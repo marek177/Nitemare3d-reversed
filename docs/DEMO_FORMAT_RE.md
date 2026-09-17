@@ -19,19 +19,17 @@ Direct recording/playback code at `seg3:90CE..9266` proves:
 ```cpp
 #pragma pack(push,1)
 struct DemoRecord {
-    uint8_t  eventByte;     // runtime 0x0108
-    uint16_t inputMask;     // runtime 0x3756
-    uint8_t  pad;           // zero in all supplied records
-    uint32_t timestamp;     // game/demo tick
+    uint8_t  eventByte;
+    uint16_t inputMask;
+    uint8_t  pad;
+    uint32_t timestamp;
 };
 #pragma pack(pop)
 ```
 
-Recording state 2 writes `0x0108 -> +0`, `0x3756 -> +1`, current tick `0x53DC -> +4`. Playback state 4 performs the inverse copy. **VERIFIED_EXE**. `pad` is zero in all 760 supplied records. **VERIFIED_DATA**.
+Recording state 2 writes current input/event state and tick; playback state 4 restores it. **VERIFIED_EXE**.
 
 ## Input-mask decoding
-
-The normal player-input routine directly tests `0x3756`, so most movement/action bits can now be decoded. **VERIFIED_EXE** for the bit tests/effects.
 
 | mask | reconstructed effect |
 |---:|---|
@@ -40,27 +38,63 @@ The normal player-input routine directly tests `0x3756`, so most movement/action
 | `0x0008` | turn one direction; with `0x0100`, strafe using angle + 270 degrees |
 | `0x0010` | turn opposite direction; with `0x0100`, strafe using angle + 90 degrees |
 | `0x0020` | double movement and turn increments |
-| `0x0040` | force movement/turn increments to 1; user-facing key name still TODO |
-| `0x0080` | FIRE; reaches verified weapon-fire routine `seg3:8B06` |
-| `0x0100` | strafe modifier for `0x0008/0x0010` |
-| `0x0200` | edge-triggered action/use-like event; exact user-facing name still PARTIAL |
+| `0x0040` | force movement/turn increments to 1 |
+| `0x0080` | FIRE; reaches weapon-fire routine `seg3:8B06` |
+| `0x0100` | strafe modifier |
+| `0x0200` | edge-triggered action/use-like event |
 
-Left/right naming for `0x0008/0x0010` remains to be fixed against the engine angle convention. The forward/back interpretation of `0x0002/0x0004` is stronger because the latter explicitly uses current angle + 180.
+**VERIFIED_EXE** for bit tests/effects; left/right user-facing labels remain PARTIAL.
 
-The first two demo-header WORDs feed the same routine as movement/angular increments. `0x0020` doubles both and `0x0040` forces both to 1. Exact semantic name of the third header WORD is still TODO. **VERIFIED_EXE / PARTIAL labels**.
+The first two demo-header WORDs feed movement/angular increments. With the supplied demos the base values are 10 and 5. **VERIFIED_EXE / VERIFIED_DATA**.
 
-## Input vocabulary in original streams
+## Player spawn and initial angle — recovered
 
-All three files use the same compact family of masks, confirming recorded relative player input rather than absolute X/Y trajectories. Common masks include `0`, `2`, `4`, `8`, `10`, `16`, `18`, `128`, `130`, `136`, `144`, `512`, and combinations such as `514` and `528`. **VERIFIED_DATA**.
+The level initialization scan at raw disassembly `0x23312..0x23386` walks the second byte of every 2-byte MAP cell (`mapBuffer+1`, stride 2). For each object byte it performs a runtime class lookup. When the resolved class equals 2, the entry is treated as the player start. **VERIFIED_EXE**.
 
-This explains the substitution test: when DEMO.2 or DEMO.3 is copied into the DEMO.1 slot while E1M11 remains loaded, the engine blindly executes valid movement/fire/use commands against incompatible geometry, producing collisions, spinning and shots into walls. **BEHAVIORAL + VERIFIED_FORMAT**.
+For the player-start object the routine sets:
+
+```text
+playerX = tileX * 64 + 32
+playerY = tileY * 64 + 32
+initialAngle = (objectId - baseObjectIdForClass2) * 90 degrees
+```
+
+The angle is passed to the normal angle setter. That setter normalizes into `0..359` and stores the result in global `0x4BEA`. Player world coordinates are globals `0x4BF6`/`0x4BF8`. **VERIFIED_EXE**.
+
+A data-wide search over all supplied MAP.1/2/3 levels independently identifies one and only one contiguous four-ID family that occurs exactly once per level: object IDs **1,2,3,4**. This matches the EXE's four-orientation subtraction/multiply-by-90 construction. Therefore player start markers are:
+
+| object ID | initial angle |
+|---:|---:|
+| 1 | 0 degrees |
+| 2 | 90 degrees |
+| 3 | 180 degrees |
+| 4 | 270 degrees |
+
+**VERIFIED_DATA + VERIFIED_EXE**.
+
+### Exact starts for high-value demo candidates
+
+- E1M3: object 2 at tile `(16,49)` -> world `(1056,3168)`, angle 90 degrees.
+- E1M11: object 2 at tile `(16,49)` -> world `(1056,3168)`, angle 90 degrees.
+- E2M3: object 2 at tile `(27,52)` -> world `(1760,3360)`, angle 90 degrees.
+- E3M3: object 1 at tile `(7,5)` -> world `(480,352)`, angle 0 degrees.
+
+E1M3 and E1M11 thus share not only almost identical payload geometry but also exactly the same player spawn and initial facing. **VERIFIED_DATA**.
+
+## Movement commit / collision chain
+
+The normal movement path computes a proposed destination and reaches a commit routine around raw `0x1E9E0`. That routine calls multiple helpers before committing `DI -> 0x4BF6` and `SI -> 0x4BF8`; after commit it derives current tile coordinates by arithmetic shift right 6 and updates the current map-cell far pointer. **VERIFIED_EXE**.
+
+This confirms 64 world units per tile and that collision/interaction processing occurs before the final coordinate write. The exact passability flags for each wall/door type are still PARTIAL because the helper chain consults runtime lookup tables populated from episode resources. A naive rule such as `wallByte != 0` is incorrect: known player spawn cells themselves contain nonzero first-byte values (for example E1M3/E1M11 spawn first byte `187`, E2M3/E3M3 `193`).
+
+Therefore the final trajectory matcher must use the recovered collision flags/lookup semantics rather than guessing that zero means floor.
 
 ## Playback/record state machine
 
 Global `0x46B8`:
 
 - state 1: create/open `demo.N`, write 6-byte header
-- state 2: record changed event/input state as 8-byte records
+- state 2: record 8-byte records
 - state 3: open existing `demo.N`, read header + first record
 - state 4: timed playback
 - state 5: close/reset
@@ -69,42 +103,26 @@ Record timestamps are compared against game tick `0x53DC`. **VERIFIED_EXE**.
 
 ## Resource relationship and attract mode
 
-The resource setup constructs `map.N`, `img.N`, and `demo.N` from the same numeric selector; demo filename buffer is `0x7E84`. **VERIFIED_EXE**.
-
-Normal menu attract behavior observed by testing forces resource set 1 and visibly runs Level 1:11. Removing demos produces `Error opening file demo.1`. Substituting DEMO.2/3 does not change the loaded HUD/map from 1:11. Therefore map identity is not encoded in the 8-byte demo command records. **BEHAVIORAL + VERIFIED_FORMAT**.
+Resource setup constructs `map.N`, `img.N`, and `demo.N` from the same numeric selector. Normal menu attract behavior observed by testing forces resource set 1 and visibly runs Level 1:11. Removing demos produces `Error opening file demo.1`; substituting DEMO.2/3 does not change the loaded HUD/map from 1:11. **BEHAVIORAL + VERIFIED_FORMAT**.
 
 ## MAP.1 E1M3 versus E1M11
 
-A direct comparison of their 8192-byte payloads finds only 17 differing bytes. They are extremely close variants, but not literally byte-identical. **VERIFIED_DATA**.
-
-This is strong evidence that E1M11 is derived from/copies the E1M3 layout for attract playback, but exact map-plane semantics must remain separate from the demo-stream proof.
+Their 8192-byte payloads differ by only 17 bytes and their player start is identical. E1M11 is therefore a very close E1M3-derived demo variant. **VERIFIED_DATA**.
 
 ## DEMO.2 / DEMO.3 origin hypothesis
 
 - DEMO.1 is compatible with E1M3/E1M11.
-- DEMO.2 may originate from an Episode 2 map; E2M3 is a high-value candidate.
-- DEMO.3 may originate from an Episode 3 map; E3M3 is a high-value candidate.
+- DEMO.2 may originate from an Episode 2 map; E2M3 remains a high-value candidate.
+- DEMO.3 may originate from an Episode 3 map; E3M3 remains a high-value candidate.
 
-E2M3/E3M3 remain **INFERRED**. Final MAP.2/MAP.3 contain 10 maps each, so deleted E2M11/E3M11 maps cannot currently be asserted.
+E2M3/E3M3 are still **INFERRED**, not yet verified. The newly recovered spawn system gives the matcher exact start state for every candidate level, removing one major ambiguity.
 
 ## Command-line switch
 
 `NITE3W.EXE -r` sets demo state 1 and enables recording. **VERIFIED_EXE**. No command-line case directly setting playback state 3 has yet been found.
 
-## Next: automatic trajectory matcher
+## Next: finish collision flags, then automatic matcher
 
-The demo command format is no longer the main blocker. A trustworthy matcher now needs exact player spawn/initial angle and map collision/passability semantics.
+Spawn and initial angle are no longer blockers. The remaining critical prerequisite is the exact movement collision/passability lookup used before the `0x4BF6/0x4BF8` commit.
 
-Planned scoring:
-
-1. recover candidate level player start and initial angle;
-2. replay forward/back and turn commands with the header-derived increments;
-3. apply strafe modifier behavior;
-4. reproduce wall/door collision sufficiently to detect impossible movement;
-5. score collisions/stalls versus valid corridor traversal;
-6. use FIRE events as secondary enemy/line-of-sight evidence;
-7. use action/use events as strong door/switch evidence;
-8. calibrate DEMO.1 on E1M3/E1M11;
-9. rank DEMO.2 across E2M1-10 and DEMO.3 across E3M1-10.
-
-The next EXE pass should therefore target player-spawn extraction and the movement/collision routine called from this decoded input handler.
+Once recovered, replay DEMO.1 across E1 levels as calibration, then DEMO.2 across E2M1-10 and DEMO.3 across E3M1-10. Score wall collisions/stalls, successful door/use interactions, firing lines toward guard positions, and duration before divergence. E1M3/E1M11 should form the positive-control pair for DEMO.1.
