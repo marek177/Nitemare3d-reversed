@@ -20,6 +20,7 @@ add_library(n3d_core
     src/app/GameData.cpp
     src/game/LevelState.cpp
     src/game/CheatSystem.cpp
+    src/game/HazardSystem.hpp
     src/ui/MenuModel.cpp
     src/ui/InstructionsData.cpp
     src/renderer/Framebuffer.cpp
@@ -43,7 +44,6 @@ target_link_libraries(n3d_pushable_test PRIVATE n3d_core)
 
 add_executable(n3d_menu_cheat_test tests/menu_cheat_test.cpp)
 target_link_libraries(n3d_menu_cheat_test PRIVATE n3d_core)
-
 
 if(N3D_ENABLE_SDL3)
     find_package(SDL3 CONFIG QUIET)
