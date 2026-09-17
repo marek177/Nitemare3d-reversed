@@ -46,11 +46,9 @@ Therefore the labels are direct executable evidence, not inferred names:
 | `GUARD+0A` | **strategy** | **VERIFIED_EXE** |
 | `GUARD+0B` | state | VERIFIED_EXE |
 | `GUARD+0C` | nextstate | VERIFIED_EXE |
-| `GUARD+06` | timer | **VERIFIED_EXE** |
+| `GUARD+06` | **timer** | **VERIFIED_EXE** |
 | `GUARD+11` | **octant** | **VERIFIED_EXE** |
 | `GUARD+12` | **resoct / result octant** | **VERIFIED_EXE** |
-
-This replaces earlier conservative names for +0A/+10/+11/+12.
 
 ## Damage receiver recovered
 
@@ -87,7 +85,28 @@ sub es:[si+10], al       ; strength -= damage
 mov byte ptr es:[si+12], 8
 ```
 
-Thus **enemy HP storage and the lethal/non-lethal damage split are now VERIFIED_EXE**. Exact initial HP per enemy and exact weapon damage constants are still TODO; those require tracing the strength initializer and `compute_damage` producer.
+Thus **enemy HP storage and the lethal/non-lethal damage split are VERIFIED_EXE**.
+
+## Strength initialization: important third-pass correction
+
+A complete direct-write audit of the GUARD pool in the code segment found the following writes to `GUARD+10`:
+
+1. normal GUARD creation at `seg3:84AD`: `mov byte ptr es:[bx+10], 0xFF`;
+2. a second/special GUARD setup path at `seg3:A18A`: `mov byte ptr es:[di+10], 0xFF`;
+3. lethal damage at `seg3:8127`: clear `GUARD+10` to zero;
+4. non-lethal damage at `seg3:81EF`: subtract the computed damage byte from `GUARD+10`.
+
+No class-indexed post-spawn write to `GUARD+10` was found in the GUARD-owning code segment. GUARD base `0x93AE` / guard-count `0x7E5E` references are confined to this code segment in the static segment scan.
+
+Therefore the previous target "find a later per-class strength initializer" is **not supported by the current EXE evidence**. The strongest current model is:
+
+- fresh GUARD strength starts at **255 (`0xFF`)**;
+- damage directly reduces that byte;
+- class-specific toughness, if present, must be implemented outside a later HP initializer (for example in damage production/mitigation, state logic, or another indirect mechanism).
+
+Status: **VERIFIED_EXE for the 0xFF initialization and direct write set; INFERRED for the conclusion that all normally spawned guards begin with the same effective strength until dynamic/indirect evidence proves otherwise.**
+
+This distinction matters: do not publish an `Enemy class -> HP` table with invented values. The next high-value target is now the damage producer.
 
 ## Current GUARD layout
 
@@ -103,7 +122,7 @@ Thus **enemy HP storage and the lethal/non-lethal damage split are now VERIFIED_
 | `+0D` | 1 | o_id | VERIFIED_EXE |
 | `+0E` | 1 | definition lookup result | PARTIAL |
 | `+0F` | 1 | synchronization boolean | PARTIAL |
-| `+10` | 1 | **strength / HP** | **VERIFIED_EXE** |
+| `+10` | 1 | **strength / HP** | **VERIFIED_EXE**; initialized `0xFF`, cleared/subtracted by damage receiver |
 | `+11` | 1 | **octant** | **VERIFIED_EXE** |
 | `+12` | 1 | **resoct** | **VERIFIED_EXE** |
 | `+13` | 1 | transition parameter | PARTIAL |
@@ -130,14 +149,14 @@ Thus **enemy HP storage and the lethal/non-lethal damage split are now VERIFIED_
 | `+1A` | 1 | runtime byte initialized zero | TODO semantic |
 | `+1B` | 1 | unknown | TODO |
 
-A separate runtime mover has also been found that resolves an OBJECT by `index*0x1C`, adds signed byte deltas to `OBJECT+10/+12`, updates the map-cell pointer and decrements a lifetime/count byte. This proves that X/Y are mutable integer world coordinates and that some movers use per-tick signed deltas. It is not yet promoted as the GUARD walking-speed routine until its owning runtime class is tied to GUARD state dispatch.
+A separate runtime mover resolves an OBJECT by `index*0x1C`, adds signed byte deltas to `OBJECT+10/+12`, updates the map-cell pointer and decrements a lifetime/count byte. This proves that X/Y are mutable integer world coordinates and that some movers use per-tick signed deltas. It is not yet promoted as the GUARD walking-speed routine until its owning runtime class is tied to GUARD state dispatch.
 
 ## Next targets
 
-1. Trace the **strength initializer** -> exact HP by enemy class.
-2. Trace `compute_damage` producer -> exact weapon damage / randomization / difficulty effects.
-3. Trace GUARD movement state handlers that write OBJECT X/Y -> direction and walking speed.
-4. Trace timer/timestamp writes in detection and attack states -> reaction delay and attack interval.
-5. Follow lethal/non-lethal handlers into sound calls -> pain/death SND.DAT IDs; then alert/attack states.
+1. Trace the **damage producer** reached by the hit receiver -> exact weapon damage, randomization, mitigation and possible class/difficulty effects.
+2. Trace GUARD movement state handlers that write OBJECT X/Y -> direction and walking speed.
+3. Trace GUARD timer/timestamp writes in detection and attack states -> reaction delay and attack interval.
+4. Follow lethal/non-lethal handlers into sound calls -> pain/death SND.DAT IDs; then alert/attack states.
+5. Revisit per-class toughness only if the damage producer or an indirect write path proves class-specific scaling.
 
 The renderer remains deferred until this runtime/combat layer is substantially complete.
