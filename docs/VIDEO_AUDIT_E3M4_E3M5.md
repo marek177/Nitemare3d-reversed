@@ -146,4 +146,4 @@ E3M5 provides direct/strong evidence for:
 - E3M4: **audited; source is suitable for deletion after preserving this audit/evidence package.**
 - E3M5: **audited, but source itself contains an editorial gameplay gap.** It is suitable for deletion if preserving this source gap in the audit is sufficient; do not call E3M5 "100% continuous frame coverage" without another capture.
 - E3M6: already audited separately.
-- The remaining completely unaudited Episode 3 walkthrough level is **E3M3**.
+- E3M3 now has a dedicated MAP/HINT reconstruction audit and source-code anchor table in `docs/VIDEO_AUDIT_E3M3.md` / `src/game/Episode3LevelData.hpp`; the remaining gap is the literal direct MP4 frame/timestamp pass.

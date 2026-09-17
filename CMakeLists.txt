@@ -48,6 +48,9 @@ target_link_libraries(n3d_menu_cheat_test PRIVATE n3d_core)
 add_executable(n3d_hazard_test tests/hazard_test.cpp)
 target_link_libraries(n3d_hazard_test PRIVATE n3d_core)
 
+add_executable(n3d_episode3_level_data_test tests/episode3_level_data_test.cpp)
+target_link_libraries(n3d_episode3_level_data_test PRIVATE n3d_core)
+
 if(N3D_ENABLE_SDL3)
     find_package(SDL3 CONFIG QUIET)
 
