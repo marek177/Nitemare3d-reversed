@@ -46,6 +46,18 @@ This file is the central status table for the next runtime-engine reverse-engine
 - `OBJECTS.1-3` and `WALLS.1-3` are editor-side definitions and must not be treated as runtime object tables. **VERIFIED_DATA / behavioral project constraint**
 - E1M11 is a demo/internal map and is not part of the normal 10-level Episode 1 progression. **VERIFIED_DATA / BEHAVIORAL**
 
+### Menu demo / attract-mode behavior
+
+A user-supplied gameplay capture on 2026-09-17 adds an important behavioral distinction for E1M11/demo handling:
+
+- the demo is launched by the game's **menu/demo path**, not by reaching it through normal Episode 1 gameplay;
+- normal play does not expose the demo as an ordinary selectable/reachable level;
+- repeated demo launches can use **different MIDI songs** rather than a single permanently bound E1M11 track.
+
+Status: **BEHAVIORAL**. The executable selector remains TODO.
+
+This changes the MIDI RE target: do not model demo music as simply `episode=1, level=11 -> one MIDI`. Trace the menu/attract-mode demo entry point separately from the normal level-start path, then follow its MIDI selector and determine whether it uses RNG, a rotating index, a playlist/table, or another stateful selection rule. Also determine whether the selector excludes the currently playing menu song or any previous demo song.
+
 ## Next extraction order
 
 1. **GUARD AI + combat constants**
@@ -74,11 +86,16 @@ This file is the central status table for the next runtime-engine reverse-engine
 
 5. **MIDI selection + BSF/edition**
    - finish Episode/Level -> MIDI table and special branches;
+   - trace the **menu/demo launch path** separately from normal level start;
+   - identify the demo MIDI candidate table/playlist and exact changing-song selector;
+   - determine RNG vs round-robin/stateful selection and any exclusion/repeat rules;
    - trace `NITE3D.BSF`, edition/registration and integrity checks.
 
 ## Video audit status carried into this phase
 
 Episode 3 walkthrough coverage is now substantially better than the earlier baseline: E3M1 is covered across both halves, E3M4-E3M6 have dedicated audits, and E3M7-E3M9 were subsequently audited. E3M10/ending behavior was also examined. Video observations are useful for state transitions and timings, but exact numeric HP/damage/speed values remain **INFERRED/TODO** until tied to executable evidence.
+
+The 2026-09-17 menu-demo capture additionally establishes behavioral evidence that the internal demo path is distinct from normal progression and that its MIDI selection can vary between demo starts.
 
 ## Implementation rule
 
