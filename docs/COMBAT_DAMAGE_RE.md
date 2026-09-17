@@ -33,7 +33,7 @@ Status: **VERIFIED_EXE** for selector behavior and weapon ordering from embedded
 
 ## Enemy-class scaling matrix
 
-The producer dispatches on `OBJECT+06 class` for classes `0x0C..0x1F`. The table below gives the operation applied to the signed base damage **before final difficulty scaling**.
+The producer dispatches on `OBJECT+06 class` for classes `0x0C..0x1F`. The jump table at `seg3:9FE8` contains 20 targets, one for each class. The table below gives the operation applied to the signed base damage **before final difficulty scaling**.
 
 | OBJECT class | Single Shot Laser (0) | Magic Wand (1) | Silver Pistol (2) | Continuous Laser (3) | Status |
 |---:|---:|---:|---:|---:|---|
@@ -51,12 +51,14 @@ The producer dispatches on `OBJECT+06 class` for classes `0x0C..0x1F`. The table
 | `0x17` | /4 | /256 | /4 | /4 | VERIFIED_EXE |
 | `0x18` | /8 | /256 | /16 | /8 | VERIFIED_EXE |
 | `0x19` | 0 | 0 | 0 | 0 | VERIFIED_EXE |
-| `0x1A` | /2 | 0 | /2 | /2 | VERIFIED_EXE |
+| `0x1A` | 0 | /2 | 0 | 0 | VERIFIED_EXE |
 | `0x1B` | /2 | /2 | /2 | /2 | VERIFIED_EXE |
 | `0x1C` | /2 | /2 | /2 | /2 | VERIFIED_EXE |
 | `0x1D` | /8 | /8 | /8 | /8 | VERIFIED_EXE |
 | `0x1E` | /8 | 0 | /8 | /8 | VERIFIED_EXE |
 | `0x1F` | /4 | 0 | /4 | /4 | VERIFIED_EXE |
+
+Important correction: class `0x1A` reaches `seg3:A080`, which returns zero for every weapon except weapon 1 (Magic Wand), where it performs `/2`. Earlier notes had the polarity reversed.
 
 The `/256` entries are literal arithmetic right shifts by 8, not shorthand for immunity. For small positive base values they normally collapse to zero, but the exact signed arithmetic is retained here.
 
@@ -87,6 +89,49 @@ if (damage > 255)
 
 The hit receiver separately ignores non-positive damage (`damage <= 0`) on the non-lethal path. Thus the effective damage accepted by the GUARD receiver is 1..255.
 
+## Weapon ammo pools and consumption
+
+The fire/ammo helper at `seg3:A97C` provides a direct mapping from weapon selector to ammo byte. Omnipotent (`0x4BE5 != 0`) bypasses normal consumption and reports success.
+
+| Weapon selector | Weapon | Ammo byte | Consumption |
+|---:|---|---:|---|
+| 0 | Single Shot Laser | `0x4C20` | decrement by 1 when non-zero |
+| 1 | Magic Wand | `0x4C44` | decrement by 1 when non-zero |
+| 2 | Silver Pistol | `0x4C1F` | decrement by 1 when non-zero |
+| 3 | Continuous fire laser | `0x4C20` | decrement by 1 when non-zero; shares laser pool with weapon 0 |
+
+Status: **VERIFIED_EXE**.
+
+The related refill/pickup helper at `seg3:A9E0` shows two useful operations:
+
+- forced/set path sets the selected ammo pool to `0x32` = **50**;
+- ordinary ammo pickups add `0x14` = **20** while checking a `0x64` = **100** threshold before the add.
+
+The ordinary pickup type order is not the same as weapon-selector order: pickup type 0 adds to `0x4C1F` (silver), type 1 to `0x4C20` (laser), and type 2 to `0x4C44` (wand). Exact item names/graphics remain to be bound to those pickup type IDs.
+
+## Weapon jam is a scripted level flag, not random weapon failure
+
+The firing routine at `seg3:8B06` checks byte `0x4C2E` before performing the shot. If it is non-zero it calls the tiny message routine at `seg4:2508`, which displays the embedded string at segment-10 offset `0x1E94`:
+
+```text
+Your weapon appears to be jammed!
+```
+
+and returns without executing the normal firing path.
+
+A direct-write audit of `0x4C2E` finds the important setter/clearer in the level-script dispatcher at `seg3:C01E..C051`. In the Episode-1 branch (`0x7E52 == 1`), when `level + 1 == 9`:
+
+```text
+script/event code 0x47 -> if not jammed: 0x4C2E = 1
+script/event code 0x48 -> if jammed:     0x4C2E = 0
+```
+
+Both transitions invoke SFX ID `0x44` (decimal **68**) through the sound helper.
+
+Therefore the jam is **not supported as a random gun-jam probability**. It is a scripted gameplay condition that blocks the common fire routine until a corresponding script event clears it. The current evidence ties the set/clear mechanism specifically to Episode 1, level 9 (1-based level number), subject to final map-event binding.
+
+Status: **VERIFIED_EXE** for flag check, setter, clearer, event codes and SFX ID; map-object identity that emits event `0x47/0x48` is still PARTIAL.
+
 ## Reconstructed formula
 
 For normal class-table entries:
@@ -116,7 +161,8 @@ The arithmetic uses signed 16-bit shifts/division behavior. This pseudocode is d
 2. Trace the writer of `OBJECT+18` to give the projected coordinate an exact semantic name.
 3. Resolve the special class `0x15` helper and the meaning of global `0x7E52` used by class `0x16`.
 4. Tie `0x4C14` values to the exact difficulty labels displayed by the game UI.
-5. Trace weapon fire cadence/ammo consumption and the `Your weapon appears to be jammed!` branch.
-6. Follow lethal/non-lethal handlers into exact pain/death SND.DAT calls.
+5. Trace exact weapon cadence / continuous-fire scheduling and bind ammo HUD/display behavior.
+6. Bind the Episode-1 level-9 jam event codes `0x47/0x48` to the exact map objects/triggers.
+7. Follow lethal/non-lethal handlers into exact pain/death SND.DAT calls.
 
 Renderer work remains deferred until the combat/runtime pass is complete.
