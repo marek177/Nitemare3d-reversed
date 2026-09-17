@@ -1,96 +1,143 @@
 # GUARD AI reverse engineering
 
 Date: 2026-09-17
-Evidence: original NITE3W.EXE V1.10 Win16 binary (230400 bytes), reconstructed USER.SAV writer/layout, and direct 16-bit disassembly.
+Evidence: original NITE3W.EXE V1.10 Win16 binary (230400 bytes), reconstructed USER.SAV writer/layout, direct 16-bit disassembly and embedded developer/debug strings.
 
-## Fixed GUARD anchors
+## Fixed GUARD / OBJECT anchors
 
-- record stride: **0x1A = 26 bytes**
-- capacity: **100**
-- USER.SAV GUARD pool: **0xB43B..0xBE62**, 0x0A28 bytes
-- `+0x0B state`, `+0x0C next_state`, `+0x0D o_id`
-- `+0x08` is a runtime OBJECT slot/index; EXE multiplies it by **0x1C**
+- GUARD stride: **0x1A = 26 bytes**, capacity **100**.
+- USER.SAV GUARD pool: **0xB43B..0xBE62**, 0x0A28 bytes.
+- `GUARD+08` is an OBJECT slot; `slot * 0x1C` addresses a 28-byte OBJECT record.
+- `OBJECT+10/+12` are **world X/Y**; world-to-tile conversion uses arithmetic shift right by 6.
+- `OBJECT+0C:+0E` is the object's map-cell far pointer, not X/Y.
 
 Evidence: **VERIFIED_EXE + VERIFIED_SAVE_LAYOUT**.
 
-## 28-byte OBJECT record: new verified linkage
+## Embedded debug string unlocks GUARD semantics
 
-Direct disassembly of the level/object initialization path proves a fixed **0x1C = 28-byte** runtime OBJECT record. The object pool is walked with `add ...,0x1C`; GUARD code resolves its associated object with `guard[+0x08] * 0x1C`.
-
-The initialization path writes the following object fields:
-
-| OBJECT offset | Width | Role | Status |
-|---:|---:|---|---|
-| `+0x00` | 1 | object/map ID | VERIFIED access |
-| `+0x01` | 1 | subtype/variant-like value | PARTIAL semantic |
-| `+0x02` | 1 | signed animation/render offset component | PARTIAL semantic |
-| `+0x03` | 1 | signed animation/render offset component | PARTIAL semantic |
-| `+0x04` | 1 | definition-table ID | VERIFIED access |
-| `+0x05` | 1 | flags; bit **0x08** selects GUARD creation | **VERIFIED_EXE** |
-| `+0x06` | 1 | runtime object type/class | VERIFIED access |
-| `+0x07` | 1 | GUARD index for guard objects | **VERIFIED_EXE**: assigned from current GUARD count |
-| `+0x08` | 4 | runtime value initialized to zero | semantic TODO |
-| `+0x0C` | 2 | map-cell far-pointer offset | **VERIFIED_EXE** |
-| `+0x0E` | 2 | map-cell far-pointer segment | **VERIFIED_EXE** |
-| `+0x10` | 2 | **world X** | **VERIFIED_EXE** |
-| `+0x12` | 2 | **world Y** | **VERIFIED_EXE** |
-| `+0x14..0x19` | 6 | unknown | TODO |
-| `+0x1A` | 1 | runtime byte initialized to zero | VERIFIED write; semantic TODO |
-| `+0x1B` | 1 | unknown | TODO |
-
-### Why +0x10/+0x12 are X/Y
-
-This is now stronger than the previous PARTIAL classification. A runtime routine resolves an object by index and computes:
+NITE3W contains the developer diagnostic:
 
 ```text
-dy = object[+0x12] - playerY
-dx = object[+0x10] - playerX
-angle = direction_function(dx, dy)
+class %d, strength %d, strategy %d
+state %d, nextstate %d, timer %d
+octant %d, resoct %d
 ```
 
-Other object/guard routines use the same fields for world/map calculations. Therefore `OBJECT+0x10` and `OBJECT+0x12` are promoted to **VERIFIED_EXE world X/Y**.
+The call site pushes, in reverse C argument order:
 
-`OBJECT+0x0C:+0x0E` are a separate far pointer to the object's map cell. GUARD lookup code compares an input far pointer against these two words, so these must not be confused with X/Y coordinates.
+```text
+GUARD+12
+GUARD+11
+GUARD+06
+GUARD+0C
+GUARD+0B
+GUARD+0A
+GUARD+10
+OBJECT+06
+format
+```
 
-## GUARD field recovery
+Therefore the labels are direct executable evidence, not inferred names:
 
-| Offset | Width | Recovered role | Status |
+| Field | Meaning | Status |
+|---|---|---|
+| `OBJECT+06` | class | VERIFIED_EXE |
+| `GUARD+10` | **strength / HP** | **VERIFIED_EXE** |
+| `GUARD+0A` | **strategy** | **VERIFIED_EXE** |
+| `GUARD+0B` | state | VERIFIED_EXE |
+| `GUARD+0C` | nextstate | VERIFIED_EXE |
+| `GUARD+06` | timer | **VERIFIED_EXE** |
+| `GUARD+11` | **octant** | **VERIFIED_EXE** |
+| `GUARD+12` | **resoct / result octant** | **VERIFIED_EXE** |
+
+This replaces earlier conservative names for +0A/+10/+11/+12.
+
+## Damage receiver recovered
+
+The guard-hit routine obtains a damage amount from a helper and compares it against `GUARD+10 strength`.
+
+Equivalent control flow:
+
+```text
+damage = compute_damage(...)
+if (strength <= damage) {
+    strength = 0;
+    death_handler(...);
+    ...
+} else if (damage > 0) {
+    if (state == 7)
+        special_state7_hit_handler(...);
+    strength -= damage;
+    resoct = 8;
+    pain/state reaction dispatch(...);
+}
+```
+
+Direct instructions include:
+
+```text
+mov al, es:[si+10]
+cmp ax, damage
+jg  non_lethal
+mov es:[si+10], ah       ; AH is zero here -> strength = 0
+...
+non_lethal:
+mov al, damage
+sub es:[si+10], al       ; strength -= damage
+mov byte ptr es:[si+12], 8
+```
+
+Thus **enemy HP storage and the lethal/non-lethal damage split are now VERIFIED_EXE**. Exact initial HP per enemy and exact weapon damage constants are still TODO; those require tracing the strength initializer and `compute_damage` producer.
+
+## Current GUARD layout
+
+| Offset | Width | Meaning | Status |
 |---:|---:|---|---|
-| `+0x00` | 2 | sequence/definition-derived value | PARTIAL |
-| `+0x02` | 4 | timestamp/time value | VERIFIED_EXE |
-| `+0x06` | 2 | state/countdown timing value | VERIFIED_EXE |
-| `+0x08` | 2 | runtime OBJECT slot/index | **VERIFIED_EXE** |
-| `+0x0A` | 1 | behavior/state-control | PARTIAL |
-| `+0x0B` | 1 | state | VERIFIED_EXE |
-| `+0x0C` | 1 | next_state | VERIFIED_EXE |
-| `+0x0D` | 1 | o_id | VERIFIED_EXE |
-| `+0x0E` | 1 | object/definition lookup result | PARTIAL |
-| `+0x0F` | 1 | GUARD/object synchronization boolean | PARTIAL |
-| `+0x10` | 1 | sentinel-backed target/sequence-related field | PARTIAL; initialized 0xFF |
-| `+0x11..0x12` | 2 | unknown | TODO |
-| `+0x13` | 1 | transition parameter | PARTIAL |
-| `+0x14..0x15` | 2 | unknown | TODO |
-| `+0x16` | 1 | transition/control flag | PARTIAL |
-| `+0x17..0x19` | 3 | unknown | TODO |
+| `+00` | 2 | sequence/definition-derived value | PARTIAL |
+| `+02` | 4 | timestamp/time value | VERIFIED_EXE |
+| `+06` | 2 | **timer** | VERIFIED_EXE |
+| `+08` | 2 | OBJECT slot/index | VERIFIED_EXE |
+| `+0A` | 1 | **strategy** | VERIFIED_EXE |
+| `+0B` | 1 | state | VERIFIED_EXE |
+| `+0C` | 1 | nextstate | VERIFIED_EXE |
+| `+0D` | 1 | o_id | VERIFIED_EXE |
+| `+0E` | 1 | definition lookup result | PARTIAL |
+| `+0F` | 1 | synchronization boolean | PARTIAL |
+| `+10` | 1 | **strength / HP** | **VERIFIED_EXE** |
+| `+11` | 1 | **octant** | **VERIFIED_EXE** |
+| `+12` | 1 | **resoct** | **VERIFIED_EXE** |
+| `+13` | 1 | transition parameter | PARTIAL |
+| `+14..15` | 2 | unknown | TODO |
+| `+16` | 1 | transition/control flag | PARTIAL |
+| `+17..19` | 3 | unknown | TODO |
 
-## Capacity path independently verified
+## 28-byte OBJECT layout
 
-During object initialization, when object flag bit `0x08` indicates a guard, the executable compares the current GUARD count against literal **0x64 (100)** before creating the guard. The same branch references `MAXGUARD exceeded (%d)` and stores the current guard index into `OBJECT+0x07` before incrementing the count.
+| Offset | Width | Role | Status |
+|---:|---:|---|---|
+| `+00` | 1 | object/map ID | VERIFIED access |
+| `+01` | 1 | subtype/variant-like value | PARTIAL |
+| `+02/+03` | 2 | signed render/movement-related components depending runtime object class | PARTIAL |
+| `+04` | 1 | definition-table ID | VERIFIED access |
+| `+05` | 1 | flags; bit 0x08 selects GUARD creation | VERIFIED_EXE |
+| `+06` | 1 | **class** | VERIFIED_EXE developer label |
+| `+07` | 1 | GUARD index for guard objects | VERIFIED_EXE |
+| `+08` | 4 | runtime value initialized zero | TODO semantic |
+| `+0C:+0E` | 4 | map-cell far pointer | VERIFIED_EXE |
+| `+10` | 2 | world X | VERIFIED_EXE |
+| `+12` | 2 | world Y | VERIFIED_EXE |
+| `+14..19` | 6 | unknown | TODO |
+| `+1A` | 1 | runtime byte initialized zero | TODO semantic |
+| `+1B` | 1 | unknown | TODO |
 
-This independently confirms the 100-record capacity inferred from USER.SAV.
+A separate runtime mover has also been found that resolves an OBJECT by `index*0x1C`, adds signed byte deltas to `OBJECT+10/+12`, updates the map-cell pointer and decrements a lifetime/count byte. This proves that X/Y are mutable integer world coordinates and that some movers use per-tick signed deltas. It is not yet promoted as the GUARD walking-speed routine until its owning runtime class is tied to GUARD state dispatch.
 
-## Goals 2-5: next xrefs
+## Next targets
 
-The coordinate part of the chain is now solved:
+1. Trace the **strength initializer** -> exact HP by enemy class.
+2. Trace `compute_damage` producer -> exact weapon damage / randomization / difficulty effects.
+3. Trace GUARD movement state handlers that write OBJECT X/Y -> direction and walking speed.
+4. Trace timer/timestamp writes in detection and attack states -> reaction delay and attack interval.
+5. Follow lethal/non-lethal handlers into sound calls -> pain/death SND.DAT IDs; then alert/attack states.
 
-`GUARD+0x08 -> OBJECT[index] -> OBJECT+0x10 X / +0x12 Y`.
-
-Remaining high-value targets are:
-
-1. trace writes to `OBJECT+0x10/+0x12` from GUARD state handlers -> **direction + movement speed**;
-2. find subtraction/comparison that selects pain/death state -> **enemy HP + weapon damage routine**;
-3. trace GUARD `+0x02/+0x06` updates in detection/attack states -> **reaction delay + attack interval**;
-4. bind sound-play calls in those handlers -> **alert/attack/pain/death SND.DAT IDs**;
-5. identify remaining GUARD bytes and OBJECT `+0x14..+0x1B` without guessing.
-
-No HP, speed or damage number is promoted until direct executable evidence is found.
+The renderer remains deferred until this runtime/combat layer is substantially complete.
