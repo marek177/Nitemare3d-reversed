@@ -16,6 +16,39 @@ All three have exactly the same 6-byte header: three little-endian words `(10, 5
 
 The second dword of every 8-byte record is monotonically non-decreasing and is used by the executable as a playback timestamp. **VERIFIED_DATA / VERIFIED_EXE**.
 
+## MAP container correlation
+
+The supplied MAP files have a common 514-byte container/header region followed by 8192-byte level payloads:
+
+- `MAP.1`: 90,626 bytes = 514 + 11 x 8192 -> 11 levels.
+- `MAP.2`: 82,434 bytes = 514 + 10 x 8192 -> 10 levels.
+- `MAP.3`: 82,434 bytes = 514 + 10 x 8192 -> 10 levels.
+
+A direct E1M3 versus E1M11 payload comparison produced a very important result: **all 4096 bytes at even positions are identical**. Only 17 odd-position bytes differ. In the established 2-byte-per-cell map representation this means that the complete first byte/plane of every map cell is identical between E1M3 and E1M11, while only 17 second-byte/object-state entries differ. **VERIFIED_DATA**.
+
+Therefore the statement that E1M3 and E1M11 are the same map is substantially correct at the structural/geometry level: E1M11 is an E1M3-derived duplicate with a very small set of object/entity differences rather than an independently designed level.
+
+This is highly relevant to DEMO.1. The cleanest current model is that DEMO.1 was recorded against the E1M3 geometry (or its E1M11 demo duplicate), and E1M11 exists specifically as a stable demo copy with altered object population/state. **INFERRED**, supported by exact geometry-plane equality and behavioral playback compatibility.
+
+## Episode-2 / Episode-3 demo hypothesis
+
+Behavioral substitution tests show:
+
+- DEMO.1 renamed/used as the normal demo stream fits E1M11.
+- DEMO.2 forced into the DEMO.1 slot does not fit E1M11: recorded commands collide with the wrong geometry and produce aimless turning/shooting.
+- DEMO.3 forced into the DEMO.1 slot behaves likewise and does not fit E1M11.
+- The HUD/map remains E1M11 during these substitutions, proving that changing the stream does not itself select a map. **BEHAVIORAL**.
+
+Because the EXE constructs `MAP.N`, `IMG.N`, and `DEMO.N` from the same resource-set number, a strong candidate is:
+
+- `DEMO.1` -> Episode 1 demo geometry, apparently E1M3/E1M11.
+- `DEMO.2` -> a map in `MAP.2`, with **E2M3 a high-value candidate**.
+- `DEMO.3` -> a map in `MAP.3`, with **E3M3 a high-value candidate**.
+
+The specific E2M3/E3M3 assignments are currently **INFERRED/TODO**, not yet VERIFIED_DATA. MAP.2 and MAP.3 contain only ten final level payloads, so there is no physical E2M11/E3M11 payload in the supplied final containers. If development once used hidden/test E2M11/E3M11 copies analogous to E1M11, those payloads are absent from these final MAP files and cannot be asserted without another build or residual evidence.
+
+A particularly plausible development history to test is: each episode's demo was recorded on its M3 map; Episode 1 later received a duplicated M3 geometry as hidden E1M11 for attract playback, while DEMO.2/3 remained unused residual recordings. This model explains both the E1M3/E1M11 geometry identity and why DEMO.2/3 do not fit the final attract map. It remains **INFERRED** until trajectory/map matching or EXE caller evidence confirms it.
+
 ## EXE filename construction
 
 The episode/resource setup routine stores its numeric argument in global `0x7E52`, then constructs three names with `%s%d`:
@@ -99,11 +132,19 @@ Important: `-r` is a recorder switch, not a proven command to play an existing d
 - MIDI music can change between repeated demo launches. MIDI selection is therefore not yet assumed to be stored in DEMO.1. **BEHAVIORAL**.
 - Removing the demo files causes `Error opening file demo.1`. **BEHAVIORAL**, consistent with the recovered filename/open path.
 
-## Next tests
+## Next tests / trajectory matching
 
-1. Rename/copy DEMO.2 to DEMO.1 and launch the menu demo. If movement changes while E1M11 remains loaded, this directly proves that the file is an input stream independent of map identity.
-2. Repeat with DEMO.3 as DEMO.1.
-3. Trace the menu caller that sets `0x46B8 = 3` and determine why it selects resource set 1/E1M11.
-4. Cross-reference runtime byte `0x0108` and word `0x3756` to assign exact meanings to DemoRecord fields.
-5. Trace end-of-file handling and keyboard-abort branch.
-6. Trace MIDI selection independently and determine RNG vs round-robin behavior.
+The highest-value next pass is no longer merely file substitution. Decode `control`/`value` into exact player commands and replay each stream against candidate map collision geometry.
+
+For each candidate level score:
+
+1. whether the demo start position/direction is valid;
+2. number of movement commands that collide with walls;
+3. use/open commands that coincide with doors or interactive cells;
+4. firing events whose rays have plausible targets/guards;
+5. duration before trajectory diverges or becomes trapped;
+6. endpoint and any level/event interaction.
+
+Run DEMO.1 against all E1 maps as a calibration set: E1M3 and E1M11 should score near the top because their geometry plane is byte-identical. Then run DEMO.2 against all ten MAP.2 levels and DEMO.3 against all ten MAP.3 levels. A clear minimum-collision candidate would provide strong evidence for the original recording map.
+
+Also trace the menu caller that sets `0x46B8 = 3`, end-of-file handling, keyboard abort, and MIDI selection independently.
