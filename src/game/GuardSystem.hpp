@@ -5,32 +5,31 @@
 
 namespace nitemare3d::game {
 
+inline constexpr std::size_t kGuardCapacity = 100;          // VERIFIED_EXE + SAVE layout
+inline constexpr std::size_t kGuardRecordSize = 0x1A;      // VERIFIED_EXE
+inline constexpr std::size_t kGuardSaveOffset = 0xB43B;    // VERIFIED_SAVE_LAYOUT correlation
+inline constexpr std::size_t kGuardSaveSize = 0x0A28;      // 100 * 0x1A
+
 // Clean-room runtime layout scaffold recovered from NITE3W.EXE.
-//
-// Evidence status:
-//   VERIFIED_EXE: record stride 0x1A, state +0x0B,
-//                 next_state +0x0C, object id +0x0D.
-//   UNKNOWN: all remaining bytes until their executable semantics are traced.
-//
-// Do not assign guessed HP/speed/position meanings to the unknown bytes.
+// VERIFIED_EXE: stride 0x1A, state +0x0B, next_state +0x0C, o_id +0x0D.
+// Remaining bytes stay unnamed until their executable semantics are traced.
 #pragma pack(push, 1)
 struct GuardRuntimeRecord {
     std::uint8_t unknown00_0A[0x0B];
     std::uint8_t state;       // +0x0B, VERIFIED_EXE
     std::uint8_t nextState;   // +0x0C, VERIFIED_EXE
-    std::uint8_t objectId;    // +0x0D, VERIFIED_EXE (o_id diagnostic)
+    std::uint8_t objectId;    // +0x0D, VERIFIED_EXE
     std::uint8_t unknown0E_19[0x0C];
 };
 #pragma pack(pop)
 
-static_assert(sizeof(GuardRuntimeRecord) == 0x1A,
-              "Original Nitemare-3D GUARD runtime record is 26 bytes");
+static_assert(sizeof(GuardRuntimeRecord) == kGuardRecordSize);
 static_assert(offsetof(GuardRuntimeRecord, state) == 0x0B);
 static_assert(offsetof(GuardRuntimeRecord, nextState) == 0x0C);
 static_assert(offsetof(GuardRuntimeRecord, objectId) == 0x0D);
+static_assert(kGuardCapacity * sizeof(GuardRuntimeRecord) == kGuardSaveSize);
 
-// State numeric meanings are intentionally not enumerated yet. The original
-// executable's transition dispatch still needs to be traced before assigning
-// semantic enum names to individual values.
+// State numeric meanings and HP/speed/position/timer fields are intentionally
+// not guessed. They will be named only after direct EXE/save correlation.
 
 } // namespace nitemare3d::game
