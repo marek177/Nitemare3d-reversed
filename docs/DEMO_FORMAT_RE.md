@@ -113,11 +113,50 @@ The uploaded demo streams have visibly different early command patterns. Example
 
 Across the full streams, DEMO.3 contains 21 records carrying `0x0200`, compared with 6 in DEMO.1 and 5 in DEMO.2. DEMO.3 therefore has a particularly strong interaction-event fingerprint that should help reject candidate first rooms lacking compatible nearby doors/switches/interactives. **VERIFIED_DATA** for record counts; exact world interaction target remains dependent on collision/action reconstruction.
 
-## Movement commit / collision chain
+## Movement commit / collision chain — deeper direct EXE pass
 
-The normal movement path computes a proposed destination and reaches a commit routine around raw `0x1E9E0`. Helpers run before committing `DI -> 0x4BF6` and `SI -> 0x4BF8`; after commit tile coordinates are derived by arithmetic shift right 6. **VERIFIED_EXE**.
+The normal player movement commit routine begins at raw `0x1E9E0`. Proposed world coordinates arrive in `DI`/`SI`. Before the final position write the routine calls three helpers, after which it commits:
 
-This confirms 64 world units per tile. Exact passability flags for wall/door types remain PARTIAL. A naive `wallByte != 0` rule is invalid because spawn cells themselves can have nonzero first-plane values.
+```asm
+1ea0d: mov di,0x4bf6       ; player world X
+1ea11: mov si,0x4bf8       ; player world Y
+1ea15: sar di,6
+1ea18: sar si,6
+```
+
+Therefore the committed tile is exactly `world >> 6`, confirming 64 world units per tile. **VERIFIED_EXE**.
+
+The tile coordinates are cached in globals:
+
+```text
+0x4BF2 = current tile X
+0x4BF4 = current tile Y
+```
+
+If either tile coordinate changes, the routine directly dispatches event **`0x16`** before rebuilding the current-cell pointer:
+
+```asm
+1ea1b..1ea26  compare new tile X/Y with 0x4BF2/0x4BF4
+1ea28         store tile X
+1ea2c         store tile Y
+1ea30         push 0x16
+1ea32         call event/level dispatcher
+```
+
+This upgrades the previously tentative tile-change event to **VERIFIED_EXE**.
+
+The current MAP cell pointer is then reconstructed explicitly as:
+
+```text
+cellOffset = ((tileY << 6) + tileX) << 1
+cellPointer = 86A5:(A69E + cellOffset)
+```
+
+and stored as the far pointer at globals `0x4C10:0x4C12`. This is exactly a 64x64 map with 2 bytes per cell. **VERIFIED_EXE**.
+
+Immediately after rebuilding that pointer, the code calls a cell/object lookup helper with the far pointer. If the helper returns anything other than `0xFFFF`, its low byte is cached in global `0x4C1C`. Thus `0x4C1C` is a current-cell-derived runtime ID/value, although its final semantic name is still **PARTIAL**.
+
+The three pre-commit helper calls are now confirmed as the critical remaining collision/interaction chain. Their exact effects still need reconstruction before the demo matcher can simulate authoritative movement; do not replace them with `wallByte != 0` heuristics.
 
 ## Playback/record state machine
 
@@ -159,4 +198,4 @@ The positive control is DEMO.1: a correct matcher should independently rank E1M3
 
 ## Next
 
-Decode exact collision/passability and USE target semantics, then run the 93-combination staged matcher. DEMO.3's unusually dense early USE/ACTION pattern is a high-value discriminator. Preserve ranked raw scores and divergence timestamps rather than forcing a winner; a deleted/older map must remain a valid outcome.
+Resolve the three pre-commit movement helpers and exact USE target semantics. Then implement the authoritative movement step using the now-verified post-commit state: world coordinates, tile coordinates, tile-change event `0x16`, current-cell far pointer `0x4C10:0x4C12`, and current-cell-derived value `0x4C1C`. After that run the full 93-combination matcher.
