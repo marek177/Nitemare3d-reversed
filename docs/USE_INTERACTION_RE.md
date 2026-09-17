@@ -65,7 +65,7 @@ The routine multiplies this delta by 2 because a MAP cell is two bytes, then add
 | 6 | -1 |
 | 7 | -64 |
 
-Thus USE reach is **one adjacent tile**, with diagonal view octants quantized to the neighboring cardinal cell. User-facing north/east/south/west labels are intentionally omitted here until the coordinate convention is fully normalized.
+Thus USE reach is **one adjacent tile**, with diagonal view octants quantized to the neighboring cardinal cell. User-facing north/east/south/west labels are intentionally omitted until the coordinate convention is fully normalized.
 
 Status: **VERIFIED_EXE**.
 
@@ -78,18 +78,14 @@ The target cell is classified through:
 - object-type mapping `0x8296[objectByte]`;
 - object property table `0x7F94[objectByte]`.
 
-The major directly traced target families are below.
-
 ## Dynamic doors
 
 If the target wall carries property bit `0x08`, USE resolves the dynamic-wall record through `seg3:1296`.
 
-Door records:
-
 ```text
-base   = 0x9DD6
-stride = 0x16 = 22 bytes
-max    = 64
+DoorRuntime base   = 0x9DD6
+DoorRuntime stride = 0x16 = 22 bytes
+Maximum doors      = 64
 ```
 
 The executable contains `Door not in map` and `MAXDOORS exceeded (%d)`.
@@ -98,33 +94,49 @@ The executable contains `Door not in map` and `MAXDOORS exceeded (%d)`.
 
 The linked OBJECT class is checked before the state transition:
 
-- classes `0x33..0x38` test a key/lock mask through global `0x4C28` and an index derived from OBJECT `+0x01`;
-- classes `0x39..0x3A` test another lock/card mask through global `0x4C29`;
-- if the latter requirement is missing, `seg3:BCEA` reaches the message `You need a %s`;
+- classes `0x33..0x38` test a bit in global key/lock mask `0x4C28`, with the bit index from OBJECT `+0x01`;
+- classes `0x39..0x3A` test global ID-card mask `0x4C29`, again indexed by OBJECT `+0x01`;
+- missing card access reaches `seg3:BCEA` and `You need a %s`;
 - classes `0x3B..0x3C` reject this ordinary USE route.
 
-Original executable strings include `Red key`, `Green key`, `Blue key`, `Yellow key`, `Red ID card`, and `Yellow ID card`. The exact class-to-string mapping still requires decoding of the associated pointer/index tables, so individual classes are not named here yet.
+`seg3:BCB6` proves the exact four-entry key-name table:
 
-Status: **VERIFIED_EXE** for the class ranges/mask checks; exact class names **PARTIAL**.
+| index | key string |
+|---:|---|
+| 0 | Red key |
+| 1 | Green key |
+| 2 | Blue key |
+| 3 | Yellow key |
+
+`seg3:BCEA` uses the two-entry card-name table:
+
+| index | card string |
+|---:|---|
+| 0 | Red ID card |
+| 1 | Yellow ID card |
+
+This establishes the meaning of the inventory masks independently of editor labels. The exact `0x33..0x3E` class-to-lock construction still needs the OBJECT `+01` audit before every class gets a final name.
+
+Status: **VERIFIED_EXE**.
 
 ### Door state transition
 
 When the interaction is permitted:
 
 - door record `+0x14` is set to `1`;
-- `seg3:188A(doorRecord, octant)` performs the door transition;
-- state byte/word at `DoorRuntime+0x0C` is switched among the observed door states;
-- states `0` and `4` are the states accepted by the collision passability helper;
-- sound IDs around `0x25/0x26` are used by the transition path;
+- `seg3:188A(doorRecord, octant)` performs the transition;
+- runtime state at `DoorRuntime+0x0C` is switched among the observed door states;
+- states `0` and `4` are accepted by the collision passability helper;
+- sound IDs around `0x25/0x26` occur on the transition path;
 - linked classes `0x3D/0x3E` have an additional facing/orientation restriction.
 
-Exact user-facing labels for every numeric door state remain **PARTIAL**.
+Exact human-readable names for every numeric door state remain **PARTIAL**.
 
 ## PANEL runtime family
 
 If the target object maps to type `3`, USE calls `seg3:12E8(targetCell)`.
 
-That routine searches a 22-byte runtime table at `0xA356`. Initialization `seg3:16D6..181B` creates these records for mapped object type `3`, enforces a maximum of **32**, and the executable contains `MAXPANELS exceeded (%d)`.
+Initialization `seg3:16D6..181B` creates 22-byte records at `0xA356`, maximum 32, and the executable contains `MAXPANELS exceeded (%d)`.
 
 ```text
 PanelRuntime base   = 0xA356
@@ -132,9 +144,9 @@ PanelRuntime stride = 0x16 = 22 bytes
 Maximum panels      = 32
 ```
 
-USE writes panel record `+0x14 = 2`, plays SFX `0x27`, and proceeds through the panel-linked state/action path.
+USE writes panel record `+0x14 = 2`, plays SFX `0x27`, and updates linked panel/door-like state.
 
-Status: **VERIFIED_EXE** that this is the panel runtime family; exact per-panel action semantics are still being classified.
+Status: **VERIFIED_EXE** for the panel runtime family; individual panel action semantics remain **PARTIAL**.
 
 ## Pushable-object path
 
@@ -144,10 +156,8 @@ Mapped object type `0x28` enters the push path:
 2. call `seg3:21B6(targetCell, destinationCell)`;
 3. find the push runtime record through `seg3:133A`;
 4. reject the push if the destination carries generic blocking property bit `0x02`;
-5. load signed movement deltas from two octant tables;
+5. load signed movement deltas from the octant tables;
 6. activate the push record for eight updates.
-
-The signed tables are:
 
 ```text
 DS 0x00A4: [ 0, +8, +8,  0,  0, -8, -8,  0 ]
@@ -156,7 +166,7 @@ DS 0x00AC: [-8,  0,  0, +8, +8,  0,  0, -8 ]
 
 The push pool is at `0xA616`, uses 6-byte records and has maximum 12. Initialization `seg3:181C..1889` scans OBJECT class/type `0x28`; the executable contains `Push not in map` and `MAXPUSHES exceeded (%d)`.
 
-This agrees with `docs/PUSHABLE_RE.md`: eight updates at eight world units produce exactly one 64-unit tile move.
+Eight updates at eight world units produce one 64-unit tile move, agreeing with `docs/PUSHABLE_RE.md`.
 
 Status: **VERIFIED_EXE**.
 
@@ -164,39 +174,87 @@ Status: **VERIFIED_EXE**.
 
 ### Wall types 9..12
 
-`seg3:25F8` handles mapped wall types `9..0x0C` specially in relation to the current level number:
+`seg3:25F8` handles mapped wall types `9..0x0C` relative to the current level:
 
-- type `9` derives current level +1;
-- type `10` derives current level +2;
-- types `11/12` follow related special paths without the same increment.
+- type `9` produces current level +1;
+- type `10` produces current level +2;
+- types `11/12` return the current level through related paths.
 
-Original EXE strings include `This is the portal to the` and `Invalid level #`, strongly tying this area to level-transition / portal-like logic. Exact type-to-visible-feature naming remains **PARTIAL** until all xrefs are closed.
+The executable contains `This is the portal to the` and `Invalid level #`. The numeric behavior is **VERIFIED_EXE**; exact visible-feature naming of all four types remains **PARTIAL**.
 
-### Wall types 0x0D..0x2C
+### Wall-type dispatcher `seg3:277A`
 
-`seg3:277A` groups these types into special-wall handlers:
+The dispatcher separates mapped wall types `0x0D..0x2C` into five handler families. NE relocation-chain decoding is important here: three targets reside in **segment 4**, not segment 3.
 
-| mapped wall type | handler |
-|---|---|
-| default within `0x0D..0x2C` | `seg3:1EE0` |
-| `0x15..0x18` | `seg3:C126` |
-| `0x19..0x1C` | `seg3:20CE` |
-| `0x1D..0x24` | `seg3:1F6A` |
-| `0x25..0x2C` | `seg3:2076` |
+| mapped wall type | far target | target segment | status |
+|---|---:|---:|---|
+| default within `0x0D..0x2C` | `1EE0` | 4 | VERIFIED_EXE |
+| `0x15..0x18` | `C126` | 3 | VERIFIED_EXE |
+| `0x19..0x1C` | `20CE` | 4 | VERIFIED_EXE |
+| `0x1D..0x24` | `1F6A` | 4 | VERIFIED_EXE |
+| `0x25..0x2C` | `2076` | 4 | VERIFIED_EXE |
 
-The executable also contains interaction strings such as `What's the combination?  0000000`, `the correct combination.`, `Open remote doors`, and `Close remote doors`. Those strings are high-value anchors for the next xref pass, but the grouped ranges are not assigned final game-facing labels until the specific handlers are fully decoded.
+### Types 0x19..0x1C — exact colored-key family
 
-Status: **VERIFIED_EXE** for dispatch ranges, **PARTIAL** for names/effects.
+`seg4:20CE` computes `index = mappedWallType - 0x19`, looks up the corresponding name through `seg3:BCB6`, and tests bit `1 << index` in `0x4C28`.
+
+This proves the mapping:
+
+| mapped wall type | required key |
+|---:|---|
+| `0x19` | Red key |
+| `0x1A` | Green key |
+| `0x1B` | Blue key |
+| `0x1C` | Yellow key |
+
+The handler formats `You use the ...` when the key is present and `You need a ...` otherwise. The success helper `seg3:ACB8` only plays SFX `0x32`; it does **not** clear `0x4C28`, so this path does not consume the key.
+
+Status: **VERIFIED_EXE**, including reusable-key behavior for this handler family.
+
+### Types 0x25..0x2C — combination-check family
+
+`seg4:2076` compares the target wall's raw wall-ID state against the canonical raw ID for the requested mapped wall type. On a mismatch it enters the UI/message path that references the original combination-lock text region, including:
+
+- `What's the combination?  0000000`
+- `I'm sorry, that is not\nthe correct combination.`
+- stored code strings including `01532`, `080993`, and `372535`.
+
+This is sufficient to classify `0x25..0x2C` as the **combination-check / combination-lock family**. The exact per-type code/state correspondence is still **PARTIAL**.
+
+### Types 0x1D..0x24
+
+`seg4:1F6A` enumerates raw wall variants belonging to a mapped wall type using `seg3:2334` / `seg3:2426`, builds a menu/state table, and consults inventory/card-related state. Its exact game-facing role is not yet fully named and remains **PARTIAL**.
+
+### Default 0x0D..0x14 family
+
+`seg4:1EE0` also uses the wall-variant lookup helpers `seg3:2334` / `seg3:2426` and updates wall-related runtime/display state. Exact labels remain **PARTIAL**.
+
+### Types 0x15..0x18
+
+`seg3:C126` is the only one of these five families that remains in segment 3. It builds text/state based on bitfield `0x4C45` and routes through additional level/special-wall logic. Exact names remain **PARTIAL**.
+
+The executable also contains `Open remote doors` and `Close remote doors`; these remain xref anchors rather than prematurely assigned handler names.
 
 ## Other directly observed USE branches
 
-- mapped wall type `4`: writes `0x4C20 = 100` before the common action/sound path. Exact visible source/object name is **PARTIAL**; the effect itself is **VERIFIED_EXE**.
-- mapped wall type `5`: when `0x4C22 != 0` and `0x4C1D < 100`, adds 20 to `0x4C1D`, decrements `0x4C22`, then follows common action/sound handling. **VERIFIED_EXE**, resource names **PARTIAL**.
+- mapped wall type `4`: plays SFX `0x2B`, writes `0x4C20 = 100`, then follows the common action path. Effect **VERIFIED_EXE**, visible source name **PARTIAL**.
+- mapped wall type `5`: when `0x4C22 != 0` and `0x4C1D < 100`, adds 20 to `0x4C1D`, decrements `0x4C22`, and follows common action handling. **VERIFIED_EXE**, resource names **PARTIAL**.
 - mapped wall type `6`: analogous, adding 20 to `0x4C21` when below 100 and consuming one `0x4C22`. **VERIFIED_EXE**, resource names **PARTIAL**.
-- mapped wall type `8`: dispatches to `seg3:C0A2(targetCell)`. Exact semantics **PARTIAL**.
+- mapped wall type `8`: dispatches to `seg3:C0A2(targetCell)`. It contains explicit Episode-1 level-specific branches; exact visible semantic **PARTIAL**.
 - object property bit `0x08`: dispatches to `seg3:AB3E(targetCell)`; the property is generated for mapped object types `0x08..0x25`. Exact family semantics **PARTIAL**.
 - object types `0x26` and `0x27`: dispatch to `seg3:AD9E(targetCell, objectType)`. **VERIFIED_EXE**, exact labels **PARTIAL**.
-- object type `0x29`: dispatches to `seg3:B010(targetCell)` and contains episode/level-specific logic. Exact label **PARTIAL**.
+- object type `0x29`: dispatches to `seg3:B010(targetCell)` and contains episode/level-special behavior. Exact label **PARTIAL**.
+
+## Wall-variant lookup helpers
+
+Two helpers explain several of the special-wall handlers:
+
+- `seg3:2334(type, startingRawId)` scans raw wall IDs until `0x8196[rawId] == type`;
+- `seg3:2426(type)` scans the current 64x64 map and returns the highest raw wall ID currently used for that mapped type.
+
+This confirms that multiple raw wall graphics/states can share one logical mapped wall type and that some USE handlers cycle or compare those raw variants rather than simply toggling a binary wall flag.
+
+Status: **VERIFIED_EXE**.
 
 ## Reconstructed high-level USE skeleton
 
@@ -218,19 +276,20 @@ void UsePressed()
 }
 ```
 
-The important correction is that `kUseCellDelta` is not a ray length or arbitrary range: it is one exact adjacent-cardinal-cell offset selected by the 8-way octant.
+The key correction is that `kUseCellDelta` is not a ray length: it is one adjacent-cardinal-cell offset selected by the 8-way octant.
 
 ## Relation to Catacomb Abyss / Wolf3D
 
-Catacomb Abyss performs substantial wall/door/special-tile handling through movement collision (`HitSpecialTile`) rather than using the same Nitemare dispatcher. Wolf3D has a classic `Use()` front-cell action path. Nitemare's explicit rising-edge USE and one-adjacent-cell selection is therefore conceptually closer to Wolf's front-cell action model, while its property-table and runtime door/panel/push architecture is its own implementation.
+Catacomb Abyss performs substantial wall/door/special-tile handling through movement collision (`HitSpecialTile`) rather than using the same Nitemare dispatcher. Wolf3D has a classic front-cell `Use()` path. Nitemare's explicit rising-edge USE and adjacent-cell selection is conceptually closer to Wolf's front-cell action model, while the property-table plus door/panel/push runtime architecture is its own implementation.
 
 No source-level identity is claimed.
 
 ## Remaining TODO before USE is 100%
 
-- Decode `seg3:1EE0`, `1F6A`, `2076`, `20CE`, `C126` and map them to exact switch/combination/remote-door/etc. names.
-- Resolve the precise semantics of mapped wall types `4..12`.
+- Fully name `seg4:1EE0`, `seg4:1F6A`, and `seg3:C126` from their final UI/action xrefs.
+- Resolve exact per-type code/state mapping for combination family `0x25..0x2C`.
+- Resolve precise semantics of mapped wall types `4..12`.
 - Resolve `AB3E`, `AD9E`, `B010`, and `C0A2` to exact object/action names.
-- Decode class `0x33..0x3E` lock/key/card identity tables.
+- Complete the `0x33..0x3E` door-class audit using OBJECT `+01` and key/card indices.
 - Label every dynamic-door state at runtime `+0x0C`.
-- Regression-test USE against all three original demo streams, especially DEMO.3's dense `0x0200` interaction pattern.
+- Regression-test USE against all three original demo streams, especially DEMO.3's dense `0x0200` pattern.
