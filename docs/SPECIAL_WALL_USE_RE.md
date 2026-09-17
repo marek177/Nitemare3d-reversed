@@ -2,169 +2,203 @@
 
 Date: 2026-09-17
 
-This supplements `docs/USE_INTERACTION_RE.md` with deeper decoding of the `seg3:277A` special-wall dispatcher and its cross-segment targets.
+This supplements `docs/USE_INTERACTION_RE.md` with deeper decoding of the `seg3:277A` special-wall dispatcher, its NE cross-segment targets, and the initialized menu records in segment 7.
 
 ## NE relocation correction
 
-The far-call target offset alone is not sufficient to name the target segment in a Win16 NE image. The segment-3 relocation chains were decoded and prove:
+The far-call target offset alone is not sufficient to identify the target segment in a Win16 NE image. Segment-3 relocation chains prove:
 
-| call site in seg3 | target offset | relocated target segment |
-|---:|---:|---:|
-| `277A` family -> `C126` | `C126` | **segment 3** |
-| `277A` family -> `20CE` | `20CE` | **segment 4** |
-| `277A` family -> `1F6A` | `1F6A` | **segment 4** |
-| `277A` family -> `2076` | `2076` | **segment 4** |
-| `277A` default -> `1EE0` | `1EE0` | **segment 4** |
+| dispatcher target | offset | target segment |
+|---|---:|---:|
+| `C126` | `C126` | 3 |
+| `20CE` | `20CE` | 4 |
+| `1F6A` | `1F6A` | 4 |
+| `2076` | `2076` | 4 |
+| `1EE0` | `1EE0` | 4 |
 
 Status: **VERIFIED_EXE**.
+
+## Segment-7 menu records settle three wall families
+
+The initialized data in segment 7 contains fixed 18-byte menu records used directly by the special-wall handlers.
+
+### Menu at segment7:`1496`
+
+```text
+Floor 1
+Floor 2
+Floor 3
+Floor 4
+Floor 5
+Floor 6
+Floor 7
+Floor 8
+Floor 9
+Floor 10
+```
+
+`seg4:1F6A` walks these records with stride `0x12` and dynamically enables/disables entries. Therefore mapped wall types **`0x1D..0x24` are the floor/elevator-selection family**. **VERIFIED_EXE**.
+
+### Menu at segment7:`155C`
+
+```text
+Climb up
+Climb down
+Cancel
+```
+
+`seg4:1EE0` passes this menu and uses `seg3:2334` / `seg3:2426` to decide which direction/state is currently available. Therefore mapped wall types **`0x0D..0x14` are the climb up/down family**. **VERIFIED_EXE**.
+
+### Menu at segment7:`15A4`
+
+```text
+Go down
+Cancel
+```
+
+`seg4:2076` passes this menu. Therefore mapped wall types **`0x25..0x2C` are the go-down confirmation family**. **VERIFIED_EXE**.
+
+This is an important correction: an earlier provisional analysis associated `0x25..0x2C` with the combination prompt. The direct segment-7 menu evidence disproves that classification.
+
+## Combination prompt actually belongs to object type `0x26`
+
+`seg3:1A22` sends mapped object types `0x26` and `0x27` to `seg3:AD9E`.
+
+For mapped object type **`0x26`**, the state-zero path opens the exact prompt:
+
+```text
+What's the combination?  0000000
+```
+
+The same data region contains code strings including:
+
+```text
+01532
+080993
+372535
+```
+
+and the failure message:
+
+```text
+I'm sorry, that is not
+the correct combination.
+```
+
+Thus the **combination-input interaction is object type `0x26`**, not wall types `0x25..0x2C`. Exact visual/object identity is still **PARTIAL** until the OBJECT-definition/state audit is complete.
 
 ## Four-pentagram mask — global `0x4C45`
 
-The object-touch dispatcher `seg3:CF60` has a jump table for OBJECT classes `0x2F..0x3D`. Class **`0x3C`** reaches `seg3:D158`, where:
+The object-touch dispatcher `seg3:CF60` maps OBJECT class **`0x3C`** to `seg3:D158`, which performs:
 
 ```text
-bit = 1 << OBJECT[+01]
-0x4C45 |= bit
+0x4C45 |= 1 << OBJECT[+01]
 ```
 
-The Omnifarious cheat path at `seg3:B162..B176` writes `0x0F` to `0x4C45` along with the other all-inventory state.
+The Omnifarious path sets `0x4C45 = 0x0F`. `seg3:C126` tests the same four bits and its static strings identify their order:
 
-The special-wall handler `seg3:C126` tests the four low bits of `0x4C45`. Its static pointer table resolves to these exact strings:
-
-| bit | missing-item string |
+| bit | pentagram |
 |---:|---|
-| `0x01` | `The Red Pentagram` |
-| `0x02` | `The Green Pentagram` |
-| `0x04` | `The Blue Pentagram` |
-| `0x08` | `The Yellow Pentagram` |
+| `0x01` | Red Pentagram |
+| `0x02` | Green Pentagram |
+| `0x04` | Blue Pentagram |
+| `0x08` | Yellow Pentagram |
 
-The same handler begins with the exact message:
+Therefore OBJECT class `0x3C` is the pentagram collectible class and OBJECT `+01` is its color/subtype index. **VERIFIED_EXE**.
 
-```text
-This is the portal to the
-"Other Side".   You cannot
-pass through until you have
-collected all 4 pentagrams!
-
-You need to find :-
-```
-
-Therefore:
-
-- `0x4C45` = **four-pentagram possession mask**;
-- OBJECT class `0x3C`, indexed by OBJECT `+01`, is the **pentagram collectible class**;
-- the four values of `OBJECT+01` correspond in order to Red, Green, Blue, Yellow.
-
-Status: **VERIFIED_EXE**.
-
-## `0x15..0x18` special-wall family — portal / mirror / pentagram gate
+## `0x15..0x18` — Other Side portal / mirror / four-pentagram gate
 
 `seg3:277A` routes mapped wall types `0x15..0x18` to `seg3:C126`.
 
-`C126`:
-
-1. copies the portal-to-the-Other-Side text into its local message buffer;
-2. appends each missing colored pentagram name according to `0x4C45`;
-3. has a dedicated branch for mapped type `0x16` using the string:
+The handler builds the exact message requiring all four pentagrams before passage to the `"Other Side"`, appends the names of missing pentagrams, and has a mapped-type-`0x16` branch using:
 
 ```text
 The mirror crack'd
 from side to side!
 ```
 
-4. for mapped type `0x15`, `0x4C45 == 0x0F` opens a distinct success/transition path rather than the missing-pentagram message path.
+For mapped type `0x15`, `0x4C45 == 0x0F` enters a distinct success/transition path. **VERIFIED_EXE** for the family and control flow; exact visual names of all four mapped types remain **PARTIAL**.
 
-The family can therefore be classified as the **Other Side portal / Mirror of Destiny / four-pentagram gate family**. Exact visible meaning of each of `0x15`, `0x16`, `0x17`, `0x18` still requires per-level wall-definition correlation, but `0x15` and `0x16` already have strong direct behavioral identities in the executable.
+## `0x19..0x1C` — exact reusable colored-key gates
 
-Status: **VERIFIED_EXE** for message/mask/control flow; per-type visual labels **PARTIAL**.
+`seg4:20CE` calculates `index = mappedWallType - 0x19`, tests `1 << index` in colored-key mask `0x4C28`, and resolves the key name through `seg3:BCB6`:
 
-## `0x19..0x1C` — exact colored-key gates
-
-`seg4:20CE` computes:
-
-```text
-keyIndex = mappedWallType - 0x19
-keyBit   = 1 << keyIndex
-present  = (0x4C28 & keyBit) != 0
-```
-
-`seg3:BCB6` resolves the key-name table exactly:
-
-| wall type | index | key |
-|---:|---:|---|
-| `0x19` | 0 | Red key |
-| `0x1A` | 1 | Green key |
-| `0x1B` | 2 | Blue key |
-| `0x1C` | 3 | Yellow key |
-
-The handler builds either `You use the <key>` or `You need a <key>`. On success it calls `seg3:ACB8`, which only plays SFX `0x32`; the key mask is not cleared. Thus this special-wall key path uses **reusable keys**.
-
-Status: **VERIFIED_EXE**.
-
-## ID-card table
-
-The two-card pointer table used by `seg3:BCEA` resolves exactly to:
-
-| index | card |
+| wall type | required key |
 |---:|---|
-| 0 | Red ID card |
-| 1 | Yellow ID card |
+| `0x19` | Red key |
+| `0x1A` | Green key |
+| `0x1B` | Blue key |
+| `0x1C` | Yellow key |
 
-Door classes `0x39..0x3A` test bit `1 << OBJECT+01` in global `0x4C29` and call `BCEA` on failure. This proves `0x4C29` is the ID-card possession mask.
+It formats `You use the ...` or `You need a ...`. Success calls `seg3:ACB8`, which does not clear the key mask; keys are reusable in this handler family. **VERIFIED_EXE**.
 
-Status: **VERIFIED_EXE**.
+## ID-card-controlled remote terminal — mapped wall type 3
 
-## `0x25..0x2C` — combination-check family
+Tracing the USE caller around `seg3:1C2D..1C46` proves that mapped **wall type 3** resolves an associated OBJECT and calls `seg4:21D8`.
 
-`seg4:2076` uses the raw-wall-variant search helper `seg3:2334`, compares the current raw wall state to the expected/canonical state, and on mismatch enters the UI path backed by the combination text area.
+`seg4:21D8`:
 
-The original data segment contains:
+1. reads OBJECT `+0x01`;
+2. stores it in `0x40F8`;
+3. tests `1 << OBJECT+01` against ID-card mask `0x4C29`;
+4. calls `seg4:2146` on success or `seg3:BCEA` for the missing-card message.
+
+`seg4:2146` prepares segment-7 menu `15DA`:
 
 ```text
-What's the combination?  0000000
-01532
-080993
-372535
-I'm sorry, that is not
-the correct combination.
+Open remote doors
+Close remote doors
+Enable remote cannons
+Disable remote cannons
+Cancel
 ```
 
-Therefore mapped types `0x25..0x2C` belong to the **combination-check / combination-lock family**. Multiple raw wall IDs can map to the same logical type; the raw ID encodes the visible/state variant that this handler validates.
+and changes menu-entry enable state from globals `0x51A4` / `0x51A5` before displaying it.
 
-Status: **VERIFIED_EXE** for family identity and validation structure; exact type -> code/state association remains **PARTIAL**.
+Thus mapped wall type **3 is an ID-card-controlled remote doors/cannons terminal family**. **VERIFIED_EXE**.
+
+The two ID-card strings are exactly:
+
+```text
+index 0 = Red ID card
+index 1 = Yellow ID card
+```
 
 ## Raw-wall variant helpers
 
-`seg3:2334(mappedType, startingRawId)` searches raw wall IDs until the runtime mapping table `0x8196[rawId]` equals the requested logical type.
+`seg3:2334(mappedType, startingRawId)` scans raw wall IDs until `0x8196[rawId] == mappedType`.
 
-`seg3:2426(mappedType)` scans the current 64x64 map and returns the highest raw wall ID currently present for that mapped type.
+`seg3:2426(mappedType)` scans the current 64x64 map and returns the highest raw wall ID currently used for the logical type.
 
-These helpers explain why special walls cannot be reconstructed as a simple single-byte logical enum: several graphics/state variants may share one mapped wall type.
+These explain why several visible/state variants may share one logical wall type. **VERIFIED_EXE**.
 
-Status: **VERIFIED_EXE**.
+## Scripted wall type 8 — Episode-1 special cases
 
-## Scripted wall type 8 — Episode 1 special cases
-
-`seg3:C0A2(targetCell)` is reached from USE for mapped wall type `8`. It explicitly checks Episode 1 and has separate branches for level numbers 2 and 7 (1-based level numbering in the branch logic).
-
-The level-7 branch references the exact messages:
+`seg3:C0A2(targetCell)` handles mapped wall type 8 and explicitly branches for Episode 1 levels 2 and 7 (1-based branch logic). The E1M7 path contains:
 
 ```text
 Well done!  You fixed the power!
 You already fixed it!
 ```
 
-and changes persistent runtime state before redisplaying the scene. Thus wall type 8 includes at least an Episode-1 scripted **power-repair interaction** in E1M7; the E1M2 action is a separate special case and is not yet given a user-facing name.
+Therefore type 8 includes an E1M7 power-repair interaction. The exact E1M2 user-facing action remains **PARTIAL**.
 
-Status: **VERIFIED_EXE** for the level checks and E1M7 message/effect family; E1M2 exact label **PARTIAL**.
+## Current exact dispatcher map
+
+| mapped wall type | handler | classification |
+|---|---|---|
+| `3` | seg4:`21D8` / `2146` | ID-card remote doors/cannons terminal |
+| `8` | seg3:`C0A2` | scripted Episode-1 special interaction |
+| `0x0D..0x14` | seg4:`1EE0` | climb up/down menu |
+| `0x15..0x18` | seg3:`C126` | Other Side portal/mirror/pentagram gate |
+| `0x19..0x1C` | seg4:`20CE` | reusable colored-key gates |
+| `0x1D..0x24` | seg4:`1F6A` | Floor 1..10 selector |
+| `0x25..0x2C` | seg4:`2076` | Go down / Cancel |
 
 ## Remaining special-wall work
 
-Still unresolved before the special-wall dispatcher can be called complete:
-
-- exact names/level roles for default types `0x0D..0x14` handled by `seg4:1EE0`;
-- exact role of types `0x1D..0x24` handled by `seg4:1F6A`;
-- exact code/raw-state mapping for `0x25..0x2C`;
-- exact per-type visual labels for `0x15..0x18` beyond the portal/mirror control flow already proven;
-- xrefs for `Open remote doors` / `Close remote doors` to the exact wall type and state transition;
-- E1M2's type-8 scripted action.
+- decode the final callback/action IDs behind climb/floor/go-down menus;
+- name the remaining individual visual wall variants within each family;
+- complete the per-level scripted behavior for wall type 8;
+- finish object type `0x26` combination state/reward logic during the OBJECT audit;
+- tie the remote-terminal OBJECT `+01` values to the exact Red/Yellow ID-card-controlled variants.
