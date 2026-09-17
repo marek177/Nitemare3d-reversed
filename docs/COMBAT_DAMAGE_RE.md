@@ -109,6 +109,40 @@ The related refill/pickup helper at `seg3:A9E0` shows two useful operations:
 
 The ordinary pickup type order is not the same as weapon-selector order: pickup type 0 adds to `0x4C1F` (silver), type 1 to `0x4C20` (laser), and type 2 to `0x4C44` (wand). Exact item names/graphics remain to be bound to those pickup type IDs.
 
+### Signed-byte quirk: 127 is real for silver/laser logic
+
+A direct instruction audit confirms that the three ammo bytes are **not compared consistently**.
+
+Silver ammo (`0x4C1F`) pickup test at `seg3:AA2E`:
+
+```text
+cmp byte ptr [0x4C1F], 0x64
+jge ...                         ; signed comparison
+```
+
+Laser ammo (`0x4C20`) at `seg3:AA4C` uses the same signed `jge`. Therefore these paths interpret the byte as an `int8_t` for the `< 100` test. Values `0x80..0xFF` are negative in this interpretation.
+
+Magic Wand ammo (`0x4C44`) at `seg3:AA6A` instead uses:
+
+```text
+cmp byte ptr [0x4C44], 0x64
+jae ...                         ; unsigned comparison
+```
+
+so wand ammo is treated as an unsigned byte in this pickup-limit path.
+
+The HUD/display preparation independently confirms the asymmetry. At `seg3:A54F` and `A5A1`, silver and laser use signed `jle` against 100 and then `cbtw` sign-extension before formatting. At `seg3:A5F3`, wand uses an unsigned branchless min-with-100 sequence and explicitly zero-extends AH.
+
+Consequences:
+
+- **100 (`0x64`) is the intended gameplay pickup/display cap**, not the physical byte capacity.
+- **127 (`0x7F`) is the highest positive signed-byte value** for silver and laser when manually editing memory. This directly explains Cheat Engine observations where one of these ammo values behaves normally only through 127.
+- Writing 128..255 is physically possible in the byte, but silver/laser code interprets those bit patterns as -128..-1 in signed comparison/display paths. It is therefore not a valid positive ammo range.
+- Magic Wand differs: its cap checks/display path are unsigned, so it does not have the same signed-127 semantic boundary in these routines, although normal gameplay still caps/refills it around 100.
+- The firing helper itself only tests `OR AL,AL` for zero and decrements the byte, so manually corrupted 0x80..0xFF values can still be consumed; the inconsistency is specifically in comparison/HUD semantics.
+
+Status: **VERIFIED_EXE**. User Cheat Engine observation independently agrees with the silver/laser signed-byte behavior.
+
 ## Weapon jam is a scripted level flag, not random weapon failure
 
 The firing routine at `seg3:8B06` checks byte `0x4C2E` before performing the shot. If it is non-zero it calls the tiny message routine at `seg4:2508`, which displays the embedded string at segment-10 offset `0x1E94`:
@@ -161,7 +195,7 @@ The arithmetic uses signed 16-bit shifts/division behavior. This pseudocode is d
 2. Trace the writer of `OBJECT+18` to give the projected coordinate an exact semantic name.
 3. Resolve the special class `0x15` helper and the meaning of global `0x7E52` used by class `0x16`.
 4. Tie `0x4C14` values to the exact difficulty labels displayed by the game UI.
-5. Trace exact weapon cadence / continuous-fire scheduling and bind ammo HUD/display behavior.
+5. Trace exact weapon cadence / continuous-fire scheduling and bind remaining ammo HUD behavior.
 6. Bind the Episode-1 level-9 jam event codes `0x47/0x48` to the exact map objects/triggers.
 7. Follow lethal/non-lethal handlers into exact pain/death SND.DAT calls.
 
