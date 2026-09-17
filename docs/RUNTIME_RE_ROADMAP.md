@@ -2,112 +2,133 @@
 
 Date: 2026-09-17
 
-This file is the central status table for the next runtime-engine reverse-engineering phase. Percentages are engineering estimates, not byte-count coverage.
+This file is the central roadmap toward a source-level reconstruction of `NITE3W.EXE`. Percentages below are engineering estimates, not byte-count coverage. The final percentage will be replaced by the function/range audit in step 14.
 
 ## Evidence labels
 
 - **VERIFIED_EXE** — directly supported by `NITE3W.EXE` / IDA-level binary evidence.
 - **VERIFIED_DATA** — directly supported by original game data/save formats.
-- **BEHAVIORAL** — observed in gameplay/video evidence.
-- **INFERRED** — strong reconstruction hypothesis, still requiring direct binary confirmation.
+- **VERIFIED_SAVE_LAYOUT** — exact save-file physical layout.
+- **BEHAVIORAL** — observed in original gameplay/video.
+- **INFERRED** — strong reconstruction hypothesis requiring more binary confirmation.
+- **PARTIAL** — important behavior is known but not all subcases/labels are closed.
 - **TODO** — not yet established.
 
-## Central status table
+## Current working status
 
-| Subsystem | Current | Target after next phase | Main missing evidence |
-|---|---:|---:|---|
-| GUARD AI / state machine | ~45% | 90–95% | LOS, hearing, reaction, movement, attack, pain/death transitions, projectile dispatch |
-| Enemy HP / speed / damage | ~25% | 90–100% | exact per-type constants/tables and damage call sites |
-| Weapon damage / timing | ~30% | 90–100% | damage routine, multipliers, cooldown/fire timing, alternate fire/event branches |
-| Enemy SFX mapping | ~65% | 90–100% | complete GUARD -> alert/attack/pain/death sound matrix |
-| USER.SAV gameplay fields | ~60% | 85–95% | semantic labels for 94-byte global block and fixed runtime arrays |
-| 1:1 raycaster | ~60% | 85–90% | complete branch graph, clipping, texture sampling and special-wall cases |
-| NITE3W.EXE direct binary/algorithm RE | ~54% | ~68–72% | AI/combat, raycaster, save semantics, debug/keyboard and remaining scripts |
+| Subsystem | Current | Important remaining work |
+|---|---:|---|
+| Player collision / passability | **~85–90%** | residual wall-property meanings, door state names, side effects, trajectory regression |
+| USE / interaction `0x0200` | **~80–85%** | remaining special-wall handler names, combination subtypes, special objects |
+| OBJECT 28-byte runtime record | ~50–55% | especially `+14..+1B` and complete read/write xrefs |
+| GUARD runtime record | ~78% | residual control/transition bytes |
+| GUARD movement | ~35–40% | exact speed, octant->delta, collision/fallback |
+| GUARD AI / state machine | ~55–60% | complete transition graph, attack/projectile/reaction logic |
+| Enemy strength / damage receiver | ~95–100% | mostly naming/integration; fresh GUARD strength 255 is verified |
+| Weapon -> enemy damage | ~90–95% | integrate remaining special branches |
+| Player damage / death | ~35% | enemy->player producer, difficulty, death/restart flow |
+| Weapon cadence | ~40–50% | timing/held-fire/continuous laser |
+| Enemy pain/death + SFX | ~55–70% | exact class/state/SND matrix |
+| USER.SAV physical layout | ~95–100% | physical record essentially solved |
+| USER.SAV gameplay semantics | ~65–68% | remaining runtime arrays/global block meanings |
+| Level/script engine | ~45% | complete event/opcode dispatcher |
+| Keyboard/debug/CLI | ~60% | remaining developer keys/switches |
+| MIDI/music selection | ~40% | exact selectors and demo special path |
+| SND.DAT runtime/cache | ~60% | cache/runtime call-site semantics |
+| NITE3D.BSF | ~30–40% | registration/edition/integrity algorithm |
+| Renderer/raycaster | ~45–50% | traversal, clipping, texture columns, sprites/depth |
+| WinG/display backend | ~70% | mostly integration/detail |
+| `NITE3W.EXE` direct algorithm RE | **~63–65% working estimate** | steps 3–14 below |
 
-## Already established anchors
+The headline EXE number remains deliberately conservative. It will not be called 95–100% until step 14 classifies the executable code space by bytes/functions.
 
-### Save/runtime state
+## Newly closed anchors: player collision
 
-- `USER.SAV` slot size is exactly `0xD6E7` = 55,015 bytes. **VERIFIED_EXE**
-- Current mutable map image begins at save offset `0x35` and is `0x2000` = 8192 bytes (64x64 x 2 bytes/cell). **VERIFIED_EXE / VERIFIED_DATA**
-- Compact gameplay/global state block is `USER.SAV+0x2035`, size `0x5E` = 94 bytes. Individual fields remain to be named. **VERIFIED_EXE**
-- Large runtime arrays follow at `0x2093`, `0x8DF3`, `0xB43B`, `0xBE63`, etc. Their physical sizes are known; class/field semantics are still incomplete. **VERIFIED_EXE**
-- The save/load path restores raw runtime blocks, rebuilds pointers and rebases timers. **VERIFIED_EXE**
+Detailed evidence is in `docs/PLAYER_COLLISION_RE.md`.
 
-### Renderer
+- movement/collision core: `seg3:8604`;
+- post-move commit: `seg3:8A20`;
+- player AABB half-extent: **27 world units**;
+- one tile: **64 world units**;
+- movement uses one-unit Bresenham-like major/minor stepping;
+- axis components are tested separately, naturally producing wall sliding;
+- wall properties are precomputed at `0x7E94[wallByte]`;
+- object properties are precomputed at `0x7F94[objectByte]`;
+- wall bit `0x04` hard-blocks, wall bit `0x08` enters dynamic-door passability, wall bit `0x40` invokes a script-touch hook;
+- object bit `0x02` blocks; object bit `0x04` invokes touch/pickup handling;
+- door runtime table: `0x9DD6`, stride 22, maximum 64.
 
-- Original renderer is not a Wolf3D-style textbook grid DDA reconstruction. Existing RE evidence points to a custom vector/line-segment textured-column pipeline. **VERIFIED_EXE / INFERRED for remaining branch semantics**
-- Known anchors include a 320-entry column-hit/far-pointer structure and a 320 x 16-bit depth buffer; full clipping/sampling semantics remain to be traced. **VERIFIED_EXE**
-- Target framebuffer is 320x200 8-bit; 3-D viewport width is 304 in the recovered configuration/default path. **VERIFIED_EXE**
+These are **VERIFIED_EXE**.
 
-### Map/runtime behavior
+The collision architecture is structurally closer to Catacomb Abyss's separate-axis/special-touch design than to Wolf3D's full-vector `ClipMove` fallback, but Nitemare's exact one-unit stepping/property tables are different. This is a comparison, not a source-copy claim.
 
-- MAP levels are 64x64, two bytes per cell, with an 8192-byte level payload after the container header. **VERIFIED_DATA**
-- `OBJECTS.1-3` and `WALLS.1-3` are editor-side definitions and must not be treated as runtime object tables. **VERIFIED_DATA / behavioral project constraint**
-- E1M11 is a demo/internal map and is not part of the normal 10-level Episode 1 progression. **VERIFIED_DATA / BEHAVIORAL**
+## Newly closed anchors: USE / interaction
 
-### Menu demo / attract-mode behavior
+Detailed evidence is in `docs/USE_INTERACTION_RE.md`.
 
-A user-supplied gameplay capture on 2026-09-17 adds an important behavioral distinction for E1M11/demo handling:
+- `inputMask 0x0200` is rising-edge USE/ACTION;
+- previous-state latch: `0x012C`;
+- dispatcher: `seg3:1A22`;
+- USE selects exactly **one adjacent cardinal cell**, quantized from the 8-way octant;
+- exact cell-delta table: `[-64,+1,+1,+64,+64,-1,-1,-64]`;
+- dynamic doors, key/card gates, panels and pushables have been directly separated;
+- key-name order is exactly Red, Green, Blue, Yellow;
+- card-name order is Red ID card, Yellow ID card;
+- mapped wall types `0x19..0x1C` are exactly Red/Green/Blue/Yellow-key interaction families and do not consume the key in this handler;
+- mapped wall types `0x25..0x2C` are tied to the combination-check / combination-lock path;
+- panel runtime: `0xA356`, stride 22, maximum 32;
+- push runtime: `0xA616`, stride 6, maximum 12.
 
-- the demo is launched by the game's **menu/demo path**, not by reaching it through normal Episode 1 gameplay;
-- normal play does not expose the demo as an ordinary selectable/reachable level;
-- repeated demo launches can use **different MIDI songs** rather than a single permanently bound E1M11 track.
+These are **VERIFIED_EXE** except where the detailed document explicitly says `PARTIAL`.
 
-Status: **BEHAVIORAL**. The executable selector remains TODO.
+## Fixed 14-step extraction order toward 95–100%
 
-This changes the MIDI RE target: do not model demo music as simply `episode=1, level=11 -> one MIDI`. Trace the menu/attract-mode demo entry point separately from the normal level-start path, then follow its MIDI selector and determine whether it uses RNG, a rotating index, a playlist/table, or another stateful selection rule. Also determine whether the selector excludes the currently playing menu song or any previous demo song.
+1. **Player collision/passability** — finish the small remaining side effects/state labels and trajectory regression.
+2. **USE `0x0200`** — finish remaining special-wall/object subfamilies.
+3. **OBJECT `+14..+1B`** — complete all read/write/xrefs for the 28-byte runtime record.
+4. **GUARD movement** — speed, octant->delta, collision, blocked fallback.
+5. **GUARD AI state machine** — strategy/state/nextstate/timer, detection, attack, projectiles, reactions.
+6. **Player damage/death** — all damage producers, difficulty, health receiver, death/restart flow.
+7. **Weapons** — cadence/cooldown/ammo/fire state for all four weapons.
+8. **Pain/death + SND.DAT** — exact enemy transition and sound mapping.
+9. **Enemy identity** — runtime class `0x0C..0x1F` -> OBJECT/IMG/map/sprite/enemy identity.
+10. **Level/script engine** — complete event/opcode dispatcher; preserve known anchors such as `0x16`, `0x47`, `0x48`.
+11. **USER.SAV semantics** — assign every persisted runtime block to its exact globals/structures.
+12. **Subsystems** — debug/keyboard, command line, MIDI, SND runtime/cache, BSF/edition/integrity.
+13. **Renderer** — view transform, vector/wall traversal, clipping, texture-column sampling, sprite/depth/occlusion.
+14. **Final EXE audit** — classify every executable code range as `RECONSTRUCTED_GAME`, `KNOWN_FRAMEWORK`, `COMPILER_RUNTIME`, `THUNK`, `DATA`, or `UNKNOWN`, and calculate real byte coverage.
 
-## Next extraction order
+## Comparison sources
 
-1. **GUARD AI + combat constants**
-   - identify guard record stride/capacity and candidate fields;
-   - trace spawn -> idle -> detect -> chase -> attack -> pain -> death;
-   - recover exact HP, movement, reaction and attack/damage constants;
-   - attach SFX IDs to each transition.
+For movement/collision, interaction, actor AI and renderer mathematics, compare in this order:
 
-2. **1:1 raycaster**
-   - complete ray/intersection branch graph;
-   - establish near-plane and viewport clipping;
-   - recover texture-column coordinate calculation;
-   - document door/special-wall rendering;
-   - verify sprite depth/occlusion behavior.
+1. original Nitemare `NITE3W.EXE` — authoritative target;
+2. Catacomb Abyss public source — high-value structural comparison;
+3. Wolfenstein 3-D public source — secondary lineage/algorithm comparison.
 
-3. **USER.SAV runtime semantics**
-   - correlate runtime globals/arrays with the save write/read call sites;
-   - label player HP/ammo/weapons/inventory/coordinates/angle/timers;
-   - identify guard/projectile/object record arrays;
-   - document pointer fixups and timer rebasing.
+A similarity label is not promoted to “identical” unless control flow/constants/data representation actually match.
 
-4. **Keyboard/debug/command-line**
-   - trace keyboard handler xrefs and all cheat/debug branches;
-   - distinguish documented cheat flags from hidden developer hotkeys;
-   - recover command-line edition/debug switches where present.
+## Save/runtime anchors
 
-5. **MIDI selection + BSF/edition**
-   - finish Episode/Level -> MIDI table and special branches;
-   - trace the **menu/demo launch path** separately from normal level start;
-   - identify the demo MIDI candidate table/playlist and exact changing-song selector;
-   - determine RNG vs round-robin/stateful selection and any exclusion/repeat rules;
-   - trace `NITE3D.BSF`, edition/registration and integrity checks.
+- `USER.SAV` slot size: exactly `0xD6E7` = 55,015 bytes. **VERIFIED_EXE**
+- mutable map image at save offset `0x35`, size `0x2000` = 8192 bytes. **VERIFIED_EXE / VERIFIED_DATA**
+- gameplay/global block at `USER.SAV+0x2035`, size `0x5E`. **VERIFIED_EXE**
+- save/load restores raw runtime blocks, rebuilds pointers and rebases timers. **VERIFIED_EXE**
 
-## Video audit status carried into this phase
+## Demo/attract anchors
 
-Episode 3 walkthrough coverage is now substantially better than the earlier baseline: E3M1 is covered across both halves, E3M4-E3M6 have dedicated audits, and E3M7-E3M9 were subsequently audited. E3M10/ending behavior was also examined. Video observations are useful for state transitions and timings, but exact numeric HP/damage/speed values remain **INFERRED/TODO** until tied to executable evidence.
+- DEMO is recorded input, not absolute position playback;
+- `-r` enables recording;
+- supplied demo records are 8 bytes after the 6-byte header;
+- E1M11 is an internal/demo map and normal progression does not expose it;
+- the origin search for DEMO.2 and DEMO.3 must remain open to all 31 preserved maps or an older/deleted map.
 
-The 2026-09-17 menu-demo capture additionally establishes behavioral evidence that the internal demo path is distinct from normal progression and that its MIDI selection can vary between demo starts.
+See `docs/DEMO_FORMAT_RE.md`.
 
 ## Implementation rule
 
-Do not encode guessed combat constants as final game logic. New reconstructed source should retain the evidence label in comments until a value is verified. Prefer structures that allow later replacement of inferred values without changing public interfaces.
+Do not encode guessed constants as final game logic. New reconstructed source must retain evidence labels/comments until values are verified. Prefer structures that can replace partial semantics without changing public interfaces.
 
-### Planned source modules
+## Completion criterion
 
-- `src/game/GuardSystem.hpp/.cpp` — state machine and per-guard runtime state.
-- `src/game/CombatSystem.hpp/.cpp` — weapon/enemy damage and timing.
-- `src/game/RuntimeSaveState.hpp/.cpp` — semantic representation of recovered USER.SAV blocks.
-- renderer additions should extend the existing `src/renderer` implementation rather than introduce a second incompatible renderer.
-
-## Completion criterion for this phase
-
-The phase is considered complete when a guard can be traced from original map/object spawn through detection, movement, attack, damage reception and death with every important transition linked to an EXE routine/constant or explicitly marked behavioral/inferred; and when the renderer's per-column intersection -> clipping -> texture sampling -> depth/occlusion path is documented sufficiently for a deterministic clean-room reimplementation.
+The project reaches the 95–100% claim only after the final function/range audit shows that essentially all executable game code is either reconstructed or deliberately classified as framework/compiler/thunk/data, with any remaining `UNKNOWN` ranges explicitly quantified and listed.
