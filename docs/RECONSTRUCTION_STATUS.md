@@ -2,10 +2,10 @@
 
 This repository is a clean-room-style reconstruction scaffold based on the supplied Windows 3.1 executable/data plus independently documented gameplay observations. It is not the original Gray Design Associates source tree.
 
-## Current estimate (2026-09-17)
+## Current estimate (2026-09-18)
 
-- Direct binary/algorithm reverse engineering of `NITE3W.EXE`: **about 63–65%** working estimate.
-- Broader behavioral reconstruction using EXE + original data formats + walkthrough evidence + documentation: **about 85–86%** working estimate.
+- Direct binary/algorithm reverse engineering of `NITE3W.EXE`: **about 66–68%** working estimate.
+- Broader behavioral reconstruction using EXE + original data formats + walkthrough evidence + documentation: **about 86–87%** working estimate.
 
 These percentages are engineering estimates, not byte-count coverage. The final 95–100% claim will be based on the function/range audit, not on a subjective subsystem average.
 
@@ -52,8 +52,11 @@ These percentages are engineering estimates, not byte-count coverage. The final 
 | MIDI/music selection | ~40% |
 | SND.DAT runtime/cache | ~60% |
 | NITE3D.BSF | ~30–40% |
-| Renderer/raycaster | ~45–50% |
-| `NITE3W.EXE` overall direct RE | **~63–65%** |
+| Renderer/raycaster | ~48–52% |
+| Win16/MFC/GDI presentation path | ~80–85% |
+| Input / keyboard | ~70–75% |
+| Joystick path | ~65–70% |
+| `NITE3W.EXE` overall direct RE | **~66–68%** |
 
 See `docs/RUNTIME_RE_ROADMAP.md` for the fixed 14-step route to the final audit.
 
@@ -65,6 +68,22 @@ See `docs/RUNTIME_RE_ROADMAP.md` for the fixed 14-step route to the final audit.
 - `docs/PLAYER_HEALTH_RE.md` — player health evidence/status.
 - `docs/GUARD_AI_RE.md` — GUARD runtime state evidence.
 - `docs/DEMO_FORMAT_RE.md` — demo record/playback and spawn/first-room forensics.
+
+## 2026-09-18 Ghidra/IDA cross-audit
+
+A new cross-audit used the original Win16 executable together with a Ghidra listing/project and an IDA database. The Ghidra listing contains approximately **1,067 unique `FUN_*` candidates**, **4,984 `LAB_*` labels**, **829 `DAT_*` symbols**, roughly **4,666 CALL/CALLF occurrences**, about **10,958 XREF blocks**, and approximately **308 unique external API symbols**. These are analysis counts, not a claim that every `FUN_*` is an original game routine; MFC/runtime/library code and heuristic function boundaries still need classification.
+
+New structural evidence:
+
+- the Win16 NE image has 10 logical segments; entry is `0002:3718`, auto-data/SS is segment 10, and the Ghidra synthetic selector for that data segment is `1048h`;
+- segment `1048` is the main auto-data area and is now a primary target for naming persistent game globals;
+- GDI calls including `BitBlt`, `StretchDIBits` and `CreateDIBitmap` strengthen the split between the software renderer/framebuffer and the final Windows presentation path;
+- keyboard input is directly tied to `GetAsyncKeyState`/key-state processing, while joystick support is independently visible through WinMM joystick APIs;
+- the audio path exposes waveOut and MIDI APIs, supporting separate SFX/cache and music subsystems;
+- diagnostic strings expose explicit runtime tables/limits for doors, panels and pushables, plus object/sound cache statistics (reload/thrash counters);
+- large switch-based dispatchers in the game-code segments are now priority candidates for object/state/command semantic recovery.
+
+This cross-audit raises confidence in the executable structure and subsystem boundaries, but it does **not** by itself resolve the remaining raycaster branches, guard AI transitions, weapon timing, enemy-to-player damage, or all semantic fields in the auto-data segment.
 
 ## Major unresolved areas
 
