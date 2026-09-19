@@ -5,6 +5,12 @@
 Modern C++ reconstruction scaffold for the **Windows 3.1** version of Nitemare 3D.
 The design goal is to preserve the original data formats and reconstructed game logic while replacing obsolete Windows 3.x display plumbing (`WING.DLL` and `DISPDIB.DLL`) with **SDL3**.
 
+## AI assistance disclosure
+
+This is an **AI-assisted reverse-engineering and reconstruction project**. A substantial part of the analysis, research, documentation, code generation, refactoring, and interpretation of reverse-engineered material has been produced with the assistance of **ChatGPT by OpenAI**, under the direction and review of **marek177**.
+
+Git commit authorship therefore identifies the account that committed the files and should **not** be interpreted as meaning that every analysis, document, or line of code was written manually and independently by the repository owner. AI-generated or AI-assisted findings may contain errors, especially where original source code or symbols are unavailable, so important reverse-engineering conclusions should be independently verified against the original executable and game data.
+
 ## Reverse-engineering status
 
 The project separates direct executable reverse engineering from behavior reconstructed from original data, walkthrough evidence and original documentation. See `docs/RECONSTRUCTION_STATUS.md`, `docs/EXE_FUNCTION_MAP.md`, `docs/SAVE_LIBRARIES_IDA_REPORT.md`, and the video-audit reports for evidence and confidence levels.
