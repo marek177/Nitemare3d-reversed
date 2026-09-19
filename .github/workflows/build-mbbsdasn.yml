@@ -1,0 +1,49 @@
+name: Build MBBSDASM Win64
+
+on:
+  push:
+    branches:
+      - build-mbbsdasn-net9
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout helper repo
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 9 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Fetch MBBSDASM source
+        shell: pwsh
+        run: git clone --depth 1 https://github.com/mbbsemu/MBBSDASM.git MBBSDASM-src
+
+      - name: Restore
+        shell: pwsh
+        run: dotnet restore .\MBBSDASM-src\MBBSDASM.sln
+
+      - name: Test
+        shell: pwsh
+        run: dotnet test .\MBBSDASM-src\MBBSDASM.sln -c Release --no-restore
+
+      - name: Publish self-contained Windows x64
+        shell: pwsh
+        run: dotnet publish .\MBBSDASM-src\MBBSDASM\MBBSDASM.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -o .\publish\win-x64
+
+      - name: Create ZIP
+        shell: pwsh
+        run: Compress-Archive -Path .\publish\win-x64\* -DestinationPath .\MBBSDASM-win-x64-net9.zip -Force
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MBBSDASM-win-x64-net9
+          path: MBBSDASM-win-x64-net9.zip
+          if-no-files-found: error
