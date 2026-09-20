@@ -349,3 +349,47 @@ Door records already have concrete XREF anchors. Curtain animation and two-desti
 - analysis/nite3w_guard_record.md — recovered 0x1C structure with evidence per field.
 - analysis/nite3w_renderer.md — framebuffer ownership, render-call chain, wall/sprite routine evidence.
 - analysis/nite3w_loaders.md — MAP/IMG/UIF/SND/BSF loader call chains and format observations.
+
+
+## Phase 4 — guard field offsets recovered; record-stride correction
+
+### CONFIRMED — guard debug fields
+
+Disassembly of seg3 ~0xABA2–0xABE4 around the direct XREF at 0xABD7 allows the printf arguments to be reconstructed exactly. The inspected runtime record contains:
+- +0x06 word: timer
+- +0x08 word: index into a second definition/class table
+- +0x0A byte: strategy
+- +0x0B byte: state
+- +0x0C byte: nextstate
+- +0x10 byte: strength
+- +0x11 byte: octant
+- +0x12 byte: resoct
+
+The printed class is fetched indirectly: runtime +0x08 is multiplied by 0x1C and used to index a second table; a byte from that definition entry is printed as class.
+
+### CORRECTION
+
+The previous broad working statement that a 0x1C stride represented the general guard/object runtime record was too strong. The new instruction-level reconstruction shows that 0x1C is definitely the stride of the secondary class/definition table used by this debug path.
+
+A different visible-object path at seg3:0xCE91 explicitly uses an IMUL stride of 0x1A (26 bytes). These must be treated as separate structures until further XREF propagation proves relationships.
+
+This correction is recorded explicitly to prevent a speculative struct size from propagating into OpenNitemare3D.
+
+### CONFIRMED — exploding-wall object mutation details
+
+The seg3 ~0x9BD2–0x9C79 path:
+- converts two coordinates to tiles using SAR 6;
+- searches for an existing map object;
+- if absent, requests/creates class 0x2D;
+- on an object-type value 0x2E, writes runtime byte +0x03 = 0 and +0x06 = 0x2D;
+- on value 0x2F, writes +0x03 = 1 and +0x06 = 0x2D;
+- copies/uses byte +0x04 and stores a far pointer at +0x08/+0x0A derived from a table indexed by that byte.
+
+This gives concrete field-write evidence for the exploding-wall runtime object, though field names other than the class/type values remain provisional.
+
+### New repository artifacts
+
+- analysis/nite3w_guard_record.md
+- analysis/nite3w_function_map.csv
+
+These files separate instruction-backed facts from hypotheses and will be expanded as XREFs are propagated.
