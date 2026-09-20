@@ -393,3 +393,20 @@ This gives concrete field-write evidence for the exploding-wall runtime object, 
 - analysis/nite3w_function_map.csv
 
 These files separate instruction-backed facts from hypotheses and will be expanded as XREFs are propagated.
+
+
+## Phase 5 — AI state-machine separation
+
+A dedicated AI audit has been added. The recovered runtime layout now cleanly separates per-instance fields (timer, strategy, state, nextstate, strength, octant, resoct) from the class/definition table reached through runtime +0x08 and 0x1C-stride indexing.
+
+### STRONG EVIDENCE
+
+The combination of current state + next state + 16-bit timer is characteristic of a timed finite-state machine and is consistent with the executable's guard-error diagnostics. Numeric state IDs are intentionally left unnamed until their branches/actions are recovered.
+
+### Cross-check against existing reimplementation
+
+The public OpenNitemare3D reimplementation contains dedicated Guard and DirectionalGuard classes and separate Curtain/Warp/HiddenPanel entities. This is useful as a comparison target, but it is not being treated as proof of original NITE3W.EXE semantics. Original-binary evidence remains authoritative.
+
+### Priority XREF pass
+
+The next binary pass should locate every instruction that writes runtime offsets +0x0B, +0x0C and +0x06. Grouping those writes by nearby calls/coordinate tests will expose state transitions. Writes to +0x10 are separately prioritized to resolve strength/HP semantics.
