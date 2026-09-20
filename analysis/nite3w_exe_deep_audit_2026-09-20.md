@@ -92,3 +92,196 @@ This establishes substantial Microsoft MFC runtime/framework code in the binary.
 - full function/xref catalogue: pending.
 
 This document records only findings directly supported by the current executable scan. Hypotheses are deliberately separated from confirmed facts.
+
+
+## Phase 2 — relocation/XREF audit
+
+### CONFIRMED — WinG presentation path is concentrated in segment 3
+
+NE relocation records identify these WinG calls:
+- seg3:0x2F77 -> WING ordinal 1001 = WinGCreateDC
+- seg3:0x2F51 -> WING ordinal 1002 = WinGRecommendDIBFormat
+- seg3:0x2F8D -> WING ordinal 1003 = WinGCreateBitmap
+- seg3:0x33CF -> WING ordinal 1006 = WinGSetDIBColorTable
+- seg3:0x30E2 -> WING ordinal 1009 = WinGStretchBlt
+- seg3:0x32FE -> WING ordinal 1010 = WinGBitBlt
+- seg3:0x2EC4 -> DISPDIB ordinal 1
+
+The WinG ordinal names were cross-checked against the historical WinG export specification. The executable therefore has a concrete WinG framebuffer/display setup and blit/presentation cluster around segment 3 offsets ~0x2E96–0x33xx.
+
+Disassembly at seg3:0x2F36 begins a coherent initialization routine. It invokes WinGRecommendDIBFormat / WinGCreateDC / WinGCreateBitmap through relocation-patched far calls and initializes a large pixel-memory region. This is now the primary presentation-boundary anchor for tracing backwards into the software renderer.
+
+### CONFIRMED — multimedia/audio cluster in segment 3
+
+MMSYSTEM relocation targets are heavily concentrated around seg3:0xD686–0xE4A0, with additional calls near 0x8FAB/0x8FCE and one in segment 4.
+
+Observed MMSYSTEM ordinals include:
+2, 102, 103, 201, 202, 211, 212, 401, 403, 404, 405, 406, 407, 408, 411, 415, 416, 604, 605, 606, 607, 701, 702, 706.
+
+The same region is adjacent to embedded diagnostics for the sequencer/MCI path:
+- "sequencer"
+- "MCI temp file"
+- "SeqID = %d (DEVTYPE)"
+- "SeqID = %d (sequencer)"
+- "MOD_SQSYNTH, id=%d"
+- "MOD_FMSYNTH, id=%d"
+- "MOD_SYNTH, id=%d"
+- "Tune %d not found"
+
+This cleanly separates a Windows multimedia subsystem from the core game simulation.
+
+### CONFIRMED — keyboard and joystick paths
+
+KEYBOARD relocations occur at seg1:0x0C64, seg2:0x1104 and seg3:0x8CBF.
+
+Joystick-specific embedded diagnostics/configuration:
+- "No joystick driver installed"
+- "Joystick is unplugged"
+- "Joystick error"
+- "system.ini"
+- "JoyCal0"
+- "joystick.drv"
+- "joystick"
+
+The joystick error string has a direct segment-3 immediate-string reference near 0x8EED, making the ~0x8Cxx–0x8Fxx area a high-priority input/joystick cluster.
+
+### CONFIRMED — file/data-loader evidence
+
+The binary contains direct diagnostics and names for:
+- snd.dat
+- game.pal
+- map.
+- img.
+- demo.
+- uif.dat
+- ending.fli
+- nite3d.bsf
+- map.1
+- config.sav
+- user.sav
+
+It also embeds loader/error labels:
+- Read_image()
+- Read_img_sequence()
+- Read_images()
+- Text_read()
+- "Error opening file %s"
+- "Error reading file %s"
+- "Error seeking file %s"
+- "Image format invalid"
+- "UIF image not found, num=%d"
+
+Immediate references into the automatic data/string segment locate loader candidate clusters:
+- MAP name/prefix references: seg3:0x4998 and seg4:0x246C/0x24C6 (plus additional candidate)
+- IMG prefix references: dense cluster in seg3 including 0x3E6F, 0x49AA, 0x4DB8, 0x4E8D, 0x4FA5, 0x50B6, 0x68D1, 0x7C36, 0x8191, 0x8301, 0xA83F, 0xA8A9
+- UIF.DAT references: seg3 ~0x5D10–0x5F7C
+- SND.DAT references: seg3 ~0x4814–0x517A and ~0x9436–0x944E, plus seg1 candidate
+
+These are candidate XREFs from raw immediate matching; each must be validated against instruction boundaries before assigning final function names.
+
+### CONFIRMED — gameplay structures and debug instrumentation
+
+The executable contains unusually useful internal diagnostics:
+- "class %d, strength %d, strategy %d"
+- "state %d, nextstate %d, timer %d"
+- "octant %d, resoct %d"
+- "Problem with guard: state=%d, next_state=%d, o_id=0x%x"
+- "Guard not in map"
+- "Guards left: %d, Panels left: %d"
+- "Vectors: %u/%u, Objects: %u/%u, Guards: %u/%u"
+- "Frame rate: %u/sec (%u mS), [%u,%u]"
+- near/far heap statistics
+- tile/object/sound slot reload/thrash statistics
+- "Game Statistics"
+
+The direct reference to "class %d, strength %d, strategy %d" occurs at seg3:0xABD7 inside a routine around 0xAB80. Nearby code reads multiple fields from a guard-like record and indexes another table with a 0x1C-byte stride. Other gameplay routines also advance records by 0x1C. This is strong evidence for a 28-byte gameplay/guard record or a closely related 28-byte table element; field semantics still require validation.
+
+### CONFIRMED — doors, panels, pushes and exploding walls
+
+Embedded hard limits/error paths:
+- "Door not in map"
+- "Push not in map"
+- "MAXDOORS exceeded (%d)"
+- "MAXPANELS exceeded (%d)"
+- "MAXPUSHES exceeded (%d)"
+- "Exploding wall not in map"
+
+The "Door not in map" diagnostic is referenced from multiple routines around seg3:0x12DA, 0x132C and 0x15E9. The surrounding disassembly performs coordinate comparisons and iterates fixed-size records, giving a concrete anchor for reconstructing door/map-object lookup structures.
+
+The exploding-wall diagnostic is directly referenced near seg3:0x9C0F. The surrounding routine performs tile-coordinate conversion with arithmetic shifts by 6, searches/creates a map object, and handles object classes 0x2D/0x2F. This is a strong gameplay-mechanics anchor.
+
+### CONFIRMED — map/world fixed-point scale clue
+
+Multiple gameplay routines convert position values to tile coordinates using arithmetic shift-right by 6 (SAR 6). This demonstrates a 64-unit sub-tile/fixed-point coordinate scale in those paths. This should be checked against MAP/object coordinate decoding before generalizing it to every engine coordinate.
+
+### CONFIRMED — object/guard limits and on-screen list
+
+The executable has explicit failure paths:
+- "Too many objects on screen"
+- "MAXOBJ exceeded (%d)"
+- "MAXGUARD exceeded (%d)"
+- "MAXVECLIST exceeded (%d)"
+- "MAXVEC exceeded (%d)"
+
+"Too many objects on screen" is directly referenced around seg3:0xCEE0, adjacent to code that iterates 0x1C-byte records and compares world/tile coordinates. This is a useful anchor for the visible-object/vector pipeline.
+
+### CONFIRMED — cheat/debug features are real shipped code
+
+Strings include:
+- "Position %d,%d  Cheat modes: %s"
+- "Cheats..."
+- "Omniscient (all-knowing)"
+- "Omnipotent (all-powerful)"
+- "Omnificent (all-cunning)"
+- "Omnifarious (all things)"
+- "Cheat modes are only available when you purchase the complete trilogy."
+- "debug.txt"
+- "Beta release!!!  Do NOT distribute"
+
+The cheat-status format is directly referenced from segment 4 around 0x26F5/0x274B. "debug.txt" has multiple code-segment candidate references. This establishes that debug/cheat instrumentation is not merely external documentation; executable code paths reference it.
+
+### CONFIRMED — remote-control gameplay actions
+
+Menu/action strings include:
+- Open remote doors
+- Close remote doors
+- Enable remote cannons
+- Disable remote cannons
+
+These will be traced into their command handlers in the next XREF pass and compared with map/object classes.
+
+### STRONG EVIDENCE
+
+- Segment 3 ~0x2E96–0x33xx is the Windows framebuffer creation/presentation layer.
+- Segment 3 ~0xD6xx–0xE4xx is a multimedia/audio/MCI control layer.
+- Segment 3 ~0x8Cxx–0x8Fxx contains joystick/input support.
+- Segment 3 ~0x12xx–0x16xx is strongly associated with door/map-object lookup and setup.
+- Segment 3 ~0x9Bxx–0x9Cxx contains exploding-wall mechanics.
+- Segment 3 ~0xABxx contains guard debug/state inspection and exposes useful record fields.
+- Segment 3 ~0xCExx contains visible-object/list management.
+
+### HYPOTHESES — not yet promoted to facts
+
+- The 0x1C-byte stride may be the principal guard/object runtime structure. It is confirmed as a recurring record stride, but the exact C struct boundary and all fields are not yet reconstructed.
+- Renderer/raycaster code should be upstream of the WinGBitBlt/WinGStretchBlt calls, but no function is yet labelled "raycaster" until the wall-column/ray traversal loop is structurally identified.
+- Strength is likely connected to enemy HP/durability, but the binary string alone does not prove whether it is current HP, base HP, attack strength, or another gameplay parameter.
+
+## Updated audit status
+
+- Binary/NE structure: CONFIRMED
+- Segment map: CONFIRMED
+- Import/fixup map: CONFIRMED, second-pass underway
+- WinG display boundary: CONFIRMED
+- Multimedia subsystem cluster: CONFIRMED
+- Keyboard/joystick cluster: CONFIRMED at import/string-XREF level
+- MAP/IMG/UIF/SND loader clusters: LOCATED, function-boundary validation underway
+- Door/map-object lookup: LOCATED
+- Exploding-wall mechanics: LOCATED
+- Guard/state debug path: LOCATED
+- 64-unit tile-coordinate conversion: CONFIRMED in multiple gameplay paths
+- Cheat/debug code: CONFIRMED
+- Full renderer/raycaster decomposition: pending
+- wall-column and sprite projection routines: pending
+- enemy HP/damage/difficulty/score semantics: pending
+- teleport/curtain mechanics: pending
+- complete function/caller/callee catalogue: pending
