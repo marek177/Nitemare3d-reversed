@@ -285,3 +285,67 @@ These will be traced into their command handlers in the next XREF pass and compa
 - enemy HP/damage/difficulty/score semantics: pending
 - teleport/curtain mechanics: pending
 - complete function/caller/callee catalogue: pending
+
+
+## Phase 3 — renderer boundary and structure-recovery plan
+
+### CONFIRMED — WinG export identities independently cross-checked
+
+The segment-3 presentation anchors from Phase 2 match the historical 16-bit WinG export table:
+1001 WinGCreateDC; 1002 WinGRecommendDIBFormat; 1003 WinGCreateBitmap; 1004 WinGGetDIBPointer; 1005 WinGGetDIBColorTable; 1006 WinGSetDIBColorTable; 1007 WinGCreateHalfTonePalette; 1008 WinGCreateHalfToneBrush; 1009 WinGStretchBlt; 1010 WinGBitBlt.
+
+This strengthens the classification of seg3 ~0x2E96–0x33xx as presentation/setup rather than the raycaster itself. WinGBitBlt/WinGStretchBlt copy/stretch an already rendered source DC/bitmap to a destination; therefore the actual wall/sprite rasterization should be sought in callers and data writers upstream of these calls.
+
+### STRONG EVIDENCE — expected renderer split
+
+The binary architecture now supports a three-layer working model:
+1. Win16/MFC window and paint/event layer.
+2. WinG DIB/framebuffer creation, palette and final blit layer in segment 3.
+3. Game-specific software renderer that writes the 8-bit indexed framebuffer before layer 2 presents it.
+
+This is a structural model, not yet a claim about exact function boundaries.
+
+### Next static signatures to promote renderer routines to CONFIRMED
+
+A candidate will only be labelled wall/ray code after finding several of:
+- repeated screen-column loop / x increment,
+- per-column distance or projected-height calculation,
+- texture-column address calculation,
+- clipping against viewport top/bottom,
+- writes into the WinG bitmap pixel pointer or an intermediate 8-bit buffer,
+- traversal using map/tile coordinates,
+- fixed-point shifts/multiplies,
+- caller relationship leading to the confirmed WinG presentation routine.
+
+Sprite routines will require evidence such as projected x/y, scale by distance, transparent-pixel handling, clipping, and depth/occlusion interaction.
+
+### Guard/object 0x1C record reconstruction matrix
+
+Current status:
+- 0x1C stride: CONFIRMED recurring gameplay-table stride.
+- class/strength/strategy: CONFIRMED field labels emitted by shipped debug code.
+- state/nextstate/timer: CONFIRMED debug labels associated with guard state diagnostics.
+- exact byte offsets: NOT YET CONFIRMED.
+- whether strength is HP: HYPOTHESIS.
+
+The next pass should correlate every memory operand in the debug-print routine with the argument push order, then propagate those recovered offsets to all 0x1C-stride XREFs. This should turn the anonymous record into a partial C struct without guessing.
+
+### Damage/difficulty/score audit criteria
+
+No value will be named HP/damage/score merely because it changes around an enemy. Confirmation requires one of:
+- decrement/comparison leading to death/state transition,
+- direct association with a score accumulator after kill,
+- difficulty-indexed table access or branch,
+- debug/string semantic evidence,
+- repeated consistency across more than one enemy class.
+
+### Door / curtain / teleport audit split
+
+Door records already have concrete XREF anchors. Curtain animation and two-destination teleport selection remain separate targets; they must not be folded into the generic door implementation until code/data evidence shows a shared mechanism.
+
+### New deliverables queued
+
+- analysis/nite3w_function_map.csv — segment:offset, provisional name, confidence, callers/callees, subsystem.
+- analysis/nite3w_guard_record.md — recovered 0x1C structure with evidence per field.
+- analysis/nite3w_renderer.md — framebuffer ownership, render-call chain, wall/sprite routine evidence.
+- analysis/nite3w_loaders.md — MAP/IMG/UIF/SND/BSF loader call chains and format observations.
