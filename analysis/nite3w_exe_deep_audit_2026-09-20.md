@@ -410,3 +410,45 @@ The public OpenNitemare3D reimplementation contains dedicated Guard and Directio
 ### Priority XREF pass
 
 The next binary pass should locate every instruction that writes runtime offsets +0x0B, +0x0C and +0x06. Grouping those writes by nearby calls/coordinate tests will expose state transitions. Writes to +0x10 are separately prioritized to resolve strength/HP semantics.
+
+
+## Phase 6 — DOS MAP.EXE vs game-data responsibility
+
+New binary comparison:
+- MAP.EXE SHA-256 e88bf6bc1a2612737fdbfcb171f68b99154c48f362c9346d89f024d8f0f47f8a
+- packed N3D.EXE SHA-256 a3fa02335e1d8bc531918f3bfaa66217aef65c81e562a2fdf1c749be652ca485
+- unpacked N3D-UNFU.EXE SHA-256 552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301
+
+### CONFIRMED — MAP.EXE owns WALLS.* / OBJECTS.* textual class definitions
+
+MAP.EXE contains:
+- literal prefixes `map.`, `walls.`, `objects.`
+- command help: `-w prints wall class number 0..n` and `-o prints object class number 0..n`
+- parsers/errors: `Bad wall definition [%s] in %s`, `Bad object definition [%s] in %s`, `Unknown class definition in %s, class = %s`
+- class-name vocabulary including WALL/REVWALL/WALL_EX*, many DOOR* variants, PUSH, UIFOBJ
+- GUARD1 through GUARD30
+- separate Wall and Object class-print formats.
+
+This directly confirms that the DOS MAP viewer/editor interprets WALLS.n and OBJECTS.n as class-definition/description inputs and exposes numeric class IDs.
+
+### CONFIRMED — GUARD1..GUARD30 are present in MAP.EXE
+
+The 30 names are contiguous in MAP.EXE around file offsets 0xBB52 onward (decimal 47954 for GUARD1). Therefore the viewer has an explicit symbolic mapping for thirty guard classes.
+
+This does not by itself prove that the game executable loads OBJECTS.n. It proves that MAP.EXE understands those textual/symbolic definitions.
+
+### STRONG EVIDENCE — runtime game does not load WALLS.* / OBJECTS.*
+
+The unpacked game executable contains direct names for snd.dat, map., img., uif.dat and map.1, plus runtime errors such as Wall class undefined and Obj class undefined. The current string scan finds no `walls.` or `objects.` filename prefixes in N3D-UNFU.EXE, while MAP.EXE contains them explicitly.
+
+The safest current architecture is therefore:
+- MAP.n = runtime level/map data consumed by game.
+- IMG.n = runtime graphics consumed by game.
+- SND.DAT / UIF.DAT / GAME.PAL = runtime resources.
+- WALLS.n / OBJECTS.n = MAP.EXE viewer/editor definition/annotation files, not demonstrated runtime game inputs.
+
+The game's own wall/object/guard class behavior is consequently likely compiled into executable tables/code and/or encoded numerically in MAP.n, rather than dynamically read from WALLS.n / OBJECTS.n.
+
+### Audit correction
+
+Future enemy-class reconstruction must not assume OBJECTS.n defines runtime HP/AI values. GUARD1..GUARD30 from MAP.EXE are valuable for mapping numeric map object classes to symbolic names, but HP/strength/strategy/state semantics must still be recovered from N3D/NITE3W executable code and runtime tables.
