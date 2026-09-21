@@ -12,6 +12,31 @@ Addresses use `NE-segment:offset` notation. Names are reconstructed descriptive 
 | `3:21B6` | StartPush | high | copies cardinal movement increments and sets 8-step counter |
 | `3:2210` | UpdatePushes | high | updates fixed-point XY, map object cell, decrements counter |
 
+## Renderer path recovered 2026-09-21
+
+The renderer is a projected-vector/span pipeline, not a Wolfenstein-style
+per-column tile-grid DDA. The complete instruction evidence, file offsets and
+comparison with Catacomb Abyss, Hovertank 3-D and Wolfenstein 3-D are in
+[`analysis/nite3w_renderer.md`](../analysis/nite3w_renderer.md).
+
+| Address | Reconstructed role | Confidence | Evidence |
+|---|---|---|---|
+| `3:2F36` | create 320x200 WinG framebuffer | high | stores returned pixel selector and clears exactly 64,000 bytes |
+| `3:3612` | fill ceiling/floor | high | direct indexed-buffer writes with 320-byte stride |
+| `3:366A` | draw textured wall column | high | `texture_x << 6`, fixed-point vertical sampling, framebuffer stride 320 |
+| `3:374E` | draw scaled sprite | high | depth test, transparent palette index `0x29`, stride 320 |
+| `3:6152` | initialize wall-span interpolation | high | writes interpolation fields in a `0x14`-byte span record |
+| `3:6266` | coalesce column owners into wall spans | high | scans `0x53FE + 4*x`, maximum 50 records |
+| `3:6422` | wall/special-wall column clip | medium | orientation/type branches can reject a column; full case meanings open |
+| `3:66B0` | rasterize wall spans | high | per-x interpolation, depth update and wall-column call |
+| `3:6914` | projected-sprite pass | high | 100 records, `0x12`-byte stride |
+| `3:D78C` | render-frame orchestrator | high | calls visibility, span, clear, wall, object and sprite stages in order |
+| `3:E516` | set view angle/trig state | high | normalizes degrees, derives 45-degree octant and trig components |
+| `3:E798` | transform/project wall vector | high | camera transform, near clip and projected endpoints |
+| `3:EBD6` | wall texture-coordinate helper | medium | orientation-dependent fixed-point coordinate calculation |
+| `4:3564` | project vector and claim columns | high | clips a projected interval and fills empty owner entries |
+| `4:3940` | traverse four sorted vector lists | high | front-to-back list traversal stops when viewport coverage is complete |
+
 Additional executable anchors include diagnostics for missing door/push records, maximum door/panel/push counts, undefined wall/object classes and empty object-class lookups. These are useful anchors for continuing door, panel, pushable and object-class dispatch reconstruction.
 
 

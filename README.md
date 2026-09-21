@@ -15,7 +15,14 @@ Git commit authorship therefore identifies the account that committed the files 
 
 The project separates direct executable reverse engineering from behavior reconstructed from original data, walkthrough evidence and original documentation. See `docs/RECONSTRUCTION_STATUS.md`, `docs/EXE_FUNCTION_MAP.md`, `docs/SAVE_LIBRARIES_IDA_REPORT.md`, and the video-audit reports for evidence and confidence levels.
 
-Well-understood areas include the Win16/WinG display path, 320x200 indexed framebuffer, 304x152 3-D viewport, map/archive formats, SND.DAT container and PCM format, CONFIG.SAV physical layout, USER.SAV physical block layout, many doors/warps/pushables and numerous level-specific scripts. Major unresolved areas are exact enemy HP/speed/reaction/damage, numeric weapon multipliers, a fully traced guard AI state machine, all hidden keyboard/debug paths and a 1:1 reconstruction of every raycaster branch.
+Well-understood areas include the Win16/WinG display path, 320x200 indexed framebuffer, 304x152 3-D viewport, the original vector/span renderer's primary visibility-to-sprite call chain, map/archive formats, SND.DAT container and PCM format, CONFIG.SAV physical layout, USER.SAV physical block layout, many doors/warps/pushables and numerous level-specific scripts. Major unresolved areas are exact enemy HP/speed/reaction/damage, numeric weapon multipliers, a fully traced guard AI state machine, all hidden keyboard/debug paths, construction of the renderer's sorted vector lists and the remaining special-wall/fallback branches.
+
+The renderer audit corrects an important earlier assumption: NITE3W does not
+use Wolfenstein 3-D's one-grid-ray-per-screen-column DDA. It projects wall
+vectors, assigns visible spans to a per-column owner table, coalesces those
+columns into wall records and then draws textured columns and depth-tested
+sprites. See the [renderer audit](analysis/nite3w_renderer.md) for
+instruction-level evidence.
 
 ## Current runtime architecture
 
@@ -79,6 +86,7 @@ python scripts/import_original_data.py /path/to/Nitemare3D
 
 ```bash
 python tools/ne_inspect.py data/original/NITE3W.EXE
+python tools/ne_renderer_audit.py data/original/NITE3W.EXE xrefs 'internal 3:D78C'
 python tools/n3d_save_inspect.py CONFIG.SAV USER.SAV
 n3d_inspect data/original
 ```
@@ -91,4 +99,4 @@ E3M6 directly strengthens the fire-hazard model: small and medium fire are trave
 
 ## Next engineering targets
 
-The highest-value remaining targets are the original guard AI/HP/damage paths, exact weapon damage/timing, the remaining raycaster branches, keyboard/debug command paths, MIDI level-selection table, registration/BSF checks, and the semantic fields inside USER.SAV runtime blocks.
+The highest-value remaining targets are the original guard AI/HP/damage paths, exact weapon damage/timing, renderer vector-list construction and special-wall branches, keyboard/debug command paths, MIDI level-selection table, registration/BSF checks, and the semantic fields inside USER.SAV runtime blocks.

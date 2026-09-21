@@ -7,10 +7,12 @@
 
 namespace n3d {
 
-// Playable verification renderer. The grid traversal and projection are a
-// temporary reference implementation while the exact NITE3W.EXE ray-column
-// routine is being reconstructed. It intentionally consumes the real MAP data
-// and LevelState so gameplay systems can be tested now.
+// Playable verification renderer. This grid-DDA implementation intentionally
+// consumes the real MAP data and LevelState so gameplay systems can be tested
+// now, but it is not the recovered NITE3W.EXE renderer. The original traverses
+// sorted wall-vector lists, assigns projected spans to screen columns, and then
+// rasterizes those spans. See analysis/nite3w_renderer.md and
+// OriginalRendererFacts.hpp.
 class Raycaster {
 public:
     void render(Framebuffer& fb, const LevelState& level);

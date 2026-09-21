@@ -2,9 +2,9 @@
 
 This repository is a clean-room-style reconstruction scaffold based on the supplied Windows 3.1 executable/data plus independently documented gameplay observations. It is not the original Gray Design Associates source tree.
 
-## Current estimate (2026-09-18)
+## Current estimate (2026-09-21)
 
-- Direct binary/algorithm reverse engineering of `NITE3W.EXE`: **about 66–68%** working estimate.
+- Direct binary/algorithm reverse engineering of `NITE3W.EXE`: **about 69–71%** working estimate.
 - Broader behavioral reconstruction using EXE + original data formats + walkthrough evidence + documentation: **about 86–87%** working estimate.
 
 These percentages are engineering estimates, not byte-count coverage. The final 95–100% claim will be based on the function/range audit, not on a subjective subsystem average.
@@ -52,11 +52,11 @@ These percentages are engineering estimates, not byte-count coverage. The final 
 | MIDI/music selection | ~40% |
 | SND.DAT runtime/cache | ~60% |
 | NITE3D.BSF | ~30–40% |
-| Renderer/raycaster | ~48–52% |
+| Renderer/raycaster | ~75–80% |
 | Win16/MFC/GDI presentation path | ~80–85% |
 | Input / keyboard | ~70–75% |
 | Joystick path | ~65–70% |
-| `NITE3W.EXE` overall direct RE | **~66–68%** |
+| `NITE3W.EXE` overall direct RE | **~69–71%** |
 
 See `docs/RUNTIME_RE_ROADMAP.md` for the fixed 14-step route to the final audit.
 
@@ -68,6 +68,7 @@ See `docs/RUNTIME_RE_ROADMAP.md` for the fixed 14-step route to the final audit.
 - `docs/PLAYER_HEALTH_RE.md` — player health evidence/status.
 - `docs/GUARD_AI_RE.md` — GUARD runtime state evidence.
 - `docs/DEMO_FORMAT_RE.md` — demo record/playback and spawn/first-room forensics.
+- `analysis/nite3w_renderer.md` — instruction-level framebuffer, vector visibility, wall-span, texture-column, depth and sprite pipeline.
 
 ## 2026-09-18 Ghidra/IDA cross-audit
 
@@ -83,7 +84,7 @@ New structural evidence:
 - diagnostic strings expose explicit runtime tables/limits for doors, panels and pushables, plus object/sound cache statistics (reload/thrash counters);
 - large switch-based dispatchers in the game-code segments are now priority candidates for object/state/command semantic recovery.
 
-This cross-audit raises confidence in the executable structure and subsystem boundaries, but it does **not** by itself resolve the remaining raycaster branches, guard AI transitions, weapon timing, enemy-to-player damage, or all semantic fields in the auto-data segment.
+This cross-audit raises confidence in the executable structure and subsystem boundaries. The subsequent renderer audit resolved the primary frame call chain and its vector/span architecture, but not every special-wall branch or the producer of the four sorted vector lists. Guard AI transitions, weapon timing, enemy-to-player damage and many semantic fields in the auto-data segment also remain unresolved.
 
 ## Major unresolved areas
 
@@ -95,7 +96,7 @@ This cross-audit raises confidence in the executable structure and subsystem bou
 - complete level/script opcode/event dispatcher;
 - remaining USER.SAV semantic labels;
 - keyboard/debug/CLI, MIDI selector and `NITE3D.BSF`;
-- exact renderer traversal/clipping/texture/sprite/depth path;
+- vector-list construction, special-wall cases, exact depth units and the remaining renderer fallback branches;
 - final byte/function classification of all executable code.
 
 ## Comparison rule

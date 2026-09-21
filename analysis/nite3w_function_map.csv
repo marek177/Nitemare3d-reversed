@@ -13,3 +13,22 @@ segment,offset,provisional_name,confidence,subsystem,evidence
 3,0xCE91,visible_table_stride_1A,CONFIRMED,visible objects,IMUL stride 0x1A
 3,0xCEE0,too_many_objects_xref,CONFIRMED,visible objects,pushes Too many objects on screen
 4,0x26F5,cheat_status_format_xref,CONFIRMED,debug/cheats,immediate reference to cheat status format
+3,0x2F36,create_wing_framebuffer,CONFIRMED,renderer/presentation,creates 320x200 top-down DIB stores bits selector at 0x51A0 and clears 64000 bytes
+3,0x3612,fill_ceiling_and_floor,CONFIRMED,renderer,linear 8-bit writes with 320-byte row stride and two palette-index globals
+3,0x366A,draw_textured_wall_column,CONFIRMED,renderer,texture_x shifted by 6 fixed-point vertical sampling and 320-byte destination stride
+3,0x374E,draw_scaled_sprite,CONFIRMED,renderer,depth-table compare transparent index 0x29 and 320-byte destination stride
+3,0x3DB8,background_backend_wrapper,CONFIRMED,renderer,WinG branch calls 3:3612
+3,0x3E44,wall_column_backend_wrapper,CONFIRMED,renderer,WinG branch calls 3:366A and is called by 3:66B0
+3,0x3F80,sprite_backend_wrapper,CONFIRMED,renderer,WinG branch calls 3:374E and is called by 3:6914
+3,0x6152,initialize_wall_span_interpolation,CONFIRMED,renderer,computes endpoint deltas and writes 0x14-byte span interpolation fields
+3,0x6266,coalesce_column_owners,CONFIRMED,renderer,groups far pointers from 0x53FE into max 50 records of 0x14 bytes at 0x5E88
+3,0x6348,integrate_visible_objects,STRONG,renderer,object ordering stage between wall-span creation and sprite pass
+3,0x6422,special_wall_column_clip,STRONG,renderer,wall type/orientation branches can suppress a column
+3,0x66B0,rasterize_wall_spans,CONFIRMED,renderer,iterates span records updates depth table and calls texture-coordinate plus column-draw routines
+3,0x6914,draw_projected_sprites,CONFIRMED,renderer,iterates 100 records at 0x6270 with stride 0x12
+3,0xD78C,render_frame,CONFIRMED,renderer,ordered calls join visibility span clear wall object and sprite stages
+3,0xE516,set_view_angle,CONFIRMED,renderer,normalizes degrees computes octant and stores trig components
+3,0xE798,project_wall_vector,CONFIRMED,renderer,view transform near clipping and projected endpoint writes
+3,0xEBD6,wall_texture_coordinate,STRONG,renderer,orientation-dependent fixed-point texture coordinate calculation
+4,0x3564,project_and_claim_columns,CONFIRMED,renderer,projects candidate clips x interval and fills empty per-column owner entries
+4,0x3940,traverse_sorted_wall_vectors,CONFIRMED,renderer,walks four ordered far-pointer lists until viewport columns are covered

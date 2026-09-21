@@ -82,7 +82,7 @@ This establishes substantial Microsoft MFC runtime/framework code in the binary.
 - Segment map: confirmed at NE-table level.
 - Import-module map: confirmed.
 - Framework fingerprint: confirmed (MFC).
-- Renderer audit: pending call/fixup-level classification.
+- Renderer audit: primary frame/wall/sprite call chain confirmed; see `analysis/nite3w_renderer.md`.
 - AI/enemy audit: pending.
 - map/IMG/WALLS/OBJECTS/UIF/SND loader xrefs: pending.
 - damage/difficulty/score tables: pending.
@@ -263,7 +263,7 @@ These will be traced into their command handlers in the next XREF pass and compa
 ### HYPOTHESES — not yet promoted to facts
 
 - The 0x1C-byte stride may be the principal guard/object runtime structure. It is confirmed as a recurring record stride, but the exact C struct boundary and all fields are not yet reconstructed.
-- Renderer/raycaster code should be upstream of the WinGBitBlt/WinGStretchBlt calls, but no function is yet labelled "raycaster" until the wall-column/ray traversal loop is structurally identified.
+- The earlier expectation of a conventional "raycaster" was superseded by the Phase 7 instruction audit: NITE3W traverses projected vector lists and wall spans rather than performing a Wolf-style grid DDA per screen column.
 - Strength is likely connected to enemy HP/durability, but the binary string alone does not prove whether it is current HP, base HP, attack strength, or another gameplay parameter.
 
 ## Updated audit status
@@ -280,8 +280,8 @@ These will be traced into their command handlers in the next XREF pass and compa
 - Guard/state debug path: LOCATED
 - 64-unit tile-coordinate conversion: CONFIRMED in multiple gameplay paths
 - Cheat/debug code: CONFIRMED
-- Full renderer/raycaster decomposition: pending
-- wall-column and sprite projection routines: pending
+- Primary renderer/vector-span decomposition: CONFIRMED
+- wall-column and sprite projection routines: CONFIRMED
 - enemy HP/damage/difficulty/score semantics: pending
 - teleport/curtain mechanics: pending
 - complete function/caller/callee catalogue: pending
@@ -347,7 +347,7 @@ Door records already have concrete XREF anchors. Curtain animation and two-desti
 
 - analysis/nite3w_function_map.csv — segment:offset, provisional name, confidence, callers/callees, subsystem.
 - analysis/nite3w_guard_record.md — recovered 0x1C structure with evidence per field.
-- analysis/nite3w_renderer.md — framebuffer ownership, render-call chain, wall/sprite routine evidence.
+- analysis/nite3w_renderer.md — delivered: framebuffer ownership, vector/span render-call chain, wall/sprite routine evidence and source comparison.
 - analysis/nite3w_loaders.md — MAP/IMG/UIF/SND/BSF loader call chains and format observations.
 
 
@@ -452,3 +452,44 @@ The game's own wall/object/guard class behavior is consequently likely compiled 
 ### Audit correction
 
 Future enemy-class reconstruction must not assume OBJECTS.n defines runtime HP/AI values. GUARD1..GUARD30 from MAP.EXE are valuable for mapping numeric map object classes to symbolic names, but HP/strength/strategy/state semantics must still be recovered from N3D/NITE3W executable code and runtime tables.
+
+
+## Phase 7 — renderer pipeline recovered
+
+The primary software-renderer call chain has now been recovered from NE
+relocations and instruction-level data flow. The durable evidence is recorded
+in `analysis/nite3w_renderer.md` and the address catalogue in
+`analysis/nite3w_function_map.csv`.
+
+### CONFIRMED
+
+- `3:2F36` creates a 320x200 top-down WinG bitmap, stores the returned pixel
+  selector at data offset `0x51A0` and clears exactly 64,000 bytes.
+- `4:3940` traverses four pre-sorted far-pointer lists front-to-back;
+  `4:3564` projects candidate vectors and assigns them to a per-column owner
+  table.
+- `3:E798` performs the view transform, near clipping and endpoint projection.
+- `3:6266` coalesces equal column owners into at most 50 wall-span records of
+  `0x14` bytes each; `3:6152` initializes their interpolants.
+- `3:66B0` walks those spans, updates the per-column depth table and calls the
+  textured vertical-column path `3:3E44 -> 3:366A`.
+- `3:6914` iterates 100 projected-object records of `0x12` bytes and calls the
+  sprite path `3:3F80 -> 3:374E`.
+- Sprite palette index `0x29` is transparent in this path.
+- `3:D78C` is the frame orchestrator joining visibility, span construction,
+  background clear, walls, visible objects and sprites.
+
+### CORRECTION
+
+The original renderer is not a Wolfenstein 3-D-style per-column tile-grid DDA.
+Its per-frame visibility stage projects wall vectors, uses a column-owner table
+and then rasterizes coalesced spans. Catacomb Abyss and Hovertank 3-D provide a
+closer wall-list/span comparison, but their boundary-ray `TraceRay` and
+`FollowWalls` organization is not identical to NITE3W's four-list traversal.
+
+### Still open
+
+The map-to-vector-list producer, exact units of the depth word, all
+special-wall branches in `3:6422` and the VGA fallback routines remain
+unresolved. No replacement implementation should claim 1:1 renderer parity
+until those paths are closed.
