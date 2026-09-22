@@ -1,6 +1,6 @@
 # Nitemare3D-Reversed — reconstruction v0.10
 
-**v0.10 update:** cross-thread/session findings through 2026-09-22 are consolidated in [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md). The newest pass resolves MAP→VEC construction, the four 333-entry VECLIST indexes, the 28-byte VEC layout anchors, the 320-column owner table, 20-byte wall spans, 18-byte projected-sprite queue, viewport/projection details, GUARD score values and the 22-state dispatcher. It also records corrections to older 80-byte OBJECT / 98-byte GUARD / 52-byte render-record guesses.
+**v0.10 update:** cross-thread/session findings through 2026-09-22 are consolidated in [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md), with same-day corrections and newly resolved findings in [`docs/PROJECT_FINDINGS_DELTA_2026-09-22.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-22.md). The latest pass resolves GUARD13/class `0x14` as Dracula's internal Bat second phase, narrows GUARD25/class `0x20`, tightens `OBJECT+18` projected-damage semantics, preserves the 28-byte OBJECT / 26-byte GUARD corrections, and carries those facts into `RecoveredRuntime.hpp`.
 
 Modern C++ reconstruction scaffold for the **Windows 3.1** version of Nitemare 3D.
 The design goal is to preserve the original data formats and reconstructed game logic while replacing obsolete Windows 3.x display plumbing (`WING.DLL` and `DISPDIB.DLL`) with **SDL3**.
@@ -13,9 +13,10 @@ Git commit authorship therefore identifies the account that committed the files 
 
 ## Reverse-engineering status
 
-Start with the canonical consolidation:
+Start with the consolidation and newest delta:
 
 - [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md)
+- [`docs/PROJECT_FINDINGS_DELTA_2026-09-22.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-22.md) — newest corrections/findings from the current project folder
 - [`docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md`](docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md) — consolidated unknowns, priorities and evidence boundaries
 
 Then use the subsystem reports for instruction-level evidence:
@@ -45,11 +46,13 @@ Well-understood areas now include:
 - player health and both directions of difficulty scaling;
 - player→GUARD weapon/class damage matrix;
 - GUARD score switch and 22-state dispatcher skeleton;
+- Dracula `0x11 -> 0x14` two-phase transform with HP reset;
+- GUARD25/class `0x20` constrained as an unresolved/cut/fallback class rather than a known enemy;
 - SND.DAT directory/PCM format, MIDI inventory;
 - CONFIG.SAV physical size and USER.SAV block layout;
 - many doors/warps/pushables and numerous level-specific scripts.
 
-The most important remaining work is no longer the basic renderer architecture. It is the exact owner-conflict geometry, special-wall/texture-U paths, wall animation timing, complete door/panel/control records, semantic names for GUARD states 02–14, guard movement/attack timing, projectile behavior, remaining enemy->player class binding, BSF integrity algorithm, and unresolved save/resource fields.
+The most important remaining work is no longer the basic renderer architecture. It is the exact owner-conflict geometry, special-wall/texture-U paths, wall animation timing, complete door/panel/control records, semantic names for GUARD states 02–14, guard movement/attack timing, projectile behavior, remaining enemy->player class binding, GUARD25 reachability/identity, the complete Dracula resource/sound/corpse chain, the 4096-byte cell-state semantics, BSF integrity algorithm, and unresolved save/resource fields.
 
 ## Renderer architecture
 
@@ -152,8 +155,8 @@ E3M6 strengthens the fire-hazard model: small and medium fire are traversable da
 3. Complete door/panel/control record/state semantics.
 4. Finish GUARD state 02–14 naming plus movement/attack timing.
 5. Bind enemy-to-player class transforms to visible enemies/projectiles.
-6. Translate the exact owner-conflict rule in `FUN_1018_3564`.
-7. Translate all `FUN_1010_6422` texture-U/special-wall cases.
-8. Audit global `0x7E60` and remaining VEC animation/resource fields.
-9. Finish BSF integrity/version-diff reconstruction.
-10. Finish SFX/MIDI/UIF/ENDING.FLI semantic edge cases and unresolved USER.SAV blocks.
+6. Resolve GUARD25/class `0x20` reachability and resource identity.
+7. Trace the complete Dracula `0x11 -> 0x14` sequence/sound/corpse chain.
+8. Resolve the 4096-byte per-cell runtime state block and `OBJECT+14/+16/+18` semantics.
+9. Translate the exact owner-conflict rule in `FUN_1018_3564` and all `FUN_1010_6422` texture-U/special-wall cases.
+10. Finish BSF integrity/version-diff reconstruction plus SFX/MIDI/UIF/ENDING.FLI edge cases and unresolved USER.SAV blocks.
