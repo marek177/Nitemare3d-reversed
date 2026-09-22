@@ -1,6 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.9
+# Nitemare3D-Reversed — reconstruction v0.10
 
-**v0.9 update:** extended Episode 3 audit covers complete E3M1, E3M6 and E3M7–E3M9, including reusable colored keys, the two-floor E3M9 elevator selector, the cracked Mirror of Destiny exit, and E3M6 fire-hazard behavior. E3M3–E3M5 remain the outstanding full Episode-3 walkthrough audits.
+**v0.10 update:** cross-thread/session findings through 2026-09-22 are consolidated in [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md). The newest pass resolves MAP→VEC construction, the four 333-entry VECLIST indexes, the 28-byte VEC layout anchors, the 320-column owner table, 20-byte wall spans, 18-byte projected-sprite queue, viewport/projection details, GUARD score values and the 22-state dispatcher. It also records corrections to older 80-byte OBJECT / 98-byte GUARD / 52-byte render-record guesses.
 
 Modern C++ reconstruction scaffold for the **Windows 3.1** version of Nitemare 3D.
 The design goal is to preserve the original data formats and reconstructed game logic while replacing obsolete Windows 3.x display plumbing (`WING.DLL` and `DISPDIB.DLL`) with **SDL3**.
@@ -13,16 +13,63 @@ Git commit authorship therefore identifies the account that committed the files 
 
 ## Reverse-engineering status
 
-The project separates direct executable reverse engineering from behavior reconstructed from original data, walkthrough evidence and original documentation. See `docs/RECONSTRUCTION_STATUS.md`, `docs/EXE_FUNCTION_MAP.md`, `docs/SAVE_LIBRARIES_IDA_REPORT.md`, and the video-audit reports for evidence and confidence levels.
+Start with the canonical consolidation:
 
-Well-understood areas include the Win16/WinG display path, 320x200 indexed framebuffer, 304x152 3-D viewport, the original vector/span renderer's primary visibility-to-sprite call chain, map/archive formats, SND.DAT container and PCM format, CONFIG.SAV physical layout, USER.SAV physical block layout, many doors/warps/pushables and numerous level-specific scripts. Major unresolved areas are exact enemy HP/speed/reaction/damage, numeric weapon multipliers, a fully traced guard AI state machine, all hidden keyboard/debug paths, construction of the renderer's sorted vector lists and the remaining special-wall/fallback branches.
+- [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md)
 
-The renderer audit corrects an important earlier assumption: NITE3W does not
-use Wolfenstein 3-D's one-grid-ray-per-screen-column DDA. It projects wall
-vectors, assigns visible spans to a per-column owner table, coalesces those
-columns into wall records and then draws textured columns and depth-tested
-sprites. See the [renderer audit](analysis/nite3w_renderer.md) for
-instruction-level evidence.
+Then use the subsystem reports for instruction-level evidence:
+
+- [`analysis/nite3w_renderer.md`](analysis/nite3w_renderer.md)
+- [`docs/GUARD_AI_RE.md`](docs/GUARD_AI_RE.md)
+- [`docs/COMBAT_DAMAGE_RE.md`](docs/COMBAT_DAMAGE_RE.md)
+- [`docs/PLAYER_HEALTH_RE.md`](docs/PLAYER_HEALTH_RE.md)
+- [`docs/PLAYER_COLLISION_RE.md`](docs/PLAYER_COLLISION_RE.md)
+- [`docs/USE_INTERACTION_RE.md`](docs/USE_INTERACTION_RE.md)
+- [`docs/SPECIAL_WALL_USE_RE.md`](docs/SPECIAL_WALL_USE_RE.md)
+- [`docs/SAVE_LIBRARIES_IDA_REPORT.md`](docs/SAVE_LIBRARIES_IDA_REPORT.md)
+- [`docs/RE_AUDIT_CHEATS_AUDIO.md`](docs/RE_AUDIT_CHEATS_AUDIO.md)
+
+Well-understood areas now include:
+
+- Win16/WinG platform path and 320×200 indexed framebuffer;
+- normal 304×152 3-D viewport;
+- MAP→boundary-vector construction;
+- 1000×28-byte VEC pool;
+- four orientation-specific 333-entry VECLIST pointer indexes;
+- per-column owner table and wall-span coalescing;
+- wall and sprite raster stages plus the 100-entry projected-sprite queue;
+- MAP/archive geometry and major runtime capacities;
+- OBJECT 28-byte and GUARD 26-byte record sizes;
+- player collision/USE/pushable mechanics;
+- player health and both directions of difficulty scaling;
+- player→GUARD weapon/class damage matrix;
+- GUARD score switch and 22-state dispatcher skeleton;
+- SND.DAT directory/PCM format, MIDI inventory;
+- CONFIG.SAV physical size and USER.SAV block layout;
+- many doors/warps/pushables and numerous level-specific scripts.
+
+The most important remaining work is no longer the basic renderer architecture. It is the exact owner-conflict geometry, special-wall/texture-U paths, wall animation timing, complete door/panel/control records, semantic names for GUARD states 02–14, guard movement/attack timing, projectile behavior, remaining enemy->player class binding, BSF integrity algorithm, and unresolved save/resource fields.
+
+## Renderer architecture
+
+The renderer audit corrects an important early assumption: NITE3W does **not** use Wolfenstein 3-D's one-grid-ray-per-screen-column DDA.
+
+The recovered path is:
+
+```text
+64x64 MAP
+  -> exposed boundary extraction + merging
+  -> VEC[1000] (28 B each)
+  -> four VECLIST[333] far-pointer indexes
+  -> project/near-clip candidate vectors
+  -> 320-entry wall-owner table
+  -> <=50 visible wall spans (20 B each)
+  -> textured wall columns + per-column wall occlusion
+  -> <=100 projected sprite commands (18 B each)
+  -> 320x200 8-bit framebuffer
+```
+
+See the [renderer audit](analysis/nite3w_renderer.md) for instruction-level evidence and the remaining exact-special-case TODOs.
 
 ## Current runtime architecture
 
@@ -42,7 +89,7 @@ original MAP / IMG / GAME.PAL / definitions
                SDL3
 ```
 
-The original `WING.DLL` and `DISPDIB.DLL` are not loaded.
+The original `WING.DLL` and `DISPDIB.DLL` are not loaded by the reconstruction.
 
 ## Build
 
@@ -72,7 +119,7 @@ build\Release\nitemare3d.exe --data data\original --episode 1 --level 1
 
 Or configure with `-DN3D_FETCH_SDL3=ON` if you want CMake to fetch SDL3.
 
-The `nitemare3d` executable currently displays a top-down preview of the selected original 64x64 map using the original palette. That small viewer is deliberate: it validates the modern SDL path before the original 3D raycaster is transplanted.
+The `nitemare3d` executable currently displays a top-down preview of the selected original 64x64 map using the original palette. That small viewer is deliberate: it validates the modern SDL path before the original 3-D renderer is transplanted.
 
 ## Original data
 
@@ -93,10 +140,19 @@ n3d_inspect data/original
 
 ## Video audit coverage
 
-Episode 1 and Episode 2 walkthrough material has durable audit coverage. Episode 3 currently has durable coverage for **E3M1, E3M2, E3M6, E3M7, E3M8, E3M9 and E3M10/Ending**. The remaining full walkthrough audits are **E3M3, E3M4 and E3M5**.
+Episode 1 and Episode 2 walkthrough material has durable audit coverage. Episode 3 has dedicated repository reports for E3M3, E3M4, E3M5, E3M6 and extended/finale material; where source videos contain cuts, the reports retain those limitations rather than claiming false 100% frame coverage.
 
-E3M6 directly strengthens the fire-hazard model: small and medium fire are traversable damaging hazards while large fire is the lethal/impassable class documented by the original material. Exact numeric damage/timing remains unresolved and is not invented in the source. See `docs/VIDEO_AUDIT_E3M6.md` and `src/game/HazardSystem.hpp`.
+E3M6 strengthens the fire-hazard model: small and medium fire are traversable damaging hazards while large fire is the lethal/impassable class documented by original material. Exact numeric damage/timing remains unresolved and is not invented in the source.
 
 ## Next engineering targets
 
-The highest-value remaining targets are the original guard AI/HP/damage paths, exact weapon damage/timing, renderer vector-list construction and special-wall branches, keyboard/debug command paths, MIDI level-selection table, registration/BSF checks, and the semantic fields inside USER.SAV runtime blocks.
+1. Complete `wall ID/class -> flags -> handler -> renderer class` mapping.
+2. Decode animated-wall sequence timing and `FUN_1010_65A6`.
+3. Complete door/panel/control record/state semantics.
+4. Finish GUARD state 02–14 naming plus movement/attack timing.
+5. Bind enemy-to-player class transforms to visible enemies/projectiles.
+6. Translate the exact owner-conflict rule in `FUN_1018_3564`.
+7. Translate all `FUN_1010_6422` texture-U/special-wall cases.
+8. Audit global `0x7E60` and remaining VEC animation/resource fields.
+9. Finish BSF integrity/version-diff reconstruction.
+10. Finish SFX/MIDI/UIF/ENDING.FLI semantic edge cases and unresolved USER.SAV blocks.
