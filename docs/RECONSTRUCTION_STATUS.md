@@ -1,107 +1,177 @@
-# Reconstruction status — v1.0
+# Reconstruction status — v1.1
+
+Date: 2026-09-22
 
 This repository is a clean-room-style reconstruction scaffold based on the supplied Windows 3.1 executable/data plus independently documented gameplay observations. It is not the original Gray Design Associates source tree.
 
-## Current estimate (2026-09-21)
+The canonical cross-thread/session summary is now:
 
-- Direct binary/algorithm reverse engineering of `NITE3W.EXE`: **about 69–71%** working estimate.
-- Broader behavioral reconstruction using EXE + original data formats + walkthrough evidence + documentation: **about 86–87%** working estimate.
+- [`ALL_THREADS_CONSOLIDATION_2026-09-22.md`](ALL_THREADS_CONSOLIDATION_2026-09-22.md)
 
-These percentages are engineering estimates, not byte-count coverage. The final 95–100% claim will be based on the function/range audit, not on a subjective subsystem average.
+Use the subsystem reports for instruction-level evidence. This status file intentionally avoids promoting uncertain field names or approximate subsystem percentages into facts.
+
+## Completion estimate policy
+
+The previous 2026-09-21 engineering estimate of roughly **69–71% direct binary/algorithm RE** and **86–87% broader behavioral reconstruction** is retained only as a historical working estimate. The 2026-09-22 renderer and GUARD passes resolved several major unknowns, but no new overall percentage is asserted here because a defensible final percentage requires function/range classification of the executable rather than subjective averaging.
 
 ## Strongly understood
 
-- Win16 NE structure, 10 segments and direct import-module inventory.
-- WinG/DISPDIB display path.
-- `CONFIG.SAV` 20-byte format and nearly all field semantics.
-- `USER.SAV` physical save-slot layout: `0xD6E7` = 55,015 bytes.
-- mutable 64x64x2 MAP image persisted in the save.
-- MAP/IMG/OBJECTS/WALLS/DEMO structural formats, with remaining semantic edges explicitly tracked.
-- player spawn IDs 1–4 and four initial orientations.
-- world scale: 64 internal units/tile.
-- player movement/collision core: 27-unit AABB half-extent, incremental major/minor stepping, wall/object property tables, dynamic-door passability and natural axis sliding.
-- USE `0x0200`: rising-edge behavior, one-adjacent-cell targeting, door/key/card/panel/push dispatcher families.
-- exact colored-key order Red/Green/Blue/Yellow and ID-card names Red/Yellow from executable pointer tables.
-- `0x19..0x1C` colored-key special-wall family; this handler does not consume the key.
-- combination-lock family `0x25..0x2C` identified; exact per-type code/state mapping remains partial.
-- GUARD record core, GUARD->OBJECT linkage and fresh strength initialization to 255.
-- player->enemy weapon damage matrix and difficulty transform substantially reconstructed.
-- weapon ammo stores/consumption/pickups and scripted jam mechanism.
-- pushable runtime table/update path.
-- 320x200 8-bit target framebuffer, 304-wide 3-D viewport, Q10 trig/projection anchors.
+### Platform / executable
 
-## Current subsystem table
+- Win16 NE structure, 10 logical segments and direct import-module inventory.
+- WinG/DISPDIB display/presentation path.
+- 320×200, 8-bit indexed WinG framebuffer.
+- normal 3-D viewport x=8..311, y=4..155 = 304×152, center `(160,80)`.
 
-| Subsystem | Current |
-|---|---:|
-| Player collision / passability | ~85–90% |
-| USE / interaction | ~80–85% |
-| OBJECT 28-byte record | ~50–55% |
-| GUARD record | ~78% |
-| GUARD movement | ~35–40% |
-| GUARD AI/state machine | ~55–60% |
-| Enemy strength / damage receiver | ~95–100% |
-| Weapon -> enemy damage | ~90–95% |
-| Player health/damage/death | ~35% |
-| Weapon cadence | ~40–50% |
-| Enemy pain/death + SFX | ~55–70% |
-| USER.SAV physical layout | ~95–100% |
-| USER.SAV gameplay semantics | ~65–68% |
-| Level/script dispatcher | ~45% |
-| Debug/keyboard/CLI | ~60% |
-| MIDI/music selection | ~40% |
-| SND.DAT runtime/cache | ~60% |
-| NITE3D.BSF | ~30–40% |
-| Renderer/raycaster | ~75–80% |
-| Win16/MFC/GDI presentation path | ~80–85% |
-| Input / keyboard | ~70–75% |
-| Joystick path | ~65–70% |
-| `NITE3W.EXE` overall direct RE | **~69–71%** |
+### MAP / world / runtime pools
 
-See `docs/RUNTIME_RE_ROADMAP.md` for the fixed 14-step route to the final audit.
+- MAP archive header 514 bytes; each level payload is 64×64×2 = 8192 bytes.
+- MAP cell order `{wallByte, objectByte}`.
+- supplied payload counts: E1=11, E2=10, E3=10; E1M11 is internal/demo.
+- world scale: 64 internal units per tile.
+- player spawn IDs 1–4 and four cardinal initial orientations.
+- OBJECT records: 28 B, max 350, base `0x6D66`, count `0x7E58`.
+- GUARD records: 26 B, max 100, base `0x93AE`, count `0x7E5E`.
+- doors: 64×22 B; panels: 32×22 B; pushes: 12×6 B.
+- vectors: max 1000×28 B.
+- four orientation VECLIST arrays: each max 333 4-byte far pointers.
+- visible wall spans: max 50×20 B.
+- projected sprite commands: max 100×18 B.
 
-## New dedicated RE documents
+The older OBJECT=80 B, GUARD=98 B and renderer-record=52 B estimates are superseded.
 
-- `docs/PLAYER_COLLISION_RE.md` — exact movement/collision stepping, AABB, property bits, door passability, Catacomb/Wolf comparison.
-- `docs/USE_INTERACTION_RE.md` — exact USE edge trigger, adjacent-cell table, key/card/door/panel/push/special-wall dispatcher.
-- `docs/COMBAT_DAMAGE_RE.md` — player-to-enemy damage producer/matrix.
-- `docs/PLAYER_HEALTH_RE.md` — player health evidence/status.
-- `docs/GUARD_AI_RE.md` — GUARD runtime state evidence.
-- `docs/DEMO_FORMAT_RE.md` — demo record/playback and spawn/first-room forensics.
-- `analysis/nite3w_renderer.md` — instruction-level framebuffer, vector visibility, wall-span, texture-column, depth and sprite pipeline.
+### Player movement / interaction
 
-## 2026-09-18 Ghidra/IDA cross-audit
+- 27-world-unit player collision AABB half-extent.
+- incremental movement with X/Y collision resolved separately, producing wall sliding.
+- USE input mask `0x0200`, rising-edge behavior and one-adjacent-cardinal-cell targeting.
+- wall/object property tables at `0x7E94` / `0x7F94` with directly recovered blocking, dynamic-door, script/touch, object-presence and guard-creation bits.
+- pushables use runtime class `0x28`; eight 8-unit updates move one 64-unit tile.
+- colored-key order and major wall/door/warp families are mapped from executable/data evidence.
 
-A new cross-audit used the original Win16 executable together with a Ghidra listing/project and an IDA database. The Ghidra listing contains approximately **1,067 unique `FUN_*` candidates**, **4,984 `LAB_*` labels**, **829 `DAT_*` symbols**, roughly **4,666 CALL/CALLF occurrences**, about **10,958 XREF blocks**, and approximately **308 unique external API symbols**. These are analysis counts, not a claim that every `FUN_*` is an original game routine; MFC/runtime/library code and heuristic function boundaries still need classification.
+### Renderer architecture
 
-New structural evidence:
+The basic renderer architecture is now substantially resolved:
 
-- the Win16 NE image has 10 logical segments; entry is `0002:3718`, auto-data/SS is segment 10, and the Ghidra synthetic selector for that data segment is `1048h`;
-- segment `1048` is the main auto-data area and is now a primary target for naming persistent game globals;
-- GDI calls including `BitBlt`, `StretchDIBits` and `CreateDIBitmap` strengthen the split between the software renderer/framebuffer and the final Windows presentation path;
-- keyboard input is directly tied to `GetAsyncKeyState`/key-state processing, while joystick support is independently visible through WinMM joystick APIs;
-- the audio path exposes waveOut and MIDI APIs, supporting separate SFX/cache and music subsystems;
-- diagnostic strings expose explicit runtime tables/limits for doors, panels and pushables, plus object/sound cache statistics (reload/thrash counters);
-- large switch-based dispatchers in the game-code segments are now priority candidates for object/state/command semantic recovery.
+```text
+MAP 64x64
+ -> exposed boundary extraction
+ -> merge compatible adjacent edges
+ -> VEC[1000], 28 B each
+ -> four orientation VECLIST[333] pointer indexes
+ -> project / near-clip candidate VECs
+ -> 320-entry wall-owner far-pointer table at 0x53FE
+ -> coalesce equal owner runs to <=50 wall spans at 0x5E88
+ -> ceiling/floor
+ -> textured wall columns
+ -> 320-entry wall silhouette/occlusion table at 0x58FE
+ -> object projection/culling
+ -> <=100 projected sprite records at 0x6270
+ -> sprite draw
+ -> framebuffer presentation
+```
 
-This cross-audit raises confidence in the executable structure and subsystem boundaries. The subsequent renderer audit resolved the primary frame call chain and its vector/span architecture, but not every special-wall branch or the producer of the four sorted vector lists. Guard AI transitions, weapon timing, enemy-to-player damage and many semantic fields in the auto-data segment also remain unresolved.
+Confirmed/high-confidence renderer details include:
+
+- MAP→VEC producer `FUN_1018_4370` / `FUN_1018_4046` with four orientation passes.
+- VEC world endpoints at `+0C/+0E/+10/+12` and projected endpoint fields at `+14..+1A`.
+- orientation 0/1 horizontal and 2/3 vertical boundary construction.
+- four VECLIST count globals `0x697A/7C/7E/80` and bases `0x6982/0x6EB6/0x73EA/0x791E`.
+- horizontal lists sorted by Y, vertical lists by X.
+- per-column owner table uses 320 far pointers and supports early termination when all active viewport columns are covered.
+- owner runs are coalesced to 20-byte wall-span records.
+- wall column source uses 64 samples in the audited WinG path.
+- sprite transparent palette index is `0x29` in the audited sprite path.
+- the original renderer is not Wolfenstein 3-D's one-grid-ray-per-screen-column DDA.
+
+The remaining renderer work is concentrated in conflict resolution, special-wall texture mapping, animation fields, alternate VGA/backend behavior and exact units/semantics of a few intermediate values rather than the basic architecture.
+
+See [`../analysis/nite3w_renderer.md`](../analysis/nite3w_renderer.md).
+
+### GUARD / combat
+
+- GUARD debug semantics directly identify `strength`, `strategy`, `state`, `nextstate`, `timer`, `octant` and `resoct` fields.
+- fresh GUARD strength is initialized to 255 (`0xFF`); direct writes include creation, lethal clear and non-lethal subtraction.
+- state dispatcher covers `0x00..0x15`; `0x15` is confirmed pain/hit reaction and returns to `next_state`.
+- original per-GUARD score switch is recovered for GUARD1..25; GUARD26/Dancers follows the default zero-score path.
+- notable verified scores include Dracula 0, Demon 250, Penelope -1000 and Dr. Hamerstein 1000.
+- player→GUARD damage producer and class/weapon transform matrix are substantially reconstructed.
+- player health is runtime byte `0x4C1D`, normally initialized/capped at 100.
+- enemy/object→player damage producer and final difficulty transform are recovered; remaining work is chiefly class/name/projectile binding.
+- difficulty value `0/1/2` is constrained by three systems: player damage, enemy damage and GUARD timer scaling.
+- ammo pools, normal pickup increments, signed silver/laser byte quirk and scripted weapon-jam mechanism are recovered.
+
+### Saves / audio / resources
+
+- `CONFIG.SAV` is 20 bytes.
+- `USER.SAV` slot size is `0xD6E7 = 55,015` bytes and its major MAP/vector/object/GUARD/door/push blocks are physically mapped.
+- load logic rebuilds pointers and rebases timers; save data is not a naive reusable pointer dump.
+- SND.DAT directory: 160×6-byte entries; IDs 1..15 MIDI, 34..110 logical SFX range, 111 end sentinel.
+- audited Windows SFX data is raw 8-bit mono PCM at 11025 Hz.
+- GAME.PAL exact palette payload is known; default floor/ceiling indices are `0x0C` / `0x11`.
+- ENDING.FLI header/video properties and E3M10 finale use are documented.
+
+## Current subsystem state
+
+The table below deliberately uses qualitative states rather than implying byte-accurate completion percentages.
+
+| Subsystem | State after 2026-09-22 consolidation |
+|---|---|
+| Win16 NE / imports / presentation | strong |
+| MAP archive/world scale | strong |
+| player movement/collision | strong |
+| USE/interactions | strong with special-class gaps |
+| OBJECT physical record | strong size/base/capacity; many field semantics partial |
+| GUARD physical record | strong core fields; tail fields partial |
+| GUARD state machine | dispatcher/handlers mapped; exact semantic state names and timing still partial |
+| GUARD score | strong / direct switch evidence |
+| player→enemy damage | strong arithmetic/matrix; some visible-name binding partial |
+| enemy→player damage | strong producer/difficulty; class/projectile binding partial |
+| player health/death | strong normal path; alternate hazard/death path partial |
+| weapon cadence | partial |
+| doors/panels/controls | physical records/capacities strong; state fields/dispatch partial |
+| pushables | strong core movement/table behavior |
+| renderer architecture | strong |
+| renderer VEC/VECLIST | strong core construction/geometry; animation/resource fields partial |
+| wall owner/conflict | owner table strong; occupied-slot winner mathematics partial |
+| wall texture/special cases | partial |
+| sprite projection/queue | strong structure; exact field labels/order edge cases partial |
+| USER.SAV physical layout | strong |
+| USER.SAV semantic fields | partial |
+| SND.DAT container/PCM | strong |
+| exact SFX semantic map | partial |
+| MIDI usage table | partial |
+| UIF.DAT semantics | partial |
+| BSF integrity/registration | partial |
+| debug/keyboard paths | partial-to-strong depending command |
+
+## Ghidra / IDA cross-audit context
+
+A prior cross-audit counted approximately 1,067 unique Ghidra `FUN_*` candidates, 4,984 `LAB_*` labels, 829 `DAT_*` symbols, roughly 4,666 CALL/CALLF occurrences, about 10,958 XREF blocks and approximately 308 external API symbols. These are analysis-workset counts, **not** the final number of original game functions: static runtime/MFC/library code and imperfect auto-function boundaries remain mixed in.
+
+The important improvement since that audit is that the producer of the four renderer vector lists is no longer an open architectural question. MAP boundary extraction, VEC construction, orientation indexing and the four sorted VECLIST arrays are now traced. Likewise, enemy→player damage is no longer wholly unresolved; its producer/difficulty transform are known while visible attacker binding remains incomplete.
 
 ## Major unresolved areas
 
-- finish OBJECT `+14..+1B` and complete OBJECT read/write xref map;
-- GUARD movement speed/octant/collision and full AI transition graph;
-- enemy->player damage and death/restart flow;
-- weapon cadence/held fire/continuous-laser timing;
-- exact pain/death/SND matrix and enemy class identities `0x0C..0x1F`;
-- complete level/script opcode/event dispatcher;
-- remaining USER.SAV semantic labels;
-- keyboard/debug/CLI, MIDI selector and `NITE3D.BSF`;
-- vector-list construction, special-wall cases, exact depth units and the remaining renderer fallback branches;
-- final byte/function classification of all executable code.
+1. Complete OBJECT field semantics, especially the remaining animation/projection/runtime fields.
+2. Complete GUARD field tail and give exact high-level names to states 02..14.
+3. Recover guard movement speed, reaction delay, attack interval and full LOS/hearing behavior.
+4. Map all enemy/projectile classes to the recovered player-damage branches.
+5. Recover projectile speed/lifetime/radius/owner/friendly-fire behavior.
+6. Decode complete door/panel/control 22-byte records and remote-door/cannon state machines.
+7. Complete numeric wall-class dispatcher and `WALLS.*` secondary attribute-bit layout.
+8. Decode animated-wall/sequence timing and `FUN_1010_65A6`.
+9. Translate exact occupied-owner conflict math in `FUN_1018_3564`.
+10. Translate all `FUN_1010_6422` special-wall/texture-U cases and remaining lower raster/backend paths.
+11. Audit all writes and exact meaning of runtime/save word `0x7E60` / USER.SAV `0xD6E5`.
+12. Finish remaining USER.SAV semantic blocks/timer rebasing.
+13. Finish exact SFX event and MIDI level/menu call-site maps.
+14. Reconstruct `NITE3D.BSF` integrity algorithm across version variants.
+15. Complete final byte/function/range classification of the executable.
 
 ## Comparison rule
 
-Catacomb Abyss is now the primary public source comparison for collision/movement/AI lineage, with Wolfenstein 3-D as the secondary comparison. Similarity is not treated as identity unless the original Nitemare executable demonstrates matching control flow/constants/data representation.
+Catacomb Abyss, Hovertank 3-D, Wolfenstein 3-D and related released source trees are comparison material only. Similarity is not treated as identity unless the original Nitemare executable demonstrates matching control flow, constants and data representation.
 
 ## Repository constraint
 
