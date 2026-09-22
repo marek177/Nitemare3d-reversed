@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
 
@@ -9,6 +10,7 @@ inline constexpr std::size_t kGuardCapacity = 100;
 inline constexpr std::size_t kGuardRecordSize = 0x1A;
 inline constexpr std::size_t kGuardSaveOffset = 0xB43B;
 inline constexpr std::size_t kGuardSaveSize = 0x0A28;
+inline constexpr std::uint8_t kFreshGuardStrength = 0xFF;
 
 // Clean-room runtime layout recovered from NITE3W.EXE V1.10.
 // Names below are promoted only where direct executable evidence exists.
@@ -22,14 +24,14 @@ struct GuardRuntimeRecord {
     std::uint8_t state;               // +0B VERIFIED_EXE
     std::uint8_t nextState;           // +0C VERIFIED_EXE
     std::uint8_t objectId;            // +0D VERIFIED_EXE; diagnostic o_id
-    std::uint8_t definitionId;        // +0E lookup-derived; exact table name pending
-    std::uint8_t syncFlag;            // +0F derived boolean
-    std::uint8_t strength;            // +10 VERIFIED_EXE: enemy HP/strength; damage subtracts here
+    std::uint8_t definitionId;        // +0E PARTIAL: lookup-derived
+    std::uint8_t syncFlag;            // +0F PARTIAL: derived boolean
+    std::uint8_t strength;            // +10 VERIFIED_EXE: strength / HP
     std::uint8_t octant;              // +11 VERIFIED_EXE; debug label "octant"
-    std::uint8_t resultOctant;        // +12 VERIFIED_EXE; debug label "resoct"; set to 8 on non-lethal hit
-    std::uint8_t transitionParam;      // +13 transition assignment; exact semantic pending
+    std::uint8_t resultOctant;        // +12 VERIFIED_EXE; debug label "resoct"
+    std::uint8_t transitionParam;      // +13 PARTIAL
     std::uint8_t unknown14_15[0x02];
-    std::uint8_t transitionFlag;       // +16 control flag
+    std::uint8_t transitionFlag;       // +16 PARTIAL control flag
     std::uint8_t unknown17_19[0x03];
 };
 #pragma pack(pop)
@@ -51,10 +53,116 @@ static_assert(offsetof(GuardRuntimeRecord, transitionParam) == 0x13);
 static_assert(offsetof(GuardRuntimeRecord, transitionFlag) == 0x16);
 static_assert(kGuardCapacity * sizeof(GuardRuntimeRecord) == kGuardSaveSize);
 
-// Damage receiver is now structurally verified: a computed damage byte is
-// compared with strength. If damage >= strength, strength is cleared to zero
-// and the death path is called; otherwise damage is subtracted from strength
-// and resultOctant is set to 8 before pain/state handling.
-// Exact per-weapon damage constants remain TODO until the damage producer is traced.
+// The dispatcher accepts exactly 0x00..0x15. Only state 0x15 has a final
+// high-level name established strongly enough to encode here. The other names
+// remain numeric until their animation/sound/movement semantics are complete.
+enum class GuardState : std::uint8_t {
+    State00 = 0x00,
+    State01 = 0x01,
+    State02 = 0x02,
+    State03 = 0x03,
+    State04 = 0x04,
+    State05 = 0x05,
+    State06 = 0x06,
+    State07 = 0x07,
+    State08 = 0x08,
+    State09 = 0x09,
+    State0A = 0x0A,
+    State0B = 0x0B,
+    State0C = 0x0C,
+    State0D = 0x0D,
+    State0E = 0x0E,
+    State0F = 0x0F,
+    State10 = 0x10,
+    State11 = 0x11,
+    State12 = 0x12,
+    State13 = 0x13,
+    State14 = 0x14,
+    PainReaction = 0x15,
+};
+
+inline constexpr std::size_t kGuardStateCount = 0x16;
+
+// Control-flow summary recovered from the state dispatcher. These are handler
+// offsets inside the original segment-3 code, useful for cross-checking IDA /
+// Ghidra without pretending that all state names are already known.
+inline constexpr std::array<std::uint16_t, kGuardStateCount> kGuardStateHandlerOffsets = {
+    0x7BA2, // 00 animation/timer -> nextState
+    0x7BE0, // 01 timer -> 02
+    0x7BFA, // 02 active AI/animation + sound path
+    0x7C3C, // 03 detection/transition-like
+    0x7C86, // 04 alternate detection/attack-like
+    0x7CE4, // 05 helper transition
+    0x7CEC, // 06 movement + timer -> 03
+    0x7D2A, // 07 active AI; strategy 3 special branch
+    0x7D7E, // 08 movement/AI; may -> 02
+    0x7DEC, // 09 special/collision action
+    0x80A4, // 0A no local action in dispatcher
+    0x80A4, // 0B no local action in dispatcher
+    0x7E54, // 0C shared handler
+    0x7E54, // 0D shared handler
+    0x7E6C, // 0E conditional -> 0F
+    0x7E9E, // 0F timer/action -> 10 or 0E
+    0x7F26, // 10 timer -> 0F
+    0x7F8E, // 11 movement + timer -> strategy=0,state=07
+    0x7FEE, // 12 wait -> nextState
+    0x8038, // 13 helper transition
+    0x804A, // 14 long timer + periodic action
+    0x807E, // 15 confirmed pain/hit -> nextState
+};
+
+// Original score dispatcher: OBJECT+06 class values 0x08..0x20 map to
+// GUARD1..GUARD25. Classes outside that switch return zero. GUARD26/Dancers is
+// therefore on the default zero-score path rather than having an entry here.
+inline constexpr std::uint8_t kFirstScoredGuardObjectClass = 0x08;
+inline constexpr std::uint8_t kLastScoredGuardObjectClass = 0x20;
+inline constexpr std::array<int, 25> kGuardScoreByObjectClass = {
+    25,    // 0x08 GUARD1  Bat
+    75,    // 0x09 GUARD2  Frankenstein
+    50,    // 0x0A GUARD3  Mummy
+    100,   // 0x0B GUARD4  Skeleton
+    250,   // 0x0C GUARD5  Mrs H.
+    150,   // 0x0D GUARD6  Zelda
+    200,   // 0x0E GUARD7  Vampira
+    100,   // 0x0F GUARD8  Baddie #1
+    100,   // 0x10 GUARD9  Baddie #2
+    0,     // 0x11 GUARD10 Dracula -- scripted behavior handled separately
+    150,   // 0x12 GUARD11 Cemetery Gargoyle
+    150,   // 0x13 GUARD12 Garden Gargoyle
+    200,   // 0x14 GUARD13 unknown/unused identity
+    -1000, // 0x15 GUARD14 Penelope
+    1000,  // 0x16 GUARD15 Dr. Hamerstein
+    100,   // 0x17 GUARD16 Tall slim robot
+    200,   // 0x18 GUARD17 Trashcan robot
+    0,     // 0x19 GUARD18 Cannon
+    25,    // 0x1A GUARD19 Ghost
+    100,   // 0x1B GUARD20 Goldie
+    100,   // 0x1C GUARD21 Greenie
+    250,   // 0x1D GUARD22 Demon
+    250,   // 0x1E GUARD23 Alien #1
+    200,   // 0x1F GUARD24 Alien #2
+    50,    // 0x20 GUARD25 unknown/unused identity
+};
+
+constexpr int guardScoreForObjectClass(std::uint8_t objectClass) noexcept {
+    if (objectClass < kFirstScoredGuardObjectClass ||
+        objectClass > kLastScoredGuardObjectClass) {
+        return 0;
+    }
+    return kGuardScoreByObjectClass[
+        static_cast<std::size_t>(objectClass - kFirstScoredGuardObjectClass)];
+}
+
+static_assert(guardScoreForObjectClass(0x11) == 0);   // Dracula
+static_assert(guardScoreForObjectClass(0x16) == 1000); // Dr. Hamerstein
+static_assert(guardScoreForObjectClass(0x1D) == 250);  // Demon
+static_assert(guardScoreForObjectClass(0x00) == 0);    // default path
+
+// Damage receiver is structurally verified: a computed damage value is
+// compared with strength. Lethal damage clears strength to zero and enters the
+// death path. Positive non-lethal damage is subtracted, resultOctant is set to
+// 8, and ordinary pain handling temporarily enters state 0x15 before restoring
+// nextState. Player-weapon/class damage transforms are documented in
+// docs/COMBAT_DAMAGE_RE.md; they are no longer an unknown producer.
 
 } // namespace nitemare3d::game
