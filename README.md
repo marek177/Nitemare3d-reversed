@@ -16,6 +16,7 @@ Git commit authorship therefore identifies the account that committed the files 
 Start with the canonical consolidation:
 
 - [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md)
+- [`docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md`](docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md) — consolidated unknowns, priorities and evidence boundaries
 
 Then use the subsystem reports for instruction-level evidence:
 

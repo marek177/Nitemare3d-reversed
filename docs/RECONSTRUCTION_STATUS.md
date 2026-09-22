@@ -7,6 +7,7 @@ This repository is a clean-room-style reconstruction scaffold based on the suppl
 The canonical cross-thread/session summary is now:
 
 - [`ALL_THREADS_CONSOLIDATION_2026-09-22.md`](ALL_THREADS_CONSOLIDATION_2026-09-22.md)
+- [`UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md`](UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md)
 
 Use the subsystem reports for instruction-level evidence. This status file intentionally avoids promoting uncertain field names or approximate subsystem percentages into facts.
 
@@ -152,6 +153,10 @@ A prior cross-audit counted approximately 1,067 unique Ghidra `FUN_*` candidates
 The important improvement since that audit is that the producer of the four renderer vector lists is no longer an open architectural question. MAP boundary extraction, VEC construction, orientation indexing and the four sorted VECLIST arrays are now traced. Likewise, enemy→player damage is no longer wholly unresolved; its producer/difficulty transform are known while visible attacker binding remains incomplete.
 
 ## Major unresolved areas
+
+The complete machine-readable target register is available in
+`src/re/UnknownSystemsAudit.hpp`; it distinguishes verified anchors from
+hypotheses and TODOs.
 
 1. Complete OBJECT field semantics, especially the remaining animation/projection/runtime fields.
 2. Complete GUARD field tail and give exact high-level names to states 02..14.

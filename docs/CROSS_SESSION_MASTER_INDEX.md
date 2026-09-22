@@ -4,6 +4,10 @@ Updated: 2026-09-22
 
 This file indexes findings accumulated across the Nitemare 3-D reverse-engineering conversations. The detailed canonical report is ALL_THREADS_CONSOLIDATION_2026-09-22.md.
 
+The unresolved-system register is maintained in
+[`UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md`](UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md)
+and `src/re/UnknownSystemsAudit.hpp`.
+
 ## Evidence policy
 Use VERIFIED_EXE, VERIFIED_DATA, VERIFIED_SAVE_LAYOUT, BEHAVIORAL, INFERRED, PARTIAL and TODO. Do not promote old guesses or approximate percentages into original-game facts.
 
@@ -62,5 +66,9 @@ SND.DAT/VOC extraction must be compared with original playback. ENDING.FLI has 4
 11. BSF integrity/version algorithm.
 12. Hidden/deleted/unused code, cheats, alternate paths and runtime limits.
 13. UIF/SND/FLI edge cases and unresolved save blocks.
+
+The current end-to-end priority chain is GUARD AI → sequence event →
+projectile/weapon → collision → damage → death → score/drop/morph. Unknowns
+must remain labelled rather than being promoted to HP, speed or immunity facts.
 
 When a finding changes, update the canonical consolidation, subsystem report, clean-room fact header and regression test together.
