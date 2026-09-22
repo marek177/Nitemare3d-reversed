@@ -102,6 +102,21 @@ inline constexpr std::uint16_t kProjectedSpriteBase = 0x6270;
 inline constexpr std::size_t kProjectedSpriteRecordBytes = 0x12;
 inline constexpr std::size_t kProjectedSpriteCapacity = 100;
 
+// Function offsets/names used by the current Ghidra/IDA renderer audit.
+// These are evidence anchors, not API entry points in the reconstructed engine.
+inline constexpr std::uint16_t kFnOwnerToSpan = 0x6266;
+inline constexpr std::uint16_t kFnWallRaster = 0x66B0;
+inline constexpr std::uint16_t kFnTextureU = 0x6422;
+inline constexpr std::uint16_t kFnWallColumnBlitter = 0x3E44;
+inline constexpr std::uint16_t kFnSpriteQueueConsume = 0x6914;
+
+// Remaining high-value renderer unknowns are intentionally represented as
+// audit anchors instead of guessed semantics.
+inline constexpr std::uint16_t kUnknownDynamicWallGlobal = 0x7E60;
+inline constexpr std::uint8_t kSpecialRenderClass2 = 0x02;
+inline constexpr std::uint8_t kSpecialRenderClass3F = 0x3F;
+inline constexpr std::uint8_t kSpecialRenderClass40 = 0x40;
+
 // Audited WinG wall-column source path uses 64 vertical texture samples.
 inline constexpr std::size_t kTextureColumnSamples = 64;
 
