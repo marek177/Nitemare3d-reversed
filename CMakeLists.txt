@@ -60,6 +60,9 @@ target_link_libraries(n3d_guard_facts_test PRIVATE n3d_core)
 add_executable(n3d_unknown_systems_audit_test tests/unknown_systems_audit_test.cpp)
 target_link_libraries(n3d_unknown_systems_audit_test PRIVATE n3d_core)
 
+add_executable(n3d_recovered_runtime_facts_test tests/recovered_runtime_facts_test.cpp)
+target_link_libraries(n3d_recovered_runtime_facts_test PRIVATE n3d_core)
+
 if(N3D_ENABLE_SDL3)
     find_package(SDL3 CONFIG QUIET)
 
