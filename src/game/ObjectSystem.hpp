@@ -8,7 +8,8 @@ namespace nitemare3d::game {
 inline constexpr std::size_t kObjectRecordSize = 0x1C; // VERIFIED_EXE
 
 // Clean-room partial layout of the original NITE3W V1.10 runtime object record.
-// Only fields with direct executable evidence are named.
+// Only fields with direct executable evidence are named. PARTIAL fields are
+// intentionally named by observed role rather than guessed original symbols.
 #pragma pack(push, 1)
 struct ObjectRuntimeRecord {
     std::uint8_t objectId;        // +0x00, object/map identifier (VERIFIED_EXE)
@@ -24,7 +25,9 @@ struct ObjectRuntimeRecord {
     std::uint16_t mapCellSegment; // +0x0E, segment part of map-cell far pointer
     std::int16_t worldX;          // +0x10, world-space X coordinate (VERIFIED_EXE)
     std::int16_t worldY;          // +0x12, world-space Y coordinate (VERIFIED_EXE)
-    std::uint8_t unknown14_19[6];
+    std::int16_t renderSortA;     // +0x14, renderer/sort-related value (PARTIAL)
+    std::int16_t renderSortB;     // +0x16, renderer/sort-related value (PARTIAL)
+    std::int16_t projectedYBase;  // +0x18, view/projected vertical baseline used by damage producer (VERIFIED read; writer semantic PARTIAL)
     std::uint8_t runtime1A;       // +0x1A, initialized to zero
     std::uint8_t unknown1B;
 };
@@ -38,6 +41,10 @@ static_assert(offsetof(ObjectRuntimeRecord, mapCellOffset) == 0x0C);
 static_assert(offsetof(ObjectRuntimeRecord, mapCellSegment) == 0x0E);
 static_assert(offsetof(ObjectRuntimeRecord, worldX) == 0x10);
 static_assert(offsetof(ObjectRuntimeRecord, worldY) == 0x12);
+static_assert(offsetof(ObjectRuntimeRecord, renderSortA) == 0x14);
+static_assert(offsetof(ObjectRuntimeRecord, renderSortB) == 0x16);
+static_assert(offsetof(ObjectRuntimeRecord, projectedYBase) == 0x18);
+static_assert(offsetof(ObjectRuntimeRecord, runtime1A) == 0x1A);
 
 inline constexpr std::uint8_t kObjectRuntimePresent = 0x01; // 0x7F94: instantiate runtime OBJECT
 inline constexpr std::uint8_t kObjectBlocksMovement = 0x02; // 0x7F94: blocks player movement
@@ -45,5 +52,10 @@ inline constexpr std::uint8_t kObjectSpecialTouch = 0x04;   // 0x7F94: special/t
 inline constexpr std::uint8_t kObjectCreatesGuard = 0x08;   // 0x7F94 / OBJECT+05: create GUARD
 inline constexpr std::uint8_t kObjectSpecial20 = 0x20;      // exact semantic TODO
 inline constexpr std::uint8_t kObjectSpecial40 = 0x40;      // exact semantic TODO
+
+// Damage path cross-binding (see docs/COMBAT_DAMAGE_RE.md): OBJECT+0x18 is read
+// by seg3:9FA2 as a projected/view-space vertical value. It must not be confused
+// with worldY at +0x12. The exact writer-level renderer symbol remains open.
+inline constexpr std::size_t kObjectProjectedDamageBaselineOffset = 0x18;
 
 } // namespace nitemare3d::game
