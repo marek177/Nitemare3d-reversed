@@ -57,6 +57,9 @@ target_link_libraries(n3d_renderer_facts_test PRIVATE n3d_core)
 add_executable(n3d_guard_facts_test tests/guard_facts_test.cpp)
 target_link_libraries(n3d_guard_facts_test PRIVATE n3d_core)
 
+add_executable(n3d_object_runtime_facts_test tests/object_runtime_facts_test.cpp)
+target_link_libraries(n3d_object_runtime_facts_test PRIVATE n3d_core)
+
 add_executable(n3d_unknown_systems_audit_test tests/unknown_systems_audit_test.cpp)
 target_link_libraries(n3d_unknown_systems_audit_test PRIVATE n3d_core)
 
