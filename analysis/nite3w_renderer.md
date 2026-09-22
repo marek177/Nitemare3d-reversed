@@ -1,101 +1,374 @@
-# NITE3W.EXE renderer audit
+# NITE3W.EXE renderer audit — consolidated 2026-09-22
 
-This note records the renderer path recovered from the supplied Windows 3.1
-executable.  Addresses use logical NE `segment:offset` notation; file offsets
-refer to the executable with SHA-256
-`12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481`.
+This note records the current renderer reconstruction from the supplied Windows 3.1 executable. Addresses use logical NE `segment:offset` notation where available; Ghidra auto-names are retained for newly traced helpers. The authoritative target is NITE3W.EXE V1.10, SHA-256 `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481`.
 
 ## Result
 
-The original renderer is **not** Wolfenstein 3-D's one-grid-ray-per-screen-column
-DDA.  It is a software vector/span renderer:
+The original renderer is **not** Wolfenstein 3-D's one-grid-ray-per-screen-column DDA. It is a custom 2.5D wall-vector/span renderer with per-column wall ownership and a separate projected-sprite queue.
 
-1. project candidate wall-vector endpoints;
-2. traverse four pre-sorted vector lists front-to-back;
-3. assign a winning wall pointer to each viewport column;
-4. coalesce adjacent equal owners into wall spans;
-5. interpolate and texture-map the spans one vertical column at a time;
-6. draw sorted objects/sprites with a per-column depth test; and
-7. present the completed 8-bit WinG bitmap.
+Current reconstructed pipeline:
 
-This conclusion is instruction-backed.  It does not identify how the tile map
-is converted into the four vector lists; that producer path remains open.
+```text
+MAP 64x64
+   |
+   v
+extract exposed tile boundaries
+   |
+   v
+merge adjacent compatible boundaries
+   |
+   v
+VEC[0..999] -- 28-byte wall-vector records
+   |
+   v
+4 x orientation-specific VECLIST[333] of far pointers
+   |
+   v
+sort horizontal lists by Y / vertical lists by X
+   |
+   v
+per frame:
+  traverse candidate VECs
+  -> world-to-camera transform
+  -> near clipping
+  -> perspective-project endpoints
+  -> owner[x] = winning VEC pointer
+  -> coalesce equal owner[x] runs into wall spans
+  -> ceiling/floor
+  -> textured wall-column rasterization
+  -> per-column wall silhouette/occlusion values
+  -> object projection/culling
+  -> 100-entry projected-sprite queue
+  -> sprite draw clipped by wall information
+  -> 320x200 8-bit framebuffer
+```
+
+This conclusion is instruction-backed. Earlier notes that treated MAP->VEC or the four sorted lists as still unknown are superseded by the later audit below.
 
 ## Evidence policy
 
-- **CONFIRMED**: direct instruction, relocation or data-flow evidence.
-- **STRONG**: several instructions establish the role, but a field or branch
-  still lacks a final semantic name.
-- **OPEN**: deliberately unresolved; no behavior is invented for it.
+- **CONFIRMED / VERIFIED_EXE**: direct instruction, relocation or data-flow evidence.
+- **STRONG**: several instructions establish the role but not every semantic name.
+- **PARTIAL**: structure/path established, exact high-level meaning incomplete.
+- **OPEN**: deliberately unresolved; no behavior invented.
 
-## Recovered call chain
+---
+
+# 1. Frame renderer call chain
+
+Recovered frame ordering:
 
 ```text
-3:D78C frame renderer
-  4:3940 traverse four sorted vector lists
-    4:3564 project/clip candidate and fill column-owner table
-      3:E798 transform and project vector endpoints
-  3:6266 coalesce column owners into wall spans
-    3:6152 initialize span interpolation
-  3:3DB8 -> 3:3612 clear ceiling/floor in the WinG framebuffer
-  3:66B0 rasterize wall spans
-    3:EBD6 derive wall texture coordinate
-    3:6422 special-wall/orientation clipping helper
-    3:3E44 -> 3:366A draw one textured wall column
-  3:6348 visible-object ordering/integration
-  3:6914 iterate projected objects
-    3:3F80 -> 3:374E draw a depth-tested sprite
-
-confirmed presentation boundary elsewhere in the caller-side path
-  3:30E2 / 3:32FE WinG stretch/blit calls
+3:D78C / Ghidra frame orchestrator
+  4:3940 / FUN_1018_3940   traverse four sorted vector lists
+    4:3564 / FUN_1018_3564 project/clip candidate and update owner[x]
+      3:E798 / FUN_1010_E798 transform, near-clip and project VEC
+  3:6266 / FUN_1010_6266   coalesce owner[x] runs into wall spans
+    3:6152 / FUN_1010_6152 initialize span interpolation
+  3:3DB8                   ceiling/floor backend wrapper
+    3:3612                 WinG linear framebuffer fill
+  3:66B0 / FUN_1010_66B0   wall-span rasterizer
+    3:EBD6 / FUN_1010_EBD6 perspective/orientation mapping helper
+    3:6422 / FUN_1010_6422 texture-U / special-wall helper
+    3:3E44                 wall-column backend wrapper
+      3:366A               WinG textured-column drawer
+    3:65A6 / FUN_1010_65A6 animation/resource-side helper
+  3:6348                   visible-object integration/order
+  object projection path includes FUN_1010_CC7C
+  3:6914 / FUN_1010_6914   projected-sprite queue consumer
+    3:3F80                 sprite backend wrapper
+      3:374E               WinG depth/occlusion-tested sprite drawer
 ```
 
-`3:3DB8`, `3:3E44` and `3:3F80` select between the WinG linear-buffer
-implementation and a VGA-oriented fallback.  The arrows above show the WinG
-path.  The WinG imports establish the final presentation boundary; the diagram
-does not claim that `3:D78C` directly calls those import sites.
+Presentation occurs elsewhere through WinG bit/stretch-blit paths. `3:D78C` should not be described as directly importing/presenting the DIB.
 
-## Function anchors
+---
 
-| Address | File offset | Recovered role | Confidence | Decisive evidence |
-|---|---:|---|---|---|
-| `3:2F36` | `0x18EF6` | Create WinG DIB and retain pixel selector | CONFIRMED | writes width 320 and height -200, calls `WinGCreateBitmap`, stores returned bits selector at data `0x51A0`, clears `0x3E80` dwords = 64,000 bytes |
-| `3:3612` | `0x195D2` | Linear framebuffer ceiling/floor fill | CONFIRMED | address is `y*320+x`; fills top with data byte `0x7E63`, bottom with `0x7E62`; row stride `0x140` |
-| `3:366A` | `0x1962A` | Textured vertical wall-column drawer | CONFIRMED | texture pointer advances by `texture_x << 6`; destination advances by 320; fixed-point source step uses `ADD`/`ADC`; alternate path uses `XLAT` |
-| `3:374E` | `0x1970E` | Scaled/depth-tested sprite drawer | CONFIRMED | reads depth at `0x58FE + 2*x`; palette index `0x29` skips the framebuffer write; vertical destination step is 320 |
-| `3:3DB8` | `0x19D78` | Ceiling/floor backend wrapper | CONFIRMED | WinG branch calls `3:3612` |
-| `3:3E44` | `0x19E04` | Wall-column backend wrapper | CONFIRMED | WinG branch calls `3:366A`; called by `3:66B0` |
-| `3:3F80` | `0x19F40` | Sprite backend wrapper | CONFIRMED | WinG branch calls `3:374E`; called by `3:6914` |
-| `3:6152` | `0x1C112` | Initialize a wall-span's interpolants | CONFIRMED | computes endpoint deltas/divisions and writes span fields `+0x06`, `+0x0A`, `+0x0C`, `+0x10`, `+0x12` |
-| `3:6266` | `0x1C226` | Coalesce per-column owners into wall spans | CONFIRMED | scans far pointers at `0x53FE + 4*x`, emits `0x14`-byte records at `0x5E88`, enforces maximum `0x32` |
-| `3:6348` | `0x1C308` | Visible-object ordering/integration | STRONG | operates between wall-span creation and sprite rasterization; exact record semantics are not all named |
-| `3:6422` | `0x1C3E2` | Wall/special-wall clipping helper | STRONG | branches on wall type/orientation and can suppress a column; exact names for all cases remain open |
-| `3:66B0` | `0x1C670` | Wall-span rasterizer | CONFIRMED | loops `0x14`-byte records, advances a 32-bit interpolant per x, updates depth table, calls texture-coordinate and column-draw routines |
-| `3:6914` | `0x1C8D4` | Projected-sprite pass | CONFIRMED | scans 100 records at `0x6270` with stride `0x12` and calls `3:3F80` |
-| `3:D78C` | `0x2374C` | Frame renderer/orchestrator | CONFIRMED | ordered far calls connect traversal, span build, clear, walls, object integration and sprites |
-| `3:E516` | `0x244D6` | Set view angle and direction components | CONFIRMED | normalizes degrees to 0..359, divides by 45 for octant, stores trig results at `0x4C46/0x4C48` |
-| `3:E798` | `0x24758` | Transform/near-clip/project a wall vector | CONFIRMED | subtracts view X/Y, applies direction components and near clip `0x4000`, writes projected endpoint fields `+0x14..+0x1A` |
-| `3:EBD6` | `0x24B96` | Wall texture-coordinate helper | STRONG | selects direction component from wall orientation and combines screen x, projection constants and a 16.16 wall coordinate |
-| `4:3564` | `0x287C4` | Candidate-vector projector/column owner | CONFIRMED | calls `3:E798`, clips projected endpoints to viewport and fills empty entries at `0x53FE + 4*x` |
-| `4:3940` | `0x28BA0` | Front-to-back vector traversal | CONFIRMED | clears column owners and walks four far-pointer lists until the uncovered-column count reaches zero |
+# 2. MAP -> VEC construction
 
-## Framebuffer and raster evidence
+## 2.1 Four passes
 
-### WinG surface
+`FUN_1018_4370` calls `FUN_1018_4046` four times with orientation parameters 0,1,2,3. The caller advances by `count * 0x1C`, proving the destination records are 28 bytes each.
 
-`3:2F36` writes a 320-pixel width and negative 200-pixel DIB height before
-`WinGCreateBitmap`.  A negative DIB height makes the bitmap top-down.  The
-returned pixel selector is saved at data offset `0x51A0`, then `REP STOSD`
-clears `0x3E80 * 4 = 64000` bytes.  The wall, sprite and background writers all
-load this same selector and use a 320-byte row stride.  The recovered surface
-is therefore a 320x200, linear, 8-bit indexed framebuffer.
+`FUN_1018_4046` scans the 64×64 map, identifies exposed tile boundaries and emits vectors. Adjacent compatible boundaries are merged into longer vectors through the related extension helper.
 
-### Textured wall column
+The routine checks the total vector count against `0x03E8 = 1000` and reaches the original `MAXVEC exceeded` path on overflow.
 
-The core of `3:366A` is equivalent to the following structural pseudocode:
+## 2.2 World geometry
+
+One tile is exactly 64 world units. Recovered orientation construction:
+
+| Orientation | Segment |
+|---:|---|
+| 0 | `(x,y) -> (x+64,y)` top/horizontal edge |
+| 1 | `(x,y+64) -> (x+64,y+64)` bottom/horizontal edge |
+| 2 | `(x+64,y) -> (x+64,y+64)` right/vertical edge |
+| 3 | `(x,y) -> (x,y+64)` left/vertical edge |
+
+The merge helper extends x2 or y2 by another 64 units according to orientation.
+
+This is important architecturally: the map is converted into wall boundary segments first. The renderer does not perform a fresh Wolf3D-style tile DDA hit search for every screen column.
+
+---
+
+# 3. Recovered 28-byte VEC layout
+
+Current strongest layout:
+
+```text
++00  uint8   wallId
++01  int8    texture/offset-like value         PARTIAL
++02  uint8   animation auxiliary value         PARTIAL
++03  uint8   animation frame/sub-index         STRONG
++04  uint8   texture/resource set              STRONG
++05  uint8   flags
++06  uint8   renderClass
++07  uint8   orientation                       CONFIRMED, 0..3
++08  uint32  timer/runtime value               PARTIAL
++0C  int16   x1                                CONFIRMED
++0E  int16   y1                                CONFIRMED
++10  int16   x2                                CONFIRMED
++12  int16   y2                                CONFIRMED
++14  int16   screenX1                          CONFIRMED
++16  int16   projectedY1_Q4                    CONFIRMED
++18  int16   screenX2                          CONFIRMED
++1A  int16   projectedY2_Q4                    CONFIRMED
+```
+
+The projection stage overwrites the projected endpoint fields each frame.
+
+## Flags currently visible in renderer logic
+
+- `0x01` — active/renderable path, high confidence.
+- `0x04` — special boundary/merge/render behavior; exact semantic label open.
+- `0x08` — special geometric/wall behavior; exact semantic label open.
+- `0x10` — masked/transparent or sprite-occlusion-related special handling; partial.
+- `0x20` — **texture U flip**, high confidence from the wall raster path.
+
+## renderClass
+
+Values `2`, `0x3F`, `0x40` have special branches in the renderer. These must be mapped to exact `WALLS.*` classes via the property/class tables before assigning visible names.
+
+---
+
+# 4. Four VECLIST arrays and the 333-vs-1000 question
+
+`FUN_1018_3430` distributes pointers to VEC records according to `VEC+07 orientation` into four far-pointer arrays.
+
+Counts:
+
+```text
+0x697A
+0x697C
+0x697E
+0x6980
+```
+
+Array bases:
+
+```text
+0x6982
+0x6EB6
+0x73EA
+0x791E
+```
+
+The spacing between adjacent bases is exactly:
+
+```text
+0x534 = 1332 = 333 * 4 bytes
+```
+
+Therefore each orientation list stores up to 333 **4-byte far pointers**, not 333 VEC records.
+
+The real vector pool remains `1000 * 28` bytes.
+
+Sorting behavior:
+
+- horizontal VEC lists sort by Y;
+- vertical VEC lists sort by X.
+
+This resolves the earlier `MAXVECLIST=333` mystery: it is a capacity for each orientation-specific spatial pointer index, not the total vector population.
+
+---
+
+# 5. Framebuffer and viewport
+
+## WinG surface
+
+The WinG path creates a top-down 320×200 8-bit DIB and clears exactly 64,000 bytes.
+
+Confirmed:
+
+- framebuffer width: 320;
+- framebuffer height: 200;
+- row stride: 320 bytes;
+- palette-indexed pixels.
+
+## Normal 3-D viewport
+
+`FUN_1010_5208` derives the normal game viewport:
+
+```text
+xMin = 8
+xMax = 311
+width = 304
+
+yMin = 4
+yMax = 155
+height = 152
+
+centerX = 160
+centerY = 80
+centerY_Q4 = 1280
+```
+
+These values explain why full-screen structures are 320 entries wide while only the active 304-column 3-D region is normally traversed.
+
+---
+
+# 6. Per-column wall owner table at 0x53FE
+
+Base: `0x53FE`.
+
+Layout:
+
+```text
+320 entries * 4-byte far pointer = 1280 bytes
+0x53FE + 320*4 = 0x58FE
+```
+
+`FUN_1018_3940` clears the active viewport portion and initializes the count of uncovered screen columns.
+
+`FUN_1018_3564`:
+
+1. projects/clips a candidate VEC;
+2. computes its projected X interval;
+3. visits owner slots across that interval;
+4. if a slot is empty, writes the VEC far pointer and decrements the uncovered-column count;
+5. if a slot is occupied, applies geometry-dependent conflict/hidden-surface logic to determine the winner.
+
+When every active viewport column is covered, traversal can stop early. This is a major performance behavior and one of the reasons the renderer does not need a classic DDA ray for every x coordinate.
+
+### Still open
+
+The exact mathematical winner rule in occupied owner slots inside `FUN_1018_3564` remains one of the highest-value renderer TODOs.
+
+---
+
+# 7. owner[x] -> wall spans
+
+`FUN_1010_6266` scans the owner array and coalesces consecutive columns that reference the same VEC into a compact wall-span list.
+
+Confirmed:
+
+- span count global `0x5E7E`;
+- span array base `0x5E88`;
+- stride `0x14 = 20` bytes;
+- maximum 50 records;
+- overflow path corresponds to `MAXSEG exceeded`.
+
+Current structural reconstruction:
+
+```text
++00  VEC far pointer
++04  xStart
++06  endpoint/interpolation value
++08  xEnd
++0A  endpoint/interpolation value
++0C  32-bit interpolation step
++10  32-bit accumulator/current interpolation value
+```
+
+`FUN_1010_6152` initializes the deltas/divisions. `FUN_1010_66B0` increments the accumulator by the step for each screen X. The high/current word is used in Q4-like projected wall geometry.
+
+This corrects older notes that speculated a 52-byte renderer record.
+
+---
+
+# 8. Projection and clipping
+
+## View angle
+
+`FUN_1010_E516(angle)`:
+
+- normalizes angle to 0..359;
+- uses 45-degree sectors (`0x2D`);
+- updates direction/trig globals around `0x4C46/0x4C48`.
+
+## Dynamic projection constants
+
+`FUN_1010_E4B2` computes projection-related globals around:
+
+```text
+0x3A6A
+0x3A6E
+0x3A72
+0x3A76
+```
+
+It uses integer constants including `0x5000`, `0x2EE0`, `0x8340`; `0x3A72` is derived by shifting another projection value by 4.
+
+For the normal 304-pixel viewport, one recovered focal-like term is approximately 178 pixels. If interpreted through a conventional pinhole model this corresponds to roughly 81 degrees horizontal FOV. That angle is a mathematical reconstruction, **not** a literal named `FOV=81` constant in the binary.
+
+## VEC endpoint projection
+
+`FUN_1010_E798(VEC*)`:
+
+- subtracts player/camera world coordinates from both endpoints;
+- applies integer camera rotation using the recovered direction components;
+- performs near clipping/interpolation;
+- saturates/project-clamps extreme X cases;
+- writes projected endpoint fields `+14..+1A`.
+
+Near-plane/clamp anchor: `0x4000`.
+
+A segment with only one endpoint behind/too near is clipped rather than simply rejected.
+
+Vertical projection uses a Q4-like result around `centerY_Q4`; horizontal projection uses the recovered focal-like term and `centerX`.
+
+---
+
+# 9. Second per-column table at 0x58FE
+
+Base: `0x58FE`.
+
+Layout:
+
+```text
+320 entries * 2 bytes
+```
+
+The wall rasterizer writes one value per drawn screen column. Sprite/object projection and sprite drawing read this table for occlusion decisions.
+
+The previous shorthand name `depth buffer` is useful descriptively but can be misleading. The table stores a projected wall silhouette/height/occlusion quantity used in screen-space comparisons; current evidence does **not** justify describing it as a conventional metric distance Z-buffer.
+
+`FUN_1010_CC7C` samples it around multiple horizontal points of a projected object during culling/insertion.
+
+---
+
+# 10. Wall rasterization
+
+`FUN_1010_66B0` iterates the 20-byte spans.
+
+Recovered behavior includes:
+
+- read VEC `+04` as an index into a descriptor table around `0x51AC`;
+- read VEC `+03` as frame/sub-index inside another resource descriptor level;
+- lazy-load resource if a graphics pointer is null via the image/resource loader path;
+- use VEC orientation and flag `0x20` to choose U direction;
+- special mapping changes for `renderClass 0x3F/0x40`;
+- call `FUN_1010_EBD6` to derive a perspective/orientation wall mapping parameter;
+- call `FUN_1010_6422` for texture-U / special-wall column selection;
+- update `0x58FE[x]`;
+- call lower-level wrapper `3:3E44` as texture-column/draw jobs change.
+
+## WinG wall-column core
+
+`3:366A` is the linear framebuffer column drawer. Structural pseudocode:
 
 ```c
-source = texture + (texture_x << 6); // 64-byte column
+source = texture + (texture_x << 6); // 64 samples in audited path
 dest = framebuffer + y * 320 + x;
 while (pixels--) {
     *dest = translated ? translation[*source] : *source;
@@ -105,84 +378,139 @@ while (pixels--) {
 }
 ```
 
-This proves a 64-sample, column-major source layout for this path.  It does not
-prove that every IMG resource is 64x64.
+This proves 64-sample column source organization for this raster path. It does not prove that every IMG resource is 64×64.
 
-### Sprite transparency and depth
+---
 
-`3:374E` compares each sampled byte with `0x29` and omits the write on equality.
-It also indexes a word table at `0x58FE + 2*x` before drawing a column.  That
-same table is updated by `3:66B0`, which makes it the wall-depth/projected-height
-buffer used for sprite occlusion.  Exact units remain open.
+# 11. Ceiling/floor
 
-## Visibility traversal and recovered structures
+`3:3DB8` is a backend wrapper; its WinG branch reaches `3:3612`.
 
-`4:3940` does not read a tile map for every screen x.  It clears a table of far
-pointers over the viewport, then consumes four ordered candidate lists:
+The linear fill uses the same 320-byte row stride and fills the viewport with palette-indexed ceiling/floor values.
 
-| Pointer list | Count | Initial-index global |
-|---|---:|---:|
-| `0x6982` | `0x697A` | `0x4BFA` |
-| `0x6EB6` | `0x697C` | `0x4BFC` |
-| `0x73EA` | `0x697E` | `0x4BFE` |
-| `0x791E` | `0x6980` | `0x4C00` |
+Recovered default palette indexes:
 
-The view octant at `0x4BEC` selects traversal direction/state.  `4:3564`
-projects each candidate, clamps its screen interval and installs its pointer
-only where the per-column owner is still empty.  `3:6266` subsequently groups
-runs of identical pointers into at most 50 wall-span records.
+- floor: `0x0C`;
+- ceiling: `0x11`.
 
-Recovered capacities/strides:
+These values are also serialized at the tail of USER.SAV.
 
-| Item | Value | Confidence |
-|---|---:|---|
-| framebuffer | `320 * 200` bytes | CONFIRMED |
-| wall texture-column height | 64 samples | CONFIRMED for `3:366A` |
-| transparent sprite palette index | `0x29` | CONFIRMED |
-| column-owner entry | 4-byte far pointer | CONFIRMED |
-| depth entry | 2 bytes per x | CONFIRMED |
-| wall-span record | `0x14` bytes | CONFIRMED |
-| wall-span capacity | 50 | CONFIRMED |
-| projected-sprite record | `0x12` bytes | CONFIRMED |
-| projected-sprite pass capacity | 100 | CONFIRMED |
+Open question: whether every original rendering mode/level uses only solid fills or whether alternate environment paths can change this behavior beyond palette selection.
 
-## Comparison with released id Software-era sources
+---
 
-| Engine | Visibility discovery | Wall draw organization | Relationship to NITE3W |
-|---|---|---|---|
-| Catacomb Abyss | `TraceRay` traces boundary rays through the tile map; `FollowWalls` builds a wall list | `DrawVWall` walks projected wall spans and records per-column height/source information | Closest structural comparison after visibility discovery: wall endpoints/spans and per-column texture work.  NITE3W's four-list owner-table traversal is different. |
-| Hovertank 3-D | `TraceRay` finds boundary walls; `FollowWalls` constructs the visible wall chain | draws a wall list rather than casting every screen column independently | Same broad wall-list lineage, but not the same NITE3W traversal or data structures. |
-| Wolfenstein 3-D | `AsmRefresh` computes a ray for each `pixx` and alternates horizontal/vertical grid DDA tests against `tilemap` | hit routines immediately finish the column | Direct counterexample: the recovered NITE3W frame path has no per-column grid DDA or `tilemap[x,y]` lookup. |
+# 12. Projected object/sprite queue at 0x6270
 
-Similarity is not treated as identity.  The comparison sources explain the
-family resemblance, while the NITE3W executable remains authoritative.
+The sprite/object pass uses a separate fixed array:
 
-Primary comparison sources:
+- base `0x6270`;
+- 100 records;
+- stride `0x12 = 18` bytes.
 
-- [Catacomb Abyss `C4_DRAW.C`](https://github.com/CatacombGames/CatacombAbyss/blob/master/C4_DRAW.C)
-  and [`C4_TRACE.C`](https://github.com/CatacombGames/CatacombAbyss/blob/master/C4_TRACE.C);
-- [Hovertank 3-D `HOVDRAW.C`](https://github.com/FlatRockSoft/Hovertank3D/blob/master/HOVDRAW.C); and
-- [Wolfenstein 3-D `WL_DR_A.ASM`](https://github.com/id-Software/wolf3d/blob/master/WOLFSRC/WL_DR_A.ASM).
+`FUN_1010_CC7C` performs projection/culling and builds queue commands. Recovered stores support a layout containing:
 
-## Open questions
-
-- construction and lifetime of the four sorted vector lists;
-- exact semantic names for every wall-vector and `0x14`-byte span field;
-- every special-wall branch in `3:6422`;
-- exact units stored in the word depth table at `0x58FE`;
-- palette-translation table selection in the alternate `3:366A` path;
-- exact ordering contract between `3:6348` and the 100-entry sprite pass; and
-- the VGA fallback paths behind the three renderer wrappers.
-
-## Reproducing the audit
-
-`tools/ne_renderer_audit.py` preserves logical NE addresses and expands the
-non-additive relocation chains used by this Win16 linker.  Examples:
-
-```bash
-python tools/ne_renderer_audit.py NITE3W.EXE disasm 3 0x366a 0x374e
-python tools/ne_renderer_audit.py NITE3W.EXE xrefs 'internal 3:366A'
-python tools/ne_renderer_audit.py NITE3W.EXE xrefs 'import WING'
+```text
++00 active/free marker
++02 world-object pointer/reference
++06 sprite/resource descriptor
++08 screenLeft
++0A screenRight
++0C screenTop
++0E screenBottom
++10 projectedBottomQ4 / ordering value
 ```
 
-The executable is intentionally not stored in this repository.
+Some field names remain PARTIAL because exact pointer/descriptor types are still being refined.
+
+Queue placement is based on a projected screen/depth-like bucket derived from vertical position. If the preferred slot is occupied the code searches nearby slots. If no slot can be found the executable emits:
+
+```text
+Too many objects on screen
+```
+
+`FUN_1010_6914` scans all 100 18-byte records, lazy-loads sprite resources if needed, draws active commands through `3:3F80 -> 3:374E`, and resets/free-marks them.
+
+## Sprite transparency
+
+The audited WinG sprite drawer treats palette index `0x29` as transparent and skips writes for that sample.
+
+This transparency value belongs to the recovered runtime sprite raster path; separate archive/export tools must not automatically assume every image type has identical transparency rules.
+
+---
+
+# 13. Special walls, animation and global 0x7E60
+
+## FUN_1010_6422
+
+Strongly involved in exact texture-U selection and special-wall/orientation behavior. It compares current screen X with projected VEC endpoints, uses segment length/orientation and render-class/flag information, and can suppress or alter column mapping.
+
+Exact per-class semantics are still open.
+
+## FUN_1010_65A6
+
+Called from the wall pass when a resource/descriptor condition is present. Current cross-thread evidence makes it a high-priority animation/frame/timer/resource helper. It should not yet be given a definitive final name until all writes to VEC animation fields and descriptors are paired.
+
+## Global 0x7E60
+
+`FUN_1010_66B0` reads runtime word `0x7E60`; under certain conditions it can be zeroed for horizontal orientations. USER.SAV serializes a corresponding word at `0xD6E5`.
+
+Possible meanings considered during audit include environment, door displacement, scroll/texture shift, or other special wall motion. None is sufficiently proven to publish as final. The correct next step is a full write-XREF audit.
+
+---
+
+# 14. Original renderer limits and structures
+
+| Item | Value | Status |
+|---|---:|---|
+| framebuffer | 320×200, 64,000 B | CONFIRMED |
+| normal 3-D viewport | 304×152 | CONFIRMED |
+| VEC record | 28 B | CONFIRMED |
+| total VEC capacity | 1000 | CONFIRMED |
+| VECLIST capacity | 333 pointers per orientation | CONFIRMED |
+| owner entry | 4-byte far pointer | CONFIRMED |
+| owner entries | 320 | CONFIRMED |
+| wall occlusion entry | 2 B | CONFIRMED |
+| wall occlusion entries | 320 | CONFIRMED |
+| wall span | 20 B | CONFIRMED |
+| wall span capacity | 50 | CONFIRMED |
+| projected sprite record | 18 B | CONFIRMED |
+| projected sprite capacity | 100 | CONFIRMED |
+| wall texture-column height | 64 samples | CONFIRMED for WinG wall path |
+| sprite transparent index | `0x29` | CONFIRMED for audited sprite path |
+
+---
+
+# 15. Comparison with released id-era source code
+
+Similarity is useful for orientation, not proof of source identity.
+
+| Engine | Visibility discovery | Relationship to NITE3W |
+|---|---|---|
+| Catacomb Abyss | boundary-ray / wall-list style | useful structural comparison for wall lists/spans; NITE3W's four VECLIST + owner table is different |
+| Hovertank 3-D | traced wall chain/list | broad family resemblance, different data structures and traversal |
+| Wolfenstein 3-D | per-screen-column tile-grid DDA | direct counterexample to NITE3W's recovered vector-list traversal |
+
+Reference source trees previously used for comparison:
+
+- Catacomb Abyss `C4_DRAW.C`, `C4_TRACE.C`;
+- Hovertank 3-D `HOVDRAW.C`;
+- Wolfenstein 3-D `WL_DR_A.ASM`.
+
+Do not describe Nitemare 3-D as a simple Wolf3D renderer clone.
+
+---
+
+# 16. Current highest-value open renderer targets
+
+1. Fully translate `FUN_1018_3564` owner-conflict/hidden-surface resolution.
+2. Fully translate `FUN_1010_6422` texture-U and special-wall cases.
+3. Fully translate `FUN_1010_3E44` and the lower alternate VGA/translation paths.
+4. Decode `FUN_1010_65A6` wall animation/resource update behavior.
+5. Audit all writes to `0x7E60`.
+6. Audit all writes to VEC `+01/+02/+03/+04/+08`.
+7. Build exact `WALLS.* wall ID -> flags/property -> renderClass -> texture descriptor -> renderer branch` mapping.
+8. Finish exact queue field semantics for `FUN_1010_CC7C` / `3:6348` / `3:6914`.
+9. Determine every masked/transparent wall interaction with sprite occlusion.
+10. Compare DOS planar/fullscreen backend behavior against the WinG path instruction by instruction.
+
+The remaining work is now about fidelity and special cases, not discovering the basic renderer architecture.
