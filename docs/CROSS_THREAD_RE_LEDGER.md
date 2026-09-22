@@ -1,27 +1,53 @@
 # Cross-thread Nitemare 3-D reconstruction ledger
 
-Date: 2026-09-18
+Updated: 2026-09-22
 
-This ledger consolidates reverse-engineering results recovered across the Nitemare 3-D work threads. It is intentionally conservative: exact values are only promoted when backed by original executable/data/save evidence. See subsystem documents for disassembly details.
+This ledger is a compact index of findings recovered across the Nitemare 3-D reverse-engineering threads. The canonical full consolidation is now:
+
+- [`ALL_THREADS_CONSOLIDATION_2026-09-22.md`](ALL_THREADS_CONSOLIDATION_2026-09-22.md)
+
+Subsystem documents remain authoritative for instruction-level evidence. Exact values are promoted only when backed by original executable/data/save evidence.
 
 ## Binary target
 
 - NITE3W.EXE V1.10: 230,400 bytes; Win16 NE; 10 segments.
 - SHA-256: `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481`.
-- Imports observed across KERNEL, WING, DISPDIB, GDI, USER, KEYBOARD, COMMDLG, MMSYSTEM and SHELL; joystick.drv is dynamically involved.
-- A whole-EXE sweep produced roughly 688 candidate function entries. This is an audit workset, not a final function count.
+- Direct imported modules: KERNEL, WING, DISPDIB, GDI, USER, KEYBOARD, COMMDLG, MMSYSTEM and SHELL.
+- `joystick.drv` is dynamically referenced.
+- Large Ghidra/IDA function/label/XREF counts are analysis worksets, not a final count of original game functions because runtime/MFC/library code remains mixed in.
 
 ## Original data formats
 
-- MAP.1 has 11 payloads; MAP.2 and MAP.3 have 10. Each level is 64x64x2 = 8192 bytes after the 514-byte archive header. E1M11 is the internal/demo map.
-- Each MAP cell is interleaved `{wallByte, objectByte}`.
+- MAP.1 has 11 supplied payloads; MAP.2 and MAP.3 have 10 each.
+- Each level is 64×64×2 = 8192 bytes after a 514-byte archive header.
+- Each MAP cell is `{wallByte, objectByte}`.
+- E1M11 is the internal/demo map.
 - Runtime world coordinates use 64 units per tile and `coord >> 6` for world-to-tile conversion.
-- IMG archives use indexed image/sequence data; prior archive work confirmed raw indexed graphics and sequence-definition tables. Keep episode-specific IMG identity separate.
-- UIF.DAT is a 32-entry UI/PCX-oriented container in the recovered data analysis.
-- SND.DAT is a 160-entry sound/music container in the recovered data analysis; runtime SND-ID-to-event mapping is still being completed.
-- DEMO files use a 6-byte header followed by 8-byte timed input records.
-- GAME.PAL contains the 768-byte palette payload used by the original indexed renderer.
-- OBJECTS.1-3 and WALLS.1-3 are primarily editor-definition assets; runtime gameplay is driven by MAP/IMG/EXE structures rather than requiring these editor files.
+- The supplied 11/10/10 payload counts are **not** treated as a proven universal MAP-format ceiling; historical MapEdit sources support a larger editor level count.
+- IMG archives contain indexed image/sequence data; episode-specific identity must be preserved.
+- UIF.DAT is a UI-resource container whose complete per-ID semantics remain partial.
+- SND.DAT uses a 160×6-byte directory. IDs 1..15 are MIDI; the audited Windows SFX path uses raw 8-bit mono PCM at 11025 Hz.
+- DEMO uses a 6-byte header followed by 8-byte timed input records.
+- GAME.PAL supplies the original 256-color indexed palette.
+- ENDING.FLI is 320×200; header frame count 488, with some decoders exposing a ring/repeat frame as 489.
+- OBJECTS.1-3 and WALLS.1-3 are primarily editor/definition assets; runtime behavior is reconstructed from EXE/MAP/IMG/property tables and does not require those files to remain present at runtime.
+
+## Corrected original runtime record sizes
+
+Direct EXE indexing and USER.SAV block sizes supersede older arithmetic guesses:
+
+| Family | Base | Capacity | Stride |
+|---|---:|---:|---:|
+| OBJECT | `0x6D66` | 350 | 28 B |
+| GUARD | `0x93AE` | 100 | 26 B |
+| door | `0x9DD6` | 64 | 22 B |
+| panel | `0xA356` | 32 | 22 B |
+| push | `0xA616` | 12 | 6 B |
+| VEC | runtime vector pool | 1000 | 28 B |
+| wall span | `0x5E88` | 50 | 20 B |
+| projected sprite | `0x6270` | 100 | 18 B |
+
+Old OBJECT=80 B, GUARD=98 B and wall-span=52 B notes are obsolete.
 
 ## MAP -> runtime object pipeline
 
@@ -30,172 +56,238 @@ The executable constructs two 256-entry property tables:
 - wall properties at DS `0x7E94[wallByte]`;
 - object properties at DS `0x7F94[objectByte]`.
 
-Confirmed wall bits used by movement:
+Confirmed wall bits used by gameplay:
+
 - `0x04`: hard blocking;
 - `0x08`: dynamic door path;
 - `0x40`: level-script/touch hook.
 
 Confirmed object bits:
+
 - `0x01`: instantiate runtime OBJECT;
 - `0x02`: blocks movement;
 - `0x04`: special/touch handler;
 - `0x08`: creates GUARD.
 
-The MAP object byte passes through definition/class lookup before OBJECT creation. OBJECT is 28 bytes; `OBJECT+05` receives the property flags and `OBJECT+06` the runtime class. `OBJECT+01` is a class-relative variant index.
+OBJECT `+06` is the runtime class used by combat and behavior dispatch. Guard-producing OBJECTs link to GUARD entries through the recovered index fields.
 
 ## Player movement/collision
 
-Main anchors:
-- `seg3:8AAC`: movement caller;
-- `seg3:8604`: incremental movement/collision;
-- `seg3:84F4`: leading-edge MAP passability;
-- `seg3:8A20`: player position/tile commit.
+Main facts:
 
-Confirmed globals:
-- `0x4BF6`: player world X;
-- `0x4BF8`: player world Y;
-- `0x4BF2`: current tile X;
-- `0x4BF4`: current tile Y;
-- `0x4C10:0x4C12`: current MAP-cell far pointer.
+- player world X/Y at `0x4BF6/0x4BF8`;
+- current tile X/Y at `0x4BF2/0x4BF4`;
+- collision AABB half-extent 27 world units;
+- incremental integer movement with X/Y collision tested separately, yielding wall sliding;
+- a separate threshold 42 exists in proximity/occupancy logic; exact semantic role remains PARTIAL;
+- changing tile dispatches event `0x16`.
 
-Player collision is an AABB with half-extent 27 world units. Motion is integer/Bresenham-like one-unit stepping; X/Y components are collision-tested separately, giving natural wall sliding. A separate proximity/occupancy path uses threshold 42 world units; its exact gameplay role remains PARTIAL.
+Recovered input-mask anchors include:
 
-Changing tile dispatches event `0x16`.
-
-## USE / doors / panels / pushables
-
-- Input `0x0200` is rising-edge USE/ACTION.
-- USE resolves one adjacent cardinal cell from player orientation.
-- Dynamic doors: max 64, runtime stride 22, original table base `0x9DD6`.
-- Panels: max 32, stride 22.
-- Pushables: runtime class `0x28`, max 12, stride 6.
-- Push movement is 8 steps x 8 world units = one 64-unit tile.
-- Verified gameplay includes red/green/blue/yellow key-gated families and Red/Yellow ID-card gates.
-- Wall families `0x19..0x1C` map to Red/Green/Blue/Yellow key interaction families.
-- Wall families `0x25..0x2C` enter the combination-lock/check path.
-- Teleports, special walls and combination subtypes remain under exact opcode/class audit; do not assign guessed names.
-
-## OBJECT runtime
-
-Base `0x6D66`, stride `0x1C`, maximum 350.
-
-Known:
-- +00 object/map ID;
-- +01 class-relative variant;
-- +02/+03 signed render/animation components (PARTIAL semantic);
-- +04 definition-table ID;
-- +05 property flags copied from `0x7F94`;
-- +06 runtime class;
-- +07 GUARD index for guard-producing objects;
-- +08..+0B initialized runtime value, semantic TODO;
-- +0C:+0E MAP-cell far pointer;
-- +10 world X;
-- +12 world Y;
-- +14..+19 still incomplete; +18 participates in damage/projection geometry;
-- +1A initialized zero;
-- +1B TODO.
-
-## GUARD runtime
-
-Base `0x93AE`, stride 26, maximum 100; count global `0x7E5E`. `GUARD+08` is an OBJECT slot/index and resolves as `0x6D66 + index*0x1C`.
-
-Known fields:
-- +02 dword timestamp/time;
-- +06 timer;
-- +08 OBJECT slot/index;
-- +0A strategy;
-- +0B state;
-- +0C nextstate;
-- +0D o_id;
-- +0E definition lookup result (PARTIAL);
-- +0F sync/control boolean (PARTIAL);
-- +10 strength;
-- +11 octant;
-- +12 resoct;
-- +13 transition parameter (PARTIAL);
-- +16 transition/control flag (PARTIAL).
-
-Fresh GUARD strength is initialized to `0xFF`. Damage receiver has explicit lethal clear/death handling and nonlethal subtraction/reaction handling. Per-enemy HP values must not be invented.
-
-## Combat/weapons
-
-Weapon selector `0x4C23`:
-0 Single Shot Laser; 1 Magic Wand; 2 Silver Pistol; 3 Continuous Laser; `0xFF` no weapon/unset state.
-
-Confirmed damage core includes a geometry-derived base plus `random()%25`, class/weapon divisors, difficulty scaling, and clamp to 255. The exact class/weapon divisor matrix is documented in `COMBAT_DAMAGE_RE.md`.
-
-Ammo:
-- SSL uses `0x4C20`;
-- Wand uses `0x4C44`;
-- Silver Pistol uses `0x4C1F`;
-- Continuous Laser uses `0x4C20`;
-- Omnipotent `0x4BE5` bypasses consumption;
-- ordinary pickup +20, forced/set value 50, threshold 100.
-
-Weapon jam global: `0x4C2E`. Script event `0x47` sets jam and `0x48` clears it. Firing path anchor: `seg3:8B06`.
-
-## DEMO
-
-Record layout:
-`eventByte:u8, inputMask:u16, pad:u8, timestamp:u32`.
-
-Known input bits include:
 - `0x0002` forward;
 - `0x0004` backward;
-- `0x0020` doubles movement increment;
-- `0x0040` increment 1;
+- `0x0008/0x0010` turning directions;
+- `0x0020` faster/doubled movement or turn increment;
+- `0x0040` increment/reset-related input behavior, exact high-level label PARTIAL;
 - `0x0080` FIRE;
 - `0x0100` strafe modifier;
 - `0x0200` USE/ACTION.
 
-DEMO is input playback, not stored absolute positions. `-r` enables recording. The supplied DEMO.1 matches E1M11 behavior; DEMO.2/3 origins must remain open rather than being guessed from episode numbering.
+## USE / doors / panels / pushables / wall classes
 
-## Player spawn
+- USE is rising-edge triggered and resolves one adjacent cardinal cell.
+- Pushables use runtime class `0x28` and move 8×8 = 64 world units per full push.
+- `WARP_L1..L4` are red/green/blue/yellow key-locked wall/passage classes.
+- `WARP_1..8` are paired stair/dumbwaiter/vertical-connection groups.
+- `WARP_E1/E2` are elevator groups.
+- `WARP_S1/S2` are special mirror families.
+- `DOORV/H` are door orientations; locked/remote/curtain/transport variants are represented by the corresponding `DOOR*` families.
+- `LEVEL_UP` is a normal next-level gateway; `LEVEL_UP2` skips a level.
+- `WALL_EX1/2` are exploding wall/door-related families.
+- `ONE_SHOT` is the original spelling for disappearing-gargoyle definitions.
+- `SPECIAL1`, `CONTROL`, `ACTIONSPOT`, `TRIGGER1/2`, `RETREAT`, `TURN`, `FLEE`, `SAFESPOT` have confirmed data uses; their full runtime dispatch is still being completed.
 
-The map scan identifies the player start from the object layer. IDs 1..4 encode the four orientations:
-- 1 -> 0 degrees;
-- 2 -> 90;
-- 3 -> 180;
-- 4 -> 270.
+## GUARD runtime and AI
 
-Spawn position is tile center: `x*64+32, y*64+32`.
+GUARD base `0x93AE`, stride 26, maximum 100; count global `0x7E5E`.
+
+Direct developer diagnostics identify:
+
+- `+06` timer;
+- `+08` OBJECT slot/index;
+- `+0A` strategy;
+- `+0B` state;
+- `+0C` nextstate;
+- `+10` strength / HP;
+- `+11` octant;
+- `+12` resoct.
+
+Fresh GUARD strength is initialized to `0xFF`. No class-indexed post-spawn HP initializer has been found; practical toughness is heavily influenced by class/weapon damage transforms. Per-enemy initial HP tables must not be invented.
+
+The state dispatcher covers states `0x00..0x15`. State `0x15` is confirmed pain/hit reaction and returns to `next_state`. The exact semantic names for states 02..14 remain partial.
+
+### Per-GUARD score switch
+
+Recovered values:
+
+| Guard | Name | Score |
+|---:|---|---:|
+| 1 | Bat | 25 |
+| 2 | Frankenstein | 75 |
+| 3 | Mummy | 50 |
+| 4 | Skeleton | 100 |
+| 5 | Mrs H. | 250 |
+| 6 | Zelda | 150 |
+| 7 | Vampira | 200 |
+| 8 | Baddie #1 | 100 |
+| 9 | Baddie #2 | 100 |
+| 10 | Dracula | 0 |
+| 11 | Cemetery Gargoyle | 150 |
+| 12 | Garden Gargoyle | 150 |
+| 13 | unknown/unused identity | 200 |
+| 14 | Penelope | -1000 |
+| 15 | Dr. Hamerstein | 1000 |
+| 16 | Tall slim robot | 100 |
+| 17 | Trashcan robot | 200 |
+| 18 | Cannon | 0 |
+| 19 | Ghost | 25 |
+| 20 | Goldie | 100 |
+| 21 | Greenie | 100 |
+| 22 | Demon | 250 |
+| 23 | Alien #1 | 250 |
+| 24 | Alien #2 | 200 |
+| 25 | unknown/unused identity | 50 |
+| 26 | Dancers | default 0 path; outside normal switch |
+
+Dracula's zero is therefore a real switch value; any scripted Dracula→Bat transformation is a separate behavior path, not evidence that the Dracula score constant should be changed.
+
+## Combat / health / difficulty
+
+Weapon selector `0x4C23`:
+
+- 0 Single Shot Laser;
+- 1 Magic Wand;
+- 2 Silver Pistol;
+- 3 Continuous Laser;
+- `0xFF` none/unset.
+
+Ammo:
+
+- Silver `0x4C1F`;
+- Laser `0x4C20`, shared by single/continuous laser;
+- Wand `0x4C44`;
+- ordinary pickup +20;
+- forced/set value 50;
+- intended threshold/display cap 100;
+- Silver/Laser have a signed-byte comparison/display quirk, making 127 the highest positive signed value in those manual-memory paths.
+
+Player health:
+
+- `0x4C1D`;
+- normal initialization/cap 100;
+- normal lethal receiver saturates to zero and enters the death state;
+- Omnipotent bypasses normal damage.
+
+Difficulty global `0x4C14` is independently constrained by player→GUARD damage, enemy→player damage and GUARD timing:
+
+| value | player→enemy | enemy→player | GUARD timing |
+|---:|---:|---:|---:|
+| 0 | ×2 | ÷2 | slower |
+| 1 | ×1 | ×1 | baseline |
+| 2 | ÷2 | ×2 | faster |
+
+Weapon jam global `0x4C2E` is script-controlled. Episode-1 level-9 events `0x47` and `0x48` set/clear it; no random jam probability is supported by current evidence.
+
+## Renderer — corrected current model
+
+The original renderer is not Wolfenstein 3-D's per-screen-column tile DDA.
+
+MAP boundary extraction is now traced:
+
+```text
+MAP 64x64
+ -> FUN_1018_4370
+ -> four calls to FUN_1018_4046 (orientations 0..3)
+ -> merge compatible boundary edges
+ -> VEC[1000], 28 B each
+ -> distribute far pointers by VEC+07 orientation
+ -> four VECLIST[333]
+ -> sort horizontal lists by Y, vertical lists by X
+```
+
+Orientation geometry:
+
+- 0 top horizontal;
+- 1 bottom horizontal;
+- 2 right vertical;
+- 3 left vertical.
+
+VEC endpoint fields are at `+0C/+0E/+10/+12`; projected fields are at `+14..+1A`.
+
+Four VECLIST count globals:
+
+- `0x697A`, `0x697C`, `0x697E`, `0x6980`.
+
+Four VECLIST bases:
+
+- `0x6982`, `0x6EB6`, `0x73EA`, `0x791E`.
+
+Per-frame visibility:
+
+- owner table `0x53FE`: 320×4-byte far pointers;
+- wall occlusion/silhouette table `0x58FE`: 320×2-byte values;
+- owner runs coalesce to <=50 20-byte spans at `0x5E88`;
+- projected objects use <=100 18-byte records at `0x6270`;
+- sprite transparency uses palette index `0x29` in the audited WinG path.
+
+Remaining renderer unknowns are exact occupied-owner winner mathematics, special-wall/texture-U branches, animation/resource field semantics, global `0x7E60`, and alternate backend details—not the basic VEC/VECLIST architecture.
+
+## DEMO
+
+Record layout:
+
+`eventByte:u8, inputMask:u16, pad:u8, timestamp:u32`.
+
+DEMO is timed input playback, not stored absolute positions. `-r` enables recording. DEMO.1 matches E1M11 behavior; DEMO.2/3 origin remains open.
 
 ## USER.SAV / CONFIG.SAV
 
-USER.SAV slot size is exactly `0xD6E7` = 55,015 bytes. Important offsets:
-- +0x0004 description;
-- +0x002D episode;
-- +0x002F zero-based level;
-- +0x0031 saved tick;
-- +0x0035 8192-byte mutable MAP;
-- +0x2035 0x5E-byte gameplay/global block;
-- +0xB43B 0x0A28-byte GUARD block = 100*26.
+USER.SAV slot size is exactly `0xD6E7 = 55,015` bytes.
 
-The remaining persisted blocks and rebasing behavior are tracked in `SAVE_LIBRARIES_IDA_REPORT.md`.
+Important offsets:
 
-CONFIG.SAV is 20 bytes. Recovered settings include viewport/window dimensions, mouse/joystick sensitivity, MIDI/SFX volume, enable toggles and the four Omni cheat toggles. See the save/config documentation before changing semantics.
+- +`0x0004` description;
+- +`0x002D` episode;
+- +`0x002F` zero-based level;
+- +`0x0031` saved tick;
+- +`0x0035` mutable 8192-byte MAP;
+- +`0x2035` 94-byte gameplay/global block;
+- +`0x2093` 28,000-byte vector pool = 1000×28;
+- +`0x8DF3` 9,800-byte object pool = 350×28;
+- +`0xB43B` 2,600-byte GUARD pool = 100×26;
+- +`0xBE63` 1,408-byte door pool = 64×22;
+- +`0xC403` unresolved 336-byte runtime block;
+- +`0xC55B` 72-byte push pool = 12×6;
+- +`0xD6E3` floor palette index;
+- +`0xD6E4` ceiling palette index;
+- +`0xD6E5` runtime/render environment word corresponding to `0x7E60`, exact semantic open.
 
-## Renderer/runtime limits
+CONFIG.SAV is 20 bytes.
 
-Recovered original limits include:
-- segments 50;
-- images 70;
-- objects 350;
-- guards 100;
-- vectors 1000;
-- orientation-list capacity 333;
-- doors 64;
-- panels 32;
-- pushables 12.
+## Hidden/special content and quirks
 
-Renderer evidence indicates a custom vector/line-segment textured-column path with indexed framebuffer and depth/column structures; do not replace it with textbook Wolf3D DDA merely because movement/data concepts are related. Catacomb Abyss and Wolf3D are comparison sources, not identity claims.
-
-A prior audit also found a MAXVECLIST off-by-one two-byte overwrite in the original and an undefined wall 0x37 occurrence at E2M4 (61,54). Preserve original quirks only when compatibility requires them; document rather than silently relying on memory corruption.
+- E1M11 is the internal/demo level.
+- GUARD13 and GUARD25 have score entries but unresolved visible identities/use.
+- GUARD26 Dancers is a separate scripted family.
+- remote-door/cannon commands, special mirrors, pentagram conditions, scripted weapon jam and disappearing gargoyle definitions are present.
+- an undefined wall `0x37` exists in supplied E2M4 data at `(61,54)` and should be preserved/documented as an original data quirk until proven otherwise.
+- a prior audit identified a VECLIST boundary/off-by-one memory-overwrite quirk; reconstruction code should document original behavior rather than silently depending on corruption.
+- no Quake-style developer console has been established.
 
 ## Evidence discipline
 
 Use: `VERIFIED_EXE`, `VERIFIED_DATA`, `VERIFIED_SAVE_LAYOUT`, `BEHAVIORAL`, `INFERRED`, `PARTIAL`, `TODO`.
 
-Do not promote approximate progress, guessed enemy identity, HP, damage, speed, state names, SND identities, wall meanings or renderer lineage to VERIFIED without direct evidence.
+Do not promote guessed enemy HP, speed, state names, sound identities, wall meanings, exact FOV labels, platform-source identity or approximate completion percentages into verified facts.
 
-The final 95-100% EXE claim requires byte/range classification, not an engineering estimate.
+The final 95–100% EXE claim requires byte/function/range classification.
