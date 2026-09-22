@@ -1,20 +1,18 @@
 # NITE3W AI state-machine audit — consolidated 2026-09-22
 
-This file records the current GUARD state-machine reconstruction from the original NITE3W.EXE V1.10. It supersedes the early note that no numeric state handlers had been assigned.
+This file records the current GUARD state-machine reconstruction from the original NITE3W.EXE V1.10. It supersedes the early note that no numeric state handlers had been assigned and the earlier assumption that GUARD13 was an unknown class.
 
 ## Confirmed runtime record
 
 GUARD records are 26 bytes (`0x1A`), maximum 100, base `0x93AE`, count global `0x7E5E`.
 
-The executable's developer diagnostic string directly names the following fields:
+The executable's developer diagnostic string directly names:
 
 ```text
 class %d, strength %d, strategy %d
 state %d, nextstate %d, timer %d
 octant %d, resoct %d
 ```
-
-The call-site argument order establishes:
 
 | GUARD offset | Meaning | Status |
 |---:|---|---|
@@ -37,36 +35,33 @@ The call-site argument order establishes:
 
 ### Important correction
 
-The old early note described `GUARD+08` as a definition index. That was wrong. It is an OBJECT slot/index. The runtime resolves the associated 28-byte OBJECT record through the recovered object pool/indexing path. The visible/runtime class printed by the diagnostic is read from `OBJECT+06`.
+The old note described `GUARD+08` as a definition index. It is an OBJECT slot/index. The runtime resolves the associated 28-byte OBJECT record, and the visible/runtime class printed by diagnostics is read from `OBJECT+06`.
 
-## Strength / HP is now confirmed
+## Strength / HP
 
-`GUARD+10` is not merely a candidate field. Direct hit-receiver code:
+`GUARD+10` is confirmed strength/HP. Direct code:
 
-- compares damage with `GUARD+10`;
-- clears it to zero on lethal damage;
-- subtracts non-lethal damage from it;
-- normal and special GUARD creation write `0xFF`.
-
-Therefore:
+- compares incoming damage with `GUARD+10`;
+- clears it to zero on lethal damage before death/special handling;
+- subtracts non-lethal damage;
+- normal and special creation write `0xFF`;
+- Dracula's phase-change path restores `0xFF` for the transformed second phase.
 
 ```text
 fresh strength = 255
 if damage >= strength:
     strength = 0
-    death path
+    death/special path
 else if damage > 0:
     strength -= damage
     pain/reaction path
 ```
 
-No class-indexed post-spawn strength initializer was found in the direct-write audit. Enemy-specific practical toughness is instead strongly affected by the player-weapon/class damage transform. Do not invent per-enemy starting HP values.
+No class-indexed post-spawn strength initializer was found. Enemy-specific practical toughness is instead strongly affected by class/weapon damage transforms plus special phase logic. Do not invent per-enemy starting HP values.
 
 ## State dispatcher
 
 The dispatcher around `3:7B55` accepts states `0x00..0x15`, giving 22 numeric states.
-
-Current branch-level map:
 
 | State | Handler | Recovered behavior | Confidence |
 |---:|---:|---|---|
@@ -77,9 +72,9 @@ Current branch-level map:
 | `04` | `7C86` | alternate detection/attack branch | partial semantic |
 | `05` | `7CE4` | helper transition branch | partial semantic |
 | `06` | `7CEC` | movement + timer; then state `03` | strong control flow |
-| `07` | `7D2A` | active AI; strategy 3 has a separate branch | partial semantic |
+| `07` | `7D2A` | active AI; strategy 3 separate branch | partial semantic |
 | `08` | `7D7E` | movement/AI; can enter state `02` | partial semantic |
-| `09` | `7DEC` | special/collision action | partial semantic |
+| `09` | `7DEC` | special/collision/action path | partial semantic |
 | `0A` | `80A4` | no local action in dispatcher | strong |
 | `0B` | `80A4` | no local action in dispatcher | strong |
 | `0C` | `7E54` | shared handler with `0D` | partial semantic |
@@ -93,22 +88,21 @@ Current branch-level map:
 | `14` | `804A` | long timer + periodic action | partial semantic |
 | `15` | `807E` | confirmed pain/hit reaction; then `state=nextstate` | VERIFIED/strong |
 
-The exact human-readable labels for states `02..14` remain deliberately unresolved until their animation, movement, attack, sight and sound callers are bound. Do not prematurely name every state `CHASE`, `ATTACK`, etc.
+Human-readable labels for states `02..14` remain unresolved until animation, movement, attack, sight and sound callers are bound.
 
 ## Hit/pain transition
 
-The non-lethal hit path provides useful state-machine evidence:
+The ordinary non-lethal path:
 
 - `guard+0x10 -= damage`;
 - `guard+0x12 = 8`;
-- ordinary pain handling preserves the old state in `nextstate` and sets current state to `0x15`;
-- handler `0x15` returns to `nextstate` after its animation/timer completion.
+- prior state is preserved in `nextstate`;
+- current state becomes `0x15`;
+- state `0x15` returns to `nextstate` after animation/timer completion.
 
-Strategies 3 and 5 have special hit behavior and therefore must remain explicit strategy cases rather than being flattened into one generic AI state model.
+Strategies 3 and 5 have special hit behavior and must remain separate strategy cases.
 
 ## Difficulty interaction
-
-The same gameplay difficulty global used by combat also changes GUARD timing:
 
 ```text
 difficulty 0 -> timer doubled / guards slower
@@ -116,11 +110,11 @@ difficulty 1 -> baseline
 difficulty 2 -> timer halved / guards faster
 ```
 
-Together with both directions of damage scaling this strongly establishes the numeric order 0=easier, 1=baseline, 2=harder even though final menu-label setter tracing remains separate.
+Together with both damage directions this establishes numeric order 0=easier, 1=baseline, 2=harder.
 
 ## Score dispatch
 
-The per-kill score switch is recovered for GUARD1..25. GUARD26/Dancers falls outside the switch and takes the default zero-score path.
+The per-kill score switch is recovered for GUARD1..25. GUARD26/Dancers falls outside the switch and takes the default zero path.
 
 ```text
 GUARD1  Bat                 25
@@ -132,10 +126,10 @@ GUARD6  Zelda             150
 GUARD7  Vampira           200
 GUARD8  Baddie #1         100
 GUARD9  Baddie #2         100
-GUARD10 Dracula             0
+GUARD10 Dracula phase 1      0
 GUARD11 Cemetery Gargoyle 150
 GUARD12 Garden Gargoyle   150
-GUARD13 unknown           200
+GUARD13 Dracula-Bat       200
 GUARD14 Penelope        -1000
 GUARD15 Dr. Hamerstein   1000
 GUARD16 Tall slim robot   100
@@ -147,17 +141,46 @@ GUARD21 Greenie           100
 GUARD22 Demon             250
 GUARD23 Alien #1          250
 GUARD24 Alien #2          200
-GUARD25 unknown            50
+GUARD25 unresolved         50
 GUARD26 Dancers/default     0
 ```
 
-Dracula's zero is a real value in this score switch. His scripted transformation/death behavior, including the Bat relationship observed elsewhere, must be reconstructed separately instead of changing the score constant.
+## Dracula phase transformation: class 0x11 -> 0x14
+
+The old TODO “reconstruct Dracula's transformation to Bat” is now partially resolved at the executable state/class level.
+
+A lethal hit to Dracula class `0x11` does not simply terminate the actor. The special path rewrites the associated OBJECT/GUARD:
+
+```text
+OBJECT+06 = 0x14
+GUARD+10  = 0xFF
+GUARD+0B  = 0x08
+GUARD+0C  = 0x02
+GUARD+06  = 1
+sequence/frame-related value = 0x23
+transformation event/sound request = 0x22
+```
+
+Thus GUARD13/class `0x14` is the internal Dracula-Bat second phase rather than an unrelated unused enemy. Dracula phase 1 gives 0 score; the transformed class gives 200 on final death. Normal Bat class `0x08` remains separate and gives 25.
+
+What remains unresolved is the complete resource/animation/sound/corpse chain around this transition, not the existence or target class of the transformation.
+
+## GUARD25/class 0x20
+
+Class `0x20` remains visually unidentified. Current profile:
+
+- strength 255;
+- generic observed setup state `07`, next-state `02`, strategy 0;
+- score 50;
+- outside explicit player-damage resistance jump table `0x0C..0x1F`;
+- no confirmed dedicated alert/attack/death SFX;
+- no confirmed normal MAP spawn.
+
+Best current classification: cut/unfinished/fallback class, INFERRED. Search every writer of `OBJECT+06 = 0x20` and orphan SEQDEF/IMG/SND references before naming it.
 
 ## Definition and OBJECT indirection
 
-GUARD state is per-instance. `GUARD+08` links the GUARD to an OBJECT record; the OBJECT carries class/resource/runtime information, including `OBJECT+06 class` used by combat and diagnostics.
-
-This matters when reconstructing AI:
+GUARD state is per-instance. `GUARD+08` links to an OBJECT record, which carries class/resource/runtime information including `OBJECT+06` and world position.
 
 ```text
 GUARD instance state/timers/strategy
@@ -167,23 +190,17 @@ GUARD instance state/timers/strategy
                 +--> class / world position / animation-resource state
 ```
 
-The engine therefore separates instance AI state from class/object data rather than storing every behavioral property directly in the 26-byte GUARD.
+Relevant new OBJECT audit point: `OBJECT+18` is read by player->GUARD damage as a projected/view-space vertical baseline; it is not world Y.
 
 ## 2026-09-22 comparative AI audit: patrol, octants, alert states
 
-A comparison against the public `BBQGiraffe/OpenNitemare3D` reimplementation provides several useful search fingerprints. These are **heuristics only**, not proof of original NITE3W behavior; the public port is incomplete and contains placeholders.
+A comparison against the public `BBQGiraffe/OpenNitemare3D` reimplementation provides search fingerprints only; it is not proof of original behavior.
 
-### Eight-direction patrol is a strong search target
+### Eight-direction patrol search target
 
-The public code models eight compass directions:
+The public code models N, NE, E, SE, S, SW, W, NW. This aligns with original `octant`/`resoct` fields at `GUARD+11/+12` and motivates tracing every 0..7 write/range check.
 
-```text
-N, NE, E, SE, S, SW, W, NW
-```
-
-and directional patrol actors change direction from map turning-point tiles. This aligns closely with the original executable diagnostic fields `octant` and `resoct` at `GUARD+11/+12` and raises the priority of tracing all 0..7 writes and mask/range checks around these fields.
-
-Target reverse-engineering fingerprint:
+Target fingerprint:
 
 ```text
 MAP/WALL tile class
@@ -193,21 +210,13 @@ MAP/WALL tile class
     -> movement delta lookup
 ```
 
-Finding this chain could identify patrol state, direction encoding, movement vectors and a map-trigger mechanism at once.
-
 ### Patrol and chase may use different movement abstractions
 
-The public reimplementation uses eight directions for directional patrol but only four cardinal neighbors when selecting a chase step. This must not be copied into the reconstruction until verified in the original EXE. It does, however, define a concrete test:
-
-- inspect movement callers for whether chase candidates are 4-way or 8-way;
-- compare those callers with the `octant`/`resoct` path;
-- determine whether octant is visual orientation only, patrol motion, or both.
+The public reimplementation uses eight directions for directional patrol but four cardinal neighbors for chase selection. Do not copy this until verified; instead compare original movement callers and octant/resoct use.
 
 ### Alert/roar candidate state
 
-The public reimplementation uses a high-level sequence `idle -> roar/alert -> chase`, with a class-specific alert sound and a short timer. The original executable has 22 lower-level states, so a likely original alert state should be identified by behavior rather than by copying the public enum.
-
-Search for a state handler with this signature:
+Search original handlers for:
 
 ```text
 entry from detection/idle
@@ -216,96 +225,93 @@ entry from detection/idle
     -> transition into active movement/chase state
 ```
 
-This is now a high-value semantic assignment target for states `02..14`.
-
 ### Public health/damage code is not authoritative
 
-The public code initializes guard health to `100` and its plasma path can directly force a `dead` state. These are implementation placeholders and conflict with the original EXE evidence that newly created GUARD strength is `255` and that weapon/class damage transformation determines practical toughness. Therefore no HP values from the public port are to be imported into this audit.
+The public port's 100 HP initialization conflicts with original EXE evidence for 255. No HP values from that port should be imported.
 
 ## Expanded AI reconstruction TODO
 
 ### P0 — architecture and combat
 
-1. Complete the full 26-byte GUARD field map; resolve `+14..15` and `+17..19`.
-2. Build the complete write/read XREF graph for `GUARD+0B state` and record every transition condition.
-3. Recover all 22 state handlers `00..15` and assign semantic names only after evidence from movement, sound, animation and combat callers.
-4. Prove the exact role of `GUARD+0C nextstate` beyond confirmed pain/state-return use; test whether it acts as a generic one-level resume-state mechanism.
-5. Enumerate every strategy value and build a `strategy -> reachable states / special transitions` matrix.
-6. Search for a common `SetGuardState`-style helper or data-driven state-definition table.
-7. Audit state-table candidates with 22 entries or 22 pointers and look for fields resembling handler, timer, sequence, sound or next-state.
-8. Trace all writes to `GUARD+10 strength`; preserve the verified initial value 255 unless new executable evidence proves class-specific replacement.
-9. Recover the full player-weapon x GUARD/OBJECT-class damage transform, including immunities/resistances/special cases.
-10. Test whether projectile travel time/distance or impact distance participates in the final damage calculation.
-11. Fully trace difficulty scaling for both player->guard and guard->player damage plus AI timers.
+1. Complete the 26-byte GUARD field map; resolve `+14..15` and `+17..19`.
+2. Build complete read/write XREF graph for `GUARD+0B state`.
+3. Assign state names only after original movement/sound/animation evidence.
+4. Prove complete role of `nextstate` beyond pain-return use.
+5. Enumerate every strategy value and reachable-state matrix.
+6. Search for a common SetGuardState-style helper or data-driven table.
+7. Audit 22-entry table candidates for handler/timer/sequence/sound/next-state fields.
+8. Preserve verified fresh strength 255 unless new executable evidence proves replacement.
+9. Keep the recovered player-weapon x class damage matrix synchronized with AI docs.
+10. Trace exact influence of projected geometry/distance on damage through `OBJECT+18`.
+11. Keep difficulty scaling synchronized across both damage directions and timers.
 
 ### P1 — sensing and movement
 
-12. Trace every read/write of `GUARD+11 octant` and `GUARD+12 resoct`; identify direction encoding and 0..7 transforms.
-13. Find direction delta tables and fixed-point/cardinal/diagonal movement constants.
-14. Search the original MAP/WALL handling for 8-way patrol turning-point behavior.
-15. Determine whether patrol and chase use separate movement algorithms/profiles.
-16. Recover collision response after failed movement: retry axis, choose alternate octant, randomize, stop, or invoke special action.
-17. Recover exact pursuit logic toward the player; determine whether there is pathfinding or greedy/local steering only.
-18. Recover LOS trace and all MAP/WALL reads used by guard detection.
-19. Recover FOV/octant-facing checks and whether enemies can detect behind themselves.
-20. Recover detection distance/range thresholds by class/strategy.
-21. Search weapon-fire/player-noise paths for guard alert propagation or hearing logic.
-22. Identify the AI RNG source and thresholds used for attack, movement, direction changes, reaction delays or sound variation.
-23. Recover exact attack decision chain: visibility, distance, strategy, timer, RNG and class gates.
-24. Recover attack cooldown/cadence and convert timer units into real game-time units.
-25. Determine whether distant guards sleep/deactivate or whether all active guards receive every AI tick.
-26. Determine guard-to-guard collision rules and whether guards can block or overlap each other.
-27. Determine whether guards share alerts or whether detection is entirely per-instance.
-28. Determine whether chase preserves a last-known player position after LOS is lost.
-29. Determine how doors, secret walls, push walls and teleporters affect guard movement and state.
+12. Trace every read/write of octant and resoct; identify 0..7 direction encoding.
+13. Find direction delta tables and movement constants.
+14. Search MAP/WALL handling for patrol turning-point behavior.
+15. Determine whether patrol and chase use separate movement profiles.
+16. Recover collision response after failed movement.
+17. Recover pursuit logic/pathfinding vs greedy steering.
+18. Recover LOS trace and MAP/WALL reads.
+19. Recover FOV/facing checks.
+20. Recover class/strategy detection ranges.
+21. Search weapon-fire/player-noise paths for hearing/alert propagation.
+22. Identify AI RNG source and thresholds.
+23. Recover attack decision chain.
+24. Recover attack cooldown/cadence in real time.
+25. Determine distant-guard sleep/deactivation behavior.
+26. Determine guard-to-guard collision/overlap rules.
+27. Determine shared-alert behavior.
+28. Determine last-known-player behavior after LOS loss.
+29. Determine AI interaction with doors, secret walls, push walls and teleports.
 
 ### P2 — reactions, animation, sound and specials
 
-30. Keep state `0x15` bound to pain/hit reaction, but enumerate every writer of `0x15` to exclude broader interrupt semantics.
-31. Recover death-state chain: lethal hit, dying animation, corpse/removal and any state/resource conversion.
-32. Bind each state to exact animation/sequence data and frame timing.
-33. Bind alert/attack/pain/death sounds to original SND.DAT call sites and separate abstract sound request IDs from final SND indexes.
-34. Reconstruct Dracula's special death/transformation path to Bat without altering the confirmed zero score constant.
-35. Reconstruct GUARD26 dancers as a possible scripted/event actor path and identify class replacement mechanics.
-36. Reconstruct Dr. Hamerstein boss-specific decisions, timings, attacks and death behavior.
-37. Recover complete behavioral profiles for Demon, Greenie, Goldie, Tall Slim Robot and Trashcan Robot.
-38. Determine enemy-projectile friendly-fire behavior and whether one guard can damage another.
-39. Recover any class-specific environmental reactions or special wall/event triggers.
+30. Enumerate every writer of pain state `0x15`.
+31. Recover full death chain: dying animation, corpse/removal and conversions.
+32. Bind each state to sequence/frame timing.
+33. Bind alert/attack/pain/death sounds to original SND.DAT call sites.
+34. **Dracula target updated:** class transform `0x11 -> 0x14` and HP/state reset are resolved; finish resource/sequence/sound/corpse semantics.
+35. Reconstruct GUARD26 dancer script and class replacement mechanics.
+36. Reconstruct Hamerstein boss decisions, vulnerability state, attacks and death behavior.
+37. Recover profiles for Demon, Greenie, Goldie, Tall Slim Robot and Trashcan Robot.
+38. Determine enemy-projectile friendly fire.
+39. Recover class-specific environmental reactions/special triggers.
 
 ### P3 — hidden / unused behavior
 
-40. Classify zero-XREF or unreachable state IDs, strategy values and guard classes.
-41. Cross-reference unused IMG sequences against guard/state definitions for cut animations or enemies.
-42. Cross-reference unused SND.DAT entries against AI/sound dispatchers for cut alert/attack/death behavior.
-43. Search dead/debug code for developer AI modes, test guards, forced-state controls or instrumentation.
-44. Determine the hard maximum number of active guards and whether the 100-entry GUARD pool is also the practical active-AI limit.
-45. Search for map-event code that writes guard state/strategy/class directly, especially around dancer and transformation cases.
+40. Classify unreachable state IDs, strategy values and guard classes.
+41. Cross-reference unused IMG sequences against guard/state definitions.
+42. Cross-reference unused SND entries against AI dispatchers.
+43. Search dead/debug code for AI test modes/instrumentation.
+44. Determine practical active-AI limit vs 100-entry GUARD pool.
+45. Search map-event code that writes state/strategy/class directly, especially dancer, Dracula morph and GUARD25 cases.
 
 ## Immediate next audit order
 
-The highest-yield sequence is now:
-
 ```text
+GUARD25/class 0x20 writers
+    -> orphan sequence/IMG/SND binding
+Dracula 0x11->0x14 resource chain
+    -> final corpse/removal path
 GUARD+0B all writes/reads
     -> transition graph
-    -> common SetState/state-table search
     -> strategy matrix
     -> octant/resoct movement chain
-    -> patrol turning-point map switch
     -> LOS/detection
-    -> damage matrix + distance/difficulty transforms
+    -> attack timing/projectiles
     -> sound/animation bindings
 ```
 
-The purpose of the TODO is not to force labels onto unknowns. Each item should move from `UNKNOWN` -> `PARTIAL` -> `VERIFIED_EXE` only when supported by original executable/data evidence.
-
 ## High-priority remaining AI work
 
-1. Assign exact semantic names to states `02..14` only after animation/sound/movement XREFs are paired.
-2. Recover all strategy values and their transition differences, not only special strategies 3 and 5.
-3. Trace GUARD movement writes to OBJECT X/Y to obtain exact per-class speed/cadence.
-4. Recover sight/FOV/LOS/hearing and the Omnificent hostility gate.
-5. Recover exact attack scheduling and enemy/projectile producer identities.
-6. Bind alert/attack/pain/death sound IDs directly to original SND.DAT call sites.
-7. Resolve GUARD13/GUARD25 identity/use and the separate GUARD26 dancer script.
-8. Finish the unresolved tail fields of the 26-byte GUARD record.
+1. Assign exact semantic names to states `02..14` only after original XREF evidence.
+2. Recover all strategy values and transition differences.
+3. Derive exact per-class movement speed/cadence.
+4. Recover sight/FOV/LOS/hearing and Omnificent hostility gate.
+5. Recover exact attack scheduling and projectile identities.
+6. Bind alert/attack/pain/death sound IDs to original SND.DAT call sites.
+7. Resolve GUARD25 reachability/identity and GUARD26 dancer script.
+8. Finish unresolved tail fields of the 26-byte GUARD record.
+9. Finish Dracula-Bat resource/sound/corpse chain while preserving resolved class/HP/state facts.
