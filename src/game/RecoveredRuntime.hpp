@@ -21,6 +21,10 @@ inline constexpr std::size_t kEpisode2Levels = 10;
 inline constexpr std::size_t kEpisode3Levels = 10;
 inline constexpr int kWorldUnitsPerTile = 64;                // coord >> 6
 
+// Structural runtime/save evidence also exposes a 4096-byte 64x64-sized
+// cell-state/visibility-like block. Exact bit semantics remain PARTIAL.
+inline constexpr std::size_t kRuntimeCellStateBytes = 4096;
+
 // Important distinction: 11/10/10 are the supplied archive payload counts, not
 // a proven universal MAP-format ceiling. Historical MapEdit sources support a
 // larger editor MAX_LEVELS; the original game executable's absolute archive
@@ -51,6 +55,7 @@ inline constexpr std::uint16_t kWandAmmoGlobal = 0x4C44;
 inline constexpr std::uint16_t kOmnipotentGlobal = 0x4BE5;
 inline constexpr std::uint16_t kPlayerWorldXGlobal = 0x4BF6;
 inline constexpr std::uint16_t kPlayerWorldYGlobal = 0x4BF8;
+inline constexpr std::uint16_t kEpisodeBossGateGlobal = 0x7E52; // semantic PARTIAL; Hamerstein checks value 3
 
 // Difficulty value ordering is supported independently by player->guard
 // damage, guard->player damage and GUARD timer scaling.
@@ -100,6 +105,18 @@ inline constexpr std::size_t kProjectedSpriteStride = 18;
 // Correction retained explicitly for audit history: older arithmetic guesses
 // of OBJECT=80 B and GUARD=98 B were wrong. Direct indexing and USER.SAV block
 // sizes prove OBJECT=28 B and GUARD=26 B.
+
+// 28-byte OBJECT anchors -----------------------------------------------------
+inline constexpr std::size_t kObjectClassOffset = 0x06;
+inline constexpr std::size_t kObjectGuardIndexOffset = 0x07;
+inline constexpr std::size_t kObjectMapBindingOffset = 0x0C;
+inline constexpr std::size_t kObjectWorldXOffset = 0x10;
+inline constexpr std::size_t kObjectWorldYOffset = 0x12;
+inline constexpr std::size_t kObjectRenderSortAOffset = 0x14; // semantic PARTIAL
+inline constexpr std::size_t kObjectRenderSortBOffset = 0x16; // semantic PARTIAL
+// Read by damage producer as projected/view-space vertical baseline; writer
+// semantics still PARTIAL. Explicitly not world Y.
+inline constexpr std::size_t kObjectProjectedDamageBaselineOffset = 0x18;
 
 // Renderer / viewport --------------------------------------------------------
 inline constexpr int kFramebufferWidth = 320;
@@ -188,8 +205,33 @@ inline constexpr std::uint8_t kGuardInitialStrength = 0xFF;
 inline constexpr std::uint8_t kGuardPainState = 0x15;
 inline constexpr std::size_t kGuardStateCount = 0x16;        // states 00..15
 
-// Per-kill score switch covers GUARD1..25. GUARD13/GUARD25 identity remains
-// unknown; GUARD26/Dancers is outside the switch and falls back to 0.
+// Recovered runtime classes used by combat/death dispatch.
+inline constexpr std::uint8_t kGuardClassBat = 0x08;
+inline constexpr std::uint8_t kGuardClassDracula = 0x11;
+inline constexpr std::uint8_t kGuardClassDraculaBat = 0x14;  // transformed second phase
+inline constexpr std::uint8_t kGuardClassPenelope = 0x15;
+inline constexpr std::uint8_t kGuardClassHamerstein = 0x16;
+inline constexpr std::uint8_t kGuardClassCannon = 0x19;
+inline constexpr std::uint8_t kGuardClassGhost = 0x1A;
+inline constexpr std::uint8_t kGuardClassAlien1 = 0x1E;
+inline constexpr std::uint8_t kGuardClassAlien2 = 0x1F;
+inline constexpr std::uint8_t kGuardClass25 = 0x20;           // identity/reachability PARTIAL
+
+// Dracula lethal phase-1 transition anchors.
+inline constexpr std::uint8_t kDraculaMorphStrength = 0xFF;
+inline constexpr std::uint8_t kDraculaMorphState = 0x08;
+inline constexpr std::uint8_t kDraculaMorphNextState = 0x02;
+inline constexpr std::uint16_t kDraculaMorphTimer = 1;
+inline constexpr std::uint8_t kDraculaMorphSequenceValue = 0x23;
+inline constexpr std::uint8_t kDraculaMorphEventSoundRequest = 0x22;
+
+// Hamerstein combat special branch.
+inline constexpr std::uint16_t kHamersteinGateValue = 3;
+inline constexpr int kHamersteinBaseDamageWhenVulnerable = 3;
+
+// Per-kill score switch covers GUARD1..25. GUARD13 is the transformed
+// Dracula-Bat second phase. GUARD25 remains unidentified; GUARD26/Dancers is
+// outside the switch and falls back to 0.
 inline constexpr std::array<int, 26> kGuardScorePoints = {
     25,    // GUARD1  Bat
     75,    // GUARD2  Frankenstein
@@ -200,10 +242,10 @@ inline constexpr std::array<int, 26> kGuardScorePoints = {
     200,   // GUARD7  Vampira
     100,   // GUARD8  Baddie #1
     100,   // GUARD9  Baddie #2
-    0,     // GUARD10 Dracula (scripted death may transform into Bat)
+    0,     // GUARD10 Dracula phase 1
     150,   // GUARD11 Cemetery Gargoyle
     150,   // GUARD12 Garden Gargoyle
-    200,   // GUARD13 unknown/unused identity
+    200,   // GUARD13 Dracula-Bat internal second form
     -1000, // GUARD14 Penelope
     1000,  // GUARD15 Dr. Hamerstein
     100,   // GUARD16 Tall slim robot
@@ -215,7 +257,7 @@ inline constexpr std::array<int, 26> kGuardScorePoints = {
     250,   // GUARD22 Demon
     250,   // GUARD23 Alien #1
     200,   // GUARD24 Alien #2
-    50,    // GUARD25 unknown/unused identity
+    50,    // GUARD25 unresolved/cut/fallback identity
     0      // GUARD26 Dancers / default score path
 };
 
@@ -232,7 +274,7 @@ inline constexpr int kAmmoForcedValue = 50;
 inline constexpr int kAmmoThreshold = 100;
 
 // Known level/script event anchors ------------------------------------------
-inline constexpr std::uint8_t kEventEnteredTile = 0x16;
+inline constexpr std::uint8_t kEventEnteredTile = 0x16;      // tile-change/walk-over path, distinct from USE
 inline constexpr std::uint8_t kEventSetWeaponJam = 0x47;
 inline constexpr std::uint8_t kEventClearWeaponJam = 0x48;
 
