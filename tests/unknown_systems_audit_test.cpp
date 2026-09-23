@@ -4,9 +4,13 @@
 
 int main() {
     using namespace nitemare3d::re;
-    static_assert(kUnknownSystemTargets.size() == 29);
+    static_assert(kUnknownSystemTargets.size() == 30);
     static_assert(countByEvidence(Evidence::VerifiedExe) >= 2);
     static_assert(countByEvidence(Evidence::Todo) >= 5);
+    assert(kUnknownSystemTargets[2].area == AuditArea::SequenceEvents);
+    assert(kUnknownSystemTargets[2].evidence == Evidence::Todo);
+    assert(kUnknownSystemTargets[3].area == AuditArea::SequenceEvents);
+    assert(kUnknownSystemTargets[3].evidence == Evidence::Partial);
     assert(countByEvidence(Evidence::VerifiedData) >= 1);
     assert(countByEvidence(Evidence::Partial) >= 8);
     assert(kUnknownSystemTargets[0].anchor[0] != '\0');
