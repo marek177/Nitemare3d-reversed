@@ -24,6 +24,7 @@ int main() {
 
     static_assert(sizeof(VecRecord) == 28);
     static_assert(offsetof(VecRecord, x1) == 0x0C);
+    static_assert(sizeof(WallSpanRecord) == 20);
 
     const auto tables = makeWallSamplingTables(200);
     assert(tables.step16_16[1] == 0x400000U);
@@ -78,6 +79,39 @@ int main() {
 
     texVec.orientation = 0;
     assert(selectTextureU(texVec, 8, 64, 64) == 63); // class 2 horizontal special case
+
+    WallSpanRecord span{};
+    span.xStart = 12;
+    span.xEnd = 18;
+    assert(initializeSpanInterpolation(span, 10, 20, 20, 40, 20));
+    assert(span.yStep16_16 == 0x20000);
+    assert(span.yAtStart == 24);
+    assert(span.yAtEnd == 36);
+    assert(span.yAccumulator16_16 == 0x40000U);
+
+    span.xStart = 2;
+    span.xEnd = 6;
+    assert(initializeSpanInterpolation(span, 2, 25, 7, 25, 10));
+    assert(span.yStep16_16 == 0);
+    assert(span.yAtStart == 25);
+    assert(span.yAtEnd == 25);
+    assert(span.yAccumulator16_16 == 15U * 65536U);
+
+    span.xStart = 3;
+    span.xEnd = 3;
+    assert(initializeSpanInterpolation(span, 3, 10, 3, 20, 5));
+    assert(span.yStep16_16 == 0);
+    assert(span.yAtStart == 10);
+    assert(span.yAtEnd == 20);
+    assert(span.yAccumulator16_16 == 5U * 65536U);
+
+    span.xStart = 1;
+    span.xEnd = 3;
+    assert(initializeSpanInterpolation(span, 0, 40, 4, 32, 32));
+    assert(span.yStep16_16 == -0x20000);
+    assert(span.yAtStart == 38);
+    assert(span.yAtEnd == 34);
+    assert(span.yAccumulator16_16 == 6U * 65536U);
 
     std::array<std::uint8_t, 64> textureColumn{};
     for (std::size_t i = 0; i < textureColumn.size(); ++i) {
