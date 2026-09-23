@@ -144,10 +144,12 @@ between all sequence values and visible WALLS assets still need mapping.
 
 - `src/renderer/Win16WallRasterCore.hpp`: 28-byte VEC view, exact owner winner
   predicates, exact `FUN_1010_6422` texture-U cases, both sampling-table
-  initializers, and the bounded indexed-column loop.
+  initializers, `FUN_1010_6152` span interpolation, and the bounded
+  indexed-column loop.
 - `tests/win16_wall_raster_core_test.cpp`: checks all eight owner cases,
   strict tie behavior, texture-U orientations/classes, table values,
-  direct/remapped column writes, and invalid source clipping.
+  positive/negative/degenerate span interpolation, direct/remapped column
+  writes, and invalid source clipping.
 
 The new test compiles and runs with C++20 and `-Wall -Wextra -Wpedantic`.
 These checks validate the isolated routines; they do not establish pixel
@@ -181,8 +183,9 @@ separate comparison.
 2. Audit the remaining writes to VEC `+01/+02/+03/+08`, including the
    `FUN_1018_3C0C` effect and animation-table contents.
 3. Port MAP boundary extraction, four-list sorting, camera transform and
-   clipping, owner coverage, span interpolation, object ordering, and both
-   wall/sprite resource paths into the runtime.
+   clipping, owner coverage/span coalescing, object ordering, and both
+   wall/sprite resource paths into the runtime; the recovered span setup still
+   needs to be wired into that pipeline.
 4. Recover exact palette-remap inputs and resource-loader edge behavior.
 5. Capture deterministic frames from the original Win16 executable with the
    same map, camera, palette, and display route; compare indexed framebuffer
