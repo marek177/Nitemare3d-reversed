@@ -153,6 +153,27 @@ The new test compiles and runs with C++20 and `-Wall -Wextra -Wpedantic`.
 These checks validate the isolated routines; they do not establish pixel
 parity for a complete game frame.
 
+## DOS E-20 cross-build check
+
+The DOS E-20 Ghidra export provides independent matches for the sampler and
+texture-U logic:
+
+- `FUN_1000_1560` fills a 511-entry `0x400000 / n` table at DS `0x2656`.
+- `FUN_1000_1590` reads the clipping-height word at `0x4546` and computes the
+  same divide-then-half clipped start, storing its byte and fraction at
+  `0x2E52+n` and `0x3054+2*(n-1)`.
+- `FUN_1000_22CA` follows the same endpoint-proximity, flag `0x08`, orientation,
+  render-class `2`, and final `width-1` mask branches as Win16
+  `FUN_1010_6422`.
+- `FUN_1000_241E` has the corresponding timed wall-frame update, sequence-table
+  selector, and per-class branches of Win16 `FUN_1010_65A6`; its special
+  class-`0x2D` helper is DOS `FUN_1000_04BE`.
+
+This cross-check improves confidence in the shared logic while preserving the
+build-specific table addresses and backends. It does not prove the DOS and
+WinG paths emit identical pixels; their display and resource paths still need
+separate comparison.
+
 ## What remains before claiming full renderer parity
 
 1. Map the numeric `FUN_1010_6422` and animation-descriptor cases to every
