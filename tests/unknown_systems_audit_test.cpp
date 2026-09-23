@@ -4,7 +4,7 @@
 
 int main() {
     using namespace nitemare3d::re;
-    static_assert(kUnknownSystemTargets.size() == 26);
+    static_assert(kUnknownSystemTargets.size() == 27);
     static_assert(countByEvidence(Evidence::VerifiedExe) >= 2);
     static_assert(countByEvidence(Evidence::Todo) >= 5);
     assert(countByEvidence(Evidence::VerifiedData) >= 1);
