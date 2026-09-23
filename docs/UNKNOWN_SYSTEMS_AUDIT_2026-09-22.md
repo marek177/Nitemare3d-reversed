@@ -249,3 +249,42 @@ The 64-byte block at USER.SAV+0xD5A3 mirrors runtime bytes 0xA65E..0xA69D. The a
 Selector zero is a no-op. For a first nonzero selector, the cache marks that selector before scanning guards. It changes guards with strategy 0, matching guard selector at +0x0E, and state 7 or 8: a 0..7 simulation-step delay is stored at +0x06, then state becomes 1. This handler has no distance or LOS test; the adjacent attack-sound call is a separate operation. Cache writes are saved; level initialization clears them, and the save-load path restores the saved bytes afterward.
 
 The same mechanism appears in Win16 1.8 under FUN_1010_75C0/FUN_1010_8A62 and in Win16 1.10 under FUN_1010_7664/FUN_1010_8B06. Its behavioral purpose and room/door grouping remain partially inferred. See [the detailed cache analysis](../analysis/nite3w_guard_wake_cache_2026-09-23.md).
+
+
+---
+
+## 2026-09-23 addendum: DOS EXEPACK, RNG, and RTC timing
+
+### Binary evidence
+
+- DOS input `N3D-UNFU(1).exe`: SHA-256 `552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301`.
+- EXEPACK-expanded image `N3D-DOS-unpacked.img`: SHA-256 `e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297`.
+- Rebuilt MZ image: SHA-256 `45f0035a4480313856b41befc6e3a8a9a2ecaa109c72400c7de9ba07981b25d8`.
+- Win16 NE `nite3w(10).exe`: SHA-256 `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481`.
+
+### EXEPACK correction
+
+The DOS MZ is packed with an EXEPACK-style stream. Its EXEPACK header contains signature `RB`, original entry `11EE:0018`, original `SS:SP=3574:0800`, and an expanded length of `0x29D60` bytes. The packed stream uses backward `B0` fill and `B2` literal commands and an internal relocation table with 1,670 entries. Consequently, MZ `e_crlc=0` does not mean the unpacked program has no relocations, and raw file offsets cannot be used as addresses for the expanded code. The header and unpack algorithm are documented by [unEXEPACK](https://github.com/w4kfu/unEXEPACK); a technical overview is available from [Pushbx](https://pushbx.org/ecm/doc/insref.htm#EXEPACK).
+
+### RNG: formula and seed confirmed in DOS and Win16
+
+DOS `1000:FD40` far-calls `11EE:31F8`. In the expanded image, the routine updates a 32-bit state with:
+
+```text
+state[n+1] = (state[n] * 214013 + 2531011) mod 2^32
+result[n]  = (state[n+1] >> 16) & 0x7FFF
+```
+
+The setter at `11EE:31E6` stores the low state word at `DS:24B8` and clears `DS:24BA`. Wrapper `FD46` passes seed 1; initialized data also starts at 1. The first output is 41 by direct calculation. No direct clock-derived seed write was found in the examined DOS image.
+
+The Win16 binary contains the same multiplier, increment and high-15-bit return. Its state is at `DS:0A90/0A92` in NE auto-data segment 10 and also initializes to 1. Static evidence therefore establishes identical algorithms and initial states, while runtime sequence parity still depends on call order.
+
+Modulo reductions are now quantified over the full LCG period: `&1`, `&7` and `%8` are uniform. For `%80`, residues 0–47 occur 410 times per 32,768 outputs and 48–79 occur 409 times; `%62` has 32 residues at 529 and 30 at 528; `%36` has 8 at 911 and 28 at 910; `%25` has 18 at 1,311 and 7 at 1,310; `%7` has one residue at 4,682 and six at 4,681; `%240` has 128 residues at 137 and 112 at 136. The game’s observed RNG result is always nonnegative, so signed versus unsigned remainder gives the same result at these sites.
+
+The remaining RNG questions are chronological call order, meaning of globals `0x3630/0x3632/0x3634`, and resets across level/menu/LOAD/DEMO transitions. DOS multiply helpers `11EE:3AD8` and Win16 `6DA3:7118` are consistent with 32-bit multiply but their bodies have not been independently mapped.
+
+### RTC timing
+
+DOS `FUN_1000_bd34` preserves register A's high nibble and sets the low nibble to 6, installs `11EE:0BCC` on `INT 70h`, enables register B's periodic-interrupt bit `0x40`, and unmasks IRQ8. Under the standard 32.768-kHz MC146818 time base, rate-select 6 is 1024 Hz (976.562 µs); the exact base is conditional because the high nibble is preserved. The MC146818 rate table lists this mapping in [the register definitions](https://sources.debian.org/src/gxemul/0.7.0%2Bdfsg-1/src/include/thirdparty/mc146818reg.h/#L354).
+
+The handler body at `11EE:0BCC`, status-register-C acknowledgement, and relationship to the 25-Hz game tick remain unresolved. Next evidence needed: map the timer handler and helper addresses in the expanded image, then capture a DOS trace alongside Win16 for the same DEMO and level transitions.
