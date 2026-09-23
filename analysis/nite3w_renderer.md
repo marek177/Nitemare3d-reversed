@@ -456,7 +456,9 @@ The remaining uncertainty is the mapping from these numeric classes/flags to all
 
 ## FUN_1010_65A6
 
-Called from the wall pass when a resource/descriptor condition is present. Current cross-thread evidence makes it a high-priority animation/frame/timer/resource helper. It should not yet be given a definitive final name until all writes to VEC animation fields and descriptors are paired.
+The instruction-level state update is reconstructed in the [2026-09-23 raw-assembly pass](nite3w_renderer_2026-09-23.md). It compares the 32-bit game clock at DS `0x0096` with the deadline at VEC `+08`; when due, it increments frame `+03`, applies special behavior for render classes `0x07`, `0x2D`, and `0x2F`, and either wraps through the descriptor frame count or selects among an eight-entry sequence using `FUN_1018_32D2() & 7`. It schedules the next deadline as current clock plus the descriptor interval at `+02`.
+
+The descriptor row is 8 bytes at `0x51AC + textureSet*8`; observed fields are frame count at `+00`, interval at `+02`, and sequence-table offset at `+04`. The remaining task is to map every row to its WALLS asset and trace the repeated `FUN_1018_3C0C` side effect.
 
 ## Global 0x7E60
 
@@ -510,7 +512,7 @@ Do not describe Nitemare 3-D as a simple Wolf3D renderer clone.
 
 # 16. Current highest-value open renderer targets
 
-1. Trace `FUN_1010_65A6` and the writes to VEC `+01/+02/+03/+08` to recover animation timing and sequence selection.
+1. Map the recovered `FUN_1010_65A6` descriptor rows, VEC `+01/+02` data and `FUN_1018_3C0C` side effect to visible wall resources.
 2. Map every `WALLS.* wall ID -> flags/property -> renderClass -> texture descriptor -> renderer branch` and validate the special `FUN_1010_6422` cases against source assets.
 3. Port the recovered MAP boundary extraction, four-list traversal, camera projection/near clipping, owner coverage and span interpolation into the runtime.
 4. Finish sprite/object ordering, masked-wall interaction, palette-remap generation inputs and resource-loader edge behavior.
