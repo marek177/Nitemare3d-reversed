@@ -14,9 +14,24 @@ In Win16 1.10, `FUN_1010_7B56` dispatches guard state `+0x0B`. In state 7 it upd
 - state `+0x0B = 0x13`;
 - movement components `+0x13/+0x14` from two lookup tables indexed by facing `+0x11`.
 
+The tables are recoverable from the supplied 1.10 NE executable (SHA-256 `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481`). NE segment 10 begins at file offset `0x2C040`; bytes corresponding to data offsets `0x00E8..0x00F7` are `00 08 08 00 00 F8 F8 00 F8 00 00 08 08 00 00 F8`. The dispatcher reads the first eight as X and the second eight as Y; signed values are:
+
+| Facing index | X step | Y step |
+|---:|---:|---:|
+| 0 | 0 | -8 |
+| 1 | +8 | 0 |
+| 2 | +8 | 0 |
+| 3 | 0 | +8 |
+| 4 | 0 | +8 |
+| 5 | -8 | 0 |
+| 6 | -8 | 0 |
+| 7 | 0 | -8 |
+
+Thus eight facings map to four cardinal movement vectors, with neighboring facing indices sharing a vector. If all seven movement updates succeed, the displacement is 56 internal units, or seven-eighths of a 64-unit map cell. A cell boundary can still be crossed when the guard begins close to that edge.
+
 State 13 calls `FUN_1010_7A44`. That routine decrements the timer. At the point where the remaining timer is 8, it requests a facing-dependent sound through the sound helper. During the following seven updates it computes a candidate position from the current coordinates plus the stored movement components. It checks the candidate map cell and occupancy before updating the object coordinates and the map's occupant bookkeeping. When the timer expires, it clears strategy `+0x0A` and sets state 2.
 
-The code therefore proves a delayed, short movement sequence tied to strategy 3 and the guard's facing. The actual movement vector values are held in data tables and have not been decoded here; calling this a flank, retreat, or named patrol behavior would go beyond the evidence.
+The code therefore proves a delayed, short cardinal movement sequence tied to strategy 3 and the guard's facing. Each proposed update can be blocked by map-cell occupancy. Calling the behavior a flank, retreat, or named patrol would go beyond the evidence.
 
 ## State 15: damage reaction and return state
 
@@ -32,7 +47,6 @@ Win16 1.8 has the same transitions in `FUN_1010_7AB2`, starts state 13 in `FUN_1
 
 ## Remaining proof
 
-1. Decode the two facing-indexed movement tables at data offsets `0x00E8` and `0x00F0` for this executable build.
-2. Resolve the class-specific damage reaction sequence selector and readers of byte `+0x12`.
-3. Trace all writers into states 7, 13 and 15, then classify affected guard/object classes from the map data.
-4. Compare the same transitions with DOS v2.0 raw code and a runtime capture, including occupied/blocked candidate cells and the sound event.
+1. Resolve the class-specific damage reaction sequence selector and readers of byte `+0x12`.
+2. Trace all writers into states 7, 13 and 15, then classify affected guard/object classes from the map data.
+3. Compare the same transitions with DOS v2.0 raw code and a runtime capture, including occupied/blocked candidate cells and the sound event.
