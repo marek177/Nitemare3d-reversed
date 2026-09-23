@@ -22,6 +22,7 @@ Start with the consolidation and newest delta:
 - [`analysis/nite3w_core_function_map_2026-09-23.md`](analysis/nite3w_core_function_map_2026-09-23.md) — DOS/Win16 core-function coverage map
 - [`analysis/nite3w_projectile_pool_2026-09-23.md`](analysis/nite3w_projectile_pool_2026-09-23.md) — projectile record, collision, save and render details
 - [`analysis/nite3w_img_seqdef_2026-09-23.md`](analysis/nite3w_img_seqdef_2026-09-23.md) — original IMG directory and sequence-bank loading, with the low-bank overlap still unresolved
+- [`analysis/nite3w_guard_reaction_2026-09-23.md`](analysis/nite3w_guard_reaction_2026-09-23.md) — Win16 guard state 13 movement and state 15 hit-reaction transitions, cross-checked in 1.8
 - [`docs/PROJECT_FINDINGS_DELTA_2026-09-22.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-22.md) — previous cross-session corrections
 - [`docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md`](docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md) — consolidated unknowns, priorities and evidence boundaries
 
