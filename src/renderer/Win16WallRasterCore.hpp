@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <bit>
 #include <cstddef>
 #include <cstdint>
 #include <span>
@@ -83,6 +84,71 @@ inline constexpr bool ownerConflictReplaces(const VecRecord& oldOwner,
     default:
         return false;
     }
+}
+
+constexpr std::int16_t subtract16(std::int16_t a, std::int16_t b) noexcept {
+    const auto bits = static_cast<std::uint16_t>(
+        static_cast<std::uint16_t>(a) - static_cast<std::uint16_t>(b));
+    return std::bit_cast<std::int16_t>(bits);
+}
+
+constexpr std::int16_t negate16(std::int16_t value) noexcept {
+    const auto bits = static_cast<std::uint16_t>(0U - static_cast<std::uint16_t>(value));
+    return std::bit_cast<std::int16_t>(bits);
+}
+
+// FUN_1010_6422 texture-U endpoint correction. Arithmetic that the 16-bit
+// binary performs in AX/CX is explicitly wrapped before signed comparisons.
+// Width normally equals 64, so the final operation applies mask 0x3F.
+inline constexpr std::uint16_t selectTextureU(const VecRecord& vec,
+                                              std::int16_t screenX,
+                                              std::int16_t alongWall,
+                                              std::uint16_t width) noexcept {
+    const bool nearLeft = subtract16(screenX, vec.screenX1) < 8;
+    const bool nearRight = subtract16(vec.screenX2, screenX) < 8;
+    const std::uint16_t mask = static_cast<std::uint16_t>(width - 1U);
+
+    if ((!nearLeft && !nearRight) || (vec.flags & 0x08U) != 0) {
+        return static_cast<std::uint16_t>(alongWall) & mask;
+    }
+
+    const std::int16_t length = (vec.orientation == 0 || vec.orientation == 1)
+        ? subtract16(vec.x2, vec.x1)
+        : subtract16(vec.y2, vec.y1);
+
+    if (vec.renderClass == 2 && (vec.orientation == 0 || vec.orientation == 3)) {
+        if (vec.orientation == 0) {
+            if ((nearRight && alongWall < 0) || screenX == vec.screenX2) {
+                return 0;
+            }
+            if ((nearLeft && length <= alongWall) || screenX == vec.screenX1) {
+                alongWall = subtract16(length, 1);
+            }
+        } else {
+            if ((nearLeft && alongWall >= 0) || screenX == vec.screenX1) {
+                alongWall = -1;
+            } else if ((nearRight && negate16(length) > alongWall) ||
+                       screenX == vec.screenX2) {
+                alongWall = negate16(length);
+            }
+        }
+    } else if (vec.orientation == 0 || vec.orientation == 2) {
+        if ((nearRight && alongWall >= 0) || screenX == vec.screenX2) {
+            alongWall = -1;
+        } else if ((nearLeft && negate16(length) > alongWall) ||
+                   screenX == vec.screenX1) {
+            alongWall = negate16(length);
+        }
+    } else if (vec.orientation == 1 || vec.orientation == 3) {
+        if ((nearLeft && alongWall < 0) || screenX == vec.screenX1) {
+            alongWall = 0;
+        } else if ((nearRight && length <= alongWall) ||
+                   screenX == vec.screenX2) {
+            alongWall = subtract16(length, 1);
+        }
+    }
+
+    return static_cast<std::uint16_t>(alongWall) & mask;
 }
 
 struct WallSamplingTables {
