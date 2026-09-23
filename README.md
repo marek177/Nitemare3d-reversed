@@ -1,6 +1,6 @@
 # Nitemare3D-Reversed — reconstruction v0.12
 
-**v0.12 update:** the 2026-09-23 all-audit sync identifies the Win16 player projectile pool (8 × 42-byte records at USER.SAV +0xC403), resolves the related 20-unit render-culling threshold, maps the SECRET-panel credential/link flags and shade-save tail, and adds the executable-confirmed fire damage values (100/10/2 HP per simulation update). Code models and tests live in `src/game/ProjectileRuntime.hpp` and `tests/projectile_runtime_test.cpp`; the consolidated delta is [here](docs/PROJECT_FINDINGS_DELTA_2026-09-23.md).
+**v0.12 update:** the 2026-09-23 audit maps the Win16 player projectile pool and save fields, and adds the executable-confirmed 100/10/2 HP fire damage values per simulation update. The IMG pass now separates the two 256-entry image directories from the two 90-byte sequence banks, preserves raw sequence records, and flags an unresolved overlap in the low bank. See [the IMG/seqdef audit](analysis/nite3w_img_seqdef_2026-09-23.md) and [the consolidated delta](docs/PROJECT_FINDINGS_DELTA_2026-09-23.md).
 
 **v0.11 update:** the 2026-09-23 raw-assembly pass resolves the Win16 renderer's occupied-column owner rules, texture-U corrections, 16.16 wall-column sampler, 16.16 span interpolation, and wall-animation update control flow; DOS E-20 contains matching texture-U/animation routines and independently confirms the sampler formulas. Findings are in [`analysis/nite3w_renderer_2026-09-23.md`](analysis/nite3w_renderer_2026-09-23.md); the standalone reference code is [`src/renderer/Win16WallRasterCore.hpp`](src/renderer/Win16WallRasterCore.hpp), with a CMake test target. The 2026-09-22 cross-thread consolidation and system audits remain linked below.
 
@@ -21,6 +21,7 @@ Start with the consolidation and newest delta:
 - [`docs/PROJECT_FINDINGS_DELTA_2026-09-23.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-23.md) — consolidated findings from all current audits
 - [`analysis/nite3w_core_function_map_2026-09-23.md`](analysis/nite3w_core_function_map_2026-09-23.md) — DOS/Win16 core-function coverage map
 - [`analysis/nite3w_projectile_pool_2026-09-23.md`](analysis/nite3w_projectile_pool_2026-09-23.md) — projectile record, collision, save and render details
+- [`analysis/nite3w_img_seqdef_2026-09-23.md`](analysis/nite3w_img_seqdef_2026-09-23.md) — original IMG directory and sequence-bank loading, with the low-bank overlap still unresolved
 - [`docs/PROJECT_FINDINGS_DELTA_2026-09-22.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-22.md) — previous cross-session corrections
 - [`docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md`](docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md) — consolidated unknowns, priorities and evidence boundaries
 
