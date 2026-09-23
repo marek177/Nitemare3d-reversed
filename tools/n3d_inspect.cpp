@@ -21,9 +21,28 @@ static void inspectMap(const fs::path& p) {
 }
 static void inspectImg(const fs::path& p) {
     const auto img = n3d::ImgArchive::load(p);
-    std::size_t nonZeroSlots = 0, exactFrameRefs = 0;
-    for (auto off : img.slotOffsets()) if (off != 0) { ++nonZeroSlots; if (img.frameAtExactOffset(off)) ++exactFrameRefs; }
-    std::cout << p.filename().string() << ": slots=" << img.slotOffsets().size() << ", nonZeroSlots=" << nonZeroSlots << ", frames=" << img.frames().size() << ", slotRefsToExactFrameStart=" << exactFrameRefs << ", firstData=0x" << std::hex << img.firstDataOffset() << std::dec << "\n";
+    std::size_t nonZeroWallSlots = 0, exactWallFrameRefs = 0;
+    std::size_t nonZeroObjectSlots = 0, exactObjectFrameRefs = 0;
+    for (auto off : img.wallSlotOffsets()) {
+        if (off != 0) {
+            ++nonZeroWallSlots;
+            if (img.frameAtExactOffset(off)) ++exactWallFrameRefs;
+        }
+    }
+    for (auto off : img.objectSlotOffsets()) {
+        if (off != 0) {
+            ++nonZeroObjectSlots;
+            if (img.frameAtExactOffset(off)) ++exactObjectFrameRefs;
+        }
+    }
+    std::cout << p.filename().string()
+              << ": wallSlots=" << img.wallSlotOffsets().size()
+              << ", wallRefs=" << nonZeroWallSlots << "/" << exactWallFrameRefs
+              << ", objectSlots=" << img.objectSlotOffsets().size()
+              << ", objectRefs=" << nonZeroObjectSlots << "/" << exactObjectFrameRefs
+              << ", frames=" << img.frames().size()
+              << ", seqdefBanks=" << (img.hasSequenceDefinitions() ? 2 : 0)
+              << ", firstData=0x" << std::hex << img.firstDataOffset() << std::dec << "\n";
 }
 static void inspectDat(const fs::path& p) {
     const auto dat = n3d::DatArchive::load(p);
