@@ -1,4 +1,4 @@
-# NITE3W.EXE renderer audit — consolidated 2026-09-22
+# NITE3W.EXE renderer audit — consolidated 2026-09-23
 
 This note records the current renderer reconstruction from the supplied Windows 3.1 executable. Addresses use logical NE `segment:offset` notation where available; Ghidra auto-names are retained for newly traced helpers. The authoritative target is NITE3W.EXE V1.10, SHA-256 `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481`.
 
@@ -250,9 +250,11 @@ Layout:
 
 When every active viewport column is covered, traversal can stop early. This is a major performance behavior and one of the reasons the renderer does not need a classic DDA ray for every x coordinate.
 
-### Still open
+### Resolved by raw-assembly audit (2026-09-23)
 
-The exact mathematical winner rule in occupied owner slots inside `FUN_1018_3564` remains one of the highest-value renderer TODOs.
+The occupied-slot decision in `FUN_1018_3564` is now translated from CS 1018:3564. It has eight cross-orientation cases, each using strict signed 16-bit endpoint comparisons; ties and same-orientation cases retain the old owner. The exact old/new orientation matrix and the C++ helper are recorded in [the dated raw-assembly pass](nite3w_renderer_2026-09-23.md) and `src/renderer/Win16WallRasterCore.hpp`.
+
+The function still has separate viewport clipping, empty-slot insertion, and owner-count logic. The recovered helper covers only the occupied-slot decision.
 
 ---
 
@@ -380,6 +382,12 @@ while (pixels--) {
 
 This proves 64-sample column source organization for this raster path. It does not prove that every IMG resource is 64×64.
 
+## 16.16 sampler tables (raw-assembly pass)
+
+`FUN_1010_2930` initializes 511 increments as `floor(0x400000 / n)`, giving a 16.16 source-texture step for each projected height n. A second initializer at CS 1010:2960, called from CS:5259, fills the clipped-start byte/fraction tables at DS:0x2C7F and DS:0x2E80. Its exact divide-then-shift order and address formulas are documented in [the dated raw-assembly pass](nite3w_renderer_2026-09-23.md). The word at DS:0x53E2 is an input; its standalone semantic label remains open.
+
+The new `src/renderer/Win16WallRasterCore.hpp` implements these tables and the WinG indexed-column stepping. The function operates on an already-selected texture column and does not replace the full scene renderer.
+
 ---
 
 # 11. Ceiling/floor
@@ -442,9 +450,9 @@ This transparency value belongs to the recovered runtime sprite raster path; sep
 
 ## FUN_1010_6422
 
-Strongly involved in exact texture-U selection and special-wall/orientation behavior. It compares current screen X with projected VEC endpoints, uses segment length/orientation and render-class/flag information, and can suppress or alter column mapping.
+The branch structure is now recovered from the executable: it bypasses endpoint correction for columns away from both projected ends or when VEC flag `0x08` is set; near endpoints it applies orientation-dependent signed segment-length corrections, including a special `renderClass == 2` path for orientations 0 and 3. The exact branch summary is in [the dated raw-assembly pass](nite3w_renderer_2026-09-23.md).
 
-Exact per-class semantics are still open.
+The remaining uncertainty is the mapping from these numeric classes/flags to all named WALLS resources and pixel-level outcomes, which needs original-frame comparisons.
 
 ## FUN_1010_65A6
 
@@ -502,15 +510,11 @@ Do not describe Nitemare 3-D as a simple Wolf3D renderer clone.
 
 # 16. Current highest-value open renderer targets
 
-1. Fully translate `FUN_1018_3564` owner-conflict/hidden-surface resolution.
-2. Fully translate `FUN_1010_6422` texture-U and special-wall cases.
-3. Fully translate `FUN_1010_3E44` and the lower alternate VGA/translation paths.
-4. Decode `FUN_1010_65A6` wall animation/resource update behavior.
-5. Audit all writes to `0x7E60`.
-6. Audit all writes to VEC `+01/+02/+03/+04/+08`.
-7. Build exact `WALLS.* wall ID -> flags/property -> renderClass -> texture descriptor -> renderer branch` mapping.
-8. Finish exact queue field semantics for `FUN_1010_CC7C` / `3:6348` / `3:6914`.
-9. Determine every masked/transparent wall interaction with sprite occlusion.
-10. Compare DOS planar/fullscreen backend behavior against the WinG path instruction by instruction.
+1. Trace `FUN_1010_65A6` and the writes to VEC `+01/+02/+03/+08` to recover animation timing and sequence selection.
+2. Map every `WALLS.* wall ID -> flags/property -> renderClass -> texture descriptor -> renderer branch` and validate the special `FUN_1010_6422` cases against source assets.
+3. Port the recovered MAP boundary extraction, four-list traversal, camera projection/near clipping, owner coverage and span interpolation into the runtime.
+4. Finish sprite/object ordering, masked-wall interaction, palette-remap generation inputs and resource-loader edge behavior.
+5. Compare the alternate VGA planar backend and DOS renderer against the WinG path where behavior is expected to match.
+6. Capture deterministic frames from the original executable using the same map, camera, palette and display route; compare 64,000 indexed pixels per frame and resolve the differences.
 
-The remaining work is now about fidelity and special cases, not discovering the basic renderer architecture.
+The owner decision, basic sampler tables and linear indexed-column loop are now instruction-backed and have a standalone C++ reference implementation. The playable `Raycaster.cpp` is still a provisional grid-DDA renderer; the new code is not yet a full scene-renderer port. Full pixel parity remains unverified until original-runtime captures are compared.
