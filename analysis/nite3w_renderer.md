@@ -386,7 +386,7 @@ This proves 64-sample column source organization for this raster path. It does n
 
 `FUN_1010_2930` initializes 511 increments as `floor(0x400000 / n)`, giving a 16.16 source-texture step for each projected height n. A second initializer at CS 1010:2960, called from CS:5259, fills the clipped-start byte/fraction tables at DS:0x2C7F and DS:0x2E80. Its exact divide-then-shift order and address formulas are documented in [the dated raw-assembly pass](nite3w_renderer_2026-09-23.md). The word at DS:0x53E2 is an input; its standalone semantic label remains open.
 
-The new `src/renderer/Win16WallRasterCore.hpp` implements these tables and the WinG indexed-column stepping. The function operates on an already-selected texture column and does not replace the full scene renderer.
+The new `src/renderer/Win16WallRasterCore.hpp` implements these tables, texture-U correction and WinG indexed-column stepping. DOS E-20 `FUN_1000_1560` and `FUN_1000_1590` independently use the same step and clipped-start formulas at build-specific addresses. The column function operates on an already-selected texture column and does not replace the full scene renderer.
 
 ---
 
@@ -452,13 +452,13 @@ This transparency value belongs to the recovered runtime sprite raster path; sep
 
 The branch structure is now recovered from the executable: it bypasses endpoint correction for columns away from both projected ends or when VEC flag `0x08` is set; near endpoints it applies orientation-dependent signed segment-length corrections, including a special `renderClass == 2` path for orientations 0 and 3. The exact branch summary is in [the dated raw-assembly pass](nite3w_renderer_2026-09-23.md).
 
-The remaining uncertainty is the mapping from these numeric classes/flags to all named WALLS resources and pixel-level outcomes, which needs original-frame comparisons.
+DOS E-20 `FUN_1000_22CA` independently reproduces the same endpoint, orientation and render-class branch family. The remaining uncertainty is the mapping from these numeric classes/flags to all named WALLS resources and pixel-level outcomes, which needs original-frame comparisons.
 
 ## FUN_1010_65A6
 
 The instruction-level state update is reconstructed in the [2026-09-23 raw-assembly pass](nite3w_renderer_2026-09-23.md). It compares the 32-bit game clock at DS `0x0096` with the deadline at VEC `+08`; when due, it increments frame `+03`, applies special behavior for render classes `0x07`, `0x2D`, and `0x2F`, and either wraps through the descriptor frame count or selects among an eight-entry sequence using `FUN_1018_32D2() & 7`. It schedules the next deadline as current clock plus the descriptor interval at `+02`.
 
-The descriptor row is 8 bytes at `0x51AC + textureSet*8`; observed fields are frame count at `+00`, interval at `+02`, and sequence-table offset at `+04`. The remaining task is to map every row to its WALLS asset and trace the repeated `FUN_1018_3C0C` side effect.
+The descriptor row is 8 bytes at `0x51AC + textureSet*8`; observed fields are frame count at `+00`, interval at `+02`, and sequence-table offset at `+04`. DOS E-20 `FUN_1000_241E` independently has the same timed update and sequence selection, with its class-`0x2D` helper at `FUN_1000_04BE`. The remaining task is to map every row to its WALLS asset and trace the repeated `FUN_1018_3C0C` side effect.
 
 ## Global 0x7E60
 
