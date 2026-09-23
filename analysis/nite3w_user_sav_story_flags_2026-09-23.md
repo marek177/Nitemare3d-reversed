@@ -14,8 +14,8 @@ The operations below are directly visible in the decompiled executable. Narrativ
 
 | Save offset | Runtime byte | Directly observed behavior | Status |
 |---:|---|---|---|
-| 0xC553 | DAT_1048_51A4 | Bit field selected by DAT_1048_40F8. Commands 0x1E/0x1F update its selected bit while opening matching runtime door records of wall classes 0x3B/0x3C for the same selector and orientation. | Door/combo state is strongly supported; exact meaning of a set bit (completed, selected, or cached state) remains open. |
-| 0xC554 | DAT_1048_51A5 | Toggled by dispatcher actions 0x20/0x21. GUARD states 0x0E/0x0F read it: when set, state 0x0E advances to 0x0F; state 0x0F repeats a timed branch through 0x10, and when clear it returns to 0x0E. | Confirmed global gate for a special GUARD behavior; actor group and design meaning remain open. |
+| 0xC553 | DAT_1048_51A4 | Bit mask for the linked-wall state of a SECRET panel. In the supplied MAP/OBJECTS data, class 0x03 / object ID 0x62 selects channel 0. The panel requires ID-card mask bit 0, identified as the red card (object ID 0x09). Commands 0x1E/0x1F act on matching wall-pair records of classes 0x3B/0x3C. | Static selector, credential and wall-pair linkage are verified for the supplied Win16 data. The exact resulting appearance/state still needs runtime confirmation. |
+| 0xC554 | DAT_1048_51A5 | Initialized to 1 and toggled by panel commands 0x20/0x21. It gates the Cannon class 0x19 (object IDs 0xCC–0xCF) state path 0x0E–0x10; the enabled path performs a perception check and can reach player damage. | Cannon binding and AI gate are verified statically; cadence, presentation and runtime effect still need measurement. |
 | 0xC555 | DAT_1048_51A6 | Shared level-trigger latch/stage. Several TRIGGER1 branches set it to 1; the special-wall class 0x08 follow-up in episode 1, level index 6 advances 1 to 2. The contact-damage path for object class 0x16 also checks whether it is zero. | Confirmed state machine with values 0/1/2; exact story meaning is not recovered. |
 | 0xC556 | DAT_1048_51A7 | Set to 1 by the episode 1, level index 9 TRIGGER2 branch before displaying its text event. No gameplay read was found beyond save/restore. | Confirmed one-shot event marker; text and downstream consumer remain unknown. |
 | 0xC557 | DAT_1048_51A8 | Set by episode 1, level index 9 TRIGGER1. That branch sets DAT_1048_4BE8, clears DAT_1048_4BE5 and displays three text pointers. The Escape handler later checks this flag when the game is in state 7 and player health is zero. | Confirmed end-event/exit gate; the exact meaning of DAT_1048_4BE8 and the narrative text remain open. |
@@ -48,13 +48,13 @@ This matrix closes the dispatch conditions and byte writes for the listed branch
 - **51AB changes more than color.** FUN_1010_C5E2 selects shade mode 6 and clears floor/ceiling selectors when the flag is set. FUN_1010_188A exits before its normal door operation while the flag remains set.
 - **51A9 is reached from object collision.** FUN_1010_9B64 calls FUN_1010_C356 when the object-property table has bit 0x40. C356 only enters the timed helper for episode 2, level index 9; C2B8 increments its counter and sets 51A9 on the 20-call event path.
 - **51AA marks a GUARD state transition.** The caller is the state-9 branch in FUN_1010_7B56, not the projectile hit routine. Its sound/message side effect is class-specific to 0x16.
-- **51A4 selector is not safely nameable as “level.”** FUN_1018_21D8 copies byte +1 of a selected record into DAT_1048_40F8. The safe-door dispatcher uses that selector for both its bit shift and record filter. The code proves a selector-keyed door state, but the original field meaning and valid selector range need data/runtime confirmation.
+- **51A4 is a SECRET-panel linked-wall bit mask, not safe/combo progress.** FUN_1010_D1A2 stores the class-relative object index in OBJECT+1; the supplied maps contain SECRET object ID 0x62 as the only class-0x03 item, so the current selector is 0. The panel checks ID-card mask bit 0 (red card, object ID 0x09); commands 0x1E/0x1F update linked class-0x3B/0x3C wall-pair records. Safe objects are a separate class-0x26 combination path. Other data builds and the exact visible wall result remain open.
 
 ## What remains unknown
 
 1. Original text for the pointers 016E, 0172, 0176, 0182, 0186, 018A, 018E, 0196, 019A, 01C6 and 01D2, and the resources that populate them.
-2. Exact interpretation and valid range of the selector used by 51A4; whether the bit records a solved combination, an open pair or a UI/cache state.
-3. Which GUARD classes reach the 0x0E–0x10 special branch controlled by 51A5, and what the map action commands 0x20/0x21 mean to the player.
+2. Runtime appearance/result of the linked wall-pair commands 0x1E/0x1F and whether additional SECRET channels occur in other MAP/OBJECTS builds.
+3. Runtime Cannon cadence, presentation/SFX, and the player-facing labels for commands 0x20/0x21.
 4. Whether 51A9 and 51AA are intentionally write-only save markers, consumed by code through an indirect path, or retained for compatibility.
 5. Runtime proof of trigger placement, persistence after level changes, and behavior after loading saves with each byte independently modified.
 

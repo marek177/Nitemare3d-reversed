@@ -27,8 +27,8 @@ struct ObjectRuntimeRecord {
     std::int16_t worldY;          // +0x12, world-space Y coordinate (VERIFIED_EXE)
     std::int16_t renderSortA;     // +0x14, renderer/sort-related value (PARTIAL)
     std::int16_t renderSortB;     // +0x16, renderer/sort-related value (PARTIAL)
-    std::int16_t projectedYBase;  // +0x18, view/projected vertical baseline used by damage producer (VERIFIED read; writer semantic PARTIAL)
-    std::uint8_t runtime1A;       // +0x1A, initialized to zero
+    std::int16_t projectedYBase;  // +0x18, FUN_1010_CC7C projection/depth-scale cache read by damage producer; not world Y
+    std::uint8_t runtime1A;       // +0x1A, zero for ordinary objects; embedded projectile OBJECT uses a vertical sprite offset (5..20 in flight)
     std::uint8_t unknown1B;
 };
 #pragma pack(pop)

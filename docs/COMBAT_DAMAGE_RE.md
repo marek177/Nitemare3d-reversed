@@ -1,6 +1,6 @@
 # Combat damage reverse engineering
 
-Updated: 2026-09-22
+Updated: 2026-09-23
 Evidence: direct 16-bit disassembly of original NITE3W.EXE V1.10 (SHA-256 `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481`) plus cross-binding to the recovered GUARD score/death paths.
 
 ## Damage producer located
@@ -16,7 +16,7 @@ base += random() % 25
 
 `global_53EE` is derived by the viewport setup routine at `seg3:5207..5250` and is a vertical screen/view reference. `OBJECT+18` therefore participates in projected/view-space vertical aim geometry in this damage path; it is **not** world Y (`OBJECT+12`).
 
-Status: **VERIFIED_EXE** for arithmetic/read site and random range; exact writer-level semantic name of `OBJECT+18` remains PARTIAL.
+Status: **VERIFIED_EXE** for arithmetic/read site, random range, and writer routine: `FUN_1010_CC7C` stores a camera-projection/depth-scale value in `OBJECT+0x18`. Exact geometric units remain PARTIAL; the field is not world Y.
 
 ### Consequence for “shots to kill” tables
 
@@ -215,7 +215,7 @@ The original uses signed 16-bit shifts/division behavior; this pseudocode is des
 
 ## Remaining combat targets
 
-1. Trace the writer of `OBJECT+18` and give it a final renderer semantic name.
+1. Resolve the exact geometric units and projection reference for `OBJECT+0x18`; its writer `FUN_1010_CC7C` is now identified.
 2. Resolve Penelope class `0x15` helper side effects completely.
 3. Resolve full meaning/writers of `0x7E52` and Hamerstein vulnerability state.
 4. Bind `0x4C14` numeric values to exact displayed difficulty labels.

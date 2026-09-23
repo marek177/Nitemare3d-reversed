@@ -53,7 +53,9 @@ constexpr std::uint16_t ammoGlobalForWeapon(WeaponSelector weapon) noexcept {
 
 // Damage producer at seg3:9FA2:
 //   base = ((OBJECT+0x18) - viewReferenceY) * 8 + random()%25
-// then class/weapon transform and difficulty transform are applied.
+// FUN_1010_CC7C writes a camera-projection/depth-scale cache to OBJECT+0x18;
+// it is not world Y or a fixed weapon damage value. Class/weapon and difficulty
+// transforms are applied to the raw result.
 inline constexpr std::uint16_t kDamageProducerOffset = 0x9FA2;
 inline constexpr std::uint8_t kDamageRandomRange = 25;
 inline constexpr std::uint8_t kMaximumDamage = 255;

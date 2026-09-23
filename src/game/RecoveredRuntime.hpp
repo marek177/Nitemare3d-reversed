@@ -21,9 +21,10 @@ inline constexpr std::size_t kEpisode2Levels = 10;
 inline constexpr std::size_t kEpisode3Levels = 10;
 inline constexpr int kWorldUnitsPerTile = 64;                // coord >> 6
 
-// Structural runtime/save evidence also exposes a 4096-byte 64x64-sized
-// cell-state/visibility-like block. Exact bit semantics remain PARTIAL.
-inline constexpr std::size_t kRuntimeCellStateBytes = 4096;
+// The 4096-byte runtime/save block is the 64x64 automap raster/index buffer.
+// Its drawing/update role is confirmed; the meaning of every stored byte remains PARTIAL.
+inline constexpr std::size_t kRuntimeAutomapBytes = 4096;
+inline constexpr std::size_t kRuntimeCellStateBytes = kRuntimeAutomapBytes; // historical alias
 
 // Important distinction: 11/10/10 are the supplied archive payload counts, not
 // a proven universal MAP-format ceiling. Historical MapEdit sources support a
@@ -116,7 +117,7 @@ inline constexpr std::size_t kObjectRenderSortAOffset = 0x14; // semantic PARTIA
 inline constexpr std::size_t kObjectRenderSortBOffset = 0x16; // semantic PARTIAL
 // Read by damage producer as projected/view-space vertical baseline; writer
 // semantics still PARTIAL. Explicitly not world Y.
-inline constexpr std::size_t kObjectProjectedDamageBaselineOffset = 0x18;
+inline constexpr std::size_t kObjectProjectedDamageBaselineOffset = 0x18; // written by FUN_1010_CC7C projection
 
 // Renderer / viewport --------------------------------------------------------
 inline constexpr int kFramebufferWidth = 320;
@@ -308,13 +309,53 @@ inline constexpr std::size_t kSaveGuardBlockOffset = 0xB43B;
 inline constexpr std::size_t kSaveGuardBlockBytes = 0x0A28;  // 100*26
 inline constexpr std::size_t kSaveDoorBlockOffset = 0xBE63;
 inline constexpr std::size_t kSaveDoorBlockBytes = 1408;     // 64*22
-inline constexpr std::size_t kSaveUnknown336Offset = 0xC403;// semantic TODO
-inline constexpr std::size_t kSaveUnknown336Bytes = 336;
+inline constexpr std::size_t kSavePanelActivationBlockOffset = 0xC3E3;
+inline constexpr std::size_t kSavePanelActivationBlockBytes = 32; // one byte per panel, copied from record +0x14
+inline constexpr std::size_t kSaveProjectileBlockOffset = 0xC403;
+inline constexpr std::size_t kSaveProjectileBlockBytes = 0x150; // 8*42
+inline constexpr std::size_t kProjectilePoolCapacity = 8;
+inline constexpr std::size_t kProjectileRecordStride = 42;
+inline constexpr std::size_t kSaveStoryFlagsOffset = 0xC553; // runtime 0x51A4..0x51AB
+inline constexpr std::size_t kSaveStoryFlagsBytes = 8;
 inline constexpr std::size_t kSavePushBlockOffset = 0xC55B;
 inline constexpr std::size_t kSavePushBlockBytes = 72;       // 12*6
-inline constexpr std::size_t kSaveFloorPaletteOffset = 0xD6E3;
-inline constexpr std::size_t kSaveCeilingPaletteOffset = 0xD6E4;
-inline constexpr std::size_t kSaveEnvironmentWordOffset = 0xD6E5; // mirrors 0x7E60, exact semantic TODO
+inline constexpr std::size_t kSaveAutomapBufferOffset = 0xC5A3;
+inline constexpr std::size_t kSaveAutomapBufferBytes = 4096;
+inline constexpr std::size_t kSaveGuardWakeCacheOffset = 0xD5A3;
+inline constexpr std::size_t kSaveGuardWakeCacheBytes = 64;
+inline constexpr std::size_t kSaveColorRemapOffset = 0xD5E3;
+inline constexpr std::size_t kSaveColorRemapBytes = 256;
+inline constexpr std::size_t kSaveFillColorAOffset = 0xD6E3; // runtime 0x7E62
+inline constexpr std::size_t kSaveFillColorBOffset = 0xD6E4; // runtime 0x7E63
+inline constexpr std::size_t kSaveShadeLevelOffset = 0xD6E5; // runtime 0x7E60
+inline constexpr std::size_t kDefaultShadeLevel = 2;
+inline constexpr std::size_t kDarkEventShadeLevel = 6;
+inline constexpr std::array<std::uint8_t, 8> kShadeAdjustmentSteps = {
+    0, 4, 8, 12, 16, 20, 30, 40
+};
+
+// Legacy names retained for downstream source compatibility; their meanings
+// are now resolved by the USER.SAV/runtime audit above.
+inline constexpr std::size_t kSaveUnknown336Offset = kSaveProjectileBlockOffset;
+inline constexpr std::size_t kSaveUnknown336Bytes = kSaveProjectileBlockBytes;
+inline constexpr std::size_t kSaveFloorPaletteOffset = kSaveFillColorAOffset;
+inline constexpr std::size_t kSaveCeilingPaletteOffset = kSaveFillColorBOffset;
+inline constexpr std::size_t kSaveEnvironmentWordOffset = kSaveShadeLevelOffset;
+
+// Runtime DS offsets for the saved event/AI state bytes.
+inline constexpr std::uint16_t kSecretPanelLinkStateGlobal = 0x51A4;
+inline constexpr std::uint16_t kCannonAttackEnableGlobal = 0x51A5;
+inline constexpr std::uint16_t kSharedStoryEventStageGlobal = 0x51A6;
+inline constexpr std::uint16_t kTemporaryShadeModeGlobal = 0x51AB;
+
+static_assert(kSavePanelActivationBlockOffset + kSavePanelActivationBlockBytes == kSaveProjectileBlockOffset);
+static_assert(kSaveProjectileBlockOffset + kSaveProjectileBlockBytes == kSaveStoryFlagsOffset);
+static_assert(kSaveStoryFlagsOffset + kSaveStoryFlagsBytes == kSavePushBlockOffset);
+static_assert(kSavePushBlockOffset + kSavePushBlockBytes == kSaveAutomapBufferOffset);
+static_assert(kSaveAutomapBufferOffset + kSaveAutomapBufferBytes == kSaveGuardWakeCacheOffset);
+static_assert(kSaveGuardWakeCacheOffset + kSaveGuardWakeCacheBytes == kSaveColorRemapOffset);
+static_assert(kSaveColorRemapOffset + kSaveColorRemapBytes == kSaveFillColorAOffset);
+static_assert(kSaveShadeLevelOffset + sizeof(std::uint16_t) == kUserSaveSlotBytes);
 
 // CONFIG.SAV ---------------------------------------------------------------
 inline constexpr std::size_t kConfigSaveBytes = 20;

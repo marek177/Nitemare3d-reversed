@@ -1,6 +1,6 @@
 # Reconstruction status — v1.1
 
-Date: 2026-09-22
+Date: 2026-09-23
 
 This repository is a clean-room-style reconstruction scaffold based on the supplied Windows 3.1 executable/data plus independently documented gameplay observations. It is not the original Gray Design Associates source tree.
 
@@ -105,7 +105,7 @@ See [`../analysis/nite3w_renderer.md`](../analysis/nite3w_renderer.md).
 ### Saves / audio / resources
 
 - `CONFIG.SAV` is 20 bytes.
-- `USER.SAV` slot size is `0xD6E7 = 55,015` bytes and its major MAP/vector/object/GUARD/door/push blocks are physically mapped.
+- `USER.SAV` slot size is `0xD6E7 = 55,015` bytes. The 8 × 42-byte player projectile pool at `0xC403`, panel activation bytes, push array, automap raster, guard wake cache, color-remap table and shade/fill tail are mapped.
 - load logic rebuilds pointers and rebases timers; save data is not a naive reusable pointer dump.
 - SND.DAT directory: 160×6-byte entries; IDs 1..15 MIDI, 34..110 logical SFX range, 111 end sentinel.
 - audited Windows SFX data is raw 8-bit mono PCM at 11025 Hz.
@@ -162,13 +162,13 @@ hypotheses and TODOs.
 2. Complete GUARD field tail and give exact high-level names to states 02..14.
 3. Recover guard movement speed, reaction delay, attack interval and full LOS/hearing behavior.
 4. Map all enemy/projectile classes to the recovered player-damage branches.
-5. Recover projectile speed/lifetime/radius/owner/friendly-fire behavior.
+5. Calibrate projectile substep speed/time and resolve enemy-projectile identity/ownership; player-pool layout, impact state and <=9-unit guard hit tolerance are now mapped.
 6. Decode complete door/panel/control 22-byte records and remote-door/cannon state machines.
 7. Complete numeric wall-class dispatcher and `WALLS.*` secondary attribute-bit layout.
-8. Decode animated-wall/sequence timing and `FUN_1010_65A6`.
-9. Translate exact occupied-owner conflict math in `FUN_1018_3564`.
-10. Translate all `FUN_1010_6422` special-wall/texture-U cases and remaining lower raster/backend paths.
-11. Audit all writes and exact meaning of runtime/save word `0x7E60` / USER.SAV `0xD6E5`.
+8. Complete animated-wall/resource mapping and sequence timing beyond the recovered `FUN_1010_65A6` update control flow.
+9. Integrate the full camera/vector/span scene path and compare deterministic frames with the original.
+10. Finish `FUN_1010_6422` special-wall cases and lower raster/backend paths; owner-conflict math and texture-U corrections are now mapped.
+11. Verify shade-level override bounds/runtime presentation (`0x7E60` / USER.SAV `0xD6E5`) and exact fill-region semantics for `0x7E62/0x7E63`.
 12. Finish remaining USER.SAV semantic blocks/timer rebasing.
 13. Finish exact SFX event and MIDI level/menu call-site maps.
 14. Reconstruct `NITE3D.BSF` integrity algorithm across version variants.

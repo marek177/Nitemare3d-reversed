@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.11
+# Nitemare3D-Reversed — reconstruction v0.12
+
+**v0.12 update:** the 2026-09-23 all-audit sync identifies the Win16 player projectile pool (8 × 42-byte records at USER.SAV +0xC403), resolves the related 20-unit render-culling threshold, maps the SECRET-panel credential/link flags and shade-save tail, and adds the executable-confirmed fire damage values (100/10/2 HP per simulation update). Code models and tests live in `src/game/ProjectileRuntime.hpp` and `tests/projectile_runtime_test.cpp`; the consolidated delta is [here](docs/PROJECT_FINDINGS_DELTA_2026-09-23.md).
 
 **v0.11 update:** the 2026-09-23 raw-assembly pass resolves the Win16 renderer's occupied-column owner rules, texture-U corrections, 16.16 wall-column sampler, 16.16 span interpolation, and wall-animation update control flow; DOS E-20 contains matching texture-U/animation routines and independently confirms the sampler formulas. Findings are in [`analysis/nite3w_renderer_2026-09-23.md`](analysis/nite3w_renderer_2026-09-23.md); the standalone reference code is [`src/renderer/Win16WallRasterCore.hpp`](src/renderer/Win16WallRasterCore.hpp), with a CMake test target. The 2026-09-22 cross-thread consolidation and system audits remain linked below.
 
@@ -16,7 +18,10 @@ Git commit authorship therefore identifies the account that committed the files 
 Start with the consolidation and newest delta:
 
 - [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md)
-- [`docs/PROJECT_FINDINGS_DELTA_2026-09-22.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-22.md) — newest corrections/findings from the current project folder
+- [`docs/PROJECT_FINDINGS_DELTA_2026-09-23.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-23.md) — consolidated findings from all current audits
+- [`analysis/nite3w_core_function_map_2026-09-23.md`](analysis/nite3w_core_function_map_2026-09-23.md) — DOS/Win16 core-function coverage map
+- [`analysis/nite3w_projectile_pool_2026-09-23.md`](analysis/nite3w_projectile_pool_2026-09-23.md) — projectile record, collision, save and render details
+- [`docs/PROJECT_FINDINGS_DELTA_2026-09-22.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-22.md) — previous cross-session corrections
 - [`docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md`](docs/UNKNOWN_SYSTEMS_AUDIT_2026-09-22.md) — consolidated unknowns, priorities and evidence boundaries
 
 Then use the subsystem reports for instruction-level evidence:
@@ -49,10 +54,10 @@ Well-understood areas now include:
 - Dracula `0x11 -> 0x14` two-phase transform with HP reset;
 - GUARD25/class `0x20` constrained as an unresolved/cut/fallback class rather than a known enemy;
 - SND.DAT directory/PCM format, MIDI inventory;
-- CONFIG.SAV physical size and USER.SAV block layout;
+- CONFIG.SAV physical size and USER.SAV block layout, including the 8-slot/42-byte projectile pool and wake cache;
 - many doors/warps/pushables and numerous level-specific scripts.
 
-Renderer code is now moving from recovered facts into tested primitives: owner-conflict predicates, texture-U correction, span interpolation and the linear fixed-point wall-column loop are implemented, but the complete scene path is not ported. Remaining work spans wall-animation/resource mapping, the camera/vector/span pipeline, sprite and palette details, deterministic original-frame comparison, complete door/panel/control records, semantic names for GUARD states 02–14, guard movement/attack timing, projectile behavior, enemy-to-player class binding, GUARD25 reachability/identity, Dracula's resource/sound/corpse chain, 4096-byte cell-state semantics, the BSF integrity algorithm, and unresolved save/resource fields.
+Renderer work is moving from recovered facts into tested primitives: owner-conflict predicates, texture-U correction, span interpolation, and the linear fixed-point wall-column loop are implemented. The full scene path still needs integration and pixel comparison. Other open work includes wall-animation/resource mapping, sprite and palette details, door/panel/control records, GUARD states 02–14 and attack timing, enemy-projectile identity/behavior, enemy-to-player class binding, GUARD25, Dracula's resource/sound/corpse chain, automap byte values, BSF integrity, and remaining save/resource fields.
 
 ## Renderer architecture
 
@@ -106,6 +111,7 @@ cmake --build build
 ./build/n3d_pushable_test
 ./build/n3d_menu_cheat_test
 ./build/n3d_hazard_test
+./build/n3d_projectile_runtime_test
 ./build/n3d_win16_wall_raster_core_test
 ```
 
@@ -147,7 +153,7 @@ n3d_inspect data/original
 
 Episode 1 and Episode 2 walkthrough material has durable audit coverage. Episode 3 has dedicated repository reports for E3M3, E3M4, E3M5, E3M6 and extended/finale material; where source videos contain cuts, the reports retain those limitations rather than claiming false 100% frame coverage.
 
-E3M6 strengthens the fire-hazard model: small and medium fire are traversable damaging hazards while large fire is the lethal/impassable class documented by original material. Exact numeric damage/timing remains unresolved and is not invented in the source.
+E3M6 confirms the passability distinction: small/medium fire is traversable and large fire is impassable/lethal per original material. The Win16 audit now maps fire object IDs 0x3B/0x3C/0x3D to large/medium/small and confirms damage values of 100/10/2 HP per simulation update. The calibrated interval and damage-per-second remain open.
 
 ## Next engineering targets
 

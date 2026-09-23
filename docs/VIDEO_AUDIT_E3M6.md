@@ -31,7 +31,7 @@ Source: user-supplied `Nitemare 3D Walkthrough by Hexkwondo! E3 L6.mp4`.
 
 1. Keep an explicit fire-hazard classification (`Small`, `Medium`, `Large`).
 2. Keep collision/passability separate from damage application.
-3. Do not invent numeric damage-per-tick values yet; recover them from the original executable before marking damage timing 1:1.
+3. The video alone does not establish numeric damage. The 2026-09-23 Win16 executable/data audit now confirms 100/10/2 HP per simulation update for large/medium/small fire; the calibrated update interval and damage-per-second remain open.
 4. Small and medium flames must permit player occupancy/traversal. Large flames must follow the original lethal/impassable behavior.
 5. Integrate fire behavior with the future player-health/damage subsystem rather than hard-coding it into map rendering.
 
@@ -40,8 +40,8 @@ The evidence-bounded model is implemented in `src/game/HazardSystem.hpp`.
 ## Evidence status
 
 - Fire class semantics: **video + original documentation supported**.
-- Exact HP damage values: **unresolved**.
-- Exact damage tick interval: **unresolved**.
+- Exact HP damage values: **VERIFIED_EXE** in the 2026-09-23 NITE3W 1.10 audit: large/medium/small fire = 100/10/2 HP per simulation update.
+- Exact damage tick interval and damage per second: **unresolved**; the video audit alone does not measure them.
 - Exact object/wall IDs for every fire visual: **requires MAP/IMG/EXE cross-reference before declaring 100%**.
 
 ## Episode 3 video coverage after this audit

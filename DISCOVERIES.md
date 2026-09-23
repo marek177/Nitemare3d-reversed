@@ -1,8 +1,14 @@
 # Nitemare 3D Reverse Engineering — Discoveries
 
-Last consolidated: 2026-09-22
+Last consolidated: 2026-09-23
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
+
+## 2026-09-23 all-audit update
+
+The 2026-09-23 delta is consolidated in [`docs/PROJECT_FINDINGS_DELTA_2026-09-23.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-23.md), with instruction-level evidence in [the core-function map](analysis/nite3w_core_function_map_2026-09-23.md), [the projectile audit](analysis/nite3w_projectile_pool_2026-09-23.md), the [USER.SAV flag audit](analysis/nite3w_user_sav_story_flags_2026-09-23.md), and the [guard wake-cache audit](analysis/nite3w_guard_wake_cache_2026-09-23.md).
+
+New code-level anchors include the 8 × 42-byte NITE3W player projectile pool saved at 0xC403, a 20-unit per-axis OR render threshold (not a despawn rule), the 0x51A4 SECRET-panel/red-ID-card linkage, 0x51A5 Cannon AI gate, and CAUSTIC fire damage of 100/10/2 HP per simulation update. Runtime cadence/visual verification, the DOS projectile layout, and remaining USER.SAV byte semantics stay open.
 
 ## Evidence policy
 
@@ -339,8 +345,9 @@ USER.SAV uses fixed records of `0xD6E7 = 55015` bytes. Major blocks include:
 - 8192-byte mutable MAP snapshot;
 - 94-byte gameplay/global block;
 - fixed-capacity runtime arrays;
-- floor/ceiling palette bytes;
-- level/environment parameter `0x7E60`.
+- fill-color selectors `0x7E62/0x7E63` and shade-level word `0x7E60` (default index 2, dark-event index 6);
+- 8 × 42-byte player-projectile pool, 64-byte guard wake cache, 256-byte color-remap table, and 4096-byte automap raster/index buffer.
+
 
 The physical record layout is recovered; semantic labeling of every field is still incomplete.
 
@@ -357,14 +364,14 @@ Version comparison targets include 1.0, 1.7, 1.8, 1.9 and 2.0. The important unr
 ## Highest-value remaining targets
 
 1. Complete semantic naming for GUARD states 02..14 and all strategy values.
-2. Recover exact guard movement/attack cadence, LOS/FOV/hearing and projectile production.
+2. Recover exact guard movement/attack cadence, LOS/FOV/hearing and enemy-projectile production; the player projectile pool and player-fire path are now mapped.
 3. Bind all enemy alert/attack/pain/death SND.DAT IDs directly.
-4. Finish special-wall/texture-U/renderClass mapping and owner-conflict geometry.
-5. Decode animated-wall timing and remaining VEC fields.
+4. Finish special-wall/resource/renderClass mapping and lower raster/backend details; owner-conflict geometry and current texture-U corrections are documented.
+5. Complete animated-wall/resource timing and remaining VEC field semantics; the animation update control flow is mapped.
 6. Finish 22-byte door/panel/control record semantics and SPECIAL1/ONE_SHOT/REVWALL details.
-7. Finish player->GUARD `OBJECT+18` writer semantics and enemy->player class-name binding.
+7. Refine the geometric units of player->GUARD `OBJECT+18` (writer `FUN_1010_CC7C` identified) and bind enemy->player classes to visible attackers.
 8. Finish BSF integrity/version-difference algorithm.
-9. Resolve remaining USER.SAV semantic fields and `0x7E60`.
+9. Resolve remaining USER.SAV byte semantics and validate shade override bounds/runtime effect at `0x7E60`.
 10. Complete DOS-vs-Windows backend/behavior comparison and feed only verified shared behavior into ports.
 
 ## Detailed reports

@@ -413,12 +413,12 @@ Sprite transparency in the recovered WinG path uses palette index `0x29`.
 
 Highest-value renderer TODOs now are **not** basic architecture. They are:
 
-1. exact owner-conflict geometry in `FUN_1018_3564`;
-2. complete texture-U/special-wall semantics in `FUN_1010_6422`;
+1. complete camera/vector/span scene integration and original-frame pixel comparison;
+2. finish special-wall/resource cases in `FUN_1010_6422`;
 3. complete lower wall-column blitter/alternate VGA path in `FUN_1010_3E44` and callees;
-4. wall animation helper `FUN_1010_65A6`;
-5. exact floor/ceiling alternate modes in `FUN_1010_3DB8`;
-6. all writes/meaning of global `0x7E60`;
+4. finish wall-animation/resource mapping beyond the recovered `FUN_1010_65A6` update flow;
+5. validate alternate floor/ceiling modes in `FUN_1010_3DB8`;
+6. validate shade override bounds and runtime output for `0x7E60`;
 7. all writes to VEC `+01/+02/+03/+04/+08`;
 8. class-by-class WALLS -> property flags -> renderClass -> texture descriptor mapping.
 
@@ -717,11 +717,11 @@ Important offsets:
 - `0x8DF3` 9,800-byte object pool = 350×28;
 - `0xB43B` 2,600-byte GUARD pool = 100×26;
 - `0xBE63` 1,408-byte door pool = 64×22;
-- `0xC403` 336-byte unresolved runtime block;
+- `0xC403` 336-byte player-projectile pool = 8 × 42-byte records;
 - `0xC55B` 72-byte push array = 12×6;
 - `0xD6E3` floor palette byte;
 - `0xD6E4` ceiling palette byte;
-- `0xD6E5` 16-bit environment/render parameter mirroring runtime `0x7E60`, exact semantic still TODO.
+- `0xD6E5` 16-bit shade-level index mirroring runtime `0x7E60`; default index 2, scripted dark mode index 6; shade table `[0,4,8,12,16,20,30,40]`.
 
 Important unresolved save regions also include smaller auxiliary blocks and a 4096-byte state/visibility-like block. Loading performs pointer reconstruction and timer rebasing; the save is not a naive dump where every stored pointer remains valid.
 
@@ -831,15 +831,15 @@ The recovered NITE3W renderer remains authoritative where it differs.
 4. Complete GUARD states 02..14 with exact animation/sound/action names.
 5. Guard movement speed/cadence and full attack timing.
 6. Enemy-to-player class table mapped to visible names and projectile/melee identities.
-7. Projectiles: speed, lifetime, owner/friendly-fire, hit radius and damage paths.
+7. Player projectile pool/record, impact state, guard collision tolerance and render culling are mapped. Remaining: calibrated movement/time units, enemy-projectile identity/ownership, and DOS cross-check.
 8. Exact special mirror/pentagram/finale state variables.
 
 ## P1 — renderer fidelity
 
-1. `FUN_1018_3564` exact owner conflict/hidden-surface rule.
-2. `FUN_1010_6422` exact U mapping and special-wall cases.
-3. `FUN_1010_3E44` / `3:366A` alternate translation/VGA behavior.
-4. all writes to `0x7E60`.
+1. full camera/vector/span integration and deterministic original-frame comparison.
+2. remaining `FUN_1010_6422` special-wall/resource mapping.
+3. `FUN_1010_3E44` / `3:366A` lower blitter and alternate translation/VGA behavior.
+4. shade override bounds and exact floor/ceiling fill regions for `0x7E60` / `0x7E62` / `0x7E63`.
 5. VEC animation/resource fields `+01/+02/+03/+04/+08`.
 6. exact `0x58FE` unit semantics.
 7. masked walls/curtains/grates and sprite occlusion interaction.
@@ -850,7 +850,7 @@ The recovered NITE3W renderer remains authoritative where it differs.
 2. full `WALLS.*` secondary attribute-column bit layout;
 3. full `OBJECTS.*` attribute-code grammar;
 4. sequence-definition format/timing/events;
-5. unresolved USER.SAV blocks (`0xC403` 336 B and smaller auxiliary blocks);
+5. remaining USER.SAV semantics and pointer reconstruction (the `0xC403` projectile pool is resolved);
 6. timer rebasing details.
 
 ## P2 — resource/audio/UI
@@ -884,3 +884,11 @@ Use this consolidation as the entry point, then drill down:
 - `src/game/RecoveredRuntime.hpp` — compile-time values that are safe to expose to reconstruction code.
 
 Any future finding should update this file only after its subsystem report/evidence has been captured, so the master ledger remains conservative rather than becoming another speculation list.
+
+
+
+---
+
+## 2026-09-23 projectile/save/hazard addendum
+
+The current findings are summarized in [PROJECT_FINDINGS_DELTA_2026-09-23.md](PROJECT_FINDINGS_DELTA_2026-09-23.md). This supersedes earlier open-list entries that described USER.SAV +0xC403 as unknown and treated the projectile ±20 render check or shade index as unresolved. The 2026-09-23 update maps the player projectile pool, fire damage-per-update values, SECRET-panel/Cannon flags, guard wake cache, automap buffer roles, color remap table, and shade lookup. Runtime timings, other-build differences, scene equivalence, and residual save-field semantics remain open.

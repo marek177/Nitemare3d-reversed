@@ -12,10 +12,19 @@ inline constexpr std::uintptr_t kColoredKeyMaskAddress = 0x4C28;
 inline constexpr std::uintptr_t kIdCardMaskAddress    = 0x4C29;
 inline constexpr std::uintptr_t kPentagramMaskAddress = 0x4C45;
 
-// The colored-key and ID-card globals are bit masks. Exact per-bit color/card
-// ordering should remain data-driven until every door class has been bound to
-// a displayed lock message in the same executable build.
+// The colored-key and ID-card globals are bit masks. The ID-card ordering below
+// is directly linked to the supplied Win16 OBJECTS/MAP data for the SECRET panel.
 using InventoryMask = std::uint8_t;
+
+enum class IdCardBit : std::uint8_t {
+    Red = 0,
+    Yellow = 1,
+};
+
+inline constexpr std::uint8_t kSecretPanelObjectClass = 0x03;
+inline constexpr std::uint8_t kSecretPanelObjectId = 0x62;
+inline constexpr std::uint8_t kSecretPanelRequiredIdCardObjectId = 0x09;
+inline constexpr IdCardBit kSecretPanelRequiredIdCard = IdCardBit::Red;
 
 constexpr bool hasInventoryBit(InventoryMask mask, std::uint8_t bit) noexcept {
     return (mask & static_cast<InventoryMask>(1u << bit)) != 0;
@@ -23,6 +32,14 @@ constexpr bool hasInventoryBit(InventoryMask mask, std::uint8_t bit) noexcept {
 
 constexpr void grantInventoryBit(InventoryMask& mask, std::uint8_t bit) noexcept {
     mask = static_cast<InventoryMask>(mask | static_cast<InventoryMask>(1u << bit));
+}
+
+constexpr bool hasIdCard(InventoryMask mask, IdCardBit bit) noexcept {
+    return hasInventoryBit(mask, static_cast<std::uint8_t>(bit));
+}
+
+constexpr bool hasSecretPanelCredential(InventoryMask idCardMask) noexcept {
+    return hasIdCard(idCardMask, kSecretPanelRequiredIdCard);
 }
 
 // WARP_S1 uses all four pentagrams. This bit ordering is directly established

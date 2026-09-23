@@ -4,9 +4,10 @@
 
 namespace n3d {
 
-// Episode 3 fire behavior reconstructed from the original hint material and
-// the E3M6 walkthrough.  The numeric damage values/tick interval remain
-// intentionally unspecified until they are recovered from NITE3W.EXE.
+// Win16 NITE3W 1.10 maps object IDs 0x3B..0x3D to class-7 CAUSTIC fires.
+// FUN_1010_BE62 applies these amounts per simulation update; DAT_53F2 is the
+// calibrated update interval, so these are not fixed damage-per-second values.
+// Passability comes from the E3M6 gameplay/video audit, independently of damage.
 enum class FireHazardClass : std::uint8_t {
     None = 0,
     Small,
@@ -14,27 +15,37 @@ enum class FireHazardClass : std::uint8_t {
     Large,
 };
 
+inline constexpr std::uint8_t kLargeFireObjectId = 0x3B;
+inline constexpr std::uint8_t kMediumFireObjectId = 0x3C;
+inline constexpr std::uint8_t kSmallFireObjectId = 0x3D;
+
 struct FireHazardBehavior {
     bool passable{};
-    bool instantKill{};
-    bool appliesContinuousDamage{};
+    std::uint8_t damagePerSimulationUpdate{};
 };
 
-constexpr FireHazardBehavior fireHazardBehavior(FireHazardClass fire) {
+constexpr FireHazardClass fireHazardClassForObjectId(std::uint8_t objectId) noexcept {
+    switch (objectId) {
+    case kLargeFireObjectId: return FireHazardClass::Large;
+    case kMediumFireObjectId: return FireHazardClass::Medium;
+    case kSmallFireObjectId: return FireHazardClass::Small;
+    default: return FireHazardClass::None;
+    }
+}
+
+constexpr FireHazardBehavior fireHazardBehavior(FireHazardClass fire) noexcept {
     switch (fire) {
     case FireHazardClass::Small:
-        // E3M6: visibly traversable; player takes damage while crossing.
-        return {true, false, true};
+        return {true, 2};
     case FireHazardClass::Medium:
-        // Official behavior: passable, but almost deadly; E3M6 shows the
-        // player can cross it and survive with severe health loss.
-        return {true, false, true};
+        return {true, 10};
     case FireHazardClass::Large:
-        // Large flames are the lethal/impassable class.
-        return {false, true, false};
+        // 100 HP/update is lethal from the normal 100-HP maximum; the executable
+        // damage path still expresses this as damage, not a separate kill flag.
+        return {false, 100};
     case FireHazardClass::None:
     default:
-        return {true, false, false};
+        return {true, 0};
     }
 }
 

@@ -362,3 +362,34 @@ V dodaných súboroch posledný event je `0x25`, `0x26`, resp. `0x00`; žiadny z
 2. Zmerať oba clock režimy a hranice 40/65/500; overiť reakciu na pauzu, LOAD, wrap a vynechané IRQ/buckety.
 3. Dokončiť externé DEMO exit stavy a mapy DEMO.2/3; pre porovnanie platforiem prevádzať event a masku podľa správneho layoutu.
 4. Párovať callee `C150/BF36` s Win16 update cestou a obrazom/zvukom pôvodnej hry.
+
+
+---
+
+## 2026-09-23 consolidated update from all audits
+
+This update folds the latest DOS v2.0, Win16 1.10/1.8, save-layout, projectile, fire, renderer, and function-inventory findings into the repository register. It keeps behavioral inference and static executable evidence distinct; unresolved timing and full cross-platform runtime equivalence remain open.
+
+### USER.SAV and projectile pool
+
+The 336-byte block at USER.SAV+0xC403 is an eight-slot array of 42-byte player-fired projectile records. Each record has 14 bytes of Bresenham movement state followed by the 28-byte OBJECT at +0x0E. State +0x0C is 0=free, 1=flying, 2=impact. Pool exhaustion skips the shot without consuming ammunition. Weapon selectors 0, 1, and 3 use this pool; selector 2 is hitscan. The ±20 X/Y condition controls projection/culling and is not a lifetime or slot-release test. Guard collision uses an inclusive ±9 test on each axis. Sequence offsets are wand 2/3 and plasma 0/1. Projectile speed in physical time, exact movement interpretation for every byte, and the DOS runtime counterpart remain open.
+
+USER.SAV+0xC3E3 is 32 panel activation bytes copied from panel record +0x14. The following save blocks are now named: push records at C55B–C5A2; automap storage C5A3–D5A2; 64-byte DOOR-family guard wake cache D5A3–D5E2; 256-byte color remap D5E3–D6E2; fill selectors D6E3/E4; and shade level D6E5. Automap byte-level semantics remain partial.
+
+### Story/event flags and wake behavior
+
+The eight bytes saved at C553 correspond to runtime 0x51A4–0x51AB. Evidence distinguishes the selector-keyed SECRET panel bit channel and red-ID-card requirement (mask bit 0; object 0x09), Cannon AI gate at 0x51A5, shared event stage and class-0x16 damage branch at 0x51A6, trigger latches at 0x51A7/8, episode-2 timed collision latch at 0x51A9, class-0x16 state-9 handling at 0x51AA, and shade mode 6 / early return in door-state updates at 0x51AB. Some bytes are written without a direct functional reader in the examined call graph, so they are not assigned narrative names.
+
+After a successful shot, the guard wake handler derives a selector from the most recently recorded class-D wall. Selector 0 is a no-op; supported supplied-map selectors are sparse. It wakes strategy-0 guards with the matching selector in states 7 or 8, assigns rand()%8 delay, then changes state to 1. The handler has no distance or line-of-sight test. This behavior is cross-checked in Win16 1.8 and 1.10; its intended design purpose is still partly inferred.
+
+### Object fields, hazards, and renderer
+
+OBJECT+0x18 is written by FUN_1010_CC7C as a camera-projection/depth-scale cache, not world Y. OBJECT+0x1A is the vertical offset used by the projectile record interpretation. Fire object IDs 0x3B/0x3C/0x3D are large/medium/small and apply 100/10/2 HP per simulation update. Small and medium fire are passable; large fire is impassable and lethal in the audited gameplay evidence. Damage per second is still unknown until the simulation interval is measured.
+
+The 9/23 renderer assembly pass resolves occupied-column wall ownership, texture-U corrections, 16.16 sampling/interpolation, and wall-animation update control flow. Scene-level integration and captured-image comparison remain incomplete.
+
+### Function inventory and evidence boundaries
+
+The paired inventory contains 1,486 function definitions (519 DOS, 967 Win16). Identity support exists for 429 DOS and 929 Win16 entries, or 1,358/1,486 (91.4%); this is function matching support, not percent of the game understood. Manual detailed review currently covers only the first 200 functions per platform. The NE relocation pass classified 6,082 sites: 4,904 internal; 610 assigned (104 described, 462 call-target, 44 data); 20 ambiguous; 5,452 without an owner. The recovered call graph contains 283 partial call edges.
+
+The E3M6 completion save records level 6, 18 enemies remaining, two panels missing, bonus 0, and score 25,675. This confirms the observed fire passability in that tested save. Use the detailed reports [core function map](../analysis/nite3w_core_function_map_2026-09-23.md), [projectile pool map](../analysis/nite3w_projectile_pool_2026-09-23.md), and [story/event flag map](../analysis/nite3w_user_sav_story_flags_2026-09-23.md) for addresses, offsets, and evidence tables.

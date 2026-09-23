@@ -1,6 +1,6 @@
 # Nitemare 3-D cross-session master index
 
-Updated: 2026-09-22
+Updated: 2026-09-23
 
 This file indexes findings accumulated across the Nitemare 3-D reverse-engineering conversations. The detailed canonical report is ALL_THREADS_CONSOLIDATION_2026-09-22.md.
 
@@ -31,7 +31,7 @@ Important anchors: owner table 0x53FE; wall occlusion 0x58FE; wall span count 0x
 
 VEC orientation: 0 top, 1 bottom, 2 right, 3 left. High-confidence offsets: wallId +00, flags +05, renderClass +06, orientation +07, endpoints +0C/+0E/+10/+12, projected fields +14..+1A. Flag 0x20 flips texture-U direction. Fields +01/+02/+03/+04/+08 remain partial.
 
-Priority renderer targets: FUN_1018_3564 owner conflict, FUN_1010_6422 texture-U/special walls, FUN_1010_3E44 lower wall blitter, FUN_1010_65A6 animation, global 0x7E60, and complete WALLS-to-render-class mapping.
+Remaining renderer targets: complete camera/vector/span scene integration, FUN_1010_3E44 lower wall blitter, exact wall-animation/resource mapping, VEC flag semantics, and full WALLS-to-render-class coverage. The 2026-09-23 raw-assembly audit resolved the occupied-column owner rules, texture-U corrections, fixed-point sampling/interpolation and animation update control flow.
 
 ## Runtime
 Known capacities: doors 64x22 B; panels 32x22 B; pushes 12x6 B; objects 350x28 B; guards 100x26 B; vectors 1000x28 B; wall spans 50x20 B; projected sprites 100x18 B.
@@ -52,16 +52,25 @@ Continue auditing MAP, IMG, OBJECTS, WALLS, SND.DAT, UIF.DAT, ENDING.FLI, GAME.P
 
 SND.DAT/VOC extraction must be compared with original playback. ENDING.FLI has 488 frames and uses COLOR_64, BRUN, LC, BLACK and COPY chunks; editing must preserve delta-frame semantics.
 
+## 2026-09-23 projectile, save and hazard update
+
+- Player-fired NITE3W projectiles use 8 × 42-byte records at USER.SAV +0xC403; +0x0E embeds a 28-byte OBJECT. The ±20 check controls projection only, not lifetime.
+- USER.SAV +0xC553 stores flags 0x51A4–0x51AB; 0x51A4 is the SECRET-panel linked-wall bit (red ID-card bit 0 required), and 0x51A5 gates Cannon AI.
+- USER.SAV +0xD5A3 is the 64-byte one-shot guard wake cache keyed by a class-D wall selector. +0xD5E3 is the palette remap table; +0xD6E5 mirrors shade index 0x7E60 (default 2, dark event 6).
+- CAUSTIC fire IDs 0x3B/0x3C/0x3D apply 100/10/2 HP per simulation update; calibrated seconds/DPS remain open.
+
+See [the 2026-09-23 all-audit delta](PROJECT_FINDINGS_DELTA_2026-09-23.md).
+
 ## Open targets
-1. Exact owner conflict/hidden-surface rule.
-2. Complete texture-U and special-wall mapping.
-3. Wall animation timing and unresolved VEC writers.
-4. Global 0x7E60.
+1. Complete camera/vector/span integration and deterministic pixel comparison.
+2. Remaining special-wall/resource mapping and lower raster/backend paths.
+3. Wall-animation/resource mapping and unresolved VEC field semantics.
+4. Shade override bounds and runtime presentation at 0x7E60.
 5. WALLS ID -> flags -> renderClass -> resource -> handler map.
 6. Door/panel/control layouts and special scripts.
 7. GUARD states 02..14, movement, attack timing and perception.
-8. Enemy/projectile damage and SND mappings.
-9. GUARD13/GUARD25 identities and GUARD26 dancer script.
+8. Enemy attack/projectile identity and SND mappings; the NITE3W player projectile pool and guard-hit test are now structurally mapped.
+9. GUARD25 identity and GUARD26 dancer script.
 10. DEMO.2/3 origin across all preserved maps.
 11. BSF integrity/version algorithm.
 12. Hidden/deleted/unused code, cheats, alternate paths and runtime limits.
