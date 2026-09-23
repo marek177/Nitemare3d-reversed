@@ -52,6 +52,33 @@ int main() {
     assert(ownerConflictReplaces(old3, makeVec(1, 9, 11, 19, 21)));
     assert(!ownerConflictReplaces(old3, makeVec(3, 9, 11, 19, 21)));
 
+    auto texVec = makeVec(0, 100, 100, 164, 100);
+    texVec.screenX1 = 8;
+    texVec.screenX2 = 31;
+    assert(selectTextureU(texVec, 20, 67, 64) == 3); // ordinary masked coordinate
+    texVec.flags = 0x08;
+    assert(selectTextureU(texVec, 8, 67, 64) == 3);  // flag bypasses edge correction
+    texVec.flags = 0;
+    assert(selectTextureU(texVec, 30, 3, 64) == 63); // orientation 0 far-end sentinel
+    assert(selectTextureU(texVec, 8, -100, 64) == 0); // orientation 0 start correction
+
+    texVec.orientation = 1;
+    assert(selectTextureU(texVec, 8, -1, 64) == 0);  // orientation 1 near-start clip
+    assert(selectTextureU(texVec, 30, 64, 64) == 63); // orientation 1 far-end clip
+
+    texVec.orientation = 2;
+    texVec.y1 = 100;
+    texVec.y2 = 164;
+    assert(selectTextureU(texVec, 30, 3, 64) == 63); // orientation 2 far-end sentinel
+
+    texVec.orientation = 3;
+    texVec.renderClass = 2;
+    assert(selectTextureU(texVec, 8, 0, 64) == 63);  // class 2 start sentinel
+    assert(selectTextureU(texVec, 30, -100, 64) == 0); // class 2 negative-end correction
+
+    texVec.orientation = 0;
+    assert(selectTextureU(texVec, 8, 64, 64) == 63); // class 2 horizontal special case
+
     std::array<std::uint8_t, 64> textureColumn{};
     for (std::size_t i = 0; i < textureColumn.size(); ++i) {
         textureColumn[i] = static_cast<std::uint8_t>(i);
