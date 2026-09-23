@@ -96,25 +96,58 @@ The portable C++ core exposes the recovered sampler as
 explicit 16.16 start/step values. It is a tested low-level primitive, not a
 claim that the full scene renderer has been ported.
 
-## `FUN_1010_6422`: status
+## `FUN_1010_6422`: texture-coordinate correction
 
-The branch structure is recoverable and the prior blanket TODO is too broad.
-The routine first checks whether the screen column lies within the first/last
-eight projected columns; if neither endpoint is near, or VEC flag `0x08` is
-set, it returns the along-wall coordinate masked by `width-1`. Near an endpoint
-it applies orientation-specific signed segment-length corrections, including
-the special `renderClass == 2` handling for orientations 0 and 3. A full
-class-to-wall-resource mapping and comparison renders are still required
-before attaching human-readable names to all cases.
+The branch structure is translated in `selectTextureU()`. It first checks
+whether the screen column lies within the first/last eight projected columns;
+if neither endpoint is near, or VEC flag `0x08` is set, it returns the
+along-wall coordinate masked by `width-1`. Orientations 0/2 and 1/3 use
+different signed endpoint corrections. `renderClass == 2` has distinct
+handling for orientations 0 and 3, including 0 and `0xFFFF` sentinel values
+before the final width mask. The code retains 16-bit wrapping before signed
+comparisons. Numeric branch behavior is now represented; a full mapping from
+wall IDs/classes to named WALLS resources and comparison renders remains open.
+
+## `FUN_1010_65A6`: animation state update
+
+The per-wall update logic is now recovered at instruction level. It compares
+the 32-bit game clock at DS `0x0096` with the deadline at VEC `+08`; if due, it
+increments VEC frame `+03` and then follows these cases:
+
+- render class `0x2F`: reset frame to zero;
+- render class `0x07`: hold frame zero and schedule again, with a last-frame
+  clamp for the descriptor count;
+- render class `0x2D`: call `FUN_1018_3C0C` at the descriptor frame boundary,
+  then hold the last frame; the call can repeat on later due ticks;
+- other classes with no sequence-table offset: advance through the frame count,
+  then wrap to frame zero;
+- other classes with a sequence table: use the current VEC `+02` selector to
+  read a two-byte sequence entry. When the current frame reaches the entry's
+  low-byte frame count plus high-byte extension, choose one of eight selectors
+  with `FUN_1018_32D2() & 7`, skipping entries whose high byte is zero, then
+  load the selected low byte as the next frame.
+
+The class `0x07` path first increments the frame, then turns the first step back
+to zero; subsequent ticks compare against the descriptor count and clamp at
+the final frame. The class `0x2D` path calls `FUN_1018_3C0C` at each due tick
+where the incremented frame reaches the descriptor count, then stores the
+final frame again. The helper's full map-wall side effects still need tracing.
+
+The descriptor is an 8-byte row at `0x51AC + textureSet*8`; direct accesses
+support frame count at `+00`, update interval at `+02`, and sequence-table
+offset at `+04`. The routine schedules the next deadline as 32-bit
+`gameClock + interval`. This resolves the helper's control flow, but the
+semantic names/resource contents for every descriptor row and the relationship
+between all sequence values and visible WALLS assets still need mapping.
 
 ## Code and verification
 
 - `src/renderer/Win16WallRasterCore.hpp`: 28-byte VEC view, exact owner winner
-  predicates, both sampling-table initializers, and the bounded indexed-column
-  loop.
+  predicates, exact `FUN_1010_6422` texture-U cases, both sampling-table
+  initializers, and the bounded indexed-column loop.
 - `tests/win16_wall_raster_core_test.cpp`: checks all eight owner cases,
-  strict tie behavior, table values, direct/remapped column writes, and invalid
-  source clipping.
+  strict tie behavior, texture-U orientations/classes, table values,
+  direct/remapped column writes, and invalid source clipping.
 
 The new test compiles and runs with C++20 and `-Wall -Wextra -Wpedantic`.
 These checks validate the isolated routines; they do not establish pixel
@@ -122,10 +155,10 @@ parity for a complete game frame.
 
 ## What remains before claiming full renderer parity
 
-1. Finish the `FUN_1010_6422` numerical port against original captures and map
-   its special cases to every `WALLS.*` property/resource class.
-2. Trace `FUN_1010_65A6` and writes to VEC `+01/+02/+03/+08` to recover exact
-   animated-wall timing and frame selection.
+1. Map the numeric `FUN_1010_6422` and animation-descriptor cases to every
+   `WALLS.*` property/resource class and verify the visible outcomes.
+2. Audit the remaining writes to VEC `+01/+02/+03/+08`, including the
+   `FUN_1018_3C0C` effect and animation-table contents.
 3. Port MAP boundary extraction, four-list sorting, camera transform and
    clipping, owner coverage, span interpolation, object ordering, and both
    wall/sprite resource paths into the runtime.
