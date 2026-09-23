@@ -227,3 +227,13 @@ The keyboard/event dispatcher at `seg3:8C9A` stores its current event code in `0
 3. Compare the DOS v2.0 playback and recording routines against Win16 1.10 to test whether the record layout and timing are shared.
 4. Trace the update of `0x53DC` to determine the time unit, then measure a playback in the running game.
 5. Keep the broader executable audit moving on the main loop, level initialization, guard runtime, and the anonymous 336-byte USER.SAV block; these are still stronger unknowns than another pass over already documented USE/WARP behavior.
+
+## Header parameters and playback clock — verified subset
+
+The 6-byte header stores the live runtime WORDs at `0x53F6`, `0x53F8`, and `0x53FA`. The initializer at `seg3:D7D0–D8F4` derives the first two from timer calibration and sets the third exactly to `2 * 0x53F6`. For the supplied files these values are `(10, 5, 20)`.
+
+The input-step routine reads `0x53F6` and `0x53F8` as its base movement and turn increments (`seg3:9900–993E`). Input bit `0x0020` doubles both; bit `0x0040` forces both increments to 1. The object-position routine at `seg3:9D30–9E1E` uses `0x53FA` as the iteration limit for repeated position updates and map-cell checks. That establishes a movement/collision substep bound; identifying the exact actor type handled by this routine remains open.
+
+In playback state 4, when the next record timestamp is still ahead of `0x53DC`, code increments the counter by one at `seg3:9241` only while game state `0x46B6` is 8. When a record is due, it restores the saved input and reads the next record. This confirms that playback waits against a loop-relative counter; the wall-clock duration represented by one count still needs runtime timing or timer-source analysis.
+
+These findings refine the earlier open question: the first two header words are confirmed movement/turn increments, and the third is their derived two-times movement bound. Remaining work is to name each input-mask bit from all of its consumers and identify the exact actor path using the third parameter.
