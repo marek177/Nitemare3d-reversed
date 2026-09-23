@@ -1,6 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.10
+# Nitemare3D-Reversed — reconstruction v0.11
 
-**v0.10 update:** cross-thread/session findings through 2026-09-22 are consolidated in [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md), with same-day corrections and newly resolved findings in [`docs/PROJECT_FINDINGS_DELTA_2026-09-22.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-22.md). The latest pass resolves GUARD13/class `0x14` as Dracula's internal Bat second phase, narrows GUARD25/class `0x20`, tightens `OBJECT+18` projected-damage semantics, preserves the 28-byte OBJECT / 26-byte GUARD corrections, and carries those facts into `RecoveredRuntime.hpp`.
+**v0.11 update:** the 2026-09-23 raw-assembly pass resolves the Win16 renderer's occupied-column owner rules and 16.16 wall-column sampling core. Findings are in [`analysis/nite3w_renderer_2026-09-23.md`](analysis/nite3w_renderer_2026-09-23.md); the standalone reference code is [`src/renderer/Win16WallRasterCore.hpp`](src/renderer/Win16WallRasterCore.hpp), with a CMake test target. The 2026-09-22 cross-thread consolidation and system audits remain linked below.
 
 Modern C++ reconstruction scaffold for the **Windows 3.1** version of Nitemare 3D.
 The design goal is to preserve the original data formats and reconstructed game logic while replacing obsolete Windows 3.x display plumbing (`WING.DLL` and `DISPDIB.DLL`) with **SDL3**.
@@ -52,7 +52,7 @@ Well-understood areas now include:
 - CONFIG.SAV physical size and USER.SAV block layout;
 - many doors/warps/pushables and numerous level-specific scripts.
 
-The most important remaining work is no longer the basic renderer architecture. It is the exact owner-conflict geometry, special-wall/texture-U paths, wall animation timing, complete door/panel/control records, semantic names for GUARD states 02–14, guard movement/attack timing, projectile behavior, remaining enemy->player class binding, GUARD25 reachability/identity, the complete Dracula resource/sound/corpse chain, the 4096-byte cell-state semantics, BSF integrity algorithm, and unresolved save/resource fields.
+Renderer code is now moving from recovered facts into tested primitives: owner-conflict predicates and the linear fixed-point wall-column loop are implemented, but the complete scene path is not ported. Remaining work spans wall animation/resource classes, the camera/vector/span pipeline, sprite and palette details, deterministic original-frame comparison, complete door/panel/control records, semantic names for GUARD states 02–14, guard movement/attack timing, projectile behavior, enemy-to-player class binding, GUARD25 reachability/identity, Dracula's resource/sound/corpse chain, 4096-byte cell-state semantics, the BSF integrity algorithm, and unresolved save/resource fields.
 
 ## Renderer architecture
 
@@ -73,7 +73,7 @@ The recovered path is:
   -> 320x200 8-bit framebuffer
 ```
 
-See the [renderer audit](analysis/nite3w_renderer.md) for instruction-level evidence and the remaining exact-special-case TODOs.
+See the [renderer audit](analysis/nite3w_renderer.md) and its [2026-09-23 raw-assembly update](analysis/nite3w_renderer_2026-09-23.md). The runtime `Raycaster.cpp` remains a provisional grid-DDA viewer; it has not yet been replaced with the recovered vector/span scene renderer.
 
 ## Current runtime architecture
 
@@ -106,6 +106,7 @@ cmake --build build
 ./build/n3d_pushable_test
 ./build/n3d_menu_cheat_test
 ./build/n3d_hazard_test
+./build/n3d_win16_wall_raster_core_test
 ```
 
 ### Windows 11 + SDL3
@@ -158,5 +159,5 @@ E3M6 strengthens the fire-hazard model: small and medium fire are traversable da
 6. Resolve GUARD25/class `0x20` reachability and resource identity.
 7. Trace the complete Dracula `0x11 -> 0x14` sequence/sound/corpse chain.
 8. Resolve the 4096-byte per-cell runtime state block and `OBJECT+14/+16/+18` semantics.
-9. Translate the exact owner-conflict rule in `FUN_1018_3564` and all `FUN_1010_6422` texture-U/special-wall cases.
-10. Finish BSF integrity/version-diff reconstruction plus SFX/MIDI/UIF/ENDING.FLI edge cases and unresolved USER.SAV blocks.
+9. Integrate the recovered Win16 camera/vector/span pipeline and sprite/resource ordering into the runtime; validate it against deterministic original frames.
+10. Finish wall-animation and special-resource mappings, DOS/VGA backend comparisons, BSF integrity/version-diff reconstruction, SFX/MIDI/UIF/ENDING.FLI edge cases and unresolved USER.SAV blocks.
