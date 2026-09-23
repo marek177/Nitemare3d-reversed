@@ -74,8 +74,9 @@ deleted class. Compare MAP, WALLS.2 and EXE handler domains first.
 
 Keep the established projected-boundary-vector model. Audit VEC `+01/+02/+03/
 +04/+08`, flags `04/08/10`, owner conflict `FUN_1018_3564`, texture-U
-`FUN_1010_6422`, and animation path `FUN_1010_65A6`. Locate RNG/seed and main
-logical tick; DEMO records are 8 B but determinism still requires evidence.
+`FUN_1010_6422`, and animation path `FUN_1010_65A6`. RNG arithmetic, DEMO seed
+resets and DOS clock sources are now mapped below. Trace full RNG call order and
+cross-platform timing; the two 8 B DEMO layouts differ.
 
 Use four hidden-content sets: `DEFINED`, `PLACED`, `REFERENCED`, `EXECUTED`.
 Report `DEFINED−PLACED`, `REFERENCED−PLACED`, `DEFINED∩PLACED−EXECUTED`, and
@@ -108,9 +109,9 @@ Tento prechod zosúlaďuje register s novšími priamymi auditmi Win16 1.10 a DO
 | # | Výsledok analýzy a doložené fakty | Čo je naozaj otvorené a aký dôkaz to uzavrie |
 |---:|---|---|
 | 1 | **Štart – čiastočné.** Win16 má spoločnú stavbu `map.N`, `img.N`, `demo.N`; `-r` zapína záznam DEMO. Obe skúmané platformy obsahujú `Invalid command line`, ale samotný text neurčuje parser hry. | Zostaviť WinMain/DOS štartovaciu vetvu, zoradiť init grafiky, času, vstupu a súborov; nájsť všetky exit a chyby open/load. Rozlíšiť herné argumenty od runtime/MFC textov. |
-| 2 | **Hlavný cyklus – scheduler DOS zmapovaný, presná sémantika stále P0.** `FUN_1000_e964` opakuje `c1a8` v hernom stave. `c1a8` má samostatné 8 Hz a predvolené 25 Hz vetvy; update call order je `c0d8 → bf36 → A0B8 → A236 → 0AEA → 8230 → lag hook → 70D6`. Win16 `0x46B6` prepína herné vetvy a DEMO dispatcher sa volá v stave 8. | Pomenovať a rozhraniť jednotlivé callee, najmä zlúčený blok `1000:70D6`, oddeliť input/player/AI/combat/world/render a spárovať s Win16. Overiť správanie pri 65 ms lag hranici a 500 ms rebase. |
-| 3 | **Časovanie – významná časť potvrdená.** Win16 kalibruje päť update priechodov. DOS nastavuje `0x3CC2=25`; `FUN_1000_bef4` z toho počíta 25 krokov/s (40 ms), `FUN_1000_beb4` vedie samostatný 8 Hz čítač a `FUN_1000_bf7a` meria desať update priechodov. `FUN_1000_c1a8` ukazuje poradie scheduleru a 500 ms rebase. DOS nastavuje aj RTC vektor `INT 70h` s handlerom `11EE:0x0BCC`; alternatívna cesta používa BIOS tick `0x46C/0x46E`. | Zistiť presný význam každého scheduler callu, RTC handlera a `0x3CC7/0x3CCF` režimov; overiť wrap, pauzu/LOAD, lag vetvy a runtime čas pri presnom builde. DEMO `0x53DC` ostáva osobitný čítač. |
-| 4 | **RNG – callsite mapa rozšírená, algoritmus otvorený P0.** DOS stub `1000:0xFD40 → 11EE:0x31F8`; C export obsahuje 26 textových volaní v 18 caller funkciách. Vidno `&1`, `&7`, `%8`, `%8+8`, `%0x50+8`, `%0x3E`, `%0x24`, `%0x19`, `%7` a `%0xF0+0xA0`. | Dekódovať cieľový segment/overlay a zápisy stavu; nájsť seed/reset; rozlíšiť pomocné RNG od animácie/render jitter; otestovať modulo bias a DOS/Win16/DEMO reprodukovateľnosť. Callsite count je inventár C exportu, nie potvrdený počet jedinečných logických random udalostí. |
+| 2 | **DOS scheduler – poradie a DEMO vetvenie potvrdené.** `C1A8` oddeľuje vetvy 8/1000 a 25/1000 jednotiek zdrojového času. V bežnej hre volá `C150` pomalšia vetva; pri `3CD6 != 0` ho hlavná vetva volá pri nepárnom `4540`, pred inkrementom v `BF36`. | Úplná sémantika všetkých callee, zhodnosť Win16 poradia a živý trace. Vynechaný bucket zvyšuje logický čítač iba raz; scheduler spätne nedobieha všetky zmeškané kroky. |
+| 3 | **DOS RTC handler a jednotky času potvrdené.** Skutočný vektor je `0BCC:0002`, teda image offset `BCC2`; ISR zvyšuje dword `DS:081E`, číta RTC C a posiela EOI obom PIC. Pri 1024 Hz RTC predstavujú vetvy 25/1000 a 8/1000 nominálne 25,6 a 8,192 Hz. `BDF8` poskytuje samostatný polling čas. | Zmerať skutočný beh, stratené IRQ, pauzu/LOAD a Win16 paritu. Samostatne preveriť wrap a čítanie čítača počas prerušenia. Hodnoty 40 a 65 sú jednotky `BE74`; 500 používa polling čas `BDF8`. |
+| 4 | **RNG – algoritmus, násobenie, seed a DEMO reset potvrdené.** LCG `state × 214013 + 2531011 mod 2^32`, návrat `(state >> 16) & 0x7FFF`. DOS a Win16 používajú byte-identický 50 B násobiteľský helper. Obe DEMO štartovacie cesty nastavia seed 1. `3634/3636` sú countdown/fáza paletového záblesku. | Celkové poradie odberov, význam `3630/3632`, prípadné nepriame resety mimo DEMO a úplná save/load kontinuita RNG. Modulo bias je vypočítaný; runtime porovnanie zostáva otvorené. |
 | 5 | **Pamäť a cache – otvorené.** Pevné kapacity polí sú potvrdené; USER.SAV obsahuje VEC/OBJECT/GUARD/door, panel, projectile, push, automap a remap bloky. | Chýba alokačno-vlastnícky graf, životnosť far pointerov po level change/LOAD a presná DOS XMS/disk-cache vetva. Treba sledovať alloc/free a všetky pointer rebasing writery. |
 | 6 | **Level load – čiastočné.** MAP má 514-bajtovú hlavičku, dve 256-bajtové class mapy a 64×64 bunky po 2 B; finálne dáta obsahujú 31 levelov. Win16 staví názvy MAP/IMG/DEMO z rovnakého selektora. | Presné poradie parser → steny/vektory → objekty/guardy → dvere/panely/pushes → spawn; reset persistentných polí; DOS hranice `1000:84FE` a porovnanie level-init buildov. |
 | 7 | **Vstupy – Win16 klávesnica prevažne zmapovaná.** Šípky menia `0x3756`; ľavý/pravý Shift nastavujú `0x40/0x20`, Ctrl `0x80`, Alt používa `0x3757`; Q prepína hudbu, R efekty, Alt+Enter režim okna. DOS číta aj klávesnicu, myš a joystick. | Neuzavreté sú Win16 myš/joystick, DOS scancode mapovanie, dead-zone, strata fokusu a kombinované udalosti. Raw caller test pre stavový bit `0x8000` a tri systémové klávesové callery. |
@@ -134,15 +135,15 @@ Tento prechod zosúlaďuje register s novšími priamymi auditmi Win16 1.10 a DO
 | 25 | **Projekcia/clipping – hlavný tok doložený.** Win16 oreže near-plane okolo `0x4000`, projektuje vektorové konce a rozhoduje viditeľnosť po stĺpcoch. | Všetky orientačné dvojice pri prekrytí, equality/tie prípady, near-plane okraje a fixed-point rounding. Porovnať raw frame capture z pevne zadanej pozície. |
 | 26 | **Texture/transparency – otvorená pixelová hranica.** Projekcia/span má zmapovaný 20 B record a 16.16 vertikálnu interpoláciu; shade/remap tabuľka má potvrdenú funkciu. | Finálna texture U/V adresa, texel writer, masked/transparency steny, čiastočne otvorené dvere a tieňové výnimky. Dokončiť od span emittera až po framebuffer zápis. |
 | 27 | **Sprites/order – čiastočné.** Je 350×28 B OBJECT pool, projekčný visible-object prechod a wall-owner buffer pre occlusion. | Presné triedenie, rovnaká hĺbka, clipping, wall/sprite order, priority a limit pre preplnený onscreen list. Potrebný call graph sort → span/sprite write. |
-| 28 | **Palette/video – palette transform potvrdený.** 236 základných farieb sa remapuje podľa úrovní stmavenia; Win16 používa WinG/DisplayDIB a DOS VGA helpery. | Všetky používateľské cesty remap/transparent colors, rezervované farby a bitovo presná DOS/Win16 výstupná zhoda. Zmerať identický frame a porovnať 320×200 palette bytes. |
+| 28 | **Palette/video – remap aj DOS paletový záblesk zmapované.** `A0CC` prepína DAC index 0xEB a index z `D2F7` medzi nulami a 0xFF komponentmi. `3634` je countdown a `3636` fáza; návrat do tmavej fázy volá zvuk 0x42. | Grafické assety používajúce oba indexy, Win16 ekvivalent, všetky ostatné remap/transparent cesty a pixelová parita. |
 | 29 | **HUD/automap – dáta čiastočne potvrdené.** Save obsahuje 4096 B automap plochu; existujú HUD a portrait draw routiny. | Význam všetkých raster hodnôt/farieb, dirty flags, portrait HP prahy, značky a spotreba máp metrov. Sledovať každého writeru automap buffera a HUD update. |
 | 30 | **Menu/texty/config – čiastočné.** Q/R a Alt+Enter klávesy, difficulty/UI a remote door/cannon menu majú priamo doložené vetvy. | Ukladanie konfigurácie, všetky dialog/message vetvy, command-line parser, MFC/runtime texty a okrajové textové clipping. Nevyvodzovať `-debug` iba z `debug.txt`. |
 | 31 | **MAP/IMG/UIF/loadery – jadro MAP potvrdené.** MAP header/cell layout a file I/O/resource loader vetvy sú známe; seqdef loader načíta pevné 90 B bloky. | Runtime mutácie MAP, zvyšné IMG metadata a frame linky, UIF sloty 0–2, prázdne sloty 17–31 a presné asset aliasy. Overiť loader → renderer/dispatcher XREF. |
-| 32 | **Zvuk/hudba – kontajner čiastočne zmapovaný.** SND.DAT má 160 slotov, 88 nenulových položiek; existujú Q/R toggle a event SFX volania. | Úplná event→slot tabuľka, sample/codec/rate a dôvod chybných exportov, priority/prekryv zvukov, MIDI loop a DOS/Win16 prehrávanie. |
+| 32 | **Zvuk/hudba – kontajner a ďalšia väzba udalosti potvrdené.** SND.DAT má 160 slotov, 88 nenulových položiek. DOS paletový záblesk končí volaním `9270 → C686(0x42,0,2)`: zvukový index 66 a priorita 2. | Kompletná event→slot tabuľka, sample/codec/rate, MIDI slučky, mix/prekrývanie a DOS/Win16 porovnanie. |
 | 33 | **ENDING.FLI – otvorené okraje.** Hlavička uvádza 488 frame; fyzická kontrola našla 489 blokov a najmenej šesť prázdnych koncových blokov. | Zistiť, ktoré bloky sú padding/EOF, čo prehrávač považuje za koniec a či všetky 489 záznamy majú valídny frame header. |
 | 34 | **Mapy/assety – obsah zmeraný, runtime nie.** 31 finálnych mapových blokov; E1M3 a E1M11 zdieľajú wall plane, no líšia sa v 17 object cells; E2M4 má známu anomáliu. | Všetky class/asset použitia naprieč epizódami a buildmi, nepoužitý content a aktérske hraničné počty; pre DEMO.2/3 preveriť všetkých 31 máp. |
 | 35 | **USER.SAV – physical layout confirmed; C553 and D5A3 behavior partly mapped.** C553 event/AI bytes have direct callers; D5A3 is a one-shot guard wake cache keyed by nonzero class-D wall selector. | 94-byte player/global block, timer/pointer rebasing, design reason for DOOR-ID grouping, and selector bounds across all WALLS builds. |
-| 36 | **DEMO – formát a stavový automat prevažne uzavreté.** 6 B hlavička, 8 B record; kód eventu + vstupná maska + nulový/nepoužívaný bajt + čas; hlavička `(10,5,20)` sú pohyb/turn/substep parametre; state 1–5 a timed playback sú potvrdené. | Začiatočná mapa/spawn, reprodukovateľný RNG, EOF/prerušenie, wall-clock dĺžka counteru, účel `+3`, level match DEMO.2/3 a DOS parita. |
+| 36 | 911 alebo 910 | 0–7 |
 | 37 | **Debug/CMD/cheats – čiastočné.** `debug.txt` aj `Invalid command line` sú v oboch skúmaných binárkach; Win16 logger a `-r` DEMO recording sú doložené. | Cross-reference fyzických stringov, všetky command-line callers, logger activator, rozdiel od CRT/MFC parsera a dosiahnuteľnosť cheat/debug gate. |
 | 38 | **Platformová vrstva – základ identifikovaný.** DOS je MZ; Win16 NITE3W je NE; Win16 používa systémové tick API a WinG/DisplayDIB, DOS BIOS/VGA časovanie a výstup. | Message loop, callbacky, focus/device recovery, cleanup, import API celý a DOS XMS/disk cache. Potrebné sú exact-hash build exports a caller graph. |
 | 39 | **Register funkcií – úplnosť inventára nie je sémantická úplnosť.** Známe je 519 DOS + 967 Win16 = 1 486 definícií; všetky sú klasifikované, no starší ručný detail pokrýval 200 z každej vetvy a ďalšie rutiny sa rozoberali cielene. | Uzavrieť skutočné hranice veľkých merged blokov, near/far/nepriame xrefy, callbacky a dead-code kandidátov; aktualizovať každý entry na CONFIRMED/PARTIAL/CANDIDATE pre presný build. |
@@ -153,7 +154,7 @@ Tento prechod zosúlaďuje register s novšími priamymi auditmi Win16 1.10 a DO
 1. `USER.SAV +0xC403` nie je anonymný 336-bajtový blok: je to osem 42 B projectile záznamov.
 2. Fire damage `100/10/2` HP na simulačný update je potvrdený; neznáme ostáva DPS pri konkrétnom kalibrovanom intervale a ostatné hazardy.
 3. Win16 explodujúca stena má completion cleanup mapového blokovania; iba DOS call target a presná stopa ostávajú otvorené.
-4. DEMO formát, hlavičkové pohybové parametre, hlavné input bity a state 1–5 sú rozpoznané; mapovanie levelu DEMO.2/3 a wall-clock dĺžka ešte nie.
+4. DEMO formáty DOS a Win16, ich rozdielne rozloženie event/mask, Win16 hlavičkové pohybové parametre, hlavné input bity a state 1–5 sú rozpoznané; mapovanie levelu DEMO.2/3 a wall-clock dĺžka ešte nie.
 5. Win16 klávesové udalosti a shade/remap funkcia sú doložené; nezamieňať to s úplným input-device alebo renderer uzavretím.
 6. 1 358/1 486 párovaných funkcií je podobnosť identity; nie 91,4 % pochopenia hry. Súhrnné 50–60 % je len starší pracovný odhad, nie meraná metrika.
 
@@ -173,49 +174,6 @@ Pri ďalšom prechode treba po každom uzavretom výreze uviesť build/hash, adr
 
 ---
 
-## Pokračovanie P0: priamy DOS rozbor scheduleru, hodín a RNG brány
-
-### Identita dôkazu
-
-- DOS obraz `N3D-UNFU(1).exe`, SHA-256 `552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301`.
-- Ghidra C export `N3D-DOS-UNFULL-v20.exe.c`, SHA-256 `5b4c671ca5864916f250324d226378a8ce6ee3278220a832fc7f139e49796d54`.
-- Nižšie uvedené adresy sú offsety DOS segmentu `1000`; volanie RTC handlera používa segment `11EE`. Export C má pri veľkých merged blokoch nepresné hranice, preto sú tvrdenia o poradí volaní silnejšie než domnienky o názve každej fázy.
-
-### Priame časovacie fakty
-
-1. `FUN_1000_4760` a `FUN_1000_4778` nastavujú `0x3CC2` na `25`. `FUN_1000_bef4(t)` vypočíta celočíselný bucket `floor(0x3CC2 * t / 1000)`; keď sa bucket zmení, zvýši čítač `0x16FE` a uloží posledný bucket do `0x1702`. Pri predvolenom nastavení to dáva **25 krokov za sekundu**, teda nominálne **40 ms na krok**.
-2. `FUN_1000_beb4(t)` počíta odlišný bucket `floor(8 * t / 1000)`. Pri zmene zvýši čítač `0x16F6` a uloží poslednú hodnotu do `0x16FA`. Je to samostatná **8 Hz časová os**; jej presná produktová rola sa neurčuje iba podľa frekvencie.
-3. `FUN_1000_bf7a` najprv vykoná desať volaní `FUN_1000_bf36` a spriemeruje nameraný čas. Ak prvý priemer nedosiahne `0x41` ms (65 ms), vykoná ďalších desať meraní s dodatočným volaním `0x19B6`. Potom porovná nameraný čas s `1000 / 0x3CC2` a odvodí parametre `0x4556–0x4560`. Funkcia teda meria DOS update výkon a zohľadňuje minimálny 40 ms interval.
-4. `FUN_1000_bd34(0)` číta a upraví RTC register A cez porty `0x70/0x71` (dolný nibble nastaví na `6`), uloží starý vektor `INT 70h`, nainštaluje handler `11EE:0x0BCC`, povolí periodic interrupt bit `0x40` v RTC registri B a odmaskuje IRQ8 cez port `0xA1`. Vetva s parametrom `1` maskuje IRQ8, vypne bit `0x40` v RTC registri B a obnoví pôvodný vektor. `FUN_1000_bde4` volá túto správu podľa flagu `0x3CCF`. Presný časový význam počítadla v samotnom handleri `11EE:0x0BCC` ešte treba získať.
-5. `FUN_1000_bdf8` má dve cesty. Pri `0x3CC7 == 0` a `0x3CCF != 0` číta BIOS Data Area na `0x46C/0x46E`, pracuje s bázou na `0x16F2` a používa násobok `0x37` (55 ms na BIOS tick). Inak volá helper `1000:0x49CA` a skladá výsledok ako `local_10[0] * 1000 + local_c`; význam návratových polí helpera zatiaľ nie je pomenovaný.
-6. `FUN_1000_be74` pri `0x3CCF == 0` obnoví timestamp cez `bdf8` a uloží ho do `0x81E/0x820`; pri aktívnom flagu vráti už udržiavanú hodnotu. Samotné flagy `0x3CC7/0x3CCF` preto rozlišujú časové režimy, ale ich úplná init/fallback matica zostáva otvorená.
-
-### Poradie scheduleru
-
-`FUN_1000_e964` nastaví stav `0x3CD4=1` a opakuje `FUN_1000_c1a8`, kým stav neprejde na `3` alebo `0`. V `c1a8` sú dve hranice:
-
-- Pri dosiahnutí bucketu z `beb4` sa volá `FUN_1000_c150` podľa režimu `0x3CD6` a posúva sa ďalší deadline `0x1738`.
-- Pri dosiahnutí bucketu z `bef4` sa volá postupne `FUN_1000_c0d8`, `FUN_1000_bf36`, `0xA0B8`, `0xA236`, `0x0AEA`, `0x8230`, potom lag vetva `0x1608` alebo `0x15EE` a napokon `0x70D6`. Ďalší deadline sa uloží do `0x173C`, časová báza do `0x1734`.
-- Ak rozdiel od `0x1734` prekročí 500 ms, scheduler zavolá `bde4` dvakrát, znovu odčíta `bdf8` a rebazuje časovú bázu.
-
-Z kódu je potvrdený **call order**, nie plná sémantika každého callee. Najväčší ďalší výnos prinesie párovanie `0xA0B8/0xA236/0x0AEA/0x8230/0x70D6` s Win16 update cestou a runtime záznamom 40 ms tickov.
-
-### RNG: nájdená brána, nie algoritmus
-
-DOS volania na `1000:0xFD40` sú päťbajtový far-call stub: `lcall 11EE:0x31F8; retf`. Callery potvrdzujú náhodné použitie: `FUN_1000_5092` testuje návratový bit `&1` pri výbere odrazovej osi a `FUN_1000_8590` použije `FD40() % 0x19`, teda zvyšok 0–24. Ďalšie callery odovzdávajú argumenty helperu.
-
-Zostáva otvorené, čo presne robí kód `11EE:0x31F8`, kde ukladá seed, kedy sa seed resetuje a či DOS a Win16 používajú rovnakú sekvenciu. Kým sa cieľový segment a jeho zápisy stavu neprejdú, helper sa neoznačuje za konkrétny CRT `rand()` algoritmus.
-
-### Ďalší uzatvárací test
-
-1. Rozlúštiť adresnú mapu a overlay/segment pre `11EE:0x0BCC` a `11EE:0x31F8`.
-2. Vytvoriť read/write tabuľku pre `0x81E/0x820`, `0x16F2`, `0x16F6/0x16FA`, `0x16FE/0x1702`, `0x1734/0x1738/0x173C` a `0x3CC2/0x3CC7/0x3CCF`.
-3. Zmerať DOS tick trace s rovnakým DEMO vstupom pri bežnom behu, pauze a LOAD; osobitne porovnať intervaly okolo 40 ms, 65 ms a 500 ms.
-4. Zaznamenať výstupy `FD40` pre opakované seed/time podmienky a porovnať s Win16; až potom uzavrieť generátor, bias a reprodukovateľnosť replaya.
-
-
----
-
 ## Doplnenie P0: inventár volaní DOS RNG
 
 V analyzovanom DOS C exporte som spočítal **26 textových callsite záznamov v 18 caller funkciách**. Ich pozorované konzumné tvary sú:
@@ -229,9 +187,9 @@ V analyzovanom DOS C exporte som spočítal **26 textových callsite záznamov v
 | `5F74`, `70D6`, `84FE`, `954A`, `980C`, `9CF2` | Dve hodnoty `% 0x3E` a `% 0x24` ukladajú sa do `0x3632/0x3630`; význam týchto globálov ostáva otvorený. |
 | `8590` | `% 0x19` sa pripočíta do výrazu `(field_delta * 8) + random`. |
 | `9FB4`, `A018` | `% 7` používa výsledok v opakovanej výberovej vetve; presný intended range treba potvrdiť na inštrukciách. |
-| `A0CC` | `% 0xF0 + 0xA0` sa zapisuje do `0x3634`. |
+| `A0CC` | `% 0xF0 + 0xA0` nastaví countdown `0x3634` pri konci svetlej fázy paletového záblesku; fáza je `0x3636`, zvukový slot `0x42`. |
 
-Počet je prevzatý z textového exportu; veľké merged bloky môžu skresliť počet logických callsite a ich hernú rolu. Inventár však už zužuje ďalšiu prácu na helper `11EE:0x31F8`, seed writes a význam globálov `0x3630/0x3632/0x3634`.
+Počet je prevzatý z textového exportu; veľké merged bloky môžu skresliť počet logických callsite a ich hernú rolu. Algoritmus helpera, DEMO reset a význam `0x3634/0x3636` sú teraz potvrdené nižšie. Otvorené zostávajú najmä chronologické poradie odberov, `0x3630/0x3632` a resety mimo DEMO.
 
 
 ---
@@ -253,38 +211,154 @@ The same mechanism appears in Win16 1.8 under FUN_1010_75C0/FUN_1010_8A62 and in
 
 ---
 
-## 2026-09-23 addendum: DOS EXEPACK, RNG, and RTC timing
-
-### Binary evidence
-
-- DOS input `N3D-UNFU(1).exe`: SHA-256 `552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301`.
-- EXEPACK-expanded image `N3D-DOS-unpacked.img`: SHA-256 `e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297`.
-- Rebuilt MZ image: SHA-256 `45f0035a4480313856b41befc6e3a8a9a2ecaa109c72400c7de9ba07981b25d8`.
-- Win16 NE `nite3w(10).exe`: SHA-256 `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481`.
-
-### EXEPACK correction
+## 2026-09-23: DOS EXEPACK mapping
 
 The DOS MZ is packed with an EXEPACK-style stream. Its EXEPACK header contains signature `RB`, original entry `11EE:0018`, original `SS:SP=3574:0800`, and an expanded length of `0x29D60` bytes. The packed stream uses backward `B0` fill and `B2` literal commands and an internal relocation table with 1,670 entries. Consequently, MZ `e_crlc=0` does not mean the unpacked program has no relocations, and raw file offsets cannot be used as addresses for the expanded code. The header and unpack algorithm are documented by [unEXEPACK](https://github.com/w4kfu/unEXEPACK); a technical overview is available from [Pushbx](https://pushbx.org/ecm/doc/insref.htm#EXEPACK).
 
-### RNG: formula and seed confirmed in DOS and Win16
 
-DOS `1000:FD40` far-calls `11EE:31F8`. In the expanded image, the routine updates a 32-bit state with:
+## Pokračovanie P0: opravená RTC adresa, časové jednotky a DOS/Win16 DEMO
+
+### Presné vstupy a overenie
+
+| Podklad | SHA-256 |
+|---|---|
+| DOS `N3D-UNFU(1).exe` | `552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301` |
+| Rozbalený DOS image | `e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297` |
+| Obnovený MZ | `45f0035a4480313856b41befc6e3a8a9a2ecaa109c72400c7de9ba07981b25d8` |
+| DOS Ghidra C export | `5b4c671ca5864916f250324d226378a8ce6ee3278220a832fc7f139e49796d54` |
+| Win16 `nite3w(10).exe` | `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481` |
+
+Dôkaz tvorí priama 16-bitová disassembláž a čítanie MZ/NE relocácií. Adresy DOS bez segmentu v tejto sekcii znamenajú offset v rozbalenom image; sú zhodné s offsetovou časťou používaných označení `FUN_1000_...`. DOS segmenty v uložených far pointeroch sú relatívne k load segmentu. Pri Win16 sa používa číslo NE segmentu a offset. Originál hry sa v tomto prechode nespúšťal.
+
+### 1. Oprava adresy RTC handlera a úplné telo ISR
+
+Predchádzajúca verzia omylom interpretovala segment volanej CRT funkcie ako segment handlera. Správna postupnosť na `BD74–BD7C` je:
+
+```asm
+push 0x0BCC      ; segment handlera, MZ relocation na BD75
+push 0x0002      ; offset handlera
+push 0x0070      ; číslo interruptu
+call 11EE:39F4   ; set-vector helper, image 158D4
+```
+
+Helper `158D4` načíta `DS:DX` cez `LDS DX,[BP+8]` a volá DOS `INT 21h/AH=25h`. Preto je handler **`0BCC:0002` → image `BCC2`**. Hodnota `11EE:0BCC` v staršom audite bola nesprávna.
+
+| ISR offset | Priama operácia |
+|---|---|
+| `BCC2–BCCE` | uloží 32-bitové všeobecné registre, DS/ES; nastaví DS na relokovaný `2771`; CLD |
+| `BCCF` | `INC DWORD PTR DS:[081E]` |
+| `BCD4–BCD8` | vyberie RTC register C na porte 70h a prečíta ho z 71h |
+| `BCDA–BCDE` | pošle EOI `0x20` na port A0h aj 20h |
+| `BCE0–BCE6` | obnoví registre a vykoná IRET |
+
+MZ tabuľka potvrdzuje relocácie segmentu handlera na `BD75`, jeho DS operandu na `BCCA` a segmentu CRT callu na `BD7F`. Funkcia `BD34` pri zapnutí uloží pôvodný vektor, zmení rate-select na 6, povolí periodic bit v RTC B, prečíta RTC C a odmaskuje IRQ8. Pri vypnutí obnoví vektor a maskuje IRQ8; neobnovuje pôvodný rate-select registra A. Zapnutie/vypnutie v tomto tele nenuluje `081E`.
+
+### 2. Dve časové základne a presné vetvenie scheduleru
+
+`BE74` vracia `DS:081E`. Ak `3CCF == 0`, pred návratom ho obnoví z `BDF8`; pri aktívnom RTC vracia ISR čítač. Každý RTC interrupt zvýši hodnotu o 1, bez prepočtu na milisekundy.
+
+`BDF8` má samostatné cesty:
+
+- `3CC7 == 0 && 3CCF != 0`: odčíta BIOS tick `0040:006C`, odpočíta uloženú bázu `16F2` a výsledok násobí 55.
+- Inak volá `11EE:2AEA` (image `149CA`). Helper načíta DOS dátum/čas; do `struct+4` uloží **DOS stotiny sekundy × 10**, teda milisekundovú zložku. Caller skladá `32-bitové sekundy × 1000 + word na +4`. Presný názov runtime funkcie je kandidát `ftime`; význam spotrebovaných polí je doložený inštrukciami.
+
+Oprava jednotiek: pri štandardnej 32,768 kHz báze RTC znamená rate-select 6 frekvenciu 1024 Hz; mapovanie uvádza aj [tabuľka registrov MC146818](https://sources.debian.org/src/gxemul/0.7.0%2Bdfsg-1/src/include/thirdparty/mc146818reg.h/#L354). Kód zachováva horný nibble registra A, takže tento záver predpokladá štandardné nastavenie bázy. Časy odvodené z `BE74` sú potom nasledovné:
+
+| Výraz/prah | Jednotky kódu | Ideálny fyzický ekvivalent s RTC |
+|---|---:|---:|
+| `floor(25*t/1000)` | 40 interruptov medzi bucketmi | 39,0625 ms; 25,6 bucketov/s |
+| `floor(8*t/1000)` | 125 interruptov medzi bucketmi | 122,0703125 ms; 8,192 bucketov/s |
+| test `< 0x41` | menej ako 65 interruptov | menej ako 63,4765625 ms |
+| watchdog `>500` | používa **BDF8**, samostatný polling čas | približne 500 ms podľa vybranej polling cesty |
+
+Hodnoty **25 Hz/40 ms a 8 Hz** platia pri milisekundovom vstupe. Pri RTC sa časová základňa líši o 2,4 %. Uvedené RTC frekvencie sú odvodené limity pri pravidelnom obsluhovaní prerušení a dostatočne častom pollingu, nie namerané FPS.
+
+`BEB4` a `BEF4` pri zmene vypočítaného bucketu zvýšia svoj logický čítač **iba o 1**. Ak medzi dvoma volaniami preskočí viac bucketov, nedobiehajú ich počet. Násobenie v `BEF4` zachováva iba dolných 32 bitov pred delením; wrap správanie preto treba zachovať pri portovaní.
+
+`C1A8` vykonáva:
+
+1. Snímka `BE74` pre logické vetvy a samostatná snímka `BDF8` pre watchdog.
+2. Bežná hra (`3CD6 == 0`): pri pomalom termíne zavolá `C150`.
+3. DEMO režim (`3CD6 != 0`): v hlavnej vetve zavolá `C150`, iba ak je `4540` nepárny **pred** volaním `BF36`.
+4. Hlavná vetva: `C0D8 → BF36 → A0B8 → A236 → 0AEA → 8230 → 1608/15EE podľa 65 jednotiek → 70D6`.
+5. `BF36` zvyšuje 32-bitový `4540` o 1. DEMO preto volá `C150` každý druhý hlavný priechod; ideálne pri RTC 12,8-krát/s, kým bežný režim používa pomalú vetvu 8,192-krát/s.
+6. Watchdog pri rozdiele >500 zavolá `BDE4(1)`, potom `BDE4(0)`, a aktualizuje bázu `1734`; jeho argumenty sú potvrdené raw kódom.
+
+Zostáva runtime meranie, sémantika všetkých callee, presná matica režimov, pauza/LOAD a porovnanie s Win16. `BE74` číta low/high word osobitne; atomicitu pri príchode IRQ a hraničné pretečenia ešte treba overiť.
+
+### 3. RNG: potvrdené násobenie, opravené Win16 adresy a DEMO reset
 
 ```text
 state[n+1] = (state[n] * 214013 + 2531011) mod 2^32
 result[n]  = (state[n+1] >> 16) & 0x7FFF
 ```
 
-The setter at `11EE:31E6` stores the low state word at `DS:24B8` and clears `DS:24BA`. Wrapper `FD46` passes seed 1; initialized data also starts at 1. The first output is 41 by direct calculation. No direct clock-derived seed write was found in the examined DOS image.
+DOS RNG `FD40 → 11EE:31F8` má telo na `150D8`, stav `DS:24B8/24BA`. Setter `11EE:31E6` je na `150C6`; wrapper `FD46` mu odovzdáva 1. Win16 RNG je `NE seg2:6EC8`, setter `seg2:6EB0`, stav `DS:0A90/0A92`. Obe inicializované hodnoty sú 1.
 
-The Win16 binary contains the same multiplier, increment and high-15-bit return. Its state is at `DS:0A90/0A92` in NE auto-data segment 10 and also initializes to 1. Static evidence therefore establishes identical algorithms and initial states, while runtime sequence parity still depends on call order.
+**Násobenie už je uzavreté:** DOS `11EE:3AD8` mapuje na `159B8`. Jeho 50 bajtov sa presne zhoduje s Win16 `seg2:7118`. Helper počíta dolných 32 bitov súčinu pomocou dolného 16×16 súčinu a dvoch krížových súčinov. Návrat je DX:AX; `RETF 8` odstráni dva 32-bitové argumenty. Nezávislý aritmetický model zodpovedá plnému 32-bitovému násobeniu pri 1 005 hraničných a deterministicky vybraných pároch.
 
-Modulo reductions are now quantified over the full LCG period: `&1`, `&7` and `%8` are uniform. For `%80`, residues 0–47 occur 410 times per 32,768 outputs and 48–79 occur 409 times; `%62` has 32 residues at 529 and 30 at 528; `%36` has 8 at 911 and 28 at 910; `%25` has 18 at 1,311 and 7 at 1,310; `%7` has one residue at 4,682 and six at 4,681; `%240` has 128 residues at 137 and 112 at 136. The game’s observed RNG result is always nonnegative, so signed versus unsigned remainder gives the same result at these sites.
+Hodnota **`6DA3` v raw Win16 calle nie je runtime selector**. Je to ďalší článok NE relocation reťazca. Relocation record #3 (index od 0) segmentu 2 je type 2/internal, zdroj `6EE0`, cieľ NE segment 2; tým priamo určuje volanie `seg2:7118`. Rovnaký princíp platí pre ostatné nerealokované Win16 far cally. Formát bol overený proti zdrojovej implementácii [Wine NE loadera](https://github.com/wine-mirror/wine/blob/master/dlls/krnl386.exe16/ne_segment.c).
 
-The remaining RNG questions are chronological call order, meaning of globals `0x3630/0x3632/0x3634`, and resets across level/menu/LOAD/DEMO transitions. DOS multiply helpers `11EE:3AD8` and Win16 `6DA3:7118` are consistent with 32-bit multiply but their bodies have not been independently mapped.
+| Platforma | Potvrdená resetovacia cesta |
+|---|---|
+| DOS | `F98C` pripraví režim 1 alebo 3, vykoná prípravu a `F972`, na `F9AC` zavolá `FD46`, potom na `F9B1` vynuluje `4540` a vstúpi do `E964`. DEMO štart tak vždy začína RNG seed-om 1 a nulovým counterom. |
+| Win16 | `seg3:DAA0` pri DEMO stave 1 alebo 3 vstúpi na `DAB4`; na `DAFC` volá `seg4:32D8 → seg2:6EB0` s argumentom 1; na `DB01` vynuluje `53DC`, potom spustí DEMO dispatcher. Cieľ seg4 je potvrdený relocation recordom #16 segmentu 3. |
 
-### RTC timing
+Zhoda algoritmu, násobiteľského helpera, počiatočného stavu a resetu pri DEMO štarte je staticky potvrdená. Zhoda hry po jednotlivých udalostiach stále vyžaduje rovnaké poradie odberov, mapu, vstupy a časové vetvy. Resety pri bežnej novej hre, LOAD a prechode levelu ešte nemožno z tejto cesty všeobecne odvodiť.
 
-DOS `FUN_1000_bd34` preserves register A's high nibble and sets the low nibble to 6, installs `11EE:0BCC` on `INT 70h`, enables register B's periodic-interrupt bit `0x40`, and unmasks IRQ8. Under the standard 32.768-kHz MC146818 time base, rate-select 6 is 1024 Hz (976.562 µs); the exact base is conditional because the high nibble is preserved. The MC146818 rate table lists this mapping in [the register definitions](https://sources.debian.org/src/gxemul/0.7.0%2Bdfsg-1/src/include/thirdparty/mc146818reg.h/#L354).
+Inventár C exportu obsahuje 26 textových referencií v 18 caller blokoch; merged bloky môžu obsahovať duplicity. Konzumenti používajú `&1`, `&7`, `%8`, `%80+8`, `%62`, `%36`, `%25`, `%7`, `%240+160`. Modulo bias pri rovnomernom celom 15-bitovom priestore:
 
-The handler body at `11EE:0BCC`, status-register-C acknowledgement, and relationship to the 25-Hz game tick remain unresolved. Next evidence needed: map the timer handler and helper addresses in the expanded image, then capture a DOS trace alongside Win16 for the same DEMO and level transitions.
+| Modul | Počet vstupov na zvyšok | Častejšie zvyšky |
+|---:|---|---|
+| 2 / 8 | presne 16384 / 4096 | žiadne |
+| 80 | 410 alebo 409 | 0–47 |
+| 62 | 529 alebo 528 | 0–31 |
+| 36 | 911 alebo 910 | 0–7 |
+| 25 | 1311 alebo 1310 | 0–17 |
+| 7 | 4682 alebo 4681 | 0 |
+| 240 | 137 alebo 136 | 0–127 |
+
+Tabuľka platí pre celý priestor 32768 možných návratov, ktoré sú rovnomerne pokryté počas úplného cyklu LCG. Krátka herná stopa má vlastné rozdelenie. Návrat je nezáporný, takže signed/unsigned modulo samotného výsledku RNG vychádza rovnako. Prvý výstup pre seed 1 je 41.
+
+### 4. DEMO: rovnaká veľkosť, rozdielne rozloženie recordu
+
+Oba loadery čítajú tri 16-bitové hlavičkové hodnoty a potom 8-bajtové recordy. Význam prvých štyroch bajtov sa však líši:
+
+| Pole | DOS `6D04–6E87` | Win16 `seg3:90CE–9266` |
+|---|---|---|
+| Event code | word `+0` → buffer `34BE`; pri zázname SI z BIOS key vetvy | byte `+0` → `375E`, zdroj `0108` |
+| Vstupná maska | word `+2` → `34C0`, runtime `3F50` | word `+1` → `375F`, runtime `3756` |
+| Byte `+3` | horný bajt DOS masky | táto Win16 vetva ho nezapisuje ani nekonzumuje |
+| Timestamp | dword `+4` → `34C2`, zdroj `4540` | dword `+4` → `3762`, zdroj `53DC` |
+| Hlavičkové premenné | `455C`, `455E`, `4560` | `53F6`, `53F8`, `53FA` |
+
+Dôkaz DOS writeru: `6E57` zapisuje word SI na `34BE`, `6E5E` masku na `34C0`, `6E65` timestamp na `34C2`. Reader na `6DEF/6DF3` číta tie isté wordy. Win16 writer na `9153–9163` používa byte event a posunutý word masky.
+
+Príklad dodaného posledného recordu DEMO.1: prvé bajty `25 08 00 00`. Win16 z nich číta event `0x25` a masku `0x0008`; DOS by čítal key word `0x0825` a masku `0`. Priamy prenos súboru by zmenil ovládanie. V dodaných troch DEMO súboroch má Win16 interpretácia 140/194/194 nenulových masiek; DOS interpretácia iba 6/5/21. To podporuje ich Win16 rozloženie, ale neurčuje pôvodnú mapu.
+
+DOS timestamp je doložene **počet priechodov BF36**, ktorý priamo inkrementuje `4540`; nejde o RTC counter. Počet sekúnd prehrávania závisí od skutočnej kadencie hlavnej vetvy. Počas prehrávania DOS testuje živú klávesnicu na `6E0A`; ak je kláves dostupný, vracia `0x1B` na ukončovaciu cestu.
+
+### 5. EOF: potvrdená lokálna logika a zostávajúci koniec prehrávania
+
+V DOS sa po načítaní ďalších 8 B na `6E02` návrat AX nekontroluje. Vo Win16 sa rovnako nekontroluje read na `seg3:921A`. Ani jedna z týchto vetiev explicitne neprepína na stop stav podľa počtu načítaných bajtov. DOS read helper `13CF4` používa DOS `INT 21h/AH=3Fh`; vetvy read sú odlíšené od game dispatcheru.
+
+V dodaných súboroch posledný event je `0x25`, `0x26`, resp. `0x00`; žiadny z nich nie je Escape. Potvrdené sú preto ignorovanie read-resultu a absencia explicitného EOF prechodu v týchto dispatcher vetvách. Ak EOF ponechá buffer nezmenený a hra zostane v playback stave, predchádzajúci record je znovu dostupný. Úplný koniec sa musí sledovať cez vonkajší herný stav, udalosti mapy a vstup; samotný posledný timestamp nepreukazuje celkovú dĺžku DEMO.
+
+### 6. Doteraz anonymný RNG konzument: DOS paletový záblesk
+
+`A0CC` používa `3634` ako countdown a `3636` ako fázu. V bežnej hre ho volá `C150`; v DEMO má preto vyššie opísanú odlišnú kadenciu. Kód sa preskočí v epizóde 2 a v epizóde 3, ak `level_index + 1 < 10`.
+
+- Inicializácia s nenulovým argumentom: countdown 80, fáza 0, čierne RGB pre DAC index `0xEB` a index uložený v `D2F7`.
+- Update odpočíta 1 a rozhoduje podľa **pôvodnej** hodnoty. Udalosť nastane, keď bola pôvodná hodnota 0; interval preto zodpovedá uloženému countdownu **+1** volaniam.
+- Začiatok záblesku: fáza 1, countdown 3, obe paletové položky dostanú komponenty `0xFF`.
+- Po ďalších **4 update volaniach**: fáza 0, nové oneskorenie `rand()%240 + 160`, obe položky späť na 0; zavolá sa `9270 → C686(0x42,0,2)`.
+- `C686` je SND prehrávacia cesta: index 66, priorita 2. Zvuk je teda volaný pri konci svetlej fázy. Náhodné číslo sa spotrebuje tiež pri tomto prechode.
+
+`16B0` zapisuje priamo VGA DAC porty `3C8/3C9`, čo potvrdzuje paletový charakter efektu. Konkrétne okno/obloha/asset viazaný na tieto indexy a zvukový obsah položky 66 ešte vyžadujú obrazové a zvukové porovnanie. Pracovný názov „blesk/hrom“ je z týchto operácií odôvodnený, ale mapovanie na konkrétny asset zostáva čiastočné.
+
+### Ďalšie najdôležitejšie otvorené dôkazy
+
+1. Zmapovať úplný order RNG odberov vrátane paletového efektu, AI a menu; preveriť `3630/3632`.
+2. Zmerať oba clock režimy a hranice 40/65/500; overiť reakciu na pauzu, LOAD, wrap a vynechané IRQ/buckety.
+3. Dokončiť externé DEMO exit stavy a mapy DEMO.2/3; pre porovnanie platforiem prevádzať event a masku podľa správneho layoutu.
+4. Párovať callee `C150/BF36` s Win16 update cestou a obrazom/zvukom pôvodnej hry.
