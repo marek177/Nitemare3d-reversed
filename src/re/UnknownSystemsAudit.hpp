@@ -28,10 +28,11 @@ struct AuditTarget {
     const char* nextObservation;
 };
 
-inline constexpr std::array<AuditTarget, 29> kUnknownSystemTargets = {{
+inline constexpr std::array<AuditTarget, 30> kUnknownSystemTargets = {{
     {AuditArea::GuardAi, Evidence::Partial, "GUARD strategy/state/nextState", "GUARD +0A/+0B/+0C; states 00..15; pain 15h", "map reads/writes, timer, LOS, attack and transitions"},
     {AuditArea::GuardAi, Evidence::Partial, "GUARD26..30", "classes beyond scored switch", "trace creation, class changes, projectile and scripted uses"},
     {AuditArea::SequenceEvents, Evidence::Todo, "sequence-definition events", "seqdef/animation references", "find duration, sound, attack, movement and next-sequence writes"},
+    {AuditArea::SequenceEvents, Evidence::Partial, "IMG sequence-bank address map", "90-B records; low 8+90*id, high 8+90*(0x100|id); DOS 2.0 and Win16 1.8/1.10 match", "resolve low-bank overlap with both IMG directories and verify the episode/build asset pairing"},
     {AuditArea::SpawnDespawn, Evidence::Partial, "runtime spawn/despawn", "OBJECT count 7E58; GUARD count 7E5E", "classify load, trigger, drop, projectile and morph callers"},
     {AuditArea::CollisionFlags, Evidence::Partial, "collision flag matrix", "property tables 7E94/7F94", "separate player, guard, projectile and wall masks"},
     {AuditArea::Projectile, Evidence::Partial, "NITE3W player projectile pool", "USER.SAV +C403; 8x42 B, states 0/1/2, embedded 28-B OBJECT", "compare DOS behavior; calibrate movement/time units; bind enemy projectiles and remaining fields"},
