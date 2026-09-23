@@ -84,7 +84,7 @@ The write routine was reconstructed from the original EXE. Every write length be
 | `0xC553` | `0x0008` | eight persistent event/AI/presentation bytes, DAT_1048_51A4–51AB; see the dedicated analysis report |
 | `0xC55B` | `0x0048` (72) | runtime state block |
 | `0xC5A3` | `0x1000` (4096) | 64x64 byte-per-cell state map; likely map/visibility-related, exact semantic label pending |
-| `0xD5A3` | `0x0040` (64) | runtime state block |
+| `0xD5A3` | `0x0040` (64) | saved one-shot guard wake cache; selector at runtime `0xA65E`, keyed by class-D wall ID minus the first class-D ID |
 | `0xD5E3` | `0x0100` (256) | 256-byte runtime lookup/state block |
 | `0xD6E3` | 1 | floor palette index; supplied `0x0C` |
 | `0xD6E4` | 1 | ceiling palette index; supplied `0x11` |
@@ -267,3 +267,12 @@ Important already-recovered original routines relevant to this report:
 | WING.DLL export table | 100% |
 | DISPDIB.DLL export table | 100% |
 | IDA-level naming of every internal WinG/DispDib function | not complete; many internal routines remain unnamed |
+
+
+## USER.SAV+0xD5A3 guard wake cache
+
+FUN_1010_7664 treats its argument as a class-D wall selector. Zero is a no-op; -1 clears all 64 bytes. A new nonzero selector is marked once and wakes strategy-0 guards whose +0x0E selector matches the player and whose state is 7 or 8. Their timer becomes rand()%8 and state becomes 1. The attack handler invokes this after a successful fire path and then dispatches the attack sound separately.
+
+For the supplied WALLS metadata, the 24 DOOR-family IDs span 0x70..0xAE, yielding sparse selectors 0..62; selector 0 is disabled by the no-op rule. The handler contains no distance or line-of-sight filter. The selector is the most recently recorded DOOR-family wall ID for both player and guard, not a unique cell address.
+
+The 64 bytes are saved at USER.SAV offset 0xD5A3. Level setup clears them; the save-menu load path then restores them from the slot. The same mechanism exists in Win16 1.8 as FUN_1010_75C0, with corresponding classifier FUN_1010_242E and attack path FUN_1010_8A62. See [the detailed analysis](../analysis/nite3w_guard_wake_cache_2026-09-23.md). Static analysis does not resolve why the game groups guards by wall tile ID; runtime verification remains open.
