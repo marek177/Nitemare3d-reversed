@@ -16,7 +16,7 @@ enum class Evidence : std::uint8_t {
 enum class AuditArea : std::uint8_t {
     GuardAi, SequenceEvents, SpawnDespawn, CollisionFlags, Projectile,
     Damage, DeathScoreMorph, Difficulty, WallDispatcher, Renderer, RngTick,
-    MapHeader, Resources, Bsf, NeRelocations, HiddenContent,
+    MapHeader, Resources, Bsf, NeRelocations, HiddenContent, SaveState,
 };
 
 struct AuditTarget {
@@ -27,7 +27,7 @@ struct AuditTarget {
     const char* nextObservation;
 };
 
-inline constexpr std::array<AuditTarget, 25> kUnknownSystemTargets = {{
+inline constexpr std::array<AuditTarget, 26> kUnknownSystemTargets = {{
     {AuditArea::GuardAi, Evidence::Partial, "GUARD strategy/state/nextState", "GUARD +0A/+0B/+0C; states 00..15; pain 15h", "map reads/writes, timer, LOS, attack and transitions"},
     {AuditArea::GuardAi, Evidence::Partial, "GUARD26..30", "classes beyond scored switch", "trace creation, class changes, projectile and scripted uses"},
     {AuditArea::SequenceEvents, Evidence::Todo, "sequence-definition events", "seqdef/animation references", "find duration, sound, attack, movement and next-sequence writes"},
@@ -53,6 +53,7 @@ inline constexpr std::array<AuditTarget, 25> kUnknownSystemTargets = {{
     {AuditArea::Renderer, Evidence::VerifiedExe, "renderer capacities", "vectors 1000; spans 50x20; sprites 100x18", "validate alternate backend and overflow boundaries"},
     {AuditArea::Damage, Evidence::VerifiedExe, "player health/ammo globals", "health 4C1D; ammo 4C1F/4C20/4C44", "bind visible enemy/projectile branches and difficulty"},
     {AuditArea::Resources, Evidence::VerifiedData, "SND.DAT container", "160 six-byte entries; IDs 1..15 MIDI, 34..110 SFX", "complete event map and playback verification"},
+    {AuditArea::SaveState, Evidence::Partial, "USER.SAV event/AI flags C553..C55A", "DAT_1048_51A4..51AB; trigger, GUARD and shade XREFs mapped", "recover story text, selector meaning, indirect consumers and runtime LOAD behavior"},
 }};
 
 constexpr std::size_t countByEvidence(Evidence wanted) noexcept {
