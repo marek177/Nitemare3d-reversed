@@ -97,9 +97,10 @@ constexpr std::int16_t negate16(std::int16_t value) noexcept {
     return std::bit_cast<std::int16_t>(bits);
 }
 
-// FUN_1010_6422 texture-U endpoint correction. Arithmetic that the 16-bit
-// binary performs in AX/CX is explicitly wrapped before signed comparisons.
-// Width normally equals 64, so the final operation applies mask 0x3F.
+// FUN_1010_6422 texture-U endpoint correction. DOS E-20 FUN_1000_22CA has the
+// same branch family. Arithmetic that the 16-bit binary performs in AX/CX is
+// explicitly wrapped before signed comparisons. Width normally equals 64, so
+// the final operation applies mask 0x3F.
 inline constexpr std::uint16_t selectTextureU(const VecRecord& vec,
                                               std::int16_t screenX,
                                               std::int16_t alongWall,
