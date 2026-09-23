@@ -110,7 +110,7 @@ Tento prechod zosúlaďuje register s novšími priamymi auditmi Win16 1.10 a DO
 | 1 | **Štart – čiastočné.** Win16 má spoločnú stavbu `map.N`, `img.N`, `demo.N`; `-r` zapína záznam DEMO. Obe skúmané platformy obsahujú `Invalid command line`, ale samotný text neurčuje parser hry. | Zostaviť WinMain/DOS štartovaciu vetvu, zoradiť init grafiky, času, vstupu a súborov; nájsť všetky exit a chyby open/load. Rozlíšiť herné argumenty od runtime/MFC textov. |
 | 2 | **Hlavný cyklus – scheduler DOS zmapovaný, presná sémantika stále P0.** `FUN_1000_e964` opakuje `c1a8` v hernom stave. `c1a8` má samostatné 8 Hz a predvolené 25 Hz vetvy; update call order je `c0d8 → bf36 → A0B8 → A236 → 0AEA → 8230 → lag hook → 70D6`. Win16 `0x46B6` prepína herné vetvy a DEMO dispatcher sa volá v stave 8. | Pomenovať a rozhraniť jednotlivé callee, najmä zlúčený blok `1000:70D6`, oddeliť input/player/AI/combat/world/render a spárovať s Win16. Overiť správanie pri 65 ms lag hranici a 500 ms rebase. |
 | 3 | **Časovanie – významná časť potvrdená.** Win16 kalibruje päť update priechodov. DOS nastavuje `0x3CC2=25`; `FUN_1000_bef4` z toho počíta 25 krokov/s (40 ms), `FUN_1000_beb4` vedie samostatný 8 Hz čítač a `FUN_1000_bf7a` meria desať update priechodov. `FUN_1000_c1a8` ukazuje poradie scheduleru a 500 ms rebase. DOS nastavuje aj RTC vektor `INT 70h` s handlerom `11EE:0x0BCC`; alternatívna cesta používa BIOS tick `0x46C/0x46E`. | Zistiť presný význam každého scheduler callu, RTC handlera a `0x3CC7/0x3CCF` režimov; overiť wrap, pauzu/LOAD, lag vetvy a runtime čas pri presnom builde. DEMO `0x53DC` ostáva osobitný čítač. |
-| 4 | **RNG – helper lokalizovaný, algoritmus otvorený P0.** DOS volania smerujú cez `1000:0xFD40`, ktorého stub skáče na `11EE:0x31F8`. Calleri používajú bit `&1` aj modulo `0x19`; to potvrdzuje náhodný výber, nie seed ani vzorec generátora. | Dekódovať cieľový segment/overlay a jeho zápisy stavu; nájsť seed/reset a všetky callery; zmerať bias `&1`/`%n` a porovnať DOS s Win16 a DEMO replay. Kontaktové damage a guard wait rozsahy ostávajú doložené samostatnými callsite auditmi. |
+| 4 | **RNG – callsite mapa rozšírená, algoritmus otvorený P0.** DOS stub `1000:0xFD40 → 11EE:0x31F8`; C export obsahuje 26 textových volaní v 18 caller funkciách. Vidno `&1`, `&7`, `%8`, `%8+8`, `%0x50+8`, `%0x3E`, `%0x24`, `%0x19`, `%7` a `%0xF0+0xA0`. | Dekódovať cieľový segment/overlay a zápisy stavu; nájsť seed/reset; rozlíšiť pomocné RNG od animácie/render jitter; otestovať modulo bias a DOS/Win16/DEMO reprodukovateľnosť. Callsite count je inventár C exportu, nie potvrdený počet jedinečných logických random udalostí. |
 | 5 | **Pamäť a cache – otvorené.** Pevné kapacity polí sú potvrdené; USER.SAV obsahuje VEC/OBJECT/GUARD/door, panel, projectile, push, automap a remap bloky. | Chýba alokačno-vlastnícky graf, životnosť far pointerov po level change/LOAD a presná DOS XMS/disk-cache vetva. Treba sledovať alloc/free a všetky pointer rebasing writery. |
 | 6 | **Level load – čiastočné.** MAP má 514-bajtovú hlavičku, dve 256-bajtové class mapy a 64×64 bunky po 2 B; finálne dáta obsahujú 31 levelov. Win16 staví názvy MAP/IMG/DEMO z rovnakého selektora. | Presné poradie parser → steny/vektory → objekty/guardy → dvere/panely/pushes → spawn; reset persistentných polí; DOS hranice `1000:84FE` a porovnanie level-init buildov. |
 | 7 | **Vstupy – Win16 klávesnica prevažne zmapovaná.** Šípky menia `0x3756`; ľavý/pravý Shift nastavujú `0x40/0x20`, Ctrl `0x80`, Alt používa `0x3757`; Q prepína hudbu, R efekty, Alt+Enter režim okna. DOS číta aj klávesnicu, myš a joystick. | Neuzavreté sú Win16 myš/joystick, DOS scancode mapovanie, dead-zone, strata fokusu a kombinované udalosti. Raw caller test pre stavový bit `0x8000` a tri systémové klávesové callery. |
@@ -212,3 +212,23 @@ Zostáva otvorené, čo presne robí kód `11EE:0x31F8`, kde ukladá seed, kedy 
 2. Vytvoriť read/write tabuľku pre `0x81E/0x820`, `0x16F2`, `0x16F6/0x16FA`, `0x16FE/0x1702`, `0x1734/0x1738/0x173C` a `0x3CC2/0x3CC7/0x3CCF`.
 3. Zmerať DOS tick trace s rovnakým DEMO vstupom pri bežnom behu, pauze a LOAD; osobitne porovnať intervaly okolo 40 ms, 65 ms a 500 ms.
 4. Zaznamenať výstupy `FD40` pre opakované seed/time podmienky a porovnať s Win16; až potom uzavrieť generátor, bias a reprodukovateľnosť replaya.
+
+
+---
+
+## Doplnenie P0: inventár volaní DOS RNG
+
+V analyzovanom DOS C exporte som spočítal **26 textových callsite záznamov v 18 caller funkciách**. Ich pozorované konzumné tvary sú:
+
+| Caller funkcia | Pozorované použitie výsledku |
+|---|---|
+| `241E`, `B22C` | `& 7`, potom výber cez tabuľkový index. |
+| `5092`, `9EB4` | `& 1`; vyberie sa znamienko/odrazová os. |
+| `5510`, `5516` | `% 8` do poľa `+6`; následne sa nastavuje stav `+0x0B`. |
+| `55A8`, `58A0` | Delay/state hodnota `% 8 + 8`, `% 0x50 + 8` a ďalšia maskovaná voľba. |
+| `5F74`, `70D6`, `84FE`, `954A`, `980C`, `9CF2` | Dve hodnoty `% 0x3E` a `% 0x24` ukladajú sa do `0x3632/0x3630`; význam týchto globálov ostáva otvorený. |
+| `8590` | `% 0x19` sa pripočíta do výrazu `(field_delta * 8) + random`. |
+| `9FB4`, `A018` | `% 7` používa výsledok v opakovanej výberovej vetve; presný intended range treba potvrdiť na inštrukciách. |
+| `A0CC` | `% 0xF0 + 0xA0` sa zapisuje do `0x3634`. |
+
+Počet je prevzatý z textového exportu; veľké merged bloky môžu skresliť počet logických callsite a ich hernú rolu. Inventár však už zužuje ďalšiu prácu na helper `11EE:0x31F8`, seed writes a význam globálov `0x3630/0x3632/0x3634`.
