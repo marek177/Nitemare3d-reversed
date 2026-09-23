@@ -42,6 +42,23 @@ static_assert(offsetof(VecRecord, y2) == 0x12);
 static_assert(offsetof(VecRecord, screenX1) == 0x14);
 static_assert(offsetof(VecRecord, projectedY2Q4) == 0x1A);
 
+// Host-side view of the 20-byte span consumed by FUN_1010_66B0.
+#pragma pack(push, 1)
+struct WallSpanRecord {
+    std::uint32_t vecFarPointer;          // +00
+    std::int16_t xStart;                  // +04
+    std::int16_t yAtStart;                // +06, interpolated
+    std::int16_t xEnd;                    // +08
+    std::int16_t yAtEnd;                  // +0A, interpolated
+    std::int32_t yStep16_16;              // +0C
+    std::uint32_t yAccumulator16_16;      // +10, fixed-point screen Y
+};
+#pragma pack(pop)
+
+static_assert(sizeof(WallSpanRecord) == 20);
+static_assert(offsetof(WallSpanRecord, yStep16_16) == 0x0C);
+static_assert(offsetof(WallSpanRecord, yAccumulator16_16) == 0x10);
+
 // FUN_1018_3564 (CS 1018:3564), reduced to the occupied-column decision.
 // All coordinate comparisons are signed 16-bit and strict. Equal endpoints
 // keep the existing owner. Empty-column insertion and clipping happen outside
@@ -95,6 +112,58 @@ constexpr std::int16_t subtract16(std::int16_t a, std::int16_t b) noexcept {
 constexpr std::int16_t negate16(std::int16_t value) noexcept {
     const auto bits = static_cast<std::uint16_t>(0U - static_cast<std::uint16_t>(value));
     return std::bit_cast<std::int16_t>(bits);
+}
+
+// FUN_1010_6152 span setup. xStart/xEnd are the already-coalesced screen
+// limits in the span record; endpoint values are the projected VEC x/y pairs.
+// The 32-bit accumulator stores the screen-Y displacement from centerYQ4 plus
+// the fractional start offset. False means the source quotient would overflow
+// the original signed 32-bit IDIV result for pathological input coordinates.
+inline bool initializeSpanInterpolation(WallSpanRecord& span,
+                                        std::int16_t x1,
+                                        std::int16_t y1Q4,
+                                        std::int16_t x2,
+                                        std::int16_t y2Q4,
+                                        std::int16_t centerYQ4) noexcept {
+    const std::int16_t dx = subtract16(x2, x1);
+    const std::int16_t dy = subtract16(y2Q4, y1Q4);
+
+    std::int32_t step = 0;
+    if (dx != 0) {
+        const std::int64_t numerator = static_cast<std::int64_t>(dy) * 65536;
+        const std::int64_t quotient = numerator / dx;
+        if (quotient < INT32_MIN || quotient > INT32_MAX) {
+            return false;
+        }
+        step = static_cast<std::int32_t>(quotient);
+    }
+
+    std::int16_t yStart = y1Q4;
+    std::int16_t yEnd = dy == 0 ? y1Q4 : y2Q4;
+    std::uint32_t accumulator =
+        static_cast<std::uint32_t>(static_cast<std::uint16_t>(subtract16(y1Q4, centerYQ4))) << 16U;
+
+    if (dx != 0 && dy != 0) {
+        const auto interpolate = [=](std::int16_t x) noexcept {
+            const std::int16_t offset = subtract16(x, x1);
+            const std::int64_t product = static_cast<std::int64_t>(offset) * dy;
+            const std::int64_t value = static_cast<std::int64_t>(y1Q4) + product / dx;
+            return std::bit_cast<std::int16_t>(static_cast<std::uint16_t>(value));
+        };
+        yStart = interpolate(span.xStart);
+        yEnd = interpolate(span.xEnd);
+
+        const std::int16_t startOffset = subtract16(span.xStart, x1);
+        const std::int64_t product = static_cast<std::int64_t>(startOffset) * step;
+        const std::uint32_t productLow = static_cast<std::uint32_t>(product);
+        accumulator += productLow;
+    }
+
+    span.yAtStart = yStart;
+    span.yAtEnd = yEnd;
+    span.yStep16_16 = step;
+    span.yAccumulator16_16 = accumulator;
+    return true;
 }
 
 // FUN_1010_6422 texture-U endpoint correction. DOS E-20 FUN_1000_22CA has the
