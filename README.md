@@ -1,6 +1,6 @@
 # Nitemare3D-Reversed — reconstruction v0.11
 
-**v0.11 update:** the 2026-09-23 raw-assembly pass resolves the Win16 renderer's occupied-column owner rules and 16.16 wall-column sampling core. Findings are in [`analysis/nite3w_renderer_2026-09-23.md`](analysis/nite3w_renderer_2026-09-23.md); the standalone reference code is [`src/renderer/Win16WallRasterCore.hpp`](src/renderer/Win16WallRasterCore.hpp), with a CMake test target. The 2026-09-22 cross-thread consolidation and system audits remain linked below.
+**v0.11 update:** the 2026-09-23 raw-assembly pass resolves the Win16 renderer's occupied-column owner rules, texture-U corrections, 16.16 wall-column sampler, and wall-animation update control flow. Findings are in [`analysis/nite3w_renderer_2026-09-23.md`](analysis/nite3w_renderer_2026-09-23.md); the standalone reference code is [`src/renderer/Win16WallRasterCore.hpp`](src/renderer/Win16WallRasterCore.hpp), with a CMake test target. The 2026-09-22 cross-thread consolidation and system audits remain linked below.
 
 Modern C++ reconstruction scaffold for the **Windows 3.1** version of Nitemare 3D.
 The design goal is to preserve the original data formats and reconstructed game logic while replacing obsolete Windows 3.x display plumbing (`WING.DLL` and `DISPDIB.DLL`) with **SDL3**.
@@ -52,7 +52,7 @@ Well-understood areas now include:
 - CONFIG.SAV physical size and USER.SAV block layout;
 - many doors/warps/pushables and numerous level-specific scripts.
 
-Renderer code is now moving from recovered facts into tested primitives: owner-conflict predicates and the linear fixed-point wall-column loop are implemented, but the complete scene path is not ported. Remaining work spans wall animation/resource classes, the camera/vector/span pipeline, sprite and palette details, deterministic original-frame comparison, complete door/panel/control records, semantic names for GUARD states 02–14, guard movement/attack timing, projectile behavior, enemy-to-player class binding, GUARD25 reachability/identity, Dracula's resource/sound/corpse chain, 4096-byte cell-state semantics, the BSF integrity algorithm, and unresolved save/resource fields.
+Renderer code is now moving from recovered facts into tested primitives: owner-conflict predicates and the linear fixed-point wall-column loop are implemented, but the complete scene path is not ported. Remaining work spans wall-animation/resource mapping, the camera/vector/span pipeline, sprite and palette details, deterministic original-frame comparison, complete door/panel/control records, semantic names for GUARD states 02–14, guard movement/attack timing, projectile behavior, enemy-to-player class binding, GUARD25 reachability/identity, Dracula's resource/sound/corpse chain, 4096-byte cell-state semantics, the BSF integrity algorithm, and unresolved save/resource fields.
 
 ## Renderer architecture
 
