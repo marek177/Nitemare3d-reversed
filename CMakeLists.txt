@@ -54,6 +54,9 @@ target_link_libraries(n3d_episode3_level_data_test PRIVATE n3d_core)
 add_executable(n3d_renderer_facts_test tests/renderer_facts_test.cpp)
 target_link_libraries(n3d_renderer_facts_test PRIVATE n3d_core)
 
+add_executable(n3d_win16_wall_raster_core_test tests/win16_wall_raster_core_test.cpp)
+target_link_libraries(n3d_win16_wall_raster_core_test PRIVATE n3d_core)
+
 add_executable(n3d_guard_facts_test tests/guard_facts_test.cpp)
 target_link_libraries(n3d_guard_facts_test PRIVATE n3d_core)
 
