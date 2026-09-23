@@ -27,7 +27,7 @@ struct AuditTarget {
     const char* nextObservation;
 };
 
-inline constexpr std::array<AuditTarget, 26> kUnknownSystemTargets = {{
+inline constexpr std::array<AuditTarget, 27> kUnknownSystemTargets = {{
     {AuditArea::GuardAi, Evidence::Partial, "GUARD strategy/state/nextState", "GUARD +0A/+0B/+0C; states 00..15; pain 15h", "map reads/writes, timer, LOS, attack and transitions"},
     {AuditArea::GuardAi, Evidence::Partial, "GUARD26..30", "classes beyond scored switch", "trace creation, class changes, projectile and scripted uses"},
     {AuditArea::SequenceEvents, Evidence::Todo, "sequence-definition events", "seqdef/animation references", "find duration, sound, attack, movement and next-sequence writes"},
@@ -54,6 +54,7 @@ inline constexpr std::array<AuditTarget, 26> kUnknownSystemTargets = {{
     {AuditArea::Damage, Evidence::VerifiedExe, "player health/ammo globals", "health 4C1D; ammo 4C1F/4C20/4C44", "bind visible enemy/projectile branches and difficulty"},
     {AuditArea::Resources, Evidence::VerifiedData, "SND.DAT container", "160 six-byte entries; IDs 1..15 MIDI, 34..110 SFX", "complete event map and playback verification"},
     {AuditArea::SaveState, Evidence::Partial, "USER.SAV event/AI flags C553..C55A", "DAT_1048_51A4..51AB; trigger, GUARD and shade XREFs mapped", "recover story text, selector meaning, indirect consumers and runtime LOAD behavior"},
+    {AuditArea::SaveState, Evidence::Partial, "USER.SAV guard wake cache", "runtime 0xA65E / save D5A3; nonzero class-D wall selector; successful fire wakes strategy-0 guards in states 7/8", "verify intended DOOR-ID grouping and selector bounds across supported WALLS builds"},
 }};
 
 constexpr std::size_t countByEvidence(Evidence wanted) noexcept {
