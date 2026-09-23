@@ -199,3 +199,31 @@ The positive control is DEMO.1: a correct matcher should independently rank E1M3
 ## Next
 
 Resolve the three pre-commit movement helpers and exact USE target semantics. Then implement the authoritative movement step using the now-verified post-commit state: world coordinates, tile coordinates, tile-change event `0x16`, current-cell far pointer `0x4C10:0x4C12`, and current-cell-derived value `0x4C1C`. After that run the full 93-combination matcher.
+
+## Address-level Win16 trace — 2026-09-23
+
+This pass inspected the raw NE image of `nite3w(10).exe` (Win16 1.10). Addresses below are `seg3:offset` before NE fixups.
+
+The common resource-name builder starts at `seg3:4989`. It takes the numeric resource selector, formats it with `%s%d`, and writes three paths: `map.` to buffer `0x7E64`, `img.` to `0x7E74`, and `demo.` to `0x7E84`. This directly ties the DEMO filename to the same numeric selector used for MAP and IMG.
+
+The DEMO dispatcher at `seg3:90CE` uses state global `0x46B8`. The raw state bodies are:
+
+| State | Raw behavior |
+|---:|---|
+| `1` | Opens the DEMO path for writing, emits the three header WORDs from `0x53F6`, `0x53F8`, and `0x53FA`, then advances to state 2. |
+| `2` | Forms a record from event byte `0x0108`, input mask `0x3756`, and clock `0x53DC`; skips the write when the event/mask pair matches the previously written pair at `0x010C` / `0x3766`. |
+| `3` | Opens the DEMO path read-only, reads the three header WORDs and the first 8-byte record, then advances to state 4. |
+| `4` | Compares the record timestamp with current clock `0x53DC`; holds until the record is due, restores the event byte and input mask, then reads the next record. |
+| `5` | Closes the active handle and resets the DEMO state. |
+
+The relevant body ranges are `seg3:90EA–9187` (recording), `seg3:9188–91F9` (playback setup), `seg3:91FA–9249` (timed playback), and `seg3:924A–9262` (close/reset). The record byte at `+3` maps to `0x3761`, but this state routine neither initializes nor consumes it. All 760 such bytes in the supplied streams are zero; its intended role remains unresolved.
+
+The keyboard/event dispatcher at `seg3:8C9A` stores its current event code in `0x0108` and updates the 16-bit mask at `0x3756`. Its comparisons include `0x1B`, `0x20`, and `0x0D`; these are consistent with Escape, Space, and Enter, but the remaining codes should be named only after tracing their callers and consumers.
+
+### Remaining high-value DEMO questions
+
+1. Find every reader of `0x3756` and connect each tested bit to movement, turning, strafing, firing, or USE. Validate the resulting map against all three recordings.
+2. Trace every writer of `0x46B8` and the surrounding `0x46B6 == 8` condition to establish how playback starts, ends, and is stopped.
+3. Compare the DOS v2.0 playback and recording routines against Win16 1.10 to test whether the record layout and timing are shared.
+4. Trace the update of `0x53DC` to determine the time unit, then measure a playback in the running game.
+5. Keep the broader executable audit moving on the main loop, level initialization, guard runtime, and the anonymous 336-byte USER.SAV block; these are still stronger unknowns than another pass over already documented USE/WARP behavior.
