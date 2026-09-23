@@ -284,6 +284,8 @@ Current structural reconstruction:
 
 `FUN_1010_6152` initializes the deltas/divisions. `FUN_1010_66B0` increments the accumulator by the step for each screen X. The high/current word is used in Q4-like projected wall geometry.
 
+The raw-assembly port of the 20-byte span layout and `FUN_1010_6152` initializer is in `src/renderer/Win16WallRasterCore.hpp` (`WallSpanRecord` and `initializeSpanInterpolation()`). It reproduces signed 16.16 slope division, span-endpoint interpolation and the starting accumulator. The isolated cases are covered by the dedicated CMake test; the coalescer and camera/projection path still have to feed this record in the runtime.
+
 This corrects older notes that speculated a 52-byte renderer record.
 
 ---
@@ -514,7 +516,7 @@ Do not describe Nitemare 3-D as a simple Wolf3D renderer clone.
 
 1. Map the recovered `FUN_1010_65A6` descriptor rows, VEC `+01/+02` data and `FUN_1018_3C0C` side effect to visible wall resources.
 2. Map every `WALLS.* wall ID -> flags/property -> renderClass -> texture descriptor -> renderer branch` and validate the special `FUN_1010_6422` cases against source assets.
-3. Port the recovered MAP boundary extraction, four-list traversal, camera projection/near clipping, owner coverage and span interpolation into the runtime.
+3. Port MAP boundary extraction, four-list traversal and camera projection/near clipping, then wire the recovered owner, span-interpolation and column-sampling primitives into the runtime.
 4. Finish sprite/object ordering, masked-wall interaction, palette-remap generation inputs and resource-loader edge behavior.
 5. Compare the alternate VGA planar backend and DOS renderer against the WinG path where behavior is expected to match.
 6. Capture deterministic frames from the original executable using the same map, camera, palette and display route; compare 64,000 indexed pixels per frame and resolve the differences.
