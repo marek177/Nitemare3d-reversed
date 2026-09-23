@@ -78,6 +78,8 @@ Keep the established projected-boundary-vector model. Audit VEC `+01/+02/+03/
 resets and DOS clock sources are now mapped below. Trace full RNG call order and
 cross-platform timing; the two 8 B DEMO layouts differ.
 
+The 2026-09-23 IMG/seqdef pass confirms the two 256-entry image directories and both 90-byte selector-bank formulas across DOS 2.0 and Win16 1.8/1.10. The low bank overlaps the directory region for selectors 0..22 in the supplied IMG sample. Address arithmetic is now modeled; meaning and exact EXE-to-asset pairing remain open. See [the detailed IMG audit](../analysis/nite3w_img_seqdef_2026-09-23.md).
+
 Use four hidden-content sets: `DEFINED`, `PLACED`, `REFERENCED`, `EXECUTED`.
 Report `DEFINED−PLACED`, `REFERENCED−PLACED`, `DEFINED∩PLACED−EXECUTED`, and
 `EXE handlers−known classes` across IMG, OBJECTS, WALLS, SND, UIF, MAP and EXE.
