@@ -115,8 +115,8 @@ the 32-bit game clock at DS `0x0096` with the deadline at VEC `+08`; if due, it
 increments VEC frame `+03` and then follows these cases:
 
 - render class `0x2F`: reset frame to zero;
-- render class `0x07`: hold frame zero and schedule again, with a last-frame
-  clamp for the descriptor count;
+- render class `0x07`: if the incremented frame is 1, set it back to zero;
+  otherwise keep advancing below the descriptor count and clamp at count-1;
 - render class `0x2D`: call `FUN_1018_3C0C` at the descriptor frame boundary,
   then hold the last frame; the call can repeat on later due ticks;
 - other classes with no sequence-table offset: advance through the frame count,
@@ -127,8 +127,8 @@ increments VEC frame `+03` and then follows these cases:
   with `FUN_1018_32D2() & 7`, skipping entries whose high byte is zero, then
   load the selected low byte as the next frame.
 
-The class `0x07` path first increments the frame, then turns the first step back
-to zero; subsequent ticks compare against the descriptor count and clamp at
+The class `0x07` path first increments the frame, then turns a value of 1 back
+to zero; other frame values advance until the descriptor count, then clamp at
 the final frame. The class `0x2D` path calls `FUN_1018_3C0C` at each due tick
 where the incremented frame reaches the descriptor count, then stores the
 final frame again. The helper's full map-wall side effects still need tracing.
