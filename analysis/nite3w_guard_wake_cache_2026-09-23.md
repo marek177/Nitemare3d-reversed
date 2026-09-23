@@ -57,7 +57,7 @@ The same sequence is present in Win16 1.8 under different function names: the ca
 
 ## Save lifetime
 
-The save writer and loader copy 0x40 bytes at runtime offset 0xA65E to/from USER.SAV offset 0xD5A3. Win16 1.10 level setup FUN_1018_09F2 clears the gate with FUN_1010_7664(-1). The save-menu load path calls level setup first and then FUN_1010_574C, which restores the saved bytes. A fresh level entry clears the gate; resuming a saved slot restores its prior selector marks.
+The save writer and loader copy 0x40 bytes at runtime offset 0xA65E to/from USER.SAV offset 0xD5A3. Win16 1.10 level setup FUN_1018_09F2 clears the gate with FUN_1010_7664(-1). When the load path runs level setup, it then calls FUN_1010_574C, which restores the saved bytes; the reader also restores them when no level transition is needed. A fresh level entry clears the gate; resuming a saved slot restores its prior selector marks.
 
 ## Remaining questions
 
