@@ -60,6 +60,9 @@ target_link_libraries(n3d_win16_wall_raster_core_test PRIVATE n3d_core)
 add_executable(n3d_guard_facts_test tests/guard_facts_test.cpp)
 target_link_libraries(n3d_guard_facts_test PRIVATE n3d_core)
 
+add_executable(n3d_guard_save_block_test tests/guard_save_block_test.cpp)
+target_link_libraries(n3d_guard_save_block_test PRIVATE n3d_core)
+
 add_executable(n3d_object_runtime_facts_test tests/object_runtime_facts_test.cpp)
 target_link_libraries(n3d_object_runtime_facts_test PRIVATE n3d_core)
 
