@@ -81,7 +81,7 @@ The write routine was reconstructed from the original EXE. Every write length be
 | `0xBE63` | `0x0580` (1408) | 64 x 22-byte runtime records; exact class labeling pending |
 | `0xC3E3` | `0x0020` (32) | auxiliary per-record state list |
 | `0xC403` | `0x0150` (336) | runtime state block |
-| `0xC553` | `0x0008` | runtime state block |
+| `0xC553` | `0x0008` | eight persistent event/AI/presentation bytes, DAT_1048_51A4–51AB; see the dedicated analysis report |
 | `0xC55B` | `0x0048` (72) | runtime state block |
 | `0xC5A3` | `0x1000` (4096) | 64x64 byte-per-cell state map; likely map/visibility-related, exact semantic label pending |
 | `0xD5A3` | `0x0040` (64) | runtime state block |
@@ -89,6 +89,10 @@ The write routine was reconstructed from the original EXE. Every write length be
 | `0xD6E3` | 1 | floor palette index; supplied `0x0C` |
 | `0xD6E4` | 1 | ceiling palette index; supplied `0x11` |
 | `0xD6E5` | 2 | level render/environment parameter (`0x7E60`); exact semantic label still pending |
+
+## USER.SAV+0xC553 semantic follow-up
+
+The eight-byte block at offset 0xC553 is copied as a unit between the save slot and DAT_1048_51A4–DAT_1048_51AB. Those bytes are not one homogeneous structure: the confirmed roles include selector-keyed door interaction state, a GUARD-state gate, episode-trigger latches, a timed collision-script marker, a Hamerstein state-9 marker and a temporary shade/door-update mode. See [the detailed event/flag report](../analysis/nite3w_user_sav_story_flags_2026-09-23.md) for each call site, the zero-based episode/level trigger matrix, cross-links and unresolved narrative names.
 
 ## E1M1 verification
 
@@ -257,7 +261,7 @@ Important already-recovered original routines relevant to this report:
 |---|---:|
 | `CONFIG.SAV` byte layout | ~98-100% |
 | `USER.SAV` physical record layout | 100% |
-| `USER.SAV` semantic labeling of every internal runtime block | ~55-60% |
+| `USER.SAV` semantic labeling of every internal runtime block | partial; C553 now behavior-mapped, 94-byte player/global block and 64-byte wake cache still open |
 | direct DLL/module dependency list | 100% |
 | NITE3W -> WinG/DispDib API mapping | 100% |
 | WING.DLL export table | 100% |
