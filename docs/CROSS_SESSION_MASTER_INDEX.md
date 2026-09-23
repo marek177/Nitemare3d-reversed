@@ -52,6 +52,12 @@ Continue auditing MAP, IMG, OBJECTS, WALLS, SND.DAT, UIF.DAT, ENDING.FLI, GAME.P
 
 SND.DAT/VOC extraction must be compared with original playback. ENDING.FLI has 488 frames and uses COLOR_64, BRUN, LC, BLACK and COPY chunks; editing must preserve delta-frame semantics.
 
+### IMG and sequence definitions — 2026-09-23
+
+Win16 1.10 reads two 0x400-byte directories of 256 dword offsets (wall at file offset 0, object at 0x400). Sequence records are 90 bytes; low selectors start at 0x0008, and high selectors start at 0x5A08. The low records for selectors 0..22 overlap the two directory blocks. DOS 2.0 and Win16 1.8 use the same selector arithmetic. The supplied IMG's directory pointers all land on scanned frame boundaries, but several low-bank counts/intervals overlap pointer bytes and do not form a resolved runtime mapping. Keep this an explicit asset-pairing/runtime TODO; do not claim wall animation is fully decoded.
+
+The C++ loader now exposes both image directories and preserves the two raw sequence banks. See [the detailed audit](../analysis/nite3w_img_seqdef_2026-09-23.md) and `src/formats/ImgSequenceLayout.hpp`.
+
 ## 2026-09-23 projectile, save and hazard update
 
 - Player-fired NITE3W projectiles use 8 × 42-byte records at USER.SAV +0xC403; +0x0E embeds a 28-byte OBJECT. The ±20 check controls projection only, not lifetime.
