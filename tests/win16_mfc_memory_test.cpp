@@ -31,6 +31,13 @@ int main() {
     assert(kCWndVtableSlots[2].target.segment == 3);
     assert(kCWndVtableSlots[13].byteOffset == 0x34);
     assert(kCWndVtableSlots[13].target.offset == 0x171C);
+    assert(kHandleMaps.size() == 4);
+    assert(kHandleMaps[0].runtimeClassOffset == kCWndRuntimeClass);
+    assert(kHandleMaps[0].handleFieldOffset == 0x14);
+    assert(kHandleMaps[1].handleCount == 2);
+    assert(kHandleMaps[2].handleFieldOffset == 0x04);
+    assert(kHandleMaps[3].runtimeClassOffset == kCMenuRuntimeClass);
+    assert(handleMapBucket(0x1234, 17) == ((0x1234 >> 4) % 17));
 
     return 0;
 }
