@@ -5,6 +5,8 @@
 
 namespace nitemare3d::port {
 
+class TemporaryWindowScope;
+
 class WindowRegistry {
 public:
     void beginTemporaryScope() noexcept { ++temporaryScopeDepth_; }
@@ -16,6 +18,8 @@ public:
     }
 
     [[nodiscard]] std::size_t temporaryScopeDepth() const noexcept { return temporaryScopeDepth_; }
+
+    [[nodiscard]] TemporaryWindowScope scopedTemporary();
 
     WindowWrapper& fromHandle(WindowHandle handle) {
         return registry_.fromHandle(handle, [](WindowHandle value) {
@@ -96,5 +100,9 @@ public:
 private:
     WindowRegistry* registry_;
 };
+
+inline TemporaryWindowScope WindowRegistry::scopedTemporary() {
+    return TemporaryWindowScope{*this};
+}
 
 } // namespace nitemare3d::port
