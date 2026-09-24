@@ -10,7 +10,12 @@ struct Wrapper {
 }
 
 int main() {
-    using nitemare3d::port::HandleRegistry;
+    using namespace nitemare3d::port;
+
+    static_assert(legacyZOrderPseudoHandle(ZOrderTarget::Top) == 0);
+    static_assert(legacyZOrderPseudoHandle(ZOrderTarget::Bottom) == 1);
+    static_assert(legacyZOrderPseudoHandle(ZOrderTarget::TopMost) == -1);
+    static_assert(legacyZOrderPseudoHandle(ZOrderTarget::NoTopMost) == -2);
 
     HandleRegistry<int, Wrapper> registry;
     int factoryCalls = 0;
