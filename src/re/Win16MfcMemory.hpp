@@ -150,6 +150,33 @@ inline constexpr std::array<VtableSlot16, 20> kCWndVtableSlots = {{
     {0x48, {1, 0x1E9C}, "window virtual"},
     {0x4C, {1, 0x17B2}, "window virtual"},
 }};
+
+enum class MfcEvidence16 : std::uint8_t {
+    DirectBinary,
+    RelocationAware,
+    StrongSemantic,
+    RuntimePending,
+};
+
+struct MfcEvidenceFact16 {
+    const char* subject;
+    MfcEvidence16 evidence;
+    const char* anchor;
+};
+
+inline constexpr std::array<MfcEvidenceFact16, 10> kMfcEvidence = {{
+    {"CRuntimeClass16 layout", MfcEvidence16::RelocationAware, "NE segment 10 descriptor series"},
+    {"CWnd object size 0x1A", MfcEvidence16::DirectBinary, "CRuntimeClass 1048:0594 and sentinel stride"},
+    {"CWnd HWND +0x14", MfcEvidence16::DirectBinary, "Attach/Detach/GetParent/DestroyWindow paths"},
+    {"CWnd +0x16 HWND-like context", MfcEvidence16::StrongSemantic, "window API path with GetParent(+0x14) fallback"},
+    {"CWnd +0x18 associated object", MfcEvidence16::StrongSemantic, "teardown virtual callback and clear"},
+    {"CWnd sentinel identities", MfcEvidence16::StrongSemantic, "pseudo HWND 0/1/-1/-2 and SetWindowPos semantics"},
+    {"HandleMap roots/layout", MfcEvidence16::DirectBinary, "1048:4250/44F2/451C/4548"},
+    {"HandleMap hash", MfcEvidence16::DirectBinary, "(handle >> 4) % bucketCount"},
+    {"temporary wrapper cleanup", MfcEvidence16::DirectBinary, "nesting-zero cleanup and handle clear before delete"},
+    {"full runtime lifecycle validation", MfcEvidence16::RuntimePending, "Win3.11 debugger trace still required"},
+}};
+
 enum class HandleOwnership16 : std::uint8_t {
     BorrowedTemporary,
     AttachedPermanent,
