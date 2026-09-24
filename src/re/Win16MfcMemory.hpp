@@ -81,6 +81,26 @@ inline constexpr std::uint16_t kCScrollViewRuntimeClass = 0x07BC;
 inline constexpr std::uint16_t kCPreviewViewRuntimeClass = 0x07D6;
 inline constexpr std::uint16_t kCWinAppRuntimeClass = 0x07EC;
 
+struct HandleMapFact {
+    std::uint16_t rootOffset;
+    const char* wrapperClass;
+    const char* handleType;
+    std::uint16_t runtimeClassOffset;
+    std::uint16_t handleFieldOffset;
+    std::uint16_t handleCount;
+};
+
+inline constexpr std::array<HandleMapFact, 4> kHandleMaps = {{
+    {kCWndHandleMapRoot, "CWnd", "HWND", kCWndRuntimeClass, 0x14, 1},
+    {kCDcHandleMapRoot, "CDC", "HDC", kCDcRuntimeClass, 0x04, 2},
+    {kCGdiObjectHandleMapRoot, "CGdiObject", "HGDIOBJ", kCGdiObjectRuntimeClass, 0x04, 1},
+    {kCMenuHandleMapRoot, "CMenu", "HMENU", kCMenuRuntimeClass, 0x04, 1},
+}};
+
+constexpr std::uint16_t handleMapBucket(std::uint16_t handle, std::uint16_t bucketCount) noexcept {
+    return bucketCount == 0 ? 0 : static_cast<std::uint16_t>((handle >> 4) % bucketCount);
+}
+
 inline constexpr std::uint16_t kCWndVtable = 0x49A4;
 inline constexpr std::uint16_t kCWndObjectSize = 0x1A;
 inline constexpr std::uint16_t kCWndHwndOffset = 0x14;
