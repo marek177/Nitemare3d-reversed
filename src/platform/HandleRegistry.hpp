@@ -62,4 +62,15 @@ enum class ZOrderTarget {
     NoTopMost,
 };
 
+
+constexpr std::intptr_t legacyZOrderPseudoHandle(ZOrderTarget target) noexcept {
+    switch (target) {
+    case ZOrderTarget::Top: return 0;
+    case ZOrderTarget::Bottom: return 1;
+    case ZOrderTarget::TopMost: return -1;
+    case ZOrderTarget::NoTopMost: return -2;
+    }
+    return 0;
+}
+
 } // namespace nitemare3d::port
