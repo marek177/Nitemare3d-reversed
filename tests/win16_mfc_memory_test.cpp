@@ -21,6 +21,16 @@ int main() {
     assert(kCWndSentinels[1].pseudoHwnd == 1);
     assert(kCWndSentinels[2].pseudoHwnd == -1);
     assert(kCWndSentinels[3].pseudoHwnd == -2);
+    assert(kCWndConstructor.segment == 1 && kCWndConstructor.offset == 0x114A);
+    assert(kCWndCreateObjectThunk.offset == 0x1AEC);
+    assert(kCWndDeletingDestructor.offset == 0x281E);
+    assert(kRuntimeCreateObject.offset == 0x06C0);
+    assert(kCWndVtableSlots.size() == 20);
+    assert(kCWndVtableSlots[0].target.offset == 0x1B0C);
+    assert(kCWndVtableSlots[1].target.offset == 0x281E);
+    assert(kCWndVtableSlots[2].target.segment == 3);
+    assert(kCWndVtableSlots[13].byteOffset == 0x34);
+    assert(kCWndVtableSlots[13].target.offset == 0x171C);
 
     return 0;
 }

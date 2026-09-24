@@ -87,6 +87,50 @@ inline constexpr std::uint16_t kCWndHwndOffset = 0x14;
 inline constexpr std::uint16_t kCWndSecondaryHwndOffset = 0x16;
 inline constexpr std::uint16_t kCWndAssociatedObjectOffset = 0x18;
 
+struct FarAddress16 {
+    std::uint16_t segment;
+    std::uint16_t offset;
+};
+
+inline constexpr FarAddress16 kCWndConstructor{1, 0x114A};
+inline constexpr FarAddress16 kCWndHandleConstructor{1, 0x1172};
+inline constexpr FarAddress16 kCWndCreateObjectThunk{1, 0x1AEC};
+inline constexpr FarAddress16 kCWndTeardown{1, 0x1666};
+inline constexpr FarAddress16 kCWndDestroyWindowPath{1, 0x171C};
+inline constexpr FarAddress16 kCWndDeletingDestructor{1, 0x281E};
+inline constexpr FarAddress16 kRuntimeCreateObject{1, 0x06C0};
+inline constexpr FarAddress16 kRuntimeIsKindOf{1, 0x068A};
+inline constexpr FarAddress16 kRuntimeCreateCallbackDispatch{1, 0x0730};
+
+struct VtableSlot16 {
+    std::uint16_t byteOffset;
+    FarAddress16 target;
+    const char* role;
+};
+
+inline constexpr std::array<VtableSlot16, 20> kCWndVtableSlots = {{
+    {0x00, {1, 0x1B0C}, "runtime-class getter"},
+    {0x04, {1, 0x281E}, "deleting destructor"},
+    {0x08, {3, 0x0464}, "inherited virtual"},
+    {0x0C, {1, 0x06B8}, "inherited virtual"},
+    {0x10, {1, 0x06BC}, "inherited virtual"},
+    {0x14, {1, 0x35C8}, "inherited virtual"},
+    {0x18, {1, 0x16FA}, "window lifecycle dispatch"},
+    {0x1C, {1, 0x1B12}, "runtime/class helper"},
+    {0x20, {1, 0x36D4}, "inherited virtual"},
+    {0x24, {1, 0x36CA}, "inherited virtual"},
+    {0x28, {1, 0x36FA}, "inherited virtual"},
+    {0x2C, {1, 0x3700}, "inherited virtual"},
+    {0x30, {1, 0x1606}, "window virtual"},
+    {0x34, {1, 0x171C}, "DestroyWindow/detach path"},
+    {0x38, {1, 0x15E6}, "window virtual"},
+    {0x3C, {1, 0x2448}, "window virtual"},
+    {0x40, {1, 0x2116}, "window virtual"},
+    {0x44, {1, 0x1A1A}, "window virtual"},
+    {0x48, {1, 0x1E9C}, "window virtual"},
+    {0x4C, {1, 0x17B2}, "window virtual"},
+}};
+
 struct SentinelWnd {
     std::uint16_t objectOffset;
     std::int16_t pseudoHwnd;

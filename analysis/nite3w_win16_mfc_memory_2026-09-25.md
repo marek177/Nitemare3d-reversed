@@ -60,3 +60,22 @@ Recovered resource memory domains include:
 - oversized audio resources: dedicated HGLOBAL path
 
 These are historical Win16 implementation details. A modern port should preserve observable cache/resource behavior rather than reproduce segmented allocation literally.
+
+
+## CWnd constructor, create thunk and vtable anchors
+
+The CWnd runtime descriptor at segment-10 offset `0594` reports a 0x1A-byte object and its create callback resolves to `1:1AEC`. That thunk invokes the constructor at `1:114A`. The alternate constructor at `1:1172` accepts the initial/pseudo HWND used by the four global z-order sentinels.
+
+The recovered lifecycle anchors are:
+
+- `1:068A` — runtime-class base traversal / IsKindOf-like helper
+- `1:06C0` — generic runtime object allocation/create path
+- `1:0730` — create-callback dispatcher
+- `1:114A` — CWnd default constructor
+- `1:1172` — CWnd constructor with initial HWND/pseudo-HWND
+- `1:1AEC` — CWnd CRuntimeClass create thunk
+- `1:1666` — CWnd teardown/destructor body
+- `1:171C` — normal DestroyWindow + detach path
+- `1:281E` — CWnd deleting destructor
+
+The CWnd vtable starts at `4:49A4`. Relocation-aware decoding confirms at least the first 20 slots through byte offset `+4C`; notably `+00 -> 1:1B0C`, `+04 -> 1:281E`, `+18 -> 1:16FA`, and `+34 -> 1:171C`. The `+34` target independently closes the lifecycle dispatch observed in `1:16FA`.
