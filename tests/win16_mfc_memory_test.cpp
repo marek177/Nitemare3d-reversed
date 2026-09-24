@@ -38,6 +38,14 @@ int main() {
     assert(kHandleMaps[2].handleFieldOffset == 0x04);
     assert(kHandleMaps[3].runtimeClassOffset == kCMenuRuntimeClass);
     assert(handleMapBucket(0x1234, 17) == ((0x1234 >> 4) % 17));
+    assert(kTemporaryWrapperLifecycle.permanentLookupFirst);
+    assert(kTemporaryWrapperLifecycle.temporaryLookupSecond);
+    assert(kTemporaryWrapperLifecycle.allocateOnMiss);
+    assert(kTemporaryWrapperLifecycle.clearHandleBeforeDelete);
+    assert(kTemporaryWrapperLifecycle.cleanupAtNestingZero);
+    assert(kCWndLifecycle.constructor.offset == 0x114A);
+    assert(kCWndLifecycle.createThunk.offset == 0x1AEC);
+    assert(kCWndLifecycle.destroyWindowPath.offset == 0x171C);
 
     return 0;
 }
