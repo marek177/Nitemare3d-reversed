@@ -28,7 +28,7 @@ The previous 2026-09-21 engineering estimate of roughly **69–71% direct binary
 
 Direct-binary relocation-aware analysis now recovers the core MFC 2.5 object/memory framework used by NITE3W: CWnd/CDC/CGdiObject/CMenu handle maps, temporary/permanent wrapper lifetime, the 16-byte CRuntimeClass format, CWnd's 0x1A-byte object size and HWND fields, the four z-order sentinel CWnd objects, and the Win16 CRT far-heap split/coalesce/grow behavior. See [`../analysis/nite3w_win16_mfc_memory_2026-09-25.md`](../analysis/nite3w_win16_mfc_memory_2026-09-25.md) and [`../src/re/Win16MfcMemory.hpp`](../src/re/Win16MfcMemory.hpp).
 
-Modern-port guidance that separates original Win16 ABI evidence from Windows 11/x64 implementation choices is in [`WIN16_MFC_TO_X64_PORT.md`](WIN16_MFC_TO_X64_PORT.md).
+Modern-port guidance that separates original Win16 ABI evidence from Windows 11/x64 implementation choices is in [`WIN16_MFC_TO_X64_PORT.md`](WIN16_MFC_TO_X64_PORT.md). The remaining dynamic checks are enumerated in [`WIN16_MFC_RUNTIME_VALIDATION.md`](WIN16_MFC_RUNTIME_VALIDATION.md), including temporary/permanent HandleMap identity, borrowed-handle cleanup, sentinel behavior, CDC dual-handle state and CRuntimeClass ancestry.
 
 ### MAP / world / runtime pools
 
