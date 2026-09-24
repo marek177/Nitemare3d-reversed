@@ -150,6 +150,40 @@ inline constexpr std::array<VtableSlot16, 20> kCWndVtableSlots = {{
     {0x48, {1, 0x1E9C}, "window virtual"},
     {0x4C, {1, 0x17B2}, "window virtual"},
 }};
+enum class HandleOwnership16 : std::uint8_t {
+    BorrowedTemporary,
+    AttachedPermanent,
+    StaticSentinel,
+};
+
+struct TemporaryWrapperLifecycle16 {
+    bool permanentLookupFirst;
+    bool temporaryLookupSecond;
+    bool allocateOnMiss;
+    bool clearHandleBeforeDelete;
+    bool cleanupAtNestingZero;
+};
+
+inline constexpr TemporaryWrapperLifecycle16 kTemporaryWrapperLifecycle{
+    true, true, true, true, true
+};
+
+struct CWndLifecycleFact16 {
+    FarAddress16 constructor;
+    FarAddress16 createThunk;
+    FarAddress16 teardown;
+    FarAddress16 destroyWindowPath;
+    FarAddress16 deletingDestructor;
+};
+
+inline constexpr CWndLifecycleFact16 kCWndLifecycle{
+    kCWndConstructor,
+    kCWndCreateObjectThunk,
+    kCWndTeardown,
+    kCWndDestroyWindowPath,
+    kCWndDeletingDestructor,
+};
+
 
 struct SentinelWnd {
     std::uint16_t objectOffset;
