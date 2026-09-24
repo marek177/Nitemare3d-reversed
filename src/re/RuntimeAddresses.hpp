@@ -49,3 +49,6 @@ inline constexpr std::uint16_t kPanelCapacity = 32;
 inline constexpr std::uint16_t kPushCapacity = 12;
 
 } // namespace nitemare3d::re
+
+// Win16 MFC/framework addresses are intentionally kept in Win16MfcAddresses.hpp
+// and Win16MfcMemory.hpp so game-runtime globals remain separate from framework ABI evidence.
