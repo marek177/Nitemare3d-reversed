@@ -99,6 +99,9 @@ target_link_libraries(n3d_handle_registry_test PRIVATE n3d_core)
 add_executable(n3d_native_handle_wrapper_test tests/native_handle_wrapper_test.cpp)
 target_link_libraries(n3d_native_handle_wrapper_test PRIVATE n3d_core)
 
+add_executable(n3d_window_wrapper_test tests/window_wrapper_test.cpp)
+target_link_libraries(n3d_window_wrapper_test PRIVATE n3d_core)
+
 if(N3D_ENABLE_SDL3)
     find_package(SDL3 CONFIG QUIET)
 
