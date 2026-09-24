@@ -86,3 +86,8 @@ Across video and static interaction audits, preserve the already documented fact
 The C++ reference model now exposes the projectile record layout and tests its size, slot states, weapon routing, hit tolerance, and render-only ±20 threshold. The fire model exposes the executable-derived object ID mapping and per-update damage, separate from behaviorally audited passability. RecoveredRuntime.hpp names the save blocks and shade fields. UnknownSystemsAudit.hpp no longer treats the 336-byte pool as an unknown record.
 
 Static Win16 statements here are not automatically DOS behavior. Projectiles' calibrated speed, event timing, scene pixels, unknown record bytes, save/load side effects beyond tested copies, and unresolved story text remain open.
+
+
+## 2026-09-25 Win16 MFC / memory synchronization
+
+The current repository now contains the relocation-aware Win16 MFC reconstruction and its modern compatibility layer. Canonical entry point: `docs/WIN16_MFC_RE_SUMMARY.md`. Static artifacts cover `CRuntimeClass16`, 31 runtime classes, CWnd layout/vtable/lifecycle anchors, HWND/HDC/HGDIOBJ/HMENU HandleMaps, evidence levels and explicit coverage states. Runtime validation remains separately tracked and requires the Win3.1 debugger checklist/capture template. The modern C++20 layer now includes `HandleRegistry`, `NativeHandleWrapper`, `WindowWrapper`, `WindowRegistry`, nested/RAII temporary scopes and the recovered z-order mapping. Historical 16:16 pointers, NE fixups and raw MFC object layouts are evidence only and are not reproduced as the x64 ABI.
