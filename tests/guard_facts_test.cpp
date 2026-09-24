@@ -31,6 +31,36 @@ int main() {
     assert(guardScoreForObjectClass(0x1D) == 250);   // Demon
     assert(guardScoreForObjectClass(0x20) == 50);    // GUARD25 unknown
 
+    // The audited state 0x13 sound tick, movement attempts and blocked-step
+    // timer behavior are represented separately.
+    static_assert(kGuardStateLethalPlayerContact == 0x0B);
+    static_assert(kGuardStateStrategy3Movement == 0x13);
+    assert(guardState13InitialTimer(0) == 8);
+    assert(guardState13InitialTimer(79) == 87);
+    assert(guardState13InitialTimer(80) == 8);
+    const auto wait = stepGuardState13(10, true);
+    assert(wait.nextTimer == 9 && !wait.playMovementSound && !wait.attemptMovement);
+    const auto sound = stepGuardState13(9, true);
+    assert(sound.nextTimer == 8 && sound.playMovementSound && !sound.attemptMovement);
+    const auto move = stepGuardState13(8, true);
+    assert(move.nextTimer == 7 && move.attemptMovement && move.commitMovement);
+    const auto blocked = stepGuardState13(8, false);
+    assert(blocked.nextTimer == 7 && blocked.attemptMovement && !blocked.commitMovement);
+    const auto lastAttempt = stepGuardState13(1, false);
+    assert(lastAttempt.nextTimer == 0 && lastAttempt.attemptMovement && !lastAttempt.commitMovement);
+    std::uint16_t timer = 8;
+    int blockedMovementAttempts = 0;
+    for (int i = 0; i < 8; ++i) {
+        const auto step = stepGuardState13(timer, false);
+        assert(step.attemptMovement && !step.commitMovement);
+        timer = step.nextTimer;
+        ++blockedMovementAttempts;
+    }
+    assert(blockedMovementAttempts == 8 && timer == 0);
+
+    const auto finished = stepGuardState13(timer, true);
+    assert(finished.clearStrategyAndEnterState2 && !finished.attemptMovement && finished.nextTimer == 0);
+
     // Classes outside GUARD1..25 use the default score path.
     assert(guardScoreForObjectClass(0x07) == 0);
     assert(guardScoreForObjectClass(0x21) == 0); // includes GUARD26/Dancers path

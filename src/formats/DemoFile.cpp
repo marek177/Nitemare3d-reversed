@@ -16,20 +16,34 @@ DemoFile DemoFile::load(const std::filesystem::path& path) {
         out.rawHeaderWords_[i] = io::readU16LE(bytes, i * 2);
     }
 
-    std::uint32_t previousTick = 0;
+    std::uint32_t previousGeneration = 0;
     bool first = true;
     for (std::size_t pos = 6; pos < bytes.size(); pos += 8) {
         DemoRecord rec;
-        rec.rawInputState = io::readU32LE(bytes, pos);
-        rec.tick = io::readU32LE(bytes, pos + 4);
-        if (!first && rec.tick < previousTick) {
-            out.ticksAreMonotonic_ = false;
+        rec.eventByte = bytes[pos];
+        rec.inputMask = io::readU16LE(bytes, pos + 1);
+        rec.paddingByte = bytes[pos + 3];
+        rec.renderGeneration = io::readU32LE(bytes, pos + 4);
+        if (!first && rec.renderGeneration < previousGeneration) {
+            out.renderGenerationsAreMonotonic_ = false;
         }
-        previousTick = rec.tick;
+        previousGeneration = rec.renderGeneration;
         first = false;
         out.records_.push_back(rec);
     }
     return out;
+}
+
+const DemoRecord* DemoFile::dispatchOneDueRecordAtGeneration(
+    std::uint32_t currentRenderGeneration,
+    std::size_t& nextRecordIndex) const noexcept {
+    if (nextRecordIndex >= records_.size()) return nullptr;
+
+    const auto& next = records_[nextRecordIndex];
+    if (next.renderGeneration > currentRenderGeneration) return nullptr;
+
+    ++nextRecordIndex;
+    return &next;
 }
 
 } // namespace n3d

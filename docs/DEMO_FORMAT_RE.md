@@ -160,7 +160,7 @@ The three pre-commit helper calls are now confirmed as the critical remaining co
 
 ## Playback/record state machine
 
-Global `0x46B8`: state 1 creates/opens `demo.N` and writes the header; state 2 records; state 3 opens for playback; state 4 timed playback; state 5 close/reset. Timestamps are compared against game tick `0x53DC`. **VERIFIED_EXE**.
+Global `0x46B8`: state 1 creates/opens `demo.N` and writes the header; state 2 records; state 3 opens for playback; state 4 timed playback; state 5 close/reset. The timestamp is compared against the 32-bit render-generation counter `0x53DC`; it is not a millisecond value. **VERIFIED_EXE; unit corrected 2026-09-24**.
 
 ## Resource relationship and attract mode
 
@@ -191,6 +191,22 @@ E2M3 and E3M3 remain candidates only; they receive no prior scoring advantage.
 Before full-engine collision fidelity, use a staged fingerprint matcher. For each map collect spawn, angle, a local 15x15/21x21 two-plane patch, nearby wall/resource IDs, nearby object IDs, and eventually decoded doors/enemies/interactives. Compare the earliest demo command sequence against this local environment. This can eliminate impossible candidates before full trajectory simulation.
 
 The positive control is DEMO.1: a correct matcher should independently rank E1M3/E1M11 together because they have the same spawn and local first-plane geometry. If it fails this test, the movement/collision model is not yet reliable enough to interpret DEMO.2/3 rankings.
+
+## Timestamp unit — 2026-09-24 correction
+
+The timestamp field is a 32-bit render-generation index, not a duration in
+milliseconds. The writer and playback comparator use the same field across the
+four inspected Win16 builds. Playback consumes at most one due record per
+dispatcher call. The special UI mode 8 can advance the generation in the
+replay path without the ordinary render, so callers must not treat the value
+as a one-to-one count of completed rendered frames. The supplied DEMO.1 data
+contains 203 records with first generation 19 and last generation 1157; the
+last record does not establish the total playback duration.
+
+The original inspected playback branch does not explicitly test the file-read
+result at EOF. The reconstructed DemoFile parser and dispatch helper check
+their bounds and stop safely; this safety behavior is not asserted to match the
+original branch.
 
 ## Command-line switch
 

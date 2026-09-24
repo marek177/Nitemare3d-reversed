@@ -115,6 +115,8 @@ cmake --build build
 ./build/n3d_hazard_test
 ./build/n3d_projectile_runtime_test
 ./build/n3d_win16_wall_raster_core_test
+./build/n3d_demo_file_test
+./build/n3d_guard_facts_test
 ```
 
 ### Windows 11 + SDL3

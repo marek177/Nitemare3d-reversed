@@ -59,8 +59,8 @@ static void inspectDefs(const fs::path& p) {
 }
 static void inspectDemo(const fs::path& p) {
     const auto d = n3d::DemoFile::load(p);
-    std::cout << p.filename().string() << ": header={" << d.rawHeaderWords()[0] << "," << d.rawHeaderWords()[1] << "," << d.rawHeaderWords()[2] << "}, records=" << d.records().size() << ", ticksMonotonic=" << (d.ticksAreMonotonic() ? "yes" : "no");
-    if (!d.records().empty()) std::cout << ", lastTick=" << d.records().back().tick;
+    std::cout << p.filename().string() << ": header={" << d.rawHeaderWords()[0] << "," << d.rawHeaderWords()[1] << "," << d.rawHeaderWords()[2] << "}, records=" << d.records().size() << ", renderGenerationsMonotonic=" << (d.renderGenerationsAreMonotonic() ? "yes" : "no");
+    if (!d.records().empty()) std::cout << ", lastRenderGeneration=" << d.records().back().renderGeneration;
     std::cout << "\n";
 }
 static void inspectPcx(const fs::path& p) { const auto pcx = n3d::Pcx8::load(p); std::cout << p.filename().string() << ": " << pcx.width << "x" << pcx.height << " 8-bit PCX\n"; }

@@ -23,7 +23,7 @@ struct GuardRuntimeRecord {
     std::uint8_t strategy;            // +0A VERIFIED_EXE; debug label "strategy"
     std::uint8_t state;               // +0B VERIFIED_EXE
     std::uint8_t nextState;           // +0C VERIFIED_EXE
-    std::uint8_t objectId;            // +0D VERIFIED_EXE; diagnostic o_id
+    std::uint8_t savedMapObjectByte; // +0D: displaced map-cell object byte used on movement/death
     std::uint8_t definitionId;        // +0E PARTIAL: lookup-derived
     std::uint8_t syncFlag;            // +0F PARTIAL: derived boolean
     std::uint8_t strength;            // +10 VERIFIED_EXE: strength / HP
@@ -43,7 +43,7 @@ static_assert(offsetof(GuardRuntimeRecord, objectSlot) == 0x08);
 static_assert(offsetof(GuardRuntimeRecord, strategy) == 0x0A);
 static_assert(offsetof(GuardRuntimeRecord, state) == 0x0B);
 static_assert(offsetof(GuardRuntimeRecord, nextState) == 0x0C);
-static_assert(offsetof(GuardRuntimeRecord, objectId) == 0x0D);
+static_assert(offsetof(GuardRuntimeRecord, savedMapObjectByte) == 0x0D);
 static_assert(offsetof(GuardRuntimeRecord, definitionId) == 0x0E);
 static_assert(offsetof(GuardRuntimeRecord, syncFlag) == 0x0F);
 static_assert(offsetof(GuardRuntimeRecord, strength) == 0x10);
@@ -83,6 +83,18 @@ enum class GuardState : std::uint8_t {
 
 inline constexpr std::size_t kGuardStateCount = 0x16;
 
+// 2026-09-24 Win16 audit: 0x0B is written only on lethal guard-to-player
+// contact and has no dispatcher case. State 0x13 is the strategy-3 move path.
+inline constexpr std::uint8_t kGuardStateLethalPlayerContact = 0x0B;
+inline constexpr std::uint8_t kGuardStateStrategy3Movement = 0x13;
+inline constexpr std::uint16_t kGuardState13TimerRandomRange = 0x50;
+inline constexpr std::uint16_t kGuardState13TimerMinimum = 8;
+
+constexpr std::uint16_t guardState13InitialTimer(std::uint16_t randomValue) noexcept {
+    return static_cast<std::uint16_t>(
+        randomValue % kGuardState13TimerRandomRange + kGuardState13TimerMinimum);
+}
+
 // Control-flow summary recovered from the state dispatcher. These are handler
 // offsets inside the original segment-3 code, useful for cross-checking IDA /
 // Ghidra without pretending that all state names are already known.
@@ -110,6 +122,35 @@ inline constexpr std::array<std::uint16_t, kGuardStateCount> kGuardStateHandlerO
     0x804A, // 14 long timer + periodic action
     0x807E, // 15 confirmed pain/hit -> nextState
 };
+
+// State 0x13 countdown from the 2026-09-24 Win16 audit. The timer always
+// decreases, including when the attempted map step is blocked. A step commits
+// coordinates/cell occupancy only when targetCellAllowsMove is true.
+struct GuardState13StepResult {
+    std::uint16_t nextTimer{};
+    bool playMovementSound{};
+    bool attemptMovement{};
+    bool commitMovement{};
+    bool clearStrategyAndEnterState2{};
+};
+
+constexpr GuardState13StepResult stepGuardState13(
+    std::uint16_t currentTimer,
+    bool targetCellAllowsMove) noexcept {
+    if (currentTimer == 0) {
+        return {0, false, false, false, true};
+    }
+
+    const std::uint16_t nextTimer =
+        static_cast<std::uint16_t>(currentTimer - std::uint16_t{1});
+    if (nextTimer == 8) {
+        return {nextTimer, true, false, false, false};
+    }
+    if (nextTimer < 8) {
+        return {nextTimer, false, true, targetCellAllowsMove, false};
+    }
+    return {nextTimer, false, false, false, false};
+}
 
 // Original score dispatcher: OBJECT+06 class values 0x08..0x20 map to
 // GUARD1..GUARD25. Classes outside that switch return zero. GUARD26/Dancers is
