@@ -7,6 +7,16 @@ namespace nitemare3d::port {
 
 class WindowRegistry {
 public:
+    void beginTemporaryScope() noexcept { ++temporaryScopeDepth_; }
+
+    void endTemporaryScope() noexcept {
+        if (temporaryScopeDepth_ == 0) return;
+        --temporaryScopeDepth_;
+        if (temporaryScopeDepth_ == 0) clearTemporary();
+    }
+
+    [[nodiscard]] std::size_t temporaryScopeDepth() const noexcept { return temporaryScopeDepth_; }
+
     WindowWrapper& fromHandle(WindowHandle handle) {
         return registry_.fromHandle(handle, [](WindowHandle value) {
             return WindowWrapper{value, HandleOwnership::Borrowed};
@@ -48,6 +58,7 @@ public:
 
 private:
     HandleRegistry<WindowHandle, WindowWrapper> registry_;
+    std::size_t temporaryScopeDepth_ = 0;
 };
 
 } // namespace nitemare3d::port
