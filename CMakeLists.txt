@@ -84,6 +84,9 @@ target_link_libraries(n3d_img_archive_layout_test PRIVATE n3d_core)
 add_executable(n3d_demo_file_test tests/demo_file_test.cpp)
 target_link_libraries(n3d_demo_file_test PRIVATE n3d_core)
 
+add_executable(n3d_win16_mfc_memory_test tests/win16_mfc_memory_test.cpp)
+target_link_libraries(n3d_win16_mfc_memory_test PRIVATE n3d_core)
+
 if(N3D_ENABLE_SDL3)
     find_package(SDL3 CONFIG QUIET)
 
