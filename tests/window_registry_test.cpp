@@ -44,6 +44,24 @@ int main() {
 
     windows.endTemporaryScope();
     assert(windows.temporaryScopeDepth() == 0);
+
+    {
+        TemporaryWindowScope outer{windows};
+        auto& scoped1 = windows.fromHandle(500);
+        assert(scoped1.handle() == 500);
+        assert(windows.temporaryScopeDepth() == 1);
+        {
+            TemporaryWindowScope inner{windows};
+            auto& scoped2 = windows.fromHandle(600);
+            assert(scoped2.handle() == 600);
+            assert(windows.temporaryScopeDepth() == 2);
+            assert(windows.temporaryCount() == 2);
+        }
+        assert(windows.temporaryScopeDepth() == 1);
+        assert(windows.temporaryCount() == 2);
+    }
+    assert(windows.temporaryScopeDepth() == 0);
+    assert(windows.temporaryCount() == 0);
     assert(windows.temporaryCount() == 0);
 
     windows.endTemporaryScope();
