@@ -134,6 +134,10 @@ inline constexpr std::array<RuntimeClassFact, 31> kRuntimeClasses = {{
     {kCCmdTargetRuntimeClass, "CCmdTarget", 0x14, kCObjectRuntimeClass},
     {kCDocumentRuntimeClass, "CDocument", 0x36, kCCmdTargetRuntimeClass},
     {kCDocTemplateRuntimeClass, "CDocTemplate", 0x36, kCCmdTargetRuntimeClass},
+    {kCSingleDocTemplateRuntimeClass, "CSingleDocTemplate", 0x38, kCDocTemplateRuntimeClass},
+    {kCSplitterWndRuntimeClass, "CSplitterWnd", 0x52, kCWndRuntimeClass},
+    {kCScrollViewRuntimeClass, "CScrollView", 0x32, kCViewRuntimeClass},
+    {kCPreviewViewRuntimeClass, "CPreviewView", 0x8A, kCScrollViewRuntimeClass},
     {kCWinAppRuntimeClass, "CWinApp", 0x8E, kCCmdTargetRuntimeClass},
 }};
 
