@@ -56,6 +56,11 @@ int main() {
     assert(!isDerivedFrom(kCMenuRuntimeClass, kCWndRuntimeClass));
     assert(validateRuntimeClassTable());
     assert(validateHandleMaps());
+    assert(kMfcEvidence.size() == 10);
+    assert(kMfcEvidence[0].evidence == MfcEvidence16::RelocationAware);
+    assert(kMfcEvidence[1].evidence == MfcEvidence16::DirectBinary);
+    assert(kMfcEvidence[3].evidence == MfcEvidence16::StrongSemantic);
+    assert(kMfcEvidence[9].evidence == MfcEvidence16::RuntimePending);
 
     return 0;
 }
