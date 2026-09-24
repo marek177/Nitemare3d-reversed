@@ -107,7 +107,7 @@ struct RuntimeClassFact {
     std::uint16_t base;
 };
 
-inline constexpr std::array<RuntimeClassFact, 30> kRuntimeClasses = {{
+inline constexpr std::array<RuntimeClassFact, 31> kRuntimeClasses = {{
     {kCObjectRuntimeClass, "CObject", 0x04, 0},
     {kCWndRuntimeClass, "CWnd", 0x1A, kCCmdTargetRuntimeClass},
     {kCFrameWndRuntimeClass, "CFrameWnd", 0x4E, kCWndRuntimeClass},
