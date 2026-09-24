@@ -54,6 +54,8 @@ int main() {
     assert(isDerivedFrom(kCPreviewViewRuntimeClass, kCViewRuntimeClass));
     assert(isDerivedFrom(kCPenRuntimeClass, kCGdiObjectRuntimeClass));
     assert(!isDerivedFrom(kCMenuRuntimeClass, kCWndRuntimeClass));
+    assert(validateRuntimeClassTable());
+    assert(validateHandleMaps());
 
     return 0;
 }

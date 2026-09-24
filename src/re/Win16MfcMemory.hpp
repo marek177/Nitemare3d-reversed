@@ -256,4 +256,28 @@ constexpr bool isDerivedFrom(std::uint16_t candidate, std::uint16_t base) noexce
     return false;
 }
 
+
+constexpr bool validateRuntimeClassTable() noexcept {
+    for (std::size_t i = 0; i < kRuntimeClasses.size(); ++i) {
+        const auto& fact = kRuntimeClasses[i];
+        if (fact.offset == 0 || fact.name == nullptr || fact.objectSize == 0) return false;
+        for (std::size_t j = i + 1; j < kRuntimeClasses.size(); ++j)
+            if (fact.offset == kRuntimeClasses[j].offset) return false;
+        if (fact.base != 0 && findRuntimeClass(fact.base) == nullptr) return false;
+    }
+    return true;
+}
+
+constexpr bool validateHandleMaps() noexcept {
+    for (const auto& map : kHandleMaps) {
+        if (map.rootOffset == 0 || map.wrapperClass == nullptr || map.handleType == nullptr) return false;
+        if (findRuntimeClass(map.runtimeClassOffset) == nullptr) return false;
+        if (map.handleCount == 0) return false;
+    }
+    return true;
+}
+
+static_assert(validateRuntimeClassTable());
+static_assert(validateHandleMaps());
+
 } // namespace nitemare3d::re::win16
