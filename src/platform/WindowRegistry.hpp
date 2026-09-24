@@ -61,4 +61,40 @@ private:
     std::size_t temporaryScopeDepth_ = 0;
 };
 
+
+class TemporaryWindowScope {
+public:
+    explicit TemporaryWindowScope(WindowRegistry& registry) noexcept
+        : registry_(&registry) {
+        registry_->beginTemporaryScope();
+    }
+
+    TemporaryWindowScope(const TemporaryWindowScope&) = delete;
+    TemporaryWindowScope& operator=(const TemporaryWindowScope&) = delete;
+
+    TemporaryWindowScope(TemporaryWindowScope&& other) noexcept
+        : registry_(other.registry_) {
+        other.registry_ = nullptr;
+    }
+
+    TemporaryWindowScope& operator=(TemporaryWindowScope&& other) noexcept {
+        if (this == &other) return *this;
+        release();
+        registry_ = other.registry_;
+        other.registry_ = nullptr;
+        return *this;
+    }
+
+    ~TemporaryWindowScope() { release(); }
+
+    void release() noexcept {
+        if (registry_ == nullptr) return;
+        registry_->endTemporaryScope();
+        registry_ = nullptr;
+    }
+
+private:
+    WindowRegistry* registry_;
+};
+
 } // namespace nitemare3d::port
