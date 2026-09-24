@@ -24,3 +24,8 @@ Run:
 
 For 32-bit Windows builds use the `x86-windows` vcpkg triplet and `-A Win32`.
 The original Win16 executable remains reference material only.
+
+
+## Win16/MFC reconstruction tests
+
+The current CMake project also builds dedicated reverse-engineering/compatibility tests for Win16 MFC metadata, address catalogs, coverage, HandleRegistry, native ownership, WindowWrapper and WindowRegistry. These use portable C++20; they do not require MFC 2.5 or a Win16 SDK.
