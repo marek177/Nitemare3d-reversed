@@ -30,5 +30,23 @@ int main() {
 
     windows.clearTemporary();
     assert(windows.temporaryCount() == 0);
+
+    windows.beginTemporaryScope();
+    windows.beginTemporaryScope();
+    assert(windows.temporaryScopeDepth() == 2);
+    auto& scoped = windows.fromHandle(400);
+    assert(scoped.handle() == 400);
+    assert(windows.temporaryCount() == 1);
+
+    windows.endTemporaryScope();
+    assert(windows.temporaryScopeDepth() == 1);
+    assert(windows.temporaryCount() == 1);
+
+    windows.endTemporaryScope();
+    assert(windows.temporaryScopeDepth() == 0);
+    assert(windows.temporaryCount() == 0);
+
+    windows.endTemporaryScope();
+    assert(windows.temporaryScopeDepth() == 0);
     return 0;
 }
