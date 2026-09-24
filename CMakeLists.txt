@@ -93,6 +93,9 @@ target_link_libraries(n3d_win16_mfc_addresses_test PRIVATE n3d_core)
 add_executable(n3d_win16_mfc_coverage_test tests/win16_mfc_coverage_test.cpp)
 target_link_libraries(n3d_win16_mfc_coverage_test PRIVATE n3d_core)
 
+add_executable(n3d_handle_registry_test tests/handle_registry_test.cpp)
+target_link_libraries(n3d_handle_registry_test PRIVATE n3d_core)
+
 if(N3D_ENABLE_SDL3)
     find_package(SDL3 CONFIG QUIET)
 
