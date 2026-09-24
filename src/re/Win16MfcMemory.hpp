@@ -239,4 +239,21 @@ inline constexpr std::array<RuntimeClassFact, 31> kRuntimeClasses = {{
     {kCWinAppRuntimeClass, "CWinApp", 0x8E, kCCmdTargetRuntimeClass},
 }};
 
+constexpr const RuntimeClassFact* findRuntimeClass(std::uint16_t offset) noexcept {
+    for (const auto& fact : kRuntimeClasses)
+        if (fact.offset == offset) return &fact;
+    return nullptr;
+}
+
+constexpr bool isDerivedFrom(std::uint16_t candidate, std::uint16_t base) noexcept {
+    if (candidate == 0 || base == 0) return candidate == base;
+    for (std::size_t depth = 0; depth <= kRuntimeClasses.size(); ++depth) {
+        if (candidate == base) return true;
+        const auto* fact = findRuntimeClass(candidate);
+        if (fact == nullptr || fact->base == 0) return false;
+        candidate = fact->base;
+    }
+    return false;
+}
+
 } // namespace nitemare3d::re::win16
