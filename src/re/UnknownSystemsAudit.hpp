@@ -17,7 +17,7 @@ enum class AuditArea : std::uint8_t {
     GuardAi, SequenceEvents, SpawnDespawn, CollisionFlags, Projectile,
     Damage, DeathScoreMorph, Difficulty, WallDispatcher, Renderer, RngTick,
     MapHeader, Resources, Bsf, NeRelocations, HiddenContent, SaveState,
-    FunctionCoverage,
+    FunctionCoverage, MfcRuntimeValidation,
 };
 
 struct AuditTarget {
@@ -28,7 +28,7 @@ struct AuditTarget {
     const char* nextObservation;
 };
 
-inline constexpr std::array<AuditTarget, 30> kUnknownSystemTargets = {{
+inline constexpr std::array<AuditTarget, 31> kUnknownSystemTargets = {{
     {AuditArea::GuardAi, Evidence::Partial, "GUARD strategy/state/nextState", "GUARD +0A/+0B/+0C; states 00..15; pain 15h", "map reads/writes, timer, LOS, attack and transitions"},
     {AuditArea::GuardAi, Evidence::Partial, "GUARD26..30", "classes beyond scored switch", "trace creation, class changes, projectile and scripted uses"},
     {AuditArea::SequenceEvents, Evidence::Todo, "sequence-definition events", "seqdef/animation references", "find duration, sound, attack, movement and next-sequence writes"},
@@ -59,6 +59,7 @@ inline constexpr std::array<AuditTarget, 30> kUnknownSystemTargets = {{
     {AuditArea::SaveState, Evidence::Partial, "USER.SAV guard wake cache", "0xA65E/D5A3; last class-D wall selector; one-shot wake after successful fire", "runtime-check repeated/sparse selectors and explain the original grouping design"},
     {AuditArea::Damage, Evidence::VerifiedExe, "CAUSTIC fire damage table", "OBJECT IDs 3B/3C/3D deal 100/10/2 HP per simulation update", "calibrate update interval; audit other contact hazards and invulnerability interactions"},
     {AuditArea::FunctionCoverage, Evidence::Partial, "cross-version executable function map", "1,486 definitions; 519 DOS and 967 Win16; detailed review is not exhaustive", "continue body-level analysis beyond the first 200 functions per platform"},
+    {AuditArea::MfcRuntimeValidation, Evidence::Partial, "Win16 MFC runtime lifecycle validation", "static HandleMap/CRuntimeClass/CWnd architecture recovered; debugger probes and capture template committed", "capture Win3.1 temporary/permanent wrapper identity, borrowed-handle cleanup, CDC dual handles, sentinels and ancestry"},
 }};
 
 constexpr std::size_t countByEvidence(Evidence wanted) noexcept {

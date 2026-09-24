@@ -4,7 +4,7 @@
 
 int main() {
     using namespace nitemare3d::re;
-    static_assert(kUnknownSystemTargets.size() == 30);
+    static_assert(kUnknownSystemTargets.size() == 31);
     static_assert(countByEvidence(Evidence::VerifiedExe) >= 2);
     static_assert(countByEvidence(Evidence::Todo) >= 5);
     assert(kUnknownSystemTargets[2].area == AuditArea::SequenceEvents);
@@ -16,6 +16,8 @@ int main() {
     assert(kUnknownSystemTargets[0].anchor[0] != '\0');
     assert(kUnknownSystemTargets[kUnknownSystemTargets.size() - 3].area == AuditArea::SaveState);
     assert(kUnknownSystemTargets[kUnknownSystemTargets.size() - 3].evidence == Evidence::Partial);
-    assert(kUnknownSystemTargets.back().area == AuditArea::FunctionCoverage);
+    assert(kUnknownSystemTargets[kUnknownSystemTargets.size() - 2].area == AuditArea::FunctionCoverage);
+    assert(kUnknownSystemTargets[kUnknownSystemTargets.size() - 2].evidence == Evidence::Partial);
+    assert(kUnknownSystemTargets.back().area == AuditArea::MfcRuntimeValidation);
     assert(kUnknownSystemTargets.back().evidence == Evidence::Partial);
 }
