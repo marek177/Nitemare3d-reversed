@@ -46,6 +46,14 @@ int main() {
     assert(kCWndLifecycle.constructor.offset == 0x114A);
     assert(kCWndLifecycle.createThunk.offset == 0x1AEC);
     assert(kCWndLifecycle.destroyWindowPath.offset == 0x171C);
+    assert(findRuntimeClass(kCWndRuntimeClass) != nullptr);
+    assert(findRuntimeClass(kCWndRuntimeClass)->objectSize == 0x1A);
+    assert(findRuntimeClass(0xFFFF) == nullptr);
+    assert(isDerivedFrom(kCWndRuntimeClass, kCCmdTargetRuntimeClass));
+    assert(isDerivedFrom(kCFrameWndRuntimeClass, kCObjectRuntimeClass));
+    assert(isDerivedFrom(kCPreviewViewRuntimeClass, kCViewRuntimeClass));
+    assert(isDerivedFrom(kCPenRuntimeClass, kCGdiObjectRuntimeClass));
+    assert(!isDerivedFrom(kCMenuRuntimeClass, kCWndRuntimeClass));
 
     return 0;
 }
