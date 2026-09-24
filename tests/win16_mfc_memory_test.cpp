@@ -11,6 +11,12 @@ int main() {
     assert(kCWndObjectSize == 0x1A);
     assert(kRuntimeClasses[0].offset == kCObjectRuntimeClass);
     assert(kRuntimeClasses[1].base == kCCmdTargetRuntimeClass);
+    assert(kRuntimeClasses.size() == 31);
+    assert(kRuntimeClasses[26].offset == kCSingleDocTemplateRuntimeClass);
+    assert(kRuntimeClasses[27].base == kCWndRuntimeClass);
+    assert(kRuntimeClasses[28].base == kCViewRuntimeClass);
+    assert(kRuntimeClasses[29].base == kCScrollViewRuntimeClass);
+    assert(kRuntimeClasses[30].offset == kCWinAppRuntimeClass);
     assert(kCWndSentinels[0].pseudoHwnd == 0);
     assert(kCWndSentinels[1].pseudoHwnd == 1);
     assert(kCWndSentinels[2].pseudoHwnd == -1);
