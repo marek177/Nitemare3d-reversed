@@ -192,3 +192,8 @@ These percentages describe reverse-engineering completeness, not implementation 
 6. Continue vector renderer reconstruction.
 
 Do not promote a hypothesis to a named enum/field without executable/data evidence. Keep uncertain values explicitly marked as `Unknown`, `Reserved`, or `Candidate`.
+
+
+## 2026-09-25 Win16 MFC / memory synchronization
+
+The current repository now contains the relocation-aware Win16 MFC reconstruction and its modern compatibility layer. Canonical entry point: `docs/WIN16_MFC_RE_SUMMARY.md`. Static artifacts cover `CRuntimeClass16`, 31 runtime classes, CWnd layout/vtable/lifecycle anchors, HWND/HDC/HGDIOBJ/HMENU HandleMaps, evidence levels and explicit coverage states. Runtime validation remains separately tracked and requires the Win3.1 debugger checklist/capture template. The modern C++20 layer now includes `HandleRegistry`, `NativeHandleWrapper`, `WindowWrapper`, `WindowRegistry`, nested/RAII temporary scopes and the recovered z-order mapping. Historical 16:16 pointers, NE fixups and raw MFC object layouts are evidence only and are not reproduced as the x64 ABI.
