@@ -47,7 +47,7 @@ inline constexpr std::array<AuditTarget, 30> kUnknownSystemTargets = {{
     {AuditArea::MapHeader, Evidence::Partial, "MAP 514-byte header", "31 supplied levels; 8192-byte payload", "diff offsets and correlate metadata/spawns/flags"},
     {AuditArea::Resources, Evidence::Partial, "UIF/SND/FLI edge cases", "UIF 0..31; SND directory; FLI deltas", "xref reserved slots and map events to resources"},
     {AuditArea::Bsf, Evidence::Todo, "NITE3D.BSF consumer", "six known xrefs across versions", "recover read size/stride/compare and mutation behavior"},
-    {AuditArea::NeRelocations, Evidence::Partial, "Win16 NE relocations", "NITE3W has 10 logical segments", "classify far calls, imports and far data pointers"},
+    {AuditArea::NeRelocations, Evidence::VerifiedExe, "Win16 NE relocations and MFC runtime metadata", "10 logical NE segments; relocation-aware CRuntimeClass/HandleMap decoding complete for core MFC classes", "retain relocation-aware decoding for remaining non-MFC data tables"},
     {AuditArea::HiddenContent, Evidence::Todo, "defined/placed/referenced/executed sets", "IMG, OBJECTS, WALLS, SND, MAP", "report unused assets, orphan handlers and unreachable states"},
     {AuditArea::HiddenContent, Evidence::VerifiedSaveLayout, "saved player-projectile pool", "USER.SAV +C403, 8 records x 42 bytes", "identify remaining record bytes and verify pointer rebuild in runtime/DOS"},
     {AuditArea::Resources, Evidence::Partial, "shade index and fill-color state", "7E60/D6E5 index 2 default, 6 dark; 7E62/63 fill selectors", "validate override inputs and exact filled framebuffer regions"},

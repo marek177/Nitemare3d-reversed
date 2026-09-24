@@ -24,6 +24,10 @@ The previous 2026-09-21 engineering estimate of roughly **69–71% direct binary
 - 320×200, 8-bit indexed WinG framebuffer.
 - normal 3-D viewport x=8..311, y=4..155 = 304×152, center `(160,80)`.
 
+### Win16 MFC / memory ownership
+
+Direct-binary relocation-aware analysis now recovers the core MFC 2.5 object/memory framework used by NITE3W: CWnd/CDC/CGdiObject/CMenu handle maps, temporary/permanent wrapper lifetime, the 16-byte CRuntimeClass format, CWnd's 0x1A-byte object size and HWND fields, the four z-order sentinel CWnd objects, and the Win16 CRT far-heap split/coalesce/grow behavior. See [`../analysis/nite3w_win16_mfc_memory_2026-09-25.md`](../analysis/nite3w_win16_mfc_memory_2026-09-25.md) and [`../src/re/Win16MfcMemory.hpp`](../src/re/Win16MfcMemory.hpp).
+
 ### MAP / world / runtime pools
 
 - MAP archive header 514 bytes; each level payload is 64×64×2 = 8192 bytes.
