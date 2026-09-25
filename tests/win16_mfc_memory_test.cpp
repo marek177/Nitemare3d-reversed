@@ -9,6 +9,13 @@ int main() {
     static_assert(sizeof(HandleMap16) == 0x26);
 
     assert(kCWndObjectSize == 0x1A);
+    assert(kCDcObjectSize == 0x0A);
+    assert(kCDcOutputHdcOffset == 0x04);
+    assert(kCDcAttributeHdcOffset == 0x06);
+    assert(kCDcUnknown08Offset == 0x08);
+    assert(kCDcAttach.offset == 0x02E2 && kCDcDetach.offset == 0x0316);
+    assert(kCDcBaseCleanup.offset == 0x0342);
+    assert(kCPaintDcDestructor.offset == 0x0D0A);
     assert(kRuntimeClasses[0].offset == kCObjectRuntimeClass);
     assert(kRuntimeClasses[1].base == kCCmdTargetRuntimeClass);
     assert(kRuntimeClasses.size() == 31);
