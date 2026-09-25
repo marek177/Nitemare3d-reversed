@@ -114,6 +114,9 @@ target_link_libraries(n3d_player_reconstruction_test PRIVATE n3d_core)
 add_executable(n3d_projectile_save_block_test tests/projectile_save_block_test.cpp)
 target_link_libraries(n3d_projectile_save_block_test PRIVATE n3d_core)
 
+add_executable(n3d_win16_recovered_facts_20260925_test tests/win16_recovered_facts_2026_09_25_test.cpp)
+target_link_libraries(n3d_win16_recovered_facts_20260925_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
