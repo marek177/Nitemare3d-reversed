@@ -20,10 +20,18 @@ struct MfcAddressFact16 {
     const char* name;
 };
 
-inline constexpr std::array<MfcAddressFact16, 25> kMfcAddressCatalog = {{
+inline constexpr std::array<MfcAddressFact16, 33> kMfcAddressCatalog = {{
     {MfcAddressKind16::Code, 1, 0x068A, "runtime IsKindOf/base traversal"},
     {MfcAddressKind16::Code, 1, 0x06C0, "generic runtime CreateObject"},
     {MfcAddressKind16::Code, 1, 0x0730, "runtime create callback dispatch"},
+    {MfcAddressKind16::Code, 1, 0x02E2, "CDC Attach"},
+    {MfcAddressKind16::Code, 1, 0x0316, "CDC Detach"},
+    {MfcAddressKind16::Code, 1, 0x0342, "CDC base cleanup"},
+    {MfcAddressKind16::Code, 1, 0x0D0A, "CPaintDC destructor"},
+    {MfcAddressKind16::Code, 1, 0x104E, "CDC deleting destructor"},
+    {MfcAddressKind16::Code, 1, 0x1070, "CClientDC deleting destructor"},
+    {MfcAddressKind16::Code, 1, 0x1092, "CWindowDC deleting destructor"},
+    {MfcAddressKind16::Code, 1, 0x10B4, "CPaintDC deleting destructor"},
     {MfcAddressKind16::Code, 1, 0x114A, "CWnd constructor"},
     {MfcAddressKind16::Code, 1, 0x1172, "CWnd constructor(initial HWND)"},
     {MfcAddressKind16::Code, 1, 0x1666, "CWnd teardown"},
