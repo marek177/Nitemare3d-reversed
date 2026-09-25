@@ -120,3 +120,8 @@ Only promote a finding to confirmed when it is supported by the original Nitemar
 ## 2026-09-25 Win16 MFC / memory synchronization
 
 The current repository now contains the relocation-aware Win16 MFC reconstruction and its modern compatibility layer. Canonical entry point: `docs/WIN16_MFC_RE_SUMMARY.md`. Static artifacts cover `CRuntimeClass16`, 31 runtime classes, CWnd layout/vtable/lifecycle anchors, HWND/HDC/HGDIOBJ/HMENU HandleMaps, evidence levels and explicit coverage states. Runtime validation remains separately tracked and requires the Win3.1 debugger checklist/capture template. The modern C++20 layer now includes `HandleRegistry`, `NativeHandleWrapper`, `WindowWrapper`, `WindowRegistry`, nested/RAII temporary scopes and the recovered z-order mapping. Historical 16:16 pointers, NE fixups and raw MFC object layouts are evidence only and are not reproduced as the x64 ABI.
+
+### HandleMap packing follow-up
+
+The host-side clean-room model now explicitly uses 2-byte packing for the recovered Win16 binary records. This preserves the executable-derived `HandleMap16` size of `0x26` bytes instead of accepting the 40-byte layout produced by default GCC/Clang host alignment. Compile-time checks pin the member offsets to `0x00`, `0x10`, `0x20`, `0x22`, and `0x24`. The evidence audit reproduced the 40-vs-38-byte mismatch and the packed correction on GCC and Clang; a fresh full-project build was not executed during this synchronization. Implementation commits on this review branch: `af1676f45ce45d0e95673ec789eb7200941b3b31` and `ab19bb0eaa5777077be06eb7ac7b2ba07c2fc27f`.
+
