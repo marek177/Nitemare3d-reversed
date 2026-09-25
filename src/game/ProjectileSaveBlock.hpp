@@ -63,8 +63,7 @@ constexpr void write32(ProjectileBytes& bytes, std::uint32_t value) noexcept {
 } // namespace projectile_save_detail
 
 // A structural decode, NOT validation that the record is a playable projectile.
-// Generic OBJECT field names are retained; runtime08 is an animation deadline
-// in this embedded-projectile context, not a newly named generic OBJECT field.
+// OBJECT animation fields use the recovered generic names from ObjectSystem.hpp.
 constexpr ProjectileRuntimeRecord decodeProjectileRecord(const ProjectileBytes& bytes) noexcept {
     using namespace projectile_save_detail;
     ProjectileRuntimeRecord record{};
@@ -78,13 +77,13 @@ constexpr ProjectileRuntimeRecord decodeProjectileRecord(const ProjectileBytes& 
     record.unknown0D = bytes[0x0D];
     record.renderObject.objectId = bytes[0x0E];
     record.renderObject.variant = bytes[0x0F];
-    record.renderObject.animX = bytes[0x10];
-    record.renderObject.animY = bytes[0x11];
-    record.renderObject.definitionId = bytes[0x12];
+    record.renderObject.animationAux = bytes[0x10];
+    record.renderObject.animationFrame = bytes[0x11];
+    record.renderObject.sequenceId = bytes[0x12];
     record.renderObject.flags = bytes[0x13];
     record.renderObject.type = bytes[0x14];
     record.renderObject.guardIndex = bytes[0x15];
-    record.renderObject.runtime08 = read32<0x16>(bytes);
+    record.renderObject.animationDeadline = read32<0x16>(bytes);
     record.renderObject.mapCellOffset = read16<0x1A>(bytes);
     record.renderObject.mapCellSegment = read16<0x1C>(bytes);
     record.renderObject.worldX = readSigned16<0x1E>(bytes);
@@ -110,13 +109,13 @@ constexpr ProjectileBytes encodeProjectileRecord(const ProjectileRuntimeRecord& 
     bytes[0x0D] = record.unknown0D;
     bytes[0x0E] = record.renderObject.objectId;
     bytes[0x0F] = record.renderObject.variant;
-    bytes[0x10] = record.renderObject.animX;
-    bytes[0x11] = record.renderObject.animY;
-    bytes[0x12] = record.renderObject.definitionId;
+    bytes[0x10] = record.renderObject.animationAux;
+    bytes[0x11] = record.renderObject.animationFrame;
+    bytes[0x12] = record.renderObject.sequenceId;
     bytes[0x13] = record.renderObject.flags;
     bytes[0x14] = record.renderObject.type;
     bytes[0x15] = record.renderObject.guardIndex;
-    write32<0x16>(bytes, record.renderObject.runtime08);
+    write32<0x16>(bytes, record.renderObject.animationDeadline);
     write16<0x1A>(bytes, record.renderObject.mapCellOffset);
     write16<0x1C>(bytes, record.renderObject.mapCellSegment);
     write16<0x1E>(bytes, static_cast<std::uint16_t>(record.renderObject.worldX));
