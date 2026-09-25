@@ -10,7 +10,9 @@ int main() {
     static_assert(kObjectRecordSize == 0x1C);
     static_assert(offsetof(ObjectRuntimeRecord, objectId) == 0x00);
     static_assert(offsetof(ObjectRuntimeRecord, variant) == 0x01);
-    static_assert(offsetof(ObjectRuntimeRecord, definitionId) == 0x04);
+    static_assert(offsetof(ObjectRuntimeRecord, animationFrame) == 0x03);
+    static_assert(offsetof(ObjectRuntimeRecord, sequenceId) == 0x04);
+    static_assert(offsetof(ObjectRuntimeRecord, animationDeadline) == 0x08);
     static_assert(offsetof(ObjectRuntimeRecord, flags) == 0x05);
     static_assert(offsetof(ObjectRuntimeRecord, type) == 0x06);
     static_assert(offsetof(ObjectRuntimeRecord, guardIndex) == 0x07);
