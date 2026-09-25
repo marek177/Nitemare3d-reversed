@@ -6,6 +6,8 @@
 
 namespace nitemare3d::re::win16 {
 
+#pragma pack(push, 2)
+
 struct CRuntimeClass16 {
     std::uint32_t classNameFar;
     std::uint16_t objectSize;
@@ -43,6 +45,13 @@ struct HandleMap16 {
     std::uint16_t handleCount;
 };
 static_assert(sizeof(HandleMap16) == 0x26);
+static_assert(offsetof(HandleMap16, permanent) == 0x00);
+static_assert(offsetof(HandleMap16, temporary) == 0x10);
+static_assert(offsetof(HandleMap16, tempRuntimeClassOffset) == 0x20);
+static_assert(offsetof(HandleMap16, handleFieldOffset) == 0x22);
+static_assert(offsetof(HandleMap16, handleCount) == 0x24);
+
+#pragma pack(pop)
 
 inline constexpr std::uint16_t kCWndHandleMapRoot = 0x4250;
 inline constexpr std::uint16_t kCDcHandleMapRoot = 0x44F2;
