@@ -122,6 +122,22 @@ inline constexpr FarAddress16 kRuntimeCreateObject{1, 0x06C0};
 inline constexpr FarAddress16 kRuntimeIsKindOf{1, 0x068A};
 inline constexpr FarAddress16 kRuntimeCreateCallbackDispatch{1, 0x0730};
 
+// CDC is a 0x0A-byte wrapper. +0x04 is the output HDC and +0x06 is the
+// attribute HDC. Attach writes both from the attached HDC; Detach clears both.
+// +0x08 is still semantically unresolved.
+inline constexpr std::uint16_t kCDcObjectSize = 0x0A;
+inline constexpr std::uint16_t kCDcOutputHdcOffset = 0x04;
+inline constexpr std::uint16_t kCDcAttributeHdcOffset = 0x06;
+inline constexpr std::uint16_t kCDcUnknown08Offset = 0x08;
+inline constexpr FarAddress16 kCDcAttach{1, 0x02E2};
+inline constexpr FarAddress16 kCDcDetach{1, 0x0316};
+inline constexpr FarAddress16 kCDcBaseCleanup{1, 0x0342};
+inline constexpr FarAddress16 kCPaintDcDestructor{1, 0x0D0A};
+inline constexpr FarAddress16 kCDcDeletingDestructor{1, 0x104E};
+inline constexpr FarAddress16 kCClientDcDeletingDestructor{1, 0x1070};
+inline constexpr FarAddress16 kCWindowDcDeletingDestructor{1, 0x1092};
+inline constexpr FarAddress16 kCPaintDcDeletingDestructor{1, 0x10B4};
+
 struct VtableSlot16 {
     std::uint16_t byteOffset;
     FarAddress16 target;
