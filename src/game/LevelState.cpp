@@ -24,8 +24,8 @@ LevelState LevelState::create(const LevelMap& source,
                               const DefinitionTable& wallDefs) {
     LevelState out;
     out.cells_ = source.cells;
-    out.objectDefs_ = &objectDefs;
-    out.wallDefs_ = &wallDefs;
+    out.objectDefs_ = objectDefs;
+    out.wallDefs_ = wallDefs;
     out.discoverPlayerStart();
     out.discoverPushables();
     return out;
@@ -67,7 +67,7 @@ void LevelState::discoverPushables() {
     for (int y = 0; y < static_cast<int>(LevelMap::Height); ++y) {
         for (int x = 0; x < static_cast<int>(LevelMap::Width); ++x) {
             const auto objectId = at(x, y).object;
-            if (objectId == 0 || !objectDefs_->isClass(objectId, "PUSH")) continue;
+            if (objectId == 0 || !objectDefs_.isClass(objectId, "PUSH")) continue;
             if (pushables_.size() >= MaxPushables) throw std::runtime_error("MAXPUSHES exceeded (12), matching NITE3W.EXE");
             PushableObject p;
             p.objectId = objectId;
@@ -79,7 +79,7 @@ void LevelState::discoverPushables() {
 }
 
 bool LevelState::wallAllowsMovement(std::uint8_t wallId) const {
-    const auto* def = wallDefs_->find(wallId);
+    const auto* def = wallDefs_.find(wallId);
     if (!def) return false;
     const std::string_view cls = def->className;
     return cls == "FLOOR" || cls == "ACTIONSPOT" || classStartsWith(cls, "TRIGGER");
@@ -87,7 +87,7 @@ bool LevelState::wallAllowsMovement(std::uint8_t wallId) const {
 
 bool LevelState::objectBlocksMovement(std::uint8_t objectId) const {
     if (objectId == 0) return false;
-    const auto* def = objectDefs_->find(objectId);
+    const auto* def = objectDefs_.find(objectId);
     if (!def) return true;
     if (def->className == "PUSH") return true;
     return !nonBlockingObjectClass(def->className);
@@ -114,6 +114,21 @@ const PushableObject* LevelState::pushableAtTile(int x, int y) const {
     return nullptr;
 }
 
+bool LevelState::pushableOccupiesOrTargetsTile(int x, int y, const PushableObject* ignore) const {
+    for (const auto& p : pushables_) {
+        if (&p == ignore) continue;
+        if (p.tileX() == x && p.tileY() == y) return true;
+        if (!p.moving()) continue;
+
+        // fixedX/fixedY are tile-center world coordinates. step*ticksRemaining
+        // is the exact remaining displacement to the reserved destination.
+        const int finalX = p.fixedX + static_cast<int>(p.stepX) * p.ticksRemaining;
+        const int finalY = p.fixedY + static_cast<int>(p.stepY) * p.ticksRemaining;
+        if (finalX / FixedUnitsPerTile == x && finalY / FixedUnitsPerTile == y) return true;
+    }
+    return false;
+}
+
 bool LevelState::beginPush(int x, int y, int dirX, int dirY) {
     if ((std::abs(dirX) + std::abs(dirY)) != 1) return false;
     auto* push = pushableAtTile(x, y);
@@ -121,6 +136,7 @@ bool LevelState::beginPush(int x, int y, int dirX, int dirY) {
     const int targetX = x + dirX;
     const int targetY = y + dirY;
     if (!cellAllowsPushTarget(targetX, targetY)) return false;
+    if (pushableOccupiesOrTargetsTile(targetX, targetY, push)) return false;
     push->stepX = static_cast<std::int8_t>(dirX * PushStepUnits);
     push->stepY = static_cast<std::int8_t>(dirY * PushStepUnits);
     push->ticksRemaining = PushTicks;
@@ -168,7 +184,7 @@ bool LevelState::tryMovePlayer(double dx, double dy, bool allowAutoPush) {
     const int ty = static_cast<int>(std::floor(ny));
     if (inBounds(tx, ty)) {
         const auto& cell = at(tx, ty);
-        if (objectDefs_->isClass(cell.object, "PUSH") && allowAutoPush) {
+        if (objectDefs_.isClass(cell.object, "PUSH") && allowAutoPush) {
             int dirX = 0, dirY = 0;
             if (std::abs(dx) >= std::abs(dy) && std::abs(dx) > 1e-9) dirX = dx > 0.0 ? 1 : -1;
             else if (std::abs(dy) > 1e-9) dirY = dy > 0.0 ? 1 : -1;
