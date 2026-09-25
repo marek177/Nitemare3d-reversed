@@ -108,6 +108,9 @@ target_link_libraries(n3d_window_registry_test PRIVATE n3d_core)
 add_executable(n3d_runtime_safety_test tests/runtime_safety_test.cpp)
 target_link_libraries(n3d_runtime_safety_test PRIVATE n3d_core)
 
+add_executable(n3d_player_reconstruction_test tests/player_reconstruction_test.cpp)
+target_link_libraries(n3d_player_reconstruction_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)

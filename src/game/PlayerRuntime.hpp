@@ -1,5 +1,8 @@
 #pragma once
 
+#include "game/InventoryRuntime.hpp"
+#include "game/PlayerHealthRuntime.hpp"
+
 #include <cstdint>
 
 namespace nitemare3d::game {
@@ -12,9 +15,19 @@ namespace nitemare3d::game {
 inline constexpr std::uint16_t kPlayerWorldXAddress = 0x4BF6; // VERIFIED_EXE
 inline constexpr std::uint16_t kPlayerWorldYAddress = 0x4BF8; // VERIFIED_EXE
 
-// Inventory / access globals.
-inline constexpr std::uint16_t kColoredKeyMaskAddress = 0x4C28; // VERIFIED_EXE: door/WARP key checks
-inline constexpr std::uint16_t kIdCardMaskAddress    = 0x4C29; // VERIFIED_EXE: ID-card door checks
+// seg3:8A20 commits the containing tile and MAP-cell far pointer.
+inline constexpr std::uint16_t kPlayerTileXAddress = 0x4BF2;
+inline constexpr std::uint16_t kPlayerTileYAddress = 0x4BF4;
+inline constexpr std::uint16_t kPlayerMapCellOffsetAddress = 0x4C10;
+inline constexpr std::uint16_t kPlayerMapCellSegmentAddress = 0x4C12;
+
+// PLAYER_HEALTH_RE.md: initialization, clamp/writeback and damage receiver.
+inline constexpr std::uint16_t kPlayerHealthAddress = health::kHealthAddress;
+inline constexpr std::uint16_t kPlayerGameStateAddress = health::kGameStateAddress;
+
+// Inventory addresses and pentagram helpers have a single definition in
+// InventoryRuntime.hpp. Include it above so existing PlayerRuntime users keep
+// access to those names without duplicate definitions in combined headers.
 
 // Weapon / ammo runtime globals.
 inline constexpr std::uint16_t kSilverAmmoAddress = 0x4C1F; // VERIFIED_EXE
@@ -22,10 +35,6 @@ inline constexpr std::uint16_t kLaserAmmoAddress  = 0x4C20; // VERIFIED_EXE, sha
 inline constexpr std::uint16_t kActiveWeaponAddress = 0x4C23; // VERIFIED_EXE
 inline constexpr std::uint16_t kWeaponJamAddress = 0x4C2E; // VERIFIED_EXE, scripted jam flag
 inline constexpr std::uint16_t kWandAmmoAddress = 0x4C44; // VERIFIED_EXE
-
-// Special inventory/state mask used by the Other Side portal.
-inline constexpr std::uint16_t kPentagramMaskAddress = 0x4C45; // VERIFIED_EXE
-inline constexpr std::uint8_t kAllPentagramsMask = 0x0F;
 
 // Difficulty and cheat/runtime flags.
 inline constexpr std::uint16_t kDifficultyAddress = 0x4C14; // VERIFIED_EXE
@@ -56,16 +65,14 @@ constexpr bool hasAccessBit(std::uint8_t mask, std::uint8_t bit) noexcept {
     return (mask & bit) != 0;
 }
 
-constexpr bool hasAllPentagrams(std::uint8_t mask) noexcept {
-    return (mask & kAllPentagramsMask) == kAllPentagramsMask;
-}
-
 // Current confidence notes:
 // - Player X/Y addresses: VERIFIED_EXE.
 // - Key/card masks: VERIFIED_EXE through door/USE dispatch.
 // - Ammo/weapon globals: VERIFIED_EXE through fire/ammo and damage routines.
 // - Pentagram mask: VERIFIED_EXE through WARP_S1/S2 portal logic.
-// - Health, score and exact angle globals are intentionally not named here yet;
-//   they remain to be bound from their definitive writer/reader chains.
+// - Health and tile/MAP-cell addresses: bound by PLAYER_HEALTH_RE.md and
+//   PLAYER_COLLISION_RE.md; runnable semantic subsets are in PlayerHealthRuntime
+//   and PlayerCollisionRuntime. No original-process pointers are dereferenced.
+// - Score width and exact angle representation are not established here.
 
 } // namespace nitemare3d::game
