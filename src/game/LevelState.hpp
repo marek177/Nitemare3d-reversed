@@ -55,14 +55,16 @@ public:
     bool tryMovePlayer(double dx, double dy, bool allowAutoPush = true);
 private:
     std::array<MapCell, LevelMap::Width * LevelMap::Height> cells_{};
-    const DefinitionTable* objectDefs_{};
-    const DefinitionTable* wallDefs_{};
+    // Own definition tables so LevelState never retains references to temporaries.
+    DefinitionTable objectDefs_{};
+    DefinitionTable wallDefs_{};
     PlayerState player_{};
     std::vector<PushableObject> pushables_;
     std::size_t indexOf(int x, int y) const;
     void discoverPlayerStart();
     void discoverPushables();
     bool positionBlockedByPushable(double x, double y) const;
+    bool pushableOccupiesOrTargetsTile(int x, int y, const PushableObject* ignore = nullptr) const;
 };
 
 } // namespace n3d
