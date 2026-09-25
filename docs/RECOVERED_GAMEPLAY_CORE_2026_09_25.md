@@ -20,4 +20,13 @@ Exactly one score award per playable placement gives 145,775. Avoiding the two P
 ## Still open
 Projectile owner/friendly fire, exact projectile OBJECT+0x18 freshness, full animation tokens, complete wall/USE side effects, pixel-perfect renderer parity, full ending callback, and true maximum achievable score.
 
-Code: src/re/N3DRecoveredCore_2026_09_25.hpp/.cpp
+## Coverage ledger
+
+The current subsystem-level working estimates are intentionally stored separately from recovered gameplay semantics:
+
+- `docs/RE_COVERAGE_2026_09_25.md`
+- `src/re/N3DAnalysisStatus_2026_09_25.hpp`
+
+This separation prevents a percentage/status update from silently changing reconstructed engine behavior.
+
+Code: `src/re/N3DRecoveredCore_2026_09_25.hpp/.cpp`
