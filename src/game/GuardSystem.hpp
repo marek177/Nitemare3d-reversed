@@ -29,8 +29,9 @@ struct GuardRuntimeRecord {
     std::uint8_t strength;            // +10 VERIFIED_EXE: strength / HP
     std::uint8_t octant;              // +11 VERIFIED_EXE; debug label "octant"
     std::uint8_t resultOctant;        // +12 VERIFIED_EXE; debug label "resoct"
-    std::uint8_t transitionParam;      // +13 PARTIAL
-    std::uint8_t unknown14_15[0x02];
+    std::int8_t moveX;                 // +13 VERIFIED_EXE in state 0x13
+    std::int8_t moveY;                 // +14 VERIFIED_EXE in state 0x13
+    std::uint8_t unknown15;            // +15 semantic TODO
     std::uint8_t transitionFlag;       // +16 PARTIAL control flag
     std::uint8_t unknown17_19[0x03];
 };
@@ -49,7 +50,9 @@ static_assert(offsetof(GuardRuntimeRecord, syncFlag) == 0x0F);
 static_assert(offsetof(GuardRuntimeRecord, strength) == 0x10);
 static_assert(offsetof(GuardRuntimeRecord, octant) == 0x11);
 static_assert(offsetof(GuardRuntimeRecord, resultOctant) == 0x12);
-static_assert(offsetof(GuardRuntimeRecord, transitionParam) == 0x13);
+static_assert(offsetof(GuardRuntimeRecord, moveX) == 0x13);
+static_assert(offsetof(GuardRuntimeRecord, moveY) == 0x14);
+static_assert(offsetof(GuardRuntimeRecord, unknown15) == 0x15);
 static_assert(offsetof(GuardRuntimeRecord, transitionFlag) == 0x16);
 static_assert(kGuardCapacity * sizeof(GuardRuntimeRecord) == kGuardSaveSize);
 
@@ -64,11 +67,11 @@ enum class GuardState : std::uint8_t {
     State04 = 0x04,
     State05 = 0x05,
     State06 = 0x06,
-    State07 = 0x07,
+    PerceptionDecision = 0x07,
     State08 = 0x08,
     State09 = 0x09,
     State0A = 0x0A,
-    State0B = 0x0B,
+    LethalPlayerContact = 0x0B,
     State0C = 0x0C,
     State0D = 0x0D,
     State0E = 0x0E,
@@ -76,7 +79,7 @@ enum class GuardState : std::uint8_t {
     State10 = 0x10,
     State11 = 0x11,
     State12 = 0x12,
-    State13 = 0x13,
+    TimedDirectionalMove = 0x13,
     State14 = 0x14,
     PainReaction = 0x15,
 };
