@@ -14,13 +14,13 @@ inline constexpr std::size_t kObjectRecordSize = 0x1C; // VERIFIED_EXE
 struct ObjectRuntimeRecord {
     std::uint8_t objectId;        // +0x00, object/map identifier (VERIFIED_EXE)
     std::uint8_t variant;         // +0x01, class-relative variant index (VERIFIED_EXE); gameplay meaning PARTIAL
-    std::uint8_t animX;           // +0x02, used as signed animation/render offset
-    std::uint8_t animY;           // +0x03, used as signed animation/render offset
-    std::uint8_t definitionId;    // +0x04, indexes object definition tables
-    std::uint8_t flags;           // +0x05, copied from object property table 0x7F94 (VERIFIED_EXE)
+    std::uint8_t animationAux;    // +0x02, animation/render auxiliary byte; full semantics PARTIAL
+    std::uint8_t animationFrame;  // +0x03, current sequence frame (VERIFIED_EXE)
+    std::uint8_t sequenceId;      // +0x04, runtime sequence index (VERIFIED_EXE)
+    std::uint8_t flags;           // +0x05, runtime/property flags (VERIFIED_EXE)
     std::uint8_t type;            // +0x06, runtime class lookup from definition (VERIFIED_EXE)
     std::uint8_t guardIndex;      // +0x07, assigned from current GUARD count for guard objects
-    std::uint32_t runtime08;      // +0x08, initialized to zero; semantic TODO
+    std::uint32_t animationDeadline; // +0x08, absolute sequence/frame deadline (VERIFIED_EXE)
     std::uint16_t mapCellOffset;  // +0x0C, near part of persisted map-cell far pointer
     std::uint16_t mapCellSegment; // +0x0E, segment part of map-cell far pointer
     std::int16_t worldX;          // +0x10, world-space X coordinate (VERIFIED_EXE)
@@ -34,9 +34,12 @@ struct ObjectRuntimeRecord {
 #pragma pack(pop)
 
 static_assert(sizeof(ObjectRuntimeRecord) == kObjectRecordSize);
+static_assert(offsetof(ObjectRuntimeRecord, animationFrame) == 0x03);
+static_assert(offsetof(ObjectRuntimeRecord, sequenceId) == 0x04);
 static_assert(offsetof(ObjectRuntimeRecord, flags) == 0x05);
 static_assert(offsetof(ObjectRuntimeRecord, type) == 0x06);
 static_assert(offsetof(ObjectRuntimeRecord, guardIndex) == 0x07);
+static_assert(offsetof(ObjectRuntimeRecord, animationDeadline) == 0x08);
 static_assert(offsetof(ObjectRuntimeRecord, mapCellOffset) == 0x0C);
 static_assert(offsetof(ObjectRuntimeRecord, mapCellSegment) == 0x0E);
 static_assert(offsetof(ObjectRuntimeRecord, worldX) == 0x10);
