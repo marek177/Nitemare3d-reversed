@@ -1,5 +1,7 @@
 # Nitemare3D-Reversed — reconstruction v0.12
 
+**2026-09-25 update:** HUD/automap/menu dispatchers, renderer globals, GUARD state/field corrections, IMG/UIF HUD-bank facts, and CDC/MFC wrapper anchors are now encoded in [`src/re/Win16RecoveredFacts_2026_09_25.hpp`](src/re/Win16RecoveredFacts_2026_09_25.hpp) with a regression test. The full evidence boundary is in [`docs/PROJECT_FINDINGS_DELTA_2026-09-25.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-25.md). `LevelState` also now owns its definition tables and reserves moving pushable destinations to avoid dangling references and target overwrite races.
+
 **v0.12 update:** the 2026-09-23 audit maps the Win16 player projectile pool and save fields, and adds the executable-confirmed 100/10/2 HP fire damage values per simulation update. The IMG pass now separates the two 256-entry image directories from the two 90-byte sequence banks, preserves raw sequence records, and flags an unresolved overlap in the low bank. See [the IMG/seqdef audit](analysis/nite3w_img_seqdef_2026-09-23.md) and [the consolidated delta](docs/PROJECT_FINDINGS_DELTA_2026-09-23.md).
 
 **v0.11 update:** the 2026-09-23 raw-assembly pass resolves the Win16 renderer's occupied-column owner rules, texture-U corrections, 16.16 wall-column sampler, 16.16 span interpolation, and wall-animation update control flow; DOS E-20 contains matching texture-U/animation routines and independently confirms the sampler formulas. Findings are in [`analysis/nite3w_renderer_2026-09-23.md`](analysis/nite3w_renderer_2026-09-23.md); the standalone reference code is [`src/renderer/Win16WallRasterCore.hpp`](src/renderer/Win16WallRasterCore.hpp), with a CMake test target. The 2026-09-22 cross-thread consolidation and system audits remain linked below.
@@ -17,6 +19,7 @@ Git commit authorship therefore identifies the account that committed the files 
 
 Start with the consolidation and newest delta:
 
+- [`docs/PROJECT_FINDINGS_DELTA_2026-09-25.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-25.md) — HUD/automap/menu, renderer globals, GUARD corrections, IMG/UIF HUD bank, MFC CDC anchors and runtime safety fixes
 - [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md)
 - [`docs/PROJECT_FINDINGS_DELTA_2026-09-23.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-23.md) — consolidated findings from all current audits
 - [`analysis/nite3w_core_function_map_2026-09-23.md`](analysis/nite3w_core_function_map_2026-09-23.md) — DOS/Win16 core-function coverage map
