@@ -7,6 +7,11 @@ int main() {
 
     static_assert(sizeof(CRuntimeClass16) == 0x10);
     static_assert(sizeof(HandleMap16) == 0x26);
+    static_assert(offsetof(HandleMap16, permanent) == 0x00);
+    static_assert(offsetof(HandleMap16, temporary) == 0x10);
+    static_assert(offsetof(HandleMap16, tempRuntimeClassOffset) == 0x20);
+    static_assert(offsetof(HandleMap16, handleFieldOffset) == 0x22);
+    static_assert(offsetof(HandleMap16, handleCount) == 0x24);
 
     assert(kCWndObjectSize == 0x1A);
     assert(kCDcObjectSize == 0x0A);

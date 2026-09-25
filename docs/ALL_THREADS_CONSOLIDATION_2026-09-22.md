@@ -892,3 +892,8 @@ Any future finding should update this file only after its subsystem report/evide
 ## 2026-09-23 projectile/save/hazard addendum
 
 The current findings are summarized in [PROJECT_FINDINGS_DELTA_2026-09-23.md](PROJECT_FINDINGS_DELTA_2026-09-23.md). This supersedes earlier open-list entries that described USER.SAV +0xC403 as unknown and treated the projectile ±20 render check or shade index as unresolved. The 2026-09-23 update maps the player projectile pool, fire damage-per-update values, SECRET-panel/Cannon flags, guard wake cache, automap buffer roles, color remap table, and shade lookup. Runtime timings, other-build differences, scene equivalence, and residual save-field semantics remain open.
+
+
+## 2026-09-25 Win16 MFC / memory synchronization
+
+The current repository now contains the relocation-aware Win16 MFC reconstruction and its modern compatibility layer. Canonical entry point: `docs/WIN16_MFC_RE_SUMMARY.md`. Static artifacts cover `CRuntimeClass16`, 31 runtime classes, CWnd layout/vtable/lifecycle anchors, HWND/HDC/HGDIOBJ/HMENU HandleMaps, evidence levels and explicit coverage states. Runtime validation remains separately tracked and requires the Win3.1 debugger checklist/capture template. The modern C++20 layer now includes `HandleRegistry`, `NativeHandleWrapper`, `WindowWrapper`, `WindowRegistry`, nested/RAII temporary scopes and the recovered z-order mapping. Historical 16:16 pointers, NE fixups and raw MFC object layouts are evidence only and are not reproduced as the x64 ABI.

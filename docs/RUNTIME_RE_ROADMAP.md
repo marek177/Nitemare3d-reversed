@@ -132,3 +132,8 @@ Do not encode guessed constants as final game logic. New reconstructed source mu
 ## Completion criterion
 
 The project reaches the 95–100% claim only after the final function/range audit shows that essentially all executable game code is either reconstructed or deliberately classified as framework/compiler/thunk/data, with any remaining `UNKNOWN` ranges explicitly quantified and listed.
+
+
+## 2026-09-25 Win16 MFC / memory synchronization
+
+The current repository now contains the relocation-aware Win16 MFC reconstruction and its modern compatibility layer. Canonical entry point: `docs/WIN16_MFC_RE_SUMMARY.md`. Static artifacts cover `CRuntimeClass16`, 31 runtime classes, CWnd layout/vtable/lifecycle anchors, HWND/HDC/HGDIOBJ/HMENU HandleMaps, evidence levels and explicit coverage states. Runtime validation remains separately tracked and requires the Win3.1 debugger checklist/capture template. The modern C++20 layer now includes `HandleRegistry`, `NativeHandleWrapper`, `WindowWrapper`, `WindowRegistry`, nested/RAII temporary scopes and the recovered z-order mapping. Historical 16:16 pointers, NE fixups and raw MFC object layouts are evidence only and are not reproduced as the x64 ABI.
