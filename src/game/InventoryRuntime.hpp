@@ -27,11 +27,16 @@ inline constexpr std::uint8_t kSecretPanelRequiredIdCardObjectId = 0x09;
 inline constexpr IdCardBit kSecretPanelRequiredIdCard = IdCardBit::Red;
 
 constexpr bool hasInventoryBit(InventoryMask mask, std::uint8_t bit) noexcept {
-    return (mask & static_cast<InventoryMask>(1u << bit)) != 0;
+    // The mask has exactly eight bits. Reject invalid indices before shifting;
+    // shifting by the host unsigned-int width or more is undefined in C++.
+    return bit < 8 && (mask & static_cast<InventoryMask>(1u << bit)) != 0;
 }
 
 constexpr void grantInventoryBit(InventoryMask& mask, std::uint8_t bit) noexcept {
-    mask = static_cast<InventoryMask>(mask | static_cast<InventoryMask>(1u << bit));
+    // Invalid indices are a no-op, not a modulo-width bit selection.
+    if (bit < 8) {
+        mask = static_cast<InventoryMask>(mask | static_cast<InventoryMask>(1u << bit));
+    }
 }
 
 constexpr bool hasIdCard(InventoryMask mask, IdCardBit bit) noexcept {

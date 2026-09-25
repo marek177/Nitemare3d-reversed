@@ -93,8 +93,9 @@ constexpr bool projectileHitsGuard(std::int32_t projectileX,
                                     std::int32_t projectileY,
                                     std::int32_t guardX,
                                     std::int32_t guardY) noexcept {
-    const auto dx = projectileX - guardX;
-    const auto dy = projectileY - guardY;
+    // Widen before subtracting: the public int32_t inputs may span both limits.
+    const auto dx = static_cast<std::int64_t>(projectileX) - guardX;
+    const auto dy = static_cast<std::int64_t>(projectileY) - guardY;
     return dx >= -kProjectileGuardHitTolerance && dx <= kProjectileGuardHitTolerance &&
            dy >= -kProjectileGuardHitTolerance && dy <= kProjectileGuardHitTolerance;
 }
@@ -105,8 +106,9 @@ constexpr bool projectileNeedsProjection(std::int32_t projectileX,
                                           std::int32_t projectileY,
                                           std::int32_t playerX,
                                           std::int32_t playerY) noexcept {
-    const auto dx = projectileX - playerX;
-    const auto dy = projectileY - playerY;
+    // Preserve the axis-aligned threshold without signed subtraction overflow.
+    const auto dx = static_cast<std::int64_t>(projectileX) - playerX;
+    const auto dy = static_cast<std::int64_t>(projectileY) - playerY;
     return dx > kProjectileRenderDistanceThreshold || dx < -kProjectileRenderDistanceThreshold ||
            dy > kProjectileRenderDistanceThreshold || dy < -kProjectileRenderDistanceThreshold;
 }
