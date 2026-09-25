@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <filesystem>
 #include <fstream>
+#include <stdexcept>
 #include <vector>
 
 namespace {
@@ -81,4 +82,47 @@ int main() {
            low->alternateTableFlag() == 1);
     assert(high && high->intervalMs() == 100 && high->frameCount() == 3 &&
            high->alternateTableFlag() == 0);
+
+    {
+        auto invalid = bytes;
+        writeU32(invalid, 2 * 4, static_cast<std::uint32_t>(imageOffset + 1));
+        const auto badPath =
+            std::filesystem::temp_directory_path() / "n3d_img_archive_invalid_wall_offset.img";
+        {
+            std::ofstream out(badPath, std::ios::binary);
+            out.write(reinterpret_cast<const char*>(invalid.data()),
+                      static_cast<std::streamsize>(invalid.size()));
+            assert(out.good());
+        }
+        bool rejected = false;
+        try {
+            (void)n3d::ImgArchive::load(badPath);
+        } catch (const std::runtime_error&) {
+            rejected = true;
+        }
+        std::filesystem::remove(badPath);
+        assert(rejected);
+    }
+
+    {
+        auto invalid = bytes;
+        writeU32(invalid, kObjectImageDirectoryOffset + 6 * 4,
+                 static_cast<std::uint32_t>(imageOffset + 10));
+        const auto badPath =
+            std::filesystem::temp_directory_path() / "n3d_img_archive_invalid_object_offset.img";
+        {
+            std::ofstream out(badPath, std::ios::binary);
+            out.write(reinterpret_cast<const char*>(invalid.data()),
+                      static_cast<std::streamsize>(invalid.size()));
+            assert(out.good());
+        }
+        bool rejected = false;
+        try {
+            (void)n3d::ImgArchive::load(badPath);
+        } catch (const std::runtime_error&) {
+            rejected = true;
+        }
+        std::filesystem::remove(badPath);
+        assert(rejected);
+    }
 }

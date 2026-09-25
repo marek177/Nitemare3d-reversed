@@ -79,6 +79,21 @@ ImgArchive ImgArchive::load(const std::filesystem::path& path) {
         pos += 10 + pixelCount;
     }
 
+    auto validateDirectoryFrameBoundaries =
+        [&](const std::vector<std::uint32_t>& directory, const char* directoryName) {
+            for (const auto offset : directory) {
+                if (offset != 0 && !out.exactOffsetToFrame_.contains(offset)) {
+                    throw std::runtime_error(
+                        std::string("IMG ") + directoryName +
+                        " directory entry does not point to a frame boundary: " +
+                        path.string());
+                }
+            }
+        };
+
+    validateDirectoryFrameBoundaries(out.wallSlotOffsets_, "wall");
+    validateDirectoryFrameBoundaries(out.objectSlotOffsets_, "object");
+
     return out;
 }
 
