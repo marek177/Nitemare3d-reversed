@@ -55,10 +55,10 @@ void checkFieldMapping(Checks& c) {
     c.require(r.stepX == 0x0908 && r.stepY == 0x0B0A, "movement sign offsets");
     c.require(r.state == 0x0C && r.unknown0D == 0x0D, "state and unknown byte");
     c.require(r.renderObject.objectId == 0x0E && r.renderObject.variant == 0x0F, "object template bytes");
-    c.require(r.renderObject.animX == 0x10 && r.renderObject.animY == 0x11, "animation bytes");
-    c.require(r.renderObject.definitionId == 0x12 && r.renderObject.flags == 0x13, "sequence and flags");
+    c.require(r.renderObject.animationAux == 0x10 && r.renderObject.animationFrame == 0x11, "animation bytes");
+    c.require(r.renderObject.sequenceId == 0x12 && r.renderObject.flags == 0x13, "sequence and flags");
     c.require(r.renderObject.type == 0x14 && r.renderObject.guardIndex == 0x15, "object type and auxiliary byte");
-    c.require(r.renderObject.runtime08 == 0x19181716u, "32-bit deadline little-endian");
+    c.require(r.renderObject.animationDeadline == 0x19181716u, "32-bit deadline little-endian");
     c.require(r.renderObject.mapCellOffset == 0x1B1A && r.renderObject.mapCellSegment == 0x1D1C, "far pointer order");
     c.require(r.renderObject.worldX == 0x1F1E && r.renderObject.worldY == 0x2120, "world coordinate offsets");
     c.require(r.renderObject.renderSortA == 0x2322 && r.renderObject.renderSortB == 0x2524, "render cache offsets");
@@ -103,11 +103,11 @@ void checkFieldMapping(Checks& c) {
     }
     for (const auto deadline : {0u, 0x7FFFFFFFu, 0x80000000u, 0xFFFFFFFFu}) {
         ProjectileRuntimeRecord record{};
-        record.renderObject.runtime08 = deadline;
+        record.renderObject.animationDeadline = deadline;
         const auto encoded = encodeProjectileRecord(record);
         c.require(encoded[0x16] == (deadline & 0xFFu) &&
                   encoded[0x19] == (deadline >> 24), "unsigned deadline byte order");
-        c.require(decodeProjectileRecord(encoded).renderObject.runtime08 == deadline,
+        c.require(decodeProjectileRecord(encoded).renderObject.animationDeadline == deadline,
                   "deadline retains all 32 bits");
     }
 }
