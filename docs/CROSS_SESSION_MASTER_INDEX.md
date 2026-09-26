@@ -1,6 +1,6 @@
 # Nitemare 3-D cross-session master index
 
-Updated: 2026-09-23
+Updated: 2026-09-26
 
 This file indexes findings accumulated across the Nitemare 3-D reverse-engineering conversations. The detailed canonical report is ALL_THREADS_CONSOLIDATION_2026-09-22.md.
 
@@ -87,3 +87,11 @@ projectile/weapon → collision → damage → death → score/drop/morph. Unkno
 must remain labelled rather than being promoted to HP, speed or immunity facts.
 
 When a finding changes, update the canonical consolidation, subsystem report, clean-room fact header and regression test together.
+
+## 2026-09-26 chat-recovery preservation
+
+A dedicated recovery workflow now exists for ChatGPT conversations whose UI thread may fail to load. See [CHAT_RECOVERY_2026-09-26.md](CHAT_RECOVERY_2026-09-26.md) and `tools/extract_chat_re.py`.
+
+The extractor targets conversations mentioning Nitemare3D / Nite3W / Nite3D / N3D and retains nearby reverse-engineering context. Extracted chat statements remain provenance until cross-checked against executable/data evidence.
+
+The current recovery queue explicitly includes the 2026-09-25/26 work on Win16/MFC, renderer, automap, HUD palette/RGB, debug support, BSF, unknown/partial functions, unexamined subsystems, and 1:1 reconstruction status.
