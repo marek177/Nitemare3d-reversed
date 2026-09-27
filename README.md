@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.15
+# Nitemare3D-Reversed — reconstruction v0.16
+
+**v0.16 / 2026-09-27 update:** cross-version function coverage is now represented explicitly in code instead of living only in audit prose. The current audited export contains 519 DOS function definitions and 967 Win16 definitions. Exact/strong fuzzy cross-version matching supports 429/519 DOS functions and 929/967 Win16 functions, leaving 90 DOS and 38 Win16 definitions requiring weak-match/manual boundary review. This is a function-identity/matching metric, **not** a percentage of semantic understanding. See [`src/re/N3DV016Coverage.hpp`](src/re/N3DV016Coverage.hpp), [`tests/v016_coverage_test.cpp`](tests/v016_coverage_test.cpp), and [`docs/PROJECT_STATUS_V016.md`](docs/PROJECT_STATUS_V016.md).
 
 **v0.15 / 2026-09-27 update:** behavioral sprite/object spatial findings are now preserved explicitly instead of being folded into generic renderer assumptions. The new model distinguishes floor-, mid-height- and ceiling-anchored sprites; fixed versus view-dependent directional variants; collision/blocking behavior; and vertical oscillation. Current behavioral evidence records the Bat as a ceiling-associated animated GUARD with vertical bob/oscillation during attack behavior, while some world objects use player-view-dependent variants (for example front/side bed views). These are intentionally marked as `BEHAVIORAL` until exact executable writers/dispatchers are recovered. See [`src/re/N3DV015SpriteFacts.hpp`](src/re/N3DV015SpriteFacts.hpp), [`tests/v015_sprite_facts_test.cpp`](tests/v015_sprite_facts_test.cpp), and [`analysis/nite3w_sprite_object_spatial_2026-09-27.md`](analysis/nite3w_sprite_object_spatial_2026-09-27.md).
 
@@ -129,6 +131,7 @@ cmake --build build
 ./build/n3d_v013_recovered_facts_test
 ./build/n3d_v014_analysis_test
 ./build/n3d_v015_sprite_facts_test
+./build/n3d_v016_coverage_test
 ```
 
 ### Windows 11 + SDL3
