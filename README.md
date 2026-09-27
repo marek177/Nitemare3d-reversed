@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.12
+# Nitemare3D-Reversed — reconstruction v0.13
+
+**v0.13 / 2026-09-26 update:** the newest DOS/Win16 static-analysis pass is now encoded in source. Win16 v1.8 pushables use class `0x28`, a 6-byte PUSH record, cardinalized octant tables, and an 8-tick × 8-unit one-tile move. GUARD direction generation now preserves the audited ±8 movement and strategy-2 ±16 movement, and class-specific initialization from `FUN_1010_AF7E` is represented conservatively. New player direction globals and DOS v1.8/v2.0 table/function anchors are in [`src/re/N3DV013Facts_2026_09_26.hpp`](src/re/N3DV013Facts_2026_09_26.hpp), covered by `n3d_v013_recovered_facts_test`.
 
 **2026-09-25 update:** HUD/automap/menu dispatchers, renderer globals, GUARD state/field corrections, IMG/UIF HUD-bank facts, and CDC/MFC wrapper anchors are now encoded in [`src/re/Win16RecoveredFacts_2026_09_25.hpp`](src/re/Win16RecoveredFacts_2026_09_25.hpp) with a regression test. The full evidence boundary is in [`docs/PROJECT_FINDINGS_DELTA_2026-09-25.md`](docs/PROJECT_FINDINGS_DELTA_2026-09-25.md). `LevelState` also now owns its definition tables and reserves moving pushable destinations to avoid dangling references and target overwrite races.
 
@@ -120,6 +122,7 @@ cmake --build build
 ./build/n3d_win16_wall_raster_core_test
 ./build/n3d_demo_file_test
 ./build/n3d_guard_facts_test
+./build/n3d_v013_recovered_facts_test
 ```
 
 ### Windows 11 + SDL3
