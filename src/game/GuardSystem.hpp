@@ -96,6 +96,69 @@ inline constexpr std::uint8_t kGuardStateStrategy3Movement = 0x13;
 inline constexpr std::uint16_t kGuardState13TimerRandomRange = 0x50;
 inline constexpr std::uint16_t kGuardState13TimerMinimum = 8;
 
+struct GuardMoveVector {
+    std::int8_t dx;
+    std::int8_t dy;
+};
+
+// FUN_1010_6F2A (Win16 v1.8): facing 0..7 is cardinalized in pairs.
+// Normal movement is 8 world units; strategy 2 doubles it to 16.
+constexpr GuardMoveVector guardDirectionalStep(std::uint8_t facing,
+                                               std::uint8_t strategy) noexcept {
+    constexpr std::array<std::int8_t, 8> dx = {0, 1, 1, 0, 0, -1, -1, 0};
+    constexpr std::array<std::int8_t, 8> dy = {-1, 0, 0, 1, 1, 0, 0, -1};
+    const auto i = static_cast<std::size_t>(facing & 7u);
+    const std::int8_t scale = strategy == 2 ? 16 : 8;
+    return {
+        static_cast<std::int8_t>(dx[i] * scale),
+        static_cast<std::int8_t>(dy[i] * scale)
+    };
+}
+
+struct GuardInitialProfile {
+    std::uint8_t strategy;
+    std::uint8_t state;
+    std::uint8_t nextState;
+    std::uint8_t perceptionMode;
+};
+
+// FUN_1010_AF7E class-specific initialization. This captures only assignments
+// backed by the 2026-09-26 static audit; later movement may promote state to 8.
+constexpr GuardInitialProfile guardInitialProfile(std::uint8_t objectClass) noexcept {
+    GuardInitialProfile p{0, 7, 2, 1};
+
+    switch (objectClass) {
+    case 0x08:
+    case 0x09:
+    case 0x0A:
+    case 0x11:
+    case 0x14:
+    case 0x1A:
+        p.perceptionMode = 0;
+        break;
+    case 0x12:
+    case 0x13:
+        p.strategy = 3;
+        p.perceptionMode = 0;
+        break;
+    case 0x15:
+    case 0x16:
+        p.nextState = 0;
+        break;
+    case 0x19:
+        p.strategy = 4;
+        p.state = 0x0E;
+        break;
+    case 0x21:
+        p.state = 0;
+        p.nextState = 0;
+        break;
+    default:
+        break;
+    }
+    return p;
+}
+
 constexpr std::uint16_t guardState13InitialTimer(std::uint16_t randomValue) noexcept {
     return static_cast<std::uint16_t>(
         randomValue % kGuardState13TimerRandomRange + kGuardState13TimerMinimum);
