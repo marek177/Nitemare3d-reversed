@@ -9,9 +9,15 @@ namespace nitemare3d::re {
 // Semantic names remain conservative where full reader/writer behavior is not yet closed.
 
 // Player position / state
+inline constexpr std::uint16_t kPlayerAngle = 0x4BEA;       // 0..359 degrees
+inline constexpr std::uint16_t kPlayerOctant = 0x4BEC;      // angle / 45, 0..7
+inline constexpr std::uint16_t kPlayerSubsector = 0x4BEE;   // renderer/input-derived subsector
+inline constexpr std::uint16_t kPlayerDirectionMask = 0x4BF0;
 inline constexpr std::uint16_t kPlayerX = 0x4BF6;
 inline constexpr std::uint16_t kPlayerY = 0x4BF8;
 inline constexpr std::uint16_t kOmnipotentFlag = 0x4BE5;
+inline constexpr std::uint16_t kPlayerTrigA = 0x4C46;
+inline constexpr std::uint16_t kPlayerTrigB = 0x4C48;
 
 // Difficulty / weapon / ammo
 inline constexpr std::uint16_t kDifficulty = 0x4C14;
