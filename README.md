@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.13
+# Nitemare3D-Reversed — reconstruction v0.14
+
+**v0.14 / 2026-09-27 update:** the project now records a deeper whole-program reverse-engineering workflow in code and documentation. The v0.14 analysis model tracks CFG, SSA-style value flow, DFG, Use-Def/Def-Use chains, liveness, alias relationships, cyclomatic complexity, dominators, natural loops, interprocedural call graphs, cross-version matching and evidence provenance. See [`src/re/N3DV014Analysis.hpp`](src/re/N3DV014Analysis.hpp), [`tests/v014_analysis_test.cpp`](tests/v014_analysis_test.cpp), and [`docs/TOOLS_USED_V014.md`](docs/TOOLS_USED_V014.md).
 
 **v0.13 / 2026-09-26 update:** the newest DOS/Win16 static-analysis pass is now encoded in source. Win16 v1.8 pushables use class `0x28`, a 6-byte PUSH record, cardinalized octant tables, and an 8-tick × 8-unit one-tile move. GUARD direction generation now preserves the audited ±8 movement and strategy-2 ±16 movement, and class-specific initialization from `FUN_1010_AF7E` is represented conservatively. New player direction globals and DOS v1.8/v2.0 table/function anchors are in [`src/re/N3DV013Facts_2026_09_26.hpp`](src/re/N3DV013Facts_2026_09_26.hpp), covered by `n3d_v013_recovered_facts_test`.
 
@@ -123,6 +125,7 @@ cmake --build build
 ./build/n3d_demo_file_test
 ./build/n3d_guard_facts_test
 ./build/n3d_v013_recovered_facts_test
+./build/n3d_v014_analysis_test
 ```
 
 ### Windows 11 + SDL3
@@ -150,7 +153,11 @@ Original game assets are intentionally excluded from the public repository. Copy
 python scripts/import_original_data.py /path/to/Nitemare3D
 ```
 
-## Useful tools
+## Reverse-engineering toolchain
+
+The v0.14 toolchain and analysis methodology are documented in [`docs/TOOLS_USED_V014.md`](docs/TOOLS_USED_V014.md). Not every listed tool is implied to have been used for every individual finding; executable/data evidence remains authoritative.
+
+## Useful project-local tools
 
 ```bash
 python tools/ne_inspect.py data/original/NITE3W.EXE
