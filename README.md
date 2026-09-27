@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.14
+# Nitemare3D-Reversed — reconstruction v0.15
+
+**v0.15 / 2026-09-27 update:** behavioral sprite/object spatial findings are now preserved explicitly instead of being folded into generic renderer assumptions. The new model distinguishes floor-, mid-height- and ceiling-anchored sprites; fixed versus view-dependent directional variants; collision/blocking behavior; and vertical oscillation. Current behavioral evidence records the Bat as a ceiling-associated animated GUARD with vertical bob/oscillation during attack behavior, while some world objects use player-view-dependent variants (for example front/side bed views). These are intentionally marked as `BEHAVIORAL` until exact executable writers/dispatchers are recovered. See [`src/re/N3DV015SpriteFacts.hpp`](src/re/N3DV015SpriteFacts.hpp), [`tests/v015_sprite_facts_test.cpp`](tests/v015_sprite_facts_test.cpp), and [`analysis/nite3w_sprite_object_spatial_2026-09-27.md`](analysis/nite3w_sprite_object_spatial_2026-09-27.md).
 
 **v0.14 / 2026-09-27 update:** the project now records a deeper whole-program reverse-engineering workflow in code and documentation. The v0.14 analysis model tracks CFG, SSA-style value flow, DFG, Use-Def/Def-Use chains, liveness, alias relationships, cyclomatic complexity, dominators, natural loops, interprocedural call graphs, cross-version matching and evidence provenance. See [`src/re/N3DV014Analysis.hpp`](src/re/N3DV014Analysis.hpp), [`tests/v014_analysis_test.cpp`](tests/v014_analysis_test.cpp), and [`docs/TOOLS_USED_V014.md`](docs/TOOLS_USED_V014.md).
 
@@ -126,6 +128,7 @@ cmake --build build
 ./build/n3d_guard_facts_test
 ./build/n3d_v013_recovered_facts_test
 ./build/n3d_v014_analysis_test
+./build/n3d_v015_sprite_facts_test
 ```
 
 ### Windows 11 + SDL3
