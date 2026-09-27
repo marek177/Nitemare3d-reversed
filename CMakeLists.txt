@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.12.0 LANGUAGES CXX)
+project(Nitemare3D_Reconstructed VERSION 0.13.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -116,6 +116,9 @@ target_link_libraries(n3d_projectile_save_block_test PRIVATE n3d_core)
 
 add_executable(n3d_win16_recovered_facts_20260925_test tests/win16_recovered_facts_2026_09_25_test.cpp)
 target_link_libraries(n3d_win16_recovered_facts_20260925_test PRIVATE n3d_core)
+
+add_executable(n3d_v013_recovered_facts_test tests/v013_recovered_facts_test.cpp)
+target_link_libraries(n3d_v013_recovered_facts_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
