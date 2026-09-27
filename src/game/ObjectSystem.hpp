@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
 
@@ -60,5 +61,64 @@ inline constexpr std::uint8_t kObjectSpecial40 = 0x40;      // exact semantic TO
 // by seg3:9FA2 as a projected/view-space vertical value. It must not be confused
 // with worldY at +0x12. The exact writer-level renderer symbol remains open.
 inline constexpr std::size_t kObjectProjectedDamageBaselineOffset = 0x18;
+
+// v0.13 / 2026-09-26 Win16 v1.8 pushable audit.
+// OBJECT type 0x28 is represented by a separate six-byte PUSH runtime record.
+inline constexpr std::uint8_t kPushableObjectType = 0x28;
+inline constexpr std::size_t kPushRecordSize = 0x06;
+inline constexpr std::size_t kPushCapacity = 12;
+inline constexpr std::uint8_t kPushMoveTicks = 8;
+inline constexpr std::int8_t kPushUnitsPerTick = 8;
+inline constexpr int kWorldUnitsPerTile = 64;
+
+#pragma pack(push, 1)
+struct PushRuntimeRecord {
+    std::uint16_t objectIndex;     // +00 OBJECT slot
+    std::int8_t deltaX;            // +02 signed world-X step per tick
+    std::int8_t deltaY;            // +03 signed world-Y step per tick
+    std::uint8_t stepsRemaining;   // +04 0 when idle; 8 when a one-tile push starts
+    std::uint8_t runtime05;        // +05 unresolved auxiliary/runtime byte
+};
+#pragma pack(pop)
+
+static_assert(sizeof(PushRuntimeRecord) == kPushRecordSize);
+static_assert(offsetof(PushRuntimeRecord, objectIndex) == 0x00);
+static_assert(offsetof(PushRuntimeRecord, deltaX) == 0x02);
+static_assert(offsetof(PushRuntimeRecord, deltaY) == 0x03);
+static_assert(offsetof(PushRuntimeRecord, stepsRemaining) == 0x04);
+static_assert(offsetof(PushRuntimeRecord, runtime05) == 0x05);
+
+struct PushDirection {
+    std::int8_t dx;
+    std::int8_t dy;
+};
+
+// Player octant (angle / 45) is intentionally eight-way, while push movement
+// collapses pairs of octants to four cardinal directions.
+inline constexpr std::array<std::int16_t, 8> kFrontCellDelta = {
+    -64, 1, 1, 64, 64, -1, -1, -64
+};
+inline constexpr std::array<std::int8_t, 8> kPushDeltaX = {
+    0, 8, 8, 0, 0, -8, -8, 0
+};
+inline constexpr std::array<std::int8_t, 8> kPushDeltaY = {
+    -8, 0, 0, 8, 8, 0, 0, -8
+};
+
+constexpr PushDirection pushDirectionForOctant(std::uint8_t octant) noexcept {
+    const auto i = static_cast<std::size_t>(octant & 7u);
+    return {kPushDeltaX[i], kPushDeltaY[i]};
+}
+
+constexpr bool canStartPush(const PushRuntimeRecord& push,
+                            std::uint8_t targetSemanticFlags) noexcept {
+    return push.stepsRemaining == 0 && (targetSemanticFlags & 0x02u) == 0;
+}
+
+constexpr int pushDistanceForCompletedMove() noexcept {
+    return static_cast<int>(kPushMoveTicks) * static_cast<int>(kPushUnitsPerTick);
+}
+
+static_assert(pushDistanceForCompletedMove() == kWorldUnitsPerTile);
 
 } // namespace nitemare3d::game
