@@ -198,9 +198,18 @@ The blocked path of `seg3:84F4` — either a hard wall (`0x04`) or a dynamic doo
 
 `seg3:E3B0` is now directly identified as the Win16 sampled-SFX playback routine: it resolves the sound entry, prepares a `WAVEHDR`, sets waveOut volume, calls `waveOutPrepareHeader`, and submits the buffer with `waveOutWrite`.
 
-The exact retail name of SFX index 1 is not assigned here until the SND.DAT event/name mapping is independently verified.
+The SFX table relationship is now also closed. `seg3:5132` reads exactly `0x1DA = 79 * 6` bytes from file offset `0xC0 = 32 * 6` into the runtime sound directory at `0x49F8`. Therefore runtime SFX index `n` corresponds to SND.DAT directory entry `32+n`.
 
-Status: **VERIFIED_EXE**.
+For the blocked-step request:
+
+```text
+runtime SFX 1 -> SND.DAT entry 33
+entry 33: length 0 / reserved-empty
+```
+
+Because `seg3:E3B0` first checks that the selected runtime entry has non-zero length, this request is a no-op with the audited retail SND.DAT. The code retains a sound hook, but the shipped sample slot is empty.
+
+Status: **VERIFIED_EXE + VERIFIED_DATA**.
 
 ## Reconstructed collision skeleton
 
@@ -259,9 +268,8 @@ Classification: **CONCEPTUALLY SIMILAR, ALGORITHMICALLY DIFFERENT**.
 
 The 2026-09-28 closure pass resolves the previous `0x01`/`0x10` wall-bit TODO, states `0..3` of `DoorRuntime+0x0C`, and the blocked-step `seg3:E3B0` side effect. Remaining work is narrower:
 
-- map SFX index `1` to its exact SND.DAT retail sound identity;
 - regression-test the reconstructed one-unit stepping against original gameplay/demo trajectories, especially corners, sliding, moving doors and touch-trigger cells.
 
-The former `CF60` unknown-class and door-state-`4` TODOs are closed by the 2026-09-28 audit.
+The former `CF60` unknown-class, door-state-`4`, and blocked-step SFX identity TODOs are closed by the 2026-09-28 audit.
 
 Until those behavioral parity checks are complete, this document does **not** call player collision 100%.
