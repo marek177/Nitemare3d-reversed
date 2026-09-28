@@ -112,7 +112,7 @@ void checkCollision(Checks& c) {
     c.require(!m::doorStateAllowsPassage(m::DoorState::Closed), "closed door state blocks");
     c.require(!m::doorStateAllowsPassage(m::DoorState::Opening), "opening door state blocks");
     c.require(!m::doorStateAllowsPassage(m::DoorState::Closing), "closing door state blocks");
-    c.require(m::doorStateAllowsPassage(m::DoorState::PassableSpecial), "special state 4 passes");
+    c.require(m::doorStateAllowsPassage(m::DoorState::CorpseHoldOpen), "corpse hold-open state 4 passes");
     for (std::int32_t world = -32768; world <= 32767; ++world)
         c.require(m::worldToTile(world) == static_cast<std::int32_t>(std::floor(world / 64.0)),
                   "signed world coordinate floor division");
