@@ -157,6 +157,8 @@ int main() {
     static_assert(collision::kWallExploding == 0x10);
     static_assert(collision::kWallScriptTouch == 0x40);
     static_assert(collision::kBlockedStepSfxIndex == 1);
+    static_assert(collision::kRuntimeSfxDirectoryBase == 32);
+    static_assert(collision::kBlockedStepSndDirectoryIndex == 33);
     static_assert(collision::worldToTile(-1) == -1 && collision::worldToTile(64) == 1);
     static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Key)));
     static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::IdCard)));
