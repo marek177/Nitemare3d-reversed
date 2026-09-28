@@ -1,4 +1,5 @@
 #pragma once
+#include "game/InventoryRuntime.hpp"
 #include <cstdint>
 
 namespace nitemare3d::game {
@@ -31,7 +32,7 @@ inline constexpr std::uint8_t kRemoteCloseCommand = 0x1F;
 inline constexpr std::uint8_t kRemoteCannonEnableCommand = 0x20;
 inline constexpr std::uint8_t kRemoteCannonDisableCommand = 0x21;
 inline constexpr std::uint8_t kMovementScriptWallFlag = 0x40;
-inline constexpr std::uint8_t kPortalPentagramMask = 0x0F;
+inline constexpr std::uint8_t kPortalPentagramMask = kAllPentagramsMask;
 inline constexpr std::uint8_t kPortalEntryClass = 0x15;
 inline constexpr std::uint8_t kPortalExitClass = 0x16;
 inline constexpr std::uint8_t kExplodingWallRuntimeClass = 0x2D;
@@ -84,8 +85,5 @@ constexpr bool canCloseRemoteDoor(std::uint8_t state) noexcept {
 }
 constexpr bool hasCard(std::uint16_t mask, std::uint8_t group) noexcept {
   return group < 16 && ((mask >> group) & 1u) != 0;
-}
-constexpr bool hasAllPentagrams(std::uint8_t mask) noexcept {
-  return (mask & kPortalPentagramMask) == kPortalPentagramMask;
 }
 } // namespace nitemare3d::game
