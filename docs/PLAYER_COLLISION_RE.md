@@ -107,11 +107,13 @@ The controller lifecycle is now substantially decoded:
 | `1` | initial/completed closed state |
 | `2` | opening motion; completion changes state to `0` |
 | `3` | closing motion; completion changes state to `1` |
-| `4` | passable special state; no normal lifecycle writer has yet been identified |
+| `4` | corpse hold-open / disabled-door state: set by GUARD death-finalization when the retained corpse/object is bound to a dynamic-door cell; passable and excluded from normal door toggling/countdown |
 
 `seg3:188A` selects `1/3 -> 2` when opening and `0/2 -> 3` when closing. The update path moves the two linked wall pieces by two internal units per update, clears their collision bit when opening completes, and starts an open countdown of 32. The auto-close path retries after 4 updates while the doorway is occupied.
 
-Status: **VERIFIED_EXE** for states `0..3`, transitions and timers; state `4` is **VERIFIED_EXE** as passable but its normal producer remains **PARTIAL**.
+State `4` now also has a direct producer. GUARD state `9` is the death-finalization path selected from lethal damage. It calls `seg3:A0EE`, which for most classes leaves the dead OBJECT active/renderable. If that OBJECT's map-cell pointer refers to a dynamic-door wall, the code finds the associated controller and writes `DoorRuntime+0x0C = 4`. The normal door toggle helper returns immediately when it sees state `4`, the auto-close loop only processes state `0`, and the collision helper accepts state `4` as passable. This establishes the practical role as a corpse-held/passable disabled door rather than an unexplained generic state.
+
+Status: **VERIFIED_EXE** for states `0..4`, including the state-`4` death/corpse producer and passability behavior.
 
 ### Object collision bits used by this helper
 
@@ -140,9 +142,9 @@ The retail OBJECTS class tables can now be joined directly to the `CF60` switch 
 
 This is stronger than a name guess: the class names come from the supplied OBJECTS definitions, while the effects come independently from the executable dispatcher.
 
-`CF60` also contains cases `0x31/0x32/0x34/0x35/0x37/0x38`. Their state effects are visible in code, but no matching class assignment occurs in the supplied retail OBJECTS tables audited so far. They therefore remain deliberately unnamed rather than being forced onto a guessed item.
+`CF60` also contains cases `0x31/0x32/0x34/0x35/0x37/0x38`. Their state effects are visible in code, but a cross-build class-table audit found **zero** retail object-class assignments to any of those six values, and the Win16 1.10 decompiler has no writer that changes `OBJECT+06` to those values. For the audited retail builds they are therefore best classified as **legacy/dead dispatcher cases** rather than unnamed live pickups. Their historical pre-release names remain unknown.
 
-Status: **VERIFIED_EXE + VERIFIED_DATA** for the nine named retail families above.
+Status: **VERIFIED_EXE + VERIFIED_DATA** for the nine named retail families; **UNREACHABLE-IN-AUDITED-RETAIL / legacy** for `0x31/0x32/0x34/0x35/0x37/0x38`.
 
 ## Door/dynamic-wall runtime records
 
@@ -257,9 +259,9 @@ Classification: **CONCEPTUALLY SIMILAR, ALGORITHMICALLY DIFFERENT**.
 
 The 2026-09-28 closure pass resolves the previous `0x01`/`0x10` wall-bit TODO, states `0..3` of `DoorRuntime+0x0C`, and the blocked-step `seg3:E3B0` side effect. Remaining work is narrower:
 
-- resolve whether dispatcher-only `CF60` cases `0x31/0x32/0x34/0x35/0x37/0x38` are unused legacy classes, generated runtime classes, or retail items missing from the supplied definitions;
-- determine whether door state `4` has an intended normal/scripted lifecycle or is only an exceptional/transient state;
 - map SFX index `1` to its exact SND.DAT retail sound identity;
 - regression-test the reconstructed one-unit stepping against original gameplay/demo trajectories, especially corners, sliding, moving doors and touch-trigger cells.
+
+The former `CF60` unknown-class and door-state-`4` TODOs are closed by the 2026-09-28 audit.
 
 Until those behavioral parity checks are complete, this document does **not** call player collision 100%.
