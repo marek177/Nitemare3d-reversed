@@ -16,6 +16,39 @@ inline constexpr std::uintptr_t kPentagramMaskAddress = 0x4C45;
 // is directly linked to the supplied Win16 OBJECTS/MAP data for the SECRET panel.
 using InventoryMask = std::uint8_t;
 
+// Object classes that are directly joined between retail OBJECTS data and the
+// seg3:CF60 touch/pickup dispatcher. Dispatcher-only cases 31/32/34/35/37/38
+// are intentionally not named here because no matching retail OBJECTS class
+// assignment has been established in the supplied data.
+enum class TouchPickupClass : std::uint8_t {
+    Key = 0x2F,
+    IdCard = 0x30,
+    Food = 0x33,
+    Weapon = 0x36,
+    Ammo = 0x39,
+    CrystalBall = 0x3A,
+    MagicEye = 0x3B,
+    Pentagram = 0x3C,
+    Scroll = 0x3D,
+};
+
+constexpr bool isNamedTouchPickupClass(std::uint8_t objectClass) noexcept {
+    switch (static_cast<TouchPickupClass>(objectClass)) {
+    case TouchPickupClass::Key:
+    case TouchPickupClass::IdCard:
+    case TouchPickupClass::Food:
+    case TouchPickupClass::Weapon:
+    case TouchPickupClass::Ammo:
+    case TouchPickupClass::CrystalBall:
+    case TouchPickupClass::MagicEye:
+    case TouchPickupClass::Pentagram:
+    case TouchPickupClass::Scroll:
+        return true;
+    default:
+        return false;
+    }
+}
+
 enum class IdCardBit : std::uint8_t {
     Red = 0,
     Yellow = 1,
