@@ -122,6 +122,28 @@ Status: **VERIFIED_EXE** for states `0..3`, transitions and timers; state `4` is
 
 A separate neighboring-cell/path query at `seg3:2649..2778` also checks wall/object bit `0x02`, reinforcing its generic blocked/occupied meaning.
 
+### Object-touch dispatcher `seg3:CF60`
+
+The retail OBJECTS class tables can now be joined directly to the `CF60` switch for the pickup classes that actually occur in the supplied data:
+
+| class | retail family | directly observed CF60 effect |
+|---:|---|---|
+| `0x2F` | KEY | sets the corresponding bit in `0x4C28` |
+| `0x30` | IDCARD | sets the corresponding bit in `0x4C29` |
+| `0x33` | FOOD | if HP < 100, adds `20 >> subtype`; retail IDs are red full-strength / blue half-strength potions |
+| `0x36` | WEAPON | sets the corresponding bit in `0x4C2A` and runs weapon-select/ammo initialization helpers |
+| `0x39` | AMMO | delegates subtype-specific acceptance/update to `seg3:A9E0(subtype,0)` |
+| `0x3A` | CRYSTALB | adds 20 to `0x4C42` while below 100 |
+| `0x3B` | MAGICEYE | adds 20 to `0x4C43` while below 100 |
+| `0x3C` | PENTAGRAM | sets the corresponding bit in `0x4C45` |
+| `0x3D` | SCROLL | dispatches the scroll subtype through `seg3:C5B6` |
+
+This is stronger than a name guess: the class names come from the supplied OBJECTS definitions, while the effects come independently from the executable dispatcher.
+
+`CF60` also contains cases `0x31/0x32/0x34/0x35/0x37/0x38`. Their state effects are visible in code, but no matching class assignment occurs in the supplied retail OBJECTS tables audited so far. They therefore remain deliberately unnamed rather than being forced onto a guessed item.
+
+Status: **VERIFIED_EXE + VERIFIED_DATA** for the nine named retail families above.
+
 ## Door/dynamic-wall runtime records
 
 `seg3:1296` scans a runtime table at `0x9DD6` by MAP-cell far pointer. The records are **22 bytes** each. Initialization around `seg3:14A8..16D5` creates records for walls whose property table contains bit `0x08` and enforces a capacity of **64**; the executable contains `MAXDOORS exceeded (%d)`.
@@ -235,7 +257,7 @@ Classification: **CONCEPTUALLY SIMILAR, ALGORITHMICALLY DIFFERENT**.
 
 The 2026-09-28 closure pass resolves the previous `0x01`/`0x10` wall-bit TODO, states `0..3` of `DoorRuntime+0x0C`, and the blocked-step `seg3:E3B0` side effect. Remaining work is narrower:
 
-- tie every `seg3:CF60` object-touch class to its exact retail item/special-object identity and side effects;
+- resolve whether dispatcher-only `CF60` cases `0x31/0x32/0x34/0x35/0x37/0x38` are unused legacy classes, generated runtime classes, or retail items missing from the supplied definitions;
 - determine whether door state `4` has an intended normal/scripted lifecycle or is only an exceptional/transient state;
 - map SFX index `1` to its exact SND.DAT retail sound identity;
 - regression-test the reconstructed one-unit stepping against original gameplay/demo trajectories, especially corners, sliding, moving doors and touch-trigger cells.
