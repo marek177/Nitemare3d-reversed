@@ -158,6 +158,16 @@ int main() {
     static_assert(collision::kWallScriptTouch == 0x40);
     static_assert(collision::kBlockedStepSfxIndex == 1);
     static_assert(collision::worldToTile(-1) == -1 && collision::worldToTile(64) == 1);
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Key)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::IdCard)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Food)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Weapon)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Ammo)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::CrystalBall)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::MagicEye)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Pentagram)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Scroll)));
+    static_assert(!isNamedTouchPickupClass(0x31) && !isNamedTouchPickupClass(0x38));
     static_assert(hasAllPentagrams(0x0F) && !hasAllPentagrams(0x07));
     static_assert(!hasInventoryBit(0xFF, 255));
     Checks checks;
