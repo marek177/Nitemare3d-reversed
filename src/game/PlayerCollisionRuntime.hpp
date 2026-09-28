@@ -33,6 +33,9 @@ inline constexpr std::uint8_t kWallDynamicDoor = 0x08;
 inline constexpr std::uint8_t kWallExploding = 0x10;
 inline constexpr std::uint8_t kWallScriptTouch = 0x40;
 inline constexpr std::uint8_t kBlockedStepSfxIndex = 1;
+inline constexpr std::uint8_t kRuntimeSfxDirectoryBase = 32;
+inline constexpr std::uint8_t kBlockedStepSndDirectoryIndex =
+    kRuntimeSfxDirectoryBase + kBlockedStepSfxIndex; // 33, empty in retail SND.DAT
 
 using ByteTable = std::array<std::uint8_t, 256>;
 
