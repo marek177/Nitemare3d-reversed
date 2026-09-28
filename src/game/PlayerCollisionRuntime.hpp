@@ -80,15 +80,17 @@ enum class DoorState : std::uint16_t {
     Closed = 1,
     Opening = 2,
     Closing = 3,
-    PassableSpecial = 4,
+    CorpseHoldOpen = 4,
 };
 
 // States 0..3 and their transitions are verified in the controller lifecycle.
-// State 4 is verified as passable, but its ordinary producer remains unknown.
+// State 4 is written by GUARD death-finalization when a retained corpse/object
+// occupies a dynamic-door cell. It is passable and excluded from normal toggle
+// and auto-close processing, effectively holding/disabling the door open.
 // A wider numeric overload prevents an invalid value such as 256 aliasing 0.
 constexpr bool doorStateAllowsPassage(std::uint16_t state) noexcept {
     return state == static_cast<std::uint16_t>(DoorState::Open) ||
-           state == static_cast<std::uint16_t>(DoorState::PassableSpecial);
+           state == static_cast<std::uint16_t>(DoorState::CorpseHoldOpen);
 }
 constexpr bool doorStateAllowsPassage(DoorState state) noexcept {
     return doorStateAllowsPassage(static_cast<std::uint16_t>(state));
