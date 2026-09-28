@@ -2,6 +2,8 @@
 
 Date: 2026-09-17
 
+Closure update: 2026-09-28 — re-audited against the latest Win16 1.10 decompiler export and the recovered door-controller audit.
+
 This document records direct reverse-engineering results from the original Win16 `NITE3W.EXE` V1.10. It deliberately separates executable evidence from comparison with Catacomb Abyss / Wolfenstein 3-D.
 
 ## Evidence labels
@@ -88,13 +90,28 @@ Two runtime property tables are central:
 
 | bit | observed behavior | status |
 |---:|---|---|
+| `0x01` | renderer/projection eligibility for ordinary/dynamic wall vectors; copied to VEC `+0x05` and tested by `seg4:3564` before projection/column claiming | **VERIFIED_EXE** |
+| `0x02` | generic occupied/wall-presence bit used by neighboring-cell/path tests | **VERIFIED_EXE** |
 | `0x04` | hard blocking wall | **VERIFIED_EXE** |
 | `0x08` | dynamic wall/door path; runtime door record is queried before deciding passability | **VERIFIED_EXE** |
+| `0x10` | exploding/destructible-wall family marker for mapped types `0x2E..0x2F`; projectile collision enters the exploding-wall transition path | **VERIFIED_EXE** |
 | `0x40` | invokes the level-script/touch hook `seg3:BFD8`; the bit alone does not force blocking | **VERIFIED_EXE** |
 
 For a wall with `0x08`, the helper resolves the dynamic-wall record through `seg3:1296` and the passability test at `seg3:1476`. The latter accepts runtime state `+0x0C == 0` or `+0x0C == 4`, and rejects the other observed states.
 
-The exact human-readable names of those door states remain **PARTIAL**.
+The controller lifecycle is now substantially decoded:
+
+| state | verified behavior |
+|---:|---|
+| `0` | open/passable; auto-close countdown runs |
+| `1` | initial/completed closed state |
+| `2` | opening motion; completion changes state to `0` |
+| `3` | closing motion; completion changes state to `1` |
+| `4` | passable special state; no normal lifecycle writer has yet been identified |
+
+`seg3:188A` selects `1/3 -> 2` when opening and `0/2 -> 3` when closing. The update path moves the two linked wall pieces by two internal units per update, clears their collision bit when opening completes, and starts an open countdown of 32. The auto-close path retries after 4 updates while the doorway is occupied.
+
+Status: **VERIFIED_EXE** for states `0..3`, transitions and timers; state `4` is **VERIFIED_EXE** as passable but its normal producer remains **PARTIAL**.
 
 ### Object collision bits used by this helper
 
@@ -134,7 +151,7 @@ Observed rules include:
 - bit `0x02` for mapped types `0x01..0x40`;
 - bit `0x40` for mapped types `0x47..0x48`.
 
-Only the bits whose behavior has been traced should be given semantic names. `0x01` and `0x10` remain **PARTIAL**.
+`0x01` is consumed by the wall-vector renderer as a projection/column-claim eligibility gate. `0x10` is consumed by projectile collision for the exploding/destructible wall family and is also carried into renderer boundary decisions. Both are now **VERIFIED_EXE** at the behavioral level.
 
 ### Object property table — seg3:255D..25E8
 
@@ -148,6 +165,16 @@ Only the bits whose behavior has been traced should be given semantic names. `0x
 - bit `0x40`: type `0x04`.
 
 For player collision, bit `0x02` is confirmed blocking and bit `0x04` is confirmed touch/interaction dispatch.
+
+Status: **VERIFIED_EXE**.
+
+## Blocked-step side effect / collision sound
+
+The blocked path of `seg3:84F4` — either a hard wall (`0x04`) or a dynamic door whose state is not passable — calls `seg3:E3B0` with SFX index `1` as its first argument before returning zero movement.
+
+`seg3:E3B0` is now directly identified as the Win16 sampled-SFX playback routine: it resolves the sound entry, prepares a `WAVEHDR`, sets waveOut volume, calls `waveOutPrepareHeader`, and submits the buffer with `waveOutWrite`.
+
+The exact retail name of SFX index 1 is not assigned here until the SND.DAT event/name mapping is independently verified.
 
 Status: **VERIFIED_EXE**.
 
@@ -206,8 +233,11 @@ Classification: **CONCEPTUALLY SIMILAR, ALGORITHMICALLY DIFFERENT**.
 
 ## Remaining TODO before calling collision 100%
 
-- Name the remaining wall-property bits (`0x01`, `0x10`, and any rendering-only semantics).
-- Fully label door runtime states at `DoorRuntime+0x0C`.
-- Confirm all side effects of the hard-wall branch and `seg3:E3B0`.
-- Tie object-touch classes to their exact item/special-object identities.
-- Regression-test the reconstructed one-unit stepping against original gameplay/demo trajectories.
+The 2026-09-28 closure pass resolves the previous `0x01`/`0x10` wall-bit TODO, states `0..3` of `DoorRuntime+0x0C`, and the blocked-step `seg3:E3B0` side effect. Remaining work is narrower:
+
+- tie every `seg3:CF60` object-touch class to its exact retail item/special-object identity and side effects;
+- determine whether door state `4` has an intended normal/scripted lifecycle or is only an exceptional/transient state;
+- map SFX index `1` to its exact SND.DAT retail sound identity;
+- regression-test the reconstructed one-unit stepping against original gameplay/demo trajectories, especially corners, sliding, moving doors and touch-trigger cells.
+
+Until those behavioral parity checks are complete, this document does **not** call player collision 100%.
