@@ -1,5 +1,8 @@
 #pragma once
 
+#include "game/DifficultySystem.hpp"
+
+#include <algorithm>
 #include <cstdint>
 
 namespace nitemare3d::game {
@@ -94,6 +97,103 @@ inline constexpr std::uint8_t kHamersteinBaseDamage = 3;
 inline constexpr std::uint8_t kWeaponJamEnableEvent = 0x47;
 inline constexpr std::uint8_t kWeaponJamDisableEvent = 0x48;
 inline constexpr std::uint8_t kWeaponJamSoundId = 0x44;
+
+
+
+enum class DamageTransformKind : std::uint8_t {
+    PassThrough,
+    Divide2,
+    Divide4,
+    Divide8,
+    Divide16,
+    Divide256,
+    Immune,
+    HamersteinGate,
+};
+
+// Direct transcription of the verified class x weapon transform at seg3:9FE8.
+// A divisor of 256 is literal behavior in the original, not a symbolic immunity.
+constexpr DamageTransformKind damageTransformFor(std::uint8_t objectClass,
+                                                 WeaponSelector weapon) noexcept {
+    const bool wand = weapon == WeaponSelector::MagicWand;
+    const bool silver = weapon == WeaponSelector::SilverPistol;
+
+    switch (objectClass) {
+    case 0x0C: return DamageTransformKind::Divide8;
+    case 0x0D: return wand ? DamageTransformKind::Divide2 : DamageTransformKind::Divide8;
+    case 0x0E:
+        return (wand || silver) ? DamageTransformKind::Divide2
+                                : DamageTransformKind::Divide8;
+    case 0x0F:
+    case 0x10:
+        return wand ? DamageTransformKind::Divide2 : DamageTransformKind::Divide256;
+    case 0x11:
+    case 0x14:
+        return (wand || silver) ? DamageTransformKind::Divide2
+                                : DamageTransformKind::Divide8;
+    case 0x12:
+    case 0x13:
+        return DamageTransformKind::Divide4;
+    case 0x15:
+    case 0x19:
+        return DamageTransformKind::Immune;
+    case 0x16:
+        return DamageTransformKind::HamersteinGate;
+    case 0x17:
+        return wand ? DamageTransformKind::Divide256 : DamageTransformKind::Divide4;
+    case 0x18:
+        if (wand) return DamageTransformKind::Divide256;
+        if (silver) return DamageTransformKind::Divide16;
+        return DamageTransformKind::Divide8;
+    case 0x1A:
+        return wand ? DamageTransformKind::Divide2 : DamageTransformKind::Immune;
+    case 0x1B:
+    case 0x1C:
+        return DamageTransformKind::Divide2;
+    case 0x1D:
+        return DamageTransformKind::Divide8;
+    case 0x1E:
+        return wand ? DamageTransformKind::Immune : DamageTransformKind::Divide8;
+    case 0x1F:
+        return wand ? DamageTransformKind::Immune : DamageTransformKind::Divide4;
+    default:
+        return DamageTransformKind::PassThrough;
+    }
+}
+
+constexpr int applyDamageTransform(int rawDamage,
+                                   DamageTransformKind transform,
+                                   std::uint8_t hamersteinGateValue = 0) noexcept {
+    if (rawDamage <= 0)
+        return rawDamage;
+
+    switch (transform) {
+    case DamageTransformKind::PassThrough: return rawDamage;
+    case DamageTransformKind::Divide2: return rawDamage / 2;
+    case DamageTransformKind::Divide4: return rawDamage / 4;
+    case DamageTransformKind::Divide8: return rawDamage / 8;
+    case DamageTransformKind::Divide16: return rawDamage / 16;
+    case DamageTransformKind::Divide256: return rawDamage / 256;
+    case DamageTransformKind::Immune: return 0;
+    case DamageTransformKind::HamersteinGate:
+        return hamersteinGateValue == kHamersteinGateRequiredValue
+            ? kHamersteinBaseDamage
+            : 0;
+    }
+    return rawDamage;
+}
+
+constexpr int playerDamageAfterResistanceAndDifficulty(
+    int rawDamage,
+    std::uint8_t objectClass,
+    WeaponSelector weapon,
+    Difficulty difficulty,
+    std::uint8_t hamersteinGateValue = 0) noexcept {
+    int damage = applyDamageTransform(
+        rawDamage, damageTransformFor(objectClass, weapon), hamersteinGateValue);
+    damage = scalePlayerDamageByDifficulty(damage, difficulty);
+    return damage > kMaximumDamage ? kMaximumDamage : damage;
+}
 
 // The receiver compares positive damage against GUARD+0x10 strength.
 // Lethal damage clears strength and enters death/special handling; non-lethal

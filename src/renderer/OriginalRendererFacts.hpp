@@ -102,6 +102,21 @@ inline constexpr std::uint16_t kProjectedSpriteBase = 0x6270;
 inline constexpr std::size_t kProjectedSpriteRecordBytes = 0x12;
 inline constexpr std::size_t kProjectedSpriteCapacity = 100;
 
+
+
+enum class SpriteSpatialEvidence : std::uint8_t {
+    ExecutableLayout,
+    BehavioralOnly,
+};
+
+// Queue capacity/record size are executable-backed. Vertical anchoring and
+// directional object selection observed in gameplay are intentionally not
+// encoded as renderer math until the selector/writer path is recovered.
+inline constexpr SpriteSpatialEvidence kSpriteQueueEvidence =
+    SpriteSpatialEvidence::ExecutableLayout;
+inline constexpr SpriteSpatialEvidence kDirectionalSpriteSelectionEvidence =
+    SpriteSpatialEvidence::BehavioralOnly;
+
 // Function offsets/names used by the current Ghidra/IDA renderer audit.
 // These are evidence anchors, not API entry points in the reconstructed engine.
 inline constexpr std::uint16_t kFnOwnerToSpan = 0x6266;

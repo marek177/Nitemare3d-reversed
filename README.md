@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.16
+# Nitemare3D-Reversed — reconstruction v0.17
+
+**v0.17 / 2026-09-29 update:** recovered executable behavior is now pushed further into the actual runtime source instead of living only in RE notes. `CombatSystem.hpp` implements the verified class × weapon resistance transform and difficulty scaling; `GuardSystem.hpp` exposes the verified positive-hit receiver outcome; `ObjectSystem.hpp` exposes executable-backed runtime/property predicates; and `ProjectileRuntime.hpp` adds explicit collision/impact decisions around the verified 8 × 42-byte projectile pool. Renderer code remains conservative where directional/vertical sprite selection is still behavioral rather than instruction-verified. See [`docs/PROJECT_STATUS_V017.md`](docs/PROJECT_STATUS_V017.md) and [`tests/v017_runtime_integration_test.cpp`](tests/v017_runtime_integration_test.cpp).
 
 **v0.16 / 2026-09-27 update:** cross-version function coverage is now represented explicitly in code instead of living only in audit prose. The current audited export contains 519 DOS function definitions and 967 Win16 definitions. Exact/strong fuzzy cross-version matching supports 429/519 DOS functions and 929/967 Win16 functions, leaving 90 DOS and 38 Win16 definitions requiring weak-match/manual boundary review. This is a function-identity/matching metric, **not** a percentage of semantic understanding. See [`src/re/N3DV016Coverage.hpp`](src/re/N3DV016Coverage.hpp), [`tests/v016_coverage_test.cpp`](tests/v016_coverage_test.cpp), and [`docs/PROJECT_STATUS_V016.md`](docs/PROJECT_STATUS_V016.md).
 
@@ -132,6 +134,7 @@ cmake --build build
 ./build/n3d_v014_analysis_test
 ./build/n3d_v015_sprite_facts_test
 ./build/n3d_v016_coverage_test
+./build/n3d_v017_runtime_integration_test
 ```
 
 ### Windows 11 + SDL3

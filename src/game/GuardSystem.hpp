@@ -268,6 +268,52 @@ static_assert(guardScoreForObjectClass(0x16) == 1000); // Dr. Hamerstein
 static_assert(guardScoreForObjectClass(0x1D) == 250);  // Demon
 static_assert(guardScoreForObjectClass(0x00) == 0);    // default path
 
+
+
+enum class GuardHitDisposition : std::uint8_t {
+    Ignored,
+    Pain,
+    Lethal,
+};
+
+struct GuardHitOutcome {
+    std::uint8_t strength;
+    std::uint8_t resultOctant;
+    GuardHitDisposition disposition;
+};
+
+// Verified receiver contract from seg3:80F7/811C..81EF.
+// Positive non-lethal hits subtract HP and write resoct=8.
+// Lethal hits clear HP and branch to death/special handling.
+// This helper intentionally does not guess the class-specific death handler.
+constexpr GuardHitOutcome receiveGuardDamage(std::uint8_t strength,
+                                             int damage,
+                                             std::uint8_t currentResultOctant) noexcept {
+    if (damage <= 0)
+        return {strength, currentResultOctant, GuardHitDisposition::Ignored};
+    if (damage >= strength)
+        return {0, currentResultOctant, GuardHitDisposition::Lethal};
+    return {
+        static_cast<std::uint8_t>(strength - damage),
+        8,
+        GuardHitDisposition::Pain
+    };
+}
+
+struct DraculaPhase2Reset {
+    std::uint8_t objectClass;
+    std::uint8_t strength;
+    std::uint8_t state;
+    std::uint8_t nextState;
+    std::uint16_t timer;
+    std::uint8_t sequenceValue;
+    std::uint8_t eventId;
+};
+
+inline constexpr DraculaPhase2Reset kDraculaPhase2Reset{
+    0x14, 0xFF, 0x08, 0x02, 1, 0x23, 0x22
+};
+
 // Damage receiver is structurally verified: a computed damage value is
 // compared with strength. Lethal damage clears strength to zero and enters the
 // death path. Positive non-lethal damage is subtracted, resultOctant is set to

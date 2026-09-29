@@ -100,6 +100,28 @@ constexpr bool projectileHitsGuard(std::int32_t projectileX,
            dy >= -kProjectileGuardHitTolerance && dy <= kProjectileGuardHitTolerance;
 }
 
+
+
+struct ProjectileCollisionDecision {
+    bool hitGuard;
+    bool enterImpactState;
+};
+
+// The verified proximity test is the guard-hit decision point for the modern
+// reconstruction. Class-specific damage/death remains in Combat/GuardSystem.
+constexpr ProjectileCollisionDecision projectileGuardCollisionDecision(
+    std::int32_t projectileX,
+    std::int32_t projectileY,
+    std::int32_t guardX,
+    std::int32_t guardY) noexcept {
+    const bool hit = projectileHitsGuard(projectileX, projectileY, guardX, guardY);
+    return {hit, hit};
+}
+
+constexpr std::uint8_t projectileImpactStateValue() noexcept {
+    return static_cast<std::uint8_t>(ProjectileSlotState::Impact);
+}
+
 // FUN_1010_9E20 uses this threshold only to decide whether to project the
 // embedded OBJECT. It is not a lifetime, despawn, or slot-release rule.
 constexpr bool projectileNeedsProjection(std::int32_t projectileX,

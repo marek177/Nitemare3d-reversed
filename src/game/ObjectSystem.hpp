@@ -57,6 +57,34 @@ inline constexpr std::uint8_t kObjectCreatesGuard = 0x08;   // 0x7F94 / OBJECT+0
 inline constexpr std::uint8_t kObjectSpecial20 = 0x20;      // exact semantic TODO
 inline constexpr std::uint8_t kObjectSpecial40 = 0x40;      // exact semantic TODO
 
+
+
+constexpr bool objectRuntimePresent(std::uint8_t flags) noexcept {
+    return (flags & kObjectRuntimePresent) != 0;
+}
+
+constexpr bool objectBlocksMovement(std::uint8_t flags) noexcept {
+    return (flags & kObjectBlocksMovement) != 0;
+}
+
+constexpr bool objectHasSpecialTouch(std::uint8_t flags) noexcept {
+    return (flags & kObjectSpecialTouch) != 0;
+}
+
+constexpr bool objectCreatesGuard(std::uint8_t flags) noexcept {
+    return (flags & kObjectCreatesGuard) != 0;
+}
+
+// Keep the two unresolved high bits queryable without assigning unsupported
+// semantic names. They are still useful when comparing definition/runtime data.
+constexpr bool objectHasSpecial20(std::uint8_t flags) noexcept {
+    return (flags & kObjectSpecial20) != 0;
+}
+
+constexpr bool objectHasSpecial40(std::uint8_t flags) noexcept {
+    return (flags & kObjectSpecial40) != 0;
+}
+
 // Damage path cross-binding (see docs/COMBAT_DAMAGE_RE.md): OBJECT+0x18 is read
 // by seg3:9FA2 as a projected/view-space vertical value. It must not be confused
 // with worldY at +0x12. The exact writer-level renderer symbol remains open.
