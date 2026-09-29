@@ -20,6 +20,32 @@ int main() {
     static_assert(kFreshGuardStrength == 0xFF);
     static_assert(kGuardStateCount == 22);
     static_assert(static_cast<unsigned>(GuardState::PainReaction) == 0x15);
+    static_assert(static_cast<unsigned>(GuardState::AlertSequence) == 0x02);
+    static_assert(static_cast<unsigned>(GuardState::AttackOpportunityCheck) == 0x03);
+    static_assert(static_cast<unsigned>(GuardState::AttackExecution) == 0x04);
+    static_assert(static_cast<unsigned>(GuardState::MovementReplan) == 0x05);
+    static_assert(static_cast<unsigned>(GuardState::TimedMovement) == 0x06);
+    static_assert(static_cast<unsigned>(GuardState::StationaryAcquire) == 0x07);
+    static_assert(static_cast<unsigned>(GuardState::MovingAcquire) == 0x08);
+
+    static_assert(kGuardStrategyCount == 5);
+    static_assert(isRecoveredGuardStrategy(0));
+    static_assert(isRecoveredGuardStrategy(4));
+    static_assert(!isRecoveredGuardStrategy(5));
+    static_assert(static_cast<unsigned>(GuardStrategy::DefaultMovement) == 0);
+    static_assert(static_cast<unsigned>(GuardStrategy::WoundedDoorSeek) == 1);
+    static_assert(static_cast<unsigned>(GuardStrategy::RouteMarkerMovement) == 2);
+    static_assert(static_cast<unsigned>(GuardStrategy::GargoyleOneShot) == 3);
+    static_assert(static_cast<unsigned>(GuardStrategy::Cannon) == 4);
+    static_assert(strategyUsesAlternateMoveSequence(2));
+    static_assert(!strategyUsesAlternateMoveSequence(1));
+    static_assert(strategySuppressesOrdinaryHitReaction(4));
+    static_assert(strategyCanEnterTimedOneShotMove(3));
+    static_assert(strategyForSpawnWallClass(0x43) == 1);
+    static_assert(strategyForSpawnWallClass(0x42) == 2);
+    static_assert(strategyForSpawnWallClass(0x46) == 2);
+    static_assert(strategyForSpawnWallClass(0x41) == 0);
+    static_assert(strategyOneExistsOnlyAsDormantMarkerInSuppliedMaps());
 
     // Original score switch anchors.
     assert(guardScoreForObjectClass(0x08) == 25);    // Bat
