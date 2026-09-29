@@ -342,3 +342,30 @@ The current/next-state writer audit now accounts for every numeric state `0x00..
 - ordinary non-lethal reaction enters `0x15` unless one of the special recovery branches is selected.
 
 State-ID/reachability is therefore **100% for Win16 1.10**. Full AI semantics and DOS parity remain separate.
+
+
+## Strategy matrix + states 02–08 closure — 2026-09-29
+
+The normal Win16 1.10 strategy value set is exactly `0..4`; no normal strategy-5 writer was recovered.
+
+- 0 = default player-biased movement;
+- 1 = wounded door-seeking (nearest DoorRuntime anchor while HP < 0x7F);
+- 2 = route-marker movement selected from RETREAT/ACTIONSPOT, using 16-unit movement and alternate move sequences;
+- 3 = gargoyle ONE_SHOT movement through state 0x13;
+- 4 = Cannon-specific state machine.
+
+Functional state names are now justified directly from control flow:
+
+```text
+02 AlertSequence
+03 AttackOpportunityCheck
+04 AttackExecution
+05 MovementReplan
+06 TimedMovement
+07 StationaryAcquire
+08 MovingAcquire
+```
+
+The ordinary active loop is `02 -> 03 -> 04 -> 05 -> 06 -> 03`; failed opportunity checks route 03 -> 05. State 7/8 feed the loop through LOS acquisition, with Omnificent suppression and the strategy-3 special branch preserved.
+
+Strategy IDs/writers and state-02..08 control flow are closed for Win16 1.10. Exact per-class sequence token names and full DOS dispatcher parity remain separate.
