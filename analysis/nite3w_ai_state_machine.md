@@ -369,3 +369,16 @@ Functional state names are now justified directly from control flow:
 The ordinary active loop is `02 -> 03 -> 04 -> 05 -> 06 -> 03`; failed opportunity checks route 03 -> 05. State 7/8 feed the loop through LOS acquisition, with Omnificent suppression and the strategy-3 special branch preserved.
 
 Strategy IDs/writers and state-02..08 control flow are closed for Win16 1.10. Exact per-class sequence token names and full DOS dispatcher parity remain separate.
+
+
+## Engagement mode closure — 2026-09-29
+
+`GUARD+0x16` selects the result returned by `7594` for attack-opportunity checks:
+
+- 0 -> close square (both world-axis deltas <= 64);
+- 1 -> LOS/path result;
+- 2 -> same LOS/path result, retained but no normal writer in audited Win16 builds.
+
+`7594` stores LOS in +0x17 and close-proximity in +0x18 before selecting one. Initializer B02C writes mode 1 by default and mode 0 for classes 08/09/0A/11/12/13/14/1A.
+
+State 7/8 acquisition uses the frontal `7494` path directly; state 3/4 attack continuation uses `7594`, whose internal visibility call bypasses the frontal-sector gate. This closes the acquisition-versus-continued-attack distinction in the active AI loop.
