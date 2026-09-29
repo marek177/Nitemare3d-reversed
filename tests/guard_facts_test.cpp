@@ -47,6 +47,25 @@ int main() {
     static_assert(strategyForSpawnWallClass(0x41) == 0);
     static_assert(strategyOneExistsOnlyAsDormantMarkerInSuppliedMaps());
 
+    // Engagement/perception mode closure.
+    static_assert(kGuardAcquireMaxTileDelta == 8);
+    static_assert(kGuardCloseAttackAxisDistance == 64);
+    static_assert(engagementModeUsesCloseProximity(0));
+    static_assert(!engagementModeUsesCloseProximity(1));
+    static_assert(engagementModeUsesLineOfSight(1));
+    static_assert(engagementModeUsesLineOfSight(2));
+    static_assert(!engagementModeUsesLineOfSight(0));
+    static_assert(engagementModeHasRecoveredNormalWriter(0));
+    static_assert(engagementModeHasRecoveredNormalWriter(1));
+    static_assert(!engagementModeHasRecoveredNormalWriter(2));
+    static_assert(guardInitialEngagementMode(0x08) == GuardEngagementMode::CloseProximity);
+    static_assert(guardInitialEngagementMode(0x12) == GuardEngagementMode::CloseProximity);
+    static_assert(guardInitialEngagementMode(0x1A) == GuardEngagementMode::CloseProximity);
+    static_assert(guardInitialEngagementMode(0x0B) == GuardEngagementMode::LineOfSight);
+    static_assert(guardInitialEngagementMode(0x19) == GuardEngagementMode::LineOfSight);
+    static_assert(guardInitialProfile(0x08).perceptionMode == 0);
+    static_assert(guardInitialProfile(0x0B).perceptionMode == 1);
+
     // Original score switch anchors.
     assert(guardScoreForObjectClass(0x08) == 25);    // Bat
     assert(guardScoreForObjectClass(0x11) == 0);     // Dracula
