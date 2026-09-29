@@ -121,18 +121,18 @@ The dispatcher around `3:7B55` accepts exactly 22 numeric states.
 | `06` | `7CEC` | movement + timer; then `03` | strong control flow |
 | `07` | `7D2A` | active AI; strategy 3 special branch | PARTIAL |
 | `08` | `7D7E` | movement/AI; may enter `02` | PARTIAL |
-| `09` | `7DEC` | special/collision/action path; transformation-related writers remain important | PARTIAL |
-| `0A` | `80A4` | no local action in dispatcher | strong |
+| `09` | `7DEC` | lethal death/special finalization | strong |
+| `0A` | `80A4` | finalized-death terminal state; no local dispatcher body | strong |
 | `0B` | `80A4` | no local action in dispatcher | strong |
 | `0C` | `7E54` | dormant retail branch; sequence refresh only; USE retains `I've nothing left!` | VERIFIED reachability classification |
 | `0D` | `7E54` | dormant sibling branch; same sequence-refresh handler | VERIFIED reachability classification |
 | `0E` | `7E6C` | conditional transition to `0F` | strong control flow |
 | `0F` | `7E9E` | timer/action; transitions `10` or `0E` | strong control flow |
 | `10` | `7F26` | timer; then return `0F` | strong control flow |
-| `11` | `7F8E` | movement + timer; then `strategy=0,state=07` | strong control flow |
-| `12` | `7FEE` | wait for timer/animation; then `state=nextstate` | strong |
+| `11` | `7F8E` | strategy-1 dynamic-door maneuver; then `strategy=0,state=07` | strong |
+| `12` | `7FEE` | lethal wait/animation path; then `state=nextstate` (death path uses 09) | strong |
 | `13` | `8038` | helper transition | PARTIAL |
-| `14` | `804A` | long timer + periodic action | PARTIAL |
+| `14` | `804A` | E1M9 Radio/Dancers scripted movement state | strong/scripted |
 | `15` | `807E` | confirmed pain/hit reaction; returns to nextstate | VERIFIED/strong |
 
 Exact labels such as CHASE/ATTACK/SEARCH are intentionally not assigned to states 02..14 until movement, animation and sound XREFs close the semantics.
@@ -160,6 +160,25 @@ The surviving Win16 USE hook `3:AB3E` resolves a GUARD and displays **"I've noth
 **Classification:** `0x0C` and `0x0D` are **retail-dormant / legacy-compatible states** in the recovered normal graph. A crafted save, corrupted state, or an as-yet-unrecovered external memory write could still place a GUARD there, so this is not a claim that the numeric handlers are impossible to execute. The historical pre-release meaning is unknown; specifically, `0x0C` is **not** renamed corpse/loot state merely from the text.
 
 This also explains why ordinary death does not prove `0x0C`: normal death finalization reaches state `0x0A`, while lethal player contact uses `0x0B`.
+
+## State producer/reachability closure — 2026-09-29
+
+The Win16 1.10 numeric state space is now closed at the producer level. All 22 values `0x00..0x15` are classified: 20 have a recovered retail producer, `0x0A/0x0B` are deliberate terminal states with no local dispatcher body, and only `0x0C/0x0D` are retained dormant handlers without a normal producer.
+
+Important newly promoted semantics:
+
+- `0x09` = death/special finalization entry;
+- `0x0A` = ordinary finalized-death terminal state;
+- `0x11` = strategy-1 dynamic-door maneuver;
+- `0x12` = conditional lethal wait/animation before next state `0x09`;
+- `0x14` = E1M9 Radio/Dancers scripted state;
+- `0x15` = ordinary pain/reaction state.
+
+The lethal state-setter packing is now decoded: `0x00090000` supplies `state=0,next=9`, while `0x00090012` supplies `state=0x12,next=9` when OBJECT `+0x1A > 0`. This is why state `0x12` eventually restores state `0x09` rather than representing an independent AI strategy.
+
+Detailed evidence and the complete 22-row producer table are in `GUARD_STATE_REACHABILITY_CLOSURE_2026-09-29.md`.
+
+**Coverage:** GUARD state-ID / producer reachability is **100% for Win16 1.10**. This does not promote the entire GUARD AI subsystem to 100%; exact state names for the remaining active AI states, attack scheduling, resource bindings and full DOS parity remain separate targets.
 
 ## Pain transition
 
