@@ -105,6 +105,48 @@ inline constexpr std::size_t kGuardStateCount = 0x16;
 
 inline constexpr std::size_t kGuardStrategyCount = 5;
 
+inline constexpr std::uint8_t kGuardAcquireMaxTileDelta = 8;
+inline constexpr std::uint16_t kGuardCloseAttackAxisDistance = 64;
+
+enum class GuardEngagementMode : std::uint8_t {
+    CloseProximity = 0,
+    LineOfSight = 1,
+    LegacyLineOfSight = 2,
+};
+
+constexpr bool engagementModeUsesCloseProximity(std::uint8_t mode) noexcept {
+    return mode == static_cast<std::uint8_t>(GuardEngagementMode::CloseProximity);
+}
+
+constexpr bool engagementModeUsesLineOfSight(std::uint8_t mode) noexcept {
+    return mode == static_cast<std::uint8_t>(GuardEngagementMode::LineOfSight) ||
+           mode == static_cast<std::uint8_t>(GuardEngagementMode::LegacyLineOfSight);
+}
+
+constexpr bool engagementModeHasRecoveredNormalWriter(std::uint8_t mode) noexcept {
+    return mode == static_cast<std::uint8_t>(GuardEngagementMode::CloseProximity) ||
+           mode == static_cast<std::uint8_t>(GuardEngagementMode::LineOfSight);
+}
+
+// B02C initializes engagement mode to LOS (1) and overrides the listed
+// close-range classes to mode 0. Mode 2 is accepted by 7594 as LOS-equivalent
+// but has no recovered normal writer in Win16 1.3/1.6/1.8/1.10.
+constexpr GuardEngagementMode guardInitialEngagementMode(std::uint8_t objectClass) noexcept {
+    switch (objectClass) {
+    case 0x08: // Bat
+    case 0x09: // Frankenstein
+    case 0x0A: // Mummy
+    case 0x11: // Dracula
+    case 0x12: // Cemetery Gargoyle
+    case 0x13: // Garden Gargoyle
+    case 0x14: // Dracula-Bat
+    case 0x1A: // Ghost
+        return GuardEngagementMode::CloseProximity;
+    default:
+        return GuardEngagementMode::LineOfSight;
+    }
+}
+
 enum class GuardStrategy : std::uint8_t {
     DefaultMovement = 0,
     WoundedDoorSeek = 1,
@@ -244,21 +286,12 @@ constexpr GuardInitialProfile guardInitialProfile(std::uint8_t objectClass) noex
         static_cast<std::uint8_t>(GuardStrategy::DefaultMovement),
         static_cast<std::uint8_t>(GuardState::StationaryAcquire),
         static_cast<std::uint8_t>(GuardState::AlertSequence),
-        1};
+        static_cast<std::uint8_t>(guardInitialEngagementMode(objectClass))};
 
     switch (objectClass) {
-    case 0x08:
-    case 0x09:
-    case 0x0A:
-    case 0x11:
-    case 0x14:
-    case 0x1A:
-        p.perceptionMode = 0;
-        break;
     case 0x12:
     case 0x13:
         p.strategy = static_cast<std::uint8_t>(GuardStrategy::GargoyleOneShot);
-        p.perceptionMode = 0;
         break;
     case 0x15:
     case 0x16:
