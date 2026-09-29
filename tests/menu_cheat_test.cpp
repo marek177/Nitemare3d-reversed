@@ -38,6 +38,7 @@ int main() {
     assert(s.health == 100);
     assert(s.magicEyePower == 100 && s.crystalBallPower == 100);
     assert(s.weaponMask == 0x0F);
+    assert(s.activeWeapon == 0);
     assert(s.keyMask == 0x0F);
     assert(s.idCardMask == 0x03);
     assert(s.pentagramMask == 0x0F);
