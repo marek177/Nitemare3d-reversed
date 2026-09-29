@@ -34,6 +34,15 @@ int main() {
     // The audited state 0x13 sound tick, movement attempts and blocked-step
     // timer behavior are represented separately.
     static_assert(kGuardStateLethalPlayerContact == 0x0B);
+    static_assert(kGuardStateDormantUseMessage == 0x0C);
+    static_assert(kGuardStateDormantSharedPose == 0x0D);
+    static_assert(isRecoveredRetailDormantGuardState(0x0C));
+    static_assert(isRecoveredRetailDormantGuardState(0x0D));
+    static_assert(!isRecoveredRetailDormantGuardState(0x0B));
+    static_assert(!isRecoveredRetailDormantGuardState(0x0E));
+    static_assert(static_cast<unsigned>(GuardState::DormantUseMessage) == 0x0C);
+    static_assert(static_cast<unsigned>(GuardState::DormantSharedPose) == 0x0D);
+    static_assert(kGuardStateHandlerOffsets[0x0C] == kGuardStateHandlerOffsets[0x0D]);
     static_assert(kGuardStateStrategy3Movement == 0x13);
     assert(guardState13InitialTimer(0) == 8);
     assert(guardState13InitialTimer(79) == 87);
