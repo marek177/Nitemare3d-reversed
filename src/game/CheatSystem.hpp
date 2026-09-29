@@ -29,6 +29,7 @@ struct CheatAffectedState {
     std::uint8_t magicEyePower{};
     std::uint8_t crystalBallPower{};
     std::uint8_t weaponMask{};
+    std::uint8_t activeWeapon{0xFF};
     std::uint8_t keyMask{};
     std::uint8_t idCardMask{};
     std::uint8_t pentagramMask{};
