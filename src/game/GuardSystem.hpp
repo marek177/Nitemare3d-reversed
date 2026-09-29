@@ -307,6 +307,44 @@ constexpr GuardState13StepResult stepGuardState13(
 // therefore on the default zero-score path rather than having an entry here.
 inline constexpr std::uint8_t kFirstScoredGuardObjectClass = 0x08;
 inline constexpr std::uint8_t kLastScoredGuardObjectClass = 0x20;
+inline constexpr std::uint8_t kDraculaBatInternalClass = 0x14;
+inline constexpr std::uint8_t kGuard25ExecutableOnlyClass = 0x20;
+inline constexpr std::uint8_t kGuard26DancersClass = 0x21;
+inline constexpr std::uint8_t kGuard26DancersObjectIdEpisode1 = 0x8C;
+
+enum class GuardClassPresence : std::uint8_t {
+    NotGuard,
+    RetailPlaced,
+    InternalTransformOnly,
+    ExecutableOnlyFallback,
+    RetailScripted,
+};
+
+// Shipped class-table audit across the supplied MAP.1-3 families:
+// 0x08..0x1F are retail-mapped except 0x14 (Dracula-Bat transform only);
+// 0x20 has executable support but no MAP class-table assignment or recovered
+// OBJECT+06 writer; 0x21 is GUARD26/Dancers and is retail-placed/scripted.
+constexpr GuardClassPresence guardClassPresence(std::uint8_t objectClass) noexcept {
+    if (objectClass == kDraculaBatInternalClass) {
+        return GuardClassPresence::InternalTransformOnly;
+    }
+    if (objectClass == kGuard25ExecutableOnlyClass) {
+        return GuardClassPresence::ExecutableOnlyFallback;
+    }
+    if (objectClass == kGuard26DancersClass) {
+        return GuardClassPresence::RetailScripted;
+    }
+    if (objectClass >= 0x08 && objectClass <= 0x1F) {
+        return GuardClassPresence::RetailPlaced;
+    }
+    return GuardClassPresence::NotGuard;
+}
+
+constexpr bool hasShippedRetailGuardPlacement(std::uint8_t objectClass) noexcept {
+    const auto p = guardClassPresence(objectClass);
+    return p == GuardClassPresence::RetailPlaced ||
+           p == GuardClassPresence::RetailScripted;
+}
 inline constexpr std::array<int, 25> kGuardScoreByObjectClass = {
     25,    // 0x08 GUARD1  Bat
     75,    // 0x09 GUARD2  Frankenstein
@@ -332,7 +370,7 @@ inline constexpr std::array<int, 25> kGuardScoreByObjectClass = {
     250,   // 0x1D GUARD22 Demon
     250,   // 0x1E GUARD23 Alien #1
     200,   // 0x1F GUARD24 Alien #2
-    50,    // 0x20 GUARD25 unknown/unused identity
+    50,    // 0x20 GUARD25 executable-only fallback slot
 };
 
 constexpr int guardScoreForObjectClass(std::uint8_t objectClass) noexcept {
