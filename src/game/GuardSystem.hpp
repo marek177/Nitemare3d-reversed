@@ -358,7 +358,7 @@ inline constexpr std::array<int, 25> kGuardScoreByObjectClass = {
     0,     // 0x11 GUARD10 Dracula -- scripted behavior handled separately
     150,   // 0x12 GUARD11 Cemetery Gargoyle
     150,   // 0x13 GUARD12 Garden Gargoyle
-    200,   // 0x14 GUARD13 unknown/unused identity
+    200,   // 0x14 GUARD13 Dracula-Bat internal transform
     -1000, // 0x15 GUARD14 Penelope
     1000,  // 0x16 GUARD15 Dr. Hamerstein
     100,   // 0x17 GUARD16 Tall slim robot
@@ -370,7 +370,7 @@ inline constexpr std::array<int, 25> kGuardScoreByObjectClass = {
     250,   // 0x1D GUARD22 Demon
     250,   // 0x1E GUARD23 Alien #1
     200,   // 0x1F GUARD24 Alien #2
-    50,    // 0x20 GUARD25 executable-only fallback slot
+    50,    // 0x20 GUARD25 executable-only fallback/cut slot
 };
 
 constexpr int guardScoreForObjectClass(std::uint8_t objectClass) noexcept {
