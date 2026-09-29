@@ -29,7 +29,7 @@ int main() {
     assert(guardScoreForObjectClass(0x1B) == 100);   // Goldie
     assert(guardScoreForObjectClass(0x1C) == 100);   // Greenie
     assert(guardScoreForObjectClass(0x1D) == 250);   // Demon
-    assert(guardScoreForObjectClass(0x20) == 50);    // GUARD25 unknown
+    assert(guardScoreForObjectClass(0x20) == 50);    // GUARD25 executable-only fallback
 
     // The audited state 0x13 sound tick, movement attempts and blocked-step
     // timer behavior are represented separately.
@@ -87,7 +87,19 @@ int main() {
     const auto finished = stepGuardState13(timer, true);
     assert(finished.clearStrategyAndEnterState2 && !finished.attemptMovement && finished.nextTimer == 0);
 
+    // Shipped GUARD class reachability inventory.
+    static_assert(guardClassPresence(0x08) == GuardClassPresence::RetailPlaced);
+    static_assert(guardClassPresence(0x14) == GuardClassPresence::InternalTransformOnly);
+    static_assert(guardClassPresence(0x20) == GuardClassPresence::ExecutableOnlyFallback);
+    static_assert(guardClassPresence(0x21) == GuardClassPresence::RetailScripted);
+    static_assert(guardClassPresence(0x22) == GuardClassPresence::NotGuard);
+    static_assert(hasShippedRetailGuardPlacement(0x08));
+    static_assert(!hasShippedRetailGuardPlacement(0x14));
+    static_assert(!hasShippedRetailGuardPlacement(0x20));
+    static_assert(hasShippedRetailGuardPlacement(0x21));
+    static_assert(kGuard26DancersObjectIdEpisode1 == 0x8C);
+
     // Classes outside GUARD1..25 use the default score path.
     assert(guardScoreForObjectClass(0x07) == 0);
-    assert(guardScoreForObjectClass(0x21) == 0); // includes GUARD26/Dancers path
+    assert(guardScoreForObjectClass(0x21) == 0); // GUARD26/Dancers default score path
 }
