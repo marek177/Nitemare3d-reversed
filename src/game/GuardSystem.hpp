@@ -70,8 +70,10 @@ enum class GuardState : std::uint8_t {
     PerceptionDecision = 0x07,
     State07 = PerceptionDecision,
     State08 = 0x08,
-    State09 = 0x09,
-    State0A = 0x0A,
+    DeathFinalize = 0x09,
+    State09 = DeathFinalize,
+    DeadTerminal = 0x0A,
+    State0A = DeadTerminal,
     LethalPlayerContact = 0x0B,
     State0B = LethalPlayerContact,
     DormantUseMessage = 0x0C,
@@ -81,11 +83,14 @@ enum class GuardState : std::uint8_t {
     State0E = 0x0E,
     State0F = 0x0F,
     State10 = 0x10,
-    State11 = 0x11,
-    State12 = 0x12,
+    DoorManeuver = 0x11,
+    State11 = DoorManeuver,
+    DeathWait = 0x12,
+    State12 = DeathWait,
     TimedDirectionalMove = 0x13,
     State13 = TimedDirectionalMove,
-    State14 = 0x14,
+    RadioDanceScript = 0x14,
+    State14 = RadioDanceScript,
     PainReaction = 0x15,
 };
 
@@ -107,6 +112,68 @@ constexpr bool isRecoveredRetailDormantGuardState(std::uint8_t state) noexcept {
     return state == kGuardStateDormantUseMessage ||
            state == kGuardStateDormantSharedPose;
 }
+
+enum class GuardStateReachability : std::uint8_t {
+    NormalRuntime,
+    ConditionalRuntime,
+    ClassSpecificRuntime,
+    ScriptedRuntime,
+    Terminal,
+    Dormant,
+};
+
+// Win16 1.10 producer/reachability closure, cross-checked against the available
+// 1.3/1.6/1.8 state-machine exports. Every numeric state has a recovered
+// producer category except 0x0C/0x0D, whose handlers survive without a normal
+// retail writer.
+inline constexpr std::array<GuardStateReachability, kGuardStateCount>
+kGuardStateReachability = {
+    GuardStateReachability::NormalRuntime,       // 00 sequence wrapper / class-0x21 init
+    GuardStateReachability::ConditionalRuntime,  // 01 accepted-fire wake cache
+    GuardStateReachability::NormalRuntime,       // 02 wake/detection/strategy return
+    GuardStateReachability::NormalRuntime,       // 03 sequence transition
+    GuardStateReachability::NormalRuntime,       // 04 sequence transition
+    GuardStateReachability::NormalRuntime,       // 05 sequence transition
+    GuardStateReachability::NormalRuntime,       // 06 movement planner
+    GuardStateReachability::NormalRuntime,       // 07 default init / state-11 return
+    GuardStateReachability::NormalRuntime,       // 08 moving init / Dracula transform
+    GuardStateReachability::ConditionalRuntime,  // 09 lethal-death finalization
+    GuardStateReachability::Terminal,            // 0A ordinary finalized death
+    GuardStateReachability::Terminal,            // 0B guard that caused player death
+    GuardStateReachability::Dormant,             // 0C no recovered retail writer
+    GuardStateReachability::Dormant,             // 0D no recovered retail writer
+    GuardStateReachability::ClassSpecificRuntime,// 0E cannon-family initial state
+    GuardStateReachability::ClassSpecificRuntime,// 0F cannon-family enabled/wait cycle
+    GuardStateReachability::ClassSpecificRuntime,// 10 cannon-family attack cycle
+    GuardStateReachability::ConditionalRuntime,  // 11 strategy-1 door maneuver
+    GuardStateReachability::ConditionalRuntime,  // 12 lethal wait while OBJECT+1A > 0
+    GuardStateReachability::ConditionalRuntime,  // 13 strategy-3 timed movement
+    GuardStateReachability::ScriptedRuntime,     // 14 E1M9 Radio/Dancers script
+    GuardStateReachability::ConditionalRuntime,  // 15 ordinary non-lethal pain reaction
+};
+
+constexpr bool guardStateHasRecoveredRetailProducer(std::uint8_t state) noexcept {
+    return state < kGuardStateCount &&
+           kGuardStateReachability[state] != GuardStateReachability::Dormant;
+}
+
+constexpr bool isGuardTerminalState(std::uint8_t state) noexcept {
+    return state < kGuardStateCount &&
+           kGuardStateReachability[state] == GuardStateReachability::Terminal;
+}
+
+constexpr std::size_t recoveredRetailProducedGuardStateCount() noexcept {
+    std::size_t count = 0;
+    for (std::size_t i = 0; i < kGuardStateReachability.size(); ++i) {
+        if (kGuardStateReachability[i] != GuardStateReachability::Dormant) {
+            ++count;
+        }
+    }
+    return count;
+}
+
+static_assert(recoveredRetailProducedGuardStateCount() == 20);
+
 inline constexpr std::uint16_t kGuardState13TimerRandomRange = 0x50;
 inline constexpr std::uint16_t kGuardState13TimerMinimum = 8;
 
@@ -191,18 +258,18 @@ inline constexpr std::array<std::uint16_t, kGuardStateCount> kGuardStateHandlerO
     0x7CEC, // 06 movement + timer -> 03
     0x7D2A, // 07 active AI; strategy 3 special branch
     0x7D7E, // 08 movement/AI; may -> 02
-    0x7DEC, // 09 special/collision action
-    0x80A4, // 0A no local action in dispatcher
-    0x80A4, // 0B no local action in dispatcher
+    0x7DEC, // 09 lethal death/special finalization
+    0x80A4, // 0A terminal finalized-death state; no local handler
+    0x80A4, // 0B terminal killer state after player death; no local handler
     0x7E54, // 0C dormant in recovered retail graph; USE has "I've nothing left!"
     0x7E54, // 0D dormant sibling; same sequence-refresh handler
     0x7E6C, // 0E conditional -> 0F
     0x7E9E, // 0F timer/action -> 10 or 0E
     0x7F26, // 10 timer -> 0F
-    0x7F8E, // 11 movement + timer -> strategy=0,state=07
-    0x7FEE, // 12 wait -> nextState
-    0x8038, // 13 helper transition
-    0x804A, // 14 long timer + periodic action
+    0x7F8E, // 11 strategy-1 door maneuver -> strategy=0,state=07
+    0x7FEE, // 12 lethal wait/animation -> nextState 09
+    0x8038, // 13 strategy-3 timed directional movement
+    0x804A, // 14 E1M9 Radio/Dancers scripted movement
     0x807E, // 15 confirmed pain/hit -> nextState
 };
 
