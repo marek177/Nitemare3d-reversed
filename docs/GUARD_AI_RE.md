@@ -1,6 +1,6 @@
 # GUARD AI reverse engineering
 
-Updated: 2026-09-22
+Updated: 2026-09-29
 
 Evidence: original NITE3W.EXE V1.10 Win16 binary (230400 bytes), reconstructed USER.SAV writer/layout, direct 16-bit disassembly/decompilation, executable developer/debug strings, original data files and controlled gameplay/video observations.
 
@@ -124,8 +124,8 @@ The dispatcher around `3:7B55` accepts exactly 22 numeric states.
 | `09` | `7DEC` | special/collision/action path; transformation-related writers remain important | PARTIAL |
 | `0A` | `80A4` | no local action in dispatcher | strong |
 | `0B` | `80A4` | no local action in dispatcher | strong |
-| `0C` | `7E54` | shared handler | PARTIAL |
-| `0D` | `7E54` | shared handler | PARTIAL |
+| `0C` | `7E54` | dormant retail branch; sequence refresh only; USE retains `I've nothing left!` | VERIFIED reachability classification |
+| `0D` | `7E54` | dormant sibling branch; same sequence-refresh handler | VERIFIED reachability classification |
 | `0E` | `7E6C` | conditional transition to `0F` | strong control flow |
 | `0F` | `7E9E` | timer/action; transitions `10` or `0E` | strong control flow |
 | `10` | `7F26` | timer; then return `0F` | strong control flow |
@@ -136,6 +136,30 @@ The dispatcher around `3:7B55` accepts exactly 22 numeric states.
 | `15` | `807E` | confirmed pain/hit reaction; returns to nextstate | VERIFIED/strong |
 
 Exact labels such as CHASE/ATTACK/SEARCH are intentionally not assigned to states 02..14 until movement, animation and sound XREFs close the semantics.
+
+### State 0x0C / 0x0D reachability closure — 2026-09-29
+
+A writer/read audit changes the status of these two states. They are **not normal active AI states in the recovered retail graph**.
+
+For Win16, the audited 1.3, 1.6, 1.8 and 1.10 C exports all retain the same state-`0x0C` USE check, but none contains a recovered direct writer of current state `0x0C` or `0x0D`. In 1.10 the only three raw calls to the common state/sequence setter `3:762C` construct ordinary animation/death/reaction transitions; none supplies `0x0C` or `0x0D` as the new current/next state. The direct `nextState` writers likewise do not introduce either value.
+
+For DOS the same residual state-`0x0C` interaction check exists in the audited exports:
+
+| DOS build | residual state-0x0C interaction helper |
+|---|---|
+| 1.0 | `FUN_1000_8C46` |
+| 1.7 | `FUN_1000_8F56` |
+| 1.8 | `FUN_1000_90BA` |
+| 1.9 | byte-identical executable to the audited 1.8 build, therefore the same code image |
+| 2.0 | `FUN_1000_90C4` |
+
+The audited DOS writer sets also contain no recovered literal current-state writer for `0x0C` or `0x0D`.
+
+The surviving Win16 USE hook `3:AB3E` resolves a GUARD and displays **"I've nothing left!"** only when current state is `0x0C`. This is the only user-facing semantic directly tied to `0x0C`. Both `0x0C` and `0x0D` otherwise share `3:7E54`, which merely forces the normal directional/sequence refresh and does not leave the state.
+
+**Classification:** `0x0C` and `0x0D` are **retail-dormant / legacy-compatible states** in the recovered normal graph. A crafted save, corrupted state, or an as-yet-unrecovered external memory write could still place a GUARD there, so this is not a claim that the numeric handlers are impossible to execute. The historical pre-release meaning is unknown; specifically, `0x0C` is **not** renamed corpse/loot state merely from the text.
+
+This also explains why ordinary death does not prove `0x0C`: normal death finalization reaches state `0x0A`, while lethal player contact uses `0x0B`.
 
 ## Pain transition
 
@@ -269,7 +293,7 @@ GUARD26/Dancers is not another class in the GUARD1..25 switch. E1M9 data/gamepla
 
 ## Remaining GUARD/AI targets
 
-1. Give exact semantic names to states 02..14 using original animation/movement/sound XREFs.
+1. Give exact semantic names to the remaining *reachable* partially named states (especially 02..09 and 0E..14) using original animation/movement/sound XREFs; 0C/0D are now classified as dormant.
 2. Recover every `strategy` value and full transition matrix.
 3. Trace movement-state writes to OBJECT X/Y and derive exact speeds/cadence.
 4. Recover sight/FOV/LOS/hearing and the Omnificent hostility gate.
