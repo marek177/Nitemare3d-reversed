@@ -258,18 +258,23 @@ The transformed `0x14` class then uses the score-switch value **200** when final
 
 Current interpretation: Dracula has two 255-strength phases, with the second phase represented internally by GUARD13/class `0x14`. This is supported by the direct class writer plus HP/state reset and shared Bat-related resource/sound behavior.
 
-## GUARD25 / class 0x20 profile
+## GUARD25 / class 0x20 shipped-reachability closure
 
-Class `0x20` remains visually unidentified, but its runtime footprint is much narrower than previously thought:
+Class `0x20` is now classified as an **executable-only fallback/cut slot**, not merely an unidentified retail enemy.
 
-- normal/special creation strength: 255;
-- generic initial AI profile observed as state `07`, next state `02`, strategy 0;
-- score-switch value 50;
-- no dedicated class branch in the recovered `0x0C..0x1F` resistance table, so it falls outside that explicit transform and currently behaves as a generic/fallback damage case in the audited path;
-- no confirmed dedicated attack/death/alert SND mapping;
-- no confirmed normal MAP spawn or visible sprite identity.
+The complete supplied MAP/object-class inventory contains no object-class-table assignment for `0x20`, while every normal retail guard class around it is represented and class `0x21` is explicitly GUARD26/Dancers. A targeted Win16 writer audit also finds no gameplay writer `OBJECT+06 = 0x20`. The superficially similar `GUARD+06 = 0x20` write belongs to the door-maneuver timer and is unrelated to object class.
 
-The best current classification is **cut/unfinished/fallback class, INFERRED**, not a named enemy. Remaining work is to search orphan SEQDEF/IMG/SND references and every writer of `OBJECT+06 = 0x20`.
+If injected, `0x20` still receives the generic guard profile: strength 255, initial state/next state 7/2, strategy 0, generic damage handling, score 50, and no dedicated recovered GUARD sound-selector branch.
+
+This is sufficient to close **shipped reachability**: GUARD25 is not spawned or transformed into by the supplied retail game data/code graph. A hypothetical orphan/pre-release sprite identity remains historical archaeology only.
+
+## GUARD26 / class 0x21 Dancers
+
+GUARD26 is real shipped data rather than a fallback slot. Episode-1 object ID `0x8C` maps to class `0x21` and editor name **Dancers**, with one supplied E1 placement. It uses the special initialization profile and the E1M9 Radio/ACTIONSPOT scripted path. GUARD26 lies outside the GUARD1..25 score switch and therefore scores zero by the default path.
+
+Detailed data evidence is in `GUARD_CLASS_INVENTORY_CLOSURE_2026-09-29.md`.
+
+**Coverage:** shipped GUARD class/object reachability inventory is now **100%**. This does not invent a pre-release name for the unused `0x20` slot.
 
 ## Weapon/class special cases relevant to AI
 
