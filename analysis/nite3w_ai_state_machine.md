@@ -77,8 +77,8 @@ The dispatcher around `3:7B55` accepts states `0x00..0x15`, giving 22 numeric st
 | `09` | `7DEC` | special/collision/action path | partial semantic |
 | `0A` | `80A4` | no local action in dispatcher | strong |
 | `0B` | `80A4` | no local action in dispatcher | strong |
-| `0C` | `7E54` | shared handler with `0D` | partial semantic |
-| `0D` | `7E54` | shared handler with `0C` | partial semantic |
+| `0C` | `7E54` | dormant retail branch; sequence refresh only; USE residual message | reachability closed |
+| `0D` | `7E54` | dormant sibling; same sequence-refresh handler | reachability closed |
 | `0E` | `7E6C` | conditional transition to `0F` | strong control flow |
 | `0F` | `7E9E` | timer/action; transition to `10` or back to `0E` | strong control flow |
 | `10` | `7F26` | timer then return to `0F` | strong control flow |
@@ -89,6 +89,16 @@ The dispatcher around `3:7B55` accepts states `0x00..0x15`, giving 22 numeric st
 | `15` | `807E` | confirmed pain/hit reaction; then `state=nextstate` | VERIFIED/strong |
 
 Human-readable labels for states `02..14` remain unresolved until animation, movement, attack, sight and sound callers are bound.
+
+### Dormant states 0x0C and 0x0D
+
+The 2026-09-29 writer audit finds no recovered normal current-state writer for `0x0C` or `0x0D` in Win16 1.3/1.6/1.8/1.10. Raw 1.10 inspection of every call to the generic state/sequence setter also yields no transition that introduces either value. The values can still be processed if injected/restored: both dispatch through `7E54`, which only refreshes the directional sequence.
+
+The same residual `state==0x0C` interaction test exists in DOS 1.0, 1.7, 1.8 and 2.0; DOS 1.9 is byte-identical to the audited 1.8 executable. None of the audited DOS writer sets introduces `0x0C` or `0x0D`.
+
+State `0x0C` has one additional retained semantic: the USE hook displays **"I've nothing left!"**. This is treated as a fossil/legacy-compatible interaction, not proof that `0x0C` was a corpse or loot state in the shipped game.
+
+Reachability classification: **dormant in the recovered retail graph; handler retained**.
 
 ## Hit/pain transition
 
@@ -306,7 +316,7 @@ GUARD+0B all writes/reads
 
 ## High-priority remaining AI work
 
-1. Assign exact semantic names to states `02..14` only after original XREF evidence.
+1. Assign exact semantic names to the remaining reachable partially named states only after original XREF evidence; states `0x0C/0x0D` are now classified as dormant rather than awaiting active-AI names.
 2. Recover all strategy values and transition differences.
 3. Derive exact per-class movement speed/cadence.
 4. Recover sight/FOV/LOS/hearing and Omnificent hostility gate.
