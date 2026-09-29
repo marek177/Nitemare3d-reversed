@@ -49,7 +49,8 @@ void CheatSystem::applyLevelStart(CheatAffectedState& state) const {
         state.weaponMask = 0x0F;
         state.keyMask = 0x0F;
         state.idCardMask = 0x03;
-        state.benefitMask = 0x0F;
+        state.pentagramMask = 0x0F;
+        state.specialUseCharges = 99;
     }
 }
 
