@@ -3,6 +3,7 @@
 #include "game/GameEdition.hpp"
 
 #include <array>
+#include <cstddef>
 #include <cstdint>
 #include <string_view>
 
