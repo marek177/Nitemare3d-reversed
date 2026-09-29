@@ -240,3 +240,65 @@ State 7/8 acquisition instead uses raw `7494` LOS directly.
 | complete DOS dispatcher/strategy parity | not included in this 100% claim |
 
 The residual 1–2% semantic gap is presentation/author-intent naming, not uncertainty about the executable transitions described above.
+
+
+## Engagement/perception mode closure
+
+The byte at `GUARD+0x16` is now closed as the selector used by `3:7594` to choose the attack-opportunity test used in states 3/4.
+
+`7594` always computes and stores both candidate signals first:
+
+- `GUARD+0x17` = visibility/path result from `7494`;
+- `GUARD+0x18` = close-proximity result, true when both absolute world-axis deltas are <= 64.
+
+Raw branch behavior:
+
+| `GUARD+0x16` | Returned decision |
+|---:|---|
+| 0 | `GUARD+0x18` close proximity |
+| 1 | `GUARD+0x17` LOS/path result |
+| 2 | `GUARD+0x17` LOS/path result |
+| >=3 | no defined normal branch; not produced by retail initialization |
+
+Normal initialization writes mode 1 and changes the following classes to mode 0:
+
+```text
+0x08 Bat
+0x09 Frankenstein
+0x0A Mummy
+0x11 Dracula
+0x12 Cemetery Gargoyle
+0x13 Garden Gargoyle
+0x14 Dracula-Bat
+0x1A Ghost
+```
+
+These are therefore close-range attack-opportunity classes in states 3/4. Other normal classes use LOS-mode attack opportunities.
+
+A writer scan over Win16 1.3/1.6/1.8/1.10 found normal writes only for modes 0 and 1. Mode 2 is accepted as an LOS-equivalent by the selector logic but has no recovered normal producer, so it is best treated as a legacy-compatible value.
+
+### Acquisition LOS versus attack LOS
+
+Do not conflate state-7/8 acquisition with state-3/4 attack continuation.
+
+State 7/8 calls `7494` in the front-facing acquisition mode:
+
+- target must be within an axis-aligned 8-tile range on each axis;
+- the facing test uses the guard's current octant and accepts the forward octant plus its immediate left/right neighbors;
+- path/LOS must succeed.
+
+State 3/4 calls `7594`, whose internal `7494` call sets the flags that bypass the facing-sector test. Thus once a guard is already in the active cycle, its attack opportunity can remain valid outside the original frontal acquisition cone, subject to the selected close-proximity or LOS mode.
+
+This closes the behavioral distinction between **acquisition** and **attack continuation**.
+
+## Updated coverage
+
+| Subarea | Status |
+|---|---:|
+| strategy numeric set / normal writers | **100% Win16 1.10** |
+| strategy 0–4 primary control flow | **100% Win16 1.10** |
+| engagement mode 0/1 normal semantics | **100% Win16 1.10** |
+| legacy mode 2 classification | **100% static classification** |
+| states 0x02–0x08 control flow | **100% Win16 1.10** |
+| states 0x02–0x08 gameplay semantics | **99%+** |
+| exact original symbol names / per-class presentation tokens | separate, not required for behavior closure |
