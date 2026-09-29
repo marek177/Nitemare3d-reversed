@@ -114,13 +114,13 @@ The dispatcher around `3:7B55` accepts exactly 22 numeric states.
 |---:|---:|---|---|
 | `00` | `7BA2` | animation/timer; then `state=nextstate` | strong |
 | `01` | `7BE0` | timer countdown; then `02` | strong |
-| `02` | `7BFA` | active AI/animation with sound-type-3 path | PARTIAL |
-| `03` | `7C3C` | detection/transition branch | PARTIAL |
-| `04` | `7C86` | alternate detection/attack branch | PARTIAL |
-| `05` | `7CE4` | helper transition | PARTIAL |
-| `06` | `7CEC` | movement + timer; then `03` | strong control flow |
-| `07` | `7D2A` | active AI; strategy 3 special branch | PARTIAL |
-| `08` | `7D7E` | movement/AI; may enter `02` | PARTIAL |
+| `02` | `7BFA` | AlertSequence: class sound + row+34 sequence -> 03 | strong |
+| `03` | `7C3C` | AttackOpportunityCheck: 7594 -> 04 or 05 | strong |
+| `04` | `7C86` | AttackExecution: perception re-check, attack SFX + player damage, then 05 | strong |
+| `05` | `7CE4` | MovementReplan via strategy planner 76FC | strong |
+| `06` | `7CEC` | TimedMovement: movement + countdown -> 03 | strong |
+| `07` | `7D2A` | StationaryAcquire: Omnificent/LOS gate -> 02 or strategy-3 state 13 | strong |
+| `08` | `7D7E` | MovingAcquire: marker movement + conditional LOS -> 02 | strong |
 | `09` | `7DEC` | lethal death/special finalization | strong |
 | `0A` | `80A4` | finalized-death terminal state; no local dispatcher body | strong |
 | `0B` | `80A4` | no local action in dispatcher | strong |
@@ -179,6 +179,40 @@ The lethal state-setter packing is now decoded: `0x00090000` supplies `state=0,n
 Detailed evidence and the complete 22-row producer table are in `GUARD_STATE_REACHABILITY_CLOSURE_2026-09-29.md`.
 
 **Coverage:** GUARD state-ID / producer reachability is **100% for Win16 1.10**. This does not promote the entire GUARD AI subsystem to 100%; exact state names for the remaining active AI states, attack scheduling, resource bindings and full DOS parity remain separate targets.
+
+## Strategy matrix and active states 0x02–0x08 — 2026-09-29
+
+A writer/control-flow audit closes the normal Win16 strategy set as exactly **0..4**:
+
+| strategy | functional meaning |
+|---:|---|
+| 0 | default player-biased movement planner |
+| 1 | wounded door-seeking / flee-to-door |
+| 2 | route-marker movement (RETREAT/ACTIONSPOT; double movement scale) |
+| 3 | gargoyle/ONE_SHOT timed movement |
+| 4 | Cannon state machine |
+
+No normal gameplay writer of strategy 5 was recovered. Earlier references to strategy 5 are obsolete.
+
+State semantics are now promoted where direct side effects are sufficient:
+
+| state | functional name |
+|---:|---|
+| 02 | AlertSequence |
+| 03 | AttackOpportunityCheck |
+| 04 | AttackExecution |
+| 05 | MovementReplan |
+| 06 | TimedMovement |
+| 07 | StationaryAcquire |
+| 08 | MovingAcquire |
+
+The ordinary active loop is `02 -> 03 -> 04 -> 05 -> 06 -> 03`, with branches that can skip attack execution when perception fails. State 7 is the stationary acquisition entry; state 8 is the moving/marker acquisition entry.
+
+Strategy 1's helper `1394` scans the 22-byte DoorRuntime controller array and chooses the nearest LOS-valid door anchor when strength < 0x7F. Strategy 2 is selected by RETREAT/ACTIONSPOT wall classes and uses 16-unit movement plus the alternate animation bank. Strategy 3 belongs to the two gargoyle classes and activates ONE_SHOT during state 13. Strategy 4 is class-0x19 Cannon.
+
+Detailed evidence is in `GUARD_STRATEGY_ACTIVE_STATES_CLOSURE_2026-09-29.md`.
+
+**Coverage:** strategy IDs/writers/control flow and states 02–08 control flow are **100% for Win16 1.10**. Exact presentation token/IMG/SND binding and complete DOS parity remain separate.
 
 ## Pain transition
 
