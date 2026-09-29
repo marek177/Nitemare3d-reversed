@@ -293,7 +293,7 @@ I've nothing left!
 
 only when `GUARD+0x0B == 0x0C`.
 
-The condition and text are **VERIFIED_EXE**. The semantic name of GUARD state `0x0C` is intentionally left open here; this path is not labeled "corpse loot" or similar until the state-machine audit independently proves that meaning.
+The condition and text are **VERIFIED_EXE**. The 2026-09-29 writer audit now classifies GUARD state `0x0C` as a **retail-dormant / legacy-compatible state**: its handler and this USE text survive, but no normal writer was recovered in Win16 1.3/1.6/1.8/1.10 or DOS 1.0/1.7/1.8(=1.9)/2.0. Its sibling `0x0D` is likewise dormant and shares the same sequence-refresh handler. This closes the shipped-game reachability question without inventing a historical name such as corpse/loot state.
 
 ## Wall type 8 — scripted Episode-1 interactions
 
@@ -340,9 +340,8 @@ void UsePressed()
 
 ## Remaining TODO before USE is 100%
 
-The 2026-09-28 closure pass resolves the former menu-callback, SAFE/TRUNK/Radio, retail door-class and E1M2 SPECIAL1 TODOs. Remaining work is narrower:
+The 2026-09-28/29 closure passes resolve the former menu-callback, SAFE/TRUNK/Radio, retail door-class, E1M2 SPECIAL1 and GUARD-state-0x0C reachability TODOs. Remaining work is narrower:
 
-- resolve the semantic meaning of GUARD state `0x0C` used by the `"I've nothing left!"` USE hook;
 - finish any class-specific visual/event side effects that occur after the already-recovered door/panel/warp state changes;
 - regression-test the complete USE matrix against original runtime/demo trajectories, including repeated-use, blocked, credential-missing, moving-door, floor/stair and scripted-level edge cases.
 
