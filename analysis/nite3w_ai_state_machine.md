@@ -325,3 +325,20 @@ GUARD+0B all writes/reads
 7. Resolve GUARD25 reachability/identity and GUARD26 dancer script.
 8. Finish unresolved tail fields of the 26-byte GUARD record.
 9. Finish Dracula-Bat resource/sound/corpse chain while preserving resolved class/HP/state facts.
+
+
+## Producer/reachability closure — 2026-09-29
+
+The current/next-state writer audit now accounts for every numeric state `0x00..0x15` in Win16 1.10.
+
+- **20/22** states have a normal, conditional, class-specific, scripted, or terminal retail producer.
+- **0x0C/0x0D** are the only retained handlers without a recovered normal producer.
+- **0x0A/0x0B** are not missing handlers: they are deliberate terminal states.
+- lethal damage uses either `state 0 -> next 9` or `state 0x12 -> next 9`, depending on OBJECT `+0x1A`;
+- `0x09` then performs death/special finalization;
+- normal finalization terminates at `0x0A`, while Dracula performs the already documented transform to class `0x14` / state `0x08`;
+- `0x11` is entered by the strategy-1 door maneuver;
+- `0x14` is entered by the E1M9 Radio/Dancers script and restored to `0x06`;
+- ordinary non-lethal reaction enters `0x15` unless one of the special recovery branches is selected.
+
+State-ID/reachability is therefore **100% for Win16 1.10**. Full AI semantics and DOS parity remain separate.
