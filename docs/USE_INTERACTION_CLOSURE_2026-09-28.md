@@ -6,7 +6,8 @@ This note updates the 2026-09-25 working coverage estimate after a focused Win16
 
 | Subsystem | Previous working range | 2026-09-28 working range | State |
 |---|---:|---:|---|
-| USE / interactions | 75–90% | **90–95%** | PARTIAL — static dispatcher/state semantics substantially closed; full original-runtime parity remains |
+| USE / interactions — static semantics | 75–90% legacy combined estimate | **96–98%** | Core dispatcher, class/state effects and dormant branches substantially closed |
+| USE / interactions — original-runtime parity | — | **90–95%** | Controlled repeated-use/moving-state/demo parity still required |
 
 This is an evidence-coverage estimate, not byte-count coverage and not a claim of recovered original source.
 
@@ -44,18 +45,18 @@ This is an evidence-coverage estimate, not byte-count coverage and not a claim o
   - starts the scripted dance-music sequence;
 - E1M2 SPECIAL1 is the Office morphing chalkboard (wall ID 0x56), with resource timer/state 0x96 and SFX request 0x44;
 - E1M7 SPECIAL1 is the Kitchen fuse-box power-repair path;
-- the GUARD-family USE hook is narrowed to one exact condition: GUARD state 0x0C displays "I've nothing left!".
+- the GUARD-family USE hook is narrowed to one exact condition: GUARD state 0x0C displays "I've nothing left!";
+- GUARD states 0x0C and 0x0D are now classified as retail-dormant/legacy-compatible: retained handlers, but no recovered normal writer across the audited Win16 and DOS state graphs.
 
 ## Remaining before 100%
 
-1. independently close the semantic name/role of GUARD state 0x0C rather than inferring it from the USE text;
-2. regression-test all USE paths against original runtime/demo behavior:
+1. regression-test all USE paths against original runtime/demo behavior:
    - repeated USE;
    - missing credential;
    - doors in intermediate states;
    - SAFE/TRUNK already-empty states;
    - floor/stair facing and destination;
    - E1M2/E1M7/E1M9 scripts;
-3. verify any remaining presentation-only side effects where the gameplay state transition is already known.
+2. verify any remaining presentation-only side effects where the gameplay state transition is already known.
 
-The main remaining gap is therefore behavioral parity and one GUARD-state semantic, not the core USE dispatcher architecture.
+The main remaining gap is therefore **behavioral parity**, not the core USE dispatcher architecture or the former GUARD-state-0x0C semantic question.
