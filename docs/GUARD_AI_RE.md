@@ -214,6 +214,22 @@ Detailed evidence is in `GUARD_STRATEGY_ACTIVE_STATES_CLOSURE_2026-09-29.md`.
 
 **Coverage:** strategy IDs/writers/control flow and states 02–08 control flow are **100% for Win16 1.10**. Exact presentation token/IMG/SND binding and complete DOS parity remain separate.
 
+## Engagement mode / acquisition distinction — 2026-09-29
+
+`GUARD+0x16` now has a direct behavioral interpretation in `3:7594`:
+
+- mode `0` -> use close-proximity flag `GUARD+0x18`;
+- mode `1` -> use visibility/LOS flag `GUARD+0x17`;
+- mode `2` -> same LOS result, but no normal writer exists in Win16 1.3/1.6/1.8/1.10.
+
+The close flag is true only when both world-axis deltas are <= 64. The visibility helper itself rejects targets beyond 8 map cells on either axis.
+
+Initialization selects close-proximity mode for Bat, Frankenstein, Mummy, Dracula, both Gargoyles, Dracula-Bat and Ghost; other normal classes default to LOS mode.
+
+States 7/8 use a front-facing acquisition call directly through `7494`, while states 3/4 use `7594`, whose internal visibility call bypasses the frontal-octant test. This cleanly separates initial acquisition from continued attack opportunity.
+
+**Coverage:** engagement-mode semantics are statically closed for Win16 1.10; mode 2 is retained as an LOS-compatible legacy value without a normal producer.
+
 ## Pain transition
 
 The normal non-lethal hit path:
