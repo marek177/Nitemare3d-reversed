@@ -74,8 +74,10 @@ enum class GuardState : std::uint8_t {
     State0A = 0x0A,
     LethalPlayerContact = 0x0B,
     State0B = LethalPlayerContact,
-    State0C = 0x0C,
-    State0D = 0x0D,
+    DormantUseMessage = 0x0C,
+    State0C = DormantUseMessage,
+    DormantSharedPose = 0x0D,
+    State0D = DormantSharedPose,
     State0E = 0x0E,
     State0F = 0x0F,
     State10 = 0x10,
@@ -89,10 +91,22 @@ enum class GuardState : std::uint8_t {
 
 inline constexpr std::size_t kGuardStateCount = 0x16;
 
-// 2026-09-24 Win16 audit: 0x0B is written only on lethal guard-to-player
-// contact and has no dispatcher case. State 0x13 is the strategy-3 move path.
+// State reachability audit:
+// - 0x0B is written on lethal guard-to-player contact and has no dispatcher case.
+// - 0x0C/0x0D share a static sequence-refresh handler but no normal retail writer
+//   was recovered in Win16 1.3/1.6/1.8/1.10 or DOS 1.0/1.7/1.8(=1.9)/2.0.
+//   A crafted/restored state can still enter them; 0x0C retains the USE message
+//   "I've nothing left!".
+// - 0x13 is the strategy-3 timed movement path.
 inline constexpr std::uint8_t kGuardStateLethalPlayerContact = 0x0B;
+inline constexpr std::uint8_t kGuardStateDormantUseMessage = 0x0C;
+inline constexpr std::uint8_t kGuardStateDormantSharedPose = 0x0D;
 inline constexpr std::uint8_t kGuardStateStrategy3Movement = 0x13;
+
+constexpr bool isRecoveredRetailDormantGuardState(std::uint8_t state) noexcept {
+    return state == kGuardStateDormantUseMessage ||
+           state == kGuardStateDormantSharedPose;
+}
 inline constexpr std::uint16_t kGuardState13TimerRandomRange = 0x50;
 inline constexpr std::uint16_t kGuardState13TimerMinimum = 8;
 
@@ -180,8 +194,8 @@ inline constexpr std::array<std::uint16_t, kGuardStateCount> kGuardStateHandlerO
     0x7DEC, // 09 special/collision action
     0x80A4, // 0A no local action in dispatcher
     0x80A4, // 0B no local action in dispatcher
-    0x7E54, // 0C shared handler
-    0x7E54, // 0D shared handler
+    0x7E54, // 0C dormant in recovered retail graph; USE has "I've nothing left!"
+    0x7E54, // 0D dormant sibling; same sequence-refresh handler
     0x7E6C, // 0E conditional -> 0F
     0x7E9E, // 0F timer/action -> 10 or 0E
     0x7F26, // 10 timer -> 0F
