@@ -125,5 +125,84 @@
     "multi_member_families": 51,
     "max_family_size": 4,
     "explicit_relations": 104
+  },
+  "machine_extension_v4": {
+    "new_machine_dossiers": 5009,
+    "dos": {
+      "1.7": {
+        "functions": 600,
+        "functions_with_inferred_parameters": 375,
+        "parameter_slots": 829,
+        "direct_calls": 2008,
+        "memory_write_sites": 2835
+      },
+      "2.0": {
+        "functions": 600,
+        "functions_with_inferred_parameters": 376,
+        "parameter_slots": 835,
+        "direct_calls": 1996,
+        "memory_write_sites": 2819
+      }
+    },
+    "win16": {
+      "1.3": {
+        "source_records": 959,
+        "valid_machine_dossiers": 957,
+        "open_records": 2
+      },
+      "1.6": {
+        "source_records": 959,
+        "valid_machine_dossiers": 952,
+        "open_records": 7
+      },
+      "1.8": {
+        "source_records": 959,
+        "valid_machine_dossiers": 952,
+        "open_records": 7
+      },
+      "1.10": {
+        "source_records": 959,
+        "valid_machine_dossiers": 948,
+        "open_records": 11
+      }
+    },
+    "dos17_vs20": {
+      "normalized_identical": 561,
+      "very_near": 7,
+      "modified_near": 8,
+      "materially_modified": 8,
+      "boundary_or_entry_mismatch": 5
+    },
+    "win16_vs10": {
+      "1.3": {
+        "byte_identical": 560,
+        "normalized_identical": 353,
+        "very_near": 16,
+        "modified_near": 15,
+        "materially_modified": 13
+      },
+      "1.6": {
+        "byte_identical": 311,
+        "normalized_identical": 579,
+        "very_near": 19,
+        "modified_near": 21,
+        "materially_modified": 22
+      },
+      "1.8": {
+        "byte_identical": 311,
+        "normalized_identical": 577,
+        "very_near": 19,
+        "modified_near": 21,
+        "materially_modified": 24
+      },
+      "1.10": {
+        "byte_identical": 149,
+        "normalized_identical": 711,
+        "very_near": 25,
+        "modified_near": 33,
+        "materially_modified": 30
+      }
+    },
+    "caveat": "Machine-level coverage is not a substitute for an independent build-native decompiler export; transferred Win16 contracts preserve provenance."
   }
 }
