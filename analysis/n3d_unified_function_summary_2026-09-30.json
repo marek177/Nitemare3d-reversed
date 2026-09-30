@@ -11,19 +11,92 @@
     "automatic-structural-only": 2968
   },
   "body_coverage": {
-    "DOS 1.0": {"records": 507, "bodies": 503, "failed": 4, "with_parameters": 308, "with_internal_callers": 227, "with_memory_writes": 263},
-    "DOS 1.1": {"records": 513, "bodies": 508, "failed": 5, "with_parameters": 308, "with_internal_callers": 225, "with_memory_writes": 263},
-    "DOS 1.5": {"records": 517, "bodies": 513, "failed": 4, "with_parameters": 307, "with_internal_callers": 238, "with_memory_writes": 267},
-    "DOS 1.9": {"records": 537, "bodies": 533, "failed": 4, "with_parameters": 314, "with_internal_callers": 258, "with_memory_writes": 278},
-    "Win16 1.0": {"records": 960, "bodies": 960, "failed": 0, "with_parameters": 756, "with_internal_callers": 737, "with_memory_writes": 420}
+    "DOS 1.0": {
+      "records": 507,
+      "bodies": 503,
+      "failed": 4,
+      "with_parameters": 308,
+      "with_internal_callers": 227,
+      "with_memory_writes": 263
+    },
+    "DOS 1.1": {
+      "records": 513,
+      "bodies": 508,
+      "failed": 5,
+      "with_parameters": 308,
+      "with_internal_callers": 225,
+      "with_memory_writes": 263
+    },
+    "DOS 1.5": {
+      "records": 517,
+      "bodies": 513,
+      "failed": 4,
+      "with_parameters": 307,
+      "with_internal_callers": 238,
+      "with_memory_writes": 267
+    },
+    "DOS 1.9": {
+      "records": 537,
+      "bodies": 533,
+      "failed": 4,
+      "with_parameters": 314,
+      "with_internal_callers": 258,
+      "with_memory_writes": 278
+    },
+    "Win16 1.0": {
+      "records": 960,
+      "bodies": 960,
+      "failed": 0,
+      "with_parameters": 756,
+      "with_internal_callers": 737,
+      "with_memory_writes": 420
+    }
   },
   "dos_cross_version": {
     "loose_exact_or_simhash_strong_records": 1636,
     "simhash_candidate_records": 160,
     "unique_candidate_records": 261,
-    "unique_candidates_by_version": {"1.0": 59, "1.1": 66, "1.5": 64, "1.9": 72},
+    "unique_candidates_by_version": {
+      "1.0": 59,
+      "1.1": 66,
+      "1.5": 64,
+      "1.9": 72
+    },
     "note": "Unique candidate means no strong structural match in the currently available DOS C exports; semantic uniqueness is not proven."
   },
-  "hard_closure": {"families": 95, "hidden_missing": 85, "decompiler_failure_families": 10},
-  "binary_only_currently": ["DOS 1.7", "DOS 2.0", "Win16 1.3", "Win16 1.6", "Win16 1.8", "Win16 1.10"]
+  "hard_closure": {
+    "families": 95,
+    "hidden_missing": 85,
+    "decompiler_failure_families": 10
+  },
+  "binary_only_currently": [
+    "DOS 1.7",
+    "DOS 2.0",
+    "Win16 1.3",
+    "Win16 1.6",
+    "Win16 1.8",
+    "Win16 1.10"
+  ],
+  "unique_function_closure_v2": {
+    "initial_candidates": 261,
+    "semantic_equivalent_known": 26,
+    "structural_equivalent_high": 44,
+    "structural_equivalent_probable": 20,
+    "review_near_match": 29,
+    "decompiler_boundary_overlap": 31,
+    "remaining_unique_candidates": 111,
+    "remaining_by_version": {
+      "DOS 1.0": 21,
+      "DOS 1.1": 25,
+      "DOS 1.5": 29,
+      "DOS 1.9": 36
+    }
+  },
+  "canonical_v2": {
+    "exported_bodies": 3017,
+    "provisional_families": 1803,
+    "cross_platform_provisional": 26,
+    "cross_version_same_platform_provisional": 561,
+    "single_build_unresolved": 1216
+  }
 }
