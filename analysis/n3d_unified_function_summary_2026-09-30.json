@@ -204,5 +204,116 @@
       }
     },
     "caveat": "Machine-level coverage is not a substitute for an independent build-native decompiler export; transferred Win16 contracts preserve provenance."
+  },
+  "win16_ne_fixup_v5": {
+    "disassembly_parser_fix": "objdump --insn-width=16; rebuilt Win16 machine layer",
+    "win16_10_cfg": {
+      "indexed_functions": 959,
+      "reachable_instructions": 43979,
+      "linear_unreachable_instructions": 20282,
+      "functions_with_linear_unreachable_content": 410
+    },
+    "fixups": {
+      "1.0": {
+        "records": 443,
+        "expanded_sites": 6038,
+        "broken_chains": 0
+      },
+      "1.3": {
+        "records": 443,
+        "expanded_sites": 6041,
+        "broken_chains": 0
+      },
+      "1.6": {
+        "records": 444,
+        "expanded_sites": 6073,
+        "broken_chains": 0
+      },
+      "1.8": {
+        "records": 446,
+        "expanded_sites": 6077,
+        "broken_chains": 0
+      },
+      "1.10": {
+        "records": 446,
+        "expanded_sites": 6082,
+        "broken_chains": 0
+      }
+    },
+    "direct_calls": {
+      "1.0": {
+        "near": 89,
+        "far_internal": 1948,
+        "far_import": 757,
+        "indirect": 212,
+        "static_direct_total": 2794
+      },
+      "1.3": {
+        "near": 89,
+        "far_internal": 1929,
+        "far_import": 756,
+        "indirect": 212,
+        "static_direct_total": 2774
+      },
+      "1.6": {
+        "near": 89,
+        "far_internal": 1889,
+        "far_import": 743,
+        "indirect": 212,
+        "static_direct_total": 2721
+      },
+      "1.8": {
+        "near": 89,
+        "far_internal": 1884,
+        "far_import": 743,
+        "indirect": 212,
+        "static_direct_total": 2716
+      },
+      "1.10": {
+        "near": 89,
+        "far_internal": 1872,
+        "far_import": 723,
+        "indirect": 212,
+        "static_direct_total": 2684
+      }
+    },
+    "import_name_map": {
+      "total": 246,
+      "High": 100,
+      "Medium-High": 117,
+      "Review": 29
+    },
+    "hidden_entry_candidates": {
+      "1.0": {
+        "total": 282,
+        "High": 0,
+        "Medium-High": 223,
+        "Medium": 59
+      },
+      "1.3": {
+        "total": 291,
+        "High": 9,
+        "Medium-High": 223,
+        "Medium": 59
+      },
+      "1.6": {
+        "total": 302,
+        "High": 18,
+        "Medium-High": 224,
+        "Medium": 60
+      },
+      "1.8": {
+        "total": 304,
+        "High": 19,
+        "Medium-High": 224,
+        "Medium": 61
+      },
+      "1.10": {
+        "total": 311,
+        "High": 24,
+        "Medium-High": 225,
+        "Medium": 62
+      }
+    }
   }
 }
