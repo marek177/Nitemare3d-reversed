@@ -40,3 +40,17 @@ foreach(n3d_test_target IN LISTS n3d_directory_targets)
         endif()
     endif()
 endforeach()
+
+# Evidence corpus checks run without proprietary EXEs. Supplying the original
+# builds via N3D_WIN16_BINARIES also enables byte/fixup verification.
+if(BUILD_TESTING)
+    find_package(Python3 COMPONENTS Interpreter QUIET)
+    if(Python3_Interpreter_FOUND)
+        add_test(NAME n3d_win16_hidden_entry_v6_test
+                 COMMAND "${Python3_EXECUTABLE}"
+                         "${CMAKE_CURRENT_SOURCE_DIR}/tests/win16_hidden_entry_v6_test.py")
+        set_tests_properties(n3d_win16_hidden_entry_v6_test PROPERTIES LABELS "reverse-engineering")
+    else()
+        message(STATUS "Win16 hidden-entry evidence test not registered: Python3 unavailable")
+    endif()
+endif()

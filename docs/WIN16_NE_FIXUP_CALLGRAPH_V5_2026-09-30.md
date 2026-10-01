@@ -81,3 +81,9 @@ Against the Win16 1.0 decompiler-derived internal call graph, v5 shares 1,603 di
 The external v5 dossier package contains the full expanded fixup table, CFG-refined fixups, resolved direct callgraph, indirect-call ledger, import-name evidence, corrected machine disassembly, and hidden-entry candidate ledger.
 
 Next: promote High hidden entry points into standalone machine dossiers, map them across all Win16 builds, then separate compiler/MFC thunks from Nitemare 3D gameplay functions.
+
+## Follow-up v6
+
+The High-only binary entry/boundary closure and revised graph are recorded in
+[WIN16_HIGH_HIDDEN_ENTRY_CLOSURE_V6_2026-10-01.md](WIN16_HIGH_HIDDEN_ENTRY_CLOSURE_V6_2026-10-01.md).
+The figures above remain the historical v5 baseline.
