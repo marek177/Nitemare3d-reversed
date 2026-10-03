@@ -1,51 +1,46 @@
-# Nitemare 3D — E3M6 video audit
+# Nitemare 3-D — E3M6 video audit
 
-Source: user-supplied `Nitemare 3D Walkthrough by Hexkwondo! E3 L6.mp4`.
+Source: `Nitemare 3D Walkthrough by Hexkwondo! E3 L6.mp4`
 
-## Source integrity
-
+## Technical identity
 - SHA-256: `fbc572b6a0602e1862d93edf29524a4553c51d5a4ff18c24be0d35eeca7fc26f`
-- Duration: 861.135238 s
-- H.264, 1920x912, 6963 video frames
-- The source MP4 is evidence only and is intentionally not distributed in this repository.
+- Duration: 861.135238 s (14:21.135)
+- Video: H.264, 1920x912
+- Reported frames: 6963
 
-## Confirmed / strengthened behavior
+## Confirmed gameplay events
 
-- Episode 3 uses multiple fire-hazard behaviors rather than one universal solid-fire behavior.
-- Small fire is traversable and damages the player while crossing.
-- Medium fire is also traversable but causes very severe health loss; this agrees with the original hint-book description that it is almost deadly.
-- Large fire is the lethal/impassable class according to the original game documentation and is treated separately from the traversable classes.
-- The practical E3M6 route therefore depends on hazard class, current health and exposure duration; collision code must not model all flames as solid walls.
-- The walkthrough reinforces that fire damage is a gameplay hazard applied during traversal, not merely a decorative sprite effect.
-- The level progresses into the Episode-3 crypt/hell visual area and finishes at the pentagram/control-panel exit area.
+| Time | Event | RE significance |
+|---:|---|---|
+| ~00:00 | Main menu then E3M6 gameplay begins | Confirms normal level entry path; no special opening story popup seen. |
+| ~01:32.9 | `You use the Red key` | Confirms successful red-key door branch. Red key remains represented as inventory state rather than a one-shot scripted item. |
+| ~02:33–02:40 | Green key visible in HUD after progression through red-key section | Confirms green-key acquisition in E3M6. Exact pickup frame should be correlated with MAP/object coordinate if needed. |
+| ~05:44.3 | Stair selector: `Climb up / Climb down / Cancel` | Confirms the same three-option StairWarpSelector behavior seen in E3M1/E3M10. |
+| ~06:08 | Yellow key visible in HUD | Confirms yellow-key acquisition before the later keyed door. |
+| ~09:52.5 | `You use the Yellow key` | Confirms successful yellow-key door branch. |
+| ~11:12–11:14 | Red chest/trunk in skull-texture area is opened; score increases by 150 | Confirms mutable container/chest state and score reward. Exact contained item is not asserted solely from these frames. |
+| ~11:46–11:50 | Combat in skull corridor; player HP visibly changes | Useful for future damage-timing correlation, but this clip alone does not isolate whether the damage source is enemy contact/projectile/fire. |
+| ~12:30 onward | Extended skull/fire/hell section with multiple distinct flame visuals | Strong visual evidence for multiple fire/hazard presentations in E3M6; exact per-class damage requires EXE/MAP correlation. |
+| ~14:00 | Final chamber/exit sequence | Transition into level completion path. |
+| ~14:12–14:13 | Level completion screen | Level 6; Enemies Remaining 18; Panels Not Found 2; Bonus 0; Score 25675. |
 
-## Directly observed completion screen
+## Directly confirmed mechanics
+- Colored locked-key door success messaging in Episode 3.
+- Persistent key inventory model remains consistent with the E3M7/E3M8 audits.
+- Three-option stair selector (`Climb up`, `Climb down`, `Cancel`).
+- Mutable chest/container interaction with score change.
+- Large multi-section fire/hazard area in E3M6.
+- Standard level-completion statistics screen and values.
 
-- Level Completed: **6**
-- Enemies Remaining: **18**
-- Panels Not Found: **2**
-- Bonus for Level: **0**
-- Score so far: **25675**
+## Important caution
+The official hint material describes E3M6 as the level that distinguishes large/medium/small fire hazards. The video clearly shows multiple fire presentations, but this audit does **not** assign exact damage or passability values from visuals alone. Those numeric rules should be recovered from `NITE3W.EXE` or verified with controlled gameplay.
 
-## Reconstruction consequences
+## Completion screen
+- Level Completed: 6
+- Enemies Remaining: 18
+- Panels Not Found: 2
+- Bonus for Level: 0
+- Score so far: 25675
 
-1. Keep an explicit fire-hazard classification (`Small`, `Medium`, `Large`).
-2. Keep collision/passability separate from damage application.
-3. The video alone does not establish numeric damage. The 2026-09-23 Win16 executable/data audit now confirms 100/10/2 HP per simulation update for large/medium/small fire; the calibrated update interval and damage-per-second remain open.
-4. Small and medium flames must permit player occupancy/traversal. Large flames must follow the original lethal/impassable behavior.
-5. Integrate fire behavior with the future player-health/damage subsystem rather than hard-coding it into map rendering.
-
-The evidence-bounded model is implemented in `src/game/HazardSystem.hpp`.
-
-## Evidence status
-
-- Fire class semantics: **video + original documentation supported**.
-- Exact HP damage values: **VERIFIED_EXE** in the 2026-09-23 NITE3W 1.10 audit: large/medium/small fire = 100/10/2 HP per simulation update.
-- Exact damage tick interval and damage per second: **unresolved**; the video audit alone does not measure them.
-- Exact object/wall IDs for every fire visual: **requires MAP/IMG/EXE cross-reference before declaring 100%**.
-
-## Episode 3 video coverage after this audit
-
-Audited/video-complete: **E3M1, E3M2, E3M6, E3M7, E3M8, E3M9, E3M10/Ending**.
-
-Still requiring a full durable walkthrough audit: **E3M3, E3M4, E3M5**.
+## Deletion status
+This source MP4 is now sufficiently audited for the reverse-engineering evidence set. The report preserves its SHA-256, principal timestamps, and selected evidence frames; the original MP4 is not included in the audit package.
