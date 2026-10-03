@@ -60,6 +60,20 @@ Cancel
 
 This is an important correction: an earlier provisional analysis associated `0x25..0x2C` with the combination prompt. The direct segment-7 menu evidence disproves that classification.
 
+## Exact contextual-menu actions
+
+The central segment-4 action dispatcher closes the formerly open callbacks:
+
+- floor selection = action `0x1A`; selected record `+02` is passed to `seg3:2800`;
+- climb up = action `0x1B` -> `seg3:2800(+1)`;
+- climb down = action `0x1C` -> `seg3:2800(-1)`;
+- go down = action `0x1D` -> `seg3:2800(-1)`;
+- cancel in both stairs/descend menus = generic action `0x19`.
+
+For the floor selector, `seg4:1F6A` dynamically writes each enabled record's value as `targetRawWallId - currentRawWallId`. `seg3:2800` applies that offset, finds the target raw-wall cell, commits the player to tile center and sets cardinal facing.
+
+This corrects the older high-level menu model that labeled action 29/`0x1D` as StairCancel. **VERIFIED_EXE**.
+
 ## Combination prompt actually belongs to object type `0x26`
 
 `seg3:1A22` sends mapped object types `0x26` and `0x27` to `seg3:AD9E`.
@@ -85,7 +99,7 @@ I'm sorry, that is not
 the correct combination.
 ```
 
-Thus the **combination-input interaction is object type `0x26`**, not wall types `0x25..0x2C`. Exact visual/object identity is still **PARTIAL** until the OBJECT-definition/state audit is complete.
+Thus the **combination-input interaction is object type `0x26`**, not wall types `0x25..0x2C`. Retail OBJECTS data identifies `0x26` as **SAFE**. Correct-combination handling writes a subtype-derived state; the later USE reward path maps the six subtypes to four colored keys plus Red/Yellow ID cards. **VERIFIED_EXE + VERIFIED_DATA**.
 
 ## Four-pentagram mask — global `0x4C45`
 
@@ -181,7 +195,7 @@ Well done!  You fixed the power!
 You already fixed it!
 ```
 
-Therefore type 8 includes an E1M7 power-repair interaction. The exact E1M2 user-facing action remains **PARTIAL**.
+Retail WALLS data closes both Episode-1 type-8 cases: E1M2 wall ID `0x56` is **Office - Morphing chalkboard**, while E1M7 wall ID `0x12` is the **Kitchen - Fuse box** power-repair case. The E1M2 path writes sequence/resource timer `0x96` and requests SFX `0x44`. **VERIFIED_EXE + VERIFIED_DATA**.
 
 ## Current exact dispatcher map
 
@@ -197,8 +211,8 @@ Therefore type 8 includes an E1M7 power-repair interaction. The exact E1M2 user-
 
 ## Remaining special-wall work
 
-- decode the final callback/action IDs behind climb/floor/go-down menus;
-- name the remaining individual visual wall variants within each family;
-- complete the per-level scripted behavior for wall type 8;
-- finish object type `0x26` combination state/reward logic during the OBJECT audit;
-- tie the remote-terminal OBJECT `+01` values to the exact Red/Yellow ID-card-controlled variants.
+The callback/action IDs, SAFE identity/reward chain, and Episode-1 SPECIAL1 cases are closed by the 2026-09-28 pass. Remaining work is primarily:
+
+- name any still-unbound individual visual variants within the broader portal/warp families where retail data actually supplies them;
+- runtime-regression the floor/stair/portal transitions, including facing and repeated-use edge cases;
+- complete semantic naming of any level-script state fields that are touched after the already-known transition.
