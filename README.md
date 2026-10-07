@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.20
+# Nitemare3D-Reversed — reconstruction v0.21
+
+**v0.21 / 2026-10-07 RE MAX update:** DOS v2.0 subsystem anchors and runtime regions are now centralized in an evidence map with confidence labels. The new layer classifies GUARD, player, projectile, action/FIRE, secret-panel and renderer addresses; keeps `0800:0E50` explicitly OPEN as an OBJECT-runtime candidate; and adds a relative-order verifier for captured traces without pretending the complete FAST/MAIN schedule is already known. See [`docs/V021_REMAX_SUBSYSTEM_EVIDENCE.md`](docs/V021_REMAX_SUBSYSTEM_EVIDENCE.md) and [`tests/v021_subsystem_evidence_test.cpp`](tests/v021_subsystem_evidence_test.cpp).
 
 **v0.20 / 2026-10-07 RE MAX update:** the project now has a dedicated deterministic verification harness for the remaining timing/RNG closure work. `N3DV020VerificationHarness` encodes the confirmed DOS v2.0 IRQ/clock/FAST/MAIN/outer-scheduler anchors, validates captured RNG transitions and known direct callsites, classifies scheduler trace events, and reports the first divergent address between traces. The unresolved `0800:0E50` OBJECT runtime site remains explicitly marked OPEN rather than being mislabeled as a proven scheduler. See [`docs/V020_REMAX_VERIFICATION_HARNESS.md`](docs/V020_REMAX_VERIFICATION_HARNESS.md) and [`tests/v020_verification_harness_test.cpp`](tests/v020_verification_harness_test.cpp).
 
@@ -144,6 +146,7 @@ cmake --build build
 ./build/n3d_v018_evidence_test
 ./build/n3d_v019_runtime_primitives_test
 ./build/n3d_v020_verification_harness_test
+./build/n3d_v021_subsystem_evidence_test
 ```
 
 ### Windows 11 + SDL3
