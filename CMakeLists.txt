@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.21.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.22.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -152,6 +152,9 @@ target_link_libraries(n3d_v020_verification_harness_test PRIVATE n3d_core)
 
 add_executable(n3d_v021_subsystem_evidence_test tests/v021_subsystem_evidence_test.cpp)
 target_link_libraries(n3d_v021_subsystem_evidence_test PRIVATE n3d_core)
+
+add_executable(n3d_v022_version_evidence_registry_test tests/v022_version_evidence_registry_test.cpp)
+target_link_libraries(n3d_v022_version_evidence_registry_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
