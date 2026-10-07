@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.25
+# Nitemare3D-Reversed — reconstruction v0.26
+
+**v0.26 / 2026-10-07 RE MAX update:** DOS v2.0 direct RNG callsites are now coupled to known GUARD/animation consumers with explicit confidence. Confirmed bindings include the animation `RNG&7` rejection-loop callsite, GUARD state-06 blocked-axis one-draw decision, and GUARD state-13 `RNG%80+8` timer. Planner callsites and the damage/pain callsite remain STRONG rather than promoted, while all other direct RNG callsites stay OPEN/Unassigned until runtime chronology closes them. See [`docs/V026_REMAX_GUARD_RNG_COUPLING.md`](docs/V026_REMAX_GUARD_RNG_COUPLING.md) and [`tests/v026_guard_rng_coupling_test.cpp`](tests/v026_guard_rng_coupling_test.cpp).
 
 **v0.25 / 2026-10-07 RE MAX update:** GUARD state changes are now tracked as a writer graph, separate from the state-handler table. Known Win16 v1.10 handler-level writes are recorded with exact handler addresses, while external transitions such as ordinary pain entry and the Dracula phase reset preserve their confirmed written values but keep `addressKnown=false` until the exact write instruction/XREF is pinned. See [`docs/V025_REMAX_GUARD_WRITER_GRAPH.md`](docs/V025_REMAX_GUARD_WRITER_GRAPH.md) and [`tests/v025_guard_writer_graph_test.cpp`](tests/v025_guard_writer_graph_test.cpp).
 
@@ -159,6 +161,7 @@ cmake --build build
 ./build/n3d_v023_cross_build_symbol_map_test
 ./build/n3d_v024_guard_state_graph_test
 ./build/n3d_v025_guard_writer_graph_test
+./build/n3d_v026_guard_rng_coupling_test
 ```
 
 ### Windows 11 + SDL3
