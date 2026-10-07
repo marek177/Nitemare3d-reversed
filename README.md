@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.19
+# Nitemare3D-Reversed — reconstruction v0.20
+
+**v0.20 / 2026-10-07 RE MAX update:** the project now has a dedicated deterministic verification harness for the remaining timing/RNG closure work. `N3DV020VerificationHarness` encodes the confirmed DOS v2.0 IRQ/clock/FAST/MAIN/outer-scheduler anchors, validates captured RNG transitions and known direct callsites, classifies scheduler trace events, and reports the first divergent address between traces. The unresolved `0800:0E50` OBJECT runtime site remains explicitly marked OPEN rather than being mislabeled as a proven scheduler. See [`docs/V020_REMAX_VERIFICATION_HARNESS.md`](docs/V020_REMAX_VERIFICATION_HARNESS.md) and [`tests/v020_verification_harness_test.cpp`](tests/v020_verification_harness_test.cpp).
 
 **v0.19 / 2026-10-07 RE MAX update:** another set of executable-backed runtime primitives is now represented directly in code. `N3DV019RuntimePrimitives` preserves the DOS v2.0 player collision footprint `0x1B`, the GUARD state-06 one-draw blocked-axis decision, planner/state-13 RNG timer formulas, the 2-unit secret-panel retraction step, and automap/detector drain intervals. Evidence confidence is encoded alongside the helpers so unresolved sliding order, exact scheduler interleaving and pool-full ammo behavior are not silently promoted to 1:1 facts. See [`docs/V019_REMAX_RUNTIME_PRIMITIVES.md`](docs/V019_REMAX_RUNTIME_PRIMITIVES.md) and [`tests/v019_runtime_primitives_test.cpp`](tests/v019_runtime_primitives_test.cpp).
 
@@ -141,6 +143,7 @@ cmake --build build
 ./build/n3d_v017_runtime_integration_test
 ./build/n3d_v018_evidence_test
 ./build/n3d_v019_runtime_primitives_test
+./build/n3d_v020_verification_harness_test
 ```
 
 ### Windows 11 + SDL3
