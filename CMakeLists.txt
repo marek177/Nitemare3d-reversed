@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.25.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.26.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -164,6 +164,9 @@ target_link_libraries(n3d_v024_guard_state_graph_test PRIVATE n3d_core)
 
 add_executable(n3d_v025_guard_writer_graph_test tests/v025_guard_writer_graph_test.cpp)
 target_link_libraries(n3d_v025_guard_writer_graph_test PRIVATE n3d_core)
+
+add_executable(n3d_v026_guard_rng_coupling_test tests/v026_guard_rng_coupling_test.cpp)
+target_link_libraries(n3d_v026_guard_rng_coupling_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
