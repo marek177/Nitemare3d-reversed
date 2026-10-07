@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.21
+# Nitemare3D-Reversed — reconstruction v0.22
+
+**v0.22 / 2026-10-07 RE MAX update:** executable identity and RE confidence are now machine-readable. `N3DV022VersionEvidenceRegistry.hpp` introduces build profiles for DOS v1.0/v1.2/v1.9/v2.0 and Win16, but only DOS v2.0 carries a confirmed fingerprint until the other binaries are independently hashed. The same registry scopes facts to builds, records evidence provenance and closure tests, and exposes a promotion guard so only CONFIRMED facts can be treated as implementation-ready. See [`docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md`](docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md) and [`tests/v022_version_evidence_registry_test.cpp`](tests/v022_version_evidence_registry_test.cpp).
 
 **v0.21 / 2026-10-07 RE MAX update:** DOS v2.0 subsystem anchors and runtime regions are now centralized in an evidence map with confidence labels. The new layer classifies GUARD, player, projectile, action/FIRE, secret-panel and renderer addresses; keeps `0800:0E50` explicitly OPEN as an OBJECT-runtime candidate; and adds a relative-order verifier for captured traces without pretending the complete FAST/MAIN schedule is already known. See [`docs/V021_REMAX_SUBSYSTEM_EVIDENCE.md`](docs/V021_REMAX_SUBSYSTEM_EVIDENCE.md) and [`tests/v021_subsystem_evidence_test.cpp`](tests/v021_subsystem_evidence_test.cpp).
 
@@ -147,6 +149,7 @@ cmake --build build
 ./build/n3d_v019_runtime_primitives_test
 ./build/n3d_v020_verification_harness_test
 ./build/n3d_v021_subsystem_evidence_test
+./build/n3d_v022_version_evidence_registry_test
 ```
 
 ### Windows 11 + SDL3
