@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.22
+# Nitemare3D-Reversed — reconstruction v0.23
+
+**v0.23 / 2026-10-07 RE MAX update:** cross-version mapping is now behavior-oriented rather than offset-oriented. `N3DV023CrossBuildSymbolMap.hpp` assigns stable behavior IDs to build-specific DOS v2.0 and Win16 v1.10 symbols, preserves per-entry confidence, and deliberately leaves missing equivalents unresolved instead of guessing addresses. A pair is considered confirmed only when both sides are present and CONFIRMED. See [`docs/V023_REMAX_CROSS_BUILD_SYMBOL_MAP.md`](docs/V023_REMAX_CROSS_BUILD_SYMBOL_MAP.md) and [`tests/v023_cross_build_symbol_map_test.cpp`](tests/v023_cross_build_symbol_map_test.cpp).
 
 **v0.22 / 2026-10-07 RE MAX update:** executable identity and RE confidence are now machine-readable. `N3DV022VersionEvidenceRegistry.hpp` introduces build profiles for DOS v1.0/v1.2/v1.9/v2.0 and Win16, but only DOS v2.0 carries a confirmed fingerprint until the other binaries are independently hashed. The same registry scopes facts to builds, records evidence provenance and closure tests, and exposes a promotion guard so only CONFIRMED facts can be treated as implementation-ready. See [`docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md`](docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md) and [`tests/v022_version_evidence_registry_test.cpp`](tests/v022_version_evidence_registry_test.cpp).
 
@@ -150,6 +152,7 @@ cmake --build build
 ./build/n3d_v020_verification_harness_test
 ./build/n3d_v021_subsystem_evidence_test
 ./build/n3d_v022_version_evidence_registry_test
+./build/n3d_v023_cross_build_symbol_map_test
 ```
 
 ### Windows 11 + SDL3
