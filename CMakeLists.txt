@@ -25,6 +25,7 @@ add_library(n3d_core
     src/ui/InstructionsData.cpp
     src/renderer/Framebuffer.cpp
     src/renderer/Raycaster.cpp
+    src/re/DosV12AnimationRuntime.cpp
 )
 
 target_include_directories(n3d_core PUBLIC src)
@@ -131,6 +132,9 @@ target_link_libraries(n3d_v016_coverage_test PRIVATE n3d_core)
 
 add_executable(n3d_v017_runtime_integration_test tests/v017_runtime_integration_test.cpp)
 target_link_libraries(n3d_v017_runtime_integration_test PRIVATE n3d_core)
+
+add_executable(n3d_dos_v12_animation_runtime_test tests/dos_v12_animation_runtime_test.cpp)
+target_link_libraries(n3d_dos_v12_animation_runtime_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
