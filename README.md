@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.26
+# Nitemare3D-Reversed — reconstruction v0.27
+
+**v0.27 / 2026-10-07 RE MAX update:** projectile behavior is now represented as a build-scoped lifecycle evidence graph covering DOS v2.0 and Win16 v1.10. The graph preserves confirmed allocation/init/movement/collision/render anchors, the 8 x 42-byte composite pool, and the `0 -> 1 -> 2 -> 0` slot lifecycle. Strong-but-open edges such as next-tick movement after FIRE, full-pool ammo preservation, and stale projection-cache effects remain explicitly non-implementation-safe. See [`docs/V027_REMAX_PROJECTILE_LIFECYCLE.md`](docs/V027_REMAX_PROJECTILE_LIFECYCLE.md) and [`tests/v027_projectile_lifecycle_test.cpp`](tests/v027_projectile_lifecycle_test.cpp).
 
 **v0.26 / 2026-10-07 RE MAX update:** DOS v2.0 direct RNG callsites are now coupled to known GUARD/animation consumers with explicit confidence. Confirmed bindings include the animation `RNG&7` rejection-loop callsite, GUARD state-06 blocked-axis one-draw decision, and GUARD state-13 `RNG%80+8` timer. Planner callsites and the damage/pain callsite remain STRONG rather than promoted, while all other direct RNG callsites stay OPEN/Unassigned until runtime chronology closes them. See [`docs/V026_REMAX_GUARD_RNG_COUPLING.md`](docs/V026_REMAX_GUARD_RNG_COUPLING.md) and [`tests/v026_guard_rng_coupling_test.cpp`](tests/v026_guard_rng_coupling_test.cpp).
 
@@ -162,6 +164,7 @@ cmake --build build
 ./build/n3d_v024_guard_state_graph_test
 ./build/n3d_v025_guard_writer_graph_test
 ./build/n3d_v026_guard_rng_coupling_test
+./build/n3d_v027_projectile_lifecycle_test
 ```
 
 ### Windows 11 + SDL3
