@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.18
+# Nitemare3D-Reversed — reconstruction v0.19
+
+**v0.19 / 2026-10-07 RE MAX update:** another set of executable-backed runtime primitives is now represented directly in code. `N3DV019RuntimePrimitives` preserves the DOS v2.0 player collision footprint `0x1B`, the GUARD state-06 one-draw blocked-axis decision, planner/state-13 RNG timer formulas, the 2-unit secret-panel retraction step, and automap/detector drain intervals. Evidence confidence is encoded alongside the helpers so unresolved sliding order, exact scheduler interleaving and pool-full ammo behavior are not silently promoted to 1:1 facts. See [`docs/V019_REMAX_RUNTIME_PRIMITIVES.md`](docs/V019_REMAX_RUNTIME_PRIMITIVES.md) and [`tests/v019_runtime_primitives_test.cpp`](tests/v019_runtime_primitives_test.cpp).
 
 **v0.18 / 2026-10-07 update:** October RE findings are now promoted into buildable C/C++ evidence modules instead of remaining only in research notes. `src/re/n3d_v018_facts.h` and `.c` encode build-scoped DOS v2.0 player, projectile, GUARD, RNG, secret-panel, renderer and scheduler anchors; `src/re/N3DV018Evidence.cpp` adds C++ compile-time layout checks; and `tests/v018_evidence_test.cpp` regression-tests the promoted facts and RNG sequence. Corrections from the latest audit are preserved explicitly: old Win16/DOS offsets are not treated as universal, `+0x50` is not promoted as an OBJECT stride, and secret panels are modeled as segmented VEC retraction rather than rigid pushwalls. See [`docs/V018_EVIDENCE_INTEGRATION.md`](docs/V018_EVIDENCE_INTEGRATION.md) and the October 1–7 research reports under [`docs/research/2026-10-01_07/`](docs/research/2026-10-01_07/).
 
@@ -138,6 +140,7 @@ cmake --build build
 ./build/n3d_v016_coverage_test
 ./build/n3d_v017_runtime_integration_test
 ./build/n3d_v018_evidence_test
+./build/n3d_v019_runtime_primitives_test
 ```
 
 ### Windows 11 + SDL3
