@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.17
+# Nitemare3D-Reversed — reconstruction v0.18
+
+**v0.18 / 2026-10-07 update:** October RE findings are now promoted into buildable C/C++ evidence modules instead of remaining only in research notes. `src/re/n3d_v018_facts.h` and `.c` encode build-scoped DOS v2.0 player, projectile, GUARD, RNG, secret-panel, renderer and scheduler anchors; `src/re/N3DV018Evidence.cpp` adds C++ compile-time layout checks; and `tests/v018_evidence_test.cpp` regression-tests the promoted facts and RNG sequence. Corrections from the latest audit are preserved explicitly: old Win16/DOS offsets are not treated as universal, `+0x50` is not promoted as an OBJECT stride, and secret panels are modeled as segmented VEC retraction rather than rigid pushwalls. See [`docs/V018_EVIDENCE_INTEGRATION.md`](docs/V018_EVIDENCE_INTEGRATION.md) and the October 1–7 research reports under [`docs/research/2026-10-01_07/`](docs/research/2026-10-01_07/).
 
 **v0.17 / 2026-09-29 update:** recovered executable behavior is now pushed further into the actual runtime source instead of living only in RE notes. `CombatSystem.hpp` implements the verified class × weapon resistance transform and difficulty scaling; `GuardSystem.hpp` exposes the verified positive-hit receiver outcome; `ObjectSystem.hpp` exposes executable-backed runtime/property predicates; and `ProjectileRuntime.hpp` adds explicit collision/impact decisions around the verified 8 × 42-byte projectile pool. Renderer code remains conservative where directional/vertical sprite selection is still behavioral rather than instruction-verified. See [`docs/PROJECT_STATUS_V017.md`](docs/PROJECT_STATUS_V017.md) and [`tests/v017_runtime_integration_test.cpp`](tests/v017_runtime_integration_test.cpp).
 
@@ -135,6 +137,7 @@ cmake --build build
 ./build/n3d_v015_sprite_facts_test
 ./build/n3d_v016_coverage_test
 ./build/n3d_v017_runtime_integration_test
+./build/n3d_v018_evidence_test
 ```
 
 ### Windows 11 + SDL3
