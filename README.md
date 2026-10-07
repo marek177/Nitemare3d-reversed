@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.23
+# Nitemare3D-Reversed — reconstruction v0.24
+
+**v0.24 / 2026-10-07 RE MAX update:** the Win16 v1.10 GUARD dispatcher is now represented as a 22-state evidence graph for states `0x00..0x15`. Each state carries its handler address, control-flow description, transition form, and separate control-flow versus semantic confidence. Confirmed transitions such as `01->02`, `06->03`, `10->0F`, `11->07`, plus `00/12/15 -> nextstate`, are regression-tested. DOS v2.0 `1000:59F0` remains dispatcher-level STRONG evidence only; per-state DOS handlers are not guessed. See [`docs/V024_REMAX_GUARD_STATE_GRAPH.md`](docs/V024_REMAX_GUARD_STATE_GRAPH.md) and [`tests/v024_guard_state_graph_test.cpp`](tests/v024_guard_state_graph_test.cpp).
 
 **v0.23 / 2026-10-07 RE MAX update:** cross-version mapping is now behavior-oriented rather than offset-oriented. `N3DV023CrossBuildSymbolMap.hpp` assigns stable behavior IDs to build-specific DOS v2.0 and Win16 v1.10 symbols, preserves per-entry confidence, and deliberately leaves missing equivalents unresolved instead of guessing addresses. A pair is considered confirmed only when both sides are present and CONFIRMED. See [`docs/V023_REMAX_CROSS_BUILD_SYMBOL_MAP.md`](docs/V023_REMAX_CROSS_BUILD_SYMBOL_MAP.md) and [`tests/v023_cross_build_symbol_map_test.cpp`](tests/v023_cross_build_symbol_map_test.cpp).
 
@@ -153,6 +155,7 @@ cmake --build build
 ./build/n3d_v021_subsystem_evidence_test
 ./build/n3d_v022_version_evidence_registry_test
 ./build/n3d_v023_cross_build_symbol_map_test
+./build/n3d_v024_guard_state_graph_test
 ```
 
 ### Windows 11 + SDL3
