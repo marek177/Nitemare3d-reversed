@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.17.0 LANGUAGES CXX)
+project(Nitemare3D_Reconstructed VERSION 0.18.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -26,6 +26,8 @@ add_library(n3d_core
     src/renderer/Framebuffer.cpp
     src/renderer/Raycaster.cpp
     src/re/DosV12AnimationRuntime.cpp
+    src/re/n3d_v018_facts.c
+    src/re/N3DV018Evidence.cpp
 )
 
 target_include_directories(n3d_core PUBLIC src)
@@ -135,6 +137,9 @@ target_link_libraries(n3d_v017_runtime_integration_test PRIVATE n3d_core)
 
 add_executable(n3d_dos_v12_animation_runtime_test tests/dos_v12_animation_runtime_test.cpp)
 target_link_libraries(n3d_dos_v12_animation_runtime_test PRIVATE n3d_core)
+
+add_executable(n3d_v018_evidence_test tests/v018_evidence_test.cpp)
+target_link_libraries(n3d_v018_evidence_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
