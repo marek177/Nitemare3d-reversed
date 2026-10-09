@@ -51,7 +51,9 @@ The wake loop has no distance or line-of-sight test. Because it marks the select
 
 In Win16 1.10, FUN_1010_8B06 reaches the wake routine after the hitscan or projectile-fire path succeeds. Raw assembly at segment 3 offset 0x8BED loads DAT_1048_4C1C, pushes it, and far-calls FUN_1010_7664. It then calls FUN_1010_B594 to select and play the attack sound and marks DAT_1048_4C30.
 
-The direct wake behavior is therefore triggered by a successful player-fire path; this handler does not model sound travel, attenuation, distance, or visibility. That does not rule out other sound-related AI paths elsewhere in the executable.
+The direct wake behavior is therefore triggered by an **accepted player-fire action**, not by a confirmed hit. In the hitscan path, after the fire/ammo gate succeeds, the GUARD hit-test loop may hit zero or more targets; the wake call still follows the loop. In the projectile path, the wake call follows successful projectile/fire creation. No active weapon, the scripted weapon-jam early return, failed ammo/fire acceptance, or failed projectile allocation returns before the wake call.
+
+This handler does not model sound travel, attenuation, distance, or visibility. It is a selector-group wake event. This distinction is important for Omnificent: firing can wake eligible passive guards without clearing the global Omnificent flag.
 
 The same sequence is present in Win16 1.8 under different function names: the cache routine is FUN_1010_75C0, the corresponding attack path is FUN_1010_8A62, and the selector classifier is FUN_1010_242E. The 1.8 cache body has the same 64-byte clear, selector gate, strategy/state filters, and random 0–7 timer.
 
