@@ -78,6 +78,9 @@ target_link_libraries(n3d_unknown_systems_audit_test PRIVATE n3d_core)
 add_executable(n3d_recovered_runtime_facts_test tests/recovered_runtime_facts_test.cpp)
 target_link_libraries(n3d_recovered_runtime_facts_test PRIVATE n3d_core)
 
+add_executable(n3d_use_interaction_facts_test tests/use_interaction_facts_test.cpp)
+target_link_libraries(n3d_use_interaction_facts_test PRIVATE n3d_core)
+
 add_executable(n3d_projectile_runtime_test tests/projectile_runtime_test.cpp)
 target_link_libraries(n3d_projectile_runtime_test PRIVATE n3d_core)
 

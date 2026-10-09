@@ -2,6 +2,8 @@
 
 Date: 2026-09-17
 
+Closure update: 2026-09-28 — re-audited against Win16 1.10 assembly/decompiler output, retail OBJECTS/WALLS class tables, and reconstructed segment-7 menu records.
+
 This document traces the player USE/ACTION input from the recorded/input bit to the interaction dispatcher and its major target families.
 
 ## Evidence labels
@@ -46,7 +48,28 @@ DoorRuntime stride = 0x16 = 22 bytes
 Maximum doors      = 64
 ```
 
-Door-linked OBJECT classes `0x33..0x38` test colored-key mask `0x4C28`; classes `0x39..0x3A` test ID-card mask `0x4C29`. The bit index comes from OBJECT `+0x01`. Classes `0x3B..0x3C` reject the ordinary door route. Door record `+0x14` is set to 1 before `seg3:188A` performs the transition. Runtime door state `+0x0C` values 0 and 4 are the states accepted by the collision passability helper.
+Door-linked classes are now joined to the retail wall-class dictionaries:
+
+| class | retail family | USE access rule |
+|---:|---|---|
+| `0x31` | DOORV | ordinary vertical sliding door |
+| `0x32` | DOORH | ordinary horizontal sliding door |
+| `0x33` | DOORVL | colored-key locked V, environment set 1 |
+| `0x34` | DOORHL | colored-key locked H, environment set 1 |
+| `0x35` | DOORVL2 | colored-key locked V, environment set 2 |
+| `0x36` | DOORHL2 | colored-key locked H, environment set 2 |
+| `0x37` | DOORVL3 | colored-key locked V, environment set 3 |
+| `0x38` | DOORHL3 | colored-key locked H, environment set 3 |
+| `0x39` | DOORVI | ID-card/transport-chamber V |
+| `0x3A` | DOORHI | ID-card/transport-chamber H |
+| `0x3B` | DOORVR | remote-controlled V; direct USE rejected |
+| `0x3C` | DOORHR | remote-controlled H; direct USE rejected |
+| `0x3F` | DOORVC | curtain V family |
+| `0x40` | DOORHC | curtain H family |
+
+No audited retail wall-class table assigns `0x3D` or `0x3E`; those numeric gaps must not be given invented retail door names.
+
+Classes `0x33..0x38` test colored-key mask `0x4C28`; classes `0x39..0x3A` test ID-card mask `0x4C29`. The bit index comes from linked OBJECT `+0x01`. Classes `0x3B..0x3C` reject the ordinary door route. Door record `+0x14` is set to 1 before `seg3:188A` performs the transition. The audited direct door and remote-terminal USE paths test credentials but do not clear the key/card masks.
 
 Exact inventory strings recovered directly from the executable:
 
@@ -119,7 +142,7 @@ NE relocation-chain decoding proves the target segments:
 
 The first, fourth and fifth classifications come from the actual segment-7 menu records, not from string proximity.
 
-### `0x0D..0x14` — climb menu
+### `0x0D..0x14` — climb menu and exact callbacks
 
 `seg4:1EE0` passes segment-7 menu `0x155C`:
 
@@ -129,7 +152,15 @@ Climb down
 Cancel
 ```
 
-The handler uses `seg3:2334`/`2426` to determine which direction is currently possible. **VERIFIED_EXE**.
+The handler uses `seg3:2334`/`2426` to determine which direction is currently possible.
+
+The segment-7 records and central action dispatcher close the callbacks:
+
+- **Climb up** = action `27 / 0x1B` -> `seg3:2800(+1)`;
+- **Climb down** = action `28 / 0x1C` -> `seg3:2800(-1)`;
+- **Cancel** = generic action `25 / 0x19`, not action 29.
+
+This corrects an older menu-model label in which action 29 was called StairCancel. **VERIFIED_EXE**.
 
 ### `0x15..0x18` — pentagram / Other Side family
 
@@ -168,7 +199,13 @@ Floor 2
 Floor 10
 ```
 
-The number of active floor records is derived from the raw wall variants associated with the logical wall type. **VERIFIED_EXE**.
+The number of active floor records is derived from the raw wall variants associated with the logical wall type. `seg4:1F6A` writes each enabled menu record's `+02` value as:
+
+```text
+targetRawWallId - currentRawWallId
+```
+
+Action `26 / 0x1A` walks the selected floor record and passes that signed value to `seg3:2800`. `seg3:2800` finds the destination raw-wall variant in the current map, selects an available neighboring cell, commits the player at tile center (`x*64+32, y*64+32`) and sets the resulting cardinal facing. **VERIFIED_EXE**.
 
 ### `0x25..0x2C` — go-down confirmation
 
@@ -179,7 +216,12 @@ Go down
 Cancel
 ```
 
-This corrects an earlier provisional classification: **`0x25..0x2C` are not the combination-lock family.** Direct segment-7 menu decoding supersedes that earlier interpretation. **VERIFIED_EXE**.
+Its exact callbacks are:
+
+- **Go down** = action `29 / 0x1D` -> `seg3:2800(-1)`;
+- **Cancel** = action `25 / 0x19`.
+
+Thus action 29 is a real descend operation, not a cancel action. This also corrects an earlier provisional classification: **`0x25..0x2C` are not the combination-lock family.** **VERIFIED_EXE**.
 
 ## Combination input — object type `0x26`, not wall `0x25..0x2C`
 
@@ -191,7 +233,67 @@ What's the combination?  0000000
 
 The data segment also contains code strings such as `01532`, `080993`, `372535` and the failure text `I'm sorry, that is not the correct combination.`
 
-Therefore the combination-input mechanism belongs to **object type `0x26`**. Its precise visual/object name remains PARTIAL until OBJECT definitions and state fields are tied together. **VERIFIED_EXE** for the prompt/type association.
+Retail OBJECTS data identifies mapped object type **`0x26` as SAFE**. The six SAFE subtypes correspond to the four colored keys and two ID cards.
+
+The state/reward chain is now decoded:
+
+1. SAFE state 0 opens the combination editor.
+2. On a correct combination, callback `seg3:AD00` writes `OBJECT+03 = subtype + 2` and plays the open/activation SFX request.
+3. A subsequent USE reaches `AD9E`; for SAFE it calls reward helper `ABFC(state + 4)`, i.e. reward code `subtype + 6`.
+4. Codes `6..9` set Red/Green/Blue/Yellow key bits; codes `10..11` set Red/Yellow ID-card bits.
+5. The object is then set to state 1. Further USE follows the empty-container message path.
+
+Thus SAFE combinations are not an abstract prompt only: their reward dispatch is directly tied to key/card inventory bits. **VERIFIED_EXE + VERIFIED_DATA**.
+
+
+## Object type `0x27` — TRUNK reward state machine
+
+Retail OBJECTS data identifies class `0x27` as **TRUNK**. Known variants are labeled for Health, Ammo, Eyes, Balls and Red key.
+
+`seg3:AD9E` implements a two-step open/take flow:
+
+- on state 0, it writes `OBJECT+03 = subtype + 2` and requests SFX `0x32`;
+- on the next USE, it passes that state directly to `seg3:ABFC`, then sets state 1;
+- state 1 displays the exact text **"It's empty!"**.
+
+The reward helper maps codes:
+
+| code | effect |
+|---:|---|
+| 2 | HP = 100; score +150 |
+| 3 | refill laser to 100; also refill silver/wand ammo when those weapons are owned; score +100 |
+| 4 | `0x4C43 = 100` (Magic Eye charge) |
+| 5 | `0x4C42 = 100` (Crystal Ball charge) |
+| 6..9 | Red/Green/Blue/Yellow key bit |
+| 10..11 | Red/Yellow ID-card bit |
+
+Because TRUNK uses `reward = subtype + 2`, its retail subtype labels line up with Health, Ammo, Eyes, Balls and Red key. **VERIFIED_EXE + VERIFIED_DATA**.
+
+## Object type `0x29` — ACTION / Radio
+
+Retail Episode-1 OBJECTS data identifies mapped type `0x29` as **ACTION**, with object ID `0x45` named **Radio**.
+
+`seg3:B010` only acts when episode = 1 and zero-based level index = 8 (**E1M9**). It calls `seg3:AE56(0)`, whose exact on-screen string is:
+
+```text
+Let's find some dance music!
+```
+
+The path plays runtime SFX request `0x45`, changes the targeted ACTIONSPOT-associated guards to scripted state `0x14` with timer `0x70`, and switches their runtime resource/class presentation for the dance sequence. A later `AE56(1)` path restores the affected actors to the normal movement/state path.
+
+Status: **VERIFIED_EXE + VERIFIED_DATA** for the Radio identity, E1M9 gate and script transition.
+
+## Guard-family USE hook `seg3:AB3E`
+
+When USE targets an object whose property table marks it as a GUARD-family runtime object, `seg3:AB3E` resolves the GUARD record. It displays:
+
+```text
+I've nothing left!
+```
+
+only when `GUARD+0x0B == 0x0C`.
+
+The condition and text are **VERIFIED_EXE**. The 2026-09-29 writer audit now classifies GUARD state `0x0C` as a **retail-dormant / legacy-compatible state**: its handler and this USE text survive, but no normal writer was recovered in Win16 1.3/1.6/1.8/1.10 or DOS 1.0/1.7/1.8(=1.9)/2.0. Its sibling `0x0D` is likewise dormant and shares the same sequence-refresh handler. This closes the shipped-game reachability question without inventing a historical name such as corpse/loot state.
 
 ## Wall type 8 — scripted Episode-1 interactions
 
@@ -202,7 +304,12 @@ Well done!  You fixed the power!
 You already fixed it!
 ```
 
-Thus wall type 8 includes the E1M7 power-repair interaction. E1M2 exact user-facing role remains **PARTIAL**.
+Retail WALLS data identifies the two Episode-1 SPECIAL1 visuals involved here:
+
+- **E1M2 / wall ID 0x56 — Office - Morphing chalkboard.** The USE path finds the linked runtime render/sequence object, writes `0x96` to its per-resource timer/state slot, and requests runtime SFX `0x44`.
+- **E1M7 / wall ID 0x12 — Kitchen - Fuse box.** This is the power-repair path with the success/already-fixed text and event-state updates.
+
+Therefore E1M2 is no longer an unnamed wall-type-8 action; it is the morphing-chalkboard SPECIAL1 case. **VERIFIED_EXE + VERIFIED_DATA**.
 
 ## Wall-variant helpers
 
@@ -233,8 +340,9 @@ void UsePressed()
 
 ## Remaining TODO before USE is 100%
 
-- finish exact action/state callbacks behind the climb, floor and go-down menus;
-- name mapped object types `0x26`, `0x27`, `0x29` and `AB3E` family from OBJECT data;
-- complete door class `0x33..0x3E` mapping and door-state labels;
-- finish E1M2 wall-type-8 special action;
-- regression-test all interactions against the demo streams, especially DEMO.3.
+The 2026-09-28/29 closure passes resolve the former menu-callback, SAFE/TRUNK/Radio, retail door-class, E1M2 SPECIAL1 and GUARD-state-0x0C reachability TODOs. Remaining work is narrower:
+
+- finish any class-specific visual/event side effects that occur after the already-recovered door/panel/warp state changes;
+- regression-test the complete USE matrix against original runtime/demo trajectories, including repeated-use, blocked, credential-missing, moving-door, floor/stair and scripted-level edge cases.
+
+Until those runtime-parity checks are complete, USE is not marked 100%.
