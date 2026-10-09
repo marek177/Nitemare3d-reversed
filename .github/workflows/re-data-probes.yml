@@ -1,0 +1,40 @@
+name: N3D RE Python data probes
+
+on:
+  push:
+    paths:
+      - "tools/n3d_bsf_audit.py"
+      - "tools/n3d_demo_layout_probe.py"
+      - "tests/test_bsf_audit.py"
+      - "tests/test_demo_layout_probe.py"
+      - ".github/workflows/re-data-probes.yml"
+  pull_request:
+    paths:
+      - "tools/n3d_bsf_audit.py"
+      - "tools/n3d_demo_layout_probe.py"
+      - "tests/test_bsf_audit.py"
+      - "tests/test_demo_layout_probe.py"
+      - ".github/workflows/re-data-probes.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-data:
+    name: Synthetic BSF/DEMO fixtures (${{ matrix.os }}, py${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: BSF fixture tests (no original game data)
+        run: python -m unittest discover -s tests -p "test_bsf_audit.py" -v
+      - name: DEMO fixture tests (no original game data)
+        run: python -m unittest discover -s tests -p "test_demo_layout_probe.py" -v
