@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-14
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-14 v0.30 trace-verification correction
+
+The [v0.30 differential trace report](docs/V030_REMAX_DIFFERENTIAL_TRACE_CLOSURE.md) documents an important **verifier limitation**: individually valid RNG transitions, matching final states, and matching FAST *direct* children cannot prove complete first-to-last runtime chronology. New [Python tools](tools/n3d_trace_compare.py) and [C++ evidence checks](src/re/N3DV030TraceClosure.hpp) compare ordered original/candidate records, surface the first difference, and require explicit capture-boundary attestation and the known unpacked DOS v2.0 image fingerprint for stricter provenance checks. All new fixture tests are synthetic. **No fresh original EXE disassembly or in-game runtime evidence was obtained in this version; open system confidence and project parity estimates remain unchanged.**
+
 ## 2026-10-14 v0.29 evidence-scoped addendum
 
 The [v0.29 scheduler/trace report](docs/V029_REMAX_SCHEDULER_TRACE_AND_EDGE_CASES.md) collects recently reported **DOS v2.0 FAST direct-call ordering** (`1000:C150`), its conditional last `89A2` call, and **DEMO routing**, plus build-specific door/PUSH edge cases, an **E2M10 reentrant scheduler lead** and an **open first post-LOAD tick**. The new [C++ evidence registry](src/re/N3DV029SchedulerEvidence.hpp) and [CSV trace tool](tools/n3d_trace_audit.py) are exercised with synthetic fixtures. None of the new static reports was independently re-disassembled from original binaries in this revision, and **no original-game runtime trace or increased parity percentage is claimed**. The 2026-09-23 detailed facts below retain their original historical evidence status.

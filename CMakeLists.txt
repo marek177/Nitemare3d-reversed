@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.29.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.30.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -173,6 +173,9 @@ target_link_libraries(n3d_v027_projectile_lifecycle_test PRIVATE n3d_core)
 
 add_executable(n3d_v029_scheduler_evidence_test tests/v029_scheduler_evidence_test.cpp)
 target_link_libraries(n3d_v029_scheduler_evidence_test PRIVATE n3d_core)
+
+add_executable(n3d_v030_trace_closure_test tests/v030_trace_closure_test.cpp)
+target_link_libraries(n3d_v030_trace_closure_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
