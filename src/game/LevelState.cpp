@@ -146,19 +146,49 @@ bool LevelState::beginPush(int x, int y, int dirX, int dirY) {
 void LevelState::tickPushables() {
     for (auto& push : pushables_) {
         if (!push.moving()) continue;
+
         const int oldTileX = push.tileX();
         const int oldTileY = push.tileY();
-        push.fixedX += push.stepX;
-        push.fixedY += push.stepY;
-        const int newTileX = push.tileX();
-        const int newTileY = push.tileY();
-        if ((newTileX != oldTileX || newTileY != oldTileY) && inBounds(oldTileX, oldTileY) && inBounds(newTileX, newTileY)) {
+        const int nextFixedX = push.fixedX + push.stepX;
+        const int nextFixedY = push.fixedY + push.stepY;
+        const int newTileX = nextFixedX / FixedUnitsPerTile;
+        const int newTileY = nextFixedY / FixedUnitsPerTile;
+        const int finalFixedX = push.fixedX + static_cast<int>(push.stepX) * push.ticksRemaining;
+        const int finalFixedY = push.fixedY + static_cast<int>(push.stepY) * push.ticksRemaining;
+        const int reservedTileX = finalFixedX / FixedUnitsPerTile;
+        const int reservedTileY = finalFixedY / FixedUnitsPerTile;
+
+        // Defensive modern-model behavior: a push may be blocked by a later
+        // map mutation. Preserve its position, timer and occupied cell rather
+        // than overwrite a wall/object that appeared after beginPush().
+        // The DOS v2.0 blocked-step rule is reported STATIC evidence; this
+        // safety guard is not a claim of verified Win16/DOS timing parity.
+        if (!inBounds(oldTileX, oldTileY) ||
+            !inBounds(reservedTileX, reservedTileY) ||
+            at(oldTileX, oldTileY).object != push.objectId ||
+            !wallAllowsMovement(at(oldTileX, oldTileY).wall)) {
+            continue;
+        }
+        if ((reservedTileX != oldTileX || reservedTileY != oldTileY) &&
+            (!cellAllowsPushTarget(reservedTileX, reservedTileY) ||
+             pushableOccupiesOrTargetsTile(reservedTileX, reservedTileY, &push))) {
+            continue;
+        }
+
+        const bool changesTile = newTileX != oldTileX || newTileY != oldTileY;
+        if (changesTile &&
+            (!cellAllowsPushTarget(newTileX, newTileY) ||
+             pushableOccupiesOrTargetsTile(newTileX, newTileY, &push))) {
+            continue;
+        }
+
+        push.fixedX = nextFixedX;
+        push.fixedY = nextFixedY;
+        if (changesTile) {
             auto& oldCell = at(oldTileX, oldTileY);
             auto& newCell = at(newTileX, newTileY);
-            if (oldCell.object == push.objectId) {
-                newCell.object = oldCell.object;
-                oldCell.object = 0;
-            }
+            newCell.object = oldCell.object;
+            oldCell.object = 0;
         }
         --push.ticksRemaining;
         if (!push.moving()) { push.stepX = 0; push.stepY = 0; }
