@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.30.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.31.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -47,6 +47,10 @@ target_link_libraries(n3d_inspect PRIVATE n3d_core)
 
 add_executable(n3d_pushable_test tests/pushable_test.cpp)
 target_link_libraries(n3d_pushable_test PRIVATE n3d_core)
+
+# Synthetic fixture, no original episode data required.
+add_executable(n3d_pushable_blocked_test tests/pushable_blocked_test.cpp)
+target_link_libraries(n3d_pushable_blocked_test PRIVATE n3d_core)
 
 add_executable(n3d_menu_cheat_test tests/menu_cheat_test.cpp)
 target_link_libraries(n3d_menu_cheat_test PRIVATE n3d_core)
