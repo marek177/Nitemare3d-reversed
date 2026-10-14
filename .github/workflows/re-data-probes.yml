@@ -6,9 +6,13 @@ on:
       - "tools/n3d_bsf_audit.py"
       - "tools/n3d_demo_layout_probe.py"
       - "tools/n3d_trace_audit.py"
+      - "tools/n3d_trace_compare.py"
       - "tests/test_bsf_audit.py"
       - "tests/test_demo_layout_probe.py"
       - "tests/test_n3d_trace_audit.py"
+      - "tests/test_n3d_trace_compare.py"
+      - "src/re/N3DV030TraceClosure.hpp"
+      - "tests/v030_trace_closure_test.cpp"
       - "src/re/N3DV029SchedulerEvidence.hpp"
       - "tests/v029_scheduler_evidence_test.cpp"
       - "CMakeLists.txt"
@@ -18,9 +22,13 @@ on:
       - "tools/n3d_bsf_audit.py"
       - "tools/n3d_demo_layout_probe.py"
       - "tools/n3d_trace_audit.py"
+      - "tools/n3d_trace_compare.py"
       - "tests/test_bsf_audit.py"
       - "tests/test_demo_layout_probe.py"
       - "tests/test_n3d_trace_audit.py"
+      - "tests/test_n3d_trace_compare.py"
+      - "src/re/N3DV030TraceClosure.hpp"
+      - "tests/v030_trace_closure_test.cpp"
       - "src/re/N3DV029SchedulerEvidence.hpp"
       - "tests/v029_scheduler_evidence_test.cpp"
       - "CMakeLists.txt"
@@ -50,9 +58,11 @@ jobs:
         run: python -m unittest discover -s tests -p "test_demo_layout_probe.py" -v
       - name: FAST/RNG trace fixture tests (no original game data)
         run: python -m unittest discover -s tests -p "test_n3d_trace_audit.py" -v
+      - name: Differential trace fixture tests (no original game data)
+        run: python -m unittest discover -s tests -p "test_n3d_trace_compare.py" -v
       - name: Configure C++ trace evidence test (SDL disabled)
         run: cmake -S . -B build -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Release
       - name: Build C++ trace evidence test
-        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test
+        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test n3d_v030_trace_closure_test
       - name: C++ trace evidence test (synthetic)
-        run: ctest --test-dir build -C Release -R "^n3d_v029_scheduler_evidence_test$" --output-on-failure
+        run: ctest --test-dir build -C Release -R "^n3d_v0(29_scheduler_evidence|30_trace_closure)_test$" --output-on-failure
