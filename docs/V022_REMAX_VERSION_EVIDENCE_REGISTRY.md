@@ -12,12 +12,17 @@ The registry has slots for:
 - DOS v2.0
 - analyzed Win16 build
 
-Only DOS v2.0 currently has a confirmed executable fingerprint in the registry:
+Historical v0.22 recorded only the DOS v2.0 unpacked image. As of **v0.32 / 2026-10-14**, direct original-file checks established additional version-specific fingerprints:
 
-- unpacked size: 171,360 bytes
-- SHA-256: `e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297`
+| Build | Measured bytes | Hash domain | Confidence |
+| --- | ---: | --- | --- |
+| DOS 1.0 | 154,448 | unpacked MZ load image | CONFIRMED |
+| DOS 1.2 | 115,856 | **packed raw MZ file only** | CONFIRMED only for packed file; unpacked image remains OPEN |
+| DOS 1.9 | 171,296 | unpacked MZ load image | CONFIRMED |
+| DOS 2.0 | 171,360 | unpacked MZ load image | CONFIRMED |
+| Win16 1.10 | 230,400 | **entire raw NE executable** | CONFIRMED |
 
-The other profiles intentionally have no invented size/hash. They remain OPEN until independently fingerprinted.
+The build profile registry now includes DOS 1.0 and 1.9 load-image hashes and the identified Win16 1.10 raw-file hash. The old `Win16Unknown` enum member remains for ABI/source compatibility but is bound to the identified v1.10. DOS 1.2 unpacked image profile remains blank/open: its confirmed packed distribution fingerprint lives in `tools/n3d_v032_static_verify.py`. **Do not compare packed raw files with unpacked load-image hashes.** Full instructions and SHA-256 are in [the v0.32 report](V032_REMAX_ORIGINAL_BINARY_CLOSURES.md).
 
 ## Evidence registry
 
@@ -55,4 +60,4 @@ Several older addresses were correct only for another build/context. A version p
 4. keep STRONG/OPEN items behind runtime verification;
 5. promote only after the closure experiment succeeds.
 
-The next high-value work is filling the missing DOS v1.0/v1.2/v1.9 and Win16 fingerprints from known binaries, then attaching per-build symbol maps.
+The next version-identity target is the unpacked DOS v1.2 image and any as-yet-unidentified builds. For the identified profiles, attach build-specific symbol maps and original-runtime traces.

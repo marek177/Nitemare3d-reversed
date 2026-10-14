@@ -65,3 +65,19 @@ Still needed:
 - RNG call association for every conditional transition.
 
 The next closure pass should target the direct write-XREF export for GUARD+0B and GUARD+0C.
+
+## v0.32 original-byte writer location addendum (2026-10-14)
+
+Re-checked against SHA-256 `12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481` (Win16 V1.10 raw NE). The formerly address-unknown writer entries above now have instruction-exact locations:
+
+| Writer | segment 3 offset | Instruction effect |
+| --- | --- | --- |
+| Nonlethal prior state save | `8290` | `GUARD+0C = GUARD+0B`, only when old state is nonzero (test at `8282`) |
+| Enter pain state | `8297` | `GUARD+0B = 15h` |
+| Direction cache invalidation | `81F3` | `GUARD+12h = 08h`; not a timer |
+| Dracula class rewrite | `A16D` | `OBJECT+06h = 14h` |
+| Dracula new state | `A17A` | `GUARD+0Bh = 08h` |
+| Dracula next state | `A17F` | `GUARD+0Ch = 02h` |
+| Dracula timer | `A184` | `GUARD+06h = 0001h` |
+
+This **closes exact instruction addresses for these seven entries**, not the exhaustive global GUARD state-writer XREF census, all class-specific transitions, or the original timing of pain/boss branches. The v0.25 enum label `ResultOctant` is legacy; in the documented path `GUARD+12` is the directional sequence cache sentinel. See `docs/V032_REMAX_ORIGINAL_BINARY_CLOSURES.md` for verification procedure.

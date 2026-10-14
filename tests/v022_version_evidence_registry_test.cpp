@@ -6,15 +6,19 @@ int main() {
     using namespace n3d::re::v022;
 
     static_assert(hasConfirmedFingerprint(BuildId::DosV20));
-    static_assert(!hasConfirmedFingerprint(BuildId::DosV10));
+    static_assert(hasConfirmedFingerprint(BuildId::DosV10));
     static_assert(!hasConfirmedFingerprint(BuildId::DosV12));
-    static_assert(!hasConfirmedFingerprint(BuildId::DosV19));
-    static_assert(!hasConfirmedFingerprint(BuildId::Win16Unknown));
+    static_assert(hasConfirmedFingerprint(BuildId::DosV19));
+    static_assert(hasConfirmedFingerprint(BuildId::Win16Unknown));
 
     constexpr auto* dos20 = profileFor(BuildId::DosV20);
     static_assert(dos20 != nullptr);
     static_assert(dos20->unpackedExeSize == 171360u);
     static_assert(dos20->fingerprintConfidence == Confidence::Confirmed);
+
+    static_assert(profileFor(BuildId::DosV10)->unpackedExeSize == 154448u);
+    static_assert(profileFor(BuildId::DosV19)->unpackedExeSize == 171296u);
+    static_assert(profileFor(BuildId::Win16Unknown)->unpackedExeSize == 230400u);
 
     constexpr auto* player = evidenceFor(FactId::Dos20PlayerXY);
     static_assert(player != nullptr);
