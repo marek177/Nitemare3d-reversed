@@ -5,15 +5,25 @@ on:
     paths:
       - "tools/n3d_bsf_audit.py"
       - "tools/n3d_demo_layout_probe.py"
+      - "tools/n3d_trace_audit.py"
       - "tests/test_bsf_audit.py"
       - "tests/test_demo_layout_probe.py"
+      - "tests/test_n3d_trace_audit.py"
+      - "src/re/N3DV029SchedulerEvidence.hpp"
+      - "tests/v029_scheduler_evidence_test.cpp"
+      - "CMakeLists.txt"
       - ".github/workflows/re-data-probes.yml"
   pull_request:
     paths:
       - "tools/n3d_bsf_audit.py"
       - "tools/n3d_demo_layout_probe.py"
+      - "tools/n3d_trace_audit.py"
       - "tests/test_bsf_audit.py"
       - "tests/test_demo_layout_probe.py"
+      - "tests/test_n3d_trace_audit.py"
+      - "src/re/N3DV029SchedulerEvidence.hpp"
+      - "tests/v029_scheduler_evidence_test.cpp"
+      - "CMakeLists.txt"
       - ".github/workflows/re-data-probes.yml"
   workflow_dispatch:
 
@@ -22,7 +32,7 @@ permissions:
 
 jobs:
   synthetic-data:
-    name: Synthetic BSF/DEMO fixtures (${{ matrix.os }}, py${{ matrix.python }})
+    name: Synthetic BSF/DEMO/trace fixtures (${{ matrix.os }}, py${{ matrix.python }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -38,3 +48,11 @@ jobs:
         run: python -m unittest discover -s tests -p "test_bsf_audit.py" -v
       - name: DEMO fixture tests (no original game data)
         run: python -m unittest discover -s tests -p "test_demo_layout_probe.py" -v
+      - name: FAST/RNG trace fixture tests (no original game data)
+        run: python -m unittest discover -s tests -p "test_n3d_trace_audit.py" -v
+      - name: Configure C++ trace evidence test (SDL disabled)
+        run: cmake -S . -B build -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Release
+      - name: Build C++ trace evidence test
+        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test
+      - name: C++ trace evidence test (synthetic)
+        run: ctest --test-dir build -C Release -R "^n3d_v029_scheduler_evidence_test$" --output-on-failure
