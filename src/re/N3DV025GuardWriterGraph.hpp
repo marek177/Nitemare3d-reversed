@@ -19,7 +19,7 @@ enum class GuardField : std::uint8_t {
     Strategy,
     Timer,
     Strength,
-    ResultOctant,
+    ResultOctant, // legacy label: GUARD+12 directional cache invalidation, NOT timer
     ObjectClass
 };
 
@@ -95,37 +95,37 @@ inline constexpr std::array<GuardWriteEvidence, 17> kWin16WriterGraph = {{
      Confidence::Confirmed,
      "pain/hit reaction returns via nextstate"},
 
-    {"normal_pain_save_previous_state", false, 0, 0,
+    {"normal_pain_save_previous_state", true, 0x0003, 0x8290,
      GuardField::NextState, WriteKind::CopyStateToNextState, 0,
      Confidence::Confirmed,
-     "ordinary non-lethal damage preserves prior state in nextstate"},
+     "nonlethal branch copies prior nonzero state into nextstate at 3:8290; state zero skips the copy"},
 
-    {"normal_pain_enter_15", false, 0, 0,
+    {"normal_pain_enter_15", true, 0x0003, 0x8297,
      GuardField::State, WriteKind::FixedValue, 0x15,
      Confidence::Confirmed,
      "ordinary non-lethal damage enters pain state 15"},
 
-    {"normal_pain_resoct_8", false, 0, 0,
+    {"normal_pain_resoct_8", true, 0x0003, 0x81F3,
      GuardField::ResultOctant, WriteKind::FixedValue, 0x08,
      Confidence::Confirmed,
-     "ordinary non-lethal damage writes resoct=8"},
+     "nonlethal branch invalidates GUARD+12 direction/sequence cache with value 8 at 3:81F3"},
 
-    {"dracula_transform_class", false, 0, 0,
+    {"dracula_transform_class", true, 0x0003, 0xA16D,
      GuardField::ObjectClass, WriteKind::FixedValue, 0x14,
      Confidence::Confirmed,
      "lethal Dracula phase-1 path rewrites OBJECT+06 from 0x11 to 0x14"},
 
-    {"dracula_transform_state", false, 0, 0,
+    {"dracula_transform_state", true, 0x0003, 0xA17A,
      GuardField::State, WriteKind::FixedValue, 0x08,
      Confidence::Confirmed,
      "Dracula second phase enters state 08"},
 
-    {"dracula_transform_nextstate", false, 0, 0,
+    {"dracula_transform_nextstate", true, 0x0003, 0xA17F,
      GuardField::NextState, WriteKind::FixedValue, 0x02,
      Confidence::Confirmed,
      "Dracula second phase writes nextstate=02"},
 
-    {"dracula_transform_timer", false, 0, 0,
+    {"dracula_transform_timer", true, 0x0003, 0xA184,
      GuardField::Timer, WriteKind::FixedValue, 0x01,
      Confidence::Confirmed,
      "Dracula second phase writes timer=1"}

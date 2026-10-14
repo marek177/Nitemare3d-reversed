@@ -55,7 +55,9 @@ inline constexpr BuildProfile kDosV20Profile{
 };
 
 inline constexpr BuildProfile kDosV10Profile{
-    BuildId::DosV10, Platform::Dos, "DOS v1.0", 0u, "", Confidence::Open
+    BuildId::DosV10, Platform::Dos, "DOS v1.0", 154448u,
+    "113ea529e4247a5991f9dde2bd49e04b61f5714a8ea838d027014cac261e004a",
+    Confidence::Confirmed
 };
 
 inline constexpr BuildProfile kDosV12Profile{
@@ -63,12 +65,18 @@ inline constexpr BuildProfile kDosV12Profile{
 };
 
 inline constexpr BuildProfile kDosV19Profile{
-    BuildId::DosV19, Platform::Dos, "DOS v1.9", 0u, "", Confidence::Open
+    BuildId::DosV19, Platform::Dos, "DOS v1.9", 171296u,
+    "e29a8d058fdf3033241f4f711bca273fb168d750f8f972047e1be8f3d946529e",
+    Confidence::Confirmed
 };
 
+// Legacy BuildId name retained for source compatibility; profile is identified.
+// Unlike DOS profiles, size and SHA for Win16 refer to the entire NE file.
 inline constexpr BuildProfile kWin16UnknownProfile{
-    BuildId::Win16Unknown, Platform::Win16, "Win16 analyzed build",
-    0u, "", Confidence::Open
+    BuildId::Win16Unknown, Platform::Win16, "Win16 v1.10 raw NE EXE",
+    230400u,
+    "12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481",
+    Confidence::Confirmed
 };
 
 inline constexpr std::array<BuildProfile, 5> kBuildProfiles = {{
