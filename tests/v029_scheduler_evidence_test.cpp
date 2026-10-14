@@ -16,6 +16,9 @@ int main() {
     static_assert(kDos20FastDirectCalls[10].gate == CallGate::TickLowThreeBitsZero);
 
     static_assert(finding("door_blocked_retry_four") != nullptr);
+    static_assert(finding("push_update_0e50")->evidence == Evidence::VerifiedStatic);
+    static_assert(finding("push_blocked_preserves_progress")->evidence == Evidence::VerifiedStatic);
+    static_assert(!runtimeConfirmed("push_update_0e50"));
     static_assert(finding("door_state4_pair_sync")->build == BuildId::DosV12);
     static_assert(finding("door_state4_early_return")->build == BuildId::DosV20);
     static_assert(!runtimeConfirmed("fast_direct_call_order"));

@@ -10,8 +10,8 @@ int main() {
     static_assert(kFastTick.offset == 0xC150);
     static_assert(kOuterScheduler.offset == 0xC1A8);
     static_assert(kMainUpdate.offset == 0xC0D8);
-    static_assert(kObjectRuntimeCandidate.offset == 0x0E50);
-    static_assert(kObjectRuntimeCandidate.confidence == Confidence::Open);
+    static_assert(kPushUpdate.offset == 0x0E50);
+    static_assert(kPushUpdate.confidence == Confidence::Confirmed);
 
     static_assert(isKnownDirectRngCallsite(0x2478));
     static_assert(isKnownDirectRngCallsite(0xB276));
@@ -37,7 +37,7 @@ int main() {
     static_assert(classifySchedulerAddress(0xBCC2) == SchedulerEvent::Irq8);
     static_assert(classifySchedulerAddress(0xC150) == SchedulerEvent::FastTick);
     static_assert(classifySchedulerAddress(0x0E50) ==
-                  SchedulerEvent::ObjectRuntimeCandidate);
+                  SchedulerEvent::PushUpdate);
     static_assert(classifySchedulerAddress(0x9999) == SchedulerEvent::Unknown);
 
     constexpr std::array<std::uint16_t, 4> expected{

@@ -32,10 +32,11 @@ C51A -> 0A40 -> 5F26 -> A19A -> A4A2 -> 0E50
 ```
 
 Identified consumers: `0A40` door auto-close, `5F26` GUARD pass (existing
-v0.21 confidence is STRONG), `0E50` candidate moving-object updater,
-`89A2` action dispatcher and `9026` weapon/cadence. Some helper names and
-the *complete* semantics of `0E50` remain open; its presence as a direct
-target does not prove every OBJECT iteration/mutation rule.
+v0.21 confidence is STRONG), `0E50` **PUSH updater** (identity statically
+resolved in v0.33), `89A2` action dispatcher and `9026` weapon/cadence.
+The original v0.29 label "moving-OBJECT candidate" was superseded by the
+new [v0.33 original-byte proof](V033_REMAX_PUSH_SCHEDULER_BINARY_CLOSURE.md).
+This direct call does NOT identify the complete generic OBJECT scheduler.
 
 **Critical distinction:** this is the order of calls *issued directly* by a
 single FAST invocation. A target may itself call other subsystems, or re-enter
@@ -153,3 +154,7 @@ collision/multi-hit/pool-full behavior; Multi Plasma fire-state transitions;
 first tick after LOAD; secret/remote-door per-tick motion; E2M10 nested branch
 runtime reachability; rendering rounding/clipping and rare-version dead code.
 No parity percentage is increased by this static registry or synthetic tests.
+
+## v0.33 post-audit note
+
+New fingerprint-gated binary audit upgrades the exact `0E50` identity and the `(destinationObjectProperties & 0x06) != 0` blocked-step skip from a reported hypothesis to **VerifiedStatic**. The six-byte PUSH pool loop is 292 masked-instruction-equivalent bytes to Win16 `3:2210`. The accepted path commits the OBJECT/MAP reference, calls an X/Y sorted-list updater and *then* decrements the remaining push count. Complete transitive timing, nested calls and generic OBJECT scheduling remain OPEN; no new original-game CPU runtime capture was produced.

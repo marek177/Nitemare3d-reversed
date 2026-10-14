@@ -19,7 +19,8 @@ enum class Subsystem : std::uint8_t {
     InputAction,
     SecretPanel,
     Renderer,
-    ObjectCandidate,
+    ObjectCandidate, // legacy unconfirmed generic-object candidate category
+    Push,
     Unknown
 };
 
@@ -41,7 +42,7 @@ inline constexpr std::array<SubsystemAnchor, 12> kDos20SubsystemAnchors = {{
     {0x8F12, Subsystem::InputAction, Confidence::Confirmed},
     {0x0AEA, Subsystem::SecretPanel, Confidence::Confirmed},
     {0xB2D4, Subsystem::Renderer, Confidence::Confirmed},
-    {0x0E50, Subsystem::ObjectCandidate, Confidence::Open}
+    {0x0E50, Subsystem::Push, Confidence::Confirmed}
 }};
 
 constexpr Subsystem classifySubsystemAddress(std::uint16_t offset) noexcept {

@@ -14,7 +14,7 @@ The project already knows many concrete routine addresses, but the remaining par
 - action/FIRE path: `89A2`, `8F12`
 - secret-panel update: `0AEA`
 - projectile render/projection: `B2D4`
-- OBJECT runtime candidate: `0E50` — remains OPEN
+- PUSH updater: `0E50` — **CONFIRMED STATIC in v0.33**, iterates six-byte PUSH records and updates indexed OBJECT state. The **generic OBJECT scheduler identity remains OPEN**.
 
 ## Encoded runtime regions
 
@@ -40,3 +40,7 @@ This is intentionally different from claiming the complete FAST/MAIN scheduler o
 - Exact FAST/MAIN subsystem interleaving: OPEN.
 
 The next evidence step remains a one-tick DOSBox-X trace. v0.21 makes that trace easier to classify and compare against the current static model.
+
+## v0.33 correction
+
+A new original-byte comparison shows DOS v2.0 `0E50` and Win16 v1.10 segment 3 `2210` have identical updater instruction/control bytes after excluding 20 address operand bytes. Thus `Subsystem::Push` is now CONFIRMED for `0E50`, while the old generic OBJECT hypothesis is rejected. This is a local classification correction, **not** a runtime closure of the full scheduler. See [v0.33](V033_REMAX_PUSH_SCHEDULER_BINARY_CLOSURE.md).

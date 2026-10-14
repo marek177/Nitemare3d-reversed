@@ -15,7 +15,8 @@ enum class Evidence : std::uint8_t {
     ReportedStatic,   // direct/static audit reported; no runtime trace in this update
     StrongInference,  // inference from control flow, pending counterexample testing
     RuntimeOpen,      // no accepted full runtime chronology
-    RuntimeConfirmed  // reserved for later evidence-backed promotion
+    RuntimeConfirmed, // reserved for later evidence-backed promotion
+    VerifiedStatic     // original fingerprinted machine-code re-disassembly
 };
 enum class CallGate : std::uint8_t { Always, TickLowThreeBitsZero };
 
@@ -36,7 +37,7 @@ inline constexpr std::array<FastDirectTarget, 11> kDos20FastDirectCalls = {{
     {0x5F26, CallGate::Always, "GUARD scheduler"},
     {0xA19A, CallGate::Always, "A19A helper (semantics open)"},
     {0xA4A2, CallGate::Always, "A4A2 helper (semantics open)"},
-    {0x0E50, CallGate::Always, "moving-OBJECT candidate (identity open)"},
+    {0x0E50, CallGate::Always, "PUSH updater (six-byte pool; original bytes verified)"},
     {0xA4AC, CallGate::Always, "A4AC helper (semantics open)"},
     {0xA0CC, CallGate::Always, "A0CC helper (semantics open)"},
     {0x89A2, CallGate::Always, "action/input pass"},
@@ -120,15 +121,17 @@ struct AuditFinding {
     std::string_view summary;
 };
 
-inline constexpr std::array<AuditFinding, 10> kRecentFindings = {{
+inline constexpr std::array<AuditFinding, 11> kRecentFindings = {{
     {"fast_direct_call_order", BuildId::DosV20, Evidence::ReportedStatic,
      "C150 direct call order only; not complete transitive runtime order"},
     {"demo_fast_odd_frame_route", BuildId::DosV20, Evidence::StrongInference,
      "C1A8/6D04 DEMO branch can route FAST via odd DS:4540 frame count"},
     {"demo_seed1_full_rng_order", BuildId::DosV20, Evidence::RuntimeOpen,
      "No capture of all draws through first gameplay input"},
-    {"push_blocked_preserves_progress", BuildId::DosV20, Evidence::ReportedStatic,
-     "0DF8/0E50: blocked motion does not spend a successful movement step"},
+    {"push_blocked_preserves_progress", BuildId::DosV20, Evidence::VerifiedStatic,
+     "0E50: when destination cell differs and object property & 0x06 is nonzero, skip coordinate write, sort helper and timer decrement"},
+    {"push_update_0e50", BuildId::DosV20, Evidence::VerifiedStatic,
+     "0E50 is 6-byte PUSH updater; masked control-flow bytes identical to Win16 3:2210 (292 bytes)"},
     {"door_blocked_retry_four", BuildId::DosV20, Evidence::ReportedStatic,
      "0A40: obstructed auto-close arms retry timer 4"},
     {"door_state4_pair_sync", BuildId::DosV12, Evidence::StrongInference,

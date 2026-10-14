@@ -118,7 +118,8 @@ enum class FactId : std::uint16_t {
     Dos20ExactFastMainOrder,
     Dos20ObjectRuntime0E50,
     Dos20ProjectileStaleCache,
-    CrossVersionAddressPortability
+    CrossVersionAddressPortability,
+    Dos20PushUpdater0E50
 };
 
 struct EvidenceRecord {
@@ -130,7 +131,7 @@ struct EvidenceRecord {
     std::string_view closureTest;
 };
 
-inline constexpr std::array<EvidenceRecord, 14> kEvidenceRegistry = {{
+inline constexpr std::array<EvidenceRecord, 15> kEvidenceRegistry = {{
     {FactId::Dos20PlayerXY, BuildId::DosV20, Confidence::Confirmed,
      EvidenceSource::StaticDisassembly, "DS:4162/4164; stores 68B5/68B9",
      "watch X/Y commit during controlled movement"},
@@ -171,8 +172,9 @@ inline constexpr std::array<EvidenceRecord, 14> kEvidenceRegistry = {{
      EvidenceSource::Unknown, "static ordering hypothesis only",
      "one-tick first-divergence trace"},
     {FactId::Dos20ObjectRuntime0E50, BuildId::DosV20, Confidence::Open,
-     EvidenceSource::StaticDisassembly, "0800:0E50 candidate",
-     "writer/reader xrefs + runtime mutation trace"},
+     EvidenceSource::StaticDisassembly,
+     "0E50 disproved as generic OBJECT scheduler: 6-byte PUSH pool updater",
+     "locate generic OBJECT scheduler separately; runtime mutation trace"},
     {FactId::Dos20ProjectileStaleCache, BuildId::DosV20, Confidence::Strong,
      EvidenceSource::StaticDisassembly,
      "embedded OBJECT +18/+19 projected-Y cache may survive reuse",
@@ -180,7 +182,11 @@ inline constexpr std::array<EvidenceRecord, 14> kEvidenceRegistry = {{
     {FactId::CrossVersionAddressPortability, BuildId::Unknown,
      Confidence::Confirmed, EvidenceSource::CrossVersionMatch,
      "4BF6/6EC8/7E5E/9806 are build-specific",
-     "fingerprint each executable before address use"}
+     "fingerprint each executable before address use"},
+    {FactId::Dos20PushUpdater0E50, BuildId::DosV20, Confidence::Confirmed,
+     EvidenceSource::CrossVersionMatch,
+     "DOS image 0E50 matches Win16 seg3:2210 for 292 bytes after 20 relocated operand bytes",
+     "original-image SHA + masked-instruction comparison; runtime order still open"}
 }};
 
 constexpr const EvidenceRecord* evidenceFor(FactId fact) noexcept {
