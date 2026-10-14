@@ -5,6 +5,7 @@
 #include <span>
 
 using namespace n3d::re::v030;
+namespace v020 = n3d::re::v020;
 
 int main() {
     static_assert(kCanonicalDos20UnpackedLength == 171360u);

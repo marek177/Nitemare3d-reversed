@@ -116,14 +116,14 @@ constexpr FirstDifference compareRngTraces(
         return {ComparisonVerdict::InvalidReference, refInvalid,
                 reference.size(), candidate.size(),
                 reference[refInvalid].caller,
-                refInvalid < candidate.size() ? candidate[refInvalid].caller : 0};
+                static_cast<std::uint16_t>(refInvalid < candidate.size() ? candidate[refInvalid].caller : 0)};
     }
     const std::size_t candInvalid =
         firstInvalidRngEntry(candidate, initialSeed);
     if (candInvalid != candidate.size()) {
         return {ComparisonVerdict::InvalidCandidate, candInvalid,
                 reference.size(), candidate.size(),
-                candInvalid < reference.size() ? reference[candInvalid].caller : 0,
+                static_cast<std::uint16_t>(candInvalid < reference.size() ? reference[candInvalid].caller : 0),
                 candidate[candInvalid].caller};
     }
 
@@ -138,8 +138,8 @@ constexpr FirstDifference compareRngTraces(
     if (reference.size() != candidate.size()) {
         return {ComparisonVerdict::CountDifference, limit,
                 reference.size(), candidate.size(),
-                limit < reference.size() ? reference[limit].caller : 0,
-                limit < candidate.size() ? candidate[limit].caller : 0};
+                static_cast<std::uint16_t>(limit < reference.size() ? reference[limit].caller : 0),
+                static_cast<std::uint16_t>(limit < candidate.size() ? candidate[limit].caller : 0)};
     }
     return {seal.fullyAttested()
                 ? ComparisonVerdict::EqualAttested
