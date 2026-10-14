@@ -1,8 +1,12 @@
 # Nitemare 3D Reverse Engineering — Discoveries
 
-Last consolidated: 2026-09-23
+Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-14
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
+
+## 2026-10-14 v0.29 evidence-scoped addendum
+
+The [v0.29 scheduler/trace report](docs/V029_REMAX_SCHEDULER_TRACE_AND_EDGE_CASES.md) collects recently reported **DOS v2.0 FAST direct-call ordering** (`1000:C150`), its conditional last `89A2` call, and **DEMO routing**, plus build-specific door/PUSH edge cases, an **E2M10 reentrant scheduler lead** and an **open first post-LOAD tick**. The new [C++ evidence registry](src/re/N3DV029SchedulerEvidence.hpp) and [CSV trace tool](tools/n3d_trace_audit.py) are exercised with synthetic fixtures. None of the new static reports was independently re-disassembled from original binaries in this revision, and **no original-game runtime trace or increased parity percentage is claimed**. The 2026-09-23 detailed facts below retain their original historical evidence status.
 
 ## 2026-09-23 all-audit update
 
