@@ -39,6 +39,8 @@ int main() {
     static_assert(mayPromoteToImplementation(FactId::Dos20RngAlgorithm));
     static_assert(mayPromoteToImplementation(FactId::Dos20SecretPanelStep));
     static_assert(requiresRuntimeClosure(FactId::Dos20ProjectileStaleCache));
+    static_assert(mayPromoteToImplementation(FactId::Dos20PushUpdater0E50));
+    static_assert(requiresRuntimeClosure(FactId::Dos20ObjectRuntime0E50));
 
     const auto* unknown = profileFor(BuildId::Unknown);
     assert(unknown == nullptr);

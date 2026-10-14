@@ -12,12 +12,12 @@ int main() {
     static_assert(classifySubsystemAddress(0x89A2) == Subsystem::InputAction);
     static_assert(classifySubsystemAddress(0x0AEA) == Subsystem::SecretPanel);
     static_assert(classifySubsystemAddress(0x0E50) ==
-                  Subsystem::ObjectCandidate);
+                  Subsystem::Push);
     static_assert(classifySubsystemAddress(0x7777) == Subsystem::Unknown);
 
     static_assert(confidenceForAddress(0x8230) == Confidence::Confirmed);
     static_assert(confidenceForAddress(0x5F26) == Confidence::Strong);
-    static_assert(confidenceForAddress(0x0E50) == Confidence::Open);
+    static_assert(confidenceForAddress(0x0E50) == Confidence::Confirmed);
 
     static_assert(kProjectilePool.base == 0x41B6);
     static_assert(kProjectilePool.size == 0x0150);

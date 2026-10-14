@@ -49,3 +49,7 @@ The acceptance target remains:
 ## Next closure step
 
 Feed one controlled DOS v2.0 tick and the DEMO seed=1 pre-input trace into this harness. Once the observed order is repeatable, that sequence can be promoted from OPEN to CONFIRMED in a later version.
+
+## v0.33 correction — original bytes identify `0E50` (2026-10-14)
+
+The v0.20 hypothesis that `0E50` might be the generic OBJECT updater is **superseded**. The fingerprinted DOS v2.0 function at `0E50` iterates a six-byte PUSH record pool; Win16 v1.10 `3:2210` is instruction-identical after masking 20 differing address-operand bytes in a 292-byte routine. It updates PUSH-owned OBJECT coordinates, MAP cell links, sorted spatial indices, and decrements the PUSH countdown only on an accepted step. See [v0.33 binary proof](V033_REMAX_PUSH_SCHEDULER_BINARY_CLOSURE.md). This correction does **not** establish complete OBJECT animation iteration or total FAST/MAIN timing.

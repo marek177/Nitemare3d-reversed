@@ -25,8 +25,9 @@ inline constexpr AddressAnchor kFastTick{0xC150, Confidence::Confirmed};
 inline constexpr AddressAnchor kOuterScheduler{0xC1A8, Confidence::Confirmed};
 inline constexpr AddressAnchor kMainUpdate{0xC0D8, Confidence::Confirmed};
 
-// Candidate from the open-gaps audit. Do not treat as a closed scheduler identity.
-inline constexpr AddressAnchor kObjectRuntimeCandidate{0x0E50, Confidence::Open};
+// v0.33 direct original-byte audit: six-byte PUSH pool updater, NOT
+// an all-OBJECT runtime scheduler. Full FAST/MAIN order remains OPEN.
+inline constexpr AddressAnchor kPushUpdate{0x0E50, Confidence::Confirmed};
 
 inline constexpr std::array<std::uint16_t, 20> kDos20DirectRngCallsites = {
     0x2478, 0x525E, 0x5582, 0x5666, 0x56A6,
@@ -86,7 +87,7 @@ enum class SchedulerEvent : std::uint8_t {
     FastTick,
     MainUpdate,
     OuterScheduler,
-    ObjectRuntimeCandidate,
+    PushUpdate,
     Unknown
 };
 
@@ -99,7 +100,7 @@ constexpr SchedulerEvent classifySchedulerAddress(std::uint16_t offset) noexcept
     case 0xC150: return SchedulerEvent::FastTick;
     case 0xC0D8: return SchedulerEvent::MainUpdate;
     case 0xC1A8: return SchedulerEvent::OuterScheduler;
-    case 0x0E50: return SchedulerEvent::ObjectRuntimeCandidate;
+    case 0x0E50: return SchedulerEvent::PushUpdate;
     default: return SchedulerEvent::Unknown;
     }
 }
