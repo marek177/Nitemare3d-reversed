@@ -13,6 +13,10 @@ int main() {
     static_assert(expectedFastDirectCount(8) == 11);
     static_assert(expectedFastDirectCount(16) == 11);
     static_assert(kDos20FastDirectCalls[5].offset == 0x0E50);
+    static_assert(kDos20FastDirectCalls[0].offset == 0xC51A);
+    static_assert(kDos20FastDirectCalls[0].label.find("RETF") != std::string_view::npos);
+    static_assert(finding("fast_first_target_empty_c51a")->evidence == Evidence::VerifiedStatic);
+    static_assert(!runtimeConfirmed("fast_first_target_empty_c51a"));
     static_assert(kDos20FastDirectCalls[10].gate == CallGate::TickLowThreeBitsZero);
 
     static_assert(finding("door_blocked_retry_four") != nullptr);

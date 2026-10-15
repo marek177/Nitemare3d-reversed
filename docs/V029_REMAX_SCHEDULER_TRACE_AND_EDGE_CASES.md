@@ -158,3 +158,7 @@ No parity percentage is increased by this static registry or synthetic tests.
 ## v0.33 post-audit note
 
 New fingerprint-gated binary audit upgrades the exact `0E50` identity and the `(destinationObjectProperties & 0x06) != 0` blocked-step skip from a reported hypothesis to **VerifiedStatic**. The six-byte PUSH pool loop is 292 masked-instruction-equivalent bytes to Win16 `3:2210`. The accepted path commits the OBJECT/MAP reference, calls an X/Y sorted-list updater and *then* decrements the remaining push count. Complete transitive timing, nested calls and generic OBJECT scheduling remain OPEN; no new original-game CPU runtime capture was produced.
+
+## v0.34 original-binary correction (2026-10-15)
+
+The first DOS v2.0 FAST target `C51A` is a **RETF-only empty hook**, verified from the canonical unpacked MZ load image; it is not a hidden OBJECT updater. Frame animation/visual updates are split across `C1A8 → BF36 → 2500 → 241E` (span path) and `BF36 → 21F0 → B2D4 → B22C/B17E` (projected objects). `B2D4` also has a projectile caller from `8230`. The **DEMO FAST check on the existing `DS:4540` low bit at `C221` precedes the `BF36` increment of that render-generation counter.** Details and precise conditional gates are in [v0.34](V034_REMAX_OBJECT_ANIMATION_RENDER_BRANCHES.md). Full generic OBJECT writer census and end-to-end runtime order remain OPEN.
