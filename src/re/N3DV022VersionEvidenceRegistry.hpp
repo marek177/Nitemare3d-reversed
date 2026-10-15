@@ -17,7 +17,8 @@ enum class BuildId : std::uint8_t {
     DosV19,
     DosV20,
     Win16Unknown,
-    Unknown
+    Unknown,
+    DosV17 // appended to preserve numeric values of legacy enum entries
 };
 
 enum class Confidence : std::uint8_t {
@@ -60,6 +61,12 @@ inline constexpr BuildProfile kDosV10Profile{
     Confidence::Confirmed
 };
 
+inline constexpr BuildProfile kDosV17Profile{
+    BuildId::DosV17, Platform::Dos, "DOS v1.7", 170848u,
+    "df85d457e752860dc8fc8c39c4c36ba1c62f03b0e704f1365ee618d8ed8447ff",
+    Confidence::Confirmed
+};
+
 inline constexpr BuildProfile kDosV12Profile{
     BuildId::DosV12, Platform::Dos, "DOS v1.2", 0u, "", Confidence::Open
 };
@@ -79,8 +86,9 @@ inline constexpr BuildProfile kWin16UnknownProfile{
     Confidence::Confirmed
 };
 
-inline constexpr std::array<BuildProfile, 5> kBuildProfiles = {{
+inline constexpr std::array<BuildProfile, 6> kBuildProfiles = {{
     kDosV10Profile,
+    kDosV17Profile,
     kDosV12Profile,
     kDosV19Profile,
     kDosV20Profile,
@@ -119,7 +127,10 @@ enum class FactId : std::uint16_t {
     Dos20ObjectRuntime0E50,
     Dos20ProjectileStaleCache,
     CrossVersionAddressPortability,
-    Dos20PushUpdater0E50
+    Dos20PushUpdater0E50,
+    Dos20IncomingDamagePreProtection,
+    Dos19IncomingDamagePostProtection,
+    Dos20HitIndicatorCountdown
 };
 
 struct EvidenceRecord {
@@ -131,7 +142,7 @@ struct EvidenceRecord {
     std::string_view closureTest;
 };
 
-inline constexpr std::array<EvidenceRecord, 15> kEvidenceRegistry = {{
+inline constexpr std::array<EvidenceRecord, 18> kEvidenceRegistry = {{
     {FactId::Dos20PlayerXY, BuildId::DosV20, Confidence::Confirmed,
      EvidenceSource::StaticDisassembly, "DS:4162/4164; stores 68B5/68B9",
      "watch X/Y commit during controlled movement"},
@@ -187,7 +198,19 @@ inline constexpr std::array<EvidenceRecord, 15> kEvidenceRegistry = {{
     {FactId::Dos20PushUpdater0E50, BuildId::DosV20, Confidence::Confirmed,
      EvidenceSource::CrossVersionMatch,
      "DOS image 0E50 matches Win16 seg3:2210 for 292 bytes after 20 relocated operand bytes",
-     "original-image SHA + masked-instruction comparison; runtime order still open"}
+     "original-image SHA + masked-instruction comparison; runtime order still open"},
+    {FactId::Dos20IncomingDamagePreProtection, BuildId::DosV20, Confidence::Confirmed,
+     EvidenceSource::StaticDisassembly,
+     "6A84 calls 87D8 before timer 6A93 and shield/game-state gates 6A99/6AA0",
+     "fingerprinted original opcode/branch verifier v0.36; runtime trace pending"},
+    {FactId::Dos19IncomingDamagePostProtection, BuildId::DosV19, Confidence::Confirmed,
+     EvidenceSource::StaticDisassembly,
+     "6A76/6A7D protect before 6A92 calls 87CE; same in DOS 1.0/1.7 by v0.36",
+     "fingerprinted original opcode/branch verifier v0.36; cross-version data"},
+    {FactId::Dos20HitIndicatorCountdown, BuildId::DosV20, Confidence::Confirmed,
+     EvidenceSource::StaticDisassembly,
+     "6A93 sets DS:417A=3 on nonzero damage; A236/A23D/A243/A24A code 4/3",
+     "four updater-invocation timing model; actual render cadence OPEN"}
 }};
 
 constexpr const EvidenceRecord* evidenceFor(FactId fact) noexcept {

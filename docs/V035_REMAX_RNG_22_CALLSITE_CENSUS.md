@@ -178,3 +178,7 @@ od DEMO `seed=1`, načítané variant-table dáta v každej scéne, počet
 vnorených FAST, presný RNG stav po LOAD a pixel-perfect rendering. Preto
 sa **nezvyšuje globálne percento 1:1 parity**. Tento commit opravuje kritický
 statický podklad používaný pre budúci skutočný trace.
+
+## v0.36 protected-hit RNG scheduling consequence
+
+The 22 static callsite census was NOT changed by v0.36. Instead the cross-version caller order was refined: when the DOS v2.0 actor-damage receiver `6A70` is invoked, it calls `87D8` **before** the invulnerability and terminal-state guards, whereas DOS v1.0/1.7/1.9 guard first. Classes with RNG damage branches `8860/886C/887C` can therefore advance the v2.0 shared RNG stream despite an unchanged HP value. A nonzero computed damage byte also arms `DS:417A` timer=3 before protection. Do not apply this to all hazard/projectile paths or imply a captured seed=1 DEMO trace. See [v0.36](V036_REMAX_PROTECTED_HIT_RNG_ORDER.md).

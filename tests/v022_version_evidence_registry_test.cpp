@@ -7,6 +7,8 @@ int main() {
 
     static_assert(hasConfirmedFingerprint(BuildId::DosV20));
     static_assert(hasConfirmedFingerprint(BuildId::DosV10));
+    static_assert(hasConfirmedFingerprint(BuildId::DosV17));
+    static_assert(kBuildProfiles.size() == 6);
     static_assert(!hasConfirmedFingerprint(BuildId::DosV12));
     static_assert(hasConfirmedFingerprint(BuildId::DosV19));
     static_assert(hasConfirmedFingerprint(BuildId::Win16Unknown));
@@ -17,6 +19,9 @@ int main() {
     static_assert(dos20->fingerprintConfidence == Confidence::Confirmed);
 
     static_assert(profileFor(BuildId::DosV10)->unpackedExeSize == 154448u);
+    static_assert(profileFor(BuildId::DosV17)->unpackedExeSize == 170848u);
+    static_assert(profileFor(BuildId::DosV17)->sha256 ==
+                  "df85d457e752860dc8fc8c39c4c36ba1c62f03b0e704f1365ee618d8ed8447ff");
     static_assert(profileFor(BuildId::DosV19)->unpackedExeSize == 171296u);
     static_assert(profileFor(BuildId::Win16Unknown)->unpackedExeSize == 230400u);
 
@@ -41,6 +46,11 @@ int main() {
     static_assert(requiresRuntimeClosure(FactId::Dos20ProjectileStaleCache));
     static_assert(mayPromoteToImplementation(FactId::Dos20PushUpdater0E50));
     static_assert(requiresRuntimeClosure(FactId::Dos20ObjectRuntime0E50));
+    static_assert(mayPromoteToImplementation(FactId::Dos20IncomingDamagePreProtection));
+    static_assert(mayPromoteToImplementation(FactId::Dos19IncomingDamagePostProtection));
+    static_assert(mayPromoteToImplementation(FactId::Dos20HitIndicatorCountdown));
+    static_assert(evidenceFor(FactId::Dos20IncomingDamagePreProtection)->build == BuildId::DosV20);
+    static_assert(evidenceFor(FactId::Dos19IncomingDamagePostProtection)->build == BuildId::DosV19);
 
     const auto* unknown = profileFor(BuildId::Unknown);
     assert(unknown == nullptr);
