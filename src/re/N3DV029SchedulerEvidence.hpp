@@ -121,13 +121,13 @@ struct AuditFinding {
     std::string_view summary;
 };
 
-inline constexpr std::array<AuditFinding, 12> kRecentFindings = {{
+inline constexpr std::array<AuditFinding, 15> kRecentFindings = {{
     {"fast_direct_call_order", BuildId::DosV20, Evidence::ReportedStatic,
      "C150 direct call order only; not complete transitive runtime order"},
     {"fast_first_target_empty_c51a", BuildId::DosV20, Evidence::VerifiedStatic,
      "C150 first direct target C51A executes a sole RETF; not an OBJECT update"},
-    {"demo_fast_odd_frame_route", BuildId::DosV20, Evidence::StrongInference,
-     "C1A8/6D04 DEMO branch can route FAST via odd DS:4540 frame count"},
+    {"demo_fast_odd_frame_route", BuildId::DosV20, Evidence::VerifiedStatic,
+     "C221 old render-generation low-bit gate, C22E FAST(slowCounter), before BF36 increments generation"},
     {"demo_seed1_full_rng_order", BuildId::DosV20, Evidence::RuntimeOpen,
      "No capture of all draws through first gameplay input"},
     {"push_blocked_preserves_progress", BuildId::DosV20, Evidence::VerifiedStatic,
@@ -145,8 +145,14 @@ inline constexpr std::array<AuditFinding, 12> kRecentFindings = {{
      "20th special-hit branch may enter nested scheduler before collision returns"},
     {"post_load_first_tick_order", BuildId::Win16V110, Evidence::RuntimeOpen,
      "initial buffer alias is mapped; first post-LOAD gameplay tick not traced"},
+    {"slow_bucket_single_increment", BuildId::DosV20, Evidence::VerifiedStatic,
+     "BEB4: when quantized clock changes, increment DS:16F6 once; no quotient-delta catch-up"},
+    {"frame_bucket_single_increment", BuildId::DosV20, Evidence::VerifiedStatic,
+     "BEF4: calibrated quantized clock changes -> exactly one DS:16FE increment"},
+    {"unsigned_legacy_recovery_500", BuildId::DosV20, Evidence::VerifiedStatic,
+     "C286/C28F: unsigned BDF8 snapshot minus DS:1734 >500 invokes BDE4(1/0), resamples"},
     {"full_fast_main_order", BuildId::DosV20, Evidence::RuntimeOpen,
-     "Nested callbacks, time catch-up and render/RNG chronology unverified"}
+     "Local BEB4/BEF4/C1A8 skipped-step gates verified v0.37; global nested callbacks/IRQ/render/RNG chronology still open"}
 }};
 
 constexpr const AuditFinding* finding(std::string_view id) noexcept {

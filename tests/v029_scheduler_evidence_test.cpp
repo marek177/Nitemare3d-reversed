@@ -17,6 +17,12 @@ int main() {
     static_assert(kDos20FastDirectCalls[0].label.find("RETF") != std::string_view::npos);
     static_assert(finding("fast_first_target_empty_c51a")->evidence == Evidence::VerifiedStatic);
     static_assert(!runtimeConfirmed("fast_first_target_empty_c51a"));
+    static_assert(finding("demo_fast_odd_frame_route")->evidence == Evidence::VerifiedStatic);
+    static_assert(finding("slow_bucket_single_increment")->evidence == Evidence::VerifiedStatic);
+    static_assert(finding("frame_bucket_single_increment")->evidence == Evidence::VerifiedStatic);
+    static_assert(finding("unsigned_legacy_recovery_500")->evidence == Evidence::VerifiedStatic);
+    static_assert(!runtimeConfirmed("slow_bucket_single_increment"));
+    static_assert(finding("full_fast_main_order")->evidence == Evidence::RuntimeOpen);
     static_assert(kDos20FastDirectCalls[10].gate == CallGate::TickLowThreeBitsZero);
 
     static_assert(finding("door_blocked_retry_four") != nullptr);

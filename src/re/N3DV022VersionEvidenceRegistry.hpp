@@ -130,7 +130,11 @@ enum class FactId : std::uint16_t {
     Dos20PushUpdater0E50,
     Dos20IncomingDamagePreProtection,
     Dos19IncomingDamagePostProtection,
-    Dos20HitIndicatorCountdown
+    Dos20HitIndicatorCountdown,
+    Dos20SlowQuantizerSingleIncrement,
+    Dos20FrameQuantizerSingleIncrement,
+    Dos20DemoFastSlowCounterArgument,
+    Dos20UnsignedLegacy500Recovery
 };
 
 struct EvidenceRecord {
@@ -142,7 +146,7 @@ struct EvidenceRecord {
     std::string_view closureTest;
 };
 
-inline constexpr std::array<EvidenceRecord, 18> kEvidenceRegistry = {{
+inline constexpr std::array<EvidenceRecord, 22> kEvidenceRegistry = {{
     {FactId::Dos20PlayerXY, BuildId::DosV20, Confidence::Confirmed,
      EvidenceSource::StaticDisassembly, "DS:4162/4164; stores 68B5/68B9",
      "watch X/Y commit during controlled movement"},
@@ -210,7 +214,23 @@ inline constexpr std::array<EvidenceRecord, 18> kEvidenceRegistry = {{
     {FactId::Dos20HitIndicatorCountdown, BuildId::DosV20, Confidence::Confirmed,
      EvidenceSource::StaticDisassembly,
      "6A93 sets DS:417A=3 on nonzero damage; A236/A23D/A243/A24A code 4/3",
-     "four updater-invocation timing model; actual render cadence OPEN"}
+     "four updater-invocation timing model; actual render cadence OPEN"},
+    {FactId::Dos20SlowQuantizerSingleIncrement, BuildId::DosV20,
+     Confidence::Confirmed, EvidenceSource::StaticDisassembly,
+     "BEB4..BEEA: quantized time=(u32 clock*8)/1000; cache!=key -> one DS:16F6 INC",
+     "v0.37 original-byte gate probe; nested IRQ delivery still OPEN"},
+    {FactId::Dos20FrameQuantizerSingleIncrement, BuildId::DosV20,
+     Confidence::Confirmed, EvidenceSource::StaticDisassembly,
+     "BEF4..BF2C: MOVSX 3CC2, low32 MUL clock /1000; cache!=key -> one DS:16FE INC",
+     "v0.37 original-byte gate probe; calibration/runtime clock source OPEN"},
+    {FactId::Dos20DemoFastSlowCounterArgument, BuildId::DosV20,
+     Confidence::Confirmed, EvidenceSource::StaticDisassembly,
+     "C221 old DS:4540 odd gate, C228 pushes slow DS:3672 to C22E FAST before BF36",
+     "v0.37 original-byte gate probe; C150 modulo-8 action gate"},
+    {FactId::Dos20UnsignedLegacy500Recovery, BuildId::DosV20,
+     Confidence::Confirmed, EvidenceSource::StaticDisassembly,
+     "C286 unsigned (entry BDF8 - DS:1734)>500 invokes BDE4(1),BDE4(0),BDF8",
+     "v0.37 original-byte gate probe; external BDE4 effects still OPEN"}
 }};
 
 constexpr const EvidenceRecord* evidenceFor(FactId fact) noexcept {

@@ -144,3 +144,7 @@ hodnotou frame/deadline pred/po, počtom RNG odberov a dôvodom cullingu.
 Druhá kontrolovaná scéna musí ponechať objekt mimo projekcie. Až potom
 možno bezpečne povedať, či sa animácia mimo obrazu zastaví, dobieha alebo
 je aktualizovaná iným callbackom.
+
+## v0.37 refinement — DEMO FAST argument, not just frame parity
+
+The `C221` odd-generation gate identified here is paired with a **second independent modulo-8 gate**: at `C228` the outer scheduler pushes `DS:3672` (slowCounter from `BEB4`), rather than the frame count, before calling `C150`. Inside `C150:C198` the conditional second `89A2` dispatch tests the supplied argument `&7`. Hence DEMO frame generation decides whether to call FAST, but slowCounter decides whether that FAST makes its gated second action pass. The quantizers also increment only once per changed quantized time sample; the outer scheduler has no local multi-tick replay loop. Detailed original code and regression tests: [v0.37](V037_REMAX_SCHEDULER_CATCHUP_STATIC_CLOSURE.md). Global nested callbacks and exact simulated speed are still OPEN.

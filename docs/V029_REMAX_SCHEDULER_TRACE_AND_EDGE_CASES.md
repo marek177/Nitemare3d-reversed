@@ -166,3 +166,9 @@ The first DOS v2.0 FAST target `C51A` is a **RETF-only empty hook**, verified fr
 ## v0.35 RNG census correction
 
 An original-byte scan demonstrates **22**, not 20, inline direct far RNG callsites in DOS v2.0. Two legitimate incoming damage sites `8860` and `886C` were omitted by the old list, causing false strict-trace rejections. The class dispatcher table proves their targets, and the updated Python/C++ registries accept them. See [v0.35](V035_REMAX_RNG_22_CALLSITE_CENSUS.md). This changes static caller validation only, not proof of DEMO seed=1 chronology.
+
+## v0.37 — original DOS v2.0 quantized counters and local catch-up closure
+
+The earlier v0.29 note that *all* catch-up behavior remained open is now narrowed by direct original-byte proof. Slow quantizer `BEB4` computes `low32(clock*8)/1000`, caches `DS:16FA` and increments `DS:16F6` **once** when the key differs. Frame quantizer `BEF4` uses signed `DS:3CC2` calibration, low32 product and /1000, caches `DS:1702` and increments `DS:16FE` **once**. At outer `C1A8`, `DS:1738/173C` due thresholds are unsigned compared against those counters and, after a due branch, each set to **observed counter+1**, not incremented until all elapsed intervals are replayed. The normal FAST `C1EA` is allowed only with DEMO mode=0; frame DEMO FAST `C22E` only with mode!=0 and old `DS:4540` odd. Both take **slowCounter** as argument. The guarded recovery tail `C286..C2B4` checks unsigned legacy clock delta >500 and may resample BDF8 after BDE4(1/0) toggles.
+
+This is **VERIFIED STATIC for these direct routines**, not a claim of no nested callbacks/interrupts elsewhere. Exact global original runtime order, RNG seed=1 and pixel parity remain OPEN. See [v0.37](V037_REMAX_SCHEDULER_CATCHUP_STATIC_CLOSURE.md).

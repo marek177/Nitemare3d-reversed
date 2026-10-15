@@ -69,3 +69,7 @@ The `Dos20RngDirectCallsites` fact is now backed by **22** original-byte direct 
 ## v0.36 additional DOS v1.7 build profile and damage order
 
 A new direct original image check confirms the DOS **v1.7** unpacked MZ load-image profile (170848 bytes, SHA-256 `df85d457e752860dc8fc8c39c4c36ba1c62f03b0e704f1365ee618d8ed8447ff`). The appended enum value `BuildId::DosV17` preserves numeric values of existing build IDs. The profile registry now has six records; DOS v1.2 still lacks an unpacked-image SHA, and the DOS v1.7 profile is not a DOS v1.2 alias. The v0.36 evidence registry also distinguishes v2.0 incoming damage producer-before-protection, v1.9 protection-before-producer (also checked in v1.0 and v1.7) and the v2.0 short hit-indicator countdown. See [v0.36](V036_REMAX_PROTECTED_HIT_RNG_ORDER.md). These are narrow static control-flow facts, not runtime parity.
+
+## v0.37 scheduler evidence additions (2026-10-15)
+
+Four **build-scoped local** static records for fingerprinted DOS v2.0 were added: one-count-per-quantized-change in `BEB4` and `BEF4`, a DEMO odd-frame FAST call that passes the slowCounter argument, and unsigned 500-unit legacy clock recovery in `C286..C2B4`. The registry's separate `Dos20ExactFastMainOrder` entry remains **OPEN** because neither full transitive callbacks nor interrupt chronology were traced. Evidence report: [v0.37](V037_REMAX_SCHEDULER_CATCHUP_STATIC_CLOSURE.md).
