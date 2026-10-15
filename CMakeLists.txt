@@ -196,6 +196,10 @@ target_link_libraries(n3d_v035_rng_census_test PRIVATE n3d_core)
 add_executable(n3d_v036_protected_hit_ordering_test tests/v036_protected_hit_ordering_test.cpp)
 target_link_libraries(n3d_v036_protected_hit_ordering_test PRIVATE n3d_core)
 
+# Original DOS/Win16 special-hit callback evidence, synthetic test only.
+add_executable(n3d_v037_impact_callback_test tests/v037_impact_callback_test.cpp)
+target_link_libraries(n3d_v037_impact_callback_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
