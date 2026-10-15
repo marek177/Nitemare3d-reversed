@@ -66,6 +66,14 @@ class DifferentialTraceTests(unittest.TestCase):
         self.assertFalse(report["provenance"]["evidence_gate"])
         self.assertFalse(report["original_runtime_verified"])
 
+    def test_new_original_damage_callers_valid_in_strict_comparator(self):
+        reference = rng_rows((0x8860, 0x886C, 0x887C))
+        report = compare.compare_captures('rng', reference, reference,
+                                          strict_callers=True)
+        self.assertTrue(report['ok'])
+        self.assertEqual(report['verdict'], 'trace_match_unsealed')
+        self.assertFalse(report['original_runtime_verified'])
+
     def test_caller_mismatch_even_when_same_rng_states(self):
         reference = rng_rows()
         candidate = rng_rows((0x2478, 0x525E, 0x525E, 0x58A7))

@@ -45,6 +45,22 @@ class RngEvidenceTests(unittest.TestCase):
             state = new_state
         return rows
 
+    def test_all_22_direct_callers_include_damage_site_pair(self):
+        self.assertEqual(len(probe.RNG_DIRECT_CALLERS), 22)
+        self.assertIn(0x8860, probe.RNG_DIRECT_CALLERS)
+        self.assertIn(0x886C, probe.RNG_DIRECT_CALLERS)
+        state = 1
+        rows = []
+        for caller in (0x8860, 0x886C, 0x887C):
+            after = (state * 214013 + 2531011) & 0xFFFFFFFF
+            rows.append(dict(caller=caller, before=state, after=after,
+                             result=(after >> 16) & 0x7FFF))
+            state = after
+        self.assertTrue(probe.audit_rng(rows, seed=1, strict_callers=True)['ok'])
+        rows[1]['caller'] = 0x7777
+        self.assertEqual(probe.audit_rng(rows, seed=1, strict_callers=True)['error'],
+                         'caller not in direct-call census')
+
     def test_seed_and_continuity(self):
         rows = self.make_rows()
         self.assertTrue(probe.audit_rng(rows, seed=1)['ok'])

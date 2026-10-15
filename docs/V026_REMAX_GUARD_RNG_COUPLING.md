@@ -37,11 +37,38 @@ is bound to GUARD planner/timer-direction logic with STRONG confidence. The prec
 
 `85AD` is bound to damage/pain ordering with STRONG confidence, but its exact branch consumer remains to be closed by trace.
 
-## Unassigned direct callsites
+## v0.35 direct original-byte correction
 
-All other known direct DOS v2.0 RNG callsites remain explicitly `Unassigned / OPEN`.
+The v0.26 list of **20** direct callsites was incomplete. The fingerprinted
+DOS v2.0 unpacked image contains **22** occurrences of the direct far-call
+opcode to `0FBA:01A0`. The missing sites `8860` (damage `RNG&7`)
+and `886C` (damage `RNG&15`) are reachable from the original 23-entry
+class jump table at `882E`. `887C` handles `RNG&31` for classes `11..14`.
+These branches are class-specific and each executes one RNG call if reached.
 
-They are preserved in the same 20-entry table so future traces can promote them one at a time without changing the callsite census.
+All **22 direct opcode sites** now have an instruction-local consumer binding
+in `N3DV026GuardRngCoupling.hpp`:
+- `5582`: GUARD state 7/8 conditional activation; `RNG%8` writes timer,
+  then state 1;
+- `B276`: projected OBJECT variant `RNG&7`; can repeat until an
+  accepted descriptor entry, independently of the SPAN `2478` consumer;
+- `9C98/9CC2/9D6E/9F0C/9F36`: class-specific sound selector arithmetic;
+- `9A68/9A77`: two sequential scene-effect position values;
+- `9FE3/A047`: resource selector `RNG%7` with resource-byte rejection;
+- `A12B`: effect timer `RNG%240+160`;
+- `85AD` and GUARD planner sites retain their prior STRONG semantic or
+  ordering evidence where not fully closed.
+
+**Important:** `CONFIRMED` in this table refers to immediate disassembled
+instructions and operands, not actual runtime entry, enemy visible-name
+identity or global ordering. Absence of `Unassigned` entries does NOT imply
+the full behavior or all RNG aliases are proven.
+
+The branch `CMP SI,7; JE retry` after `IDIV 7` in `9FE3/A047` is
+provably unreachable for the known unsigned 15-bit RNG result. The *separate*
+retry when a resource-table byte is zero remains reachable in principle.
+
+See [v0.35 evidence and tests](V035_REMAX_RNG_22_CALLSITE_CENSUS.md).
 
 ## Why this matters for DEMO parity
 

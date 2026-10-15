@@ -15,6 +15,9 @@ int main() {
 
     static_assert(isKnownDirectRngCallsite(0x2478));
     static_assert(isKnownDirectRngCallsite(0xB276));
+    static_assert(kDos20DirectRngCallsites.size() == 22);
+    static_assert(isKnownDirectRngCallsite(0x8860));
+    static_assert(isKnownDirectRngCallsite(0x886C));
     static_assert(!isKnownDirectRngCallsite(0x1234));
 
     constexpr std::uint32_t before = 1;
@@ -27,6 +30,11 @@ int main() {
     constexpr RngTraceEntry valid{0x2478, before, after, result};
     constexpr auto validCheck = validateRngTraceEntry(valid);
     static_assert(validCheck.valid());
+
+    constexpr RngTraceEntry damageCaller0{0x8860, before, after, result};
+    constexpr RngTraceEntry damageCaller1{0x886C, before, after, result};
+    static_assert(validateRngTraceEntry(damageCaller0).valid());
+    static_assert(validateRngTraceEntry(damageCaller1).valid());
 
     constexpr RngTraceEntry badCaller{0x1234, before, after, result};
     static_assert(!validateRngTraceEntry(badCaller).valid());

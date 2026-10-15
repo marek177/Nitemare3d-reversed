@@ -4,7 +4,7 @@ Date: 2026-10-14. Revision after
 [v0.29](V029_REMAX_SCHEDULER_TRACE_AND_EDGE_CASES.md).
 
 **Scope:** New *verification infrastructure* for the highest-priority open
-runtime questions. The exact DOS v2.0 RNG LCG and 20 direct caller offsets
+runtime questions. The exact DOS v2.0 RNG LCG and the **historical v0.30 list of 20** direct caller offsets (corrected to **22** by the v0.35 binary audit)
 come from the already documented v0.20/v0.22/v0.26 audits. **No newly captured
 original-game CPU trace is included or claimed.** No percentage increase is
 justified by this version.
@@ -166,3 +166,7 @@ never automatically a promotion to `VERIFIED_EXE` or `BEHAVIORAL`.
 
 **No new original-game runtime trace, new original enemy rule, or 1:1 parity
 claim is made by v0.30.**
+
+## v0.35 correction — strict caller table expanded
+
+The old 20-site direct caller census rejected legitimate incoming-damage RNG callsites `8860/886C`. The canonical DOS v2.0 load-image contains 22 direct far-call opcode occurrences, with the two additional sites confirmed by a class jump table. Updated `n3d_trace_audit.py` and `N3DV020VerificationHarness.hpp` correct the data. The v0.30 differential algorithm itself is unchanged and still compares ordered records without sorting. See [v0.35 report](V035_REMAX_RNG_22_CALLSITE_CENSUS.md).
