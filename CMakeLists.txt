@@ -190,6 +190,10 @@ target_link_libraries(n3d_v033_push_scheduler_test PRIVATE n3d_core)
 add_executable(n3d_v034_object_animation_evidence_test tests/v034_object_animation_evidence_test.cpp)
 target_link_libraries(n3d_v034_object_animation_evidence_test PRIVATE n3d_core)
 
+# Win16 v1.8/v1.10 SECRET cascade synthetic regression (no original assets).
+add_executable(n3d_v035_secret_cascade_test tests/v035_secret_cascade_test.cpp)
+target_link_libraries(n3d_v035_secret_cascade_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
