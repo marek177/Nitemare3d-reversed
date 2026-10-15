@@ -39,8 +39,13 @@ def synthetic_image():
             image[site] = 0xE8
             struct.pack_into("<h", image, site+1, offset)
         else:
-            image[site] = 0x9A
-            struct.pack_into("<HH", image, site+1, target & 15, target >> 4)
+            # Both FAR calls are already covered by the exact original
+            # opcode window at C246. The normalized target has many valid
+            # segment:offset representations: never rewrite its originally
+            # encoded bytes using an arbitrary equivalent segment base.
+            assert image[site] == 0x9A
+            off, seg = struct.unpack_from("<HH", image, site+1)
+            assert (seg << 4) + off == target
     return image
 
 
