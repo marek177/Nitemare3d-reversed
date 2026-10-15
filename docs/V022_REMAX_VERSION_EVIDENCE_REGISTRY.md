@@ -65,3 +65,7 @@ The next version-identity target is the unpacked DOS v1.2 image and any as-yet-u
 ## v0.35 direct RNG census correction (2026-10-15)
 
 The `Dos20RngDirectCallsites` fact is now backed by **22** original-byte direct FAR calls to `0FBA:01A0`, rather than the earlier 20-entry static register. Two missing incoming-damage paths at load-image `8860` and `886C` were verified as actual jump-table targets for actor classes `08` and `09/0A`. The scope is one SHA-256-identified unpacked DOS v2.0 image; runtime order and indirect RNG calls remain open. See [v0.35 report](V035_REMAX_RNG_22_CALLSITE_CENSUS.md).
+
+## v0.36 additional DOS v1.7 build profile and damage order
+
+A new direct original image check confirms the DOS **v1.7** unpacked MZ load-image profile (170848 bytes, SHA-256 `df85d457e752860dc8fc8c39c4c36ba1c62f03b0e704f1365ee618d8ed8447ff`). The appended enum value `BuildId::DosV17` preserves numeric values of existing build IDs. The profile registry now has six records; DOS v1.2 still lacks an unpacked-image SHA, and the DOS v1.7 profile is not a DOS v1.2 alias. The v0.36 evidence registry also distinguishes v2.0 incoming damage producer-before-protection, v1.9 protection-before-producer (also checked in v1.0 and v1.7) and the v2.0 short hit-indicator countdown. See [v0.36](V036_REMAX_PROTECTED_HIT_RNG_ORDER.md). These are narrow static control-flow facts, not runtime parity.
