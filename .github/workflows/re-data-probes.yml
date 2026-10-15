@@ -21,6 +21,18 @@ on:
       - "src/re/N3DV036ProtectedHitOrdering.hpp"
       - "tests/v036_protected_hit_ordering_test.cpp"
       - "docs/V036_REMAX_PROTECTED_HIT_RNG_ORDER.md"
+      - "tools/n3d_v037_scheduler_gate_probe.py"
+      - "tests/test_n3d_v037_scheduler_gate_probe.py"
+      - "src/re/N3DV037SchedulerCatchup.hpp"
+      - "tests/v037_scheduler_catchup_test.cpp"
+      - "docs/V037_REMAX_SCHEDULER_CATCHUP_STATIC_CLOSURE.md"
+      - "src/re/N3DV029SchedulerEvidence.hpp"
+      - "tests/v029_scheduler_evidence_test.cpp"
+      - "src/re/N3DV022VersionEvidenceRegistry.hpp"
+      - "tests/v022_version_evidence_registry_test.cpp"
+      - "docs/V029_REMAX_SCHEDULER_TRACE_AND_EDGE_CASES.md"
+      - "docs/V034_REMAX_OBJECT_ANIMATION_RENDER_BRANCHES.md"
+      - "docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md"
       - "src/re/N3DV022VersionEvidenceRegistry.hpp"
       - "tests/v022_version_evidence_registry_test.cpp"
       - "docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md"
@@ -86,6 +98,18 @@ on:
       - "src/re/N3DV036ProtectedHitOrdering.hpp"
       - "tests/v036_protected_hit_ordering_test.cpp"
       - "docs/V036_REMAX_PROTECTED_HIT_RNG_ORDER.md"
+      - "tools/n3d_v037_scheduler_gate_probe.py"
+      - "tests/test_n3d_v037_scheduler_gate_probe.py"
+      - "src/re/N3DV037SchedulerCatchup.hpp"
+      - "tests/v037_scheduler_catchup_test.cpp"
+      - "docs/V037_REMAX_SCHEDULER_CATCHUP_STATIC_CLOSURE.md"
+      - "src/re/N3DV029SchedulerEvidence.hpp"
+      - "tests/v029_scheduler_evidence_test.cpp"
+      - "src/re/N3DV022VersionEvidenceRegistry.hpp"
+      - "tests/v022_version_evidence_registry_test.cpp"
+      - "docs/V029_REMAX_SCHEDULER_TRACE_AND_EDGE_CASES.md"
+      - "docs/V034_REMAX_OBJECT_ANIMATION_RENDER_BRANCHES.md"
+      - "docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md"
       - "src/re/N3DV022VersionEvidenceRegistry.hpp"
       - "tests/v022_version_evidence_registry_test.cpp"
       - "docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md"
@@ -170,10 +194,12 @@ jobs:
         run: python -m unittest discover -s tests -p "test_n3d_v035_rng_census.py" -v
       - name: Cross-version protected-hit ordering fixture tests (synthetic)
         run: python -m unittest discover -s tests -p "test_n3d_v036_protected_hit_probe.py" -v
+      - name: DOS v2.0 quantized-clock and scheduler-gate fixture tests (synthetic)
+        run: python -m unittest discover -s tests -p "test_n3d_v037_scheduler_gate_probe.py" -v
       - name: Configure C++ evidence and push-safety tests (SDL disabled)
         run: cmake -S . -B build -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Release
       - name: Build C++ trace and push-safety tests
-        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test n3d_v030_trace_closure_test n3d_pushable_blocked_test n3d_v022_version_evidence_registry_test n3d_v025_guard_writer_graph_test n3d_v032_static_closure_test n3d_v020_verification_harness_test n3d_v021_subsystem_evidence_test n3d_v033_push_scheduler_test n3d_v034_object_animation_evidence_test n3d_v026_guard_rng_coupling_test n3d_v035_rng_census_test n3d_v036_protected_hit_ordering_test
+        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test n3d_v030_trace_closure_test n3d_pushable_blocked_test n3d_v022_version_evidence_registry_test n3d_v025_guard_writer_graph_test n3d_v032_static_closure_test n3d_v020_verification_harness_test n3d_v021_subsystem_evidence_test n3d_v033_push_scheduler_test n3d_v034_object_animation_evidence_test n3d_v026_guard_rng_coupling_test n3d_v035_rng_census_test n3d_v036_protected_hit_ordering_test n3d_v037_scheduler_catchup_test
       - name: C++ evidence and push-safety tests (synthetic)
         run: ctest --test-dir build -C Release -R "^(n3d_v0(29_scheduler_evidence|30_trace_closure)_test|n3d_pushable_blocked_test)$" --output-on-failure
       - name: v0.32 static closure registry C++ tests
@@ -186,3 +212,5 @@ jobs:
         run: ctest --test-dir build -C Release -R "^n3d_v0(26_guard_rng_coupling|35_rng_census)_test$" --output-on-failure
       - name: v0.36 protected-hit damage order and version evidence C++ tests
         run: ctest --test-dir build -C Release -R "^n3d_v0(22_version_evidence_registry|36_protected_hit_ordering)_test$" --output-on-failure
+      - name: v0.37 scheduler catch-up and evidence-registry C++ tests
+        run: ctest --test-dir build -C Release -R "^n3d_v0(22_version_evidence_registry|29_scheduler_evidence|37_scheduler_catchup)_test$" --output-on-failure

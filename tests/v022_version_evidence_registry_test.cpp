@@ -49,6 +49,13 @@ int main() {
     static_assert(mayPromoteToImplementation(FactId::Dos20IncomingDamagePreProtection));
     static_assert(mayPromoteToImplementation(FactId::Dos19IncomingDamagePostProtection));
     static_assert(mayPromoteToImplementation(FactId::Dos20HitIndicatorCountdown));
+    static_assert(kEvidenceRegistry.size() == 22);
+    static_assert(mayPromoteToImplementation(FactId::Dos20SlowQuantizerSingleIncrement));
+    static_assert(mayPromoteToImplementation(FactId::Dos20FrameQuantizerSingleIncrement));
+    static_assert(mayPromoteToImplementation(FactId::Dos20DemoFastSlowCounterArgument));
+    static_assert(mayPromoteToImplementation(FactId::Dos20UnsignedLegacy500Recovery));
+    static_assert(evidenceFor(FactId::Dos20UnsignedLegacy500Recovery)->build == BuildId::DosV20);
+    static_assert(!mayPromoteToImplementation(FactId::Dos20ExactFastMainOrder));
     static_assert(evidenceFor(FactId::Dos20IncomingDamagePreProtection)->build == BuildId::DosV20);
     static_assert(evidenceFor(FactId::Dos19IncomingDamagePostProtection)->build == BuildId::DosV19);
 
