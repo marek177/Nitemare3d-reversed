@@ -32,7 +32,7 @@ inline constexpr std::uint16_t kDos20OuterScheduler = 0xC1A8;
 // Reported sequence of DIRECT call targets of 1000:C150, not the full
 // transitive execution order. Callbacks/recursive invocations may interleave.
 inline constexpr std::array<FastDirectTarget, 11> kDos20FastDirectCalls = {{
-    {0xC51A, CallGate::Always, "C51A helper (semantics open)"},
+    {0xC51A, CallGate::Always, "C51A empty RETF hook (v0.34 verified original bytes)"},
     {0x0A40, CallGate::Always, "door auto-close"},
     {0x5F26, CallGate::Always, "GUARD scheduler"},
     {0xA19A, CallGate::Always, "A19A helper (semantics open)"},
@@ -121,9 +121,11 @@ struct AuditFinding {
     std::string_view summary;
 };
 
-inline constexpr std::array<AuditFinding, 11> kRecentFindings = {{
+inline constexpr std::array<AuditFinding, 12> kRecentFindings = {{
     {"fast_direct_call_order", BuildId::DosV20, Evidence::ReportedStatic,
      "C150 direct call order only; not complete transitive runtime order"},
+    {"fast_first_target_empty_c51a", BuildId::DosV20, Evidence::VerifiedStatic,
+     "C150 first direct target C51A executes a sole RETF; not an OBJECT update"},
     {"demo_fast_odd_frame_route", BuildId::DosV20, Evidence::StrongInference,
      "C1A8/6D04 DEMO branch can route FAST via odd DS:4540 frame count"},
     {"demo_seed1_full_rng_order", BuildId::DosV20, Evidence::RuntimeOpen,
