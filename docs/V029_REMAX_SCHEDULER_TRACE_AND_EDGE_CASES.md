@@ -132,7 +132,7 @@ caller,before,after,result
 This too is merely a mathematically valid **synthetic example**. For a full
 DEMO proof, collect *every* RNG draw, in exact order, beginning with state 1.
 `--strict-callers` is appropriate only if all observed caller offsets should
-belong to the known 20-entry DOS v2.0 direct-call census; indirect call paths
+belong to the re-audited 22-entry DOS v2.0 direct-call census (v0.35); indirect call paths
 must be investigated rather than discarded.
 
 ```sh
@@ -162,3 +162,7 @@ New fingerprint-gated binary audit upgrades the exact `0E50` identity and the `(
 ## v0.34 original-binary correction (2026-10-15)
 
 The first DOS v2.0 FAST target `C51A` is a **RETF-only empty hook**, verified from the canonical unpacked MZ load image; it is not a hidden OBJECT updater. Frame animation/visual updates are split across `C1A8 → BF36 → 2500 → 241E` (span path) and `BF36 → 21F0 → B2D4 → B22C/B17E` (projected objects). `B2D4` also has a projectile caller from `8230`. The **DEMO FAST check on the existing `DS:4540` low bit at `C221` precedes the `BF36` increment of that render-generation counter.** Details and precise conditional gates are in [v0.34](V034_REMAX_OBJECT_ANIMATION_RENDER_BRANCHES.md). Full generic OBJECT writer census and end-to-end runtime order remain OPEN.
+
+## v0.35 RNG census correction
+
+An original-byte scan demonstrates **22**, not 20, inline direct far RNG callsites in DOS v2.0. Two legitimate incoming damage sites `8860` and `886C` were omitted by the old list, causing false strict-trace rejections. The class dispatcher table proves their targets, and the updated Python/C++ registries accept them. See [v0.35](V035_REMAX_RNG_22_CALLSITE_CENSUS.md). This changes static caller validation only, not proof of DEMO seed=1 chronology.

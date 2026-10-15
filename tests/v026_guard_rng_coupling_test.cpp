@@ -1,13 +1,15 @@
 #include "re/N3DV026GuardRngCoupling.hpp"
 
 #include <cassert>
+#include <cstdint>
+#include <initializer_list>
 
 int main() {
     using namespace n3d::re::v026;
 
-    static_assert(kDos20RngCoupling.size() == 20);
-    static_assert(countAssignedConsumers() == 7);
-    static_assert(countConfirmedCouplings() == 3);
+    static_assert(kDos20RngCoupling.size() == 22);
+    static_assert(countAssignedConsumers() == 22);
+    static_assert(countConfirmedCouplings() == 18);
 
     constexpr auto* anim = couplingFor(0x2478);
     static_assert(anim != nullptr);
@@ -33,10 +35,34 @@ int main() {
     static_assert(planner->consumer == RngConsumer::GuardPlanner);
     static_assert(planner->confidence == Confidence::Strong);
 
-    constexpr auto* unknown = couplingFor(0xB276);
-    static_assert(unknown != nullptr);
-    static_assert(unknown->consumer == RngConsumer::Unassigned);
-    static_assert(unknown->confidence == Confidence::Open);
+    constexpr auto* wake = couplingFor(0x5582);
+    static_assert(wake != nullptr);
+    static_assert(wake->consumer == RngConsumer::GuardWakeTimer);
+    static_assert(wake->confidence == Confidence::Confirmed);
+    static_assert(isExactlyOneDraw(0x5582));
+    for (auto caller : {0x8860, 0x886C, 0x887C}) {
+        const auto* entry = couplingFor(static_cast<std::uint16_t>(caller));
+        assert(entry != nullptr);
+        assert(entry->consumer == RngConsumer::IncomingDamageMasked);
+        assert(entry->drawCount == DrawCountModel::ExactlyOne);
+        assert(entry->confidence == Confidence::Confirmed);
+    }
+    constexpr auto* projected = couplingFor(0xB276);
+    static_assert(projected != nullptr);
+    static_assert(projected->consumer == RngConsumer::ProjectedAnimationVariant);
+    static_assert(projected->drawCount == DrawCountModel::VariableRejectionLoop);
+    static_assert(projected->confidence == Confidence::Confirmed);
+    static_assert(!isExactlyOneDraw(0xB276));
+    static_assert(couplingFor(0x9FE3)->drawCount == DrawCountModel::VariableRejectionLoop);
+    static_assert(couplingFor(0xA047)->consumer == RngConsumer::ResourceTableVariant);
+    static_assert(couplingFor(0x9C98)->consumer == RngConsumer::GuardSfxVariant);
+    static_assert(couplingFor(0x9CC2)->consumer == RngConsumer::GuardSfxVariant);
+    static_assert(couplingFor(0x9D6E)->consumer == RngConsumer::GuardSfxVariant);
+    static_assert(couplingFor(0x9F0C)->consumer == RngConsumer::GuardSfxVariant);
+    static_assert(couplingFor(0x9F36)->consumer == RngConsumer::GuardSfxVariant);
+    static_assert(couplingFor(0x9A68)->consumer == RngConsumer::SceneEffectPosition);
+    static_assert(couplingFor(0x9A77)->consumer == RngConsumer::SceneEffectPosition);
+    static_assert(couplingFor(0xA12B)->consumer == RngConsumer::SceneEffectTimer);
 
     assert(couplingFor(0x1234) == nullptr);
     return 0;

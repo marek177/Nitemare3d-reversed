@@ -61,3 +61,7 @@ Several older addresses were correct only for another build/context. A version p
 5. promote only after the closure experiment succeeds.
 
 The next version-identity target is the unpacked DOS v1.2 image and any as-yet-unidentified builds. For the identified profiles, attach build-specific symbol maps and original-runtime traces.
+
+## v0.35 direct RNG census correction (2026-10-15)
+
+The `Dos20RngDirectCallsites` fact is now backed by **22** original-byte direct FAR calls to `0FBA:01A0`, rather than the earlier 20-entry static register. Two missing incoming-damage paths at load-image `8860` and `886C` were verified as actual jump-table targets for actor classes `08` and `09/0A`. The scope is one SHA-256-identified unpacked DOS v2.0 image; runtime order and indirect RNG calls remain open. See [v0.35 report](V035_REMAX_RNG_22_CALLSITE_CENSUS.md).

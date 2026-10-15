@@ -20,6 +20,13 @@ enum class RngConsumer : std::uint8_t {
     GuardPlanner,
     GuardState13Timer,
     GuardDamagePain,
+    GuardWakeTimer,
+    IncomingDamageMasked,
+    SceneEffectPosition,
+    GuardSfxVariant,
+    ResourceTableVariant,
+    SceneEffectTimer,
+    ProjectedAnimationVariant,
     Unassigned
 };
 
@@ -39,7 +46,10 @@ struct GuardRngCoupling {
     std::string_view effect;
 };
 
-inline constexpr std::array<GuardRngCoupling, 20> kDos20RngCoupling = {{
+// v0.35: 22 raw direct far-call sites, verified against the fingerprinted
+// original DOS v2.0 unpacked load image. Confidence means the INSTRUCTION-
+// LOCAL consumer is supported, not that dynamic order or reachability is.
+inline constexpr std::array<GuardRngCoupling, 22> kDos20RngCoupling = {{
     {0x2478, RngConsumer::AnimationVariant, false, 0,
      DrawCountModel::VariableRejectionLoop, Confidence::Confirmed,
      "animation variant selection via RNG&7; rejection loop may consume 0..N additional draws"},
@@ -48,9 +58,9 @@ inline constexpr std::array<GuardRngCoupling, 20> kDos20RngCoupling = {{
      DrawCountModel::ExactlyOne, Confidence::Confirmed,
      "when blockedX && blockedY, bit0 chooses stored X/Y direction flip"},
 
-    {0x5582, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x5582, RngConsumer::GuardWakeTimer, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "GUARD+0A=0 and matching +0E with state 7/8: timer GUARD+06 = RNG%8 (0..7), then state=1"},
 
     {0x5666, RngConsumer::GuardPlanner, false, 0,
      DrawCountModel::ExactlyOne, Confidence::Strong,
@@ -72,53 +82,59 @@ inline constexpr std::array<GuardRngCoupling, 20> kDos20RngCoupling = {{
      DrawCountModel::ExactlyOne, Confidence::Strong,
      "damage/pain ordering RNG draw; exact branch consumer still needs runtime ordering proof"},
 
-    {0x887C, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x8860, RngConsumer::IncomingDamageMasked, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "actor class 08 incoming player damage: RNG & 7; 87D8 jump-table entry 882E"},
+    {0x886C, RngConsumer::IncomingDamageMasked, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "actor classes 09/0A incoming player damage: RNG & 15; jump-table entries 8830/8832"},
+    {0x887C, RngConsumer::IncomingDamageMasked, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "actor classes 11..14 incoming player damage: RNG & 31; class table entries 8840..8846"},
 
-    {0x9A68, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x9A68, RngConsumer::SceneEffectPosition, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "immediate consumer RNG%62 -> DS:3632; effect rendering semantics separately open"},
 
-    {0x9A77, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x9A77, RngConsumer::SceneEffectPosition, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "after 9A68, second RNG%36 -> DS:3630; exact effect trigger still runtime open"},
 
-    {0x9C98, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x9C98, RngConsumer::GuardSfxVariant, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "class-specific sound selector RNG%3+0x17 (0x17..0x19); class/name pairing outside this record"},
 
-    {0x9CC2, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x9CC2, RngConsumer::GuardSfxVariant, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "class-specific sound selector RNG%4+0x4B (0x4B..0x4E); class/name pairing outside this record"},
 
-    {0x9D6E, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x9D6E, RngConsumer::GuardSfxVariant, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "class-specific sound selector RNG%3+0x0B (0x0B..0x0D); class/name pairing outside this record"},
 
-    {0x9F0C, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x9F0C, RngConsumer::GuardSfxVariant, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "class-specific sound selector RNG%3+0x38 (0x38..0x3A); class/name pairing outside this record"},
 
-    {0x9F36, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x9F36, RngConsumer::GuardSfxVariant, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "class-specific sound selector RNG%2+0x36 (0x36..0x37); class/name pairing outside this record"},
 
-    {0x9FE3, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0x9FE3, RngConsumer::ResourceTableVariant, false, 0,
+     DrawCountModel::VariableRejectionLoop, Confidence::Confirmed,
+     "RNG%7 -> 0..6; SI==7 branch unreachable for 15-bit output; retry if resource byte +0x4B == 0"},
 
-    {0xA047, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0xA047, RngConsumer::ResourceTableVariant, false, 0,
+     DrawCountModel::VariableRejectionLoop, Confidence::Confirmed,
+     "RNG%7 -> 0..6; SI==7 branch unreachable for 15-bit output; retry if resource byte +0x3B == 0"},
 
-    {0xA12B, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"},
+    {0xA12B, RngConsumer::SceneEffectTimer, false, 0,
+     DrawCountModel::ExactlyOne, Confidence::Confirmed,
+     "RNG%240 + 160 -> DS:3634; upstream event semantics not yet named"},
 
-    {0xB276, RngConsumer::Unassigned, false, 0,
-     DrawCountModel::Unknown, Confidence::Open,
-     "direct RNG callsite; semantic consumer not yet closed"}
+    {0xB276, RngConsumer::ProjectedAnimationVariant, false, 0,
+     DrawCountModel::VariableRejectionLoop, Confidence::Confirmed,
+     "B22C frame boundary -> RNG&7 -> OBJECT+02; retry if selected descriptor word high byte zero; then OBJECT+03"},
 }};
 
 constexpr const GuardRngCoupling* couplingFor(std::uint16_t callsite) noexcept {

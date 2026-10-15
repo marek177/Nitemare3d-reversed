@@ -14,7 +14,12 @@ The DOS v2.0 timing/scheduler anchors from the October audit are now represented
 - MAIN/update/render path: `C0D8`
 - outer scheduler: `C1A8`
 
-The 20 known direct DOS v2.0 RNG callsites are also preserved in one audited table.
+The original v0.20 registry listed 20 apparent direct RNG callsites.
+**Correction v0.35 (2026-10-15):** exhaustive literal far-CALL opcode scan of
+the fingerprinted DOS v2.0 image finds **22**, adding `8860` and `886C`
+from the incoming-damage class dispatcher. The C++ table and trace verifier
+have been corrected. See [v0.35](V035_REMAX_RNG_22_CALLSITE_CENSUS.md).
+These are 22 static callsites, not a bound on dynamic draws or indirect calls.
 
 ## What remains explicitly open
 

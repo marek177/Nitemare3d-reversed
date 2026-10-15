@@ -29,9 +29,13 @@ inline constexpr AddressAnchor kMainUpdate{0xC0D8, Confidence::Confirmed};
 // an all-OBJECT runtime scheduler. Full FAST/MAIN order remains OPEN.
 inline constexpr AddressAnchor kPushUpdate{0x0E50, Confidence::Confirmed};
 
-inline constexpr std::array<std::uint16_t, 20> kDos20DirectRngCallsites = {
+// v0.35: 22 distinct direct far CALL sites in the fingerprinted DOS v2.0
+// unpacked image; two previously omitted damage branches 8860/886C.
+// This is NOT proof of all indirect calls or complete runtime chronology.
+inline constexpr std::array<std::uint16_t, 22> kDos20DirectRngCallsites = {
     0x2478, 0x525E, 0x5582, 0x5666, 0x56A6,
-    0x573F, 0x58A7, 0x85AD, 0x887C, 0x9A68,
+    0x573F, 0x58A7, 0x85AD, 0x8860, 0x886C,
+    0x887C, 0x9A68,
     0x9A77, 0x9C98, 0x9CC2, 0x9D6E, 0x9F0C,
     0x9F36, 0x9FE3, 0xA047, 0xA12B, 0xB276
 };
