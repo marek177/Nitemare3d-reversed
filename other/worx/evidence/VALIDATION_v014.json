@@ -1,0 +1,45 @@
+{
+  "project": "WORX Toolkit 2.1 RE MAX v0.14",
+  "date": "2026-10-16",
+  "original_binary_executed": false,
+  "origin": "static machine byte reads of original expanded DOS N3D v1.9 and v2.0 images",
+  "original_image_sha256_v20": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "original_image_sha256_v19": "e29a8d058fdf3033241f4f711bca273fb168d750f8f972047e1be8f3d946529e",
+  "new_machine_slices": 6,
+  "new_opcode_anchors": 25,
+  "new_explicit_direct_edges": 11,
+  "cross_version_selected_spans": 6,
+  "cross_version_operand_byte_differences": 41,
+  "cpp_compiler_validation": [
+    "GCC C++17 -Werror",
+    "Clang C++17 -Werror"
+  ],
+  "ctest_gcc": "8/8 passed",
+  "ctest_clang": "8/8 passed",
+  "original_exe_audits_passed": true,
+  "covered_new_subcontracts": [
+    "MIDI 44B3 gate",
+    "MIDI 4553 length skip",
+    "MIDI FF 2F 458C EOT shell",
+    "XMS 5863 packet/far-callback shell",
+    "stream 08 5FBF",
+    "stream 0C 5FD2"
+  ],
+  "not_claimed": [
+    "runtime IRQ hardware fidelity",
+    "complete MIDI track callback and OPL stream",
+    "complete PCM mixer",
+    "DOS/XMS service itself",
+    "complete 79 non-null API handlers"
+  ],
+  "known_api_handlers_in_current_prior_audit": 41,
+  "unknown_nonnull_api_handlers_remaining": 38,
+  "initially_null_dispatch_slots": 3,
+  "derived_files": {
+    "new_static_manifest": "data/worx21_audio_deep_static_v014.json",
+    "cross_version_manifest": "data/worx21_crossversion_v19_v20_v014.json",
+    "cxx_impl": "src/audio_deep.cpp",
+    "test_suite": "tests/test_audio_deep.cpp",
+    "audit": "tools/audit_audio_deep_v014.py"
+  }
+}

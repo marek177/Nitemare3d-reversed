@@ -1,0 +1,12 @@
+branch,step,trigger,local_effect,evidence_scope
+all_hit,1,entry,damage scalar called; guaranteed initial RNG draw,DOS+Win16 original static
+fatal,2,HP <= unsigned low8 damage,GUARD HP byte cleared to 0,DOS+Win16 original static
+fatal,3,after HP cleared,"fatal variant selector GUARD+12, descriptor+59; optional RNG repeats",DOS+Win16 original static
+fatal,4,"DS:4190 != 1 (DOS), DS:4C26 !=1 (Win16)",class death SFX selection invoked (optional RNG for 0F/10),DOS+Win16 original static
+fatal,5,all lethal after selector,sequence state update + score lookup,DOS+Win16 original static
+fatal,6,score value returned,signed CWD; 32-bit score add with carry,DOS+Win16 original static
+fatal,7,after score update,event dispatcher with argument 4; MAP/object pointer byte write,DOS+Win16 original static
+nonfatal,2,HP > low8 damage and damage!=0 AND old state == 7,state7 event selector called before HP decrease,DOS+Win16 original static
+nonfatal,3,HP > low8 damage and damage!=0,HP decrease and GUARD+12=8,DOS+Win16 original static
+nonfatal,4,strategy == 4,skip nonfatal variant selector,DOS+Win16 original static
+nonfatal,5,strategy != 4,nonfatal variant selector GUARD+12 nonzero forces RNG,DOS+Win16 original static

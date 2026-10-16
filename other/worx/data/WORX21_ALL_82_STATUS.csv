@@ -1,0 +1,83 @@
+AH,CS_target,image_offset,status,priority,mechanism_or_hypothesis,closing_evidence_required
+00,0x0000,,NULL_IN_INITIAL_IMAGE,P0,initial null target / range and reachability,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+01,0x478D,0x1A37D,ENTRYPOINT_ONLY,P0,"DSP reset/detekcia, porty/časovanie",Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+02,0x485A,0x1A44A,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write BX to 2DF0; zero AH; write AX to 2010,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+03,0x308E,0x18C7E,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"read16(2C47), then clear",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+04,0x59C8,0x1B5B8,ENTRYPOINT_ONLY,P0,PCS/SFX prepínanie — interný tok,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+05,0x5E19,0x1BA09,ENTRYPOINT_ONLY,P0,"digitálne audio, state/IRQ",Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+06,0x5ECD,0x1BABD,ENTRYPOINT_ONLY,P0,VOC playback / PCM buffer,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+07,0x4741,0x1A331,ENTRYPOINT_ONLY,P0,digitálne audio/SB,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+08,0x45E5,0x1A1D5,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,read masked CS byte 2DEA,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+09,0x309A,0x18C8A,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"BX*0x04A9 -> 32-bit counter copies 2C4B/2C4F, status reset; returns AX=04A9",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+0A,0x30C1,0x18CB1,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,restore 32-bit time counter 2C4B from 2C4F; reset 2C53,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+0B,0x30DB,0x18CCB,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,read zero-extended CS byte 2C53,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+0C,0x4265,0x19E55,ENTRYPOINT_ONLY,P1,MIDI route/tempo,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+0D,0x3E77,0x19A67,ENTRYPOINT_ONLY,P1,MIDI stop / event state,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+0E,0x45DD,0x1A1CD,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,read masked CS byte 2D62,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+0F,0x3792,0x19382,ENTRYPOINT_ONLY,P1,OPL interný stav,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+10,0x3DCB,0x199BB,ENTRYPOINT_ONLY,P1,MIDI note-on/channel conversion,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+11,0x3DD3,0x199C3,ENTRYPOINT_ONLY,P1,MIDI note-off/channel conversion,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+12,0x3E2B,0x19A1B,BODY_AND_DEPS_AUDITED,CLOSED_STATIC_SUBSET,MIDI state/index 2DC4/2DC5; conditional B0 gate; original bytes 3E2B..3E5A,Pinned original handler + transitive helper/IO edge; C++ state-and-event regression; IRQ/runtime parity still open
+13,0x3004,0x18BF4,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write AL to CS:2DBC,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+14,0x3302,0x18EF2,ENTRYPOINT_ONLY,P0,"DOS file open, read, error branches",Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+15,0x36E2,0x192D2,ENTRYPOINT_ONLY,P0,SFX/PCM call chain,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+16,0x3009,0x18BF9,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write AL to CS:2DBD,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+17,0x31CA,0x18DBA,ENTRYPOINT_ONLY,P0,buffer/segment state,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+18,0x312E,0x18D1E,ENTRYPOINT_ONLY,P0,read buffer/memory source,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+19,0x335B,0x18F4B,BODY_AND_DEPS_AUDITED,CLOSED_STATIC_SUBSET,DOS file close INT21/AH3E if handle !=FFFF; original bytes 335B..337A; OS modeled by callback,Pinned original handler + transitive helper/IO edge; C++ state-and-event regression; IRQ/runtime parity still open
+1A,0x337B,0x18F6B,ENTRYPOINT_ONLY,P1,line parser/memory source,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+1B,0x34C1,0x190B1,ENTRYPOINT_ONLY,P1,resource parsing,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+1C,0x33AF,0x18F9F,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,return CS byte 2DCA bit 0,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+1D,0x3E5B,0x19A4B,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write BL to 2C61; DS modified but ISR restores,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+1E,0x4389,0x19F79,ENTRYPOINT_ONLY,P1,CMF path/decoder,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+1F,0x45F2,0x1A1E2,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write 1 to CS:2D62,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+20,0x372F,0x1931F,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"DSP detected: SB mixer port writes 22h,BL; else AX=FFFF",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+21,0x3771,0x19361,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"DSP detected: SB mixer port writes 04h,BL; else AX=FFFF",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+22,0x3750,0x19340,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"DSP detected: SB mixer port writes 26h,BL; else AX=FFFF",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+23,0x301D,0x18C0D,ENTRYPOINT_ONLY,P1,OPL/AdLib detection port sequence,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+24,0x2F5F,0x18B4F,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"return AX=1234, DX=5678",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+25,0x2FCF,0x18BBF,ENTRYPOINT_ONLY,P1,audio core service,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+26,0x2E76,0x18A66,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write 1 to CS:2C0C,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+27,0x0000,,NULL_IN_INITIAL_IMAGE,P0,initial null target: runtime writer/dispatch safety unknown,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+28,0x0000,,NULL_IN_INITIAL_IMAGE,P0,initial null target: runtime writer/dispatch safety unknown,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+29,0x41F6,0x19DE6,BODY_AND_DEPS_AUDITED,CLOSED_STATIC_SUBSET,"Joystick port 201h: 1+800 reads, 40 writes, optional calibrate; original 41F6..4264",Pinned original handler + transitive helper/IO edge; C++ state-and-event regression; IRQ/runtime parity still open
+2A,0x41B3,0x19DA3,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,AX=(uint16(64*2012))/201A or product if divisor=0; DX remainder,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+2B,0x41CD,0x19DBD,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,AX=(uint16(64*2014))/201C or product if divisor=0; DX remainder,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+2C,0x41E7,0x19DD7,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,return CS byte[2016 + incoming AL]; internal CLC,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+2D,0x45ED,0x1A1DD,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,return CS word 2C56,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+2E,0x3E67,0x19A57,BODY_AND_DEPS_AUDITED,CLOSED_STATIC_SUBSET,"PIT 0952-independent reprogram call 466A, 201E state; original 3E67..3E76 and helper 466A..469E",Pinned original handler + transitive helper/IO edge; C++ state-and-event regression; IRQ/runtime parity still open
+2F,0x4476,0x1A066,ENTRYPOINT_ONLY,P0,timer tick/event counters,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+30,0x4470,0x1A060,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,return CS word 2C49 (internal CLC not propagated by IRET),original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+31,0x4CE1,0x1A8D1,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write (AL&3F) at word CS:[4BBF + 2*BX],original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+32,0x5675,0x1B265,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,return 0xFFFF,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+33,0x56F0,0x1B2E0,ENTRYPOINT_ONLY,P0,PCM/voice init and resource allocation,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+34,0x5679,0x1B269,ENTRYPOINT_ONLY,P0,"PCM/voice shutdown, mode state",Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+35,0x4C75,0x1A865,ENTRYPOINT_ONLY,P0,frequency/period conversion and state,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+36,0x5664,0x1B254,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,read word CS:[4BEF + 2*AL],original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+37,0x4866,0x1A456,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,return CS word 2DF0,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+38,0x5926,0x1B516,ENTRYPOINT_ONLY,P0,SB/DSP state/IRQ,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+39,0x5973,0x1B563,ENTRYPOINT_ONLY,P0,SB/DSP route,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+3A,0x5D6F,0x1B95F,ENTRYPOINT_ONLY,P0,SB/DSP stream,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+3B,0x5CF6,0x1B8E6,ENTRYPOINT_ONLY,P0,SB/DSP stream,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+3C,0x5BCD,0x1B7BD,ENTRYPOINT_ONLY,P0,SB/DSP stream,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+3D,0x5CD0,0x1B8C0,ENTRYPOINT_ONLY,P0,SB/DSP stream,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+3E,0x3ED7,0x19AC7,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write BL to CS:3ED6,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+3F,0x5C63,0x1B853,ENTRYPOINT_ONLY,P0,SB/DSP settings,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+40,0x3597,0x19187,ENTRYPOINT_ONLY,P1,OPL/MIDI track callback parse,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+41,0x5792,0x1B382,ENTRYPOINT_ONLY,P1,OPL/MIDI address/time state,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+42,0x5DF2,0x1B9E2,ENTRYPOINT_ONLY,P1,music scheduler,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+43,0x34BB,0x190AB,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write BX to CS:34B9,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+44,0x4C61,0x1A851,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write 2 to word CS:[4BAF + 2*BX],original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+45,0x5C19,0x1B809,ENTRYPOINT_ONLY,P0,"DOS output, device/failure",Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+46,0x389A,0x1948A,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,install DX:BX callback at CS:3896/3898,original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+47,0x4C6B,0x1A85B,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,write 0 to word CS:[4BEF + 2*BX],original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+48,0x2218,0x17E08,ENTRYPOINT_ONLY,P2,XMS driver installation/alloc,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+49,0x2349,0x17F39,ENTRYPOINT_ONLY,P2,XMS memory operation / far-call,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+4A,0x2208,0x17DF8,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"SB mixer write index 0Ah, value BL; AX low=BL, DX=base+5",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+4B,0x21DC,0x17DCC,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"SB mixer write index 0Ch, value BL; AX low=BL, DX=base+5",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+4C,0x21EC,0x17DDC,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"SB mixer write index 2Eh, value (BL | BL<<4); AX low=value, DX=base+5",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+4D,0x393B,0x1952B,ENTRYPOINT_ONLY,P1,MIDI event/status handling,Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+4E,0x5549,0x1B139,ENTRYPOINT_ONLY,P0,"PCM scratch output, buffer zero-fill/mix",Full 16-bit CFG + call/return path + register/flags + CS/DS/ES memory xrefs; hardware behavior as needed
+4F,0x5A3F,0x1B62F,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"poll SB DSP write status, then OUT (base+0Ch), AL",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+50,0x5A1E,0x1B60E,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,"poll SB DSP read status, then IN (base+0Ah), AX=AL",original machine body SHA + C++ state/ports tests; real IRQ/timing still open
+51,0x3DB3,0x199A3,LEAF_BYTE_AUDITED,CLOSED_STATIC_SUBSET,set 3DB1=1;2B96=AL;2B95=FF;2BC7=00,original machine body SHA + C++ state/ports tests; real IRQ/timing still open

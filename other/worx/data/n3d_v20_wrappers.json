@@ -1,0 +1,794 @@
+{
+  "source": "Nitemare3D_RedOrangeYellow_closure_pass23_2026-10-03(1).md",
+  "provenance": "Binary audit notes on Nitemare DOS v2.0; source byte audit not repeated without exact EXE",
+  "scope": "N3D-facing 75 far-callable wrappers, NOT the WORX backend functions",
+  "wrappers": [
+    {
+      "start_image_hex": "0x10BFC",
+      "end_image_hex": "0x10C5E",
+      "size_bytes": 99,
+      "role_from_pass23": "central `WorxInt63Command` / INT 63h thunk",
+      "referenced_command_hex": [],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10C5F",
+      "end_image_hex": "0x10C76",
+      "size_bytes": 24,
+      "role_from_pass23": "toolkit support thunk to `15BF:2F66`",
+      "referenced_command_hex": [],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10C77",
+      "end_image_hex": "0x10CD9",
+      "size_bytes": 99,
+      "role_from_pass23": "command `1Ah`; far-pointer/named request wrapper",
+      "referenced_command_hex": [
+        "1A"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10CDA",
+      "end_image_hex": "0x10D2F",
+      "size_bytes": 86,
+      "role_from_pass23": "command `18h` wrapper",
+      "referenced_command_hex": [
+        "18"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10D30",
+      "end_image_hex": "0x10D97",
+      "size_bytes": 104,
+      "role_from_pass23": "command `17h` + result/size helper",
+      "referenced_command_hex": [
+        "17"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10D98",
+      "end_image_hex": "0x10DC8",
+      "size_bytes": 49,
+      "role_from_pass23": "command `48h`",
+      "referenced_command_hex": [
+        "48"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10DC9",
+      "end_image_hex": "0x10E8F",
+      "size_bytes": 199,
+      "role_from_pass23": "composite external-resource/handle resolver",
+      "referenced_command_hex": [],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10E90",
+      "end_image_hex": "0x10EE4",
+      "size_bytes": 85,
+      "role_from_pass23": "command `49h`",
+      "referenced_command_hex": [
+        "49"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10EE5",
+      "end_image_hex": "0x10F16",
+      "size_bytes": 50,
+      "role_from_pass23": "command `45h`",
+      "referenced_command_hex": [
+        "45"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10F17",
+      "end_image_hex": "0x10F48",
+      "size_bytes": 50,
+      "role_from_pass23": "command `2Dh`",
+      "referenced_command_hex": [
+        "2D"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10F49",
+      "end_image_hex": "0x10F77",
+      "size_bytes": 47,
+      "role_from_pass23": "command `1Fh`",
+      "referenced_command_hex": [
+        "1F"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10F78",
+      "end_image_hex": "0x10FA9",
+      "size_bytes": 50,
+      "role_from_pass23": "command `13h`, byte argument",
+      "referenced_command_hex": [
+        "13"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x10FAA",
+      "end_image_hex": "0x1102C",
+      "size_bytes": 131,
+      "role_from_pass23": "composite resolver + command `39h`",
+      "referenced_command_hex": [
+        "39"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1102D",
+      "end_image_hex": "0x1105E",
+      "size_bytes": 50,
+      "role_from_pass23": "command `16h`, byte argument",
+      "referenced_command_hex": [
+        "16"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1105F",
+      "end_image_hex": "0x11090",
+      "size_bytes": 50,
+      "role_from_pass23": "command `38h`",
+      "referenced_command_hex": [
+        "38"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11091",
+      "end_image_hex": "0x110DB",
+      "size_bytes": 75,
+      "role_from_pass23": "command `20h`, packed pair `(a<<4) | b`",
+      "referenced_command_hex": [
+        "20"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x110DC",
+      "end_image_hex": "0x1110D",
+      "size_bytes": 50,
+      "role_from_pass23": "command `27h`",
+      "referenced_command_hex": [
+        "27"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1110E",
+      "end_image_hex": "0x1113B",
+      "size_bytes": 46,
+      "role_from_pass23": "command `28h`, WORD argument",
+      "referenced_command_hex": [
+        "28"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1113C",
+      "end_image_hex": "0x11186",
+      "size_bytes": 75,
+      "role_from_pass23": "command `21h`, packed SFX mixer/control pair",
+      "referenced_command_hex": [
+        "21"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "21",
+          "purpose": "SFX two-channel control"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x11187",
+      "end_image_hex": "0x111D1",
+      "size_bytes": 75,
+      "role_from_pass23": "command `22h`, packed music mixer/control pair",
+      "referenced_command_hex": [
+        "22"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "22",
+          "purpose": "Music two-channel control"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x111D2",
+      "end_image_hex": "0x11200",
+      "size_bytes": 47,
+      "role_from_pass23": "command `29h`",
+      "referenced_command_hex": [
+        "29"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11201",
+      "end_image_hex": "0x11235",
+      "size_bytes": 53,
+      "role_from_pass23": "command `2Ch`, joystick button/status index",
+      "referenced_command_hex": [
+        "2C"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "2C",
+          "purpose": "Joystick button/status index"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x11236",
+      "end_image_hex": "0x11267",
+      "size_bytes": 50,
+      "role_from_pass23": "command `2Ah`",
+      "referenced_command_hex": [
+        "2A"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11268",
+      "end_image_hex": "0x11299",
+      "size_bytes": 50,
+      "role_from_pass23": "command `2Bh`",
+      "referenced_command_hex": [
+        "2B"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1129A",
+      "end_image_hex": "0x112CB",
+      "size_bytes": 50,
+      "role_from_pass23": "command `23h`",
+      "referenced_command_hex": [
+        "23"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x112CC",
+      "end_image_hex": "0x112FD",
+      "size_bytes": 50,
+      "role_from_pass23": "command `37h`",
+      "referenced_command_hex": [
+        "37"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x112FE",
+      "end_image_hex": "0x1132C",
+      "size_bytes": 47,
+      "role_from_pass23": "command `04h`, disable/shutdown digital-SFX route",
+      "referenced_command_hex": [
+        "04"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "04",
+          "purpose": "Disable/shutdown digitized SFX"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x1132D",
+      "end_image_hex": "0x1135E",
+      "size_bytes": 50,
+      "role_from_pass23": "command `01h`, SB DSP autodetect",
+      "referenced_command_hex": [
+        "01"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "01",
+          "purpose": "Sound Blaster DSP autodetection"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x1135F",
+      "end_image_hex": "0x11391",
+      "size_bytes": 51,
+      "role_from_pass23": "command `02h`, forced SB DSP detect",
+      "referenced_command_hex": [
+        "02"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "02",
+          "purpose": "Forced DSP detection with port/IRQ"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x11392",
+      "end_image_hex": "0x11440",
+      "size_bytes": 175,
+      "role_from_pass23": "composite external-resource resolver variant",
+      "referenced_command_hex": [],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11441",
+      "end_image_hex": "0x11488",
+      "size_bytes": 72,
+      "role_from_pass23": "command `10h`, packed arguments",
+      "referenced_command_hex": [
+        "10"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11489",
+      "end_image_hex": "0x1151B",
+      "size_bytes": 147,
+      "role_from_pass23": "composite resolver + command `0Fh`",
+      "referenced_command_hex": [
+        "0F"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1151C",
+      "end_image_hex": "0x1154A",
+      "size_bytes": 47,
+      "role_from_pass23": "command `43h`, WORD argument",
+      "referenced_command_hex": [
+        "43"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1154B",
+      "end_image_hex": "0x115A5",
+      "size_bytes": 91,
+      "role_from_pass23": "command `1Bh`, far-pointer argument",
+      "referenced_command_hex": [
+        "1B"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x115A6",
+      "end_image_hex": "0x11600",
+      "size_bytes": 91,
+      "role_from_pass23": "command `40h`, far-pointer argument",
+      "referenced_command_hex": [
+        "40"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11601",
+      "end_image_hex": "0x1165B",
+      "size_bytes": 91,
+      "role_from_pass23": "command `06h`, far-pointer argument",
+      "referenced_command_hex": [
+        "06"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1165C",
+      "end_image_hex": "0x116B6",
+      "size_bytes": 91,
+      "role_from_pass23": "command `3Ah`, far-pointer argument",
+      "referenced_command_hex": [
+        "3A"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x116B7",
+      "end_image_hex": "0x116E5",
+      "size_bytes": 47,
+      "role_from_pass23": "command `44h`, WORD argument",
+      "referenced_command_hex": [
+        "44"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x116E6",
+      "end_image_hex": "0x11714",
+      "size_bytes": 47,
+      "role_from_pass23": "command `47h`, WORD argument",
+      "referenced_command_hex": [
+        "47"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11715",
+      "end_image_hex": "0x11769",
+      "size_bytes": 85,
+      "role_from_pass23": "command `1Eh`, far-pointer argument",
+      "referenced_command_hex": [
+        "1E"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1176A",
+      "end_image_hex": "0x117BE",
+      "size_bytes": 85,
+      "role_from_pass23": "command `0Ch`, far-pointer argument",
+      "referenced_command_hex": [
+        "0C"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x117BF",
+      "end_image_hex": "0x117FD",
+      "size_bytes": 63,
+      "role_from_pass23": "command `05h` wrapper",
+      "referenced_command_hex": [
+        "05"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x117FE",
+      "end_image_hex": "0x1183C",
+      "size_bytes": 63,
+      "role_from_pass23": "command `3Ch` wrapper",
+      "referenced_command_hex": [
+        "3C"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1183D",
+      "end_image_hex": "0x1187A",
+      "size_bytes": 62,
+      "role_from_pass23": "command `3Fh` wrapper",
+      "referenced_command_hex": [
+        "3F"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x1187B",
+      "end_image_hex": "0x118AC",
+      "size_bytes": 50,
+      "role_from_pass23": "command `3Dh` wrapper",
+      "referenced_command_hex": [
+        "3D"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x118AD",
+      "end_image_hex": "0x118EB",
+      "size_bytes": 63,
+      "role_from_pass23": "command `3Bh` wrapper",
+      "referenced_command_hex": [
+        "3B"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x118EC",
+      "end_image_hex": "0x11920",
+      "size_bytes": 53,
+      "role_from_pass23": "command `12h`, two byte arguments",
+      "referenced_command_hex": [
+        "12"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11921",
+      "end_image_hex": "0x11958",
+      "size_bytes": 56,
+      "role_from_pass23": "command `4Dh`, packed control argument",
+      "referenced_command_hex": [
+        "4D"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11959",
+      "end_image_hex": "0x11987",
+      "size_bytes": 47,
+      "role_from_pass23": "command `0Ah`",
+      "referenced_command_hex": [
+        "0A"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11988",
+      "end_image_hex": "0x119B9",
+      "size_bytes": 50,
+      "role_from_pass23": "command `0Eh`",
+      "referenced_command_hex": [
+        "0E"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x119BA",
+      "end_image_hex": "0x119E8",
+      "size_bytes": 47,
+      "role_from_pass23": "command `1Dh`, WORD argument",
+      "referenced_command_hex": [
+        "1D"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x119E9",
+      "end_image_hex": "0x11A1A",
+      "size_bytes": 50,
+      "role_from_pass23": "command `09h`, WORD argument",
+      "referenced_command_hex": [
+        "09"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11A1B",
+      "end_image_hex": "0x11A5C",
+      "size_bytes": 66,
+      "role_from_pass23": "command `14h` wrapper",
+      "referenced_command_hex": [
+        "14"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11A5D",
+      "end_image_hex": "0x11A74",
+      "size_bytes": 24,
+      "role_from_pass23": "toolkit support thunk to `15BF:2E7D`",
+      "referenced_command_hex": [],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11A75",
+      "end_image_hex": "0x11AB1",
+      "size_bytes": 61,
+      "role_from_pass23": "command `11h`, packed byte arguments",
+      "referenced_command_hex": [
+        "11"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11AB2",
+      "end_image_hex": "0x11AE0",
+      "size_bytes": 47,
+      "role_from_pass23": "command `0Dh`, stop current music",
+      "referenced_command_hex": [
+        "0D"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "0D",
+          "purpose": "Stop active music"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x11AE1",
+      "end_image_hex": "0x11B0F",
+      "size_bytes": 47,
+      "role_from_pass23": "command `07h`",
+      "referenced_command_hex": [
+        "07"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11B10",
+      "end_image_hex": "0x11B3E",
+      "size_bytes": 47,
+      "role_from_pass23": "command `15h`, stop fallback/PC-speaker SFX",
+      "referenced_command_hex": [
+        "15"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "15",
+          "purpose": "Stop PC speaker/fallback effect"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x11B3F",
+      "end_image_hex": "0x11B70",
+      "size_bytes": 50,
+      "role_from_pass23": "command `0Bh`",
+      "referenced_command_hex": [
+        "0B"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11B71",
+      "end_image_hex": "0x11BA2",
+      "size_bytes": 50,
+      "role_from_pass23": "command `08h`",
+      "referenced_command_hex": [
+        "08"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11BA3",
+      "end_image_hex": "0x11BD4",
+      "size_bytes": 50,
+      "role_from_pass23": "command `1Ch`, query fallback/PC-speaker SFX active",
+      "referenced_command_hex": [
+        "1C"
+      ],
+      "caller_meanings_confirmed": [
+        {
+          "AH": "1C",
+          "purpose": "Query PC speaker/fallback effect active"
+        }
+      ]
+    },
+    {
+      "start_image_hex": "0x11BD5",
+      "end_image_hex": "0x11C08",
+      "size_bytes": 52,
+      "role_from_pass23": "digital-route shutdown helper then command `25h`",
+      "referenced_command_hex": [
+        "25"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11C09",
+      "end_image_hex": "0x11C37",
+      "size_bytes": 47,
+      "role_from_pass23": "command `32h`",
+      "referenced_command_hex": [
+        "32"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11C38",
+      "end_image_hex": "0x11C66",
+      "size_bytes": 47,
+      "role_from_pass23": "command `34h`",
+      "referenced_command_hex": [
+        "34"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11C67",
+      "end_image_hex": "0x11C98",
+      "size_bytes": 50,
+      "role_from_pass23": "command `31h`, WORD+byte arguments",
+      "referenced_command_hex": [
+        "31"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11C99",
+      "end_image_hex": "0x11CCC",
+      "size_bytes": 52,
+      "role_from_pass23": "command `35h`, packed mode/control arguments",
+      "referenced_command_hex": [
+        "35"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11CCD",
+      "end_image_hex": "0x11D32",
+      "size_bytes": 102,
+      "role_from_pass23": "command `33h` followed by command `35h`",
+      "referenced_command_hex": [
+        "33",
+        "35"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11D33",
+      "end_image_hex": "0x11D98",
+      "size_bytes": 102,
+      "role_from_pass23": "command `41h` followed by command `35h`",
+      "referenced_command_hex": [
+        "41",
+        "35"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11D99",
+      "end_image_hex": "0x11DCD",
+      "size_bytes": 53,
+      "role_from_pass23": "command `36h`, byte argument",
+      "referenced_command_hex": [
+        "36"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11DCE",
+      "end_image_hex": "0x11DFC",
+      "size_bytes": 47,
+      "role_from_pass23": "command `42h`",
+      "referenced_command_hex": [
+        "42"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11DFD",
+      "end_image_hex": "0x11E2B",
+      "size_bytes": 47,
+      "role_from_pass23": "command `3Eh`, WORD argument",
+      "referenced_command_hex": [
+        "3E"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11E2C",
+      "end_image_hex": "0x11E5A",
+      "size_bytes": 47,
+      "role_from_pass23": "command `4Ah`, WORD argument",
+      "referenced_command_hex": [
+        "4A"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11E5B",
+      "end_image_hex": "0x11E89",
+      "size_bytes": 47,
+      "role_from_pass23": "command `4Bh`, WORD argument",
+      "referenced_command_hex": [
+        "4B"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11E8A",
+      "end_image_hex": "0x11EB8",
+      "size_bytes": 47,
+      "role_from_pass23": "command `4Ch`, WORD argument",
+      "referenced_command_hex": [
+        "4C"
+      ],
+      "caller_meanings_confirmed": []
+    },
+    {
+      "start_image_hex": "0x11EB9",
+      "end_image_hex": "0x11EE6",
+      "size_bytes": 46,
+      "role_from_pass23": "command `51h`, WORD argument",
+      "referenced_command_hex": [
+        "51"
+      ],
+      "caller_meanings_confirmed": []
+    }
+  ]
+}

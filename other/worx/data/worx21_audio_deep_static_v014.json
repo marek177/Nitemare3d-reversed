@@ -1,0 +1,248 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "target": "unpacked N3D DOS v2.0 / WORX 2.1",
+  "proofs": {
+    "slices": [
+      {
+        "id": "midi_gate_44b3_44ed",
+        "start_ip": "44B3",
+        "end_exclusive": "44EE",
+        "bytes": 59,
+        "sha256": "1b6482491c7267a330479d74304ec06b8dc6c91e92238760ae3557e184402485"
+      },
+      {
+        "id": "midi_unknown_meta_4553_455c",
+        "start_ip": "4553",
+        "end_exclusive": "455D",
+        "bytes": 10,
+        "sha256": "7b9fe2b4b9659eec83b5f8eb0edba55120aeaf30a26f4460fc4cba7ae9ffb8da"
+      },
+      {
+        "id": "midi_eot_458c_45dc",
+        "start_ip": "458C",
+        "end_exclusive": "45DD",
+        "bytes": 81,
+        "sha256": "e806807be301665d3c35bfcc2c0e0774a8ac27cb20246d2907a41101d11d4c9e"
+      },
+      {
+        "id": "xms_refill_5863_58d7",
+        "start_ip": "5863",
+        "end_exclusive": "58D8",
+        "bytes": 117,
+        "sha256": "cfc64ac08866c393dac6fd301c37d021ef7cda6468a425f06cc6e85541de2cdb"
+      },
+      {
+        "id": "stream_mode08_5fbf_5fd1",
+        "start_ip": "5FBF",
+        "end_exclusive": "5FD2",
+        "bytes": 19,
+        "sha256": "ca04bd29d8fc3d621a02f0479dc3a679454be4722ea68d266ab0151e42701d50"
+      },
+      {
+        "id": "stream_mode0c_5fd2_5ff2",
+        "start_ip": "5FD2",
+        "end_exclusive": "5FF3",
+        "bytes": 33,
+        "sha256": "f02fe09047cee6b1f211a92abbe8fbca88fc7046a9978fccf03a0fa7b248952f"
+      }
+    ],
+    "anchors": [
+      {
+        "id": "gate_push_cx",
+        "ip": "44B3",
+        "bytes": "51"
+      },
+      {
+        "id": "gate_active_bit",
+        "ip": "44BB",
+        "bytes": "2e f7 87 62 2c 01 00"
+      },
+      {
+        "id": "gate_delta_low_or_high",
+        "ip": "44C8",
+        "bytes": "2e 8b 87 a2 2c 2e 0b 87 a4 2c"
+      },
+      {
+        "id": "gate_delta_sub_sbb",
+        "ip": "44D4",
+        "bytes": "2e 83 af a2 2c 01 2e 83 9f a4 2c 00"
+      },
+      {
+        "id": "gate_esdi",
+        "ip": "44E4",
+        "bytes": "2e 8b bf 22 2d 2e 8e 06 5f 2c"
+      },
+      {
+        "id": "meta_skip_length_one_byte",
+        "ip": "4553",
+        "bytes": "32 e4 26 8a 05 47 03 f8"
+      },
+      {
+        "id": "eot_clear_current",
+        "ip": "458C",
+        "bytes": "2e c7 87 62 2c 00 00"
+      },
+      {
+        "id": "eot_scan_ffff",
+        "ip": "459A",
+        "bytes": "2e f7 87 62 2c ff ff"
+      },
+      {
+        "id": "eot_global_index_not_found_bx",
+        "ip": "45AB",
+        "bytes": "2e ff 06 c0 2d"
+      },
+      {
+        "id": "eot_replay_indicator",
+        "ip": "45B3",
+        "bytes": "2e 80 3e 61 2c 00"
+      },
+      {
+        "id": "eot_mode_one",
+        "ip": "45C4",
+        "bytes": "3c 01 74 06"
+      },
+      {
+        "id": "eot_stop_music",
+        "ip": "45D4",
+        "bytes": "2e c6 06 62 2d 00"
+      },
+      {
+        "id": "xms_register_saves",
+        "ip": "5863",
+        "bytes": "50 53 51 52 56"
+      },
+      {
+        "id": "xms_dest_256_stride",
+        "ip": "5868",
+        "bytes": "8b c3 d1 e8 86 e0 05 ed 4c"
+      },
+      {
+        "id": "xms_packet_length",
+        "ip": "587A",
+        "bytes": "2e c7 06 cc 21 00 01"
+      },
+      {
+        "id": "xms_prior_cursor",
+        "ip": "5890",
+        "bytes": "2e 8b 87 cf 4b 2e 89 87 ed 54"
+      },
+      {
+        "id": "xms_address_add_carry",
+        "ip": "58A3",
+        "bytes": "2e 03 87 c6 20 2e a3 d2 21"
+      },
+      {
+        "id": "xms_no_previous_high_word",
+        "ip": "58B1",
+        "bytes": "2e c7 06 d4 21 00 00 2e 11 06 d4 21"
+      },
+      {
+        "id": "xms_far_callback",
+        "ip": "58BD",
+        "bytes": "b4 0b 8d 36 cc 21 2e ff 1e c8 21"
+      },
+      {
+        "id": "xms_cmp_service_ax",
+        "ip": "58C8",
+        "bytes": "3d 01 00 74 03 b8 00 00"
+      },
+      {
+        "id": "xms_pop_orig_ax",
+        "ip": "58D0",
+        "bytes": "0e 1f 5e 5a 59 5b 58 c3"
+      },
+      {
+        "id": "stream_08_call_312e",
+        "ip": "5FBF",
+        "bytes": "2e 8b 1e df 48 0e 07 bf 69 5e e8 62 d1"
+      },
+      {
+        "id": "stream_08_only_low_sub",
+        "ip": "5FCC",
+        "bytes": "2e 29 06 df 48 c3"
+      },
+      {
+        "id": "stream_0c_sub_sbb",
+        "ip": "5FD2",
+        "bytes": "2e 8b 0e db 48 2e 29 0e df 48 2e 83 1e e1 48 00"
+      },
+      {
+        "id": "stream_0c_zero_on_borrow",
+        "ip": "5FE4",
+        "bytes": "2e c7 06 df 48 00 00 2e c7 06 e1 48 00 00"
+      }
+    ],
+    "branch_targets": [
+      {
+        "id": "gate_active_JNE",
+        "from_ip": "44C2",
+        "to_ip": "44C6"
+      },
+      {
+        "id": "gate_no_delta_JE",
+        "from_ip": "44D2",
+        "to_ip": "44E2"
+      },
+      {
+        "id": "eot_next_track_LOOP",
+        "from_ip": "45A6",
+        "to_ip": "459A"
+      },
+      {
+        "id": "eot_other_active_JNE",
+        "from_ip": "45A1",
+        "to_ip": "45AB"
+      },
+      {
+        "id": "eot_repeat_JE",
+        "from_ip": "45B9",
+        "to_ip": "45D4"
+      },
+      {
+        "id": "eot_replay_mode_JE",
+        "from_ip": "45C6",
+        "to_ip": "45CE"
+      },
+      {
+        "id": "eot_reenter_44b4",
+        "from_ip": "45B0",
+        "to_ip": "44B4"
+      },
+      {
+        "id": "eot_replay_4265_JMP",
+        "from_ip": "45CB",
+        "to_ip": "44B4"
+      },
+      {
+        "id": "eot_replay_4389_JMP",
+        "from_ip": "45D1",
+        "to_ip": "44B4"
+      },
+      {
+        "id": "eot_stop_JMP",
+        "from_ip": "45DA",
+        "to_ip": "44B4"
+      },
+      {
+        "id": "stream_zero_on_borrow_JAE",
+        "from_ip": "5FE2",
+        "to_ip": "5FF2"
+      }
+    ]
+  },
+  "new_static_subcontracts": [
+    "midi_gate_44b3_44ed",
+    "midi_unknown_meta_4553_455c",
+    "midi_eot_458c_45dc",
+    "xms_refill_5863_58d7",
+    "stream_mode08_5fbf_5fd1",
+    "stream_mode0c_5fd2_5ff2"
+  ],
+  "limitations": [
+    "Selected straight-line and local branch subcontracts, not full transitive CFG",
+    "XMS/DOS external services and original IRQ timing not emulated",
+    "Complete MIDI 3A4D, 4265, 4389 and streaming modes 01/02/03/09 remain open",
+    "41/79 previously audited non-null INT63 handler count remains unchanged"
+  ]
+}

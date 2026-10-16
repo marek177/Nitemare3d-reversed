@@ -12,8 +12,13 @@ remake in `docs/` and `src/` are intentionally left untouched.
   damage cross-build static closure package. A research snapshot, *not* a
   statement that the GitHub game engine is now at 100% parity.
 - [`n3d/VERSIONS_20261016.md`](n3d/VERSIONS_20261016.md): evidence-based
-  original DOS/Win16 version census (11 detected version labels).
+  original DOS/Win16 version census (12 detected version labels).
 
-Distingish machine-byte witnesses from candidate algorithms and runtime
+- [`n3d/v058/`](n3d/v058/README_SK.md): five original-byte-matched GUARD
+  score/SFX/variant routines across DOS 2.0 and two Win16 builds, plus tests.
+- [`n3d/builds_12/`](n3d/builds_12/README.md): original-byte audit of seven
+  DOS and five Win16 release profiles, function/callsite evidence and verifiers.
+
+Distinguish machine-byte witnesses from candidate algorithms and runtime
 unverified behavior. Never distribute proprietary original `.EXE`, `.LIB`,
 asset archives or compiler binaries in these folders.

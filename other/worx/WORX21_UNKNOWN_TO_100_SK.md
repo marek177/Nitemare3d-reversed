@@ -1,26 +1,23 @@
-# WORX 2.1 — RE-MAX v0.13: presne otvorené miesta do 100 %
+# WORX 2.1 — zostávajúce neznáme po RE MAX v0.15
 
-**Basis:** pinned unpacked N3D DOS v2.0, 16.10.2026. 41/79 nenulových INT63 API obslúh má auditované kontrakty, 38 úplné telá neuzatvorené. 3 staticky nulové položky neoznačovať za trvalo mŕtve. Ďalšie nálezy v0.13 sú subkontrakty, nie nové úplné API implementácie.
+**Overený základ:** doteraz 41/79 nenulových `INT63` API handlerov s auditovanými kontraktmi; ostatných 38 nenulových handlerov bez úplnej implementácie. 3 počiatočne nulové sloty sú samostatný reachability problém. **v0.15 tieto počty nemení:** v0.14 uzavrela MIDI gate/EOT a XMS/stream podkontrakty; v0.15 navyše uzavrela jedno-eventový channel/meta parser shell 44EE..4552 a priamy 3A4D prefix.
 
-| P | Funkcia/oblasť | Čo už vieme | Presné chýbajúce dôkazy / ďalší RE krok |
+| Priorita | Oblasť | Už uzavreté v0.14 | Otvorená presná medzera |
 |---|---|---|---|
-| P0 | `44B3..45DC` MIDI track parser (`AH=2F`, IRQ08) | Vstupný index `2DC0`, aktívne stopy, delta counters `2CA2/2CA4`, dôkaz 4476 fallthrough, helper `45F9` | Všetky `FF` meta vetvy (2F/51/unknown), running status, update DI, `3A4D`, `4265`, `4389`, `466A`, možné hardvérové `DIV` trap, memo stavy; exaktný CFG/callee graph |
-| P0 | `555D..5663` PCM mixer | 8 voice slots, prefix fill, sample `IMUL` + 8-bit wrap | Absolútne všetky loop/ring/stop/playlist branch, 16.16 increment, refill `5863`, `5502`, state aliasing, zvukové mem ptr, compare DMA byte stream; bytový výstup |
-| P0 | `5863` XMS/EMS refill | Priamo uloží XMS argument block a volá `CS:[21C8]` | callsite, `21C8` pointer origin, transitive memory bank and XMS driver flags, error/fallback/wrap; skutočné XMS služby ako posledný krok runtime |
-| P0 | `5F17` audio streaming | Nový byte-pinned prefix `2DEA=1`, `48DB` length, `48E4` 00/80 buffer fill; stream state | Dokódovať `5F17..61xx`, DOS `312E` file read return/EOF/CF, volume/rate modes, file cursor alias, error paths, 5DF2 dependent effects |
-| P0 | `49BC` DMA | 49BC celý data+port contract, signed branches modelované | IRQ flags `CLI/STI`, DMA latch race v reálnom DOS emulátore, dôkaz portových údajov a sampling window; C++ `PortIO` kontrakt už pripravený |
-| P1 | `3A4D`, `38A7`, `58F8` MIDI/OPL | Vstupné status/data/state a priamy call chain známe | Kompletné note/controller bank, OPL register ordering, running status, no-voice fallback, metronom |
-| P1 | `4265`, `4389`, `466A`, `45F9` | `45F9` plný VLQ algoritmus; staticky známe vstupy ďalších | Čítanie streamu MZ/FAR, CMF vs MIDI parser, chybné meta dáta, far pointer alias, nested `DIV 0` faults |
-| P1 | `INT 08h` `4150`, `40E7` | V0.12 audit gate, PIC, BIOS chain, SUB/SBB budget, PCM→MIDI order; v0.13 aj vstupné shell vnútorných callbackov | Presné CPU stack/flags/segmenty, IF, vnoriteľnosť prerušení, súčasnosť DSP DMA a audio bufferu, stopy IRQ oproti originálu |
-| P2 | `AH=00,27,28`, `AH=52` | Nulové sloty v počiatočnom obraze; mimo tabuľky 52 alias k `20C4` | Zistiť každého writera, reachability, self-modifying dispatch, CPU efekt volania null/invalid ptr |
-| P2 | ostatných 38 `INT63` handlerov | Handler pointery a priorita v `data/WORX21_ALL_82_STATUS.csv` | Recursive CFG, všetky nepriame volania, register/stack/CF/IO contract, test každého tela |
+| P0 | `44B3..45DC` MIDI track parser | gate, 32-bit delta, FF2F EOT, FF51/unknown meta, **44EE..4552 running/new status, nibble-length parameter read, 3A4D direct CALL, 45F9/452B commit** | zvyšok `3A4D` po `3A67`, reentry `44B4` pri nulovej delte, callback nonreturn, replay `4265/4389`, CPU flags/IRQ |
+| P0 | `5863` XMS refill | 256-B call packet, indexované 4-byte resource adresy, CF carry, stale `21CE`, nepriamy `CS:[21C8]`, výsledný AX sa obnoví | úplný XMS handler, identifikácia handle/banku, jeho flags + chyby, reálny streaming/refill/DS segment, súbežnosť s IRQ |
+| P0 | `5F17` streaming | fill prefix `80/00`, mode08 single-word subtraction, mode0C unsigned 32-bit saturation | `5F3E..5FBE` EOF a file-header dispatch, 312E DOS side effects, mode 01/02/03/09, shared buffer a underruns |
+| P0 | `555D–5663` osemhlasový PCM mixer | DMA poll, prefix 80h pair-clear, signed IMPUL sample primitive, 8 voice slots | plná per-voice slučka, wrap, playlist `5502`, `5863` refill side effects, 16.16 phase, far source byte routing, byte-exact output stream |
+| P0 | `INT08` + `40E7` | timer gate/IRQ shell + 32-bit zostatok; volanie PCM→MIDI | presné prerušenia/IF, reentrant flagy, časovanie DMA bufferu a PIC chain |
+| P1 | `3A4D` MIDI/OPL | **presné bezpodmienečné zápisy 2DC4/2DC8/2DC5/2DC6**, vstup `AX/BH/BL`; 1-dátová udalosť necháva BL z indexu stopy | kompletné `3A67+` OPL/Speaker/MPU vetvy, instrument bank, reentrancy/IRQ a vedľajšie účinky v nested callee |
+| P1 | Krížové verzie | 6 úsekov v0.14; v0.15 navyše 101 B channel + 34 B dispatch + meta prefix, **13 nových operandových rozdielov, inak presná zhoda** | rozšíriť na celý segment/ostatné DOS verzie a zmapovať všetky netotožné callee telá |
+| P2 | Mŕtve/nepoužité/invalid | nulové sloty 00/27/28 v počiatočnom obraze; alias závislosti EOT skeneru | writer→reader a nepriamy reachability dôkaz všetkých slotov, invalid AH=52 efekt, 16-bit code/data alias |
 
-Ďalší najvyšší pomer presnosť/čas: **rozobrať `44B3..45DC` do konkrétnych udalosťových typov a `5F17` stream body, potom doplniť mixer `555D` s 5863 refill**. Pri nemožnosti uzavrieť časovanie staticky použiť dávkovo rovnaký DOSBox-X hardvér na originál vs clone a porovnať sled `(tick, CS:IP, port, AL, DMA, IRQ, PCM byte/OPL register)`.
+## Ďalší RE-first postup
 
-## Akceptačná podmienka 100 %
+1. `3A67+` a `44B4` reentry: **lokálny event pipeline je uzavretý**. Teraz doplniť transitive 3A4D dispatcher, volania `58F8/3B5B/38A7`, register/flags/writer-graph a nulový delta live/reachability dôkaz.
+2. `5F3E..5FBE`: všetky príkazové módy, presný DOS `312E` file-result/CF a ukončenie; synchronizovať s už hotovým mode08/0C podkontraktom.
+3. `555D` a `5863`: zostaviť stateful eight-voice mixer s explicitným XMS backendom a kontrolou reálneho 16:16 `ES:DI/DS:SI` pri ukončení hlasu.
+4. Vyčerpať statiku na cross-build pre DOS 1.0/1.7/1.9/2.0 pred DOSBox runtime. Originálne hostiteľské IRQ, porty a timer testovať až pri nemožnosti statického uzavretia.
 
-Pri každom vstupnom bode: vlastný machine-byte dôkaz + dominator/CFG so všetkými vetvami a write/read aliasmi + zreťazený call graph + CPU flag/stack model + C++17 testy + originál/clone register/port/timing trace, len tam kde statika nestačí. Hardvérový čas, obsluha chýb a mŕtve vetvy sú súčasťou definície. Žiadne percentá audio parity nevyvodzovať z počtu rekonštruovaných selektorov.
-
-## v0.13 nový stav tempo `FF51`
-
-`455D..458B` a jeho priamy PIT helper `466A..469E` sú teraz strojovo kontrolované a modelované vrátane x86 16-bit `DIV` trap a `OUT` poradia. Stále však ide o subvetvu v **otvorenom** track parseri `44B3..45DC`: zostávajú všetky ostatné meta eventy, running status, OPL callback, ES far-memory a vyvolávacie podmienky. Nezvyšuje sa počet uzavretých API handlerov nad 41.
+Pre uzavretie 1:1 je pre každý edge potrebný EXE SHA, machine bytes + CFG/call order, alias globals, regist/flags/stack, prepis a izolovaný test. **Nie je poctivé tvrdiť 100 %, pokiaľ chýba pôvodný runtime porovnávací trace.**

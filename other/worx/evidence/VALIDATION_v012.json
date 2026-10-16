@@ -1,0 +1,49 @@
+{
+  "version": "0.12",
+  "date": "2026-10-16",
+  "original_mz_filename": "N3D_DOS_v2.0_IDA.EXE",
+  "original_mz_bytes": 178528,
+  "original_load_image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "original_embedded_segment": "15BFh",
+  "known_selector_count": 82,
+  "initial_nonzero_handlers": 79,
+  "initial_null_handlers": 3,
+  "original_body_contracts": 41,
+  "v011_body_contracts": 37,
+  "v012_additions_ah": [
+    "12",
+    "19",
+    "29",
+    "2E"
+  ],
+  "unreconstructed_nonzero_handlers": 38,
+  "int08_gate_static_machine_sha256": "575221bdfdc0622f8a816ea823014931aebb2fc79bdae319ba2d4bad6c136bf2",
+  "int08_audio_shell_static_machine_sha256": "1caf9d948575f57763ddd611d7190dfb6b675965776cc66fb86ba23d2328b4cb",
+  "gcc_cmake_ctest": {
+    "passed": 6,
+    "total": 6,
+    "original_MZ_bytes_verified": true
+  },
+  "clang_cmake_ctest": {
+    "passed": 6,
+    "total": 6,
+    "original_MZ_bytes_verified": true
+  },
+  "original_exe_in_archive": false,
+  "real_dos_runtime_trace_compared": false,
+  "real_IRQ_nested_stack_parity": false,
+  "bit_exact_audio_parity": false,
+  "readiness_notes": "The 41 number is handler boundary coverage, not weighted percent of whole WORX or hardware timing",
+  "source_files_sha256": {
+    "src/int63_leaf.cpp": "284ada080a1fdcfea41e1eade01e9bc6e344ab5fc6c257deceb1182b683000db",
+    "src/int08_gate.cpp": "d8b79ac4029542c4cb3add4ba05fd1e054f1cbbaea99738c10f204ef7f3203ec",
+    "src/int08_audio.cpp": "d4dd5545e76258dd7d4ca893ca5915cb3cdb6a306f98c60f91afe513d942ace3",
+    "tools/audit_dispatch_binary.py": "177029f22d376cedc90a0e0c82732eb0119f285e3926bbc614f274a9afcf7b1d",
+    "tools/audit_int08_re_first.py": "4a6e49e38ab33c7196a5c02dff689bb7c935ee20a89d9f060660a49c129560c3",
+    "data/n3d_v20_int63_dispatch.json": "1873b624e0aec5d21b616fb10da269eec1b1640e4a1d4f7eb97c58e110d35890",
+    "data/worx21_int08_static_evidence.json": "ac66cead1f536b9532cbe51b6ba6011dcd6aab362b71667d7f2ace37a4178c3a",
+    "tests/test_int63_composed.cpp": "d6e9d7c6609f2f67efbc357acaf8cd508279bb9c66482b86320f0ee4a546c898",
+    "tests/test_int08_gate.cpp": "41b674a6be225b8957c71e790434e97a880581d81e9f9211744eebc78ac603ca",
+    "tests/test_int08_audio.cpp": "47bdc62d3f3894473bc3f15d68fb9ab623658041d9abb689e207a40f6b70c461"
+  }
+}

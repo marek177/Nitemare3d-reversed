@@ -1,0 +1,267 @@
+{
+  "version": "0.15",
+  "domain": "original unpacked DOS MZ image bytes, not run-time CS:IP",
+  "original_v19_sha256": "e29a8d058fdf3033241f4f711bca273fb168d750f8f972047e1be8f3d946529e",
+  "original_v20_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "cs_base_v19": "15BB0",
+  "cs_base_v20": "15BF0",
+  "v19_ip_minus_v20_ip": 4,
+  "status_nibble_data_length": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    1,
+    1,
+    2,
+    0
+  ],
+  "v20_spans": [
+    {
+      "id": "v20_channel_shell",
+      "ip_start": "44EE",
+      "ip_end_exclusive": "4553",
+      "length": 101,
+      "sha256": "076f7d28f35cb4698837258c227d45cfbfd66768f4e962af8ecc55965a032e43"
+    },
+    {
+      "id": "v20_dispatch_prefix",
+      "ip_start": "3A4D",
+      "ip_end_exclusive": "3A6F",
+      "length": 34,
+      "sha256": "4f9f432eebb7b3fad17fb6f78d7326be3b91e7a13346a91c289b652aa20b2785"
+    },
+    {
+      "id": "v20_ff_meta_prefix",
+      "ip_start": "4546",
+      "ip_end_exclusive": "4553",
+      "length": 13,
+      "sha256": "34e9254bf4fe3bac4d2e6357d1202e61f17dc1b2331e9635de5f5f7cdf2ec73c"
+    },
+    {
+      "id": "v20_nibble_parameter_table",
+      "ip_start": "2DA4",
+      "ip_end_exclusive": "2DB4",
+      "length": 16,
+      "sha256": "d26fc4d220107edf18cf2cb41451a4cecb3ddcded0a0647b38dbf9950e6285c2"
+    }
+  ],
+  "v20_anchors": [
+    {
+      "id": "ff_precedes_status_bit",
+      "ip": "44F1",
+      "signature": "3c ff 74 51 a8 80 74 06"
+    },
+    {
+      "id": "status_cache_word_store",
+      "ip": "44F9",
+      "signature": "2e 89 87 63 2d 47"
+    },
+    {
+      "id": "running_status_load",
+      "ip": "44FF",
+      "signature": "2e 8b 87 63 2d"
+    },
+    {
+      "id": "status_high_nibble",
+      "ip": "4504",
+      "signature": "32 e4 b1 04 d3 e8 8b f0"
+    },
+    {
+      "id": "status_parameter_table",
+      "ip": "450C",
+      "signature": "2e 8a 8c a4 2d 32 ed"
+    },
+    {
+      "id": "cached_ax_for_dispatch",
+      "ip": "4513",
+      "signature": "2e 8b 87 63 2d"
+    },
+    {
+      "id": "first_data_bh",
+      "ip": "4518",
+      "signature": "e3 0b 26 8a 3d 47 49 e3 04"
+    },
+    {
+      "id": "second_data_bl",
+      "ip": "4521",
+      "signature": "26 8a 1d 47"
+    },
+    {
+      "id": "call_3a4d",
+      "ip": "4525",
+      "signature": "e8 25 f5"
+    },
+    {
+      "id": "call_45f9",
+      "ip": "4528",
+      "signature": "e8 ce 00"
+    },
+    {
+      "id": "reload_index_after_callbacks",
+      "ip": "452B",
+      "signature": "2e 8b 1e c0 2d d1 e3"
+    },
+    {
+      "id": "write_cursor",
+      "ip": "4532",
+      "signature": "2e 89 bf 22 2d"
+    },
+    {
+      "id": "write_delta_low",
+      "ip": "4539",
+      "signature": "2e 89 87 a2 2c"
+    },
+    {
+      "id": "write_delta_high",
+      "ip": "453E",
+      "signature": "2e 89 97 a4 2c"
+    },
+    {
+      "id": "reenter_44b4",
+      "ip": "4543",
+      "signature": "e9 6e ff"
+    },
+    {
+      "id": "ff_meta_type",
+      "ip": "4546",
+      "signature": "47 26 8a 05 47 3c 2f 74 3d 3c 51 74 0a"
+    },
+    {
+      "id": "dispatch_split_status",
+      "ip": "3A4D",
+      "signature": "8a e0 80 e4 f0 24 0f"
+    },
+    {
+      "id": "dispatch_write_channel",
+      "ip": "3A54",
+      "signature": "2e a2 c4 2d"
+    },
+    {
+      "id": "dispatch_write_status",
+      "ip": "3A58",
+      "signature": "2e 88 26 c8 2d"
+    },
+    {
+      "id": "dispatch_write_data_bh",
+      "ip": "3A5D",
+      "signature": "2e 88 3e c5 2d"
+    },
+    {
+      "id": "dispatch_write_data_bl",
+      "ip": "3A62",
+      "signature": "2e 88 1e c6 2d"
+    },
+    {
+      "id": "dispatch_gate_to_nested_3a67",
+      "ip": "3A67",
+      "signature": "2e f6 06 bc 2d 06 75 3c"
+    }
+  ],
+  "v20_branch_targets": [
+    {
+      "id": "ff_JE",
+      "from_ip": "44F3",
+      "target": "4546"
+    },
+    {
+      "id": "running_JE",
+      "from_ip": "44F7",
+      "target": "44FF"
+    },
+    {
+      "id": "no_params_JCXZ",
+      "from_ip": "4518",
+      "target": "4525"
+    },
+    {
+      "id": "one_param_JCXZ",
+      "from_ip": "451F",
+      "target": "4525"
+    },
+    {
+      "id": "meta_EOT_JE",
+      "from_ip": "454D",
+      "target": "458C"
+    },
+    {
+      "id": "meta_tempo_JE",
+      "from_ip": "4551",
+      "target": "455D"
+    },
+    {
+      "id": "reenter_JMP",
+      "from_ip": "4543",
+      "target": "44B4"
+    }
+  ],
+  "v20_near_calls": [
+    {
+      "id": "dispatch_3a4d",
+      "from_ip": "4525",
+      "target": "3A4D"
+    },
+    {
+      "id": "delta_vlq_45f9",
+      "from_ip": "4528",
+      "target": "45F9"
+    }
+  ],
+  "crossversion_matches": [
+    {
+      "id": "channel_shell",
+      "v20_start_ip": "44EE",
+      "v19_start_ip": "44F2",
+      "bytes_compared": 101,
+      "modified_operand_ips": [
+        "44FC",
+        "4502",
+        "450F",
+        "4516",
+        "452E",
+        "4535",
+        "453C",
+        "4541"
+      ],
+      "non_operand_differences": 0
+    },
+    {
+      "id": "dispatch_prefix",
+      "v20_start_ip": "3A4D",
+      "v19_start_ip": "3A51",
+      "bytes_compared": 34,
+      "modified_operand_ips": [
+        "3A56",
+        "3A5B",
+        "3A60",
+        "3A65",
+        "3A6A"
+      ],
+      "non_operand_differences": 0
+    },
+    {
+      "id": "meta_prefix",
+      "v20_start_ip": "4546",
+      "v19_start_ip": "454A",
+      "bytes_compared": 13,
+      "modified_operand_ips": [],
+      "non_operand_differences": 0
+    }
+  ],
+  "proof_boundary": [
+    "Original bytes/straight-line branch shells only",
+    "3A4D hardware or software downstream after 3A67 explicitly injected",
+    "Actual caller DX/DS/FLAGS, IRQ and callback nonreturn behavior not certified",
+    "Out-of-range track/global alias tests are synthetic, not reachability proof",
+    "Single-event model stops at JMP 44B4; zero-delta recursive scheduling open",
+    "No source binaries bundled or published"
+  ]
+}

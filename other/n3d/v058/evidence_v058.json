@@ -1,0 +1,1781 @@
+{
+  "audit": "RE MAX v0.58 — GUARD death score/sound selector and variant gates",
+  "version_note": "local evidence package, not GitHub release version",
+  "original_game_executed": false,
+  "runtime_trace_executed": false,
+  "original_binaries_included": false,
+  "cross_build": {
+    "score": {
+      "bytes": 145,
+      "allowed_operands_and_tables": 52,
+      "dos_win_differing_bytes": 52,
+      "win_alt_differing_bytes": 52,
+      "semantic_routes_equal": true,
+      "normalization_only": true
+    },
+    "death_sound": {
+      "bytes": 194,
+      "allowed_operands_and_tables": 62,
+      "dos_win_differing_bytes": 62,
+      "win_alt_differing_bytes": 52,
+      "semantic_routes_equal": true,
+      "normalization_only": true
+    },
+    "state7_sound": {
+      "bytes": 236,
+      "allowed_operands_and_tables": 66,
+      "dos_win_differing_bytes": 66,
+      "win_alt_differing_bytes": 50,
+      "semantic_routes_equal": true,
+      "normalization_only": true
+    },
+    "fatal_variant": {
+      "bytes": 100,
+      "allowed_operands_and_tables": 9,
+      "dos_win_differing_bytes": 9,
+      "win_alt_differing_bytes": 2,
+      "semantic_routes_equal": true,
+      "normalization_only": true
+    },
+    "nonfatal_variant": {
+      "bytes": 100,
+      "allowed_operands_and_tables": 9,
+      "dos_win_differing_bytes": 9,
+      "win_alt_differing_bytes": 3,
+      "semantic_routes_equal": true,
+      "normalization_only": true
+    }
+  },
+  "profiles": {
+    "dos20": {
+      "original_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+      "seg3_file_offset": null,
+      "tables": {
+        "score": {
+          "start": "084FE",
+          "size": 145,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "050",
+              "selected_value": 25,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "056",
+              "selected_value": 75,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "08A",
+              "selected_value": 50,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "08D",
+              "selected_value": 0,
+              "behavior": "default_zero"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "072",
+              "selected_value": -1000,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "07A",
+              "selected_value": 1000,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "08D",
+              "selected_value": 0,
+              "behavior": "default_zero"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "050",
+              "selected_value": 25,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "20",
+              "relative_target": "08A",
+              "selected_value": 50,
+              "behavior": "constant_signed16"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "signed score points"
+        },
+        "death_sound": {
+          "start": "09CF2",
+          "size": 194,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "052",
+              "selected_value": 35,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "058",
+              "selected_value": 8,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "064",
+              "selected_value": 36,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "06A",
+              "selected_value": 4,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "070",
+              "selected_value": 19,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "076",
+              "selected_value": 14,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "07C",
+              "selected_value": "rng%3+11",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "07C",
+              "selected_value": "rng%3+11",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "052",
+              "selected_value": 35,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "08E",
+              "selected_value": 74,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "094",
+              "selected_value": 2,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "094",
+              "selected_value": 2,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "09A",
+              "selected_value": 9,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "event selector (not proof of actual played audio)"
+        },
+        "state7_sound": {
+          "start": "09EB4",
+          "size": 236,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "052",
+              "selected_value": 34,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "058",
+              "selected_value": "rng%3+56",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "058",
+              "selected_value": "rng%3+56",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "06A",
+              "selected_value": 59,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "070",
+              "selected_value": 20,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "076",
+              "selected_value": 21,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "07C",
+              "selected_value": 16,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "082",
+              "selected_value": "rng%2+54",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "082",
+              "selected_value": "rng%2+54",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "094",
+              "selected_value": 6,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "09A",
+              "selected_value": 63,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "0A0",
+              "selected_value": 60,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "0A6",
+              "selected_value": 18,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "0AC",
+              "selected_value": 72,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "0B2",
+              "selected_value": 71,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "0B8",
+              "selected_value": 73,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "0BE",
+              "selected_value": 13,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "0BE",
+              "selected_value": 13,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "0C4",
+              "selected_value": 56,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "0CA",
+              "selected_value": 61,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "0CA",
+              "selected_value": 61,
+              "behavior": "fixed_selector"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "event selector (not proof of actual played audio)"
+        },
+        "fatal_variant": {
+          "start": "09FB4",
+          "size": 100,
+          "high_flag_offset": "59",
+          "rejection_base_byte_offset": "4B",
+          "rejection_stride": 2,
+          "fast_seven_requires": [
+            "GUARD+12==0",
+            "descriptor high_flag !=0"
+          ],
+          "rng_remainder_set": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "last_relative_byte_nonexecuted_padding": "0A017",
+          "effect": "invariant local selector, transitive resource effects not proven"
+        },
+        "nonfatal_variant": {
+          "start": "0A018",
+          "size": 100,
+          "high_flag_offset": "49",
+          "rejection_base_byte_offset": "3B",
+          "rejection_stride": 2,
+          "fast_seven_requires": [
+            "GUARD+12==0",
+            "descriptor high_flag !=0"
+          ],
+          "rng_remainder_set": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "last_relative_byte_nonexecuted_padding": "0A07B",
+          "effect": "invariant local selector, transitive resource effects not proven"
+        }
+      },
+      "hit": {
+        "entry": "05F74",
+        "direct_nested_calls": {
+          "fatal_variant": [
+            "05FAD"
+          ],
+          "death_sound": [
+            "05FC7"
+          ],
+          "score": [
+            "06016"
+          ],
+          "state7_sound": [
+            "0605D"
+          ],
+          "nonfatal_variant": [
+            "0608E",
+            "06144"
+          ]
+        },
+        "extra_witnesses": [
+          {
+            "image_offset": "05F74",
+            "bytes": 6,
+            "meaning": "dos20 hit function entry"
+          },
+          {
+            "image_offset": "05F90",
+            "bytes": 15,
+            "meaning": "dos20 lethal threshold after damage scalar"
+          },
+          {
+            "image_offset": "0606F",
+            "bytes": 5,
+            "meaning": "dos20 GUARD+12=8 before nonfatal variant"
+          },
+          {
+            "image_offset": "08635",
+            "bytes": 4,
+            "meaning": "dos20 damage class15 zeroes scalar after FAR callback"
+          },
+          {
+            "image_offset": "0601E",
+            "bytes": 9,
+            "meaning": "fatal score 32bit signed addition"
+          },
+          {
+            "image_offset": "05FB8",
+            "bytes": 7,
+            "meaning": "death sound conditional gate"
+          }
+        ],
+        "guaranteed_nonfatal_variant_rng_if_entered": true,
+        "guarantee_scope": "only direct hit nonfatal GUARD+12=8 paths; no callback reentry proof"
+      }
+    },
+    "win110": {
+      "original_sha256": "12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481",
+      "seg3_file_offset": "15FC0",
+      "tables": {
+        "score": {
+          "start": "09F10",
+          "size": 145,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "050",
+              "selected_value": 25,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "056",
+              "selected_value": 75,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "08A",
+              "selected_value": 50,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "08D",
+              "selected_value": 0,
+              "behavior": "default_zero"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "072",
+              "selected_value": -1000,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "07A",
+              "selected_value": 1000,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "08D",
+              "selected_value": 0,
+              "behavior": "default_zero"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "050",
+              "selected_value": 25,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "20",
+              "relative_target": "08A",
+              "selected_value": 50,
+              "behavior": "constant_signed16"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "signed score points"
+        },
+        "death_sound": {
+          "start": "0B6A0",
+          "size": 194,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "052",
+              "selected_value": 35,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "058",
+              "selected_value": 8,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "064",
+              "selected_value": 36,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "06A",
+              "selected_value": 4,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "070",
+              "selected_value": 19,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "076",
+              "selected_value": 14,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "07C",
+              "selected_value": "rng%3+11",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "07C",
+              "selected_value": "rng%3+11",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "052",
+              "selected_value": 35,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "08E",
+              "selected_value": 74,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "094",
+              "selected_value": 2,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "094",
+              "selected_value": 2,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "09A",
+              "selected_value": 9,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "event selector (not proof of actual played audio)"
+        },
+        "state7_sound": {
+          "start": "0B862",
+          "size": 236,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "052",
+              "selected_value": 34,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "058",
+              "selected_value": "rng%3+56",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "058",
+              "selected_value": "rng%3+56",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "06A",
+              "selected_value": 59,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "070",
+              "selected_value": 20,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "076",
+              "selected_value": 21,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "07C",
+              "selected_value": 16,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "082",
+              "selected_value": "rng%2+54",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "082",
+              "selected_value": "rng%2+54",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "094",
+              "selected_value": 6,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "09A",
+              "selected_value": 63,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "0A0",
+              "selected_value": 60,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "0A6",
+              "selected_value": 18,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "0AC",
+              "selected_value": 72,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "0B2",
+              "selected_value": 71,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "0B8",
+              "selected_value": 73,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "0BE",
+              "selected_value": 13,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "0BE",
+              "selected_value": 13,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "0C4",
+              "selected_value": 56,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "0CA",
+              "selected_value": 61,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "0CA",
+              "selected_value": 61,
+              "behavior": "fixed_selector"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "event selector (not proof of actual played audio)"
+        },
+        "fatal_variant": {
+          "start": "0B94E",
+          "size": 100,
+          "high_flag_offset": "59",
+          "rejection_base_byte_offset": "4B",
+          "rejection_stride": 2,
+          "fast_seven_requires": [
+            "GUARD+12==0",
+            "descriptor high_flag !=0"
+          ],
+          "rng_remainder_set": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "last_relative_byte_nonexecuted_padding": "0B9B1",
+          "effect": "invariant local selector, transitive resource effects not proven"
+        },
+        "nonfatal_variant": {
+          "start": "0B9B2",
+          "size": 100,
+          "high_flag_offset": "49",
+          "rejection_base_byte_offset": "3B",
+          "rejection_stride": 2,
+          "fast_seven_requires": [
+            "GUARD+12==0",
+            "descriptor high_flag !=0"
+          ],
+          "rng_remainder_set": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "last_relative_byte_nonexecuted_padding": "0BA15",
+          "effect": "invariant local selector, transitive resource effects not proven"
+        }
+      },
+      "hit": {
+        "entry": "080F8",
+        "direct_nested_calls": {
+          "fatal_variant": [
+            "08131"
+          ],
+          "death_sound": [
+            "0814B"
+          ],
+          "score": [
+            "0819B"
+          ],
+          "state7_sound": [
+            "081E1"
+          ],
+          "nonfatal_variant": [
+            "08212",
+            "082CA"
+          ]
+        },
+        "extra_witnesses": [
+          {
+            "image_offset": "080F8",
+            "bytes": 6,
+            "meaning": "win110 hit function entry"
+          },
+          {
+            "image_offset": "08114",
+            "bytes": 15,
+            "meaning": "win110 lethal threshold after damage scalar"
+          },
+          {
+            "image_offset": "081F3",
+            "bytes": 5,
+            "meaning": "win110 GUARD+12=8 before nonfatal variant"
+          },
+          {
+            "image_offset": "0A047",
+            "bytes": 4,
+            "meaning": "win110 damage class15 zeroes scalar after FAR callback"
+          },
+          {
+            "image_offset": "081A3",
+            "bytes": 9,
+            "meaning": "fatal score 32bit signed addition"
+          },
+          {
+            "image_offset": "0813C",
+            "bytes": 7,
+            "meaning": "death sound conditional gate"
+          }
+        ],
+        "guaranteed_nonfatal_variant_rng_if_entered": true,
+        "guarantee_scope": "only direct hit nonfatal GUARD+12=8 paths; no callback reentry proof"
+      }
+    },
+    "winalt": {
+      "original_sha256": "144e96bb649c5463d440c343ad982ed8e5f143e788c9af08bbb890fcd1b3db22",
+      "seg3_file_offset": "15FA0",
+      "tables": {
+        "score": {
+          "start": "09E62",
+          "size": 145,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "050",
+              "selected_value": 25,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "056",
+              "selected_value": 75,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "08A",
+              "selected_value": 50,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "08D",
+              "selected_value": 0,
+              "behavior": "default_zero"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "062",
+              "selected_value": 150,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "072",
+              "selected_value": -1000,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "07A",
+              "selected_value": 1000,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "08D",
+              "selected_value": 0,
+              "behavior": "default_zero"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "050",
+              "selected_value": 25,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "05C",
+              "selected_value": 100,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "082",
+              "selected_value": 250,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "06A",
+              "selected_value": 200,
+              "behavior": "constant_signed16"
+            },
+            {
+              "class_hex": "20",
+              "relative_target": "08A",
+              "selected_value": 50,
+              "behavior": "constant_signed16"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "signed score points"
+        },
+        "death_sound": {
+          "start": "0B5F2",
+          "size": 194,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "052",
+              "selected_value": 35,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "058",
+              "selected_value": 8,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "064",
+              "selected_value": 36,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "06A",
+              "selected_value": 4,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "070",
+              "selected_value": 19,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "076",
+              "selected_value": 14,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "07C",
+              "selected_value": "rng%3+11",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "07C",
+              "selected_value": "rng%3+11",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "05E",
+              "selected_value": 7,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "052",
+              "selected_value": 35,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "0A3",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "08E",
+              "selected_value": 74,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "094",
+              "selected_value": 2,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "094",
+              "selected_value": 2,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "09A",
+              "selected_value": 9,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "0A0",
+              "selected_value": 70,
+              "behavior": "fixed_selector"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "event selector (not proof of actual played audio)"
+        },
+        "state7_sound": {
+          "start": "0B7B4",
+          "size": 236,
+          "classes": [
+            {
+              "class_hex": "08",
+              "relative_target": "052",
+              "selected_value": 34,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "09",
+              "relative_target": "058",
+              "selected_value": "rng%3+56",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "0A",
+              "relative_target": "058",
+              "selected_value": "rng%3+56",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "0B",
+              "relative_target": "06A",
+              "selected_value": 59,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0C",
+              "relative_target": "070",
+              "selected_value": 20,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0D",
+              "relative_target": "076",
+              "selected_value": 21,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0E",
+              "relative_target": "07C",
+              "selected_value": 16,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "0F",
+              "relative_target": "082",
+              "selected_value": "rng%2+54",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "10",
+              "relative_target": "082",
+              "selected_value": "rng%2+54",
+              "behavior": "draw_rng_once_then_mod"
+            },
+            {
+              "class_hex": "11",
+              "relative_target": "094",
+              "selected_value": 6,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "12",
+              "relative_target": "09A",
+              "selected_value": 63,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "13",
+              "relative_target": "0A0",
+              "selected_value": 60,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "14",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "15",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "16",
+              "relative_target": "0A6",
+              "selected_value": 18,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "17",
+              "relative_target": "0AC",
+              "selected_value": 72,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "18",
+              "relative_target": "0B2",
+              "selected_value": 71,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "19",
+              "relative_target": "0CD",
+              "selected_value": 0,
+              "behavior": "default_zero_selector"
+            },
+            {
+              "class_hex": "1A",
+              "relative_target": "0B8",
+              "selected_value": 73,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1B",
+              "relative_target": "0BE",
+              "selected_value": 13,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1C",
+              "relative_target": "0BE",
+              "selected_value": 13,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1D",
+              "relative_target": "0C4",
+              "selected_value": 56,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1E",
+              "relative_target": "0CA",
+              "selected_value": 61,
+              "behavior": "fixed_selector"
+            },
+            {
+              "class_hex": "1F",
+              "relative_target": "0CA",
+              "selected_value": 61,
+              "behavior": "fixed_selector"
+            }
+          ],
+          "fallback_for_out_of_range": 0,
+          "value_kind": "event selector (not proof of actual played audio)"
+        },
+        "fatal_variant": {
+          "start": "0B8A0",
+          "size": 100,
+          "high_flag_offset": "59",
+          "rejection_base_byte_offset": "4B",
+          "rejection_stride": 2,
+          "fast_seven_requires": [
+            "GUARD+12==0",
+            "descriptor high_flag !=0"
+          ],
+          "rng_remainder_set": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "last_relative_byte_nonexecuted_padding": "0B903",
+          "effect": "invariant local selector, transitive resource effects not proven"
+        },
+        "nonfatal_variant": {
+          "start": "0B904",
+          "size": 100,
+          "high_flag_offset": "49",
+          "rejection_base_byte_offset": "3B",
+          "rejection_stride": 2,
+          "fast_seven_requires": [
+            "GUARD+12==0",
+            "descriptor high_flag !=0"
+          ],
+          "rng_remainder_set": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "last_relative_byte_nonexecuted_padding": "0B967",
+          "effect": "invariant local selector, transitive resource effects not proven"
+        }
+      },
+      "hit": {
+        "entry": "08054",
+        "direct_nested_calls": {
+          "fatal_variant": [
+            "0808D"
+          ],
+          "death_sound": [
+            "080A7"
+          ],
+          "score": [
+            "080F7"
+          ],
+          "state7_sound": [
+            "0813D"
+          ],
+          "nonfatal_variant": [
+            "0816E",
+            "08226"
+          ]
+        },
+        "extra_witnesses": [
+          {
+            "image_offset": "08054",
+            "bytes": 6,
+            "meaning": "winalt hit function entry"
+          },
+          {
+            "image_offset": "08070",
+            "bytes": 15,
+            "meaning": "winalt lethal threshold after damage scalar"
+          },
+          {
+            "image_offset": "0814F",
+            "bytes": 5,
+            "meaning": "winalt GUARD+12=8 before nonfatal variant"
+          },
+          {
+            "image_offset": "09F99",
+            "bytes": 4,
+            "meaning": "winalt damage class15 zeroes scalar after FAR callback"
+          },
+          {
+            "image_offset": "080FF",
+            "bytes": 9,
+            "meaning": "fatal score 32bit signed addition"
+          },
+          {
+            "image_offset": "08098",
+            "bytes": 7,
+            "meaning": "death sound conditional gate"
+          }
+        ],
+        "guaranteed_nonfatal_variant_rng_if_entered": true,
+        "guarantee_scope": "only direct hit nonfatal GUARD+12=8 paths; no callback reentry proof"
+      }
+    }
+  },
+  "dos20_sound_zero_selector_gate": {
+    "selector_zero_reaches_backend": true,
+    "global_enable_byte": "DS:414E",
+    "slot0_directory_word": "DS:3F64",
+    "if_slot0_word_zero": "early return before external playback",
+    "if_slot0_word_nonzero": "continues to downstream routines; final audible outcome OPEN",
+    "witnesses": [
+      {
+        "image_offset": "0C686",
+        "bytes": 14,
+        "meaning": "DOS SFX backend rejects when global sound enabled byte is zero"
+      },
+      {
+        "image_offset": "0C694",
+        "bytes": 20,
+        "meaning": "DOS SFX backend checks six-byte slot directory word for chosen selector"
+      }
+    ]
+  },
+  "open": [
+    "Transitive SFX playback including selector zero, priority, resource type and memory cache",
+    "GUARD class 0x15 negative-score reachability via normal gameplay (damage scalar class 0x15 returns 0 after external callback)",
+    "All indirect callers of score, sound selectors and variant selectors",
+    "Full rare-boss morph, drop and object/map mutation effects in hit/death helpers",
+    "Loaded descriptor selector bytes +3B/+4B and fast flag +49/+59 for every resource",
+    "RNG seed/order beyond local call graph (IRQ, render, DEMO, LOAD)",
+    "OBJECT+18 writer/readers including clipping and stale projection cache",
+    "DOS/Win16 world-state/pixel/timing 1:1 original trace"
+  ]
+}
