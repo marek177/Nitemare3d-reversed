@@ -30,8 +30,8 @@ struct Tail final : MidiDispatchTail3a67 {
     bool redirect=false;
     void dispatch_tail_3a67(CSState &cs,MidiDispatchRegisters &regs) override {
         ++calls;last=regs;
-        CHECK(cs.read8(0x2DC4)==static_cast<std::uint8_t>(regs.ax&0x0Fu));
-        CHECK(cs.read8(0x2DC8)==static_cast<std::uint8_t>(regs.ax&0xF0u));
+        CHECK(cs.read8(0x2DC4)==static_cast<std::uint8_t>(regs.ax));
+        CHECK(cs.read8(0x2DC8)==static_cast<std::uint8_t>(regs.ax >> 8u));
         CHECK(cs.read8(0x2DC5)==static_cast<std::uint8_t>(regs.bx>>8u));
         CHECK(cs.read8(0x2DC6)==static_cast<std::uint8_t>(regs.bx));
         if(redirect) {
@@ -60,7 +60,7 @@ static void test_explicit_channel_and_delta() {
     const auto r=step(s,m,&cb);
     CHECK(r.kind==MidiStepKind::channel_event && r.status==0x90);
     CHECK(r.table_data_count==2 && r.dispatch_bx==0x3C7F && r.dispatch_cx==1);
-    CHECK(cb.calls==1 && cb.last.ax==0x0090 && cb.last.bx==0x3C7F);
+    CHECK(cb.calls==1 && cb.last.ax==0x9000 && cb.last.bx==0x3C7F);
     CHECK(cb.last.si==9 && cb.last.cx==1 && cb.last.es==m.segment && cb.last.di==103);
     CHECK(s.read16(0x2D63+6)==0x0090); // full WORD cached, not a byte
     CHECK(r.next_delta==129 && r.next_di==105 && r.vlq_bytes==2 && r.index_committed==3);
@@ -75,7 +75,7 @@ static void test_running_status_stale_data_register() {
     m.bytes[100]=0x35;m.bytes[101]=0;
     auto r=step(s,m,&cb);
     CHECK(r.kind==MidiStepKind::channel_event && r.status==0xC3);
-    CHECK(r.table_data_count==1 && cb.last.ax==0xC3);
+    CHECK(r.table_data_count==1 && cb.last.ax==0xC003);
     CHECK(cb.last.bx==0x3502 && cb.last.cx==0 && cb.last.di==101);
     CHECK(s.read8(0x2DC5)==0x35 && s.read8(0x2DC6)==0x02);
     CHECK(r.next_delta==0 && r.next_di==102);

@@ -1,0 +1,213 @@
+{
+  "version": "0.16",
+  "scope": "stream 5F3E–5FBE local CFG; mode bodies outside; read-only static proof",
+  "dos_v19_unpacked_sha256": "e29a8d058fdf3033241f4f711bca273fb168d750f8f972047e1be8f3d946529e",
+  "dos_v20_unpacked_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "span": {
+    "first_ip": "5F3E",
+    "end_exclusive": "5FBF",
+    "bytes": 129,
+    "sha256": "e215c15813b94fd64f3669f38064b99efca282cb86ccc55a102034f9a7ca1597"
+  },
+  "operand_delta_v19_ip_plus4": [
+    "5F40",
+    "5F45",
+    "5F4C",
+    "5F54",
+    "5F5C",
+    "5F6E",
+    "5F7C",
+    "5F84",
+    "5F8C",
+    "5F94",
+    "5F9C",
+    "5FA7",
+    "5FB2"
+  ],
+  "non_operand_differences": 0,
+  "anchors": [
+    {
+      "id": "check_remaining_low",
+      "ip": "5F3E",
+      "length": 4
+    },
+    {
+      "id": "or_remaining_high",
+      "ip": "5F42",
+      "length": 5
+    },
+    {
+      "id": "check_buffered_bytes",
+      "ip": "5F49",
+      "length": 6
+    },
+    {
+      "id": "test_dsp_active",
+      "ip": "5F51",
+      "length": 6
+    },
+    {
+      "id": "clear_whole_dsp_flag",
+      "ip": "5F59",
+      "length": 6
+    },
+    {
+      "id": "dsp_pause_d0",
+      "ip": "5F5F",
+      "length": 2
+    },
+    {
+      "id": "out_pic_0a",
+      "ip": "5F64",
+      "length": 4
+    },
+    {
+      "id": "mode_read1_setup",
+      "ip": "5F68",
+      "length": 8
+    },
+    {
+      "id": "mode_read1_count_check",
+      "ip": "5F73",
+      "length": 5
+    },
+    {
+      "id": "rem_read3_setup",
+      "ip": "5F78",
+      "length": 6
+    },
+    {
+      "id": "mode_0c_first",
+      "ip": "5F81",
+      "length": 6
+    },
+    {
+      "id": "mode_03_second",
+      "ip": "5F89",
+      "length": 6
+    },
+    {
+      "id": "mode_08_third",
+      "ip": "5F91",
+      "length": 6
+    },
+    {
+      "id": "mode_09_fourth",
+      "ip": "5F99",
+      "length": 6
+    },
+    {
+      "id": "mode_02_fifth",
+      "ip": "5FA4",
+      "length": 6
+    },
+    {
+      "id": "mode_01_sixth",
+      "ip": "5FAF",
+      "length": 6
+    },
+    {
+      "id": "error_close_stc_ret",
+      "ip": "5FBA",
+      "length": 5
+    }
+  ],
+  "edges": [
+    {
+      "id": "nonzero_rem_to_mode",
+      "ip": "5F47",
+      "target": "5F81"
+    },
+    {
+      "id": "buffered_to_mode",
+      "ip": "5F4F",
+      "target": "5F81"
+    },
+    {
+      "id": "dsp_inactive_skip_stop",
+      "ip": "5F57",
+      "target": "5F68"
+    },
+    {
+      "id": "failed_read_to_error",
+      "ip": "5F76",
+      "target": "5FBA"
+    },
+    {
+      "id": "mode_0c",
+      "ip": "5F87",
+      "target": "5FD2"
+    },
+    {
+      "id": "mode_03",
+      "ip": "5F8F",
+      "target": "5FF3"
+    },
+    {
+      "id": "mode_08",
+      "ip": "5F97",
+      "target": "5FBF"
+    },
+    {
+      "id": "mode_09_not",
+      "ip": "5F9F",
+      "target": "5FA4"
+    },
+    {
+      "id": "mode_09_jump",
+      "ip": "5FA1",
+      "target": "6092"
+    },
+    {
+      "id": "mode_02_not",
+      "ip": "5FAA",
+      "target": "5FAF"
+    },
+    {
+      "id": "mode_02_jump",
+      "ip": "5FAC",
+      "target": "60E8"
+    },
+    {
+      "id": "mode_01_not",
+      "ip": "5FB5",
+      "target": "5FBA"
+    },
+    {
+      "id": "mode_01_jump",
+      "ip": "5FB7",
+      "target": "6037"
+    }
+  ],
+  "calls": [
+    {
+      "id": "dsp_5a3f",
+      "ip": "5F61",
+      "target": "5A3F"
+    },
+    {
+      "id": "read_mode_312e",
+      "ip": "5F70",
+      "target": "312E"
+    },
+    {
+      "id": "read_rem3_312e",
+      "ip": "5F7E",
+      "target": "312E"
+    },
+    {
+      "id": "error_close_4741",
+      "ip": "5FBA",
+      "target": "4741"
+    }
+  ],
+  "not_yet_reconstructed": [
+    "DOS 312E file read side effects",
+    "DSP 5A3F I/O and status timeouts",
+    "close 4741",
+    "mode 01/02/03/09 continuations",
+    "full 5F17 output-buffer fill",
+    "CF/IF/DF and stack across transitive callees",
+    "IRQ and physical device timing"
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "version": "0.16",
+  "provenance": "unpacked, original MZ image with code segment CS; static only",
+  "v19_sha256_image": "e29a8d058fdf3033241f4f711bca273fb168d750f8f972047e1be8f3d946529e",
+  "v20_sha256_image": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "v19_to_v20_ip_shift": 4,
+  "machine_spans": [
+    {
+      "id": "route_3a67_3b03",
+      "ip_start": "3A67",
+      "ip_end_exclusive": "3B04",
+      "length": 157,
+      "sha256": "c056659b00258130f31a046144b03c67614ce0182810caba9d5ecd7d7319be0f",
+      "relocated_low_operand_ips": [
+        "3A6A",
+        "3A81",
+        "3A89",
+        "3A8E",
+        "3A98",
+        "3AA2",
+        "3AAE",
+        "3AB6",
+        "3AC4",
+        "3AD2",
+        "3ADA",
+        "3AE2",
+        "3AED",
+        "3AF4",
+        "3AF9",
+        "3AFD"
+      ],
+      "other_changed_bytes": 0
+    },
+    {
+      "id": "mpu_58f8_5925",
+      "ip_start": "58F8",
+      "ip_end_exclusive": "5926",
+      "length": 46,
+      "sha256": "50ebb3fae7469934ad36d21c4805aacf9f098c4c6fb01cac2d152e3ed56facbe",
+      "relocated_low_operand_ips": [
+        "5917",
+        "591F"
+      ],
+      "other_changed_bytes": 0
+    }
+  ],
+  "opcode_anchors": [
+    {
+      "name": "route_test",
+      "ip": "3A67",
+      "bytes": 8
+    },
+    {
+      "name": "save_live_frame",
+      "ip": "3A6F",
+      "bytes": 5
+    },
+    {
+      "name": "status_nibble_to_si",
+      "ip": "3A74",
+      "bytes": 10
+    },
+    {
+      "name": "table_to_cx",
+      "ip": "3A7E",
+      "bytes": 7
+    },
+    {
+      "name": "no_data_gate",
+      "ip": "3A85",
+      "bytes": 2
+    },
+    {
+      "name": "status_from_globals",
+      "ip": "3A87",
+      "bytes": 9
+    },
+    {
+      "name": "status_call",
+      "ip": "3A90",
+      "bytes": 3
+    },
+    {
+      "name": "data1_gate",
+      "ip": "3A93",
+      "bytes": 3
+    },
+    {
+      "name": "data1_from_global",
+      "ip": "3A96",
+      "bytes": 4
+    },
+    {
+      "name": "data1_call",
+      "ip": "3A9A",
+      "bytes": 3
+    },
+    {
+      "name": "data2_gate",
+      "ip": "3A9D",
+      "bytes": 3
+    },
+    {
+      "name": "data2_from_global",
+      "ip": "3AA0",
+      "bytes": 4
+    },
+    {
+      "name": "data2_call",
+      "ip": "3AA4",
+      "bytes": 3
+    },
+    {
+      "name": "restore_frame_ret",
+      "ip": "3AA7",
+      "bytes": 4
+    },
+    {
+      "name": "status_90_unsigned",
+      "ip": "3AAB",
+      "bytes": 6
+    },
+    {
+      "name": "status_b0_unsigned",
+      "ip": "3AB3",
+      "bytes": 6
+    },
+    {
+      "name": "status_c0_unsigned",
+      "ip": "3AC1",
+      "bytes": 6
+    },
+    {
+      "name": "pitch_gate",
+      "ip": "3ACF",
+      "bytes": 6
+    },
+    {
+      "name": "config_mode",
+      "ip": "3AD7",
+      "bytes": 6
+    },
+    {
+      "name": "channel_09",
+      "ip": "3ADF",
+      "bytes": 6
+    },
+    {
+      "name": "channel_0b",
+      "ip": "3AEA",
+      "bytes": 6
+    },
+    {
+      "name": "pitch_add_8bit",
+      "ip": "3AF2",
+      "bytes": 13
+    },
+    {
+      "name": "fm_call",
+      "ip": "3AFF",
+      "bytes": 3
+    },
+    {
+      "name": "clc_ret",
+      "ip": "3B02",
+      "bytes": 2
+    },
+    {
+      "name": "mpu_save",
+      "ip": "58F8",
+      "bytes": 11
+    },
+    {
+      "name": "mpu_early_limit",
+      "ip": "5903",
+      "bytes": 8
+    },
+    {
+      "name": "mpu_write",
+      "ip": "590B",
+      "bytes": 6
+    },
+    {
+      "name": "mpu_restore",
+      "ip": "5911",
+      "bytes": 3
+    },
+    {
+      "name": "callback_segment_gate",
+      "ip": "5914",
+      "bytes": 8
+    },
+    {
+      "name": "callback_far_call",
+      "ip": "591C",
+      "bytes": 5
+    },
+    {
+      "name": "success_ret",
+      "ip": "5921",
+      "bytes": 1
+    },
+    {
+      "name": "timeout_restore_ret",
+      "ip": "5922",
+      "bytes": 4
+    }
+  ],
+  "local_branches": [
+    {
+      "name": "3a6d_jne",
+      "ip": "3A6D",
+      "target": "3AAB"
+    },
+    {
+      "name": "3a85_jcxz",
+      "ip": "3A85",
+      "target": "3AA7"
+    },
+    {
+      "name": "3a93_jcxz",
+      "ip": "3A93",
+      "target": "3AA7"
+    },
+    {
+      "name": "3a9d_jcxz",
+      "ip": "3A9D",
+      "target": "3AA7"
+    },
+    {
+      "name": "3ab1_jbe",
+      "ip": "3AB1",
+      "target": "3ACF"
+    },
+    {
+      "name": "3ab9_ja",
+      "ip": "3AB9",
+      "target": "3AC1"
+    },
+    {
+      "name": "3abe_jmp",
+      "ip": "3ABE",
+      "target": "3B02"
+    },
+    {
+      "name": "3ac7_ja",
+      "ip": "3AC7",
+      "target": "3B02"
+    },
+    {
+      "name": "3acc_jmp",
+      "ip": "3ACC",
+      "target": "3B02"
+    },
+    {
+      "name": "3ad5_je",
+      "ip": "3AD5",
+      "target": "3AF2"
+    },
+    {
+      "name": "3add_jne",
+      "ip": "3ADD",
+      "target": "3AEA"
+    },
+    {
+      "name": "3ae5_je",
+      "ip": "3AE5",
+      "target": "3AFF"
+    },
+    {
+      "name": "3ae7_jmp",
+      "ip": "3AE7",
+      "target": "3AF2"
+    },
+    {
+      "name": "3af0_jae",
+      "ip": "3AF0",
+      "target": "3AFF"
+    },
+    {
+      "name": "5903_jcxz",
+      "ip": "5903",
+      "target": "5922"
+    },
+    {
+      "name": "5909_jne",
+      "ip": "5909",
+      "target": "5903"
+    },
+    {
+      "name": "591a_je",
+      "ip": "591A",
+      "target": "5921"
+    }
+  ],
+  "near_calls": [
+    {
+      "name": "status_mpu",
+      "ip": "3A90",
+      "target": "58F8"
+    },
+    {
+      "name": "data1_mpu",
+      "ip": "3A9A",
+      "target": "58F8"
+    },
+    {
+      "name": "data2_mpu",
+      "ip": "3AA4",
+      "target": "58F8"
+    },
+    {
+      "name": "type_3941",
+      "ip": "3ABB",
+      "target": "3941"
+    },
+    {
+      "name": "type_3e34",
+      "ip": "3AC9",
+      "target": "3E34"
+    },
+    {
+      "name": "type_3b5b",
+      "ip": "3AFF",
+      "target": "3B5B"
+    }
+  ],
+  "far_indirect": {
+    "ip": "591C",
+    "pointer_offset": "3896",
+    "pointer_segment": "3898"
+  },
+  "original_mpu_poll_limit": 65535,
+  "closure": "local 3A67 routing + bounded 58F8 port loop; NOT child 3941/3E34/3B5B, callback hardware, IRQ, flags, timing",
+  "corrected_v015_callback_ax": "3A4D rewrites original cached status AL to AH=status&F0 and AL=status&0F before 3A67",
+  "not_proven": [
+    "hardware port IO conditions",
+    "indirect 3896 target semantics",
+    "3B5B FM/PC speaker subtree",
+    "MIDI device and global event interleaving",
+    "full FLAGS and private IRQ stack",
+    "input reachability of out-of-range values",
+    "byte-perfect real audio output"
+  ]
+}

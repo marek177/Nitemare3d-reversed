@@ -86,7 +86,9 @@ MidiStepResult midi_event_step_44ee(CSState &state, FarByteMemory &memory,
                 // There is NO second DEC CX here, even if count==2!
             }
         }
-        MidiDispatchRegisters regs{cached_ax,
+        MidiDispatchRegisters regs{static_cast<std::uint16_t>(
+                                       (std::uint16_t(status & 0xF0u) << 8u) |
+                                       (status & 0x0Fu)),
                                    static_cast<std::uint16_t>((std::uint16_t(bh)<<8u)|bl),
                                    cx,si,es,di};
         result.kind=MidiStepKind::channel_event;
@@ -94,6 +96,7 @@ MidiStepResult midi_event_step_44ee(CSState &state, FarByteMemory &memory,
         result.table_data_count=count;
         result.dispatch_bx=regs.bx;
         result.dispatch_cx=regs.cx;
+        // 3A4D..3A66 rewrites AX to AH=status&F0h, AL=status&0Fh.
         // 3A4D..3A66 unconditional CS prologue, BEFORE the opaque hardware
         // or software routing at 3A67. These global effects are byte-pinned.
         state.write8(0x2DC4u,static_cast<std::uint8_t>(status&0x0Fu));

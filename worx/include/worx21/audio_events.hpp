@@ -7,9 +7,9 @@
 
 namespace worx21 {
 
-// Registers visible at the first nontrivial decision of the transitive
-// CS:3A4D MIDI device handler.  The rest of 3A4D is NOT reconstructed here.
-// In particular, DX, DS, FLAGS and physical device timing remain opaque.
+// Registers at CS:3A67 AFTER the CS:3A4D..3A66 split of status.
+// AX here is (status&F0h)<<8 | (status&0Fh), NOT the cached MIDI word.
+// Full FLAGS, stack and real hardware/IRQ timing remain outside this model.
 struct MidiDispatchRegisters {
     std::uint16_t ax = 0;
     std::uint16_t bx = 0;
@@ -17,6 +17,8 @@ struct MidiDispatchRegisters {
     std::uint16_t si = 0;
     std::uint16_t es = 0;
     std::uint16_t di = 0;
+    std::uint16_t ds = 0; // v0.16: 3A6F PUSH CS / 3A70 POP DS is visible
+    std::uint16_t dx = 0; // may be changed by a FAR 3896 callback
 };
 
 // The original 3A4D..3A66 prefix writes four CS globals unconditionally.

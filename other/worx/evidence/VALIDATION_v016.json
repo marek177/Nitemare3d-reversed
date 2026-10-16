@@ -1,0 +1,36 @@
+{
+  "project": "WORX Toolkit 2.1 RE MAX v0.16",
+  "date": "2026-10-16",
+  "source": "original fully unpacked N3D DOS v1.9/v2.0 MZ images, static inspection only",
+  "original_image_sha256_v19": "e29a8d058fdf3033241f4f711bca273fb168d750f8f972047e1be8f3d946529e",
+  "original_image_sha256_v20": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "new_original_byte_spans": 3,
+  "new_original_bytes_verified": 332,
+  "new_machine_opcode_anchors": 49,
+  "new_local_branch_targets": 30,
+  "new_direct_call_targets": 10,
+  "new_crossversion_offset_low_operand_differences": 31,
+  "new_non_operand_byte_differences": 0,
+  "ctest_compiler_gcc": "11/11 passed",
+  "ctest_compiler_clang": "11/11 passed",
+  "ctest_github_layout_simulation": "11/11 passed",
+  "python_mutation_negative_tests": "2/2 verified original image mutation rejected",
+  "scope": [
+    "Correct v0.15 AX transformation at CS:3A4D before 3A67 callback",
+    "Machine-local CS:3A67..3B03 MIDI dispatch shell",
+    "CS:58F8..5925 bounded direct MPU port I/O and callback trigger",
+    "CS:5F3E..5FBE streaming header gate and six dispatch modes",
+    "No fake completions of 3941/3E34/3B5B, stream 01/02/03/09, file/DSP/IRQ callback implementations"
+  ],
+  "limitations": [
+    "No DOSBox original-vs-reconstruction live output parity comparison",
+    "No actual hardware sample/IRQ/BIOS timing verification",
+    "CPU FLAGS and interrupt stack not completely modeled",
+    "Reentrant callbacks that do not return are not modeled",
+    "Unavailable modern host access to actual XMS, DSP and OS file backend",
+    "CMake build and tests are not proof of full 1:1 audio or 79-handler closure"
+  ],
+  "original_executable_in_source_repo": false,
+  "original_executable_executed": false,
+  "source_artifact_type": "clean-room reconstructed C++17, not original vendor code"
+}
