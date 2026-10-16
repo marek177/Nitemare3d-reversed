@@ -1,0 +1,781 @@
+{
+  "source_filename": "N3D_DOS_v2.0_IDA.EXE",
+  "original_image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "mz_header_bytes": 7168,
+  "load_image_bytes": 171360,
+  "table_segment": "15BF",
+  "table_offset_cs": "0x2020",
+  "table_offset_image": "0x17C10",
+  "selector_range_audited": "00h..51h",
+  "selectors_audited": 82,
+  "nonzero_targets": 79,
+  "null_initial_targets": [
+    "00",
+    "27",
+    "28"
+  ],
+  "leaf_bodies_verified": 37,
+  "composed_bodies_verified": 4,
+  "machine_audited_handler_contracts": 41,
+  "nonzero_handlers_not_reconstructed": 38,
+  "transitive_helpers": {
+    "2E": {
+      "start": "466A",
+      "end_exclusive": "469F",
+      "sha256": "6b9d5028a52646356b8982a1b86cb3e47b9b48bda087495180989c558850cefd",
+      "purpose": "PIT dividend FFFFh, calls ports 43h / 40h / 40h"
+    }
+  },
+  "dispatcher_signature_hex": "50 86 e0 32 e4 d1 e0 8b f0 58 2e ff 94 20 20",
+  "dispatch_return_epilogue_hex": "2e ff 0e d4 3e 2e a1 e2 30 2e 8b 16 e4 30 cf",
+  "table_sha256_00_to_51": "38aeeb4ae7790a72808a6855f3ce9691f777f15975260abc0901efd5e70ebf5d",
+  "qualifiers": [
+    "No INT63 bounds guard before indirect CALL is visible in original dispatcher.",
+    "Null targets are INITIAL IMAGE words, not proven permanently null at runtime.",
+    "Nonzero entry point does NOT imply a reconstructed inner algorithm.",
+    "AH19 INT21 and AH29/AH2E ports are external side-effect boundaries.",
+    "AH2E transitive helper 466A is audited; other IRQ/call graphs remain incomplete.",
+    "IRET restores caller FLAGS unless the saved interrupt frame is modified.",
+    "Original full machine executable is intentionally not embedded in this output."
+  ],
+  "dispatch": [
+    {
+      "ah": "00",
+      "table_word_image_offset": "0x17C10",
+      "target_cs_offset": "0x0000",
+      "target_image_offset": null,
+      "status": "NULL_IN_INITIAL_IMAGE",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "01",
+      "table_word_image_offset": "0x17C12",
+      "target_cs_offset": "0x478D",
+      "target_image_offset": "0x1A37D",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "02",
+      "table_word_image_offset": "0x17C14",
+      "target_cs_offset": "0x485A",
+      "target_image_offset": "0x1A44A",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write BX to 2DF0; zero AH; write AX to 2010",
+      "leaf_body_sha256": "b64bd32eb4800c376c8722020d996cd8adbdc9c01b531e5202607a7fc4c8722e"
+    },
+    {
+      "ah": "03",
+      "table_word_image_offset": "0x17C16",
+      "target_cs_offset": "0x308E",
+      "target_image_offset": "0x18C7E",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "read16(2C47), then clear",
+      "leaf_body_sha256": "f9278fe8b09fda0e7759d320c06a53cd0c1f4d2d358f49617c0c5a313ee6fb3e"
+    },
+    {
+      "ah": "04",
+      "table_word_image_offset": "0x17C18",
+      "target_cs_offset": "0x59C8",
+      "target_image_offset": "0x1B5B8",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "05",
+      "table_word_image_offset": "0x17C1A",
+      "target_cs_offset": "0x5E19",
+      "target_image_offset": "0x1BA09",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "06",
+      "table_word_image_offset": "0x17C1C",
+      "target_cs_offset": "0x5ECD",
+      "target_image_offset": "0x1BABD",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "07",
+      "table_word_image_offset": "0x17C1E",
+      "target_cs_offset": "0x4741",
+      "target_image_offset": "0x1A331",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "08",
+      "table_word_image_offset": "0x17C20",
+      "target_cs_offset": "0x45E5",
+      "target_image_offset": "0x1A1D5",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "read masked CS byte 2DEA",
+      "leaf_body_sha256": "6dafed2ca3984e61945b035e75adf53567302f3c4db5e84ce5411fd259376973"
+    },
+    {
+      "ah": "09",
+      "table_word_image_offset": "0x17C22",
+      "target_cs_offset": "0x309A",
+      "target_image_offset": "0x18C8A",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "BX*0x04A9 -> 32-bit counter copies 2C4B/2C4F, status reset; returns AX=04A9",
+      "leaf_body_sha256": "2999de0ec78b092761f4272887e89d9612915756e8afab1e0ae6b1226992d7f7"
+    },
+    {
+      "ah": "0A",
+      "table_word_image_offset": "0x17C24",
+      "target_cs_offset": "0x30C1",
+      "target_image_offset": "0x18CB1",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "restore 32-bit time counter 2C4B from 2C4F; reset 2C53",
+      "leaf_body_sha256": "d06f400ba8a83598b7a73fe3cd10f0b5c902dc3e384bc244a2f2645f9a0e71d7"
+    },
+    {
+      "ah": "0B",
+      "table_word_image_offset": "0x17C26",
+      "target_cs_offset": "0x30DB",
+      "target_image_offset": "0x18CCB",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "read zero-extended CS byte 2C53",
+      "leaf_body_sha256": "b15fec9a6947aa6a192a11408259323e8b352050fa9a00a23e3f1d4c1912d049"
+    },
+    {
+      "ah": "0C",
+      "table_word_image_offset": "0x17C28",
+      "target_cs_offset": "0x4265",
+      "target_image_offset": "0x19E55",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "0D",
+      "table_word_image_offset": "0x17C2A",
+      "target_cs_offset": "0x3E77",
+      "target_image_offset": "0x19A67",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "0E",
+      "table_word_image_offset": "0x17C2C",
+      "target_cs_offset": "0x45DD",
+      "target_image_offset": "0x1A1CD",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "read masked CS byte 2D62",
+      "leaf_body_sha256": "26518c87ddd0e726ac3cbcd007736a3652889874d746b738313ad64284f55b54"
+    },
+    {
+      "ah": "0F",
+      "table_word_image_offset": "0x17C2E",
+      "target_cs_offset": "0x3792",
+      "target_image_offset": "0x19382",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "10",
+      "table_word_image_offset": "0x17C30",
+      "target_cs_offset": "0x3DCB",
+      "target_image_offset": "0x199BB",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "11",
+      "table_word_image_offset": "0x17C32",
+      "target_cs_offset": "0x3DD3",
+      "target_image_offset": "0x199C3",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "12",
+      "table_word_image_offset": "0x17C34",
+      "target_cs_offset": "0x3E2B",
+      "target_image_offset": "0x19A1B",
+      "status": "BODY_AND_DEPS_AUDITED",
+      "leaf_summary": "MIDI indexed store: (mode &20h) && AL>=B0h suppresses table write",
+      "leaf_body_sha256": "7eb7bdfa7f4d5f8b03a1f13f3250ba6a8ca9b8d44955a4eb5612808026aefc6b"
+    },
+    {
+      "ah": "13",
+      "table_word_image_offset": "0x17C36",
+      "target_cs_offset": "0x3004",
+      "target_image_offset": "0x18BF4",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write AL to CS:2DBC",
+      "leaf_body_sha256": "4d02aa5101a0aead76e99ec4ed0ed13921ac11c94f478b0dac987aa4dc9c618c"
+    },
+    {
+      "ah": "14",
+      "table_word_image_offset": "0x17C38",
+      "target_cs_offset": "0x3302",
+      "target_image_offset": "0x18EF2",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "15",
+      "table_word_image_offset": "0x17C3A",
+      "target_cs_offset": "0x36E2",
+      "target_image_offset": "0x192D2",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "16",
+      "table_word_image_offset": "0x17C3C",
+      "target_cs_offset": "0x3009",
+      "target_image_offset": "0x18BF9",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write AL to CS:2DBD",
+      "leaf_body_sha256": "a7371ad159375c0ddfd4f3510a6663582c1e350b40c3595f3f64fd4ca337917a"
+    },
+    {
+      "ah": "17",
+      "table_word_image_offset": "0x17C3E",
+      "target_cs_offset": "0x31CA",
+      "target_image_offset": "0x18DBA",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "18",
+      "table_word_image_offset": "0x17C40",
+      "target_cs_offset": "0x312E",
+      "target_image_offset": "0x18D1E",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "19",
+      "table_word_image_offset": "0x17C42",
+      "target_cs_offset": "0x335B",
+      "target_image_offset": "0x18F4B",
+      "status": "BODY_AND_DEPS_AUDITED",
+      "leaf_summary": "conditional DOS INT21/3Eh close; AX saved, DX externally observable",
+      "leaf_body_sha256": "6b1989e83bf4dac57a4221699f0024d57ab42e269c277c739d248fa1850d9ad6"
+    },
+    {
+      "ah": "1A",
+      "table_word_image_offset": "0x17C44",
+      "target_cs_offset": "0x337B",
+      "target_image_offset": "0x18F6B",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "1B",
+      "table_word_image_offset": "0x17C46",
+      "target_cs_offset": "0x34C1",
+      "target_image_offset": "0x190B1",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "1C",
+      "table_word_image_offset": "0x17C48",
+      "target_cs_offset": "0x33AF",
+      "target_image_offset": "0x18F9F",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "return CS byte 2DCA bit 0",
+      "leaf_body_sha256": "036f17983465ba289b4bcb1412c9a474b8bf0cfbcf320f4c126c4b961fefbce4"
+    },
+    {
+      "ah": "1D",
+      "table_word_image_offset": "0x17C4A",
+      "target_cs_offset": "0x3E5B",
+      "target_image_offset": "0x19A4B",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write BL to 2C61; DS modified but ISR restores",
+      "leaf_body_sha256": "c304f11c0b3983cc7a124611b19e6660bff454b43bb579f25bc761c373e24f2f"
+    },
+    {
+      "ah": "1E",
+      "table_word_image_offset": "0x17C4C",
+      "target_cs_offset": "0x4389",
+      "target_image_offset": "0x19F79",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "1F",
+      "table_word_image_offset": "0x17C4E",
+      "target_cs_offset": "0x45F2",
+      "target_image_offset": "0x1A1E2",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write 1 to CS:2D62",
+      "leaf_body_sha256": "7d88fe9a2831affee82927df9dba86746dda92ca0cd581ed0c6086975664ae30"
+    },
+    {
+      "ah": "20",
+      "table_word_image_offset": "0x17C50",
+      "target_cs_offset": "0x372F",
+      "target_image_offset": "0x1931F",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "DSP detected: SB mixer port writes 22h,BL; else AX=FFFF",
+      "leaf_body_sha256": "c92e04a8c827a9a16f52c8efba682c65ed7d2122dfa6074675d87b3aaf7954ed"
+    },
+    {
+      "ah": "21",
+      "table_word_image_offset": "0x17C52",
+      "target_cs_offset": "0x3771",
+      "target_image_offset": "0x19361",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "DSP detected: SB mixer port writes 04h,BL; else AX=FFFF",
+      "leaf_body_sha256": "da1e51347ff9d06eeeff685dad25212bcff09ed330599d9c2195d41b59e31e9b"
+    },
+    {
+      "ah": "22",
+      "table_word_image_offset": "0x17C54",
+      "target_cs_offset": "0x3750",
+      "target_image_offset": "0x19340",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "DSP detected: SB mixer port writes 26h,BL; else AX=FFFF",
+      "leaf_body_sha256": "f7985eeae6daceb62c06321329f370e5e9aaf6d55ab29513d91b9bcfd0d2a69c"
+    },
+    {
+      "ah": "23",
+      "table_word_image_offset": "0x17C56",
+      "target_cs_offset": "0x301D",
+      "target_image_offset": "0x18C0D",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "24",
+      "table_word_image_offset": "0x17C58",
+      "target_cs_offset": "0x2F5F",
+      "target_image_offset": "0x18B4F",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "return AX=1234, DX=5678",
+      "leaf_body_sha256": "dd03a864b3173b610b6cd712ef1b7597d82f21bff4b545b0e721bc596a5d7b1a"
+    },
+    {
+      "ah": "25",
+      "table_word_image_offset": "0x17C5A",
+      "target_cs_offset": "0x2FCF",
+      "target_image_offset": "0x18BBF",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "26",
+      "table_word_image_offset": "0x17C5C",
+      "target_cs_offset": "0x2E76",
+      "target_image_offset": "0x18A66",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write 1 to CS:2C0C",
+      "leaf_body_sha256": "2a63f8ceca7268a366534e2267849154f886f626f23092670d956e809fefad55"
+    },
+    {
+      "ah": "27",
+      "table_word_image_offset": "0x17C5E",
+      "target_cs_offset": "0x0000",
+      "target_image_offset": null,
+      "status": "NULL_IN_INITIAL_IMAGE",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "28",
+      "table_word_image_offset": "0x17C60",
+      "target_cs_offset": "0x0000",
+      "target_image_offset": null,
+      "status": "NULL_IN_INITIAL_IMAGE",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "29",
+      "table_word_image_offset": "0x17C62",
+      "target_cs_offset": "0x41F6",
+      "target_image_offset": "0x19DE6",
+      "status": "BODY_AND_DEPS_AUDITED",
+      "leaf_summary": "joystick button nibble, 40 writes then 800 reads of port 201h",
+      "leaf_body_sha256": "a73a92fabbe1bb187fac90ffa31b63ab7d7b3b8ab7b0d65fabde5e8f237465d3"
+    },
+    {
+      "ah": "2A",
+      "table_word_image_offset": "0x17C64",
+      "target_cs_offset": "0x41B3",
+      "target_image_offset": "0x19DA3",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "AX=(uint16(64*2012))/201A or product if divisor=0; DX remainder",
+      "leaf_body_sha256": "9c6c0483817fa9efed3dd5faa643f064f0246147381d21812aa75c68082fc87e"
+    },
+    {
+      "ah": "2B",
+      "table_word_image_offset": "0x17C66",
+      "target_cs_offset": "0x41CD",
+      "target_image_offset": "0x19DBD",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "AX=(uint16(64*2014))/201C or product if divisor=0; DX remainder",
+      "leaf_body_sha256": "53f3e16f81752f7327ce87fc5366370de85eba41d2d1c38edd19127f62557405"
+    },
+    {
+      "ah": "2C",
+      "table_word_image_offset": "0x17C68",
+      "target_cs_offset": "0x41E7",
+      "target_image_offset": "0x19DD7",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "return CS byte[2016 + incoming AL]; internal CLC",
+      "leaf_body_sha256": "e255a3cbce35e8b1020b30262e7f85a191345803bc0c8ef11d910be09936bb26"
+    },
+    {
+      "ah": "2D",
+      "table_word_image_offset": "0x17C6A",
+      "target_cs_offset": "0x45ED",
+      "target_image_offset": "0x1A1DD",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "return CS word 2C56",
+      "leaf_body_sha256": "37480001ef28beda02a2871ea4fcd995ce4a9dd750d55a436715de5818305e4f"
+    },
+    {
+      "ah": "2E",
+      "table_word_image_offset": "0x17C6C",
+      "target_cs_offset": "0x3E67",
+      "target_image_offset": "0x19A57",
+      "status": "BODY_AND_DEPS_AUDITED",
+      "leaf_summary": "PIT init with audited helper 466A..469E; disabled if 201E==1",
+      "leaf_body_sha256": "aee8ad101ffd978923325ee6751aa2427a7a85445fa300891b3534e76c01edbe"
+    },
+    {
+      "ah": "2F",
+      "table_word_image_offset": "0x17C6E",
+      "target_cs_offset": "0x4476",
+      "target_image_offset": "0x1A066",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "30",
+      "table_word_image_offset": "0x17C70",
+      "target_cs_offset": "0x4470",
+      "target_image_offset": "0x1A060",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "return CS word 2C49 (internal CLC not propagated by IRET)",
+      "leaf_body_sha256": "bd6537ff2fce243898d4aa3ffdfacac774da966df3275763bd2c51e364dca6c7"
+    },
+    {
+      "ah": "31",
+      "table_word_image_offset": "0x17C72",
+      "target_cs_offset": "0x4CE1",
+      "target_image_offset": "0x1A8D1",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write (AL&3F) at word CS:[4BBF + 2*BX]",
+      "leaf_body_sha256": "a7ac6e21647cee4606b1e176cf81028ff23add08a435238c870b2c01118ebd52"
+    },
+    {
+      "ah": "32",
+      "table_word_image_offset": "0x17C74",
+      "target_cs_offset": "0x5675",
+      "target_image_offset": "0x1B265",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "return 0xFFFF",
+      "leaf_body_sha256": "c0c342a8de2e918af78a0eecaba47c0014a633dd60b93b77acb3259143ff5c46"
+    },
+    {
+      "ah": "33",
+      "table_word_image_offset": "0x17C76",
+      "target_cs_offset": "0x56F0",
+      "target_image_offset": "0x1B2E0",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "34",
+      "table_word_image_offset": "0x17C78",
+      "target_cs_offset": "0x5679",
+      "target_image_offset": "0x1B269",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "35",
+      "table_word_image_offset": "0x17C7A",
+      "target_cs_offset": "0x4C75",
+      "target_image_offset": "0x1A865",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "36",
+      "table_word_image_offset": "0x17C7C",
+      "target_cs_offset": "0x5664",
+      "target_image_offset": "0x1B254",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "read word CS:[4BEF + 2*AL]",
+      "leaf_body_sha256": "0580c8b648ecaa54faaf591ac9f3c589139bd0bea71c1bf17b2b30d0dde08dac"
+    },
+    {
+      "ah": "37",
+      "table_word_image_offset": "0x17C7E",
+      "target_cs_offset": "0x4866",
+      "target_image_offset": "0x1A456",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "return CS word 2DF0",
+      "leaf_body_sha256": "a555be08521b62ce9e2eb7e0780426db16d15ad3b4e4d38befadf4ef2aa54b85"
+    },
+    {
+      "ah": "38",
+      "table_word_image_offset": "0x17C80",
+      "target_cs_offset": "0x5926",
+      "target_image_offset": "0x1B516",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "39",
+      "table_word_image_offset": "0x17C82",
+      "target_cs_offset": "0x5973",
+      "target_image_offset": "0x1B563",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "3A",
+      "table_word_image_offset": "0x17C84",
+      "target_cs_offset": "0x5D6F",
+      "target_image_offset": "0x1B95F",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "3B",
+      "table_word_image_offset": "0x17C86",
+      "target_cs_offset": "0x5CF6",
+      "target_image_offset": "0x1B8E6",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "3C",
+      "table_word_image_offset": "0x17C88",
+      "target_cs_offset": "0x5BCD",
+      "target_image_offset": "0x1B7BD",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "3D",
+      "table_word_image_offset": "0x17C8A",
+      "target_cs_offset": "0x5CD0",
+      "target_image_offset": "0x1B8C0",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "3E",
+      "table_word_image_offset": "0x17C8C",
+      "target_cs_offset": "0x3ED7",
+      "target_image_offset": "0x19AC7",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write BL to CS:3ED6",
+      "leaf_body_sha256": "dd1bf91b2331ba74b5a99459b6ba0304c2f0368851c863229f1dbef3d8636d1d"
+    },
+    {
+      "ah": "3F",
+      "table_word_image_offset": "0x17C8E",
+      "target_cs_offset": "0x5C63",
+      "target_image_offset": "0x1B853",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "40",
+      "table_word_image_offset": "0x17C90",
+      "target_cs_offset": "0x3597",
+      "target_image_offset": "0x19187",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "41",
+      "table_word_image_offset": "0x17C92",
+      "target_cs_offset": "0x5792",
+      "target_image_offset": "0x1B382",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "42",
+      "table_word_image_offset": "0x17C94",
+      "target_cs_offset": "0x5DF2",
+      "target_image_offset": "0x1B9E2",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "43",
+      "table_word_image_offset": "0x17C96",
+      "target_cs_offset": "0x34BB",
+      "target_image_offset": "0x190AB",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write BX to CS:34B9",
+      "leaf_body_sha256": "e735b2a55abaf278174f51bf12f99dc21b7f905b7e5686fafc084fd1219b9637"
+    },
+    {
+      "ah": "44",
+      "table_word_image_offset": "0x17C98",
+      "target_cs_offset": "0x4C61",
+      "target_image_offset": "0x1A851",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write 2 to word CS:[4BAF + 2*BX]",
+      "leaf_body_sha256": "81a44c35a5b3285940c8bf338a97175bd2911edc7a16c5357773f7ab4127c3b0"
+    },
+    {
+      "ah": "45",
+      "table_word_image_offset": "0x17C9A",
+      "target_cs_offset": "0x5C19",
+      "target_image_offset": "0x1B809",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "46",
+      "table_word_image_offset": "0x17C9C",
+      "target_cs_offset": "0x389A",
+      "target_image_offset": "0x1948A",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "install DX:BX callback at CS:3896/3898",
+      "leaf_body_sha256": "70070beacb5a430983d2e6b67852ad50b5a43128691bafde1cb7a68ce5d27e37"
+    },
+    {
+      "ah": "47",
+      "table_word_image_offset": "0x17C9E",
+      "target_cs_offset": "0x4C6B",
+      "target_image_offset": "0x1A85B",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "write 0 to word CS:[4BEF + 2*BX]",
+      "leaf_body_sha256": "5f48549efcc0c9756a701d47730ebc13fa83d155b59682545cac5d293d5e87f9"
+    },
+    {
+      "ah": "48",
+      "table_word_image_offset": "0x17CA0",
+      "target_cs_offset": "0x2218",
+      "target_image_offset": "0x17E08",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "49",
+      "table_word_image_offset": "0x17CA2",
+      "target_cs_offset": "0x2349",
+      "target_image_offset": "0x17F39",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "4A",
+      "table_word_image_offset": "0x17CA4",
+      "target_cs_offset": "0x2208",
+      "target_image_offset": "0x17DF8",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "SB mixer write index 0Ah, value BL; AX low=BL, DX=base+5",
+      "leaf_body_sha256": "9633bad130bbed310a0506f2594f8fd0aa72beed795805bf6e6f5656bf12fd4f"
+    },
+    {
+      "ah": "4B",
+      "table_word_image_offset": "0x17CA6",
+      "target_cs_offset": "0x21DC",
+      "target_image_offset": "0x17DCC",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "SB mixer write index 0Ch, value BL; AX low=BL, DX=base+5",
+      "leaf_body_sha256": "d36b242a522f1ad3c310383f4047afe21017af6aa82adf726e84489329a857ef"
+    },
+    {
+      "ah": "4C",
+      "table_word_image_offset": "0x17CA8",
+      "target_cs_offset": "0x21EC",
+      "target_image_offset": "0x17DDC",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "SB mixer write index 2Eh, value (BL | BL<<4); AX low=value, DX=base+5",
+      "leaf_body_sha256": "2bb1d555bbcee63707526b32db3fea3c9710d7673c5de523ed07288f4e84d028"
+    },
+    {
+      "ah": "4D",
+      "table_word_image_offset": "0x17CAA",
+      "target_cs_offset": "0x393B",
+      "target_image_offset": "0x1952B",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "4E",
+      "table_word_image_offset": "0x17CAC",
+      "target_cs_offset": "0x5549",
+      "target_image_offset": "0x1B139",
+      "status": "ENTRYPOINT_ONLY",
+      "leaf_summary": null,
+      "leaf_body_sha256": null
+    },
+    {
+      "ah": "4F",
+      "table_word_image_offset": "0x17CAE",
+      "target_cs_offset": "0x5A3F",
+      "target_image_offset": "0x1B62F",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "poll SB DSP write status, then OUT (base+0Ch), AL",
+      "leaf_body_sha256": "0c0d91acf6a6059aa1d98ce896fa463a96690e203b363dcd9a8657ff4d6b7369"
+    },
+    {
+      "ah": "50",
+      "table_word_image_offset": "0x17CB0",
+      "target_cs_offset": "0x5A1E",
+      "target_image_offset": "0x1B60E",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "poll SB DSP read status, then IN (base+0Ah), AX=AL",
+      "leaf_body_sha256": "c18bb4e9a1e19275c59c55ba8ee860860c76bb983dcb4d669d740c4b715e2406"
+    },
+    {
+      "ah": "51",
+      "table_word_image_offset": "0x17CB2",
+      "target_cs_offset": "0x3DB3",
+      "target_image_offset": "0x199A3",
+      "status": "LEAF_BYTE_AUDITED",
+      "leaf_summary": "set 3DB1=1;2B96=AL;2B95=FF;2BC7=00",
+      "leaf_body_sha256": "51d9e500bc8e2b8577f73a613586d2be12bff9dab844a1bc9dda1cc91369a51a"
+    }
+  ]
+}

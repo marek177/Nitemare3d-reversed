@@ -1,0 +1,229 @@
+{
+  "origin": "unpacked N3D DOS v2.0 embedded WORX 2.1",
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "machine_slices": {
+    "timer_midi_outer_4476": {
+      "cs_start": "4476",
+      "cs_end_exclusive": "44B3",
+      "bytes": 61,
+      "sha256": "aecabeb8b171c0d276e1d7e79559119337c292504ef124b21840f63ee2c940a7"
+    },
+    "midi_track_44b3_REMAINS_OPEN": {
+      "cs_start": "44B3",
+      "cs_end_exclusive": "45DD",
+      "bytes": 298,
+      "sha256": "9dcda1b828209b6608e23b1ca619f2a833c46bf7ef351c45168bc8dc6b4c8742"
+    },
+    "tempo_ff51_455d": {
+      "cs_start": "455D",
+      "cs_end_exclusive": "458C",
+      "bytes": 47,
+      "sha256": "66a97d8ea13617f5d1b1aeecbec13a803d969b6764af54f23a146a5c59ac8b10"
+    },
+    "vlq_45f9": {
+      "cs_start": "45F9",
+      "cs_end_exclusive": "4630",
+      "bytes": 55,
+      "sha256": "569c78b7d219c20f857c4edd780a2ac7a011ee80ea49058e1c4dc4c74838f51c"
+    },
+    "dma_49bc": {
+      "cs_start": "49BC",
+      "cs_end_exclusive": "4A12",
+      "bytes": 86,
+      "sha256": "9ef7734e568166359064c544b8734120b0a76487307067026c75764e00bce77e"
+    },
+    "pit_helper_466a": {
+      "cs_start": "466A",
+      "cs_end_exclusive": "469F",
+      "bytes": 53,
+      "sha256": "6b9d5028a52646356b8982a1b86cb3e47b9b48bda087495180989c558850cefd"
+    },
+    "pcm_555d_REMAINS_OPEN": {
+      "cs_start": "555D",
+      "cs_end_exclusive": "5664",
+      "bytes": 263,
+      "sha256": "6211c2ac65b829358c8dbe149cd2f554f885cb37718e6d9827e4bc0e19a541d1"
+    },
+    "pcm_sample_arithmetic_5625": {
+      "cs_start": "5625",
+      "cs_end_exclusive": "563F",
+      "bytes": 26,
+      "sha256": "2cd59a7ac6c3bceb30ba2b41e2a2dfd229fb9f3b7119daa377be87918f3ca459"
+    },
+    "music_gate_5df2": {
+      "cs_start": "5DF2",
+      "cs_end_exclusive": "5E19",
+      "bytes": 39,
+      "sha256": "1581cc2456e97b2464f178fa16ec3a09f83f5a4ed0d73ff84285579c1444dc34"
+    },
+    "stream_fill_prefix_5f17": {
+      "cs_start": "5F17",
+      "cs_end_exclusive": "5F3E",
+      "bytes": 39,
+      "sha256": "65eb4513aaee75e8cbba22d10088b8e0df7821cb7c8a0d7750e88943ee0a12a8"
+    }
+  },
+  "machine_anchors": {
+    "midi_enabled_guard_4478": {
+      "cs_offset": "4478",
+      "machine_bytes": "2e 80 3e 62 2d 00 75 01 c3"
+    },
+    "midi_counter_increment_4481": {
+      "cs_offset": "4481",
+      "machine_bytes": "2e ff 06 54 2c"
+    },
+    "midi_unsigned_threshold_448a": {
+      "cs_offset": "448A",
+      "machine_bytes": "2e 3b 06 5a 2c 72 0c"
+    },
+    "midi_count_to_cx_44a4": {
+      "cs_offset": "44A4",
+      "machine_bytes": "2e 8b 0e 58 2c"
+    },
+    "midi_call_44a9": {
+      "cs_offset": "44A9",
+      "machine_bytes": "e8 07 00"
+    },
+    "midi_loop_fallthrough_44b1": {
+      "cs_offset": "44B1",
+      "machine_bytes": "e2 f6 51"
+    },
+    "midi_vlq_initial_registers_45fb": {
+      "cs_offset": "45FB",
+      "machine_bytes": "33 c0 33 d2"
+    },
+    "midi_vlq_recur_460f": {
+      "cs_offset": "460F",
+      "machine_bytes": "d1 e0 d1 d2 d1 e0 d1 d2"
+    },
+    "midi_vlq_stop_460a": {
+      "cs_offset": "460A",
+      "machine_bytes": "80 ff 80 72 1e"
+    },
+    "midi_vlq_call_4528": {
+      "cs_offset": "4528",
+      "machine_bytes": "e8 ce 00"
+    },
+    "dma_reset_49bf": {
+      "cs_offset": "49BF",
+      "machine_bytes": "32 c0 e6 0c"
+    },
+    "dma_second_sample_49c3": {
+      "cs_offset": "49C3",
+      "machine_bytes": "e4 02 e4 02 fb 86 e0 32 c0 8b c8"
+    },
+    "dma_below_base_49ce": {
+      "cs_offset": "49CE",
+      "machine_bytes": "2e a1 df 2d 3b c8 73 03"
+    },
+    "dma_0400_threshold_49db": {
+      "cs_offset": "49DB",
+      "machine_bytes": "81 f9 00 04 73 03"
+    },
+    "dma_signed_1000_threshold_49e4": {
+      "cs_offset": "49E4",
+      "machine_bytes": "81 f9 00 10 7e 03"
+    },
+    "dma_signed_ring_49fc": {
+      "cs_offset": "49FC",
+      "machine_bytes": "3b ca 7d 0a"
+    },
+    "dma_final_length_4a0a": {
+      "cs_offset": "4A0A",
+      "machine_bytes": "2b ca 2e 89 0e db 48 c3"
+    },
+    "pcm_gate_555f": {
+      "cs_offset": "555F",
+      "machine_bytes": "e8 5a f4 83 f9 00 75 01 c3"
+    },
+    "pcm_length_save_5572": {
+      "cs_offset": "5572",
+      "machine_bytes": "2e 89 0e 8b 47"
+    },
+    "pcm_word_clear_5577": {
+      "cs_offset": "5577",
+      "machine_bytes": "d1 e9 b8 80 80 f3 ab"
+    },
+    "pcm_eight_slots_5658": {
+      "cs_offset": "5658",
+      "machine_bytes": "83 c3 02 83 fb 10 73 03"
+    },
+    "pcm_signed_multiply_add_5625": {
+      "cs_offset": "5625",
+      "machine_bytes": "8a 04 32 e4 d1 e8 1f 2d 40 00 2e 8b 97 bf 4b d1 e2 d1 e2 f7 ea 26 00 25"
+    },
+    "music_active_5df2": {
+      "cs_offset": "5DF2",
+      "machine_bytes": "2e 80 3e ea 2d 01 74 01 c3"
+    },
+    "music_mode_5dfd": {
+      "cs_offset": "5DFD",
+      "machine_bytes": "2e 80 3e e3 48 02 74 0b"
+    },
+    "music_second_mode_5e05": {
+      "cs_offset": "5E05",
+      "machine_bytes": "2e 80 3e e3 48 0c 74 03"
+    },
+    "music_dma_and_stream_5e10": {
+      "cs_offset": "5E10",
+      "machine_bytes": "e8 a9 eb e3 03 e8 ff 00 c3"
+    },
+    "stream_prefix_active_5f19": {
+      "cs_offset": "5F19",
+      "machine_bytes": "2e c6 06 ea 2d 01"
+    },
+    "stream_prefix_count_5f1f": {
+      "cs_offset": "5F1F",
+      "machine_bytes": "2e 8b 0e db 48 e3 18"
+    },
+    "stream_prefix_fill_5f30": {
+      "cs_offset": "5F30",
+      "machine_bytes": "b0 00 2e 80 3e e4 48 00 75 02 b0 80 f3 aa"
+    },
+    "tempo_skip_meta_length_455d": {
+      "cs_offset": "455D",
+      "machine_bytes": "47 53 52 26 8a 15 47 32 f6"
+    },
+    "tempo_divide_by_2c5a_456e": {
+      "cs_offset": "456E",
+      "machine_bytes": "2e 8b 1e 5a 2c f7 f3"
+    },
+    "tempo_high_product_4575": {
+      "cs_offset": "4575",
+      "machine_bytes": "bb 73 1e f7 e3 8b c2 bb 0a 00 f7 e3"
+    },
+    "tempo_pit_call_4581": {
+      "cs_offset": "4581",
+      "machine_bytes": "e8 e6 00 2e a3 49 2c"
+    },
+    "pit_466a_mode_gate": {
+      "cs_offset": "466A",
+      "machine_bytes": "2e 83 3e 1e 20 01 75 01 c3"
+    },
+    "pit_466a_div": {
+      "cs_offset": "467D",
+      "machine_bytes": "8b d8 33 d2 b8 ff ff f7 f3"
+    },
+    "pit_466a_out": {
+      "cs_offset": "4690",
+      "machine_bytes": "b0 34 e6 43 58 e6 40 8a c4 e6 40"
+    }
+  },
+  "closure": {
+    "49BC": "transitive-independent register, state, ports on injected I/O; CPU IF/timing open",
+    "45F9": "machine-body algorithm modeled except real-mode memory mapping & infinite input",
+    "4476": "outer loop and call sequence only; 44B3 handler still open",
+    "5DF2": "branch and direct call order only; 5F17 streaming still open",
+    "555D": "pre-clear prefix and per-sample primitive only; mixer loop and callees open",
+    "5F17": "buffer-fill prefix only; stream file/payload processing open",
+    "455D": "FF51 tempo arithmetic / direct PIT subroutine modeled; enclosing 44B3 remains open"
+  },
+  "transitive_open": {
+    "4476_to_44B3": "44B3..45DC includes output 3A4D, vlq 45F9, start music 4265, CMF 4389, PIT 466A",
+    "555D_to_49BC": "DMA helper implemented at register/PortIO boundary; ISA timing remains external",
+    "555D_to_5863": "XMS/EMS sample refill & far callback CS:[21C8] not closed",
+    "555D_to_5502": "playlist activation & voice-routing nested into 56F0/5792/4C75 not closed",
+    "5DF2_to_5F17": "file/resource audio streaming incl 312E, DOS/device-dependent paths not closed"
+  },
+  "api_handler_count_unchanged": 41
+}

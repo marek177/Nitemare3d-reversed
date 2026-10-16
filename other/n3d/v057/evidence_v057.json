@@ -1,0 +1,1213 @@
+{
+  "audit": "REMAX v057 geometry + per-class GUARD damage scalar",
+  "provenance": "verified against user-provided original DOS20 and Win16 NE binaries",
+  "original_game_executed": false,
+  "gameplay_runtime_trace": false,
+  "comparison": {
+    "geometry_byte_length": 354,
+    "geometry_DOS_Win_equal_nonoperands": 338,
+    "geometry_DOS_Win_operand_only_mismatches": [
+      "0E0",
+      "0E1",
+      "0E4",
+      "0E5",
+      "0F3",
+      "0F4",
+      "10F",
+      "110",
+      "111",
+      "112",
+      "119",
+      "11A",
+      "11B",
+      "11C",
+      "135",
+      "136"
+    ],
+    "damage_byte_length": 291,
+    "damage_DOS_Win_differing_byte_count": 78,
+    "damage_DOS_Win_equal_after_operand_mask": true,
+    "damage_DOS_Win_operand_only_differences": [
+      "012",
+      "013",
+      "01E",
+      "01F",
+      "020",
+      "021",
+      "043",
+      "044",
+      "046",
+      "047",
+      "048",
+      "049",
+      "04A",
+      "04B",
+      "04C",
+      "04D",
+      "04E",
+      "04F",
+      "050",
+      "051",
+      "052",
+      "053",
+      "054",
+      "055",
+      "056",
+      "057",
+      "058",
+      "059",
+      "05A",
+      "05B",
+      "05C",
+      "05D",
+      "05E",
+      "05F",
+      "060",
+      "061",
+      "062",
+      "063",
+      "064",
+      "065",
+      "066",
+      "067",
+      "068",
+      "069",
+      "06A",
+      "06B",
+      "06C",
+      "06D",
+      "076",
+      "077",
+      "084",
+      "085",
+      "090",
+      "091",
+      "09B",
+      "09C",
+      "09E",
+      "09F",
+      "0A0",
+      "0A1",
+      "0AC",
+      "0AD",
+      "0B8",
+      "0B9",
+      "0C8",
+      "0C9",
+      "0D4",
+      "0D5",
+      "0E0",
+      "0E1",
+      "0EC",
+      "0ED",
+      "0F8",
+      "0F9",
+      "102",
+      "103",
+      "10E",
+      "10F"
+    ],
+    "win_alt_geometry_equal_after_operand_mask": true,
+    "win_alt_damage_equal_after_operand_mask": true
+  },
+  "direct_DOS_callers": {
+    "geometry": [
+      "001A5",
+      "0542D",
+      "06A1B"
+    ],
+    "guard_hit": [
+      "06A2F",
+      "08125"
+    ],
+    "caller_opcode_checks": [
+      {
+        "offset": "00196",
+        "bytes_checked": 3,
+        "meaning": "selection caller: checkObject=0; dynamic limit CX"
+      },
+      {
+        "offset": "0541E",
+        "bytes_checked": 3,
+        "meaning": "GUARD LOS caller: bool AX; limit=8"
+      },
+      {
+        "offset": "06A0E",
+        "bytes_checked": 6,
+        "meaning": "hitscan caller: checkObject=1, steps=16"
+      },
+      {
+        "offset": "06A23",
+        "bytes_checked": 4,
+        "meaning": "weapon state 1 returns to scan on LOS AL=0"
+      },
+      {
+        "offset": "06A37",
+        "bytes_checked": 3,
+        "meaning": "hitscan scan GUARD stride=26 after hit"
+      }
+    ]
+  },
+  "dos20_nested_wall_lookup": {
+    "lookup": "IMG:0000",
+    "state_gate": "IMG:01E0",
+    "record_bytes": 18,
+    "record_pointer_fields": [
+      "+04",
+      "+06"
+    ],
+    "state_field": "+08",
+    "state_values_accepted": [
+      0,
+      4
+    ],
+    "lookup_miss": "IMG:FBAC invokes runtime exit path; ordinary exit contains INT 21h AH=4Ch",
+    "raw_instruction_witnesses": [
+      {
+        "offset": "00000",
+        "bytes_checked": 14,
+        "meaning": "DOS lookup initializes ES:3076 18-byte moving record base"
+      },
+      {
+        "offset": "00014",
+        "bytes_checked": 4,
+        "meaning": "DOS moving wall count is DS:0000"
+      },
+      {
+        "offset": "00020",
+        "bytes_checked": 12,
+        "meaning": "first matching FAR MAP cell pointer chosen by record+04/+06"
+      },
+      {
+        "offset": "0002C",
+        "bytes_checked": 3,
+        "meaning": "lookup steps over 18B records"
+      },
+      {
+        "offset": "00044",
+        "bytes_checked": 8,
+        "meaning": "lookup miss triggers error-report routine with code 0x42"
+      },
+      {
+        "offset": "001E0",
+        "bytes_checked": 28,
+        "meaning": "wall state+08 0 or 4 passes; everything else fails"
+      },
+      {
+        "offset": "0BC6E",
+        "bytes_checked": 5,
+        "meaning": "geometry nested direct FAR call to DOS 0:0000"
+      },
+      {
+        "offset": "0BC78",
+        "bytes_checked": 5,
+        "meaning": "geometry nested direct FAR call to DOS 0:01E0"
+      },
+      {
+        "offset": "0FBCC",
+        "bytes_checked": 7,
+        "meaning": "error helper routes through runtime exit-like routine with status 1"
+      },
+      {
+        "offset": "120CB",
+        "bytes_checked": 5,
+        "meaning": "DOS cleanup/exit mechanism normal entry"
+      },
+      {
+        "offset": "12147",
+        "bytes_checked": 7,
+        "meaning": "DOS normal exit branch INT21/4C using caller exit code"
+      }
+    ],
+    "win16_transitive_equivalence": "OPEN"
+  },
+  "input_domains": {
+    "damage_classes": [
+      "0C",
+      "0D",
+      "0E",
+      "0F",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "1A",
+      "1B",
+      "1C",
+      "1D",
+      "1E",
+      "1F"
+    ],
+    "damage_mode_examples": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "difficulty_modes": [
+      0,
+      1,
+      2
+    ]
+  },
+  "profiles": {
+    "dos20": {
+      "profile": "dos20",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+      "original_executed": false,
+      "entry_offsets": {
+        "geometry": "0BB60",
+        "damage_scalar": "08590",
+        "guard_hit": "05F74"
+      },
+      "addr_type": "DOS unpacked MZ load-image offset",
+      "ne_segment3_file_offset": null,
+      "geometry_size": 354,
+      "damage_scalar_size": 291,
+      "witnesses": [
+        {
+          "offset": "0BB60",
+          "bytes_checked": 12,
+          "meaning": "LOS original function entry"
+        },
+        {
+          "offset": "0BBE5",
+          "bytes_checked": 8,
+          "meaning": "LOS maxSteps signed <=0 -> false"
+        },
+        {
+          "offset": "0BC29",
+          "bytes_checked": 12,
+          "meaning": "endpoint compared before map lookup"
+        },
+        {
+          "offset": "0BC58",
+          "bytes_checked": 18,
+          "meaning": "nested WALL property 02,04,08 gate"
+        },
+        {
+          "offset": "0BC6A",
+          "bytes_checked": 5,
+          "meaning": "dynamic WALL helper receives far MAP cell pointer"
+        },
+        {
+          "offset": "0BC84",
+          "bytes_checked": 6,
+          "meaning": "object property check disabled by arg byte 0"
+        },
+        {
+          "offset": "0BC9A",
+          "bytes_checked": 12,
+          "meaning": "OBJECT bit02 and !bit20 means block"
+        },
+        {
+          "offset": "0BCB6",
+          "bytes_checked": 6,
+          "meaning": "endpoint return AL=1"
+        },
+        {
+          "offset": "0BCBC",
+          "bytes_checked": 6,
+          "meaning": "blocked/timeout return AL=0"
+        },
+        {
+          "offset": "0BCA6",
+          "bytes_checked": 9,
+          "meaning": "loop counter increment compare"
+        },
+        {
+          "offset": "08590",
+          "bytes_checked": 16,
+          "meaning": "damage scalar loads OBJECT+0x18"
+        },
+        {
+          "offset": "085B2",
+          "bytes_checked": 8,
+          "meaning": "unconditional RNG result modulo25, then SI+=DX"
+        },
+        {
+          "offset": "085CF",
+          "bytes_checked": 4,
+          "meaning": "20-entry class dispatch via CS word table"
+        },
+        {
+          "offset": "08690",
+          "bytes_checked": 2,
+          "meaning": "difficulty first gate"
+        },
+        {
+          "offset": "086A5",
+          "bytes_checked": 10,
+          "meaning": "signed upper-255 clamp and no lower clamp"
+        },
+        {
+          "offset": "05F74",
+          "bytes_checked": 12,
+          "meaning": "GUARD hit wrapper entry"
+        },
+        {
+          "offset": "05F90",
+          "bytes_checked": 15,
+          "meaning": "damage producer AL zeroextended then GUARD HP <= damage gate"
+        },
+        {
+          "offset": "06065",
+          "bytes_checked": 10,
+          "meaning": "nonlethal byte HP subtraction"
+        },
+        {
+          "offset": "060A2",
+          "bytes_checked": 11,
+          "meaning": "GUARD state range 03..15h dispatch"
+        }
+      ],
+      "class_case_targets": [
+        {
+          "class_hex": "0C",
+          "case_rel": "06E",
+          "path": "shr3"
+        },
+        {
+          "class_hex": "0D",
+          "case_rel": "074",
+          "path": "sel1_shr1_else3"
+        },
+        {
+          "class_hex": "0E",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "0F",
+          "case_rel": "08E",
+          "path": "sel1_shr8_else1"
+        },
+        {
+          "class_hex": "10",
+          "case_rel": "08E",
+          "path": "sel1_shr8_else1"
+        },
+        {
+          "class_hex": "11",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "12",
+          "case_rel": "0FD",
+          "path": "shr2"
+        },
+        {
+          "class_hex": "13",
+          "case_rel": "0FD",
+          "path": "shr2"
+        },
+        {
+          "class_hex": "14",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "15",
+          "case_rel": "098",
+          "path": "callback_zero"
+        },
+        {
+          "class_hex": "16",
+          "case_rel": "0AA",
+          "path": "global3_const3_else_zero"
+        },
+        {
+          "class_hex": "17",
+          "case_rel": "0B6",
+          "path": "sel1_shr8_else2"
+        },
+        {
+          "class_hex": "18",
+          "case_rel": "0C6",
+          "path": "sel1_shr8_sel2_shr4_else3"
+        },
+        {
+          "class_hex": "19",
+          "case_rel": "0A5",
+          "path": "zero"
+        },
+        {
+          "class_hex": "1A",
+          "case_rel": "0DE",
+          "path": "sel1_shr1_else_zero"
+        },
+        {
+          "class_hex": "1B",
+          "case_rel": "0E5",
+          "path": "shr1"
+        },
+        {
+          "class_hex": "1C",
+          "case_rel": "0E5",
+          "path": "shr1"
+        },
+        {
+          "class_hex": "1D",
+          "case_rel": "06E",
+          "path": "shr3"
+        },
+        {
+          "class_hex": "1E",
+          "case_rel": "0EA",
+          "path": "sel1_zero_else3"
+        },
+        {
+          "class_hex": "1F",
+          "case_rel": "0F6",
+          "path": "sel1_zero_else2"
+        }
+      ],
+      "hit_state_routes": [
+        {
+          "state": 3,
+          "role": "return",
+          "rel_offset": "208"
+        },
+        {
+          "state": 4,
+          "role": "return",
+          "rel_offset": "208"
+        },
+        {
+          "state": 5,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 6,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 7,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        },
+        {
+          "state": 8,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        },
+        {
+          "state": 9,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 10,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 11,
+          "role": "return",
+          "rel_offset": "208"
+        },
+        {
+          "state": 12,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 13,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 14,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 15,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 16,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 17,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 18,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 19,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 20,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 21,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        }
+      ],
+      "unclosed": [
+        "WALL helper nested FAR side effects",
+        "per-class event helper for 0x15",
+        "damage/hit nested FAR routines",
+        "real map input reachability",
+        "runtime frame ordering"
+      ]
+    },
+    "win110": {
+      "profile": "win110",
+      "sha256": "12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481",
+      "original_executed": false,
+      "entry_offsets": {
+        "geometry": "0D50A",
+        "damage_scalar": "09FA2",
+        "guard_hit": "080F8"
+      },
+      "addr_type": "NE segment 3 logical offset",
+      "ne_segment3_file_offset": "15FC0",
+      "geometry_size": 354,
+      "damage_scalar_size": 291,
+      "witnesses": [
+        {
+          "offset": "0D50A",
+          "bytes_checked": 12,
+          "meaning": "LOS original function entry"
+        },
+        {
+          "offset": "0D58F",
+          "bytes_checked": 8,
+          "meaning": "LOS maxSteps signed <=0 -> false"
+        },
+        {
+          "offset": "0D5D3",
+          "bytes_checked": 12,
+          "meaning": "endpoint compared before map lookup"
+        },
+        {
+          "offset": "0D602",
+          "bytes_checked": 18,
+          "meaning": "nested WALL property 02,04,08 gate"
+        },
+        {
+          "offset": "0D614",
+          "bytes_checked": 5,
+          "meaning": "dynamic WALL helper receives far MAP cell pointer"
+        },
+        {
+          "offset": "0D62E",
+          "bytes_checked": 6,
+          "meaning": "object property check disabled by arg byte 0"
+        },
+        {
+          "offset": "0D644",
+          "bytes_checked": 12,
+          "meaning": "OBJECT bit02 and !bit20 means block"
+        },
+        {
+          "offset": "0D660",
+          "bytes_checked": 6,
+          "meaning": "endpoint return AL=1"
+        },
+        {
+          "offset": "0D666",
+          "bytes_checked": 6,
+          "meaning": "blocked/timeout return AL=0"
+        },
+        {
+          "offset": "0D650",
+          "bytes_checked": 9,
+          "meaning": "loop counter increment compare"
+        },
+        {
+          "offset": "09FA2",
+          "bytes_checked": 16,
+          "meaning": "damage scalar loads OBJECT+0x18"
+        },
+        {
+          "offset": "09FC4",
+          "bytes_checked": 8,
+          "meaning": "unconditional RNG result modulo25, then SI+=DX"
+        },
+        {
+          "offset": "09FE1",
+          "bytes_checked": 4,
+          "meaning": "20-entry class dispatch via CS word table"
+        },
+        {
+          "offset": "0A0A2",
+          "bytes_checked": 2,
+          "meaning": "difficulty first gate"
+        },
+        {
+          "offset": "0A0B7",
+          "bytes_checked": 10,
+          "meaning": "signed upper-255 clamp and no lower clamp"
+        },
+        {
+          "offset": "080F8",
+          "bytes_checked": 12,
+          "meaning": "GUARD hit wrapper entry"
+        },
+        {
+          "offset": "08114",
+          "bytes_checked": 15,
+          "meaning": "damage producer AL zeroextended then GUARD HP <= damage gate"
+        },
+        {
+          "offset": "081E9",
+          "bytes_checked": 10,
+          "meaning": "nonlethal byte HP subtraction"
+        },
+        {
+          "offset": "08226",
+          "bytes_checked": 11,
+          "meaning": "GUARD state range 03..15h dispatch"
+        }
+      ],
+      "class_case_targets": [
+        {
+          "class_hex": "0C",
+          "case_rel": "06E",
+          "path": "shr3"
+        },
+        {
+          "class_hex": "0D",
+          "case_rel": "074",
+          "path": "sel1_shr1_else3"
+        },
+        {
+          "class_hex": "0E",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "0F",
+          "case_rel": "08E",
+          "path": "sel1_shr8_else1"
+        },
+        {
+          "class_hex": "10",
+          "case_rel": "08E",
+          "path": "sel1_shr8_else1"
+        },
+        {
+          "class_hex": "11",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "12",
+          "case_rel": "0FD",
+          "path": "shr2"
+        },
+        {
+          "class_hex": "13",
+          "case_rel": "0FD",
+          "path": "shr2"
+        },
+        {
+          "class_hex": "14",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "15",
+          "case_rel": "098",
+          "path": "callback_zero"
+        },
+        {
+          "class_hex": "16",
+          "case_rel": "0AA",
+          "path": "global3_const3_else_zero"
+        },
+        {
+          "class_hex": "17",
+          "case_rel": "0B6",
+          "path": "sel1_shr8_else2"
+        },
+        {
+          "class_hex": "18",
+          "case_rel": "0C6",
+          "path": "sel1_shr8_sel2_shr4_else3"
+        },
+        {
+          "class_hex": "19",
+          "case_rel": "0A5",
+          "path": "zero"
+        },
+        {
+          "class_hex": "1A",
+          "case_rel": "0DE",
+          "path": "sel1_shr1_else_zero"
+        },
+        {
+          "class_hex": "1B",
+          "case_rel": "0E5",
+          "path": "shr1"
+        },
+        {
+          "class_hex": "1C",
+          "case_rel": "0E5",
+          "path": "shr1"
+        },
+        {
+          "class_hex": "1D",
+          "case_rel": "06E",
+          "path": "shr3"
+        },
+        {
+          "class_hex": "1E",
+          "case_rel": "0EA",
+          "path": "sel1_zero_else3"
+        },
+        {
+          "class_hex": "1F",
+          "case_rel": "0F6",
+          "path": "sel1_zero_else2"
+        }
+      ],
+      "hit_state_routes": [
+        {
+          "state": 3,
+          "role": "return",
+          "rel_offset": "20B"
+        },
+        {
+          "state": 4,
+          "role": "return",
+          "rel_offset": "20B"
+        },
+        {
+          "state": 5,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 6,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 7,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        },
+        {
+          "state": 8,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        },
+        {
+          "state": 9,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 10,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 11,
+          "role": "return",
+          "rel_offset": "20B"
+        },
+        {
+          "state": 12,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 13,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 14,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 15,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 16,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 17,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 18,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 19,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 20,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 21,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        }
+      ],
+      "unclosed": [
+        "WALL helper nested FAR side effects",
+        "per-class event helper for 0x15",
+        "damage/hit nested FAR routines",
+        "real map input reachability",
+        "runtime frame ordering"
+      ]
+    },
+    "winalt": {
+      "profile": "winalt",
+      "sha256": "144e96bb649c5463d440c343ad982ed8e5f143e788c9af08bbb890fcd1b3db22",
+      "original_executed": false,
+      "entry_offsets": {
+        "geometry": "0D45C",
+        "damage_scalar": "09EF4",
+        "guard_hit": "08054"
+      },
+      "addr_type": "NE segment 3 logical offset",
+      "ne_segment3_file_offset": "15FA0",
+      "geometry_size": 354,
+      "damage_scalar_size": 291,
+      "witnesses": [
+        {
+          "offset": "0D45C",
+          "bytes_checked": 12,
+          "meaning": "LOS original function entry"
+        },
+        {
+          "offset": "0D4E1",
+          "bytes_checked": 8,
+          "meaning": "LOS maxSteps signed <=0 -> false"
+        },
+        {
+          "offset": "0D525",
+          "bytes_checked": 12,
+          "meaning": "endpoint compared before map lookup"
+        },
+        {
+          "offset": "0D554",
+          "bytes_checked": 18,
+          "meaning": "nested WALL property 02,04,08 gate"
+        },
+        {
+          "offset": "0D566",
+          "bytes_checked": 5,
+          "meaning": "dynamic WALL helper receives far MAP cell pointer"
+        },
+        {
+          "offset": "0D580",
+          "bytes_checked": 6,
+          "meaning": "object property check disabled by arg byte 0"
+        },
+        {
+          "offset": "0D596",
+          "bytes_checked": 12,
+          "meaning": "OBJECT bit02 and !bit20 means block"
+        },
+        {
+          "offset": "0D5B2",
+          "bytes_checked": 6,
+          "meaning": "endpoint return AL=1"
+        },
+        {
+          "offset": "0D5B8",
+          "bytes_checked": 6,
+          "meaning": "blocked/timeout return AL=0"
+        },
+        {
+          "offset": "0D5A2",
+          "bytes_checked": 9,
+          "meaning": "loop counter increment compare"
+        },
+        {
+          "offset": "09EF4",
+          "bytes_checked": 16,
+          "meaning": "damage scalar loads OBJECT+0x18"
+        },
+        {
+          "offset": "09F16",
+          "bytes_checked": 8,
+          "meaning": "unconditional RNG result modulo25, then SI+=DX"
+        },
+        {
+          "offset": "09F33",
+          "bytes_checked": 4,
+          "meaning": "20-entry class dispatch via CS word table"
+        },
+        {
+          "offset": "09FF4",
+          "bytes_checked": 2,
+          "meaning": "difficulty first gate"
+        },
+        {
+          "offset": "0A009",
+          "bytes_checked": 10,
+          "meaning": "signed upper-255 clamp and no lower clamp"
+        },
+        {
+          "offset": "08054",
+          "bytes_checked": 12,
+          "meaning": "GUARD hit wrapper entry"
+        },
+        {
+          "offset": "08070",
+          "bytes_checked": 15,
+          "meaning": "damage producer AL zeroextended then GUARD HP <= damage gate"
+        },
+        {
+          "offset": "08145",
+          "bytes_checked": 10,
+          "meaning": "nonlethal byte HP subtraction"
+        },
+        {
+          "offset": "08182",
+          "bytes_checked": 11,
+          "meaning": "GUARD state range 03..15h dispatch"
+        }
+      ],
+      "class_case_targets": [
+        {
+          "class_hex": "0C",
+          "case_rel": "06E",
+          "path": "shr3"
+        },
+        {
+          "class_hex": "0D",
+          "case_rel": "074",
+          "path": "sel1_shr1_else3"
+        },
+        {
+          "class_hex": "0E",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "0F",
+          "case_rel": "08E",
+          "path": "sel1_shr8_else1"
+        },
+        {
+          "class_hex": "10",
+          "case_rel": "08E",
+          "path": "sel1_shr8_else1"
+        },
+        {
+          "class_hex": "11",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "12",
+          "case_rel": "0FD",
+          "path": "shr2"
+        },
+        {
+          "class_hex": "13",
+          "case_rel": "0FD",
+          "path": "shr2"
+        },
+        {
+          "class_hex": "14",
+          "case_rel": "082",
+          "path": "sel2_shr1_else3"
+        },
+        {
+          "class_hex": "15",
+          "case_rel": "098",
+          "path": "callback_zero"
+        },
+        {
+          "class_hex": "16",
+          "case_rel": "0AA",
+          "path": "global3_const3_else_zero"
+        },
+        {
+          "class_hex": "17",
+          "case_rel": "0B6",
+          "path": "sel1_shr8_else2"
+        },
+        {
+          "class_hex": "18",
+          "case_rel": "0C6",
+          "path": "sel1_shr8_sel2_shr4_else3"
+        },
+        {
+          "class_hex": "19",
+          "case_rel": "0A5",
+          "path": "zero"
+        },
+        {
+          "class_hex": "1A",
+          "case_rel": "0DE",
+          "path": "sel1_shr1_else_zero"
+        },
+        {
+          "class_hex": "1B",
+          "case_rel": "0E5",
+          "path": "shr1"
+        },
+        {
+          "class_hex": "1C",
+          "case_rel": "0E5",
+          "path": "shr1"
+        },
+        {
+          "class_hex": "1D",
+          "case_rel": "06E",
+          "path": "shr3"
+        },
+        {
+          "class_hex": "1E",
+          "case_rel": "0EA",
+          "path": "sel1_zero_else3"
+        },
+        {
+          "class_hex": "1F",
+          "case_rel": "0F6",
+          "path": "sel1_zero_else2"
+        }
+      ],
+      "hit_state_routes": [
+        {
+          "state": 3,
+          "role": "return",
+          "rel_offset": "20B"
+        },
+        {
+          "state": 4,
+          "role": "return",
+          "rel_offset": "20B"
+        },
+        {
+          "state": 5,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 6,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 7,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        },
+        {
+          "state": 8,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        },
+        {
+          "state": 9,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 10,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 11,
+          "role": "return",
+          "rel_offset": "20B"
+        },
+        {
+          "state": 12,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 13,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 14,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 15,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 16,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 17,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 18,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 19,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 20,
+          "role": "transition_21",
+          "rel_offset": "164"
+        },
+        {
+          "state": 21,
+          "role": "special_animation",
+          "rel_offset": "1AA"
+        }
+      ],
+      "unclosed": [
+        "WALL helper nested FAR side effects",
+        "per-class event helper for 0x15",
+        "damage/hit nested FAR routines",
+        "real map input reachability",
+        "runtime frame ordering"
+      ]
+    }
+  },
+  "evidence_policy": "The full 354B geometry / 291B damage scalar body is checked across builds; nested callees and natural reachability OPEN"
+}

@@ -1,0 +1,15 @@
+priority,id,area,precise_unknown,static_next,runtime_only_if,status
+P0,GEOM_WIN_SPECIAL_WALL,Win16,Identifikovať Win16 ekvivalenty k DOS 0:0000 a 0:01E0 a ich volané rutiny,NE relocation + úplný caller/callee/array writer register,Runtime iba pri rozdielnych callback side effects,OPEN
+P0,WALL_RECORD_STATE_WRITERS,18 B moving-wall,"Všetky writery WORD+08 a stavov 0/4, vrátane LOAD, automatiky a remote control",statický XREF všetkých 18B stavových writerov,iba dynamický reset/callback ak statika nestačí,OPEN
+P0,GEOM_ERROR_HANDLER,DOS fault handling,Úplná DOS error/exit cesta FBA:000C -> 11EE:01EB vrátane cleanup a návratnosti,CFG všetkých následných callov a INT21 exit branches,prostredie DOS môže meniť správanie výstupu,PARTIAL
+P0,DAMAGE_DEPTH_REF,GUARD damage,Presný vlastník DS:4552 a rozsah OBJECT+18 (Win16 DS:53EE),úplný writer/reader/alias census render-depth po LOAD a offscreen,ak reálny hodnotový rozsah nevypočítateľný staticky,OPEN
+P0,DAMAGE_NEGATIVE_REACH,GUARD damage,"Môže signed16 po rozdiele byť záporné, viesť k veľkému low-byte damage?",range/reachability analýza všetkých producerov depth a UI map scény,až pri neuzavretej path reachability,OPEN
+P0,DAMAGE_CLASS15_CALLEE,OBJECT class 15,Transitive side effects špeciálneho FAR callbacku pred damage=0,DOS 0D29:0750 callgraph + Win16 ekvivalent + DS:1068 text/data,iba environment-dependent externé dôsledky,OPEN
+P0,HIT_NONLETHAL_CALLEES,GUARD hit,Po damage>0: všetky nested state/sfx/animation/pain writery,"úplný callgraph 5F74 a Win16 80F8, všetky cieľové JUMP vetvy",len interleaving neprerušiteľných časov,OPEN
+P0,HIT_LETHAL_CALLEES,GUARD death,Score/drop/morph/corpse/guard_count v death branch 5FA3..6048,"writer graph 1BE4,1922,54D8,12E,05D2",scénická dosiahnuteľnosť ak zostane nejasná,OPEN
+P0,WEAPON_MODE1_PRECONDITION,Weapon mode 1,"Stav podmienky 0x83D:B42 a zmena DS:4190, DS:418F, DS:4180",CALL 69A? -> preconditions -> geometry -> hit; verzionizované XREF,runtime keď zlyhá static chronology,OPEN
+P0,MULTI_GUARD_SCAN,Weapon mode 1,V jednom fire eventi: viac GUARD hit volaní po špeciálnom geometry gate?,"dokázať stav count, HP, stamp a po sebe idúce geometrické prieniky",model execution iba ak static feasibility neurčí,OPEN
+P1,GUARD_HP0_DMG0,Guard death branch,Zvláštnosť HP=0 a damage=0 spúšťa lethal compare,"dosiahnuteľnosť kombinácie GUARD state, HP, damage=0 bez ďalšieho exit",len nevylúčiteľné runtime stavy,OPEN
+P1,GEOM_ZERO_DELTA,Geometry edge,Rovnaká start/cieľ bunka nevedie k okamžitému úspechu,"callsite XY invariants, výber guardov v tej istej bunke",ak statický callsite neuzavrie,OPEN
+P1,GEOM_DYNAMIC_WRITER,World mutation,Map cell prepísaná callbackom medzi testom WALL a OBJECT,súpis vnorených writerov/aliasov a teleport/dvere predpoklady,len interleaving externých callbacks,OPEN
+P1,HIT_STATE_TABLE_VERSION,Crossbuild,Zmapovať state 03..15 nonlethal side effects aj pre ďalšie DOS 1.0/1.7/1.9,hash-gated table/body matching pre všetky dostupné vydania,"bez runtime, len ak verzia absentuje v archive",OPEN
