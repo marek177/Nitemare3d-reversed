@@ -36,6 +36,11 @@ on:
       - "tests/v039_late_static_closures_test.cpp"
       - "tools/n3d_v039_static_models.py"
       - "tests/test_n3d_v039_static_models.py"
+      - "docs/V040_REMAX_PROJECTILE_REENTRY_ABA_NARROWING.md"
+      - "src/re/N3DV040ProjectileReentryClosure.hpp"
+      - "tests/v040_projectile_reentry_closure_test.cpp"
+      - "tools/n3d_v040_projectile_reentry.py"
+      - "tests/test_n3d_v040_projectile_reentry.py"
       - "src/re/N3DV029SchedulerEvidence.hpp"
       - "tests/v029_scheduler_evidence_test.cpp"
       - "src/re/N3DV022VersionEvidenceRegistry.hpp"
@@ -123,6 +128,11 @@ on:
       - "tests/v039_late_static_closures_test.cpp"
       - "tools/n3d_v039_static_models.py"
       - "tests/test_n3d_v039_static_models.py"
+      - "docs/V040_REMAX_PROJECTILE_REENTRY_ABA_NARROWING.md"
+      - "src/re/N3DV040ProjectileReentryClosure.hpp"
+      - "tests/v040_projectile_reentry_closure_test.cpp"
+      - "tools/n3d_v040_projectile_reentry.py"
+      - "tests/test_n3d_v040_projectile_reentry.py"
       - "src/re/N3DV029SchedulerEvidence.hpp"
       - "tests/v029_scheduler_evidence_test.cpp"
       - "src/re/N3DV022VersionEvidenceRegistry.hpp"
@@ -220,10 +230,12 @@ jobs:
         run: python -m unittest discover -s tests -p "test_n3d_v038_recent_models.py" -v
       - name: v0.39 late-day bounded-model fixture tests (synthetic)
         run: python -m unittest discover -s tests -p "test_n3d_v039_static_models.py" -v
+      - name: v0.40 projectile reentry bounded-model fixture tests (synthetic)
+        run: python -m unittest discover -s tests -p "test_n3d_v040_projectile_reentry.py" -v
       - name: Configure C++ evidence and push-safety tests (SDL disabled)
         run: cmake -S . -B build -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Release
       - name: Build C++ trace and push-safety tests
-        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test n3d_v030_trace_closure_test n3d_pushable_blocked_test n3d_v022_version_evidence_registry_test n3d_v025_guard_writer_graph_test n3d_v032_static_closure_test n3d_v020_verification_harness_test n3d_v021_subsystem_evidence_test n3d_v033_push_scheduler_test n3d_v034_object_animation_evidence_test n3d_v026_guard_rng_coupling_test n3d_v035_rng_census_test n3d_v036_protected_hit_ordering_test n3d_v037_scheduler_catchup_test n3d_v038_three_day_findings_test n3d_v039_late_static_closures_test
+        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test n3d_v030_trace_closure_test n3d_pushable_blocked_test n3d_v022_version_evidence_registry_test n3d_v025_guard_writer_graph_test n3d_v032_static_closure_test n3d_v020_verification_harness_test n3d_v021_subsystem_evidence_test n3d_v033_push_scheduler_test n3d_v034_object_animation_evidence_test n3d_v026_guard_rng_coupling_test n3d_v035_rng_census_test n3d_v036_protected_hit_ordering_test n3d_v037_scheduler_catchup_test n3d_v038_three_day_findings_test n3d_v039_late_static_closures_test n3d_v040_projectile_reentry_closure_test
       - name: C++ evidence and push-safety tests (synthetic)
         run: ctest --test-dir build -C Release -R "^(n3d_v0(29_scheduler_evidence|30_trace_closure)_test|n3d_pushable_blocked_test)$" --output-on-failure
       - name: v0.32 static closure registry C++ tests
@@ -242,3 +254,5 @@ jobs:
         run: ctest --test-dir build -C Release -R "^n3d_v038_three_day_findings_test$" --output-on-failure
       - name: v0.39 late-day bounded C++ evidence models
         run: ctest --test-dir build -C Release -R "^n3d_v039_late_static_closures_test$" --output-on-failure
+      - name: v0.40 projectile reentry bounded C++ evidence model
+        run: ctest --test-dir build -C Release -R "^n3d_v040_projectile_reentry_closure_test$" --output-on-failure
