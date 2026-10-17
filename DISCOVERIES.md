@@ -1,8 +1,12 @@
 # Nitemare 3D Reverse Engineering — Discoveries
 
-Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-14
+Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
+
+## 2026-10-17 v0.38 three-day consolidation
+
+The [v0.38 consolidation](docs/V038_REMAX_THREE_DAY_CONSOLIDATION.md) promotes several 14–16 October findings into bounded, buildable reference contracts without promoting them to original-runtime proof. The new [C++ evidence header](src/re/N3DV038ThreeDayFindings.hpp) and [Python oracle](tools/n3d_v038_recent_models.py) cover the Win16 joystick post-division clamp, Magic Eye RNG draw budget, door state 4 normal-action blocking, 18-byte-versus-14-byte door/panel completion timing, class-0x16/Hamerstein damage direction and RNG ordering, signed E2M10 every-20 gating, low16 render-average truncation, initial DOS graphics/SAVE segment aliasing, and the projectile mixed-generation callback invariant. Synthetic regressions are wired into CI. **DEMO ordered RNG, nested scheduler chronology, final-tick door passability, SAVE/LOAD first-tick parity, framebuffer zero-diff and live audio timing remain OPEN.**
 
 ## 2026-10-14 v0.30 trace-verification correction
 

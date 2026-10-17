@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.37
+# Nitemare3D-Reversed — reconstruction v0.38
+
+**v0.38 / 2026-10-17 three-day RE consolidation:** adds a buildable evidence layer for several high-value findings from 14–16 October that were still scattered outside the main N3D code path. New bounded models cover the Win16 v1.8→v1.10 joystick recalibration clamp, Magic Eye automap RNG draw budget, rare door state 4 blocking, the 18-byte door versus 14-byte four-VEC one-extra-update cleanup difference, Hamerstein/class `0x16` damage direction plus pre-dispatch RNG consumption, signed E2M10 every-20 semantics, raw low16 timing averages, DOS v1.2/v2.0 initial graphics/SAVE 4 KiB aliasing, and the projectile callback mixed-generation invariant. Adds a C++20 header, C++ regression, data-free Python oracle/tests, CI wiring and a consolidated report. **No fresh original DOSBox-X/OTVDM trace, framebuffer zero-diff or audio zero-diff is claimed, so full runtime parity remains open.** See [v0.38 consolidation](docs/V038_REMAX_THREE_DAY_CONSOLIDATION.md), [C++ models](src/re/N3DV038ThreeDayFindings.hpp) and [Python oracle](tools/n3d_v038_recent_models.py).
 
 **v0.37 / 2026-10-15 RE MAX scheduler catch-up closure:** Original DOS v2.0 unpacked MZ byte audit resolves the local timing rules in `BEB4` slow clock and `BEF4` calibrated frame clock. Each compares a quantized time key and **increments its counter only once when that key changes**, even after a large time jump. Outer `C1A8` uses unsigned due thresholds and resets the next eligibility to the **observed counter + 1** after one slow/frame pass, never replaying all overdue buckets locally. Normal FAST `C1EA` is suppressed in DEMO; DEMO FAST `C22E` is gated on **pre-render** odd `DS:4540`. **Both FAST paths receive slowCounter**, not frameCounter, which drives the separate `C150` second action `&7` gate. A rare unsigned delta of more than 500 legacy clock units activates `BDE4(1)`, `BDE4(0)` and a `BDF8` resample; clock rollback can satisfy this branch due to wrap. Adds a SHA-bound original opcode verifier checking 25 instruction windows, 13 branch targets and 13 direct calls, a version-scoped C++ reference, regression tests and Windows/Linux CI. **These facts close local static catch-up behavior, NOT nested interrupts, full RNG seed=1 timing, exact original display cadence or 1:1 rendering.** See [v0.37 evidence](docs/V037_REMAX_SCHEDULER_CATCHUP_STATIC_CLOSURE.md), [read-only verifier](tools/n3d_v037_scheduler_gate_probe.py) and [C++ model](src/re/N3DV037SchedulerCatchup.hpp).
 
@@ -187,6 +189,15 @@ cmake --build build
 ./build/n3d_v025_guard_writer_graph_test
 ./build/n3d_v026_guard_rng_coupling_test
 ./build/n3d_v027_projectile_lifecycle_test
+./build/n3d_v029_scheduler_evidence_test
+./build/n3d_v030_trace_closure_test
+./build/n3d_v032_static_closure_test
+./build/n3d_v033_push_scheduler_test
+./build/n3d_v034_object_animation_evidence_test
+./build/n3d_v035_rng_census_test
+./build/n3d_v036_protected_hit_ordering_test
+./build/n3d_v037_scheduler_catchup_test
+./build/n3d_v038_three_day_findings_test
 ```
 
 ### Windows 11 + SDL3
