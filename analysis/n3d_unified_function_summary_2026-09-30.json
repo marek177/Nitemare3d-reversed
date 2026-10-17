@@ -1,0 +1,434 @@
+{
+  "generated_at": "2026-09-30",
+  "baseline_commit": "d2be7fb09d6b1b6e0404517b603b306c8f1096db",
+  "records": 3034,
+  "bodies": 3017,
+  "decompiler_failed": 17,
+  "semantic_status": {
+    "Confirmed": 37,
+    "Inferred": 28,
+    "Unknown": 1,
+    "automatic-structural-only": 2968
+  },
+  "body_coverage": {
+    "DOS 1.0": {
+      "records": 507,
+      "bodies": 503,
+      "failed": 4,
+      "with_parameters": 308,
+      "with_internal_callers": 227,
+      "with_memory_writes": 263
+    },
+    "DOS 1.1": {
+      "records": 513,
+      "bodies": 508,
+      "failed": 5,
+      "with_parameters": 308,
+      "with_internal_callers": 225,
+      "with_memory_writes": 263
+    },
+    "DOS 1.5": {
+      "records": 517,
+      "bodies": 513,
+      "failed": 4,
+      "with_parameters": 307,
+      "with_internal_callers": 238,
+      "with_memory_writes": 267
+    },
+    "DOS 1.9": {
+      "records": 537,
+      "bodies": 533,
+      "failed": 4,
+      "with_parameters": 314,
+      "with_internal_callers": 258,
+      "with_memory_writes": 278
+    },
+    "Win16 1.0": {
+      "records": 960,
+      "bodies": 960,
+      "failed": 0,
+      "with_parameters": 756,
+      "with_internal_callers": 737,
+      "with_memory_writes": 420
+    }
+  },
+  "dos_cross_version": {
+    "loose_exact_or_simhash_strong_records": 1636,
+    "simhash_candidate_records": 160,
+    "unique_candidate_records": 261,
+    "unique_candidates_by_version": {
+      "1.0": 59,
+      "1.1": 66,
+      "1.5": 64,
+      "1.9": 72
+    },
+    "note": "Unique candidate means no strong structural match in the currently available DOS C exports; semantic uniqueness is not proven."
+  },
+  "hard_closure": {
+    "families": 95,
+    "hidden_missing": 85,
+    "decompiler_failure_families": 10
+  },
+  "binary_only_currently": [
+    "DOS 1.7",
+    "DOS 2.0",
+    "Win16 1.3",
+    "Win16 1.6",
+    "Win16 1.8",
+    "Win16 1.10"
+  ],
+  "unique_function_closure_v2": {
+    "initial_candidates": 261,
+    "semantic_equivalent_known": 26,
+    "structural_equivalent_high": 44,
+    "structural_equivalent_probable": 20,
+    "review_near_match": 29,
+    "decompiler_boundary_overlap": 31,
+    "remaining_unique_candidates": 111,
+    "remaining_by_version": {
+      "DOS 1.0": 21,
+      "DOS 1.1": 25,
+      "DOS 1.5": 29,
+      "DOS 1.9": 36
+    }
+  },
+  "canonical_v2": {
+    "exported_bodies": 3017,
+    "provisional_families": 1803,
+    "cross_platform_provisional": 26,
+    "cross_version_same_platform_provisional": 561,
+    "single_build_unresolved": 1216
+  },
+  "unique_function_closure_v3": {
+    "candidates_from_v2": 111,
+    "unresolved": 0,
+    "manual_followup": 29,
+    "confidence": {
+      "High": 82,
+      "Medium-High": 27,
+      "Medium": 2
+    },
+    "classes": {
+      "cross-version-equivalent": 33,
+      "present-in-other-build": 33,
+      "boundary-split-merge-correspondence": 23,
+      "decompiler/internal-block-artifact": 11,
+      "cross-version-counterpart": 8,
+      "version-modified-counterpart": 1,
+      "probable-cross-version-counterpart": 1,
+      "decompiler-alias": 1
+    }
+  },
+  "canonical_v3_conservative": {
+    "exported_bodies": 3017,
+    "families": 2957,
+    "multi_member_families": 51,
+    "max_family_size": 4,
+    "explicit_relations": 104
+  },
+  "machine_extension_v4": {
+    "new_machine_dossiers": 5009,
+    "dos": {
+      "1.7": {
+        "functions": 600,
+        "functions_with_inferred_parameters": 375,
+        "parameter_slots": 829,
+        "direct_calls": 2008,
+        "memory_write_sites": 2835
+      },
+      "2.0": {
+        "functions": 600,
+        "functions_with_inferred_parameters": 376,
+        "parameter_slots": 835,
+        "direct_calls": 1996,
+        "memory_write_sites": 2819
+      }
+    },
+    "win16": {
+      "1.3": {
+        "source_records": 959,
+        "valid_machine_dossiers": 957,
+        "open_records": 2
+      },
+      "1.6": {
+        "source_records": 959,
+        "valid_machine_dossiers": 952,
+        "open_records": 7
+      },
+      "1.8": {
+        "source_records": 959,
+        "valid_machine_dossiers": 952,
+        "open_records": 7
+      },
+      "1.10": {
+        "source_records": 959,
+        "valid_machine_dossiers": 948,
+        "open_records": 11
+      }
+    },
+    "dos17_vs20": {
+      "normalized_identical": 561,
+      "very_near": 7,
+      "modified_near": 8,
+      "materially_modified": 8,
+      "boundary_or_entry_mismatch": 5
+    },
+    "win16_vs10": {
+      "1.3": {
+        "byte_identical": 560,
+        "normalized_identical": 353,
+        "very_near": 16,
+        "modified_near": 15,
+        "materially_modified": 13
+      },
+      "1.6": {
+        "byte_identical": 311,
+        "normalized_identical": 579,
+        "very_near": 19,
+        "modified_near": 21,
+        "materially_modified": 22
+      },
+      "1.8": {
+        "byte_identical": 311,
+        "normalized_identical": 577,
+        "very_near": 19,
+        "modified_near": 21,
+        "materially_modified": 24
+      },
+      "1.10": {
+        "byte_identical": 149,
+        "normalized_identical": 711,
+        "very_near": 25,
+        "modified_near": 33,
+        "materially_modified": 30
+      }
+    },
+    "caveat": "Machine-level coverage is not a substitute for an independent build-native decompiler export; transferred Win16 contracts preserve provenance."
+  },
+  "win16_ne_fixup_v5": {
+    "disassembly_parser_fix": "objdump --insn-width=16; rebuilt Win16 machine layer",
+    "win16_10_cfg": {
+      "indexed_functions": 959,
+      "reachable_instructions": 43979,
+      "linear_unreachable_instructions": 20282,
+      "functions_with_linear_unreachable_content": 410
+    },
+    "fixups": {
+      "1.0": {
+        "records": 443,
+        "expanded_sites": 6038,
+        "broken_chains": 0
+      },
+      "1.3": {
+        "records": 443,
+        "expanded_sites": 6041,
+        "broken_chains": 0
+      },
+      "1.6": {
+        "records": 444,
+        "expanded_sites": 6073,
+        "broken_chains": 0
+      },
+      "1.8": {
+        "records": 446,
+        "expanded_sites": 6077,
+        "broken_chains": 0
+      },
+      "1.10": {
+        "records": 446,
+        "expanded_sites": 6082,
+        "broken_chains": 0
+      }
+    },
+    "direct_calls": {
+      "1.0": {
+        "near": 89,
+        "far_internal": 1948,
+        "far_import": 757,
+        "indirect": 212,
+        "static_direct_total": 2794
+      },
+      "1.3": {
+        "near": 89,
+        "far_internal": 1929,
+        "far_import": 756,
+        "indirect": 212,
+        "static_direct_total": 2774
+      },
+      "1.6": {
+        "near": 89,
+        "far_internal": 1889,
+        "far_import": 743,
+        "indirect": 212,
+        "static_direct_total": 2721
+      },
+      "1.8": {
+        "near": 89,
+        "far_internal": 1884,
+        "far_import": 743,
+        "indirect": 212,
+        "static_direct_total": 2716
+      },
+      "1.10": {
+        "near": 89,
+        "far_internal": 1872,
+        "far_import": 723,
+        "indirect": 212,
+        "static_direct_total": 2684
+      }
+    },
+    "import_name_map": {
+      "total": 246,
+      "High": 100,
+      "Medium-High": 117,
+      "Review": 29
+    },
+    "hidden_entry_candidates": {
+      "1.0": {
+        "total": 282,
+        "High": 0,
+        "Medium-High": 223,
+        "Medium": 59
+      },
+      "1.3": {
+        "total": 291,
+        "High": 9,
+        "Medium-High": 223,
+        "Medium": 59
+      },
+      "1.6": {
+        "total": 302,
+        "High": 18,
+        "Medium-High": 224,
+        "Medium": 60
+      },
+      "1.8": {
+        "total": 304,
+        "High": 19,
+        "Medium-High": 224,
+        "Medium": 61
+      },
+      "1.10": {
+        "total": 311,
+        "High": 24,
+        "Medium-High": 225,
+        "Medium": 62
+      }
+    }
+  },
+  "win16_high_hidden_entry_v6": {
+    "schema_version": 6,
+    "binary_hashes": {
+      "1.0": "6476e259a3a763e2985f22ea6655929e5b313f63ca4bcb976f98b6d50b72140c",
+      "1.3": "926c0001944b9822cdae10b35c92c2d6cd3772bc774c4c88fb17df7465d1f156",
+      "1.6": "5851849bacd8b03e93444d8a8f34d51c23fecddc73d6b8df7f016885c3b9d418",
+      "1.8": "144e96bb649c5463d440c343ad982ed8e5f143e788c9af08bbb890fcd1b3db22",
+      "1.10": "12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481"
+    },
+    "input_evidence_sha256": {
+      "win16_10_machine_functions_cfg_v5.csv": "ff6ea49b21a43e15d02bf51f8135b5af8c7c31ed814f85dffafe3f1dbad5a9aa",
+      "win16_110_machine_functions_v4.csv": "0fab9528e05dca432008ba27dc922a9dffc31e935dd0c23dd6a8ca8f80ca1239",
+      "win16_13_machine_functions_v4.csv": "940e37b6bac5c92265080c2fceaff4c695f9a1699975f5958b053c0ff98366f0",
+      "win16_16_machine_functions_v4.csv": "1653c277aae6c7f73ae6553629f12b7644a095f655ece92bfa8377f5132238aa",
+      "win16_18_machine_functions_v4.csv": "da35156736f2e5eafda7b490ece4d6664bcb0d478d7cbe1a4cdfa4496f3c087a",
+      "win16_hidden_entry_candidates_aggregated_v5.csv": "d661e0f133b275763eb804dfe4a64fcfd39674d096af71d45c163f111661b712",
+      "win16_ne_fixup_sites_cfg_refined_v5.csv": "a8088ca5c16a1e3d849fa4a77426a74974d58b22fb6e65062cff41104be38a53",
+      "win16_static_direct_callgraph_v5.csv": "2d271bb13141d1c7334c89e6e50f54c602e5d87563e974d31d541734131765bd"
+    },
+    "high_only": true,
+    "promotions_by_version": {
+      "1.10": 24,
+      "1.3": 9,
+      "1.6": 18,
+      "1.8": 19
+    },
+    "structural_families": 34,
+    "families_with_multiple_entries_same_build": 0,
+    "high_candidates_audited": 70,
+    "promoted": 70,
+    "deferred": 0,
+    "medium_or_medium_high_promoted": 0,
+    "relations_by_status": {
+      "unique-masked-binary-counterpart": 249,
+      "unresolved-modified-or-unmapped": 101
+    },
+    "classifications": {
+      "runtime-or-MFC-wrapper-candidate": 3,
+      "application-logic-candidate": 62,
+      "call-wrapper": 5
+    },
+    "callgraph": [
+      {
+        "version": "1.0",
+        "ne_records": 443,
+        "ne_expanded_sites": 6038,
+        "near": 89,
+        "far_internal": 1948,
+        "far_import": 757,
+        "direct_total": 2794,
+        "indirect": 212,
+        "new_direct_sites": 0,
+        "reassigned_direct_sites": 0,
+        "indexed_intervals_v5": 959,
+        "new_machine_dossiers": 0
+      },
+      {
+        "version": "1.3",
+        "ne_records": 443,
+        "ne_expanded_sites": 6041,
+        "near": 89,
+        "far_internal": 1942,
+        "far_import": 757,
+        "direct_total": 2788,
+        "indirect": 212,
+        "new_direct_sites": 14,
+        "reassigned_direct_sites": 10,
+        "indexed_intervals_v5": 957,
+        "new_machine_dossiers": 9
+      },
+      {
+        "version": "1.6",
+        "ne_records": 444,
+        "ne_expanded_sites": 6073,
+        "near": 91,
+        "far_internal": 1954,
+        "far_import": 755,
+        "direct_total": 2800,
+        "indirect": 212,
+        "new_direct_sites": 79,
+        "reassigned_direct_sites": 18,
+        "indexed_intervals_v5": 952,
+        "new_machine_dossiers": 18
+      },
+      {
+        "version": "1.8",
+        "ne_records": 446,
+        "ne_expanded_sites": 6077,
+        "near": 91,
+        "far_internal": 1953,
+        "far_import": 759,
+        "direct_total": 2803,
+        "indirect": 212,
+        "new_direct_sites": 87,
+        "reassigned_direct_sites": 18,
+        "indexed_intervals_v5": 952,
+        "new_machine_dossiers": 19
+      },
+      {
+        "version": "1.10",
+        "ne_records": 446,
+        "ne_expanded_sites": 6082,
+        "near": 91,
+        "far_internal": 1951,
+        "far_import": 749,
+        "direct_total": 2791,
+        "indirect": 212,
+        "new_direct_sites": 107,
+        "reassigned_direct_sites": 19,
+        "indexed_intervals_v5": 948,
+        "new_machine_dossiers": 24
+      }
+    ],
+    "historical_counts_note": "v4/v5 counts are retained as historical artifacts; v6 is a High-only extension, not semantic completeness"
+  }
+}
