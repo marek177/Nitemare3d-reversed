@@ -69,6 +69,9 @@ on:
       - "docs/V044_REMAX_WEAPON_FIRE_CLOSURE.md"
       - "src/re/N3DV044WeaponFireClosure.hpp"
       - "tests/v044_weapon_fire_closure_test.cpp"
+      - "docs/V045_REMAX_WEAPON_SWITCH_FRAME_ORDER.md"
+      - "src/re/N3DV045WeaponSwitchFrameOrder.hpp"
+      - "tests/v045_weapon_switch_frame_order_test.cpp"
       - "src/re/N3DV029SchedulerEvidence.hpp"
       - "tests/v029_scheduler_evidence_test.cpp"
       - "src/re/N3DV022VersionEvidenceRegistry.hpp"
@@ -189,6 +192,9 @@ on:
       - "docs/V044_REMAX_WEAPON_FIRE_CLOSURE.md"
       - "src/re/N3DV044WeaponFireClosure.hpp"
       - "tests/v044_weapon_fire_closure_test.cpp"
+      - "docs/V045_REMAX_WEAPON_SWITCH_FRAME_ORDER.md"
+      - "src/re/N3DV045WeaponSwitchFrameOrder.hpp"
+      - "tests/v045_weapon_switch_frame_order_test.cpp"
       - "src/re/N3DV029SchedulerEvidence.hpp"
       - "tests/v029_scheduler_evidence_test.cpp"
       - "src/re/N3DV022VersionEvidenceRegistry.hpp"
@@ -295,7 +301,7 @@ jobs:
       - name: Configure C++ evidence and push-safety tests (SDL disabled)
         run: cmake -S . -B build -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Release
       - name: Build C++ trace and push-safety tests
-        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test n3d_v030_trace_closure_test n3d_pushable_blocked_test n3d_v022_version_evidence_registry_test n3d_v025_guard_writer_graph_test n3d_v032_static_closure_test n3d_v020_verification_harness_test n3d_v021_subsystem_evidence_test n3d_v033_push_scheduler_test n3d_v034_object_animation_evidence_test n3d_v026_guard_rng_coupling_test n3d_v035_rng_census_test n3d_v036_protected_hit_ordering_test n3d_v037_scheduler_catchup_test n3d_v038_three_day_findings_test n3d_v039_late_static_closures_test n3d_v040_projectile_reentry_closure_test n3d_v041_latest_static_evidence_test n3d_v041_frame_compositor_test n3d_v042_oct18_closures_test n3d_e1m9_radio_lifecycle_test n3d_dos20_sprite_raster_test n3d_v043_runtime_closure_test n3d_v044_weapon_fire_closure_test
+        run: cmake --build build --config Release --target n3d_v029_scheduler_evidence_test n3d_v030_trace_closure_test n3d_pushable_blocked_test n3d_v022_version_evidence_registry_test n3d_v025_guard_writer_graph_test n3d_v032_static_closure_test n3d_v020_verification_harness_test n3d_v021_subsystem_evidence_test n3d_v033_push_scheduler_test n3d_v034_object_animation_evidence_test n3d_v026_guard_rng_coupling_test n3d_v035_rng_census_test n3d_v036_protected_hit_ordering_test n3d_v037_scheduler_catchup_test n3d_v038_three_day_findings_test n3d_v039_late_static_closures_test n3d_v040_projectile_reentry_closure_test n3d_v041_latest_static_evidence_test n3d_v041_frame_compositor_test n3d_v042_oct18_closures_test n3d_e1m9_radio_lifecycle_test n3d_dos20_sprite_raster_test n3d_v043_runtime_closure_test n3d_v044_weapon_fire_closure_test n3d_v045_weapon_switch_frame_order_test
       - name: C++ evidence and push-safety tests (synthetic)
         run: ctest --test-dir build -C Release -R "^(n3d_v0(29_scheduler_evidence|30_trace_closure)_test|n3d_pushable_blocked_test)$" --output-on-failure
       - name: v0.32 static closure registry C++ tests
@@ -324,3 +330,5 @@ jobs:
         run: ctest --test-dir build -C Release -R "^(n3d_v043_runtime_closure_test|n3d_e1m9_radio_lifecycle_test|n3d_dos20_sprite_raster_test)$" --output-on-failure
       - name: v0.44 weapon FIRE closure model
         run: ctest --test-dir build -C Release -R "^n3d_v044_weapon_fire_closure_test$" --output-on-failure
+      - name: v0.45 weapon-switch frame-order model
+        run: ctest --test-dir build -C Release -R "^n3d_v045_weapon_switch_frame_order_test$" --output-on-failure
