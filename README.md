@@ -264,3 +264,5 @@ E3M6 confirms the passability distinction: small/medium fire is traversable and 
 8. Resolve the 4096-byte per-cell runtime state block and `OBJECT+14/+16/+18` semantics.
 9. Integrate the recovered Win16 camera/vector/span pipeline and sprite/resource ordering into the runtime; validate it against deterministic original frames.
 10. Finish wall-animation and special-resource mappings, DOS/VGA backend comparisons, BSF integrity/version-diff reconstruction, SFX/MIDI/UIF/ENDING.FLI edge cases and unresolved USER.SAV blocks.
+
+E1M9 radio follow-up: [static writer/reader lifecycle and evidence limits](docs/E1M9_STATIC_LIFECYCLE.md).
