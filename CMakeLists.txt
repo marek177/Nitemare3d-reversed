@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.43.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.44.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -225,6 +225,9 @@ target_link_libraries(n3d_e1m9_radio_lifecycle_test PRIVATE n3d_core)
 
 add_executable(n3d_v043_runtime_closure_test tests/v043_runtime_closure_test.cpp)
 target_link_libraries(n3d_v043_runtime_closure_test PRIVATE n3d_core)
+
+add_executable(n3d_v044_weapon_fire_closure_test tests/v044_weapon_fire_closure_test.cpp)
+target_link_libraries(n3d_v044_weapon_fire_closure_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
