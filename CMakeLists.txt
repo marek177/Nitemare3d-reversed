@@ -217,6 +217,9 @@ target_link_libraries(n3d_v041_frame_compositor_test PRIVATE n3d_core)
 add_executable(n3d_v042_oct18_closures_test tests/v042_oct18_closures_test.cpp)
 target_link_libraries(n3d_v042_oct18_closures_test PRIVATE n3d_core)
 
+add_executable(n3d_e1m9_radio_lifecycle_test tests/e1m9_radio_lifecycle_test.cpp)
+target_link_libraries(n3d_e1m9_radio_lifecycle_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
