@@ -1,0 +1,20 @@
+area,fact,scope
+damage,DOS1.0-1.9 protection/game-state gates precede damage calculation,12-build static report
+damage,DOS2.0 and Win16 1.0-1.10 calculate damage before protection/game-state gates,12-build static report
+damage,nonzero calculated damage arms feedback timer=3 on DOS2/Win16 before later protection return,local opcode closure
+damage,RNG mask class08=7 class09/0A=15 class11-14=31,12-build local table/call closure
+feedback,3->2 selector4;2->1 selector4;1->0 selector4;0->-1 selector3,local frame updater
+save,SECRET writes fixed 32 bytes but locally initializes only N active state bytes,12-build SAVE closure
+load,SECRET reads fixed 32 bytes and restores only N states with byte-to-WORD zero extension,12-build LOAD closure
+load,DOS door 64x18 preserves runtime prefix 8 bytes before record read,12-build local LOAD
+load,Win16 door 64x22 preserves runtime prefix 12 bytes before record read,12-build local LOAD
+io,SECRET 32-byte caller tests only AX sign not AX==32,12-build local caller
+win16,E2M10 first queued message displays immediately; remaining messages ACK in descending index order,5-build queue consumer
+win16,mode4 accepted ACK with remaining records forces render/HUD/present before displaying next text,5-build queue consumer
+pool,DOS dynamic wall capacity64 stride18,12-build pool-family correction
+pool,DOS class3 geometry capacity32 stride14,12-build pool-family correction
+pool,Win16 dynamic wall capacity64 stride22,12-build pool-family correction
+pool,Win16 class3 geometry capacity32 stride22,12-build pool-family correction
+alias,62 previously ambiguous writer sites reclassified to correct local record families,v0.59 static audit
+callgraph,60 direct object-map-pointer recalculation edges plus 12 movement-transfer edges=72,12-build v0.59 audit
+imports,Win16 timing import ordinals 604/605/606/607 and USER ordinal13 mapped via CALL+1 fixups,Win16 static import audit
