@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-18 v0.47 WORX DMA runtime closure
+
+The [v0.47 report](docs/V047_REMAX_WORX_DMA_RUNTIME.md) adds a natural original-runtime closure for the DOS Sound Blaster/DMA path. Playback setup reached the WORX DMA start with the active flag already set, programmed the observed DMA/DSP state and unmasked the DMA channel. The later automatic stop at 5F59 cleared the active flag, sent DSP D0h and masked the DMA channel; only afterward did the explicit stop helper run with playback already inactive. This proves natural DMA start plus automatic stop for the tested build, while active playback at central shutdown, audible PCM parity and exact hardware timing remain OPEN.
+
 ## 2026-10-18 v0.46 runtime acceptance sync
 
 The [v0.46 report](docs/V046_REMAX_RUNTIME_ACCEPTANCE_SYNC.md) synchronizes the newest original DOSBox-X evidence. PASS16 proves a natural same-scheduler PROJECTILE -> time/VGA -> INPUT boundary sequence and corrects PASS15 DS/WORLD alias attribution. GUARD PASS17–22 supplies executed alert, attack, planner, movement and collision witnesses, including state05's own movement call, state06 timer closure, and double-block RNG reflection. Controlled DOS1.2/DOS2 weapon runs now cover keyboard selection, commit/raise, mode, pistol ammo, held Multi Plasma and the shared weapon0/3 plasma pool. Shutdown tests add a non-fatal no-XMS path and configuration-reachable digital INT63 stop/IRQ-restore operations. A natural palette path also ties RNG seed 1 to timer 201 and live VGA DAC index writes. **DEMO total RNG order, active projectile FB-FE/reentry, SAVE/LOAD first-frame behavior, framebuffer/palette zero-diff, Win16 runtime and active audible DSP/DMA parity remain OPEN.**

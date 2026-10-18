@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.46.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.47.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -234,6 +234,9 @@ target_link_libraries(n3d_v045_weapon_switch_frame_order_test PRIVATE n3d_core)
 
 add_executable(n3d_v046_runtime_acceptance_test tests/v046_runtime_acceptance_test.cpp)
 target_link_libraries(n3d_v046_runtime_acceptance_test PRIVATE n3d_core)
+
+add_executable(n3d_v047_worx_dma_runtime_test tests/v047_worx_dma_runtime_test.cpp)
+target_link_libraries(n3d_v047_worx_dma_runtime_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
