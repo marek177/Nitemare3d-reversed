@@ -1,0 +1,15 @@
+area,evidence,status
+scheduler_frame,DOS2 natural runtime C24B-C250-C26F-C274 in one scheduler invocation,ORIGINAL_RUNTIME_SCOPED
+scheduler_irq,IRQ observed on projectile call boundary before callee entry,ORIGINAL_RUNTIME_SCOPED
+guard_state05,state05 planner sets state06 and calls movement once timer FFFF-to-8,ORIGINAL_RUNTIME_CONTROLLED
+guard_state06,eight state06 visits timer8-to-0 then state03 for measured guards,ORIGINAL_RUNTIME_CONTROLLED
+guard_double_block,blockX+blockY consumes RNG odd flips vx even flips vy,ORIGINAL_RUNTIME_CONTROLLED
+weapons_cross_dos,DOS1.2 and DOS2 keyboard selection commit mode ammo behavior matched,ORIGINAL_RUNTIME_CONTROLLED
+multiplasma,DOS1.2 and DOS2 held FIRE consumed shared weapon0/3 plasma ammo,ORIGINAL_RUNTIME_CONTROLLED
+palette_rng,seed1 to 0029E2C0 result41 timer201 DAC indices EB/E3,ORIGINAL_RUNTIME_SCOPED
+shutdown_no_xms,missing XMS manager nonfatal and guarded cleanup skipped,ORIGINAL_RUNTIME_CONFIG_SCOPED
+shutdown_digital,INT63 AH0D AH07 AH04 and IRQ7 vector restore observed,ORIGINAL_RUNTIME_CONFIG_SCOPED
+demo_rng,complete seed1 consumer chronology,OPEN
+projectile_active,FB-FE active lifecycle and nested reentry,OPEN
+renderer_zero_diff,64000-byte framebuffer plus palette equality,OPEN
+win16_runtime,cross-platform runtime timing and audio parity,OPEN
