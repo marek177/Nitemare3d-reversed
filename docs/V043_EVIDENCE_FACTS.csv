@@ -1,0 +1,14 @@
+area,evidence,status
+door_runtime,DOS1.2 E1M1 natural USE record8 state1->2 flag0->1,ORIGINAL_RUNTIME_LOCAL_CLOSED
+world_update,DOS1.2 E1M1 32768-instruction trace visits 33 live queue records in snapshot order,ORIGINAL_RUNTIME_SCENARIO_CLOSED
+shutdown_normal,DOS original Quit through cleanup CRT INT00 restore and INT21 4C00,ORIGINAL_RUNTIME_BUILD_SCOPED
+shutdown_pit,observed PIT divisor FFFFh 65535 in shutdown audio/WORX branch,ORIGINAL_RUNTIME_BUILD_SCOPED
+shutdown_rtc,observed periodic RTC disable and INT70 restore; ISR occurred earlier during audio cleanup,ORIGINAL_RUNTIME_BUILD_SCOPED
+shutdown_xms,observed game-cache XMS unlock and free success in normal shutdown,ORIGINAL_RUNTIME_BUILD_SCOPED
+shutdown_bsf,474 decoded bytes period52 exact buffer match and 473 emitted payload bytes,STATIC_PLUS_RUNTIME_BUFFER_CLOSED
+shutdown_error,late BSF-open fault repeats XMS requests then exits code1,ORIGINAL_RUNTIME_BUILD_SCOPED
+guard_damage,23-case local contact-damage switch x12 builds,ORIGINAL_STATIC_LOCAL_CLOSED
+guard_init,OLD19 vs NEW26 class table and Dancers state divergence x12 builds,ORIGINAL_STATIC_LOCAL_CLOSED
+guard_wake,state7/8 strategy0 same-area latch gate then RNG%8 -> state1 x12 builds,ORIGINAL_STATIC_LOCAL_CLOSED_REACHABILITY_OPEN
+e1m9_radio,Win16 1.3-1.10 WALL clear OBJECT preserved and state14-only restore,STATIC_LOCAL_CLOSED_GLOBAL_REACHABILITY_OPEN
+renderer_sprite,DOS2 sprite writer clipping visibility transparency planar address bounded subset,ORIGINAL_STATIC_LOCAL_CLOSED_PIXEL_PARITY_OPEN

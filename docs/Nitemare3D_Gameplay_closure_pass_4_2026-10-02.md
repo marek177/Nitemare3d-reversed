@@ -103,7 +103,7 @@ At activation it:
 - plays event `0x45` and and modal/story helper;
 - scans all GUARD records;
 - selects guards whose underlying wall class is `0x46` ACTIONSPOT;
-- clears the map-cell object byte;
+- clears the map-cell **WALL** byte in audited Win16 1.3–1.10, preserving the adjacent OBJECT byte (v0.41 correction; Win16 1.0 differs);
 - saves the actor'with current OBJECT sequence selector;
 - sets state `0x14`;
 - sets timer `0x70` (112);
