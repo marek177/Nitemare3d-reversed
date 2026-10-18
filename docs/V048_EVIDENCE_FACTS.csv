@@ -1,0 +1,14 @@
+area,evidence,status
+demo_open,main menu Demo naturally loads DEMO.1 and enters mode4,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_map,episode1 map index10 loaded and 8192-byte map block matched expected MAP.1 data,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_header,header words 15 7 30 observed in runtime,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_first_record,record key48E0 input2 counter8 loaded exactly,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_rng_seed,natural startup resets DOS RNG state to1 after map init,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_rng_formula,LCG 214013/2531011 and 15-bit result statically closed,ORIGINAL_STATIC_LOCAL_CLOSED
+demo_scheduler_mode3,alternate update returned at mode3 counter1 argument1,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_scheduler_mode4,alternate update returned at mode4 counter3 argument2,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_first_apply,first record applied at render counter8 before next record load,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_first_movement,input2 angle90 step15 moved X1056-to-1071 Y unchanged,ORIGINAL_RUNTIME_CLOSED_SCOPED
+demo_rng_total_order,complete post-seed ordered consumer ledger,OPEN
+demo_eof,EOF and last-record behavior,OPEN
+demo_crossbuild,DOS and Win16 deterministic parity,OPEN

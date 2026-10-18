@@ -80,6 +80,10 @@ on:
       - "docs/V047_EVIDENCE_FACTS.csv"
       - "src/re/N3DV047WorxDmaRuntime.hpp"
       - "tests/v047_worx_dma_runtime_test.cpp"
+      - "docs/V048_REMAX_DEMO_BOOTSTRAP.md"
+      - "docs/V048_EVIDENCE_FACTS.csv"
+      - "src/re/N3DV048DemoBootstrap.hpp"
+      - "tests/v048_demo_bootstrap_test.cpp"
       - "src/re/N3DV029SchedulerEvidence.hpp"
       - "tests/v029_scheduler_evidence_test.cpp"
       - "src/re/N3DV022VersionEvidenceRegistry.hpp"
@@ -348,3 +352,7 @@ jobs:
         run: cmake --build build --config Release --target n3d_v047_worx_dma_runtime_test
       - name: v0.47 WORX DMA runtime model
         run: ctest --test-dir build -C Release -R "^n3d_v047_worx_dma_runtime_test$" --output-on-failure
+      - name: Build v0.48 DEMO bootstrap model
+        run: cmake --build build --config Release --target n3d_v048_demo_bootstrap_test
+      - name: v0.48 DEMO bootstrap model
+        run: ctest --test-dir build -C Release -R "^n3d_v048_demo_bootstrap_test$" --output-on-failure

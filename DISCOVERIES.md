@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-18 v0.48 DEMO bootstrap / first-input closure
+
+The [v0.48 report](docs/V048_REMAX_DEMO_BOOTSTRAP.md) moves DEMO.1 from a mostly format/static contract to a concrete original-runtime startup path. Natural menu selection loads E1M11/map-index 10, header `15/7/30`, and first record `0x48E0 / input 2 / counter 8`; the DOS RNG state is reset to 1 after map initialization. Separate checkpoints prove the alternate scheduler path returns in both mode3 and mode4, with the parity check before the render-counter increment. The first record is applied at counter8 before the next record load, and a paired capture shows the resulting first movement `(1056,3168) -> (1071,3168)` at angle90 and step15. **Complete post-seed RNG consumer order, EOF behavior, later record semantics, DOS/Win16 deterministic parity and framebuffer parity remain OPEN.**
+
 ## 2026-10-18 v0.47 WORX DMA runtime closure
 
 The [v0.47 report](docs/V047_REMAX_WORX_DMA_RUNTIME.md) adds a natural original-runtime closure for the DOS Sound Blaster/DMA path. Playback setup reached the WORX DMA start with the active flag already set, programmed the observed DMA/DSP state and unmasked the DMA channel. The later automatic stop at 5F59 cleared the active flag, sent DSP D0h and masked the DMA channel; only afterward did the explicit stop helper run with playback already inactive. This proves natural DMA start plus automatic stop for the tested build, while active playback at central shutdown, audible PCM parity and exact hardware timing remain OPEN.
