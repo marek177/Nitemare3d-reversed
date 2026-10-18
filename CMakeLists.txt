@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.42.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.43.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -216,6 +216,15 @@ target_link_libraries(n3d_v041_frame_compositor_test PRIVATE n3d_core)
 
 add_executable(n3d_v042_oct18_closures_test tests/v042_oct18_closures_test.cpp)
 target_link_libraries(n3d_v042_oct18_closures_test PRIVATE n3d_core)
+
+add_executable(n3d_dos20_sprite_raster_test tests/dos20_sprite_raster_test.cpp)
+target_link_libraries(n3d_dos20_sprite_raster_test PRIVATE n3d_core)
+
+add_executable(n3d_e1m9_radio_lifecycle_test tests/e1m9_radio_lifecycle_test.cpp)
+target_link_libraries(n3d_e1m9_radio_lifecycle_test PRIVATE n3d_core)
+
+add_executable(n3d_v043_runtime_closure_test tests/v043_runtime_closure_test.cpp)
+target_link_libraries(n3d_v043_runtime_closure_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 
