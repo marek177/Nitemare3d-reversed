@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.56 recent-days frontier consolidation
+
+The [v0.56 frontier](docs/V056_REMAX_FRONTIER_CONSOLIDATION.md) is a guardrail checkpoint after integrating the currently available recent evidence. It records which recent closures are original-runtime, controlled-runtime or static, and keeps the unresolved global acceptance items explicit. No new global parity percentage is inferred from the number of releases or tests.
+
 ## 2026-10-19 v0.55 DEMO seed/EOF static narrowing
 
 The [v0.55 report](docs/V055_REMAX_DEMO_SEED_EOF_STATIC.md) distinguishes the seed=1 helper from actual RNG consumption and pins the local DOS DEMO reader order. The complete DOS DEMO.1 payload has 275 records, first `48E0/0002/8` and last `74E0/0090/1074`; four adjacent record pairs share a counter. The local caller does not immediately test the read count after the next-record read, which narrows but does not close EOF/error behavior. Older multi-gigabyte traces that did not capture the seed interval are not treated as negative RNG evidence.
