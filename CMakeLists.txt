@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.50.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.51.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -246,6 +246,9 @@ target_link_libraries(n3d_v049_oct19_evidence_test PRIVATE n3d_core)
 
 add_executable(n3d_v050_guard41_death_test tests/v050_guard41_death_test.cpp)
 target_link_libraries(n3d_v050_guard41_death_test PRIVATE n3d_core)
+
+add_executable(n3d_v051_win16_wing_runtime_test tests/v051_win16_wing_runtime_test.cpp)
+target_link_libraries(n3d_v051_win16_wing_runtime_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 

@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.51 Win16 WinG runtime closure
+
+The [v0.51 report](docs/V051_REMAX_WIN16_WING_RUNTIME.md) removes the previous Win16 startup blocker. After completing the WinG 1.0 runtime in the isolated Windows 3.11 laboratory, original Nitemare builds 1.0/1.3/1.6/1.8/1.10 all reach a rendered E1M1 scene. V1.10 additionally required bypassing a stale local WING.DLL so the updated system WinG could load. This is startup/render reachability only; input/tick/RNG/framebuffer/audio parity remains OPEN.
+
 ## 2026-10-19 v0.50 GUARD41 death outcome
 
 The [v0.50 report](docs/V050_REMAX_GUARD41_DEATH_OUTCOME.md) closes a bounded natural DOS1.2 death-handler path for GUARD41. The original runtime executes RNG #16→#18 in one trace, rejects two candidates, accepts the third, writes HP `111→0`, score `0→100`, updates local state/timer fields and clears the linked map marker `A5→00`. RNG #17 is therefore no longer prediction-only. Later animation completion, drop/cleanup and cross-build death parity remain OPEN.

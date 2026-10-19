@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.50
+# Nitemare3D-Reversed — reconstruction v0.51
+
+**v0.51 / 2026-10-19 Win16 WinG runtime closure:** the Windows 3.11 laboratory now reaches a rendered E1M1 scene in **all 5/5 Win16 builds** (1.0, 1.3, 1.6, 1.8, 1.10) after completing the WinG 1.0 runtime from the user-provided Microsoft package. V1.10 also required removing a local old `WING.DLL` conflict in the laboratory copy; no Nitemare executable or game data were patched. Win16 runtime is therefore no longer blocked at application startup, but gameplay-input timing, RNG, framebuffer/palette zero-diff, animation and audio parity remain OPEN. See [v0.51 report](docs/V051_REMAX_WIN16_WING_RUNTIME.md).
 
 **v0.50 / 2026-10-19 GUARD41 death closure:** extends the natural DOS1.2 DEMO.1 runtime path from lethal HP through the measured death handler. A bounded original trace now executes RNG #16, #17 and #18 without a gap: #16 and #17 reject animation candidates, #18 accepts one. The same trace writes GUARD41 HP `111→0`, updates its timer/state/next-state, increments score `0→100`, and clears the linked map marker `0xA5→0x00`. This supersedes the v0.49 prediction-only status for RNG #17. Later death-animation completion, drop logic, pool cleanup, DOS2/Win16 equivalence and end-to-end parity remain OPEN. See [v0.50 report](docs/V050_REMAX_GUARD41_DEATH_OUTCOME.md).
 
