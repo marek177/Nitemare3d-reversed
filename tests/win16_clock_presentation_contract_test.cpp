@@ -51,6 +51,48 @@ static_assert(vgaDacComponent(255) == 63);
 static_assert(kDisplayDibEnterFlags == 0x8200);
 static_assert(kDisplayDibExitFlags == 0x4040);
 
+// Keyboard/recalibration branches recovered from original Win16 C exports.
+// VK_MENU uses 0x12, VK_RETURN uses 0x0d; key-state bit 15 marks key-up.
+constexpr auto kAltKeyDown =
+    altEnterKeyTransition(Build::Win110, 0x12, 0, false, false);
+static_assert(kAltKeyDown.altHeld);
+static_assert(kAltKeyDown.requestedModeSelector == -1);
+constexpr auto kEnterWithAlt =
+    altEnterKeyTransition(Build::Win110, 0x0D, 0, kAltKeyDown.altHeld, false);
+static_assert(kEnterWithAlt.requestedModeSelector == 3);
+static_assert(altEnterKeyTransition(Build::Win110, 0x0D, 0,
+                                   true, true).requestedModeSelector == 4);
+static_assert(altEnterKeyTransition(Build::Win10, 0x0D, 0,
+                                   true, false).requestedModeSelector == 2);
+static_assert(altEnterKeyTransition(Build::Win18, 0x0D, 0,
+                                   true, true).requestedModeSelector == 3);
+static_assert(altEnterKeyTransition(Build::Win110, 0x0D, 0x8000,
+                                   true, false).requestedModeSelector == -1);
+static_assert(altEnterKeyTransition(Build::Win110, 0x0D, 0,
+                                   false, false).requestedModeSelector == -1);
+static_assert(altEnterKeyTransition(Build::Win110, 0x12, 0x8000,
+                                   true, false).altHeld == false);
+static_assert(altEnterKeyTransition(Build::Win110, 0x20, 0,
+                                   true, false).requestedModeSelector == -1);
+
+// v1.0: call-site guard for scheduler mode 0 only.
+// v1.8/v1.10: unconditional call, then internal guard for modes 0/1/3.
+static_assert(invokesCalibrationAfterAltEnter(Build::Win10, 1, 1, 0));
+static_assert(!invokesCalibrationAfterAltEnter(Build::Win10, 1, 1, 1));
+static_assert(!invokesCalibrationAfterAltEnter(Build::Win10, 10, 1, 0));
+static_assert(invokesCalibrationAfterAltEnter(Build::Win18, 10, 0, 2));
+static_assert(invokesCalibrationAfterAltEnter(Build::Win110, 10, 0, 2));
+static_assert(performsCalibrationAfterAltEnter(Build::Win10, 1, 1, 0));
+static_assert(!performsCalibrationAfterAltEnter(Build::Win10, 1, 1, 1));
+static_assert(!performsCalibrationAfterAltEnter(Build::Win10, 1, 1, 3));
+static_assert(performsCalibrationAfterAltEnter(Build::Win18, 1, 1, 1));
+static_assert(performsCalibrationAfterAltEnter(Build::Win18, 1, 1, 3));
+static_assert(performsCalibrationAfterAltEnter(Build::Win110, 1, 1, 1));
+static_assert(performsCalibrationAfterAltEnter(Build::Win110, 1, 1, 3));
+static_assert(!performsCalibrationAfterAltEnter(Build::Win110, 1, 1, 2));
+static_assert(!performsCalibrationAfterAltEnter(Build::Win110, 10, 1, 0));
+static_assert(!performsCalibrationAfterAltEnter(Build::Win110, 1, 0, 0));
+
 int main() {
     for (std::uint16_t w = 319; w <= 321; ++w) {
         for (std::uint16_t h = 199; h <= 201; ++h) {
