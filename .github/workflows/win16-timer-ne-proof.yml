@@ -1,0 +1,37 @@
+name: Win16 NE timer binary proof regression
+
+on:
+  push:
+    paths:
+      - 'tools/n3d_win16_timer_binary_proof.py'
+      - 'tools/ne_renderer_audit.py'
+      - 'tests/test_n3d_win16_timer_binary_proof.py'
+      - 'docs/WIN16_TIMER_BINARY_PROOF_20261019.md'
+      - '.github/workflows/win16-timer-ne-proof.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_win16_timer_binary_proof.py'
+      - 'tools/ne_renderer_audit.py'
+      - 'tests/test_n3d_win16_timer_binary_proof.py'
+      - 'docs/WIN16_TIMER_BINARY_PROOF_20261019.md'
+      - '.github/workflows/win16-timer-ne-proof.yml'
+
+jobs:
+  synthetic-ne-fixtures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install 16-bit disassembler
+        run: python -m pip install capstone==5.0.9
+      - name: Compile Python verification scripts
+        run: |
+          python -m py_compile tools/ne_renderer_audit.py
+          python -m py_compile tools/n3d_win16_timer_binary_proof.py
+          python -m py_compile tests/test_n3d_win16_timer_binary_proof.py
+      - name: Verify synthetic NE parser/ordinal relocations
+        run: python -m unittest discover -s tests -p 'test_n3d_win16_timer_binary_proof.py' -v
+      - name: Verify CLI has no original binary dependency
+        run: python tools/n3d_win16_timer_binary_proof.py --help
