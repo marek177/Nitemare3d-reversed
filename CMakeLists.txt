@@ -265,6 +265,11 @@ target_link_libraries(n3d_v055_demo_seed_eof_test PRIVATE n3d_core)
 add_executable(n3d_v056_frontier_status_test tests/v056_frontier_status_test.cpp)
 target_link_libraries(n3d_v056_frontier_status_test PRIVATE n3d_core)
 
+# Win16 static branch model: synthetic tests only, no original binaries needed.
+add_executable(n3d_win16_clock_presentation_contract_test
+    tests/win16_clock_presentation_contract_test.cpp)
+target_link_libraries(n3d_win16_clock_presentation_contract_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
