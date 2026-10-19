@@ -82,7 +82,7 @@ jobs:
           out = Path('/tmp/n3wunr-wrapper.exe')
           out.write_bytes(data)
           print('Embedded SFX-wrapper recognized by zipfile:',is_zipfile(out))
-          for magic in (b'PK\\x03\\x04',b'MSCF',b'SZDD',b'LZ91'):
+          for magic in (bytes((80,75,3,4)),b'MSCF',b'SZDD',b'LZ91'):
               print('Marker',repr(magic),'count:',data.count(magic),'first:',data.find(magic))
           print('e_lfanew:',hex(struct.unpack_from('<I',data,0x3c)[0]))
           print('MZ header start:',data[:64].hex(' '))
