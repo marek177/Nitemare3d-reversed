@@ -120,3 +120,35 @@ the multimedia clock never initializes. V058-10 remains OPEN.
 Relevant public technical reference: Microsoft KB Q65122, segmented NE
 executable format and segment relocation records
 https://jeffpar.github.io/kbarchive/kb/065/Q65122/
+
+
+## Five-release clock flags and calibration gates
+
+The intermediate 1.3 and 1.6 Ghidra exports were also inspected, rather
+than extrapolating addresses from 1.0/1.8/1.10:
+
+| Build | Clock selector byte | Timer init/cleanup | Read clock | Render calibration |
+|---|---|---|---|---|
+| 1.0 | DS:45F2 | 3:D43E | 3:D498 | 3:D5A2 |
+| 1.3 | DS:45F2 | 3:D44A | 3:D4A4 | 3:D5AE |
+| 1.6 | DS:46A2 | 3:D5BE | 3:D618 | 3:D722 |
+| 1.8 | DS:46B2 | 3:D5BE | 3:D618 | 3:D722 |
+| 1.10 | DS:46B2 | 3:D66C | 3:D6C6 | 3:D7D0 |
+
+Evidence: NITE3W13.EXE(7).c, FUN_1010_D44A/D5AE; NITE3W16.EXE(5).c,
+FUN_1010_D5BE/D722; earlier 1.0, 1.8, 1.10 exports plus NE relocation CSV.
+In 1.3 and 1.6 the keyboard handler invokes calibration after Alt+Enter,
+while the calibration callee checks screen=1, state=1, and scheduler mode
+belonging to {0,1,3}. Windows 1.0 has the equivalent narrower input
+condition at the keyboard *caller* with scheduler mode 0.
+
+WinG direct blit selector in 1.3/1.6 also checks native dimensions
+320x200 for WinGBitBlt and otherwise uses WinGStretchBlt; the
+presentation mode IDs retain older 0/1 window sizes, 2 fullscreen,
+3 restore behavior. Only Windows 1.10 introduces window selector 2
+for 960x600 and shifts fullscreen/restore to selectors 3/4.
+
+src/re/Win16ClockPresentationContract.hpp and the synthetic C++ regression
+now carry the five-build flag/entry/mode matrix. All five rows have direct
+decompiler evidence, but precise multimedia-timer cleanup argument and
+overall original-runtime parity remain separate OPEN obligations.
