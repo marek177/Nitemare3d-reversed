@@ -183,6 +183,85 @@ def disassemble_region(image: NeImage, segment: int, start: int, end: int):
     return lines
 
 
+def verify_win18_timer_call_and_stack(image: NeImage) -> dict:
+    """Exact, build-specific facts from SHA-pinned Win16 1.8 instructions.
+
+    The noninitialized local is a *source-level risk fact*, not permission
+    to read undefined C++ stack memory in the reconstructed engine.
+    """
+    expected_bytes = {
+        0x0EE6: "6a 00",         # immediate arg 0 -> initialize
+        0x0EE8: "9a be d5",      # FAR CALL 3:D5BE (segment word NE-fixed)
+        0x0EED: "83 c4 02",      # caller pops int arg
+        0x0F22: "6a 01",         # immediate arg 1 -> cleanup
+        0x0F24: "9a be d5",      # FAR CALL 3:D5BE
+        0x0F29: "83 c4 02",
+        0xD5BE: "c8 06 00 00",   # ENTER 6,0; local 6 bytes uninitialized
+        0xD5D0: "8d 46 fa",      # pointer to [BP-6] caps struct
+        0xD5D5: "6a 04",         # 4-byte TIMECAPS output
+        0xD5E3: "a2 b2 46",      # flag DS:46B2 from timeGetDevCaps status
+        0xD5E6: "8b 76 fa",      # SI <- wPeriodMin at [BP-6]
+        0xD5FC: "56",            # begin with pushed SI
+        0xD5FD: "9a",            # far MMSYSTEM 605
+        0xD60D: "ff 76 fe",      # end with pushed [BP-2]
+        0xD610: "9a",            # far MMSYSTEM 606
+    }
+    for ip, hex_bytes in expected_bytes.items():
+        expected = bytes.fromhex(hex_bytes)
+        actual = image.bytes_at(3, ip, ip + len(expected))
+        if actual != expected:
+            raise ValueError(
+                f"Win16 v1.8 timer instruction changed at 3:{ip:04X}: "
+                f"{actual.hex()} vs {expected.hex()}"
+            )
+    fixups = internal_far_relocations(image, 3, 0xD5BE)
+    callsite_by_fixup_source = {x["source"] for x in fixups}
+    if callsite_by_fixup_source != {"3:0EEB", "3:0F27"}:
+        raise ValueError(
+            "Win16 v1.8 timer initializer FAR caller relocation census changed"
+        )
+    imports = [
+        import_at(image, 0xD5D7, "MMSYSTEM", 604),
+        import_at(image, 0xD5FD, "MMSYSTEM", 605),
+        import_at(image, 0xD610, "MMSYSTEM", 606),
+    ]
+    if not all(x["verified"] for x in imports):
+        raise ValueError("v1.8 timer imports not independently fixup-backed")
+    # Complete linear instruction body D5BE..D617, including early returns.
+    instructions = disassemble_region(image, 3, 0xD5BE, 0xD618)
+    use_of_uninitialized = [
+        row for row in instructions
+        if "[bp - 2]" in row["operands"]
+    ]
+    if len(use_of_uninitialized) != 1 or (
+            use_of_uninitialized[0]["mnemonic"] != "push" or
+            use_of_uninitialized[0]["address"] != "3:D60D"):
+        raise ValueError("v1.8 BP-2 cleanup read assumption no longer unique")
+    return {
+        "proof": "SHA_PINNED_ORIGINAL_BYTE_STATIC",
+        "build": "1.8",
+        "init_far_call": "3:0EE8",
+        "init_immediate_argument": 0,
+        "cleanup_far_call": "3:0F24",
+        "cleanup_immediate_argument": 1,
+        "imported_timer_api_calls_verified": 3,
+        "timer_local_allocation_bytes": 6,
+        "time_get_dev_caps_buffer": "[BP-6]",
+        "time_get_dev_caps_output_bytes": 4,
+        "time_begin_period_argument": "SI = max(wPeriodMin, 10)",
+        "time_end_period_argument": "WORD PTR [BP-2]",
+        "time_end_period_local_initialized_by_function": False,
+        "observed_bp_minus_2_references": use_of_uninitialized,
+        "verified_timer_fixup_caller_sources": sorted(callsite_by_fixup_source),
+        "limits": [
+            "No dynamic timing measurement",
+            "The original stack-residue value is not statically a fixed constant",
+            "Do not reproduce a host-language uninitialized read in portable C++",
+            "Only version 1.8 is byte-verified by this bounded claim"
+        ],
+    }
+
+
 def inspect(image: NeImage, profile: Profile):
     seg3 = image.segment(3)
     if (seg3.file_offset, seg3.length) != (
@@ -201,7 +280,12 @@ def inspect(image: NeImage, profile: Profile):
     near_cleanup = [row for row in lines
                     if cleanup_ip - 24 <= int(row["address"].split(":")[1], 16)
                     <= cleanup_ip + 5]
+    win18_proof = (
+        verify_win18_timer_call_and_stack(image)
+        if profile.version == "1.8" else None
+    )
     return {
+        "win18_timer_stack_proof": win18_proof,
         "build": profile.version,
         "source_sha256": profile.sha256,
         "source_size": profile.raw_size,
