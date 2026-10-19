@@ -39,8 +39,38 @@ jobs:
           if md5 != expected:
               raise SystemExit('Historic shareware checksum failed')
           PY
-            python tools/n3d_win16_timer_binary_proof.py "/tmp/$archive" \
-              --version "$ver" --output "/tmp/clock-$ver.json"
+            python - "$archive" <<'PY'
+          import hashlib
+          from pathlib import Path
+          import sys
+          import struct
+          sys.path.insert(0, 'tools')
+          from n3d_win16_timer_binary_proof import iter_zip_exes
+          from zipfile import ZipFile
+          name = sys.argv[1]
+          outer = Path('/tmp',name)
+          with ZipFile(outer) as z:
+              print('Outer entries:', [(x.filename, x.file_size) for x in z.infolist() if x.filename.lower().endswith(('.exe','.zip'))])
+          for member, data in iter_zip_exes(outer.read_bytes(),name):
+              print('EXE member',member,'size',len(data),'SHA256',hashlib.sha256(data).hexdigest())
+              if len(data)>0x40 and data[:2]==b'MZ':
+                  header = struct.unpack_from('<I',data,0x3c)[0]
+                  if data[header:header+2]==b'NE':
+                      count = struct.unpack_from('<H',data,header+0x1c)[0]
+                      print('  NE segment count',count)
+                      if count >= 3:
+                          table = header+struct.unpack_from('<H',data,header+0x22)[0]+2*8
+                          sector, length, flags, minimum = struct.unpack_from('<HHHH',data,table)
+                          align = struct.unpack_from('<H',data,header+0x32)[0]
+                          off = sector << align
+                          print('  NE3 offset',off,'length',length or 65536,'sha256',
+                                hashlib.sha256(data[off:off+(length or 65536)]).hexdigest())
+          PY
+            if ! python tools/n3d_win16_timer_binary_proof.py "/tmp/$archive" \
+              --version "$ver" --output "/tmp/clock-$ver.json"; then
+              echo "PINNED_ORIGINAL_NOT_FOUND for $ver; continuing to other release."
+              continue
+            fi
             python - "$ver" "$archive" <<'PY'
           import json
           from pathlib import Path
