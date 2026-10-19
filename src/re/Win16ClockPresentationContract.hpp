@@ -7,8 +7,55 @@ namespace n3d::re::win16::presentation {
 // Bounded static contract, NOT a complete Windows 3.11/WinG emulator.
 // Sources: Win16 1.0, 1.8 and 1.10 Ghidra C exports; see
 // docs/WIN16_CLOCK_PRESENTATION_STATIC_AUDIT_20261019.md.
-enum class Build : std::uint8_t { Win10, Win18, Win110 };
+enum class Build : std::uint8_t { Win10, Win13, Win16, Win18, Win110 };
 enum class ClockBackend : std::uint8_t { GetTickCount, TimeGetTime };
+
+// Win16 NE logical addresses, recovered by cross-build static decompilation
+// and pinned import-relocation evidence. These are not DOS real-mode CS values.
+constexpr std::uint16_t clockBackendFlagOffset(Build build) noexcept {
+    switch (build) {
+        case Build::Win10:
+        case Build::Win13: return 0x45F2;
+        case Build::Win16: return 0x46A2;
+        case Build::Win18:
+        case Build::Win110: return 0x46B2;
+    }
+    return 0;
+}
+
+constexpr std::uint16_t timerInitializeEntry(Build build) noexcept {
+    switch (build) {
+        case Build::Win10: return 0xD43E;
+        case Build::Win13: return 0xD44A;
+        case Build::Win16:
+        case Build::Win18: return 0xD5BE;
+        case Build::Win110: return 0xD66C;
+    }
+    return 0;
+}
+
+constexpr std::uint16_t timerReadEntry(Build build) noexcept {
+    switch (build) {
+        case Build::Win10: return 0xD498;
+        case Build::Win13: return 0xD4A4;
+        case Build::Win16:
+        case Build::Win18: return 0xD618;
+        case Build::Win110: return 0xD6C6;
+    }
+    return 0;
+}
+
+constexpr std::uint16_t calibrationEntry(Build build) noexcept {
+    switch (build) {
+        case Build::Win10: return 0xD5A2;
+        case Build::Win13: return 0xD5AE;
+        case Build::Win16:
+        case Build::Win18: return 0xD722;
+        case Build::Win110: return 0xD7D0;
+    }
+    return 0;
+}
+
 
 constexpr bool multimediaCapabilitiesSucceeded(std::uint16_t mmResult) noexcept {
     return mmResult == 0; // TIMERR_NOERROR, not timeBeginPeriod success
