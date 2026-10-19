@@ -1,5 +1,6 @@
 #pragma once
 
+#include "game/GuardConstants.hpp"
 #include "game/DifficultySystem.hpp"
 
 #include <algorithm>
@@ -75,7 +76,6 @@ inline constexpr std::uint8_t kHamersteinClass = 0x16;
 inline constexpr std::uint8_t kCannonClass = 0x19;
 inline constexpr std::uint8_t kGhostClass = 0x1A;
 
-inline constexpr std::uint8_t kFreshGuardStrength = 0xFF;
 inline constexpr std::uint8_t kPainState = 0x15;
 inline constexpr std::uint8_t kPainResultOctant = 8;
 

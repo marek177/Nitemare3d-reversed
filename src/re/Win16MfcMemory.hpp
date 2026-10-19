@@ -35,6 +35,9 @@ struct MfcMap16 {
 };
 static_assert(sizeof(MfcMap16) == 0x10);
 
+// Win16 MFC uses 2-byte aggregate alignment. Without this, modern
+// 32/64-bit host ABIs can add trailing padding and break the recovered layout.
+#pragma pack(push, 2)
 struct HandleMap16 {
     MfcMap16 permanent;
     MfcMap16 temporary;
@@ -42,7 +45,13 @@ struct HandleMap16 {
     std::uint16_t handleFieldOffset;
     std::uint16_t handleCount;
 };
+#pragma pack(pop)
 static_assert(sizeof(HandleMap16) == 0x26);
+static_assert(offsetof(HandleMap16, permanent) == 0x00);
+static_assert(offsetof(HandleMap16, temporary) == 0x10);
+static_assert(offsetof(HandleMap16, tempRuntimeClassOffset) == 0x20);
+static_assert(offsetof(HandleMap16, handleFieldOffset) == 0x22);
+static_assert(offsetof(HandleMap16, handleCount) == 0x24);
 
 inline constexpr std::uint16_t kCWndHandleMapRoot = 0x4250;
 inline constexpr std::uint16_t kCDcHandleMapRoot = 0x44F2;

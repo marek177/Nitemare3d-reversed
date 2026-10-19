@@ -1,0 +1,16 @@
+area,evidence,status
+demo_rng_11,DOS1.2 original runtime DF90722B->1649B442 result5705 GUARD41 planner,ORIGINAL_RUNTIME_SCOPED
+demo_rng_12,DOS1.2 original runtime 1649B442->6DF109FD result28145 timer0->9 state05->06,ORIGINAL_RUNTIME_SCOPED
+demo_rng_15,DOS1.2 original runtime C1BBB05F->A6E9C9A6 result9961 and GUARD41 HP111->0 damage165,ORIGINAL_RUNTIME_SCOPED
+demo_rng_16,DOS1.2 original runtime A6E9C9A6->81EB59D1 result491 and rejection backedge,ORIGINAL_RUNTIME_SCOPED
+demo_rng_17,entry observed with pre-state81EB59D1 but post-state/result not executed,OPEN_POST_STATE
+dos20_trace,3775835 instructions 289190 VRAM events 7315 VGA snapshots 12 main updates,ORIGINAL_RUNTIME_SCOPED
+dos20_vram_writers,289190 checked VRAM events with zero local address/color mismatches,ORIGINAL_RUNTIME_SCOPED
+projectile_lifecycle,DOS2 controlled original runtime free->flying->impact->free ammo64->63,ORIGINAL_RUNTIME_CONTROLLED
+e2m10_reentry,repeated outer-scheduler backedge and low16-product timing rule,ORIGINAL_STATIC_CLOSED_SCOPED
+e2m10_aba,natural stale-slot resurrection or ABA overwrite,OPEN_RUNTIME
+win110_palette,conditional 236-entry copy with 10+10 system reserve else256,ORIGINAL_STATIC_CLOSED_SCOPED
+win16_runtime,five builds attempted but no Nitemare game window observed,OPEN_RUNTIME
+linux_portability,HandleMap packing shared guard constant and order-independent audit test fixed,CLEANROOM_BUILD_FIX
+sdl3_smoke,SDL3 headless clean-room executable rendered 12 synthetic frames and exited0,CLEANROOM_SMOKE_ONLY
+framebuffer_zero_diff,canonical original-vs-port indexed framebuffer and palette equality,OPEN

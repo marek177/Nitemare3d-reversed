@@ -1,5 +1,7 @@
 #pragma once
 
+#include "game/GuardConstants.hpp"
+
 #include <array>
 #include <cstddef>
 #include <cstdint>
@@ -10,7 +12,6 @@ inline constexpr std::size_t kGuardCapacity = 100;
 inline constexpr std::size_t kGuardRecordSize = 0x1A;
 inline constexpr std::size_t kGuardSaveOffset = 0xB43B;
 inline constexpr std::size_t kGuardSaveSize = 0x0A28;
-inline constexpr std::uint8_t kFreshGuardStrength = 0xFF;
 
 // Clean-room runtime layout recovered from NITE3W.EXE V1.10.
 // Names below are promoted only where direct executable evidence exists.

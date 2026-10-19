@@ -14,10 +14,14 @@ int main() {
     assert(countByEvidence(Evidence::VerifiedData) >= 1);
     assert(countByEvidence(Evidence::Partial) >= 8);
     assert(kUnknownSystemTargets[0].anchor[0] != '\0');
-    assert(kUnknownSystemTargets[kUnknownSystemTargets.size() - 3].area == AuditArea::SaveState);
-    assert(kUnknownSystemTargets[kUnknownSystemTargets.size() - 3].evidence == Evidence::Partial);
-    assert(kUnknownSystemTargets[kUnknownSystemTargets.size() - 2].area == AuditArea::FunctionCoverage);
-    assert(kUnknownSystemTargets[kUnknownSystemTargets.size() - 2].evidence == Evidence::Partial);
-    assert(kUnknownSystemTargets.back().area == AuditArea::MfcRuntimeValidation);
-    assert(kUnknownSystemTargets.back().evidence == Evidence::Partial);
+    // Area membership should not depend on insertion order in the audit registry.
+    constexpr auto hasAreaWithEvidence = [](AuditArea area, Evidence evidence) {
+        for (const auto& item : kUnknownSystemTargets)
+            if (item.area == area && item.evidence == evidence)
+                return true;
+        return false;
+    };
+    static_assert(hasAreaWithEvidence(AuditArea::SaveState, Evidence::Partial));
+    static_assert(hasAreaWithEvidence(AuditArea::FunctionCoverage, Evidence::Partial));
+    static_assert(hasAreaWithEvidence(AuditArea::MfcRuntimeValidation, Evidence::Partial));
 }

@@ -84,6 +84,16 @@ on:
       - "docs/V048_EVIDENCE_FACTS.csv"
       - "src/re/N3DV048DemoBootstrap.hpp"
       - "tests/v048_demo_bootstrap_test.cpp"
+      - "docs/V049_REMAX_OCT19_RUNTIME_BUILD_SYNC.md"
+      - "docs/V049_EVIDENCE_FACTS.csv"
+      - "docs/LINUX_BUILD_VALIDATION_2026-10-19.md"
+      - "src/re/N3DV049Oct19Evidence.hpp"
+      - "tests/v049_oct19_evidence_test.cpp"
+      - "src/re/Win16MfcMemory.hpp"
+      - "src/game/GuardConstants.hpp"
+      - "src/game/CombatSystem.hpp"
+      - "src/game/GuardSystem.hpp"
+      - "tests/unknown_systems_audit_test.cpp"
       - "src/re/N3DV029SchedulerEvidence.hpp"
       - "tests/v029_scheduler_evidence_test.cpp"
       - "src/re/N3DV022VersionEvidenceRegistry.hpp"
@@ -356,3 +366,7 @@ jobs:
         run: cmake --build build --config Release --target n3d_v048_demo_bootstrap_test
       - name: v0.48 DEMO bootstrap model
         run: ctest --test-dir build -C Release -R "^n3d_v048_demo_bootstrap_test$" --output-on-failure
+      - name: Build v0.49 evidence and portability tests
+        run: cmake --build build --config Release --target n3d_v049_oct19_evidence_test n3d_unknown_systems_audit_test n3d_win16_mfc_memory_test
+      - name: v0.49 evidence and portability tests
+        run: ctest --test-dir build -C Release -R "^(n3d_v049_oct19_evidence_test|n3d_unknown_systems_audit_test|n3d_win16_mfc_memory_test)$" --output-on-failure
