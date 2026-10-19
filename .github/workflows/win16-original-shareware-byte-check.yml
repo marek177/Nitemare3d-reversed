@@ -37,6 +37,38 @@ jobs:
           if actual != expected:
               raise SystemExit('Public historical download checksum mismatch')
           PY
+      - name: Inspect archive member identities without executing binaries
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from hashlib import sha256
+          from zipfile import ZipFile
+          import struct
+          with ZipFile('/tmp/nite3w18-shareware.zip') as z:
+              for item in z.infolist():
+                  if not item.filename.lower().endswith('.exe') or item.file_size > 8_388_608:
+                      continue
+                  data = z.read(item)
+                  print('member:', item.filename, 'bytes:', len(data),
+                        'sha256:', sha256(data).hexdigest())
+                  if len(data) < 0x100 or data[:2] != b'MZ':
+                      print('  not MZ')
+                      continue
+                  ne = struct.unpack_from('<I', data, 0x3c)[0]
+                  if data[ne:ne+2] != b'NE':
+                      print('  MZ but no NE header')
+                      continue
+                  shift = struct.unpack_from('<H',data,ne+0x32)[0]
+                  segtab = ne+struct.unpack_from('<H',data,ne+0x22)[0]
+                  scnt = struct.unpack_from('<H',data,ne+0x1c)[0]
+                  if scnt < 3: continue
+                  sector,length,flags,minalloc = struct.unpack_from('<HHHH',data,segtab+2*8)
+                  off=sector<<shift
+                  size=length or 65536
+                  print('  NE segment3:',off,size,
+                        'sha256:',sha256(data[off:off+size]).hexdigest())
+          PY
       - name: Verify SHA-pinned original Win16 v1.8 NE and decode timer
         shell: bash
         run: |
