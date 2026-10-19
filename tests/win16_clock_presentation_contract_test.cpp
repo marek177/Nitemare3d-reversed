@@ -133,6 +133,22 @@ static_assert(performsCalibrationAfterAltEnter(Build::Win16, 1, 1, 1));
 static_assert(!performsCalibrationAfterAltEnter(Build::Win13, 1, 1, 2));
 static_assert(!performsCalibrationAfterAltEnter(Build::Win16, 0, 1, 3));
 
+// SHA-pinned Win16 v1.8 original-instruction proof, distinct from inferred
+// decompiler semantics for the remaining Windows releases.
+static_assert(timerCleanupArgumentEvidence(Build::Win18) ==
+              TimerCleanupArgumentEvidence::StackLocalBpMinus2NotInitialized);
+static_assert(timerCleanupArgumentEvidence(Build::Win10) ==
+              TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked);
+static_assert(timerCleanupArgumentEvidence(Build::Win13) ==
+              TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked);
+static_assert(timerCleanupArgumentEvidence(Build::Win16) ==
+              TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked);
+static_assert(timerCleanupArgumentEvidence(Build::Win110) ==
+              TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked);
+static_assert(kWin18TimerInitCaller == 0x0EE8);
+static_assert(kWin18TimerEndCaller == 0x0F24);
+static_assert(kWin18TimerEndImportedCall == 0xD610);
+
 int main() {
     for (std::uint16_t w = 319; w <= 321; ++w) {
         for (std::uint16_t h = 199; h <= 201; ++h) {
