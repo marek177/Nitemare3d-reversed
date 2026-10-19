@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.57
+# Nitemare3D-Reversed — reconstruction v0.58
+
+**v0.58 / 2026-10-19 GUARD41 state09 closure:** a bounded original DOS1.2 trace now executes GUARD41 state09 all the way to the common dispatcher epilogue. The path performs `09→0A`, consumes RNG #19 `AEA69ED3→12DBCE4A` (result 4827), and takes the measured WALL-property branch to the epilogue. Static DOS1.2/DOS2 dispatcher tables both map states 0x0A/0x0B to their common epilogues. Later scheduler/pool cleanup and natural DOS2 equivalence remain OPEN. See [v0.58 report](docs/V058_REMAX_GUARD41_STATE09.md).
 
 **v0.57 / 2026-10-19 DOS2 DEMO RNG chain:** two independent original DOS2 trace sessions reproduce the exact same first eight shared-wrapper RNG entries; one longer original run extends the scoped ledger through entry 18. The longer sequence exposes real retry bursts at `A047×6` and `9FE3×3`. Entries 9–18 are not yet independently replicated, and the complete DEMO/CRT/Win16 RNG ledger remains OPEN. See [v0.57 report](docs/V057_REMAX_DEMO_RNG_CHAIN.md).
 
