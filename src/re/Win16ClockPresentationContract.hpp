@@ -65,6 +65,46 @@ constexpr int windowSizeSelectorFromMenuCommand(
     }
 }
 
+// Original Win16 keyboard path interprets the high bit as key release:
+// VK_MENU=0x12 writes ALT into modifier bit 0; VK_RETURN=0x0D key-down
+// with ALT held requests an alternate presentation mode.
+// This is a local static input contract, not proof of OS accelerator delivery.
+struct AltEnterKeyTransition {
+    bool altHeld;
+    int requestedModeSelector; // -1 means no display-mode request
+};
+
+constexpr AltEnterKeyTransition altEnterKeyTransition(
+    Build build, std::uint16_t virtualKey, std::uint16_t keyStateWord,
+    bool altHeld, bool fullscreenActive) noexcept {
+    const bool keyDown = (keyStateWord & 0x8000U) == 0U;
+    if (virtualKey == 0x12U) return {keyDown, -1};
+    if (virtualKey != 0x0DU || !keyDown || !altHeld)
+        return {altHeld, -1};
+    const int enterMode = (build == Build::Win110) ? 3 : 2;
+    return {altHeld, fullscreenActive ? enterMode + 1 : enterMode};
+}
+
+// Callsite/callee split is important. In v1.0 the caller invokes calibration
+// only with game screen=1, game state=1 and scheduler mode=0.
+// In v1.8 and v1.10 the keyboard caller always invokes the routine after
+// Alt+Enter, but the routine itself accepts scheduler modes 0, 1, or 3.
+constexpr bool invokesCalibrationAfterAltEnter(
+    Build build, std::uint16_t screenState,
+    std::uint16_t gameState, std::uint16_t schedulerMode) noexcept {
+    if (build != Build::Win10) return true;
+    return screenState == 1U && gameState == 1U && schedulerMode == 0U;
+}
+
+constexpr bool performsCalibrationAfterAltEnter(
+    Build build, std::uint16_t screenState,
+    std::uint16_t gameState, std::uint16_t schedulerMode) noexcept {
+    if (screenState != 1U || gameState != 1U) return false;
+    if (build == Build::Win10) return schedulerMode == 0U;
+    return schedulerMode == 0U || schedulerMode == 1U ||
+           schedulerMode == 3U;
+}
+
 enum class WinGBlit : std::uint8_t { BitBlt, StretchBlt };
 
 constexpr WinGBlit windowBlitForSize(
