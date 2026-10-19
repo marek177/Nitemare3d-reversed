@@ -1,0 +1,61 @@
+name: Win16 original shareware byte check
+
+on:
+  push:
+    paths:
+      - '.github/workflows/win16-original-shareware-byte-check.yml'
+      - 'tools/n3d_win16_timer_binary_proof.py'
+      - 'tools/ne_renderer_audit.py'
+  workflow_dispatch:
+
+jobs:
+  win16-v18-original-static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install static disassembler
+        run: python -m pip install capstone==5.0.9
+      - name: Fetch PUBLIC Win16 v1.8 shareware ZIP, verify distribution checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 2 --connect-timeout 20 --max-time 90 \
+            'https://www.classicdosgames.com/files/games/gray/nite3w18.zip' \
+            -o /tmp/nite3w18-shareware.zip
+          python - <<'PY'
+          from pathlib import Path
+          from hashlib import md5
+          p = Path('/tmp/nite3w18-shareware.zip')
+          expected = '2caa732f42e5b8a9ac2930008bec724e'
+          actual = md5(p.read_bytes()).hexdigest()
+          print('Archive-size:', p.stat().st_size)
+          print('Distribution-MD5:', actual)
+          if actual != expected:
+              raise SystemExit('Public historical download checksum mismatch')
+          PY
+      - name: Verify SHA-pinned original Win16 v1.8 NE and decode timer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/n3d_win16_timer_binary_proof.py \
+            /tmp/nite3w18-shareware.zip --version 1.8 \
+            --output /tmp/win16_v18_timer_evidence.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r = json.loads(Path('/tmp/win16_v18_timer_evidence.json').read_text())
+          print('Original build:',r['build'])
+          print('Original SHA256:',r['source_sha256'])
+          print('NE timer entry:',r['timer_init'])
+          print('Import fixups validated:',sum(x['verified'] for x in r['verified_import_anchors']))
+          print('CALLSITE with preceding assembly around timeEndPeriod:')
+          for row in r['cleanup_call_context']:
+              print(row['address'], row['bytes'], row['mnemonic'], row['operands'], row['relocations'])
+          print('E8 candidates:',r['candidate_near_E8_xrefs_to_timer_init'])
+          print('NE fixup internal refs:',r['fixup_backed_internal_references_to_timer_init'])
+          print('Note: source EXE or ZIP are never committed or uploaded as artifacts.')
+          PY
