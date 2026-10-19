@@ -111,7 +111,24 @@ jobs:
           print('CALLSITE with preceding assembly around timeEndPeriod:')
           for row in r['cleanup_call_context']:
               print(row['address'], row['bytes'], row['mnemonic'], row['operands'], row['relocations'])
+          print('FULL original timer initialization / read-time ASM:')
+          for row in r['timer_function_disassembly']:
+              print('TIMER',row['address'],row['bytes'],row['mnemonic'],row['operands'],row['relocations'])
           print('E8 candidates:',r['candidate_near_E8_xrefs_to_timer_init'])
           print('NE fixup internal refs:',r['fixup_backed_internal_references_to_timer_init'])
+          import sys
+          import tempfile
+          sys.path.insert(0, 'tools')
+          from n3d_win16_timer_binary_proof import find_pinned_original, disassemble_region
+          from ne_renderer_audit import NeImage
+          _, binary, profile = find_pinned_original(Path('/tmp/nite3w18-shareware.zip'), '1.8')
+          with tempfile.TemporaryDirectory() as tmp:
+              exe = Path(tmp) / 'verified-original.exe'
+              exe.write_bytes(binary)
+              image = NeImage(exe)
+              for begin,end in ((0x0EDA,0x0EF5),(0x0F16,0x0F35)):
+                  print('Original NE3 caller window:',hex(begin),hex(end))
+                  for row in disassemble_region(image, 3, begin, end):
+                      print('CALLER',row['address'],row['bytes'],row['mnemonic'],row['operands'],row['relocations'])
           print('Note: source EXE or ZIP are never committed or uploaded as artifacts.')
           PY
