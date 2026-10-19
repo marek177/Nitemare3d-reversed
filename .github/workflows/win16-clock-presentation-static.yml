@@ -1,0 +1,29 @@
+name: Win16 clock and presentation static contract
+
+on:
+  push:
+    paths:
+      - 'src/re/Win16ClockPresentationContract.hpp'
+      - 'tests/win16_clock_presentation_contract_test.cpp'
+      - 'docs/WIN16_CLOCK_PRESENTATION_STATIC_AUDIT_20261019.md'
+      - 'CMakeLists.txt'
+      - '.github/workflows/win16-clock-presentation-static.yml'
+  pull_request:
+    paths:
+      - 'src/re/Win16ClockPresentationContract.hpp'
+      - 'tests/win16_clock_presentation_contract_test.cpp'
+      - 'docs/WIN16_CLOCK_PRESENTATION_STATIC_AUDIT_20261019.md'
+      - 'CMakeLists.txt'
+      - '.github/workflows/win16-clock-presentation-static.yml'
+
+jobs:
+  synthetic-win16-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and run bounded Win16 static contract
+        run: |
+          g++ -std=c++20 -Wall -Wextra -Wpedantic -Werror -Isrc \
+            tests/win16_clock_presentation_contract_test.cpp \
+            -o /tmp/win16_clock_presentation_contract_test
+          /tmp/win16_clock_presentation_contract_test
