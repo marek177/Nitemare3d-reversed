@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.63 DOS2 DEMO RNG35
+
+Four original DOS2 sessions reproduce the first eight shared RNG draws, three reproduce the first eighteen, and two reproduce the first thirty-five. The depth-instrumented route stays at scheduler depth1 for all 35 draws. Full DEMO EOF chronology remains open.
+
 ## 2026-10-19 v0.59 Win16 SAVE→LOAD runtime
 
 The [v0.59 report](docs/V059_REMAX_WIN16_SAVE_LOAD.md) adds an original Win16 v1.10 E1M1 persistence witness: movement, save, fresh Windows/game restart, load, and restoration of the moved fireplace view. The save is 55,015 bytes and changes 477 bytes after movement. Exact semantic field offsets, RNG/cache rebinding and first-post-load CPU ordering remain OPEN.
