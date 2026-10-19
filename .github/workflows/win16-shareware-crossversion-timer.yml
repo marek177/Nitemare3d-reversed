@@ -66,6 +66,23 @@ jobs:
                           print('  NE3 offset',off,'length',length or 65536,'sha256',
                                 hashlib.sha256(data[off:off+(length or 65536)]).hexdigest())
           PY
+            python - "$archive" "$ver" <<'PY'
+          from zipfile import ZipFile
+          from pathlib import Path
+          import sys
+          archive, version = sys.argv[1:]
+          with ZipFile(Path('/tmp',archive)) as z:
+              members = [n for n in z.namelist() if n.lower().endswith('.exe')]
+              if not members: raise SystemExit('No SFX EXE member in outer ZIP')
+              sfx = z.read(members[0])
+          out = Path('/tmp','outer-sfx-'+version+'.exe')
+          out.write_bytes(sfx)
+          print('SFX member',members[0],'stored at',out)
+          PY
+            if command -v 7z >/dev/null 2>&1; then
+              echo "7z listing of original SFX $ver:"
+              7z l "/tmp/outer-sfx-$ver.exe" | head -55 || true
+            fi
             if ! python tools/n3d_win16_timer_binary_proof.py "/tmp/$archive" \
               --version "$ver" --output "/tmp/clock-$ver.json"; then
               echo "PINNED_ORIGINAL_NOT_FOUND for $ver; continuing to other release."
