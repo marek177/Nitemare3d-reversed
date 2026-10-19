@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.50 GUARD41 death outcome
+
+The [v0.50 report](docs/V050_REMAX_GUARD41_DEATH_OUTCOME.md) closes a bounded natural DOS1.2 death-handler path for GUARD41. The original runtime executes RNG #16→#18 in one trace, rejects two candidates, accepts the third, writes HP `111→0`, score `0→100`, updates local state/timer fields and clears the linked map marker `A5→00`. RNG #17 is therefore no longer prediction-only. Later animation completion, drop/cleanup and cross-build death parity remain OPEN.
+
 ## 2026-10-19 v0.49 runtime / cross-build / buildability sync
 
 The [v0.49 report](docs/V049_REMAX_OCT19_RUNTIME_BUILD_SYNC.md) adds the strongest post-v0.48 evidence. DOS1.2 DEMO.1 advances through RNG #16 with GUARD planner/state writes, a measured GUARD41 HP `111→0` death-producing damage branch, and an animation retry backedge; RNG #17 entry is observed but its post-state remains unexecuted. A separate DOS2 Advanced History E1M1 capture records 3.77M instructions and 289k VRAM events, with 12 measured main-update passes and zero local address/color mismatches in the checked writer stream. Controlled DOS2 runtime closes one projectile `0→1→2→0` lifecycle. E2M10 now has a statically proven repeated outer-scheduler loop, while natural stale-slot resurrection/ABA remains OPEN. Cross-build analysis identifies the Win16 v1.10 conditional 236-entry managed-palette path. The clean-room tree also receives Linux portability fixes for Win16 structure packing, shared GUARD strength and order-independent audit testing. **Framebuffer zero-diff, full DEMO RNG chronology, SAVE/LOAD first frame, natural E2M10 ABA and working Win16 game runtime remain OPEN.**
