@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.52
+# Nitemare3D-Reversed — reconstruction v0.53
+
+**v0.53 / 2026-10-19 HUD reindex + weapon class36 static closure:** corrects the DOS1.9→2.0 HUD dispatcher mapping: DOS2 inserts a new damage-related action at ID4 and shifts the old IDs4–8 to IDs5–9. The local `DS:417A=3` damage signal yields the static HUD action sequence `4→4→4→3`; exact final pixels remain OPEN. Separately, Win16 v1.10 MAP high IDs `0x25..0x28` are now tied to weapon pickup class `0x36`, variants 0..3, ownership bits `1/2/4/8`, and 50-unit ammo initialization, with variants 0 and 3 sharing the same plasma/laser ammo store. DOS pickup-algorithm equivalence is not assumed. See [v0.53 report](docs/V053_REMAX_HUD_WEAPON_CLASS36.md).
 
 **v0.52 / 2026-10-19 DOS2 random-event timer closure:** adds a complete local original-runtime RNG consumer from the DOS v2.0 timed/random-effects substep. The measured branch performs phase `1→0`, RNG state `1→0x0029E2C0`, returns `41`, and stores countdown `201 = 160 + (41 % 240)`. An independent longer trace repeats the same transition and records countdown `201→200→199` while the global tick advances `85→88`. In the measured top-level order this RNG consumer belongs to the `0x039E` random-effects substep after the `0x037D` actor traversal. The writer that initialized state 1 in this normal E1M1 path and the global RNG order remain OPEN. See [v0.52 report](docs/V052_REMAX_DOS20_RNG_TIMER.md).
 

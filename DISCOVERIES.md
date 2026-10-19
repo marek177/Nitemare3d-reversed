@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.53 HUD reindex and weapon class36
+
+The [v0.53 report](docs/V053_REMAX_HUD_WEAPON_CLASS36.md) corrects the DOS HUD dispatcher history: v2.0 inserts a new action4 and shifts the old v1.9 actions4–8 to5–9. The local damage signal `DS:417A=3` yields `4→4→4→3` in the static HUD branch. Win16 v1.10 also closes MAP high IDs25–28 as class36 weapon pickup variants with ownership bits1/2/4/8 and 50-unit ammo initialization. Exact DOS pickup equivalence and final HUD pixels remain OPEN.
+
 ## 2026-10-19 v0.52 DOS2 random-event timer
 
 The [v0.52 report](docs/V052_REMAX_DOS20_RNG_TIMER.md) closes one original DOS2 random-event timer branch end-to-end: phase `1→0`, RNG `1→0029E2C0`, return 41, countdown `FFFF→201`. A separate 805,890-instruction trace confirms the same draw and later decrements `201→200→199`. The caller is located in the measured top-level `039E` timed/random-effects substep, after the actor-list traversal in that direct order. Seed initialization and the complete multi-subsystem RNG ledger remain OPEN.
