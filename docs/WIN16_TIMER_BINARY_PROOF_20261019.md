@@ -235,3 +235,24 @@ Required final step: inspect exact SHA-256-pinned 230,400-byte NITE3W.EXE
 Win16 1.10 at NE3:D6BB..D6BE and record all NE internal fixups to
 NE3:D66C. Only then close the timeEndPeriod stack operand and full
 timer initialization caller graph.
+
+
+### Independent Ghidra C-body equivalence check (18 -> 110)
+
+The two archived original decompilations were read directly:
+NITE3W-18.EXE.c, FUN_1010_d5be; and
+nite3w110.exe(20260927-130639).c, FUN_1010_d66c.
+
+After renaming only the function and its unrelated constant string
+symbol, and normalizing whitespace, the two recovered C function bodies
+matched exactly (424 characters in the normalized representation).
+This is a complete *decompiler-body textual* equality observation,
+not an original code-byte equality proof. It corroborates the identical
+branch predicates for initial timeGetDevCaps, assignment to DS:46B2,
+the period clamp and conditional timeEndPeriod.
+
+CRITICAL LIMIT: both C decompilations print TIMEENDPERIOD() with
+an omitted stack argument. Exact textual equality is therefore NOT
+proof of v1.10 reading [BP-2]. Only the original v1.10 binary can close
+the raw cleanup-argument obligation. This clarification intentionally
+retains Win110::OriginalBytesNotYetChecked in the C++ contract.
