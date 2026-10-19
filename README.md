@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.59
+# Nitemare3D-Reversed — reconstruction v0.60
+
+**v0.60 / 2026-10-19 indirect/depth static evidence:** integrates the archived DOS1.9 census of 77 linear-decode candidates, 23 jump tables and the bounded DS:4550 viewport-depth formula. Adds full source reports and a portable DOS2 ledger validator to support existing v0.57/v0.58 findings. Recursive CFG, alias provenance and natural stale-depth hits remain OPEN. See [static report](docs/V060_REMAX_INDIRECT_DEPTH_REFERENCE.md), [DEMO source appendix](docs/DEMO_DOS20_LEDGER_SOURCE_APPENDIX.md) and [GUARD source appendix](docs/GUARD41_STATE09_SOURCE_APPENDIX.md).
 
 **v0.59 / 2026-10-19 Win16 SAVE→LOAD runtime:** original Win16 v1.10 now has a real E1M1 persistence witness in the repaired Windows 3.11/WinG lab. After movement, the game writes a 55,015-byte USER.SAV; after a fresh Windows/game restart, loading the first slot restores the moved fireplace view. The moved save differs from the start-position save in 477 bytes, while the restored-vs-saved ROI is 98.37% pixel-identical. Exact field offsets, RNG/cache rebinding and the first post-load CPU frame remain OPEN. See [v0.59 report](docs/V059_REMAX_WIN16_SAVE_LOAD.md).
 
