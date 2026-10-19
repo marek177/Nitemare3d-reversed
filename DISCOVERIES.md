@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.52 DOS2 random-event timer
+
+The [v0.52 report](docs/V052_REMAX_DOS20_RNG_TIMER.md) closes one original DOS2 random-event timer branch end-to-end: phase `1→0`, RNG `1→0029E2C0`, return 41, countdown `FFFF→201`. A separate 805,890-instruction trace confirms the same draw and later decrements `201→200→199`. The caller is located in the measured top-level `039E` timed/random-effects substep, after the actor-list traversal in that direct order. Seed initialization and the complete multi-subsystem RNG ledger remain OPEN.
+
 ## 2026-10-19 v0.51 Win16 WinG runtime closure
 
 The [v0.51 report](docs/V051_REMAX_WIN16_WING_RUNTIME.md) removes the previous Win16 startup blocker. After completing the WinG 1.0 runtime in the isolated Windows 3.11 laboratory, original Nitemare builds 1.0/1.3/1.6/1.8/1.10 all reach a rendered E1M1 scene. V1.10 additionally required bypassing a stale local WING.DLL so the updated system WinG could load. This is startup/render reachability only; input/tick/RNG/framebuffer/audio parity remains OPEN.

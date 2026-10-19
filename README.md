@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.51
+# Nitemare3D-Reversed — reconstruction v0.52
+
+**v0.52 / 2026-10-19 DOS2 random-event timer closure:** adds a complete local original-runtime RNG consumer from the DOS v2.0 timed/random-effects substep. The measured branch performs phase `1→0`, RNG state `1→0x0029E2C0`, returns `41`, and stores countdown `201 = 160 + (41 % 240)`. An independent longer trace repeats the same transition and records countdown `201→200→199` while the global tick advances `85→88`. In the measured top-level order this RNG consumer belongs to the `0x039E` random-effects substep after the `0x037D` actor traversal. The writer that initialized state 1 in this normal E1M1 path and the global RNG order remain OPEN. See [v0.52 report](docs/V052_REMAX_DOS20_RNG_TIMER.md).
 
 **v0.51 / 2026-10-19 Win16 WinG runtime closure:** the Windows 3.11 laboratory now reaches a rendered E1M1 scene in **all 5/5 Win16 builds** (1.0, 1.3, 1.6, 1.8, 1.10) after completing the WinG 1.0 runtime from the user-provided Microsoft package. V1.10 also required removing a local old `WING.DLL` conflict in the laboratory copy; no Nitemare executable or game data were patched. Win16 runtime is therefore no longer blocked at application startup, but gameplay-input timing, RNG, framebuffer/palette zero-diff, animation and audio parity remain OPEN. See [v0.51 report](docs/V051_REMAX_WIN16_WING_RUNTIME.md).
 
