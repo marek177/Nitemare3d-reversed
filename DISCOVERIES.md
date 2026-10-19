@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.54 cross-build map/palette delta
+
+The [v0.54 report](docs/V054_REMAX_CROSSBUILD_MAP_PALETTE.md) records 124 selected DOS/Win MAP high-byte differences across all 31 levels and controlled E1M1 A/B evidence that each of the four local `0x25..0x28` markers visibly changes the DOS scene. It also records the +48-byte DOS1.9→2.0 loaded-code-band growth and the Win16 v1.10 conditional palette rule (236 managed colors with 10+10 reserved, otherwise 256). These are version adapters and evidence anchors, not an overall behavior percentage.
+
 ## 2026-10-19 v0.53 HUD reindex and weapon class36
 
 The [v0.53 report](docs/V053_REMAX_HUD_WEAPON_CLASS36.md) corrects the DOS HUD dispatcher history: v2.0 inserts a new action4 and shifts the old v1.9 actions4–8 to5–9. The local damage signal `DS:417A=3` yields `4→4→4→3` in the static HUD branch. Win16 v1.10 also closes MAP high IDs25–28 as class36 weapon pickup variants with ownership bits1/2/4/8 and 50-unit ammo initialization. Exact DOS pickup equivalence and final HUD pixels remain OPEN.

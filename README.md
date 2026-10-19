@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.53
+# Nitemare3D-Reversed — reconstruction v0.54
+
+**v0.54 / 2026-10-19 cross-build map/palette delta:** consolidates the 31-level DOS/Win high-byte marker census and controlled E1M1 A/B tests. The audited data contains four selected `0x25..0x28` high-byte positions per level (124 total), concentrated near the player start; clearing each one individually in DOS2 produces a visible E1M1 scene difference while repeated baseline-vs-baseline remains identical. The same update records the DOS1.9→2.0 main-band growth and the Win16 v1.10 palette rule that conditionally reserves 10+10 system entries and copies 236 middle colors instead of all 256. Exact resource identity and full cross-build pixel parity remain OPEN. See [v0.54 report](docs/V054_REMAX_CROSSBUILD_MAP_PALETTE.md).
 
 **v0.53 / 2026-10-19 HUD reindex + weapon class36 static closure:** corrects the DOS1.9→2.0 HUD dispatcher mapping: DOS2 inserts a new damage-related action at ID4 and shifts the old IDs4–8 to IDs5–9. The local `DS:417A=3` damage signal yields the static HUD action sequence `4→4→4→3`; exact final pixels remain OPEN. Separately, Win16 v1.10 MAP high IDs `0x25..0x28` are now tied to weapon pickup class `0x36`, variants 0..3, ownership bits `1/2/4/8`, and 50-unit ammo initialization, with variants 0 and 3 sharing the same plasma/laser ammo store. DOS pickup-algorithm equivalence is not assumed. See [v0.53 report](docs/V053_REMAX_HUD_WEAPON_CLASS36.md).
 
