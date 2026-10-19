@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.55 DEMO seed/EOF static narrowing
+
+The [v0.55 report](docs/V055_REMAX_DEMO_SEED_EOF_STATIC.md) distinguishes the seed=1 helper from actual RNG consumption and pins the local DOS DEMO reader order. The complete DOS DEMO.1 payload has 275 records, first `48E0/0002/8` and last `74E0/0090/1074`; four adjacent record pairs share a counter. The local caller does not immediately test the read count after the next-record read, which narrows but does not close EOF/error behavior. Older multi-gigabyte traces that did not capture the seed interval are not treated as negative RNG evidence.
+
 ## 2026-10-19 v0.54 cross-build map/palette delta
 
 The [v0.54 report](docs/V054_REMAX_CROSSBUILD_MAP_PALETTE.md) records 124 selected DOS/Win MAP high-byte differences across all 31 levels and controlled E1M1 A/B evidence that each of the four local `0x25..0x28` markers visibly changes the DOS scene. It also records the +48-byte DOS1.9→2.0 loaded-code-band growth and the Win16 v1.10 conditional palette rule (236 managed colors with 10+10 reserved, otherwise 256). These are version adapters and evidence anchors, not an overall behavior percentage.

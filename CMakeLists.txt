@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.54.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.55.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -258,6 +258,9 @@ target_link_libraries(n3d_v053_hud_weapon_crossbuild_test PRIVATE n3d_core)
 
 add_executable(n3d_v054_crossbuild_map_palette_test tests/v054_crossbuild_map_palette_test.cpp)
 target_link_libraries(n3d_v054_crossbuild_map_palette_test PRIVATE n3d_core)
+
+add_executable(n3d_v055_demo_seed_eof_test tests/v055_demo_seed_eof_test.cpp)
+target_link_libraries(n3d_v055_demo_seed_eof_test PRIVATE n3d_core)
 
 include(cmake/RegressionTests.cmake)
 

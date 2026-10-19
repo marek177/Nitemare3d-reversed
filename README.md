@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.54
+# Nitemare3D-Reversed — reconstruction v0.55
+
+**v0.55 / 2026-10-19 DEMO seed/EOF static narrowing:** separates the DOS seed helper from real RNG consumption, pins the local seed-reset and DEMO reader opcodes, and records the complete DOS DEMO.1 payload endpoints (275 records; first `48E0/0002/8`, last `74E0/0090/1074`). The reader applies the current record before reading the next, while the local caller near `6E07` does not immediately test the read-count return value. This narrows EOF behavior but does not close CRT short-read/error semantics or the final demo transition. Large older captures that missed the seed-reset interval are explicitly rejected as chronology evidence. See [v0.55 report](docs/V055_REMAX_DEMO_SEED_EOF_STATIC.md).
 
 **v0.54 / 2026-10-19 cross-build map/palette delta:** consolidates the 31-level DOS/Win high-byte marker census and controlled E1M1 A/B tests. The audited data contains four selected `0x25..0x28` high-byte positions per level (124 total), concentrated near the player start; clearing each one individually in DOS2 produces a visible E1M1 scene difference while repeated baseline-vs-baseline remains identical. The same update records the DOS1.9→2.0 main-band growth and the Win16 v1.10 palette rule that conditionally reserves 10+10 system entries and copies 236 middle colors instead of all 256. Exact resource identity and full cross-build pixel parity remain OPEN. See [v0.54 report](docs/V054_REMAX_CROSSBUILD_MAP_PALETTE.md).
 
