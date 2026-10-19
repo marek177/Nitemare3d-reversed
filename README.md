@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.56
+# Nitemare3D-Reversed — reconstruction v0.57
+
+**v0.57 / 2026-10-19 DOS2 DEMO RNG chain:** two independent original DOS2 trace sessions reproduce the exact same first eight shared-wrapper RNG entries; one longer original run extends the scoped ledger through entry 18. The longer sequence exposes real retry bursts at `A047×6` and `9FE3×3`. Entries 9–18 are not yet independently replicated, and the complete DEMO/CRT/Win16 RNG ledger remains OPEN. See [v0.57 report](docs/V057_REMAX_DEMO_RNG_CHAIN.md).
 
 **v0.56 / 2026-10-19 recent-days frontier consolidation:** freezes the current evidence boundary after integrating the newly available 19-Oct runtime/static/build findings. The recent chain now covers GUARD41 death through score/map cleanup, Win16 WinG startup to E1M1 in 5/5 builds, the DOS2 random-event timer RNG branch, one controlled projectile `0→1→2→0` lifecycle, E2M10 repeated-scheduler narrowing, DOS HUD reindex/class36 weapon pickups, cross-build MAP marker A/B effects, the Win16 managed-palette delta, and DEMO seed/reader/last-record static narrowing. **Full DEMO RNG/EOF, natural E2M10 ABA, SAVE/LOAD first frame, framebuffer+palette zero-diff, Win16 gameplay timing, exact audio, and strict original-vs-port acceptance remain OPEN.** See [v0.56 frontier](docs/V056_REMAX_FRONTIER_CONSOLIDATION.md).
 

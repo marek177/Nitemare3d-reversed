@@ -117,6 +117,10 @@ on:
       - "docs/V056_EVIDENCE_FACTS.csv"
       - "src/re/N3DV056FrontierStatus.hpp"
       - "tests/v056_frontier_status_test.cpp"
+      - "docs/V057_REMAX_DEMO_RNG_CHAIN.md"
+      - "docs/V057_EVIDENCE_FACTS.csv"
+      - "src/re/N3DV057DemoRngChain.hpp"
+      - "tests/v057_demo_rng_chain_test.cpp"
       - "src/re/Win16MfcMemory.hpp"
       - "src/game/GuardConstants.hpp"
       - "src/game/CombatSystem.hpp"
@@ -426,3 +430,7 @@ jobs:
         run: cmake --build build --config Release --target n3d_v056_frontier_status_test
       - name: v0.56 frontier guardrail
         run: ctest --test-dir build -C Release -R "^n3d_v056_frontier_status_test$" --output-on-failure
+      - name: Build v0.57 DEMO RNG chain model
+        run: cmake --build build --config Release --target n3d_v057_demo_rng_chain_test
+      - name: v0.57 DEMO RNG chain model
+        run: ctest --test-dir build -C Release -R "^n3d_v057_demo_rng_chain_test$" --output-on-failure

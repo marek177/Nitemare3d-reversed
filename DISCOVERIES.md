@@ -4,6 +4,10 @@ Base consolidated: 2026-09-23; evidence-scoped addendum: 2026-10-17
 
 This is the short-form master status for the reverse-engineering project. The canonical cross-thread report is [`docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md`](docs/ALL_THREADS_CONSOLIDATION_2026-09-22.md); subsystem documents contain the instruction-level evidence.
 
+## 2026-10-19 v0.57 DOS2 DEMO RNG chain
+
+The [v0.57 report](docs/V057_REMAX_DEMO_RNG_CHAIN.md) closes D02-A: two independent original DOS2 sessions reproduce the same first eight shared-wrapper RNG entries exactly. A longer original run records entries 1–18 and demonstrates live retry bursts at A047 and 9FE3. Entries 9–18 still need independent replication; this is not the complete DEMO RNG ledger.
+
 ## 2026-10-19 v0.56 recent-days frontier consolidation
 
 The [v0.56 frontier](docs/V056_REMAX_FRONTIER_CONSOLIDATION.md) is a guardrail checkpoint after integrating the currently available recent evidence. It records which recent closures are original-runtime, controlled-runtime or static, and keeps the unresolved global acceptance items explicit. No new global parity percentage is inferred from the number of releases or tests.

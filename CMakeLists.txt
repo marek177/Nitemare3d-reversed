@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.56.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.57.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -264,6 +264,9 @@ target_link_libraries(n3d_v055_demo_seed_eof_test PRIVATE n3d_core)
 
 add_executable(n3d_v056_frontier_status_test tests/v056_frontier_status_test.cpp)
 target_link_libraries(n3d_v056_frontier_status_test PRIVATE n3d_core)
+
+add_executable(n3d_v057_demo_rng_chain_test tests/v057_demo_rng_chain_test.cpp)
+target_link_libraries(n3d_v057_demo_rng_chain_test PRIVATE n3d_core)
 
 # Win16 static branch model: synthetic tests only, no original binaries needed.
 add_executable(n3d_win16_clock_presentation_contract_test
