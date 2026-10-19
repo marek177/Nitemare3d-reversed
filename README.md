@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.58
+# Nitemare3D-Reversed — reconstruction v0.59
+
+**v0.59 / 2026-10-19 Win16 SAVE→LOAD runtime:** original Win16 v1.10 now has a real E1M1 persistence witness in the repaired Windows 3.11/WinG lab. After movement, the game writes a 55,015-byte USER.SAV; after a fresh Windows/game restart, loading the first slot restores the moved fireplace view. The moved save differs from the start-position save in 477 bytes, while the restored-vs-saved ROI is 98.37% pixel-identical. Exact field offsets, RNG/cache rebinding and the first post-load CPU frame remain OPEN. See [v0.59 report](docs/V059_REMAX_WIN16_SAVE_LOAD.md).
 
 **v0.58 / 2026-10-19 GUARD41 state09 closure:** a bounded original DOS1.2 trace now executes GUARD41 state09 all the way to the common dispatcher epilogue. The path performs `09→0A`, consumes RNG #19 `AEA69ED3→12DBCE4A` (result 4827), and takes the measured WALL-property branch to the epilogue. Static DOS1.2/DOS2 dispatcher tables both map states 0x0A/0x0B to their common epilogues. Later scheduler/pool cleanup and natural DOS2 equivalence remain OPEN. See [v0.58 report](docs/V058_REMAX_GUARD41_STATE09.md).
 

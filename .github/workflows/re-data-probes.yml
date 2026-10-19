@@ -125,6 +125,10 @@ on:
       - "docs/V058_EVIDENCE_FACTS.csv"
       - "src/re/N3DV058GuardState09.hpp"
       - "tests/v058_guard_state09_test.cpp"
+      - "docs/V059_REMAX_WIN16_SAVE_LOAD.md"
+      - "docs/V059_EVIDENCE_FACTS.csv"
+      - "src/re/N3DV059Win16SaveLoad.hpp"
+      - "tests/v059_win16_save_load_test.cpp"
       - "src/re/Win16MfcMemory.hpp"
       - "src/game/GuardConstants.hpp"
       - "src/game/CombatSystem.hpp"
@@ -442,3 +446,7 @@ jobs:
         run: cmake --build build --config Release --target n3d_v058_guard_state09_test
       - name: v0.58 GUARD state09 model
         run: ctest --test-dir build -C Release -R "^n3d_v058_guard_state09_test$" --output-on-failure
+      - name: Build v0.59 Win16 save/load witness model
+        run: cmake --build build --config Release --target n3d_v059_win16_save_load_test
+      - name: v0.59 Win16 save/load witness model
+        run: ctest --test-dir build -C Release -R "^n3d_v059_win16_save_load_test$" --output-on-failure
