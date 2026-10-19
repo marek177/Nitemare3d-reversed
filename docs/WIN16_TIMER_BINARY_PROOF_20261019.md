@@ -152,3 +152,28 @@ src/re/Win16ClockPresentationContract.hpp and the synthetic C++ regression
 now carry the five-build flag/entry/mode matrix. All five rows have direct
 decompiler evidence, but precise multimedia-timer cleanup argument and
 overall original-runtime parity remain separate OPEN obligations.
+
+## Win16 v1.8 original-byte correction (19 October, later pass)
+
+**This explicitly supersedes older generic statements above that
+`timeEndPeriod` had an unknown argument in every release.**
+
+For the **SHA-256-matched original Windows v1.8 only**, the argument is now
+instruction-exactly recovered: `3:D60D PUSH WORD PTR [BP-2]`, immediately
+before `3:D610 CALL FAR MMSYSTEM.606`. In the same fresh `ENTER 6,0`
+frame, the function never initializes `[BP-2]`; `timeGetDevCaps`
+receives its four-byte output buffer at `[BP-6]`, outside the
+cleanup operand. The argument comes from residual local stack memory.
+
+Original NECALL callers `3:0EE8` with `PUSH 0` and `3:0F24`
+with `PUSH 1` are proven by raw `9A` opcodes, exact target offsets
+and internal NE fixups. The Ghidra-export absence of the init call
+was an incomplete recovered-C callgraph, not a real missing caller.
+
+Proof: [Original Win16 v1.8 CI byte check](https://github.com/marek177/Nitemare3d-reversed/actions/runs/39316588090);
+[full evidence and limitations](WIN16_V18_TIMER_ORIGINAL_STACK_PROOF_20261019.md).
+
+The **Win16 v1.10 `3:D6BE` operand** is still not byte-verified and
+continues to be OPEN. The same applies to version-specific original
+byte claims for the 1.0/1.3/1.6 release timer cleanup paths and full
+indirect FAR callgraph. No binary or gameplay parity percentage is raised.
