@@ -177,3 +177,61 @@ The **Win16 v1.10 `3:D6BE` operand** is still not byte-verified and
 continues to be OPEN. The same applies to version-specific original
 byte claims for the 1.0/1.3/1.6 release timer cleanup paths and full
 indirect FAR callgraph. No binary or gameplay parity percentage is raised.
+
+
+## 19 October 2026: delta audit Win16 1.8 -> 1.10
+
+**Evidence level: byte-prefix and NE import relocation evidence. This is
+not complete Win16 1.10 timer-body byte equality.**
+
+New reproducible tool: tools/n3d_win16_timer_crossversion_verify.py.
+It reads the committed original-byte anchors, NE relocation callsite
+register and NE segment layout CSV, and checks exactly:
+
+| Import | Win16 1.8 | Win16 1.10 | Relative offset |
+|---|---|---|---|
+| MMSYSTEM.604 timeGetDevCaps | 3:D5D7 | 3:D685 | +0xAE |
+| MMSYSTEM.605 timeBeginPeriod | 3:D5FD | 3:D6AB | +0xAE |
+| MMSYSTEM.606 timeEndPeriod | 3:D610 | 3:D6BE | +0xAE |
+| MMSYSTEM.607 timeGetTime | 3:D61F | 3:D6CD | +0xAE |
+| USER.13 GetTickCount | 3:D626 | 3:D6D4 | +0xAE |
+
+The recorded first 16 bytes also match for each of read_time,
+slow_clock, frame_clock and calibrate at corresponding +0xAE addresses.
+This is precisely 64 bytes of PREFIX equality, not a SHA match for
+full functions. The complete NE3 segment digests are distinct.
+
+Win16 1.8 original instructions establish its cleanup argument as
+PUSH WORD PTR [BP-2]. They do NOT by themselves prove Win16 1.10's
+3:D6BE argument. The v1.10 whole-function stack and caller proof
+obligation stays OPEN, as does V058-10 (all aliased/indirect FAR callers).
+
+Regression: tests/test_n3d_win16_timer_crossversion.py has five synthetic
+and committed-evidence tests, including rejection on a mutated instruction
+prefix or imported-callsite offset.
+[CI success](https://github.com/marek177/Nitemare3d-reversed/actions/runs/39319135738).
+
+### Independent archived-installation-package search
+
+A public, historical Windows 3.x download at
+https://archive.org/download/win3_Nite3d3x/win3_Nite3d3x.zip
+was fetched and inventoried without executing original binaries.
+Outer ZIP: 2,346,509 bytes, SHA-256
+4d8d66d6fce0564d00e407f921957c87c6a45a5671e810450a783cb0f9ff3246.
+Top-level members:
+- DIRINFO, 149 bytes;
+- INSTALL.EXE, 1,208,320 bytes;
+- INSTALL.W02, 1,062,651 bytes;
+- WINGDLL.rar, 106,577 bytes.
+
+The directly discoverable NE file is an installer, INSTALL.EXE,
+SHA-256 cf92833c2606e4734737a1582fd57f307004cda9a60e5104773ef4bd9682b239.
+It is NOT any one of the five pinned Nitemare game EXEs.
+This is a scoped negative finding: proprietary installer payloads
+were not unpacked, so a hidden packaged game binary is not excluded.
+[Public-archive CI inventory](https://github.com/marek177/Nitemare3d-reversed/actions/runs/39319326388).
+
+Required final step: inspect exact SHA-256-pinned 230,400-byte NITE3W.EXE
+Win16 1.10 at NE3:D6BB..D6BE and record all NE internal fixups to
+NE3:D66C. Only then close the timeEndPeriod stack operand and full
+timer initialization caller graph.
