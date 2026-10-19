@@ -101,3 +101,59 @@ not prove render/timing parity.
 
 For overall proof tracking, V058-10 (Win16 indirect FAR/fixup-backed
 callgraph) stays OPEN. No claimed 100% behavior or pixel correctness.
+
+
+## Further static pass: Alt+Enter key path (three-version delta)
+
+Read the original Win16 decompilations from the archived Ghidra exports:
+- 1.0 `NITE3W -10.EXE.c`, `FUN_1010_8ACA` (near `3:8ACA`);
+- 1.8 `NITE3W-18.EXE.c`, `FUN_1010_8C2E` (near `3:8C2E`);
+- 1.10 `nite3w110.exe(20260927-130639).c`, `FUN_1010_8CD2`
+  (near `3:8CD2`).
+
+All three implement a local key interpretation:
+- Key-event `param2 & 0x8000` nonzero denotes a release; only the
+  opposite branch handles `Enter` mode toggles.
+- `VK_MENU` `0x12` sets/clears bit 0 of the ALT/modifier byte.
+- A key-down `VK_RETURN` `0x0D` with that bit set selects the
+  fullscreen action when currently windowed, and restores the window
+  when fullscreen; the resulting mode-selector numbers are
+  `2/3` (1.0/1.8) versus `3/4` (1.10).
+- After the selector call the keyboard route considers render
+  calibration. This should not be confused with a separate native
+  MFC DOS Mode menu command or proof of keyboard event delivery.
+
+**Important moved gate (instruction-path equivalent, bounded scope):**
+
+| Release | keyboard caller | calibrator | eligible state tuple |
+|---|---|---|---|
+| 1.0 | guarded call `D5A2` | unguarded local body | screen=1, game=1, scheduler mode=0 |
+| 1.8 | unconditional call `D722` | guarded body | screen=1, game=1, scheduler mode in {0,1,3} |
+| 1.10 | unconditional call `D7D0` | guarded body | screen=1, game=1, scheduler mode in {0,1,3} |
+
+For 1.0 the caller reads `DS:45F6 / DS:45F4 / DS:45F8`.
+For 1.8 and 1.10 the callee reads `DS:46B6 / DS:46B4 /
+DS:46B8`. The callee gate moves and broadens across releases.
+**Scheduler mode 3 is not the same field as presentation selector 3.**
+The 1.10 `FUN_1010_D7D0` eligible branch executes a preparatory
+render followed by five `D7C0` render/HUD/presentation calls
+before recomputing frame calibration values. This is not five AI steps.
+
+The new `altEnterKeyTransition`, `invokesCalibrationAfterAltEnter`,
+and `performsCalibrationAfterAltEnter` functions in the standalone
+Win16 contract reproduce only this bounded decision logic. Synthetic
+tests pin known key-down/release, ALT-state, mode-selector, and mode-gate
+cases. Key-repeat dispatch, re-entrancy, display driver behavior and
+actual clock ticks remain outside the test.
+
+**Do not infer** the 1.10 multimedia timer is never initialized merely
+because the Ghidra export only contains a named direct `D66C(1)`
+reference: the nearby MFC menu dispatchers also have short handlers
+missing from the recovered C function body catalog, while a separate
+raw-binary message-map audit recovers those handlers. This is a concrete
+reason to keep V058-10 (fixup/indirect callgraph completion) OPEN.
+
+The `timeEndPeriod` argument remains unresolved. In the Ghidra C
+exports it appears as `TIMEENDPERIOD()` without a trustworthy
+argument list even though the Win16 ABI expects a WORD. No original
+raw-byte stack walk was completed in this pass.
