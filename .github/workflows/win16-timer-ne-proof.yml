@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - 'tools/n3d_win16_timer_binary_proof.py'
+      - 'tools/n3d_win16_timer_crossversion_verify.py'
+      - 'tests/test_n3d_win16_timer_crossversion.py'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win16_NE3_anchors.csv'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win16_reloc_anchored_import_CALLs.csv'
       - 'tools/ne_renderer_audit.py'
       - 'tests/test_n3d_win16_timer_binary_proof.py'
       - 'docs/WIN16_TIMER_BINARY_PROOF_20261019.md'
@@ -11,6 +15,10 @@ on:
   pull_request:
     paths:
       - 'tools/n3d_win16_timer_binary_proof.py'
+      - 'tools/n3d_win16_timer_crossversion_verify.py'
+      - 'tests/test_n3d_win16_timer_crossversion.py'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win16_NE3_anchors.csv'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win16_reloc_anchored_import_CALLs.csv'
       - 'tools/ne_renderer_audit.py'
       - 'tests/test_n3d_win16_timer_binary_proof.py'
       - 'docs/WIN16_TIMER_BINARY_PROOF_20261019.md'
@@ -30,8 +38,14 @@ jobs:
         run: |
           python -m py_compile tools/ne_renderer_audit.py
           python -m py_compile tools/n3d_win16_timer_binary_proof.py
+          python -m py_compile tools/n3d_win16_timer_crossversion_verify.py
+          python -m py_compile tests/test_n3d_win16_timer_crossversion.py
           python -m py_compile tests/test_n3d_win16_timer_binary_proof.py
       - name: Verify synthetic NE parser/ordinal relocations
         run: python -m unittest discover -s tests -p 'test_n3d_win16_timer_binary_proof.py' -v
+      - name: Verify exact 1.8 to 1.10 timer-anchor mapping and proof limits
+        run: |
+          python tools/n3d_win16_timer_crossversion_verify.py --output /tmp/n3d-win16-timer-crossversion.json
+          python -m unittest discover -s tests -p 'test_n3d_win16_timer_crossversion.py' -v
       - name: Verify CLI has no original binary dependency
         run: python tools/n3d_win16_timer_binary_proof.py --help
