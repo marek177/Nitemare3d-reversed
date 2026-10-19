@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.61
+# Nitemare3D-Reversed — reconstruction v0.62
+
+**v0.62 / 2026-10-19 DOS2 palette fade:** original runtime covers all 21 palette uploads and the exact per-component fade rule. Final reconstructed palette hash matches the emulator; timing and framebuffer zero-diff remain open. See docs/V062_REMAX_DOS20_PALETTE_FADE.md.
 
 **v0.61 / 2026-10-19 IMG preview and runtime evidence:** integrates IMG wall/pushable textures, nonvisual-marker visibility, provisional paired-face sampling and compatibility with the user-supplied palette container. Adds bounded renderer/world-update source reports. Exact vector/span rendering and whole-game parity remain OPEN. See [implementation and validation](docs/V061_REMAX_IMG_PREVIEW_AND_RUNTIME_AUDIT.md).
 
