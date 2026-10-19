@@ -108,6 +108,11 @@ jobs:
           print('Original SHA256:',r['source_sha256'])
           print('NE timer entry:',r['timer_init'])
           print('Import fixups validated:',sum(x['verified'] for x in r['verified_import_anchors']))
+          proof = r['win18_timer_stack_proof']
+          assert proof is not None
+          print('Verified original Win16 v1.8 initializer:', proof['init_far_call'])
+          print('Verified original Win16 v1.8 cleanup:', proof['cleanup_far_call'])
+          print('Cleanup argument:', proof['time_end_period_argument'])
           print('CALLSITE with preceding assembly around timeEndPeriod:')
           for row in r['cleanup_call_context']:
               print(row['address'], row['bytes'], row['mnemonic'], row['operands'], row['relocations'])
