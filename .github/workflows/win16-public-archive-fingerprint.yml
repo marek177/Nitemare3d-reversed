@@ -1,0 +1,79 @@
+name: Win16 public archive fingerprint audit (no runtime)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/win16-public-archive-fingerprint.yml'
+      - 'tools/n3d_win16_timer_binary_proof.py'
+  workflow_dispatch:
+
+jobs:
+  fingerprint-public-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install static disassembler
+        run: python -m pip install capstone==5.0.9
+      - name: Fetch independently published Win3.x Nitemare archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://archive.org/download/win3_Nite3d3x/win3_Nite3d3x.zip'
+          if ! curl --fail --location --retry 1 --connect-timeout 15 \
+                  --max-time 120 "$URL" -o /tmp/win3_Nite3d3x.zip; then
+            echo 'ARCHIVE_DOWNLOAD_UNAVAILABLE; this is NOT a failed original-byte assertion'
+            exit 0
+          fi
+          stat -c 'PUBLIC_ARCHIVE_SIZE=%s' /tmp/win3_Nite3d3x.zip
+          sha256sum /tmp/win3_Nite3d3x.zip
+      - name: Inspect archive without executing original EXEs
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test ! -s /tmp/win3_Nite3d3x.zip; then
+            echo 'NO_ARCHIVE_AVAILABLE; no Win16 v1.10 proof'
+            exit 0
+          fi
+          python - <<'PY'
+          import hashlib, sys, zipfile, struct
+          from pathlib import Path
+          sys.path.insert(0,"tools")
+          from n3d_win16_timer_binary_proof import iter_zip_exes, HASH_TO_PROFILE, find_pinned_original
+          from ne_renderer_audit import NeImage
+          from n3d_win16_timer_binary_proof import inspect
+          src=Path("/tmp/win3_Nite3d3x.zip")
+          print("ARCHIVE_SHA256",hashlib.sha256(src.read_bytes()).hexdigest())
+          with zipfile.ZipFile(src) as z:
+              print("TOP_LEVEL_MEMBERS",[(i.filename,i.file_size) for i in z.infolist()][:80])
+          candidates=list(iter_zip_exes(src.read_bytes(),"InternetArchive:win3_Nite3d3x.zip"))
+          print("EXE_CANDIDATE_COUNT",len(candidates))
+          found=False
+          for name,data in candidates:
+              sha=hashlib.sha256(data).hexdigest()
+              profile=HASH_TO_PROFILE.get(sha)
+              ne_sig="non-NE"
+              if len(data)>0x40 and data[:2]==b'MZ':
+                  off=struct.unpack_from('<I',data,0x3c)[0]
+                  if 0 <= off < len(data)-2 and data[off:off+2]==b'NE':
+                      ne_sig="NE"
+              print("MEMBER",name,"size",len(data),"sha",sha,"format",ne_sig,
+                    "PINNED_BUILD",profile.version if profile else "none")
+              if profile:
+                  import tempfile
+                  with tempfile.TemporaryDirectory() as tmp:
+                      f=Path(tmp,"candidate.exe")
+                      f.write_bytes(data)
+                      details=inspect(NeImage(f),profile)
+                      print("EXACT_PINNED_WIN16",profile.version,
+                            "ALL_FIVE_IMPORTS",
+                            all(c["verified"] for c in details["verified_import_anchors"]))
+                      print("CALL_XREFS",details["fixup_backed_internal_references_to_timer_init"])
+                      print("ENDPERIOD_CALL_CONTEXT",details["cleanup_call_context"])
+                      found=True
+          if not found:
+              print("NO_MATCHING_SHA_PINNED_WIN16_EXE: no 1.10 byte proof from this public item")
+          PY
