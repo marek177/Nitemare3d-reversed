@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.60
+# Nitemare3D-Reversed — reconstruction v0.61
+
+**v0.61 / 2026-10-19 IMG preview and runtime evidence:** integrates IMG wall/pushable textures, nonvisual-marker visibility, provisional paired-face sampling and compatibility with the user-supplied palette container. Adds bounded renderer/world-update source reports. Exact vector/span rendering and whole-game parity remain OPEN. See [implementation and validation](docs/V061_REMAX_IMG_PREVIEW_AND_RUNTIME_AUDIT.md).
 
 **v0.60 / 2026-10-19 indirect/depth static evidence:** integrates the archived DOS1.9 census of 77 linear-decode candidates, 23 jump tables and the bounded DS:4550 viewport-depth formula. Adds full source reports and a portable DOS2 ledger validator to support existing v0.57/v0.58 findings. Recursive CFG, alias provenance and natural stale-depth hits remain OPEN. See [static report](docs/V060_REMAX_INDIRECT_DEPTH_REFERENCE.md), [DEMO source appendix](docs/DEMO_DOS20_LEDGER_SOURCE_APPENDIX.md) and [GUARD source appendix](docs/GUARD41_STATE09_SOURCE_APPENDIX.md).
 

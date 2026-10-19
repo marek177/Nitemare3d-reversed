@@ -45,6 +45,8 @@ public:
     PlayerState& player() { return player_; }
     const std::vector<PushableObject>& pushables() const { return pushables_; }
     bool wallAllowsMovement(std::uint8_t wallId) const;
+    // Preview-ray visibility, intentionally independent of player collision.
+    bool wallObscuresView(std::uint8_t wallId) const;
     bool objectBlocksMovement(std::uint8_t objectId) const;
     bool cellAllowsPlayer(int x, int y) const;
     bool cellAllowsPushTarget(int x, int y) const;

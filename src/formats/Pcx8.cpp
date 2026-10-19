@@ -12,7 +12,20 @@ Pcx8Image Pcx8::load(const std::filesystem::path& path) {
 }
 
 std::array<Rgb8, 256> Pcx8::extractPalette(const std::filesystem::path& path) {
-    return decode(io::readFile(path)).palette;
+    const auto bytes = io::readFile(path);
+    // User-supplied 1924-byte palette container (reported as a Windows-derived
+    // GAME.PAL in the DOS dataset). This is not an original DOS format claim.
+    if (bytes.size() == 1924 && bytes[0] == 0x3A && bytes[1] == 0x3C &&
+        bytes[2] == 0x00 && bytes[3] == 0x1F) {
+        std::array<Rgb8, 256> palette{};
+        constexpr std::size_t start = 1924 - 768;
+        for (std::size_t i = 0; i < palette.size(); ++i) {
+            palette[i] = {bytes[start + i * 3], bytes[start + i * 3 + 1],
+                          bytes[start + i * 3 + 2]};
+        }
+        return palette;
+    }
+    return decode(bytes).palette;
 }
 
 Pcx8Image Pcx8::decode(const std::vector<std::uint8_t>& bytesVec) {

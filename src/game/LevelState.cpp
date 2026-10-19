@@ -85,6 +85,20 @@ bool LevelState::wallAllowsMovement(std::uint8_t wallId) const {
     return cls == "FLOOR" || cls == "ACTIONSPOT" || classStartsWith(cls, "TRIGGER");
 }
 
+// The map uses the wall byte as both geometry and nonvisual AI/gameplay
+// metadata. Every RETREAT/TURN/FLEE/SAFESPOT record has imageName="NULL"
+// in all three supplied WALLS.* definition tables. A grid-ray must traverse
+// these markers rather than paint a fallback-color wall in front of the scene.
+// Movement/collision is deliberately unchanged pending original runtime proof.
+bool LevelState::wallObscuresView(std::uint8_t wallId) const {
+    if (wallAllowsMovement(wallId)) return false;
+    const auto* def = wallDefs_.find(wallId);
+    if (!def) return true; // Keep unknown IDs visibly diagnostic.
+    const auto& cls = def->className;
+    return cls != "TURN" && cls != "RETREAT" && cls != "FLEE" &&
+           cls != "SAFESPOT";
+}
+
 bool LevelState::objectBlocksMovement(std::uint8_t objectId) const {
     if (objectId == 0) return false;
     const auto* def = objectDefs_.find(objectId);

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.60.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.61.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -278,6 +278,12 @@ target_link_libraries(n3d_v059_win16_save_load_test PRIVATE n3d_core)
 add_executable(n3d_win16_clock_presentation_contract_test
     tests/win16_clock_presentation_contract_test.cpp)
 target_link_libraries(n3d_win16_clock_presentation_contract_test PRIVATE n3d_core)
+
+# Preview renderer regressions; these do not establish original pixel parity.
+foreach(preview_test img_texture_sampler wall_marker_visibility wall_pair_texture game_palette)
+  add_executable(n3d_${preview_test}_test tests/${preview_test}_test.cpp)
+  target_link_libraries(n3d_${preview_test}_test PRIVATE n3d_core)
+endforeach()
 
 include(cmake/RegressionTests.cmake)
 

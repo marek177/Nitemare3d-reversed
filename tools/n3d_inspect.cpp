@@ -78,7 +78,8 @@ int main(int argc, char** argv) {
         }
         inspectDat(root / "SND.DAT");
         inspectDat(root / "UIF.DAT");
-        inspectPcx(root / "GAME.PAL");
+        (void)n3d::Pcx8::extractPalette(root / "GAME.PAL");
+        std::cout << "GAME.PAL: palette loaded\n";
         inspectFli(root / "ENDING.FLI");
         return 0;
     } catch (const std::exception& e) {
