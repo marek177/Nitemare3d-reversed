@@ -57,6 +57,27 @@ constexpr std::uint16_t calibrationEntry(Build build) noexcept {
 }
 
 
+// Only Win16 v1.8 currently has a SHA-pinned original-byte closure of the
+// timeEndPeriod argument. Its caller pushes SS:[BP-2] from a fresh ENTER 6,0
+// frame; the routine does not write that local word. This is a historical
+// instruction fact, not an instruction to invoke host C++ undefined behavior.
+enum class TimerCleanupArgumentEvidence : std::uint8_t {
+    OriginalBytesNotYetChecked,
+    StackLocalBpMinus2NotInitialized
+};
+
+constexpr TimerCleanupArgumentEvidence timerCleanupArgumentEvidence(
+    Build build) noexcept {
+    return build == Build::Win18
+        ? TimerCleanupArgumentEvidence::StackLocalBpMinus2NotInitialized
+        : TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked;
+}
+
+// Two original relocation-backed immediate FAR callsites in Win16 v1.8.
+inline constexpr std::uint16_t kWin18TimerInitCaller = 0x0EE8;
+inline constexpr std::uint16_t kWin18TimerEndCaller = 0x0F24;
+inline constexpr std::uint16_t kWin18TimerEndImportedCall = 0xD610;
+
 constexpr bool multimediaCapabilitiesSucceeded(std::uint16_t mmResult) noexcept {
     return mmResult == 0; // TIMERR_NOERROR, not timeBeginPeriod success
 }
