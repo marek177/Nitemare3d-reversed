@@ -111,6 +111,22 @@ class TimerBinaryProofTests(unittest.TestCase):
         self.assertEqual(len(nested), 1)
         self.assertEqual(nested[0][1], self.data)
 
+    def test_nested_zip_self_extracting_exe_wrapper(self):
+        inner = io.BytesIO()
+        with zipfile.ZipFile(inner, "w") as archive:
+            archive.writestr("install/NITE3W.EXE", self.data)
+        # No executable is run. The bytes model an MZ stub with a ZIP central
+        # directory appended, as in historical Win16 ZIP-SFX installers.
+        wrapper = b"MZ" + (b"\\0" * 128) + inner.getvalue()
+        outer = io.BytesIO()
+        with zipfile.ZipFile(outer, "w") as archive:
+            archive.writestr("N3WUNR.EXE", wrapper)
+        entries = list(iter_zip_exes(outer.getvalue(), "bundle.zip"))
+        self.assertEqual(len(entries), 2)
+        self.assertEqual(entries[0][1], self.data)
+        self.assertTrue(entries[0][0].endswith("N3WUNR.EXE::install/NITE3W.EXE"))
+        self.assertEqual(entries[1][1], wrapper)
+
     def test_synthetic_report_without_bypassing_sha_guard(self):
         # inspect() is unit-tested with a fake profile on synthetic bytes.
         # Public CLI still requires a real sha-pinned original build.
