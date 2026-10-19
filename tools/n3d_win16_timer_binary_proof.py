@@ -77,7 +77,14 @@ def iter_zip_exes(data: bytes, description: str, depth: int = 0):
             name = entry.filename.replace("\\", "/")
             suffix = name.lower()
             if suffix.endswith(".exe") and entry.file_size <= MAX_EXE_BYTES:
-                yield description + "::" + name, archive.read(entry)
+                member = archive.read(entry)
+                # Win16 shareware distributions sometimes place NITE3W.EXE
+                # inside a ZIP self-extracting .EXE (N3WUNR.EXE).
+                # Parse its appended ZIP directory; never execute the wrapper.
+                if depth < 2 and zipfile.is_zipfile(io.BytesIO(member)):
+                    yield from iter_zip_exes(
+                        member, description + "::" + name, depth + 1)
+                yield description + "::" + name, member
             elif (suffix.endswith(".zip") and depth < 2 and
                   entry.file_size <= MAX_NESTED_ZIP_BYTES):
                 nested = archive.read(entry)
