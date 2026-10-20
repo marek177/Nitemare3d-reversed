@@ -12,9 +12,9 @@ permissions:
   contents: read
 
 jobs:
-  heavy-debug-object:
+  heavy-debug-full:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -64,6 +64,12 @@ jobs:
           cd upstream
           make -C src/debug n3d_trace.o V=1
           test -s src/debug/n3d_trace.o
+      - name: Link entire DOSBox-X executable
+        run: |
+          cd upstream
+          make -j2 V=0
+          find . -type f \( -name dosbox-x -o -name dosbox-x.exe \) -exec ls -lh {} \;
+          test -x src/dosbox-x
       - name: Evidence boundary
         run: |
-          echo "Compiled C++ object only. This is NOT proof of a working DOS gameplay capture."
+          echo "Full build attempted. This is NOT proof of a working DOS gameplay capture."
