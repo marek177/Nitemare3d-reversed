@@ -15,6 +15,7 @@ from n3d_win16_filename_alias_calls import (
     WIN110_SSCANF_FORMAT_DISPATCH, WIN110_SSCANF_BYTE_STORE,
     WIN110_SSCANF_WIDTH_GATE, WIN110_SSCANF_TERMINAL_NUL_STORE,
     win31_program_manager_launcher_excludes_timer_alias,
+    original_commandline_near_copy_request_bytes,
     clock_overwrite_possible_with_suffix,load_ledger,verify
 )
 
@@ -131,6 +132,32 @@ class Win16DirectFileNames(unittest.TestCase):
             win31_program_manager_launcher_excludes_timer_alias(129,8)
         with self.assertRaisesRegex(ValueError,"negative"):
             win31_program_manager_launcher_excludes_timer_alias(-1,8)
+
+    def test_full_original_commandline_input_provenance_reaches_tokenizer(self):
+        p=verify(self.rows)["original_win16_lpCmdLine_near_copy"]
+        self.assertEqual(p["mfc_lpCmdLine_argument_forwarded"],
+                         "3:0084 -> 3:0088")
+        self.assertEqual(p["application_parser_entry"],"3:1118")
+        self.assertEqual(p["near_copy_call"],"3:1136 -> 2:6C3C")
+        self.assertEqual(p["far_strlen_call"],"2:6C4C -> 2:7344")
+        self.assertEqual(p["near_heap_alloc"],"2:6C5A -> 2:5AB0 (LocalAlloc)")
+        self.assertEqual(p["far_to_near_copy"],"2:6C6D -> 2:735E")
+        self.assertEqual(p["first_tokenizer_call"],"3:1141 -> 2:6B06")
+        self.assertEqual(p["subsequent_token_cursor"],"DS:0A8E (written by 2:6B06)")
+        self.assertFalse(p["local_literal_128_length_guard"])
+
+    def test_original_near_allocation_uses_dynamic_source_length_not_128(self):
+        report=verify(self.rows)
+        self.assertTrue(report["original_commandline_copy_uses_dynamic_strlen_plus_one"])
+        self.assertFalse(report["game_locally_enforces_128_char_limit_in_command_copy"])
+        self.assertEqual(original_commandline_near_copy_request_bytes(0),1)
+        self.assertEqual(original_commandline_near_copy_request_bytes(128),129)
+        self.assertEqual(original_commandline_near_copy_request_bytes(4096),4097)
+        self.assertEqual(original_commandline_near_copy_request_bytes(65534),65535)
+        with self.assertRaisesRegex(ValueError,"overflowing"):
+            original_commandline_near_copy_request_bytes(65535)
+        with self.assertRaisesRegex(ValueError,"overflowing"):
+            original_commandline_near_copy_request_bytes(-1)
 
     def test_rejects_wrong_direct_literal(self):
         rows=copy.deepcopy(self.rows)
