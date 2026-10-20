@@ -4,6 +4,27 @@
 instruction listing + local contract tests. The original game was not
 executed; whole-program indirect FAR call reachability remains OPEN.
 
+## Updated global-state writer proof
+
+The archived Ghidra DGROUP data already held the missing predecessor:
+`DS:00A2 = 01h` and `DS:46B2 = 00h`. Normal startup enters
+`FUN_1010_0E9E` at 3:1129. That routine tests DS:00A2; on its
+first entry `3:0ECA` clears the one-shot latch and `3:0ED6`
+clears DS:46B2. Only later does `D66C(0)` set DS:46B2
+from `timeGetDevCaps` at 3:D691.
+
+The original Ghidra direct-XREF table contains exactly TWO direct writers
+to DS:46B2 (0ED6 and D691) and THREE readers (D6A3, D6B4,
+D6C6); DS:00A2 has only one direct reader and one direct writer.
+This is a direct-symbol census, NOT full alias-writer closure.
+See [clock flag writer census](WIN16_CLOCK_FLAG_WRITER_CENSUS_20261020.md).
+
+Consequently, in the *ordinary initial path under directly resolved
+writers*, an audio-init error before timer setup enters timer cleanup
+with DS:46B2 still zero and skips MMSYSTEM.606. If a hidden alias
+writer runs before failure, that conditional conclusion must be
+reconsidered. No original runtime behavior is claimed.
+
 ## Original call ordering
 
 Original disassembly in the user's archived
