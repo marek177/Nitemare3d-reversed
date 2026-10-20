@@ -60,3 +60,13 @@ GPLv2-or-later testovací fixture tests/fixtures/dosboxx/n3d_trace_v3.cpp je pri
 **Neoverené:** zostavenie celého DOSBox-X, chod N3DTrace_Instruction() pri nepozastavenej originálnej hre, úspešný headless gameplay trace, konečné CPU poradie death handlera a celková 1:1 parita. Pretrvávajúci problém príkazu RUN nemožno považovať za automaticky odstránený len z úspešnej testovanej aplikácie patchu. Ak heavy-debug callback nie je v normálnom behu volaný, tento overlay sám o sebe nestačí.
 
 Žiadne pôvodné komerčné EXE, súbory IMG/MAP/OBJECTS ani surové súkromné pamäťové dumpy nie sú súčasťou návrhu.
+
+
+## Výsledky následnej validácie 20. októbra
+
+1. **Upstream patch PASS:** pôvodný v3 patch aj nový deferred overlay sa dali aplikovať na čistý DOSBox-X tag dosbox-x-v2026.10.01 po normalizácii CRLF koncov riadkov v súboroch, ktorých sa patch dotýka. Overenie z GitHub Actions run 39445885853.
+2. **Regresie PASS:** 6/6 Python testov vrátane nezlučiteľného anchoru, dvojitej aplikácie a fail-closed testu ES:SI/opcode brán; GitHub Actions 39445128970.
+3. **C++ build PASS (jednotkový):** na čistom upstream po oboch patchoch prešlo Autotools configure s --enable-debug=heavy a skompiloval sa skutočný src/debug/n3d_trace.o pomocou G++ s C++14. GitHub Actions run 39446164331. Nie je to zostavený/spustený celý DOSBox-X executable.
+4. **Pôvodná DOS V2.0 DEMO smoke PASS:** pôvodný nepatchovaný N3D.EXE SHA256 a3fa02335e1d8bc531918f3bfaa66217aef65c81e562a2fdf1c749be652ca485 bol spustený na Linux Xvfb s používateľovým predchádzajúcim Advanced History v3 ELF SHA256 1967f583ccbe6a25a58318dc1ddba8fa48a7b697f6eb4b4c04158bbeaa258db3, cycles=fixed 3000. Klávesnicou bolo dosiahnuté Main Menu → Demo → vykreslená pôvodná 3D scéna s titulom Nitemare-3D Demo Mode. Samostatný dôkazový ZIP so snímkami a hashmi bol vytvorený v konverzácii.
+
+**Dôležitá hranica:** smoke run použil pôvodný v3 ELF, **nie** novozostavený ELF s deferred overlay. Ani smoke, ani objektová kompilácia neobsahujú originálnu novú CPU death stopu. Pri ďalšom kroku treba najprv skompilovať a spustiť celý nový emulator s v0.65 overlay, overiť, že callback je aktívny počas gameplay, a až potom pristúpiť k aktérskej trace akceptácii.
