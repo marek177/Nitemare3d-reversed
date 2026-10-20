@@ -69,10 +69,10 @@ def validate_archived_hidden_code(handler:bytes=None,
     prefix=bytes.fromhex(INSTALL_PREFIX_HEX)
     suffix=bytes.fromhex(INSTALL_SUFFIX_HEX)
     install = prefix + b"\x00" + suffix if install is None else install
-    if handler!=bytes.fromhex(HIDDEN_DEFAULT_HANDLER_HEX):
-        raise ValueError("Original callback byte sequence at 1000:076A differs")
     if len(handler)!=8 or len(install)!=23:
         raise ValueError("Hidden code-island length changed")
+    if handler!=bytes.fromhex(HIDDEN_DEFAULT_HANDLER_HEX):
+        raise ValueError("Original callback byte sequence at 1000:076A differs")
     if install[:len(prefix)]!=prefix or install[len(prefix)+1:]!=suffix:
         raise ValueError("Original known install thunk anchors at 1000:0772 differ")
     return {
