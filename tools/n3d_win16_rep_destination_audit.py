@@ -2,8 +2,9 @@
 """Bounded provenance review for archived Nitemare Win16 1.10 REP writes.
 
 All 83 records came from pre-existing original Ghidra textual disassembly.
-25 REP MOVSD/STOSD and 9 REP MOVSW/STOSW sites have original source
-destination/length traces; the remaining 49 need more pointer flow.
+25 REP MOVSD/STOSD, 9 older REP16 and 12 new portal/video REP sites
+have fixed bounds (46 total); 1 LocalAlloc STOSW has a verified dynamic
+round-up formula. The remaining 36 need further pointer/length proof.
 This file never claims complete Win16 x86 code coverage, runtime parity, or
 an independently re-hashed Win16 v1.10 original executable.
 """
@@ -54,7 +55,37 @@ KNOWN_FIXED_16={
     "1000:1294":(0x423E,18),
     "1000:2BE2":(0x423E,18),
 }
-KNOWN_BOUNDED_TOTAL=KNOWN_REP32+len(KNOWN_REP16_BOUNDED)
+# Five literal strings used by 3:C126:
+# each MOVSW/MOVSB pair copies a complete NUL-terminated literal;
+# upper byte limits are corroborated by adjacent pointers in original DGROUP.
+# C body local_104[256] (ENTER 0x102): combined result including final
+# terminator <=130+(20-1)+(22-1)+(20-1)+(22-1)=210.
+STATIC_PORTAL_TEXT_PAIR_BOUNDS={
+    "1010:C158":130,"1010:C15C":130,
+    "1010:C190":20,"1010:C194":20,
+    "1010:C1C8":22,"1010:C1CC":22,
+    "1010:C200":20,"1010:C204":20,
+    "1010:C238":22,"1010:C23C":22,
+}
+STATIC_PORTAL_TEXT_MAX_CONCATENATED=210
+STATIC_PORTAL_LOCAL_BUFFER_CAPACITY=256
+VIDEO_SEGMENT_REP_64000={"1010:3A73","1010:4719"}
+ROUNDED_LOCALALLOC_STOSW="1008:672D"
+KNOWN_SOURCE_BOUNDED_TOTAL=(KNOWN_REP32+len(KNOWN_REP16_BOUNDED)
+                            +len(STATIC_PORTAL_TEXT_PAIR_BOUNDS)
+                            +len(VIDEO_SEGMENT_REP_64000))
+
+
+def win16_localalloc_word_clear_bytes(alloc_bytes:int)->int:
+    """Exact CX=(((uint16_t)(alloc_bytes+1))>>1); REP STOSW 2*CX.
+    Applies only to original successful LocalAlloc path in FUN_1008_66FE.
+    No proof about allocator padding or heap metadata is implied.
+    """
+    if not 0<=alloc_bytes<=0xFFFF:
+        raise ValueError("Requested LocalAlloc bytes must be uint16")
+    cx=((alloc_bytes+1)&0xFFFF)>>1
+    return cx*2
+
 STRING_STAGING_START=0x36BE
 STRING_CLOCK_FLAG=0x46B2
 STRING_CLOCK_OFFSET=STRING_CLOCK_FLAG-STRING_STAGING_START
@@ -113,7 +144,9 @@ def provenance_audit(rows:list[dict[str,str]],
     bounded=[]
     bounded32=[]
     bounded16=[]
+    bounded_byte=[]
     fixed=[]
+    rounded_alloc_sites=[]
     for row in rows:
         site=row["site"]
         m=re.fullmatch(r"[0-9A-F]{4}:[0-9A-F]{4}",site)
@@ -135,15 +168,23 @@ def provenance_audit(rows:list[dict[str,str]],
             length=int(n)
             if length<=0 or length>65536:
                 raise ValueError("Invalid source-bounded REP length "+site)
-            if op not in ("MOVSD.REP","STOSD.REP","MOVSW.REP","STOSW.REP"):
+            if (op not in ("MOVSD.REP","STOSD.REP","MOVSW.REP","STOSW.REP")
+                and not (op=="MOVSB.REP" and
+                         site in STATIC_PORTAL_TEXT_PAIR_BOUNDS)):
                 raise ValueError("Unexpected unreviewed REP length "+site)
             if category in OPEN_CATEGORIES:
                 raise ValueError("Length alone is not destination provenance "+site)
             bounded.append(site)
             if op in ("MOVSD.REP","STOSD.REP"):
                 bounded32.append(site)
+            elif op=="MOVSB.REP":
+                bounded_byte.append(site)
             else:
                 bounded16.append(site)
+        if category=="LOCALALLOC_DYNAMIC_ROUNDED_WORD_CLEAR":
+            if site!=ROUNDED_LOCALALLOC_STOSW or op!="STOSW.REP" or n:
+                raise ValueError("Unexpected dynamic LocalAlloc STOSW evidence")
+            rounded_alloc_sites.append(site)
         if category in OPEN_CATEGORIES:
             open_sites.append(site)
         if row["fixed_DGROUP_start"]:
@@ -172,8 +213,8 @@ def provenance_audit(rows:list[dict[str,str]],
         raise ValueError(f"REP textual census mismatch: {actual} vs {expected}")
     if enforce_archived_census and len(rows)!=83:
         raise ValueError(f"Expected 83 Ghidra textual REP sites, got {len(rows)}")
-    if enforce_archived_census and len(bounded)!=KNOWN_BOUNDED_TOTAL:
-        raise ValueError("Expected exactly 34 source-bounded REP sites")
+    if enforce_archived_census and len(bounded)!=KNOWN_SOURCE_BOUNDED_TOTAL:
+        raise ValueError("Expected 46 fixed-bound REP sites")
     if enforce_archived_census and {
         row["site"] for row in rows
         if row["destination_class"]=="STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND"
@@ -183,14 +224,37 @@ def provenance_audit(rows:list[dict[str,str]],
         r["site"] for r in rows if r["rep_operation"] in ("MOVSD.REP","STOSD.REP")
     }:
         raise ValueError("Not all 25 REP32 sites were inspected")
-    if enforce_archived_census and set(bounded16)!=set(KNOWN_REP16_BOUNDED):
-        raise ValueError("Nine archived REP16 destination sites changed")
+    expected_16=(set(KNOWN_REP16_BOUNDED)
+                 | {site for site in STATIC_PORTAL_TEXT_PAIR_BOUNDS
+                    if any(r["site"]==site and r["rep_operation"]=="MOVSW.REP"
+                           for r in rows)}
+                 | VIDEO_SEGMENT_REP_64000)
+    if enforce_archived_census and set(bounded16)!=expected_16:
+        raise ValueError("Expected 16 bounded MOVSW/STOSW sites")
+    expected_byte={site for site in STATIC_PORTAL_TEXT_PAIR_BOUNDS
+                   if any(r["site"]==site and r["rep_operation"]=="MOVSB.REP"
+                          for r in rows)}
+    if enforce_archived_census and set(bounded_byte)!=expected_byte:
+        raise ValueError("Expected five bounded MOVSB sites")
+    if enforce_archived_census and rounded_alloc_sites!=[ROUNDED_LOCALALLOC_STOSW]:
+        raise ValueError("Dynamic LocalAlloc round-up STOSW site missing")
     if enforce_archived_census:
         for row in rows:
             site=row["site"]
             if site in KNOWN_REP16_BOUNDED:
                 if int(row["bounded_total_write_bytes"])!=KNOWN_REP16_BOUNDED[site]:
                     raise ValueError("Archived REP16 instruction length mismatch "+site)
+            if site in STATIC_PORTAL_TEXT_PAIR_BOUNDS:
+                if (row["destination_class"]!="STACK_256_BYTE_STATIC_TEXT_APPEND"
+                    or int(row["bounded_total_write_bytes"])
+                    !=STATIC_PORTAL_TEXT_PAIR_BOUNDS[site]):
+                    raise ValueError("Static portal literal source bound mismatch "+site)
+            if site in VIDEO_SEGMENT_REP_64000:
+                if (row["destination_class"]!="VIDEO_SELECTOR_ES_DS_51A0_64000"
+                    or int(row["bounded_total_write_bytes"])!=64000):
+                    raise ValueError("Video-bank REP length/provenance mismatch "+site)
+        if STATIC_PORTAL_TEXT_MAX_CONCATENATED>STATIC_PORTAL_LOCAL_BUFFER_CAPACITY:
+            raise ValueError("Static concat could overrun local buffer")
         all_fixed={**KNOWN_FIXED_32,**KNOWN_FIXED_16}
         if {r["source"] for r in fixed}!=set(all_fixed):
             raise ValueError("Seven expected fixed DGROUP destinations changed")
@@ -200,8 +264,8 @@ def provenance_audit(rows:list[dict[str,str]],
                 raise ValueError("Original fixed REP destination span changed")
         if not KNOWN_HEAP_90B.issubset(set(bounded)):
             raise ValueError("Missing LocalAlloc 90-byte REP sources")
-        if len(open_sites)!=49:
-            raise ValueError(f"Expected 49 unresolved REP destinations, got {len(open_sites)}")
+        if len(open_sites)!=36:
+            raise ValueError(f"Expected 36 unresolved REP destinations, got {len(open_sites)}")
 
     return {
         "build":"Win16 v1.10",
@@ -211,6 +275,19 @@ def provenance_audit(rows:list[dict[str,str]],
         "opcode_type_counts":dict(actual),
         "source_byte_bounded_rep_movsd_stosd":len(bounded32),
         "source_byte_bounded_rep_movsw_stosw":len(bounded16),
+        "source_byte_bounded_rep_movsb":len(bounded_byte),
+        "source_byte_bounded_rep_old_rep16":len(KNOWN_REP16_BOUNDED),
+        "source_symbolically_bounded_rep":len(rounded_alloc_sites),
+        "dynamic_localalloc_zeroing_sites":sorted(rounded_alloc_sites),
+        "dynamic_localalloc_odd_size_can_write_one_nominal_extra_byte":True,
+        "dynamic_localalloc_words_written_at_65535":win16_localalloc_word_clear_bytes(65535),
+        "portal_static_literal_rep_sites":sorted(STATIC_PORTAL_TEXT_PAIR_BOUNDS),
+        "portal_literal_max_buffer_output":STATIC_PORTAL_TEXT_MAX_CONCATENATED,
+        "portal_stack_buffer_capacity":STATIC_PORTAL_LOCAL_BUFFER_CAPACITY,
+        "portal_source_pointer_aliases_globally_excluded":False,
+        "video_es_selector_source":"WORD DS:[51A0]",
+        "video_64000_byte_rep_sites":sorted(VIDEO_SEGMENT_REP_64000),
+        "video_segment_distinct_from_DGROUP_for_all_states_proven":False,
         "source_byte_bounded_rep_total":len(bounded),
         "bounded_rep_sites":sorted(bounded),
         "destination_classes":dict(sorted(class_counts.items())),
@@ -250,7 +327,10 @@ def provenance_audit(rows:list[dict[str,str]],
             "All destination-provenance classes rely on original Ghidra local instructions",
             "Fixed DS ranges can be bounded algebraically independent of runtime stack or heap",
             "Other-segment, stack, heap and framebuffer disjointness uses valid OS segment/allocator semantics",
-            "Other 49 REP destinations need interprocedural pointer/length or bounds proof",
+            "Other 36 REP destinations need interprocedural pointer/length or bounds proof",
+            "Odd successful LocalAlloc of n=1..65533 writes n+1 zero bytes at STOSW; odd n=65535 clears zero due to uint16 wrap",
+            "10 portal literal REP sites bounded by 256-byte local buffer/210-byte concatenation, conditional on original source pointers",
+            "2 video REP sites write 64000 bytes to ES selected by DS:51A0, not an unconditional selector nonalias proof",
             "Four string copies at DS:36BE could overlap DS:46B2 if NUL-terminated combined char count >=4084; actual input reachability unproved",
             "Non-REP writes, computed SI/DI/BX/ES stores and call-based memcpy are separate",
         ],
@@ -267,8 +347,9 @@ def main()->int:
         rendered=json.dumps(report,indent=2,ensure_ascii=False)+"\n"
         if args.output:
             args.output.write_text(rendered,encoding="utf-8")
-            print("Reviewed 83 original textual REP sites; 34 local bounds "
-                  "(25 REP32 + 9 REP16), 7 fixed DGROUP spans, 49 pending.")
+            print("Reviewed 83 original REP sites: 46 fixed source bounds, "
+                  "1 symbolic LocalAlloc clear, seven fixed DGROUP spans, "
+                  "36 unresolved.")
             print(f"JSON report: {args.output}")
         else:
             print(rendered)
