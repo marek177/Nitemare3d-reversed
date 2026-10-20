@@ -25,28 +25,28 @@ DEFAULT_MANIFEST=(ROOT/"other/n3d/builds_12/static_byte_evidence"
     /"N3D_Win110_memcpy_6C80_direct_callers_20261020.csv")
 
 # Original NE1/NE2 code XREF locations, *not* a list of all possible
-# computed far pointers to 2:6C80.
+# computed far pointers to 1008:6C80.
 EXACT_DIRECT_CALLERS={
-    "0:0DD0","0:0E16","0:0E51","0:0ED9",
-    "0:0EEA","0:0F74","0:4C72","2:3F20",
+    "1000:0DD0","1000:0E16","1000:0E51","1000:0ED9",
+    "1000:0EEA","1000:0F74","1000:4C72","1008:3F20",
 }
 EXPECTED_CALLER_ENTRIES={
-    "0:0DD0":"0:0DA0",
-    "0:0E16":"0:0DDE",
-    "0:0E51":"0:0E26",
-    "0:0ED9":"0:0EBA",
-    "0:0EEA":"0:0EBA",
-    "0:0F74":"0:0F4C",
-    "0:4C72":"0:4C38",
-    "2:3F20":"2:3EBE",
+    "1000:0DD0":"1000:0DA0",
+    "1000:0E16":"1000:0DDE",
+    "1000:0E51":"1000:0E26",
+    "1000:0ED9":"1000:0EBA",
+    "1000:0EEA":"1000:0EBA",
+    "1000:0F74":"1000:0F4C",
+    "1000:4C72":"1000:4C38",
+    "1008:3F20":"1008:3EBE",
 }
 CAPACITY_SIGNED_BRANCH_SITES={
-    "0:0E51":"JGE",
-    "0:0F74":"JGE",
-    "0:4C72":"JLE",
+    "1000:0E51":"JGE",
+    "1000:0F74":"JGE",
+    "1000:4C72":"JLE",
 }
 ADDITION_WRAP_CONCERN_SITES={
-    "0:0DD0","0:0ED9","0:0EEA","0:4C72",
+    "1000:0DD0","1000:0ED9","1000:0EEA","1000:4C72",
 }
 INPUT_COUNT_PROVEN_FIT_ALL_STATES=False
 
@@ -62,8 +62,8 @@ def check_u16(n:int, parameter:str)->None:
         raise ValueError(parameter+" must be unsigned 16-bit")
 
 def append_direct_fast_path(used:int, added:int, capacity:int)->bool:
-    """Original 0:4C40..4C49: AX=uint16(used+added);
-    CMP AX,[SI+4]; JLE (signed), before 0:4C72 memcpy.
+    """Original 1000:4C40..4C49: AX=uint16(used+added);
+    CMP AX,[SI+4]; JLE (signed), before 1000:4C72 memcpy.
 
     DOES NOT assert that struct invariants make this fast branch safe.
     """
@@ -96,7 +96,7 @@ def requested_localalloc_size_for_string_length(count:int)->int:
     return u16(count+1)
 
 def clamped_stream_chunk(available:int,remaining:int)->int:
-    """2:3F12 CMP AX,CX; JBE, else MOV AX,CX: unsigned min.
+    """1008:3F12 CMP AX,CX; JBE, else MOV AX,CX: unsigned min.
     The stream caller additionally rejects zero available before copy.
     """
     check_u16(available,"available")
@@ -132,7 +132,7 @@ def audit(rows:list[dict[str,str]])->dict[str,Any]:
             raise ValueError("Alias safety incorrectly marked closed "+site)
 
     if sites!=EXACT_DIRECT_CALLERS or sites!=MEMCPY_NAMED_DIRECT_CALLERS:
-        raise ValueError("Incomplete original 2:6C80 direct XREF census")
+        raise ValueError("Incomplete original 1008:6C80 direct XREF census")
     for site,branch in CAPACITY_SIGNED_BRANCH_SITES.items():
         row=by_site[site]
         if not any(x in row["local_capacity_or_allocation_guard"]
@@ -143,17 +143,17 @@ def audit(rows:list[dict[str,str]])->dict[str,Any]:
             by_site[site]["guard_width"]+
             by_site[site]["local_capacity_or_allocation_guard"]):
             raise ValueError("16-bit overflowing ADD evidence missing "+site)
-    if "min(" not in by_site["2:3F20"]["copy_count_operand"]:
+    if "min(" not in by_site["1008:3F20"]["copy_count_operand"]:
         raise ValueError("Unsigned stream transfer minimum is missing")
-    if "LocalAlloc" not in by_site["0:0E16"]["local_capacity_or_allocation_guard"]:
+    if "LocalAlloc" not in by_site["1000:0E16"]["local_capacity_or_allocation_guard"]:
         raise ValueError("Unproven strdup allocation path")
 
     return {
         "target":"NE2:6C80",
         "version":"NITE3W original Win16 1.10 (archived Ghidra text)",
         "direct_named_caller_count":len(sites),
-        "direct_far_call_sites":sorted(sites-{"2:3F20"}),
-        "near_call_with_explicit_push_CS":"2:3F20",
+        "direct_far_call_sites":sorted(sites-{"1008:3F20"}),
+        "near_call_with_explicit_push_CS":"1008:3F20",
         "caller_entries":{k:v for k,v in sorted(EXPECTED_CALLER_ENTRIES.items())},
         "full_argument_provenance_recorded_for_all_eight":True,
         "signed_capacity_compare_sites":CAPACITY_SIGNED_BRANCH_SITES,
@@ -163,29 +163,29 @@ def audit(rows:list[dict[str,str]])->dict[str,Any]:
         "memcpy_helper_copy_sites_closed_in_full_program":0,
         "win16_original_exe_freshly_rehashed_in_this_run":False,
         "normal_valid_heap_contract_can_bound_some_caller_paths":True,
-        "unsigned_stream_transfer_minimum_site":"2:3F12/3F14",
+        "unsigned_stream_transfer_minimum_site":"1008:3F12/3F14",
         "literal_tested_counterexamples":[
             {
-                "site":"0:4C72",
+                "site":"1000:4C72",
                 "used":65530,"added":10,"capacity":20,
                 "wrapped_sum":additive_required_len_u16(65530,10),
                 "signed_fast_append_taken":append_direct_fast_path(65530,10,20),
                 "length_really_fits_unsigned_capacity":False,
             },
             {
-                "site":"0:0E51",
+                "site":"1000:0E51",
                 "capacity":32767,"requested":32768,
                 "signed_skip_resize":enough_capacity_signed(32767,32768),
                 "unsigned_capacity_enough":False,
             },
             {
-                "site":"0:0F74",
+                "site":"1000:0F74",
                 "capacity":32767,"requested":32768,
                 "signed_skip_resize":enough_capacity_signed(32767,32768),
                 "unsigned_capacity_enough":False,
             },
             {
-                "site":"0:0EBA",
+                "site":"1000:0EBA",
                 "prefix":65530,"suffix":10,
                 "wrapped_requested_count":additive_required_len_u16(65530,10),
                 "true_unbounded_sum":65540,
