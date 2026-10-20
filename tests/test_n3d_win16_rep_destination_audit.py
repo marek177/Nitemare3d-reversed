@@ -140,7 +140,7 @@ class Win16RepDestinationTests(unittest.TestCase):
             report["string_staging_distance_to_flag_bytes"],4084)
         self.assertEqual(
             report["last_NUL_overlaps_clock_if_sum_characters_at_least"],4084)
-        self.assertFalse(report["string_alias_dynamically_reachable"])
+        self.assertFalse(report["string_alias_dynamic_reachability_proven"])
         self.assertEqual(
             report["remaining_rep_destinations_for_pointer_provenance"],58)
 
