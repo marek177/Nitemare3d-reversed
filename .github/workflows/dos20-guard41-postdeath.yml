@@ -1,0 +1,29 @@
+name: DOS2 GUARD41 post-death capture contract
+on:
+  push:
+    paths: ['src/re/N3DDos20Guard41PostDeath.hpp', 'src/re/N3DV058GuardState09.hpp', 'tests/dos20_guard41_postdeath_test.cpp', 'CMakeLists.txt', '.github/workflows/dos20-guard41-postdeath.yml']
+  pull_request:
+    paths: ['src/re/N3DDos20Guard41PostDeath.hpp', 'src/re/N3DV058GuardState09.hpp', 'tests/dos20_guard41_postdeath_test.cpp', 'CMakeLists.txt', '.github/workflows/dos20-guard41-postdeath.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build-postdeath -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Build bounded contract
+        run: cmake --build build-postdeath --config Debug --target n3d_dos20_guard41_postdeath_test
+      - name: Reject pre-death control and altered identities
+        run: ctest --test-dir build-postdeath -C Debug -R '^n3d_dos20_guard41_postdeath_test$' --output-on-failure
+      - name: Strict GCC UBSan
+        if: runner.os == 'Linux'
+        run: |
+          c++ -std=c++20 -Wall -Wextra -Werror -pedantic -fsanitize=undefined -fno-sanitize-recover=all -Isrc tests/dos20_guard41_postdeath_test.cpp -o /tmp/guard41-postdeath
+          /tmp/guard41-postdeath

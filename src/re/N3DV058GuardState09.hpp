@@ -34,6 +34,8 @@ constexpr std::uint16_t rng15(std::uint32_t s) noexcept {
 
 inline constexpr bool kState0AAnd0BDispatchToCommonEpilogueDos12 = true;
 inline constexpr bool kState0AAnd0BDispatchToCommonEpilogueDos20 = true;
+// Historical v058 status only. Current DOS2 bounded evidence is documented
+// in docs/DOS20_GUARD41_POSTDEATH.md and N3DDos20Guard41PostDeath.hpp.
 inline constexpr bool kDos20NaturalGuard41State09Observed = false;
 inline constexpr bool kCompleteDeathPoolCleanupClosed = false;
 

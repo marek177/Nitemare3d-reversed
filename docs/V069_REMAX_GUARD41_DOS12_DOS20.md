@@ -28,3 +28,7 @@ This proves that the original DOS2 DEMO route naturally reaches a dead GUARD41 s
 DEMO.1 is byte-identical between the compared full DOS distributions. MAP.1 differs in 46 bytes, all in high bytes of cells; E1M11 differs at only four high-byte positions while all 4096 low bytes match. OBJECTS.1 differs in source-name text on 28 rows while corresponding IDs/class marks/descriptions stay aligned. EXE and IMG.1 differ.
 
 Therefore identical DEMO input bytes do not by themselves imply identical runtime RNG/resource behavior across DOS1.2 and DOS2.
+
+## Later bounded DOS2 evidence
+
+The 2026-10-20 [post-death integration](DOS20_GUARD41_POSTDEATH.md) records reported original DOS2 00→09 and 09→0A writers, RNG #19 and state9 epilogue entry. Separate natural captures still do not establish the full uninterrupted fatal-to-state0A timing interval.
