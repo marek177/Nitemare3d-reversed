@@ -159,8 +159,10 @@ int main() {
         basePalette[3*i]=static_cast<std::uint8_t>(i%64);
         basePalette[3*i+1]=static_cast<std::uint8_t>(i/64);
     }
+    std::copy(basePalette.begin(),basePalette.end(),ds.begin()+0x4A64);
+    ds[0x6278]=0; ds[0x6279]=0;
     sh::Prepared shading{};
-    assert(sh::prepare(basePalette,0,shading));
+    assert(sh::prepareFromDosSegment(ds,shading));
     m::MaterialBinder material{ds,&catalog,&*trig,&shading,camera};
     s::Plan plan{};
     assert(s::prepare(ds,3,0,material,plan)==s::Status::Ok);
@@ -182,6 +184,20 @@ int main() {
     std::fill(frame.begin(),frame.end(),0xff);
     assert(s::render(plan,frame,{})==s::Status::Ok);
     assert(frame[59*320+8]==79 && frame[100*320+311]==79);
+
+    // Actual DOS shade source is DS:4A64 plus selector DS:6278;
+    // the same IMG source index 79 must pass through shade=4 -> index 11.
+    ds[0x6278]=1;
+    sh::Prepared darker{};
+    assert(sh::prepareFromDosSegment(ds,darker));
+    material.ds=ds;
+    material.shading=&darker;
+    assert(s::prepare(ds,3,0,material,plan)==s::Status::Ok);
+    std::fill(frame.begin(),frame.end(),0xff);
+    assert(s::render(plan,frame,{})==s::Status::Ok);
+    assert(frame[59*320+8]==11 && frame[100*320+311]==11);
+    ds[0x6278]=0;
+    material.shading=&shading;
 
     // Third cache has genuine 128x64 (2 x 64x64) frames. Per-column
     // integer U can select both physical halves; no 128 -> 64 squash.
