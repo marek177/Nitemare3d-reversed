@@ -149,6 +149,48 @@ int main(int argc,char**argv){
     assert(frame[108*320+311]==0x57);
     assert(frame[50*320+311]==0xEE);
 
+    // Real 16.16 span interpolation is exercised across the FULL viewport,
+    // not merely the first column. Positive and negative signed slopes.
+    mem=fixture(1);
+    put32(mem,sp::kSpanBase+10,0x00010000u);
+    assert(sp::prepare(mem,1,0,material,plan)==sp::Status::Ok);
+    assert(plan.columns[0].spanYQ4==331);
+    assert(plan.columns[17].spanYQ4==348);
+    assert(plan.columns[17].projectedBottomY==101);
+    assert(plan.columns[17].drawArgs.firstY==58);
+    assert(plan.columns[303].spanYQ4==634);
+    assert(plan.columns[303].projectedBottomY==119);
+    assert(plan.columns[303].drawArgs.firstY==40);
+    assert(plan.columns[303].drawArgs.pixelCount==80);
+    std::fill(frame.begin(),frame.end(),0xEE);
+    assert(sp::render(plan,frame,{})==sp::Status::Ok);
+    assert(frame[40*320+311]==0x57);
+    assert(frame[39*320+311]==0xEE);
+    assert(frame[58*320+25]==0x1F);
+
+    put32(mem,sp::kSpanBase+10,0xFFFF0000u); // -1 Q4 per column
+    assert(sp::prepare(mem,1,0,material,plan)==sp::Status::Ok);
+    assert(plan.columns[303].spanYQ4==28);
+    assert(plan.columns[303].projectedBottomY==81);
+    assert(plan.columns[303].drawArgs.firstY==78);
+    assert(plan.columns[303].drawArgs.pixelCount==4);
+
+    // Large near wall: the DOS 1A2E clipped path uses the entire viewport and
+    // a nonzero 16.16 source offset, not a centered symmetric approximation.
+    mem=fixture(1);
+    put32(mem,sp::kSpanBase+14,1232u<<16u);
+    assert(sp::prepare(mem,1,0,material,plan)==sp::Status::Ok);
+    assert(plan.columns[0].projectedBottomY==157);
+    assert(plan.columns[0].heightIndex==155);
+    assert(plan.columns[0].drawArgs.firstY==4);
+    assert(plan.columns[0].drawArgs.pixelCount==152);
+    assert(plan.columns[0].drawArgs.source16_16==
+           ((3u*64u*65536u/155u)>>1u));
+    std::fill(frame.begin(),frame.end(),0xEE);
+    assert(sp::render(plan,frame,{})==sp::Status::Ok);
+    assert(frame[4*320+8]==0x1F && frame[155*320+311]==0x57);
+    assert(frame[3*320+8]==0xEE && frame[156*320+311]==0xEE);
+
     // Invalid input never changes the preceding complete plan.
     const auto beforePlan=plan;
     put16(mem,sp::kOwnerOffset+2*18,0);
