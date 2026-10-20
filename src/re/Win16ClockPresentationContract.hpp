@@ -57,26 +57,39 @@ constexpr std::uint16_t calibrationEntry(Build build) noexcept {
 }
 
 
-// Only Win16 v1.8 currently has a SHA-pinned original-byte closure of the
-// timeEndPeriod argument. Its caller pushes SS:[BP-2] from a fresh ENTER 6,0
-// frame; the routine does not write that local word. This is a historical
-// instruction fact, not an instruction to invoke host C++ undefined behavior.
+// In v1.8 the local SS:[BP-2] read was independently checked against
+// SHA-pinned original EXE bytes. In v1.10 the same FF 76 FE instruction,
+// direct 0/1 callers and full function body were recovered from an earlier
+// SHA-gated v0.61 Ghidra archive (see docs/WIN16_V110_TIMER_ARCHIVED_BYTE_CLOSURE_20261020.md).
+// Today's local environment has NOT independently rehashed the v1.10 original.
+// Never translate the historical uninitialized stack read into C++ undefined
+// behavior. Distinguish archived ASM from fresh binary verification.
 enum class TimerCleanupArgumentEvidence : std::uint8_t {
     OriginalBytesNotYetChecked,
-    StackLocalBpMinus2NotInitialized
+    StackLocalBpMinus2NotInitialized,
+    ArchivedWin110GhidraListingBpMinus2NotInitialized
 };
 
 constexpr TimerCleanupArgumentEvidence timerCleanupArgumentEvidence(
     Build build) noexcept {
-    return build == Build::Win18
-        ? TimerCleanupArgumentEvidence::StackLocalBpMinus2NotInitialized
-        : TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked;
+    switch (build) {
+        case Build::Win18:
+            return TimerCleanupArgumentEvidence::StackLocalBpMinus2NotInitialized;
+        case Build::Win110:
+            return TimerCleanupArgumentEvidence::ArchivedWin110GhidraListingBpMinus2NotInitialized;
+        default:
+            return TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked;
+    }
 }
 
-// Two original relocation-backed immediate FAR callsites in Win16 v1.8.
+// Exact direct caller offsets and imported cleanup calls in NE logical segment 3.
 inline constexpr std::uint16_t kWin18TimerInitCaller = 0x0EE8;
 inline constexpr std::uint16_t kWin18TimerEndCaller = 0x0F24;
 inline constexpr std::uint16_t kWin18TimerEndImportedCall = 0xD610;
+inline constexpr std::uint16_t kWin110TimerInitCaller = 0x0F34;
+inline constexpr std::uint16_t kWin110TimerEndCaller = 0x0F70;
+inline constexpr std::uint16_t kWin110TimerEndImportedCall = 0xD6BE;
+inline constexpr std::uint16_t kWin110TimerEndLocalRead = 0xD6BB;
 
 constexpr bool multimediaCapabilitiesSucceeded(std::uint16_t mmResult) noexcept {
     return mmResult == 0; // TIMERR_NOERROR, not timeBeginPeriod success
