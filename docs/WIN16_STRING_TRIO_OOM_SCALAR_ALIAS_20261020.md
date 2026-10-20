@@ -163,7 +163,7 @@ Exact direct call records and source expressions:
 other/n3d/builds_12/static_byte_evidence/
 N3D_Win110_E26_assignment_direct_callers_20261020.csv
 
-## 4. Evidence boundary and regression
+## 5. Evidence boundary and regression
 
 Original-static and safe address models:
 - tools/n3d_win16_string_trio_lifecycle_audit.py
