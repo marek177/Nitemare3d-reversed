@@ -1,0 +1,35 @@
+name: N3D v072 strict renderer stage gate
+
+on:
+  push:
+    paths:
+      - 'tools/n3d_v072_stage_frame_gate.py'
+      - 'tools/n3d_v071_frame_parity_gate.py'
+      - 'tests/test_n3d_v072_stage_frame_gate.py'
+      - '.github/workflows/renderer-v072-stage-gate.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_v072_stage_frame_gate.py'
+      - 'tools/n3d_v071_frame_parity_gate.py'
+      - 'tests/test_n3d_v072_stage_frame_gate.py'
+      - '.github/workflows/renderer-v072-stage-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-stage-gate:
+    name: Strict stage test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail-closed stage and DAC checks (without commercial assets)
+        run: python -m unittest discover -s tests -p 'test_n3d_v072_stage_frame_gate.py' -v
