@@ -43,6 +43,10 @@ STRING_STAGING_START=0x36BE
 STRING_CLOCK_FLAG=0x46B2
 STRING_CLOCK_OFFSET=STRING_CLOCK_FLAG-STRING_STAGING_START
 STRING_STAGING_SITES={"1010:527E","1010:5282","1010:52A1","1010:52A5"}
+# Original DS:101E = "config.sav\0"; direct callers 3:52F5 and 3:5358.
+FIXED_CONFIG_SAV_SUFFIX_CHARACTERS=10
+FIXED_CONFIG_SAV_CALLERS={"1010:52F5","1010:5358"}
+DYNAMIC_STRING_CALLERS={"1010:5397","1010:548C","1010:5759"}
 OPEN_CATEGORIES={
     "DESTINATION_PROVENANCE_OPEN",
     "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND",
@@ -187,6 +191,12 @@ def provenance_audit(rows:list[dict[str,str]],
         "timer_flag_in_staging_region":"DS:46B2",
         "string_staging_distance_to_flag_bytes":STRING_CLOCK_OFFSET,
         "last_NUL_overlaps_clock_if_sum_characters_at_least":STRING_CLOCK_OFFSET,
+        "fixed_config_sav_string":"config.sav",
+        "fixed_config_sav_characters":FIXED_CONFIG_SAV_SUFFIX_CHARACTERS,
+        "fixed_config_sav_callers":sorted(FIXED_CONFIG_SAV_CALLERS),
+        "other_parameter_or_register_string_callers":sorted(DYNAMIC_STRING_CALLERS),
+        "prefix_characters_required_to_touch_clock_with_config_sav":(
+            STRING_CLOCK_OFFSET-FIXED_CONFIG_SAV_SUFFIX_CHARACTERS),
         "string_alias_dynamic_reachability_proven":False,
         "five_fixed_DGROUP_writes":fixed,
         "fixed_DGROUP_regions_exclude_clock_and_latch":all(
