@@ -144,6 +144,20 @@ class Win16RepDestinationTests(unittest.TestCase):
         self.assertEqual(
             report["remaining_rep_destinations_for_pointer_provenance"],58)
 
+    def test_config_sav_fixed_suffix_threshold(self):
+        result=provenance_audit(self.rows)
+        self.assertEqual(result["fixed_config_sav_string"],"config.sav")
+        self.assertEqual(result["fixed_config_sav_characters"],10)
+        self.assertEqual(result["fixed_config_sav_callers"],
+                         ["1010:52F5","1010:5358"])
+        self.assertEqual(result["other_parameter_or_register_string_callers"],
+                         ["1010:5397","1010:548C","1010:5759"])
+        self.assertEqual(
+            result["prefix_characters_required_to_touch_clock_with_config_sav"],4074)
+        self.assertFalse(unbounded_string_copy_reaches_clock(0,10))
+        self.assertFalse(unbounded_string_copy_reaches_clock(4073,10))
+        self.assertTrue(unbounded_string_copy_reaches_clock(4074,10))
+
     def test_unsafe_long_or_negative_string_length_not_silently_accepted(self):
         with self.assertRaisesRegex(ValueError,"negative"):
             unbounded_string_copy_reaches_clock(-1,5)
