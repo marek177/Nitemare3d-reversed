@@ -23,6 +23,10 @@ on:
       - 'tools/n3d_win16_string_trio_lifecycle_audit.py'
       - 'tools/n3d_win16_oom_callback_indirect_proof.py'
       - 'tests/test_n3d_win16_oom_callback_indirect_proof.py'
+      - 'tools/n3d_win16_e26_second_order_proof.py'
+      - 'tests/test_n3d_win16_e26_second_order_proof.py'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_E26_second_order_caller_sources_20261020.csv'
+      - 'docs/WIN16_E26_SECOND_ORDER_UPSTREAM_STATIC_20261020.md'
       - 'docs/WIN16_OOM_CALLBACK_HIDDEN_CODE_ISLAND_20261020.md'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_E26_assignment_direct_callers_20261020.csv'
       - 'tests/test_n3d_win16_string_trio_lifecycle_audit.py'
@@ -67,6 +71,10 @@ on:
       - 'tools/n3d_win16_string_trio_lifecycle_audit.py'
       - 'tools/n3d_win16_oom_callback_indirect_proof.py'
       - 'tests/test_n3d_win16_oom_callback_indirect_proof.py'
+      - 'tools/n3d_win16_e26_second_order_proof.py'
+      - 'tests/test_n3d_win16_e26_second_order_proof.py'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_E26_second_order_caller_sources_20261020.csv'
+      - 'docs/WIN16_E26_SECOND_ORDER_UPSTREAM_STATIC_20261020.md'
       - 'docs/WIN16_OOM_CALLBACK_HIDDEN_CODE_ISLAND_20261020.md'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_E26_assignment_direct_callers_20261020.csv'
       - 'tests/test_n3d_win16_string_trio_lifecycle_audit.py'
@@ -113,6 +121,8 @@ jobs:
           python -m py_compile tools/n3d_win16_string_trio_lifecycle_audit.py
           python -m py_compile tools/n3d_win16_oom_callback_indirect_proof.py
           python -m py_compile tests/test_n3d_win16_oom_callback_indirect_proof.py
+          python -m py_compile tools/n3d_win16_e26_second_order_proof.py
+          python -m py_compile tests/test_n3d_win16_e26_second_order_proof.py
           python -m py_compile tests/test_n3d_win16_string_trio_lifecycle_audit.py
           python -m py_compile tests/test_n3d_win16_memcpy_6c80_caller_audit.py
           python -m py_compile tools/n3d_win16_filename_alias_calls.py
@@ -156,6 +166,10 @@ jobs:
         run: |
           python tools/n3d_win16_oom_callback_indirect_proof.py --output /tmp/win16-oom-hidden-report.json
           python -m unittest discover -s tests -p 'test_n3d_win16_oom_callback_indirect_proof.py' -v
+      - name: Prove ten second-order Win16 E26 direct callers and open source size bound
+        run: |
+          python tools/n3d_win16_e26_second_order_proof.py --output /tmp/win16-E26-upstream-audit.json
+          python -m unittest discover -s tests -p 'test_n3d_win16_e26_second_order_proof.py' -v
       - name: Pin all twelve Win16 user.sav/config.sav direct filename paths
         run: |
           python tools/n3d_win16_filename_alias_calls.py --output /tmp/n3d-win16-filename-aliases.json
