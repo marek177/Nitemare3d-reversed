@@ -278,6 +278,9 @@ public:
            screenX<sw::kLeft || screenX>sw::kRight ||
            wallId!=ds[nearOwner])
             return std::nullopt;
+        // A live shade-mode change must rebuild the input translation first;
+        // never silently render with an XLAT captured at another engine tick.
+        if(sw::word(ds,0x6278)!=shading->shadeIndex)return std::nullopt;
         const auto vec=vecFromDosDS(ds,nearOwner);
         const auto selection=catalog->select(vec);
         if(!selection || (selection->frame.width!=64 &&
@@ -290,7 +293,8 @@ public:
         if(!u)return std::nullopt;
         const bool forceZero=useZeroShadeForWall(ds,vec,shading->shadeIndex);
         const shade::Prepared* active=forceZero?shadingZero:shading;
-        if(!active || (forceZero && active->shadeIndex!=0))
+        if(!active || (forceZero && (active->shadeIndex!=0 ||
+                                      active->baseRgb6!=shading->baseRgb6)))
             return std::nullopt;
         return sw::Material{selection->frame.pixels,
             selection->frame.width,selection->frame.height,
