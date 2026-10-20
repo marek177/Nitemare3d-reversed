@@ -179,6 +179,61 @@ int main() {
     w16(ds,0x41B2,0);
     w16(ds,0x41B4,1024);
 
+    // Eight 45-degree octants / four VEC orientations / class-edge flags:
+    // algebraic DOS CEDC DS-state port vs independent Win16 EBD6 semantic port.
+    // These are CROSS-BUILD SYNTHETIC tests, not original DOS instructions
+    // or a claim that any particular scenario was observed at runtime.
+    struct AngleCoefficients {
+        int angle;
+        int sine;
+        int cosine;
+    };
+    const std::array<AngleCoefficients,8> octants{{
+        {0,0,1024},{45,724,724},{90,1024,0},{135,724,-724},
+        {180,0,-1024},{225,-724,-724},{270,-1024,0},{315,-724,724}
+    }};
+    unsigned comparedU=0;
+    for(const auto& acoef:octants) {
+        trig->sin[acoef.angle]=static_cast<std::int16_t>(acoef.sine);
+        trig->cos[acoef.angle]=static_cast<std::int16_t>(acoef.cosine);
+        w16(ds,0x415C,(0x99u & (1u<<(acoef.angle/45))) ? 1u : 0u);
+        w16(ds,0x41B2,static_cast<std::uint16_t>(acoef.sine));
+        w16(ds,0x41B4,static_cast<std::uint16_t>(acoef.cosine));
+        auto view=camera;
+        view.angleDegrees=acoef.angle;
+        for(unsigned ori=0;ori<4;++ori) {
+            for(unsigned style=0;style<3;++style) {
+                auto cross=vecDos;
+                cross.orientation=static_cast<std::uint8_t>(ori);
+                cross.renderClass=
+                    static_cast<std::uint8_t>(style==0?1:style==1?2:0x3F);
+                cross.flags=static_cast<std::uint8_t>(style==0?0x08:style==1?0x20:0);
+                cross.x1=1440; cross.y1=3620;
+                cross.x2=ori<2?1504:1440;
+                cross.y2=ori<2?3620:3684;
+                cross.screenX1=8;cross.screenX2=311;
+                for(const unsigned width:{64u,128u}) {
+                    for(const int x:{8,16,160,303}) {
+                        for(const std::uint16_t ph:{std::uint16_t(331),std::uint16_t(1280)}) {
+                            auto native=m::perspectiveUDosFromDS(
+                                cross,static_cast<std::int16_t>(x),ph,ds,width);
+                            auto win=m::perspectiveUCandidate(
+                                cross,static_cast<std::int16_t>(x),ph,view,*trig,width);
+                            assert(native && win);
+                            assert(*native==*win);
+                            ++comparedU;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    assert(comparedU==8u*4u*3u*2u*4u*2u);
+    // Restore the 0-degree DOS camera for the integration/frame tests.
+    w16(ds,0x415C,1);
+    w16(ds,0x41B2,0);
+    w16(ds,0x41B4,1024);
+
     auto highFrame=m::vecFromDosDS(ds,b);
     highFrame.animationFrame=255;
     const auto clamped=catalog.select(highFrame);
