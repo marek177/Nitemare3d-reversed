@@ -331,6 +331,11 @@ add_executable(n3d_dos20_texture_u_edge_test
     tests/dos20_texture_u_edge_test.cpp)
 target_link_libraries(n3d_dos20_texture_u_edge_test PRIVATE n3d_core)
 
+# DOS2 real signed 16/32-bit perspective-CEDC before 25DC/22CA. Not DDA.
+add_executable(n3d_dos20_cedc_projection_test
+    tests/dos20_cedc_projection_test.cpp)
+target_link_libraries(n3d_dos20_cedc_projection_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
