@@ -15,7 +15,8 @@ from n3d_win16_string_trio_lifecycle_audit import (
     EMPTY_SENTINEL,CLOCK_FLAG_DS,ONESHOT_LATCH_DS,
     INSTRUCTION_WITNESSES,
     Trio,init_trio,free_is_attempted,teardown_trio,
-    allocate_trio,failing_alloc_global_zero_writer,audit
+    allocate_trio,failing_alloc_global_zero_writer,
+    initial_empty_assignment_plan,word_signed,audit
 )
 
 
@@ -132,6 +133,53 @@ class Win16OriginalStringTrioAudit(unittest.TestCase):
         self.assertEqual(INSTRUCTION_WITNESSES["1000:0D6B"][0],"89 7C 04")
         self.assertEqual(INSTRUCTION_WITNESSES["1008:5AF6"][0],"FF 1E 4A 09")
         self.assertGreaterEqual(len(INSTRUCTION_WITNESSES),20)
+
+    def test_canonical_empty_signed_jge_skips_alloc_at_32768(self):
+        p=initial_empty_assignment_plan(32768)
+        self.assertEqual(p["signed_requested_used"],-32768)
+        self.assertTrue(p["jge_skips_reallocation"])
+        self.assertEqual(p["copy_destination_DS_offset_if_no_allocation"],0x0584)
+        self.assertEqual(p["copy_last_offset_before_uint16_wrap"],0x8583)
+        self.assertTrue(p["copy_intersects_DS_46B2_if_nonfaulting"])
+        self.assertTrue(p["would_call_copy"])
+        self.assertFalse(p["actual_normal_runtime_reachability_proven"])
+        self.assertFalse(p["observed_source_length_and_pointer_valid"])
+        self.assertLess(0x8583,0x8EAE)
+
+    def test_canonical_empty_small_positive_requests_do_allocate(self):
+        for n in (1,2,100,ONESHOT_LATCH_DS,CLOCK_FLAG_DS,32767):
+            p=initial_empty_assignment_plan(n)
+            self.assertFalse(p["jge_skips_reallocation"])
+            self.assertIsNone(p["copy_destination_DS_offset_if_no_allocation"])
+            self.assertFalse(p["copy_intersects_DS_46B2_if_nonfaulting"])
+        self.assertTrue(initial_empty_assignment_plan(0)[
+            "jge_skips_reallocation"])
+        self.assertFalse(initial_empty_assignment_plan(0)["would_call_copy"])
+
+    def test_all_signed_high_bit_counts_skip_growth_from_zero_cap(self):
+        for n in range(32768,65536):
+            p=initial_empty_assignment_plan(n)
+            self.assertTrue(p["jge_skips_reallocation"])
+            self.assertEqual(p["copy_destination_DS_offset_if_no_allocation"],
+                             EMPTY_SENTINEL)
+            self.assertTrue(p["copy_intersects_DS_46B2_if_nonfaulting"])
+        self.assertEqual(word_signed(0xFFFF),-1)
+        self.assertEqual(word_signed(0x8000),-32768)
+        with self.assertRaisesRegex(ValueError,"unsigned 16-bit"):
+            word_signed(65536)
+
+    def test_initial_large_copy_into_sentinel_requires_no_localalloc_failure(self):
+        report=audit()
+        p=report["conditional_direct_memcpy_to_sentinel_from_empty"]
+        self.assertEqual(p["state"],init_trio().as_dict())
+        self.assertEqual(p["allocator_skipped_by_signed_JGE"],"1000:0E33")
+        self.assertEqual(p["target_callee"],"1008:6C80")
+        self.assertEqual(p["copy_site"],"1000:0E51")
+        self.assertEqual(p["example"]["copy_last_offset_before_uint16_wrap"],
+                         0x8583)
+        self.assertTrue(p["can_touch_clock_flag_under_nonfaulting_model"])
+        self.assertFalse(p["large_source_data_reachability_proven"])
+        self.assertEqual(p["original_DGROUP_file_backed_exclusive_end"],"0x8EAE")
 
     def test_original_free_then_init_distinct_from_init_only(self):
         old=Trio(0x2000,5,10)
