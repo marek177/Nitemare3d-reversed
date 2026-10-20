@@ -45,6 +45,36 @@ WIN110_SSCANF_WIDTH_GATE="2:47F5"
 WIN110_SSCANF_INPUT_READ="2:480F"
 WIN110_SSCANF_BYTE_STORE="2:484B"
 WIN110_SSCANF_TERMINAL_NUL_STORE="2:4892"
+# Bounded full original local dataflow for the Win16 entry lpCmdLine:
+# MFC app handler supplies a far input pointer; 2:6C3C makes a near
+# heap copy of *strlen+1* bytes, then 2:6B06 tokenizes that copy.
+# The function locally rejects length+1 overflow and allocation
+# failure; it has no comparison to a fixed 128-byte game buffer.
+WIN110_COMMANDLINE_COPY_PATH={
+    "mfc_lpCmdLine_argument_forwarded":"3:0084 -> 3:0088",
+    "application_parser_entry":"3:1118",
+    "far_commandline_argument_push":"3:1132",
+    "near_copy_call":"3:1136 -> 2:6C3C",
+    "far_strlen_call":"2:6C4C -> 2:7344",
+    "add_terminating_nul":"2:6C51 INC AX",
+    "uint16_size_overflow_branch":"2:6C52 JNZ 2:6C59",
+    "near_heap_alloc":"2:6C5A -> 2:5AB0 (LocalAlloc)",
+    "far_to_near_copy":"2:6C6D -> 2:735E",
+    "first_tokenizer_call":"3:1141 -> 2:6B06",
+    "subsequent_token_cursor":"DS:0A8E (written by 2:6B06)",
+    "local_literal_128_length_guard":False,
+    "original_windows3_11_provider_max_characters_known":False,
+}
+
+
+def original_commandline_near_copy_request_bytes(source_characters:int)->int:
+    """Integer request from 2:6C51's INC AX for valid NUL-terminated
+    source length, not proof of any Windows provider/heap success."""
+    if not 0<=source_characters<=65534:
+        raise ValueError("input length outside nonoverflowing 16-bit INC AX")
+    return source_characters+1
+
+
 LITERAL_SUFFIXES={
     "DS:101E":("config.sav",10),
     "DS:1E50":("user.sav",8),
@@ -195,6 +225,9 @@ def verify(records:list[dict[str,str]])->dict[str,Any]:
         "prefix_chars_required_for_user_sav":TIMER_OUTPUT_OFFSET-8,
         "prefix_chars_required_for_config_sav":TIMER_OUTPUT_OFFSET-10,
         "command_line_prefix_flow":COMMAND_LINE_PREFIX_PATH,
+        "original_win16_lpCmdLine_near_copy":WIN110_COMMANDLINE_COPY_PATH,
+        "original_commandline_copy_uses_dynamic_strlen_plus_one":True,
+        "game_locally_enforces_128_char_limit_in_command_copy":False,
         "win31_program_manager_command_field_max":WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX,
         "win31_program_manager_KB_reference":PROGRAM_MANAGER_31_KB_URL,
         "win31_program_manager_launch_route_cannot_reach_flag":(
@@ -217,6 +250,7 @@ def verify(records:list[dict[str,str]])->dict[str,Any]:
         "cautions":[
             "This is a direct Ghidra caller-graph closure, not full dynamic FAR closure.",
             "The '-p' path scans a parsed argv token with custom sscanf-like input %s (not sprintf).",
+            "Original Win16 app startup duplicates its lpCmdLine far input through strlen+1 LocalAlloc then tokenizes near copy.",
             "Original %s scan has no field-width/output-capacity argument or branch; provider token size remains route-dependent.",
             "KB Q71364 proves Win3.1 Program Manager field <=128, precluding this overlap on that route; other launchers remain OPEN.",
             "No runtime-overflow scenario or actual oversized Win16 command line was observed.",
