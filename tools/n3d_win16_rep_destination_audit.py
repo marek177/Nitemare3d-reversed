@@ -187,7 +187,7 @@ def provenance_audit(rows:list[dict[str,str]],
         "timer_flag_in_staging_region":"DS:46B2",
         "string_staging_distance_to_flag_bytes":STRING_CLOCK_OFFSET,
         "last_NUL_overlaps_clock_if_sum_characters_at_least":STRING_CLOCK_OFFSET,
-        "string_alias_dynamically_reachable":False,
+        "string_alias_dynamic_reachability_proven":False,
         "five_fixed_DGROUP_writes":fixed,
         "fixed_DGROUP_regions_exclude_clock_and_latch":all(
             not r["overlap_DS_46B2"] and not r["overlap_DS_00A2"] for r in fixed),
