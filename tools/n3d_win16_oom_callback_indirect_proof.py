@@ -57,6 +57,34 @@ EXPECTED_LITERAL_GLOBAL_WRITES={
     "1008:6009":"DS:094A (offset)",
     "1008:600C":"DS:094C (selector)",
 }
+# Original FUN_1000_4492 error dispatch has NO direct RETF path:
+# 44FC JMP back to its scan loop; 451E calls KERNEL.THROW (nonlocal
+# transfer under Windows 3.1 Catch/Throw); 4527 jumps back after
+# returning from the indirect per-node handler. The helper 4564
+# calls 4492 and has RETF only after this sink.
+# Reference: Microsoft Windows 3.x Catch/Throw semantics, comparable
+# to setjmp/longjmp, documented in Microsoft The Old New Thing.
+ERROR_DISPATCHER_ENTRY="1000:4492"
+ERROR_DISPATCHER_LOOP="1000:44B8"
+ERROR_DISPATCHER_BACK_EDGES={
+    "1000:44FC":"1000:44B8",
+    "1000:4527":"1000:44B8",
+}
+ERROR_DISPATCHER_NONLOCAL_EXIT="1000:451E KERNEL.THROW"
+ERROR_DISPATCHER_INDIRECT_HANDLER_CALL="1000:4524 CALL FAR [SI+08]"
+HISTORICAL_CATCH_THROW_SOURCE=(
+    "https://devblogs.microsoft.com/oldnewthing/20140103-00/?p=2173"
+)
+
+
+def normal_Win16_default_OOM_callback_returns() -> bool:
+    """Original local CFG + valid Win16 Catch/Throw nonlocal semantics.
+
+    Does NOT model corruption, invalid Catch buffers, arbitrary remote
+    callbacks, exceptions and unsigned return from a malformed handler.
+    """
+    return False
+
 
 def validate_archived_hidden_code(handler:bytes=None,
                                   install:bytes=None)->dict[str,Any]:
@@ -85,6 +113,7 @@ def validate_archived_hidden_code(handler:bytes=None,
         ],
         "normal_return_value_if_exception_helper_returns":0,
         "can_exception_helper_unwind_without_return":True,
+        "normal_valid_CatchThrow_error_dispatcher_has_no_standard_return":True,
         "install_entry":"1000:0772",
         "install_thunk_known_prefix_hex":prefix.hex(" "),
         "install_thunk_unverified_original_byte_offset":"1000:0781",
@@ -127,6 +156,12 @@ def allocation_failure_plan(handler_kind:str,
             None if callback_return is None else callback_return==0
         ),
         "may_exit_nonlocally_via_Kernel_THROW":True,
+        "normal_CatchThrow_default_handler_does_not_return":(
+            handler_kind=="default"
+        ),
+        "provided_return_value_requires_abnormal_default_handler_return":(
+            handler_kind=="default" and callback_return is not None
+        ),
     }
 
 def known_recovery_handler_plan(memory_object_exists:bool,
@@ -147,6 +182,7 @@ def known_recovery_handler_plan(memory_object_exists:bool,
         "realloc_result_checked_before_AX_1":False,
         "actual_localalloc_retry_success_proven":False,
         "throw_may_unwind":not reclaim_path,
+        "error_branch_normal_return_proven":False,
     }
 
 def optional_original_SHA_pinned_recheck(input_path:Path)->dict[str,Any]:
@@ -198,6 +234,13 @@ def audit()->dict[str,Any]:
         "recovery_callback":"1008:12D2",
         "recovery_handler_returns_one_on_normal_success_branch":True,
         "default_hidden_handler_returns_zero_if_error_callback_returns":True,
+        "default_error_helper_no_direct_return_path_under_valid_CatchThrow":True,
+        "error_dispatcher_original_entry":ERROR_DISPATCHER_ENTRY,
+        "error_dispatcher_original_back_edges":ERROR_DISPATCHER_BACK_EDGES,
+        "error_dispatcher_nonlocal_exit":ERROR_DISPATCHER_NONLOCAL_EXIT,
+        "error_dispatcher_indirect_handler":ERROR_DISPATCHER_INDIRECT_HANDLER_CALL,
+        "win16_CatchThrow_documentation":HISTORICAL_CATCH_THROW_SOURCE,
+        "normal_default_handler_returns_0_to_allocator":normal_Win16_default_OOM_callback_returns(),
         "fallback_oom_without_callback_reaches_return_zero":True,
         "complete_dynamic_reachability_of_initial_install_thunk":False,
         "complete_callback_pointer_alias_writer_graph":False,
@@ -208,9 +251,9 @@ def audit()->dict[str,Any]:
             "1000:076A is marked ?? in archived Ghidra, but exact 9A 64 45 00 10 33 C0 CB decodes as far call 4564; xor ax; retf",
             "1000:0772 executes _AFX_VERSION then stores pointer 1000:076A using setter wrapper, only if the code-island entry is actually invoked",
             "1000:28DE temporarily clears callback; 1000:2913 restores prior pointer; 1000:29BB installs recovery 1008:12D2, 1000:29EB restores prior pointer",
-            "On null LocalAlloc with callback absent/declined, allocator wrapper returns zero; D3E terminator store to DS:[requested_used] is a conditional memory-write alias",
+            "A failed LocalAlloc with no installed OOM callback returns zero; a default 1000:076A handler normally enters the nonreturn error dispatcher rather than propagating zero; DS:[requested_used] alias remains conditional when no handler or abnormal return",
             "1008:12D2 returns AX=1 on recovery branch without checking LocalRealloc result; subsequent LocalAlloc retry success is not guaranteed",
-            "Error helper 1000:4564 invokes function 1000:4492, which can call KERNEL.THROW; control may transfer nonlocally",
+            "Error helper 1000:4564 calls 1000:4492, which has NO normal RETF: paths loop via 44FC/4527 or KERNEL.THROW at 451E (nonlocal jump under valid Catch/Throw)",
             "No proof that any callback installer is globally the only writer through computed pointers",
             "Runtime observation, timer flag corruption and actual heap OOM remain unproved",
         ],
