@@ -30,6 +30,8 @@ class StageFrameGateTests(unittest.TestCase):
         vec[0] = 5
         vec[5] = 1
         vec[7] = 0
+        vec[28] = 6
+        vec[28+5] = 1
         owner = bytearray(642)
         for x in range(8, 312):
             off = 2 + 2*x
@@ -63,7 +65,7 @@ class StageFrameGateTests(unittest.TestCase):
             "world_state_sha256": "b"*64,
             "render_checkpoint": "post-present",
             "palette_phase": "gameplay",
-            "vec_count": 1,
+            "vec_count": 2,
             "stage_checkpoint": "post_span",
             "frame_checkpoint": "post_present",
             "capture_sha256": {n: gate.digest(buf) for n,buf in files.items()},
@@ -105,9 +107,9 @@ class StageFrameGateTests(unittest.TestCase):
         self.assertEqual(result["stage_results"]["VEC_MISMATCH"]["first_field"],"wall_id")
 
     def test_first_divergence_owner(self):
-        owner=self.change(self.candidate,"owner.bin",2+18*2,0)
-        # Mutated one active column to unowned; make count consistent.
-        self.change(self.candidate,"owner.bin",0,1)
+        # Original uses VEC #0. Candidate legitimately assigns VEC #1 to x=18.
+        # Both references are in the declared pool: this is a true owner-stage mismatch.
+        self.change(self.candidate,"owner.bin",2+18*2,0xC8)
         result=gate.analyze(self.original,self.candidate)
         self.assertEqual(result["first_divergent_stage"],"OWNER_MISMATCH")
         self.assertEqual(result["stage_results"]["OWNER_MISMATCH"]["first_screen_x"],18)
@@ -164,7 +166,9 @@ class StageFrameGateTests(unittest.TestCase):
             gate.analyze(self.original,self.candidate)
 
     def test_owner_count_must_be_consistent(self):
+        # Clear BOTH bytes of the near pointer, not only its low byte.
         self.change(self.candidate,"owner.bin",2+18*2,0)
+        self.change(self.candidate,"owner.bin",2+18*2+1,0)
         with self.assertRaisesRegex(old.Incomparable,"remaining count"):
             gate.analyze(self.original,self.candidate)
 
@@ -197,7 +201,7 @@ class StageFrameGateTests(unittest.TestCase):
         self.assertEqual(result["first_divergent_stage"],"PASS")
 
     def test_vec_count_mismatch_rejected(self):
-        self.manifest(self.candidate,"vec_count",2)
+        self.manifest(self.candidate,"vec_count",3)
         with self.assertRaises(old.Incomparable):gate.analyze(self.original,self.candidate)
 
     def test_manifest_sha_not_proof_of_genuine_source(self):
