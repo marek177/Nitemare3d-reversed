@@ -84,6 +84,47 @@ MEMCPY_NAMED_DIRECT_CALLERS={
     "1000:0EEA","1000:0F74","1000:4C72","1008:3F20",
 }
 
+def win16_slash_append_direct_branch_taken(first_byte_after_copy:int)->bool:
+    """Original 2:3E24 CMP [BP-0E],5C / 2:3E28 JE skip.
+
+    Static first source 2:3E16 is DS:08CC byte 0x5C. Under normal
+    successful strcpy, this function must return False.
+    """
+    if not 0 <= first_byte_after_copy <= 0xFF:
+        raise ValueError("Need an 8-bit first byte")
+    return first_byte_after_copy != 0x5C
+
+
+def win16_memcpy_exact_rep_schedule(byte_count:int, dest_is_odd:bool)->dict:
+    """Model 2:6C80 aligned-leading MOVSB + REP MOVSW/MOVSB byte counts.
+
+    The original accepts an unsigned 16-bit count; this math makes
+    no claim about the destination's available capacity, segment
+    aliasing or 16-bit address wrap.
+    """
+    if not 0 <= byte_count <= 65535:
+        raise ValueError("memcpy byte_count must be uint16")
+    if not isinstance(dest_is_odd,bool):
+        raise ValueError("Destination parity must be a bool")
+    first_byte=1 if byte_count and dest_is_odd else 0
+    remaining=byte_count-first_byte
+    words=remaining//2
+    final_byte=remaining%2
+    return {
+        "leading_MOVSB":first_byte,
+        "REP_MOVSW_iterations":words,
+        "trailing_REP_MOVSB_iterations":final_byte,
+        "total_bytes":first_byte+2*words+final_byte,
+    }
+
+
+def win16_strdup_localalloc_requested_bytes(source_strlen:int)->int:
+    """Unsigned 16-bit INC AX after strlen; symbolic, not a safety proof."""
+    if not 0 <= source_strlen <= 65535:
+        raise ValueError("source strlen is not uint16")
+    return (source_strlen+1)&0xFFFF
+
+
 ROUNDED_LOCALALLOC_STOSW="1008:672D"
 # All named original direct caller chain:
 # 0:5588 -> 0:542A with a literal 0x000A element width;
