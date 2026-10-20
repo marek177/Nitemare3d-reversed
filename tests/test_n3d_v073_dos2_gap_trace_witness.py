@@ -99,6 +99,31 @@ class WitnessTests(unittest.TestCase):
         self.assertEqual(result["routines"]["CAB8_projection"]
                          ["observed_branch_targets_from_CBF2"]["0x0CED6"],1)
 
+    def test_nonbranch_predecessor_must_not_count_as_branch(self):
+        image=bytearray(make_image())
+        image[0xCBF2]=0x90
+        result=w.witness_one(make_trace(bytes(image),[0xCBF2,0xCED6]),bytes(image),LOAD_SEG)
+        self.assertEqual(
+            result["routines"]["CAB8_projection"]["observed_branch_targets_from_CBF2"],{}
+        )
+
+    def test_zip_rejects_wrong_relocation_base(self):
+        import tempfile
+        import zipfile
+        from unittest.mock import patch
+        image=make_image()
+        full_exe=bytes(512)+image
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/"sample.zip"
+            with zipfile.ZipFile(path,"w") as archive:
+                archive.writestr("synthetic.n3dt",
+                                 make_trace(image,[0xCAB8]*40).getvalue())
+            with patch.object(w.original,"verify_original_exe",return_value=None):
+                with self.assertRaisesRegex(ValueError,"Insufficient verified"):
+                    w.witness_zip(path,full_exe,0)
+                good=w.witness_zip(path,full_exe,LOAD_SEG)
+            self.assertEqual(good["aggregate"]["CAB8_projection"]["validated_instruction_events"],40)
+
     def test_branch_fallthrough(self):
         image=make_image()
         result=w.witness_one(make_trace(image,[0xCBF2,0xCBF6]),image,LOAD_SEG)
