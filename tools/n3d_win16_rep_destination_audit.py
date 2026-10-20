@@ -2,8 +2,8 @@
 """Bounded provenance review for archived Nitemare Win16 1.10 REP writes.
 
 All 83 records came from pre-existing original Ghidra textual disassembly.
-25 REP MOVSD/STOSD sites have direct source-register/local destination
-traces and lengths; the remaining 58 require further static pointer flow.
+25 REP MOVSD/STOSD and 9 REP MOVSW/STOSW sites have original source
+destination/length traces; the remaining 49 need more pointer flow.
 This file never claims complete Win16 x86 code coverage, runtime parity, or
 an independently re-hashed Win16 v1.10 original executable.
 """
@@ -39,6 +39,22 @@ KNOWN_FIXED_32={
     "1010:BA27":(0x4BE8,94),
 }
 KNOWN_HEAP_90B={"1010:4E21","1010:500E"}
+KNOWN_REP16_BOUNDED={
+    "1000:11D3":18,
+    "1000:1294":18,
+    "1000:2B57":18,
+    "1000:2BE2":18,
+    "1000:3CAD":18,
+    "1008:6A11":32,
+    "1008:6A6B":32,
+    "1008:6AC3":32,
+    "1008:6B18":32,
+}
+KNOWN_FIXED_16={
+    "1000:1294":(0x423E,18),
+    "1000:2BE2":(0x423E,18),
+}
+KNOWN_BOUNDED_TOTAL=KNOWN_REP32+len(KNOWN_REP16_BOUNDED)
 STRING_STAGING_START=0x36BE
 STRING_CLOCK_FLAG=0x46B2
 STRING_CLOCK_OFFSET=STRING_CLOCK_FLAG-STRING_STAGING_START
@@ -95,6 +111,8 @@ def provenance_audit(rows:list[dict[str,str]],
     class_counts=Counter()
     open_sites=[]
     bounded=[]
+    bounded32=[]
+    bounded16=[]
     fixed=[]
     for row in rows:
         site=row["site"]
@@ -117,11 +135,15 @@ def provenance_audit(rows:list[dict[str,str]],
             length=int(n)
             if length<=0 or length>65536:
                 raise ValueError("Invalid source-bounded REP length "+site)
-            if op not in ("MOVSD.REP","STOSD.REP"):
+            if op not in ("MOVSD.REP","STOSD.REP","MOVSW.REP","STOSW.REP"):
                 raise ValueError("Unexpected unreviewed REP length "+site)
             if category in OPEN_CATEGORIES:
                 raise ValueError("Length alone is not destination provenance "+site)
             bounded.append(site)
+            if op in ("MOVSD.REP","STOSD.REP"):
+                bounded32.append(site)
+            else:
+                bounded16.append(site)
         if category in OPEN_CATEGORIES:
             open_sites.append(site)
         if row["fixed_DGROUP_start"]:
@@ -150,28 +172,36 @@ def provenance_audit(rows:list[dict[str,str]],
         raise ValueError(f"REP textual census mismatch: {actual} vs {expected}")
     if enforce_archived_census and len(rows)!=83:
         raise ValueError(f"Expected 83 Ghidra textual REP sites, got {len(rows)}")
-    if enforce_archived_census and len(bounded)!=KNOWN_REP32:
-        raise ValueError("Expected exactly 25 inspected REP MOVSD/STOSD sites")
+    if enforce_archived_census and len(bounded)!=KNOWN_BOUNDED_TOTAL:
+        raise ValueError("Expected exactly 34 source-bounded REP sites")
     if enforce_archived_census and {
         row["site"] for row in rows
         if row["destination_class"]=="STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND"
     }!=STRING_STAGING_SITES:
         raise ValueError("Four archived string-staging copy site classifications changed")
-    if enforce_archived_census and set(bounded)!={
+    if enforce_archived_census and set(bounded32)!={
         r["site"] for r in rows if r["rep_operation"] in ("MOVSD.REP","STOSD.REP")
     }:
         raise ValueError("Not all 25 REP32 sites were inspected")
+    if enforce_archived_census and set(bounded16)!=set(KNOWN_REP16_BOUNDED):
+        raise ValueError("Nine archived REP16 destination sites changed")
     if enforce_archived_census:
-        if {r["source"] for r in fixed}!=set(KNOWN_FIXED_32):
-            raise ValueError("Five expected fixed DGROUP destinations changed")
+        for row in rows:
+            site=row["site"]
+            if site in KNOWN_REP16_BOUNDED:
+                if int(row["bounded_total_write_bytes"])!=KNOWN_REP16_BOUNDED[site]:
+                    raise ValueError("Archived REP16 instruction length mismatch "+site)
+        all_fixed={**KNOWN_FIXED_32,**KNOWN_FIXED_16}
+        if {r["source"] for r in fixed}!=set(all_fixed):
+            raise ValueError("Seven expected fixed DGROUP destinations changed")
         for record in fixed:
-            start,length=KNOWN_FIXED_32[record["source"]]
+            start,length=all_fixed[record["source"]]
             if record["address"]!=f"DS:{start:04X}" or record["bytes"]!=length:
                 raise ValueError("Original fixed REP destination span changed")
         if not KNOWN_HEAP_90B.issubset(set(bounded)):
             raise ValueError("Missing LocalAlloc 90-byte REP sources")
-        if len(open_sites)!=58:
-            raise ValueError(f"Expected 58 unresolved REP destinations, got {len(open_sites)}")
+        if len(open_sites)!=49:
+            raise ValueError(f"Expected 49 unresolved REP destinations, got {len(open_sites)}")
 
     return {
         "build":"Win16 v1.10",
@@ -179,7 +209,9 @@ def provenance_audit(rows:list[dict[str,str]],
         "scope":"REP MOVS/STOS sites found in pre-existing analyzed original text",
         "total_rep_sites":len(rows),
         "opcode_type_counts":dict(actual),
-        "source_byte_bounded_rep_movsd_stosd":len(bounded),
+        "source_byte_bounded_rep_movsd_stosd":len(bounded32),
+        "source_byte_bounded_rep_movsw_stosw":len(bounded16),
+        "source_byte_bounded_rep_total":len(bounded),
         "bounded_rep_sites":sorted(bounded),
         "destination_classes":dict(sorted(class_counts.items())),
         "remaining_rep_destinations_for_pointer_provenance":len(open_sites),
@@ -198,7 +230,11 @@ def provenance_audit(rows:list[dict[str,str]],
         "prefix_characters_required_to_touch_clock_with_config_sav":(
             STRING_CLOCK_OFFSET-FIXED_CONFIG_SAV_SUFFIX_CHARACTERS),
         "string_alias_dynamic_reachability_proven":False,
-        "five_fixed_DGROUP_writes":fixed,
+        "five_fixed_DGROUP_writes":[
+            record for record in fixed if record["source"] in KNOWN_FIXED_32],
+        "seven_fixed_DGROUP_writes":fixed,
+        "additional_two_18byte_fixed_DGROUP_writes":[
+            record for record in fixed if record["source"] in KNOWN_FIXED_16],
         "fixed_DGROUP_regions_exclude_clock_and_latch":all(
             not r["overlap_DS_46B2"] and not r["overlap_DS_00A2"] for r in fixed),
         "win110_DGROUP_file_backed_exclusive_end":"DS:8EAE",
@@ -214,7 +250,7 @@ def provenance_audit(rows:list[dict[str,str]],
             "All destination-provenance classes rely on original Ghidra local instructions",
             "Fixed DS ranges can be bounded algebraically independent of runtime stack or heap",
             "Other-segment, stack, heap and framebuffer disjointness uses valid OS segment/allocator semantics",
-            "Other 58 REP destinations need interprocedural pointer/length or bounds proof",
+            "Other 49 REP destinations need interprocedural pointer/length or bounds proof",
             "Four string copies at DS:36BE could overlap DS:46B2 if NUL-terminated combined char count >=4084; actual input reachability unproved",
             "Non-REP writes, computed SI/DI/BX/ES stores and call-based memcpy are separate",
         ],
@@ -231,8 +267,8 @@ def main()->int:
         rendered=json.dumps(report,indent=2,ensure_ascii=False)+"\n"
         if args.output:
             args.output.write_text(rendered,encoding="utf-8")
-            print("Reviewed 83 original textual REP sites; 25 local bounds, "
-                  "5 fixed DGROUP spans, 58 pending pointer flows.")
+            print("Reviewed 83 original textual REP sites; 34 local bounds "
+                  "(25 REP32 + 9 REP16), 7 fixed DGROUP spans, 49 pending.")
             print(f"JSON report: {args.output}")
         else:
             print(rendered)
