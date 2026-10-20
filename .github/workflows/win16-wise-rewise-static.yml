@@ -1,0 +1,74 @@
+name: Win16 Wise NE original installer REWise static extraction
+
+on:
+  push:
+    paths: ['.github/workflows/win16-wise-rewise-static.yml']
+  workflow_dispatch:
+
+jobs:
+  wise-ne-static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build rewise extractor (not original Windows code)
+        shell: bash
+        run: |
+          set -u
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq build-essential cmake libz-dev > /dev/null
+          echo "APT candidate:"; apt-cache policy rewise | head -12 || true
+          if ! git clone --depth 1 https://codeberg.org/CYBERDEV/REWise.git /tmp/rewise 2>&1; then
+            echo REWISE_CODEBERG_CLONE_FAILED
+            exit 0
+          fi
+          echo "REWISE repo files"; find /tmp/rewise -maxdepth 2 -type f | head -40
+          cmake -S /tmp/rewise -B /tmp/rewise/build -DCMAKE_BUILD_TYPE=Release || true
+          cmake --build /tmp/rewise/build --parallel 2 || true
+          find /tmp/rewise -type f \( -name rewise -o -name REWise \) -exec file {} \; | head -20
+      - name: Download original public Win3.x installer
+        shell: bash
+        run: |
+          curl --fail --location --retry 1 --max-time 90 \
+            https://archive.org/download/win3_Nite3d3x/win3_Nite3d3x.zip \
+            -o /tmp/nite3w-public.zip
+          mkdir -p /tmp/nite3w-wise
+          unzip -oq /tmp/nite3w-public.zip -d /tmp/nite3w-wise
+      - name: Statically list original Wise NE contents with REWise
+        shell: bash
+        run: |
+          set -u
+          candidate="$(find /tmp/rewise -type f \( -name rewise -o -name REWise \) -perm /u+x 2>/dev/null | head -1)"
+          if test -z "$candidate"; then
+            echo REWISE_BINARY_NOT_AVAILABLE
+            exit 0
+          fi
+          echo REWISE_BINARY "$candidate"
+          timeout 50 "$candidate" -v || true
+          echo WISE_INSTALL_EXE_FILE_LIST
+          timeout 75 "$candidate" -l /tmp/nite3w-wise/INSTALL.EXE 2>&1 | head -85 || true
+          echo WISE_INSTALL_W02_FILE_LIST
+          timeout 60 "$candidate" -l /tmp/nite3w-wise/INSTALL.W02 2>&1 | head -60 || true
+          mkdir -p /tmp/rewise-output
+          echo EXTRACTING_AS_STATIC_BYTES
+          timeout 80 "$candidate" -x /tmp/rewise-output /tmp/nite3w-wise/INSTALL.EXE 2>&1 | head -75 || true
+          echo EXTRACTED_FILES
+          find /tmp/rewise-output -maxdepth 3 -type f -printf '%p size=%s\n' | head -80
+          python3 - <<'PY'
+          import hashlib,struct
+          from pathlib import Path
+          SHA="12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481"
+          files = list(Path('/tmp/rewise-output').rglob('*'))
+          checked = 0
+          for p in files:
+              if not p.is_file() or p.stat().st_size>8000000: continue
+              b = p.read_bytes()
+              if b[:2]!=b'MZ': continue
+              checked+=1
+              sha=hashlib.sha256(b).hexdigest()
+              ne=struct.unpack_from('<I',b,0x3c)[0]
+              print('EXE',str(p),'SIZE',len(b),'SHA256',sha,'NE',b[ne:ne+2]==b'NE')
+              if sha==SHA:
+                  print('EXACT_WIN16_110_ORIGINAL_FOUND',str(p))
+          print('EXECUTABLE_COUNT',checked)
+          PY
