@@ -4,6 +4,7 @@ from pathlib import Path
 import unittest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import n3d_v071_dos20_opcode_gap_audit as audit
+import n3d_v071_frame_parity_gate as frame_gate
 
 class GapTests(unittest.TestCase):
     def test_span_lengths(self):
@@ -40,6 +41,24 @@ class GapTests(unittest.TestCase):
             audit.verify_original_exe(bytes(116606))
         with self.assertRaises(ValueError):
             audit.header_size(bytes(32))
+
+
+    def test_frame_gate_synthetic(self):
+        s = dict(reference_exe_sha256=frame_gate.ORIGINAL_DOS2_UNPACKED_SHA,
+                 data_manifest_sha256="a"*64, world_state_sha256="b"*64,
+                 episode=1, level=1, game_tick=42, player_x=1440, player_y=3620,
+                 angle_units=80, render_checkpoint="wall-complete", palette_phase="gameplay")
+        orig = dict(s, role="original-dos2")
+        cand = dict(s, role="candidate")
+        pixels = bytes(64000)
+        dac = bytes(768)
+        assert frame_gate.compare_pair(pixels, pixels, dac, dac, orig, cand)["pair_matches"]
+        altered = bytearray(pixels)
+        altered[18] = 1
+        assert frame_gate.compare_pair(pixels, bytes(altered), dac, dac, orig, cand)["different_indexed_pixels"] == 1
+        cand["game_tick"] += 1
+        with self.assertRaises(frame_gate.Incomparable):
+            frame_gate.compare_pair(pixels, pixels, dac, dac, orig, cand)
 
 if __name__ == "__main__":
     unittest.main()
