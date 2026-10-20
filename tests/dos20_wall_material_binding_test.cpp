@@ -251,6 +251,13 @@ int main() {
     assert(!catalog.build(std::span(img).subspan(1),ds,3));
     assert(catalog.caches.size()==originalCaches);
 
+    // A stale shade table from the previous gameplay tick is not silently
+    // accepted after DS:6278 has changed.
+    ds[0x6278]=1;
+    assert(s::prepare(ds,3,0,material,plan)==s::Status::InvalidWallMaterial);
+    ds[0x6278]=0;
+    assert(s::prepare(ds,3,0,material,plan)==s::Status::Ok);
+
     // Missing exact U/trig/selector/shading is not replaced by DDA fallback.
     m::MaterialBinder invalid=material;
     invalid.trig=nullptr;
