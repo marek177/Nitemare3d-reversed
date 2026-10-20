@@ -76,6 +76,32 @@ int main() {
     assert(p.baseRgb6==preserved.baseRgb6);
     assert(p.shadeIndex==preserved.shadeIndex);
 
+    // Reading original global palette and shade from the 64KiB DOS segment
+    // must use DS:4A64 RGB6 and DS:6278 WORD, not the current RGB8 DAC fade.
+    std::vector<std::uint8_t> ds(65536);
+    std::copy(duplicate.begin(),duplicate.end(),ds.begin()+0x4A64);
+    ds[0x6278]=0; ds[0x6279]=0;
+    sh::Prepared originalLayout{};
+    assert(sh::prepareFromDosSegment(ds,originalLayout));
+    assert(originalLayout.shadeIndex==0);
+    assert(originalLayout.xlat[201]==11);
+    std::copy(originalLayout.xlat.begin(),originalLayout.xlat.end(),
+              ds.begin()+0xD20C);
+    assert(sh::matchesStoredDosXlat(ds,originalLayout));
+    ds[0xD20C+201]=200;
+    assert(!sh::matchesStoredDosXlat(ds,originalLayout));
+    ds[0xD20C+201]=11;
+    ds[0x6278]=8; // invalid shade index
+    const auto previous=originalLayout;
+    assert(!sh::prepareFromDosSegment(ds,originalLayout));
+    assert(originalLayout.xlat==previous.xlat);
+    ds[0x6278]=0;
+    ds[0x4A64]=64; // out-of-range RGB6 channel
+    assert(!sh::prepareFromDosSegment(ds,originalLayout));
+    ds[0x4A64]=0;
+    assert(sh::prepareFromDosSegment(ds,originalLayout));
+    assert(!sh::prepareFromDosSegment(std::span(ds).subspan(1),originalLayout));
+
     // Feed the recovered remap into v0.74's REAL indexed wall writer, proving
     // the bridge does not quietly bypass XLAT or make index 0x1F transparent.
     std::vector<std::uint8_t> indexed(w::kIndexedBytes,255);
