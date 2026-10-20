@@ -165,6 +165,55 @@ class SnapshotPipeline(unittest.TestCase):
         self.assertEqual(len(rows),304)
         self.assertTrue(all(r['physical_u']=='' and None not in r for r in rows))
 
+    def patterned_replay(self, width, displacement=331):
+        # Column and row coefficients differ: transposition, squashed 128-wide
+        # faces, constant U, missing carry and transparent-zero errors diverge.
+        self.w16(0x4162,1472)  # local=32, so center physical U=96 for width128
+        self.w16(0x4D72,displacement); self.w16(0x4D76,displacement)
+        self.w32(0x4D7C,displacement<<16)
+        self.img=bytearray(0xBC00+10+width*64)
+        struct.pack_into('<I',self.img,4*5,0xBC00)
+        self.img[0x800+5*90+2]=1
+        self.img[0xBC00:0xBC02]=bytes((width,64))
+        for u in range(width):
+            for v in range(64): self.img[0xBC00+10+u*64+v]=(17*u+3*v)&255
+        bottom=(80*16+displacement)//16
+        n=2*(bottom-80)+1
+        step=(64<<16)//n
+        first=bottom-n if bottom<155 else 4
+        count=n+1 if bottom<155 else 152
+        source=0 if bottom<155 else (((n-152)*64*65536)//n)//2
+        expected=bytearray(self.background)
+        expected_u=[]
+        trunc=lambda value,denom: (abs(value)//denom)*(-1 if value<0 else 1)
+        for x in range(8,312):
+            projected=trunc(trunc((x-160)*459074,displacement),1024)
+            u=(-(projected+32))&(width-1)
+            expected_u.append(u)
+            for row in range(count):
+                v=(source+row*step)>>16
+                expected[(first+row)*320+x]=(17*u+3*v)&255
+        self.reference=bytes(expected)
+        p=self.run_replay()
+        self.assertEqual(p.returncode,0,p.stderr)
+        self.assertEqual((self.output/'candidate.idx').read_bytes(),self.reference)
+        self.assertEqual((self.output/'candidate.u').read_bytes(),bytes(expected_u))
+        report=json.loads(p.stdout)
+        self.assertEqual(report['generated_wall_pixels'],304*count)
+        # Ensure the fixture really checks varying U/V and the second face.
+        self.assertGreater(len(set(expected_u)),2)
+        if width==128: self.assertEqual(expected_u[152],96)
+        self.assertIn(0,self.reference[first*320+8:(first+count)*320])
+
+    def test_patterned_64_wide_texture_uv_and_fixed_point_carry(self):
+        self.patterned_replay(64)
+
+    def test_patterned_128_wide_texture_preserves_second_face(self):
+        self.patterned_replay(128)
+
+    def test_patterned_clipped_wall_uses_vertical_source_offset(self):
+        self.patterned_replay(128,2000)
+
     def reject_without_output(self, extra=()):
         p=self.run_replay(extra=extra)
         self.assertEqual(p.returncode,2,p.stdout+p.stderr)
