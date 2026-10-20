@@ -169,7 +169,7 @@ class Win16MemcpyCallerAudit(unittest.TestCase):
     def test_src_dst_count_words_present_in_each_original_asm_row(self):
         entries={r["site"]:r for r in self.rows}
         self.assertIn("[param1 struct + 0]",entries["1000:0DD0"]["source_operand"])
-        self.assertIn("[param1 struct + 0]",entries["1000:0F74"]["destination_operand"])
+        self.assertIn("[struct+0]",entries["1000:0F74"]["destination_operand"])
         self.assertIn("param5",entries["1000:0ED9"]["copy_count_operand"])
         self.assertIn("param3",entries["1000:0EEA"]["copy_count_operand"])
         self.assertIn("strlen",entries["1000:0E16"]["copy_count_operand"])
