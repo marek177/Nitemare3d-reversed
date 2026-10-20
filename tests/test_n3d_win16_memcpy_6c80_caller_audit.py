@@ -82,6 +82,11 @@ class Win16MemcpyCallerAudit(unittest.TestCase):
         self.assertTrue(append_direct_fast_path(65530,10,20))
         self.assertEqual(additive_required_len_u16(65530,10),4)
         self.assertGreater(65530+10,20)
+        # Valid used<=capacity prior to call, yet original SIGNED
+        # compare treats appended 0x8000 as negative and skips growth.
+        self.assertTrue(append_direct_fast_path(0,32768,32767))
+        self.assertLessEqual(0,32767)
+        self.assertGreater(32768,32767)
         self.assertTrue(append_direct_fast_path(10,10,20))
         self.assertFalse(append_direct_fast_path(10,11,20))
         # No unsigned wrap, but compare result has the sign bit set.
