@@ -1,0 +1,32 @@
+name: N3D v080 original wall phase ordering
+
+on:
+  push:
+    paths:
+      - 'tools/n3d_v080_midrender_checkpoint.py'
+      - 'tests/test_n3d_v080_midrender_checkpoint.py'
+      - '.github/workflows/renderer-v080-original-wall-phase.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_v080_midrender_checkpoint.py'
+      - 'tests/test_n3d_v080_midrender_checkpoint.py'
+      - '.github/workflows/renderer-v080-original-wall-phase.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test DOS2 pre-read and post-advance order without copyrighted files
+        run: python -m unittest discover -s tests -p test_n3d_v080_midrender_checkpoint.py -v
