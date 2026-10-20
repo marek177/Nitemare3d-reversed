@@ -171,6 +171,7 @@ struct Selection {
 class ImgWallCatalog {
 public:
     std::vector<Sequence> caches{};
+    std::array<int,256> selectorByWall{};
     // No copying original IMG frame pixels; spans retain caller ownership.
     // Build from VEC order; alias wall IDs by the same absolute IMG stream.
     // Checked VEC +04 must correspond to the original cache selector.
@@ -182,6 +183,7 @@ public:
            activeVecCount==0 || activeVecCount>sw::kMaxVecs)
             return false;
         ImgWallCatalog next{};
+        next.selectorByWall.fill(-1);
         for(unsigned i=0;i<activeVecCount;++i){
             const auto near=sw::kVecBase+i*sw::kVecStride;
             const std::uint8_t wallId=ds[near];
@@ -222,12 +224,15 @@ public:
                 next.caches.push_back(std::move(added));
             }
             if(selector!=ds[near+4])return false; // no silent alias reshuffle
+            next.selectorByWall[wallId]=static_cast<int>(selector);
         }
         *this=std::move(next);
         return true;
     }
     std::optional<Selection> select(const Vec& v) const noexcept {
-        if(v.textureSet>=caches.size())return std::nullopt;
+        if(v.textureSet>=caches.size() ||
+           selectorByWall[v.wallId]!=static_cast<int>(v.textureSet))
+            return std::nullopt;
         const Sequence& cache=caches[v.textureSet];
         if(cache.frames.empty())return std::nullopt;
         unsigned frame=v.animationFrame;
