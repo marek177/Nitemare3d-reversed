@@ -262,6 +262,121 @@ def verify_win18_timer_call_and_stack(image: NeImage) -> dict:
     }
 
 
+
+# Win16 1.10 archived original Ghidra bytes: nite3w(1).docx and
+# RE MAX v0.61/machine_anchors_v20.csv. This manifest alone is NOT a
+# fresh byte re-read. verify_win110_timer_call_and_stack() runs it against
+# the real EXE only after the SHA-pinned original file is selected.
+WIN110_TIMER_ARCHIVED_ANCHORS = {
+    0x0F32: "6a 00",           # lifecycle mode=0
+    0x0F34: "9a 6c d6",        # CALL FAR 3:D66C
+    0x0F39: "83 c4 02",
+    0x0F6E: "6a 01",           # lifecycle mode=1
+    0x0F70: "9a 6c d6",
+    0x0F75: "83 c4 02",
+    0xD66C: "c8 06 00 00",    # ENTER 6,0
+    0xD670: "56",             # PUSH SI
+    0xD671: "8b 46 06",
+    0xD674: "0b c0",
+    0xD676: "74 06",
+    0xD678: "48",
+    0xD679: "74 39",        # mode==1 directly reaches cleanup
+    0xD67E: "8d 46 fa",     # LEA AX,[BP-6] caps buffer
+    0xD681: "16",
+    0xD682: "50",
+    0xD683: "6a 04",        # TIMECAPS length 4 bytes
+    0xD685: "9a",           # MMSYSTEM.604
+    0xD68A: "3d 01 00",
+    0xD68D: "1a c0",
+    0xD68F: "f6 d8",
+    0xD691: "a2 b2 46",     # flag DS:46B2
+    0xD694: "8b 76 fa",     # wPeriodMin at BP-6
+    0xD697: "83 ee 0a",
+    0xD69A: "1b c0",
+    0xD69C: "f7 d0",
+    0xD69E: "23 f0",
+    0xD6A0: "83 c6 0a",
+    0xD6A3: "80 3e b2 46 00",
+    0xD6A8: "74 19",
+    0xD6AA: "56",
+    0xD6AB: "9a",           # MMSYSTEM.605
+    0xD6B0: "5e",
+    0xD6B1: "c9",
+    0xD6B2: "cb",
+    0xD6B4: "80 3e b2 46 00",
+    0xD6B9: "74 08",
+    0xD6BB: "ff 76 fe",     # cleanup reads uninitialized BP-2
+    0xD6BE: "9a",           # MMSYSTEM.606
+    0xD6C3: "5e",
+    0xD6C4: "c9",
+    0xD6C5: "cb",
+}
+
+
+def verify_win110_timer_call_and_stack(image: NeImage) -> dict:
+    """Instruction/fixup contract for the SHA-pinned original Win16 1.10.
+
+    This must only be invoked by inspect() when the original SHA matched;
+    other callers must identify their test image as a synthetic fixture.
+    """
+    for ip, hex_bytes in WIN110_TIMER_ARCHIVED_ANCHORS.items():
+        expected = bytes.fromhex(hex_bytes)
+        actual = image.bytes_at(3, ip, ip + len(expected))
+        if actual != expected:
+            raise ValueError(
+                f"Win16 v1.10 timer original/archived-byte mismatch at "
+                f"3:{ip:04X}: {actual.hex()} vs {expected.hex()}"
+            )
+
+    caller_relocs = internal_far_relocations(image, 3, 0xD66C)
+    caller_sources = {r["source"] for r in caller_relocs}
+    if not {"3:0F37", "3:0F73"}.issubset(caller_sources):
+        raise ValueError("Win16 v1.10 timer direct FAR-caller fixups missing")
+    checked_imports = [
+        import_at(image, 0xD685, "MMSYSTEM", 604),
+        import_at(image, 0xD6AB, "MMSYSTEM", 605),
+        import_at(image, 0xD6BE, "MMSYSTEM", 606),
+    ]
+    if not all(r["verified"] for r in checked_imports):
+        raise ValueError("Win16 v1.10 timer MMSYSTEM import fixups mismatch")
+
+    instructions = disassemble_region(image, 3, 0xD66C, 0xD6C6)
+    bp_minus_2 = [
+        row for row in instructions
+        if "[bp - 2]" in row["operands"]
+    ]
+    if len(bp_minus_2) != 1 or (
+        bp_minus_2[0]["address"] != "3:D6BB"
+        or bp_minus_2[0]["mnemonic"] != "push"
+    ):
+        raise ValueError("Win16 v1.10 BP-2 cleanup read not unique/expected")
+
+    return {
+        "proof": "ORIGINAL_SHA_PINNED_RECHECK_OF_ARCHIVED_GHIDRA_OPCODE_MANIFEST",
+        "build": "1.10",
+        "init_far_call": "3:0F34",
+        "init_immediate_argument": 0,
+        "cleanup_far_call": "3:0F70",
+        "cleanup_immediate_argument": 1,
+        "original_gathered_archived_anchors": len(WIN110_TIMER_ARCHIVED_ANCHORS),
+        "checked_timer_imports": 3,
+        "verified_internal_far_relocation_sources": sorted(caller_sources),
+        "local_frame_bytes": 6,
+        "caps_output": "SS:[BP-6]..[BP-3] (4 bytes)",
+        "begin_period_push": "SI after 16-bit max(wPeriodMin,10)",
+        "end_period_push": "WORD PTR SS:[BP-2]",
+        "end_period_local_initialized": False,
+        "bp_minus_2_references": bp_minus_2,
+        "limitations": [
+            "Only original-recheck mode requires the complete pinned game EXE",
+            "Original 1.10 disassembly was already present in user archive v0.61",
+            "The actual stack residue and MMSYSTEM return are runtime questions",
+            "Additional dynamic/aliased FAR caller paths remain unproved",
+            "Never reproduce a host C++ uninitialized read for a parity claim",
+        ],
+    }
+
+
 def inspect(image: NeImage, profile: Profile):
     seg3 = image.segment(3)
     if (seg3.file_offset, seg3.length) != (
@@ -284,8 +399,13 @@ def inspect(image: NeImage, profile: Profile):
         verify_win18_timer_call_and_stack(image)
         if profile.version == "1.8" else None
     )
+    win110_proof = (
+        verify_win110_timer_call_and_stack(image)
+        if profile.version == "1.10" else None
+    )
     return {
         "win18_timer_stack_proof": win18_proof,
+        "win110_timer_stack_proof": win110_proof,
         "build": profile.version,
         "source_sha256": profile.sha256,
         "source_size": profile.raw_size,
