@@ -1,0 +1,37 @@
+name: N3D v073 DOS2 original trace witness
+
+on:
+  push:
+    paths:
+      - 'tools/n3d_v073_dos2_gap_trace_witness.py'
+      - 'tools/n3d_v071_dos20_opcode_gap_audit.py'
+      - 'tests/test_n3d_v073_dos2_gap_trace_witness.py'
+      - '.github/workflows/renderer-v073-trace-witness.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_v073_dos2_gap_trace_witness.py'
+      - 'tools/n3d_v071_dos20_opcode_gap_audit.py'
+      - 'tests/test_n3d_v073_dos2_gap_trace_witness.py'
+      - '.github/workflows/renderer-v073-trace-witness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  8086-witness-tests:
+    name: Synthetic 8086 trace witness
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install 16-bit assembler decoder
+        run: python -m pip install capstone==5.0.3
+      - name: Synthetic N3DTRC01 per-instruction evidence and rejection cases
+        run: python -m unittest discover -s tests -p 'test_n3d_v073_dos2_gap_trace_witness.py' -v
