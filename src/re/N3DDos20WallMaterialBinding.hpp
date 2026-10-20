@@ -130,6 +130,81 @@ inline std::optional<std::uint16_t> perspectiveUCandidate(
         vec,screenX,along,static_cast<std::uint16_t>(width));
 }
 
+// DOS2 FUN_1000_CEDC, derived independently from the original N3D-E-20
+// Ghidra export, and caller FUN_1000_25DC. Uses original runtime DS words,
+// not Win16-derived octants or a reconstructed trig table.
+//
+// Inputs:
+//  DS:415C octant selector (0 -> divide by sinQ10, nonzero -> cosQ10)
+//  DS:41B2/41B4 Q10 sine/cosine
+//  DS:3686 DWORD vertical numerator
+//  DS:368A DWORD inverse horizontal scale
+//  DS:4550 WORD screen center X
+//  DS:4162/+2 player X/Y
+//
+// The final near-endpoint adjustment calls the separately recovered DOS
+// 22CA / Win16 6422 orientation/edge family. This is *static semantic*,
+// NOT byte-validated for all caller branches, overflow and camera states.
+inline std::optional<std::uint16_t> perspectiveUDosFromDS(
+    const Vec& vec,std::int16_t screenX,std::uint16_t spanYQ4,
+    std::span<const std::uint8_t> ds,unsigned width) noexcept {
+    if(ds.size()!=sw::kSegmentBytes || spanYQ4==0 ||
+       (width!=64 && width!=128) || vec.orientation>3)
+        return std::nullopt;
+
+    const auto playerX=sw::signedWord(sw::word(ds,0x4162));
+    const auto playerY=sw::signedWord(sw::word(ds,0x4164));
+    const int sine=sw::signedWord(sw::word(ds,0x41B2));
+    const int cosine=sw::signedWord(sw::word(ds,0x41B4));
+    const bool cosineDivisor=sw::word(ds,0x415C)!=0;
+    const int divisor=cosineDivisor?cosine:sine;
+    if(divisor==0)return std::nullopt;
+    const bool vertical=vec.orientation>=2;
+    const bool curtain=vec.renderClass==0x3F || vec.renderClass==0x40;
+    bool flip=(vec.flags & 0x20u)!=0;
+    if(curtain)flip=!flip;
+    std::int16_t local=0,perpendicular=0;
+    if(!vertical){
+        local=flip
+            ? wrap16(std::int32_t(wc::subtract16(playerX,vec.x2))+0x80)
+            : wc::subtract16(playerX,vec.x1);
+        perpendicular=wc::subtract16(playerY,vec.y1);
+    }else{
+        local=flip
+            ? wrap16(std::int32_t(wc::subtract16(vec.y2,playerY))-0x80)
+            : wc::subtract16(vec.y1,playerY);
+        perpendicular=wc::subtract16(vec.x1,playerX);
+    }
+    const std::int64_t product=
+        std::int64_t(perpendicular)*(cosineDivisor?sine:cosine);
+    const std::int64_t verticalNumerator=
+        sw::signedDword(sw::dword(ds,0x3686));
+    const std::int64_t inverseScale=
+        sw::signedDword(sw::dword(ds,0x368A));
+    if(verticalNumerator<=0 || inverseScale<=0)return std::nullopt;
+    const int centerX=sw::signedWord(sw::word(ds,0x4550));
+    const std::int64_t screenTerm=
+        (std::int64_t(screenX-centerX)*inverseScale)/spanYQ4;
+    const std::int64_t verticalTerm=verticalNumerator/spanYQ4;
+    std::int64_t temp=0;
+    if(!cosineDivisor){
+        temp=vertical?product-screenTerm:verticalTerm-product;
+    }else{
+        temp=vertical?verticalTerm-product:screenTerm+product;
+    }
+    auto along=wrap16(temp/divisor);
+    along=wrap16(std::int32_t(along)+local);
+    if(vec.renderClass!=2 && (vec.orientation==0 || vec.orientation==3))
+        along=wc::negate16(along);
+    return wc::selectTextureU(
+        vec,screenX,along,static_cast<std::uint16_t>(width));
+}
+
+enum class TextureUModel : std::uint8_t {
+    DosNativeCedc22ca, // default: use original DOS2 DS runtime parameters
+    Win16CrossBuildEbd6 // independent comparison only, not DOS parity
+};
+
 inline Vec vecFromDosDS(std::span<const std::uint8_t> ds,
                        std::uint16_t near) noexcept {
     Vec v{};
@@ -268,12 +343,14 @@ public:
     // activates. Must hold independently generated shade index 0 XLAT.
     const shade::Prepared* shadingZero{};
     Camera camera{};
+    TextureUModel uModel{TextureUModel::DosNativeCedc22ca};
 
     std::optional<sw::Material> operator()(
         unsigned screenX,std::uint16_t nearOwner,std::uint8_t wallId,
         const sw::Span&,int /*bottomY*/,unsigned /*heightIndex*/,
         std::uint16_t spanYQ4) const noexcept {
-        if(ds.size()!=sw::kSegmentBytes || !catalog || !trig || !shading ||
+        if(ds.size()!=sw::kSegmentBytes || !catalog || !shading ||
+           (uModel==TextureUModel::Win16CrossBuildEbd6 && !trig) ||
            !sw::validNear(nearOwner,sw::kMaxVecs) ||
            screenX<sw::kLeft || screenX>sw::kRight ||
            wallId!=ds[nearOwner])
@@ -287,9 +364,13 @@ public:
                           selection->frame.width!=128) ||
                           selection->frame.height!=64)
             return std::nullopt;
-        const auto u=perspectiveUCandidate(vec,
-            static_cast<std::int16_t>(screenX),spanYQ4,
-            camera,*trig,selection->frame.width);
+        const auto u=(uModel==TextureUModel::DosNativeCedc22ca)
+            ? perspectiveUDosFromDS(vec,
+                static_cast<std::int16_t>(screenX),spanYQ4,
+                ds,selection->frame.width)
+            : perspectiveUCandidate(vec,
+                static_cast<std::int16_t>(screenX),spanYQ4,
+                camera,*trig,selection->frame.width);
         if(!u)return std::nullopt;
         const bool forceZero=useZeroShadeForWall(ds,vec,shading->shadeIndex);
         const shade::Prepared* active=forceZero?shadingZero:shading;
