@@ -163,7 +163,7 @@ int main() {
     ds[0x6278]=0; ds[0x6279]=0;
     sh::Prepared shading{};
     assert(sh::prepareFromDosSegment(ds,shading));
-    m::MaterialBinder material{ds,&catalog,&*trig,&shading,camera};
+    m::MaterialBinder material{ds,&catalog,&*trig,&shading,nullptr,camera};
     s::Plan plan{};
     assert(s::prepare(ds,3,0,material,plan)==s::Status::Ok);
     assert(plan.drawnColumns==304);
@@ -188,14 +188,31 @@ int main() {
     // Actual DOS shade source is DS:4A64 plus selector DS:6278;
     // the same IMG source index 79 must pass through shade=4 -> index 11.
     ds[0x6278]=1;
+    ds[0x430E]=1; // enable global shade on orientation 0/1
     sh::Prepared darker{};
     assert(sh::prepareFromDosSegment(ds,darker));
     material.ds=ds;
     material.shading=&darker;
+    material.shadingZero=&shading;
     assert(s::prepare(ds,3,0,material,plan)==s::Status::Ok);
     std::fill(frame.begin(),frame.end(),0xff);
     assert(s::render(plan,frame,{})==s::Status::Ok);
     assert(frame[59*320+8]==11 && frame[100*320+311]==11);
+
+    // DOS2 local 25DC shade selection: orientation0/1, shadeIndex>0,
+    // DS:430E==0 forces shade ZERO, unlike the global darker remap.
+    ds[0x430E]=0;
+    assert(m::useZeroShadeForWall(ds,m::vecFromDosDS(ds,b),1));
+    auto vert=m::vecFromDosDS(ds,b);vert.orientation=2;
+    assert(!m::useZeroShadeForWall(ds,vert,1));
+    assert(!m::useZeroShadeForWall(ds,m::vecFromDosDS(ds,b),0));
+    material.shadingZero=nullptr;
+    assert(s::prepare(ds,3,0,material,plan)==s::Status::InvalidWallMaterial);
+    material.shadingZero=&shading;
+    assert(s::prepare(ds,3,0,material,plan)==s::Status::Ok);
+    std::fill(frame.begin(),frame.end(),0xff);
+    assert(s::render(plan,frame,{})==s::Status::Ok);
+    assert(frame[59*320+8]==79 && frame[100*320+311]==79);
     ds[0x6278]=0;
     material.shading=&shading;
 
