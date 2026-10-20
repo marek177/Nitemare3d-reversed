@@ -10,6 +10,8 @@ Nejde o 67 stratených strojových bajtov. Rozbalený originálny DOS2 `N3D-E-20
 
 Nový [statický opcode audit](../tools/n3d_v071_dos20_opcode_gap_audit.py) presne mapuje hranice z **load-image offsetov** do MZ file offsetov (+512), vyžaduje zhodný SHA-256 celého EXE, kontroluje známu FEFA fingerprint z original trace a vytvára JSON s SHA a nulovosťou každého nepozorovaného úseku. **Nevypisuje/distribuuje komerčné strojové bajty.**
 
+**Dodatočné statické upozornenie:** v archivovanom Ghidra exporte `N3D-E-20.EXE(5).c` má funkcia `FUN_1000_fefa` upozornenia na prekryté inštrukcie pri `0x10026/0x10028` a na nesprávne inštrukčné dáta. Preto sa pri riešení okrajových vetiev nesmie zameniť dekompilovaný C za pôvodné opcode bajty. Tento export nedokazuje, že originál skutočne vykonáva neplatný kód.
+
 **Dôkazová hranica:** pri tomto passe nebola možná lokálna binárna exekúcia/verifikácia na originálnom EXE. Preto 67 bajtov ostáva otvorených na sémantické čítanie a runtime reachability; syntetické úspešné testy nie sú originálny runtime dôkaz.
 
 ## 2. Presná akceptačná brána originál ↔ remake
