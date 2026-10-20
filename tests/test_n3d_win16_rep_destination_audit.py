@@ -14,6 +14,8 @@ from n3d_win16_rep_destination_audit import (
     STATIC_PORTAL_TEXT_PAIR_BOUNDS, STATIC_PORTAL_TEXT_MAX_CONCATENATED,
     STATIC_PORTAL_LOCAL_BUFFER_CAPACITY, VIDEO_SEGMENT_REP_64000,
     ROUNDED_LOCALALLOC_STOSW, win16_localalloc_word_clear_bytes,
+    LOCALALLOC_NAMED_CALLER_ELEMENT_SIZES,
+    win16_named_calloc_request_bytes,
     load_ledger, overlaps_linear_region, provenance_audit,
     STRING_CLOCK_OFFSET, STRING_STAGING_SITES,
     unbounded_string_copy_reaches_clock,
@@ -283,6 +285,40 @@ class Win16RepDestinationTests(unittest.TestCase):
             self.assertEqual(win16_localalloc_word_clear_bytes(n),n+1)
         for n in range(0,65535,2):
             self.assertEqual(win16_localalloc_word_clear_bytes(n),n)
+
+    def test_named_original_localalloc_callers_have_even_elements(self):
+        report=provenance_audit(self.rows)
+        self.assertEqual(
+            report["dynamic_localalloc_named_direct_callers"],
+            {"0:5588":10,"0:5865":6})
+        self.assertEqual(
+            report["dynamic_localalloc_named_direct_gateway"],"0:5446")
+        self.assertTrue(
+            report["dynamic_localalloc_named_direct_product_must_be_even_if_not_overflow"])
+        self.assertFalse(
+            report["dynamic_localalloc_odd_size_reachable_through_named_direct_calls"])
+        self.assertFalse(
+            report["dynamic_localalloc_indirect_caller_reachability_excluded"])
+
+    def test_named_original_localalloc_even_products_exhaustive_u16(self):
+        for site,element_bytes in LOCALALLOC_NAMED_CALLER_ELEMENT_SIZES.items():
+            self.assertEqual(element_bytes % 2,0)
+            for count in range(65536):
+                size=win16_named_calloc_request_bytes(site,count)
+                if size is None:
+                    self.assertGreater(element_bytes*count,65535)
+                else:
+                    self.assertEqual(size,element_bytes*count)
+                    self.assertEqual(size%2,0)
+                    self.assertEqual(win16_localalloc_word_clear_bytes(size),size)
+        self.assertEqual(win16_named_calloc_request_bytes("0:5588",6553),65530)
+        self.assertIsNone(win16_named_calloc_request_bytes("0:5588",6554))
+        self.assertEqual(win16_named_calloc_request_bytes("0:5865",10922),65532)
+        self.assertIsNone(win16_named_calloc_request_bytes("0:5865",10923))
+        with self.assertRaisesRegex(ValueError,"Unverified caller"):
+            win16_named_calloc_request_bytes("0:0000",1)
+        with self.assertRaisesRegex(ValueError,"uint16"):
+            win16_named_calloc_request_bytes("0:5588",65536)
 
     def test_mutated_portal_literal_copy_bounds_rejected(self):
         rows=copy.deepcopy(self.rows)
