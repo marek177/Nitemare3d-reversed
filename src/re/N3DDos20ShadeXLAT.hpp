@@ -86,4 +86,31 @@ inline bool prepare(std::span<const std::uint8_t> baseRgb6,
     return true;
 }
 
+// DOS2 global renderer layout: source logical RGB6 at DS:4A64,
+// active shade table selector WORD at DS:6278. Build from the actual active
+// renderer memory segment, not a synthetic hard-coded GUI palette.
+inline bool prepareFromDosSegment(std::span<const std::uint8_t> ds,
+                                  Prepared& out) noexcept {
+    constexpr std::size_t kDosSegmentBytes=65536;
+    constexpr std::size_t kPaletteAt=0x4A64;
+    constexpr std::size_t kShadeAt=0x6278;
+    if(ds.size()!=kDosSegmentBytes)return false;
+    const unsigned index=std::uint16_t(ds[kShadeAt]) |
+                          (unsigned(ds[kShadeAt+1])<<8u);
+    if(index>=kShadeLevels.size())return false;
+    return prepare(ds.subspan(kPaletteAt,768),index,out);
+}
+
+// Diagnostic *optional* comparison to the cached DOS XLAT bytes at D20C.
+// A separate SS:BX descriptor can refer to another segment; callers must
+// only assert equality after confirming the relevant DS/SS memory mapping.
+inline bool matchesStoredDosXlat(std::span<const std::uint8_t> ds,
+                                 const Prepared& prepared) noexcept {
+    constexpr std::size_t kLutAt=0xD20C;
+    if(ds.size()!=65536)return false;
+    for(unsigned i=0;i<256;++i)
+        if(ds[kLutAt+i]!=prepared.xlat[i])return false;
+    return true;
+}
+
 } // namespace n3d::re::dos20::shade
