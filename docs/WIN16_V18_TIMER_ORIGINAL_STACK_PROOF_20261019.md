@@ -1,5 +1,16 @@
 # Nitemare 3-D Windows 1.8: SHA-256-pinned timer bytecode proof
 
+> **Follow-up, 20 October 2026:** earlier v0.61 original Win16 v1.10
+> Ghidra ASM evidence was recovered from the user's archive. Contrary to the
+> original v1.8-only status here, v1.10 also shows `ENTER 6,0` and
+> `3:D6BB FF 76 FE (PUSH WORD PTR [BP-2])` followed by
+> `3:D6BE MMSYSTEM.606`. See
+> [Win16 v1.10 archived original static closure](WIN16_V110_TIMER_ARCHIVED_BYTE_CLOSURE_20261020.md).
+> This is *archived byte-listing evidence*, not a fresh original rehash or
+> gameplay runtime measurement. The global indirect FAR graph and observed
+> stack-residue value remain unclosed.
+
+
 Date: 19 October 2026. Status: **ORIGINAL STATIC VERIFIED, Win16 1.8 only**.
 
 ## Origin and identity
