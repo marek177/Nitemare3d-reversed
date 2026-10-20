@@ -311,6 +311,11 @@ add_executable(n3d_dos20_span_wall_pipeline_test
     tests/dos20_span_wall_pipeline_test.cpp)
 target_link_libraries(n3d_dos20_span_wall_pipeline_test PRIVATE n3d_core)
 
+# DOS2 static 0x16CE RGB6 shade remap, strict 256-color first-minimum.
+add_executable(n3d_dos20_shade_xlat_test
+    tests/dos20_shade_xlat_test.cpp)
+target_link_libraries(n3d_dos20_shade_xlat_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
