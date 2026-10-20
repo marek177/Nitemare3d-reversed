@@ -1,4 +1,5 @@
 #include "re/N3DDos20ShadeRemap.hpp"
+#include "re/N3DDos20ShadeXLAT.hpp"
 #include <array>
 #include <cassert>
 #include <cstdint>
@@ -21,6 +22,9 @@ int main(){
     for(unsigned level=0;level<8;++level){
         const auto actual=sh::build(palette,level);
         assert(actual.ok);
+        sh::Table independent{};
+        assert(sh::buildFromRgb6(palette,level,independent));
+        assert(actual.xlat==independent); // independent native implementations
         for(unsigned src=0;src<256;++src){
             int target[3]{};
             for(unsigned c=0;c<3;++c){
