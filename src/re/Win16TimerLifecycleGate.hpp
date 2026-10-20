@@ -15,6 +15,35 @@ inline constexpr std::uint16_t kTimerInitCall = 0x0F34;
 inline constexpr std::uint16_t kAudioCleanupCall = 0x0F66;
 inline constexpr std::uint16_t kTimerCleanupCall = 0x0F70;
 
+// Original Win16 1.10 DGROUP bytes: DS:00A2=01 initially,
+// DS:46B2=00 initially. FUN_1010_0E9E tests DS:00A2;
+// on first entry it clears that latch and sets DS:46B2 to zero
+// at 3:0ED6. In the Ghidra direct XREF table these are the only
+// references to DS:00A2 (one read / one write), and DS:46B2
+// has two known direct writers: 3:0ED6 and 3:D691.
+// Pointer aliases/overlapping writes require separate analysis.
+inline constexpr std::uint16_t kGlobalInitOneShotFlagOffset = 0x00A2;
+inline constexpr std::uint16_t kClockBackendFlagOffset = 0x46B2;
+inline constexpr std::uint16_t kInitialClockFlagClearWriter = 0x0ED6;
+inline constexpr std::uint16_t kCapsResultClockFlagWriter = 0xD691;
+inline constexpr std::uint16_t kResetRoutineEntry = 0x0E9E;
+inline constexpr std::uint16_t kResetRoutineCallFromStartup = 0x1129;
+inline constexpr std::uint8_t kOriginalInitialOneShotFlag = 1;
+inline constexpr std::uint8_t kOriginalInitialClockFlag = 0;
+
+struct GlobalClockResetPlan {
+    std::uint8_t oneShotFlagAfter;
+    bool multimediaClockFlagAfter;
+    bool explicitlyResetMultimediaClockFlag;
+};
+
+constexpr GlobalClockResetPlan planGlobalClockReset(
+    std::uint8_t oneShotFlag, bool priorMultimediaFlag) noexcept {
+    return oneShotFlag != 0
+        ? GlobalClockResetPlan{0, false, true}
+        : GlobalClockResetPlan{0, priorMultimediaFlag, false};
+}
+
 // MMSYSTEM.604 returns zero for capability success. The original
 // function writes DS:[46B2] from this result BEFORE MMSYSTEM.605.
 // The later MMSYSTEM.605 return is ignored; a failure does not
