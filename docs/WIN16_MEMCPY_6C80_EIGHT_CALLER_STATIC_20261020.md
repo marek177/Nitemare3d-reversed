@@ -1,5 +1,21 @@
 # Nitemare 3-D Win16 v1.10 — eight direct memcpy callers
 
+> **20 October 2026 subsequent alias closure correction:** The fixed-address
+> Ghidra writer list is NOT the complete global writer graph.
+> Original FUN_1000_0D3E has a computed byte store at 1000:0D65;
+> on a failed LocalAlloc (AX=0), the store writes DS:[requested_length]=0.
+> With a requested length 46B2h it would clear the timer backend flag;
+> with 00A2h it would clear the one-shot latch. Independently,
+> FUN_1000_0E26 uses a signed JGE on capacity; from the valid
+> (DS:0584,0,0) state, a requested length 8000h skips allocation and
+> a subsequent 32768-byte copy would overlap DS:46B2.
+> Both are **conditional local instruction/address proofs, not
+> demonstrated reachable original gameplay paths**. See
+> [original string trio / computed writer audit](WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md).
+> All earlier "two writers" claims on this page mean **two direct
+> fixed-address writers only**.
+
+
 **Audit:** 20 October 2026. **Method:** original-static reverse engineering.
 Primary source: archived original Ghidra listing nite3w(1).docx, logical
 Win16 code NE segment 1 (Ghidra 1000) and segment 2 (Ghidra 1008).
