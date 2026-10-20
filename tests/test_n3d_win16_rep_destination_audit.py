@@ -11,6 +11,9 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
 from n3d_win16_rep_destination_audit import (
     KNOWN_FIXED_32, KNOWN_FIXED_16, KNOWN_REP16_BOUNDED,
     KNOWN_HEAP_90B, WIN110_DGROUP_FILE_BACKED_BYTES,
+    STATIC_PORTAL_TEXT_PAIR_BOUNDS, STATIC_PORTAL_TEXT_MAX_CONCATENATED,
+    STATIC_PORTAL_LOCAL_BUFFER_CAPACITY, VIDEO_SEGMENT_REP_64000,
+    ROUNDED_LOCALALLOC_STOSW, win16_localalloc_word_clear_bytes,
     load_ledger, overlaps_linear_region, provenance_audit,
     STRING_CLOCK_OFFSET, STRING_STAGING_SITES,
     unbounded_string_copy_reaches_clock,
@@ -29,9 +32,9 @@ class Win16RepDestinationTests(unittest.TestCase):
             "MOVSB.REP":14,"MOVSW.REP":20,"MOVSD.REP":14,
         })
         self.assertEqual(result["source_byte_bounded_rep_movsd_stosd"],25)
-        self.assertEqual(result["source_byte_bounded_rep_movsw_stosw"],9)
-        self.assertEqual(result["source_byte_bounded_rep_total"],34)
-        self.assertEqual(result["remaining_rep_destinations_for_pointer_provenance"],49)
+        self.assertEqual(result["source_byte_bounded_rep_movsw_stosw"],16)
+        self.assertEqual(result["source_byte_bounded_rep_total"],46)
+        self.assertEqual(result["remaining_rep_destinations_for_pointer_provenance"],36)
         self.assertFalse(result["alias_writer_graph_complete"])
         self.assertFalse(result["original_1_10_sha_reread_this_run"])
 
@@ -67,7 +70,7 @@ class Win16RepDestinationTests(unittest.TestCase):
                 "DESTINATION_PROVENANCE_OPEN",
                 "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND",
                 "STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND"))
-        self.assertEqual(result["source_byte_bounded_rep_total"],34)
+        self.assertEqual(result["source_byte_bounded_rep_total"],46)
 
     def test_seven_total_fixed_dgroup_write_ranges_exclude_clock(self):
         result=provenance_audit(self.rows)
@@ -189,7 +192,7 @@ class Win16RepDestinationTests(unittest.TestCase):
             report["last_NUL_overlaps_clock_if_sum_characters_at_least"],4084)
         self.assertFalse(report["string_alias_dynamic_reachability_proven"])
         self.assertEqual(
-            report["remaining_rep_destinations_for_pointer_provenance"],49)
+            report["remaining_rep_destinations_for_pointer_provenance"],36)
 
     def test_config_sav_fixed_suffix_threshold(self):
         result=provenance_audit(self.rows)
@@ -216,6 +219,94 @@ class Win16RepDestinationTests(unittest.TestCase):
         row=next(x for x in rows if x["site"]=="1010:527E")
         row["destination_class"]="DESTINATION_PROVENANCE_OPEN"
         with self.assertRaisesRegex(ValueError,"string-staging"):
+            provenance_audit(rows)
+
+    def test_five_original_literal_string_pairs_fit_256_byte_frame(self):
+        result=provenance_audit(self.rows)
+        self.assertEqual(len(STATIC_PORTAL_TEXT_PAIR_BOUNDS),10)
+        self.assertEqual(set(result["portal_static_literal_rep_sites"]),
+                         set(STATIC_PORTAL_TEXT_PAIR_BOUNDS))
+        self.assertEqual(STATIC_PORTAL_TEXT_MAX_CONCATENATED,210)
+        self.assertEqual(STATIC_PORTAL_LOCAL_BUFFER_CAPACITY,256)
+        self.assertEqual(result["portal_literal_max_buffer_output"],210)
+        self.assertEqual(result["portal_stack_buffer_capacity"],256)
+        self.assertLess(210,256)
+        self.assertFalse(result["portal_source_pointer_aliases_globally_excluded"])
+
+    def test_each_static_string_copy_bound_is_pinned_to_archived_string(self):
+        self.assertEqual(sum(k.endswith("C158") or k.endswith("C15C")
+                             for k in STATIC_PORTAL_TEXT_PAIR_BOUNDS),2)
+        counts=sorted(STATIC_PORTAL_TEXT_PAIR_BOUNDS.values())
+        self.assertEqual(counts,[20,20,20,20,22,22,22,22,130,130])
+        self.assertEqual(130+19+21+19+21,210)
+        for site,maxlen in STATIC_PORTAL_TEXT_PAIR_BOUNDS.items():
+            row=next(x for x in self.rows if x["site"]==site)
+            self.assertEqual(row["destination_class"],
+                             "STACK_256_BYTE_STATIC_TEXT_APPEND")
+            self.assertEqual(int(row["bounded_total_write_bytes"]),maxlen)
+
+    def test_two_original_video_segment_rep_sites_write_exactly_64000_bytes(self):
+        result=provenance_audit(self.rows)
+        self.assertEqual(set(result["video_64000_byte_rep_sites"]),
+                         VIDEO_SEGMENT_REP_64000)
+        self.assertEqual(result["video_es_selector_source"],"WORD DS:[51A0]")
+        self.assertFalse(result["video_segment_distinct_from_DGROUP_for_all_states_proven"])
+        for site in VIDEO_SEGMENT_REP_64000:
+            row=next(x for x in self.rows if x["site"]==site)
+            self.assertEqual(row["bounded_total_write_bytes"],"64000")
+            self.assertEqual(row["destination_class"],
+                             "VIDEO_SELECTOR_ES_DS_51A0_64000")
+        self.assertEqual(0x7D00*2,64000)
+
+    def test_odd_successful_localalloc_can_write_one_extra_nominal_byte(self):
+        result=provenance_audit(self.rows)
+        self.assertEqual(result["dynamic_localalloc_zeroing_sites"],
+                         [ROUNDED_LOCALALLOC_STOSW])
+        self.assertEqual(result["source_symbolically_bounded_rep"],1)
+        self.assertTrue(result["dynamic_localalloc_odd_size_can_write_one_nominal_extra_byte"])
+        self.assertEqual(win16_localalloc_word_clear_bytes(10),10)
+        self.assertEqual(win16_localalloc_word_clear_bytes(11),12)
+        self.assertEqual(win16_localalloc_word_clear_bytes(90),90)
+        self.assertEqual(win16_localalloc_word_clear_bytes(91),92)
+        self.assertEqual(win16_localalloc_word_clear_bytes(65534),65534)
+        self.assertEqual(win16_localalloc_word_clear_bytes(65535),0)
+        with self.assertRaisesRegex(ValueError,"uint16"):
+            win16_localalloc_word_clear_bytes(65536)
+        with self.assertRaisesRegex(ValueError,"uint16"):
+            win16_localalloc_word_clear_bytes(-1)
+
+    def test_original_dynamic_heap_zero_fill_formula_exhaustive_u16(self):
+        for n in range(65536):
+            words=((n+1)&0xFFFF)>>1
+            self.assertEqual(win16_localalloc_word_clear_bytes(n),2*words)
+        for n in range(1,65535,2):
+            self.assertEqual(win16_localalloc_word_clear_bytes(n),n+1)
+        for n in range(0,65535,2):
+            self.assertEqual(win16_localalloc_word_clear_bytes(n),n)
+
+    def test_mutated_portal_literal_copy_bounds_rejected(self):
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]=="1010:C1C8")
+        row["bounded_total_write_bytes"]="23"
+        with self.assertRaisesRegex(ValueError,"Static portal literal"):
+            provenance_audit(rows)
+
+    def test_mutated_video_span_rejected(self):
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]=="1010:3A73")
+        row["bounded_total_write_bytes"]="64001"
+        with self.assertRaisesRegex(ValueError,"Video-bank REP"):
+            provenance_audit(rows)
+
+    def test_original_heap_dynamic_writer_stays_symbolic_not_fixed(self):
+        row=next(x for x in self.rows if x["site"]==ROUNDED_LOCALALLOC_STOSW)
+        self.assertEqual(row["destination_class"],
+                         "LOCALALLOC_DYNAMIC_ROUNDED_WORD_CLEAR")
+        self.assertFalse(row["bounded_total_write_bytes"])
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]==ROUNDED_LOCALALLOC_STOSW)
+        row["bounded_total_write_bytes"]="11"
+        with self.assertRaisesRegex(ValueError,"dynamic LocalAlloc"):
             provenance_audit(rows)
 
     def test_site_duplicate_rejected(self):
