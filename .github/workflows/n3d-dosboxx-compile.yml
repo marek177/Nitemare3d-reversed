@@ -52,6 +52,8 @@ jobs:
           git apply ../n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch
           git apply --check ../n3d/tools/dosbox-x/n3dtrace_deferred_start_v3.patch
           git apply ../n3d/tools/dosbox-x/n3dtrace_deferred_start_v3.patch
+          git apply --check ../n3d/tools/dosbox-x/n3dtrace_guard_al_filter_v065.patch
+          git apply ../n3d/tools/dosbox-x/n3dtrace_guard_al_filter_v065.patch
       - name: Autotools configure with heavy CPU debugger
         run: |
           cd upstream
