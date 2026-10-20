@@ -88,11 +88,7 @@ def validate_archived_hidden_code(handler:bytes=None,
         "install_entry":"1000:0772",
         "install_thunk_known_prefix_hex":prefix.hex(" "),
         "install_thunk_unverified_original_byte_offset":"1000:0781",
-        "install_thunk_relocated_segment_byte_from_original_if_supplied":(
-            None if install is None else (
-                install[len(prefix)] if install != prefix + b"\\x00" + suffix else None
-            )
-        ),
+        "install_relocation_0781_was_recovered_from_archived_text":False,
         "install_thunk_known_suffix_hex":suffix.hex(" "),
         "installed_pointer":"1000:076A",
         "setter_call":"1000:077D -> 1008:601A",
@@ -177,6 +173,7 @@ def optional_original_SHA_pinned_recheck(input_path:Path)->dict[str,Any]:
         "source":source,
         "version":profile.version,
         "fresh_original_sha256":hashlib.sha256(binary).hexdigest(),
+        "original_byte_at_1000_0781_if_SHA_verified":f"{install[len(bytes.fromhex(INSTALL_PREFIX_HEX))]:02X}",
         "verified_original_code_regions":["NE1:076A..0771","NE1:0772..0788 (masked relocation byte 0781)"],
     }
 
