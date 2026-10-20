@@ -6,9 +6,12 @@ to FUN_1010_5260, including the three near-pointer wrapper functions.
 The dynamically changeable string is the PREFIX in DS:46BE, not the
 filename suffix at the 12 direct user-facing callsites.
 
-The prefix can be populated by the original -p command-line branch via
-FUN_1008_6B06 and FUN_1008_6442 / sprintf-like formatter. This tool
-does NOT invent a maximum Win3.x lpCmdLine or printf output length.
+The original -p command-line token is copied by FUN_1008_6442 /
+FUN_1008_4504 using INPUT scan semantics (sscanf-like "%s"), NOT
+sprintf output formatting. The scanner has no destination capacity
+parameter/width for the literal "%s". Windows 3.1 Program Manager's
+128-character Program Item command-line field is a separately sourced,
+route-scoped launcher bound, never a universal Win16/Win3.11 limit.
 """
 from __future__ import annotations
 
@@ -26,6 +29,22 @@ PREFIX_START=0x46BE
 OUTPUT_START=0x36BE
 TIMER_FLAG=0x46B2
 TIMER_OUTPUT_OFFSET=TIMER_FLAG-OUTPUT_START
+# Microsoft KB Q71364: Windows 3.1 PROGMAN.EXE Program Item
+# Properties "Command Line" field allows up to 128 characters.
+# This is launcher/UI-specific, not a universal Win16 lpCmdLine bound
+# and not independently demonstrated for Windows 3.11 or WinExec.
+WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX=128
+PROGRAM_MANAGER_31_KB_URL=(
+    "https://jeffpar.github.io/kbarchive/kb/071/Q71364/"
+)
+WIN110_SSCANF_FORMAT_SOURCE="DS:0D8C"
+WIN110_SSCANF_FORMAT_LITERAL="%s"
+WIN110_SSCANF_READ_STREAM_INITIALIZATION="2:6454"
+WIN110_SSCANF_FORMAT_DISPATCH="2:46AC"
+WIN110_SSCANF_WIDTH_GATE="2:47F5"
+WIN110_SSCANF_INPUT_READ="2:480F"
+WIN110_SSCANF_BYTE_STORE="2:484B"
+WIN110_SSCANF_TERMINAL_NUL_STORE="2:4892"
 LITERAL_SUFFIXES={
     "DS:101E":("config.sav",10),
     "DS:1E50":("user.sav",8),
@@ -55,6 +74,18 @@ COMMAND_LINE_PREFIX_PATH={
     "format_literal":"DS:0D8C",
     "format_specifier":"%s",
     "one_shot_zero_writer":"3:0ED9",
+    "scan_call":"3:1221",
+    "scan_function":"2:6442",
+    "input_formatter":"2:4504",
+    "scanner_kind":"sscanf-like INPUT scanner",
+    "scanner_input_token_is_source":True,
+    "scanner_output_buffer":"DS:46BE",
+    "scanner_source_length_measured_at":"2:645E -> 2:609E",
+    "scanner_format_source":WIN110_SSCANF_FORMAT_SOURCE,
+    "scanner_width_gate":WIN110_SSCANF_WIDTH_GATE,
+    "scanner_character_store":WIN110_SSCANF_BYTE_STORE,
+    "scanner_terminal_nul":WIN110_SSCANF_TERMINAL_NUL_STORE,
+    "scanner_explicit_output_capacity":None,
 }
 
 
@@ -72,6 +103,25 @@ def clock_overwrite_possible_with_suffix(prefix_characters:int,
     if OUTPUT_START+final_nul>=0x10000:
         raise ValueError("DGROUP wrap requires separate byte-exact model")
     return final_nul>=TIMER_OUTPUT_OFFSET
+
+
+def win31_progmam_direct_launcher_excludes_timer_alias(
+    total_command_field_characters:int=WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX,
+    suffix_characters:int=10,
+)->bool:
+    """Scoped Win3.1 Program Manager bound, NOT a Windows kernel limit.
+
+    Assuming -p token text is a substring of the command line entered
+    in the Program Item Properties field, token characters cannot
+    exceed the command field length. No string could reach the flag
+    when command_field_max + suffix_len < output offset 4084.
+    """
+    if total_command_field_characters<0 or suffix_characters<0:
+        raise ValueError("negative length is invalid")
+    if total_command_field_characters>WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX:
+        raise ValueError("not within documented Win3.1 PROGMAN entry field")
+    return (total_command_field_characters+suffix_characters
+            < TIMER_OUTPUT_OFFSET)
 
 
 def verify(records:list[dict[str,str]])->dict[str,Any]:
@@ -145,6 +195,18 @@ def verify(records:list[dict[str,str]])->dict[str,Any]:
         "prefix_chars_required_for_user_sav":TIMER_OUTPUT_OFFSET-8,
         "prefix_chars_required_for_config_sav":TIMER_OUTPUT_OFFSET-10,
         "command_line_prefix_flow":COMMAND_LINE_PREFIX_PATH,
+        "win31_program_manager_command_field_max":WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX,
+        "win31_program_manager_KB_reference":PROGRAM_MANAGER_31_KB_URL,
+        "win31_program_manager_launch_route_cannot_reach_flag":(
+            win31_progmam_direct_launcher_excludes_timer_alias(128,10)),
+        "win31_program_manager_scoped_only":True,
+        "Win311_program_manager_limit_independently_verified":False,
+        "all_Win16_launch_methods_proven_bounded":False,
+        "input_scan_format":"%s",
+        "input_scan_source_argument_is_token":True,
+        "input_scan_destination_capacity_argument_present":False,
+        "scan_direct_byte_store_opcode":"2:484B MOV BYTE PTR ES:[BX],AL",
+        "scan_explicit_width_limit_for_percent_s":False,
         "user_sav_is_literal_in_all_known_direct_paths":True,
         "config_sav_is_literal_in_all_known_direct_paths":True,
         "prefix_maximum_characters_statically_closed":False,
@@ -154,9 +216,9 @@ def verify(records:list[dict[str,str]])->dict[str,Any]:
         "alias_writer_graph_closed":False,
         "cautions":[
             "This is a direct Ghidra caller-graph closure, not full dynamic FAR closure.",
-            "The '-p' path stores a parsed argv token via a custom formatter.",
-            "The custom formatter is not yet instruction-proved bounded on destination.",
-            "A long prefix can make 5260 REP MOVS overlap DS:46B2 at >=4084 characters total.",
+            "The '-p' path scans a parsed argv token with custom sscanf-like input %s (not sprintf).",
+            "Original %s scan has no field-width/output-capacity argument or branch; provider token size remains route-dependent.",
+            "KB Q71364 proves Win3.1 Program Manager field <=128, precluding this overlap on that route; other launchers remain OPEN.",
             "No runtime-overflow scenario or actual oversized Win16 command line was observed.",
         ],
     }
