@@ -40,3 +40,15 @@ foreach(n3d_test_target IN LISTS n3d_directory_targets)
         endif()
     endif()
 endforeach()
+
+# Portable VGA reference-cache tests do not require original commercial files.
+if(BUILD_TESTING)
+    find_package(Python3 QUIET COMPONENTS Interpreter)
+    if(Python3_Interpreter_FOUND AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_n3d_dos20_indexed_oracle.py")
+        add_test(NAME n3d_dos20_indexed_oracle_py
+                 COMMAND "${Python3_EXECUTABLE}" -m unittest discover
+                         -s "${CMAKE_CURRENT_SOURCE_DIR}/tests"
+                         -p "test_n3d_dos20_indexed_oracle.py")
+        set_tests_properties(n3d_dos20_indexed_oracle_py PROPERTIES LABELS "render-reference")
+    endif()
+endif()
