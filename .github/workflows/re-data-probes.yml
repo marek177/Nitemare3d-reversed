@@ -3,6 +3,10 @@ name: N3D RE Python data probes
 on:
   push:
     paths:
+      - "tools/n3d_next7_table_check.py"
+      - "docs/evidence/2026-10-20/NEXT7_TYPED_ALL29_DOS20.csv"
+      - "tools/n3d_d02e_audit.py"
+      - "tests/test_n3d_d02e_audit.py"
       - "src/renderer/ImgTextureSampler.hpp"
       - "src/renderer/Raycaster.cpp"
       - "src/formats/Pcx8.cpp"
@@ -460,9 +464,13 @@ jobs:
         run: cmake --build build --config Release --target n3d_v059_win16_save_load_test
       - name: v0.59 Win16 save/load witness model
         run: ctest --test-dir build -C Release -R "^n3d_v059_win16_save_load_test$" --output-on-failure
+      - name: DEMO timing auditor robustness (synthetic)
+        run: python3 -m unittest discover -s tests -p test_n3d_d02e_audit.py -v
       - name: Build IMG preview and palette regressions
         run: cmake --build build --config Release --target n3d_img_texture_sampler_test n3d_wall_marker_visibility_test n3d_wall_pair_texture_test n3d_game_palette_test
       - name: IMG preview and palette regressions
         run: ctest --test-dir build -C Release -R "^n3d_(img_texture_sampler|wall_marker_visibility|wall_pair_texture|game_palette)_test$" --output-on-failure
       - name: Validate exported DOS2 RNG ledger
         run: python3 tools/verify_d02_ledger.py
+      - name: NEXT7 exported-table consistency
+        run: python3 tools/n3d_next7_table_check.py

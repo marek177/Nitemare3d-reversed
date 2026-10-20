@@ -1,4 +1,8 @@
-# Nitemare3D-Reversed — reconstruction v0.63
+# Nitemare3D-Reversed — reconstruction v0.77
+
+**v0.77 / 2026-10-20 bulk-copy provenance:** integrates NEXT7's 29 locally classified REP MOVS sites per DOS build (21 logical copies), correction of FAR source/destination direction, and bounded 208-byte text composition in a 258-byte frame. Adds exported-table validation; global OBJECT+18 aliases and natural stale-depth hits remain OPEN. See [provenance and limits](docs/V077_REMAX_BULK_COPY_PROVENANCE.md).
+
+**v0.76 / 2026-10-20 DEMO timing-context audit:** integrates D02-E/F: identical first 220 RNG caller/state/results can accompany different scheduler/input contexts (229 versus 220 recorded outcomes). Adds a SHA-gated original-byte auditor with stronger exported-ledger validation and 11 synthetic robustness checks. The actual first clock/due divergence and original-versus-port parity remain OPEN. See [scope and evidence](docs/V076_REMAX_DEMO_TIMING_CONTEXT.md).
 
 > **Renderer parity status (2026-10-20):** The executable still uses `src/renderer/Raycaster.cpp`, a **diagnostic DDA preview**, not the original DOS/Win16 VEC→column-owner→span renderer. **Pixel-perfect 1:1 is NOT yet verified.** Recovered E798 projection and bounded DOS2 pixel writers are research components; they must pass matched original-game indexed-framebuffer **and DAC** zero-diff tests before replacing the active DDA path.
 
