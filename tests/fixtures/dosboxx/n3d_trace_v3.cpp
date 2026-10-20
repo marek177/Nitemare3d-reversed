@@ -1,0 +1,586 @@
+/* DOSBox-X Heavy Debug: low-overhead stream trace for Nitemare 3D RE.
+ * Binary little-endian V1 format. See n3d_trace_decode.py.
+ * GPLv2-or-later, same license as DOSBox-X.
+ */
+#include "dosbox.h"
+#if C_HEAVY_DEBUG
+#include "n3d_trace.h"
+#include "cpu.h"
+#include "paging.h"
+#include "vga.h"
+#include "render.h"
+#include <vector>
+#include "../cpu/lazyflags.h"
+#include <algorithm>
+#include <atomic>
+#include <cerrno>
+#include <cstddef>
+#include <cinttypes>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#include <mutex>
+#include <string>
+#include <sys/stat.h>
+#ifdef WIN32
+#include <direct.h>
+#include <process.h>
+#else
+#include <unistd.h>
+#endif
+
+// All multibyte fields are stored in the native little-endian x86 byte order.
+#pragma pack(push, 1)
+struct N3DHeader { char magic[8]; uint32_t version, reserved; };
+struct N3DCommon { char type; uint8_t version; uint16_t size; uint64_t event, instruction; };
+struct N3DInstruction {
+    N3DCommon h;
+    uint16_t cs, ds, es, ss, fs, gs;
+    uint32_t ip, linear_ip, flags;
+    uint32_t eax, ebx, ecx, edx, esi, edi, ebp, esp;
+    uint8_t code[16];
+    uint8_t code_valid, code32, pmode, reserved;
+};
+struct N3DMemory {
+    N3DCommon h;
+    uint32_t linear, value, old_value;
+    uint8_t width, has_old, origin, reserved;
+};
+struct N3DPort {
+    N3DCommon h;
+    uint32_t port, value;
+    uint8_t width, reserved[3];
+};
+struct N3DInterrupt { N3DCommon h; uint32_t vector, type, old_ip; };
+struct N3DVRAM { N3DCommon h; uint32_t offset, old_value, new_value; uint8_t width, source, reserved[2]; };
+struct N3DFrame { N3DCommon h; uint64_t frame, vram_hash, dac_hash; uint32_t memsize, mode, width, height; };
+// VGA register state after an emulated port write, or at a frame boundary.
+// Runtime event 'G'; source register fields are explicitly serialized in v3.
+struct N3DVGARegs {
+    N3DCommon h;
+    uint64_t frame, dac_hash;
+    uint32_t reason_port, mode, width, height, display_start, scan_len, latch, bank_read, bank_write;
+    uint8_t misc, pel_mask, dac_bits, dac_write, dac_read, attr_flip;
+    uint8_t seq[6], gfx[10], attr[23], crtc[26];
+};
+// RGB values extracted from the DOSBox-X source frame cache before host scaling/shaders.
+struct N3DRender { N3DCommon h; uint64_t frame, rgb_hash; uint32_t width, height, bpp, flags; };
+#pragma pack(pop)
+static_assert(sizeof(N3DHeader)==16, "N3D header size");
+static_assert(sizeof(N3DCommon)==20, "N3D event header size");
+static_assert(sizeof(N3DInstruction)==96, "N3D CPU record size");
+static_assert(sizeof(N3DMemory)==36, "N3D mem record size");
+static_assert(sizeof(N3DPort)==32, "N3D IO record size");
+static_assert(sizeof(N3DInterrupt)==32, "N3D INT record size");
+static_assert(sizeof(N3DVRAM)==36, "N3D VRAM record size");
+static_assert(sizeof(N3DFrame)==60, "N3D frame record size");
+static_assert(sizeof(N3DVGARegs)==143, "N3D VGA register record size");
+static_assert(sizeof(N3DRender)==52, "N3D RGB frame record size");
+
+std::atomic<bool> n3d_trace_mem_enabled(false);
+std::atomic<bool> n3d_trace_read_enabled(false);
+std::atomic<bool> n3d_trace_io_enabled(false);
+std::atomic<bool> n3d_trace_vram_enabled(false);
+std::atomic<bool> n3d_trace_vframe_enabled(false);
+std::atomic<bool> n3d_trace_vreg_enabled(false);
+std::atomic<bool> n3d_trace_rgb_enabled(false);
+
+namespace {
+std::mutex output_mutex;
+std::FILE* output = nullptr;
+std::string directory, base_directory;
+uint64_t event_seq = 0, instruction_seq = 0, file_bytes = 0, total_bytes = 0;
+uint32_t chunk = 0;
+uint64_t rotate_bytes = 128ull*1024ull*1024ull;
+uint64_t limit_bytes = 4096ull*1024ull*1024ull;
+bool initialized = false, active = false, auto_start = false, record_mem = true, record_reads = false, record_io = true;
+bool stop_enabled = false;
+bool record_vram = true;
+uint32_t frame_period = 0;
+uint64_t frame_counter = 0;
+uint32_t snapshot_counter = 0;
+uint32_t snapshot_period = 0;
+uint64_t vram_events = 0;
+uint64_t frame_events = 0;
+uint64_t vreg_events = 0, rgb_events = 0, rgb_skipped = 0;
+uint64_t rgb_frame_counter = 0;
+uint32_t rgb_period = 0, rgb_limit = 64;
+uint32_t rgb_counter = 0;
+bool record_vreg = true;
+static N3DVGARegs prior_vreg={};
+static bool have_prior_vreg=false;
+static uint64_t Hash64(const void *ptr, size_t len) {
+    const uint8_t *p=static_cast<const uint8_t*>(ptr);
+    uint64_t h=14695981039346656037ull;
+    for(size_t i=0;i<len;++i) { h^=p[i]; h*=1099511628211ull; }
+    return h;
+}
+static uint64_t PaletteHash(void) {
+    uint8_t bytes[256*3];
+    for (unsigned i=0;i<256;++i) {
+        bytes[i*3+0]=vga.dac.rgb[i].red;
+        bytes[i*3+1]=vga.dac.rgb[i].green;
+        bytes[i*3+2]=vga.dac.rgb[i].blue;
+    }
+    return Hash64(bytes,sizeof(bytes));
+}
+
+uint16_t stop_cs = 0;
+uint32_t stop_ip = 0;
+std::string stop_reason;
+
+uint64_t ReadMB(const char* name, uint64_t fallback) {
+    const char* x = std::getenv(name);
+    if (!x || !*x) return fallback;
+    char *end = nullptr;
+    const unsigned long long val = std::strtoull(x, &end, 10);
+    return end == x || *end ? fallback : static_cast<uint64_t>(val);
+}
+static bool ReadBool(const char* name, bool fallback) {
+    const char* x = std::getenv(name);
+    return (!x || !*x) ? fallback : (std::strcmp(x,"0")!=0 && std::strcmp(x,"false")!=0);
+}
+static bool MkDir(const std::string& path) {
+#ifdef WIN32
+    if (_mkdir(path.c_str())==0) return true;
+#else
+    if (mkdir(path.c_str(),0755)==0) return true;
+#endif
+    return errno==EEXIST;
+}
+static std::string MakeDirectory(const std::string& parent) {
+#ifdef WIN32
+    const unsigned pid = static_cast<unsigned>(_getpid());
+#else
+    const unsigned pid = static_cast<unsigned>(getpid());
+#endif
+    if (!MkDir(parent)) return std::string();
+    for (unsigned suffix=0; suffix<1000; ++suffix) {
+        char label[96];
+        std::snprintf(label,sizeof(label),"session-%llu-%u-%03u",
+                      static_cast<unsigned long long>(std::time(nullptr)),pid,suffix);
+        const std::string candidate = parent + "/" + label;
+#ifdef WIN32
+        const int rc = _mkdir(candidate.c_str());
+#else
+        const int rc = mkdir(candidate.c_str(),0755);
+#endif
+        if (rc==0) return candidate;
+        if (errno!=EEXIST) break;
+    }
+    return std::string();
+}
+static void StopUnlocked(const char* reason) {
+    if (!active && !output) return;
+    active = false;
+    n3d_trace_mem_enabled.store(false, std::memory_order_relaxed);
+    n3d_trace_read_enabled.store(false, std::memory_order_relaxed);
+    n3d_trace_io_enabled.store(false, std::memory_order_relaxed);
+    n3d_trace_vram_enabled.store(false, std::memory_order_relaxed);
+    n3d_trace_vframe_enabled.store(false, std::memory_order_relaxed);
+    n3d_trace_vreg_enabled.store(false, std::memory_order_relaxed);
+    n3d_trace_rgb_enabled.store(false, std::memory_order_relaxed);
+    stop_reason = reason;
+    if (output) { std::fflush(output); std::fclose(output); output=nullptr; }
+    const std::string path=directory+"/summary.txt";
+    if (std::FILE* f=std::fopen(path.c_str(),"w")) {
+        std::fprintf(f,"format=N3DTRC01\nreason=%s\nrecords=%" PRIu64 "\ninstructions=%" PRIu64
+                  "\nbytes=%" PRIu64 "\nchunks=%u\nvram_events=%" PRIu64 "\nframes=%" PRIu64 "\nsnapshots=%u\nvga_register_events=%" PRIu64 "\nrgb_frames=%" PRIu64 "\nrgb_skipped=%" PRIu64 "\n",reason,event_seq,instruction_seq,total_bytes,chunk,vram_events,frame_events,snapshot_counter,vreg_events,rgb_events,rgb_skipped);
+        std::fclose(f);
+    }
+    std::fprintf(stderr,"[N3DTRACE] stopped: %s; %" PRIu64 " instructions, %" PRIu64 " total bytes (%s)\n",
+                 reason,instruction_seq,total_bytes,directory.c_str());
+}
+static bool OpenChunk() {
+    char filename[64];
+    std::snprintf(filename,sizeof(filename),"/trace-%06u.n3dt",chunk++);
+    output = std::fopen((directory+filename).c_str(),"wb");
+    if (!output) return false;
+    std::setvbuf(output,nullptr,_IOFBF,1024u*1024u);
+    const N3DHeader header = {{'N','3','D','T','R','C','0','1'},1,0};
+    if (std::fwrite(&header,1,sizeof(header),output)!=sizeof(header)) return false;
+    file_bytes = sizeof(header);
+    total_bytes += sizeof(header);
+    return true;
+}
+static void WriteUnlocked(const void* record, const size_t n) {
+    if (!active) return;
+    if (limit_bytes && total_bytes+n>limit_bytes) { StopUnlocked("SIZE_LIMIT"); return; }
+    if (file_bytes+n>rotate_bytes) {
+        std::fflush(output);
+        std::fclose(output);
+        output=nullptr;
+        if (!OpenChunk()) { StopUnlocked("ROTATE_IO_ERROR"); return; }
+    }
+    if (std::fwrite(record,1,n,output)!=n) { StopUnlocked("WRITE_ERROR"); return; }
+    file_bytes+=n;
+    total_bytes+=n;
+    if ((event_seq&16383)==0) std::fflush(output);
+}
+static N3DCommon MakeCommon(char type, uint16_t size) {
+    N3DCommon h = {};
+    h.type=type;
+    h.version=1;
+    h.size=size;
+    h.event=++event_seq;
+    h.instruction=instruction_seq;
+    return h;
+}
+static void Initialize() {
+    if (initialized) return;
+    initialized = true;
+    const char* base = std::getenv("N3D_TRACE_DIR");
+    base_directory = base && *base ? base : "n3d-traces";
+    directory = base_directory;
+    std::atexit([](){
+        std::lock_guard<std::mutex> lock(output_mutex);
+        StopUnlocked("PROCESS_EXIT");
+    });
+    auto_start = ReadBool("N3D_TRACE_AUTOSTART",false);
+    record_mem = ReadBool("N3D_TRACE_MEMORY",true);
+    record_reads = ReadBool("N3D_TRACE_READS",false);
+    record_io = ReadBool("N3D_TRACE_IO",true);
+    record_vram = ReadBool("N3D_TRACE_VRAM",true);
+    record_vreg = ReadBool("N3D_TRACE_VGA_REGS",true);
+    rgb_period = static_cast<uint32_t>(std::min<uint64_t>(ReadMB("N3D_TRACE_RGB_EVERY",0),1000000u));
+    rgb_limit = static_cast<uint32_t>(std::min<uint64_t>(ReadMB("N3D_TRACE_RGB_LIMIT",64),1000000u));
+    frame_period = static_cast<uint32_t>(std::min<uint64_t>(ReadMB("N3D_TRACE_FRAME_EVERY",0),1000000u));
+    snapshot_period = static_cast<uint32_t>(std::min<uint64_t>(ReadMB("N3D_TRACE_SNAPSHOT_EVERY",0),1000000u));
+    rotate_bytes = std::max<uint64_t>(1,ReadMB("N3D_TRACE_ROTATE_MB",128))*1024ull*1024ull;
+    limit_bytes = ReadMB("N3D_TRACE_LIMIT_MB",4096)*1024ull*1024ull;
+    const char* stop = std::getenv("N3D_TRACE_STOP_CSIP");
+    unsigned c=0, i=0;
+    if (stop && std::sscanf(stop,"%x:%x",&c,&i)==2 && c<=0xffffu) {
+        stop_enabled=true; stop_cs=static_cast<uint16_t>(c); stop_ip=i;
+    }
+}
+static bool StartUnlocked() {
+    Initialize();
+    if (active) return true;
+    // Preserve one session's monotonic counters; multiple starts yield independent sessions.
+    event_seq=0; instruction_seq=0; file_bytes=0; total_bytes=0; chunk=0;
+    frame_counter=0; snapshot_counter=0; vram_events=0; frame_events=0;
+    rgb_frame_counter=0; rgb_counter=0; rgb_events=0; vreg_events=0; rgb_skipped=0;
+    have_prior_vreg=false;
+    directory=MakeDirectory(base_directory);
+    if (directory.empty()) { std::fprintf(stderr,"[N3DTRACE] cannot create output directory\n"); return false; }
+    if (!OpenChunk()) { std::fprintf(stderr,"[N3DTRACE] cannot open trace file\n"); if (output) std::fclose(output); output=nullptr; return false; }
+    active=true;
+    n3d_trace_mem_enabled.store(record_mem, std::memory_order_relaxed);
+    n3d_trace_read_enabled.store(record_reads, std::memory_order_relaxed);
+    n3d_trace_io_enabled.store(record_io, std::memory_order_relaxed);
+    n3d_trace_vram_enabled.store(record_vram, std::memory_order_relaxed);
+    n3d_trace_vframe_enabled.store((frame_period!=0 || snapshot_period!=0 || record_vreg), std::memory_order_relaxed);
+    n3d_trace_vreg_enabled.store(record_vreg, std::memory_order_relaxed);
+    n3d_trace_rgb_enabled.store(rgb_period!=0, std::memory_order_relaxed);
+    const std::string path = directory+"/metadata.txt";
+    if (std::FILE* f=std::fopen(path.c_str(),"w")) {
+        std::fprintf(f,"format=N3DTRC01\nversion=1\nsource=DOSBox-X Heavy Debug 2026.10.01\n"
+                  "rotate_mb=%" PRIu64 "\nlimit_mb=%" PRIu64 "\nmemory=%d\nreads=%d\nio=%d\nvram=%d\nframe_every=%u\nsnapshot_every=%u\nvga_regs=%d\nrgb_every=%u\nrgb_limit=%u\nrgb_source=render_cache_pre_scaler\nrgb_supported_bpp=8\n",
+                  rotate_bytes/(1024*1024),limit_bytes/(1024*1024),
+                  int(record_mem),int(record_reads),int(record_io),int(record_vram),frame_period,snapshot_period,int(record_vreg),rgb_period,rgb_limit);
+        std::fclose(f);
+    }
+    std::fprintf(stderr,"[N3DTRACE] started: %s\n",directory.c_str());
+    return true;
+}
+} // anonymous namespace
+
+void N3DTrace_Init(void) {
+    // Heavy callback is on emulator thread; environment read once.
+    if (!initialized) {
+        Initialize();
+        if (auto_start) {
+            std::lock_guard<std::mutex> lock(output_mutex);
+            StartUnlocked();
+        }
+    }
+}
+bool N3DTrace_Start(void) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    return StartUnlocked();
+}
+void N3DTrace_Stop(void) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    StopUnlocked("USER_STOP");
+}
+void N3DTrace_Status(void) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    std::fprintf(stderr,"[N3DTRACE] %s dir=%s instructions=%" PRIu64 " events=%" PRIu64 " bytes=%" PRIu64 " VRAMwrites=%" PRIu64 " frames=%" PRIu64 " snapshots=%u VGAregs=%" PRIu64 " RGBframes=%" PRIu64 " RGBskipped=%" PRIu64 "\n",
+                 active?"ACTIVE":"STOPPED", directory.c_str(), instruction_seq,event_seq,total_bytes,vram_events,frame_events,snapshot_counter,vreg_events,rgb_events,rgb_skipped);
+}
+bool N3DTrace_Instruction(void) {
+    N3DTrace_Init();
+    if (!active) return false;
+    if (stop_enabled && SegValue(cs)==stop_cs && reg_eip==stop_ip) {
+        std::lock_guard<std::mutex> lock(output_mutex);
+        StopUnlocked("STOP_CSIP");
+        return true;
+    }
+    N3DInstruction r = {};
+    r.cs=SegValue(cs); r.ds=SegValue(ds); r.es=SegValue(es); r.ss=SegValue(ss);
+    r.fs=SegValue(fs); r.gs=SegValue(gs);
+    r.ip=reg_eip; r.linear_ip=SegPhys(cs)+reg_eip;
+    FillFlags(); r.flags=static_cast<uint32_t>(reg_flags);
+    r.eax=reg_eax; r.ebx=reg_ebx; r.ecx=reg_ecx; r.edx=reg_edx;
+    r.esi=reg_esi; r.edi=reg_edi; r.ebp=reg_ebp; r.esp=reg_esp;
+    r.code32=cpu.code.big ? 1 : 0; r.pmode=cpu.pmode ? 1 : 0;
+    // Safe direct TLB bytes only: never trigger guest MMIO reads just for tracing.
+    for (unsigned i=0;i<sizeof(r.code);i++) {
+        const LinearPt a=r.linear_ip+i;
+        const HostPt tlb=get_tlb_read(a);
+        if (tlb) { r.code[i]=host_readb(tlb+a); ++r.code_valid; continue; }
+        if (!cpu.pmode && !paging.enabled) {
+            const uint32_t page=(a & 0xfffffu)>>12;
+            PageHandler * const ph=MEM_GetPageHandler(page);
+            if (ph && (ph->getFlags() & PFLAG_HASROM)) {
+                const HostPt rom=ph->GetHostReadPt(page);
+                if (rom) { r.code[i]=host_readb(rom+(a&0xfffu)); ++r.code_valid; continue; }
+            }
+        }
+        break;
+    }
+    std::lock_guard<std::mutex> lock(output_mutex);
+    if (!active) return false;
+    ++instruction_seq;
+    r.h=MakeCommon('I',sizeof(r));
+    WriteUnlocked(&r,sizeof(r));
+    return false;
+}
+void N3DTrace_Memory(char type, uint32_t addr, uint32_t val, uint32_t old, uint8_t width, bool valid) {
+    if ((type=='R' ? !n3d_trace_read_enabled.load(std::memory_order_relaxed) :
+                      !n3d_trace_mem_enabled.load(std::memory_order_relaxed))) return;
+    std::lock_guard<std::mutex> lock(output_mutex);
+    if (!active) return;
+    N3DMemory r = {};
+    r.h=MakeCommon(type,sizeof(r));
+    r.linear=addr; r.value=val; r.old_value=old; r.width=width; r.has_old=valid ? 1 : 0;
+    WriteUnlocked(&r,sizeof(r));
+}
+void N3DTrace_IO(bool write, uint32_t port, uint32_t value, uint8_t width) {
+    if (!n3d_trace_io_enabled.load(std::memory_order_relaxed)) return;
+    std::lock_guard<std::mutex> lock(output_mutex);
+    if (!active) return;
+    N3DPort r = {};
+    r.h=MakeCommon(write?'O':'P',sizeof(r));
+    r.port=port; r.value=value; r.width=width;
+    WriteUnlocked(&r,sizeof(r));
+}
+void N3DTrace_INT(uint32_t vector, uint32_t type, uint32_t old_ip) {
+    if (!n3d_trace_io_enabled.load(std::memory_order_relaxed)) return;
+    std::lock_guard<std::mutex> lock(output_mutex);
+    if (!active) return;
+    N3DInterrupt r = {};
+    r.h=MakeCommon('T',sizeof(r));
+    r.vector=vector; r.type=type; r.old_ip=old_ip;
+    WriteUnlocked(&r,sizeof(r));
+}
+void N3DTrace_VRAMWrite(uint32_t offset, uint32_t old_value, uint32_t new_value, uint8_t width, uint8_t source) {
+    if (!n3d_trace_vram_enabled.load(std::memory_order_relaxed) || old_value==new_value) return;
+    std::lock_guard<std::mutex> lock(output_mutex);
+    if (!active) return;
+    N3DVRAM e={}; e.h=MakeCommon('V',sizeof(e));
+    e.offset=offset; e.old_value=old_value; e.new_value=new_value; e.width=width; e.source=source;
+    WriteUnlocked(&e,sizeof(e)); ++vram_events;
+}
+void N3DTrace_VRAMDirectWrite(const void *host_ptr, uint32_t old_value, uint32_t new_value, uint8_t width) {
+    if (!n3d_trace_vram_enabled.load(std::memory_order_relaxed) || old_value==new_value || !host_ptr || !vga.mem.linear) return;
+    const uintptr_t ptr=reinterpret_cast<uintptr_t>(host_ptr);
+    const uintptr_t base=reinterpret_cast<uintptr_t>(vga.mem.linear);
+    const uint32_t size=vga.mem.memsize;
+    if (!size || ptr<base || ptr-base>=(uintptr_t)size || width>size-(ptr-base)) return;
+    N3DTrace_VRAMWrite(uint32_t(ptr-base),old_value,new_value,width,4);
+}
+void N3DTrace_VRAMWatch(bool on) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    record_vram=on;
+    n3d_trace_vram_enabled.store(active && on,std::memory_order_relaxed);
+    std::fprintf(stderr,"[N3DTRACE] VGA VRAM watch %s\n",on?"ON":"OFF");
+}
+void N3DTrace_FrameWatch(uint32_t period) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    frame_period=period;
+    n3d_trace_vframe_enabled.store(active && (period!=0 || snapshot_period!=0),std::memory_order_relaxed);
+    std::fprintf(stderr,"[N3DTRACE] VGA frame hash every %u frame(s) (0=off)\n",period);
+}
+void N3DTrace_VGAInfo(void) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    std::fprintf(stderr,"[N3DTRACE] VGA mode=%u %ux%u VRAM=%u bytes bank(R/W)=%u/%u start=%u palette_bits=%u pelmask=%02X frame=%" PRIu64 " frame_period=%u\n",
+        unsigned(vga.mode),unsigned(vga.draw.width),unsigned(vga.draw.height),unsigned(vga.mem.memsize),
+        unsigned(vga.svga.bank_read),unsigned(vga.svga.bank_write),unsigned(vga.draw.address),
+        unsigned(vga.dac.bits),unsigned(vga.dac.pel_mask),frame_counter,frame_period);
+}
+void N3DTrace_VGAFrame(void) {
+    if (!n3d_trace_vframe_enabled.load(std::memory_order_relaxed)) return;
+    ++frame_counter;
+    if (!vga.mem.linear || !vga.mem.memsize) return;
+    // Vertical-timer sample of emulated VRAM, not a host RGB framebuffer.
+    if (frame_period && (frame_counter % frame_period)==0) {
+        const uint32_t size=std::min<uint32_t>(vga.mem.memsize,32u*1024u*1024u);
+        const uint64_t vrhash=Hash64(vga.mem.linear,size), phash=PaletteHash();
+        std::lock_guard<std::mutex> lock(output_mutex);
+        if (!active) return;
+        N3DFrame e={}; e.h=MakeCommon('F',sizeof(e));
+        e.frame=frame_counter; e.vram_hash=vrhash; e.dac_hash=phash;
+        e.memsize=size; e.mode=uint32_t(vga.mode); e.width=uint32_t(vga.draw.width); e.height=uint32_t(vga.draw.height);
+        WriteUnlocked(&e,sizeof(e)); ++frame_events;
+    }
+    if (record_vreg) N3DTrace_VGARegisters(0xffffffffu);
+    if (snapshot_period && (frame_counter%snapshot_period)==0)
+        N3DTrace_VGASnapshot();
+}
+bool N3DTrace_VGASnapshot(void) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    if (!active || !vga.mem.linear || !vga.mem.memsize) return false;
+    // The raw VGA memory is NOT the screen's final RGB framebuffer in planar/banked modes.
+    const uint32_t size=std::min<uint32_t>(vga.mem.memsize,32u*1024u*1024u);
+    char base[80]; std::snprintf(base,sizeof(base),"/vga-%06u",snapshot_counter);
+    const std::string out=directory+base;
+    const uint64_t vrhash=Hash64(vga.mem.linear,size), phash=PaletteHash();
+    std::FILE* f=std::fopen((out+".vram").c_str(),"wb");
+    if (!f) return false;
+    const bool memok=std::fwrite(vga.mem.linear,1,size,f)==size;
+    const bool memclose=std::fclose(f)==0;
+    if (!memok || !memclose) return false;
+    uint8_t pal[768];
+    for (unsigned i=0;i<256;++i) { pal[i*3]=vga.dac.rgb[i].red; pal[i*3+1]=vga.dac.rgb[i].green; pal[i*3+2]=vga.dac.rgb[i].blue; }
+    f=std::fopen((out+".pal").c_str(),"wb");
+    if (!f) return false;
+    const bool palok=std::fwrite(pal,1,sizeof(pal),f)==sizeof(pal);
+    const bool palclose=std::fclose(f)==0;
+    if (!palok || !palclose) return false;
+    f=std::fopen((out+".txt").c_str(),"w");
+    if (!f) return false;
+    std::fprintf(f,"instruction=%" PRIu64 "\nevent=%" PRIu64 "\nframe=%" PRIu64 "\nvram_bytes=%u\nvram_fnv64=%016" PRIX64
+        "\npalette_fnv64=%016" PRIX64 "\nmode=%u\nwidth=%u\nheight=%u\nread_bank=%u\nwrite_bank=%u\nstart_addr=%u\npalette_bits=%u\n",
+        instruction_seq,event_seq,frame_counter,unsigned(size),vrhash,phash,unsigned(vga.mode),unsigned(vga.draw.width),
+        unsigned(vga.draw.height),unsigned(vga.svga.bank_read),unsigned(vga.svga.bank_write),
+        unsigned(vga.draw.address),unsigned(vga.dac.bits));
+    std::fclose(f);
+    std::fprintf(stderr,"[N3DTRACE] VGA snapshot %s {VRAM=%u bytes, hash=%016" PRIX64 ", palette=%016" PRIX64 "}\n",out.c_str(),unsigned(size),vrhash,phash);
+    ++snapshot_counter;
+    return true;
+}
+
+void N3DTrace_VGARegistersWatch(bool enabled) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    record_vreg=enabled;
+    n3d_trace_vreg_enabled.store(active && enabled,std::memory_order_relaxed);
+    n3d_trace_vframe_enabled.store(active && (enabled || frame_period!=0 || snapshot_period!=0),std::memory_order_relaxed);
+    std::fprintf(stderr,"[N3DTRACE] VGA register state after VGA IO writes: %s\n",enabled?"ON":"OFF");
+}
+void N3DTrace_VGARegisters(uint32_t reason_port) {
+    // Captures register values after IO handler has changed the emulated VGA device.
+    // 0xffffffff=vsync, 0xfffffffe=explicit request.
+    if (reason_port!=0xfffffffeu && !n3d_trace_vreg_enabled.load(std::memory_order_relaxed)) return;
+    if (reason_port < 0x3b0u || (reason_port > 0x3dfu && reason_port < 0xfffffffeu)) return;
+    N3DVGARegs e={};
+    e.frame=frame_counter; e.reason_port=reason_port;
+    e.mode=static_cast<uint32_t>(vga.mode);
+    e.width=static_cast<uint32_t>(vga.draw.width);
+    e.height=static_cast<uint32_t>(vga.draw.height);
+    e.display_start=static_cast<uint32_t>(vga.config.display_start);
+    e.scan_len=static_cast<uint32_t>(vga.config.scan_len);
+    e.latch=vga.latch.d;
+    e.bank_read=vga.svga.bank_read; e.bank_write=vga.svga.bank_write;
+    e.dac_hash=PaletteHash();
+    e.misc=vga.misc_output; e.pel_mask=vga.dac.pel_mask;
+    e.dac_bits=vga.dac.bits; e.dac_write=vga.dac.write_index;
+    e.dac_read=vga.dac.read_index; e.attr_flip=vga.internal.attrindex?1:0;
+    e.seq[0]=vga.seq.index; e.seq[1]=vga.seq.reset; e.seq[2]=vga.seq.clocking_mode;
+    e.seq[3]=vga.seq.map_mask; e.seq[4]=vga.seq.character_map_select; e.seq[5]=vga.seq.memory_mode;
+    e.gfx[0]=vga.gfx.index; e.gfx[1]=vga.gfx.set_reset;
+    e.gfx[2]=vga.gfx.enable_set_reset; e.gfx[3]=vga.gfx.color_compare;
+    e.gfx[4]=vga.gfx.data_rotate; e.gfx[5]=vga.gfx.read_map_select;
+    e.gfx[6]=vga.gfx.mode; e.gfx[7]=vga.gfx.miscellaneous;
+    e.gfx[8]=vga.gfx.color_dont_care; e.gfx[9]=vga.gfx.bit_mask;
+    std::memcpy(e.attr,vga.attr.palette,16);
+    e.attr[16]=vga.attr.mode_control; e.attr[17]=vga.attr.horizontal_pel_panning;
+    e.attr[18]=vga.attr.overscan_color; e.attr[19]=vga.attr.color_plane_enable;
+    e.attr[20]=vga.attr.color_select; e.attr[21]=vga.attr.index;
+    e.attr[22]=vga.attr.disabled;
+    // CRTC contains 25 contiguous one-byte registers followed by index.
+    std::memcpy(e.crtc,&vga.crtc,26);
+    std::lock_guard<std::mutex> lock(output_mutex);
+    if (!active) return;
+    // Coalesce repeated identical VGA register state, not guest I/O events.
+    // Preserve boundary snapshots even if identical, for frame alignment.
+    const size_t state_offset=offsetof(N3DVGARegs,mode);
+    if (reason_port!=0xffffffffu && reason_port!=0xfffffffeu && have_prior_vreg &&
+        e.dac_hash==prior_vreg.dac_hash &&
+        std::memcmp(reinterpret_cast<const uint8_t*>(&e)+state_offset,
+                    reinterpret_cast<const uint8_t*>(&prior_vreg)+state_offset,
+                    sizeof(e)-state_offset)==0) return;
+    prior_vreg=e; have_prior_vreg=true;
+    e.h=MakeCommon('G',sizeof(e));
+    WriteUnlocked(&e,sizeof(e)); ++vreg_events;
+}
+void N3DTrace_RenderPeriod(uint32_t period) {
+    std::lock_guard<std::mutex> lock(output_mutex);
+    rgb_period=period;
+    n3d_trace_rgb_enabled.store(active && period!=0,std::memory_order_relaxed);
+    std::fprintf(stderr,"[N3DTRACE] RGB8 render cache sample interval=%u (0=OFF; limit=%u files)\n",period,rgb_limit);
+}
+// Captures an 8-bit indexed SOURCE framebuffer from the SAME cached source used
+// by CAPTURE_AddImage. Not the SDL/OpenGL-scaled, post-processed screen output.
+void N3DTrace_RenderFrame(void) {
+    if (!n3d_trace_rgb_enabled.load(std::memory_order_relaxed)) return;
+    const uint64_t frame=++rgb_frame_counter;
+    if (!rgb_period || (frame%rgb_period)!=0) return;
+    const uint32_t w=static_cast<uint32_t>(render.src.width);
+    const uint32_t h=static_cast<uint32_t>(render.src.height);
+    const size_t pitch=static_cast<size_t>(render.scale.cachePitch);
+    extern unsigned char *scalerSourceCacheBuffer;
+    extern unsigned int scalerSourceCacheBufferSize;
+    const uint32_t bpp=static_cast<uint32_t>(render.src.bpp);
+    const uint32_t bytespp=bpp==8 ? 1u : ((bpp==15 || bpp==16) ? 2u : (bpp==32 ? 4u : 0u));
+    if (!bytespp || w==0 || h==0 || w>4096 || h>4096 ||
+        pitch<size_t(w)*bytespp || pitch > 65536 || !scalerSourceCacheBuffer ||
+        pitch*size_t(h)>scalerSourceCacheBufferSize) {
+        ++rgb_skipped; return;
+    }
+    std::lock_guard<std::mutex> lock(output_mutex);
+    if (!active || !rgb_period || rgb_counter>=rgb_limit) return;
+    // Do not modify emulator video RAM or the scaler cache while sampling it.
+    std::vector<uint8_t> rgb(size_t(w)*size_t(h)*3u);
+    for (uint32_t y=0;y<h;++y) {
+        const uint8_t *src=scalerSourceCacheBuffer+size_t(y)*pitch;
+        for (uint32_t x=0;x<w;++x) {
+            uint8_t *dst=rgb.data()+3u*(size_t(y)*w+x);
+            if (bpp==8) {
+                const uint8_t i=src[x];
+                dst[0]=render.pal.rgb[i].red;
+                dst[1]=render.pal.rgb[i].green;
+                dst[2]=render.pal.rgb[i].blue;
+            } else if (bpp==15 || bpp==16) {
+                const uint16_t pixel=uint16_t(src[x*2])|(uint16_t(src[x*2+1])<<8);
+                dst[2]=uint8_t(((pixel&0x001f)*0x21)>>2);
+                if (bpp==15) {
+                    dst[1]=uint8_t(((pixel&0x03e0)*0x21)>>7);
+                    dst[0]=uint8_t(((pixel&0x7c00)*0x21)>>12);
+                } else {
+                    dst[1]=uint8_t(((pixel&0x07e0)*0x41)>>9);
+                    dst[0]=uint8_t(((pixel&0xf800)*0x21)>>13);
+                }
+            } else if (bpp==32) {
+                // Linux CAPTURE_AddImage uses B,G,R,X for an input 32bpp source row.
+                dst[0]=src[x*4+2]; dst[1]=src[x*4+1]; dst[2]=src[x*4];
+            }
+        }
+    }
+    char stem[64]; std::snprintf(stem,sizeof(stem),"/rgb-%06u.ppm",rgb_counter);
+    const std::string path=directory+stem;
+    std::FILE *f=std::fopen(path.c_str(),"wb");
+    if (!f) { ++rgb_skipped; return; }
+    const int n=std::fprintf(f,"P6\n%u %u\n255\n",w,h);
+    const bool written=n>0 && std::fwrite(rgb.data(),1,rgb.size(),f)==rgb.size();
+    const bool ok=std::fclose(f)==0 && written;
+    if (!ok) { std::remove(path.c_str()); ++rgb_skipped; return; }
+    N3DRender e={}; e.h=MakeCommon('B',sizeof(e));
+    e.frame=frame; e.rgb_hash=Hash64(rgb.data(),rgb.size());
+    e.width=w; e.height=h; e.bpp=24; e.flags=bpp; // RGB24 pixels; flags=source bpp
+    WriteUnlocked(&e,sizeof(e)); ++rgb_counter; ++rgb_events;
+}
+
+#endif // C_HEAVY_DEBUG
