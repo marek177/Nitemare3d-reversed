@@ -70,3 +70,14 @@ GPLv2-or-later testovací fixture tests/fixtures/dosboxx/n3d_trace_v3.cpp je pri
 4. **Pôvodná DOS V2.0 DEMO smoke PASS:** pôvodný nepatchovaný N3D.EXE SHA256 a3fa02335e1d8bc531918f3bfaa66217aef65c81e562a2fdf1c749be652ca485 bol spustený na Linux Xvfb s používateľovým predchádzajúcim Advanced History v3 ELF SHA256 1967f583ccbe6a25a58318dc1ddba8fa48a7b697f6eb4b4c04158bbeaa258db3, cycles=fixed 3000. Klávesnicou bolo dosiahnuté Main Menu → Demo → vykreslená pôvodná 3D scéna s titulom Nitemare-3D Demo Mode. Samostatný dôkazový ZIP so snímkami a hashmi bol vytvorený v konverzácii.
 
 **Dôležitá hranica:** smoke run použil pôvodný v3 ELF, **nie** novozostavený ELF s deferred overlay. Ani smoke, ani objektová kompilácia neobsahujú originálnu novú CPU death stopu. Pri ďalšom kroku treba najprv skompilovať a spustiť celý nový emulator s v0.65 overlay, overiť, že callback je aktívny počas gameplay, a až potom pristúpiť k aktérskej trace akceptácii.
+
+
+## Nový pôvodný GUARD41 trace po zostavení v0.65
+
+Z GitHub Actions full-build run 39449196217 bol získaný celý Linux ELF so SHA256 11631a6cb93bc9cbf595d63165be2072bfd76c21530e9e744430f3282d19c42d. Po doplnení chýbajúcej SDL2_net runtime knižnice bol spustený s originálnym nezmeneným DOS2 N3D.EXE na Xvfb. Prirodzená voľba Main Menu -> Demo skutočne aktivovala deferred trace s podmienkami CS:IP 0CEB:1333, opcodes 26886410 a GUARD41 ES:SI 2A21:2A78.
+
+**Skutočne namerané:** jedna kontinuálna N3DTRC01 session od HP writera s 20 000 originálnymi CPU inštrukciami, 56 070 čítaniami, 12 612 zápismi, teda 88 682 eventmi, riadny INSTRUCTION_BUDGET, nie SIZE_LIMIT. HP 111->0, tri originálne RNG16–18 zápisy a dve rejection vetvy + akceptácia, GUARD animácia/timer/state, score 0->100 a linked MAP marker A5->00 sú potvrdené v presnom vykonanom poradí.
+
+Súkromný evidence ZIP: N3D_GUARD41_DOS20_DEATH_TRACE_V065_20261020.zip, binary stream SHA256 6bea0e04196ee540b46f1ea56ebadaa4abcc7c2b52d571882cbcb0026d071f4b. Offline kontrola raw trace PASS, 6/6 mutácií sú správne zamietnuté. Verejný originálnym bajtom voľný prehľad je v samostatnom návrhu PR #61 / docs/V066_DOS20_GUARD41_FATAL_EXECUTION_SK.md.
+
+**Hranica:** emulator teraz naozaj úspešne zachytáva tento konkrétny originálny death path bez manuálneho RUN, no samotné state0→9→0x0A, RNG19, drop a clean-room parity ešte nie sú uzatvorené týmto záznamom.
