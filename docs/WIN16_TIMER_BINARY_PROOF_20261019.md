@@ -1,5 +1,20 @@
 # Win16 timer byte proof: original EXE, NE fixups and precise stack arguments
 
+> **20 October 2026 correction — supersedes the prior v1.10 OPEN statements below.**
+> Archived SHA-gated v0.61 original Ghidra instruction listings were located in
+> the user's earlier project archive. Win16 v1.10 directly uses
+> `3:D6BB FF 76 FE (PUSH WORD PTR [BP-2])` before
+> `3:D6BE CALL FAR MMSYSTEM.606`, with `ENTER 6,0` and no local
+> `[BP-2]` initializer. Direct callers are `3:0F34 (PUSH 0)` and
+> `3:0F70 (PUSH 1)`. Thus the *local stack operand and the two named
+> direct caller edges* are archived-original-static CLOSED. A fresh
+> exact-EXE SHA recheck in this session, indirect/aliased FAR caller closure,
+> and runtime residual-stack value are still OPEN.
+> See [WIN16_V110_TIMER_ARCHIVED_BYTE_CLOSURE_20261020.md](WIN16_V110_TIMER_ARCHIVED_BYTE_CLOSURE_20261020.md).
+> Historical prose below predates recovery of this evidence and is retained
+> only as a dated audit trail, not the current status.
+
+
 Date: 2026-10-19. Scope: Nitemare 3-D Windows 1.0 / 1.3 / 1.6 / 1.8 / 1.10.
 Static-first audit. This note does **not** claim new original-runtime coverage
 or alter the game's main simulation or renderer.
