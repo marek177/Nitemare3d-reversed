@@ -96,3 +96,6 @@ V konverzačnom ZIP nájdeš zdrojové Python verifikátory, sedem selftestov a 
 4. Neprepínať `src/renderer/Raycaster.cpp`, kým máme len ohraničený writer replay namiesto scénovej a následnej regresnej parity.
 
 **Aktuálny stav: pre jedného skutočne vykonaného originálneho stenového writeru máme prvú plne reprodukovanú DOS2 source→IMG→U/V→XLAT→VGA vetvu; celá scéna a plná hra stále otvorené.**
+### Doplnený diagnostický kontrast (originálny mid-render vs normalizovaný)
+
+Pri plnom 304-stĺpcovom natívnom C++ výstupe sa odlišuje **10 U hodnôt**, konkrétne stĺpce `x=8..17`; rozdiel medzi dvoma kandidátnymi indexovanými stenovými obrazmi je **303 pixelov**. Nesprávna fáza generovala 16 928 pixelov, správne obnovený pred-krokový stav 16 930. **Len pôvodných 42 pixelov x8 má nezávislý originálny pixelový referenčný výstup**; ostatné rozdiely sú dva kandidátne výstupy, nie dokázané odchýlky proti originálnej celej scéne.
