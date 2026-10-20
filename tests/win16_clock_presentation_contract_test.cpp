@@ -154,6 +154,16 @@ static_assert(kWin18TimerInitCaller == 0x0EE8);
 static_assert(kWin18TimerEndCaller == 0x0F24);
 static_assert(kWin18TimerEndImportedCall == 0xD610);
 
+// Static stack reuse across consecutive CDECL FAR callbacks in Win16 1.10:
+// E0C4(1) audio/MIDI teardown -> D66C(1) timer teardown.
+// PUSH argument (2 bytes), CALL FAR return (4), ENTER saved BP (2).
+static_assert(Win110SequentialFarCallStack::kAudioEnterLocalBytes == 4);
+static_assert(Win110SequentialFarCallStack::kTimerEnterLocalBytes == 6);
+static_assert(Win110SequentialFarCallStack::calleeBasePointerFromCallerSP(0xFF00) == 0xFEF8);
+static_assert(Win110SequentialFarCallStack::bpMinus2AddressFromCallerSP(0xFF00) == 0xFEF6);
+static_assert(Win110SequentialFarCallStack::audioAndTimerAliasBpMinus2(0xFF00,0xFF00));
+static_assert(!Win110SequentialFarCallStack::audioAndTimerAliasBpMinus2(0xFF00,0xFEFE));
+
 int main() {
     for (std::uint16_t w = 319; w <= 321; ++w) {
         for (std::uint16_t h = 199; h <= 201; ++h) {
