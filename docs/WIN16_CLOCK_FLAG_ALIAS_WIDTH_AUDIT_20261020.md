@@ -1,5 +1,16 @@
 # Nitemare 3-D Win16 — direct clock flag overlapping-write audit
 
+> **REP destination follow-up, 20 October 2026:**
+> The archived Win16 1.10 Ghidra REP listing now has a separate
+> [83-site destination/provenance audit](WIN16_REP_DST_PROVENANCE_PASS_20261020.md).
+> All 14 REP MOVSD and 11 REP STOSD destination classes have
+> source-local bounds (25 sites); five fixed DGROUP ranges exclude
+> DS:00A2 and DS:46B2; 58 other REP sites still need pointer/length proof.
+> In particular, FUN_1010_5260 contains a potential string-copy
+> overlap into DS:46B2 when the total concatenated character count
+> is at least 4,084, but **dynamic reachability remains UNPROVEN**.
+
+
 **Date:** 20 October 2026. **Scope:** Windows v1.8 original executable and
 archived Windows v1.10 Ghidra disassembly. This note does NOT claim that
 computed indirect/alias writers have all been ruled out.
