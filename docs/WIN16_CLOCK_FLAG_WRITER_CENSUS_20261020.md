@@ -1,5 +1,15 @@
 # Nitemare 3-D Win16 1.10 — clock mode and one-shot latch writer census
 
+> **20 October 2026 — direct writer-width closure extension:** the
+> seven original v1.10 neighboring writes at DS:46AF/46B0/46B1
+> have now each been opcode-width checked as 8-bit, so they do not
+> overlap DS:46B2. A separately SHA-verified original Win16 v1.8
+> four-code-segment pattern scan returned only two direct clock byte
+> writers and one one-shot latch byte writer. Neither result excludes
+> computed-register or ES: aliases. See
+> [WIN16_CLOCK_FLAG_ALIAS_WIDTH_AUDIT_20261020.md](WIN16_CLOCK_FLAG_ALIAS_WIDTH_AUDIT_20261020.md).
+
+
 **RE pass:** 20 October 2026. **Provenance:** pre-existing original
 Ghidra ASM/DS binary listing in the user archive `nite3w(1).docx`.
 This note is recovered existing original STATIC evidence; no original
