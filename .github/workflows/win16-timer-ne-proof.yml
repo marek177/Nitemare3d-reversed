@@ -18,6 +18,7 @@ on:
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_Ghidra_REP_destination_register_20261020.csv'
       - 'docs/WIN16_REP_DST_PROVENANCE_PASS_20261020.md'
       - 'docs/WIN16_REP_ALIAS_CLOSURE_PASS2_20261020.md'
+      - 'docs/WIN16_GENERIC_REP_COPY_HELPERS_20261020.md'
       - 'tests/test_n3d_win16_raw_fixed_store_candidates.py'
       - 'tests/test_n3d_win16_clock_alias_writes.py'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_timer_direct_write_witnesses_20261020.csv'
@@ -50,6 +51,7 @@ on:
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_Ghidra_REP_destination_register_20261020.csv'
       - 'docs/WIN16_REP_DST_PROVENANCE_PASS_20261020.md'
       - 'docs/WIN16_REP_ALIAS_CLOSURE_PASS2_20261020.md'
+      - 'docs/WIN16_GENERIC_REP_COPY_HELPERS_20261020.md'
       - 'tests/test_n3d_win16_raw_fixed_store_candidates.py'
       - 'tests/test_n3d_win16_clock_alias_writes.py'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_timer_direct_write_witnesses_20261020.csv'
@@ -110,7 +112,7 @@ jobs:
           python -m unittest discover -s tests -p 'test_n3d_win16_clock_alias_writes.py' -v
       - name: Verify raw NE byte candidate scanner overlap safety
         run: python -m unittest discover -s tests -p 'test_n3d_win16_raw_fixed_store_candidates.py' -v
-      - name: Audit 83 Win16 REP sites (46 fixed, 1 symbolic, 36 open)
+      - name: Audit 83 Win16 REP sites (48 direct/conditional, 1 symbolic, 34 open)
         run: |
           python tools/n3d_win16_rep_destination_audit.py --output /tmp/n3d-win16-rep-dst-audit.json
           python -m unittest discover -s tests -p 'test_n3d_win16_rep_destination_audit.py' -v
