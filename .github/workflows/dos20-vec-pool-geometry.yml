@@ -1,0 +1,24 @@
+name: DOS2 VEC pool and live geometry
+on:
+  push:
+    paths: ['src/game/Dos20*.hpp', 'src/game/LevelState.*', 'src/re/N3DD02JClass2DSpanTiming.hpp', 'tests/dos20_vec_pool_lookup_test.cpp', 'tests/dos20_class2d_geometry_integration_test.cpp', 'CMakeLists.txt', '.github/workflows/dos20-vec-pool-geometry.yml']
+  pull_request:
+    paths: ['src/game/Dos20*.hpp', 'src/game/LevelState.*', 'src/re/N3DD02JClass2DSpanTiming.hpp', 'tests/dos20_vec_pool_lookup_test.cpp', 'tests/dos20_class2d_geometry_integration_test.cpp', 'CMakeLists.txt', '.github/workflows/dos20-vec-pool-geometry.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure without commercial assets
+        run: cmake -S . -B build-d02m -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Build lookup, geometry and collision regression
+        run: cmake --build build-d02m --config Debug --target n3d_dos20_vec_pool_lookup_test n3d_dos20_class2d_geometry_integration_test n3d_pushable_blocked_test --parallel 4
+      - name: Run synthetic integration checks
+        run: ctest --test-dir build-d02m -C Debug -R '^n3d_(dos20_(vec_pool_lookup|class2d_geometry_integration)|pushable_blocked)_test$' --output-on-failure

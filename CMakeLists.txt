@@ -353,6 +353,13 @@ target_include_directories(n3d_dos_guard_resolver_test PRIVATE src)
 add_executable(n3d_dos20_guard41_postdeath_test tests/dos20_guard41_postdeath_test.cpp)
 target_include_directories(n3d_dos20_guard41_postdeath_test PRIVATE src)
 
+# Original DOS2 class2D SPAN/VEC/WALL event -> real LevelState map mutation.
+# Bounded data-plane integration only; main DDA preview is not replaced.
+add_executable(n3d_dos20_class2d_geometry_integration_test
+    tests/dos20_class2d_geometry_integration_test.cpp)
+target_link_libraries(n3d_dos20_class2d_geometry_integration_test PRIVATE n3d_core)
+add_executable(n3d_dos20_vec_pool_lookup_test tests/dos20_vec_pool_lookup_test.cpp)
+target_link_libraries(n3d_dos20_vec_pool_lookup_test PRIVATE n3d_core)
 include(cmake/RegressionTests.cmake)
 
 if(BUILD_TESTING)
