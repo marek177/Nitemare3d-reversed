@@ -40,7 +40,7 @@ class Win16MemcpyCallerAudit(unittest.TestCase):
         self.assertEqual(report["direct_named_caller_count"],8)
         self.assertEqual(report["caller_entries"],EXPECTED_CALLER_ENTRIES)
         self.assertTrue(report["full_argument_provenance_recorded_for_all_eight"])
-        self.assertEqual(report["near_call_with_explicit_push_CS"],"2:3F20")
+        self.assertEqual(report["near_call_with_explicit_push_CS"],"1008:3F20")
         self.assertEqual(len(report["direct_far_call_sites"]),7)
 
     def test_does_not_claim_full_alias_or_all_inputs_safe(self):
@@ -53,7 +53,7 @@ class Win16MemcpyCallerAudit(unittest.TestCase):
     def test_signed_capacity_guard_sites_have_exact_branch_types(self):
         report=audit(self.rows)
         self.assertEqual(report["signed_capacity_compare_sites"],{
-            "0:0E51":"JGE","0:0F74":"JGE","0:4C72":"JLE"})
+            "1000:0E51":"JGE","1000:0F74":"JGE","1000:4C72":"JLE"})
         self.assertEqual(report["signed_capacity_compare_sites"],
                          CAPACITY_SIGNED_BRANCH_SITES)
         for site,kind in CAPACITY_SIGNED_BRANCH_SITES.items():
@@ -138,17 +138,17 @@ class Win16MemcpyCallerAudit(unittest.TestCase):
 
     def test_rejects_forged_struct_or_missing_guard(self):
         rows=copy.deepcopy(self.rows)
-        row=next(x for x in rows if x["site"]=="0:0E51")
+        row=next(x for x in rows if x["site"]=="1000:0E51")
         row["guard_width"]="unsigned"
         with self.assertRaisesRegex(ValueError,"signed capacity"):
             audit(rows)
         rows=copy.deepcopy(self.rows)
-        row=next(x for x in rows if x["site"]=="0:4C72")
-        row["caller_entry"]="0:0000"
+        row=next(x for x in rows if x["site"]=="1000:4C72")
+        row["caller_entry"]="1000:0000"
         with self.assertRaisesRegex(ValueError,"Caller function entry"):
             audit(rows)
         rows=copy.deepcopy(self.rows)
-        row=next(x for x in rows if x["site"]=="0:0DD0")
+        row=next(x for x in rows if x["site"]=="1000:0DD0")
         row["source_operand"]=""
         with self.assertRaisesRegex(ValueError,"source_operand"):
             audit(rows)
@@ -168,12 +168,12 @@ class Win16MemcpyCallerAudit(unittest.TestCase):
 
     def test_src_dst_count_words_present_in_each_original_asm_row(self):
         entries={r["site"]:r for r in self.rows}
-        self.assertIn("[param1 struct + 0]",entries["0:0DD0"]["source_operand"])
-        self.assertIn("[param1 struct + 0]",entries["0:0F74"]["destination_operand"])
-        self.assertIn("param5",entries["0:0ED9"]["copy_count_operand"])
-        self.assertIn("param3",entries["0:0EEA"]["copy_count_operand"])
-        self.assertIn("strlen",entries["0:0E16"]["copy_count_operand"])
-        self.assertIn("min(",entries["2:3F20"]["copy_count_operand"])
+        self.assertIn("[param1 struct + 0]",entries["1000:0DD0"]["source_operand"])
+        self.assertIn("[param1 struct + 0]",entries["1000:0F74"]["destination_operand"])
+        self.assertIn("param5",entries["1000:0ED9"]["copy_count_operand"])
+        self.assertIn("param3",entries["1000:0EEA"]["copy_count_operand"])
+        self.assertIn("strlen",entries["1000:0E16"]["copy_count_operand"])
+        self.assertIn("min(",entries["1008:3F20"]["copy_count_operand"])
 
 
 if __name__=="__main__":
