@@ -52,3 +52,18 @@ if(BUILD_TESTING)
         set_tests_properties(n3d_dos20_indexed_oracle_py PROPERTIES LABELS "render-reference")
     endif()
 endif()
+
+# Optional *private original DOS v2.0* texture-U CPU return corpus.
+# Do not redistribute the user's original trace-derived CSV in the repo.
+set(N3D_DOS20_U_ORIGINAL_CSV "" CACHE FILEPATH
+    "Private 1520-row DOS2 22CA U effective-input witness CSV")
+if(BUILD_TESTING AND N3D_DOS20_U_ORIGINAL_CSV)
+    if(NOT EXISTS "${N3D_DOS20_U_ORIGINAL_CSV}")
+        message(FATAL_ERROR
+            "N3D_DOS20_U_ORIGINAL_CSV does not exist: ${N3D_DOS20_U_ORIGINAL_CSV}")
+    endif()
+    add_test(NAME n3d_dos20_texture_u_original_private
+             COMMAND n3d_dos20_texture_u_edge_test "${N3D_DOS20_U_ORIGINAL_CSV}")
+    set_tests_properties(n3d_dos20_texture_u_original_private
+                         PROPERTIES LABELS "original-data;renderer-U-bounded")
+endif()
