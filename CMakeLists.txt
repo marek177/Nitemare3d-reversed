@@ -299,6 +299,12 @@ add_executable(n3d_win16_timer_lifecycle_gate_test
     tests/win16_timer_lifecycle_gate_test.cpp)
 target_link_libraries(n3d_win16_timer_lifecycle_gate_test PRIVATE n3d_core)
 
+# DOS2 fixed-point wall-column raster. This intentionally does not replace
+# the production DDA preview; source/projected column inputs are caller-supplied.
+add_executable(n3d_dos20_indexed_wall_column_test
+    tests/dos20_indexed_wall_column_test.cpp)
+target_link_libraries(n3d_dos20_indexed_wall_column_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
