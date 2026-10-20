@@ -85,4 +85,33 @@ constexpr bool initialEmptyWouldRequestAllocation(
     return requestedUsed != 0 && requestedUsed < 0x8000;
 }
 
+// Original 1000:0E26 uses SIGNED CMP + JGE to test the capacity.
+// The canonical empty state has cap=0. For a requested count
+// 0x8000..0xFFFF, the signed requested value is negative and
+// JGE skips growth, then 1000:0E51 copies into shared DS:0584.
+// This is a conditional x86-16 address proof; no source data is
+// read or copied by the C++ contract.
+struct EmptyAssignmentPlan {
+    std::uint16_t requestedBytes;
+    bool skipsAllocation;
+    std::uint16_t selectedDestination;
+    bool wouldCopy;
+    bool wouldTouchClockFlagOnNonFaultingCopy;
+    bool actualLargeSourceReachabilityProven;
+};
+
+constexpr EmptyAssignmentPlan planAssignToOriginalEmpty(
+    std::uint16_t requestedBytes) noexcept {
+    const bool signedNegative = requestedBytes >= 0x8000u;
+    const bool skipGrowth = requestedBytes == 0 || signedNegative;
+    const bool hitsFlag = signedNegative &&
+        static_cast<std::uint32_t>(requestedBytes) >
+        static_cast<std::uint32_t>(kMultimediaClockFlagOffset -
+                                   kEmptySentinelOffset);
+    return EmptyAssignmentPlan{
+        requestedBytes,skipGrowth,kEmptySentinelOffset,
+        requestedBytes != 0,hitsFlag,false
+    };
+}
+
 } // namespace n3d::re::win16::string_trio
