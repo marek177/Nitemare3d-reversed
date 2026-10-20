@@ -313,7 +313,9 @@ WIN110_TIMER_ARCHIVED_ANCHORS = {
 }
 
 
-def verify_win110_timer_call_and_stack(image: NeImage) -> dict:
+def verify_win110_timer_call_and_stack(
+    image: NeImage, *, original_sha_verified: bool = False
+) -> dict:
     """Instruction/fixup contract for the SHA-pinned original Win16 1.10.
 
     This must only be invoked by inspect() when the original SHA matched;
@@ -352,7 +354,8 @@ def verify_win110_timer_call_and_stack(image: NeImage) -> dict:
         raise ValueError("Win16 v1.10 BP-2 cleanup read not unique/expected")
 
     return {
-        "proof": "ORIGINAL_SHA_PINNED_RECHECK_OF_ARCHIVED_GHIDRA_OPCODE_MANIFEST",
+        "proof": ("ORIGINAL_SHA_PINNED_RECHECK_OF_ARCHIVED_GHIDRA_OPCODE_MANIFEST"
+                  if original_sha_verified else "SYNTHETIC_OPCODE_MODEL_ONLY"),
         "build": "1.10",
         "init_far_call": "3:0F34",
         "init_immediate_argument": 0,
@@ -400,7 +403,7 @@ def inspect(image: NeImage, profile: Profile):
         if profile.version == "1.8" else None
     )
     win110_proof = (
-        verify_win110_timer_call_and_stack(image)
+        verify_win110_timer_call_and_stack(image, original_sha_verified=True)
         if profile.version == "1.10" else None
     )
     return {
