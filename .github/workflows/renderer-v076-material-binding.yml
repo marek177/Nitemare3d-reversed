@@ -1,0 +1,45 @@
+name: N3D renderer v076 IMG cache and perspective U binder
+
+on:
+  push:
+    paths:
+      - 'src/re/N3DDos20WallMaterialBinding.hpp'
+      - 'src/re/N3DDos20SpanWallPipeline.hpp'
+      - 'src/re/N3DDos20ShadeXLAT.hpp'
+      - 'tests/dos20_wall_material_binding_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v076-material-binding.yml'
+  pull_request:
+    paths:
+      - 'src/re/N3DDos20WallMaterialBinding.hpp'
+      - 'src/re/N3DDos20SpanWallPipeline.hpp'
+      - 'src/re/N3DDos20ShadeXLAT.hpp'
+      - 'tests/dos20_wall_material_binding_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v076-material-binding.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dos20_wall_binding:
+    name: IMG frame and U candidate binder
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure native C++20 (no SDL or commercial game data)
+        run: cmake -S . -B build-v076-material -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Build original-layout IMG and U candidate
+        run: cmake --build build-v076-material --config Debug --target n3d_dos20_wall_material_binding_test --parallel 4
+      - name: Test IMG cache alias, frame selection, perspective U and shade
+        run: ctest --test-dir build-v076-material -C Debug -R n3d_dos20_wall_material_binding_test --output-on-failure
+      - name: GCC strict warnings and UBSan
+        if: runner.os == 'Linux'
+        run: |
+          c++ -std=c++20 -O1 -g -Wall -Wextra -Werror -pedantic -fsanitize=undefined -fno-sanitize-recover=all -Isrc tests/dos20_wall_material_binding_test.cpp -o /tmp/n3d_v076_material
+          /tmp/n3d_v076_material
