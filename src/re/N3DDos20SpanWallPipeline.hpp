@@ -16,6 +16,7 @@
 #include <cstdint>
 #include <optional>
 #include <span>
+#include <type_traits>
 #include <utility>
 
 namespace n3d::re::dos20::spanwall {
@@ -161,6 +162,9 @@ constexpr std::optional<Vertical> verticalFromSpanQ4(
 // std::optional<Material>(unsigned screenX, std::uint16_t nearOwner,
 //                         std::uint8_t wallId, const Span&, int bottomY,
 //                         unsigned heightIndex).
+// Optional 7th argument: std::uint16_t spanYQ4 = current phase high WORD,
+// required for perspective texture-U. Legacy 6-argument resolvers are accepted
+// for fixtures, but must not be labeled exact perspective-U.
 // It MUST resolve exact image/frame/U/shade selection. No inferred DDA U here.
 // Produces all 304 owner-associated column records atomically.
 template<class Resolve>
@@ -203,9 +207,17 @@ Status prepare(std::span<const std::uint8_t> ds,
             p.projectedBottomY=v->projectedBottomY;
             p.heightIndex=v->heightIndex;
             if (v->visible) {
-                const std::optional<Material> material =
-                    resolve(x,s.nearOwner,wallId,s,v->projectedBottomY,
-                            v->heightIndex);
+                std::optional<Material> material;
+                if constexpr (std::is_invocable_v<Resolve&, unsigned,
+                      std::uint16_t, std::uint8_t, const Span&, int,
+                      unsigned, std::uint16_t>) {
+                    material=resolve(x,s.nearOwner,wallId,s,
+                        v->projectedBottomY,v->heightIndex,
+                        static_cast<std::uint16_t>(p.spanYQ4));
+                } else {
+                    material=resolve(x,s.nearOwner,wallId,s,
+                                     v->projectedBottomY,v->heightIndex);
+                }
                 if (!material) return Status::InvalidWallMaterial;
                 if (!wall::selectPhysicalColumn(
                     material->imgColumnMajor,material->imageWidth,
