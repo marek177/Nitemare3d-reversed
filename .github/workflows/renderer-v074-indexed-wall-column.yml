@@ -1,0 +1,36 @@
+name: N3D v074 DOS2 fixed point wall column
+
+on:
+  push:
+    paths:
+      - 'src/re/N3DDos20IndexedWallColumn.hpp'
+      - 'tests/dos20_indexed_wall_column_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v074-indexed-wall-column.yml'
+  pull_request:
+    paths:
+      - 'src/re/N3DDos20IndexedWallColumn.hpp'
+      - 'tests/dos20_indexed_wall_column_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v074-indexed-wall-column.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dos20_wall_column:
+    name: Wall raster regression
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure C++20 core without SDL3 or original game files
+        run: cmake -S . -B build-v074 -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Compile bounded DOS2 wall renderer test
+        run: cmake --build build-v074 --config Debug --target n3d_dos20_indexed_wall_column_test --parallel 4
+      - name: Execute fixed-point wall-column regression
+        run: ctest --test-dir build-v074 -C Debug -R '^n3d_dos20_indexed_wall_column_test$' --output-on-failure
