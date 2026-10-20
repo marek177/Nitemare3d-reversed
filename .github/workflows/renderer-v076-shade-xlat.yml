@@ -1,0 +1,41 @@
+name: N3D renderer v076 DOS2 exact RGB6 shade XLAT
+
+on:
+  push:
+    paths:
+      - 'src/re/N3DDos20ShadeXLAT.hpp'
+      - 'tests/dos20_shade_xlat_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v076-shade-xlat.yml'
+  pull_request:
+    paths:
+      - 'src/re/N3DDos20ShadeXLAT.hpp'
+      - 'tests/dos20_shade_xlat_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v076-shade-xlat.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dos20_shade:
+    name: DOS2 RGB6 shade XLAT and wall raster
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure C++20 without SDL3 or original game files
+        run: cmake -S . -B build-v076 -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Build strict DOS2 shade and raster regression
+        run: cmake --build build-v076 --config Debug --target n3d_dos20_shade_xlat_test --parallel 4
+      - name: Test 8 shade amounts including palette ties
+        run: ctest --test-dir build-v076 -C Debug -R n3d_dos20_shade_xlat_test --output-on-failure
+      - name: GCC UBSan and pedantic compilation
+        if: runner.os == 'Linux'
+        run: |
+          c++ -std=c++20 -O1 -g -Wall -Wextra -Werror -pedantic -fsanitize=undefined -fno-sanitize-recover=all -Isrc tests/dos20_shade_xlat_test.cpp -o /tmp/n3d_v076_shade
+          /tmp/n3d_v076_shade
