@@ -71,6 +71,29 @@ STATIC_PORTAL_TEXT_MAX_CONCATENATED=210
 STATIC_PORTAL_LOCAL_BUFFER_CAPACITY=256
 VIDEO_SEGMENT_REP_64000={"1010:3A73","1010:4719"}
 ROUNDED_LOCALALLOC_STOSW="1008:672D"
+# All named original direct caller chain:
+# 0:5588 -> 0:542A with a literal 0x000A element width;
+# 0:5865 -> 0:542A with a literal 0x0006 element width;
+# 0:5446 -> 2:66FE: single named direct target call.
+# Both possible element widths are even, so n=element_size*count
+# is even when the 16-bit MUL does not overflow and LocalAlloc succeeds.
+LOCALALLOC_NAMED_CALLER_ELEMENT_SIZES={"0:5588":10,"0:5865":6}
+LOCALALLOC_GATEWAY_CALLER="0:5446"
+
+
+def win16_named_calloc_request_bytes(site:str, count:int)->int|None:
+    """Return original 16-bit product, None on the MUL overflow branch.
+
+    Models only two named direct caller paths, not arbitrary indirect calls.
+    """
+    if site not in LOCALALLOC_NAMED_CALLER_ELEMENT_SIZES:
+        raise ValueError("Unverified caller of Win16 LocalAlloc clear")
+    if not 0<=count<=0xFFFF:
+        raise ValueError("Element count must be uint16")
+    product=LOCALALLOC_NAMED_CALLER_ELEMENT_SIZES[site]*count
+    return None if product>0xFFFF else product
+
+
 KNOWN_SOURCE_BOUNDED_TOTAL=(KNOWN_REP32+len(KNOWN_REP16_BOUNDED)
                             +len(STATIC_PORTAL_TEXT_PAIR_BOUNDS)
                             +len(VIDEO_SEGMENT_REP_64000))
@@ -280,6 +303,11 @@ def provenance_audit(rows:list[dict[str,str]],
         "source_symbolically_bounded_rep":len(rounded_alloc_sites),
         "dynamic_localalloc_zeroing_sites":sorted(rounded_alloc_sites),
         "dynamic_localalloc_odd_size_can_write_one_nominal_extra_byte":True,
+        "dynamic_localalloc_named_direct_callers":LOCALALLOC_NAMED_CALLER_ELEMENT_SIZES,
+        "dynamic_localalloc_named_direct_gateway":LOCALALLOC_GATEWAY_CALLER,
+        "dynamic_localalloc_named_direct_product_must_be_even_if_not_overflow":True,
+        "dynamic_localalloc_odd_size_reachable_through_named_direct_calls":False,
+        "dynamic_localalloc_indirect_caller_reachability_excluded":False,
         "dynamic_localalloc_words_written_at_65535":win16_localalloc_word_clear_bytes(65535),
         "portal_static_literal_rep_sites":sorted(STATIC_PORTAL_TEXT_PAIR_BOUNDS),
         "portal_literal_max_buffer_output":STATIC_PORTAL_TEXT_MAX_CONCATENATED,
@@ -329,6 +357,7 @@ def provenance_audit(rows:list[dict[str,str]],
             "Other-segment, stack, heap and framebuffer disjointness uses valid OS segment/allocator semantics",
             "Other 36 REP destinations need interprocedural pointer/length or bounds proof",
             "Odd successful LocalAlloc of n=1..65533 writes n+1 zero bytes at STOSW; odd n=65535 clears zero due to uint16 wrap",
+            "All original named direct callers of the LocalAlloc clear pass element size 6 or 10; odd-size overrun path not reached through those callers",
             "10 portal literal REP sites bounded by 256-byte local buffer/210-byte concatenation, conditional on original source pointers",
             "2 video REP sites write 64000 bytes to ES selected by DS:51A0, not an unconditional selector nonalias proof",
             "Four string copies at DS:36BE could overlap DS:46B2 if NUL-terminated combined char count >=4084; actual input reachability unproved",
