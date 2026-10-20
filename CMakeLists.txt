@@ -305,6 +305,12 @@ add_executable(n3d_dos20_indexed_wall_column_test
     tests/dos20_indexed_wall_column_test.cpp)
 target_link_libraries(n3d_dos20_indexed_wall_column_test PRIVATE n3d_core)
 
+# Experimental DOS2 post-span -> 304 indexed wall-column pipeline.
+# No DDA replacement; source IMG/U/shading is passed in explicitly.
+add_executable(n3d_dos20_span_wall_pipeline_test
+    tests/dos20_span_wall_pipeline_test.cpp)
+target_link_libraries(n3d_dos20_span_wall_pipeline_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
