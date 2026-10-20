@@ -169,6 +169,18 @@ jobs:
               print('RAW_WRITER_SCAN',report['target'],'code_segments',
                     report['file_backed_code_segments_scanned'],
                     'candidate_count',report['candidate_count'])
+              EXPECTED_RAW_SITES = {
+                  'DS:46B2': {'3:0E8A','3:D5E3'},
+                  'DS:00A2': {'3:0E7E'},
+              }
+              observed_sites = {row['source'] for row in
+                                report['raw_fixed_address_store_candidates']}
+              expected_sites = EXPECTED_RAW_SITES[report['target']]
+              assert observed_sites == expected_sites, (
+                  'Win16 1.8 original raw absolute-writer candidates changed',
+                  report['target'], observed_sites, expected_sites)
+              assert all(row['suggested_instruction'] == 'MOV_moffs8_AL'
+                         for row in report['raw_fixed_address_store_candidates'])
               for row in report['raw_fixed_address_store_candidates'][:80]:
                   print('CANDIDATE',row['source'],row['suggested_instruction'],
                         'addr',row['ds_absolute_start'],
