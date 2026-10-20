@@ -128,7 +128,6 @@ int main(int argc,char**argv){
     // A nine-run VEC/OWNER/SPAN fixture exercises the exact original
     // 28-byte VEC / 16-bit owner / 18-byte span record widths.
     mem=fixture(9);
-    const auto preserved=frame;
     assert(sp::prepare(mem,9,0,material,plan)==sp::Status::Ok);
     assert(plan.spanCount==9 && plan.drawnColumns==304);
     for(unsigned x=8;x<=311;++x) {
