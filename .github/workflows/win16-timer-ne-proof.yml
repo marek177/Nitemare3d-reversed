@@ -6,6 +6,10 @@ on:
       - 'tools/n3d_win16_timer_binary_proof.py'
       - 'tools/n3d_win16_timer_crossversion_verify.py'
       - 'tools/n3d_win16_timer_target_census.py'
+      - 'tools/n3d_win16_clock_alias_writes.py'
+      - 'tests/test_n3d_win16_clock_alias_writes.py'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_timer_direct_write_witnesses_20261020.csv'
+      - 'docs/WIN16_CLOCK_FLAG_ALIAS_WIDTH_AUDIT_20261020.md'
       - 'tests/test_n3d_win16_timer_target_census.py'
       - 'docs/WIN16_TIMER_TARGET_INDIRECT_CENSUS_20261020.md'
       - 'tests/test_n3d_win16_timer_crossversion.py'
@@ -22,6 +26,10 @@ on:
       - 'tools/n3d_win16_timer_binary_proof.py'
       - 'tools/n3d_win16_timer_crossversion_verify.py'
       - 'tools/n3d_win16_timer_target_census.py'
+      - 'tools/n3d_win16_clock_alias_writes.py'
+      - 'tests/test_n3d_win16_clock_alias_writes.py'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_timer_direct_write_witnesses_20261020.csv'
+      - 'docs/WIN16_CLOCK_FLAG_ALIAS_WIDTH_AUDIT_20261020.md'
       - 'tests/test_n3d_win16_timer_target_census.py'
       - 'docs/WIN16_TIMER_TARGET_INDIRECT_CENSUS_20261020.md'
       - 'tests/test_n3d_win16_timer_crossversion.py'
@@ -50,6 +58,8 @@ jobs:
           python -m py_compile tools/n3d_win16_timer_binary_proof.py
           python -m py_compile tools/n3d_win16_timer_crossversion_verify.py
           python -m py_compile tools/n3d_win16_timer_target_census.py
+          python -m py_compile tools/n3d_win16_clock_alias_writes.py
+          python -m py_compile tests/test_n3d_win16_clock_alias_writes.py
           python -m py_compile tests/test_n3d_win16_timer_target_census.py
           python -m py_compile tests/test_n3d_win16_timer_crossversion.py
           python -m py_compile tests/test_n3d_win16_timer_archive_v110.py
@@ -64,5 +74,9 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_n3d_win16_timer_archive_v110.py' -v
       - name: Classify timer-specific FAR fixups and indirect pointer candidates
         run: python -m unittest discover -s tests -p 'test_n3d_win16_timer_target_census.py' -v
+      - name: Validate archived Win16 v1.10 clock/latch writer widths and no direct overlap
+        run: |
+          python tools/n3d_win16_clock_alias_writes.py --output /tmp/win16-clock-direct-writer-report.json
+          python -m unittest discover -s tests -p 'test_n3d_win16_clock_alias_writes.py' -v
       - name: Verify CLI has no original binary dependency
         run: python tools/n3d_win16_timer_binary_proof.py --help
