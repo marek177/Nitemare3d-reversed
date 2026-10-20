@@ -94,6 +94,9 @@ class Win110ArchivedOpcodes(unittest.TestCase):
             verify_win110_timer_call_and_stack(self.image)
 
     def test_manifest_has_no_unspecified_magic_original_exe(self):
+        self.assertEqual(WIN110_TIMER_ARCHIVED_ANCHORS[0x0E9E], "80 3e a2 00 00")
+        self.assertEqual(WIN110_TIMER_ARCHIVED_ANCHORS[0x0ECA], "a2 a2 00")
+        self.assertEqual(WIN110_TIMER_ARCHIVED_ANCHORS[0x0ED6], "a2 b2 46")
         self.assertEqual(WIN110_TIMER_ARCHIVED_ANCHORS[0xD66C], "c8 06 00 00")
         self.assertEqual(WIN110_TIMER_ARCHIVED_ANCHORS[0xD6BB], "ff 76 fe")
         self.assertEqual(WIN110_TIMER_ARCHIVED_ANCHORS[0x0F32], "6a 00")
