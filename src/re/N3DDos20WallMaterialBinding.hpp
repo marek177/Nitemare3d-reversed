@@ -14,6 +14,7 @@
 // instruction-exact independently proven for DOS 2.0. This API marks it as
 // a candidate and rejects missing resources instead of using a DDA fallback.
 #include "re/N3DDos20SpanWallPipeline.hpp"
+#include "re/N3DDos20TextureUEdge.hpp"
 #include "re/N3DDos20ShadeXLAT.hpp"
 #include "renderer/Win16WallRasterCore.hpp"
 
@@ -196,8 +197,15 @@ inline std::optional<std::uint16_t> perspectiveUDosFromDS(
     along=wrap16(std::int32_t(along)+local);
     if(vec.renderClass!=2 && (vec.orientation==0 || vec.orientation==3))
         along=wc::negate16(along);
-    return wc::selectTextureU(
-        vec,screenX,along,static_cast<std::uint16_t>(width));
+    // DOS v2.0 FUN_1000_22CA is now independently instruction-translated
+    // and checked against 1,520 original CPU-return U values. Keep CEDC
+    // projection/25DC arithmetic a separate proof obligation.
+    const texture_u::VecEdge edge{
+        vec.screenX1,vec.screenX2,
+        vec.x1,vec.y1,vec.x2,vec.y2,
+        vec.flags,vec.renderClass,vec.orientation
+    };
+    return texture_u::correctBounded(edge,screenX,along,width);
 }
 
 enum class TextureUModel : std::uint8_t {
