@@ -20,6 +20,9 @@ on:
       - 'docs/WIN16_REP_ALIAS_CLOSURE_PASS2_20261020.md'
       - 'docs/WIN16_GENERIC_REP_COPY_HELPERS_20261020.md'
       - 'tools/n3d_win16_memcpy_6c80_caller_audit.py'
+      - 'tools/n3d_win16_string_trio_lifecycle_audit.py'
+      - 'tests/test_n3d_win16_string_trio_lifecycle_audit.py'
+      - 'docs/WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md'
       - 'tests/test_n3d_win16_memcpy_6c80_caller_audit.py'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_memcpy_6C80_direct_callers_20261020.csv'
       - 'docs/WIN16_MEMCPY_6C80_EIGHT_CALLER_STATIC_20261020.md'
@@ -57,6 +60,9 @@ on:
       - 'docs/WIN16_REP_ALIAS_CLOSURE_PASS2_20261020.md'
       - 'docs/WIN16_GENERIC_REP_COPY_HELPERS_20261020.md'
       - 'tools/n3d_win16_memcpy_6c80_caller_audit.py'
+      - 'tools/n3d_win16_string_trio_lifecycle_audit.py'
+      - 'tests/test_n3d_win16_string_trio_lifecycle_audit.py'
+      - 'docs/WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md'
       - 'tests/test_n3d_win16_memcpy_6c80_caller_audit.py'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_memcpy_6C80_direct_callers_20261020.csv'
       - 'docs/WIN16_MEMCPY_6C80_EIGHT_CALLER_STATIC_20261020.md'
@@ -96,6 +102,8 @@ jobs:
           python -m py_compile tools/n3d_win16_raw_fixed_store_candidates.py
           python -m py_compile tools/n3d_win16_rep_destination_audit.py
           python -m py_compile tools/n3d_win16_memcpy_6c80_caller_audit.py
+          python -m py_compile tools/n3d_win16_string_trio_lifecycle_audit.py
+          python -m py_compile tests/test_n3d_win16_string_trio_lifecycle_audit.py
           python -m py_compile tests/test_n3d_win16_memcpy_6c80_caller_audit.py
           python -m py_compile tools/n3d_win16_filename_alias_calls.py
           python -m py_compile tests/test_n3d_win16_filename_alias_calls.py
@@ -130,6 +138,10 @@ jobs:
         run: |
           python tools/n3d_win16_memcpy_6c80_caller_audit.py --output /tmp/n3d-win16-memcpy8-caller-audit.json
           python -m unittest discover -s tests -p 'test_n3d_win16_memcpy_6c80_caller_audit.py' -v
+      - name: Verify original Win16 empty buffer sentinel and conditional OOM scalar flag alias
+        run: |
+          python tools/n3d_win16_string_trio_lifecycle_audit.py --output /tmp/win16-string-trio-oom-alias.json
+          python -m unittest discover -s tests -p 'test_n3d_win16_string_trio_lifecycle_audit.py' -v
       - name: Pin all twelve Win16 user.sav/config.sav direct filename paths
         run: |
           python tools/n3d_win16_filename_alias_calls.py --output /tmp/n3d-win16-filename-aliases.json
