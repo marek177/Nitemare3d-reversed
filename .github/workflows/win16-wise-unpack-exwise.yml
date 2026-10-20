@@ -1,0 +1,68 @@
+name: Win16 historic Wise installer static unpack (exwise)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/win16-wise-unpack-exwise.yml'
+  workflow_dispatch:
+
+jobs:
+  original-wise-static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and build open-source exwise decompressor
+        shell: bash
+        run: |
+          set -eu
+          git clone --depth 1 https://github.com/lmop/exwise.git /tmp/exwise
+          cd /tmp/exwise
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq autoconf automake build-essential > /dev/null
+          autoreconf -fi || true
+          ./configure || true
+          make -j2 || true
+          find . -maxdepth 3 -type f -name 'exwise*' -exec file {} \; | head -25
+      - name: Download original publicly mirrored Win3.x installer
+        run: |
+          curl --fail -L --retry 2 --max-time 90 \
+            https://archive.org/download/win3_Nite3d3x/win3_Nite3d3x.zip \
+            -o /tmp/nite3w-public.zip
+          mkdir -p /tmp/nite3w-wise
+          unzip -oq /tmp/nite3w-public.zip -d /tmp/nite3w-wise
+      - name: Extract original Wise archive data only (never launch Windows code)
+        shell: bash
+        run: |
+          set -eu
+          mkdir -p /tmp/nite3w-exwise
+          cd /tmp/nite3w-exwise
+          if test -x /tmp/exwise/src/exwise; then
+            timeout 90 /tmp/exwise/src/exwise /tmp/nite3w-wise/INSTALL.EXE > /tmp/exwise-extraction.log 2>&1 || true
+          elif test -x /tmp/exwise/exwise; then
+            timeout 90 /tmp/exwise/exwise /tmp/nite3w-wise/INSTALL.EXE > /tmp/exwise-extraction.log 2>&1 || true
+          else
+            echo 'EXWISE_BUILD_NOT_AVAILABLE'
+          fi
+          test ! -f /tmp/exwise-extraction.log || head -70 /tmp/exwise-extraction.log
+          echo 'EXWISE_OUTPUT_FILES'
+          find . -maxdepth 2 -type f -printf '%p size=%s\n' | head -65
+          echo 'ORIGINAL_INNER_EXE_FINGERPRINTS'
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,struct
+          pinned = {
+              '12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481':'1.10',
+              '144e96bb649c5463d440c343ad982ed8e5f143e788c9af08bbb890fcd1b3db22':'1.8',
+              '5851849bacd8b03e93444d8a8f34d51c23fecddc73d6b8df7f016885c3b9d418':'1.6',
+          }
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or p.stat().st_size > 4_000_000: continue
+              data=p.read_bytes()
+              h=hashlib.sha256(data).hexdigest()
+              if h in pinned:
+                  print('PINNED_GAME_FOUND',p,'version',pinned[h],h)
+              if 200_000<=len(data)<=500_000 and data[:2]==b'MZ':
+                  ne=struct.unpack_from('<I',data,0x3c)[0]
+                  print('EXE_CANDIDATE',p,'size',len(data),'sha',h,'NE',data[ne:ne+2]==b'NE')
+          PY
