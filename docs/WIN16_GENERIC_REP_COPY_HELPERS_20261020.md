@@ -1,5 +1,17 @@
 # Win16 1.10 — generic REP copy helper reachability
 
+> **20 October 2026 — third static pass:** all **eight named direct
+> caller sites** to NE2:6C80 are now traced to their near destination,
+> near source, copied WORD count and immediate capacity/allocation
+> guard. This does **not** close global memcpy alias safety. The code
+> uses signed JGE/JLE capacity comparisons at original Ghidra
+> 1000:0E51, 1000:0F74 and 1000:4C72, and several unsigned 16-bit
+> additions can wrap. See
+> [the eight-caller proof](WIN16_MEMCPY_6C80_EIGHT_CALLER_STATIC_20261020.md)
+> and [its model/tests](../tools/n3d_win16_memcpy_6c80_caller_audit.py).
+> REP inventory remains 48 conditional/static + 1 symbolic + 34 OPEN.
+
+
 Audit date: 20 October 2026. Original source: archived Ghidra Win16
 disassembly nite3w(1).docx. This is statically recovered evidence,
 not a fresh v1.10 original EXE hash/run or runtime parity proof.
