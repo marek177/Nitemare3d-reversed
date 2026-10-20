@@ -1,5 +1,18 @@
 # Win16 1.10 — REP MOVS/STOS destination provenance, static pass
 
+> **Further static pass, 20 October 2026:** the three general copy helpers
+> at 2:602C (strcat-like), 2:606C (strcpy-like) and 2:6C80
+> (memcpy-like) were traced through the original Ghidra direct callers.
+> Two original REP sites in 2:602C have their ONLY named direct
+> call guarded false by the preceding copy of a fixed backslash.
+> They are 2-byte source-bounded if the helper is forced to execute;
+> the two strcpy and two memcpy REP sites remain open for
+> capacity/indirect pointer proof. Current inventory:
+> **48 fixed or direct-branch-bounded + 1 symbolic + 34 open = 83**.
+> See [generic REP helper detailed proof](WIN16_GENERIC_REP_COPY_HELPERS_20261020.md).
+> The older 46+1/36 figures below are dated intermediate counts.
+
+
 > **20 October 2026, second-pass supersession:** the latest
 > source-local evidence covers **46 fixed/source-bounded REP sites**,
 > plus **one symbolically bounded LocalAlloc STOSW**, leaving
@@ -238,9 +251,9 @@ from observed flag corruption.
 
 Current status:
 **7 original fixed-DGROUP REP intervals exclude the watched flags;
-46 fixed/source-bounded REP sites plus one symbolic LocalAlloc case
-are now mapped, while 36 remaining REP sites and the complete computed
-alias writer graph remain OPEN.** The three parametrized filename
+48 fixed/direct-branch-conditional REP sites plus one symbolic
+LocalAlloc case are mapped, while 34 remaining REP sites and
+the complete computed alias writer graph remain OPEN.** The three parametrized filename
 wrappers have fixed user.sav suffixes at their named direct callers;
 their directory prefix can still be altered via -p or unknown aliases.
 See the second-pass audit above.
