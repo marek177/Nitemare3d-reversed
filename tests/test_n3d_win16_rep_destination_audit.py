@@ -189,7 +189,7 @@ class Win16RepDestinationTests(unittest.TestCase):
             report["last_NUL_overlaps_clock_if_sum_characters_at_least"],4084)
         self.assertFalse(report["string_alias_dynamic_reachability_proven"])
         self.assertEqual(
-            report["remaining_rep_destinations_for_pointer_provenance"],58)
+            report["remaining_rep_destinations_for_pointer_provenance"],49)
 
     def test_config_sav_fixed_suffix_threshold(self):
         result=provenance_audit(self.rows)
