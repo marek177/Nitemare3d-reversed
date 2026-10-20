@@ -138,6 +138,7 @@ def audit(image: Any, segment: int = 3, offset: int = 0xD66C) -> dict[str, Any]:
             "NE segment-word fixups resolve some FAR pointers, but not target-dynamic callbacks",
             "An E8 byte scan is not a CFG-reachable direct NEAR CALL census",
             "Writable FAR slots and imported GetProcAddress callback dispatch require dataflow",
+            "Relocation + opcode 9A alone cannot prove a newly discovered site is on a CFG instruction boundary; confirm each unfamiliar callsite with original disassembly",
             "A complete list of known fixups is not exhaustive proof of 100% dynamic target reachability",
         ],
     }
