@@ -6,6 +6,8 @@ on:
       - 'src/re/N3DDos20CedcProjection.hpp'
       - 'src/re/N3DDos20WallMaterialBinding.hpp'
       - 'tests/dos20_cedc_projection_test.cpp'
+      - 'tools/n3d_v079_cedc_verify.py'
+      - 'tests/test_n3d_v079_cedc_verify.py'
       - 'cmake/RegressionTests.cmake'
       - 'CMakeLists.txt'
       - '.github/workflows/renderer-v079-cedc-perspective.yml'
@@ -14,6 +16,8 @@ on:
       - 'src/re/N3DDos20CedcProjection.hpp'
       - 'src/re/N3DDos20WallMaterialBinding.hpp'
       - 'tests/dos20_cedc_projection_test.cpp'
+      - 'tools/n3d_v079_cedc_verify.py'
+      - 'tests/test_n3d_v079_cedc_verify.py'
       - '.github/workflows/renderer-v079-cedc-perspective.yml'
   workflow_dispatch:
 
@@ -30,6 +34,11 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Python 16/32-bit CEDC arithmetic synthetic regressions
+        run: python -m unittest discover -s tests -p 'test_n3d_v079_cedc_verify.py' -v
       - name: Configure C++20 without SDL3 or commercial assets
         run: cmake -S . -B build-v079 -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
       - name: Compile CEDC and its material binder
