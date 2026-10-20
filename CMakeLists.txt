@@ -299,6 +299,12 @@ add_executable(n3d_win16_timer_lifecycle_gate_test
     tests/win16_timer_lifecycle_gate_test.cpp)
 target_link_libraries(n3d_win16_timer_lifecycle_gate_test PRIVATE n3d_core)
 
+# Pure instruction-address plan: original Win16 buffer ptr/used/capacity,
+# sentinel 0x0584, signed JGE and conditional OOM indexed flag writes.
+add_executable(n3d_win16_string_trio_contract_test
+    tests/win16_string_trio_contract_test.cpp)
+target_link_libraries(n3d_win16_string_trio_contract_test PRIVATE n3d_core)
+
 # DOS2 fixed-point wall-column raster. This intentionally does not replace
 # the production DDA preview; source/projected column inputs are caller-supplied.
 add_executable(n3d_dos20_indexed_wall_column_test
