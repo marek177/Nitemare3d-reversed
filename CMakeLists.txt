@@ -341,6 +341,9 @@ target_link_libraries(n3d_dos20_cedc_projection_test PRIVATE n3d_core)
 add_executable(n3d_dos20_wall_replay tools/n3d_dos20_wall_replay.cpp)
 target_link_libraries(n3d_dos20_wall_replay PRIVATE n3d_core)
 
+add_executable(n3d_dos_guard_resolver_test tests/dos_guard_resolver_test.cpp)
+target_include_directories(n3d_dos_guard_resolver_test PRIVATE src)
+
 include(cmake/RegressionTests.cmake)
 
 if(BUILD_TESTING)
