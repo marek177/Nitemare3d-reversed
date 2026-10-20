@@ -70,6 +70,20 @@ STATIC_PORTAL_TEXT_PAIR_BOUNDS={
 STATIC_PORTAL_TEXT_MAX_CONCATENATED=210
 STATIC_PORTAL_LOCAL_BUFFER_CAPACITY=256
 VIDEO_SEGMENT_REP_64000={"1010:3A73","1010:4719"}
+# Direct-branch *conditional* closure of both REP instructions in
+# FUN_1008_602C (strcat-like). Its only named direct call is 2:3E32,
+# which follows 2:3E16 copying static "\\\\0" to BP-0E. At 2:3E24
+# CMP BYTE PTR [BP-0E],0x5C, then 2:3E28 JE bypasses 2:3E32.
+# If forced, source DS:08CE is "\\\\0" and is exactly 2 bytes.
+# No global proof excludes computed/indirect entries to the helper.
+DEAD_DIRECT_SLASH_APPEND_COPY_BOUNDS={"1008:605F":2,"1008:6063":2}
+STRCPY_PARTIAL_CALLER_SITES={"1008:6092","1008:6096"}
+MEMCPY_PARTIAL_CALLER_SITES={"1008:6CA0","1008:6CA4"}
+MEMCPY_NAMED_DIRECT_CALLERS={
+    "1000:0DD0","1000:0E16","1000:0E51","1000:0ED9",
+    "1000:0EEA","1000:0F74","1000:4C72","1008:3F20",
+}
+
 ROUNDED_LOCALALLOC_STOSW="1008:672D"
 # All named original direct caller chain:
 # 0:5588 -> 0:542A with a literal 0x000A element width;
@@ -96,7 +110,8 @@ def win16_named_calloc_request_bytes(site:str, count:int)->int|None:
 
 KNOWN_SOURCE_BOUNDED_TOTAL=(KNOWN_REP32+len(KNOWN_REP16_BOUNDED)
                             +len(STATIC_PORTAL_TEXT_PAIR_BOUNDS)
-                            +len(VIDEO_SEGMENT_REP_64000))
+                            +len(VIDEO_SEGMENT_REP_64000)
+                            +len(DEAD_DIRECT_SLASH_APPEND_COPY_BOUNDS))
 
 
 def win16_localalloc_word_clear_bytes(alloc_bytes:int)->int:
@@ -121,6 +136,8 @@ OPEN_CATEGORIES={
     "DESTINATION_PROVENANCE_OPEN",
     "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND",
     "STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND",
+    "STRCPY_DIRECT_CALLER_ENVELOPES_PARTIAL",
+    "MEMCPY_16BIT_PARAMETER_TARGET_OPEN",
 }
 
 
@@ -193,7 +210,8 @@ def provenance_audit(rows:list[dict[str,str]],
                 raise ValueError("Invalid source-bounded REP length "+site)
             if (op not in ("MOVSD.REP","STOSD.REP","MOVSW.REP","STOSW.REP")
                 and not (op=="MOVSB.REP" and
-                         site in STATIC_PORTAL_TEXT_PAIR_BOUNDS)):
+                         (site in STATIC_PORTAL_TEXT_PAIR_BOUNDS or
+                          site in DEAD_DIRECT_SLASH_APPEND_COPY_BOUNDS))):
                 raise ValueError("Unexpected unreviewed REP length "+site)
             if category in OPEN_CATEGORIES:
                 raise ValueError("Length alone is not destination provenance "+site)
@@ -237,7 +255,7 @@ def provenance_audit(rows:list[dict[str,str]],
     if enforce_archived_census and len(rows)!=83:
         raise ValueError(f"Expected 83 Ghidra textual REP sites, got {len(rows)}")
     if enforce_archived_census and len(bounded)!=KNOWN_SOURCE_BOUNDED_TOTAL:
-        raise ValueError("Expected 46 fixed-bound REP sites")
+        raise ValueError("Expected 48 fixed-bound REP sites")
     if enforce_archived_census and {
         row["site"] for row in rows
         if row["destination_class"]=="STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND"
@@ -251,14 +269,16 @@ def provenance_audit(rows:list[dict[str,str]],
                  | {site for site in STATIC_PORTAL_TEXT_PAIR_BOUNDS
                     if any(r["site"]==site and r["rep_operation"]=="MOVSW.REP"
                            for r in rows)}
-                 | VIDEO_SEGMENT_REP_64000)
+                 | VIDEO_SEGMENT_REP_64000
+                 | {"1008:605F"})
     if enforce_archived_census and set(bounded16)!=expected_16:
-        raise ValueError("Expected 16 bounded MOVSW/STOSW sites")
+        raise ValueError("Expected 17 bounded MOVSW/STOSW sites")
     expected_byte={site for site in STATIC_PORTAL_TEXT_PAIR_BOUNDS
                    if any(r["site"]==site and r["rep_operation"]=="MOVSB.REP"
                           for r in rows)}
+    expected_byte|={"1008:6063"}
     if enforce_archived_census and set(bounded_byte)!=expected_byte:
-        raise ValueError("Expected five bounded MOVSB sites")
+        raise ValueError("Expected six bounded MOVSB sites")
     if enforce_archived_census and rounded_alloc_sites!=[ROUNDED_LOCALALLOC_STOSW]:
         raise ValueError("Dynamic LocalAlloc round-up STOSW site missing")
     if enforce_archived_census:
@@ -276,6 +296,18 @@ def provenance_audit(rows:list[dict[str,str]],
                 if (row["destination_class"]!="VIDEO_SELECTOR_ES_DS_51A0_64000"
                     or int(row["bounded_total_write_bytes"])!=64000):
                     raise ValueError("Video-bank REP length/provenance mismatch "+site)
+            if site in DEAD_DIRECT_SLASH_APPEND_COPY_BOUNDS:
+                if (row["destination_class"]!="DIRECT_CALL_BRANCH_FALSE_SLASH_APPEND"
+                    or int(row["bounded_total_write_bytes"])!=2):
+                    raise ValueError("Dead direct slash-append branch evidence changed "+site)
+            if site in STRCPY_PARTIAL_CALLER_SITES:
+                if (row["destination_class"]!="STRCPY_DIRECT_CALLER_ENVELOPES_PARTIAL"
+                    or row["bounded_total_write_bytes"]):
+                    raise ValueError("strcpy caller-provenance must remain OPEN "+site)
+            if site in MEMCPY_PARTIAL_CALLER_SITES:
+                if (row["destination_class"]!="MEMCPY_16BIT_PARAMETER_TARGET_OPEN"
+                    or row["bounded_total_write_bytes"]):
+                    raise ValueError("memcpy destination/pointer provenance must remain OPEN "+site)
         if STATIC_PORTAL_TEXT_MAX_CONCATENATED>STATIC_PORTAL_LOCAL_BUFFER_CAPACITY:
             raise ValueError("Static concat could overrun local buffer")
         all_fixed={**KNOWN_FIXED_32,**KNOWN_FIXED_16}
@@ -287,8 +319,8 @@ def provenance_audit(rows:list[dict[str,str]],
                 raise ValueError("Original fixed REP destination span changed")
         if not KNOWN_HEAP_90B.issubset(set(bounded)):
             raise ValueError("Missing LocalAlloc 90-byte REP sources")
-        if len(open_sites)!=36:
-            raise ValueError(f"Expected 36 unresolved REP destinations, got {len(open_sites)}")
+        if len(open_sites)!=34:
+            raise ValueError(f"Expected 34 unresolved REP destinations, got {len(open_sites)}")
 
     return {
         "build":"Win16 v1.10",
@@ -315,6 +347,17 @@ def provenance_audit(rows:list[dict[str,str]],
         "portal_source_pointer_aliases_globally_excluded":False,
         "video_es_selector_source":"WORD DS:[51A0]",
         "video_64000_byte_rep_sites":sorted(VIDEO_SEGMENT_REP_64000),
+        "direct_branch_false_slash_append_sites":sorted(DEAD_DIRECT_SLASH_APPEND_COPY_BOUNDS),
+        "direct_slash_append_only_named_call":"2:3E32",
+        "slash_append_guard":"2:3E16 strcpy(SS:BP-0E,DS:08CC='\\\\\\0') then 2:3E24 CMP BYTE [BP-0E],5C; 2:3E28 JE bypass",
+        "direct_branch_false_does_not_exclude_indirect_helper_calls":True,
+        "strcpy_caller_provenance_partial_sites":sorted(STRCPY_PARTIAL_CALLER_SITES),
+        "strcpy_only_named_direct_callers":["2:3E16","2:69C0"],
+        "strcpy_heap_path":"2:69AB strlen(src) -> INC AX -> 2:69B2 LocalAlloc(n) -> 2:69C0 strcpy",
+        "strcpy_source_uint16_overflow_alias_proven_absent":False,
+        "memcpy_n_byte_parameterized_open_sites":sorted(MEMCPY_PARTIAL_CALLER_SITES),
+        "memcpy_eight_named_direct_callers":sorted(MEMCPY_NAMED_DIRECT_CALLERS),
+        "memcpy_copied_bytes_formula":"copies exactly caller-provided uint16 parameter_3 on normal nonfaulting path; target alias/capacity open",
         "video_segment_distinct_from_DGROUP_for_all_states_proven":False,
         "source_byte_bounded_rep_total":len(bounded),
         "bounded_rep_sites":sorted(bounded),
@@ -355,7 +398,10 @@ def provenance_audit(rows:list[dict[str,str]],
             "All destination-provenance classes rely on original Ghidra local instructions",
             "Fixed DS ranges can be bounded algebraically independent of runtime stack or heap",
             "Other-segment, stack, heap and framebuffer disjointness uses valid OS segment/allocator semantics",
-            "Other 36 REP destinations need interprocedural pointer/length or bounds proof",
+            "Other 34 REP destinations need interprocedural pointer/length or bounds proof",
+            "2:602C only named direct call 2:3E32 is guarded by preceding successful backslash strcpy; indirect call reachability not excluded",
+            "2:606C two direct caller envelopes: static 2B stack and LocalAlloc(strlen+1); 16-bit overflow/alias still OPEN",
+            "2:6C80 exact caller-provided uint16 byte count, eight direct callers with open pointer/capacity provenance",
             "Odd successful LocalAlloc of n=1..65533 writes n+1 zero bytes at STOSW; odd n=65535 clears zero due to uint16 wrap",
             "All original named direct callers of the LocalAlloc clear pass element size 6 or 10; odd-size overrun path not reached through those callers",
             "10 portal literal REP sites bounded by 256-byte local buffer/210-byte concatenation, conditional on original source pointers",
@@ -376,9 +422,9 @@ def main()->int:
         rendered=json.dumps(report,indent=2,ensure_ascii=False)+"\n"
         if args.output:
             args.output.write_text(rendered,encoding="utf-8")
-            print("Reviewed 83 original REP sites: 46 fixed source bounds, "
-                  "1 symbolic LocalAlloc clear, seven fixed DGROUP spans, "
-                  "36 unresolved.")
+            print("Reviewed 83 original REP sites: 48 fixed/branch-bounded,"
+                  " 1 symbolic LocalAlloc clear, seven fixed DGROUP spans,"
+                  " 34 unresolved.")
             print(f"JSON report: {args.output}")
         else:
             print(rendered)
