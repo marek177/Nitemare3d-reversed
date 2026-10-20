@@ -1,20 +1,21 @@
 diff --git a/src/debug/n3d_trace.cpp b/src/debug/n3d_trace.cpp
 --- a/src/debug/n3d_trace.cpp
 +++ b/src/debug/n3d_trace.cpp
-@@ -96,6 +96,12 @@
+@@ -96,6 +96,13 @@
  uint64_t limit_bytes = 4096ull*1024ull*1024ull;
  bool initialized = false, active = false, auto_start = false, record_mem = true, record_reads = false, record_io = true;
  bool stop_enabled = false;
 +// Opt-in deferred start: do not record BIOS, DOS loader, or menu instruction streams.
 +bool start_enabled = false, start_armed = false, start_guard_enabled = false;
-+uint16_t start_cs = 0;
++bool start_actor_enabled = false;
++uint16_t start_cs = 0, start_es = 0, start_si = 0;
 +uint32_t start_ip = 0, start_guard_bytes = 0;
 +uint64_t instruction_budget = 0; // Max CPU instruction records; 0 means unlimited.
 +bool stop_break = true; // Preserve historical STOP_CSIP debugger behavior by default.
  bool record_vram = true;
  uint32_t frame_period = 0;
  uint64_t frame_counter = 0;
-@@ -249,6 +255,28 @@
+@@ -249,6 +256,36 @@
      snapshot_period = static_cast<uint32_t>(std::min<uint64_t>(ReadMB("N3D_TRACE_SNAPSHOT_EVERY",0),1000000u));
      rotate_bytes = std::max<uint64_t>(1,ReadMB("N3D_TRACE_ROTATE_MB",128))*1024ull*1024ull;
      limit_bytes = ReadMB("N3D_TRACE_LIMIT_MB",4096)*1024ull*1024ull;
@@ -32,6 +33,14 @@ diff --git a/src/debug/n3d_trace.cpp b/src/debug/n3d_trace.cpp
 +        // Deferred start takes precedence when both variables were supplied.
 +        auto_start = false;
 +    }
++    const char* actor = std::getenv("N3D_TRACE_START_ES_SI");
++    unsigned actor_seg=0, actor_off=0;
++    if (start_enabled && actor && std::sscanf(actor,"%x:%x",&actor_seg,&actor_off)==2
++            && actor_seg<=0xffffu && actor_off<=0xffffu) {
++        start_actor_enabled = true;
++        start_es = static_cast<uint16_t>(actor_seg);
++        start_si = static_cast<uint16_t>(actor_off);
++    }
 +    const char* start_bytes = std::getenv("N3D_TRACE_START_OPCODE4");
 +    unsigned b0=0,b1=0,b2=0,b3=0;
 +    if (start_enabled && start_bytes && std::strlen(start_bytes)==8
@@ -43,7 +52,7 @@ diff --git a/src/debug/n3d_trace.cpp b/src/debug/n3d_trace.cpp
      const char* stop = std::getenv("N3D_TRACE_STOP_CSIP");
      unsigned c=0, i=0;
      if (stop && std::sscanf(stop,"%x:%x",&c,&i)==2 && c<=0xffffu) {
-@@ -312,11 +340,32 @@
+@@ -312,11 +349,35 @@
  }
  bool N3DTrace_Instruction(void) {
      N3DTrace_Init();
@@ -51,6 +60,9 @@ diff --git a/src/debug/n3d_trace.cpp b/src/debug/n3d_trace.cpp
 +    if (!active) {
 +        if (!start_enabled || !start_armed ||
 +                SegValue(cs)!=start_cs || reg_eip!=start_ip) return false;
++        if (start_actor_enabled &&
++                (SegValue(es)!=start_es || (reg_esi & 0xffffu)!=start_si))
++            return false;
 +        if (start_guard_enabled) {
 +            // Read CPU opcode bytes from mapped RAM only; never perform guest MMIO.
 +            const uint32_t code_address = SegPhys(cs) + reg_eip;
