@@ -1,0 +1,71 @@
+name: Win16 public installer W02 static forensics
+
+on:
+  push:
+    paths:
+      - '.github/workflows/win16-install-w02-forensics.yml'
+  workflow_dispatch:
+
+jobs:
+  inspect-installer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install supported archive decoders
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq p7zip-full cabextract unar unshield > /tmp/archive-install.log 2>&1 || {
+            cat /tmp/archive-install.log; echo 'Optional package unavailable, using installed decoders';
+          }
+      - name: Retrieve public original Win3.x archive
+        run: |
+          curl --fail --location --retry 2 --max-time 100             'https://archive.org/download/win3_Nite3d3x/win3_Nite3d3x.zip'             -o /tmp/win3_Nite3d3x.zip
+          mkdir -p /tmp/nitemare-original-install
+          unzip -oq /tmp/win3_Nite3d3x.zip -d /tmp/nitemare-original-install
+      - name: Inspect distribution without launching executables
+        shell: bash
+        run: |
+          set -eu
+          cd /tmp/nitemare-original-install
+          echo '----- file formats, sizes, hashes -----'
+          find . -maxdepth 1 -type f -exec file {} \;
+          sha256sum INSTALL.EXE INSTALL.W02
+          echo '----- headers (first 64 bytes) -----'
+          xxd -l 64 INSTALL.EXE
+          xxd -l 64 INSTALL.W02
+          echo '----- SFX/installer markers -----'
+          strings -a -n 5 INSTALL.EXE | grep -iE 'installshield|setupfactory|wise|winzip|nitemare|gray|install\.w02|wing|dibl|unpack|compres' | head -60 || true
+          strings -a -n 5 INSTALL.W02 | grep -iE 'nite3w|\.exe|\.dll|\.img|\.dat|\.pal|nitemare|gray' | head -75 || true
+          echo '----- 7z list of INSTALL.EXE -----'
+          7z l INSTALL.EXE | head -65 || true
+          echo '----- 7z list of INSTALL.W02 -----'
+          7z l INSTALL.W02 | head -65 || true
+          echo '----- unshield listing -----'
+          unshield l INSTALL.EXE | head -60 || true
+          echo '----- cabextract listing -----'
+          cabextract -l INSTALL.EXE | head -60 || true
+          echo '----- unar listing -----'
+          unar -l INSTALL.EXE | head -75 || true
+          echo '----- look for embedded NE executables -----'
+          python3 - <<'PY'
+          import zipfile,zlib,struct,hashlib
+          from pathlib import Path
+          for fn in ('INSTALL.EXE','INSTALL.W02'):
+              b=Path(fn).read_bytes()
+              print(fn,'size',len(b),'iszip',zipfile.is_zipfile(fn),
+                    'MZ count',b.count(b'MZ'),'NE count',b.count(b'NE'),
+                    'PK count',b.count(b'PK\x03\x04'),
+                    'MSC count',b.count(b'MSCF'),'NITE3W count',b.upper().count(b'NITE3W'))
+              for token in (b'PK\x03\x04',b'MSCF',b'NITE3W',b'WING',b'EXEPACK'):
+                  pos=b.find(token);print('token',token,'offset',pos)
+              for p in range(len(b)-66):
+                  if b[p:p+2]!=b'MZ': continue
+                  candidate=struct.unpack_from('<I',b,p+0x3c)[0]
+                  if 0<=candidate<65536 and p+candidate+2<=len(b):
+                      sig=b[p+candidate:p+candidate+2]
+                      if sig in (b'NE',b'PE'):
+                          print('embedded executable',hex(p),'new header',sig,'logical offset',hex(candidate))
+                          if sig==b'NE' and p==0:
+                              print('NE installer, not necessarily game')
+          PY
