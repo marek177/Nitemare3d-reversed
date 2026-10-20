@@ -10,7 +10,9 @@ import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
 from n3d_win16_rep_destination_audit import (
     KNOWN_FIXED_32, KNOWN_HEAP_90B, WIN110_DGROUP_FILE_BACKED_BYTES,
-    load_ledger, overlaps_linear_region, provenance_audit
+    load_ledger, overlaps_linear_region, provenance_audit,
+    STRING_CLOCK_OFFSET, STRING_STAGING_SITES,
+    unbounded_string_copy_reaches_clock,
 )
 
 
@@ -119,6 +121,40 @@ class Win16RepDestinationTests(unittest.TestCase):
         report=provenance_audit(rows,enforce_archived_census=False)
         self.assertFalse(report["fixed_DGROUP_regions_exclude_clock_and_latch"])
         with self.assertRaisesRegex(ValueError,"destination span changed"):
+            provenance_audit(rows)
+
+    def test_string_buffer_clock_overlap_threshold_exact(self):
+        self.assertEqual(STRING_CLOCK_OFFSET, 0xFF4)
+        self.assertEqual(STRING_CLOCK_OFFSET, 4084)
+        self.assertFalse(unbounded_string_copy_reaches_clock(0,0))
+        self.assertFalse(unbounded_string_copy_reaches_clock(4083,0))
+        self.assertTrue(unbounded_string_copy_reaches_clock(4084,0))
+        self.assertTrue(unbounded_string_copy_reaches_clock(1000,3084))
+        self.assertFalse(unbounded_string_copy_reaches_clock(1000,3083))
+
+    def test_all_four_unbounded_string_copy_sites_remain_open(self):
+        report=provenance_audit(self.rows)
+        self.assertEqual(set(report["unbounded_string_staging_REP_sites"]),
+                         STRING_STAGING_SITES)
+        self.assertEqual(
+            report["string_staging_distance_to_flag_bytes"],4084)
+        self.assertEqual(
+            report["last_NUL_overlaps_clock_if_sum_characters_at_least"],4084)
+        self.assertFalse(report["string_alias_dynamically_reachable"])
+        self.assertEqual(
+            report["remaining_rep_destinations_for_pointer_provenance"],58)
+
+    def test_unsafe_long_or_negative_string_length_not_silently_accepted(self):
+        with self.assertRaisesRegex(ValueError,"negative"):
+            unbounded_string_copy_reaches_clock(-1,5)
+        with self.assertRaisesRegex(ValueError,"wraps"):
+            unbounded_string_copy_reaches_clock(65535,2)
+
+    def test_string_copy_classification_downgrade_rejected(self):
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]=="1010:527E")
+        row["destination_class"]="DESTINATION_PROVENANCE_OPEN"
+        with self.assertRaisesRegex(ValueError,"string-staging"):
             provenance_audit(rows)
 
     def test_site_duplicate_rejected(self):
