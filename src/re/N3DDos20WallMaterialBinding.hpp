@@ -6,6 +6,10 @@
 // -> the existing DOS2 304-column span raster.
 //
 // IMG cache/frame policy is traced to original N3D shared sequence offsets.
+// DOS2 2500/25DC additionally overrides nonzero active shade to level 0
+// for orientation 0/1 when DS:430E==0; the relevant Ghidra branch was also
+// recorded by prior DOS static audits. This is per wall/span, NOT a global
+// adjustment to the entire indexed framebuffer.
 // The 66B0/EBD6 perspective mathematics came from Win16 1.10 and is NOT
 // instruction-exact independently proven for DOS 2.0. This API marks it as
 // a candidate and rejects missing resources instead of using a DDA fallback.
@@ -242,6 +246,15 @@ public:
     }
 };
 
+// DOS2 2500/25DC shade selection: if DS:6278 != 0, DS:430E == 0,
+// and orientation is 0 or 1, the original local shade selector is 0.
+// 0x430E is an opaque display/shade runtime flag; do not infer its name.
+inline bool useZeroShadeForWall(std::span<const std::uint8_t> ds,
+                               const Vec& vec,unsigned activeShade) noexcept {
+    return ds.size()==sw::kSegmentBytes && activeShade>0 &&
+           ds[0x430E]==0 && (vec.orientation==0 || vec.orientation==1);
+}
+
 // Bridge into spanwall::prepare's opt-in SEVENTH argument spanYQ4.
 // Returned Material borrows IMG and Xlat from Catalog and Prepared. Both must
 // remain alive until prepare has copied sources and shade table into Plan.
@@ -251,6 +264,9 @@ public:
     const ImgWallCatalog* catalog{};
     const Trig360* trig{};
     const shade::Prepared* shading{};
+    // Required only when original DOS orientation-specific shade override
+    // activates. Must hold independently generated shade index 0 XLAT.
+    const shade::Prepared* shadingZero{};
     Camera camera{};
 
     std::optional<sw::Material> operator()(
@@ -272,9 +288,13 @@ public:
             static_cast<std::int16_t>(screenX),spanYQ4,
             camera,*trig,selection->frame.width);
         if(!u)return std::nullopt;
+        const bool forceZero=useZeroShadeForWall(ds,vec,shading->shadeIndex);
+        const shade::Prepared* active=forceZero?shadingZero:shading;
+        if(!active || (forceZero && active->shadeIndex!=0))
+            return std::nullopt;
         return sw::Material{selection->frame.pixels,
             selection->frame.width,selection->frame.height,
-            *u,&shading->xlat};
+            *u,&active->xlat};
     }
 };
 
