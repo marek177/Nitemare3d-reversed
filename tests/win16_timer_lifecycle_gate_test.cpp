@@ -5,6 +5,31 @@
 
 using namespace n3d::re::win16::timer;
 
+// Original DGROUP initial values + one-shot global initializer 3:0E9E.
+static_assert(kGlobalInitOneShotFlagOffset == 0x00A2);
+static_assert(kClockBackendFlagOffset == 0x46B2);
+static_assert(kInitialClockFlagClearWriter == 0x0ED6);
+static_assert(kCapsResultClockFlagWriter == 0xD691);
+static_assert(kResetRoutineCallFromStartup == 0x1129);
+static_assert(kOriginalInitialOneShotFlag == 1);
+static_assert(kOriginalInitialClockFlag == 0);
+static_assert(planGlobalClockReset(1, true).explicitlyResetMultimediaClockFlag);
+static_assert(planGlobalClockReset(1, true).multimediaClockFlagAfter == false);
+static_assert(planGlobalClockReset(1, true).oneShotFlagAfter == 0);
+static_assert(planGlobalClockReset(0, true).multimediaClockFlagAfter == true);
+static_assert(!planGlobalClockReset(0, true).explicitlyResetMultimediaClockFlag);
+static_assert(!planGlobalClockReset(0, false).multimediaClockFlagAfter);
+
+// Startup sequence: one-time reset -> audio init -> timeGetDevCaps.
+constexpr auto kReset = planGlobalClockReset(kOriginalInitialOneShotFlag, true);
+static_assert(!kReset.multimediaClockFlagAfter);
+constexpr auto kCapsSucceeded = planInitialization(0, 4);
+static_assert(kCapsSucceeded.multimediaClockFlag);
+static_assert(kCapsSucceeded.callTimeBeginPeriod);
+// If audio init fails before timeGetDevCaps and no other flag writer runs,
+// a cleanup request skips multimedia timeEndPeriod.
+static_assert(!planCleanup(kReset.multimediaClockFlagAfter).callTimeEndPeriod);
+
 static_assert(kTimerInitEntry == 0xD66C);
 static_assert(kTimerInitDirectCaller == 0x0F34);
 static_assert(kTimerCleanupDirectCaller == 0x0F70);
