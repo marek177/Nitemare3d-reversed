@@ -114,10 +114,11 @@ struct Win110SequentialFarCallStack {
         std::int32_t callerSP) noexcept {
         return calleeBasePointerFromCallerSP(callerSP) - 2;
     }
-    static constexpr bool audioAndTimerAliasBpMinus2() noexcept {
-        // The different ENTER local lengths are allocated below the BP.
-        return kAudioEnterLocalBytes == 4 &&
-               kTimerEnterLocalBytes == 6;
+    static constexpr bool audioAndTimerAliasBpMinus2(
+        std::int32_t audioCallerSP, std::int32_t timerCallerSP) noexcept {
+        // Different ENTER local lengths are allocated *below* the BP.
+        return bpMinus2AddressFromCallerSP(audioCallerSP) ==
+               bpMinus2AddressFromCallerSP(timerCallerSP);
     }
 };
 
