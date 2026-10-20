@@ -105,7 +105,7 @@ def clock_overwrite_possible_with_suffix(prefix_characters:int,
     return final_nul>=TIMER_OUTPUT_OFFSET
 
 
-def win31_progmam_direct_launcher_excludes_timer_alias(
+def win31_program_manager_launcher_excludes_timer_alias(
     total_command_field_characters:int=WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX,
     suffix_characters:int=10,
 )->bool:
@@ -198,7 +198,7 @@ def verify(records:list[dict[str,str]])->dict[str,Any]:
         "win31_program_manager_command_field_max":WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX,
         "win31_program_manager_KB_reference":PROGRAM_MANAGER_31_KB_URL,
         "win31_program_manager_launch_route_cannot_reach_flag":(
-            win31_progmam_direct_launcher_excludes_timer_alias(128,10)),
+            win31_program_manager_launcher_excludes_timer_alias(128,10)),
         "win31_program_manager_scoped_only":True,
         "Win311_program_manager_limit_independently_verified":False,
         "all_Win16_launch_methods_proven_bounded":False,
