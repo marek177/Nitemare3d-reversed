@@ -1,5 +1,21 @@
 # Nitemare 3-D Win16 — direct clock flag overlapping-write audit
 
+> **20 October 2026 subsequent alias closure correction:** The fixed-address
+> Ghidra writer list is NOT the complete global writer graph.
+> Original FUN_1000_0D3E has a computed byte store at 1000:0D65;
+> on a failed LocalAlloc (AX=0), the store writes DS:[requested_length]=0.
+> With a requested length 46B2h it would clear the timer backend flag;
+> with 00A2h it would clear the one-shot latch. Independently,
+> FUN_1000_0E26 uses a signed JGE on capacity; from the valid
+> (DS:0584,0,0) state, a requested length 8000h skips allocation and
+> a subsequent 32768-byte copy would overlap DS:46B2.
+> Both are **conditional local instruction/address proofs, not
+> demonstrated reachable original gameplay paths**. See
+> [original string trio / computed writer audit](WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md).
+> All earlier "two writers" claims on this page mean **two direct
+> fixed-address writers only**.
+
+
 > **REP destination follow-up, 20 October 2026:**
 > The archived Win16 1.10 Ghidra REP listing now has a separate
 > [83-site destination/provenance audit](WIN16_REP_DST_PROVENANCE_PASS_20261020.md).
