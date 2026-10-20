@@ -1,5 +1,18 @@
 # Win16 1.10 — REP MOVS/STOS destination provenance, static pass
 
+> **Follow-up on 20 October 2026:** the newer audit has now bounded
+> **34/83** original Ghidra REP sites (25 REP32 plus 9 REP16), including
+> **7** fixed DGROUP copy/fill spans that do not overlap `DS:00A2` or
+> `DS:46B2`; **49** sites remain without complete destination/length
+> provenance. Also, all **12 named direct file-builder call paths** have
+> a literal suffix (`config.sav` twice, `user.sav` ten times).
+> The `-p` command-line directory prefix can be written indirectly
+> into `DS:46BE`; its maximum size is still UNPROVEN. See
+> [filename/P0 proof](WIN16_FILENAME_PREFIX_P0_STATIC_20261020.md).
+> Historical first-25/remaining-58 paragraphs below document the
+> earlier, superseded intermediate pass.
+
+
 **Audit:** 20 October 2026. **Scope:** the user's pre-existing original
 Win16 1.10 Ghidra disassembly `nite3w(1).docx`, original code paths and
 the whole-file NE segment table. No new original game runtime and no
@@ -198,7 +211,7 @@ from observed flag corruption.
 - `tools/n3d_win16_rep_destination_audit.py` checks 83 unique
   code sites, the six REP operation counts, the 25 local source
   length/destination classes and five fixed DGROUP ranges.
-- `tests/test_n3d_win16_rep_destination_audit.py` includes 12
+- `tests/test_n3d_win16_rep_destination_audit.py` now includes 21
   deterministic synthetic tests, including deliberately corrupted
   sites/opcodes, invalid lengths, 16-bit wrap, and a hypothetical
   copied region overlapping DS:46B2.
@@ -210,9 +223,12 @@ from observed flag corruption.
   Win16 v1.8**, but that earlier scalar-pattern scan does not exclude
   any of the 58 newly tracked REP/pointer-flow cases.
 
-Status:
-**5 original fixed-DGROUP REP intervals excluded from overwriting the
-two watched flags; 25 source-level REP destinations classified with
-stated assumptions; 58 REP destinations and the complete computed
-alias writer graph remain OPEN.**
+Current status:
+**7 original fixed-DGROUP REP intervals excluded from overwriting the
+two watched flags; 34 source-level REP destinations classified with
+stated assumptions; 49 REP destinations and the complete computed
+alias writer graph remain OPEN.** The three parametrized filename
+wrappers have fixed `user.sav` suffixes at all their named direct
+callers; their directory prefix is still potentially variable via
+`-p`. The old counters above refer only to the first audit pass.
 No increase in behavioral/timing/rendering 1:1 parity percentage.
