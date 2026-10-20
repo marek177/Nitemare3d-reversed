@@ -1,5 +1,20 @@
 # Nitemare 3-D Win16 v1.10 — buffer trio and two conditional global-writer paths
 
+> **20 October 2026 OOM callback CFG follow-up:** archived original
+> code at **1000:076A** is a hidden, indirect-callable OOM handler,
+> registered by a neighbouring 1000:0772 thunk. On entry it calls
+> 1000:4564 -> 1000:4492, whose full instruction CFG has **no
+> normal RETF**: it either loops among exception handlers or calls
+> nonlocal Win16 KERNEL.THROW. Thus the installed default callback
+> would NOT normally return AX=0 from its fallback XOR/RETF.
+> The original 1008:5AB0 LocalAlloc wrapper can still return zero
+> if no callback is installed or callback is temporarily disabled.
+> This refines, but **does not exclude**, the conditional
+> terminator write DS:[n] on 1000:0D65. Read
+> [hidden callback original-byte and no-return CFG evidence](WIN16_OOM_CALLBACK_HIDDEN_CODE_ISLAND_20261020.md).
+> Its ordinary registration/indirect startup reachability is OPEN.
+
+
 **Audit:** 20 October 2026. **Method:** original-static RE, from the user's
 archived original Win16 v1.10 Ghidra listing nite3w(1).docx, not a fresh
 EXE SHA-256 recheck or authentic Windows 3.11 runtime trace.
