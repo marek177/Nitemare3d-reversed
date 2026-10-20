@@ -80,3 +80,19 @@ At the naturally reached lethal HP writer, confirm runtime opcode 26 88 64 10, m
 Compare DOS1.2 and DOS2 using normalized actor identities, callsite families and event ordering, not raw segment offsets.
 
 **Closure:** D02-D exported 229-draw arithmetic and event-order checks PASS. Original execution is attributed to the prior D02-D captures. Complete V2.0 GUARD41 death CPU ordering, indirect RNG census, post-EOF termination, and original-vs-clean-room 1:1 parity all remain OPEN.
+
+
+## G. Strict order regression and GitHub Actions result (20 Oct 2026)
+
+A review of the first verifier revealed a false-acceptance gap: checking 11 callsite totals and the death-related #15–19 window alone could permit two unrelated callsites to be swapped while leaving all LCG outputs and call counts unchanged.
+
+That gap is now closed with two compact, source-derived reference sequences:
+
+- **229/229 original callsite IDs in exact ordinal order**, stored in a nibble-coded literal. Callsite permutations fail even when totals are unchanged.
+- **52 unchanged scheduler/DEMO context runs**, expanded to 229 exact tuples of (scheduler entry count, last DEMO record ordinal, key, input mask). This is specifically the D02-D canonical reference run; it is not an expectation that different cycle settings must match it.
+
+All reference tokens and tuples were independently cross-checked against the user-owned 229-row exported CSV in their original order: **229/229 matches, zero mismatches**. The CSV itself is not republished here.
+
+GitHub Actions workflow \`.github/workflows/d02d-rng229.yml\` completed **SUCCESS** (run ID \`39441850584\`). It executed **9/9 Python unittest cases**: one positive synthetic reference plus eight deliberately modified negative cases (caller swap preserving counts, scheduler context, DEMO mask, AX, LCG state, missing original-instruction witness, event reordering, missing row). These are **verifier regression tests using synthetic fixtures**, not executions of original Nitemare 3D.
+
+CI and the independent exported-CSV re-audit are complementary, but neither claims original CPU-trace replay or original-versus-port behavioral/timing/rendering parity. The P0 death writer-to-epilogue trace of DOS v2.0 remains OPEN.
