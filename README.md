@@ -3,6 +3,8 @@
 > **Renderer parity status (2026-10-20):** The executable still uses `src/renderer/Raycaster.cpp`, a **diagnostic DDA preview**, not the original DOS/Win16 VEC→column-owner→span renderer. **Pixel-perfect 1:1 is NOT yet verified.** Recovered E798 projection and bounded DOS2 pixel writers are research components; they must pass matched original-game indexed-framebuffer **and DAC** zero-diff tests before replacing the active DDA path.
 
 
+**Renderer research checkpoint V066 / 2026-10-20:** bounded original DOS2 frame/DAC normalization verified against 41 original emulator RGB-cache captures (5,248,000 pixels, 0 differing RGB components) across E1M1, DEMO, and menu fade; **this is reference-vs-reference validation, NOT original-vs-remake pixel parity**. The active DDA renderer remains diagnostic. See [proof and standalone VGA oracle](docs/V066_DOS20_DISPLAY_ORACLE_SK.md).
+
 **v0.63 / 2026-10-19 DOS2 DEMO RNG35:** four original sessions now reproduce the first 8 draws, three reproduce the first 18, and two reproduce the first 35. One instrumented 35-draw run records maximum scheduler depth 1 with all draws at depth 1. Full DEMO-to-EOF RNG chronology and E2M10 reentry remain OPEN. See docs/V063_REMAX_DEMO_RNG35_DEPTH.md.
 
 **v0.62 / 2026-10-19 DOS2 palette fade:** original runtime covers all 21 palette uploads and the exact per-component fade rule. Final reconstructed palette hash matches the emulator; timing and framebuffer zero-diff remain open. See docs/V062_REMAX_DOS20_PALETTE_FADE.md.
