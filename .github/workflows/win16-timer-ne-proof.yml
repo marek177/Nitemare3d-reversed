@@ -21,6 +21,9 @@ on:
       - 'docs/WIN16_GENERIC_REP_COPY_HELPERS_20261020.md'
       - 'tools/n3d_win16_memcpy_6c80_caller_audit.py'
       - 'tools/n3d_win16_string_trio_lifecycle_audit.py'
+      - 'tools/n3d_win16_oom_callback_indirect_proof.py'
+      - 'tests/test_n3d_win16_oom_callback_indirect_proof.py'
+      - 'docs/WIN16_OOM_CALLBACK_HIDDEN_CODE_ISLAND_20261020.md'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_E26_assignment_direct_callers_20261020.csv'
       - 'tests/test_n3d_win16_string_trio_lifecycle_audit.py'
       - 'docs/WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md'
@@ -62,6 +65,9 @@ on:
       - 'docs/WIN16_GENERIC_REP_COPY_HELPERS_20261020.md'
       - 'tools/n3d_win16_memcpy_6c80_caller_audit.py'
       - 'tools/n3d_win16_string_trio_lifecycle_audit.py'
+      - 'tools/n3d_win16_oom_callback_indirect_proof.py'
+      - 'tests/test_n3d_win16_oom_callback_indirect_proof.py'
+      - 'docs/WIN16_OOM_CALLBACK_HIDDEN_CODE_ISLAND_20261020.md'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_E26_assignment_direct_callers_20261020.csv'
       - 'tests/test_n3d_win16_string_trio_lifecycle_audit.py'
       - 'docs/WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md'
@@ -105,6 +111,8 @@ jobs:
           python -m py_compile tools/n3d_win16_rep_destination_audit.py
           python -m py_compile tools/n3d_win16_memcpy_6c80_caller_audit.py
           python -m py_compile tools/n3d_win16_string_trio_lifecycle_audit.py
+          python -m py_compile tools/n3d_win16_oom_callback_indirect_proof.py
+          python -m py_compile tests/test_n3d_win16_oom_callback_indirect_proof.py
           python -m py_compile tests/test_n3d_win16_string_trio_lifecycle_audit.py
           python -m py_compile tests/test_n3d_win16_memcpy_6c80_caller_audit.py
           python -m py_compile tools/n3d_win16_filename_alias_calls.py
@@ -144,6 +152,10 @@ jobs:
         run: |
           python tools/n3d_win16_string_trio_lifecycle_audit.py --output /tmp/win16-string-trio-oom-alias.json
           python -m unittest discover -s tests -p 'test_n3d_win16_string_trio_lifecycle_audit.py' -v
+      - name: Prove hidden Win16 OOM callback 1000 076A and indirect setter retry paths
+        run: |
+          python tools/n3d_win16_oom_callback_indirect_proof.py --output /tmp/win16-oom-hidden-report.json
+          python -m unittest discover -s tests -p 'test_n3d_win16_oom_callback_indirect_proof.py' -v
       - name: Pin all twelve Win16 user.sav/config.sav direct filename paths
         run: |
           python tools/n3d_win16_filename_alias_calls.py --output /tmp/n3d-win16-filename-aliases.json
