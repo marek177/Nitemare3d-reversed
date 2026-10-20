@@ -144,7 +144,12 @@ static_assert(timerCleanupArgumentEvidence(Build::Win13) ==
 static_assert(timerCleanupArgumentEvidence(Build::Win16) ==
               TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked);
 static_assert(timerCleanupArgumentEvidence(Build::Win110) ==
-              TimerCleanupArgumentEvidence::OriginalBytesNotYetChecked);
+              TimerCleanupArgumentEvidence::ArchivedWin110GhidraListingBpMinus2NotInitialized);
+static_assert(kWin110TimerInitCaller == 0x0F34);
+static_assert(kWin110TimerEndCaller == 0x0F70);
+static_assert(kWin110TimerEndImportedCall == 0xD6BE);
+static_assert(kWin110TimerEndLocalRead == 0xD6BB);
+static_assert(kWin110TimerEndImportedCall - kWin18TimerEndImportedCall == 0xAE);
 static_assert(kWin18TimerInitCaller == 0x0EE8);
 static_assert(kWin18TimerEndCaller == 0x0F24);
 static_assert(kWin18TimerEndImportedCall == 0xD610);
