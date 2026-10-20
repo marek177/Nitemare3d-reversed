@@ -124,6 +124,61 @@ A REP destination annotation like `ES:DI=>DAT_1048_3A7A` is
 not sufficient to assert that its variable length stays within
 the identified symbol.
 
+## High-priority potential alias: string staging at DS:36BE
+
+**New exact address condition:** the original Win16 1.10 function
+`FUN_1010_5260` writes a temporary, NUL-terminated string into
+`DS:36BE`; the multimedia-timer flag `DS:46B2` is exactly
+`0x46B2 - 0x36BE = 0xFF4 = 4,084` bytes beyond that base.
+The next declared input string region starts at `DS:46BE`, exactly
+4,096 bytes beyond the staging base. The watched flag is thus
+*12 bytes before* that next region and inside the final 12 bytes of
+the mathematical 4-KiB interval beginning at `DS:36BE`.
+
+Relevant original disassembly:
+- `3:5265` sets `DI=46BE`, `3:5268` sets `SI=36BE`.
+- `3:526F` sets `CX=FFFFh`; `3:5274` scans the initial string with
+  `REPNE SCASB` up to a NUL; `3:527E/5282` copy its bytes into
+  `DS:36BE` with `REP MOVSW/MOVSB`.
+- `3:5287` loads a caller-provided second string pointer, scans its
+  length, then `3:529A` scans the staging buffer for its NUL.
+- `3:52A1/52A5` append the second string, replacing the first
+  terminator using `REP MOVSW/MOVSB`. The scans begin with
+  `CX=FFFFh`; there is **no explicit capacity comparison** in the
+  inspected helper body.
+
+For ordinary, nonwrapping NUL-terminated input strings with
+`n1` and `n2` *character counts excluding terminators*, the
+combined string writes `n1+n2+1` bytes including the final NUL.
+The timer byte is at output offset `0xFF4`, so the copy
+**could touch `DS:46B2` when `n1+n2 >= 4084`**.
+At equality the byte written there would be the final NUL;
+larger sums may write a preceding character.
+This is a conditional address/length proof, **not evidence that the
+original gameplay supplies a string of such length or ever changes
+the clock flag through this path**.
+
+Five direct callers are named in original Ghidra XREF:
+`3:52F5`, `3:5358`, `3:5397`, `3:548C`, `3:5759`.
+The first two directly pass a fixed text pointer `DS:101E`,
+whereas the remaining callers forward varying function parameters
+or a derived register. Complete caller input-length provenance
+and any library/environment length guarantee remain OPEN.
+
+The machine-readable ledger now assigns all four REP sites the
+class `STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND` while retaining
+them among **58 unresolved destinations** (not among the 25
+source-bounded destinations). The Python verifier exposes the
+threshold and its regression tests reject attempts to mark the
+string alias unreachable on the present evidence.
+
+Prioritization: if a future original trace or bounded static
+caller proof shows `n1+n2 < 4084` for all reachable invocations,
+this candidate can be closed without running arbitrary stress tests.
+Otherwise it needs a controlled input-boundary runtime trace, after
+static exhaustion, to distinguish merely possible write geometry
+from observed flag corruption.
+
 ## Automated verification, evidence grades and limits
 
 - `tools/n3d_win16_rep_destination_audit.py` checks 83 unique
