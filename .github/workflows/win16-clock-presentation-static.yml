@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'src/re/Win16ClockPresentationContract.hpp'
+      - 'src/re/Win16TimerLifecycleGate.hpp'
+      - 'tests/win16_timer_lifecycle_gate_test.cpp'
+      - 'docs/WIN16_TIMER_LIFECYCLE_ERROR_PATH_20261020.md'
       - 'tests/win16_clock_presentation_contract_test.cpp'
       - 'docs/WIN16_CLOCK_PRESENTATION_STATIC_AUDIT_20261019.md'
       - 'CMakeLists.txt'
@@ -11,6 +14,9 @@ on:
   pull_request:
     paths:
       - 'src/re/Win16ClockPresentationContract.hpp'
+      - 'src/re/Win16TimerLifecycleGate.hpp'
+      - 'tests/win16_timer_lifecycle_gate_test.cpp'
+      - 'docs/WIN16_TIMER_LIFECYCLE_ERROR_PATH_20261020.md'
       - 'tests/win16_clock_presentation_contract_test.cpp'
       - 'docs/WIN16_CLOCK_PRESENTATION_STATIC_AUDIT_20261019.md'
       - 'CMakeLists.txt'
@@ -27,3 +33,7 @@ jobs:
             tests/win16_clock_presentation_contract_test.cpp \
             -o /tmp/win16_clock_presentation_contract_test
           /tmp/win16_clock_presentation_contract_test
+          g++ -std=c++20 -Wall -Wextra -Wpedantic -Werror -Isrc \
+            tests/win16_timer_lifecycle_gate_test.cpp \
+            -o /tmp/win16_timer_lifecycle_gate_test
+          /tmp/win16_timer_lifecycle_gate_test
