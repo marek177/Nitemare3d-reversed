@@ -1,4 +1,6 @@
-# Nitemare3D-Reversed — reconstruction v0.77
+# Nitemare3D-Reversed — reconstruction v0.78
+
+**v0.78 / 2026-10-20 bulk integration:** adds the bounded four-pass DOS2 MAP→VEC producer and SHA-gated static auditor, connects its output to the existing VEC pool contract, and implements the local GUARD state21 save/restore rule. Consolidates D02-N runtime, Win16 EVENT RNG v26 and authentic IMG wall v080 evidence with explicit capture limits. Includes Linux/Windows integration CI. See [changes, validation and open gates](docs/BULK_UPDATE_20261020.md).
 
 **Runnable DOS2 wall snapshot replay:** `n3d_dos20_wall_replay` now joins DS/IMG material binding, native CEDC/22CA texture coordinates and span rasterization. It exports a candidate indexed frame, generated-pixel mask and optional wall-only comparison. See [usage and evidence limits](docs/DOS20_WALL_SNAPSHOT_REPLAY.md).
 

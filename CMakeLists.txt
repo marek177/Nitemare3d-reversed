@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(Nitemare3D_Reconstructed VERSION 0.77.0 LANGUAGES C CXX)
+project(Nitemare3D_Reconstructed VERSION 0.78.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -360,6 +360,12 @@ add_executable(n3d_dos20_class2d_geometry_integration_test
 target_link_libraries(n3d_dos20_class2d_geometry_integration_test PRIVATE n3d_core)
 add_executable(n3d_dos20_vec_pool_lookup_test tests/dos20_vec_pool_lookup_test.cpp)
 target_link_libraries(n3d_dos20_vec_pool_lookup_test PRIVATE n3d_core)
+add_executable(n3d_dos20_vec_producer_test tests/dos20_vec_producer_test.cpp)
+target_link_libraries(n3d_dos20_vec_producer_test PRIVATE n3d_core)
+
+add_executable(n3d_dos20_guard_special_state_test tests/dos20_guard_special_state_test.cpp)
+target_include_directories(n3d_dos20_guard_special_state_test PRIVATE src)
+
 include(cmake/RegressionTests.cmake)
 
 if(BUILD_TESTING)
