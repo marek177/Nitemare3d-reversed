@@ -16,6 +16,11 @@ from n3d_win16_rep_destination_audit import (
     ROUNDED_LOCALALLOC_STOSW, win16_localalloc_word_clear_bytes,
     LOCALALLOC_NAMED_CALLER_ELEMENT_SIZES,
     win16_named_calloc_request_bytes,
+    DEAD_DIRECT_SLASH_APPEND_COPY_BOUNDS, STRCPY_PARTIAL_CALLER_SITES,
+    MEMCPY_PARTIAL_CALLER_SITES, MEMCPY_NAMED_DIRECT_CALLERS,
+    win16_slash_append_direct_branch_taken,
+    win16_memcpy_exact_rep_schedule,
+    win16_strdup_localalloc_requested_bytes,
     load_ledger, overlaps_linear_region, provenance_audit,
     STRING_CLOCK_OFFSET, STRING_STAGING_SITES,
     unbounded_string_copy_reaches_clock,
@@ -34,9 +39,9 @@ class Win16RepDestinationTests(unittest.TestCase):
             "MOVSB.REP":14,"MOVSW.REP":20,"MOVSD.REP":14,
         })
         self.assertEqual(result["source_byte_bounded_rep_movsd_stosd"],25)
-        self.assertEqual(result["source_byte_bounded_rep_movsw_stosw"],16)
-        self.assertEqual(result["source_byte_bounded_rep_total"],46)
-        self.assertEqual(result["remaining_rep_destinations_for_pointer_provenance"],36)
+        self.assertEqual(result["source_byte_bounded_rep_movsw_stosw"],17)
+        self.assertEqual(result["source_byte_bounded_rep_total"],48)
+        self.assertEqual(result["remaining_rep_destinations_for_pointer_provenance"],34)
         self.assertFalse(result["alias_writer_graph_complete"])
         self.assertFalse(result["original_1_10_sha_reread_this_run"])
 
@@ -72,7 +77,7 @@ class Win16RepDestinationTests(unittest.TestCase):
                 "DESTINATION_PROVENANCE_OPEN",
                 "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND",
                 "STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND"))
-        self.assertEqual(result["source_byte_bounded_rep_total"],46)
+        self.assertEqual(result["source_byte_bounded_rep_total"],48)
 
     def test_seven_total_fixed_dgroup_write_ranges_exclude_clock(self):
         result=provenance_audit(self.rows)
@@ -194,7 +199,7 @@ class Win16RepDestinationTests(unittest.TestCase):
             report["last_NUL_overlaps_clock_if_sum_characters_at_least"],4084)
         self.assertFalse(report["string_alias_dynamic_reachability_proven"])
         self.assertEqual(
-            report["remaining_rep_destinations_for_pointer_provenance"],36)
+            report["remaining_rep_destinations_for_pointer_provenance"],34)
 
     def test_config_sav_fixed_suffix_threshold(self):
         result=provenance_audit(self.rows)
@@ -343,6 +348,80 @@ class Win16RepDestinationTests(unittest.TestCase):
         row=next(x for x in rows if x["site"]==ROUNDED_LOCALALLOC_STOSW)
         row["bounded_total_write_bytes"]="11"
         with self.assertRaisesRegex(ValueError,"dynamic LocalAlloc"):
+            provenance_audit(rows)
+
+    def test_named_strcat_helper_sole_direct_call_is_guarded_false(self):
+        result=provenance_audit(self.rows)
+        self.assertEqual(set(result["direct_branch_false_slash_append_sites"]),
+                         set(DEAD_DIRECT_SLASH_APPEND_COPY_BOUNDS))
+        self.assertEqual(result["direct_slash_append_only_named_call"],"2:3E32")
+        self.assertTrue(result["direct_branch_false_does_not_exclude_indirect_helper_calls"])
+        self.assertFalse(win16_slash_append_direct_branch_taken(0x5C))
+        self.assertTrue(win16_slash_append_direct_branch_taken(0x00))
+        self.assertTrue(win16_slash_append_direct_branch_taken(0x2F))
+        with self.assertRaisesRegex(ValueError,"8-bit"):
+            win16_slash_append_direct_branch_taken(256)
+
+    def test_two_rep_sites_in_slash_concat_have_conditional_two_byte_source(self):
+        for site in DEAD_DIRECT_SLASH_APPEND_COPY_BOUNDS:
+            row=next(x for x in self.rows if x["site"]==site)
+            self.assertEqual(row["destination_class"],
+                             "DIRECT_CALL_BRANCH_FALSE_SLASH_APPEND")
+            self.assertEqual(row["bounded_total_write_bytes"],"2")
+            self.assertFalse(row["fixed_DGROUP_start"])
+        self.assertEqual(provenance_audit(self.rows)["source_byte_bounded_rep_total"],48)
+
+    def test_strcpy_two_named_direct_caller_envelopes_stay_open(self):
+        report=provenance_audit(self.rows)
+        self.assertEqual(set(report["strcpy_caller_provenance_partial_sites"]),
+                         STRCPY_PARTIAL_CALLER_SITES)
+        self.assertEqual(report["strcpy_only_named_direct_callers"],
+                         ["2:3E16","2:69C0"])
+        self.assertFalse(report["strcpy_source_uint16_overflow_alias_proven_absent"])
+        for site in STRCPY_PARTIAL_CALLER_SITES:
+            row=next(x for x in self.rows if x["site"]==site)
+            self.assertEqual(row["destination_class"],
+                             "STRCPY_DIRECT_CALLER_ENVELOPES_PARTIAL")
+            self.assertEqual(row["bounded_total_write_bytes"],"")
+        self.assertEqual(win16_strdup_localalloc_requested_bytes(0),1)
+        self.assertEqual(win16_strdup_localalloc_requested_bytes(1),2)
+        self.assertEqual(win16_strdup_localalloc_requested_bytes(65534),65535)
+        self.assertEqual(win16_strdup_localalloc_requested_bytes(65535),0)
+        with self.assertRaisesRegex(ValueError,"uint16"):
+            win16_strdup_localalloc_requested_bytes(-1)
+
+    def test_memcpy_parity_model_matches_caller_requested_count_exhaustively(self):
+        report=provenance_audit(self.rows)
+        self.assertEqual(set(report["memcpy_n_byte_parameterized_open_sites"]),
+                         MEMCPY_PARTIAL_CALLER_SITES)
+        self.assertEqual(set(report["memcpy_eight_named_direct_callers"]),
+                         MEMCPY_NAMED_DIRECT_CALLERS)
+        for site in MEMCPY_PARTIAL_CALLER_SITES:
+            row=next(x for x in self.rows if x["site"]==site)
+            self.assertEqual(row["destination_class"],
+                             "MEMCPY_16BIT_PARAMETER_TARGET_OPEN")
+            self.assertFalse(row["bounded_total_write_bytes"])
+        for n in range(65536):
+            for odd in (False,True):
+                schedule=win16_memcpy_exact_rep_schedule(n,odd)
+                self.assertEqual(schedule["total_bytes"],n)
+                self.assertLessEqual(schedule["trailing_REP_MOVSB_iterations"],1)
+                self.assertEqual(schedule["leading_MOVSB"],int(n>0 and odd))
+        with self.assertRaisesRegex(ValueError,"uint16"):
+            win16_memcpy_exact_rep_schedule(65536,False)
+        with self.assertRaisesRegex(ValueError,"parity"):
+            win16_memcpy_exact_rep_schedule(4,1)
+
+    def test_slash_copy_or_memcpy_mutation_does_not_fake_closed_provenance(self):
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]=="1008:605F")
+        row["destination_class"]="DESTINATION_PROVENANCE_OPEN"
+        with self.assertRaisesRegex(ValueError,"Length alone"):
+            provenance_audit(rows)
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]=="1008:6092")
+        row["bounded_total_write_bytes"]="2"
+        with self.assertRaisesRegex(ValueError,"Length alone"):
             provenance_audit(rows)
 
     def test_site_duplicate_rejected(self):
