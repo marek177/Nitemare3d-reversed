@@ -41,18 +41,19 @@ static void verifyOriginalPrivateCSV(const std::string& filename){
     if(!std::getline(f,line))throw std::runtime_error("Missing original CSV header");
     if(!line.empty()&&line.back()=='\r')line.pop_back();
     const auto header=split(line);
-    constexpr std::array<const char*,24> fields{
+    constexpr std::array<const char*,25> fields{
         "session","first_event","last_event","x","orientation","branch",
         "branch_fourway","span","screen_delta","center_x","inverse_scale",
         "vertical_numerator","product32","trig_divisor",
-        "cached_2643_product32","partial_original_result",
+        "cached_2643_product32","cached_2603_2620_local16",
+        "partial_original_result",
         "final_original_num","cedc_quotient_original","returned_ax",
         "candidate_ax","caller_local16","caller_negates_u",
         "caller_pre_edge_u","candidate_unadjusted_u"};
     if(header.size()!=fields.size())throw std::runtime_error("Wrong CEDC CSV layout");
     for(unsigned i=0;i<fields.size();++i)
         if(header[i]!=fields[i])throw std::runtime_error("Wrong CEDC CSV field");
-    unsigned verified=0,directCallerImul=0;
+    unsigned verified=0,directCallerImul=0,directCallerLocal=0,negations=0;
     std::array<unsigned,4> branches{};
     while(std::getline(f,line)){
         if(line.empty())continue;
@@ -83,10 +84,10 @@ static void verifyOriginalPrivateCSV(const std::string& filename){
         };
         const auto got=dos::project(in);
         if(!got || got->path!=expected ||
-           got->screenOrVerticalQuotient!=asInt(c[15]) ||
-           got->combinedNumerator!=asInt(c[16]) ||
-           got->quotient32!=asInt(c[17]) ||
-           got->returnedAX!=asInt(c[18])){
+           got->screenOrVerticalQuotient!=asInt(c[16]) ||
+           got->combinedNumerator!=asInt(c[17]) ||
+           got->quotient32!=asInt(c[18]) ||
+           got->returnedAX!=asInt(c[19])){
             std::cerr<<"Original CEDC mismatch at event="<<c[1]
                      <<" x="<<c[3]<<"\n";
             throw std::runtime_error("Original CEDC quotient differs");
@@ -96,17 +97,25 @@ static void verifyOriginalPrivateCSV(const std::string& filename){
                 throw std::runtime_error("Original parent IMUL differs");
             ++directCallerImul;
         }
+        if(!c[15].empty()){
+            if(static_cast<std::uint16_t>(asInt(c[15]))!=asInt(c[21]))
+                throw std::runtime_error("Original parent world-local differs");
+            ++directCallerLocal;
+        }
+        if(parseBool(c[22]))++negations;
         if(dos::callerBefore22ca(got->returnedAX,
-                static_cast<std::uint16_t>(asInt(c[20])),
-                parseBool(c[21]))!=asInt(c[22]))
+                static_cast<std::uint16_t>(asInt(c[21])),
+                parseBool(c[22]))!=asInt(c[23]))
             throw std::runtime_error("Original caller raw-U mismatch");
         ++verified;
     }
     if(verified!=1808 || directCallerImul!=1804 ||
+       directCallerLocal!=1804 || negations!=1172 ||
        branches!=std::array<unsigned,4>{1030,474,187,117})
         throw std::runtime_error("Original CEDC corpus incomplete");
     std::cout<<"ORIGINAL_DOS2_CEDC_EXACT "<<verified
-             <<"/1808; caller IMUL "<<directCallerImul<<"/1808\n";
+             <<"/1808; caller IMUL "<<directCallerImul<<"/1808; "
+             <<"world-local "<<directCallerLocal<<"/1808\n";
 }
 static void synthetic(){
     const auto seed=dos::project(archivedCase);
