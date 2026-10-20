@@ -21,6 +21,10 @@ import zipfile
 
 from capstone import CS_ARCH_X86, CS_MODE_16, Cs
 from ne_renderer_audit import NeImage
+from n3d_win16_timer_target_census import (
+    audit as target_specific_fixup_census,
+    assert_known_win110_direct_callers,
+)
 
 MAX_EXE_BYTES = 8 * 1024 * 1024
 MAX_NESTED_ZIP_BYTES = 64 * 1024 * 1024
@@ -406,7 +410,13 @@ def inspect(image: NeImage, profile: Profile):
         verify_win110_timer_call_and_stack(image, original_sha_verified=True)
         if profile.version == "1.10" else None
     )
+    timer_target_census = target_specific_fixup_census(
+        image, segment=3, offset=profile.timer_init
+    )
+    if profile.version == "1.10":
+        assert_known_win110_direct_callers(timer_target_census)
     return {
+        "timer_target_specific_ne_census": timer_target_census,
         "win18_timer_stack_proof": win18_proof,
         "win110_timer_stack_proof": win110_proof,
         "build": profile.version,
@@ -426,6 +436,7 @@ def inspect(image: NeImage, profile: Profile):
             internal_far_relocations(image, 3, profile.timer_init),
         "limits": [
             "E8 byte scan includes non-instruction candidates until instruction boundaries/CFG are proved",
+            "NE relocation-backed direct call census does not exclude writable FAR callback targets",
             "Indirect writable FAR pointers require additional dataflow/reachability proof",
             "The exact timeEndPeriod argument must be read from the preceding instructions",
             "No original EXE is included in the generated JSON",
