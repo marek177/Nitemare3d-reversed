@@ -25,6 +25,28 @@ COUNT_MAX = 0xFFFF
 
 # Archived original Ghidra instruction witness table. Verification against
 # the original 230400-byte EXE is NOT performed by synthetic regression.
+# Named direct original NE1 E26 callers; only 1000:3275 passes
+# a clearly bounded string length under USER.LOADSTRING's buffer contract.
+# The other two count expressions are 16-bit but their reachable max
+# needs an interprocedural source/producer proof.
+E26_NAMED_DIRECT_COUNT_SOURCES={
+    "1000:0E7B":"source_trio.used at 1000:0E75",
+    "1000:0EAB":"strlen(param2) from 1008:609E at 1000:0EA0",
+    "1000:3275":"USER.LOADSTRING return SI at 1000:3262",
+}
+E26_BOUNDED_LOADSTRING_SITE="1000:3275"
+E26_LOADSTRING_BUFFER_MAX=0x00FF
+E26_LOADSTRING_CSTRING_LOCAL_FRAME_SIZE=0x0100
+E26_LOADSTRING_RESOURCE_CALL_SITE="1000:3293"
+E26_LOADSTRING_RESOURCE_LOAD_WRAPPER="1000:3282"
+
+
+def e26_direct_caller_count_upper_bound(site:str)->int|None:
+    if site not in E26_NAMED_DIRECT_COUNT_SOURCES:
+        raise ValueError("Unrecognized direct assignment caller")
+    return E26_LOADSTRING_BUFFER_MAX if site==E26_BOUNDED_LOADSTRING_SITE else None
+
+
 INSTRUCTION_WITNESSES = {
     "1000:0CE4": ("89 47 04", "MOV [BX+4],AX ; capacity=0"),
     "1000:0CE7": ("89 47 02", "MOV [BX+2],AX ; used=0"),
@@ -238,6 +260,17 @@ def audit()->dict[str, Any]:
             "DS:00A2":failing_alloc_global_zero_writer(ONESHOT_LATCH_DS,ONESHOT_LATCH_DS),
             "DS:46B2":failing_alloc_global_zero_writer(CLOCK_FLAG_DS,CLOCK_FLAG_DS),
         },
+        "assignment_direct_caller_count_sources":E26_NAMED_DIRECT_COUNT_SOURCES,
+        "assignment_direct_caller_max_buffer_size_by_site":{
+            site:e26_direct_caller_count_upper_bound(site)
+            for site in E26_NAMED_DIRECT_COUNT_SOURCES},
+        "resource_assignment_LoadString_site":E26_BOUNDED_LOADSTRING_SITE,
+        "resource_assignment_LoadString_max_characters_conservative":E26_LOADSTRING_BUFFER_MAX,
+        "resource_assignment_stack_buffer_bytes":E26_LOADSTRING_CSTRING_LOCAL_FRAME_SIZE,
+        "resource_assignment_resource_import_call":E26_LOADSTRING_RESOURCE_CALL_SITE,
+        "resource_assignment_high_bit_32768_reachable":False,
+        "remaining_direct_assignment_sources_32768_reachability_open":[
+            "1000:0E7B","1000:0EAB"],
         "new_conditional_scalar_alias_writer":"1000:0D65",
         "conditional_direct_memcpy_to_sentinel_from_empty":{
             "state":initial.as_dict(),
@@ -263,6 +296,7 @@ def audit()->dict[str, Any]:
             "Conditional OOM LocalAlloc return 0 is modeled, not observed",
             "A data copy after failed allocation can introduce additional pointer-derived writes",
             "Canonical empty trio + signed JGE permits very-large copy into static sentinel, independent of LocalAlloc failure; source size reachability remains OPEN",
+            "One of three E26 direct callers 1000:3275 uses LoadString(0xFF) into 256-byte local frame and cannot supply 32768 bytes under API contract",
             "Array indices and string lengths reaching 00A2/46B2 are not fully proven",
             "Null result can be returned by the wrapper when no OOM handler or callback declines",
             "Normal valid LocalAlloc heap pointers must be proved nonaliasing by separate OS contract",
