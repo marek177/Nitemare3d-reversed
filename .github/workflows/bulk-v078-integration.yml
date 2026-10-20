@@ -1,0 +1,38 @@
+name: v078 bulk MAP VEC GUARD renderer integration
+on:
+  push:
+    paths: ['src/game/Dos20*.hpp', 'src/re/N3DV052Dos20RngTimer.hpp', 'tests/dos20_vec_producer_test.cpp', 'tests/dos20_guard_special_state_test.cpp', 'tests/test_d02n_producer_static_verify.py', 'tools/n3d_d02n_producer_static_verify.py', 'CMakeLists.txt', '.github/workflows/bulk-v078-integration.yml']
+  pull_request:
+    paths: ['src/game/Dos20*.hpp', 'src/re/N3DV052Dos20RngTimer.hpp', 'tests/dos20_vec_producer_test.cpp', 'tests/dos20_guard_special_state_test.cpp', 'tests/test_d02n_producer_static_verify.py', 'tools/n3d_d02n_producer_static_verify.py', 'CMakeLists.txt', '.github/workflows/bulk-v078-integration.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Configure asset-free Debug integration
+        run: cmake -S . -B build-bulk -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Build MAP VEC GUARD geometry and wall replay
+        run: cmake --build build-bulk --config Debug --target n3d_dos20_vec_producer_test n3d_dos20_guard_special_state_test n3d_dos20_vec_pool_lookup_test n3d_dos20_class2d_geometry_integration_test n3d_pushable_blocked_test n3d_dos20_wall_replay n3d_dos20_cedc_projection_test n3d_dos20_wall_material_binding_test --parallel 4
+      - name: Run eight combined regression suites
+        run: ctest --test-dir build-bulk -C Debug -R '^n3d_(dos20_(vec_producer|guard_special_state|vec_pool_lookup|class2d_geometry_integration|wall_replay_cli|cedc_projection|wall_material_binding)|pushable_blocked)_test$' --output-on-failure
+      - name: Static audit tests without private game data
+        run: python -m unittest discover -s tests -p test_d02n_producer_static_verify.py -v
+      - name: Verify helpers also reject invalid input under optimized Python
+        run: python -O -m unittest discover -s tests -p test_d02n_producer_static_verify.py -v
+      - name: Strict GCC UBSan on bounded producer and GUARD semantics
+        if: runner.os == 'Linux'
+        run: |
+          c++ -std=c++20 -Wall -Wextra -Werror -pedantic -fsanitize=undefined -fno-sanitize-recover=all -Isrc tests/dos20_vec_producer_test.cpp -o /tmp/n3d_bulk_producer
+          /tmp/n3d_bulk_producer
+          c++ -std=c++20 -Wall -Wextra -Werror -pedantic -fsanitize=undefined -fno-sanitize-recover=all -Isrc tests/dos20_guard_special_state_test.cpp -o /tmp/n3d_bulk_guard
+          /tmp/n3d_bulk_guard
