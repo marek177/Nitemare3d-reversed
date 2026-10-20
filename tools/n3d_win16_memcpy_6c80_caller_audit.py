@@ -135,8 +135,8 @@ def audit(rows:list[dict[str,str]])->dict[str,Any]:
         raise ValueError("Incomplete original 1008:6C80 direct XREF census")
     for site,branch in CAPACITY_SIGNED_BRANCH_SITES.items():
         row=by_site[site]
-        if not any(x in row["local_capacity_or_allocation_guard"]
-                   for x in (branch,"signed")) or "signed" not in row["guard_width"]:
+        if (branch not in row["local_capacity_or_allocation_guard"]
+            or "signed" not in row["guard_width"].split()):
             raise ValueError("Original signed capacity branch missing "+site)
     for site in ADDITION_WRAP_CONCERN_SITES:
         if "uint16" not in (
