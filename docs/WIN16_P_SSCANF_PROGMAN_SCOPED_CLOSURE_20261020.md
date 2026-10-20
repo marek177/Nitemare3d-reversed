@@ -64,6 +64,45 @@ of writes, but none supplies an intrinsic 4-KiB output bound. The
 buffer overflow analysis must therefore follow the **maximum source
 token length**, not invent a hidden `sprintf` output bound.
 
+## Complete internal lpCmdLine copy path (new call-graph closure)
+
+The archived original Win16 v1.10 MFC/WinMain trampoline calls
+`FUN_1010_1118` at `3:0088` after pushing its original near/segment
+command-line pointer at `3:0084` (retrieved from the application
+instance fields). Within `FUN_1010_1118`:
+
+    3:1132 PUSH DWORD PTR [BP+6]   ; original far command-line pointer
+    3:1136 CALL FAR 2:6C3C        ; copy far string to near heap buffer
+    3:113E MOV DI,AX              ; near heap-copy pointer
+    3:1141 CALL FAR 2:6B06        ; tokenize near copy
+
+`FUN_1008_6C3C` itself has this source-length/heap allocation graph:
+
+| Original address | Instruction / operation |
+|---|---|
+| `2:6C47` | `LES DI,[BP+6]` loads original far command-line pointer |
+| `2:6C4C` | calls `FUN_1008_7344`: far strlen using `REPNE SCASB` |
+| `2:6C51` | `INC AX`, source length plus terminating NUL |
+| `2:6C52` | tests length+1 overflow/zero |
+| `2:6C5A` | `FUN_1008_5AB0` with requested dynamic length; normal route calls `KERNEL.LOCALALLOC` |
+| `2:6C62–6C69` | detects allocation failure |
+| `2:6C6D` | `FUN_1008_735E`: copies NUL-terminated far source string to allocated near buffer |
+| `2:6B3D`, `2:6B65`, `2:6B8B` | tokenizer `FUN_1008_6B06` reads/updates subsequent token pointer `DS:0A8E` |
+
+The original near-copy helper does **not** compare the source length
+against a game-specific constant `128`, `255` or `4096`.
+It requests a size calculated from the far input (subject to
+16-bit integer overflow checks and potential LocalAlloc failure).
+The first tokenizer receives the returned near pointer; later
+tokenization advances the cursor `DS:0A8E`.
+
+**Scope limit:** This proves how Nitemare's local processing carries an
+already provided command-line string. It does not prove that Windows 3.11
+or another launcher can actually *supply* 4,074+ valid characters,
+or that such an allocation succeeds. In particular, the Windows
+3.1 Program Manager UI limit below is a separate upstream constraint,
+not something programmed inside Nitemare's copy function.
+
 ## Independent historical OS source: Windows 3.1 Program Manager
 
 Microsoft Knowledge Base **Q71364**:
@@ -116,7 +155,8 @@ overflow was induced or observed.
 ## Reproducible evidence and tests
 
 - `tools/n3d_win16_filename_alias_calls.py`: reports scanner
-  source/destination, original opcode witnesses, both suffix
+  source/destination, original opcode witnesses, original far
+  command-line `strlen+1` near LocalAlloc chain, both suffix
   thresholds and the scoped 128-character Program Manager route.
 - `tests/test_n3d_win16_filename_alias_calls.py`: synthetic
   assertions for the lack of explicit `%s` field width, original
