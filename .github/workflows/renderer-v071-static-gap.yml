@@ -1,0 +1,34 @@
+name: Renderer v0.71 static-gap verification
+
+on:
+  push:
+    paths:
+      - 'tools/n3d_v071_dos20_opcode_gap_audit.py'
+      - 'tests/test_n3d_v071_dos20_opcode_gap_audit.py'
+      - '.github/workflows/renderer-v071-static-gap.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_v071_dos20_opcode_gap_audit.py'
+      - 'tests/test_n3d_v071_dos20_opcode_gap_audit.py'
+      - '.github/workflows/renderer-v071-static-gap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-gap-synthetic:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify audit module and synthetic invariants (no game data)
+        run: python -m unittest discover -s tests -p 'test_n3d_v071_dos20_opcode_gap_audit.py' -v
+      - name: Compile audit Python source
+        run: python -m py_compile tools/n3d_v071_dos20_opcode_gap_audit.py
