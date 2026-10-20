@@ -145,3 +145,29 @@ original binary [CI result](https://github.com/marek177/Nitemare3d-reversed/acti
 read-before-write in Windows 1.10 are known. Windows 1.8's full
 NE-fixup static reference census is now newly original-byte verified.
 No blanket 100% Win16 indirect-call graph or timer behavior parity claim.
+
+
+## Further confirmation: predecessor stack frame also in SHA-pinned Win16 v1.8
+
+The independent full Win16 v1.8 original-byte workflow was extended to
+disassemble both the teardown wrapper and audio/MIDI callee prologue:
+
+    3:0F18  6A 01          PUSH 1
+    3:0F1A  9A 16 E0 ..    CALL FAR 3:E016 (audio teardown)
+    3:0F1F  83 C4 02       ADD SP,2
+    3:0F22  6A 01          PUSH 1
+    3:0F24  9A BE D5 ..    CALL FAR 3:D5BE (timer teardown)
+    3:0F29  83 C4 02       ADD SP,2
+    3:E016  C8 04 00 00    ENTER 4,0
+
+The timer callee, separately already original-byte-verified, begins
+3:D5BE ENTER 6,0. Accordingly the same caller-SP/BP overlap is present
+in **both** original Win16 1.8 and archived Win16 1.10.
+The 1.8 original source also has precisely two target NE fixups and
+zero additional address-taken relocations/near E8 candidates.
+
+Proof: [Win16 1.8 original SHA and audio-prologue rerun](https://github.com/marek177/Nitemare3d-reversed/actions/runs/39441954562).
+
+This is a structural stack-slot alias proof, not a fixed numeric value
+for the reused word or a claim that all nested Windows/MMSystem calls
+have been proven free from atypical SS memory modification.
