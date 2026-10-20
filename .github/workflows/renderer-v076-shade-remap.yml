@@ -1,0 +1,31 @@
+name: N3D v076 DOS2 original shade
+on:
+  push:
+    paths:
+      - 'src/re/N3DDos20ShadeRemap.hpp'
+      - 'tests/dos20_shade_remap_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v076-shade-remap.yml'
+  pull_request:
+    paths:
+      - 'src/re/N3DDos20ShadeRemap.hpp'
+      - 'tests/dos20_shade_remap_test.cpp'
+      - '.github/workflows/renderer-v076-shade-remap.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shade:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build-shade -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Build
+        run: cmake --build build-shade --config Debug --target n3d_dos20_shade_remap_test --parallel 4
+      - name: Test
+        run: ctest --test-dir build-shade -C Debug -R n3d_dos20_shade_remap_test --output-on-failure
