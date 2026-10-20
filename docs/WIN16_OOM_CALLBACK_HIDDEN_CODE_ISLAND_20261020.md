@@ -36,6 +36,49 @@ Our optional byte verifier masks only 0781 and verifies all other
 recorded original instruction bytes. It does not invent the unrecorded byte.
 Startup reachability of this unnamed registrar is also NOT yet closed.
 
+## Stronger original CFG result: default OOM error dispatcher has no normal RETF
+
+A subsequent instruction-by-instruction audit followed the call
+from hidden 1000:076A to 1000:4564 and onward into
+FUN_1000_4492. Unlike the initial conservative first pass,
+the complete archived 4492 body shows **no direct RETF exit**.
+
+    1000:44B8  ...             error-dispatch loop header
+    1000:44FC  JMP 44B8        loop after removing an exception node
+    1000:451E  CALL FAR KERNEL.THROW
+    1000:4524  CALL FAR [SI+08] indirect installed exception handler
+    1000:4527  JMP 44B8        loop after handler returns
+
+Win16 KERNEL.CATCH and KERNEL.THROW implement an original
+nonlocal transfer analogous to setjmp/longjmp when a valid
+catch frame exists, rather than returning normally to 4492.
+For historical context: Microsoft Raymond Chen,
+https://devblogs.microsoft.com/oldnewthing/20140103-00/?p=2173.
+
+**Therefore, under valid original Win16 Catch/Throw semantics,
+the default callback 1000:076A does not normally return AX=0
+to LocalAlloc:** it loops through handlers or transfers control
+with THROW. Its adjacent XOR AX/RETF is a defensive original
+fallthrough that is not reachable through the ordinary 4492
+control-flow graph. The previous statements below about
+AX=0 from that callback describe only a hypothetical return
+from a non-returning error dispatcher, NOT normal behavior.
+
+This is important for the conditional corruption scenario:
+when this default handler is actually installed, a LocalAlloc
+failure is expected to enter error/exception handling, not
+quietly return zero to 1000:0D3E. But before registration,
+during explicit temporary disabling at 1000:28DE, or under
+other handler configurations, the LocalAlloc wrapper can
+still return AX=0. The 0D65 write remains a genuine
+**conditional scalar-address alias**; its actual execution
+during gameplay is UNPROVEN.
+
+Proof grades: hidden original bytes + 4492 local CFG CLOSED
+under ordinary Win16 semantics; full normal installation
+reachability, nonstandard exception/corrupted handler behavior
+and dynamic alias writer graph OPEN.
+
 ## Global callback pointer and five direct writers
 
 The original DGROUP image initializes:
