@@ -24,6 +24,25 @@ jobs:
           ref: dosbox-x-v2026.10.01
           path: upstream
           fetch-depth: 1
+      - name: Normalize only patched upstream CRLF sources
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          patch = Path("n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch")
+          text = patch.read_text(encoding="utf-8")
+          paths = set(re.findall(r"(?m)^--- a/([^\\t\\n]+)", text))
+          changed = []
+          for relative in paths:
+              source = Path("upstream") / relative
+              if not source.is_file():
+                  continue
+              data = source.read_bytes()
+              if b"\\r\\n" in data:
+                  source.write_bytes(data.replace(b"\\r\\n", b"\\n"))
+                  changed.append(relative)
+          print("Normalized CRLF:", ", ".join(sorted(changed)))
+          PY
       - name: Check full Advanced History v3 and deferred trace patches on upstream
         run: |
           cd upstream
