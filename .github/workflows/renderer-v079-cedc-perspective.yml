@@ -1,0 +1,43 @@
+name: N3D v079 DOS2 CEDC perspective U
+
+on:
+  push:
+    paths:
+      - 'src/re/N3DDos20CedcProjection.hpp'
+      - 'src/re/N3DDos20WallMaterialBinding.hpp'
+      - 'tests/dos20_cedc_projection_test.cpp'
+      - 'cmake/RegressionTests.cmake'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v079-cedc-perspective.yml'
+  pull_request:
+    paths:
+      - 'src/re/N3DDos20CedcProjection.hpp'
+      - 'src/re/N3DDos20WallMaterialBinding.hpp'
+      - 'tests/dos20_cedc_projection_test.cpp'
+      - '.github/workflows/renderer-v079-cedc-perspective.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cedc:
+    name: Original CEDC arithmetic (C++20)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure C++20 without SDL3 or commercial assets
+        run: cmake -S . -B build-v079 -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Compile CEDC and its material binder
+        run: cmake --build build-v079 --config Debug --target n3d_dos20_cedc_projection_test n3d_dos20_wall_material_binding_test --parallel 4
+      - name: Execute synthetic CEDC and IMG material regressions
+        run: ctest --test-dir build-v079 -C Debug -R 'n3d_dos20_(cedc_projection|wall_material_binding)_test' --output-on-failure
+      - name: Strict C++20 CEDC UBSan (Linux only)
+        if: runner.os == 'Linux'
+        run: |
+          c++ -std=c++20 -O1 -g -Wall -Wextra -Werror -pedantic -fsanitize=undefined -fno-sanitize-recover=all -Isrc tests/dos20_cedc_projection_test.cpp -o /tmp/n3d_v079_cedc
+          /tmp/n3d_v079_cedc
