@@ -1,0 +1,26 @@
+name: N3D V069 WORLD/GUARD alias static contract
+
+on:
+  pull_request:
+    paths:
+      - "tools/n3d_v069_guard_world_alias_check.py"
+      - "tests/test_n3d_v069_guard_world_alias_check.py"
+      - "docs/V069_DOS20_GUARD_WORLD_ALIAS_FRONTIER_SK.md"
+      - ".github/workflows/n3d-v069-guard-world-alias.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-static-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run guarded synthetic parser/negative tests
+        run: python3 -m unittest discover -s tests -p test_n3d_v069_guard_world_alias_check.py -v
+      - name: Evidence limit
+        run: |
+          echo "CI runs synthetic contract tests only."
+          echo "Private SHA-pinned original EXE and V067 CPU-trace replay are NOT executed in CI."
+          echo "No claimed original-versus-remake or full GUARD-slot lifecycle parity."
