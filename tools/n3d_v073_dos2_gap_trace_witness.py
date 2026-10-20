@@ -76,6 +76,10 @@ def iterate_cpu(stream):
         yield {
             "event": event, "instruction_sequence": instruction_seq,
             "cs": cs, "ip": ip, "linear_ip": linear_ip,
+            # 16-bit register lows from the real CPU pre-state. Optional
+            # consumers include the v0.77 original 22CA wall-U witness.
+            "ax": data[9] & 0xffff, "cx": data[11] & 0xffff,
+            "si": data[13] & 0xffff, "di": data[14] & 0xffff,
             "code": code[:code_valid], "code_valid": code_valid,
             "code32": code32, "protected_mode": pmode,
         }
