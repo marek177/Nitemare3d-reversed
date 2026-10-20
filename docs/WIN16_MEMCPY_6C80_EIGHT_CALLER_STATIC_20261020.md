@@ -76,6 +76,16 @@ fast-path copy, even though the unsigned requested length
 does not fit. This result is a local arithmetic witness,
 not an observed buffer overflow or a proven reachable state.
 
+A stronger mathematical counterexample has a **valid pre-call**
+used<=capacity relationship: used=0, capacity=32767, added=32768.
+The 16-bit AX becomes 0x8000, interpreted as -32768 by JLE,
+and the original therefore chooses the fast append branch even
+though the requested 32768 bytes exceed 32767 data-byte capacity.
+The subsequent terminating NUL would be written after those
+bytes. This is a conditional original-ASM hazard, not proof that
+a real Windows 3.11 gameplay or user-input path reaches 32768
+characters.
+
 The append and two-part concatenation helper also compute
 combined lengths using 16-bit ADD with no observed carry
 check before requesting allocation. Local allocator helper
