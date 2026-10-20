@@ -79,6 +79,7 @@ void LevelState::discoverPushables() {
 }
 
 bool LevelState::wallAllowsMovement(std::uint8_t wallId) const {
+    if (wallId == 0) return true; // Cleared WALL means no wall, even if defined as NULL.
     const auto* def = wallDefs_.find(wallId);
     if (!def) return false;
     const std::string_view cls = def->className;
@@ -89,8 +90,9 @@ bool LevelState::wallAllowsMovement(std::uint8_t wallId) const {
 // metadata. Every RETREAT/TURN/FLEE/SAFESPOT record has imageName="NULL"
 // in all three supplied WALLS.* definition tables. A grid-ray must traverse
 // these markers rather than paint a fallback-color wall in front of the scene.
-// Movement/collision is deliberately unchanged pending original runtime proof.
+// WALL zero is an empty cell; other marker movement rules remain diagnostic.
 bool LevelState::wallObscuresView(std::uint8_t wallId) const {
+    if (wallId == 0) return false; // Never draw a deleted wall in the preview.
     if (wallAllowsMovement(wallId)) return false;
     const auto* def = wallDefs_.find(wallId);
     if (!def) return true; // Keep unknown IDs visibly diagnostic.
