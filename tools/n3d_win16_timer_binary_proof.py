@@ -272,6 +272,15 @@ def verify_win18_timer_call_and_stack(image: NeImage) -> dict:
 # fresh byte re-read. verify_win110_timer_call_and_stack() runs it against
 # the real EXE only after the SHA-pinned original file is selected.
 WIN110_TIMER_ARCHIVED_ANCHORS = {
+    # Before timer setup: original FUN_1010_0E9E one-shot global reset.
+    # DS:00A2 is initialized to 01h in the original DGROUP image;
+    # DS:46B2 is also initialized to 00h. These bytes are a
+    # code-opcode witness, not a complete aliased-writer census.
+    0x0E9E: "80 3e a2 00 00",  # CMP BYTE DS:00A2,0
+    0x0EA3: "74 37",           # if latch 0, skip one-shot reset
+    0x0EC8: "32 c0",           # XOR AL,AL
+    0x0ECA: "a2 a2 00",        # DS:00A2 := 0
+    0x0ED6: "a2 b2 46",        # DS:46B2 := 0
     0x0F32: "6a 00",           # lifecycle mode=0
     0x0F34: "9a 6c d6",        # CALL FAR 3:D66C
     0x0F39: "83 c4 02",
