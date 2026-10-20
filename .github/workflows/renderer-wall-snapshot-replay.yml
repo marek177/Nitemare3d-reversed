@@ -25,6 +25,21 @@ jobs:
         run: cmake --build build-replay --config Debug --target n3d_dos20_wall_replay n3d_dos20_cedc_projection_test n3d_dos20_wall_material_binding_test --parallel 4
       - name: Run synthetic integration and component checks
         run: ctest --test-dir build-replay -C Debug -R '^n3d_dos20_(wall_replay_cli|cedc_projection|wall_material_binding)_test$' --output-on-failure
+      - name: Upload original-free wall replay executable and sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: n3d-dos20-wall-replay-${{ matrix.os }}
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            build-replay/n3d_dos20_wall_replay
+            build-replay/Debug/n3d_dos20_wall_replay.exe
+            tools/n3d_dos20_wall_replay.cpp
+            src/re/
+            src/renderer/Win16WallRasterCore.hpp
+            src/formats/BinaryIO.hpp
+            src/formats/BinaryIO.cpp
+            docs/DOS20_WALL_SNAPSHOT_REPLAY.md
       - name: Strict C++20 integration UBSan
         if: runner.os == 'Linux'
         run: |
