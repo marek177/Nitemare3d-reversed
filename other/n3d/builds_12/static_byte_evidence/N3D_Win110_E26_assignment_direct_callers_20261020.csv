@@ -1,0 +1,4 @@
+site,caller_function,requested_byte_count_source,source_ptr_origin,original_code_witnesses,maximum_uint16_requested_chars,large_32768_input_excluded,proof_grade
+1000:0E7B,1000:0E6A,WORD [source_trio+2],WORD [source_trio+0],0E75 PUSH [DI+2];0E78 PUSH [DI];0E7B CALL 0E26,,false,ARCHIVED_ORIGINAL_GHIDRA_DIRECT_CALL_ARGUMENTS
+1000:0EAB,1000:0E88,strlen(param2) or zero when param2 NULL,param2 near pointer,0E97 TEST SI;0EA0 CALL 609E;0EA6 PUSH AX;0EAB CALL 0E26,,false,ARCHIVED_ORIGINAL_GHIDRA_DIRECT_CALL_ARGUMENTS
+1000:3275,1000:3250,USER.LOADSTRING return SI,SS:BP-100 local buffer,3250 ENTER 0100;3282 PUSH 00FF;3293 LOADSTRING;3262 MOV SI AX;3275 CALL 0E26,255,true,ARCHIVED_ASM_PLUS_LOADSTRING_BUFFER_API_CONTRACT
