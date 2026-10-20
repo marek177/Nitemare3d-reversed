@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/win16-original-shareware-byte-check.yml'
       - 'tools/n3d_win16_timer_binary_proof.py'
+      - 'tools/n3d_win16_timer_target_census.py'
       - 'tools/ne_renderer_audit.py'
   workflow_dispatch:
 
@@ -121,6 +122,17 @@ jobs:
               print('TIMER',row['address'],row['bytes'],row['mnemonic'],row['operands'],row['relocations'])
           print('E8 candidates:',r['candidate_near_E8_xrefs_to_timer_init'])
           print('NE fixup internal refs:',r['fixup_backed_internal_references_to_timer_init'])
+          census = r['timer_target_specific_ne_census']
+          print('Original expanded target NE fixups:', census['expanded_internal_relocations_to_target'])
+          print('Original target relocation types:', census['classes'])
+          print('Original direct FAR timer callers:', census['direct_far_call_sites'])
+          print('Original timer address-taken/non-direct fixups:', census['non_direct_fixups_requiring_pointer_flow'])
+          print('Original E8 raw near candidates:', census['raw_e8_near_call_candidates_unverified'])
+          assert census['direct_far_call_sites'] == ['3:0EE8','3:0F24'], (
+              'SHA-pinned original Win16 1.8 callers no longer match archived ASM')
+          assert census['expanded_internal_relocations_to_target'] == 2
+          assert not census['non_direct_fixups_requiring_pointer_flow']
+          assert census['all_runtime_indirect_calls_excluded'] is False
           import sys
           import tempfile
           sys.path.insert(0, 'tools')
