@@ -158,6 +158,20 @@ This is a conditional address/length proof, **not evidence that the
 original gameplay supplies a string of such length or ever changes
 the clock flag through this path**.
 
+**Original DS:101E literal verification:** the existing Ghidra DGROUP
+image at `1048:101E` contains the NUL-terminated bytes of
+`config.sav` (10 printable characters plus one terminator).
+At `3:52F5` and `3:5358`, the helper's argument is the literal
+near offset `0x101E`. Therefore for these two direct callers
+`n2=10` exactly. A prefix of `n1=0` produces only an
+11-byte output and cannot affect the clock byte. More generally
+`n1 <= 4073` remains below the timer flag; `n1 >= 4074`
+would satisfy the conditional address overlap test.
+The preceding global string `DS:46BE` has an original zero
+initial byte and is explicitly cleared at `3:0ED9` during the
+one-shot reset, but proving that no pointer writer grows this
+prefix on every reachable call is a separate obligation.
+
 Five direct callers are named in original Ghidra XREF:
 `3:52F5`, `3:5358`, `3:5397`, `3:548C`, `3:5759`.
 The first two directly pass a fixed text pointer `DS:101E`,
