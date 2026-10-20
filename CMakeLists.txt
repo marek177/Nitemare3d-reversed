@@ -294,6 +294,11 @@ add_executable(n3d_dos20_visibility_opcode_contract_test
     tests/dos20_visibility_opcode_contract_test.cpp)
 target_link_libraries(n3d_dos20_visibility_opcode_contract_test PRIVATE n3d_core)
 
+# Bounded original Win16 lifecycle branch contract (synthetic, no old EXEs).
+add_executable(n3d_win16_timer_lifecycle_gate_test
+    tests/win16_timer_lifecycle_gate_test.cpp)
+target_link_libraries(n3d_win16_timer_lifecycle_gate_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
