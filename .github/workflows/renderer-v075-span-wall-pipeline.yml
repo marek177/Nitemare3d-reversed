@@ -1,0 +1,38 @@
+name: N3D v075 DOS2 owner-span wall pipeline
+
+on:
+  push:
+    paths:
+      - 'src/re/N3DDos20SpanWallPipeline.hpp'
+      - 'src/re/N3DDos20IndexedWallColumn.hpp'
+      - 'tests/dos20_span_wall_pipeline_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v075-span-wall-pipeline.yml'
+  pull_request:
+    paths:
+      - 'src/re/N3DDos20SpanWallPipeline.hpp'
+      - 'src/re/N3DDos20IndexedWallColumn.hpp'
+      - 'tests/dos20_span_wall_pipeline_test.cpp'
+      - 'CMakeLists.txt'
+      - '.github/workflows/renderer-v075-span-wall-pipeline.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dos20_spanwall:
+    name: DOS2 304-column integration regression
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure C++20 without SDL3 or commercial game files
+        run: cmake -S . -B build-v075 -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Build 304-column owner/span raster test
+        run: cmake --build build-v075 --config Debug --target n3d_dos20_span_wall_pipeline_test --parallel 4
+      - name: Execute synthetic DOS2 VEC/owner/span-to-wall tests
+        run: ctest --test-dir build-v075 -C Debug -R '^n3d_dos20_span_wall_pipeline_test$' --output-on-failure
