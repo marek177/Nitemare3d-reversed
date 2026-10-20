@@ -15,6 +15,7 @@
 // a candidate and rejects missing resources instead of using a DDA fallback.
 #include "re/N3DDos20SpanWallPipeline.hpp"
 #include "re/N3DDos20TextureUEdge.hpp"
+#include "re/N3DDos20CedcProjection.hpp"
 #include "re/N3DDos20ShadeXLAT.hpp"
 #include "renderer/Win16WallRasterCore.hpp"
 
@@ -176,30 +177,33 @@ inline std::optional<std::uint16_t> perspectiveUDosFromDS(
             : wc::subtract16(vec.y1,playerY);
         perpendicular=wc::subtract16(vec.x1,playerX);
     }
-    const std::int64_t product=
-        std::int64_t(perpendicular)*(cosineDivisor?sine:cosine);
-    const std::int64_t verticalNumerator=
+    // CEDC is a 32-bit signed IDIV pipeline whose IMUL EAX and
+    // ADD/SUB intermediate numerators wrap modulo 2^32. The original
+    // SUB(screenX, centerX) is a signed 16-bit operation. Reuse the
+    // independently original-runtime-verified arithmetic (v0.79) instead
+    // of unchecked 64-bit host evaluation.
+    const auto product32=std::int32_t(perpendicular)*
+                         std::int32_t(cosineDivisor?sine:cosine);
+    const auto verticalNumerator=
         sw::signedDword(sw::dword(ds,0x3686));
-    const std::int64_t inverseScale=
-        sw::signedDword(sw::dword(ds,0x368A));
+    const auto inverseScale=sw::signedDword(sw::dword(ds,0x368A));
     if(verticalNumerator<=0 || inverseScale<=0)return std::nullopt;
-    const int centerX=sw::signedWord(sw::word(ds,0x4550));
-    const std::int64_t screenTerm=
-        (std::int64_t(screenX-centerX)*inverseScale)/spanYQ4;
-    const std::int64_t verticalTerm=verticalNumerator/spanYQ4;
-    std::int64_t temp=0;
-    if(!cosineDivisor){
-        temp=vertical?product-screenTerm:verticalTerm-product;
-    }else{
-        temp=vertical?verticalTerm-product:screenTerm+product;
-    }
-    auto along=wrap16(temp/divisor);
-    along=wrap16(std::int32_t(along)+local);
+    const auto centerX=sw::signedWord(sw::word(ds,0x4550));
+    const cedc::Input projection{
+        screenX,centerX,vec.orientation,spanYQ4,
+        inverseScale,verticalNumerator,product32,
+        static_cast<std::int16_t>(sine),
+        static_cast<std::int16_t>(cosine),
+        cosineDivisor
+    };
+    const auto projected=cedc::project(projection);
+    if(!projected)return std::nullopt; // original signed IDIV would fault
+    auto along=wrap16(std::int32_t(
+        sw::signedWord(projected->returnedAX))+local);
     if(vec.renderClass!=2 && (vec.orientation==0 || vec.orientation==3))
         along=wc::negate16(along);
-    // DOS v2.0 FUN_1000_22CA is now independently instruction-translated
-    // and checked against 1,520 original CPU-return U values. Keep CEDC
-    // projection/25DC arithmetic a separate proof obligation.
+    // This is the original 25DC ADD SI / optional NEG SI, followed by
+    // the separately original-runtime-verified 22CA U correction.
     const texture_u::VecEdge edge{
         vec.screenX1,vec.screenX2,
         vec.x1,vec.y1,vec.x2,vec.y2,
