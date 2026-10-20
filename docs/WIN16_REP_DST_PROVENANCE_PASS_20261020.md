@@ -1,5 +1,18 @@
 # Win16 1.10 — REP MOVS/STOS destination provenance, static pass
 
+> **20 October 2026, second-pass supersession:** the latest
+> source-local evidence covers **46 fixed/source-bounded REP sites**,
+> plus **one symbolically bounded LocalAlloc STOSW**, leaving
+> **36 unclosed Ghidra-listed REP sites**. These add 10 literal
+> portal/pentagram string copies (combined <=210 bytes into a
+> 256-byte local), two 64,000-byte video-selector operations
+> and a dynamically sized heap clear that writes n+1 nominal
+> bytes for odd n<=65533. Historical 34/49, 25/58 counters
+> below are retained as first-pass context. Read the
+> [second-pass original-static audit](WIN16_REP_ALIAS_CLOSURE_PASS2_20261020.md).
+> Nothing about 1:1 runtime parity or full alias closure has changed.
+
+
 > **Follow-up on 20 October 2026:** the newer audit has now bounded
 > **34/83** original Ghidra REP sites (25 REP32 plus 9 REP16), including
 > **7** fixed DGROUP copy/fill spans that do not overlap `DS:00A2` or
@@ -224,11 +237,11 @@ from observed flag corruption.
   any of the 58 newly tracked REP/pointer-flow cases.
 
 Current status:
-**7 original fixed-DGROUP REP intervals excluded from overwriting the
-two watched flags; 34 source-level REP destinations classified with
-stated assumptions; 49 REP destinations and the complete computed
+**7 original fixed-DGROUP REP intervals exclude the watched flags;
+46 fixed/source-bounded REP sites plus one symbolic LocalAlloc case
+are now mapped, while 36 remaining REP sites and the complete computed
 alias writer graph remain OPEN.** The three parametrized filename
-wrappers have fixed `user.sav` suffixes at all their named direct
-callers; their directory prefix is still potentially variable via
-`-p`. The old counters above refer only to the first audit pass.
-No increase in behavioral/timing/rendering 1:1 parity percentage.
+wrappers have fixed user.sav suffixes at their named direct callers;
+their directory prefix can still be altered via -p or unknown aliases.
+See the second-pass audit above.
+No increase in behavior, timing or rendering 1:1 parity percentage.
