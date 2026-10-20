@@ -215,9 +215,14 @@ int main() {
     // reject the entire catalog build without mutating its previous caches.
     const auto originalCaches=catalog.caches.size();
     ds[b+4]=1;  // same stream MUST have same byte cache selector
+    assert(!catalog.select(m::vecFromDosDS(ds,b)));
     assert(!catalog.build(img,ds,3));
     assert(catalog.caches.size()==originalCaches);
     ds[b+4]=0;
+    // A stale/wrong cache selector must not silently show another IMG frame.
+    ds[c+4]=0;
+    assert(!catalog.select(m::vecFromDosDS(ds,c)));
+    ds[c+4]=1;
     std::vector<std::uint8_t> broken=img;
     broken[0x800+5*90+2]=0;
     assert(!catalog.build(broken,ds,3));
