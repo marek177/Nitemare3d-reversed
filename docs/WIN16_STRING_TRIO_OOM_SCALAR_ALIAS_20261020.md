@@ -121,6 +121,48 @@ may introduce separate 16-bit address wrap/segment faults.
 The least boundary case n=8000h is therefore the cleanest
 local conditional witness.
 
+## 4. First interprocedural filter: three named callers of 1000:0E26
+
+The archived original Ghidra target XREF table for FUN_1000_0E26
+lists **exactly three named direct CALL sites**:
+
+| Original callsite | Caller | Count passed as param3 | Is count>=8000h locally excluded? |
+|---|---|---|---|
+| 1000:0E7B | FUN_1000_0E6A | source string-trio [source+2] used WORD; source offset [source+0] | NO; source trio writer graph needed |
+| 1000:0EAB | FUN_1000_0E88 | strlen(param2) from FUN_1008_609E, or zero if input ptr is null | NO; all origin strings and maximum lengths needed |
+| 1000:3275 | FUN_1000_3250 | return SI from USER.LOADSTRING of a string resource into its local buffer | **YES** under original LoadString size semantics |
+
+At 1000:3250, the function starts with ENTER 0100h, allocating
+a 256-byte local byte buffer. It calls helper FUN_1000_3282 at
+1000:325D with that buffer. The helper passes an explicit
+maximum output size **00FFh = 255 bytes** to USER.LOADSTRING
+at 1000:3293. The returned count in AX is transferred to SI
+at 1000:3262. Nonzero SI becomes the count argument of
+the original 1000:3275 call to FUN_1000_0E26.
+
+A documented LoadString buffer size restricts copied text to
+fit that size (usual terminating-NUL policy); independently of
+the precise off-by-one return convention, 255 is a conservative
+upper bound far below 32768. Therefore the resource-loading
+direct caller cannot enter the signed-negative 8000h..FFFFh
+assignment case under its normal Win16 API contract.
+Historic/related Microsoft LoadString API documentation:
+https://techshelps.github.io/MSDN/WINBASE/devdoc/live/pdwbase/strings_6j53.htm
+
+This is **one of three direct caller branches bounded**, not a
+global exclusion of the dangerous assignment:
+- 1000:0E7B copies the source object's used field and its near pointer.
+  This is a circular ownership/invariant question until ALL original
+  writers of that field and source aliases are enumerated.
+- 1000:0EAB uses near-string strlen. The original strlen helper
+  can count up to 65535 by REPNE SCASB, so its *local* behavior
+  does not guarantee a count under 8000h.
+- Any computed/indirect call to 1000:0E26 is still unproven absent.
+
+Exact direct call records and source expressions:
+other/n3d/builds_12/static_byte_evidence/
+N3D_Win110_E26_assignment_direct_callers_20261020.csv
+
 ## 4. Evidence boundary and regression
 
 Original-static and safe address models:
@@ -156,12 +198,14 @@ Proof grades:
 | Fresh original Win16 1.10 whole-file SHA check | NOT PERFORMED |
 | Runtime / pixel / timing parity | NOT ESTABLISHED |
 
-## 5. Next proof obligations
+## 6. Next proof obligations
 
-First statically audit all named direct callers of FUN_1000_0E26:
-1000:0E7B, 1000:0EAB and 1000:3275.
-Identify precise n bounds from their source objects, strlen
-or input and whether 8000h is reachable.
+The named 1000:3275 resource/LoadString input is already
+bounded to 255, excluding 8000h in that direct path.
+Now resolve the remaining two named direct callers of
+FUN_1000_0E26: 1000:0E7B (source trio used field) and
+1000:0EAB (strlen of dynamic near input string).
+Determine their maximum original reachable n values.
 
 Then enumerate all six named callers of FUN_1000_0D3E:
 1000:0DBF, 1000:0E0B, 1000:0E3F, 1000:0ECE,
