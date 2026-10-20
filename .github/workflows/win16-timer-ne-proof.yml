@@ -8,6 +8,10 @@ on:
       - 'tools/n3d_win16_timer_target_census.py'
       - 'tools/n3d_win16_clock_alias_writes.py'
       - 'tools/n3d_win16_raw_fixed_store_candidates.py'
+      - 'tools/n3d_win16_rep_destination_audit.py'
+      - 'tests/test_n3d_win16_rep_destination_audit.py'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_Ghidra_REP_destination_register_20261020.csv'
+      - 'docs/WIN16_REP_DST_PROVENANCE_PASS_20261020.md'
       - 'tests/test_n3d_win16_raw_fixed_store_candidates.py'
       - 'tests/test_n3d_win16_clock_alias_writes.py'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_timer_direct_write_witnesses_20261020.csv'
@@ -30,6 +34,10 @@ on:
       - 'tools/n3d_win16_timer_target_census.py'
       - 'tools/n3d_win16_clock_alias_writes.py'
       - 'tools/n3d_win16_raw_fixed_store_candidates.py'
+      - 'tools/n3d_win16_rep_destination_audit.py'
+      - 'tests/test_n3d_win16_rep_destination_audit.py'
+      - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_Ghidra_REP_destination_register_20261020.csv'
+      - 'docs/WIN16_REP_DST_PROVENANCE_PASS_20261020.md'
       - 'tests/test_n3d_win16_raw_fixed_store_candidates.py'
       - 'tests/test_n3d_win16_clock_alias_writes.py'
       - 'other/n3d/builds_12/static_byte_evidence/N3D_Win110_timer_direct_write_witnesses_20261020.csv'
@@ -64,6 +72,8 @@ jobs:
           python -m py_compile tools/n3d_win16_timer_target_census.py
           python -m py_compile tools/n3d_win16_clock_alias_writes.py
           python -m py_compile tools/n3d_win16_raw_fixed_store_candidates.py
+          python -m py_compile tools/n3d_win16_rep_destination_audit.py
+          python -m py_compile tests/test_n3d_win16_rep_destination_audit.py
           python -m py_compile tests/test_n3d_win16_raw_fixed_store_candidates.py
           python -m py_compile tests/test_n3d_win16_clock_alias_writes.py
           python -m py_compile tests/test_n3d_win16_timer_target_census.py
@@ -86,5 +96,9 @@ jobs:
           python -m unittest discover -s tests -p 'test_n3d_win16_clock_alias_writes.py' -v
       - name: Verify raw NE byte candidate scanner overlap safety
         run: python -m unittest discover -s tests -p 'test_n3d_win16_raw_fixed_store_candidates.py' -v
+      - name: Enforce 83 REP-site Ghidra archive and 25 write-span destination bounds
+        run: |
+          python tools/n3d_win16_rep_destination_audit.py --output /tmp/n3d-win16-rep-dst-audit.json
+          python -m unittest discover -s tests -p 'test_n3d_win16_rep_destination_audit.py' -v
       - name: Verify CLI has no original binary dependency
         run: python tools/n3d_win16_timer_binary_proof.py --help
