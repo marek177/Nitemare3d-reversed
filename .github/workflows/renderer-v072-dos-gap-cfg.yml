@@ -1,0 +1,37 @@
+name: N3D v072 DOS2 static CFG probe
+
+on:
+  push:
+    paths:
+      - 'tools/n3d_v072_dos2_gap_cfg_probe.py'
+      - 'tools/n3d_v071_dos20_opcode_gap_audit.py'
+      - 'tests/test_n3d_v072_dos2_gap_cfg_probe.py'
+      - '.github/workflows/renderer-v072-dos-gap-cfg.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_v072_dos2_gap_cfg_probe.py'
+      - 'tools/n3d_v071_dos20_opcode_gap_audit.py'
+      - 'tests/test_n3d_v072_dos2_gap_cfg_probe.py'
+      - '.github/workflows/renderer-v072-dos-gap-cfg.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-dos-cfg:
+    name: Synthetic 8086 CFG probe
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Capstone disassembler for synthetic 16-bit fixtures
+        run: python -m pip install capstone==5.0.3
+      - name: Test direct CFG and uncertainty classification, no game assets
+        run: python -m unittest discover -s tests -p 'test_n3d_v072_dos2_gap_cfg_probe.py' -v
