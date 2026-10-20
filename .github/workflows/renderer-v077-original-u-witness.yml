@@ -1,0 +1,33 @@
+name: N3D v077 DOS2 original texture-U witness
+
+on:
+  push:
+    paths:
+      - 'tools/n3d_v073_dos2_gap_trace_witness.py'
+      - 'tools/n3d_v077_dos20_u_witness.py'
+      - 'tests/test_n3d_v077_dos20_u_witness.py'
+      - '.github/workflows/renderer-v077-original-u-witness.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_v077_dos20_u_witness.py'
+      - 'tests/test_n3d_v077_dos20_u_witness.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test_original_u_witness:
+    name: Original DOS2 U witness synthetic tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original U trace pairing tests without commercial assets
+        run: python -m unittest discover -s tests -p 'test_n3d_v077_dos20_u_witness.py' -v
