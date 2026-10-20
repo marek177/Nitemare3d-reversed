@@ -167,6 +167,14 @@ def audit(rows:list[dict[str,str]])->dict[str,Any]:
         "literal_tested_counterexamples":[
             {
                 "site":"1000:4C72",
+                "used":0,"added":32768,"capacity":32767,
+                "wrapped_sum":additive_required_len_u16(0,32768),
+                "signed_fast_append_taken":append_direct_fast_path(0,32768,32767),
+                "previous_used_fits_unsigned_capacity":True,
+                "new_count_fits_unsigned_capacity":False,
+            },
+            {
+                "site":"1000:4C72",
                 "used":65530,"added":10,"capacity":20,
                 "wrapped_sum":additive_required_len_u16(65530,10),
                 "signed_fast_append_taken":append_direct_fast_path(65530,10,20),
