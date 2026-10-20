@@ -60,13 +60,33 @@ Táto výnimka je **konkrétna DOS statická sémantika**, nie dôkaz, že všet
 
 ---
 
-## 4. Perspektívne texture-U — ČO JE KANDIDÁT
+## 4. DOS-native perspektívne U: CEDC + caller 25DC + edge 22CA
 
-Win16 EBD6 matematika je celočíselná; `screenTerm = ((screenX-160) * inverseProjectionScale) / spanYQ4`, `verticalTerm = verticalNumerator / spanYQ4`. Pre 304×152 viewport je `horizontalScale=178`, `verticalNumerator=81715200`, `inverseProjectionScale=floor(81715200/178)=459074`. Selektor oktantu používa masku `0x99`, pôvodnú Q10 trig lookup 1440 B a orientáciu VEC. Potom sa použijú signed-16 wrap, endpoint flip (vrátane render class 0x3F/0x40), sign, a `6422` korekcia/maska U.
+Po dodatočnom statickom prečítaní originálneho dekompilovaného `FUN_1000_cedc` (`N3D-DOS-UNFULL-v20.exe.c`, rovnaká rodina DOS v2.0) a jeho volajúceho `25DC` pribudla samostatná **DOS-native** vetva `perspectiveUDosFromDS`.
 
-**Dôležité:** matematika `EBD6` v tomto C++ porte pochádza z rekonštrukcie **Win16 1.10**, nie z inštrukčne uzavretého DOS v2.0 volania `25DC/22CA`. Rovnako Q10 tabuľku pre testy nevydávame za autentickú DOS trig tabuľku. `perspectiveUCandidate` je preto výslovne označený ako **cross-build candidate**, aj keď používa integer aritmetiku a syntetické testy sedia. Nesmie sa vyhlásiť za DOS2 pixel-perfect U bez runtime porovnania.
+Táto vetva **nepoužíva Win16 trig table ani odhad uhol→octant**, ale skutočné DOS renderer globály:
 
-Archívny Q10 table parser požaduje presne 1440 B (360×sin i16 + 360×cos i16), sanity check `sin45=724`, `sin90=1024`, `cos0=1024`, `cos90=0`; žiadne `double` trig generovanie. Výber správneho animation frame, fyzického U a shade XLAT je pred presným 16.16 odberom pixelov.
+| DOS adresa | Čítaná hodnota |
+|---|---|
+| `DS:415C` | selector: nula → `sinQ10` deliteľ; nenula → `cosQ10` deliteľ |
+| `DS:41B2` | `sinQ10` 16-bit signed |
+| `DS:41B4` | `cosQ10` 16-bit signed |
+| `DS:3686` | 32-bit vertical numerator |
+| `DS:368A` | 32-bit inverse projection scale |
+| `DS:4550` | center screen X |
+| `DS:4162/4164` | hráčove world X/Y |
+
+Matematika `CEDC` používa originálny `spanYQ4` (horné slovo 16.16 span fázy), orientáciu VEC a priečneho player-relative súčinu. Dve možnosti deliteľa a štyri kombinácie orientácie prepájajú `screenTerm = ((screenX-centerX)*inverseScale)/spanYQ4` s `verticalTerm = verticalNumerator/spanYQ4`. Volajúci `25DC` doplní 16-bit `local20`, inverziu podľa class/flags/orientácie a záverečnú korekciu DOS `22CA`. Pre `22CA` sa používa zrekonštruovaná Win16 `6422` vetvová rodina, ktorá má samostatné DOS statické potvrdenie.
+
+**Nová predvolená voľba `MaterialBinder` je `DosNativeCedc22ca`.** Nevyžaduje Win16 `Trig360` ani hodnotu uhla z UI, pretože číta originálne DS Q10 a výpočtové konštanty. Pôvodná funkcia `perspectiveUCandidate` zostáva ako prepínateľná `Win16CrossBuildEbd6` kontrola. Na syntetických identických DS/trig vstupoch (0°/90°) dávajú obidve rovnaké U; zdrojové 128×64 dve plné steny sa nekomprimujú.
+
+**Dôkazová hranica:** port je odvodený z pôvodného DOS C/dekompilácie a sémantiky 25DC, nie z kompletného inštrukčne presného CFG/trace výpisu 8086 pre každú možnú overflow a endian/alias vetvu. Matematika používa väčšie medzisúčiny tam, kde pôvodný build mohol mať 16/32-bit wrap. Ani DOS-native pomenovanie nie je oprávnenie tvrdiť pixel perfect bez priamo párovaného originálneho `U`/framebufferu.
+
+### 4.1 Podmienka shade pri DOS orientácii
+
+Lokálna podmienka `DS:6278 > 0 && DS:430E == 0 && VEC.orientation∈{0,1}` vyberá **shade 0** aj v prípade, že global shade má inú úroveň. Material binder má preto zvlášť `shading` a `shadingZero`, obidve z rovnakej base RGB6 palety. Chýbajúca shade-zero LUT, neplatná DS:6278 hodnota alebo shade tabuľka z predošlého ticku vedú k odmietnutiu stĺpca namiesto fallbacku. Pozorované správanie vychádza z pôvodnej DOS `25DC` dekompilácie; ďalšie účinky `DS:430E` ostávajú neznáme.
+
+---
 
 ## 5. CI testy a reprodukcia
 
@@ -85,7 +105,7 @@ Testovacie IMG sekvencie a RGB6 palety sú generované v kóde testov; sú to **
 
 ## 6. Zostávajúce 1:1 brány
 
-1. Inštrukčne uzavrieť DOS v2.0 perspektívne U vrátane `25DC→22CA→1A2E`, porovnať s každým skutočným stĺpcom Win16-portovaného výpočtu na autentických CPU stavoch.
+1. Inštrukčne dopresniť už portovaný DOS2 `25DC→CEDC→22CA→1A2E` reťazec vrátane 16/32-bit wrap, cardinal/nulových deliteľov a skutočného runtime poradia volaní; porovnať každé U s originálnym 8086 trace pri identickom stĺpci.
 2. Overiť IMG cache stream/frame alias a štart frame cez originálne `IMG.1` + `DS:62AC` VEC snapshot; aktualizovať prípadné mutačné vedľajšie efekty frame clamp.
 3. Na identickom hernom ticku vykonať originál vs port **VEC/OWNER/SPAN/FRAME/DAC** bránu [v0.72](../tools/n3d_v072_stage_frame_gate.py): `64 000` indexed8 a `768` DAC komponentov, nulová tolerancia.
 4. Doplniť pohyblivé steny/dvere, originálne animácie (engine clock + zdieľaný RNG), sprite compositor a HUD, správny VGA page/palette event order.
