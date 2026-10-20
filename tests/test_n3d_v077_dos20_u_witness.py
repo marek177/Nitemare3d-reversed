@@ -95,6 +95,23 @@ class UWitnessTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             pinned.verify_original_exe(bytes(pinned.EXE_SIZE))
 
+    def test_original_u_numeric_pair_first_difference(self):
+        import n3d_v077_original_u_diff as compare
+        original=bytearray(304)
+        original[101-8]=127
+        candidate=bytearray(original)
+        candidate[101-8]=0
+        result=compare.compare(bytes(original),bytes(candidate))
+        self.assertEqual(result["different_U_columns"],1)
+        self.assertEqual(result["first_wrong_screen_x"],101)
+        self.assertEqual(result["original_vs_remake_framebuffer"],"NOT_TESTED")
+        self.assertTrue(compare.compare(bytes(original),bytes(original))["numeric_U_equal"])
+
+    def test_u_numeric_diff_rejects_truncated_buffer(self):
+        import n3d_v077_original_u_diff as compare
+        with self.assertRaisesRegex(ValueError,"304 bytes"):
+            compare.compare(bytes(303),bytes(304))
+
     def test_event_register_fields_are_prestate(self):
         image,blob=fixture()
         with io.BytesIO(blob) as stream:
