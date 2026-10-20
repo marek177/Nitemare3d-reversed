@@ -9,7 +9,8 @@ import unittest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
 from n3d_win16_rep_destination_audit import (
-    KNOWN_FIXED_32, KNOWN_HEAP_90B, WIN110_DGROUP_FILE_BACKED_BYTES,
+    KNOWN_FIXED_32, KNOWN_FIXED_16, KNOWN_REP16_BOUNDED,
+    KNOWN_HEAP_90B, WIN110_DGROUP_FILE_BACKED_BYTES,
     load_ledger, overlaps_linear_region, provenance_audit,
     STRING_CLOCK_OFFSET, STRING_STAGING_SITES,
     unbounded_string_copy_reaches_clock,
@@ -28,7 +29,9 @@ class Win16RepDestinationTests(unittest.TestCase):
             "MOVSB.REP":14,"MOVSW.REP":20,"MOVSD.REP":14,
         })
         self.assertEqual(result["source_byte_bounded_rep_movsd_stosd"],25)
-        self.assertEqual(result["remaining_rep_destinations_for_pointer_provenance"],58)
+        self.assertEqual(result["source_byte_bounded_rep_movsw_stosw"],9)
+        self.assertEqual(result["source_byte_bounded_rep_total"],34)
+        self.assertEqual(result["remaining_rep_destinations_for_pointer_provenance"],49)
         self.assertFalse(result["alias_writer_graph_complete"])
         self.assertFalse(result["original_1_10_sha_reread_this_run"])
 
@@ -52,6 +55,50 @@ class Win16RepDestinationTests(unittest.TestCase):
             self.assertFalse(r["overlap_DS_00A2"])
             self.assertFalse(r["overlap_DS_46B2"])
         self.assertTrue(result["fixed_DGROUP_regions_exclude_clock_and_latch"])
+
+    def test_all_nine_new_rep_movsw_stosw_are_bounded_from_original_asm(self):
+        result=provenance_audit(self.rows)
+        self.assertEqual(len(KNOWN_REP16_BOUNDED),9)
+        for site,length in KNOWN_REP16_BOUNDED.items():
+            record=next(row for row in self.rows if row["site"]==site)
+            self.assertIn(record["rep_operation"],("MOVSW.REP","STOSW.REP"))
+            self.assertEqual(int(record["bounded_total_write_bytes"]),length)
+            self.assertNotIn(record["destination_class"],(
+                "DESTINATION_PROVENANCE_OPEN",
+                "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND",
+                "STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND"))
+        self.assertEqual(result["source_byte_bounded_rep_total"],34)
+
+    def test_seven_total_fixed_dgroup_write_ranges_exclude_clock(self):
+        result=provenance_audit(self.rows)
+        seven=result["seven_fixed_DGROUP_writes"]
+        self.assertEqual(len(seven),7)
+        self.assertEqual({r["source"] for r in seven},
+                         set(KNOWN_FIXED_32)|set(KNOWN_FIXED_16))
+        two=result["additional_two_18byte_fixed_DGROUP_writes"]
+        self.assertEqual({r["source"] for r in two},set(KNOWN_FIXED_16))
+        for r in two:
+            self.assertEqual(r["address"],"DS:423E")
+            self.assertEqual(r["last_written_address"],"DS:424F")
+            self.assertEqual(r["bytes"],18)
+            self.assertFalse(r["overlap_DS_00A2"])
+            self.assertFalse(r["overlap_DS_46B2"])
+
+    def test_new_rep16_stack_zeroing_is_32_bytes(self):
+        originals={"1008:6A11","1008:6A6B","1008:6AC3","1008:6B18"}
+        data=[row for row in self.rows if row["site"] in originals]
+        self.assertEqual(len(data),4)
+        self.assertTrue(all(row["rep_operation"]=="STOSW.REP"
+                            and row["bounded_total_write_bytes"]=="32"
+                            and row["destination_class"]=="STACK_LOCAL_OR_SS_REGION"
+                            for row in data))
+
+    def test_changed_32_byte_stack_zeroing_invalidates_original_proof(self):
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]=="1008:6B18")
+        row["bounded_total_write_bytes"]="34"
+        with self.assertRaisesRegex(ValueError,"REP16 instruction length"):
+            provenance_audit(rows)
 
     def test_8e90_zero_fill_ends_exactly_at_file_backed_DGROUP_end(self):
         # NE segment 10 (file-backed bytes=36526) is corroborating original
