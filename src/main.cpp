@@ -34,6 +34,7 @@ int main(int argc, char** argv) {
         auto world = n3d::LevelState::create(data.episode().maps.levels().at(static_cast<std::size_t>(level - 1)), data.episode().objects, data.episode().walls);
         std::cout << "Episode " << episode << ", level " << level << ": pushables=" << world.pushables().size() << '\n';
         n3d::Framebuffer fb(320, 200);
+        std::cerr << "RENDERER: diagnostic DDA preview ONLY; NOT original N3D pixel parity.\n";
         n3d::Raycaster raycaster(&data.episode().images);
         n3d::SDLVideo video(320, 200, 3);
         auto previous = std::chrono::steady_clock::now();
