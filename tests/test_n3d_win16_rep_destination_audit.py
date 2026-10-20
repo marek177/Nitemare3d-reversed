@@ -1,0 +1,132 @@
+#!/usr/bin/env python3
+"""Synthetic regression tests of an existing Win16 Ghidra REP-write ledger."""
+from __future__ import annotations
+
+import copy
+from pathlib import Path
+import sys
+import unittest
+
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
+from n3d_win16_rep_destination_audit import (
+    KNOWN_FIXED_32, KNOWN_HEAP_90B, WIN110_DGROUP_FILE_BACKED_BYTES,
+    load_ledger, overlaps_linear_region, provenance_audit
+)
+
+
+class Win16RepDestinationTests(unittest.TestCase):
+    def setUp(self):
+        self.rows=load_ledger()
+
+    def test_complete_archived_textual_six_opcode_census(self):
+        result=provenance_audit(self.rows)
+        self.assertEqual(result["total_rep_sites"],83)
+        self.assertEqual(result["opcode_type_counts"],{
+            "STOSB.REP":7,"STOSW.REP":17,"STOSD.REP":11,
+            "MOVSB.REP":14,"MOVSW.REP":20,"MOVSD.REP":14,
+        })
+        self.assertEqual(result["source_byte_bounded_rep_movsd_stosd"],25)
+        self.assertEqual(result["remaining_rep_destinations_for_pointer_provenance"],58)
+        self.assertFalse(result["alias_writer_graph_complete"])
+        self.assertFalse(result["original_1_10_sha_reread_this_run"])
+
+    def test_all_25_dword_rep_destinations_are_classified_with_lengths(self):
+        relevant=[r for r in self.rows
+                  if r["rep_operation"] in ("MOVSD.REP","STOSD.REP")]
+        self.assertEqual(len(relevant),25)
+        self.assertTrue(all(r["bounded_total_write_bytes"] for r in relevant))
+        self.assertTrue(all(r["destination_class"] not in (
+            "DESTINATION_PROVENANCE_OPEN",
+            "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND") for r in relevant))
+        self.assertEqual(sum(r["destination_class"]=="STACK_LOCAL_OR_SS_REGION"
+                             for r in relevant),14)
+
+    def test_exact_five_fixed_DGROUP_copy_ranges_are_disjoint(self):
+        result=provenance_audit(self.rows)
+        fixed=result["five_fixed_DGROUP_writes"]
+        self.assertEqual(len(fixed),5)
+        self.assertEqual({r["source"] for r in fixed},set(KNOWN_FIXED_32))
+        for r in fixed:
+            self.assertFalse(r["overlap_DS_00A2"])
+            self.assertFalse(r["overlap_DS_46B2"])
+        self.assertTrue(result["fixed_DGROUP_regions_exclude_clock_and_latch"])
+
+    def test_8e90_zero_fill_ends_exactly_at_file_backed_DGROUP_end(self):
+        # NE segment 10 (file-backed bytes=36526) is corroborating original
+        # segment-table evidence, not a runtime heap or total allocation size.
+        self.assertEqual(WIN110_DGROUP_FILE_BACKED_BYTES,0x8EAE)
+        result=provenance_audit(self.rows)
+        self.assertEqual(result["DGROUP_tail_REP_STOSD_exclusive_end"],"DS:8EAE")
+        zero=next(x for x in result["five_fixed_DGROUP_writes"]
+                  if x["source"]=="1010:51C5")
+        self.assertEqual(zero["address"],"DS:8E90")
+        self.assertEqual(zero["last_written_address"],"DS:8EAD")
+        self.assertEqual(zero["bytes"],30)
+
+    def test_two_rep_movsd_heap_90_byte_contracts(self):
+        destinations=[r for r in self.rows
+                      if r["site"] in KNOWN_HEAP_90B]
+        self.assertEqual(len(destinations),2)
+        self.assertTrue(all(r["destination_class"]=="LOCALALLOC_FIXED_90B_RETURN"
+                            for r in destinations))
+        self.assertTrue(all(r["bounded_total_write_bytes"]=="90"
+                            for r in destinations))
+        self.assertTrue(provenance_audit(self.rows)[
+            "heap_destinations_disjoint_from_globals_only_under_valid_Win16_LocalAlloc_contract"
+        ])
+
+    def test_invalid_opcode_or_copy_length_rejected(self):
+        rows=copy.deepcopy(self.rows)
+        rows[0]["opcode_hex"]="F3 66 AA"
+        with self.assertRaisesRegex(ValueError,"opcode contradiction"):
+            provenance_audit(rows)
+        rows=copy.deepcopy(self.rows)
+        r=next(x for x in rows if x["site"]=="1010:4E21")
+        r["bounded_total_write_bytes"]="0"
+        with self.assertRaisesRegex(ValueError,"Invalid source-bounded"):
+            provenance_audit(rows)
+
+    def test_unknown_bounded_copy_rejected(self):
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]=="1010:4E21")
+        row["destination_class"]="DESTINATION_PROVENANCE_OPEN"
+        with self.assertRaisesRegex(ValueError,"Length alone"):
+            provenance_audit(rows)
+
+    def test_partial_counts_are_detected(self):
+        rows=copy.deepcopy(self.rows)
+        rows.pop()
+        with self.assertRaisesRegex(ValueError,"census mismatch"):
+            provenance_audit(rows)
+
+    def test_fake_write_range_can_cover_the_clock_byte(self):
+        self.assertTrue(overlaps_linear_region(0x46B1,2,0x46B2))
+        self.assertTrue(overlaps_linear_region(0x46AF,4,0x46B2))
+        self.assertFalse(overlaps_linear_region(0x46B1,1,0x46B2))
+        self.assertFalse(overlaps_linear_region(0x3930,20,0x46B2))
+
+    def test_u16_boundary_and_zero_length(self):
+        self.assertFalse(overlaps_linear_region(0x8E90,0,0x8E90))
+        self.assertFalse(overlaps_linear_region(0x8E90,30,0x8EAE))
+        self.assertTrue(overlaps_linear_region(0x8E90,30,0x8EAD))
+        with self.assertRaisesRegex(ValueError,"segment wrap"):
+            overlaps_linear_region(0xFFFF,2,0x0000)
+
+    def test_modifying_fixed_range_to_hit_flag_is_not_accepted(self):
+        rows=copy.deepcopy(self.rows)
+        row=next(x for x in rows if x["site"]=="1010:51C5")
+        row["fixed_DGROUP_start"]="0x46B1"
+        report=provenance_audit(rows,enforce_archived_census=False)
+        self.assertFalse(report["fixed_DGROUP_regions_exclude_clock_and_latch"])
+        with self.assertRaisesRegex(ValueError,"destination span changed"):
+            provenance_audit(rows)
+
+    def test_site_duplicate_rejected(self):
+        rows=copy.deepcopy(self.rows)
+        rows.append(copy.deepcopy(rows[0]))
+        with self.assertRaisesRegex(ValueError,"Duplicate REP site"):
+            provenance_audit(rows)
+
+
+if __name__=="__main__":
+    unittest.main()
