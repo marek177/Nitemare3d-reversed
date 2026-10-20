@@ -108,7 +108,7 @@ class Win16DirectFileNames(unittest.TestCase):
 
     def test_rejects_duplicate_direct_caller(self):
         rows=copy.deepcopy(self.rows)
-        rows[0]["upstream_call_site"]=rows[1]["upstream_call_site"]
+        rows[0]=copy.deepcopy(rows[1])
         with self.assertRaisesRegex(ValueError,"Duplicate"):
             verify(rows)
 
