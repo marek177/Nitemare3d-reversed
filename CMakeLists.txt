@@ -288,6 +288,12 @@ foreach(preview_test img_texture_sampler wall_marker_visibility wall_pair_textur
   target_link_libraries(n3d_${preview_test}_test PRIVATE n3d_core)
 endforeach()
 
+# DOS v2.0 FEFA owner comparison and CAB8 near-plane cull (bounded research).
+# This test does not alter the active diagnostic DDA renderer.
+add_executable(n3d_dos20_visibility_opcode_contract_test
+    tests/dos20_visibility_opcode_contract_test.cpp)
+target_link_libraries(n3d_dos20_visibility_opcode_contract_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
