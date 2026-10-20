@@ -16,7 +16,10 @@ from n3d_win16_string_trio_lifecycle_audit import (
     INSTRUCTION_WITNESSES,
     Trio,init_trio,free_is_attempted,teardown_trio,
     allocate_trio,failing_alloc_global_zero_writer,
-    initial_empty_assignment_plan,word_signed,audit
+    initial_empty_assignment_plan,word_signed,audit,
+    E26_NAMED_DIRECT_COUNT_SOURCES, E26_LOADSTRING_BUFFER_MAX,
+    E26_LOADSTRING_CSTRING_LOCAL_FRAME_SIZE,
+    e26_direct_caller_count_upper_bound
 )
 
 
@@ -180,6 +183,32 @@ class Win16OriginalStringTrioAudit(unittest.TestCase):
         self.assertTrue(p["can_touch_clock_flag_under_nonfaulting_model"])
         self.assertFalse(p["large_source_data_reachability_proven"])
         self.assertEqual(p["original_DGROUP_file_backed_exclusive_end"],"0x8EAE")
+
+    def test_three_named_e26_direct_caller_count_sources(self):
+        p=audit()
+        self.assertEqual(set(p["assignment_direct_caller_count_sources"]),{
+            "1000:0E7B","1000:0EAB","1000:3275"})
+        self.assertEqual(p["resource_assignment_LoadString_site"],"1000:3275")
+        self.assertEqual(p["resource_assignment_resource_import_call"],"1000:3293")
+        self.assertEqual(p["remaining_direct_assignment_sources_32768_reachability_open"],
+                         ["1000:0E7B","1000:0EAB"])
+        self.assertEqual(E26_NAMED_DIRECT_COUNT_SOURCES["1000:0E7B"],
+                         "source_trio.used at 1000:0E75")
+
+    def test_loadstring_u255_resource_copy_excludes_negative_signed_request(self):
+        self.assertEqual(E26_LOADSTRING_BUFFER_MAX,255)
+        self.assertEqual(E26_LOADSTRING_CSTRING_LOCAL_FRAME_SIZE,256)
+        self.assertEqual(e26_direct_caller_count_upper_bound("1000:3275"),255)
+        self.assertIsNone(e26_direct_caller_count_upper_bound("1000:0E7B"))
+        self.assertIsNone(e26_direct_caller_count_upper_bound("1000:0EAB"))
+        for count in range(256):
+            self.assertFalse(initial_empty_assignment_plan(count)[
+                "jge_skips_reallocation"] if count else False)
+            self.assertFalse(initial_empty_assignment_plan(count)[
+                "copy_intersects_DS_46B2_if_nonfaulting"])
+        self.assertFalse(audit()["resource_assignment_high_bit_32768_reachable"])
+        with self.assertRaisesRegex(ValueError,"Unrecognized"):
+            e26_direct_caller_count_upper_bound("1000:0000")
 
     def test_original_free_then_init_distinct_from_init_only(self):
         old=Trio(0x2000,5,10)
