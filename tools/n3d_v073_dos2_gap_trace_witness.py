@@ -125,11 +125,11 @@ def witness_one(stream, image: bytes, load_segment: int, engine=None):
             continue
         record = structures[name]
         record["instruction_events"] += 1
-        if prev is not None and prev["offset"] == 0xCBF2 and name == "CAB8_projection":
+        if prev is not None and prev["offset"] == 0xCBF2 and prev["is_branch"] and name == "CAB8_projection":
             if offset in (0xCED6,0xCBF6):
                 key = f"0x{offset:05X}"
                 record["branch_targets_count"][key] = record["branch_targets_count"].get(key,0)+1
-        prev = {"offset": offset}
+        prev = None  # A failed or undecodable CPU row cannot witness a branch.
         prefix = row["code"]
         if not prefix:
             record["insufficient_code_valid"] += 1
@@ -157,6 +157,8 @@ def witness_one(stream, image: bytes, load_segment: int, engine=None):
             record["first_byte_disagrees_with_image"] += 1
             continue
         record["validated_executed_instruction_events"] += 1
+        mnemonic = ins[0].mnemonic.lower()
+        prev = {"offset": offset, "is_branch": mnemonic.startswith("j") or mnemonic.startswith("loop")}
         record["executed_instruction_starts"].add(offset)
         for addr in range(offset,offset+size):
             if any(lo<=addr<=hi for lo,hi in gap_ranges):
@@ -212,6 +214,14 @@ def witness_zip(path: Path, exe: bytes, load_segment: int):
             sessions.append(proof)
     if not sessions:
         raise ValueError("ZIP contains no .n3dt trace streams")
+    verified_events = sum(
+        s["routines"][name]["validated_instruction_events"]
+        for s in sessions for name in RANGES
+    )
+    if verified_events < 32:
+        raise ValueError(
+            "Insufficient verified CPU instruction witnesses in selected DOS2 routines; "
+            "check load segment, EXE version, and trace integrity (minimum 32)")
     # Keep branch coverage session-local, only aggregate exact evidence counts.
     totals = {}
     for name in RANGES:
