@@ -50,6 +50,16 @@ for source=0..255:
 
 Pribudlo `shade::prepareFromDosSegment(ds, prepared)` a diagnostický `matchesStoredDosXlat(ds, prepared)`. Posledný test **nie je automatický dôkaz SS:BX = DS:D20C**: je platný len pri overenom segmentovom mapovaní. Statické testy používajú syntetické RGB6 palety, odlišujú RGB8 prepočítaný cez `>>2`, duplicitné RGB a shade0 neidentitu. Fade/DAC efekt sa **nemieša** s produkciou indexovaných pixelov.
 
+### 3.1 Doslova DOS2: lokálna výnimka shade pre orientácie 0 a 1
+
+Pri novej kontrole archivovaného Ghidra exportu originálnej DOS v2.0 rutiny `2500/25DC` sa našla konkrétna podmienka pred `1A2E`: **ak je globálna shade úroveň DS:6278 nenulová, `DS:430E == 0` a orientácia VEC patrí medzi 0/1, lokálny shade selector sa nastaví na 0**. Pre orientácie 2/3 sa ponechá pôvodný shade index. `DS:430E` označujeme iba ako opaque display/shading stav; jeho ostatné runtime účinky sa z tohto porovnania nedajú vyvodiť.
+
+`MaterialBinder` teraz prijíma **active shade** a samostatne pripravený **shade-zero XLAT**, vyberie správnu tabuľku pre aktuálny VEC a výsledok bezpečne odovzdá stenovému rasteru. Ak by sa mala použiť shade-zero tabuľka a nie je dodaná, pripravovanie stĺpcov sa zastaví ako `InvalidWallMaterial` — žiadny nezdokumentovaný identity fallback. Test porovnáva ten istý IMG index 79 so shade4 (výsledok 11 v syntetickej RGB6 palete) a so shade0 (výsledok 79), aj odmietnutie chýbajúcej shade-zero tabuľky.
+
+Táto výnimka je **konkrétna DOS statická sémantika**, nie dôkaz, že všetky možné runtime kombinácie globálneho stavu `430E` boli vykonané. Aplikuje sa na indexed wall XLAT, nie na DAC fade/palette-phase.
+
+---
+
 ## 4. Perspektívne texture-U — ČO JE KANDIDÁT
 
 Win16 EBD6 matematika je celočíselná; `screenTerm = ((screenX-160) * inverseProjectionScale) / spanYQ4`, `verticalTerm = verticalNumerator / spanYQ4`. Pre 304×152 viewport je `horizontalScale=178`, `verticalNumerator=81715200`, `inverseProjectionScale=floor(81715200/178)=459074`. Selektor oktantu používa masku `0x99`, pôvodnú Q10 trig lookup 1440 B a orientáciu VEC. Potom sa použijú signed-16 wrap, endpoint flip (vrátane render class 0x3F/0x40), sign, a `6422` korekcia/maska U.
