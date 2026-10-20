@@ -1,5 +1,7 @@
 # Nitemare3D-Reversed — reconstruction v0.77
 
+**Runnable DOS2 wall snapshot replay:** `n3d_dos20_wall_replay` now joins DS/IMG material binding, native CEDC/22CA texture coordinates and span rasterization. It exports a candidate indexed frame, generated-pixel mask and optional wall-only comparison. See [usage and evidence limits](docs/DOS20_WALL_SNAPSHOT_REPLAY.md).
+
 **v0.77 / 2026-10-20 bulk-copy provenance:** integrates NEXT7's 29 locally classified REP MOVS sites per DOS build (21 logical copies), correction of FAR source/destination direction, and bounded 208-byte text composition in a 258-byte frame. Adds exported-table validation; global OBJECT+18 aliases and natural stale-depth hits remain OPEN. See [provenance and limits](docs/V077_REMAX_BULK_COPY_PROVENANCE.md).
 
 **v0.76 / 2026-10-20 DEMO timing-context audit:** integrates D02-E/F: identical first 220 RNG caller/state/results can accompany different scheduler/input contexts (229 versus 220 recorded outcomes). Adds a SHA-gated original-byte auditor with stronger exported-ledger validation and 11 synthetic robustness checks. The actual first clock/due divergence and original-versus-port parity remain OPEN. See [scope and evidence](docs/V076_REMAX_DEMO_TIMING_CONTEXT.md).

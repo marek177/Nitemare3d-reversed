@@ -336,7 +336,24 @@ add_executable(n3d_dos20_cedc_projection_test
     tests/dos20_cedc_projection_test.cpp)
 target_link_libraries(n3d_dos20_cedc_projection_test PRIVATE n3d_core)
 
+# Runnable checkpoint-based candidate wall renderer. Requires caller-owned
+# DS/IMG/background and makes only a masked wall-output comparison.
+add_executable(n3d_dos20_wall_replay tools/n3d_dos20_wall_replay.cpp)
+target_link_libraries(n3d_dos20_wall_replay PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
+
+if(BUILD_TESTING)
+    find_package(Python3 COMPONENTS Interpreter QUIET)
+    if(Python3_Interpreter_FOUND)
+        add_test(NAME n3d_dos20_wall_replay_cli_test
+            COMMAND "${Python3_EXECUTABLE}"
+                    "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_dos20_wall_replay_cli.py"
+                    --program $<TARGET_FILE:n3d_dos20_wall_replay> -v)
+        set_tests_properties(n3d_dos20_wall_replay_cli_test PROPERTIES LABELS "reconstruction;integration")
+    endif()
+endif()
+
 
 if(N3D_ENABLE_SDL3)
     find_package(SDL3 CONFIG QUIET)
