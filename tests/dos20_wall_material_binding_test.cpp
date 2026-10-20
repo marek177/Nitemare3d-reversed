@@ -107,6 +107,15 @@ int main() {
 
     std::vector<std::uint8_t> ds(65536);
     w16(ds,s::kSpanCountOffset,1);
+    // Original DOS2 runtime projection state used by CEDC at fixed DS offsets.
+    w16(ds,0x415C,1);          // nonzero: cosine divisor
+    w16(ds,0x41B2,0);          // Q10 sin(0)
+    w16(ds,0x41B4,1024);       // Q10 cos(0)
+    w16(ds,0x4162,1440);       // playerX
+    w16(ds,0x4164,3620);       // playerY
+    w16(ds,0x4550,160);        // screen center X
+    w32(ds,0x3686,81715200);  // exact vertical numerator
+    w32(ds,0x368A,459074);    // exact inverse projection scale
     const unsigned a=s::kVecBase,b=a+28,c=b+28;
     ds[a]=5;ds[a+3]=0;ds[a+4]=0;ds[a+5]=0x08;ds[a+6]=1;ds[a+7]=0;
     ds[b]=6;ds[b+3]=1;ds[b+4]=0;ds[b+5]=0x08;ds[b+6]=1;ds[b+7]=0;
@@ -147,6 +156,28 @@ int main() {
     assert(selected5->frame.fileOffset==stream1);
     assert(selected6->frame.fileOffset==stream1+frame64);
     assert(selected7->frame.fileOffset==stream2);
+
+    // Native DOS2 CEDC must agree with the independent Win16 EBD6 port
+    // for these cross-build synthetic cardinal states.
+    const auto vecDos=m::vecFromDosDS(ds,a);
+    for(const int x : {8,40,160,311}) {
+        const auto dosU=m::perspectiveUDosFromDS(
+            vecDos,static_cast<std::int16_t>(x),331,ds,64);
+        const auto winU=m::perspectiveUCandidate(
+            vecDos,static_cast<std::int16_t>(x),331,
+            camera,*trig,64);
+        assert(dosU && winU && *dosU==*winU);
+    }
+    auto ninetyCamera=camera;
+    ninetyCamera.angleDegrees=90;
+    w16(ds,0x415C,0);       // zero: sine divisor
+    w16(ds,0x41B2,1024);
+    w16(ds,0x41B4,0);
+    assert(*m::perspectiveUDosFromDS(vecDos,160,331,ds,64)==
+           *m::perspectiveUCandidate(vecDos,160,331,ninetyCamera,*trig,64));
+    w16(ds,0x415C,1);
+    w16(ds,0x41B2,0);
+    w16(ds,0x41B4,1024);
 
     auto highFrame=m::vecFromDosDS(ds,b);
     highFrame.animationFrame=255;
@@ -262,7 +293,15 @@ int main() {
     m::MaterialBinder invalid=material;
     invalid.trig=nullptr;
     const auto priorPlan=plan;
+    // Native DOS2 reads actual DS runtime sin/cos, so has no Win16 table
+    // dependency. The legacy comparison mode must still fail without it.
+    assert(s::prepare(ds,3,0,invalid,plan)==s::Status::Ok);
+    invalid.uModel=m::TextureUModel::Win16CrossBuildEbd6;
     assert(s::prepare(ds,3,0,invalid,plan)==s::Status::InvalidWallMaterial);
+    invalid=material;
+    w16(ds,0x41B4,0); // original DOS CEDC divisor is now zero
+    assert(s::prepare(ds,3,0,invalid,plan)==s::Status::InvalidWallMaterial);
+    w16(ds,0x41B4,1024);
     assert(plan.drawnColumns==priorPlan.drawnColumns);
     invalid=material;
     invalid.shading=nullptr;
