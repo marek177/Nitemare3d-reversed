@@ -21,19 +21,34 @@ inline constexpr std::uint16_t kWallPropertyBuilderOffset = 0x24C3; // segment 3
 inline constexpr std::uint16_t kObjectPropertyBuilderOffset = 0x255D;
 inline constexpr std::uint16_t kDoorPassageOffset = 0x1476;
 inline constexpr std::uint16_t kPostMoveOffset = 0x8A20;
+inline constexpr std::uint16_t kSoundPlaybackOffset = 0xE3B0;
+
+// Wall-property bits recovered from the Win16 1.10 executable.
+// 0x01 is copied into wall VEC records and gates projection/column claiming.
+// 0x10 marks the exploding/destructible wall family in projectile collision.
+inline constexpr std::uint8_t kWallRenderEligible = 0x01;
+inline constexpr std::uint8_t kWallOccupied = 0x02;
+inline constexpr std::uint8_t kWallHardBlock = 0x04;
+inline constexpr std::uint8_t kWallDynamicDoor = 0x08;
+inline constexpr std::uint8_t kWallExploding = 0x10;
+inline constexpr std::uint8_t kWallScriptTouch = 0x40;
+inline constexpr std::uint8_t kBlockedStepSfxIndex = 1;
+inline constexpr std::uint8_t kRuntimeSfxDirectoryBase = 32;
+inline constexpr std::uint8_t kBlockedStepSndDirectoryIndex =
+    kRuntimeSfxDirectoryBase + kBlockedStepSfxIndex; // 33, empty in retail SND.DAT
 
 using ByteTable = std::array<std::uint8_t, 256>;
 
 // Input is a MAPPED runtime type from DS:8196, NOT a MAP wall ID or a
-// definition-file class number. Unknown meanings of bits 01/10 stay unnamed.
+// definition-file class number.
 constexpr std::uint8_t wallPropertiesForMappedType(std::uint8_t type) noexcept {
     std::uint8_t flags = 0;
-    if (type >= 0x01 && type <= 0x30) flags |= 0x04;
-    if (type >= 0x2E && type <= 0x2F) flags |= 0x10;
-    if (type >= 0x31 && type <= 0x40) flags |= 0x08;
-    if ((flags & (0x04 | 0x08)) != 0) flags |= 0x01;
-    if (type >= 0x01 && type <= 0x40) flags |= 0x02;
-    if (type >= 0x47 && type <= 0x48) flags |= 0x40;
+    if (type >= 0x01 && type <= 0x30) flags |= kWallHardBlock;
+    if (type >= 0x2E && type <= 0x2F) flags |= kWallExploding;
+    if (type >= 0x31 && type <= 0x40) flags |= kWallDynamicDoor;
+    if ((flags & (kWallHardBlock | kWallDynamicDoor)) != 0) flags |= kWallRenderEligible;
+    if (type >= 0x01 && type <= 0x40) flags |= kWallOccupied;
+    if (type >= 0x47 && type <= 0x48) flags |= kWallScriptTouch;
     return flags;
 }
 
@@ -63,10 +78,28 @@ constexpr ByteTable buildObjectProperties(const ByteTable& mappedTypes) noexcept
     return result;
 }
 
-// Numeric predicate only; does not invent "open/closed" names for states 0/4.
-// A wider input prevents an invalid value such as 256 aliasing passable state 0.
+enum class DoorState : std::uint16_t {
+    Open = 0,
+    Closed = 1,
+    Opening = 2,
+    Closing = 3,
+    CorpseHoldOpen = 4,
+};
+
+// States 0..3 and their transitions are verified in the controller lifecycle.
+// State 4 is written by GUARD death-finalization when a retained corpse/object
+// occupies a dynamic-door cell. It is passable and excluded from normal toggle
+// and auto-close processing, effectively holding/disabling the door open.
+// A wider numeric overload prevents an invalid value such as 256 aliasing 0.
 constexpr bool doorStateAllowsPassage(std::uint16_t state) noexcept {
-    return state == 0 || state == 4;
+    return state == static_cast<std::uint16_t>(DoorState::Open) ||
+           state == static_cast<std::uint16_t>(DoorState::CorpseHoldOpen);
+}
+constexpr bool doorStateAllowsPassage(DoorState state) noexcept {
+    return doorStateAllowsPassage(static_cast<std::uint16_t>(state));
+}
+constexpr bool doorStateIsClosed(std::uint16_t state) noexcept {
+    return state == static_cast<std::uint16_t>(DoorState::Closed);
 }
 
 // Arithmetic >>6 from 8A20, expressed as floor division. Plain signed /64

@@ -102,9 +102,17 @@ void checkCollision(Checks& c) {
         c.require(wt[i] == walls[types[i]], "wall ID is mapped before flags");
         c.require(ot[i] == objects[types[i]], "object ID is mapped before flags");
     }
-    for (unsigned state = 0; state < 65536; ++state)
+    for (unsigned state = 0; state < 65536; ++state) {
         c.require(m::doorStateAllowsPassage(static_cast<std::uint16_t>(state)) == (state == 0 || state == 4),
                   "only numeric door states 0/4 pass");
+        c.require(m::doorStateIsClosed(static_cast<std::uint16_t>(state)) == (state == 1),
+                  "only numeric door state 1 is closed");
+    }
+    c.require(m::doorStateAllowsPassage(m::DoorState::Open), "open door state passes");
+    c.require(!m::doorStateAllowsPassage(m::DoorState::Closed), "closed door state blocks");
+    c.require(!m::doorStateAllowsPassage(m::DoorState::Opening), "opening door state blocks");
+    c.require(!m::doorStateAllowsPassage(m::DoorState::Closing), "closing door state blocks");
+    c.require(m::doorStateAllowsPassage(m::DoorState::CorpseHoldOpen), "corpse hold-open state 4 passes");
     for (std::int32_t world = -32768; world <= 32767; ++world)
         c.require(m::worldToTile(world) == static_cast<std::int32_t>(std::floor(world / 64.0)),
                   "signed world coordinate floor division");
@@ -142,7 +150,26 @@ int main() {
     static_assert(kPlayerTileXAddress == 0x4BF2 && kPlayerTileYAddress == 0x4BF4);
     static_assert(kPlayerMapCellOffsetAddress == 0x4C10 && kPlayerMapCellSegmentAddress == 0x4C12);
     static_assert(collision::kPlayerHalfExtent == 27 && collision::kWorldUnitsPerTile == 64);
+    static_assert(collision::kWallRenderEligible == 0x01);
+    static_assert(collision::kWallOccupied == 0x02);
+    static_assert(collision::kWallHardBlock == 0x04);
+    static_assert(collision::kWallDynamicDoor == 0x08);
+    static_assert(collision::kWallExploding == 0x10);
+    static_assert(collision::kWallScriptTouch == 0x40);
+    static_assert(collision::kBlockedStepSfxIndex == 1);
+    static_assert(collision::kRuntimeSfxDirectoryBase == 32);
+    static_assert(collision::kBlockedStepSndDirectoryIndex == 33);
     static_assert(collision::worldToTile(-1) == -1 && collision::worldToTile(64) == 1);
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Key)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::IdCard)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Food)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Weapon)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Ammo)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::CrystalBall)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::MagicEye)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Pentagram)));
+    static_assert(isNamedTouchPickupClass(static_cast<std::uint8_t>(TouchPickupClass::Scroll)));
+    static_assert(!isNamedTouchPickupClass(0x31) && !isNamedTouchPickupClass(0x38));
     static_assert(hasAllPentagrams(0x0F) && !hasAllPentagrams(0x07));
     static_assert(!hasInventoryBit(0xFF, 255));
     Checks checks;
