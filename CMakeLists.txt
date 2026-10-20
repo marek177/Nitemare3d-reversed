@@ -325,6 +325,12 @@ target_link_libraries(n3d_dos20_wall_material_binding_test PRIVATE n3d_core)
 add_executable(n3d_dos20_shade_remap_test tests/dos20_shade_remap_test.cpp)
 target_link_libraries(n3d_dos20_shade_remap_test PRIVATE n3d_core)
 
+# DOS v2.0 original 22CA texture-U correction; native 16-bit branch model.
+# Research-only: does not replace the live DDA renderer.
+add_executable(n3d_dos20_texture_u_edge_test
+    tests/dos20_texture_u_edge_test.cpp)
+target_link_libraries(n3d_dos20_texture_u_edge_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
