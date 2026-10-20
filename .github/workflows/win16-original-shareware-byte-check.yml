@@ -143,7 +143,8 @@ jobs:
               exe = Path(tmp) / 'verified-original.exe'
               exe.write_bytes(binary)
               image = NeImage(exe)
-              for begin,end in ((0x0EDA,0x0EF5),(0x0F16,0x0F35)):
+              for begin,end in ((0x0EDA,0x0EF5),(0x0F16,0x0F35),
+                                (0xE016,0xE02C)):
                   print('Original NE3 caller window:',hex(begin),hex(end))
                   for row in disassemble_region(image, 3, begin, end):
                       print('CALLER',row['address'],row['bytes'],row['mnemonic'],row['operands'],row['relocations'])
