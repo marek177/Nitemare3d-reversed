@@ -72,6 +72,18 @@ jobs:
           make -j2 V=0
           find . -type f \( -name dosbox-x -o -name dosbox-x.exe \) -exec ls -lh {} \;
           test -x src/dosbox-x
+      - name: Package AL-gated heavy-debug emulator
+        run: |
+          mkdir -p upload/bin
+          cp upstream/src/dosbox-x upload/bin/dosbox-x-n3d-v065-al
+          chmod +x upload/bin/dosbox-x-n3d-v065-al
+          sha256sum upload/bin/dosbox-x-n3d-v065-al > upload/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dosboxx-n3d-v065-al-gate
+          path: upload/
+          if-no-files-found: error
+          retention-days: 7
       - name: Evidence boundary
         run: |
           echo "Full build attempted. This is NOT proof of a working DOS gameplay capture."
