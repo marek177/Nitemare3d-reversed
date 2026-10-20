@@ -82,6 +82,8 @@ class SnapshotPipeline(unittest.TestCase):
         self.assertEqual(sum(mask),304*42)
         self.assertEqual(report['generated_wall_pixels'],12768)
         self.assertEqual(report['wall_pixel_mismatches'],0)
+        self.assertIsNone(report['first_wall_mismatch'])
+        self.assertIsNone(report['wall_mismatch_bounds'])
         self.assertTrue(report['wall_pixels_equal'])
         self.assertFalse(report['full_frame_parity_proven'])
         self.assertFalse(report['original_recording_authenticated'])
@@ -108,6 +110,25 @@ class SnapshotPipeline(unittest.TestCase):
         report=json.loads(p.stdout)
         self.assertEqual(report['wall_pixel_mismatches'],1)
         self.assertEqual(report['first_wall_mismatch_pixel'],59*320+18)
+        first=report['first_wall_mismatch']
+        self.assertEqual((first['x'],first['y'],first['candidate_index'],first['reference_index']), (18,59,42,43))
+        self.assertEqual((first['owner'],first['span_index'],first['wall_id']), (self.vec,0,5))
+        rows=list(csv.DictReader(io.StringIO((self.output/'columns.csv').read_text())))
+        self.assertEqual(sum(int(r['mismatch_pixels']) for r in rows),1)
+        self.assertEqual(rows[10]['mismatch_pixels'],'1')
+        self.assertEqual(sum(int(r['compared_pixels']) for r in rows),12768)
+
+    def test_first_difference_is_row_major_with_inclusive_bounds(self):
+        wrong=bytearray(self.reference)
+        for x,y in [(8,100),(311,59),(160,80)]: wrong[y*320+x]=43
+        self.reference=bytes(wrong)
+        p=self.run_replay()
+        self.assertEqual(p.returncode,1,p.stderr)
+        report=json.loads(p.stdout)
+        self.assertEqual(report['wall_pixel_mismatches'],3)
+        self.assertEqual(report['first_wall_mismatch_pixel'],59*320+311)
+        self.assertEqual(report['first_wall_mismatch']['x'],311)
+        self.assertEqual(report['wall_mismatch_bounds'],dict(left=8,top=59,right=311,bottom=100))
 
     def test_background_difference_is_not_wall_parity(self):
         wrong=bytearray(self.reference);wrong[0]=0;self.reference=bytes(wrong)
@@ -124,6 +145,10 @@ class SnapshotPipeline(unittest.TestCase):
         report=json.loads(p.stdout)
         self.assertIsNone(report['wall_pixels_equal'])
         self.assertIsNone(report['wall_pixel_mismatches'])
+        self.assertIsNone(report['first_wall_mismatch'])
+        self.assertIsNone(report['wall_mismatch_bounds'])
+        rows=list(csv.DictReader(io.StringIO((self.output/'columns.csv').read_text())))
+        self.assertTrue(all(r['compared_pixels']=='0' and r['mismatch_pixels']=='' for r in rows))
         self.assertEqual(report['wall_pixels_compared'],0)
 
     def test_empty_wall_coverage_is_not_vacuous_parity(self):

@@ -127,11 +127,13 @@ int main(int argc, char** argv) {
         std::array<std::uint8_t,sw::kColumns> u{}, valid{};
         unsigned generated=0, mismatches=0, clamped=0;
         std::optional<unsigned> firstMismatch{};
+        unsigned mismatchLeft=320, mismatchTop=200, mismatchRight=0, mismatchBottom=0;
         std::ostringstream columns;
-        columns << "screen_x,draw,span_index,owner,wall_id,span_y_q4,physical_u,image_width,frame_index,frame_offset,shade_index,clamped_animation,first_y,pixel_count\n";
+        columns << "screen_x,draw,span_index,owner,wall_id,span_y_q4,physical_u,image_width,frame_index,frame_offset,shade_index,clamped_animation,first_y,pixel_count,compared_pixels,mismatch_pixels\n";
         for (unsigned j=0; j<sw::kColumns; ++j) {
             const auto& c=plan.columns[j];
             const auto& b=bindings[j];
+            unsigned columnMismatches=0;
             columns << j+sw::kLeft << ',' << c.draw << ',' << c.spanIndex << ','
                     << c.nearOwner << ',' << unsigned(c.wallId) << ',' << c.spanYQ4 << ',';
             if (c.draw) {
@@ -144,13 +146,22 @@ int main(int argc, char** argv) {
                     const unsigned at=y*320+c.drawArgs.x;
                     mask[at]=1; ++generated;
                     if (!reference.empty() && frame[at]!=reference[at]) {
-                        ++mismatches;
-                        if (!firstMismatch) firstMismatch=at;
+                        ++mismatches; ++columnMismatches;
+                        // Define first as the lowest linear framebuffer index,
+                        // independent of the column-major traversal order.
+                        if (!firstMismatch || at<*firstMismatch) firstMismatch=at;
+                        const unsigned x=c.drawArgs.x;
+                        if (x<mismatchLeft) mismatchLeft=x;
+                        if (x>mismatchRight) mismatchRight=x;
+                        if (y<mismatchTop) mismatchTop=y;
+                        if (y>mismatchBottom) mismatchBottom=y;
                     }
                 }
             } else {
                 columns << ",,,,,,,"; // No invented material/U for culled columns.
             }
+            columns << ',' << (!reference.empty() && c.draw ? c.drawArgs.pixelCount : 0) << ',';
+            if (!reference.empty() && c.draw) columns << columnMismatches;
             columns << '\n';
         }
         const bool compared=!reference.empty() && generated>0;
@@ -173,6 +184,23 @@ int main(int argc, char** argv) {
         if (compared) report << mismatches; else report << "null";
         report << ",\n  \"first_wall_mismatch_pixel\": ";
         if (firstMismatch) report << *firstMismatch; else report << "null";
+        report << ",\n  \"first_wall_mismatch\": ";
+        if (firstMismatch) {
+            const unsigned at=*firstMismatch, x=at%320, y=at/320;
+            const auto& c=plan.columns[x-sw::kLeft];
+            const auto& b=bindings[x-sw::kLeft];
+            report << "{\"x\":" << x << ",\"y\":" << y
+                   << ",\"candidate_index\":" << unsigned(frame[at])
+                   << ",\"reference_index\":" << unsigned(reference[at])
+                   << ",\"owner\":" << c.nearOwner << ",\"span_index\":" << c.spanIndex
+                   << ",\"wall_id\":" << unsigned(c.wallId)
+                   << ",\"physical_u\":" << b.physicalU << '}';
+        } else report << "null";
+        report << ",\n  \"wall_mismatch_bounds\": ";
+        if (firstMismatch)
+            report << "{\"left\":" << mismatchLeft << ",\"top\":" << mismatchTop
+                   << ",\"right\":" << mismatchRight << ",\"bottom\":" << mismatchBottom << '}';
+        else report << "null";
         report << ",\n  \"wall_pixels_equal\": ";
         if (compared) report << (mismatches==0 ? "true" : "false"); else report << "null";
         report << "\n}\n";
