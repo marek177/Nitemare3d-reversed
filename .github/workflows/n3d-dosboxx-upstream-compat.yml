@@ -1,0 +1,38 @@
+name: DOSBox-X 2026.10.01 upstream patch applicability
+
+on:
+  pull_request:
+    paths:
+      - "tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch"
+      - "tools/dosbox-x/n3dtrace_deferred_start_v3.patch"
+      - ".github/workflows/n3d-dosboxx-upstream-compat.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  upstream-applicability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: n3d
+      - uses: actions/checkout@v4
+        with:
+          repository: joncampbell123/dosbox-x
+          ref: dosbox-x-v2026.10.01
+          path: upstream
+          fetch-depth: 1
+      - name: Check full Advanced History v3 and deferred trace patches on upstream
+        run: |
+          cd upstream
+          git apply --check ../n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch
+          git apply ../n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch
+          git apply --check ../n3d/tools/dosbox-x/n3dtrace_deferred_start_v3.patch
+          git apply ../n3d/tools/dosbox-x/n3dtrace_deferred_start_v3.patch
+          grep -F 'N3D_TRACE_START_ES_SI' src/debug/n3d_trace.cpp
+          grep -F 'INSTRUCTION_BUDGET' src/debug/n3d_trace.cpp
+      - name: Evidence boundary
+        run: |
+          echo "Source patches only; not compiled, no DOS runtime execution."
