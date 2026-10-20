@@ -67,3 +67,20 @@ if(BUILD_TESTING AND N3D_DOS20_U_ORIGINAL_CSV)
     set_tests_properties(n3d_dos20_texture_u_original_private
                          PROPERTIES LABELS "original-data;renderer-U-bounded")
 endif()
+
+# Optional private ORIGINAL DOS2 CEDC operand/return CPU witness corpus.
+# This CSV contains user-owned trace-derived operands and must not be
+# checked into or distributed by this public repository.
+set(N3D_DOS20_CEDC_ORIGINAL_CSV "" CACHE FILEPATH
+    "Private original DOS2 1808-call CEDC arithmetic witnesses")
+if(BUILD_TESTING AND N3D_DOS20_CEDC_ORIGINAL_CSV)
+    if(NOT EXISTS "${N3D_DOS20_CEDC_ORIGINAL_CSV}")
+        message(FATAL_ERROR
+            "N3D_DOS20_CEDC_ORIGINAL_CSV missing: ${N3D_DOS20_CEDC_ORIGINAL_CSV}")
+    endif()
+    add_test(NAME n3d_dos20_cedc_original_private
+             COMMAND n3d_dos20_cedc_projection_test
+                     "${N3D_DOS20_CEDC_ORIGINAL_CSV}")
+    set_tests_properties(n3d_dos20_cedc_original_private PROPERTIES
+                         LABELS "original-data;renderer-cedc-bounded")
+endif()
