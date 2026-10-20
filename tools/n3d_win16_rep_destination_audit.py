@@ -39,6 +39,33 @@ KNOWN_FIXED_32={
     "1010:BA27":(0x4BE8,94),
 }
 KNOWN_HEAP_90B={"1010:4E21","1010:500E"}
+STRING_STAGING_START=0x36BE
+STRING_CLOCK_FLAG=0x46B2
+STRING_CLOCK_OFFSET=STRING_CLOCK_FLAG-STRING_STAGING_START
+STRING_STAGING_SITES={"1010:527E","1010:5282","1010:52A1","1010:52A5"}
+OPEN_CATEGORIES={
+    "DESTINATION_PROVENANCE_OPEN",
+    "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND",
+    "STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND",
+}
+
+
+def unbounded_string_copy_reaches_clock(prefix_characters:int,
+                                        appended_characters:int)->bool:
+    """Conditional address arithmetic, NOT input-length reachability proof.
+
+    Original 3:5260 copies a NUL-terminated prefix to DS:36BE then
+    appends another NUL-terminated string. The last copied NUL is at
+    DS:36BE+prefix_characters+appended_characters. For 16-bit,
+    nonwrapping strings the flag DS:46B2 is reached once that final
+    offset is >=0xFF4 (4084).
+    """
+    if prefix_characters<0 or appended_characters<0:
+        raise ValueError("String lengths cannot be negative")
+    final_offset=prefix_characters+appended_characters
+    if STRING_STAGING_START+final_offset>=0x10000:
+        raise ValueError("String copy wraps DGROUP: requires separate model")
+    return final_offset>=STRING_CLOCK_OFFSET
 
 
 def load_ledger(path:Path=DEFAULT_LEDGER)->list[dict[str,str]]:
@@ -88,12 +115,10 @@ def provenance_audit(rows:list[dict[str,str]],
                 raise ValueError("Invalid source-bounded REP length "+site)
             if op not in ("MOVSD.REP","STOSD.REP"):
                 raise ValueError("Unexpected unreviewed REP length "+site)
-            if category in ("DESTINATION_PROVENANCE_OPEN",
-                            "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND"):
+            if category in OPEN_CATEGORIES:
                 raise ValueError("Length alone is not destination provenance "+site)
             bounded.append(site)
-        if category in ("DESTINATION_PROVENANCE_OPEN",
-                        "GHIDRA_ANNOTATED_DEST_REQUIRES_BOUND"):
+        if category in OPEN_CATEGORIES:
             open_sites.append(site)
         if row["fixed_DGROUP_start"]:
             start=int(row["fixed_DGROUP_start"],0)
@@ -123,6 +148,11 @@ def provenance_audit(rows:list[dict[str,str]],
         raise ValueError(f"Expected 83 Ghidra textual REP sites, got {len(rows)}")
     if enforce_archived_census and len(bounded)!=KNOWN_REP32:
         raise ValueError("Expected exactly 25 inspected REP MOVSD/STOSD sites")
+    if enforce_archived_census and {
+        row["site"] for row in rows
+        if row["destination_class"]=="STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND"
+    }!=STRING_STAGING_SITES:
+        raise ValueError("Four archived string-staging copy site classifications changed")
     if enforce_archived_census and set(bounded)!={
         r["site"] for r in rows if r["rep_operation"] in ("MOVSD.REP","STOSD.REP")
     }:
@@ -150,6 +180,14 @@ def provenance_audit(rows:list[dict[str,str]],
         "destination_classes":dict(sorted(class_counts.items())),
         "remaining_rep_destinations_for_pointer_provenance":len(open_sites),
         "remaining_rep_sites":sorted(open_sites),
+        "unbounded_string_staging_REP_sites":sorted(
+            row["site"] for row in rows
+            if row["destination_class"]=="STRING_DSGROUP_BUFFER_NO_LENGTH_BOUND"),
+        "string_staging_start":"DS:36BE",
+        "timer_flag_in_staging_region":"DS:46B2",
+        "string_staging_distance_to_flag_bytes":STRING_CLOCK_OFFSET,
+        "last_NUL_overlaps_clock_if_sum_characters_at_least":STRING_CLOCK_OFFSET,
+        "string_alias_dynamically_reachable":False,
         "five_fixed_DGROUP_writes":fixed,
         "fixed_DGROUP_regions_exclude_clock_and_latch":all(
             not r["overlap_DS_46B2"] and not r["overlap_DS_00A2"] for r in fixed),
@@ -167,6 +205,7 @@ def provenance_audit(rows:list[dict[str,str]],
             "Fixed DS ranges can be bounded algebraically independent of runtime stack or heap",
             "Other-segment, stack, heap and framebuffer disjointness uses valid OS segment/allocator semantics",
             "Other 58 REP destinations need interprocedural pointer/length or bounds proof",
+            "Four string copies at DS:36BE could overlap DS:46B2 if NUL-terminated combined char count >=4084; actual input reachability unproved",
             "Non-REP writes, computed SI/DI/BX/ES stores and call-based memcpy are separate",
         ],
     }
