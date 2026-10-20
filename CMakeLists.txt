@@ -316,6 +316,12 @@ add_executable(n3d_dos20_shade_xlat_test
     tests/dos20_shade_xlat_test.cpp)
 target_link_libraries(n3d_dos20_shade_xlat_test PRIVATE n3d_core)
 
+# DOS2 IMG sequence/cache/frame + Win16 EBD6-derived perspective-U candidate
+# with exact DOS2 RGB6/XLAT as a fail-closed 304-column material resolver.
+add_executable(n3d_dos20_wall_material_binding_test
+    tests/dos20_wall_material_binding_test.cpp)
+target_link_libraries(n3d_dos20_wall_material_binding_test PRIVATE n3d_core)
+
 include(cmake/RegressionTests.cmake)
 
 if(N3D_ENABLE_SDL3)
