@@ -1,5 +1,17 @@
 # Nitemare 3-D Win16 1.10 — filename alias and `-p` prefix static closure
 
+> **20 October 2026 follow-up:** `FUN_1008_6442` is an
+> **input scanner resembling `sscanf(source_token,"%s",DS:46BE)`**,
+> not an output `sprintf` formatter as this earlier pass described.
+> The original scanner's `%s` has no numeric field width. Microsoft
+> KB Q71364 documents a 128-character **Program Manager Windows 3.1**
+> command-line entry limit; only that launch route is statically
+> excluded from the 4,074/4,076-character prefix overlap.
+> See [updated instruction-exact scanner and route closure](WIN16_P_SSCANF_PROGMAN_SCOPED_CLOSURE_20261020.md).
+> Historic passages further down retain the first-pass terminology
+> only as an audit record, superseded by the linked correction.
+
+
 **Date:** 20 October 2026. **Scope:** archived original Ghidra
 `nite3w(1).docx` and original Win16 v1.10 Ghidra decompiled C.
 Static-only proof; no Win16 v1.10 original EXE was freshly rehashed
@@ -73,7 +85,7 @@ switch with `switchD_1010:116D::caseD_70` (ASCII `'p'`, thus
     3:1218 CALL FAR 2:6B06     ; tokenizer: returns next parsed argv token
     3:121D ADD SP,4
     3:1220 PUSH AX            ; token pointer, as vararg
-    3:1221 CALL FAR 2:6442    ; output + "%s"
+    3:1221 CALL FAR 2:6442    ; INPUT scanner: sscanf(token,"%s",DS:46BE)
     3:1226 ADD SP,6
     3:1229 CALL FAR 3:52AE    ; immediately revisit config.sav path
 
@@ -82,17 +94,21 @@ Original `FUN_1008_6B06` scans the token string with an on-stack
 from the command-line parser or the global next-token pointer DS:0A8E.
 It is a **tokenizer**, not the output writer.
 
-Original `FUN_1008_6442` stores the output pointer in its formatting
-state at `DS:45DC`, records the current strlen, then calls the
-format implementation `FUN_1008_4504`. Thus `DS:46BE` may be
-populated through an *indirect pointer write*, explaining why direct
-Ghidra XREFs to `DS:46BE` only show the first-entry zero at `3:0ED9`.
+Original `FUN_1008_6442` stores the SOURCE token pointer in its
+input stream state at `DS:45DC`, records the SOURCE string length
+through `FUN_1008_609E`, then calls the scanner
+`FUN_1008_4504`. The scanner consumes source bytes and writes
+through the destination pointer given as its `%s` argument.
+This indirect destination explains why symbol-only XREFs to `DS:46BE`
+show the one-shot reset but not the scanner's indexed stores.
 
 The `-p` caller supplies no output-capacity parameter to
-`FUN_1008_6442`. The complete recursive formatter's effective
-length cap and the historical Windows 3.11 entry-point command-line
-provider limit were **not proven** by current static evidence;
-do not silently import a DOS PSP 127-character assumption into Win16.
+`FUN_1008_6442`; original `%s` scan has no numeric field
+width. Microsoft KB Q71364 does demonstrate the 128-character
+Program Manager entry limit for **Windows 3.1**. That excludes the
+large-prefix clock overwrite through this one launcher route.
+An equivalent bound for **all Windows 3.11 launch mechanisms**
+remains unproven. Do not import a DOS PSP or modern Win32 limit.
 
 When the original one-shot init `3:0E9E` is triggered,
 `3:0ED9` resets the first byte at DS:46BE to zero, so the ordinary
