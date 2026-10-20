@@ -5,6 +5,9 @@ on:
     paths:
       - 'src/re/Win16ClockPresentationContract.hpp'
       - 'src/re/Win16TimerLifecycleGate.hpp'
+      - 'src/re/Win16StringTrioContract.hpp'
+      - 'tests/win16_string_trio_contract_test.cpp'
+      - 'docs/WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md'
       - 'tests/win16_timer_lifecycle_gate_test.cpp'
       - 'docs/WIN16_TIMER_LIFECYCLE_ERROR_PATH_20261020.md'
       - 'tests/win16_clock_presentation_contract_test.cpp'
@@ -15,6 +18,9 @@ on:
     paths:
       - 'src/re/Win16ClockPresentationContract.hpp'
       - 'src/re/Win16TimerLifecycleGate.hpp'
+      - 'src/re/Win16StringTrioContract.hpp'
+      - 'tests/win16_string_trio_contract_test.cpp'
+      - 'docs/WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md'
       - 'tests/win16_timer_lifecycle_gate_test.cpp'
       - 'docs/WIN16_TIMER_LIFECYCLE_ERROR_PATH_20261020.md'
       - 'tests/win16_clock_presentation_contract_test.cpp'
@@ -37,3 +43,7 @@ jobs:
             tests/win16_timer_lifecycle_gate_test.cpp \
             -o /tmp/win16_timer_lifecycle_gate_test
           /tmp/win16_timer_lifecycle_gate_test
+          g++ -std=c++20 -Wall -Wextra -Wpedantic -Werror -Isrc \
+            tests/win16_string_trio_contract_test.cpp \
+            -o /tmp/win16_string_trio_contract_test
+          /tmp/win16_string_trio_contract_test
