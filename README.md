@@ -4,6 +4,8 @@
 
 **v0.76 / 2026-10-20 DEMO timing-context audit:** integrates D02-E/F: identical first 220 RNG caller/state/results can accompany different scheduler/input contexts (229 versus 220 recorded outcomes). Adds a SHA-gated original-byte auditor with stronger exported-ledger validation and 11 synthetic robustness checks. The actual first clock/due divergence and original-versus-port parity remain OPEN. See [scope and evidence](docs/V076_REMAX_DEMO_TIMING_CONTEXT.md).
 
+> **v0.64 candidate / DOS2 DEMO RNG229:** an independent audit of the archived D02-D original DOS2 derived ledger verifies **229/229** state/AX/ordinal/checkpoint rows with no mathematical mismatches. Original captures cover 275 input records and at least one post-EOF mask replay, but this is **not new gameplay execution**, **not a clean-room parity verdict**, and **not a complete DOS2 GUARD41 death instruction trace**. The new strict CSV verifier requires the user's private exported ledger. See [v0.64 evidence scope](docs/V064_DOS20_DEMO_RNG229_ACCEPTANCE.md) and [verifier](tools/verify_d02d_rng229.py).
+
 > **Renderer parity status (2026-10-20):** The executable still uses `src/renderer/Raycaster.cpp`, a **diagnostic DDA preview**, not the original DOS/Win16 VEC→column-owner→span renderer. **Pixel-perfect 1:1 is NOT yet verified.** Recovered E798 projection and bounded DOS2 pixel writers are research components; they must pass matched original-game indexed-framebuffer **and DAC** zero-diff tests before replacing the active DDA path.
 
 
