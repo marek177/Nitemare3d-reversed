@@ -35,4 +35,10 @@ jobs:
       - name: Build 304-column owner/span raster test
         run: cmake --build build-v075 --config Debug --target n3d_dos20_span_wall_pipeline_test --parallel 4
       - name: Execute synthetic DOS2 VEC/owner/span-to-wall tests
-        run: ctest --test-dir build-v075 -C Debug -R '^n3d_dos20_span_wall_pipeline_test$' --output-on-failure
+        run: ctest --test-dir build-v075 -C Debug -R '^n3d_dos20_span_wall_pipeline_test
+ --output-on-failure
+      - name: GNU C++20 strict checks with undefined-behavior sanitizer
+        if: runner.os == 'Linux'
+        run: |
+          c++ -std=c++20 -O1 -g -Wall -Wextra -Werror -pedantic -fsanitize=undefined -fno-sanitize-recover=all -Isrc tests/dos20_span_wall_pipeline_test.cpp -o /tmp/n3d_v075_ubsan
+          /tmp/n3d_v075_ubsan
