@@ -31,6 +31,12 @@ With a reference, equality covers only generated wall pixels. Differences outsid
 
 ## Validation and remaining evidence
 
-Twelve synthetic CLI checks exercise the joined raster path, frame selection, exact one-pixel mismatch reporting, mask isolation, absent reference, all-culled coverage, malformed DS/shade/cache/CEDC inputs, output preservation and CLI validation. They run the compiled executable and verify input files remain unchanged. Existing CEDC and material-binding tests remain separate arithmetic/component checks.
+Thirteen synthetic CLI checks exercise the joined raster path, frame selection, exact one-pixel mismatch reporting, mask isolation, absent reference, all-culled coverage, malformed DS/shade/cache/CEDC inputs, output preservation and CLI validation. They run the compiled executable and verify input files remain unchanged. Existing CEDC and material-binding tests remain separate arithmetic/component checks.
 
 No authenticated original snapshot replay was performed for this integration change. A synchronized original DS/IMG/background/reference capture is still required to establish even scoped original wall equality; full indexed-frame and DAC acceptance remains a separate gate. The integration adds no new original-runtime evidence beyond the witnesses documented by its component headers.
+
+## Localizing a divergence
+
+`first_wall_mismatch_pixel` is the lowest linear framebuffer index (top to bottom, then left to right), independent of the renderer's column traversal. `first_wall_mismatch` records its x/y, candidate and reference palette indices, owner VEC pointer, span index, wall ID and physical U. This localizes an observed difference without assigning a cause. `wall_mismatch_bounds` gives inclusive left/top/right/bottom limits across all generated-wall differences. Both objects are null when there is no observed difference, including absent reference or zero coverage; consult `wall_pixels_equal` to distinguish these cases.
+
+`columns.csv` appends `compared_pixels` and `mismatch_pixels`. Without a reference or for a culled column, compared count is zero and mismatch count is empty. With a drawn column and reference, zero mismatches is explicit. Counts must reconcile with the masked aggregate, never with supplied background pixels. A three-point synthetic regression checks opposite frame corners within the wall region and verifies row-major first-difference selection despite column-major drawing.
