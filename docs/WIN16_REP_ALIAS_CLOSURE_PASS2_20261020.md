@@ -104,6 +104,35 @@ Win16 LocalAlloc may round up block size and allocation success may
 depend on the memory manager. It is not safe to emulate a stray
 host C++ write without its sandbox/heap model.
 
+### Newly recovered interprocedural reachability gate
+
+Importantly, the original Ghidra callgraph identifies one direct
+caller of the underlying LocalAlloc-fill function at 0:5446,
+inside FUN_1000_542A. That function itself has exactly two
+Ghidra-named direct callers:
+
+| Direct caller | Pushed element width | Product reaching 2:66FE |
+|---|---:|---|
+| 0:5588 (FUN_1000_557A) | 0x000A = 10 | 10 * count |
+| 0:5865 (FUN_1000_5856) | 0x0006 = 6 | 6 * count |
+
+Both products are mathematically even for every 16-bit count.
+If MUL overflowed, the original helper branches to failure
+rather than allocating. Otherwise LocalAlloc is passed an
+**even** nominal byte count, and the original zero-fill writes
+exactly that count. The odd-size one-byte-extra branch therefore
+does **not** arise from either currently known direct gameplay caller.
+
+This is a higher-level conditional static reachability result,
+not an exhaustive proof against unrecognized, address-taken or
+indirect calls to the allocation helpers. Original code also
+may pass zero count; its separate helper substitutes one byte
+for LocalAlloc(0) while the zero-fill loop still writes zero,
+which is not the odd-size overrun case.
+
+The regression tests exhaustively check all 65,536 count values for
+both direct caller element widths, including product overflow.
+
 ## Regression and provenance limits
 
 - Original Ghidra REP evidence ledger:
