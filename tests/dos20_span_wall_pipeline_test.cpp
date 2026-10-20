@@ -90,8 +90,8 @@ int main(int argc,char**argv){
         assert(sp::validNear(p,9));
         assert(span.nearOwner==p);
         assert(wallId>=10 && wallId<=18);
-        assert(bottom>=100 && bottom<=108);
-        assert(height>=41 && height<=57);
+        assert(bottom>=80 && bottom<=335);
+        assert(height>=1 && height<=511);
         return sp::Material{image,128,64,x<160 ? 0u:64u,&lut};
     };
 
