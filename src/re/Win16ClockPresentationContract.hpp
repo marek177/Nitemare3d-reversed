@@ -91,6 +91,36 @@ inline constexpr std::uint16_t kWin110TimerEndCaller = 0x0F70;
 inline constexpr std::uint16_t kWin110TimerEndImportedCall = 0xD6BE;
 inline constexpr std::uint16_t kWin110TimerEndLocalRead = 0xD6BB;
 
+// Static Win16 1.10 teardown stack-slot provenance (original Ghidra):
+// 3:0F64 PUSH 1; CALL FAR E0C4(1); ADD SP,2; PUSH 1;
+// CALL FAR D66C(1); ADD SP,2.
+// E0C4 uses ENTER 4,0; D66C uses ENTER 6,0. Both have the same
+// BP because the caller balances both argument pushes. BP-2 aliases
+// the *same stack address* across the consecutive calls, although
+// its 16-bit contents are not recovered. We never read host stack memory.
+struct Win110SequentialFarCallStack {
+    static constexpr std::int32_t kArgumentBytes = 2;
+    static constexpr std::int32_t kReturnAddressBytes = 4;
+    static constexpr std::int32_t kSavedBasePointerBytes = 2;
+    static constexpr std::int32_t kAudioEnterLocalBytes = 4;
+    static constexpr std::int32_t kTimerEnterLocalBytes = 6;
+
+    static constexpr std::int32_t calleeBasePointerFromCallerSP(
+        std::int32_t callerSP) noexcept {
+        return callerSP - kArgumentBytes - kReturnAddressBytes -
+               kSavedBasePointerBytes;
+    }
+    static constexpr std::int32_t bpMinus2AddressFromCallerSP(
+        std::int32_t callerSP) noexcept {
+        return calleeBasePointerFromCallerSP(callerSP) - 2;
+    }
+    static constexpr bool audioAndTimerAliasBpMinus2() noexcept {
+        // The different ENTER local lengths are allocated below the BP.
+        return kAudioEnterLocalBytes == 4 &&
+               kTimerEnterLocalBytes == 6;
+    }
+};
+
 constexpr bool multimediaCapabilitiesSucceeded(std::uint16_t mmResult) noexcept {
     return mmResult == 0; // TIMERR_NOERROR, not timeBeginPeriod success
 }
