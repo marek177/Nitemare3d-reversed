@@ -1,5 +1,17 @@
 # Win16 clock + presentation contract (static-first)
 
+> **20 October 2026 archival evidence correction:** Win16 v1.10's
+> timeEndPeriod argument is no longer locally unknown: prior SHA-gated
+> Ghidra ASM in the user's v0.61 archive explicitly records
+> `3:D6BB FF 76 FE (PUSH WORD PTR SS:[BP-2])` before
+> `3:D6BE MMSYSTEM.606`. Direct calls are `3:0F34` with PUSH 0 and
+> `3:0F70` with PUSH 1. Read
+> [the updated archived-static closure](WIN16_V110_TIMER_ARCHIVED_BYTE_CLOSURE_20261020.md)
+> before relying on superseded older OPEN statements below.
+> No original Win16 binary was freshly SHA-rechecked in this session;
+> indirect FAR callers and runtime stack residue remain unproved.
+
+
 Date: 2026-10-19. Scope: Win16 Nitemare 3-D 1.0, 1.8, 1.10.
 This note distinguishes *direct decompiler evidence*, *previous original-byte audit*,
 and *remaining proof obligations*. It does not raise 1:1 parity percentages.
