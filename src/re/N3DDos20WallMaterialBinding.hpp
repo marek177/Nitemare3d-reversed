@@ -2,7 +2,7 @@
 // Nitemare 3D DOS2 experimental material binding:
 // 28B VEC (+03 frame, +04 cache selector) -> aliased IMG wall stream
 // -> 10B frame header + width*height column-major bytes
-// -> Win16 EBD6/6422 perspective-U *candidate* -> DOS 16CE shade XLAT
+// -> native DOS CEDC/22CA U by default -> DOS 16CE shade XLAT
 // -> the existing DOS2 304-column span raster.
 //
 // IMG cache/frame policy is traced to original N3D shared sequence offsets.
@@ -10,9 +10,9 @@
 // for orientation 0/1 when DS:430E==0; the relevant Ghidra branch was also
 // recorded by prior DOS static audits. This is per wall/span, NOT a global
 // adjustment to the entire indexed framebuffer.
-// The 66B0/EBD6 perspective mathematics came from Win16 1.10 and is NOT
-// instruction-exact independently proven for DOS 2.0. This API marks it as
-// a candidate and rejects missing resources instead of using a DDA fallback.
+// Optional 66B0/EBD6 cross-build mathematics came from Win16 1.10 and is
+// kept separate from the default native DOS path. Full scene parity remains
+// unverified; missing resources are rejected instead of using a DDA fallback.
 #include "re/N3DDos20SpanWallPipeline.hpp"
 #include "re/N3DDos20TextureUEdge.hpp"
 #include "re/N3DDos20CedcProjection.hpp"
