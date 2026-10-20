@@ -17,7 +17,10 @@ from n3d_win16_oom_callback_indirect_proof import (
     UNKNOWN_INSTALL_BYTE_IP,CALLBACK_REGISTRATION_SITES,
     OOM_INITIAL_POINTER_WORDS,EXPECTED_LITERAL_GLOBAL_WRITES,
     validate_archived_hidden_code,allocation_failure_plan,
-    known_recovery_handler_plan,audit
+    known_recovery_handler_plan,audit,
+    normal_Win16_default_OOM_callback_returns,
+    ERROR_DISPATCHER_ENTRY,ERROR_DISPATCHER_BACK_EDGES,
+    ERROR_DISPATCHER_NONLOCAL_EXIT,ERROR_DISPATCHER_INDIRECT_HANDLER_CALL
 )
 from n3d_win16_string_trio_lifecycle_audit import (
     allocate_trio,failing_alloc_global_zero_writer,
@@ -127,6 +130,42 @@ class Win16HiddenOOMCallback(unittest.TestCase):
             self.assertTrue(v["calls_error_helper_1000_4564"])
             self.assertTrue(v["throw_may_unwind"])
             self.assertEqual(v["normal_return_AX_if_called_subroutine_returns"],0)
+
+    def test_error_dispatcher_has_only_loop_or_kernel_throw_exits(self):
+        report=audit()
+        self.assertEqual(ERROR_DISPATCHER_ENTRY,"1000:4492")
+        self.assertEqual(ERROR_DISPATCHER_BACK_EDGES,{
+            "1000:44FC":"1000:44B8",
+            "1000:4527":"1000:44B8",
+        })
+        self.assertEqual(ERROR_DISPATCHER_NONLOCAL_EXIT,
+                         "1000:451E KERNEL.THROW")
+        self.assertEqual(ERROR_DISPATCHER_INDIRECT_HANDLER_CALL,
+                         "1000:4524 CALL FAR [SI+08]")
+        self.assertFalse(normal_Win16_default_OOM_callback_returns())
+        self.assertTrue(
+            report["default_error_helper_no_direct_return_path_under_valid_CatchThrow"])
+        self.assertFalse(report["normal_default_handler_returns_0_to_allocator"])
+        self.assertIn("oldnewthing",report["win16_CatchThrow_documentation"])
+
+    def test_defensive_xor_ax_zero_stays_conditional_abnormal_fallback(self):
+        plan=allocation_failure_plan("default",0)
+        self.assertTrue(plan["normal_CatchThrow_default_handler_does_not_return"])
+        self.assertTrue(plan["provided_return_value_requires_abnormal_default_handler_return"])
+        unknown=allocation_failure_plan("default")
+        self.assertTrue(unknown["normal_CatchThrow_default_handler_does_not_return"])
+        self.assertFalse(unknown["provided_return_value_requires_abnormal_default_handler_return"])
+        self.assertIsNone(unknown["propagates_zero_to_immediate_caller_if_reached"])
+
+    def test_recovery_missing_resources_invokes_nonlocal_error_dispatcher(self):
+        for o,b in ((False,False),(True,False),(False,True)):
+            state=known_recovery_handler_plan(o,b)
+            self.assertFalse(state["error_branch_normal_return_proven"])
+            self.assertTrue(state["calls_error_helper_1000_4564"])
+            self.assertTrue(state["throw_may_unwind"])
+        good=known_recovery_handler_plan(True,True)
+        self.assertFalse(good["calls_error_helper_1000_4564"])
+        self.assertFalse(good["throw_may_unwind"])
 
     def test_original_oom_to_DGROUP_scalar_store_is_conditionally_reachable(self):
         self.assertTrue(failing_alloc_global_zero_writer(0x00A2,ONESHOT_LATCH_DS))
