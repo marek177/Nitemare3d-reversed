@@ -78,6 +78,24 @@ python3 -m unittest discover -s tests -p test_n3d_v072_stage_frame_gate.py -v
 
 Testy sú syntetické, bez pôvodných komerčných súborov. GitHub Actions spúšťa testy na Linuxe aj Windows. Aplikácia nemusí mať zatiaľ automatický export všetkých piatich súborov; **v0.72 nie je dôkaz, že už existuje synchronizovaná originál-kandidát dvojica**.
 
+## Statický CFG probe pre 67 bajtov mimo pôvodných runtime trace
+
+`tools/n3d_v072_dos2_gap_cfg_probe.py` dopĺňa v0.71 audit kontrolovanej originálnej DOS2 EXE. Pri **SHA-256 presne zhodnom** `N3D-E-20.EXE` používa Capstone v 16-bitovom režime a hľadá priamo dosiahnuteľné inštrukcie v oblastiach `CAB8` a `1021E` vrátane 51B a 16B medzier. Dáva offsety a mnemoniky; neexportuje celé strojové bajty pôvodnej hry.
+
+```bash
+python3 -m pip install capstone==5.0.3
+python3 tools/n3d_v072_dos2_gap_cfg_probe.py \
+  --exe /private/N3D-E-20.EXE \
+  --out /tmp/n3d_v072_dos2_cfg.json
+python3 -m unittest discover -s tests -p test_n3d_v072_dos2_gap_cfg_probe.py -v
+```
+
+**Vysoká opatrnosť:** statický 16-bitový direct-CFG disassembler nie je ekvivalent pôvodnej inštrukčne presnej analýzy. Nepriamy skok, FAR segmentový transfer, aliasovaný kód, data overlay a sémantika relatívneho IP môžu uniknúť; každý taký prípad sa uvádza ako neistota. Ani inštrukcia dekódovaná z EXE nie je automaticky runtime dosiahnuteľná. Označenie `not_reached_by_direct_cfg` nikdy neznamená preukázaný mŕtvy kód.
+
+Na GitHub CI sa testuje len na vytvorených 8086 syntetických úryvkoch (podmienené/nepodmienené skoky, nepriamy skok, hranice funkcie, normalizácia nad 64 KiB). V tomto passe sa **nepublikuje ani nespúšťa komerčný originálny EXE v GitHub Actions**. Ak miestne vykonávanie originálneho EXE nie je dostupné, sémantická runtime uzávierka 51+16 B zostáva otvorená.
+
+---
+
 ## Čo nie je uzavreté
 
 1. Originálny DOS v2.0 `CAB8` zostáva na **1009/1060 runtime** opcode bajtoch; nevykonaná oblasť `CD9D..CDCF` má 51 bajtov. `1021E`: **656/672**, štyri 4B sloty. Statické čítanie ich obsahu a všetky vetvy ešte nie sú inštrukčne preukázané v tomto passe.
