@@ -11,6 +11,10 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
 from n3d_win16_filename_alias_calls import (
     COMMAND_LINE_PREFIX_PATH, EXPECTED_WRAPPERS,
     LITERAL_SUFFIXES, TIMER_OUTPUT_OFFSET,
+    WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX,
+    WIN110_SSCANF_FORMAT_DISPATCH, WIN110_SSCANF_BYTE_STORE,
+    WIN110_SSCANF_WIDTH_GATE, WIN110_SSCANF_TERMINAL_NUL_STORE,
+    win31_program_manager_launcher_excludes_timer_alias,
     clock_overwrite_possible_with_suffix,load_ledger,verify
 )
 
@@ -80,6 +84,53 @@ class Win16DirectFileNames(unittest.TestCase):
         self.assertFalse(result["win16_command_line_maximum_verified"])
         self.assertFalse(result["indirect_callers_of_builder_ruled_out"])
         self.assertFalse(result["alias_writer_graph_closed"])
+
+    def test_original_input_scanner_not_sprintf(self):
+        result=verify(self.rows)
+        flow=result["command_line_prefix_flow"]
+        self.assertEqual(flow["scanner_kind"],"sscanf-like INPUT scanner")
+        self.assertTrue(flow["scanner_input_token_is_source"])
+        self.assertEqual(flow["scan_call"],"3:1221")
+        self.assertEqual(flow["scan_function"],"2:6442")
+        self.assertEqual(flow["input_formatter"],"2:4504")
+        self.assertEqual(flow["scanner_format_source"],"DS:0D8C")
+        self.assertEqual(flow["format_specifier"],"%s")
+        self.assertEqual(result["input_scan_format"],"%s")
+        self.assertTrue(result["input_scan_source_argument_is_token"])
+        self.assertFalse(result["input_scan_destination_capacity_argument_present"])
+
+    def test_original_input_scan_has_no_percent_s_width_guard(self):
+        result=verify(self.rows)
+        self.assertEqual(WIN110_SSCANF_FORMAT_DISPATCH,"2:46AC")
+        self.assertEqual(WIN110_SSCANF_WIDTH_GATE,"2:47F5")
+        self.assertEqual(WIN110_SSCANF_BYTE_STORE,"2:484B")
+        self.assertEqual(WIN110_SSCANF_TERMINAL_NUL_STORE,"2:4892")
+        self.assertEqual(
+            result["scan_direct_byte_store_opcode"],
+            "2:484B MOV BYTE PTR ES:[BX],AL")
+        self.assertFalse(result["scan_explicit_width_limit_for_percent_s"])
+
+    def test_historical_win31_program_manager_command_field_bound(self):
+        proof=verify(self.rows)
+        self.assertEqual(WIN31_PROGRAM_MANAGER_CMDLINE_FIELD_MAX,128)
+        self.assertEqual(proof["win31_program_manager_command_field_max"],128)
+        self.assertTrue(proof["win31_program_manager_launch_route_cannot_reach_flag"])
+        self.assertTrue(win31_program_manager_launcher_excludes_timer_alias(128,10))
+        self.assertTrue(win31_program_manager_launcher_excludes_timer_alias(128,8))
+        self.assertTrue(win31_program_manager_launcher_excludes_timer_alias(0,10))
+        self.assertFalse(clock_overwrite_possible_with_suffix(128,10))
+        self.assertFalse(clock_overwrite_possible_with_suffix(128,8))
+
+    def test_program_manager_limit_cannot_be_applied_to_arbitrary_win16(self):
+        proof=verify(self.rows)
+        self.assertTrue(proof["win31_program_manager_scoped_only"])
+        self.assertFalse(proof["Win311_program_manager_limit_independently_verified"])
+        self.assertFalse(proof["all_Win16_launch_methods_proven_bounded"])
+        self.assertFalse(proof["win16_command_line_maximum_verified"])
+        with self.assertRaisesRegex(ValueError,"not within documented"):
+            win31_program_manager_launcher_excludes_timer_alias(129,8)
+        with self.assertRaisesRegex(ValueError,"negative"):
+            win31_program_manager_launcher_excludes_timer_alias(-1,8)
 
     def test_rejects_wrong_direct_literal(self):
         rows=copy.deepcopy(self.rows)
