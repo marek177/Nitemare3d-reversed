@@ -41,6 +41,13 @@ INSTRUCTION_WITNESSES = {
     "1000:0D65": ("C6 01 00", "MOV BYTE [BX+DI],0 ; terminator BEFORE NULL check"),
     "1000:0D68": ("89 7C 02", "MOV [SI+2],DI ; used=n"),
     "1000:0D6B": ("89 7C 04", "MOV [SI+4],DI ; cap=n"),
+    "1000:0E30": ("39 77 04", "CMP [BX+4],SI ; signed capacity compare"),
+    "1000:0E33": ("7D 0F", "JGE 0E44 ; signed sufficient capacity"),
+    "1000:0E36": ("9A 74 0D 00", "CALL FAR 1000:0D74 ; destroy if capacity low"),
+    "1000:0E3F": ("9A 3E 0D 00", "CALL FAR 1000:0D3E ; allocate n+1"),
+    "1000:0E51": ("9A 80 6C 08", "CALL FAR 1008:6C80 ; copy uint16 n"),
+    "1000:0E5C": ("89 77 02", "MOV [BX+2],SI ; used=n"),
+    "1000:0E61": ("C6 00 00", "MOV BYTE [BX+SI],0 ; end NUL"),
     "1000:0D7D": ("9A F2 0C 00", "CALL FAR 1000:0CF2 ; conditional free"),
     "1000:0D84": ("9A DC 0C 00", "CALL FAR 1000:0CDC ; reset"),
     "1008:5AB8": ("83 7E 06 00", "CMP requested bytes,0"),
@@ -148,6 +155,47 @@ def allocate_trio(requested_used:int,heap_result_ptr:int | None,
         terminator,heap_result_ptr==0,False,False,False)
 
 
+def word_signed(value:int)->int:
+    check_word("value",value)
+    return value - 0x10000 if value >= 0x8000 else value
+
+
+def initial_empty_assignment_plan(requested_used:int)->dict[str,Any]:
+    """Original 1000:0E26 compare, with the canonical 0CDC empty state.
+
+    Pre: object == (ptr=0x0584,used=0,cap=0).
+    0E30/0E33 compares capacity against input as SIGNED 16-bit.
+    A requested used length in 0x8000..0xFFFF appears negative,
+    so 0 >= negative causes JGE to skip allocation.
+    Then 0E51 copies requested_used bytes to the sentinel offset.
+    We compute only *address intervals*; no actual memory is read/written.
+    """
+    check_word("requested_used",requested_used)
+    realloc_skipped = word_signed(0) >= word_signed(requested_used)
+    copies = requested_used != 0
+    destination = EMPTY_SENTINEL if realloc_skipped else None
+    last_nonwrapped = (
+        EMPTY_SENTINEL + requested_used - 1
+        if copies and destination is not None else None
+    )
+    touches_clock = bool(
+        copies and destination is not None and
+        requested_used > CLOCK_FLAG_DS-EMPTY_SENTINEL
+    )
+    return {
+        "requested_used":requested_used,
+        "signed_capacity_as_word":0,
+        "signed_requested_used":word_signed(requested_used),
+        "jge_skips_reallocation":realloc_skipped,
+        "would_call_copy":copies,
+        "copy_destination_DS_offset_if_no_allocation":destination,
+        "copy_last_offset_before_uint16_wrap":last_nonwrapped,
+        "copy_intersects_DS_46B2_if_nonfaulting":touches_clock,
+        "observed_source_length_and_pointer_valid":False,
+        "actual_normal_runtime_reachability_proven":False,
+    }
+
+
 def failing_alloc_global_zero_writer(length:int,target:int)->bool:
     """Could the terminal NUL write DS:[length] hit target IF AX=0?
 
@@ -166,6 +214,7 @@ def audit()->dict[str, Any]:
     latch_failure=allocate_trio(ONESHOT_LATCH_DS,0)
     clock_good=allocate_trio(CLOCK_FLAG_DS,0x2000)
     full=allocate_trio(0xFFFF,0)
+    empty_large=initial_empty_assignment_plan(0x8000)
     return {
         "original":"NITE3W Windows 1.10 archived static Ghidra",
         "instruction_witnesses":len(INSTRUCTION_WITNESSES),
@@ -190,6 +239,21 @@ def audit()->dict[str, Any]:
             "DS:46B2":failing_alloc_global_zero_writer(CLOCK_FLAG_DS,CLOCK_FLAG_DS),
         },
         "new_conditional_scalar_alias_writer":"1000:0D65",
+        "conditional_direct_memcpy_to_sentinel_from_empty":{
+            "state":initial.as_dict(),
+            "trigger_requested_count":"n in 0x8000..0xFFFF (signed negative)",
+            "allocator_skipped_by_signed_JGE":"1000:0E33",
+            "target_callee":"1008:6C80",
+            "copy_site":"1000:0E51",
+            "first_copy_byte":"DS:0584",
+            "first_touch_offset_clock":"0x412E",
+            "minimum_signed_high_bit_count":0x8000,
+            "example":empty_large,
+            "original_DGROUP_file_backed_exclusive_end":"0x8EAE",
+            "example_last_written_offset":"0x8583",
+            "can_touch_clock_flag_under_nonfaulting_model":True,
+            "large_source_data_reachability_proven":False,
+        },
         "actual_allocator_failure_or_alias_reachability_proved":False,
         "oom_callback_possible":{"far_pointer":"DS:094A/094C",
                                  "indirect_far_call":"1008:5AF6",
@@ -198,6 +262,7 @@ def audit()->dict[str, Any]:
             "No new executable rehash; instruction table sourced from archived original Ghidra",
             "Conditional OOM LocalAlloc return 0 is modeled, not observed",
             "A data copy after failed allocation can introduce additional pointer-derived writes",
+            "Canonical empty trio + signed JGE permits very-large copy into static sentinel, independent of LocalAlloc failure; source size reachability remains OPEN",
             "Array indices and string lengths reaching 00A2/46B2 are not fully proven",
             "Null result can be returned by the wrapper when no OOM handler or callback declines",
             "Normal valid LocalAlloc heap pointers must be proved nonaliasing by separate OS contract",
