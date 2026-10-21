@@ -366,6 +366,11 @@ target_link_libraries(n3d_dos20_vec_producer_test PRIVATE n3d_core)
 add_executable(n3d_dos20_guard_special_state_test tests/dos20_guard_special_state_test.cpp)
 target_include_directories(n3d_dos20_guard_special_state_test PRIVATE src)
 
+# V087 observed original DOS2 key-bit contract only (no runtime input loop).
+add_executable(n3d_dos20_input_mask_contract_test
+    tests/dos20_input_mask_contract_test.cpp)
+target_include_directories(n3d_dos20_input_mask_contract_test PRIVATE src)
+
 include(cmake/RegressionTests.cmake)
 
 if(BUILD_TESTING)

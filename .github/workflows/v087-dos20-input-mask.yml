@@ -1,0 +1,31 @@
+name: v087 DOS2 original input mask (bounded)
+on:
+  push:
+    paths: ['src/re/N3DDos20InputMaskContract.hpp', 'tests/dos20_input_mask_contract_test.cpp', 'tools/n3d_input_mask_ledger.py', 'tests/test_n3d_input_mask_ledger.py', 'CMakeLists.txt', '.github/workflows/v087-dos20-input-mask.yml']
+  pull_request:
+    paths: ['src/re/N3DDos20InputMaskContract.hpp', 'tests/dos20_input_mask_contract_test.cpp', 'tools/n3d_input_mask_ledger.py', 'tests/test_n3d_input_mask_ledger.py', 'CMakeLists.txt', '.github/workflows/v087-dos20-input-mask.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-mask:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Configure (without SDL or original data)
+        run: cmake -S . -B build-v087 -DN3D_ENABLE_SDL3=OFF -DCMAKE_BUILD_TYPE=Debug
+      - name: Build observable contract
+        run: cmake --build build-v087 --config Debug --target n3d_dos20_input_mask_contract_test --parallel 2
+      - name: Run CTest
+        run: ctest --test-dir build-v087 -C Debug -R '^n3d_dos20_input_mask_contract_test$' --output-on-failure
+      - name: Check normalized mask ledger synthetic tests
+        run: python -m unittest discover -s tests -p test_n3d_input_mask_ledger.py -v
+      - name: Check optimized Python
+        run: python -O -m unittest discover -s tests -p test_n3d_input_mask_ledger.py -v
