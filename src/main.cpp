@@ -3,10 +3,12 @@
 #include "platform/sdl/SDLVideo.hpp"
 #include "renderer/Framebuffer.hpp"
 #include "renderer/Raycaster.hpp"
+#include "re/N3DPreviewFrameTrace.hpp"
 
 #include <chrono>
 #include <cmath>
 #include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -23,11 +25,14 @@ int main(int argc, char** argv) {
     try {
         std::filesystem::path dataRoot = "data/original";
         int episode = 1, level = 1;
+        std::filesystem::path previewTrace;
         for (int i = 1; i < argc; ++i) {
             const std::string arg = argv[i];
             if (arg == "--data" && i + 1 < argc) dataRoot = argv[++i];
             else if (arg == "--episode" && i + 1 < argc) episode = std::stoi(argv[++i]);
             else if (arg == "--level" && i + 1 < argc) level = std::stoi(argv[++i]);
+            else if (arg == "--preview-trace" && i + 1 < argc) previewTrace = argv[++i];
+            else if (arg == "--preview-trace") throw std::runtime_error("Missing --preview-trace path");
         }
         auto data = n3d::GameData::loadEpisode(dataRoot, episode);
         if (level < 1 || static_cast<std::size_t>(level) > data.episode().maps.levels().size()) throw std::runtime_error("Requested level is outside this episode");
@@ -36,6 +41,14 @@ int main(int argc, char** argv) {
         n3d::Framebuffer fb(320, 200);
         std::cerr << "RENDERER: diagnostic DDA preview ONLY; NOT original N3D pixel parity.\n";
         n3d::Raycaster raycaster(&data.episode().images);
+        std::ofstream trace;
+        if (!previewTrace.empty()) {
+            trace.open(previewTrace);
+            if (!trace) throw std::runtime_error("Cannot open preview trace");
+            n3d::re::preview::header(trace);
+            std::cerr << "PREVIEW: frame-based trace; not DOS tick parity.\n";
+        }
+        std::uint64_t frameNumber = 0, pushTick = 0;
         n3d::SDLVideo video(320, 200, 3);
         auto previous = std::chrono::steady_clock::now();
         double pushAccumulator = 0.0;
@@ -68,7 +81,20 @@ int main(int argc, char** argv) {
                 world.beginPush(static_cast<int>(std::floor(player.x)) + dx, static_cast<int>(std::floor(player.y)) + dy, dx, dy);
             }
             pushAccumulator += dt;
-            while (pushAccumulator >= pushTickSeconds) { world.tickPushables(); pushAccumulator -= pushTickSeconds; }
+            while (pushAccumulator >= pushTickSeconds) { world.tickPushables(); ++pushTick; pushAccumulator -= pushTickSeconds; }
+            if (trace) {
+                unsigned moving = 0;
+                for (const auto& p : world.pushables()) if (p.moving()) ++moving;
+                const std::uint16_t keys = (input.forward ? 1 : 0) | (input.backward ? 2 : 0) |
+                    (input.turnLeft ? 4 : 0) | (input.turnRight ? 8 : 0) |
+                    (input.strafeLeft ? 16 : 0) | (input.strafeRight ? 32 : 0) |
+                    (input.actionPressed ? 64 : 0);
+                if (!n3d::re::preview::record(trace, {frameNumber, pushTick, player.x,
+                      player.y, player.angleRadians, keys,
+                      static_cast<unsigned>(world.pushables().size()), moving}))
+                    throw std::runtime_error("Failed to record preview frame");
+            }
+            ++frameNumber;
             raycaster.render(fb, world); video.present(fb, data.palette()); SDL_Delay(1);
         }
         return 0;
