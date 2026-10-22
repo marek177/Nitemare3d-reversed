@@ -1,0 +1,29 @@
+name: Gameplay differential contract
+on:
+  push:
+    paths:
+      - 'tools/n3d_gameplay_diff.py'
+      - 'tests/test_n3d_gameplay_diff.py'
+      - 'src/re/N3DGameplayTrace.hpp'
+      - 'tests/gameplay_trace_serialization_test.cpp'
+      - '.github/workflows/gameplay-diff-contract.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_gameplay_diff.py'
+      - 'tests/test_n3d_gameplay_diff.py'
+      - 'src/re/N3DGameplayTrace.hpp'
+      - 'tests/gameplay_trace_serialization_test.cpp'
+jobs:
+  synthetic-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Synthetic state-diff tests
+        run: python3 -m unittest discover -s tests -p test_n3d_gameplay_diff.py -v
+      - name: Snapshot serializer C++20
+        run: |
+          g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Isrc tests/gameplay_trace_serialization_test.cpp -o /tmp/n3d_gameplay_trace_test
+          /tmp/n3d_gameplay_trace_test
