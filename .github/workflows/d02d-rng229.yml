@@ -1,0 +1,25 @@
+name: D02-D DOS2 RNG229 verifier
+
+on:
+  pull_request:
+    paths:
+      - "tools/verify_d02d_rng229.py"
+      - "tests/test_d02d_rng229.py"
+      - "docs/V064_DOS20_DEMO_RNG229_ACCEPTANCE.md"
+      - ".github/workflows/d02d-rng229.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run validator fixture and mutation tests
+        run: python3 -m unittest discover -s tests -p test_d02d_rng229.py -v
+      - name: Explicitly separate original runtime replay
+        run: |
+          echo "CI only tests validator logic with synthetic fixtures."
+          echo "Original DOS CPU execution and private .n3dt evidence are NOT run in CI."
