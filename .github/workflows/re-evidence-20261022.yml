@@ -1,0 +1,35 @@
+name: N3D consolidated RE evidence registry
+on:
+  push:
+    paths:
+      - 'docs/RE_*20261022*'
+      - 'tools/n3d_re_evidence_registry_verify.py'
+      - 'tests/test_n3d_re_evidence_registry_verify.py'
+      - '.github/workflows/re-evidence-20261022.yml'
+  pull_request:
+    paths:
+      - 'docs/RE_*20261022*'
+      - 'tools/n3d_re_evidence_registry_verify.py'
+      - 'tests/test_n3d_re_evidence_registry_verify.py'
+      - '.github/workflows/re-evidence-20261022.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  metadata-audit:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate provenance registry and linked files
+        run: python tools/n3d_re_evidence_registry_verify.py
+      - name: Validate synthetic mutation tests
+        run: python -m unittest discover -s tests -p test_n3d_re_evidence_registry_verify.py -v
+      - name: Verify optimized Python does not suppress checks
+        run: python -O -m unittest discover -s tests -p test_n3d_re_evidence_registry_verify.py -v

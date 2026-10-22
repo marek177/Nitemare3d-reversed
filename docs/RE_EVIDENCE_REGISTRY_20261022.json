@@ -1,0 +1,524 @@
+{
+  "schema": "n3d.re-evidence-registry.v1",
+  "snapshot_date": "2026-10-22",
+  "source_commit_sha": "96274948b8a0ce04685cdffb4d854e1a3b758760",
+  "full_original_vs_remake_parity_proven": false,
+  "note": "Research/documentation registry; archived source reports are not automatically fresh independent validation",
+  "original_reference_exe": {
+    "build": "DOS 2.0 N3D-E-20.EXE",
+    "sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301",
+    "status": "hash rechecked from user-supplied historical archive on 2026-10-22; run-specific DS/asset hashes are separate"
+  },
+  "observations": [
+    {
+      "id": "DOS2_E1M1_INPUT_V085V086",
+      "domain": "player_input",
+      "grade": "original_runtime_report",
+      "statement": "V085–V086 original DOS2 E1M1: 1716 samples, 1688 host-aligned, eight action masks; not per-tick",
+      "sources": [
+        "docs/V085_V086_DOS20_LIVE_E1M1_ACTION_MASKS_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_E1M1_OPPOSING_KEYS",
+      "domain": "player_input",
+      "grade": "original_runtime_report",
+      "statement": "Original arrow conflicts/rotations and DS:3F50 direction bits in 1600 RAM samples",
+      "sources": [
+        "docs/V084_DOS20_LIVE_E1M1_OPPOSING_KEYS_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_E1M1_ALT_STRAFE",
+      "domain": "player_collision",
+      "grade": "original_runtime_report",
+      "statement": "Original Alt+arrow lateral motion without heading rotation; 853 asynchronous samples",
+      "sources": [
+        "docs/V084B_DOS20_LIVE_E1M1_ALT_STRAFE_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_E1M1_COLLISION",
+      "domain": "player_collision",
+      "grade": "original_runtime_report",
+      "statement": "Original one 11-unit movement context; clipped step 6; Y=3291 blocked in scene",
+      "sources": [
+        "docs/V081_DOS20_LIVE_E1M1_PLAYER_COLLISION_RUNTIME_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_E1M1_COMBINED_20261022",
+      "domain": "player_input",
+      "grade": "original_runtime_report",
+      "statement": "734 original E1M1 samples, two combined-key sequences, 12 phases, no per-instruction alignment",
+      "sources": [
+        "docs/DOS20_E1M1_COMBINED_KEY_RUNTIME_2026-10-22_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_E1M1_PICKUP_FIRE_20261022",
+      "domain": "weapons",
+      "grade": "archived_runtime_report",
+      "statement": "Original E1M1 pickup ammo 0 to 50; continuous Ctrl held 1-8 host sec one ammo decrement; release re-arms tested route",
+      "sources": [
+        "docs/RE_DOS20_FIRE_PICKUP_20261022_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_DEMO_RNG35",
+      "domain": "rng_demo",
+      "grade": "original_runtime_report",
+      "statement": "8/4, 18/3 and 35/2 matching eligible original-session RNG prefixes; EOF still open",
+      "sources": [
+        "docs/V063_REMAX_DEMO_RNG35_DEPTH.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_DEMO_RNG_CONTEXT",
+      "domain": "rng_demo",
+      "grade": "archived_runtime_report",
+      "statement": "220 matching shared-wrapper RNG outputs while scheduler/input contexts differ",
+      "sources": [
+        "docs/V076_REMAX_DEMO_TIMING_CONTEXT.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_PROJECTILE_LIFECYCLE",
+      "domain": "projectile",
+      "grade": "original_runtime_report",
+      "statement": "Controlled projectile pool 0 to 1 to 2 to 0 in original; natural stale-depth hit unknown",
+      "sources": [
+        "docs/V056_REMAX_FRONTIER_CONSOLIDATION.md",
+        "docs/V083_RUNTIME_PROJECTILE_SAVE_WIN16_FRONTIER.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_RENDER_OWNER_VEC",
+      "domain": "renderer",
+      "grade": "bounded_original_replay",
+      "statement": "592 unique 28B VECs and 304 owner columns at bounded original checkpoint",
+      "sources": [
+        "docs/V068_DOS20_VEC_POOL_OWNER_AUDIT_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_RENDER_TEXTURE_U",
+      "domain": "renderer",
+      "grade": "bounded_original_replay",
+      "statement": "1520 original corrected-U outputs equal native bounded 22CA model",
+      "sources": [
+        "docs/V078_DOS20_TEXTURE_U_22CA_RUNTIME_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_RENDER_CEDC",
+      "domain": "renderer",
+      "grade": "bounded_original_replay",
+      "statement": "1808 original CEDC results matched with original supplied inputs",
+      "sources": [
+        "docs/V079_DOS20_CEDC_PERSPECTIVE_RUNTIME_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_RENDER_ONE_WRITER",
+      "domain": "renderer",
+      "grade": "bounded_original_replay",
+      "statement": "One authentic x8 wall writer exact 42 of 42 indexed pixels, not whole frame",
+      "sources": [
+        "docs/V080_DOS20_AUTHENTIC_IMG_WALL_RUNTIME_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS2_MAP_SPAWN_MARKERS",
+      "domain": "maps",
+      "grade": "original_static_report",
+      "statement": "31 times four selected high-ID 0x25..0x28 changes; controlled E1M1 A/B visibility",
+      "sources": [
+        "docs/V054_REMAX_CROSSBUILD_MAP_PALETTE.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "WIN110_CLASS36_WEAPONS",
+      "domain": "weapons",
+      "grade": "original_static_report",
+      "statement": "Four weapon-class36 variants and ownership/ammo paths in Win16 1.10",
+      "sources": [
+        "docs/V053_REMAX_HUD_WEAPON_CLASS36.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS20_HUD_ACTION_REINDEX",
+      "domain": "hud",
+      "grade": "original_static_report",
+      "statement": "Inserted DOS2 action ID4 with local 4-4-4-3 damage-HUD sequence",
+      "sources": [
+        "docs/V053_REMAX_HUD_WEAPON_CLASS36.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS20_MAP_VEC_PRODUCER",
+      "domain": "maps",
+      "grade": "synthetic_contract",
+      "statement": "Bounded four orientation MAP to VEC producer, original full pool acceptance still open",
+      "sources": [
+        "docs/BULK_UPDATE_20261020.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS20_GUARD41",
+      "domain": "guard",
+      "grade": "original_runtime_report",
+      "statement": "Bounded original GUARD41 state09/death witnesses, no all-actor acceptance",
+      "sources": [
+        "docs/V050_REMAX_GUARD41_DEATH_OUTCOME.md",
+        "docs/V058_REMAX_GUARD41_STATE09.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "WIN16_WING_STARTUP",
+      "domain": "win16",
+      "grade": "original_runtime_report",
+      "statement": "Five original Win16 builds reach displayed E1M1 in WinG lab",
+      "sources": [
+        "docs/V051_REMAX_WIN16_WING_RUNTIME.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "WIN110_SAVE_LOAD",
+      "domain": "save_load",
+      "grade": "original_runtime_report",
+      "statement": "Win16 v1.10 E1M1 original SAVE/LOAD visual witness; first post-load frame not closed",
+      "sources": [
+        "docs/V059_REMAX_WIN16_SAVE_LOAD.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "WIN110_PALETTE",
+      "domain": "win16",
+      "grade": "original_static_report",
+      "statement": "Conditional reserve of 10+10 Win16 system-palette slots and 236 middle entries",
+      "sources": [
+        "docs/V054_REMAX_CROSSBUILD_MAP_PALETTE.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "WIN110_TIMER_ARCHIVE",
+      "domain": "win16",
+      "grade": "archived_static_report",
+      "statement": "Archived Win110 timer BP-2 stack evidence separated from freshly SHA-gated bytes",
+      "sources": [
+        "docs/WIN16_V110_TIMER_ARCHIVED_BYTE_CLOSURE_20261020.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS20_CACHE_ALIAS_GHIDRA01",
+      "domain": "projectile",
+      "grade": "archived_static_report",
+      "statement": "21FD:(0006+i*001C) render-target and projectile damage target record alias",
+      "sources": [
+        "docs/RE_STATIC_GHIDRA_CACHE_20261022_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS20_CACHE_ORDER_GHIDRA02",
+      "domain": "projectile",
+      "grade": "archived_static_report",
+      "statement": "Render-projection write then projectile hit/read, later projection; freshness conditional",
+      "sources": [
+        "docs/RE_STATIC_GHIDRA_CACHE_20261022_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "DOS20_METADATA_GHIDRA03",
+      "domain": "projectile",
+      "grade": "archived_static_report",
+      "statement": "21FD:264E+i*001A metadata writers IMG:549D,54A7 distinct from render pool",
+      "sources": [
+        "docs/RE_STATIC_GHIDRA_CACHE_20261022_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "V088_STATE_DIFF_GATE",
+      "domain": "remake",
+      "grade": "synthetic_contract",
+      "statement": "Strict schema, envelope and first-divergence comparisons, no original tick capture",
+      "sources": [
+        "docs/GAMEPLAY_DIFF_V088_2026-10-22.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "V089_SDL_PREVIEW",
+      "domain": "remake",
+      "grade": "synthetic_contract",
+      "statement": "Actual SDL preview frame capture, not DOS tick or V088 schema",
+      "sources": [
+        "docs/PREVIEW_FRAME_TRACE_V089_2026-10-22.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    },
+    {
+      "id": "RENDERER_FULL_PARITY_OPEN",
+      "domain": "renderer",
+      "grade": "planning",
+      "statement": "Need 64000 indexed + 768 DAC aligned original/candidate frame and first divergence",
+      "sources": [
+        "docs/V081_RENDERER_WALL_FRAME_ACCEPTANCE_PLAN.md",
+        "docs/RE_ALLINONE_PARITY_BRIDGE_20261022_SK.md"
+      ],
+      "verified_against_original_in_this_update": false,
+      "original_vs_remake_parity_proven": false
+    }
+  ],
+  "source_document_inventory": [
+    "docs/BULK_UPDATE_20261020.md",
+    "docs/DOS20_E1M1_COMBINED_KEY_RUNTIME_2026-10-22_SK.md",
+    "docs/DOS20_GUARD41_POSTDEATH.md",
+    "docs/DOS20_WALL_SNAPSHOT_REPLAY.md",
+    "docs/DOS_static_deep_audit_2026-09-24.md",
+    "docs/DOS_v1_8_candidate_identification_2026-09-24.md",
+    "docs/GAMEPLAY_DIFF_V088_2026-10-22.md",
+    "docs/N3D_1.9_deep_static_audit.md",
+    "docs/N3D_DOS10_static_batch_01.md",
+    "docs/N3D_DOS_STATIC_CLOSURE_20260929.md",
+    "docs/N3D_STATIC_ANALYSIS_BATCH05.md",
+    "docs/N3D_STATIC_ANALYSIS_BATCH06.md",
+    "docs/N3D_STATIC_ANALYSIS_BATCH07.md",
+    "docs/PREVIEW_FRAME_TRACE_V089_2026-10-22.md",
+    "docs/PROJECT_FINDINGS_DELTA_2026-09-22.md",
+    "docs/PROJECT_FINDINGS_DELTA_2026-09-23.md",
+    "docs/PROJECT_FINDINGS_DELTA_2026-09-25.md",
+    "docs/PROJECT_STATUS_UNIFIED_V5_2026-09-30.md",
+    "docs/PROJECT_STATUS_V016.md",
+    "docs/PROJECT_STATUS_V017.md",
+    "docs/RE_ALLINONE_PARITY_BRIDGE_20261022_SK.md",
+    "docs/RE_ALL_EXECUTED_SOURCE_INDEX_20261022_SK.md",
+    "docs/RE_ALL_RUNTIME_STATIC_20261022_SK.md",
+    "docs/RE_AUDIT_CHEATS_AUDIO.md",
+    "docs/RE_COVERAGE_2026_09_25.md",
+    "docs/RE_DOS20_FIRE_PICKUP_20261022_SK.md",
+    "docs/RE_P0_ACCEPTANCE_GATES_20261021_SK.md",
+    "docs/RE_PROGRESS_20261021_SK.md",
+    "docs/RE_STATIC_GHIDRA_CACHE_20261022_SK.md",
+    "docs/V018_EVIDENCE_INTEGRATION.md",
+    "docs/V019_REMAX_RUNTIME_PRIMITIVES.md",
+    "docs/V020_REMAX_VERIFICATION_HARNESS.md",
+    "docs/V021_REMAX_SUBSYSTEM_EVIDENCE.md",
+    "docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md",
+    "docs/V023_REMAX_CROSS_BUILD_SYMBOL_MAP.md",
+    "docs/V024_REMAX_GUARD_STATE_GRAPH.md",
+    "docs/V025_REMAX_GUARD_WRITER_GRAPH.md",
+    "docs/V026_REMAX_GUARD_RNG_COUPLING.md",
+    "docs/V027_REMAX_PROJECTILE_LIFECYCLE.md",
+    "docs/V028_EXTERNAL_EVIDENCE_BSF_DEMO.md",
+    "docs/V029_REMAX_SCHEDULER_TRACE_AND_EDGE_CASES.md",
+    "docs/V030_REMAX_DIFFERENTIAL_TRACE_CLOSURE.md",
+    "docs/V031_REMAX_EDGE_CASE_CLOSURE.md",
+    "docs/V032_REMAX_ORIGINAL_BINARY_CLOSURES.md",
+    "docs/V033_REMAX_PUSH_SCHEDULER_BINARY_CLOSURE.md",
+    "docs/V034_REMAX_OBJECT_ANIMATION_RENDER_BRANCHES.md",
+    "docs/V035_REMAX_RNG_22_CALLSITE_CENSUS.md",
+    "docs/V036_REMAX_PROTECTED_HIT_RNG_ORDER.md",
+    "docs/V037_REMAX_SCHEDULER_CATCHUP_STATIC_CLOSURE.md",
+    "docs/V038_REMAX_THREE_DAY_CONSOLIDATION.md",
+    "docs/V039_REMAX_LATE_STATIC_CLOSURES.md",
+    "docs/V040_REMAX_PROJECTILE_REENTRY_ABA_NARROWING.md",
+    "docs/V041_REMAX_LATEST_STATIC_CONSOLIDATION.md",
+    "docs/V041_STATIC_FACTS.csv",
+    "docs/V042_REMAX_OCT18_STATIC_SYNC.md",
+    "docs/V042_STATIC_FACTS.csv",
+    "docs/V043_EVIDENCE_FACTS.csv",
+    "docs/V043_REMAX_RUNTIME_STATIC_SYNC.md",
+    "docs/V044_REMAX_WEAPON_FIRE_CLOSURE.md",
+    "docs/V045_REMAX_WEAPON_SWITCH_FRAME_ORDER.md",
+    "docs/V046_EVIDENCE_FACTS.csv",
+    "docs/V046_REMAX_RUNTIME_ACCEPTANCE_SYNC.md",
+    "docs/V047_EVIDENCE_FACTS.csv",
+    "docs/V047_REMAX_WORX_DMA_RUNTIME.md",
+    "docs/V048_EVIDENCE_FACTS.csv",
+    "docs/V048_REMAX_DEMO_BOOTSTRAP.md",
+    "docs/V049_EVIDENCE_FACTS.csv",
+    "docs/V049_REMAX_OCT19_RUNTIME_BUILD_SYNC.md",
+    "docs/V050_EVIDENCE_FACTS.csv",
+    "docs/V050_REMAX_GUARD41_DEATH_OUTCOME.md",
+    "docs/V051_EVIDENCE_FACTS.csv",
+    "docs/V051_REMAX_WIN16_WING_RUNTIME.md",
+    "docs/V052_EVIDENCE_FACTS.csv",
+    "docs/V052_REMAX_DOS20_RNG_TIMER.md",
+    "docs/V053_EVIDENCE_FACTS.csv",
+    "docs/V053_REMAX_HUD_WEAPON_CLASS36.md",
+    "docs/V054_EVIDENCE_FACTS.csv",
+    "docs/V054_REMAX_CROSSBUILD_MAP_PALETTE.md",
+    "docs/V055_EVIDENCE_FACTS.csv",
+    "docs/V055_REMAX_DEMO_SEED_EOF_STATIC.md",
+    "docs/V056_EVIDENCE_FACTS.csv",
+    "docs/V056_REMAX_FRONTIER_CONSOLIDATION.md",
+    "docs/V057_EVIDENCE_FACTS.csv",
+    "docs/V057_REMAX_DEMO_RNG_CHAIN.md",
+    "docs/V058_EVIDENCE_FACTS.csv",
+    "docs/V058_REMAX_GUARD41_STATE09.md",
+    "docs/V059_EVIDENCE_FACTS.csv",
+    "docs/V059_REMAX_WIN16_SAVE_LOAD.md",
+    "docs/V060_REMAX_INDIRECT_DEPTH_REFERENCE.md",
+    "docs/V061_REMAX_IMG_PREVIEW_AND_RUNTIME_AUDIT.md",
+    "docs/V062_EVIDENCE_FACTS.csv",
+    "docs/V062_REMAX_DOS20_PALETTE_FADE.md",
+    "docs/V063_EVIDENCE_FACTS.csv",
+    "docs/V063_REMAX_DEMO_RNG35_DEPTH.md",
+    "docs/V064_EVIDENCE_FACTS.csv",
+    "docs/V064_REMAX_DOS20_SAVE_LOAD_BOUNDARY.md",
+    "docs/V065_REMAX_WIN16_SAVE_XY_YAW.md",
+    "docs/V066_DOS20_DISPLAY_ORACLE_SK.md",
+    "docs/V066_REMAX_READ_IMG_SEQUENCE_HEAP.md",
+    "docs/V067_DOS20_VEC_PROJECTION_SPAN_REPLAY_SK.md",
+    "docs/V067_REMAX_DOS20_SCANLINE_PLANES.md",
+    "docs/V068_DOS20_VEC_POOL_OWNER_AUDIT_SK.md",
+    "docs/V068_REMAX_UIF_PAGEFLIP_FADEIN.md",
+    "docs/V069_DOS20_VISIBILITY_REPLAY_SK.md",
+    "docs/V069_REMAX_GUARD41_DOS12_DOS20.md",
+    "docs/V070_DOS20_VISIBILITY_CAB8_FEFA_SK.md",
+    "docs/V070_REMAX_12BUILD_STATIC_CLOSURE.md",
+    "docs/V071_DOS20_STATIC_GAP_AND_FRAME_GATE_SK.md",
+    "docs/V071_REMAX_GAMEPAL_DOS_WIN16.md",
+    "docs/V072_REMAX_FIRST_RNG_ACTOR_TICK.md",
+    "docs/V072_RENDERER_FIRST_DIVERGENCE_SK.md",
+    "docs/V073_DOS20_TRACE_EXECUTION_WITNESS_SK.md",
+    "docs/V073_REMAX_DOS20_TRANSPARENT_BLIT.md",
+    "docs/V074_DOS20_INDEXED_WALL_COLUMN_SK.md",
+    "docs/V074_REMAX_DOS20_TWO_SAVE_SLOTS.md",
+    "docs/V075_DOS20_OWNER_SPAN_WALL_PIPELINE_SK.md",
+    "docs/V075_REMAX_RECENT_DAYS_EXHAUSTION.md",
+    "docs/V076_DOS20_SHADE_CROSSCHECK_SK.md",
+    "docs/V076_DOS20_WALL_IMG_U_SHADE_BINDING_SK.md",
+    "docs/V076_REMAX_DEMO_TIMING_CONTEXT.md",
+    "docs/V077_DOS20_ORIGINAL_U_RUNTIME_WITNESS_SK.md",
+    "docs/V077_REMAX_BULK_COPY_PROVENANCE.md",
+    "docs/V078_DOS20_TEXTURE_U_22CA_RUNTIME_SK.md",
+    "docs/V079_DOS20_CEDC_PERSPECTIVE_RUNTIME_SK.md",
+    "docs/V080_DOS20_AUTHENTIC_IMG_WALL_RUNTIME_SK.md",
+    "docs/V081_DOS20_LIVE_E1M1_PLAYER_COLLISION_RUNTIME_SK.md",
+    "docs/V081_RENDERER_WALL_FRAME_ACCEPTANCE_PLAN.md",
+    "docs/V082_DEMO_RNG_TIMING_ACCEPTANCE_PLAN.md",
+    "docs/V082_DOS20_LIVE_E1M1_COMBINED_INPUT_SK.md",
+    "docs/V083_DOS20_LIVE_E1M1_UP_LEFT_INPUT_SK.md",
+    "docs/V083_RUNTIME_PROJECTILE_SAVE_WIN16_FRONTIER.md",
+    "docs/V084B_DOS20_LIVE_E1M1_ALT_STRAFE_SK.md",
+    "docs/V084_DOS20_LIVE_E1M1_OPPOSING_KEYS_SK.md",
+    "docs/V085_V086_DOS20_LIVE_E1M1_ACTION_MASKS_SK.md",
+    "docs/V087_BULK_RE_RUNTIME_INTEGRATION_20261021_SK.md",
+    "docs/WIN16_CLOCK_FLAG_ALIAS_WIDTH_AUDIT_20261020.md",
+    "docs/WIN16_CLOCK_FLAG_WRITER_CENSUS_20261020.md",
+    "docs/WIN16_CLOCK_PRESENTATION_STATIC_AUDIT_20261019.md",
+    "docs/WIN16_FILENAME_PREFIX_P0_STATIC_20261020.md",
+    "docs/WIN16_GENERIC_REP_COPY_HELPERS_20261020.md",
+    "docs/WIN16_INDIRECT_PROVENANCE_V16.md",
+    "docs/WIN16_INDIRECT_PROVENANCE_V17.md",
+    "docs/WIN16_INDIRECT_PROVENANCE_V18.md",
+    "docs/WIN16_MEMCPY_6C80_EIGHT_CALLER_STATIC_20261020.md",
+    "docs/WIN16_MFC_RE_SUMMARY.md",
+    "docs/WIN16_MFC_RUNTIME_VALIDATION.md",
+    "docs/WIN16_MFC_SEMANTIC_CLOSURE_V19(1).md",
+    "docs/WIN16_MFC_SEMANTIC_CLOSURE_V19.md",
+    "docs/WIN16_MFC_TO_X64_PORT.md",
+    "docs/WIN16_OOM_CALLBACK_HIDDEN_CODE_ISLAND_20261020.md",
+    "docs/WIN16_P_SSCANF_PROGMAN_SCOPED_CLOSURE_20261020.md",
+    "docs/WIN16_REP_ALIAS_CLOSURE_PASS2_20261020.md",
+    "docs/WIN16_REP_DST_PROVENANCE_PASS_20261020.md",
+    "docs/WIN16_STRING_TRIO_OOM_SCALAR_ALIAS_20261020.md",
+    "docs/WIN16_TIMER_BINARY_PROOF_20261019.md",
+    "docs/WIN16_TIMER_LIFECYCLE_ERROR_PATH_20261020.md",
+    "docs/WIN16_TIMER_TARGET_INDIRECT_CENSUS_20261020.md",
+    "docs/WIN16_V110_TIMER_ARCHIVED_BYTE_CLOSURE_20261020.md",
+    "docs/WIN16_V18_TIMER_ORIGINAL_STACK_PROOF_20261019.md",
+    "docs/WIN16_VTABLE_INDIRECT_CLOSURE_V14.md",
+    "docs/WIN16_WISE_INSTALLER_STATIC_AUDIT_20261020.md",
+    "docs/evidence/2026-10-19/INDEX.md",
+    "docs/evidence/2026-10-19/N3D_REMAX_D02_RUNTIME_CHAIN_20261019.json",
+    "docs/evidence/2026-10-19/N3D_REMAX_D02_RUNTIME_CHAIN_20261019.md",
+    "docs/evidence/2026-10-19/N3D_REMAX_NEXT2_STATIC_CLOSURE_SK.md",
+    "docs/evidence/2026-10-19/N3D_REMAX_NEXT_STATIC_AUDIT_20261019.md",
+    "docs/evidence/2026-10-19/Nitemare3D_DOS20_DEMO_first_RNG_report_v12.md",
+    "docs/evidence/2026-10-19/Nitemare3D_DOS20_DEMO_seed_report_v11.md",
+    "docs/evidence/2026-10-19/Nitemare3D_DOS20_RNG_Runtime_report_v7.md",
+    "docs/evidence/2026-10-19/README_SK_20261019-174017_.md",
+    "docs/evidence/2026-10-19/README_SK_20261019-181606_.md",
+    "docs/evidence/2026-10-19/README_SK_20261019-183532_.md",
+    "docs/evidence/2026-10-19/README_SK_20261019-185505_.md",
+    "docs/evidence/2026-10-19/README_SK_20261019-192416_.md",
+    "docs/evidence/2026-10-19/REPORT_SK_20261019-183229_.md",
+    "docs/evidence/2026-10-19/REPORT_SK_20261019-183243_.md",
+    "docs/evidence/2026-10-19/REPORT_SK_20261019-184729_.md",
+    "docs/evidence/2026-10-19/REPORT_SK_20261019-191038_.md",
+    "docs/evidence/2026-10-19/REPORT_SK_20261019-191226_.md",
+    "docs/evidence/2026-10-19/REPORT_SK_20261019-192305_.md",
+    "docs/evidence/2026-10-19/REPORT_SK_20261019-194111_.md",
+    "docs/evidence/2026-10-19/SOURCE_MANIFEST.json",
+    "docs/evidence/2026-10-19/n3d_d01_next_goal_report_20261019.md",
+    "docs/evidence/2026-10-19/n3d_d02_verify_chain.py",
+    "docs/evidence/2026-10-20/D02N_GUARD_MEMORY_RUNTIME_REPORT.md",
+    "docs/evidence/2026-10-20/N3D_REMAX_D02E_SCHEDULER_DAMAGE_DIVERGENCE_20261020.md",
+    "docs/evidence/2026-10-20/N3D_Renderer_Exact_Components_V070_Report_SK.md",
+    "docs/evidence/2026-10-20/N3D_Renderer_Pixel_Parity_Report_V070_20261020.md",
+    "docs/evidence/2026-10-20/NEXT7_REMAINING_PROOF_OBLIGATIONS.csv",
+    "docs/evidence/2026-10-20/NEXT7_STATIC_REPORT_SK.md",
+    "docs/evidence/2026-10-20/NEXT7_TYPED_ALL29_DOS20.csv",
+    "docs/evidence/2026-10-20/REPORT_SK_20261020-124930_.md",
+    "docs/evidence/2026-10-20/SOURCE_MANIFEST.json",
+    "docs/evidence/2026-10-20/V026_WIN16_EVENT_RNG_REPORT.md",
+    "docs/evidence/2026-10-20/V080_AUTHENTIC_IMG_WALL_REPORT.md",
+    "docs/evidence/2026-10-20/n3d_d02e_audit_source.py"
+  ],
+  "original_files_committed": false
+}
