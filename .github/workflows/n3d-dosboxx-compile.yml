@@ -1,0 +1,89 @@
+name: DOSBox-X N3D deferred tracer compile probe
+
+on:
+  pull_request:
+    paths:
+      - "tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch"
+      - "tools/dosbox-x/n3dtrace_deferred_start_v3.patch"
+      - ".github/workflows/n3d-dosboxx-compile.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  heavy-debug-full:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: n3d
+      - uses: actions/checkout@v4
+        with:
+          repository: joncampbell123/dosbox-x
+          ref: dosbox-x-v2026.10.01
+          path: upstream
+          fetch-depth: 1
+      - name: Install source build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            build-essential autoconf automake libtool pkg-config nasm \
+            libsdl2-dev libsdl2-net-dev libncurses-dev libpng-dev \
+            zlib1g-dev libasound2-dev libfreetype-dev \
+            libxkbfile-dev libxrandr-dev
+      - name: Apply GPLv2+ Advanced History v3 and opt-in deferred-trace overlay
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path("n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch")
+          paths = set(re.findall(r"(?m)^--- a/([^\t\n]+)", p.read_text(encoding="utf-8")))
+          for relative in paths:
+              source = Path("upstream") / relative
+              if source.is_file():
+                  data = source.read_bytes()
+                  if b"\r\n" in data:
+                      source.write_bytes(data.replace(b"\r\n", b"\n"))
+          PY
+          cd upstream
+          git apply --check ../n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch
+          git apply ../n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch
+          git apply --check ../n3d/tools/dosbox-x/n3dtrace_deferred_start_v3.patch
+          git apply ../n3d/tools/dosbox-x/n3dtrace_deferred_start_v3.patch
+          git apply --check ../n3d/tools/dosbox-x/n3dtrace_guard_al_filter_v065.patch
+          git apply ../n3d/tools/dosbox-x/n3dtrace_guard_al_filter_v065.patch
+      - name: Autotools configure with heavy CPU debugger
+        run: |
+          cd upstream
+          ./autogen.sh
+          ./configure --enable-debug=heavy --enable-sdl2 \
+            --disable-avcodec --disable-printer --disable-mt32 \
+            --disable-dynamic-x86 --disable-opengl
+      - name: Compile instrumented source object
+        run: |
+          cd upstream
+          make -C src/debug n3d_trace.o V=1
+          test -s src/debug/n3d_trace.o
+      - name: Link entire DOSBox-X executable
+        run: |
+          cd upstream
+          make -j2 V=0
+          find . -type f \( -name dosbox-x -o -name dosbox-x.exe \) -exec ls -lh {} \;
+          test -x src/dosbox-x
+      - name: Package AL-gated heavy-debug emulator
+        run: |
+          mkdir -p upload/bin
+          cp upstream/src/dosbox-x upload/bin/dosbox-x-n3d-v065-al
+          chmod +x upload/bin/dosbox-x-n3d-v065-al
+          sha256sum upload/bin/dosbox-x-n3d-v065-al > upload/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dosboxx-n3d-v065-al-gate
+          path: upload/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Evidence boundary
+        run: |
+          echo "Full build attempted. This is NOT proof of a working DOS gameplay capture."

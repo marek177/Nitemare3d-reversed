@@ -1,0 +1,25 @@
+name: DOSBox-X N3D deferred trace patch
+
+on:
+  pull_request:
+    paths:
+      - "tools/dosbox-x/n3dtrace_deferred_start_v3.patch"
+      - "tests/fixtures/dosboxx/n3d_trace_v3.cpp"
+      - "tests/test_dosboxx_deferred_trace_patch.py"
+      - ".github/workflows/n3d-deferred-trace-patch.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  patch-applicability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check patch applicability and safety-shape tests
+        run: python3 -m unittest discover -s tests -p test_dosboxx_deferred_trace_patch.py -v
+      - name: Evidence boundary
+        run: |
+          echo "CI tests source patch applicability against a GPLv2+ v3 fixture."
+          echo "CI does NOT compile DOSBox-X or execute the original commercial game."

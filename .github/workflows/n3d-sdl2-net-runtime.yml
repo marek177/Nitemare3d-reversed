@@ -1,0 +1,25 @@
+name: N3D v0.65 SDL2_net runtime dependency
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/n3d-sdl2-net-runtime.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  runtime-so:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install matching SDL2_net runtime
+        run: sudo apt-get update -qq && sudo apt-get install -y libsdl2-net-2.0-0
+      - name: Package SDL2_net ELF for local compatibility check
+        run: |
+          mkdir -p dist/lib
+          cp -Lv /usr/lib/x86_64-linux-gnu/libSDL2_net-2.0.so.0 dist/lib/libSDL2_net-2.0.so.0
+          sha256sum dist/lib/libSDL2_net-2.0.so.0 > dist/lib/SHA256SUMS.txt
+          readelf -d dist/lib/libSDL2_net-2.0.so.0 | head -25 > dist/lib/ELF-deps.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dosboxx-v065-sdl2-net-lib-linux
+          path: dist
+          retention-days: 2
