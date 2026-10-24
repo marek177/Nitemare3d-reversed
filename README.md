@@ -1,5 +1,8 @@
 # Nitemare3D-Reversed — reconstruction v0.78
 
+**22–24 Oct 2026 research consolidation:** [DOS/Win16 evidence and implementation map](docs/RE_CONSOLIDATION_20261022_24_SK.md) and [P0 implementation acceptance matrix](docs/RE_IMPLEMENTATION_ACCEPTANCE_20261024_SK.md). This is an evidence-bounded integration; no new original-vs-remake full-game parity is claimed.
+
+
 **22 Oct 2026 — Consolidated runtime + static RE index:** [all available findings](docs/RE_ALL_RUNTIME_STATIC_20261022_SK.md), [196 indexed source reports](docs/RE_ALL_EXECUTED_SOURCE_INDEX_20261022_SK.md), [machine-audited evidence grades](docs/RE_EVIDENCE_REGISTRY_20261022.json), [Ghidra renderer/projectile cache alias](docs/RE_STATIC_GHIDRA_CACHE_20261022_SK.md), [original DOS2 E1M1 pickup/Ctrl fire](docs/RE_DOS20_FIRE_PICKUP_20261022_SK.md), and [P0 original-to-remake parity bridge](docs/RE_ALLINONE_PARITY_BRIDGE_20261022_SK.md). The original-game runtime observations are carefully separated from archived static reports, bounded native replay and synthetic CI. **Still no original-vs-remake whole-game parity; active renderer remains diagnostic DDA.**
 
 
