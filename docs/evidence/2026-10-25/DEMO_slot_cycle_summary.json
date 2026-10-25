@@ -1,0 +1,154 @@
+{
+  "status": "VERIFIED_RUNTIME_SINGLE_NATURAL_DEMO_CYCLE",
+  "run": "demo_run_d",
+  "server_pid": 40072,
+  "original_exe_sha256": "a3fa02335e1d8bc531918f3bfaa66217aef65c81e562a2fdf1c749be652ca485",
+  "DEMO1_sha256": "25ae7e97f61d19bc3fa61d630ec13b9614a4f3193da84f7c1a3c3d519f795840",
+  "header": {
+    "timing_words": [
+      15,
+      7,
+      30
+    ],
+    "first_record": [
+      18656,
+      2,
+      8
+    ],
+    "RNG_state": 1,
+    "counter": 2,
+    "file_and_memory_match": true
+  },
+  "allocations": [
+    {
+      "source": "allocator_phased_invocation.json",
+      "source_sha256": "226d5e86b88d9242ca4ba75ce9cd3ae8a49bdab4b7e20fd05eae54847f6e13ce",
+      "entry_revision": 68,
+      "render_counter": 468,
+      "selected_slot": 0,
+      "weapon_index": 1,
+      "ammo_address": "DS:41B0",
+      "ammo_before": 37,
+      "ammo_after_gate": 36,
+      "pool_unchanged_during_gate": true,
+      "only_state_byte_changed_by_single_step": true,
+      "state1_precedes_rest_initialization": true,
+      "AL_return": 1,
+      "caller_continuation": "0637:06DF",
+      "return_frame_and_SP_match": true,
+      "trace_phases": [
+        {
+          "phase": "gate_trace",
+          "events": 2852,
+          "capacity": 10000,
+          "sequence_contiguous": true
+        },
+        {
+          "phase": "initialization_trace",
+          "events": 51,
+          "capacity": 2000,
+          "sequence_contiguous": true
+        }
+      ]
+    },
+    {
+      "source": "allocator_reuse_phased_invocation.json",
+      "source_sha256": "e39abd8e35b14691158a52ac62a0ff5f6cefeb584e80deb20ce3dd107db563c0",
+      "entry_revision": 85,
+      "render_counter": 479,
+      "selected_slot": 0,
+      "weapon_index": 1,
+      "ammo_address": "DS:41B0",
+      "ammo_before": 34,
+      "ammo_after_gate": 33,
+      "pool_unchanged_during_gate": true,
+      "only_state_byte_changed_by_single_step": true,
+      "state1_precedes_rest_initialization": true,
+      "AL_return": 1,
+      "caller_continuation": "0637:06DF",
+      "return_frame_and_SP_match": true,
+      "trace_phases": [
+        {
+          "phase": "gate_trace",
+          "events": 2852,
+          "capacity": 10000,
+          "sequence_contiguous": true
+        },
+        {
+          "phase": "initialization_trace",
+          "events": 51,
+          "capacity": 2000,
+          "sequence_contiguous": true
+        }
+      ]
+    }
+  ],
+  "first_motion": {
+    "trace_events": 1825,
+    "substeps": 30,
+    "before_XY": [
+      1243,
+      2746
+    ],
+    "after_XY": [
+      1213,
+      2745
+    ],
+    "state_before": 1,
+    "state_after": 1,
+    "return_and_SP_match": true
+  },
+  "watched_transitions": [
+    {
+      "state": 2,
+      "logical_next_PC": "07ED:0324",
+      "revision": 81
+    },
+    {
+      "state": 0,
+      "logical_next_PC": "07ED:042F",
+      "revision": 82
+    }
+  ],
+  "released_bytes_equal_next_allocation_before_bytes": true,
+  "released_record_not_zeroed": true,
+  "same_slot_reuse_observed": true,
+  "input_at_reuse": {
+    "counter": 479,
+    "pending_record_index": 131,
+    "pending_record": [
+      0,
+      0,
+      480
+    ],
+    "preceding_file_record": [
+      0,
+      128,
+      479
+    ],
+    "runtime_flags": 128,
+    "mode": [
+      1,
+      4
+    ]
+  },
+  "debugger_guest_memory_writes": {
+    "count": 16,
+    "all_within_BIOS_keyboard_queue": true,
+    "gameplay_state_or_RNG_seed_writes": 0
+  },
+  "final": {
+    "session": "ses-1",
+    "PC": "0E5A:06DF",
+    "logical_PC": "0637:06DF",
+    "revision": 91,
+    "breakpoints": 0,
+    "pool_slot0_state": 1
+  },
+  "limits": [
+    "This is one observed reuse case, not global ABA/generation or reentrancy closure",
+    "Earlier allocator stop at counter250 was continued without a detailed capture; the captured calls are counters468 and479",
+    "DEMO playback is original file input, not physical keyboard/IRQ9 parity",
+    "Playback EOF/full RNG ledger and paired remake acceptance remain open"
+  ]
+}
