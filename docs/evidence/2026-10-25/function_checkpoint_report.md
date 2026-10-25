@@ -36,3 +36,8 @@ Nitemare3d-reversed bol čítaný na commite `497c6fd6272d83509f0958f8042a4e87de
 
 Reprodukcia statického priechodu: Python 3 + Capstone 5.0.9 + iced-x86 1.21.0; `python build_evidence.py <source-checkpoint-root>`. Potrebný je lokálny predchádzajúci checkpoint s analysis JSON a hash-pinned binárkami. Finálny audit: `python finalize_evidence.py` v pôvodnom pracovnom priečinku. Zdrojový koreň a cesty sú v checkpoint.json. Manifest umožňuje kontrolu integrity balíka, nie potvrdenie všetkých sémantických tvrdení.
 
+
+## Nadväzujúci priechod
+
+Aktuálny ďalší pokrok je v followup_report.md: sedem statických provenance väzieb, dve runtime hodnoty uložených pointerov, rozbalený entry breakpoint a 100 CPU udalostí pôvodnej časovacej slučky. Historické ses-1 pozastavenie vyššie už nie je aktuálnou reláciou. Žiadna úplná gameplay parita tým nie je potvrdená.
+
