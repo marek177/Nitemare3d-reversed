@@ -19,7 +19,7 @@
 
 Kanoničký version_function_mapping.csv teraz obsahuje sedem skutočných overených párov voči DOS 2.0; pôvodný index byte-stream podpisov je zachovaný oddelene vo version_function_signature_index.csv. Presné normalizované inštrukcie a hashy sú v crossversion_provider_mapping.json. Win16 zhoda sa týmto priechodom netvrdí.
 
-**VERIFIED_RUNTIME:** po ďalšom úseku originálu bol v BIOS údajoch potvrdený režim 13h. Lokálne sa zachytilo 64000 bajtov A000 framebufferu, SHA-256 `986596cbf1af641a5d95f34bb15b41f0b94328ec576d6311c8ea67b53de2e302`, so šiestimi odlišnými indexmi. Záber nie je zarovnaný na hranicu frame; aktuálne herné/menu štádium nebolo identifikované. DAC sa nezachytil a chýba párovaný remake frame. Tento výsledok preto neuzatvára renderovaciu paritu.
+**VERIFIED_RUNTIME:** po ďalšom úseku originálu bol v BIOS údajoch potvrdený režim 13h. Lokálne sa zachytilo 64000 bajtov CPU pamäťového okna A000, SHA-256 `986596cbf1af641a5d95f34bb15b41f0b94328ec576d6311c8ea67b53de2e302`, so šiestimi odlišnými hodnotami bajtov. Záber nie je zarovnaný na hranicu frame; aktuálne herné/menu štádium nebolo identifikované. DAC sa nezachytil a chýba párovaný remake frame. Tento výsledok preto neuzatvára renderovaciu paritu.
 
 ## Reprodukovateľnosť a izolácia emulátora
 
@@ -30,4 +30,9 @@ Reštartovaná bola iba overená testovacia inštancia tohto chatu, nie iný DOS
 ## Čo zostáva otvorené
 
 Ostatných päť consumer breakpointov bolo nastavených, ale v nasledujúcom ohraničenom úseku neboli dosiahnuté. Z toho nevyvodzujeme nedosiahnuteľnosť. Pre 0768:07B0 máme jednu pozorovanú adresu, nie úplnú cieľovú doménu vo všetkých prostrediach. Počet 48 otvorených DOS 2.0 nepriamych miest sa nemení. Ďalej treba sledovať allokáciu/prenos/uvolnenie provider pamäte, IRQ chaining, main-loop/OBJECT a seed-to-EOF RNG ledger; renderer stále potrebuje zarovnaný originál/remake indexed+DAC pár. Celý GOAL zostáva neúplný.
+
+
+## Oprava rozsahu VGA záznamu
+
+Následný audit preukázal zmeny VGA registrov po INT10h. Označenie vyššie ako lineárny indexed framebuffer je nepreukázané:64000 bajtov predstavuje raw A000 CPU aperture, nie zatiaľ dekódovaných64000 pixeloch. Pozri clock_vga_report.md a VGA_capture_scope_correction.json.
 
