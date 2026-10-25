@@ -41,3 +41,8 @@ Reprodukcia statického priechodu: Python 3 + Capstone 5.0.9 + iced-x86 1.21.0; 
 
 Aktuálny ďalší pokrok je v followup_report.md: sedem statických provenance väzieb, dve runtime hodnoty uložených pointerov, rozbalený entry breakpoint a 100 CPU udalostí pôvodnej časovacej slučky. Historické ses-1 pozastavenie vyššie už nie je aktuálnou reláciou. Žiadna úplná gameplay parita tým nie je potvrdená.
 
+
+## Nový VGA/DAC checkpoint
+
+Najnovšie výsledky sú v VGA_pages_DAC_report.md: úplná768-komponentová DAC write-phase s readbackom, PDB-matched read-only capture štyroch rovín a registrov a podporovaná rekonštrukcia copyright obrazovky320×200. Starý raw A000 záznam zostáva nepreukázaný ako celý obraz. Nový snímok nie je zarovnaný na frame boundary ani spárovaný s remake.
+
