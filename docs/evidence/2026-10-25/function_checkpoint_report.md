@@ -20,13 +20,15 @@ Memory mapa zachytáva explicitné dekódované operandy. Neobsahuje úplné imp
 
 Runtime výpisy pôvodných reportov neboli povýšené na nové VERIFIED_RUNTIME. Úvodný 17-krokový probe mal chybu v názvoch logov, preto sa nepočíta medzi zachované jednotlivé kroky. Opravený logger zachoval ďalších 16 krokov. Pokus o druhú reláciu bol odmietnutý SESSION_BUSY a je evidovaný. Aktuálna relácia zostala pozastavená. Žiadne herné správanie ani percentá neboli menené.
 
+Po doplnení SND/UIF a epizódových dát bol vykonaný aj trojsekundový continue/pause. Asynchrónne pozastavenie vyžadovalo execution.wait; prvé čítanie vrátilo TARGET_RUNNING a nebolo považované za meranie. Následné platné čítanie revízie 35 zachytilo F000:D186 v BIOS priestore. Bez obrazového či gameplay dôkazu z toho nevyvodzujeme úspešný vstup do menu alebo hry. Rozšírený hash manifest dát je runtime/boot_inputs.json.
+
 ## Repozitáre
 
 Nitemare3d-reversed bol čítaný na commite `497c6fd6272d83509f0958f8042a4e87dee56fdf`; OpenNitemare3D na `1668039e5239e3b094a8302df183fd5cff315bdb`. Inventár obsahuje Git blob SHA pre dokumenty a testy. Obe aktuálne správy explicitne ponechávajú otvorený originál-vs-remake framebuffer/DAC test a P0 gameplay brány. Prístup umožňuje zápis. Verejný checkpoint má obsahovať iba metodiku, agregované výsledky a reproducer, bez EXE, herných dát a plných RAM dumpov.
 
 ## Ďalší presný postup
 
-1. Doplniť pracovnú kópiu o všetky potrebné epizódové, SND a UIF dáta, zapísať ich hashy. Súčasný test nepreukazuje úspešný štart gameplayu.
+1. Overiť úplnosť pracovnej kópie podľa runtime/boot_inputs.json a identifikovať príčinu BIOS čakania po štarte. Súčasný test nepreukazuje úspešný štart gameplayu.
 2. Ukončiť/resetovať testovaciu RPC reláciu podľa dokumentácie konkrétneho buildu a zopakovať od MZ entry s opraveným loggerom; zachytiť rozbalenie a prevod runtime CS na hash-pinned load image.
 3. Vziať najprv 48 otvorených DOS 2.0 nepriamych miest. Pre každý cieliť registrácie, zápisy pointerov, dispatch doménu, ABI a dosiahnuteľnosť; nevyhlasovať tabuľkový prefix za úplnú doménu.
 4. Zachytiť pôvodný main-loop/OBJECT a seed-to-EOF DEMO ledger. Až s rovnakými vstupmi porovnávať remake, tick, slot generation a first-writer.
