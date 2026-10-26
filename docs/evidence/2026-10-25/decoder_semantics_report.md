@@ -9,3 +9,7 @@ The previous zero-disagreement count checked lengths against iced and text again
 Validation checks all3922 corrected entries, retained raw observations and1786 file hashes, four operand-width cases and an unrelated instruction rejection. The evidence generator now applies the same rule when rebuilding. The public read-only audit defaults to no writes; use `--apply` only to update derived CFG metadata. Raw original assets and binaries are not published.
 
 The initial eleven RNG caller gate classifications remain unfinished: this correction took priority because their arithmetic interpretation depends on the width of sign extension.
+
+## Static follow-up, 2026-10-26
+
+The eleven run_f-unobserved sites now have bounded byte-supported functional records in [RNG_unobserved_function_records.md](RNG_unobserved_function_records.md), with five decoded selector tables, synthetic CPU regressions and explicit remaining runtime activation gaps. The earlier unfinished-classification statement describes the preceding checkpoint. Original-game runtime coverage remains 11/22 direct sites in run_f; no global coverage or parity closure is claimed.

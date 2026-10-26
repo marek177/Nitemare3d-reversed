@@ -15,3 +15,7 @@ Reproduce with Python plus Capstone and iced-x86:
 `python audit_rng_state_references.py <hash-pinned-unpacked.exe> <nite3d20/functions.json> <output-directory>`
 
 The output records source hashes, exact scope, explicit xrefs, direct edges, encoded pointer occurrences and open domains. No game binary or original asset is included in this supplement.
+
+## Static follow-up, 2026-10-26
+
+The eleven run_f-unobserved sites now have bounded byte-supported functional records in [RNG_unobserved_function_records.md](RNG_unobserved_function_records.md), with five decoded selector tables, synthetic CPU regressions and explicit remaining runtime activation gaps. The earlier unfinished-classification statement describes the preceding checkpoint. Original-game runtime coverage remains 11/22 direct sites in run_f; no global coverage or parity closure is claimed.
