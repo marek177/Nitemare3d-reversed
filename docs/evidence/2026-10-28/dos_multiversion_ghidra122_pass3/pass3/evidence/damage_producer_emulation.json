@@ -1,0 +1,61 @@
+{
+  "build": "V1.9 (input DOS18)",
+  "exe_sha256": "943d063f34ddc889f74ad9bae696daef08fac445c1c1593508ed990a3aaaed7c",
+  "entry": "183c:01c6",
+  "cases": 7128,
+  "passed": true,
+  "negative_return_cases": 2778,
+  "negative_examples": [
+    {
+      "type": 0,
+      "mode": 0,
+      "difference": -4096,
+      "rng": 0,
+      "difficulty": 1,
+      "special": 0,
+      "signed_AX": -32768,
+      "AL": 0
+    },
+    {
+      "type": 0,
+      "mode": 0,
+      "difference": -4096,
+      "rng": 0,
+      "difficulty": 1,
+      "special": 3,
+      "signed_AX": -32768,
+      "AL": 0
+    },
+    {
+      "type": 0,
+      "mode": 0,
+      "difference": -4096,
+      "rng": 0,
+      "difficulty": 2,
+      "special": 0,
+      "signed_AX": -16384,
+      "AL": 0
+    },
+    {
+      "type": 0,
+      "mode": 0,
+      "difference": -4096,
+      "rng": 0,
+      "difficulty": 2,
+      "special": 3,
+      "signed_AX": -16384,
+      "AL": 0
+    },
+    {
+      "type": 0,
+      "mode": 0,
+      "difference": -4096,
+      "rng": 24,
+      "difficulty": 1,
+      "special": 0,
+      "signed_AX": -32744,
+      "AL": 24
+    }
+  ],
+  "scope": "RNG return AX injected; far side-effect call 183c:0263 skipped; whole-game reachability of negative inputs unknown"
+}
