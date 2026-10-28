@@ -1,0 +1,862 @@
+{
+  "schema": "n3d-ghidra-static-evidence-pass2-v1",
+  "date": "2026-10-28",
+  "exe_sha256": "12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481",
+  "internal_entries": 1346,
+  "runtime_tests": 0,
+  "complete_semantic_recovery": false,
+  "pointer_verification": {
+    "expanded_relocation_sites": 6082,
+    "pointer_entries": 865,
+    "pointer_bytes": 3460,
+    "first": "1018:48b8",
+    "last": "1018:5638",
+    "unique_targets": 317,
+    "targets_without_previous_function_entry": 94,
+    "target_segment_counts": {
+      "1008": 219,
+      "1000": 593,
+      "1010": 53
+    },
+    "table_pointer_shape": "Confirmed",
+    "virtual_table_ownership": "Partial",
+    "runtime_tests": 0
+  },
+  "leaf_verification": {
+    "verified_leaf_bodies": 92,
+    "original_bytes_checked": 498,
+    "selector_operands_verified_through_relocation_chains": 2,
+    "category_counts": {
+      "constant_ax_return": 59,
+      "empty_far_method": 16,
+      "zero_ax_return": 12,
+      "constant_dx_ax_return": 2,
+      "zero_dx_ax_return": 3
+    },
+    "complex_methods_not_claimed": [
+      "1008:2ade",
+      "1008:6efc"
+    ],
+    "runtime_tests": 0
+  },
+  "class_descriptors": [
+    {
+      "metadata": "1048:04ee",
+      "loaded_words": "04f2 1000 0004 ffff 0000 0000 0000 0000 0000 434a ",
+      "far_string_address": "1000:04f2",
+      "far_string": "CObject",
+      "class_name": "CObject",
+      "object_size": "4",
+      "base_metadata": "1048:0000"
+    },
+    {
+      "metadata": "1048:0500",
+      "loaded_words": "434a 1000 0004 ffff 0000 0000 04ee 0000 4a72 1000 ",
+      "far_string_address": "1000:434a",
+      "far_string": "CException",
+      "class_name": "CException",
+      "object_size": "4",
+      "base_metadata": "1048:04ee"
+    },
+    {
+      "metadata": "1048:0514",
+      "loaded_words": "4339 1000 0004 ffff 0000 0000 0500 0000 4322 1000 ",
+      "far_string_address": "1000:4339",
+      "far_string": "CMemoryException",
+      "class_name": "CMemoryException",
+      "object_size": "4",
+      "base_metadata": "1048:0500"
+    },
+    {
+      "metadata": "1048:0524",
+      "loaded_words": "4322 1000 0004 ffff 0000 0000 0500 0000 4356 1000 ",
+      "far_string_address": "1000:4322",
+      "far_string": "CNotSupportedException",
+      "class_name": "CNotSupportedException",
+      "object_size": "4",
+      "base_metadata": "1048:0500"
+    },
+    {
+      "metadata": "1048:0534",
+      "loaded_words": "4356 1000 0006 ffff 0000 0000 0500 0000 04fa 1000 ",
+      "far_string_address": "1000:4356",
+      "far_string": "CArchiveException",
+      "class_name": "CArchiveException",
+      "object_size": "6",
+      "base_metadata": "1048:0500"
+    },
+    {
+      "metadata": "1048:0544",
+      "loaded_words": "04fa 1000 0008 ffff 0000 0000 04ee 0000 4368 1000 ",
+      "far_string_address": "1000:04fa",
+      "far_string": "CFile",
+      "class_name": "CFile",
+      "object_size": "8",
+      "base_metadata": "1048:04ee"
+    },
+    {
+      "metadata": "1048:0554",
+      "loaded_words": "4368 1000 000a ffff 0000 0000 0500 0000 4064 1000 ",
+      "far_string_address": "1000:4368",
+      "far_string": "CFileException",
+      "class_name": "CFileException",
+      "object_size": "10",
+      "base_metadata": "1048:0500"
+    },
+    {
+      "metadata": "1048:0564",
+      "loaded_words": "4064 1000 0010 ffff 0000 0000 04ee 0000 60f8 1000 ",
+      "far_string_address": "1000:4064",
+      "far_string": "CPtrList",
+      "class_name": "CPtrList",
+      "object_size": "16",
+      "base_metadata": "1048:04ee"
+    },
+    {
+      "metadata": "1048:0574",
+      "loaded_words": "60f8 1000 0010 ffff 0000 0000 04ee 0000 0000 0000 ",
+      "far_string_address": "1000:60f8",
+      "far_string": "CMapWordToPtr",
+      "class_name": "CMapWordToPtr",
+      "object_size": "16",
+      "base_metadata": "1048:04ee"
+    },
+    {
+      "metadata": "1048:0594",
+      "loaded_words": "059e 1000 001a ffff 1aec 1000 0756 0000 0766 0530 ",
+      "far_string_address": "1000:059e",
+      "far_string": "CWnd",
+      "class_name": "CWnd",
+      "object_size": "26",
+      "base_metadata": "1048:0756"
+    },
+    {
+      "metadata": "1048:05ac",
+      "loaded_words": "65b2 1000 004e ffff 65ce 1000 0594 0000 65ac 1000 ",
+      "far_string_address": "1000:65b2",
+      "far_string": "CFrameWnd",
+      "class_name": "CFrameWnd",
+      "object_size": "78",
+      "base_metadata": "1048:0594"
+    },
+    {
+      "metadata": "1048:05bc",
+      "loaded_words": "65ac 1000 001c ffff 0000 0000 0594 0000 65a0 1000 ",
+      "far_string_address": "1000:65ac",
+      "far_string": "CView",
+      "class_name": "CView",
+      "object_size": "28",
+      "base_metadata": "1048:0594"
+    },
+    {
+      "metadata": "1048:05cc",
+      "loaded_words": "65a0 1000 002e ffff 0000 0000 0594 0000 05a4 6442 ",
+      "far_string_address": "1000:65a0",
+      "far_string": "CControlBar",
+      "class_name": "CControlBar",
+      "object_size": "46",
+      "base_metadata": "1048:0594"
+    },
+    {
+      "metadata": "1048:05e8",
+      "loaded_words": "7c94 1000 0032 ffff 0000 0000 05cc 0000 05e2 7c4e ",
+      "far_string_address": "1000:7c94",
+      "far_string": "CStatusBar",
+      "class_name": "CStatusBar",
+      "object_size": "50",
+      "base_metadata": "1048:05cc"
+    },
+    {
+      "metadata": "1048:0604",
+      "loaded_words": "7ce6 1000 003e ffff 0000 0000 05cc 0000 05e2 7cef ",
+      "far_string_address": "1000:7ce6",
+      "far_string": "CToolBar",
+      "class_name": "CToolBar",
+      "object_size": "62",
+      "base_metadata": "1048:05cc"
+    },
+    {
+      "metadata": "1048:061a",
+      "loaded_words": "7d4e 1000 002e ffff 0000 0000 05cc 0000 ac8a 1000 ",
+      "far_string_address": "1000:7d4e",
+      "far_string": "CDialogBar",
+      "class_name": "CDialogBar",
+      "object_size": "46",
+      "base_metadata": "1048:05cc"
+    },
+    {
+      "metadata": "1048:062a",
+      "loaded_words": "ac8a 1000 0022 ffff 0000 0000 0696 0000 05e0 1000 ",
+      "far_string_address": "1000:ac8a",
+      "far_string": "CPreviewDC",
+      "class_name": "CPreviewDC",
+      "object_size": "34",
+      "base_metadata": "1048:0696"
+    },
+    {
+      "metadata": "1048:063a",
+      "loaded_words": "05e0 1000 0024 ffff 0000 0000 0594 0000 05a4 05a4 ",
+      "far_string_address": "1000:05e0",
+      "far_string": "CDialog",
+      "class_name": "CDialog",
+      "object_size": "36",
+      "base_metadata": "1048:0594"
+    },
+    {
+      "metadata": "1048:0650",
+      "loaded_words": "4378 1000 01b8 ffff 0000 0000 063a 0000 4402 1000 ",
+      "far_string_address": "1000:4378",
+      "far_string": "CFileDialog",
+      "class_name": "CFileDialog",
+      "object_size": "440",
+      "base_metadata": "1048:063a"
+    },
+    {
+      "metadata": "1048:0660",
+      "loaded_words": "4402 1000 005c ffff 0000 0000 063a 0000 064a 43ee ",
+      "far_string_address": "1000:4402",
+      "far_string": "CPrintDialog",
+      "class_name": "CPrintDialog",
+      "object_size": "92",
+      "base_metadata": "1048:063a"
+    },
+    {
+      "metadata": "1048:0676",
+      "loaded_words": "004d 1008 0004 ffff 0000 0000 0500 0000 003e 1008 ",
+      "far_string_address": "1008:004d",
+      "far_string": "CResourceException",
+      "class_name": "CResourceException",
+      "object_size": "4",
+      "base_metadata": "1048:0500"
+    },
+    {
+      "metadata": "1048:0686",
+      "loaded_words": "003e 1008 0004 ffff 0000 0000 0500 0000 003a 1008 ",
+      "far_string_address": "1008:003e",
+      "far_string": "CUserException",
+      "class_name": "CUserException",
+      "object_size": "4",
+      "base_metadata": "1048:0500"
+    },
+    {
+      "metadata": "1048:0696",
+      "loaded_words": "003a 1008 000a ffff 0266 1008 04ee 0000 0030 1008 ",
+      "far_string_address": "1008:003a",
+      "far_string": "CDC",
+      "class_name": "CDC",
+      "object_size": "10",
+      "base_metadata": "1048:04ee"
+    },
+    {
+      "metadata": "1048:06a6",
+      "loaded_words": "0030 1008 000c ffff 0000 0000 0696 0000 0026 1008 ",
+      "far_string_address": "1008:0030",
+      "far_string": "CClientDC",
+      "class_name": "CClientDC",
+      "object_size": "12",
+      "base_metadata": "1048:0696"
+    },
+    {
+      "metadata": "1048:06b6",
+      "loaded_words": "0026 1008 000c ffff 0000 0000 0696 0000 001d 1008 ",
+      "far_string_address": "1008:0026",
+      "far_string": "CWindowDC",
+      "class_name": "CWindowDC",
+      "object_size": "12",
+      "base_metadata": "1048:0696"
+    },
+    {
+      "metadata": "1048:06c6",
+      "loaded_words": "001d 1008 002c ffff 0000 0000 0696 0000 0012 1008 ",
+      "far_string_address": "1008:001d",
+      "far_string": "CPaintDC",
+      "class_name": "CPaintDC",
+      "object_size": "44",
+      "base_metadata": "1048:0696"
+    },
+    {
+      "metadata": "1048:06d6",
+      "loaded_words": "0012 1008 0006 ffff 0d38 1008 04ee 0000 000d 1008 ",
+      "far_string_address": "1008:0012",
+      "far_string": "CGdiObject",
+      "class_name": "CGdiObject",
+      "object_size": "6",
+      "base_metadata": "1048:04ee"
+    },
+    {
+      "metadata": "1048:06e6",
+      "loaded_words": "000d 1008 0006 ffff 0000 0000 06d6 0000 0006 1008 ",
+      "far_string_address": "1008:000d",
+      "far_string": "CPen",
+      "class_name": "CPen",
+      "object_size": "6",
+      "base_metadata": "1048:06d6"
+    },
+    {
+      "metadata": "1048:06f6",
+      "loaded_words": "0006 1008 0006 ffff 0000 0000 06d6 0000 0000 1008 ",
+      "far_string_address": "1008:0006",
+      "far_string": "CBrush",
+      "class_name": "CBrush",
+      "object_size": "6",
+      "base_metadata": "1048:06d6"
+    },
+    {
+      "metadata": "1048:0746",
+      "loaded_words": "05e8 1000 0006 ffff 338c 1000 04ee 0000 0664 1000 ",
+      "far_string_address": "1000:05e8",
+      "far_string": "CMenu",
+      "class_name": "CMenu",
+      "object_size": "6",
+      "base_metadata": "1048:04ee"
+    },
+    {
+      "metadata": "1048:0756",
+      "loaded_words": "0664 1000 0014 ffff 0000 0000 04ee 0000 0000 065a ",
+      "far_string_address": "1000:0664",
+      "far_string": "CCmdTarget",
+      "class_name": "CCmdTarget",
+      "object_size": "20",
+      "base_metadata": "1048:04ee"
+    },
+    {
+      "metadata": "1048:076e",
+      "loaded_words": "0080 1008 0036 ffff 0000 0000 0756 0000 0766 008a ",
+      "far_string_address": "1008:0080",
+      "far_string": "CDocument",
+      "class_name": "CDocument",
+      "object_size": "54",
+      "base_metadata": "1048:0756"
+    },
+    {
+      "metadata": "1048:0784",
+      "loaded_words": "00b2 1008 0036 ffff 0000 0000 0756 0000 00c0 1008 ",
+      "far_string_address": "1008:00b2",
+      "far_string": "CDocTemplate",
+      "class_name": "CDocTemplate",
+      "object_size": "54",
+      "base_metadata": "1048:0756"
+    },
+    {
+      "metadata": "1048:0794",
+      "loaded_words": "00c0 1008 0038 ffff 0000 0000 0784 0000 05a4 00d4 ",
+      "far_string_address": "1008:00c0",
+      "far_string": "CSingleDocTemplate",
+      "class_name": "CSingleDocTemplate",
+      "object_size": "56",
+      "base_metadata": "1048:0784"
+    },
+    {
+      "metadata": "1048:07bc",
+      "loaded_words": "0182 1008 0032 ffff 0000 0000 05bc 0000 07a4 015a ",
+      "far_string_address": "1008:0182",
+      "far_string": "CScrollView",
+      "class_name": "CScrollView",
+      "object_size": "50",
+      "base_metadata": "1048:05bc"
+    },
+    {
+      "metadata": "1048:07d6",
+      "loaded_words": "ad5e 1000 008a ffff c734 1000 07bc 0000 07cc ac96 ",
+      "far_string_address": "1000:ad5e",
+      "far_string": "CPreviewView",
+      "class_name": "CPreviewView",
+      "object_size": "138",
+      "base_metadata": "1048:07bc"
+    },
+    {
+      "metadata": "1048:07ec",
+      "loaded_words": "0670 1000 008e ffff 0000 0000 0756 0000 0000 2a8e ",
+      "far_string_address": "1000:0670",
+      "far_string": "CWinApp",
+      "class_name": "CWinApp",
+      "object_size": "142",
+      "base_metadata": "1048:0756"
+    }
+  ],
+  "verified_annotations": [
+    {
+      "entry": "1000:0684",
+      "name": "RE_CObject_metadata_getter_1000_0684",
+      "comment": "Confirmed: AX returns 1048:04ee; loaded far name 1000:04f2 = CObject; object size 4 bytes; base metadata 1048:0000. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:06b8",
+      "name": "RE_empty_far_method_1000_06b8",
+      "comment": "Confirmed instruction behavior: RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:06bc",
+      "name": "RE_empty_far_method_1000_06bc",
+      "comment": "Confirmed instruction behavior: RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:0862",
+      "name": "RE_CFile_metadata_getter_1000_0862",
+      "comment": "Confirmed: AX returns 1048:0544; loaded far name 1000:04fa = CFile; object size 8 bytes; base metadata 1048:04ee. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:16f6",
+      "name": "RE_empty_far_method_1000_16f6",
+      "comment": "Confirmed instruction behavior: RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:17b2",
+      "name": "RE_return_ax_58c_1000_17b2",
+      "comment": "Confirmed instruction behavior: MOV AX,0x58c; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:17b8",
+      "name": "RE_zero_ax_return_1000_17b8",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:1b0c",
+      "name": "RE_CWnd_metadata_getter_1000_1b0c",
+      "comment": "Confirmed: AX returns 1048:0594; loaded far name 1000:059e = CWnd; object size 26 bytes; base metadata 1048:0756. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:1b12",
+      "name": "RE_return_ax_5a4_1000_1b12",
+      "comment": "Confirmed instruction behavior: MOV AX,0x5a4; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:2116",
+      "name": "RE_zero_ax_return_1000_2116",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:24bc",
+      "name": "RE_zero_ax_return_1000_24bc",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0xc. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:2796",
+      "name": "RE_zero_ax_return_1000_2796",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:279c",
+      "name": "RE_return_ax_1_1000_279c",
+      "comment": "Confirmed instruction behavior: MOV AX,0x1; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:2bfe",
+      "name": "RE_CDialog_metadata_getter_1000_2bfe",
+      "comment": "Confirmed: AX returns 1048:063a; loaded far name 1000:05e0 = CDialog; object size 36 bytes; base metadata 1048:0594. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:2c04",
+      "name": "RE_return_ax_64a_1000_2c04",
+      "comment": "Confirmed instruction behavior: MOV AX,0x64a; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:2c4a",
+      "name": "RE_return_ax_44d2_1000_2c4a",
+      "comment": "Confirmed instruction behavior: MOV AX,0x44d2; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:2f3a",
+      "name": "RE_empty_far_method_1000_2f3a",
+      "comment": "Confirmed instruction behavior: RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:33c6",
+      "name": "RE_CMenu_metadata_getter_1000_33c6",
+      "comment": "Confirmed: AX returns 1048:0746; loaded far name 1000:05e8 = CMenu; object size 6 bytes; base metadata 1048:04ee. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:343a",
+      "name": "RE_empty_far_method_1000_343a",
+      "comment": "Confirmed instruction behavior: RETF 0x6. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:343e",
+      "name": "RE_empty_far_method_1000_343e",
+      "comment": "Confirmed instruction behavior: RETF 0x6. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:34a2",
+      "name": "RE_CCmdTarget_metadata_getter_1000_34a2",
+      "comment": "Confirmed: AX returns 1048:0756; loaded far name 1000:0664 = CCmdTarget; object size 20 bytes; base metadata 1048:04ee. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:36c4",
+      "name": "RE_return_ax_766_1000_36c4",
+      "comment": "Confirmed instruction behavior: MOV AX,0x766; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:36ca",
+      "name": "RE_constant_dx_ax_return_1000_36ca",
+      "comment": "Confirmed instruction behavior: MOV AX,0x5ee; MOV DX,0x1000; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:36d4",
+      "name": "RE_constant_dx_ax_return_1000_36d4",
+      "comment": "Confirmed instruction behavior: MOV AX,0x636; MOV DX,0x1000; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:36fa",
+      "name": "RE_return_ax_1_1000_36fa",
+      "comment": "Confirmed instruction behavior: MOV AX,0x1; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:3700",
+      "name": "RE_zero_dx_ax_return_1000_3700",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; CWD; RETF 0x6. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:3930",
+      "name": "RE_CWinApp_metadata_getter_1000_3930",
+      "comment": "Confirmed: AX returns 1048:07ec; loaded far name 1000:0670 = CWinApp; object size 142 bytes; base metadata 1048:0756. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:39e2",
+      "name": "RE_return_ax_1_1000_39e2",
+      "comment": "Confirmed instruction behavior: MOV AX,0x1; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:39e8",
+      "name": "RE_return_ax_1_1000_39e8",
+      "comment": "Confirmed instruction behavior: MOV AX,0x1; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:407a",
+      "name": "RE_CPtrList_metadata_getter_1000_407a",
+      "comment": "Confirmed: AX returns 1048:0564; loaded far name 1000:4064 = CPtrList; object size 16 bytes; base metadata 1048:04ee. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:441c",
+      "name": "RE_CException_metadata_getter_1000_441c",
+      "comment": "Confirmed: AX returns 1048:0500; loaded far name 1000:434a = CException; object size 4 bytes; base metadata 1048:04ee. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:453c",
+      "name": "RE_CMemoryException_metadata_getter_1000_453c",
+      "comment": "Confirmed: AX returns 1048:0514; loaded far name 1000:4339 = CMemoryException; object size 4 bytes; base metadata 1048:0500. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:457c",
+      "name": "RE_CNotSupportedException_metadata_getter_1000_457c",
+      "comment": "Confirmed: AX returns 1048:0524; loaded far name 1000:4322 = CNotSupportedException; object size 4 bytes; base metadata 1048:0500. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:49fc",
+      "name": "RE_CArchiveException_metadata_getter_1000_49fc",
+      "comment": "Confirmed: AX returns 1048:0534; loaded far name 1000:4356 = CArchiveException; object size 6 bytes; base metadata 1048:0500. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:4aba",
+      "name": "RE_CFileException_metadata_getter_1000_4aba",
+      "comment": "Confirmed: AX returns 1048:0554; loaded far name 1000:4368 = CFileException; object size 10 bytes; base metadata 1048:0500. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:4f06",
+      "name": "RE_CFileDialog_metadata_getter_1000_4f06",
+      "comment": "Confirmed: AX returns 1048:0650; loaded far name 1000:4378 = CFileDialog; object size 440 bytes; base metadata 1048:063a. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:5090",
+      "name": "RE_zero_ax_return_1000_5090",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x6. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:5096",
+      "name": "RE_zero_ax_return_1000_5096",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:509c",
+      "name": "RE_empty_far_method_1000_509c",
+      "comment": "Confirmed instruction behavior: RETF 0x8. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:5102",
+      "name": "RE_CPrintDialog_metadata_getter_1000_5102",
+      "comment": "Confirmed: AX returns 1048:0660; loaded far name 1000:4402 = CPrintDialog; object size 92 bytes; base metadata 1048:063a. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:5108",
+      "name": "RE_return_ax_670_1000_5108",
+      "comment": "Confirmed instruction behavior: MOV AX,0x670; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:6112",
+      "name": "RE_CMapWordToPtr_metadata_getter_1000_6112",
+      "comment": "Confirmed: AX returns 1048:0574; loaded far name 1000:60f8 = CMapWordToPtr; object size 16 bytes; base metadata 1048:04ee. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:65ee",
+      "name": "RE_CFrameWnd_metadata_getter_1000_65ee",
+      "comment": "Confirmed: AX returns 1048:05ac; loaded far name 1000:65b2 = CFrameWnd; object size 78 bytes; base metadata 1048:0594. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:6600",
+      "name": "RE_CView_metadata_getter_1000_6600",
+      "comment": "Confirmed: AX returns 1048:05bc; loaded far name 1000:65ac = CView; object size 28 bytes; base metadata 1048:0594. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:6612",
+      "name": "RE_CControlBar_metadata_getter_1000_6612",
+      "comment": "Confirmed: AX returns 1048:05cc; loaded far name 1000:65a0 = CControlBar; object size 46 bytes; base metadata 1048:0594. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:6618",
+      "name": "RE_return_ax_5dc_1000_6618",
+      "comment": "Confirmed instruction behavior: MOV AX,0x5dc; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:838c",
+      "name": "RE_return_ax_5e2_1000_838c",
+      "comment": "Confirmed instruction behavior: MOV AX,0x5e2; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:8984",
+      "name": "RE_CStatusBar_metadata_getter_1000_8984",
+      "comment": "Confirmed: AX returns 1048:05e8; loaded far name 1000:7c94 = CStatusBar; object size 50 bytes; base metadata 1048:05cc. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:8dd0",
+      "name": "RE_return_ax_5f8_1000_8dd0",
+      "comment": "Confirmed instruction behavior: MOV AX,0x5f8; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:982e",
+      "name": "RE_CToolBar_metadata_getter_1000_982e",
+      "comment": "Confirmed: AX returns 1048:0604; loaded far name 1000:7ce6 = CToolBar; object size 62 bytes; base metadata 1048:05cc. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:9a3a",
+      "name": "RE_return_ax_614_1000_9a3a",
+      "comment": "Confirmed instruction behavior: MOV AX,0x614; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:9eb6",
+      "name": "RE_CDialogBar_metadata_getter_1000_9eb6",
+      "comment": "Confirmed: AX returns 1048:061a; loaded far name 1000:7d4e = CDialogBar; object size 46 bytes; base metadata 1048:05cc. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:9fd2",
+      "name": "RE_return_ax_44ca_1000_9fd2",
+      "comment": "Confirmed instruction behavior: MOV AX,0x44ca; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:a63a",
+      "name": "RE_return_ax_816_1000_a63a",
+      "comment": "Confirmed instruction behavior: MOV AX,0x816; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:ad78",
+      "name": "RE_CPreviewDC_metadata_getter_1000_ad78",
+      "comment": "Confirmed: AX returns 1048:062a; loaded far name 1000:ac8a = CPreviewDC; object size 34 bytes; base metadata 1048:0696. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:c754",
+      "name": "RE_CPreviewView_metadata_getter_1000_c754",
+      "comment": "Confirmed: AX returns 1048:07d6; loaded far name 1000:ad5e = CPreviewView; object size 138 bytes; base metadata 1048:07bc. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1000:c75a",
+      "name": "RE_return_ax_7e6_1000_c75a",
+      "comment": "Confirmed instruction behavior: MOV AX,0x7e6; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:01fe",
+      "name": "RE_CResourceException_metadata_getter_1008_01fe",
+      "comment": "Confirmed: AX returns 1048:0676; loaded far name 1008:004d = CResourceException; object size 4 bytes; base metadata 1048:0500. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:023e",
+      "name": "RE_CUserException_metadata_getter_1008_023e",
+      "comment": "Confirmed: AX returns 1048:0686; loaded far name 1008:003e = CUserException; object size 4 bytes; base metadata 1048:0500. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:0286",
+      "name": "RE_CDC_metadata_getter_1008_0286",
+      "comment": "Confirmed: AX returns 1048:0696; loaded far name 1008:003a = CDC; object size 10 bytes; base metadata 1048:04ee. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:0bba",
+      "name": "RE_CClientDC_metadata_getter_1008_0bba",
+      "comment": "Confirmed: AX returns 1048:06a6; loaded far name 1008:0030 = CClientDC; object size 12 bytes; base metadata 1048:0696. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:0bcc",
+      "name": "RE_CWindowDC_metadata_getter_1008_0bcc",
+      "comment": "Confirmed: AX returns 1048:06b6; loaded far name 1008:0026 = CWindowDC; object size 12 bytes; base metadata 1048:0696. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:0bde",
+      "name": "RE_CPaintDC_metadata_getter_1008_0bde",
+      "comment": "Confirmed: AX returns 1048:06c6; loaded far name 1008:001d = CPaintDC; object size 44 bytes; base metadata 1048:0696. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:0d72",
+      "name": "RE_CGdiObject_metadata_getter_1008_0d72",
+      "comment": "Confirmed: AX returns 1048:06d6; loaded far name 1008:0012 = CGdiObject; object size 6 bytes; base metadata 1048:04ee. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:0e48",
+      "name": "RE_CPen_metadata_getter_1008_0e48",
+      "comment": "Confirmed: AX returns 1048:06e6; loaded far name 1008:000d = CPen; object size 6 bytes; base metadata 1048:06d6. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:0e5a",
+      "name": "RE_CBrush_metadata_getter_1008_0e5a",
+      "comment": "Confirmed: AX returns 1048:06f6; loaded far name 1008:0006 = CBrush; object size 6 bytes; base metadata 1048:06d6. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:1346",
+      "name": "RE_CDocument_metadata_getter_1008_1346",
+      "comment": "Confirmed: AX returns 1048:076e; loaded far name 1008:0080 = CDocument; object size 54 bytes; base metadata 1048:0756. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:134c",
+      "name": "RE_return_ax_77e_1008_134c",
+      "comment": "Confirmed instruction behavior: MOV AX,0x77e; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:1440",
+      "name": "RE_empty_far_method_1008_1440",
+      "comment": "Confirmed instruction behavior: RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:15e4",
+      "name": "RE_empty_far_method_1008_15e4",
+      "comment": "Confirmed instruction behavior: RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:18a8",
+      "name": "RE_zero_ax_return_1008_18a8",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:18ae",
+      "name": "RE_zero_ax_return_1008_18ae",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:1ce4",
+      "name": "RE_empty_far_method_1008_1ce4",
+      "comment": "Confirmed instruction behavior: RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:1dee",
+      "name": "RE_CDocTemplate_metadata_getter_1008_1dee",
+      "comment": "Confirmed: AX returns 1048:0784; loaded far name 1008:00b2 = CDocTemplate; object size 54 bytes; base metadata 1048:0756. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:220e",
+      "name": "RE_CSingleDocTemplate_metadata_getter_1008_220e",
+      "comment": "Confirmed: AX returns 1048:0794; loaded far name 1008:00c0 = CSingleDocTemplate; object size 56 bytes; base metadata 1048:0784. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:24d2",
+      "name": "RE_return_ax_7a4_1008_24d2",
+      "comment": "Confirmed instruction behavior: MOV AX,0x7a4; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:271a",
+      "name": "RE_zero_ax_return_1008_271a",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:273e",
+      "name": "RE_empty_far_method_1008_273e",
+      "comment": "Confirmed instruction behavior: RETF 0x6. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:2774",
+      "name": "RE_zero_ax_return_1008_2774",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x8. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:277a",
+      "name": "RE_zero_ax_return_1008_277a",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0x8. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:2780",
+      "name": "RE_zero_dx_ax_return_1008_2780",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; CWD; RETF 0xc. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:2786",
+      "name": "RE_zero_dx_ax_return_1008_2786",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; CWD; RETF 0xc. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:278c",
+      "name": "RE_zero_ax_return_1008_278c",
+      "comment": "Confirmed instruction behavior: XOR AX,AX; RETF 0xc. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:2792",
+      "name": "RE_empty_far_method_1008_2792",
+      "comment": "Confirmed instruction behavior: RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:2996",
+      "name": "RE_return_ax_1_1008_2996",
+      "comment": "Confirmed instruction behavior: MOV AX,0x1; RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:299c",
+      "name": "RE_empty_far_method_1008_299c",
+      "comment": "Confirmed instruction behavior: RETF 0x6. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:29a0",
+      "name": "RE_empty_far_method_1008_29a0",
+      "comment": "Confirmed instruction behavior: RETF 0x6. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:2a80",
+      "name": "RE_CScrollView_metadata_getter_1008_2a80",
+      "comment": "Confirmed: AX returns 1048:07bc; loaded far name 1008:0182 = CScrollView; object size 50 bytes; base metadata 1048:05bc. Getter ABI only supported by RETF immediate, no parameter inference."
+    },
+    {
+      "entry": "1008:2a86",
+      "name": "RE_return_ax_7cc_1008_2a86",
+      "comment": "Confirmed instruction behavior: MOV AX,0x7cc; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1008:3606",
+      "name": "RE_return_ax_80a_1008_3606",
+      "comment": "Confirmed instruction behavior: MOV AX,0x80a; RETF 0x2. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1010:0464",
+      "name": "RE_empty_far_method_1010_0464",
+      "comment": "Confirmed instruction behavior: RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1010:076a",
+      "name": "RE_empty_far_method_1010_076a",
+      "comment": "Confirmed instruction behavior: RETF 0x4. Class/method identity and runtime reachability remain unverified."
+    },
+    {
+      "entry": "1000:068a",
+      "name": "RE_runtime_class_is_kind_of",
+      "comment": "Confirmed: obtains descriptor via virtual slot 0; compares descriptor with requested pointer; follows descriptor+0x0c until match or null. Name supported by loaded class strings and descriptor links."
+    },
+    {
+      "entry": "1000:06c0",
+      "name": "RE_runtime_class_create_object",
+      "comment": "Confirmed scoped model: size from descriptor+4 is allocated by 1008:5fe0; create callback tested via 1000:0730 (descriptor+8/+0a); failure frees allocation through 1008:5fd0. Exception/calling-convention details remain partial."
+    },
+    {
+      "entry": "1000:092c",
+      "name": "RE_CFile_open",
+      "comment": "Confirmed CFile class binding: constructor 0890 installs 1018:4934; slot+0 points to 0862 returning descriptor 1048:0544 with loaded name CFile; slot+0x18 at 494c points here. Scoped open/create behavior: initializes handle+4=-1, owned flag+6=0; uses helpers 6fb2 AH=3c and 6fec AH=3d; success sets owned flag; exact C ABI and error mapping remain partial."
+    }
+  ],
+  "scripts": {
+    "verify_far_table.py": "\"\"\"Decode original NE segment relocation chains and prove seg4's pointer table.\"\"\"\nimport csv, json, struct, hashlib\nfrom collections import Counter\nfrom pathlib import Path\nroot=Path(__file__).resolve().parents[1]\np=(root/'prior/inputs/nite3w - 110.exe').read_bytes()\nassert hashlib.sha256(p).hexdigest()=='12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481'\nne=struct.unpack_from('<I',p,0x3c)[0]\nassert p[ne:ne+2]==b'NE'\nst=ne+struct.unpack_from('<H',p,ne+0x22)[0]\nshift=struct.unpack_from('<H',p,ne+0x32)[0]\nnsegs=struct.unpack_from('<H',p,ne+0x1c)[0]\nsegs=[struct.unpack_from('<4H',p,st+i*8) for i in range(nsegs)]\nsites=[]\nfor si,(off,n,flags,alloc) in enumerate(segs,1):\n    if not off or not flags&0x100:continue\n    n=n or 65536\n    b=p[off<<shift:(off<<shift)+n]\n    pos=(off<<shift)+n\n    count=struct.unpack_from('<H',p,pos)[0]\n    for ri in range(count):\n        typ,flag,src,ts,res,to=struct.unpack_from('<BBHBBH',p,pos+2+ri*8)\n        seen=set()\n        while src!=0xffff:\n            assert src not in seen, (si,ri,'cycle',src)\n            assert src+2<=len(b), (si,ri,'bounds',src)\n            seen.add(src)\n            nxt=struct.unpack_from('<H',b,src)[0]\n            sites.append(dict(source_segment=si,record=ri,type=typ,flags=flag,source=src,\n                target_segment=ts,target_offset=to,\n                preceding_word=struct.unpack_from('<H',b,src-2)[0] if src>=2 else None))\n            if flag&4:break\n            src=nxt\nout=root/'pass2';out.mkdir(exist_ok=True)\n(out/'relocation_chain_sites.json').write_text(json.dumps(sites,indent=2))\ntail=sorted([x for x in sites if x['source_segment']==4 and x['source']>=0x48b7],key=lambda x:x['source'])\nassert len(sites)==6082\nassert len(tail)==865\nassert [x['source'] for x in tail]==list(range(0x48ba,0x563c,4))\nfuncs={x['entry'] for x in csv.DictReader((root/'final-results/functions.tsv').open(),delimiter='\\t')}\nrows=[]\nfor x in tail:\n    assert x['type']==2 and x['flags']==0\n    assert 1<=x['target_segment']<=3\n    assert x['preceding_word']<(segs[x['target_segment']-1][1] or 65536)\n    target=f\"{0x1000+(x['target_segment']-1)*8:04x}:{x['preceding_word']:04x}\"\n    rows.append(dict(table_address=f\"1018:{x['source']-2:04x}\",target=target,\n        source_ne_segment=4,relocation_record=x['record'],is_existing_function=target in funcs))\nwith (out/'far_pointer_table.tsv').open('w') as f:\n    w=csv.DictWriter(f,fieldnames=list(rows[0]),delimiter='\\t');w.writeheader();w.writerows(rows)\nnew=sorted({x['target'] for x in rows if not x['is_existing_function']})\n(root/'scripts/candidates3.txt').write_text('\\n'.join(new))\nsummary=dict(expanded_relocation_sites=len(sites),pointer_entries=len(rows),pointer_bytes=len(rows)*4,\n    first='1018:48b8',last='1018:5638',unique_targets=len({x['target'] for x in rows}),\n    targets_without_previous_function_entry=len(new),target_segment_counts=dict(Counter(x['target'][:4] for x in rows)),\n    table_pointer_shape='Confirmed',virtual_table_ownership='Partial',runtime_tests=0)\n(out/'verification_far_table.json').write_text(json.dumps(summary,indent=2)+'\\n')\nprint(json.dumps(summary,indent=2))\n",
+    "verify_leaf_bodies.py": "\"\"\"Check each bounded leaf classification against ORIGINAL EXE bytes.\"\"\"\nimport csv, struct, json\nfrom collections import Counter\nfrom pathlib import Path\nroot=Path(__file__).resolve().parents[1]\np=(root/'prior/inputs/nite3w - 110.exe').read_bytes()\nne=struct.unpack_from('<I',p,0x3c)[0];st=ne+struct.unpack_from('<H',p,ne+0x22)[0]\nshift=struct.unpack_from('<H',p,ne+0x32)[0]\nrows=list(csv.DictReader((root/'pass2/new_function_behaviors.tsv').open(),delimiter='\\t'))\nchecks=[]\nsites=json.loads((root/'pass2/relocation_chain_sites.json').read_text())\nrelocation_operands=0\nfor r in rows:\n    if r['static_category']=='complex_method':continue\n    segment,offset=[int(x,16) for x in r['entry'].split(':')]\n    si=(segment-0x1000)//8\n    fileoff=struct.unpack_from('<H',p,st+si*8)[0]<<shift\n    asm=r['instructions'].split('; '); expected=b''\n    for op in asm:\n        if op.startswith('MOV AX,'):expected+=b'\\xb8'+struct.pack('<H',int(op.split(',')[1],16))\n        elif op.startswith('MOV DX,'):expected+=b'\\xba'+struct.pack('<H',int(op.split(',')[1],16))\n        elif op=='XOR AX,AX':expected+=b'\\x33\\xc0'\n        elif op=='CWD':expected+=b'\\x99'\n        elif op.startswith('RETF '):expected+=b'\\xca'+struct.pack('<H',int(op.split()[1],16))\n        else:raise AssertionError(op)\n    actual=p[fileoff+offset:fileoff+offset+len(expected)]\n    # Raw NE selector operands contain chain links; Ghidra contains loaded selectors.\n    expected=bytearray(expected)\n    for site in sites:\n        if site['source_segment']==si+1 and site['type']==2 and site['flags']==0 and offset<=site['source']<offset+len(expected)-1:\n            at=site['source']-offset\n            loaded=struct.unpack_from('<H',expected,at)[0]\n            assert loaded==0x1000+(site['target_segment']-1)*8\n            expected[at:at+2]=actual[at:at+2]\n            relocation_operands+=1\n    assert actual==expected,(r['entry'],actual.hex(),expected.hex())\n    checks.append(dict(entry=r['entry'],byte_length=len(expected),original_hex=actual.hex(),category=r['static_category']))\nassert len(checks)==92\nsummary=dict(verified_leaf_bodies=len(checks),original_bytes_checked=sum(x['byte_length'] for x in checks),\n    selector_operands_verified_through_relocation_chains=relocation_operands,\n    category_counts=dict(Counter(x['category'] for x in checks)),complex_methods_not_claimed=['1008:2ade','1008:6efc'],runtime_tests=0)\n(root/'pass2/leaf_byte_verification.json').write_text(json.dumps(dict(summary=summary,bodies=checks),indent=2)+'\\n')\nprint(json.dumps(summary,indent=2))\n",
+    "N3DDefineFarTable.java": "import ghidra.app.script.GhidraScript;\nimport ghidra.program.model.data.*;\nimport ghidra.program.model.symbol.*;\nimport ghidra.program.model.listing.*;\nimport java.nio.file.*;\npublic class N3DDefineFarTable extends GhidraScript {\n public void run() throws Exception {\n  StructureDataType dt=new StructureDataType(\"NE_FARPTR16_PROVEN\",0);\n  dt.add(WordDataType.dataType,\"offset\",\"16-bit code offset\");\n  dt.add(WordDataType.dataType,\"selector\",\"Loader-relocated NE segment selector\");\n  var type=currentProgram.getDataTypeManager().addDataType(dt,DataTypeConflictHandler.DEFAULT_HANDLER);\n  int count=0;\n  for(String row:Files.readAllLines(Paths.get(getScriptArgs()[0])).subList(1,866)) {\n   String[] cols=row.split(\"\\t\");var a=toAddr(cols[0]);var target=toAddr(cols[1]);\n   int expectedOffset=Integer.parseInt(cols[1].split(\":\")[1],16);\n   int expectedSelector=Integer.parseInt(cols[1].split(\":\")[0],16);\n   if((getShort(a)&0xffff)!=expectedOffset || (getShort(a.add(2))&0xffff)!=expectedSelector)\n    throw new Exception(\"Loaded pointer differs from raw relocation evidence at \"+a);\n   if(getDataAt(a)==null || !getDataAt(a).isDefined())createData(a,type);\n   currentProgram.getReferenceManager().addMemoryReference(a,target,RefType.DATA,SourceType.USER_DEFINED,0);\n   currentProgram.getListing().setComment(a,CodeUnit.EOL_COMMENT,\"Confirmed NE seg4 relocation chain record \"+cols[3]+\"; far code target \"+target+\"; runtime/class ownership unverified.\");\n   count++;\n  }\n  println(\"PROVEN_FAR_POINTER_ENTRIES \"+count);\n }\n}\n",
+    "N3DInspectClassMetadata.java": "import ghidra.app.script.GhidraScript;\nimport java.io.*;\nimport java.nio.file.*;\nimport java.util.*;\npublic class N3DInspectClassMetadata extends GhidraScript {\n public void run() throws Exception {\n  try(PrintWriter p=new PrintWriter(getScriptArgs()[0])){\n   p.println(\"metadata\\tloaded_words\\tfar_string_address\\tfar_string\");\n   List<Integer> offsets=new ArrayList<>();\n   if(getScriptArgs().length>1){for(String line:Files.readAllLines(Paths.get(getScriptArgs()[1])))offsets.add(Integer.parseInt(line,16));}\n   else for(int o:new int[]{0x4ee,0x500,0x514,0x524,0x534,0x544,0x554,0x564,0x574,0x58c,0x594,0x5a4,0x676,0x686,0x696,0x784,0x794,0x7a4,0x80a})offsets.add(o);\n   for(int o:offsets){\n    var a=toAddr(String.format(\"1048:%04x\",o));StringBuilder words=new StringBuilder();for(int i=0;i<10;i++)words.append(String.format(\"%04x \",getShort(a.add(i*2))&0xffff));\n    String ptr=String.format(\"%04x:%04x\",getShort(a.add(2))&0xffff,getShort(a)&0xffff);StringBuilder str=new StringBuilder();\n    try{var s=toAddr(ptr);for(int i=0;i<100;i++){int c=getByte(s.add(i))&255;if(c==0)break;if(c<32||c>126){str.append(\"[non-ascii]\");break;}str.append((char)c);}}catch(Exception e){str.append(\"[unmapped]\");}\n    p.println(a+\"\\t\"+words+\"\\t\"+ptr+\"\\t\"+str);\n   }\n  }\n }\n}\n",
+    "N3DApplyEvidenceAnnotations.java": "import ghidra.app.script.GhidraScript;\nimport ghidra.program.model.symbol.SourceType;\nimport java.nio.file.*;\npublic class N3DApplyEvidenceAnnotations extends GhidraScript {\n public void run() throws Exception {\n  int n=0;\n  var lines=Files.readAllLines(Paths.get(getScriptArgs()[0]));\n  for(String line:lines.subList(1,lines.size())){\n   String[] c=line.split(\"\\t\",3);var f=getFunctionAt(toAddr(c[0]));if(f==null)throw new Exception(\"Missing function \"+c[0]);\n   f.setName(c[1],SourceType.USER_DEFINED);f.setComment(c[2]+\"\\nStatic evidence pass 2, 2026-10-28; original EXE SHA256 12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481.\");n++;\n  }\n  println(\"BOUNDED_FUNCTION_ANNOTATIONS \"+n);\n }\n}\n"
+  },
+  "coverage_tsv": "block\tbytes\tinstruction_bytes\tdefined_data_bytes\tundefined_bytes\nCode1\t56546\t52305\t571\t3670\nCode2\t29694\t28220\t264\t1210\nCode3\t61372\t58060\t712\t2600\nCode4\t22076\t18304\t3594\t178\n"
+}
