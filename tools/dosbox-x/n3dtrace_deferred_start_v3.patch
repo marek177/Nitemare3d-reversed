@@ -1,0 +1,92 @@
+diff --git a/src/debug/n3d_trace.cpp b/src/debug/n3d_trace.cpp
+--- a/src/debug/n3d_trace.cpp
++++ b/src/debug/n3d_trace.cpp
+@@ -96,6 +96,13 @@
+ uint64_t limit_bytes = 4096ull*1024ull*1024ull;
+ bool initialized = false, active = false, auto_start = false, record_mem = true, record_reads = false, record_io = true;
+ bool stop_enabled = false;
++// Opt-in deferred start: do not record BIOS, DOS loader, or menu instruction streams.
++bool start_enabled = false, start_armed = false, start_guard_enabled = false;
++bool start_actor_enabled = false;
++uint16_t start_cs = 0, start_es = 0, start_si = 0;
++uint32_t start_ip = 0, start_guard_bytes = 0;
++uint64_t instruction_budget = 0; // Max CPU instruction records; 0 means unlimited.
++bool stop_break = true; // Preserve historical STOP_CSIP debugger behavior by default.
+ bool record_vram = true;
+ uint32_t frame_period = 0;
+ uint64_t frame_counter = 0;
+@@ -249,6 +256,36 @@
+     snapshot_period = static_cast<uint32_t>(std::min<uint64_t>(ReadMB("N3D_TRACE_SNAPSHOT_EVERY",0),1000000u));
+     rotate_bytes = std::max<uint64_t>(1,ReadMB("N3D_TRACE_ROTATE_MB",128))*1024ull*1024ull;
+     limit_bytes = ReadMB("N3D_TRACE_LIMIT_MB",4096)*1024ull*1024ull;
++    // ReadMB parses an unsigned decimal; unlike LIMIT_MB, this is a direct count.
++    instruction_budget = ReadMB("N3D_TRACE_INSTRUCTION_LIMIT",0);
++    stop_break = ReadBool("N3D_TRACE_STOP_BREAK",true);
++    const char* start = std::getenv("N3D_TRACE_START_CSIP");
++    unsigned start_segment=0, start_offset=0;
++    if (start && std::sscanf(start,"%x:%x",&start_segment,&start_offset)==2
++            && start_segment<=0xffffu) {
++        start_enabled = true;
++        start_armed = true;
++        start_cs = static_cast<uint16_t>(start_segment);
++        start_ip = start_offset;
++        // Deferred start takes precedence when both variables were supplied.
++        auto_start = false;
++    }
++    const char* actor = std::getenv("N3D_TRACE_START_ES_SI");
++    unsigned actor_seg=0, actor_off=0;
++    if (start_enabled && actor && std::sscanf(actor,"%x:%x",&actor_seg,&actor_off)==2
++            && actor_seg<=0xffffu && actor_off<=0xffffu) {
++        start_actor_enabled = true;
++        start_es = static_cast<uint16_t>(actor_seg);
++        start_si = static_cast<uint16_t>(actor_off);
++    }
++    const char* start_bytes = std::getenv("N3D_TRACE_START_OPCODE4");
++    unsigned b0=0,b1=0,b2=0,b3=0;
++    if (start_enabled && start_bytes && std::strlen(start_bytes)==8
++            && std::sscanf(start_bytes,"%2x%2x%2x%2x",&b0,&b1,&b2,&b3)==4
++            && b0<=255 && b1<=255 && b2<=255 && b3<=255) {
++        start_guard_enabled = true;
++        start_guard_bytes = b0 | (b1<<8) | (b2<<16) | (b3<<24);
++    }
+     const char* stop = std::getenv("N3D_TRACE_STOP_CSIP");
+     unsigned c=0, i=0;
+     if (stop && std::sscanf(stop,"%x:%x",&c,&i)==2 && c<=0xffffu) {
+@@ -312,11 +349,35 @@
+ }
+ bool N3DTrace_Instruction(void) {
+     N3DTrace_Init();
+-    if (!active) return false;
++    if (!active) {
++        if (!start_enabled || !start_armed ||
++                SegValue(cs)!=start_cs || reg_eip!=start_ip) return false;
++        if (start_actor_enabled &&
++                (SegValue(es)!=start_es || (reg_esi & 0xffffu)!=start_si))
++            return false;
++        if (start_guard_enabled) {
++            // Read CPU opcode bytes from mapped RAM only; never perform guest MMIO.
++            const uint32_t code_address = SegPhys(cs) + reg_eip;
++            for (unsigned n=0;n<4;++n) {
++                const LinearPt a=code_address+n;
++                const HostPt tlb=get_tlb_read(a);
++                if (!tlb || host_readb(tlb+a)!=
++                        static_cast<uint8_t>(start_guard_bytes>>(8*n))) return false;
++            }
++        }
++        std::lock_guard<std::mutex> lock(output_mutex);
++        if (!StartUnlocked()) return false;
++        start_armed = false; // One-shot; later visits must not generate new sessions.
++    }
++    if (instruction_budget && instruction_seq>=instruction_budget) {
++        std::lock_guard<std::mutex> lock(output_mutex);
++        StopUnlocked("INSTRUCTION_BUDGET");
++        return false; // Continue emulator execution; no PDCurses break.
++    }
+     if (stop_enabled && SegValue(cs)==stop_cs && reg_eip==stop_ip) {
+         std::lock_guard<std::mutex> lock(output_mutex);
+         StopUnlocked("STOP_CSIP");
+-        return true;
++        return stop_break;
+     }
+     N3DInstruction r = {};
+     r.cs=SegValue(cs); r.ds=SegValue(ds); r.es=SegValue(es); r.ss=SegValue(ss);

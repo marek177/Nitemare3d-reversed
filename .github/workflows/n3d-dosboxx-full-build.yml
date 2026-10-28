@@ -1,0 +1,84 @@
+name: DOSBox-X N3D v0.65 full Linux build
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/n3d-dosboxx-full-build.yml"
+      - "tools/dosbox-x/n3dtrace_deferred_start_v3.patch"
+      - "tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: n3d
+      - uses: actions/checkout@v4
+        with:
+          repository: joncampbell123/dosbox-x
+          ref: dosbox-x-v2026.10.01
+          path: upstream
+          fetch-depth: 1
+      - name: Install emulator build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            build-essential autoconf automake libtool pkg-config nasm \
+            libsdl2-dev libsdl2-net-dev libncurses-dev libpng-dev \
+            zlib1g-dev libasound2-dev libfreetype-dev \
+            libxkbfile-dev libxrandr-dev
+      - name: Apply GPLv2+ Advanced History v3 and deferred trace patch
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          base=Path("n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch")
+          touched=set(re.findall(r"(?m)^--- a/([^\t\n]+)",base.read_text(encoding="utf-8")))
+          for rel in touched:
+              f=Path("upstream")/rel
+              if f.is_file():
+                  content=f.read_bytes()
+                  if b"\r\n" in content:
+                      f.write_bytes(content.replace(b"\r\n",b"\n"))
+          PY
+          cd upstream
+          git apply --check ../n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch
+          git apply ../n3d/tools/dosbox-x/dosbox-x-2026.10.01-N3D-AdvancedHistory-v3.patch
+          git apply --check ../n3d/tools/dosbox-x/n3dtrace_deferred_start_v3.patch
+          git apply ../n3d/tools/dosbox-x/n3dtrace_deferred_start_v3.patch
+      - name: Configure heavy debugger
+        run: |
+          cd upstream
+          ./autogen.sh
+          ./configure --enable-debug=heavy --enable-sdl2 \
+            --disable-avcodec --disable-printer --disable-mt32 \
+            --disable-dynamic-x86 --disable-opengl
+      - name: Build complete DOSBox-X executable
+        run: |
+          cd upstream
+          make -j2 V=0
+          find . -maxdepth 5 -type f -name 'dosbox-x' -perm /111 -print
+      - name: Package compiled ELF and metadata
+        run: |
+          mkdir -p dist/bin
+          find upstream -maxdepth 5 -type f -name dosbox-x -perm /111 -print -exec cp -v {} dist/bin/dosbox-x-n3d-v065 \;
+          test -s dist/bin/dosbox-x-n3d-v065
+          sha256sum dist/bin/dosbox-x-n3d-v065 > dist/SHA256SUMS.txt
+          ldd dist/bin/dosbox-x-n3d-v065 > dist/ELF-LDD.txt || true
+          cat > dist/BUILD_SCOPE.txt <<'EOF'
+          DOSBox-X release tag dosbox-x-v2026.10.01
+          Applied N3D Advanced History v3 and deferred trace overlay v0.65.
+          Heavy debugger compile with SDL2.
+          This binary is a compile artifact, not a proof of any original DOS Nitemare runtime path.
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dosboxx-n3d-v065-linux-elf
+          path: dist/
+          retention-days: 3
