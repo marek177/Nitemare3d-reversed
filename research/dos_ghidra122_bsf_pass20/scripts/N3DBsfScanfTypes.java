@@ -1,0 +1,16 @@
+import ghidra.app.script.GhidraScript;
+import ghidra.app.decompiler.*;
+import ghidra.program.model.data.*;
+import ghidra.program.model.listing.*;
+import ghidra.program.model.symbol.*;
+import java.nio.file.*;
+import java.security.MessageDigest;
+public class N3DBsfScanfTypes extends GhidraScript {
+ String inventory() throws Exception {var md=MessageDigest.getInstance("SHA-256");var listing=currentProgram.getListing();for(var it=listing.getInstructions(true);it.hasNext();){var i=it.next();md.update(i.getAddress().toString().getBytes());md.update(i.getBytes());}for(var it=currentProgram.getFunctionManager().getFunctions(true);it.hasNext();)md.update(it.next().getEntryPoint().toString().getBytes());return java.util.HexFormat.of().formatHex(md.digest());}
+ public void run() throws Exception {
+  var a=Files.readString(Path.of(getScriptArgs()[1])).trim().split("\\t");var out=Path.of(getScriptArgs()[0]);Files.createDirectories(out);var before=inventory();
+  var scan=getFunctionAt(toAddr(a[0]));if(scan==null)throw new IllegalStateException("Missing sscanf entry");scan.setName("SscanfNearString",SourceType.USER_DEFINED);scan.setCallingConvention("__cdecl16far");scan.setCustomVariableStorage(true);scan.replaceParameters(Function.FunctionUpdateType.CUSTOM_STORAGE,true,SourceType.USER_DEFINED,new ParameterImpl("inputOffset",UnsignedShortDataType.dataType,4,currentProgram),new ParameterImpl("formatOffset",UnsignedShortDataType.dataType,6,currentProgram));scan.setVarArgs(true);scan.setReturn(ShortDataType.dataType,new VariableStorage(currentProgram,currentProgram.getRegister("AX")),SourceType.USER_DEFINED);scan.setComment("Original near-string sscanf wrapper: input/format near offsets, near destination offsets via varargs. Verified204 no-hook cases for %i/%d plus612 original command-parser integrations. 16-bit numeric output wraps in tested overflow samples. Initial SPf800 leaves room for original stack allocator/bound check. Other formats/float not covered.");
+  var parser=getFunctionAt(toAddr(a[1]));parser.setComment("Original percent parser with original sscanf/CRT executed612 command cases (pass20); only effects mocked and fatal stopped. %i accepts hex/octal, %d decimal; 65536 ->0,32768 ->8000, -32769 ->7fff in tested16-bit conversion. Signed upper-only checks allow negative converted values. Return DX:AX points to closing percent or NUL. Graphics/palette effects remain separate.");
+  var after=inventory();if(!before.equals(after))throw new IllegalStateException("Inventory changed");Files.writeString(out.resolve("inventory.txt"),before+"\n"+after+"\n");var d=new DecompInterface();d.openProgram(currentProgram);var log=new StringBuilder("entry\tname\treturn_storage\tparameters\n");for(var f:new Function[]{scan,parser}){var r=d.decompileFunction(f,60,monitor);if(!r.decompileCompleted())throw new IllegalStateException("Failed "+f.getEntryPoint());Files.writeString(out.resolve(f.getEntryPoint().toString().replace(':','_')+".c"),r.getDecompiledFunction().getC());log.append(f.getEntryPoint()+"\t"+f.getName()+"\t"+f.getReturn().getVariableStorage()+"\t");for(var p:f.getParameters())log.append(p.getName()+":"+p.getVariableStorage()+";");log.append("varargs="+f.hasVarArgs()+"\n");}d.dispose();Files.writeString(out.resolve("typed_functions.tsv"),log);
+ }
+}
