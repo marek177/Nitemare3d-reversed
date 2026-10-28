@@ -1,0 +1,15 @@
+import ghidra.app.script.GhidraScript;
+import ghidra.app.decompiler.*;
+import ghidra.program.model.data.*;
+import ghidra.program.model.listing.*;
+import ghidra.program.model.symbol.*;
+import java.nio.file.*;
+import java.security.MessageDigest;
+import java.util.*;
+public class N3DBsfViewerRecovery extends GhidraScript {
+ String instructions() throws Exception{var md=MessageDigest.getInstance("SHA-256");for(var it=currentProgram.getListing().getInstructions(true);it.hasNext();){var i=it.next();md.update(i.getAddress().toString().getBytes());md.update(i.getBytes());}return HexFormat.of().formatHex(md.digest());}
+ Set<String> entries(){var s=new TreeSet<String>();for(var it=currentProgram.getFunctionManager().getFunctions(true);it.hasNext();)s.add(it.next().getEntryPoint().toString());return s;}
+ public void run() throws Exception {
+  var out=Path.of(getScriptArgs()[0]);Files.createDirectories(out);var address=toAddr(Files.readString(Path.of(getScriptArgs()[1])).trim());var before=instructions();var old=entries();var f=getFunctionAt(address);boolean created=false;if(f==null){if(getFunctionContaining(address)!=null)throw new IllegalStateException("Overlapping existing function");f=createFunction(address,"BrowseBsfPages");created=true;}if(f==null)throw new IllegalStateException("Function creation failed");f.setName("BrowseBsfPages",SourceType.USER_DEFINED);f.setCallingConvention("__cdecl16far");f.setCustomVariableStorage(true);f.replaceParameters(Function.FunctionUpdateType.CUSTOM_STORAGE,true,SourceType.USER_DEFINED,new ParameterImpl("displayStyle",UnsignedShortDataType.dataType,4,currentProgram),new ParameterImpl("bsfMode",UnsignedShortDataType.dataType,6,currentProgram));f.setReturnType(VoidDataType.dataType,SourceType.USER_DEFINED);f.setComment("Recovered direct caller from existing unowned instructions and call refs. Original full routine480 cases across6 builds: mode3/5 forwarded, total=1+count('#'), key50 down/key48 up (hex), ESC exit, original far-free once. Dispatch pointer, key input, page renderer and other UI calls mocked. Leading/repeated marker behavior follows pointer scan, not naive split. Print/D branch and actual renderer not verified. displayStyle analytical name, callers pass16.");var after=instructions();var now=entries();if(!before.equals(after)||!now.containsAll(old)||now.size()!=old.size()+(created?1:0))throw new IllegalStateException("Unexpected inventory change");Files.writeString(out.resolve("inventory.tsv"),"old_functions\tnew_functions\tcreated\tinstructions_before\tinstructions_after\n"+old.size()+"\t"+now.size()+"\t"+created+"\t"+before+"\t"+after+"\n");var d=new DecompInterface();d.openProgram(currentProgram);var r=d.decompileFunction(f,60,monitor);Files.writeString(out.resolve("decompile_status.txt"),"completed="+r.decompileCompleted()+"\n"+r.getErrorMessage());if(r.decompileCompleted())Files.writeString(out.resolve("BrowseBsfPages.c"),r.getDecompiledFunction().getC());d.dispose();Files.writeString(out.resolve("function.txt"),f.getEntryPoint()+"\n"+f.getSignature()+"\nbody="+f.getBody()+"\n");
+ }
+}
