@@ -1,0 +1,972 @@
+{
+  "cases": 60,
+  "scope": "original complete resource-loader instructions with mocked open/malloc/lseek/read/close and error dependency stops; original decoder executes",
+  "results": [
+    {
+      "build": "10",
+      "case": "mode3",
+      "offset": 1711,
+      "length": 12058,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "mode4",
+      "offset": 54,
+      "length": 1657,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "mode5",
+      "offset": 13769,
+      "length": 972,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "empty",
+      "offset": 0,
+      "length": 0,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "key_boundary",
+      "offset": 0,
+      "length": 52,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "short_zero",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "short_53",
+      "offset": 0,
+      "length": 54,
+      "short_read": 53,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "read_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": "read",
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "open_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "open",
+      "trace": [
+        "open"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "alloc_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "alloc",
+      "trace": [
+        "open",
+        "alloc"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "mode3",
+      "offset": 1711,
+      "length": 12562,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "mode4",
+      "offset": 54,
+      "length": 1657,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "mode5",
+      "offset": 14273,
+      "length": 972,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "empty",
+      "offset": 0,
+      "length": 0,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "key_boundary",
+      "offset": 0,
+      "length": 52,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "short_zero",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "short_53",
+      "offset": 0,
+      "length": 54,
+      "short_read": 53,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "read_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": "read",
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "open_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "open",
+      "trace": [
+        "open"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "alloc_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "alloc",
+      "trace": [
+        "open",
+        "alloc"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "mode3",
+      "offset": 528,
+      "length": 9141,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "mode4",
+      "offset": 54,
+      "length": 474,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "mode5",
+      "offset": 9669,
+      "length": 581,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "empty",
+      "offset": 0,
+      "length": 0,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "key_boundary",
+      "offset": 0,
+      "length": 52,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "short_zero",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "short_53",
+      "offset": 0,
+      "length": 54,
+      "short_read": 53,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "read_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": "read",
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "open_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "open",
+      "trace": [
+        "open"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "alloc_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "alloc",
+      "trace": [
+        "open",
+        "alloc"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "mode3",
+      "offset": 1711,
+      "length": 12812,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "mode4",
+      "offset": 54,
+      "length": 1657,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "mode5",
+      "offset": 14523,
+      "length": 972,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "empty",
+      "offset": 0,
+      "length": 0,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "key_boundary",
+      "offset": 0,
+      "length": 52,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "short_zero",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "short_53",
+      "offset": 0,
+      "length": 54,
+      "short_read": 53,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "read_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": "read",
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "open_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "open",
+      "trace": [
+        "open"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "alloc_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "alloc",
+      "trace": [
+        "open",
+        "alloc"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "mode3",
+      "offset": 1711,
+      "length": 12830,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "mode4",
+      "offset": 54,
+      "length": 1657,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "mode5",
+      "offset": 14541,
+      "length": 972,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "empty",
+      "offset": 0,
+      "length": 0,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "key_boundary",
+      "offset": 0,
+      "length": 52,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "short_zero",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "short_53",
+      "offset": 0,
+      "length": 54,
+      "short_read": 53,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "read_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": "read",
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "open_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "open",
+      "trace": [
+        "open"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "alloc_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "alloc",
+      "trace": [
+        "open",
+        "alloc"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "mode3",
+      "offset": 1711,
+      "length": 13117,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "mode4",
+      "offset": 54,
+      "length": 1657,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "mode5",
+      "offset": 14828,
+      "length": 972,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "empty",
+      "offset": 0,
+      "length": 0,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "key_boundary",
+      "offset": 0,
+      "length": 52,
+      "short_read": null,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "short_zero",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "short_53",
+      "offset": 0,
+      "length": 54,
+      "short_read": 53,
+      "error": null,
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "read_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": 0,
+      "error": "read",
+      "trace": [
+        "open",
+        "alloc",
+        "seek",
+        "read",
+        "close",
+        "decoder"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "open_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "open",
+      "trace": [
+        "open"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "alloc_error",
+      "offset": 0,
+      "length": 54,
+      "short_read": null,
+      "error": "alloc",
+      "trace": [
+        "open",
+        "alloc"
+      ],
+      "passed": true
+    }
+  ]
+}
