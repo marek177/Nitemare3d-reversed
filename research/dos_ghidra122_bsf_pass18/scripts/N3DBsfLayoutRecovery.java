@@ -1,0 +1,15 @@
+import ghidra.app.script.GhidraScript;
+import ghidra.app.decompiler.*;
+import ghidra.program.model.data.*;
+import ghidra.program.model.listing.*;
+import ghidra.program.model.symbol.*;
+import java.nio.file.*;
+import java.security.MessageDigest;
+import java.util.*;
+public class N3DBsfLayoutRecovery extends GhidraScript {
+ String instructions() throws Exception{var md=MessageDigest.getInstance("SHA-256");for(var it=currentProgram.getListing().getInstructions(true);it.hasNext();){var i=it.next();md.update(i.getAddress().toString().getBytes());md.update(i.getBytes());}return HexFormat.of().formatHex(md.digest());}
+ Set<String> entries(){var s=new TreeSet<String>();for(var it=currentProgram.getFunctionManager().getFunctions(true);it.hasNext();)s.add(it.next().getEntryPoint().toString());return s;}
+ public void run() throws Exception {
+  var out=Path.of(getScriptArgs()[0]);Files.createDirectories(out);var address=toAddr(Files.readString(Path.of(getScriptArgs()[1])).trim());var before=instructions();var old=entries();var f=getFunctionAt(address);boolean created=false;if(f==null){if(getFunctionContaining(address)!=null)throw new IllegalStateException("Overlapping existing function");f=createFunction(address,"LayoutBsfPage");created=true;}if(f==null)throw new IllegalStateException("Function creation failed");f.setName("LayoutBsfPage",SourceType.USER_DEFINED);f.setCallingConvention("__cdecl16far");f.setCustomVariableStorage(true);f.replaceParameters(Function.FunctionUpdateType.CUSTOM_STORAGE,true,SourceType.USER_DEFINED,new ParameterImpl("pageText",DWordDataType.dataType,4,currentProgram),new ParameterImpl("pageNumber",UnsignedShortDataType.dataType,8,currentProgram),new ParameterImpl("totalPages",UnsignedShortDataType.dataType,10,currentProgram));f.setReturnType(VoidDataType.dataType,SourceType.USER_DEFINED);f.setComment("Call-backed BSF page layout, recovered or newly typed according to per-build inventory. Original routine156 cases across6 builds with mocked UI/glyph renderer/width: x12,y7, line step11; space advance6; tab column next multiple4 and x=6*(column+2); other advance from width helper. Hash stops only at line start; LF ends line; y>=205 fatal branch. Percent parser/bitmap and actual framebuffer not verified. Header formatting/UI dependencies mocked.");var after=instructions();var now=entries();if(!before.equals(after)||!now.containsAll(old)||now.size()!=old.size()+(created?1:0))throw new IllegalStateException("Unexpected inventory change");Files.writeString(out.resolve("inventory.tsv"),"old_functions\tnew_functions\tcreated\tinstructions_before\tinstructions_after\n"+old.size()+"\t"+now.size()+"\t"+created+"\t"+before+"\t"+after+"\n");var d=new DecompInterface();d.openProgram(currentProgram);var r=d.decompileFunction(f,60,monitor);Files.writeString(out.resolve("decompile_status.txt"),"completed="+r.decompileCompleted()+"\n"+r.getErrorMessage());if(r.decompileCompleted())Files.writeString(out.resolve("LayoutBsfPage.c"),r.getDecompiledFunction().getC());d.dispose();Files.writeString(out.resolve("function.txt"),f.getEntryPoint()+"\n"+f.getSignature()+"\nbody="+f.getBody()+"\n");
+ }
+}
