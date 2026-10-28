@@ -1,0 +1,2836 @@
+{
+  "cases": 132,
+  "scope": "Original settings initializer and original viewport setter; file/path/fatal and setter dependencies mocked. Read mocks write exactly returned byte count. Fatal hook stops before handler.",
+  "results": [
+    {
+      "build": "10",
+      "scenario": {
+        "name": "open_0",
+        "handle": 0,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "open_65535",
+        "handle": 65535,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "open_32768",
+        "handle": 32768,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_0",
+        "handle": 3,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 0,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_1",
+        "handle": 3,
+        "length": 16,
+        "width": 1,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 1,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_7",
+        "handle": 3,
+        "length": 16,
+        "width": 7,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 7,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_8",
+        "handle": 3,
+        "length": 16,
+        "width": 8,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 8,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_160",
+        "handle": 3,
+        "length": 16,
+        "width": 160,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 160,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_304",
+        "handle": 3,
+        "length": 16,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_320",
+        "handle": 3,
+        "length": 16,
+        "width": 320,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 320,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_328",
+        "handle": 3,
+        "length": 16,
+        "width": 328,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 328,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_32767",
+        "handle": 3,
+        "length": 16,
+        "width": 32767,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32767,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_32768",
+        "handle": 3,
+        "length": 16,
+        "width": 32768,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32768,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "width_65535",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "short_0",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 0
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "short_1",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 1
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 511,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "short_2",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 2
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "short_15",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 15
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "badlength_0",
+        "handle": 3,
+        "length": 0,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "badlength_15",
+        "handle": 3,
+        "length": 15,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "badlength_17",
+        "handle": 3,
+        "length": 17,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "scenario": {
+        "name": "badlength_65552",
+        "handle": 3,
+        "length": 65552,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "open_0",
+        "handle": 0,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "open_65535",
+        "handle": 65535,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "open_32768",
+        "handle": 32768,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_0",
+        "handle": 3,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 0,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_1",
+        "handle": 3,
+        "length": 16,
+        "width": 1,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 1,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_7",
+        "handle": 3,
+        "length": 16,
+        "width": 7,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 7,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_8",
+        "handle": 3,
+        "length": 16,
+        "width": 8,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 8,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_160",
+        "handle": 3,
+        "length": 16,
+        "width": 160,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 160,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_304",
+        "handle": 3,
+        "length": 16,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_320",
+        "handle": 3,
+        "length": 16,
+        "width": 320,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 320,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_328",
+        "handle": 3,
+        "length": 16,
+        "width": 328,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 328,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_32767",
+        "handle": 3,
+        "length": 16,
+        "width": 32767,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32767,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_32768",
+        "handle": 3,
+        "length": 16,
+        "width": 32768,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32768,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "width_65535",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "short_0",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 0
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "short_1",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 1
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 511,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "short_2",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 2
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "short_15",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 15
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "badlength_0",
+        "handle": 3,
+        "length": 0,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "badlength_15",
+        "handle": 3,
+        "length": 15,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "badlength_17",
+        "handle": 3,
+        "length": 17,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "scenario": {
+        "name": "badlength_65552",
+        "handle": 3,
+        "length": 65552,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "open_0",
+        "handle": 0,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "open_65535",
+        "handle": 65535,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "open_32768",
+        "handle": 32768,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_0",
+        "handle": 3,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 0,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_1",
+        "handle": 3,
+        "length": 16,
+        "width": 1,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 1,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_7",
+        "handle": 3,
+        "length": 16,
+        "width": 7,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 7,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_8",
+        "handle": 3,
+        "length": 16,
+        "width": 8,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 8,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_160",
+        "handle": 3,
+        "length": 16,
+        "width": 160,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 160,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_304",
+        "handle": 3,
+        "length": 16,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_320",
+        "handle": 3,
+        "length": 16,
+        "width": 320,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 320,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_328",
+        "handle": 3,
+        "length": 16,
+        "width": 328,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 328,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_32767",
+        "handle": 3,
+        "length": 16,
+        "width": 32767,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32767,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_32768",
+        "handle": 3,
+        "length": 16,
+        "width": 32768,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32768,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "width_65535",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "short_0",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 0
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "short_1",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 1
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 511,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "short_2",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 2
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "short_15",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 15
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "badlength_0",
+        "handle": 3,
+        "length": 0,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "badlength_15",
+        "handle": 3,
+        "length": 15,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "badlength_17",
+        "handle": 3,
+        "length": 17,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "scenario": {
+        "name": "badlength_65552",
+        "handle": 3,
+        "length": 65552,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "open_0",
+        "handle": 0,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "open_65535",
+        "handle": 65535,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "open_32768",
+        "handle": 32768,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_0",
+        "handle": 3,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 0,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_1",
+        "handle": 3,
+        "length": 16,
+        "width": 1,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 1,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_7",
+        "handle": 3,
+        "length": 16,
+        "width": 7,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 7,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_8",
+        "handle": 3,
+        "length": 16,
+        "width": 8,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 8,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_160",
+        "handle": 3,
+        "length": 16,
+        "width": 160,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 160,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_304",
+        "handle": 3,
+        "length": 16,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_320",
+        "handle": 3,
+        "length": 16,
+        "width": 320,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 320,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_328",
+        "handle": 3,
+        "length": 16,
+        "width": 328,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 328,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_32767",
+        "handle": 3,
+        "length": 16,
+        "width": 32767,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32767,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_32768",
+        "handle": 3,
+        "length": 16,
+        "width": 32768,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32768,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "width_65535",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "short_0",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 0
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "short_1",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 1
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 511,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "short_2",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 2
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "short_15",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 15
+      },
+      "trace": [
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "badlength_0",
+        "handle": 3,
+        "length": 0,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "badlength_15",
+        "handle": 3,
+        "length": 15,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "badlength_17",
+        "handle": 3,
+        "length": 17,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "scenario": {
+        "name": "badlength_65552",
+        "handle": 3,
+        "length": 65552,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "open_0",
+        "handle": 0,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "open_65535",
+        "handle": 65535,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "open_32768",
+        "handle": 32768,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_0",
+        "handle": 3,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 0,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_1",
+        "handle": 3,
+        "length": 16,
+        "width": 1,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 1,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_7",
+        "handle": 3,
+        "length": 16,
+        "width": 7,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 7,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_8",
+        "handle": 3,
+        "length": 16,
+        "width": 8,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 8,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_160",
+        "handle": 3,
+        "length": 16,
+        "width": 160,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 160,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_304",
+        "handle": 3,
+        "length": 16,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_320",
+        "handle": 3,
+        "length": 16,
+        "width": 320,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 320,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_328",
+        "handle": 3,
+        "length": 16,
+        "width": 328,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 328,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_32767",
+        "handle": 3,
+        "length": 16,
+        "width": 32767,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32767,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_32768",
+        "handle": 3,
+        "length": 16,
+        "width": 32768,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32768,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "width_65535",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "short_0",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 0
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "short_1",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 1
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 511,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "short_2",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 2
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "short_15",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 15
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "badlength_0",
+        "handle": 3,
+        "length": 0,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "badlength_15",
+        "handle": 3,
+        "length": 15,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "badlength_17",
+        "handle": 3,
+        "length": 17,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "scenario": {
+        "name": "badlength_65552",
+        "handle": 3,
+        "length": 65552,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "open_0",
+        "handle": 0,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "open_65535",
+        "handle": 65535,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "open_32768",
+        "handle": 32768,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_0",
+        "handle": 3,
+        "length": 16,
+        "width": 0,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 0,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_1",
+        "handle": 3,
+        "length": 16,
+        "width": 1,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 1,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_7",
+        "handle": 3,
+        "length": 16,
+        "width": 7,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 7,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_8",
+        "handle": 3,
+        "length": 16,
+        "width": 8,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 8,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_160",
+        "handle": 3,
+        "length": 16,
+        "width": 160,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 160,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_304",
+        "handle": 3,
+        "length": 16,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_320",
+        "handle": 3,
+        "length": 16,
+        "width": 320,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 320,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_328",
+        "handle": 3,
+        "length": 16,
+        "width": 328,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 328,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_32767",
+        "handle": 3,
+        "length": 16,
+        "width": 32767,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32767,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_32768",
+        "handle": 3,
+        "length": 16,
+        "width": 32768,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 32768,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "width_65535",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "short_0",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 0
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 304,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "short_1",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 1
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 511,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "short_2",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 2
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "short_15",
+        "handle": 3,
+        "length": 16,
+        "width": 65535,
+        "readcount": 15
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "read",
+        "close",
+        "setter",
+        "setter_dependency",
+        "setter_dependency"
+      ],
+      "result_width": 65535,
+      "fatal": false,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "badlength_0",
+        "handle": 3,
+        "length": 0,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "badlength_15",
+        "handle": 3,
+        "length": 15,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "badlength_17",
+        "handle": 3,
+        "length": 17,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "scenario": {
+        "name": "badlength_65552",
+        "handle": 3,
+        "length": 65552,
+        "width": 304,
+        "readcount": 16
+      },
+      "trace": [
+        "path",
+        "open",
+        "length",
+        "fatal"
+      ],
+      "result_width": 304,
+      "fatal": true,
+      "passed": true
+    }
+  ],
+  "locations": [
+    {
+      "build": "10",
+      "entry": "1273:0bc0",
+      "sha256": "d70158d9f3199aff74190ca315a60931542ccc94b8847246a2a94d8d40e93702"
+    },
+    {
+      "build": "11",
+      "entry": "1275:0be6",
+      "sha256": "f54eba56e4c247288aec5212b335ee553aa1080219caf2137027a5c9b7474a52"
+    },
+    {
+      "build": "12",
+      "entry": "1275:0bf8",
+      "sha256": "0acdfc58ee45517a43b842bfae6b640a3ad17f49bfc0288a1c6be1c67ff9892a"
+    },
+    {
+      "build": "15",
+      "entry": "1277:0c20",
+      "sha256": "d75ece51f360d8a9b85126674b19901f57f3e83c0fdb24bc45cf4ec3f68a7c0b"
+    },
+    {
+      "build": "17",
+      "entry": "1277:0c70",
+      "sha256": "b95e697bbd91e9abc0a441b4e9b875cc817bc5ae4aa709a6eaad676024972d3c"
+    },
+    {
+      "build": "18",
+      "entry": "1277:0c6e",
+      "sha256": "943d063f34ddc889f74ad9bae696daef08fac445c1c1593508ed990a3aaaed7c"
+    }
+  ]
+}
