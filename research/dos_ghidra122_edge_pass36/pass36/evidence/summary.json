@@ -1,0 +1,5635 @@
+{
+  "cases": 33600,
+  "scope": "Complete original second helper, no callee mocks. Synthetic object record, positive span16 and signed edge inputs; output matches independent branch model.",
+  "locations": [
+    {
+      "build": "10",
+      "entry": "1200:02bc",
+      "instructions": [
+        {
+          "address": "1200:02bc",
+          "bytes": "c8040000",
+          "disassembly": "ENTER 0x4,0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c0",
+          "bytes": "57",
+          "disassembly": "PUSH DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c1",
+          "bytes": "56",
+          "disassembly": "PUSH SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c2",
+          "bytes": "8b4e08",
+          "disassembly": "MOV CX,word ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c5",
+          "bytes": "8b7606",
+          "disassembly": "MOV SI,word ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c8",
+          "bytes": "8bc1",
+          "disassembly": "MOV AX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ca",
+          "bytes": "2b4414",
+          "disassembly": "SUB AX,word ptr [SI + 0x14]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02cd",
+          "bytes": "3d0800",
+          "disassembly": "CMP AX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d0",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22d6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02d6]"
+        },
+        {
+          "address": "1200:02d2",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d4",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22d8",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:02d8]"
+        },
+        {
+          "address": "1200:02d6",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d8",
+          "bytes": "8846fe",
+          "disassembly": "MOV byte ptr [BP + -0x2],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02db",
+          "bytes": "8b5418",
+          "disassembly": "MOV DX,word ptr [SI + 0x18]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02de",
+          "bytes": "2bd1",
+          "disassembly": "SUB DX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e0",
+          "bytes": "8946fc",
+          "disassembly": "MOV word ptr [BP + -0x4],AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e3",
+          "bytes": "83fa08",
+          "disassembly": "CMP DX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e6",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22ec",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02ec]"
+        },
+        {
+          "address": "1200:02e8",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ea",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22ee",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:02ee]"
+        },
+        {
+          "address": "1200:02ec",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ee",
+          "bytes": "8846ff",
+          "disassembly": "MOV byte ptr [BP + -0x1],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f1",
+          "bytes": "807efc00",
+          "disassembly": "CMP byte ptr [BP + -0x4],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f5",
+          "bytes": "7504",
+          "disassembly": "JNZ 0x1000:22fb",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02fb]"
+        },
+        {
+          "address": "1200:02f7",
+          "bytes": "0ac0",
+          "disassembly": "OR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f9",
+          "bytes": "7443",
+          "disassembly": "JZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:02fb",
+          "bytes": "f6440508",
+          "disassembly": "TEST byte ptr [SI + 0x5],0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ff",
+          "bytes": "753d",
+          "disassembly": "JNZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:0301",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0305",
+          "bytes": "740f",
+          "disassembly": "JZ 0x1000:2316",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0316]"
+        },
+        {
+          "address": "1200:0307",
+          "bytes": "807c0701",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:030b",
+          "bytes": "7409",
+          "disassembly": "JZ 0x1000:2316",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0316]"
+        },
+        {
+          "address": "1200:030d",
+          "bytes": "8b7c12",
+          "disassembly": "MOV DI,word ptr [SI + 0x12]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0310",
+          "bytes": "2b7c0e",
+          "disassembly": "SUB DI,word ptr [SI + 0xe]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0313",
+          "bytes": "eb07",
+          "disassembly": "JMP 0x1000:231c",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:031c]"
+        },
+        {
+          "address": "1200:0316",
+          "bytes": "8b7c10",
+          "disassembly": "MOV DI,word ptr [SI + 0x10]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0319",
+          "bytes": "2b7c0c",
+          "disassembly": "SUB DI,word ptr [SI + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:031c",
+          "bytes": "807c0602",
+          "disassembly": "CMP byte ptr [SI + 0x6],0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0320",
+          "bytes": "0f858200",
+          "disassembly": "JNZ 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a6]"
+        },
+        {
+          "address": "1200:0324",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0328",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2330",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0330]"
+        },
+        {
+          "address": "1200:032a",
+          "bytes": "807c0703",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:032e",
+          "bytes": "7576",
+          "disassembly": "JNZ 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a6]"
+        },
+        {
+          "address": "1200:0330",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0333",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0335",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0337",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:2344",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0344]"
+        },
+        {
+          "address": "1200:0339",
+          "bytes": "2d0300",
+          "disassembly": "SUB AX,0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:033c",
+          "bytes": "7434",
+          "disassembly": "JZ 0x1000:2372",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0372]"
+        },
+        {
+          "address": "1200:033e",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0341",
+          "bytes": "e9c200",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0344",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0347",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:034b",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2353",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0353]"
+        },
+        {
+          "address": "1200:034d",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:034f",
+          "bytes": "0f8cb100",
+          "disassembly": "JL 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:0353",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0356",
+          "bytes": "0f84aa00",
+          "disassembly": "JZ 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:035a",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:035e",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:2364",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0364]"
+        },
+        {
+          "address": "1200:0360",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0362",
+          "bytes": "7e07",
+          "disassembly": "JLE 0x1000:236b",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:036b]"
+        },
+        {
+          "address": "1200:0364",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0367",
+          "bytes": "0f859b00",
+          "disassembly": "JNZ 0x1000:2406",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:036b",
+          "bytes": "8d55ff",
+          "disassembly": "LEA DX,[DI + -0x1]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:036e",
+          "bytes": "e99500",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0372",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0375",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0379",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:2380",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0380]"
+        },
+        {
+          "address": "1200:037b",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:037e",
+          "bytes": "7f20",
+          "disassembly": "JG 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:0380",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0383",
+          "bytes": "741b",
+          "disassembly": "JZ 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:0385",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0389",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:2393",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0393]"
+        },
+        {
+          "address": "1200:038b",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:038d",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:038f",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0391",
+          "bytes": "7f05",
+          "disassembly": "JG 0x1000:2398",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0398]"
+        },
+        {
+          "address": "1200:0393",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0396",
+          "bytes": "756e",
+          "disassembly": "JNZ 0x1000:2406",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0398",
+          "bytes": "8bd7",
+          "disassembly": "MOV DX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:039a",
+          "bytes": "f7da",
+          "disassembly": "NEG DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:039c",
+          "bytes": "eb68",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:03a0",
+          "bytes": "baffff",
+          "disassembly": "MOV DX,0xffff",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03a3",
+          "bytes": "eb61",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:03a6",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03a9",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03ab",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03ad",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:23ba",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ba]"
+        },
+        {
+          "address": "1200:03af",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b0",
+          "bytes": "742e",
+          "disassembly": "JZ 0x1000:23e0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03e0]"
+        },
+        {
+          "address": "1200:03b2",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b3",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23ba",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ba]"
+        },
+        {
+          "address": "1200:03b5",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b6",
+          "bytes": "7428",
+          "disassembly": "JZ 0x1000:23e0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03e0]"
+        },
+        {
+          "address": "1200:03b8",
+          "bytes": "eb84",
+          "disassembly": "JMP 0x1000:233e",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:03ba",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03bd",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03c1",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03c8]"
+        },
+        {
+          "address": "1200:03c3",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03c6",
+          "bytes": "7fd8",
+          "disassembly": "JG 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:03c8",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03cb",
+          "bytes": "74d3",
+          "disassembly": "JZ 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:03cd",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d1",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23db",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03db]"
+        },
+        {
+          "address": "1200:03d3",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d5",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d7",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d9",
+          "bytes": "7fbd",
+          "disassembly": "JG 0x1000:2398",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0398]"
+        },
+        {
+          "address": "1200:03db",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03de",
+          "bytes": "ebb6",
+          "disassembly": "JMP 0x1000:2396",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0396]"
+        },
+        {
+          "address": "1200:03e0",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03e3",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03e7",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:23ed",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ed]"
+        },
+        {
+          "address": "1200:03e9",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03eb",
+          "bytes": "7c17",
+          "disassembly": "JL 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:03ed",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03f0",
+          "bytes": "7412",
+          "disassembly": "JZ 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:03f2",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03f6",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:23fe",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03fe]"
+        },
+        {
+          "address": "1200:03f8",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03fa",
+          "bytes": "0f8e6dff",
+          "disassembly": "JLE 0x1000:236b",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:036b]"
+        },
+        {
+          "address": "1200:03fe",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0401",
+          "bytes": "e963ff",
+          "disassembly": "JMP 0x1000:2367",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0367]"
+        },
+        {
+          "address": "1200:0404",
+          "bytes": "33d2",
+          "disassembly": "XOR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0406",
+          "bytes": "8b460c",
+          "disassembly": "MOV AX,word ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0409",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040a",
+          "bytes": "23c2",
+          "disassembly": "AND AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040c",
+          "bytes": "5e",
+          "disassembly": "POP SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040d",
+          "bytes": "5f",
+          "disassembly": "POP DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040e",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040f",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "d70158d9f3199aff74190ca315a60931542ccc94b8847246a2a94d8d40e93702"
+    },
+    {
+      "build": "11",
+      "entry": "1200:02bc",
+      "instructions": [
+        {
+          "address": "1200:02bc",
+          "bytes": "c8040000",
+          "disassembly": "ENTER 0x4,0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c0",
+          "bytes": "57",
+          "disassembly": "PUSH DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c1",
+          "bytes": "56",
+          "disassembly": "PUSH SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c2",
+          "bytes": "8b4e08",
+          "disassembly": "MOV CX,word ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c5",
+          "bytes": "8b7606",
+          "disassembly": "MOV SI,word ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c8",
+          "bytes": "8bc1",
+          "disassembly": "MOV AX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ca",
+          "bytes": "2b4414",
+          "disassembly": "SUB AX,word ptr [SI + 0x14]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02cd",
+          "bytes": "3d0800",
+          "disassembly": "CMP AX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d0",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22d6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02d6]"
+        },
+        {
+          "address": "1200:02d2",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d4",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22d8",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:02d8]"
+        },
+        {
+          "address": "1200:02d6",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d8",
+          "bytes": "8846fe",
+          "disassembly": "MOV byte ptr [BP + -0x2],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02db",
+          "bytes": "8b5418",
+          "disassembly": "MOV DX,word ptr [SI + 0x18]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02de",
+          "bytes": "2bd1",
+          "disassembly": "SUB DX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e0",
+          "bytes": "8946fc",
+          "disassembly": "MOV word ptr [BP + -0x4],AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e3",
+          "bytes": "83fa08",
+          "disassembly": "CMP DX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e6",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22ec",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02ec]"
+        },
+        {
+          "address": "1200:02e8",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ea",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22ee",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:02ee]"
+        },
+        {
+          "address": "1200:02ec",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ee",
+          "bytes": "8846ff",
+          "disassembly": "MOV byte ptr [BP + -0x1],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f1",
+          "bytes": "807efc00",
+          "disassembly": "CMP byte ptr [BP + -0x4],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f5",
+          "bytes": "7504",
+          "disassembly": "JNZ 0x1000:22fb",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02fb]"
+        },
+        {
+          "address": "1200:02f7",
+          "bytes": "0ac0",
+          "disassembly": "OR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f9",
+          "bytes": "7443",
+          "disassembly": "JZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:02fb",
+          "bytes": "f6440508",
+          "disassembly": "TEST byte ptr [SI + 0x5],0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ff",
+          "bytes": "753d",
+          "disassembly": "JNZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:0301",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0305",
+          "bytes": "740f",
+          "disassembly": "JZ 0x1000:2316",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0316]"
+        },
+        {
+          "address": "1200:0307",
+          "bytes": "807c0701",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:030b",
+          "bytes": "7409",
+          "disassembly": "JZ 0x1000:2316",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0316]"
+        },
+        {
+          "address": "1200:030d",
+          "bytes": "8b7c12",
+          "disassembly": "MOV DI,word ptr [SI + 0x12]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0310",
+          "bytes": "2b7c0e",
+          "disassembly": "SUB DI,word ptr [SI + 0xe]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0313",
+          "bytes": "eb07",
+          "disassembly": "JMP 0x1000:231c",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:031c]"
+        },
+        {
+          "address": "1200:0316",
+          "bytes": "8b7c10",
+          "disassembly": "MOV DI,word ptr [SI + 0x10]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0319",
+          "bytes": "2b7c0c",
+          "disassembly": "SUB DI,word ptr [SI + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:031c",
+          "bytes": "807c0602",
+          "disassembly": "CMP byte ptr [SI + 0x6],0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0320",
+          "bytes": "0f858200",
+          "disassembly": "JNZ 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a6]"
+        },
+        {
+          "address": "1200:0324",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0328",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2330",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0330]"
+        },
+        {
+          "address": "1200:032a",
+          "bytes": "807c0703",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:032e",
+          "bytes": "7576",
+          "disassembly": "JNZ 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a6]"
+        },
+        {
+          "address": "1200:0330",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0333",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0335",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0337",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:2344",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0344]"
+        },
+        {
+          "address": "1200:0339",
+          "bytes": "2d0300",
+          "disassembly": "SUB AX,0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:033c",
+          "bytes": "7434",
+          "disassembly": "JZ 0x1000:2372",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0372]"
+        },
+        {
+          "address": "1200:033e",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0341",
+          "bytes": "e9c200",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0344",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0347",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:034b",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2353",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0353]"
+        },
+        {
+          "address": "1200:034d",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:034f",
+          "bytes": "0f8cb100",
+          "disassembly": "JL 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:0353",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0356",
+          "bytes": "0f84aa00",
+          "disassembly": "JZ 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:035a",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:035e",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:2364",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0364]"
+        },
+        {
+          "address": "1200:0360",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0362",
+          "bytes": "7e07",
+          "disassembly": "JLE 0x1000:236b",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:036b]"
+        },
+        {
+          "address": "1200:0364",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0367",
+          "bytes": "0f859b00",
+          "disassembly": "JNZ 0x1000:2406",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:036b",
+          "bytes": "8d55ff",
+          "disassembly": "LEA DX,[DI + -0x1]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:036e",
+          "bytes": "e99500",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0372",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0375",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0379",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:2380",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0380]"
+        },
+        {
+          "address": "1200:037b",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:037e",
+          "bytes": "7f20",
+          "disassembly": "JG 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:0380",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0383",
+          "bytes": "741b",
+          "disassembly": "JZ 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:0385",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0389",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:2393",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0393]"
+        },
+        {
+          "address": "1200:038b",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:038d",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:038f",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0391",
+          "bytes": "7f05",
+          "disassembly": "JG 0x1000:2398",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0398]"
+        },
+        {
+          "address": "1200:0393",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0396",
+          "bytes": "756e",
+          "disassembly": "JNZ 0x1000:2406",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0398",
+          "bytes": "8bd7",
+          "disassembly": "MOV DX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:039a",
+          "bytes": "f7da",
+          "disassembly": "NEG DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:039c",
+          "bytes": "eb68",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:03a0",
+          "bytes": "baffff",
+          "disassembly": "MOV DX,0xffff",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03a3",
+          "bytes": "eb61",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:03a6",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03a9",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03ab",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03ad",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:23ba",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ba]"
+        },
+        {
+          "address": "1200:03af",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b0",
+          "bytes": "742e",
+          "disassembly": "JZ 0x1000:23e0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03e0]"
+        },
+        {
+          "address": "1200:03b2",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b3",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23ba",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ba]"
+        },
+        {
+          "address": "1200:03b5",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b6",
+          "bytes": "7428",
+          "disassembly": "JZ 0x1000:23e0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03e0]"
+        },
+        {
+          "address": "1200:03b8",
+          "bytes": "eb84",
+          "disassembly": "JMP 0x1000:233e",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:03ba",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03bd",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03c1",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03c8]"
+        },
+        {
+          "address": "1200:03c3",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03c6",
+          "bytes": "7fd8",
+          "disassembly": "JG 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:03c8",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03cb",
+          "bytes": "74d3",
+          "disassembly": "JZ 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:03cd",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d1",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23db",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03db]"
+        },
+        {
+          "address": "1200:03d3",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d5",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d7",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d9",
+          "bytes": "7fbd",
+          "disassembly": "JG 0x1000:2398",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0398]"
+        },
+        {
+          "address": "1200:03db",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03de",
+          "bytes": "ebb6",
+          "disassembly": "JMP 0x1000:2396",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0396]"
+        },
+        {
+          "address": "1200:03e0",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03e3",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03e7",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:23ed",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ed]"
+        },
+        {
+          "address": "1200:03e9",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03eb",
+          "bytes": "7c17",
+          "disassembly": "JL 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:03ed",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03f0",
+          "bytes": "7412",
+          "disassembly": "JZ 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:03f2",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03f6",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:23fe",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03fe]"
+        },
+        {
+          "address": "1200:03f8",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03fa",
+          "bytes": "0f8e6dff",
+          "disassembly": "JLE 0x1000:236b",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:036b]"
+        },
+        {
+          "address": "1200:03fe",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0401",
+          "bytes": "e963ff",
+          "disassembly": "JMP 0x1000:2367",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0367]"
+        },
+        {
+          "address": "1200:0404",
+          "bytes": "33d2",
+          "disassembly": "XOR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0406",
+          "bytes": "8b460c",
+          "disassembly": "MOV AX,word ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0409",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040a",
+          "bytes": "23c2",
+          "disassembly": "AND AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040c",
+          "bytes": "5e",
+          "disassembly": "POP SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040d",
+          "bytes": "5f",
+          "disassembly": "POP DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040e",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040f",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "f54eba56e4c247288aec5212b335ee553aa1080219caf2137027a5c9b7474a52"
+    },
+    {
+      "build": "12",
+      "entry": "1200:02bc",
+      "instructions": [
+        {
+          "address": "1200:02bc",
+          "bytes": "c8040000",
+          "disassembly": "ENTER 0x4,0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c0",
+          "bytes": "57",
+          "disassembly": "PUSH DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c1",
+          "bytes": "56",
+          "disassembly": "PUSH SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c2",
+          "bytes": "8b4e08",
+          "disassembly": "MOV CX,word ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c5",
+          "bytes": "8b7606",
+          "disassembly": "MOV SI,word ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02c8",
+          "bytes": "8bc1",
+          "disassembly": "MOV AX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ca",
+          "bytes": "2b4414",
+          "disassembly": "SUB AX,word ptr [SI + 0x14]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02cd",
+          "bytes": "3d0800",
+          "disassembly": "CMP AX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d0",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22d6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02d6]"
+        },
+        {
+          "address": "1200:02d2",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d4",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22d8",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:02d8]"
+        },
+        {
+          "address": "1200:02d6",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02d8",
+          "bytes": "8846fe",
+          "disassembly": "MOV byte ptr [BP + -0x2],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02db",
+          "bytes": "8b5418",
+          "disassembly": "MOV DX,word ptr [SI + 0x18]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02de",
+          "bytes": "2bd1",
+          "disassembly": "SUB DX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e0",
+          "bytes": "8946fc",
+          "disassembly": "MOV word ptr [BP + -0x4],AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e3",
+          "bytes": "83fa08",
+          "disassembly": "CMP DX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02e6",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22ec",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02ec]"
+        },
+        {
+          "address": "1200:02e8",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ea",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22ee",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:02ee]"
+        },
+        {
+          "address": "1200:02ec",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ee",
+          "bytes": "8846ff",
+          "disassembly": "MOV byte ptr [BP + -0x1],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f1",
+          "bytes": "807efc00",
+          "disassembly": "CMP byte ptr [BP + -0x4],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f5",
+          "bytes": "7504",
+          "disassembly": "JNZ 0x1000:22fb",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:02fb]"
+        },
+        {
+          "address": "1200:02f7",
+          "bytes": "0ac0",
+          "disassembly": "OR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02f9",
+          "bytes": "7443",
+          "disassembly": "JZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:02fb",
+          "bytes": "f6440508",
+          "disassembly": "TEST byte ptr [SI + 0x5],0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:02ff",
+          "bytes": "753d",
+          "disassembly": "JNZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:0301",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0305",
+          "bytes": "740f",
+          "disassembly": "JZ 0x1000:2316",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0316]"
+        },
+        {
+          "address": "1200:0307",
+          "bytes": "807c0701",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:030b",
+          "bytes": "7409",
+          "disassembly": "JZ 0x1000:2316",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0316]"
+        },
+        {
+          "address": "1200:030d",
+          "bytes": "8b7c12",
+          "disassembly": "MOV DI,word ptr [SI + 0x12]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0310",
+          "bytes": "2b7c0e",
+          "disassembly": "SUB DI,word ptr [SI + 0xe]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0313",
+          "bytes": "eb07",
+          "disassembly": "JMP 0x1000:231c",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:031c]"
+        },
+        {
+          "address": "1200:0316",
+          "bytes": "8b7c10",
+          "disassembly": "MOV DI,word ptr [SI + 0x10]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0319",
+          "bytes": "2b7c0c",
+          "disassembly": "SUB DI,word ptr [SI + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:031c",
+          "bytes": "807c0602",
+          "disassembly": "CMP byte ptr [SI + 0x6],0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0320",
+          "bytes": "0f858200",
+          "disassembly": "JNZ 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a6]"
+        },
+        {
+          "address": "1200:0324",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0328",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2330",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0330]"
+        },
+        {
+          "address": "1200:032a",
+          "bytes": "807c0703",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:032e",
+          "bytes": "7576",
+          "disassembly": "JNZ 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a6]"
+        },
+        {
+          "address": "1200:0330",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0333",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0335",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0337",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:2344",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0344]"
+        },
+        {
+          "address": "1200:0339",
+          "bytes": "2d0300",
+          "disassembly": "SUB AX,0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:033c",
+          "bytes": "7434",
+          "disassembly": "JZ 0x1000:2372",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0372]"
+        },
+        {
+          "address": "1200:033e",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0341",
+          "bytes": "e9c200",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0344",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0347",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:034b",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2353",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0353]"
+        },
+        {
+          "address": "1200:034d",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:034f",
+          "bytes": "0f8cb100",
+          "disassembly": "JL 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:0353",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0356",
+          "bytes": "0f84aa00",
+          "disassembly": "JZ 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:035a",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:035e",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:2364",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0364]"
+        },
+        {
+          "address": "1200:0360",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0362",
+          "bytes": "7e07",
+          "disassembly": "JLE 0x1000:236b",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:036b]"
+        },
+        {
+          "address": "1200:0364",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0367",
+          "bytes": "0f859b00",
+          "disassembly": "JNZ 0x1000:2406",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:036b",
+          "bytes": "8d55ff",
+          "disassembly": "LEA DX,[DI + -0x1]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:036e",
+          "bytes": "e99500",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0372",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0375",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0379",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:2380",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0380]"
+        },
+        {
+          "address": "1200:037b",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:037e",
+          "bytes": "7f20",
+          "disassembly": "JG 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:0380",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0383",
+          "bytes": "741b",
+          "disassembly": "JZ 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:0385",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0389",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:2393",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0393]"
+        },
+        {
+          "address": "1200:038b",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:038d",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:038f",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0391",
+          "bytes": "7f05",
+          "disassembly": "JG 0x1000:2398",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0398]"
+        },
+        {
+          "address": "1200:0393",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0396",
+          "bytes": "756e",
+          "disassembly": "JNZ 0x1000:2406",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:0398",
+          "bytes": "8bd7",
+          "disassembly": "MOV DX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:039a",
+          "bytes": "f7da",
+          "disassembly": "NEG DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:039c",
+          "bytes": "eb68",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:03a0",
+          "bytes": "baffff",
+          "disassembly": "MOV DX,0xffff",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03a3",
+          "bytes": "eb61",
+          "disassembly": "JMP 0x1000:2406",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0406]"
+        },
+        {
+          "address": "1200:03a6",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03a9",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03ab",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03ad",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:23ba",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ba]"
+        },
+        {
+          "address": "1200:03af",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b0",
+          "bytes": "742e",
+          "disassembly": "JZ 0x1000:23e0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03e0]"
+        },
+        {
+          "address": "1200:03b2",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b3",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23ba",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ba]"
+        },
+        {
+          "address": "1200:03b5",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03b6",
+          "bytes": "7428",
+          "disassembly": "JZ 0x1000:23e0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03e0]"
+        },
+        {
+          "address": "1200:03b8",
+          "bytes": "eb84",
+          "disassembly": "JMP 0x1000:233e",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:033e]"
+        },
+        {
+          "address": "1200:03ba",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03bd",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03c1",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03c8]"
+        },
+        {
+          "address": "1200:03c3",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03c6",
+          "bytes": "7fd8",
+          "disassembly": "JG 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:03c8",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03cb",
+          "bytes": "74d3",
+          "disassembly": "JZ 0x1000:23a0",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03a0]"
+        },
+        {
+          "address": "1200:03cd",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d1",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23db",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03db]"
+        },
+        {
+          "address": "1200:03d3",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d5",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d7",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03d9",
+          "bytes": "7fbd",
+          "disassembly": "JG 0x1000:2398",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0398]"
+        },
+        {
+          "address": "1200:03db",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03de",
+          "bytes": "ebb6",
+          "disassembly": "JMP 0x1000:2396",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0396]"
+        },
+        {
+          "address": "1200:03e0",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03e3",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03e7",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:23ed",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03ed]"
+        },
+        {
+          "address": "1200:03e9",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03eb",
+          "bytes": "7c17",
+          "disassembly": "JL 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:03ed",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03f0",
+          "bytes": "7412",
+          "disassembly": "JZ 0x1000:2404",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:0404]"
+        },
+        {
+          "address": "1200:03f2",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03f6",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:23fe",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:03fe]"
+        },
+        {
+          "address": "1200:03f8",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:03fa",
+          "bytes": "0f8e6dff",
+          "disassembly": "JLE 0x1000:236b",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1200:036b]"
+        },
+        {
+          "address": "1200:03fe",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0401",
+          "bytes": "e963ff",
+          "disassembly": "JMP 0x1000:2367",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1200:0367]"
+        },
+        {
+          "address": "1200:0404",
+          "bytes": "33d2",
+          "disassembly": "XOR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0406",
+          "bytes": "8b460c",
+          "disassembly": "MOV AX,word ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:0409",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040a",
+          "bytes": "23c2",
+          "disassembly": "AND AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040c",
+          "bytes": "5e",
+          "disassembly": "POP SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040d",
+          "bytes": "5f",
+          "disassembly": "POP DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040e",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1200:040f",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "0acdfc58ee45517a43b842bfae6b640a3ad17f49bfc0288a1c6be1c67ff9892a"
+    },
+    {
+      "build": "15",
+      "entry": "1201:02ba",
+      "instructions": [
+        {
+          "address": "1201:02ba",
+          "bytes": "c8040000",
+          "disassembly": "ENTER 0x4,0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02be",
+          "bytes": "57",
+          "disassembly": "PUSH DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02bf",
+          "bytes": "56",
+          "disassembly": "PUSH SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c0",
+          "bytes": "8b4e08",
+          "disassembly": "MOV CX,word ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c3",
+          "bytes": "8b7606",
+          "disassembly": "MOV SI,word ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c6",
+          "bytes": "8bc1",
+          "disassembly": "MOV AX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c8",
+          "bytes": "2b4414",
+          "disassembly": "SUB AX,word ptr [SI + 0x14]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02cb",
+          "bytes": "3d0800",
+          "disassembly": "CMP AX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ce",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22e4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02d4]"
+        },
+        {
+          "address": "1201:02d0",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d2",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22e6",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:02d6]"
+        },
+        {
+          "address": "1201:02d4",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d6",
+          "bytes": "8846fe",
+          "disassembly": "MOV byte ptr [BP + -0x2],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d9",
+          "bytes": "8b5418",
+          "disassembly": "MOV DX,word ptr [SI + 0x18]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02dc",
+          "bytes": "2bd1",
+          "disassembly": "SUB DX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02de",
+          "bytes": "8946fc",
+          "disassembly": "MOV word ptr [BP + -0x4],AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e1",
+          "bytes": "83fa08",
+          "disassembly": "CMP DX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e4",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22fa",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02ea]"
+        },
+        {
+          "address": "1201:02e6",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e8",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22fc",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:02ec]"
+        },
+        {
+          "address": "1201:02ea",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ec",
+          "bytes": "8846ff",
+          "disassembly": "MOV byte ptr [BP + -0x1],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ef",
+          "bytes": "807efc00",
+          "disassembly": "CMP byte ptr [BP + -0x4],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02f3",
+          "bytes": "7504",
+          "disassembly": "JNZ 0x1000:2309",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02f9]"
+        },
+        {
+          "address": "1201:02f5",
+          "bytes": "0ac0",
+          "disassembly": "OR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02f7",
+          "bytes": "7443",
+          "disassembly": "JZ 0x1000:234c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:02f9",
+          "bytes": "f6440508",
+          "disassembly": "TEST byte ptr [SI + 0x5],0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02fd",
+          "bytes": "753d",
+          "disassembly": "JNZ 0x1000:234c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:02ff",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0303",
+          "bytes": "740f",
+          "disassembly": "JZ 0x1000:2324",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0314]"
+        },
+        {
+          "address": "1201:0305",
+          "bytes": "807c0701",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0309",
+          "bytes": "7409",
+          "disassembly": "JZ 0x1000:2324",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0314]"
+        },
+        {
+          "address": "1201:030b",
+          "bytes": "8b7c12",
+          "disassembly": "MOV DI,word ptr [SI + 0x12]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:030e",
+          "bytes": "2b7c0e",
+          "disassembly": "SUB DI,word ptr [SI + 0xe]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0311",
+          "bytes": "eb07",
+          "disassembly": "JMP 0x1000:232a",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:031a]"
+        },
+        {
+          "address": "1201:0314",
+          "bytes": "8b7c10",
+          "disassembly": "MOV DI,word ptr [SI + 0x10]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0317",
+          "bytes": "2b7c0c",
+          "disassembly": "SUB DI,word ptr [SI + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:031a",
+          "bytes": "807c0602",
+          "disassembly": "CMP byte ptr [SI + 0x6],0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:031e",
+          "bytes": "0f858200",
+          "disassembly": "JNZ 0x1000:23b4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03a4]"
+        },
+        {
+          "address": "1201:0322",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0326",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:032e]"
+        },
+        {
+          "address": "1201:0328",
+          "bytes": "807c0703",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:032c",
+          "bytes": "7576",
+          "disassembly": "JNZ 0x1000:23b4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03a4]"
+        },
+        {
+          "address": "1201:032e",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0331",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0333",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0335",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:2352",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0342]"
+        },
+        {
+          "address": "1201:0337",
+          "bytes": "2d0300",
+          "disassembly": "SUB AX,0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:033a",
+          "bytes": "7434",
+          "disassembly": "JZ 0x1000:2380",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0370]"
+        },
+        {
+          "address": "1201:033c",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:033f",
+          "bytes": "e9c200",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0342",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0345",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0349",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2361",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0351]"
+        },
+        {
+          "address": "1201:034b",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:034d",
+          "bytes": "0f8cb100",
+          "disassembly": "JL 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:0351",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0354",
+          "bytes": "0f84aa00",
+          "disassembly": "JZ 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:0358",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:035c",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:2372",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0362]"
+        },
+        {
+          "address": "1201:035e",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0360",
+          "bytes": "7e07",
+          "disassembly": "JLE 0x1000:2379",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0369]"
+        },
+        {
+          "address": "1201:0362",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0365",
+          "bytes": "0f859b00",
+          "disassembly": "JNZ 0x1000:2414",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0369",
+          "bytes": "8d55ff",
+          "disassembly": "LEA DX,[DI + -0x1]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:036c",
+          "bytes": "e99500",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0370",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0373",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0377",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:238e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:037e]"
+        },
+        {
+          "address": "1201:0379",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:037c",
+          "bytes": "7f20",
+          "disassembly": "JG 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:037e",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0381",
+          "bytes": "741b",
+          "disassembly": "JZ 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:0383",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0387",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23a1",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0391]"
+        },
+        {
+          "address": "1201:0389",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038b",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038d",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038f",
+          "bytes": "7f05",
+          "disassembly": "JG 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0396]"
+        },
+        {
+          "address": "1201:0391",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0394",
+          "bytes": "756e",
+          "disassembly": "JNZ 0x1000:2414",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0396",
+          "bytes": "8bd7",
+          "disassembly": "MOV DX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0398",
+          "bytes": "f7da",
+          "disassembly": "NEG DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:039a",
+          "bytes": "eb68",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:039e",
+          "bytes": "baffff",
+          "disassembly": "MOV DX,0xffff",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a1",
+          "bytes": "eb61",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:03a4",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a7",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a9",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ab",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03b8]"
+        },
+        {
+          "address": "1201:03ad",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ae",
+          "bytes": "742e",
+          "disassembly": "JZ 0x1000:23ee",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03de]"
+        },
+        {
+          "address": "1201:03b0",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03b1",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03b8]"
+        },
+        {
+          "address": "1201:03b3",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03b4",
+          "bytes": "7428",
+          "disassembly": "JZ 0x1000:23ee",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03de]"
+        },
+        {
+          "address": "1201:03b6",
+          "bytes": "eb84",
+          "disassembly": "JMP 0x1000:234c",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:03b8",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03bb",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03bf",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23d6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03c6]"
+        },
+        {
+          "address": "1201:03c1",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03c4",
+          "bytes": "7fd8",
+          "disassembly": "JG 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:03c6",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03c9",
+          "bytes": "74d3",
+          "disassembly": "JZ 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:03cb",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03cf",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23e9",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03d9]"
+        },
+        {
+          "address": "1201:03d1",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d3",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d5",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d7",
+          "bytes": "7fbd",
+          "disassembly": "JG 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0396]"
+        },
+        {
+          "address": "1201:03d9",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03dc",
+          "bytes": "ebb6",
+          "disassembly": "JMP 0x1000:23a4",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0394]"
+        },
+        {
+          "address": "1201:03de",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e1",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e5",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:23fb",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03eb]"
+        },
+        {
+          "address": "1201:03e7",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e9",
+          "bytes": "7c17",
+          "disassembly": "JL 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:03eb",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ee",
+          "bytes": "7412",
+          "disassembly": "JZ 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:03f0",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03f4",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:240c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03fc]"
+        },
+        {
+          "address": "1201:03f6",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03f8",
+          "bytes": "0f8e6dff",
+          "disassembly": "JLE 0x1000:2379",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0369]"
+        },
+        {
+          "address": "1201:03fc",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ff",
+          "bytes": "e963ff",
+          "disassembly": "JMP 0x1000:2375",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0365]"
+        },
+        {
+          "address": "1201:0402",
+          "bytes": "33d2",
+          "disassembly": "XOR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0404",
+          "bytes": "8b460c",
+          "disassembly": "MOV AX,word ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0407",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0408",
+          "bytes": "23c2",
+          "disassembly": "AND AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040a",
+          "bytes": "5e",
+          "disassembly": "POP SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040b",
+          "bytes": "5f",
+          "disassembly": "POP DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040c",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040d",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "d75ece51f360d8a9b85126674b19901f57f3e83c0fdb24bc45cf4ec3f68a7c0b"
+    },
+    {
+      "build": "17",
+      "entry": "1201:02ba",
+      "instructions": [
+        {
+          "address": "1201:02ba",
+          "bytes": "c8040000",
+          "disassembly": "ENTER 0x4,0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02be",
+          "bytes": "57",
+          "disassembly": "PUSH DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02bf",
+          "bytes": "56",
+          "disassembly": "PUSH SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c0",
+          "bytes": "8b4e08",
+          "disassembly": "MOV CX,word ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c3",
+          "bytes": "8b7606",
+          "disassembly": "MOV SI,word ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c6",
+          "bytes": "8bc1",
+          "disassembly": "MOV AX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c8",
+          "bytes": "2b4414",
+          "disassembly": "SUB AX,word ptr [SI + 0x14]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02cb",
+          "bytes": "3d0800",
+          "disassembly": "CMP AX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ce",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22e4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02d4]"
+        },
+        {
+          "address": "1201:02d0",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d2",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22e6",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:02d6]"
+        },
+        {
+          "address": "1201:02d4",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d6",
+          "bytes": "8846fe",
+          "disassembly": "MOV byte ptr [BP + -0x2],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d9",
+          "bytes": "8b5418",
+          "disassembly": "MOV DX,word ptr [SI + 0x18]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02dc",
+          "bytes": "2bd1",
+          "disassembly": "SUB DX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02de",
+          "bytes": "8946fc",
+          "disassembly": "MOV word ptr [BP + -0x4],AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e1",
+          "bytes": "83fa08",
+          "disassembly": "CMP DX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e4",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22fa",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02ea]"
+        },
+        {
+          "address": "1201:02e6",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e8",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22fc",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:02ec]"
+        },
+        {
+          "address": "1201:02ea",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ec",
+          "bytes": "8846ff",
+          "disassembly": "MOV byte ptr [BP + -0x1],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ef",
+          "bytes": "807efc00",
+          "disassembly": "CMP byte ptr [BP + -0x4],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02f3",
+          "bytes": "7504",
+          "disassembly": "JNZ 0x1000:2309",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02f9]"
+        },
+        {
+          "address": "1201:02f5",
+          "bytes": "0ac0",
+          "disassembly": "OR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02f7",
+          "bytes": "7443",
+          "disassembly": "JZ 0x1000:234c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:02f9",
+          "bytes": "f6440508",
+          "disassembly": "TEST byte ptr [SI + 0x5],0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02fd",
+          "bytes": "753d",
+          "disassembly": "JNZ 0x1000:234c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:02ff",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0303",
+          "bytes": "740f",
+          "disassembly": "JZ 0x1000:2324",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0314]"
+        },
+        {
+          "address": "1201:0305",
+          "bytes": "807c0701",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0309",
+          "bytes": "7409",
+          "disassembly": "JZ 0x1000:2324",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0314]"
+        },
+        {
+          "address": "1201:030b",
+          "bytes": "8b7c12",
+          "disassembly": "MOV DI,word ptr [SI + 0x12]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:030e",
+          "bytes": "2b7c0e",
+          "disassembly": "SUB DI,word ptr [SI + 0xe]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0311",
+          "bytes": "eb07",
+          "disassembly": "JMP 0x1000:232a",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:031a]"
+        },
+        {
+          "address": "1201:0314",
+          "bytes": "8b7c10",
+          "disassembly": "MOV DI,word ptr [SI + 0x10]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0317",
+          "bytes": "2b7c0c",
+          "disassembly": "SUB DI,word ptr [SI + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:031a",
+          "bytes": "807c0602",
+          "disassembly": "CMP byte ptr [SI + 0x6],0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:031e",
+          "bytes": "0f858200",
+          "disassembly": "JNZ 0x1000:23b4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03a4]"
+        },
+        {
+          "address": "1201:0322",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0326",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:032e]"
+        },
+        {
+          "address": "1201:0328",
+          "bytes": "807c0703",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:032c",
+          "bytes": "7576",
+          "disassembly": "JNZ 0x1000:23b4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03a4]"
+        },
+        {
+          "address": "1201:032e",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0331",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0333",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0335",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:2352",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0342]"
+        },
+        {
+          "address": "1201:0337",
+          "bytes": "2d0300",
+          "disassembly": "SUB AX,0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:033a",
+          "bytes": "7434",
+          "disassembly": "JZ 0x1000:2380",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0370]"
+        },
+        {
+          "address": "1201:033c",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:033f",
+          "bytes": "e9c200",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0342",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0345",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0349",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2361",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0351]"
+        },
+        {
+          "address": "1201:034b",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:034d",
+          "bytes": "0f8cb100",
+          "disassembly": "JL 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:0351",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0354",
+          "bytes": "0f84aa00",
+          "disassembly": "JZ 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:0358",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:035c",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:2372",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0362]"
+        },
+        {
+          "address": "1201:035e",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0360",
+          "bytes": "7e07",
+          "disassembly": "JLE 0x1000:2379",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0369]"
+        },
+        {
+          "address": "1201:0362",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0365",
+          "bytes": "0f859b00",
+          "disassembly": "JNZ 0x1000:2414",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0369",
+          "bytes": "8d55ff",
+          "disassembly": "LEA DX,[DI + -0x1]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:036c",
+          "bytes": "e99500",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0370",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0373",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0377",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:238e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:037e]"
+        },
+        {
+          "address": "1201:0379",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:037c",
+          "bytes": "7f20",
+          "disassembly": "JG 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:037e",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0381",
+          "bytes": "741b",
+          "disassembly": "JZ 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:0383",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0387",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23a1",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0391]"
+        },
+        {
+          "address": "1201:0389",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038b",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038d",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038f",
+          "bytes": "7f05",
+          "disassembly": "JG 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0396]"
+        },
+        {
+          "address": "1201:0391",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0394",
+          "bytes": "756e",
+          "disassembly": "JNZ 0x1000:2414",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0396",
+          "bytes": "8bd7",
+          "disassembly": "MOV DX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0398",
+          "bytes": "f7da",
+          "disassembly": "NEG DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:039a",
+          "bytes": "eb68",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:039e",
+          "bytes": "baffff",
+          "disassembly": "MOV DX,0xffff",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a1",
+          "bytes": "eb61",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:03a4",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a7",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a9",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ab",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03b8]"
+        },
+        {
+          "address": "1201:03ad",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ae",
+          "bytes": "742e",
+          "disassembly": "JZ 0x1000:23ee",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03de]"
+        },
+        {
+          "address": "1201:03b0",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03b1",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03b8]"
+        },
+        {
+          "address": "1201:03b3",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03b4",
+          "bytes": "7428",
+          "disassembly": "JZ 0x1000:23ee",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03de]"
+        },
+        {
+          "address": "1201:03b6",
+          "bytes": "eb84",
+          "disassembly": "JMP 0x1000:234c",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:03b8",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03bb",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03bf",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23d6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03c6]"
+        },
+        {
+          "address": "1201:03c1",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03c4",
+          "bytes": "7fd8",
+          "disassembly": "JG 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:03c6",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03c9",
+          "bytes": "74d3",
+          "disassembly": "JZ 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:03cb",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03cf",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23e9",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03d9]"
+        },
+        {
+          "address": "1201:03d1",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d3",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d5",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d7",
+          "bytes": "7fbd",
+          "disassembly": "JG 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0396]"
+        },
+        {
+          "address": "1201:03d9",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03dc",
+          "bytes": "ebb6",
+          "disassembly": "JMP 0x1000:23a4",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0394]"
+        },
+        {
+          "address": "1201:03de",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e1",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e5",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:23fb",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03eb]"
+        },
+        {
+          "address": "1201:03e7",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e9",
+          "bytes": "7c17",
+          "disassembly": "JL 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:03eb",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ee",
+          "bytes": "7412",
+          "disassembly": "JZ 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:03f0",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03f4",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:240c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03fc]"
+        },
+        {
+          "address": "1201:03f6",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03f8",
+          "bytes": "0f8e6dff",
+          "disassembly": "JLE 0x1000:2379",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0369]"
+        },
+        {
+          "address": "1201:03fc",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ff",
+          "bytes": "e963ff",
+          "disassembly": "JMP 0x1000:2375",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0365]"
+        },
+        {
+          "address": "1201:0402",
+          "bytes": "33d2",
+          "disassembly": "XOR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0404",
+          "bytes": "8b460c",
+          "disassembly": "MOV AX,word ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0407",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0408",
+          "bytes": "23c2",
+          "disassembly": "AND AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040a",
+          "bytes": "5e",
+          "disassembly": "POP SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040b",
+          "bytes": "5f",
+          "disassembly": "POP DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040c",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040d",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "b95e697bbd91e9abc0a441b4e9b875cc817bc5ae4aa709a6eaad676024972d3c"
+    },
+    {
+      "build": "18",
+      "entry": "1201:02ba",
+      "instructions": [
+        {
+          "address": "1201:02ba",
+          "bytes": "c8040000",
+          "disassembly": "ENTER 0x4,0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02be",
+          "bytes": "57",
+          "disassembly": "PUSH DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02bf",
+          "bytes": "56",
+          "disassembly": "PUSH SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c0",
+          "bytes": "8b4e08",
+          "disassembly": "MOV CX,word ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c3",
+          "bytes": "8b7606",
+          "disassembly": "MOV SI,word ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c6",
+          "bytes": "8bc1",
+          "disassembly": "MOV AX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02c8",
+          "bytes": "2b4414",
+          "disassembly": "SUB AX,word ptr [SI + 0x14]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02cb",
+          "bytes": "3d0800",
+          "disassembly": "CMP AX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ce",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22e4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02d4]"
+        },
+        {
+          "address": "1201:02d0",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d2",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22e6",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:02d6]"
+        },
+        {
+          "address": "1201:02d4",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d6",
+          "bytes": "8846fe",
+          "disassembly": "MOV byte ptr [BP + -0x2],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02d9",
+          "bytes": "8b5418",
+          "disassembly": "MOV DX,word ptr [SI + 0x18]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02dc",
+          "bytes": "2bd1",
+          "disassembly": "SUB DX,CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02de",
+          "bytes": "8946fc",
+          "disassembly": "MOV word ptr [BP + -0x4],AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e1",
+          "bytes": "83fa08",
+          "disassembly": "CMP DX,0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e4",
+          "bytes": "7d04",
+          "disassembly": "JGE 0x1000:22fa",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02ea]"
+        },
+        {
+          "address": "1201:02e6",
+          "bytes": "b001",
+          "disassembly": "MOV AL,0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02e8",
+          "bytes": "eb02",
+          "disassembly": "JMP 0x1000:22fc",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:02ec]"
+        },
+        {
+          "address": "1201:02ea",
+          "bytes": "32c0",
+          "disassembly": "XOR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ec",
+          "bytes": "8846ff",
+          "disassembly": "MOV byte ptr [BP + -0x1],AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02ef",
+          "bytes": "807efc00",
+          "disassembly": "CMP byte ptr [BP + -0x4],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02f3",
+          "bytes": "7504",
+          "disassembly": "JNZ 0x1000:2309",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:02f9]"
+        },
+        {
+          "address": "1201:02f5",
+          "bytes": "0ac0",
+          "disassembly": "OR AL,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02f7",
+          "bytes": "7443",
+          "disassembly": "JZ 0x1000:234c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:02f9",
+          "bytes": "f6440508",
+          "disassembly": "TEST byte ptr [SI + 0x5],0x8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:02fd",
+          "bytes": "753d",
+          "disassembly": "JNZ 0x1000:234c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:02ff",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0303",
+          "bytes": "740f",
+          "disassembly": "JZ 0x1000:2324",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0314]"
+        },
+        {
+          "address": "1201:0305",
+          "bytes": "807c0701",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0309",
+          "bytes": "7409",
+          "disassembly": "JZ 0x1000:2324",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0314]"
+        },
+        {
+          "address": "1201:030b",
+          "bytes": "8b7c12",
+          "disassembly": "MOV DI,word ptr [SI + 0x12]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:030e",
+          "bytes": "2b7c0e",
+          "disassembly": "SUB DI,word ptr [SI + 0xe]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0311",
+          "bytes": "eb07",
+          "disassembly": "JMP 0x1000:232a",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:031a]"
+        },
+        {
+          "address": "1201:0314",
+          "bytes": "8b7c10",
+          "disassembly": "MOV DI,word ptr [SI + 0x10]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0317",
+          "bytes": "2b7c0c",
+          "disassembly": "SUB DI,word ptr [SI + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:031a",
+          "bytes": "807c0602",
+          "disassembly": "CMP byte ptr [SI + 0x6],0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:031e",
+          "bytes": "0f858200",
+          "disassembly": "JNZ 0x1000:23b4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03a4]"
+        },
+        {
+          "address": "1201:0322",
+          "bytes": "807c0700",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0326",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:233e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:032e]"
+        },
+        {
+          "address": "1201:0328",
+          "bytes": "807c0703",
+          "disassembly": "CMP byte ptr [SI + 0x7],0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:032c",
+          "bytes": "7576",
+          "disassembly": "JNZ 0x1000:23b4",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03a4]"
+        },
+        {
+          "address": "1201:032e",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0331",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0333",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0335",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:2352",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0342]"
+        },
+        {
+          "address": "1201:0337",
+          "bytes": "2d0300",
+          "disassembly": "SUB AX,0x3",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:033a",
+          "bytes": "7434",
+          "disassembly": "JZ 0x1000:2380",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0370]"
+        },
+        {
+          "address": "1201:033c",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:033f",
+          "bytes": "e9c200",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0342",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0345",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0349",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:2361",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0351]"
+        },
+        {
+          "address": "1201:034b",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:034d",
+          "bytes": "0f8cb100",
+          "disassembly": "JL 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:0351",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0354",
+          "bytes": "0f84aa00",
+          "disassembly": "JZ 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:0358",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:035c",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:2372",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0362]"
+        },
+        {
+          "address": "1201:035e",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0360",
+          "bytes": "7e07",
+          "disassembly": "JLE 0x1000:2379",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0369]"
+        },
+        {
+          "address": "1201:0362",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0365",
+          "bytes": "0f859b00",
+          "disassembly": "JNZ 0x1000:2414",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0369",
+          "bytes": "8d55ff",
+          "disassembly": "LEA DX,[DI + -0x1]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:036c",
+          "bytes": "e99500",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0370",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0373",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0377",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:238e",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:037e]"
+        },
+        {
+          "address": "1201:0379",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:037c",
+          "bytes": "7f20",
+          "disassembly": "JG 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:037e",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0381",
+          "bytes": "741b",
+          "disassembly": "JZ 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:0383",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0387",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23a1",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0391]"
+        },
+        {
+          "address": "1201:0389",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038b",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038d",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:038f",
+          "bytes": "7f05",
+          "disassembly": "JG 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0396]"
+        },
+        {
+          "address": "1201:0391",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0394",
+          "bytes": "756e",
+          "disassembly": "JNZ 0x1000:2414",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:0396",
+          "bytes": "8bd7",
+          "disassembly": "MOV DX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0398",
+          "bytes": "f7da",
+          "disassembly": "NEG DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:039a",
+          "bytes": "eb68",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:039e",
+          "bytes": "baffff",
+          "disassembly": "MOV DX,0xffff",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a1",
+          "bytes": "eb61",
+          "disassembly": "JMP 0x1000:2414",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0404]"
+        },
+        {
+          "address": "1201:03a4",
+          "bytes": "8a4407",
+          "disassembly": "MOV AL,byte ptr [SI + 0x7]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a7",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03a9",
+          "bytes": "0bc0",
+          "disassembly": "OR AX,AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ab",
+          "bytes": "740b",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03b8]"
+        },
+        {
+          "address": "1201:03ad",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ae",
+          "bytes": "742e",
+          "disassembly": "JZ 0x1000:23ee",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03de]"
+        },
+        {
+          "address": "1201:03b0",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03b1",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23c8",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03b8]"
+        },
+        {
+          "address": "1201:03b3",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03b4",
+          "bytes": "7428",
+          "disassembly": "JZ 0x1000:23ee",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03de]"
+        },
+        {
+          "address": "1201:03b6",
+          "bytes": "eb84",
+          "disassembly": "JMP 0x1000:234c",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:033c]"
+        },
+        {
+          "address": "1201:03b8",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03bb",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03bf",
+          "bytes": "7405",
+          "disassembly": "JZ 0x1000:23d6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03c6]"
+        },
+        {
+          "address": "1201:03c1",
+          "bytes": "83faff",
+          "disassembly": "CMP DX,-0x1",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03c4",
+          "bytes": "7fd8",
+          "disassembly": "JG 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:03c6",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03c9",
+          "bytes": "74d3",
+          "disassembly": "JZ 0x1000:23ae",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:039e]"
+        },
+        {
+          "address": "1201:03cb",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03cf",
+          "bytes": "7408",
+          "disassembly": "JZ 0x1000:23e9",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03d9]"
+        },
+        {
+          "address": "1201:03d1",
+          "bytes": "8bc7",
+          "disassembly": "MOV AX,DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d3",
+          "bytes": "f7d8",
+          "disassembly": "NEG AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d5",
+          "bytes": "3bc2",
+          "disassembly": "CMP AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03d7",
+          "bytes": "7fbd",
+          "disassembly": "JG 0x1000:23a6",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0396]"
+        },
+        {
+          "address": "1201:03d9",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03dc",
+          "bytes": "ebb6",
+          "disassembly": "JMP 0x1000:23a4",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0394]"
+        },
+        {
+          "address": "1201:03de",
+          "bytes": "8b560a",
+          "disassembly": "MOV DX,word ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e1",
+          "bytes": "807efe00",
+          "disassembly": "CMP byte ptr [BP + -0x2],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e5",
+          "bytes": "7404",
+          "disassembly": "JZ 0x1000:23fb",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03eb]"
+        },
+        {
+          "address": "1201:03e7",
+          "bytes": "0bd2",
+          "disassembly": "OR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03e9",
+          "bytes": "7c17",
+          "disassembly": "JL 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:03eb",
+          "bytes": "394c14",
+          "disassembly": "CMP word ptr [SI + 0x14],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ee",
+          "bytes": "7412",
+          "disassembly": "JZ 0x1000:2412",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0402]"
+        },
+        {
+          "address": "1201:03f0",
+          "bytes": "807eff00",
+          "disassembly": "CMP byte ptr [BP + -0x1],0x0",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03f4",
+          "bytes": "7406",
+          "disassembly": "JZ 0x1000:240c",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:03fc]"
+        },
+        {
+          "address": "1201:03f6",
+          "bytes": "3bfa",
+          "disassembly": "CMP DI,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03f8",
+          "bytes": "0f8e6dff",
+          "disassembly": "JLE 0x1000:2379",
+          "flow": "CONDITIONAL_JUMP",
+          "targets": "[1201:0369]"
+        },
+        {
+          "address": "1201:03fc",
+          "bytes": "394c18",
+          "disassembly": "CMP word ptr [SI + 0x18],CX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:03ff",
+          "bytes": "e963ff",
+          "disassembly": "JMP 0x1000:2375",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1201:0365]"
+        },
+        {
+          "address": "1201:0402",
+          "bytes": "33d2",
+          "disassembly": "XOR DX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0404",
+          "bytes": "8b460c",
+          "disassembly": "MOV AX,word ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0407",
+          "bytes": "48",
+          "disassembly": "DEC AX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:0408",
+          "bytes": "23c2",
+          "disassembly": "AND AX,DX",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040a",
+          "bytes": "5e",
+          "disassembly": "POP SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040b",
+          "bytes": "5f",
+          "disassembly": "POP DI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040c",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1201:040d",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "943d063f34ddc889f74ad9bae696daef08fac445c1c1593508ed990a3aaaed7c"
+    }
+  ],
+  "full_evidence_sha256": "17a06c1fc9abb3ab28c999a61d7e457881b603b3c34a544c5b02ce8393ad58a2"
+}
