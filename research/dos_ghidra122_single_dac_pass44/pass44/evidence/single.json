@@ -1,0 +1,5630 @@
+{
+  "cases": 150,
+  "scope": "Complete original single-entry DAC writer, no mocks. OUT trace only; no VGA/DAC device.",
+  "locations": [
+    {
+      "build": "10",
+      "entry": "1155:0152",
+      "instructions": [
+        {
+          "address": "1155:0152",
+          "bytes": "55",
+          "disassembly": "PUSH BP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0153",
+          "bytes": "8bec",
+          "disassembly": "MOV BP,SP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0155",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0157",
+          "bytes": "8a4606",
+          "disassembly": "MOV AL,byte ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015a",
+          "bytes": "bac803",
+          "disassembly": "MOV DX,0x3c8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015d",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015e",
+          "bytes": "8a4608",
+          "disassembly": "MOV AL,byte ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0161",
+          "bytes": "bac903",
+          "disassembly": "MOV DX,0x3c9",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0164",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0165",
+          "bytes": "8a460a",
+          "disassembly": "MOV AL,byte ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0168",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0169",
+          "bytes": "8a460c",
+          "disassembly": "MOV AL,byte ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016c",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016d",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016e",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "d70158d9f3199aff74190ca315a60931542ccc94b8847246a2a94d8d40e93702"
+    },
+    {
+      "build": "11",
+      "entry": "1155:0152",
+      "instructions": [
+        {
+          "address": "1155:0152",
+          "bytes": "55",
+          "disassembly": "PUSH BP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0153",
+          "bytes": "8bec",
+          "disassembly": "MOV BP,SP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0155",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0157",
+          "bytes": "8a4606",
+          "disassembly": "MOV AL,byte ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015a",
+          "bytes": "bac803",
+          "disassembly": "MOV DX,0x3c8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015d",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015e",
+          "bytes": "8a4608",
+          "disassembly": "MOV AL,byte ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0161",
+          "bytes": "bac903",
+          "disassembly": "MOV DX,0x3c9",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0164",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0165",
+          "bytes": "8a460a",
+          "disassembly": "MOV AL,byte ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0168",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0169",
+          "bytes": "8a460c",
+          "disassembly": "MOV AL,byte ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016c",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016d",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016e",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "f54eba56e4c247288aec5212b335ee553aa1080219caf2137027a5c9b7474a52"
+    },
+    {
+      "build": "12",
+      "entry": "1155:0152",
+      "instructions": [
+        {
+          "address": "1155:0152",
+          "bytes": "55",
+          "disassembly": "PUSH BP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0153",
+          "bytes": "8bec",
+          "disassembly": "MOV BP,SP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0155",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0157",
+          "bytes": "8a4606",
+          "disassembly": "MOV AL,byte ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015a",
+          "bytes": "bac803",
+          "disassembly": "MOV DX,0x3c8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015d",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:015e",
+          "bytes": "8a4608",
+          "disassembly": "MOV AL,byte ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0161",
+          "bytes": "bac903",
+          "disassembly": "MOV DX,0x3c9",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0164",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0165",
+          "bytes": "8a460a",
+          "disassembly": "MOV AL,byte ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0168",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:0169",
+          "bytes": "8a460c",
+          "disassembly": "MOV AL,byte ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016c",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016d",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1155:016e",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "0acdfc58ee45517a43b842bfae6b640a3ad17f49bfc0288a1c6be1c67ff9892a"
+    },
+    {
+      "build": "15",
+      "entry": "1156:0150",
+      "instructions": [
+        {
+          "address": "1156:0150",
+          "bytes": "55",
+          "disassembly": "PUSH BP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0151",
+          "bytes": "8bec",
+          "disassembly": "MOV BP,SP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0153",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0155",
+          "bytes": "8a4606",
+          "disassembly": "MOV AL,byte ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0158",
+          "bytes": "bac803",
+          "disassembly": "MOV DX,0x3c8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015b",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015c",
+          "bytes": "8a4608",
+          "disassembly": "MOV AL,byte ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015f",
+          "bytes": "bac903",
+          "disassembly": "MOV DX,0x3c9",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0162",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0163",
+          "bytes": "8a460a",
+          "disassembly": "MOV AL,byte ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0166",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0167",
+          "bytes": "8a460c",
+          "disassembly": "MOV AL,byte ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016a",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016b",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016c",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "d75ece51f360d8a9b85126674b19901f57f3e83c0fdb24bc45cf4ec3f68a7c0b"
+    },
+    {
+      "build": "17",
+      "entry": "1156:0150",
+      "instructions": [
+        {
+          "address": "1156:0150",
+          "bytes": "55",
+          "disassembly": "PUSH BP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0151",
+          "bytes": "8bec",
+          "disassembly": "MOV BP,SP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0153",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0155",
+          "bytes": "8a4606",
+          "disassembly": "MOV AL,byte ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0158",
+          "bytes": "bac803",
+          "disassembly": "MOV DX,0x3c8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015b",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015c",
+          "bytes": "8a4608",
+          "disassembly": "MOV AL,byte ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015f",
+          "bytes": "bac903",
+          "disassembly": "MOV DX,0x3c9",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0162",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0163",
+          "bytes": "8a460a",
+          "disassembly": "MOV AL,byte ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0166",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0167",
+          "bytes": "8a460c",
+          "disassembly": "MOV AL,byte ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016a",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016b",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016c",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "b95e697bbd91e9abc0a441b4e9b875cc817bc5ae4aa709a6eaad676024972d3c"
+    },
+    {
+      "build": "18",
+      "entry": "1156:0150",
+      "instructions": [
+        {
+          "address": "1156:0150",
+          "bytes": "55",
+          "disassembly": "PUSH BP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0151",
+          "bytes": "8bec",
+          "disassembly": "MOV BP,SP",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0153",
+          "bytes": "2ae4",
+          "disassembly": "SUB AH,AH",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0155",
+          "bytes": "8a4606",
+          "disassembly": "MOV AL,byte ptr [BP + 0x6]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0158",
+          "bytes": "bac803",
+          "disassembly": "MOV DX,0x3c8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015b",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015c",
+          "bytes": "8a4608",
+          "disassembly": "MOV AL,byte ptr [BP + 0x8]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:015f",
+          "bytes": "bac903",
+          "disassembly": "MOV DX,0x3c9",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0162",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0163",
+          "bytes": "8a460a",
+          "disassembly": "MOV AL,byte ptr [BP + 0xa]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0166",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:0167",
+          "bytes": "8a460c",
+          "disassembly": "MOV AL,byte ptr [BP + 0xc]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016a",
+          "bytes": "ee",
+          "disassembly": "OUT DX,AL",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016b",
+          "bytes": "c9",
+          "disassembly": "LEAVE",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1156:016c",
+          "bytes": "cb",
+          "disassembly": "RETF",
+          "flow": "TERMINATOR",
+          "targets": "[]"
+        }
+      ],
+      "sha256": "943d063f34ddc889f74ad9bae696daef08fac445c1c1593508ed990a3aaaed7c"
+    }
+  ],
+  "results": [
+    {
+      "build": "10",
+      "index": 0,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 0,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 0,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 0,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 0,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 1,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 1,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 1,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 1,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 1,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 255,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 255,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 255,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 255,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 255,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 256,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 256,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 256,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 256,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 256,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 65535,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 65535,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 65535,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 65535,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "index": 65535,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 0,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 0,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 0,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 0,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 0,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 1,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 1,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 1,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 1,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 1,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 255,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 255,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 255,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 255,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 255,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 256,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 256,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 256,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 256,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 256,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 65535,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 65535,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 65535,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 65535,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "index": 65535,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 0,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 0,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 0,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 0,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 0,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 1,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 1,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 1,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 1,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 1,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 255,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 255,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 255,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 255,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 255,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 256,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 256,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 256,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 256,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 256,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 65535,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 65535,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 65535,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 65535,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "index": 65535,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 0,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 0,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 0,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 0,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 0,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 1,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 1,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 1,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 1,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 1,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 255,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 255,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 255,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 255,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 255,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 256,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 256,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 256,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 256,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 256,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 65535,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 65535,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 65535,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 65535,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "index": 65535,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 0,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 0,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 0,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 0,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 0,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 1,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 1,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 1,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 1,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 1,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 255,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 255,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 255,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 255,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 255,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 256,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 256,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 256,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 256,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 256,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 65535,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 65535,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 65535,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 65535,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "index": 65535,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 0,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 0,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 0,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 0,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 0,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 1,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 1,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 1,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 1,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 1,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 255,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 255,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 255,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 255,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 255,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 256,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 256,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 256,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 256,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 256,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 65535,
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          0
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 65535,
+      "rgb": [
+        63,
+        21,
+        42
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          63
+        ],
+        [
+          969,
+          1,
+          21
+        ],
+        [
+          969,
+          1,
+          42
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 65535,
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 65535,
+      "rgb": [
+        256,
+        257,
+        258
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          1
+        ],
+        [
+          969,
+          1,
+          2
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "index": 65535,
+      "rgb": [
+        65535,
+        32768,
+        32767
+      ],
+      "ports": [
+        [
+          968,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          255
+        ],
+        [
+          969,
+          1,
+          0
+        ],
+        [
+          969,
+          1,
+          255
+        ]
+      ],
+      "software_palette_unchanged": true,
+      "passed": true
+    }
+  ]
+}
