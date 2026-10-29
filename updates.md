@@ -1,0 +1,576 @@
+# Nitemare3D — Updates
+
+Complete update text supplied on 2026-10-29. Original wording, links, evidence qualifications and entry order are preserved; headings and navigation are added for readability.
+
+[Project README](README.md)
+
+## Contents
+
+- [22–24 Oct 2026 research consolidation](#update-001)
+- [22 Oct 2026 — Consolidated runtime + static RE index](#update-002)
+- [V087 RE update (2026-10-21)](#update-003)
+- [DOS v2.0 ORIGINAL live action-input runtime V085/V086 (2026-10-21)](#update-004)
+- [DOS v2.0 NEW live gameplay runtime V084 (2026-10-21)](#update-005)
+- [Original DOS2 runtime v083 / 2026-10-21](#update-006)
+- [v0.78 / 2026-10-20 bulk integration](#update-007)
+- [Runnable DOS2 wall snapshot replay](#update-008)
+- [v0.77 / 2026-10-20 bulk-copy provenance](#update-009)
+- [v0.76 / 2026-10-20 DEMO timing-context audit](#update-010)
+- [Renderer research checkpoint V071 / 2026-10-20](#update-011)
+- [E1M1 live player collision runtime V081 / 2026-10-21](#update-012)
+- [Original DOS2 E1M1 input runtime V084B / 2026-10-21](#update-013)
+- [Renderer research checkpoint V080 / 2026-10-20](#update-014)
+- [Renderer research checkpoint V079 / 2026-10-20](#update-015)
+- [Renderer research checkpoint V078 / 2026-10-20](#update-016)
+- [Renderer research checkpoint V077 / 2026-10-20](#update-017)
+- [Renderer research checkpoint V075 / 2026-10-20](#update-018)
+- [Renderer research checkpoint V074 / 2026-10-20](#update-019)
+- [Renderer research checkpoint V073 / 2026-10-20](#update-020)
+- [Renderer research checkpoint V072 / 2026-10-20](#update-021)
+- [Renderer research checkpoint V070 / 2026-10-20](#update-022)
+- [Renderer research checkpoint V069 / 2026-10-20](#update-023)
+- [Renderer research checkpoint V068 / 2026-10-20](#update-024)
+- [Renderer research checkpoint V067 / 2026-10-20](#update-025)
+- [Renderer research checkpoint V066 / 2026-10-20](#update-026)
+- [v0.63 / 2026-10-19 DOS2 DEMO RNG35](#update-027)
+- [v0.62 / 2026-10-19 DOS2 palette fade](#update-028)
+- [v0.61 / 2026-10-19 IMG preview and runtime evidence](#update-029)
+- [v0.60 / 2026-10-19 indirect/depth static evidence](#update-030)
+- [v0.59 / 2026-10-19 Win16 SAVE→LOAD runtime](#update-031)
+- [v0.58 / 2026-10-19 GUARD41 state09 closure](#update-032)
+- [v0.57 / 2026-10-19 DOS2 DEMO RNG chain](#update-033)
+- [v0.56 / 2026-10-19 recent-days frontier consolidation](#update-034)
+- [v0.55 / 2026-10-19 DEMO seed/EOF static narrowing](#update-035)
+- [v0.54 / 2026-10-19 cross-build map/palette delta](#update-036)
+- [v0.53 / 2026-10-19 HUD reindex + weapon class36 static closure](#update-037)
+- [v0.52 / 2026-10-19 DOS2 random-event timer closure](#update-038)
+- [v0.51 / 2026-10-19 Win16 WinG runtime closure](#update-039)
+- [v0.50 / 2026-10-19 GUARD41 death closure](#update-040)
+- [v0.49 / 2026-10-19 runtime + buildability sync](#update-041)
+- [v0.48 / 2026-10-18 DEMO bootstrap + first-input closure](#update-042)
+- [v0.47 / 2026-10-18 WORX DMA runtime closure](#update-043)
+- [v0.46 / 2026-10-18 runtime acceptance sync](#update-044)
+- [v0.45 / 2026-10-18 weapon-switch frame ordering](#update-045)
+- [v0.44 / 2026-10-18 weapon FIRE closure](#update-046)
+- [v0.43 / 2026-10-18 runtime + GUARD + renderer sync](#update-047)
+- [v0.42 / 2026-10-18 static sync](#update-048)
+- [v0.41 / 2026-10-18 latest static-evidence consolidation](#update-049)
+- [v0.40 / 2026-10-17 projectile one-level reentry closure](#update-050)
+- [v0.39 / 2026-10-17 late-day static closure](#update-051)
+- [v0.38 / 2026-10-17 three-day RE consolidation](#update-052)
+- [v0.37 / 2026-10-15 RE MAX scheduler catch-up closure](#update-053)
+- [v0.36 / 2026-10-15 RE MAX original-damage-order audit](#update-054)
+- [v0.35 / 2026-10-15 RE MAX RNG census correction](#update-055)
+- [v0.34 / 2026-10-15 RE MAX original-binary call-graph audit](#update-056)
+- [v0.33 / 2026-10-14 RE MAX original-byte scheduler correction](#update-057)
+- [v0.32 / 2026-10-14 RE MAX original-binary audit](#update-058)
+- [v0.31 / 2026-10-14 RE MAX update](#update-059)
+- [v0.30 / 2026-10-14 RE MAX update](#update-060)
+- [v0.29 / 2026-10-14 RE MAX update](#update-061)
+- [v0.28 / 2026-10-09 RE evidence update](#update-062)
+- [v0.27 / 2026-10-07 RE MAX update](#update-063)
+- [v0.26 / 2026-10-07 RE MAX update](#update-064)
+- [v0.25 / 2026-10-07 RE MAX update](#update-065)
+- [v0.24 / 2026-10-07 RE MAX update](#update-066)
+- [v0.23 / 2026-10-07 RE MAX update](#update-067)
+- [v0.22 / 2026-10-07 RE MAX update](#update-068)
+- [v0.21 / 2026-10-07 RE MAX update](#update-069)
+- [v0.20 / 2026-10-07 RE MAX update](#update-070)
+- [v0.19 / 2026-10-07 RE MAX update](#update-071)
+- [v0.18 / 2026-10-07 update](#update-072)
+- [v0.17 / 2026-09-29 update](#update-073)
+- [v0.16 / 2026-09-27 update](#update-074)
+- [v0.15 / 2026-09-27 update](#update-075)
+- [v0.14 / 2026-09-27 update](#update-076)
+- [v0.13 / 2026-09-26 update](#update-077)
+- [2026-09-25 update](#update-078)
+- [v0.12 update](#update-079)
+- [v0.11 update](#update-080)
+
+---
+
+For a starting point, see the [research consolidation](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_CONSOLIDATION_20261022_24_SK.md), [implementation acceptance matrix](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_IMPLEMENTATION_ACCEPTANCE_20261024_SK.md), [build instructions](https://github.com/marek177/Nitemare3d-reversed#build) and [original data setup](https://github.com/marek177/Nitemare3d-reversed#original-data). Detailed technical research and chronological updates follow below.
+
+<a id="update-001"></a>
+
+## 22–24 Oct 2026 research consolidation
+
+**22–24 Oct 2026 research consolidation:** [DOS/Win16 evidence and implementation map](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_CONSOLIDATION_20261022_24_SK.md) and [P0 implementation acceptance matrix](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_IMPLEMENTATION_ACCEPTANCE_20261024_SK.md). This is an evidence-bounded integration; no new original-vs-remake full-game parity is claimed.
+
+<a id="update-002"></a>
+
+## 22 Oct 2026 — Consolidated runtime + static RE index
+
+**22 Oct 2026 — Consolidated runtime + static RE index:** [all available findings](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_ALL_RUNTIME_STATIC_20261022_SK.md), [196 indexed source reports](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_ALL_EXECUTED_SOURCE_INDEX_20261022_SK.md), [machine-audited evidence grades](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_EVIDENCE_REGISTRY_20261022.json), [Ghidra renderer/projectile cache alias](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_STATIC_GHIDRA_CACHE_20261022_SK.md), [original DOS2 E1M1 pickup/Ctrl fire](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_DOS20_FIRE_PICKUP_20261022_SK.md), and [P0 original-to-remake parity bridge](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_ALLINONE_PARITY_BRIDGE_20261022_SK.md). The original-game runtime observations are carefully separated from archived static reports, bounded native replay and synthetic CI. **Still no original-vs-remake whole-game parity; active renderer remains diagnostic DDA.**
+
+<a id="update-003"></a>
+
+## V087 RE update (2026-10-21)
+
+**V087 RE update (2026-10-21):** [predtým/teraz, oblasti a %](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_PROGRESS_20261021_SK.md), [P0/P1 akceptačné brány](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RE_P0_ACCEPTANCE_GATES_20261021_SK.md) a [nový vstupný C++/Python kontrakt s Linux/Windows CI](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V087_BULK_RE_RUNTIME_INTEGRATION_20261021_SK.md). Výskumná aktualizácia **neznamená** pixel-perfect ani kompletnú runtime paritu; aktívny renderer zostáva diagnostické DDA.
+
+<a id="update-004"></a>
+
+## DOS v2.0 ORIGINAL live action-input runtime V085/V086 (2026-10-21)
+
+**DOS v2.0 ORIGINAL live action-input runtime V085/V086 (2026-10-21):** two fresh E1M1 DOSBox-X/XTest experiments directly observed **1,716 original guest-RAM samples, 24 phases and 24 accepted key-down/up events**. All **8/8 held-key input masks** for Ctrl (FIRE, `0x80`), Alt (`0x100`) and Space (USE, `0x200`) were confirmed, including Ctrl+Alt (`0x0180`) and Ctrl+Alt+Space (`0x0380`) in both Ctrl/Alt press orders. **1,688/1,716** samples already matched the host held-key set; the remaining 28 were stale pre-transition masks, not proved failed DOS ticks. Player XY/angle stayed stable; raw projectile slot pool did not change (not a proof of no FIRE). Verified original-data CSV/JSON and 15/15 audit tests are in the conversation ZIP; [detailed original-runtime evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V085_V086_DOS20_LIVE_E1M1_ACTION_MASKS_SK.md). **Not** original-versus-remake gameplay or pixel parity.
+
+<a id="update-005"></a>
+
+## DOS v2.0 NEW live gameplay runtime V084 (2026-10-21)
+
+**DOS v2.0 NEW live gameplay runtime V084 (2026-10-21):** original E1M1 controlled ↑+↓ and ←+→ conflict/release test, **1,600** read-only guest RAM samples, **16** accepted XTest key transitions and **13** distinct phases. Original `DS:3F50` independently revealed Up=`0x2`, Down=`0x4`, Left=`0x8`, Right=`0x10`; **1,580/1,600** sampled input states matched the host held-key set (20 samples at phase transitions). Opposite rotation cancelled in both press orders, but Up+Down showed small residual movement; single-key Right rotated **25×+6** and Left **11×−6**. [v0.84 evidence and limits](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V084_DOS20_LIVE_E1M1_OPPOSING_KEYS_SK.md). This is **original live gameplay only**, no original-vs-remake scheduler or framebuffer parity.
+
+<a id="update-006"></a>
+
+## Original DOS2 runtime v083 / 2026-10-21
+
+**Original DOS2 runtime v083 / 2026-10-21:** a fresh DOSBox-X E1M1 gameplay session using genuine XTest `↑+←` input and read-only guest RAM captured **486 samples** and **6/6 accepted key transitions**. **22/22 observed Left rotation steps were −6** with angular wrap `0→354`. Releasing ↑ while holding ← stopped XY motion but retained rotation; both-key idle remained stationary through **22 render-counter advances**. Independently validated **23 heading→Q10 pairs** and eight ledger/tamper checks; one original E1M1 scene, **not full tick-exact original-versus-port parity**. See [v083 original runtime findings](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V083_DOS20_LIVE_E1M1_UP_LEFT_INPUT_SK.md). Raw derived CSV/JSON stay in the user-delivered original-data ZIP, not in the public repository.
+
+<a id="update-007"></a>
+
+## v0.78 / 2026-10-20 bulk integration
+
+**v0.78 / 2026-10-20 bulk integration:** adds the bounded four-pass DOS2 MAP→VEC producer and SHA-gated static auditor, connects its output to the existing VEC pool contract, and implements the local GUARD state21 save/restore rule. Consolidates D02-N runtime, Win16 EVENT RNG v26 and authentic IMG wall v080 evidence with explicit capture limits. Includes Linux/Windows integration CI. See [changes, validation and open gates](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/BULK_UPDATE_20261020.md).
+
+<a id="update-008"></a>
+
+## Runnable DOS2 wall snapshot replay
+
+**Runnable DOS2 wall snapshot replay:** `n3d_dos20_wall_replay` now joins DS/IMG material binding, native CEDC/22CA texture coordinates and span rasterization. It exports a candidate indexed frame, generated-pixel mask and optional wall-only comparison. See [usage and evidence limits](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/DOS20_WALL_SNAPSHOT_REPLAY.md).
+
+<a id="update-009"></a>
+
+## v0.77 / 2026-10-20 bulk-copy provenance
+
+**v0.77 / 2026-10-20 bulk-copy provenance:** integrates NEXT7's 29 locally classified REP MOVS sites per DOS build (21 logical copies), correction of FAR source/destination direction, and bounded 208-byte text composition in a 258-byte frame. Adds exported-table validation; global OBJECT+18 aliases and natural stale-depth hits remain OPEN. See [provenance and limits](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V077_REMAX_BULK_COPY_PROVENANCE.md).
+
+<a id="update-010"></a>
+
+## v0.76 / 2026-10-20 DEMO timing-context audit
+
+**v0.76 / 2026-10-20 DEMO timing-context audit:** integrates D02-E/F: identical first 220 RNG caller/state/results can accompany different scheduler/input contexts (229 versus 220 recorded outcomes). Adds a SHA-gated original-byte auditor with stronger exported-ledger validation and 11 synthetic robustness checks. The actual first clock/due divergence and original-versus-port parity remain OPEN. See [scope and evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V076_REMAX_DEMO_TIMING_CONTEXT.md).
+
+> **Renderer parity status (2026-10-20):** The executable still uses `src/renderer/Raycaster.cpp`, a **diagnostic DDA preview**, not the original DOS/Win16 VEC→column-owner→span renderer. **Pixel-perfect 1:1 is NOT yet verified.** Recovered E798 projection and bounded DOS2 pixel writers are research components; they must pass matched original-game indexed-framebuffer **and DAC** zero-diff tests before replacing the active DDA path.
+
+<a id="update-011"></a>
+
+## Renderer research checkpoint V071 / 2026-10-20
+
+**Renderer research checkpoint V071 / 2026-10-20:** SHA-pinned **original DOS2 CAB8/1021E byte-gap audit** and strict **original-vs-candidate 64,000 indexed + 768 DAC** frame-pair acceptance gate are now in `tools/`, with synthetic verification on Linux and Windows GitHub Actions. These are research/validation tools only: the 67 historically unobserved opcode bytes still require original-EXE execution/semantic verification; **no synchronized original-vs-port gameplay frame has yet passed**. See [V071 evidence and CLI](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V071_DOS20_STATIC_GAP_AND_FRAME_GATE_SK.md). The active DDA preview remains unchanged.
+
+<a id="update-012"></a>
+
+## E1M1 live player collision runtime V081 / 2026-10-21
+
+**E1M1 live player collision runtime V081 / 2026-10-21:** executed original DOS v2.0 in Linux DOSBox-X and used read-only guest RAM plus held/released keyboard controls. Measured normal Y movement **11** units/step, one **6-unit clipped step** and a repeatable blocked forward boundary at **Y=3291** (171 observations stationary while rendering advanced 38); return movement **24×11**; Right turn **27×6** heading units to 162; subsequent heading162 movement **ΔX+34, ΔY+201**. A separate authentic new 304-owner/3-span original memory checkpoint was replayed through the native C++ wall writer, producing **26,764 candidate wall pixels**; **no original same-frame wall-pixel comparison was available**. See [full fresh runtime evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V081_DOS20_LIVE_E1M1_PLAYER_COLLISION_RUNTIME_SK.md). The 531-mismatch E1M1 renderer case remains open, and live DDA was not replaced.
+
+<a id="update-013"></a>
+
+## Original DOS2 E1M1 input runtime V084B / 2026-10-21
+
+**Original DOS2 E1M1 input runtime V084B / 2026-10-21:** live original game Alt+arrow strafe proof: **853 host RAM samples**, 10 real XTest key transitions, right-only **24×+6** and left-only **23×−6** rotations with stationary player, Alt+Right **ΔXY=(0,+33)** and Alt+Left **ΔXY=(+40,−329)** with unchanged raw heading; positions and heading remain stable after key releases despite advancing original render counter. Independent evidence-integrity/mutation tests **9/9 PASS**. This is NOT a tick-atomic trace or original-vs-remake parity claim. [Runtime measurement and limits](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V084B_DOS20_LIVE_E1M1_ALT_STRAFE_SK.md).
+
+<a id="update-014"></a>
+
+## Renderer research checkpoint V080 / 2026-10-20
+
+**Renderer research checkpoint V080 / 2026-10-20:** first *authentic DOS2 IMG.1 → original VEC owner → 2500/25DC CEDC/22CA → exact 16.16 source → original 16CE shade XLAT → VGA* one-column crosscheck. Original 64KiB DS and original DOS v2.0 IMG.1 agree on wall16 frame128×64, physical **U=106**, and **592/592** VEC cache selectors agree with 33 IMG streams. SHA-pinned 8086 instructions prove phase is read at `267A` **before** slope addition at `2684`; the captured mid-render phase=331 must be rewound to 334 for *this snapshot*. The native [wall snapshot replay](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/DOS20_WALL_SNAPSHOT_REPLAY.md) built on GitHub ran with user-owned original DS/IMG: **304 columns, 16,930 generated wall pixels**, and the **original 42-pixel x8 write matches exactly**; wrong phase produces 31/42 mismatches. Single-writer original-pre + native-x8 matches original-post 64K indexed frame **only for that one writer**. [Private original evidence report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V080_DOS20_AUTHENTIC_IMG_WALL_RUNTIME_SK.md) and [SHA-gated stage normalizer](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v080_midrender_checkpoint.py). **No comparable original complete post-wall frame, no synced original-vs-port gameplay framebuffer/DAC zero-diff; live DDA unchanged.**
+
+<a id="update-015"></a>
+
+## Renderer research checkpoint V079 / 2026-10-20
+
+**Renderer research checkpoint V079 / 2026-10-20:** recovered and independently replayed **1,808/1,808 original DOS2 CEDC signed-32 perspective-U quotients** and **1,808/1,808 original 25DC pre-22CA raw-U outputs**, covering all **four** DS:415C/orientation paths (1030/474/187/117). Original caller `IMUL` and world-local offsets are independently observed in **1,804/1,808** calls; original `NEG SI` executed 1,172 times. A separate original-to-original stage join checks **1,520/1,520** values across five complete 304-column views before the already v0.78-verified 22CA edge correction. The [CEDC C++20 arithmetic module](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DDos20CedcProjection.hpp) now powers the [DOS-native material binder](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DDos20WallMaterialBinding.hpp); [private original corpus verifier](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v079_cedc_verify.py), [tests](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/dos20_cedc_projection_test.cpp), and [proof limits](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V079_DOS20_CEDC_PERSPECTIVE_RUNTIME_SK.md). **These comparisons use captured original operands, NOT an independent modern camera/IMG or original-vs-remake framebuffer; full 64,000 indexed + 768 DAC parity remains OPEN.** DDA is still diagnostic.
+
+<a id="update-016"></a>
+
+## Renderer research checkpoint V078 / 2026-10-20
+
+**Renderer research checkpoint V078 / 2026-10-20:** source-verified the **340-byte original DOS2 22CA wall texture-U edge routine** and independently translated its signed 16-bit rules into [N3DDos20TextureUEdge.hpp](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DDos20TextureUEdge.hpp). A private, original CPU instruction/prestate corpus confirms **1,520 / 1,520 corrected-U outputs** across **five complete 304-column viewports**, including **23 / 23 nontrivial edge corrections**. An additional **28,288 / 28,288** synthetic cases match the independent Win16 6422 branch model. The DOS-native [material binder](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DDos20WallMaterialBinding.hpp) now uses the DOS edge routine; Linux/Windows C++20 CI runs without commercial game files. See [v0.78 proof and exact limits](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V078_DOS20_TEXTURE_U_22CA_RUNTIME_SK.md). **CEDC unadjusted-U remake parity and original-vs-port framebuffer/DAC zero-diff are still OPEN**; active DDA preview is unchanged.
+
+<a id="update-017"></a>
+
+## Renderer research checkpoint V077 / 2026-10-20
+
+**Renderer research checkpoint V077 / 2026-10-20:** recovered **1,520 authentic original DOS2 wall texture-U outputs** from **five complete 304-column viewport frames** in existing original CPU instruction traces. Both return checkpoints `0x26CC`/`0x26CF` agree; FAR `CEDC` calls are validated with the observed load-time segment relocation. The original `22CA` edge routine made **23 nontrivial U corrections** (including 0→127 and 64→63) that simple `U & 127` would miss. The [SHA-gated original U witness tool](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v077_dos20_u_witness.py), [numeric candidate U comparator](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v077_original_u_diff.py), asset-free CI tests, and [five-frame evidence report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V077_DOS20_ORIGINAL_U_RUNTIME_WITNESS_SK.md) are now available; the 5 private derived U buffers are delivered separately to the user, not committed. **The C++ candidate U and full indexed-framebuffer still have NOT been compared to the original**; diagnostic DDA stays unchanged.
+
+<a id="update-018"></a>
+
+## Renderer research checkpoint V075 / 2026-10-20
+
+**Renderer research checkpoint V075 / 2026-10-20:** implemented an isolated **304-column DOS2 VEC-owner/18-byte-span → integer vertical blitter → IMG/XLAT wall-column raster** in [N3DDos20SpanWallPipeline.hpp](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DDos20SpanWallPipeline.hpp). Reads an original-layout 64KiB DS post-span checkpoint, validates 16-bit owners and up to 50 spans, steps signed **16.16 span phases**, reproduces `0x2500→0x1A2E` wall placement (original x8 phase 331 → bottom100 → 42 px y59..100 → step `0x18F9C`), and produces 304 checked indexed/VGA columns using **explicit** IMG face/U/shade binding. [Linux and Windows synthetic C++20 CTest PASS](https://github.com/marek177/Nitemare3d-reversed/actions/runs/39451823144); [scope and original verification gate](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V075_DOS20_OWNER_SPAN_WALL_PIPELINE_SK.md). **Original memory snapshot optional replay and original-vs-remake framebuffer zero-diff remain outstanding. Active DDA is unchanged.**
+
+<a id="update-019"></a>
+
+## Renderer research checkpoint V074 / 2026-10-20
+
+**Renderer research checkpoint V074 / 2026-10-20:** introduces the isolated [DOS2 integer 16.16 indexed wall-column raster](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DDos20IndexedWallColumn.hpp). It consumes an explicitly selected column-major 64-texel IMG column, shade/XLAT table and wall source phase, and writes both `320×200` palette indices and optional `A000/A400` interleaved VGA bytes. Regression covers a bounded original 42-pixel (`x=8`, `y=59..100`, `step=0x18F9C`) writer witness, both full halves of `128×64` textures, no wall alpha, VGA planes/pages and failure atomicity. Linux and Windows CMake/CTest are **successful**. [Proof scope](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V074_DOS20_INDEXED_WALL_COLUMN_SK.md). **The live renderer is still diagnostic DDA; 1:1 whole-frame parity is NOT proven.**
+
+<a id="update-020"></a>
+
+## Renderer research checkpoint V073 / 2026-10-20
+
+**Renderer research checkpoint V073 / 2026-10-20:** adds [SHA-pinned DOS2 ](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v073_dos2_gap_trace_witness.py)[`N3DTRC01`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v073_dos2_gap_trace_witness.py)[ execution witness analysis](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v073_dos2_gap_trace_witness.py) to distinguish **16-byte CPU pre-state lookahead** from the bytes of instructions actually executed at `CS:IP`. Synthetic branch, relocation-base, corruption, and lookahead regressions pass **15/15 on Linux and 15/15 on Windows CI**. No archived original trace was replayed in this pass; the 51B CAB8 / 16B 1021E runtime gaps and whole-game pixel parity remain OPEN. See [v0.73 proof boundaries](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V073_DOS20_TRACE_EXECUTION_WITNESS_SK.md). DDA remains diagnostic only.
+
+<a id="update-021"></a>
+
+## Renderer research checkpoint V072 / 2026-10-20
+
+**Renderer research checkpoint V072 / 2026-10-20:** adds a fail-closed [original-vs-port VEC → owner → 18B span → indexed framebuffer → 6-bit DAC first-divergence gate](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v072_stage_frame_gate.py), plus [SHA-pinned 16-bit direct-CFG probe](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v072_dos2_gap_cfg_probe.py) for the 51B CAB8 and 16B 1021E runtime coverage gaps. Synthetic regressions pass **21/21** stage tests and **8/8** CFG tests on **both Linux and Windows GitHub Actions**. No original game/paired port frames were run through these CI suites, no new DOS opcode branch has been verified executed, and **original-vs-port pixel-perfect 1:1 remains OPEN**. See [V072 research report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V072_RENDERER_FIRST_DIVERGENCE_SK.md). The live DDA preview is untouched.
+
+<a id="update-022"></a>
+
+## Renderer research checkpoint V070 / 2026-10-20
+
+**Renderer research checkpoint V070 / 2026-10-20:** archived original DOS2 instruction traces recover **324/324 FEFA owner-insertion opcode bytes** (0 conflicts; 315,257 executed FEFA instruction events). The CAB8 vertical cull explains the two offscreen v0.69 cases as **early returns before projected X is written**: **70/70 fully projected VECs plus 2/2 early culls**, 304/304 owner words and 162/162 wall-span bytes in one authentic checkpoint. The C++ opcode contract and regression test are isolated from the live renderer. See [DOS2 FEFA/CAB8 v0.70 evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V070_DOS20_VISIBILITY_CAB8_FEFA_SK.md). **This does not verify original-vs-remake pixel-perfect parity; DDA remains diagnostic.**
+
+<a id="update-023"></a>
+
+## Renderer research checkpoint V069 / 2026-10-20
+
+**Renderer research checkpoint V069 / 2026-10-20:** DOS2 world-VEC forward replay (one original snapshot) recovers **304/304 column-owner WORDs** and **162/162 wall-span bytes** from 72 visited vectors without using the original stored projected/owner/span output as forward input. **70/72 projections** match; 2 offscreen exceptions remain open. Original-vs-remake framebuffer parity remains unverified; the active DDA preview is NOT replaced. Source/test package is separately available. See [V069 proof](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V069_DOS20_VISIBILITY_REPLAY_SK.md).
+
+<a id="update-024"></a>
+
+## Renderer research checkpoint V068 / 2026-10-20
+
+**Renderer research checkpoint V068 / 2026-10-20:** original DOS2 64 KiB memory checkpoint holds **592 unique 28-byte VEC records** in four orientation lists (**148/144/152/148**), all ordered by primary world coordinate; all **304** owner columns reference these lists. A separate integer nearest-wall control only matches **300/304**, with edge differences at columns **18/40/175/269**, so a generic raycast does **not** prove original owner selection. Bounded C++20 + Python evidence package passed **79/79 CTest** and **14/14 Python checks** with the opt-in original snapshot; the modules are **not installed into the live renderer**. See [V068 owner/visibility audit](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V068_DOS20_VEC_POOL_OWNER_AUDIT_SK.md). **Pixel-perfect original-vs-port is still OPEN; DDA remains diagnostic.**
+
+<a id="update-025"></a>
+
+## Renderer research checkpoint V067 / 2026-10-20
+
+**Renderer research checkpoint V067 / 2026-10-20:** an archived original DOS v2.0 64 KiB runtime memory checkpoint reproduces **36/36 projected VEC endpoint words** (9 vectors, including one near-plane clip and two endpoint swaps) and **162/162 DOS span bytes** (9 x 18B, 304 owner columns). This is a bounded original-run reconstruction, **not** original-vs-remake pixel parity. A left-edge clipped span shows an extra signed 16.16 phase step, with generality still open. See [DOS2 VEC / span evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V067_DOS20_VEC_PROJECTION_SPAN_REPLAY_SK.md). The runnable DDA remains explicitly diagnostic; tested offline modules are distributed separately and are **not** connected to the live renderer.
+
+<a id="update-026"></a>
+
+## Renderer research checkpoint V066 / 2026-10-20
+
+**Renderer research checkpoint V066 / 2026-10-20:** bounded original DOS2 frame/DAC normalization verified against 41 original emulator RGB-cache captures (5,248,000 pixels, 0 differing RGB components) across E1M1, DEMO, and menu fade; **this is reference-vs-reference validation, NOT original-vs-remake pixel parity**. The active DDA renderer remains diagnostic. See [proof and standalone VGA oracle](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V066_DOS20_DISPLAY_ORACLE_SK.md).
+
+<a id="update-027"></a>
+
+## v0.63 / 2026-10-19 DOS2 DEMO RNG35
+
+**v0.63 / 2026-10-19 DOS2 DEMO RNG35:** four original sessions now reproduce the first 8 draws, three reproduce the first 18, and two reproduce the first 35. One instrumented 35-draw run records maximum scheduler depth 1 with all draws at depth 1. Full DEMO-to-EOF RNG chronology and E2M10 reentry remain OPEN. See docs/V063_REMAX_DEMO_RNG35_DEPTH.md.
+
+<a id="update-028"></a>
+
+## v0.62 / 2026-10-19 DOS2 palette fade
+
+**v0.62 / 2026-10-19 DOS2 palette fade:** original runtime covers all 21 palette uploads and the exact per-component fade rule. Final reconstructed palette hash matches the emulator; timing and framebuffer zero-diff remain open. See docs/V062_REMAX_DOS20_PALETTE_FADE.md.
+
+<a id="update-029"></a>
+
+## v0.61 / 2026-10-19 IMG preview and runtime evidence
+
+**v0.61 / 2026-10-19 IMG preview and runtime evidence:** integrates IMG wall/pushable textures, nonvisual-marker visibility, provisional paired-face sampling and compatibility with the user-supplied palette container. Adds bounded renderer/world-update source reports. Exact vector/span rendering and whole-game parity remain OPEN. See [implementation and validation](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V061_REMAX_IMG_PREVIEW_AND_RUNTIME_AUDIT.md).
+
+<a id="update-030"></a>
+
+## v0.60 / 2026-10-19 indirect/depth static evidence
+
+**v0.60 / 2026-10-19 indirect/depth static evidence:** integrates the archived DOS1.9 census of 77 linear-decode candidates, 23 jump tables and the bounded DS:4550 viewport-depth formula. Adds full source reports and a portable DOS2 ledger validator to support existing v0.57/v0.58 findings. Recursive CFG, alias provenance and natural stale-depth hits remain OPEN. See [static report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V060_REMAX_INDIRECT_DEPTH_REFERENCE.md), [DEMO source appendix](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/DEMO_DOS20_LEDGER_SOURCE_APPENDIX.md) and [GUARD source appendix](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/GUARD41_STATE09_SOURCE_APPENDIX.md).
+
+<a id="update-031"></a>
+
+## v0.59 / 2026-10-19 Win16 SAVE→LOAD runtime
+
+**v0.59 / 2026-10-19 Win16 SAVE→LOAD runtime:** original Win16 v1.10 now has a real E1M1 persistence witness in the repaired Windows 3.11/WinG lab. After movement, the game writes a 55,015-byte USER.SAV; after a fresh Windows/game restart, loading the first slot restores the moved fireplace view. The moved save differs from the start-position save in 477 bytes, while the restored-vs-saved ROI is 98.37% pixel-identical. Exact field offsets, RNG/cache rebinding and the first post-load CPU frame remain OPEN. See [v0.59 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V059_REMAX_WIN16_SAVE_LOAD.md).
+
+<a id="update-032"></a>
+
+## v0.58 / 2026-10-19 GUARD41 state09 closure
+
+**v0.58 / 2026-10-19 GUARD41 state09 closure:** a bounded original DOS1.2 trace now executes GUARD41 state09 all the way to the common dispatcher epilogue. The path performs `09→0A`, consumes RNG #19 `AEA69ED3→12DBCE4A` (result 4827), and takes the measured WALL-property branch to the epilogue. Static DOS1.2/DOS2 dispatcher tables both map states 0x0A/0x0B to their common epilogues. Later scheduler/pool cleanup and natural DOS2 equivalence remain OPEN. See [v0.58 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V058_REMAX_GUARD41_STATE09.md).
+
+<a id="update-033"></a>
+
+## v0.57 / 2026-10-19 DOS2 DEMO RNG chain
+
+**v0.57 / 2026-10-19 DOS2 DEMO RNG chain:** two independent original DOS2 trace sessions reproduce the exact same first eight shared-wrapper RNG entries; one longer original run extends the scoped ledger through entry 18. The longer sequence exposes real retry bursts at `A047×6` and `9FE3×3`. Entries 9–18 are not yet independently replicated, and the complete DEMO/CRT/Win16 RNG ledger remains OPEN. See [v0.57 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V057_REMAX_DEMO_RNG_CHAIN.md).
+
+<a id="update-034"></a>
+
+## v0.56 / 2026-10-19 recent-days frontier consolidation
+
+**v0.56 / 2026-10-19 recent-days frontier consolidation:** freezes the current evidence boundary after integrating the newly available 19-Oct runtime/static/build findings. The recent chain now covers GUARD41 death through score/map cleanup, Win16 WinG startup to E1M1 in 5/5 builds, the DOS2 random-event timer RNG branch, one controlled projectile `0→1→2→0` lifecycle, E2M10 repeated-scheduler narrowing, DOS HUD reindex/class36 weapon pickups, cross-build MAP marker A/B effects, the Win16 managed-palette delta, and DEMO seed/reader/last-record static narrowing. **Full DEMO RNG/EOF, natural E2M10 ABA, SAVE/LOAD first frame, framebuffer+palette zero-diff, Win16 gameplay timing, exact audio, and strict original-vs-port acceptance remain OPEN.** See [v0.56 frontier](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V056_REMAX_FRONTIER_CONSOLIDATION.md).
+
+<a id="update-035"></a>
+
+## v0.55 / 2026-10-19 DEMO seed/EOF static narrowing
+
+**v0.55 / 2026-10-19 DEMO seed/EOF static narrowing:** separates the DOS seed helper from real RNG consumption, pins the local seed-reset and DEMO reader opcodes, and records the complete DOS DEMO.1 payload endpoints (275 records; first `48E0/0002/8`, last `74E0/0090/1074`). The reader applies the current record before reading the next, while the local caller near `6E07` does not immediately test the read-count return value. This narrows EOF behavior but does not close CRT short-read/error semantics or the final demo transition. Large older captures that missed the seed-reset interval are explicitly rejected as chronology evidence. See [v0.55 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V055_REMAX_DEMO_SEED_EOF_STATIC.md).
+
+<a id="update-036"></a>
+
+## v0.54 / 2026-10-19 cross-build map/palette delta
+
+**v0.54 / 2026-10-19 cross-build map/palette delta:** consolidates the 31-level DOS/Win high-byte marker census and controlled E1M1 A/B tests. The audited data contains four selected `0x25..0x28` high-byte positions per level (124 total), concentrated near the player start; clearing each one individually in DOS2 produces a visible E1M1 scene difference while repeated baseline-vs-baseline remains identical. The same update records the DOS1.9→2.0 main-band growth and the Win16 v1.10 palette rule that conditionally reserves 10+10 system entries and copies 236 middle colors instead of all 256. Exact resource identity and full cross-build pixel parity remain OPEN. See [v0.54 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V054_REMAX_CROSSBUILD_MAP_PALETTE.md).
+
+<a id="update-037"></a>
+
+## v0.53 / 2026-10-19 HUD reindex + weapon class36 static closure
+
+**v0.53 / 2026-10-19 HUD reindex + weapon class36 static closure:** corrects the DOS1.9→2.0 HUD dispatcher mapping: DOS2 inserts a new damage-related action at ID4 and shifts the old IDs4–8 to IDs5–9. The local `DS:417A=3` damage signal yields the static HUD action sequence `4→4→4→3`; exact final pixels remain OPEN. Separately, Win16 v1.10 MAP high IDs `0x25..0x28` are now tied to weapon pickup class `0x36`, variants 0..3, ownership bits `1/2/4/8`, and 50-unit ammo initialization, with variants 0 and 3 sharing the same plasma/laser ammo store. DOS pickup-algorithm equivalence is not assumed. See [v0.53 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V053_REMAX_HUD_WEAPON_CLASS36.md).
+
+<a id="update-038"></a>
+
+## v0.52 / 2026-10-19 DOS2 random-event timer closure
+
+**v0.52 / 2026-10-19 DOS2 random-event timer closure:** adds a complete local original-runtime RNG consumer from the DOS v2.0 timed/random-effects substep. The measured branch performs phase `1→0`, RNG state `1→0x0029E2C0`, returns `41`, and stores countdown `201 = 160 + (41 % 240)`. An independent longer trace repeats the same transition and records countdown `201→200→199` while the global tick advances `85→88`. In the measured top-level order this RNG consumer belongs to the `0x039E` random-effects substep after the `0x037D` actor traversal. The writer that initialized state 1 in this normal E1M1 path and the global RNG order remain OPEN. See [v0.52 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V052_REMAX_DOS20_RNG_TIMER.md).
+
+<a id="update-039"></a>
+
+## v0.51 / 2026-10-19 Win16 WinG runtime closure
+
+**v0.51 / 2026-10-19 Win16 WinG runtime closure:** the Windows 3.11 laboratory now reaches a rendered E1M1 scene in **all 5/5 Win16 builds** (1.0, 1.3, 1.6, 1.8, 1.10) after completing the WinG 1.0 runtime from the user-provided Microsoft package. V1.10 also required removing a local old `WING.DLL` conflict in the laboratory copy; no Nitemare executable or game data were patched. Win16 runtime is therefore no longer blocked at application startup, but gameplay-input timing, RNG, framebuffer/palette zero-diff, animation and audio parity remain OPEN. See [v0.51 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V051_REMAX_WIN16_WING_RUNTIME.md).
+
+<a id="update-040"></a>
+
+## v0.50 / 2026-10-19 GUARD41 death closure
+
+**v0.50 / 2026-10-19 GUARD41 death closure:** extends the natural DOS1.2 DEMO.1 runtime path from lethal HP through the measured death handler. A bounded original trace now executes RNG #16, #17 and #18 without a gap: #16 and #17 reject animation candidates, #18 accepts one. The same trace writes GUARD41 HP `111→0`, updates its timer/state/next-state, increments score `0→100`, and clears the linked map marker `0xA5→0x00`. This supersedes the v0.49 prediction-only status for RNG #17. Later death-animation completion, drop logic, pool cleanup, DOS2/Win16 equivalence and end-to-end parity remain OPEN. See [v0.50 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V050_REMAX_GUARD41_DEATH_OUTCOME.md).
+
+<a id="update-041"></a>
+
+## v0.49 / 2026-10-19 runtime + buildability sync
+
+**v0.49 / 2026-10-19 runtime + buildability sync:** integrates the newest DOS runtime/static evidence and fixes three clean-room Linux portability defects. DOS1.2 DEMO.1 now has bounded original-runtime evidence through RNG #16 plus the observed entry to #17, including GUARD41 planner writes, a real HP `111→0` death-producing damage branch at RNG #15, and an animation rejection backedge at RNG #16. A separate DOS2 Advanced History E1M1 trace records 3,775,835 instructions, 289,190 VRAM events, 7,315 VGA-register snapshots and 12 complete main-update executions; the checked low-level VRAM writer events have zero local address/color mismatches, but this is **not** final-framebuffer parity. Controlled DOS2 runtime now also closes one projectile `0→1→2→0` wall-impact lifecycle. E2M10 opcode analysis proves a repeated outer-scheduler backedge, while natural projectile resurrection/ABA remains OPEN. Cross-build work adds a concrete Win16 v1.10 236-vs-256 palette-copy rule. The clean-room source now also fixes Win16 `HandleMap16` host packing, the duplicate GUARD-strength constant, and an order-fragile audit test. See [v0.49 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V049_REMAX_OCT19_RUNTIME_BUILD_SYNC.md), [evidence facts](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V049_EVIDENCE_FACTS.csv) and [Linux build validation](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/LINUX_BUILD_VALIDATION_2026-10-19.md). **Strict original-vs-port zero-diff parity remains OPEN.**
+
+<a id="update-042"></a>
+
+## v0.48 / 2026-10-18 DEMO bootstrap + first-input closure
+
+**v0.48 / 2026-10-18 DEMO bootstrap + first-input closure:** consolidates five original-runtime DEMO.1 evidence captures for the tested DOS runtime build. Natural menu selection now closes the transition into demo playback, E1M11/map-index 10 loading, header `15/7/30`, the first record `key=0x48E0,input=2,counter=8`, and the post-map RNG seed reset to `1`. The alternate demo scheduler is observed returning in both mode 3 and mode 4, with its parity decision occurring before the later render-counter increment. The first record is applied only when the live counter reaches 8, before the next record is loaded, and a paired runtime capture proves that this first input moves the player from `(1056,3168)` to `(1071,3168)` at angle 90 with step 15. The DOS RNG recurrence is also encoded exactly, but **the first natural RNG consumer after seed=1, total RNG order, EOF behavior, later records, cross-build determinism and framebuffer parity remain OPEN.** See [v0.48 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V048_REMAX_DEMO_BOOTSTRAP.md) and [bounded C++ evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV048DemoBootstrap.hpp).
+
+<a id="update-043"></a>
+
+## v0.47 / 2026-10-18 WORX DMA runtime closure
+
+**v0.47 / 2026-10-18 WORX DMA runtime closure:** records a naturally reached DOS runtime Sound Blaster/DMA start and the later automatic stop path. The original reached WORX with the playback-active flag set, completed DMA/DSP setup including DSP port `0x22C`, DMA mode `0x59`, address `0xDB6E`, page `0x01`, count `0x0FFF`, and unmasked the DMA channel. Later the automatic `5F59` path cleared the active flag, emitted DSP command `0xD0`, masked the DMA channel, and only afterward entered the explicit stop helper with playback already inactive. This closes natural DMA start + automatic stop for the tested DOS build, but **does not** yet close active playback at central shutdown, audible waveform parity, or exact hardware timing. See [v0.47 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V047_REMAX_WORX_DMA_RUNTIME.md).
+
+<a id="update-044"></a>
+
+## v0.46 / 2026-10-18 runtime acceptance sync
+
+**v0.46 / 2026-10-18 runtime acceptance sync:** integrates the latest original DOSBox-X evidence. PASS16 now proves a natural same-scheduler boundary sequence `PROJECTILE C24B→C250 → INPUT C26F→C274` and corrects PASS15 DS/WORLD alias attribution. GUARD PASS17–22 adds executed alert/attack/planner/movement coverage, including real state00 underflow, 14/4 HP attack witnesses, state05's own movement call, eight-step state06 timers and the double-block RNG bounce where odd flips `vx` and even flips `vy`; one measured state05 consumes planner RNG plus collision RNG in the same update. Original DOS1.2 and DOS2 now also agree in controlled weapon selection/commit/mode/ammo tests including held Multi Plasma and shared ID0/ID3 plasma ammo. Shutdown evidence adds non-fatal no-XMS cleanup plus configuration-reachable `INT63 AH=0D/07/04` digital stop/IRQ restore; active DSP/DMA stop remains unobserved. See [v0.46 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V046_REMAX_RUNTIME_ACCEPTANCE_SYNC.md) and [bounded C++ evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV046RuntimeAcceptance.hpp). **Complete DEMO RNG order, active projectile FB–FE/reentry, SAVE/LOAD first frame, framebuffer+palette zero-diff, Win16 runtime and audible audio parity remain OPEN.**
+
+<a id="update-045"></a>
+
+## v0.45 / 2026-10-18 weapon-switch frame ordering
+
+**v0.45 / 2026-10-18 weapon-switch frame ordering:** composes the audited DOS switch/HUD/scheduler/input paths into one bounded direct-frame contract. A request made while a weapon is already active updates `pending` and, if idle, starts Lower; the current weapon/fireMode remain unchanged until the HUD Lower path reaches zero and commits pending→current. Since weapon selection occurs before FIRE inside the same input function, that later FIRE still sees the old current weapon for a normal active-weapon switch; only the `current==0xFF` direct-equip case can expose the newly selected weapon to FIRE in that same input call. In the direct parent frame, HUD transition runs before projectile update and gameplay input, so a commit can be observed by FIRE later in the same frame; weapon 3 may then fire immediately if held FIRE and carried cadence counter≥1. Conversely a projectile spawned by that input cannot be processed by the already-completed direct parent projectile pass. **Nested/reentrant scheduler visits remain OPEN.** See [v0.45 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V045_REMAX_WEAPON_SWITCH_FRAME_ORDER.md) and [C++ contract](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV045WeaponSwitchFrameOrder.hpp).
+
+<a id="update-046"></a>
+
+## v0.44 / 2026-10-18 weapon FIRE closure
+
+**v0.44 / 2026-10-18 weapon FIRE closure:** promotes the strongest existing weapon/cadence evidence into a buildable compatibility contract. The four cadence thresholds are fixed to `[2,1,3,1]`; weapon 3 (Multi Plasma) can auto-repeat while FIRE remains held, while weapons 0–2 require a fresh edge. Accepted cadence resets the cooldown **before** the FIRE dispatcher, so later rejection by no-selected-weapon, jam, action state, no ammo or full projectile pool can still consume cooldown. Projectile allocation checks the 8-slot pool before the ammo helper, therefore a full pool does not consume ammo. Weapons 0 and 3 share the same plasma-cell counter. The selectedWeapon=`0xFF` cadence overread is now modeled with audited initialized bytes (DOS1.2=`0x33`, DOS2.0=`0x65`, Win1.10=`0x03`), exposing a bounded cross-build timing divergence before the common FIRE rejection. See [v0.44 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V044_REMAX_WEAPON_FIRE_CLOSURE.md) and [C++ contract](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV044WeaponFireClosure.hpp). **Natural Multi Plasma tick timing, weapon-switch-with-held-FIRE, multi-target hitscan, jam/event side effects and DEMO/RNG coupling remain OPEN.**
+
+<a id="update-047"></a>
+
+## v0.43 / 2026-10-18 runtime + GUARD + renderer sync
+
+**v0.43 / 2026-10-18 runtime + GUARD + renderer sync:** integrates the newest live DOSBox-X evidence and the latest static closures. Main now includes a natural DOS 1.2 E1M1 door USE witness (record 8 state 1→2, flag 0→1 with other door records unchanged), a 32,768-instruction world-update trace with 33/33 live queue entries matching the RAM snapshot order, and a deep DOS shutdown/CRT evidence summary covering video mode 3, WORX/music stop, PIT divisor `0xFFFF`, interrupt restoration, mouse/RTC cleanup, XMS cache release, exit-BSF processing, CRT callbacks, restore INT00 and normal `INT 21h/AH=4Ch` exit code 0. The same release packages the v0.80 complete local GUARD contact-damage switch, the v0.81 OLD19/NEW26 GUARD initializer and conditional Dancers area-wake RNG divergence, the corrected E1M9 radio writer/reader lifecycle, and the DOS v2.0 bounded sprite-pixel contract. **These are scoped original-static/runtime closures, not whole-project zero-diff parity.** See [v0.43 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V043_REMAX_RUNTIME_STATIC_SYNC.md), [runtime/GUARD contracts](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV043RuntimeClosure.hpp), [E1M9 lifecycle](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/E1M9_STATIC_LIFECYCLE.md), and [sprite pixel contract](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/RENDERER_STATIC_PIXEL_CONTRACT.md).
+
+<a id="update-048"></a>
+
+## v0.42 / 2026-10-18 static sync
+
+**v0.42 / 2026-10-18 static sync:** integrates the newest October 18 RE passes. The incoming-damage path is now explicitly version-scoped: DOS 1.0–1.9 gates protection/game-state before calculation, while DOS 2.0 and Win16 calculate first, can consume class-dependent RNG and arm the feedback timer before a later protection return. The SAVE/LOAD model now records SECRET fixed-32-byte I/O with only N meaningful panel states, byte-to-WORD restore, and 64-door LOAD prefix preservation (DOS 8/18 bytes, Win16 12/22). A corrected pool audit separates DOS/Win dynamic-wall and class-3 geometry families, reclassifies 62 ambiguous writer sites and records 72 direct OBJECT map-pointer update call edges. Win16 E2M10 mode-4 queue ACK behavior and NE timing-import relocation ordinals are also captured. Adds C++20/Python regressions, CSV facts and [v0.42 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V042_REMAX_OCT18_STATIC_SYNC.md). **No live original trace, pixel zero-diff or audio zero-diff is claimed.**
+
+<a id="update-049"></a>
+
+## v0.41 / 2026-10-18 latest static-evidence consolidation
+
+**v0.41 / 2026-10-18 latest static-evidence consolidation:** synchronizes the repository with the late 17 October RE passes. The largest correction is E1M9 MAP-layer ownership: Win16 1.3–1.10 radio mode-0 clears the **WALL byte**, not the OBJECT byte, so radio activation does not by itself remove the projectile GUARD-property gate. New bounded contracts also encode the split 16+16 projectile deadline rearm clock hazard, E2M10 palette-effect-before-hit ordering, the nested scheduler global-frame-scratch/local-epoch split, the 12-build OBJECT+18/generation/damage correspondence, exact source pool capacities (including E3M8 SECRET 32/32 and E2M10 door-controller 60/64), matched MAP+IMG resource provenance, and a DOS sprite-compositor reference (100×18-byte slots, status-only init, v1.7+ lazy-load branch). Adds C++20/Python regressions, machine-readable static facts and a consolidated report. **No live original trace, pixel zero-diff or audio zero-diff is claimed.** See [v0.41 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V041_REMAX_LATEST_STATIC_CONSOLIDATION.md), [evidence contracts](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV041LatestStaticEvidence.hpp) and [frame compositor](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV041FrameCompositor.hpp).
+
+<a id="update-050"></a>
+
+## v0.40 / 2026-10-17 projectile one-level reentry closure
+
+**v0.40 / 2026-10-17 projectile one-level reentry closure:** narrows the E2M10 same-slot ABA hypothesis by combining the audited deferred state-2 write, pool state dispatch, allocator ordering and property-`0x40` counter semantics. A nested pool can revisit the suspended parent slot while it is still `state=1`, but a slot visit that **starts in state 1 never falls through to the state-2 expiry arm in that same visit**. It therefore ends that visit as state 1 (no hit) or state 2 (accepted hit), not state 0. Because input/FIRE allocation occurs later in the same nested outer-scheduler invocation, that allocator cannot reuse the same slot through the standard lifecycle. A same-path second E2M10 hit advances the counter `20 -> 21` and does not immediately launch another nested wait. Thus the **direct one-level self-reentry path cannot perform state1→2→0→reuse before the suspended parent resumes**. Independent nested callbacks, aliased state writers, SAVE/LOAD/IRQ effects and a genuine second pool entry beginning in state 2 remain OPEN. Adds bounded C++20/Python models, regressions, CI and [v0.40 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V040_REMAX_PROJECTILE_REENTRY_ABA_NARROWING.md).
+
+<a id="update-051"></a>
+
+## v0.39 / 2026-10-17 late-day static closure
+
+**v0.39 / 2026-10-17 late-day static closure:** packages the newest RE-first findings into buildable evidence models. The E2M10 property-`0x40` special collision now has a 12-build static return chain proving normal script return `AL=1` -> accepted collision -> IMPACT, so that path does **not** execute the DDA budget reread. E1M9 radio/state-`0x14` timing is narrowed to a 112-count lifecycle with global stop on the 113th slow update under unchanged-state assumptions; the upward GUARD scheduler can create same-pass state asymmetry. The FIRE cadence core is modeled with original thresholds `[2,1,3,1]`, fresh-edge requirements for weapons 0–2 and the held-FIRE weapon-3 exception. Cannon/class-`0x19` weapon damage is zero in all 12 audited builds but still consumes the pre-dispatch RNG draw. DOS clock routing now distinguishes RTC cache, BIOS BDA ×55 and system-date/time backends, and the renderer angle initializer is recorded as a one-turn ±360 correction rather than true modulo. Adds C++20/Python reference models, synthetic regressions, CI and a consolidated report. **No new original-runtime trace, framebuffer zero-diff or audio zero-diff is claimed.** See [v0.39 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V039_REMAX_LATE_STATIC_CLOSURES.md), [C++ contracts](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV039LateStaticClosures.hpp) and [Python models](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v039_static_models.py).
+
+<a id="update-052"></a>
+
+## v0.38 / 2026-10-17 three-day RE consolidation
+
+**v0.38 / 2026-10-17 three-day RE consolidation:** adds a buildable evidence layer for several high-value findings from 14–16 October that were still scattered outside the main N3D code path. New bounded models cover the Win16 v1.8→v1.10 joystick recalibration clamp, Magic Eye automap RNG draw budget, rare door state 4 blocking, the 18-byte door versus 14-byte four-VEC one-extra-update cleanup difference, Hamerstein/class `0x16` damage direction plus pre-dispatch RNG consumption, signed E2M10 every-20 semantics, raw low16 timing averages, DOS v1.2/v2.0 initial graphics/SAVE 4 KiB aliasing, and the projectile callback mixed-generation invariant. Adds a C++20 header, C++ regression, data-free Python oracle/tests, CI wiring and a consolidated report. **No fresh original DOSBox-X/OTVDM trace, framebuffer zero-diff or audio zero-diff is claimed, so full runtime parity remains open.** See [v0.38 consolidation](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V038_REMAX_THREE_DAY_CONSOLIDATION.md), [C++ models](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV038ThreeDayFindings.hpp) and [Python oracle](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v038_recent_models.py).
+
+<a id="update-053"></a>
+
+## v0.37 / 2026-10-15 RE MAX scheduler catch-up closure
+
+**v0.37 / 2026-10-15 RE MAX scheduler catch-up closure:** Original DOS v2.0 unpacked MZ byte audit resolves the local timing rules in `BEB4` slow clock and `BEF4` calibrated frame clock. Each compares a quantized time key and **increments its counter only once when that key changes**, even after a large time jump. Outer `C1A8` uses unsigned due thresholds and resets the next eligibility to the **observed counter + 1** after one slow/frame pass, never replaying all overdue buckets locally. Normal FAST `C1EA` is suppressed in DEMO; DEMO FAST `C22E` is gated on **pre-render** odd `DS:4540`. **Both FAST paths receive slowCounter**, not frameCounter, which drives the separate `C150` second action `&7` gate. A rare unsigned delta of more than 500 legacy clock units activates `BDE4(1)`, `BDE4(0)` and a `BDF8` resample; clock rollback can satisfy this branch due to wrap. Adds a SHA-bound original opcode verifier checking 25 instruction windows, 13 branch targets and 13 direct calls, a version-scoped C++ reference, regression tests and Windows/Linux CI. **These facts close local static catch-up behavior, NOT nested interrupts, full RNG seed=1 timing, exact original display cadence or 1:1 rendering.** See [v0.37 evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V037_REMAX_SCHEDULER_CATCHUP_STATIC_CLOSURE.md), [read-only verifier](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v037_scheduler_gate_probe.py) and [C++ model](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV037SchedulerCatchup.hpp).
+
+<a id="update-054"></a>
+
+## v0.36 / 2026-10-15 RE MAX original-damage-order audit
+
+**v0.36 / 2026-10-15 RE MAX original-damage-order audit:** independently rechecked four fingerprinted DOS unpacked executables (**1.0, 1.7, 1.9, 2.0**). DOS 1.0/1.7/1.9 test protection and terminal state **before** calling incoming-damage producer; DOS v2.0 calls producer **before** those gates, and nonzero damage sets hit-indicator countdown to 3 even if the protection gate then preserves HP. For RNG-damage classes 08/09/0A/11..14 this can consume a draw without changing HP, a cross-version seed/order parity difference. Original DOS v2.0 hit timer update follows three code-4 draw dispatches and one code-3 clear dispatch over four timer-updater invocations, **not necessarily four rendered frames**. A rare branch condition also means HP=0 and damage=0 would be lethal if the unprotected nonterminal state reaches the comparison; its natural runtime reachability remains OPEN. Added strict SHA-gated four-build opcode/branch/FAR-target verifier, DOS v1.7 profile, build-scoped C++ reference model, data-free regression tests and CI. This revisits a lead from the pre-existing September cross-version audit; it does not claim original game execution or increase full 1:1 parity. See [v0.36 evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V036_REMAX_PROTECTED_HIT_RNG_ORDER.md), [verifier](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v036_protected_hit_probe.py) and [C++ reference](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV036ProtectedHitOrdering.hpp).
+
+<a id="update-055"></a>
+
+## v0.35 / 2026-10-15 RE MAX RNG census correction
+
+**v0.35 / 2026-10-15 RE MAX RNG census correction:** a fresh SHA-256-gated scan of the original DOS v2.0 unpacked load image proves **22** literal direct far-CALL sites to `0FBA:01A0`, not the 20 previously encoded. The two missing legitimate calls `8860` and `886C` are *incoming-player-damage* branches reached through the original 23-entry class table; masks are `RNG&7` for class 08, `RNG&15` for classes 09/0A and `RNG&31` for classes 11..14 (existing `887C`). The strict FAST/RNG Python verifier, v0.20 C++ caller table, v0.22 evidence record and v0.26 22-entry immediate-consumer registry are corrected. Further recovered static consumers include GUARD activation `5582` (`RNG%8`), projected OBJECT variant rejection `B276` (possibly multiple draws), numeric class SFX/effect selection, and resource modulo-7 loops at `9FE3/A047` whose comparison with 7 is locally unreachable but whose table-value rejection remains functional. Adds a read-only original-image verifier, 23 instruction-window witnesses, exact class dispatch checks, synthetic C++/Python tests and CI. **This is a corrected static caller census, not a complete indirect-call inventory or measured DEMO seed=1 runtime order.** See [v0.35 evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V035_REMAX_RNG_22_CALLSITE_CENSUS.md), [RNG verifier](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v035_rng_census.py) and [C++ census](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV035RngCensus.hpp).
+
+<a id="update-056"></a>
+
+## v0.34 / 2026-10-15 RE MAX original-binary call-graph audit
+
+**v0.34 / 2026-10-15 RE MAX original-binary call-graph audit:** DOS v2.0 OBJECT animation updates are now grounded in two conditional rendering/projection routes rather than the disproven `0E50` all-OBJECT hypothesis. `C1A8 → BF36 → 2500 → 241E` advances SPAN-associated OBJECT frames after a deadline and nonzero descriptor gate. `BF36 → 21F0 → B2D4 → B22C/B17E` advances projected objects after flags, clipping and class-specific conditions; projectile update `8230` independently calls `B2D4`. Span animation can invoke RNG at `2478`, relevant to DEMO determinism. DEMO FAST at `C22E` tests the existing frame-generation low bit *before* `BF36` increments it. The first FAST child `C51A` is a RETF-only stub, not object logic. Adds canonical DOS build fingerprint-gated verification of 16 direct call edges and 18 opcode windows, C++ evidence predicates, synthetic regression tests and Windows/Linux CI. **An exhaustive generic OBJECT writer census, dynamic visibility effects and original-run runtime chronology remain OPEN.** See [v0.34 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V034_REMAX_OBJECT_ANIMATION_RENDER_BRANCHES.md), [original-byte probe](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v034_animation_probe.py) and [C++ evidence](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV034ObjectAnimationEvidence.hpp).
+
+<a id="update-057"></a>
+
+## v0.33 / 2026-10-14 RE MAX original-byte scheduler correction
+
+**v0.33 / 2026-10-14 RE MAX original-byte scheduler correction:** the former DOS v2.0 `0E50` generic-OBJECT candidate is definitively the six-byte **PUSH** updater. Its complete 292-byte updater body matches Win16 v1.10 NE seg3:`2210` after masking exactly 20 relocation/address-operand bytes; all 272 remaining instruction bytes are identical. The instruction-exact branch tests destination OBJECT property bits `0x06`, conditionally copies and clears MAP object bytes, commits X/Y, calls X/Y sorted-pointer-list repair, then decrements the PUSH counter. StartPush separately tests destination WALL bit `0x02` and sets counter 8. Updated scheduler/evidence registries, strict fingerprint-gated original-byte verifier, C++ reference primitives and synthetic CI regressions. **Generic OBJECT scheduler and full FAST/RNG/runtime timing remain OPEN; a defensive modern empty-target PUSH policy may diverge on nonblocking occupied cells.** See [v0.33 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V033_REMAX_PUSH_SCHEDULER_BINARY_CLOSURE.md), [verifier](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v033_push_verify.py) and [PUSH C++ reference](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV033PushScheduler.hpp).
+
+<a id="update-058"></a>
+
+## v0.32 / 2026-10-14 RE MAX original-binary audit
+
+**v0.32 / 2026-10-14 RE MAX original-binary audit:** verified five version-specific executable fingerprints (DOS 1.0/1.9/2.0 unpacked images, DOS 1.2 *packed* MZ candidate, Win16 1.10 raw NE) and checked 16 Win16 + 8 DOS v2.0 original instruction windows. Recovered the Win16 PUSH destination wall-property bit 0x02, 94-byte gameplay-block USER.SAV HP offset 0x206A (100 in supplied real save), exact nonlethal GUARD and Dracula writer addresses, DEMO/input 0x20 and 0x40 steps, DOS door retry=4 writer, Win16 projectile full-pool pre-ammo return, and DOS secret-panel endpoint cleanup. Added a build-hash-gated read-only verifier, synthetic tests and C++ proof registry, with no original game bytes redistributed. **These are narrow static/format closures, not 1:1 full runtime; first passable panel tick, total writer XREF census, DEMO scheduling, and full LOAD chronology are open.** See [v0.32 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V032_REMAX_ORIGINAL_BINARY_CLOSURES.md), [verifier](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_v032_static_verify.py), and [C++ evidence registry](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV032StaticClosure.hpp).
+
+<a id="update-059"></a>
+
+## v0.31 / 2026-10-14 RE MAX update
+
+**v0.31 / 2026-10-14 RE MAX update:** protects the modern `LevelState` PUSH implementation against overwriting a destination that becomes blocked mid-animation; a new no-original-assets C++ regression exercises blocked/resumed movement, same-ID occupancy and source mutation. Adds a strict, ordered four-scenario edge-trace comparator for PUSH, door auto-close, full projectile pool and secret-panel VEC geometry, with 11 synthetic Python tests and Windows/Linux CI wiring. CSV matching, even with declared capture envelopes, **does not establish original 1:1 runtime parity**. Door retry=4, pool-full ammo, secret-panel passability and scheduling remain evidence-scoped/open. The ordinary 100-HP Win16 cap was already verified in earlier health analysis, not discovered in v0.31. See [v0.31 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V031_REMAX_EDGE_CASE_CLOSURE.md), [edge comparison tool](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_edge_trace_compare.py) and [data-free PUSH test](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/pushable_blocked_test.cpp).
+
+<a id="update-060"></a>
+
+## v0.30 / 2026-10-14 RE MAX update
+
+**v0.30 / 2026-10-14 RE MAX update:** closes a *verification-harness gap*, not an original-game runtime gap: one syntactically valid LCG stream or matching final RNG state cannot prove the original draw order. Adds a strict original-vs-reconstruction FAST/RNG trace comparator (first divergent call/record, no sorting or silent re-alignment), tests for nested FAST callbacks and missing logger rows, a SHA-256 gate for the canonical **unpacked DOS v2.0** image, and per-CSV integrity/boundary envelopes. Integrates a build-scoped C++ closure model and synthetic Windows/Linux CI tests. A matching trace without captured event boundaries is labeled **unsealed**; even an attested match does not by itself prove a real original-game recording. No gameplay/pixel parity is claimed or percentage raised. See [v0.30 report](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V030_REMAX_DIFFERENTIAL_TRACE_CLOSURE.md), [Python comparator](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_trace_compare.py) and [C++ checks](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV030TraceClosure.hpp).
+
+<a id="update-061"></a>
+
+## v0.29 / 2026-10-14 RE MAX update
+
+**v0.29 / 2026-10-14 RE MAX update:** preserves the reported DOS v2.0 `1000:C150` FAST *direct-call* order, including the gated final `89A2`, in a version-scoped C++ evidence registry. Adds synthetic-tested Python/C++ FAST and seed-1 RNG trace diagnostics that detect first divergences while distinguishing nested calls from direct children. Records DOS v1.2/v2.0 state-4 door differences, PUSH blocked-step behavior, door retry=4, the E2M10 special-hit nested-scheduler lead, and post-LOAD first-tick uncertainty with explicit static/strong/open labels. **These are bounded prior static findings and diagnostic tools, not new original-runtime captures or proven 1:1 scheduler parity.** See [`docs/V029_REMAX_SCHEDULER_TRACE_AND_EDGE_CASES.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V029_REMAX_SCHEDULER_TRACE_AND_EDGE_CASES.md), [`src/re/N3DV029SchedulerEvidence.hpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV029SchedulerEvidence.hpp), and [`tools/n3d_trace_audit.py`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_trace_audit.py).
+
+<a id="update-062"></a>
+
+## v0.28 / 2026-10-09 RE evidence update
+
+**v0.28 / 2026-10-09 RE evidence update:** cross-checks independent DOS v2.0 documentation and the new native Win11 x64 rewrite, with explicit source attribution and no unverified 1:1 claims. Adds the original read-only Python tools [`n3d_bsf_audit.py`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_bsf_audit.py) (BSF header/chunk decode plus DOS/Win16 checksum verification) and [`n3d_demo_layout_probe.py`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tools/n3d_demo_layout_probe.py) (Win16 vs DOS-record interpretation, without guessing bit semantics), plus synthetic fixture tests and Windows/Linux CI. The prior BSF algorithm was already documented in v5; new work here is executable validation and cross-build evidence classification. See [`docs/V028_EXTERNAL_EVIDENCE_BSF_DEMO.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V028_EXTERNAL_EVIDENCE_BSF_DEMO.md). **No original game files or borrowed external source code are included; complete runtime/renderer parity remains open.**
+
+<a id="update-063"></a>
+
+## v0.27 / 2026-10-07 RE MAX update
+
+**v0.27 / 2026-10-07 RE MAX update:** projectile behavior is now represented as a build-scoped lifecycle evidence graph covering DOS v2.0 and Win16 v1.10. The graph preserves confirmed allocation/init/movement/collision/render anchors, the 8 x 42-byte composite pool, and the `0 -> 1 -> 2 -> 0` slot lifecycle. Strong-but-open edges such as next-tick movement after FIRE, full-pool ammo preservation, and stale projection-cache effects remain explicitly non-implementation-safe. See [`docs/V027_REMAX_PROJECTILE_LIFECYCLE.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V027_REMAX_PROJECTILE_LIFECYCLE.md) and [`tests/v027_projectile_lifecycle_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v027_projectile_lifecycle_test.cpp).
+
+<a id="update-064"></a>
+
+## v0.26 / 2026-10-07 RE MAX update
+
+**v0.26 / 2026-10-07 RE MAX update:** DOS v2.0 direct RNG callsites are now coupled to known GUARD/animation consumers with explicit confidence. Confirmed bindings include the animation `RNG&7` rejection-loop callsite, GUARD state-06 blocked-axis one-draw decision, and GUARD state-13 `RNG%80+8` timer. Planner callsites and the damage/pain callsite remain STRONG rather than promoted, while all other direct RNG callsites stay OPEN/Unassigned until runtime chronology closes them. See [`docs/V026_REMAX_GUARD_RNG_COUPLING.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V026_REMAX_GUARD_RNG_COUPLING.md) and [`tests/v026_guard_rng_coupling_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v026_guard_rng_coupling_test.cpp).
+
+<a id="update-065"></a>
+
+## v0.25 / 2026-10-07 RE MAX update
+
+**v0.25 / 2026-10-07 RE MAX update:** GUARD state changes are now tracked as a writer graph, separate from the state-handler table. Known Win16 v1.10 handler-level writes are recorded with exact handler addresses, while external transitions such as ordinary pain entry and the Dracula phase reset preserve their confirmed written values but keep `addressKnown=false` until the exact write instruction/XREF is pinned. See [`docs/V025_REMAX_GUARD_WRITER_GRAPH.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V025_REMAX_GUARD_WRITER_GRAPH.md) and [`tests/v025_guard_writer_graph_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v025_guard_writer_graph_test.cpp).
+
+<a id="update-066"></a>
+
+## v0.24 / 2026-10-07 RE MAX update
+
+**v0.24 / 2026-10-07 RE MAX update:** the Win16 v1.10 GUARD dispatcher is now represented as a 22-state evidence graph for states `0x00..0x15`. Each state carries its handler address, control-flow description, transition form, and separate control-flow versus semantic confidence. Confirmed transitions such as `01->02`, `06->03`, `10->0F`, `11->07`, plus `00/12/15 -> nextstate`, are regression-tested. DOS v2.0 `1000:59F0` remains dispatcher-level STRONG evidence only; per-state DOS handlers are not guessed. See [`docs/V024_REMAX_GUARD_STATE_GRAPH.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V024_REMAX_GUARD_STATE_GRAPH.md) and [`tests/v024_guard_state_graph_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v024_guard_state_graph_test.cpp).
+
+<a id="update-067"></a>
+
+## v0.23 / 2026-10-07 RE MAX update
+
+**v0.23 / 2026-10-07 RE MAX update:** cross-version mapping is now behavior-oriented rather than offset-oriented. `N3DV023CrossBuildSymbolMap.hpp` assigns stable behavior IDs to build-specific DOS v2.0 and Win16 v1.10 symbols, preserves per-entry confidence, and deliberately leaves missing equivalents unresolved instead of guessing addresses. A pair is considered confirmed only when both sides are present and CONFIRMED. See [`docs/V023_REMAX_CROSS_BUILD_SYMBOL_MAP.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V023_REMAX_CROSS_BUILD_SYMBOL_MAP.md) and [`tests/v023_cross_build_symbol_map_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v023_cross_build_symbol_map_test.cpp).
+
+<a id="update-068"></a>
+
+## v0.22 / 2026-10-07 RE MAX update
+
+**v0.22 / 2026-10-07 RE MAX update:** executable identity and RE confidence are now machine-readable. `N3DV022VersionEvidenceRegistry.hpp` introduces build profiles for DOS v1.0/v1.2/v1.9/v2.0 and Win16, but only DOS v2.0 carries a confirmed fingerprint until the other binaries are independently hashed. The same registry scopes facts to builds, records evidence provenance and closure tests, and exposes a promotion guard so only CONFIRMED facts can be treated as implementation-ready. See [`docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V022_REMAX_VERSION_EVIDENCE_REGISTRY.md) and [`tests/v022_version_evidence_registry_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v022_version_evidence_registry_test.cpp).
+
+<a id="update-069"></a>
+
+## v0.21 / 2026-10-07 RE MAX update
+
+**v0.21 / 2026-10-07 RE MAX update:** DOS v2.0 subsystem anchors and runtime regions are now centralized in an evidence map with confidence labels. The new layer classifies GUARD, player, projectile, action/FIRE, secret-panel and renderer addresses; keeps `0800:0E50` explicitly OPEN as an OBJECT-runtime candidate; and adds a relative-order verifier for captured traces without pretending the complete FAST/MAIN schedule is already known. See [`docs/V021_REMAX_SUBSYSTEM_EVIDENCE.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V021_REMAX_SUBSYSTEM_EVIDENCE.md) and [`tests/v021_subsystem_evidence_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v021_subsystem_evidence_test.cpp).
+
+<a id="update-070"></a>
+
+## v0.20 / 2026-10-07 RE MAX update
+
+**v0.20 / 2026-10-07 RE MAX update:** the project now has a dedicated deterministic verification harness for the remaining timing/RNG closure work. `N3DV020VerificationHarness` encodes the confirmed DOS v2.0 IRQ/clock/FAST/MAIN/outer-scheduler anchors, validates captured RNG transitions and known direct callsites, classifies scheduler trace events, and reports the first divergent address between traces. The unresolved `0800:0E50` OBJECT runtime site remains explicitly marked OPEN rather than being mislabeled as a proven scheduler. See [`docs/V020_REMAX_VERIFICATION_HARNESS.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V020_REMAX_VERIFICATION_HARNESS.md) and [`tests/v020_verification_harness_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v020_verification_harness_test.cpp).
+
+<a id="update-071"></a>
+
+## v0.19 / 2026-10-07 RE MAX update
+
+**v0.19 / 2026-10-07 RE MAX update:** another set of executable-backed runtime primitives is now represented directly in code. `N3DV019RuntimePrimitives` preserves the DOS v2.0 player collision footprint `0x1B`, the GUARD state-06 one-draw blocked-axis decision, planner/state-13 RNG timer formulas, the 2-unit secret-panel retraction step, and automap/detector drain intervals. Evidence confidence is encoded alongside the helpers so unresolved sliding order, exact scheduler interleaving and pool-full ammo behavior are not silently promoted to 1:1 facts. See [`docs/V019_REMAX_RUNTIME_PRIMITIVES.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V019_REMAX_RUNTIME_PRIMITIVES.md) and [`tests/v019_runtime_primitives_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v019_runtime_primitives_test.cpp).
+
+<a id="update-072"></a>
+
+## v0.18 / 2026-10-07 update
+
+**v0.18 / 2026-10-07 update:** October RE findings are now promoted into buildable C/C++ evidence modules instead of remaining only in research notes. `src/re/n3d_v018_facts.h` and `.c` encode build-scoped DOS v2.0 player, projectile, GUARD, RNG, secret-panel, renderer and scheduler anchors; `src/re/N3DV018Evidence.cpp` adds C++ compile-time layout checks; and `tests/v018_evidence_test.cpp` regression-tests the promoted facts and RNG sequence. Corrections from the latest audit are preserved explicitly: old Win16/DOS offsets are not treated as universal, `+0x50` is not promoted as an OBJECT stride, and secret panels are modeled as segmented VEC retraction rather than rigid pushwalls. See [`docs/V018_EVIDENCE_INTEGRATION.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/V018_EVIDENCE_INTEGRATION.md) and the October 1–7 research reports under [`docs/research/2026-10-01_07/`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/research/2026-10-01_07).
+
+<a id="update-073"></a>
+
+## v0.17 / 2026-09-29 update
+
+**v0.17 / 2026-09-29 update:** recovered executable behavior is now pushed further into the actual runtime source instead of living only in RE notes. `CombatSystem.hpp` implements the verified class × weapon resistance transform and difficulty scaling; `GuardSystem.hpp` exposes the verified positive-hit receiver outcome; `ObjectSystem.hpp` exposes executable-backed runtime/property predicates; and `ProjectileRuntime.hpp` adds explicit collision/impact decisions around the verified 8 × 42-byte projectile pool. Renderer code remains conservative where directional/vertical sprite selection is still behavioral rather than instruction-verified. See [`docs/PROJECT_STATUS_V017.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/PROJECT_STATUS_V017.md) and [`tests/v017_runtime_integration_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v017_runtime_integration_test.cpp).
+
+<a id="update-074"></a>
+
+## v0.16 / 2026-09-27 update
+
+**v0.16 / 2026-09-27 update:** cross-version function coverage is now represented explicitly in code instead of living only in audit prose. The current audited export contains 519 DOS function definitions and 967 Win16 definitions. Exact/strong fuzzy cross-version matching supports 429/519 DOS functions and 929/967 Win16 functions, leaving 90 DOS and 38 Win16 definitions requiring weak-match/manual boundary review. This is a function-identity/matching metric, **not** a percentage of semantic understanding. See [`src/re/N3DV016Coverage.hpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV016Coverage.hpp), [`tests/v016_coverage_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v016_coverage_test.cpp), and [`docs/PROJECT_STATUS_V016.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/PROJECT_STATUS_V016.md).
+
+<a id="update-075"></a>
+
+## v0.15 / 2026-09-27 update
+
+**v0.15 / 2026-09-27 update:** behavioral sprite/object spatial findings are now preserved explicitly instead of being folded into generic renderer assumptions. The new model distinguishes floor-, mid-height- and ceiling-anchored sprites; fixed versus view-dependent directional variants; collision/blocking behavior; and vertical oscillation. Current behavioral evidence records the Bat as a ceiling-associated animated GUARD with vertical bob/oscillation during attack behavior, while some world objects use player-view-dependent variants (for example front/side bed views). These are intentionally marked as `BEHAVIORAL` until exact executable writers/dispatchers are recovered. See [`src/re/N3DV015SpriteFacts.hpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV015SpriteFacts.hpp), [`tests/v015_sprite_facts_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v015_sprite_facts_test.cpp), and [`analysis/nite3w_sprite_object_spatial_2026-09-27.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/analysis/nite3w_sprite_object_spatial_2026-09-27.md).
+
+<a id="update-076"></a>
+
+## v0.14 / 2026-09-27 update
+
+**v0.14 / 2026-09-27 update:** the project now records a deeper whole-program reverse-engineering workflow in code and documentation. The v0.14 analysis model tracks CFG, SSA-style value flow, DFG, Use-Def/Def-Use chains, liveness, alias relationships, cyclomatic complexity, dominators, natural loops, interprocedural call graphs, cross-version matching and evidence provenance. See [`src/re/N3DV014Analysis.hpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV014Analysis.hpp), [`tests/v014_analysis_test.cpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/tests/v014_analysis_test.cpp), and [`docs/TOOLS_USED_V014.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/TOOLS_USED_V014.md).
+
+<a id="update-077"></a>
+
+## v0.13 / 2026-09-26 update
+
+**v0.13 / 2026-09-26 update:** the newest DOS/Win16 static-analysis pass is now encoded in source. Win16 v1.8 pushables use class `0x28`, a 6-byte PUSH record, cardinalized octant tables, and an 8-tick × 8-unit one-tile move. GUARD direction generation now preserves the audited ±8 movement and strategy-2 ±16 movement, and class-specific initialization from `FUN_1010_AF7E` is represented conservatively. New player direction globals and DOS v1.8/v2.0 table/function anchors are in [`src/re/N3DV013Facts_2026_09_26.hpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/N3DV013Facts_2026_09_26.hpp), covered by `n3d_v013_recovered_facts_test`.
+
+<a id="update-078"></a>
+
+## 2026-09-25 update
+
+**2026-09-25 update:** HUD/automap/menu dispatchers, renderer globals, GUARD state/field corrections, IMG/UIF HUD-bank facts, and CDC/MFC wrapper anchors are now encoded in [`src/re/Win16RecoveredFacts_2026_09_25.hpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/re/Win16RecoveredFacts_2026_09_25.hpp) with a regression test. The full evidence boundary is in [`docs/PROJECT_FINDINGS_DELTA_2026-09-25.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/PROJECT_FINDINGS_DELTA_2026-09-25.md). `LevelState` also now owns its definition tables and reserves moving pushable destinations to avoid dangling references and target overwrite races.
+
+<a id="update-079"></a>
+
+## v0.12 update
+
+**v0.12 update:** the 2026-09-23 audit maps the Win16 player projectile pool and save fields, and adds the executable-confirmed 100/10/2 HP fire damage values per simulation update. The IMG pass now separates the two 256-entry image directories from the two 90-byte sequence banks, preserves raw sequence records, and flags an unresolved overlap in the low bank. See [the IMG/seqdef audit](https://github.com/marek177/Nitemare3d-reversed/blob/main/analysis/nite3w_img_seqdef_2026-09-23.md) and [the consolidated delta](https://github.com/marek177/Nitemare3d-reversed/blob/main/docs/PROJECT_FINDINGS_DELTA_2026-09-23.md).
+
+<a id="update-080"></a>
+
+## v0.11 update
+
+**v0.11 update:** the 2026-09-23 raw-assembly pass resolves the Win16 renderer's occupied-column owner rules, texture-U corrections, 16.16 wall-column sampler, 16.16 span interpolation, and wall-animation update control flow; DOS E-20 contains matching texture-U/animation routines and independently confirms the sampler formulas. Findings are in [`analysis/nite3w_renderer_2026-09-23.md`](https://github.com/marek177/Nitemare3d-reversed/blob/main/analysis/nite3w_renderer_2026-09-23.md); the standalone reference code is [`src/renderer/Win16WallRasterCore.hpp`](https://github.com/marek177/Nitemare3d-reversed/blob/main/src/renderer/Win16WallRasterCore.hpp), with a CMake test target. The 2026-09-22 cross-thread consolidation and system audits remain linked below.
+
+Modern C++ reconstruction scaffold for the **Windows 3.1** version of Nitemare 3D. The design goal is to preserve the original data formats and reconstructed game logic while replacing obsolete Windows 3.x display plumbing (`WING.DLL` and `DISPDIB.DLL`) with **SDL3**.
