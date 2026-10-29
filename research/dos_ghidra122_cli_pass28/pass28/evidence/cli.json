@@ -1,0 +1,1760 @@
+{
+  "cases": 108,
+  "scope": "Original CLI conversion fragment, original sscanf and original viewport setter. Two downstream setter calls mocked. Stop after setter argument cleanup; full argv dispatcher not executed.",
+  "locations": [
+    {
+      "build": "10",
+      "entry": "144e:0458",
+      "width": "0x3f9c",
+      "format": "%d",
+      "dispatch_table": {
+        "address": "144e:0398",
+        "option": "v",
+        "targets": [
+          980,
+          988,
+          1012,
+          1020,
+          1030,
+          966,
+          966,
+          966,
+          966,
+          966,
+          1038,
+          966,
+          966,
+          1066,
+          1074,
+          966,
+          1082,
+          1090,
+          1098,
+          966,
+          966,
+          1112,
+          1152,
+          65367
+        ]
+      },
+      "instructions": [
+        {
+          "address": "144e:0458",
+          "bytes": "689c3f",
+          "disassembly": "PUSH 0x3f9c",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:045b",
+          "bytes": "68260a",
+          "disassembly": "PUSH 0xa26",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:045e",
+          "bytes": "46",
+          "disassembly": "INC SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:045f",
+          "bytes": "8bde",
+          "disassembly": "MOV BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:0461",
+          "bytes": "03de",
+          "disassembly": "ADD BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:0463",
+          "bytes": "ff31",
+          "disassembly": "PUSH word ptr [BX + DI]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:0465",
+          "bytes": "9ae0289b21",
+          "disassembly": "CALLF 0x2000:4290",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[219b:28e0]"
+        },
+        {
+          "address": "144e:046a",
+          "bytes": "83c406",
+          "disassembly": "ADD SP,0x6",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:046d",
+          "bytes": "80269c3ff8",
+          "disassembly": "AND byte ptr [0x3f9c],0xf8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:0472",
+          "bytes": "ff369c3f",
+          "disassembly": "PUSH word ptr [0x3f9c]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:0476",
+          "bytes": "9a620b7312",
+          "disassembly": "CALLF 0x1000:3292",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[1273:0b62]"
+        },
+        {
+          "address": "144e:047b",
+          "bytes": "83c402",
+          "disassembly": "ADD SP,0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "144e:047e",
+          "bytes": "eb05",
+          "disassembly": "JMP 0x1000:4965",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[144e:0485]"
+        }
+      ],
+      "sha256": "d70158d9f3199aff74190ca315a60931542ccc94b8847246a2a94d8d40e93702"
+    },
+    {
+      "build": "11",
+      "entry": "1452:04a8",
+      "width": "0x40a2",
+      "format": "%d",
+      "dispatch_table": {
+        "address": "1452:03ac",
+        "option": "v",
+        "targets": [
+          1000,
+          1008,
+          1032,
+          1040,
+          1050,
+          986,
+          986,
+          986,
+          986,
+          986,
+          1058,
+          986,
+          986,
+          1088,
+          1096,
+          1104,
+          1162,
+          1170,
+          1178,
+          986,
+          986,
+          1192,
+          1232,
+          65367
+        ]
+      },
+      "instructions": [
+        {
+          "address": "1452:04a8",
+          "bytes": "68a240",
+          "disassembly": "PUSH 0x40a2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04ab",
+          "bytes": "687f0a",
+          "disassembly": "PUSH 0xa7f",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04ae",
+          "bytes": "46",
+          "disassembly": "INC SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04af",
+          "bytes": "8bde",
+          "disassembly": "MOV BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04b1",
+          "bytes": "03de",
+          "disassembly": "ADD BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04b3",
+          "bytes": "ff31",
+          "disassembly": "PUSH word ptr [BX + DI]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04b5",
+          "bytes": "9ae427bc21",
+          "disassembly": "CALLF 0x2000:43a4",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[21bc:27e4]"
+        },
+        {
+          "address": "1452:04ba",
+          "bytes": "83c406",
+          "disassembly": "ADD SP,0x6",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04bd",
+          "bytes": "8026a240f8",
+          "disassembly": "AND byte ptr [0x40a2],0xf8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04c2",
+          "bytes": "ff36a240",
+          "disassembly": "PUSH word ptr [0x40a2]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04c6",
+          "bytes": "9a880b7512",
+          "disassembly": "CALLF 0x1000:32d8",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[1275:0b88]"
+        },
+        {
+          "address": "1452:04cb",
+          "bytes": "83c402",
+          "disassembly": "ADD SP,0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1452:04ce",
+          "bytes": "eb05",
+          "disassembly": "JMP 0x1000:49f5",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1452:04d5]"
+        }
+      ],
+      "sha256": "f54eba56e4c247288aec5212b335ee553aa1080219caf2137027a5c9b7474a52"
+    },
+    {
+      "build": "12",
+      "entry": "1453:04a4",
+      "width": "0x40a2",
+      "format": "%d",
+      "dispatch_table": {
+        "address": "1453:03a8",
+        "option": "v",
+        "targets": [
+          996,
+          1004,
+          1028,
+          1036,
+          1046,
+          982,
+          982,
+          982,
+          982,
+          982,
+          1054,
+          982,
+          982,
+          1084,
+          1092,
+          1100,
+          1158,
+          1166,
+          1174,
+          982,
+          982,
+          1188,
+          1228,
+          65367
+        ]
+      },
+      "instructions": [
+        {
+          "address": "1453:04a4",
+          "bytes": "68a240",
+          "disassembly": "PUSH 0x40a2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04a7",
+          "bytes": "68890a",
+          "disassembly": "PUSH 0xa89",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04aa",
+          "bytes": "46",
+          "disassembly": "INC SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04ab",
+          "bytes": "8bde",
+          "disassembly": "MOV BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04ad",
+          "bytes": "03de",
+          "disassembly": "ADD BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04af",
+          "bytes": "ff31",
+          "disassembly": "PUSH word ptr [BX + DI]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04b1",
+          "bytes": "9ae427c221",
+          "disassembly": "CALLF 0x2000:4404",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[21c2:27e4]"
+        },
+        {
+          "address": "1453:04b6",
+          "bytes": "83c406",
+          "disassembly": "ADD SP,0x6",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04b9",
+          "bytes": "8026a240f8",
+          "disassembly": "AND byte ptr [0x40a2],0xf8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04be",
+          "bytes": "ff36a240",
+          "disassembly": "PUSH word ptr [0x40a2]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04c2",
+          "bytes": "9a9a0b7512",
+          "disassembly": "CALLF 0x1000:32ea",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[1275:0b9a]"
+        },
+        {
+          "address": "1453:04c7",
+          "bytes": "83c402",
+          "disassembly": "ADD SP,0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1453:04ca",
+          "bytes": "eb05",
+          "disassembly": "JMP 0x1000:4a01",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1453:04d1]"
+        }
+      ],
+      "sha256": "0acdfc58ee45517a43b842bfae6b640a3ad17f49bfc0288a1c6be1c67ff9892a"
+    },
+    {
+      "build": "15",
+      "entry": "1458:049c",
+      "width": "0x4072",
+      "format": "%d",
+      "dispatch_table": {
+        "address": "1458:03a0",
+        "option": "v",
+        "targets": [
+          988,
+          996,
+          1020,
+          1028,
+          1038,
+          974,
+          974,
+          974,
+          974,
+          974,
+          1046,
+          974,
+          974,
+          1076,
+          1084,
+          1092,
+          1150,
+          1158,
+          1166,
+          974,
+          974,
+          1180,
+          1220,
+          65367
+        ]
+      },
+      "instructions": [
+        {
+          "address": "1458:049c",
+          "bytes": "687240",
+          "disassembly": "PUSH 0x4072",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:049f",
+          "bytes": "688d0a",
+          "disassembly": "PUSH 0xa8d",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04a2",
+          "bytes": "46",
+          "disassembly": "INC SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04a3",
+          "bytes": "8bde",
+          "disassembly": "MOV BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04a5",
+          "bytes": "03de",
+          "disassembly": "ADD BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04a7",
+          "bytes": "ff31",
+          "disassembly": "PUSH word ptr [BX + DI]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04a9",
+          "bytes": "9ae827c721",
+          "disassembly": "CALLF 0x2000:4458",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[21c7:27e8]"
+        },
+        {
+          "address": "1458:04ae",
+          "bytes": "83c406",
+          "disassembly": "ADD SP,0x6",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04b1",
+          "bytes": "80267240f8",
+          "disassembly": "AND byte ptr [0x4072],0xf8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04b6",
+          "bytes": "ff367240",
+          "disassembly": "PUSH word ptr [0x4072]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04ba",
+          "bytes": "9ac20b7712",
+          "disassembly": "CALLF 0x1000:3332",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[1277:0bc2]"
+        },
+        {
+          "address": "1458:04bf",
+          "bytes": "83c402",
+          "disassembly": "ADD SP,0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1458:04c2",
+          "bytes": "eb05",
+          "disassembly": "JMP 0x1000:4a49",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1458:04c9]"
+        }
+      ],
+      "sha256": "d75ece51f360d8a9b85126674b19901f57f3e83c0fdb24bc45cf4ec3f68a7c0b"
+    },
+    {
+      "build": "17",
+      "entry": "145f:04c8",
+      "width": "0x40b4",
+      "format": "%d",
+      "dispatch_table": {
+        "address": "145f:03aa",
+        "option": "w",
+        "targets": [
+          1000,
+          1030,
+          1038,
+          1062,
+          1070,
+          1080,
+          986,
+          986,
+          986,
+          986,
+          986,
+          1088,
+          986,
+          986,
+          1120,
+          1128,
+          1136,
+          1194,
+          1202,
+          1210,
+          986,
+          986,
+          1224,
+          1264
+        ]
+      },
+      "instructions": [
+        {
+          "address": "145f:04c8",
+          "bytes": "68b440",
+          "disassembly": "PUSH 0x40b4",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04cb",
+          "bytes": "68900a",
+          "disassembly": "PUSH 0xa90",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04ce",
+          "bytes": "46",
+          "disassembly": "INC SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04cf",
+          "bytes": "8bde",
+          "disassembly": "MOV BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04d1",
+          "bytes": "03de",
+          "disassembly": "ADD BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04d3",
+          "bytes": "ff31",
+          "disassembly": "PUSH word ptr [BX + DI]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04d5",
+          "bytes": "9ae427d121",
+          "disassembly": "CALLF 0x2000:44f4",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[21d1:27e4]"
+        },
+        {
+          "address": "145f:04da",
+          "bytes": "83c406",
+          "disassembly": "ADD SP,0x6",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04dd",
+          "bytes": "8026b440f8",
+          "disassembly": "AND byte ptr [0x40b4],0xf8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04e2",
+          "bytes": "ff36b440",
+          "disassembly": "PUSH word ptr [0x40b4]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04e6",
+          "bytes": "9ac20b7712",
+          "disassembly": "CALLF 0x1000:3332",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[1277:0bc2]"
+        },
+        {
+          "address": "145f:04eb",
+          "bytes": "83c402",
+          "disassembly": "ADD SP,0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "145f:04ee",
+          "bytes": "eb05",
+          "disassembly": "JMP 0x1000:4ae5",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[145f:04f5]"
+        }
+      ],
+      "sha256": "b95e697bbd91e9abc0a441b4e9b875cc817bc5ae4aa709a6eaad676024972d3c"
+    },
+    {
+      "build": "18",
+      "entry": "1476:04bc",
+      "width": "0x4144",
+      "format": "%d",
+      "dispatch_table": {
+        "address": "1476:039e",
+        "option": "w",
+        "targets": [
+          988,
+          1018,
+          1026,
+          1050,
+          1058,
+          1068,
+          974,
+          974,
+          974,
+          974,
+          974,
+          1076,
+          974,
+          974,
+          1108,
+          1116,
+          1124,
+          1182,
+          1190,
+          1198,
+          974,
+          974,
+          1212,
+          1252
+        ]
+      },
+      "instructions": [
+        {
+          "address": "1476:04bc",
+          "bytes": "684441",
+          "disassembly": "PUSH 0x4144",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04bf",
+          "bytes": "68be0a",
+          "disassembly": "PUSH 0xabe",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04c2",
+          "bytes": "46",
+          "disassembly": "INC SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04c3",
+          "bytes": "8bde",
+          "disassembly": "MOV BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04c5",
+          "bytes": "03de",
+          "disassembly": "ADD BX,SI",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04c7",
+          "bytes": "ff31",
+          "disassembly": "PUSH word ptr [BX + DI]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04c9",
+          "bytes": "9ae827ea21",
+          "disassembly": "CALLF 0x2000:4688",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[21ea:27e8]"
+        },
+        {
+          "address": "1476:04ce",
+          "bytes": "83c406",
+          "disassembly": "ADD SP,0x6",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04d1",
+          "bytes": "80264441f8",
+          "disassembly": "AND byte ptr [0x4144],0xf8",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04d6",
+          "bytes": "ff364441",
+          "disassembly": "PUSH word ptr [0x4144]",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04da",
+          "bytes": "9ac20b7712",
+          "disassembly": "CALLF 0x1000:3332",
+          "flow": "UNCONDITIONAL_CALL",
+          "targets": "[1277:0bc2]"
+        },
+        {
+          "address": "1476:04df",
+          "bytes": "83c402",
+          "disassembly": "ADD SP,0x2",
+          "flow": "FALL_THROUGH",
+          "targets": "[]"
+        },
+        {
+          "address": "1476:04e2",
+          "bytes": "eb05",
+          "disassembly": "JMP 0x1000:4c49",
+          "flow": "UNCONDITIONAL_JUMP",
+          "targets": "[1476:04e9]"
+        }
+      ],
+      "sha256": "943d063f34ddc889f74ad9bae696daef08fac445c1c1593508ed990a3aaaed7c"
+    }
+  ],
+  "results": [
+    {
+      "build": "10",
+      "input": "",
+      "initial_width": 311,
+      "scanf_return": 65535,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "x",
+      "initial_width": 311,
+      "scanf_return": 0,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "311",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "0",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "7",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 8,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "320",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 320,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "328",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 328,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "-1",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "-8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "32768",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 32768,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "65535",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "65536",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "65537",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "  +319junk",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 312,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "0x130",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "10",
+      "input": "0304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "",
+      "initial_width": 311,
+      "scanf_return": 65535,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "x",
+      "initial_width": 311,
+      "scanf_return": 0,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "311",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "0",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "7",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 8,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "320",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 320,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "328",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 328,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "-1",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "-8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "32768",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 32768,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "65535",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "65536",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "65537",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "  +319junk",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 312,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "0x130",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "11",
+      "input": "0304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "",
+      "initial_width": 311,
+      "scanf_return": 65535,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "x",
+      "initial_width": 311,
+      "scanf_return": 0,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "311",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "0",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "7",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 8,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "320",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 320,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "328",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 328,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "-1",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "-8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "32768",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 32768,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "65535",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "65536",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "65537",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "  +319junk",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 312,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "0x130",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "12",
+      "input": "0304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "",
+      "initial_width": 311,
+      "scanf_return": 65535,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "x",
+      "initial_width": 311,
+      "scanf_return": 0,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "311",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "0",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "7",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 8,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "320",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 320,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "328",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 328,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "-1",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "-8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "32768",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 32768,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "65535",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "65536",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "65537",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "  +319junk",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 312,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "0x130",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "15",
+      "input": "0304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "",
+      "initial_width": 311,
+      "scanf_return": 65535,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "x",
+      "initial_width": 311,
+      "scanf_return": 0,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "311",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "0",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "7",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 8,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "320",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 320,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "328",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 328,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "-1",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "-8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "32768",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 32768,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "65535",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "65536",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "65537",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "  +319junk",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 312,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "0x130",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "17",
+      "input": "0304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "",
+      "initial_width": 311,
+      "scanf_return": 65535,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "x",
+      "initial_width": 311,
+      "scanf_return": 0,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "311",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "0",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "7",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 8,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "320",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 320,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "328",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 328,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "-1",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "-8",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "32768",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 32768,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "65535",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 65528,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "65536",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "65537",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "  +319junk",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 312,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "0x130",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 0,
+      "dependency_calls": 2,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "input": "0304",
+      "initial_width": 311,
+      "scanf_return": 1,
+      "result_width": 304,
+      "dependency_calls": 2,
+      "passed": true
+    }
+  ]
+}
