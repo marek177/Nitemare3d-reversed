@@ -1,0 +1,125 @@
+decompile	commit	1d25:1f66	true		
+instruction	commit	1d25:1f66	c8140000	ENTER 0x14,0x0
+instruction	commit	1d25:1f6a	57	PUSH DI
+instruction	commit	1d25:1f6b	56	PUSH SI
+instruction	commit	1d25:1f6c	8d7eec	LEA DI,[BP + -0x14]
+instruction	commit	1d25:1f6f	be4441	MOV SI,0x4144
+instruction	commit	1d25:1f72	8cd0	MOV AX,SS
+instruction	commit	1d25:1f74	8ec0	MOV ES,AX
+instruction	commit	1d25:1f76	66b904000000	MOV ECX,0x4
+instruction	commit	1d25:1f7c	f366a5	MOVSD.REP ES:DI,SI
+instruction	commit	1d25:1f7f	bb1212	MOV BX,0x1212
+instruction	commit	1d25:1f82	8e066825	MOV ES,word ptr [0x2568]
+instruction	commit	1d25:1f86	895efc	MOV word ptr [BP + -0x4],BX
+instruction	commit	1d25:1f89	8c46fe	MOV word ptr [BP + -0x2],ES
+instruction	commit	1d25:1f8c	26803f00	CMP byte ptr ES:[BX],0x0
+instruction	commit	1d25:1f90	0f849400	JZ 0x1000:f278
+instruction	commit	1d25:1f94	8bf3	MOV SI,BX
+instruction	commit	1d25:1f96	8e5efe	MOV DS,word ptr [BP + -0x2]
+instruction	commit	1d25:1f99	8a04	MOV AL,byte ptr [SI]
+instruction	commit	1d25:1f9b	2ae4	SUB AH,AH
+instruction	commit	1d25:1f9d	2d0a00	SUB AX,0xa
+instruction	commit	1d25:1fa0	740c	JZ 0x1000:f1fe
+instruction	commit	1d25:1fa2	48	DEC AX
+instruction	commit	1d25:1fa3	7425	JZ 0x1000:f21a
+instruction	commit	1d25:1fa5	48	DEC AX
+instruction	commit	1d25:1fa6	743e	JZ 0x1000:f236
+instruction	commit	1d25:1fa8	48	DEC AX
+instruction	commit	1d25:1fa9	7457	JZ 0x1000:f252
+instruction	commit	1d25:1fab	eb6f	JMP 0x1000:f26c
+instruction	commit	1d25:1fae	837c0200	CMP word ptr [SI + 0x2],0x0
+instruction	commit	1d25:1fb2	7e04	JLE 0x1000:f208
+instruction	commit	1d25:1fb4	b001	MOV AL,0x1
+instruction	commit	1d25:1fb6	eb02	JMP 0x1000:f20a
+instruction	commit	1d25:1fb8	32c0	XOR AL,AL
+instruction	commit	1d25:1fba	8846f4	MOV byte ptr [BP + -0xc],AL
+instruction	commit	1d25:1fbd	8b4402	MOV AX,word ptr [SI + 0x2]
+instruction	commit	1d25:1fc0	99	CWD
+instruction	commit	1d25:1fc1	33c2	XOR AX,DX
+instruction	commit	1d25:1fc3	2bc2	SUB AX,DX
+instruction	commit	1d25:1fc5	8846f0	MOV byte ptr [BP + -0x10],AL
+instruction	commit	1d25:1fc8	eb52	JMP 0x1000:f26c
+instruction	commit	1d25:1fca	837c0200	CMP word ptr [SI + 0x2],0x0
+instruction	commit	1d25:1fce	7e04	JLE 0x1000:f224
+instruction	commit	1d25:1fd0	b001	MOV AL,0x1
+instruction	commit	1d25:1fd2	eb02	JMP 0x1000:f226
+instruction	commit	1d25:1fd4	32c0	XOR AL,AL
+instruction	commit	1d25:1fd6	8846f7	MOV byte ptr [BP + -0x9],AL
+instruction	commit	1d25:1fd9	8b4402	MOV AX,word ptr [SI + 0x2]
+instruction	commit	1d25:1fdc	99	CWD
+instruction	commit	1d25:1fdd	33c2	XOR AX,DX
+instruction	commit	1d25:1fdf	2bc2	SUB AX,DX
+instruction	commit	1d25:1fe1	8846f1	MOV byte ptr [BP + -0xf],AL
+instruction	commit	1d25:1fe4	eb36	JMP 0x1000:f26c
+instruction	commit	1d25:1fe6	837c0200	CMP word ptr [SI + 0x2],0x0
+instruction	commit	1d25:1fea	7e04	JLE 0x1000:f240
+instruction	commit	1d25:1fec	b001	MOV AL,0x1
+instruction	commit	1d25:1fee	eb02	JMP 0x1000:f242
+instruction	commit	1d25:1ff0	32c0	XOR AL,AL
+instruction	commit	1d25:1ff2	8846f6	MOV byte ptr [BP + -0xa],AL
+instruction	commit	1d25:1ff5	8b4402	MOV AX,word ptr [SI + 0x2]
+instruction	commit	1d25:1ff8	99	CWD
+instruction	commit	1d25:1ff9	33c2	XOR AX,DX
+instruction	commit	1d25:1ffb	2bc2	SUB AX,DX
+instruction	commit	1d25:1ffd	8846f3	MOV byte ptr [BP + -0xd],AL
+instruction	commit	1d25:2000	eb1a	JMP 0x1000:f26c
+instruction	commit	1d25:2002	837c0200	CMP word ptr [SI + 0x2],0x0
+instruction	commit	1d25:2006	7e04	JLE 0x1000:f25c
+instruction	commit	1d25:2008	b001	MOV AL,0x1
+instruction	commit	1d25:200a	eb02	JMP 0x1000:f25e
+instruction	commit	1d25:200c	32c0	XOR AL,AL
+instruction	commit	1d25:200e	8846f5	MOV byte ptr [BP + -0xb],AL
+instruction	commit	1d25:2011	8b4402	MOV AX,word ptr [SI + 0x2]
+instruction	commit	1d25:2014	99	CWD
+instruction	commit	1d25:2015	33c2	XOR AX,DX
+instruction	commit	1d25:2017	2bc2	SUB AX,DX
+instruction	commit	1d25:2019	8846f2	MOV byte ptr [BP + -0xe],AL
+instruction	commit	1d25:201c	83c612	ADD SI,0x12
+instruction	commit	1d25:201f	803c00	CMP byte ptr [SI],0x0
+instruction	commit	1d25:2022	0f8573ff	JNZ 0x1000:f1e9
+instruction	commit	1d25:2026	16	PUSH SS
+instruction	commit	1d25:2027	1f	POP DS
+instruction	commit	1d25:2028	807ef500	CMP byte ptr [BP + -0xb],0x0
+instruction	commit	1d25:202c	750c	JNZ 0x1000:f28a
+instruction	commit	1d25:202e	803e4d4100	CMP byte ptr [0x414d],0x0
+instruction	commit	1d25:2033	7405	JZ 0x1000:f28a
+instruction	commit	1d25:2035	9a8602271c	CALLF 0x1000:c4f6
+instruction	commit	1d25:203a	807ef500	CMP byte ptr [BP + -0xb],0x0
+instruction	commit	1d25:203e	740e	JZ 0x1000:f29e
+instruction	commit	1d25:2040	803e4d4100	CMP byte ptr [0x414d],0x0
+instruction	commit	1d25:2045	7507	JNZ 0x1000:f29e
+instruction	commit	1d25:2047	c646ff01	MOV byte ptr [BP + -0x1],0x1
+instruction	commit	1d25:204b	eb05	JMP 0x1000:f2a2
+instruction	commit	1d25:204e	c646ff00	MOV byte ptr [BP + -0x1],0x0
+instruction	commit	1d25:2052	a04b41	MOV AL,[0x414b]
+instruction	commit	1d25:2055	3846f3	CMP byte ptr [BP + -0xd],AL
+instruction	commit	1d25:2058	7410	JZ 0x1000:f2ba
+instruction	commit	1d25:205a	666800000200	PUSH 0x20000
+instruction	commit	1d25:2060	6a2e	PUSH 0x2e
+instruction	commit	1d25:2062	9ada03271c	CALLF 0x1000:c64a
+instruction	commit	1d25:2067	83c406	ADD SP,0x6
+instruction	commit	1d25:206a	b84441	MOV AX,0x4144
+instruction	commit	1d25:206d	8bf8	MOV DI,AX
+instruction	commit	1d25:206f	8d76ec	LEA SI,[BP + -0x14]
+instruction	commit	1d25:2072	1e	PUSH DS
+instruction	commit	1d25:2073	07	POP ES
+instruction	commit	1d25:2074	66b904000000	MOV ECX,0x4
+instruction	commit	1d25:207a	f366a5	MOVSD.REP ES:DI,SI
+instruction	commit	1d25:207d	803e4c4101	CMP byte ptr [0x414c],0x1
+instruction	commit	1d25:2082	1bc0	SBB AX,AX
+instruction	commit	1d25:2084	f7d8	NEG AX
+instruction	commit	1d25:2086	50	PUSH AX
+instruction	commit	1d25:2087	9a9201af16	CALLF 0x1000:6c82
+instruction	commit	1d25:208c	83c402	ADD SP,0x2
+instruction	commit	1d25:208f	6a02	PUSH 0x2
+instruction	commit	1d25:2091	9ae000271c	CALLF 0x1000:c350
+instruction	commit	1d25:2096	83c402	ADD SP,0x2
+instruction	commit	1d25:2099	807eff00	CMP byte ptr [BP + -0x1],0x0
+instruction	commit	1d25:209d	740a	JZ 0x1000:f2f9
+instruction	commit	1d25:209f	6a0c	PUSH 0xc
+instruction	commit	1d25:20a1	9a9c02271c	CALLF 0x1000:c50c
+instruction	commit	1d25:20a6	83c402	ADD SP,0x2
+instruction	commit	1d25:20a9	5e	POP SI
+instruction	commit	1d25:20aa	5f	POP DI
+instruction	commit	1d25:20ab	c9	LEAVE
+instruction	commit	1d25:20ac	cb	RETF
