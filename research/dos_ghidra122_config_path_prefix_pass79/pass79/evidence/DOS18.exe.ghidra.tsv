@@ -1,0 +1,40 @@
+decompile	path_concat	1277:0c20	true		
+instruction	path_concat	1277:0c20	55	PUSH BP
+instruction	path_concat	1277:0c21	8bec	MOV BP,SP
+instruction	path_concat	1277:0c23	57	PUSH DI
+instruction	path_concat	1277:0c24	56	PUSH SI
+instruction	path_concat	1277:0c25	bfdc3c	MOV DI,0x3cdc
+instruction	path_concat	1277:0c28	be6434	MOV SI,0x3464
+instruction	path_concat	1277:0c2b	8cd9	MOV CX,DS
+instruction	path_concat	1277:0c2d	8ec1	MOV ES,CX
+instruction	path_concat	1277:0c2f	b9ffff	MOV CX,0xffff
+instruction	path_concat	1277:0c32	33c0	XOR AX,AX
+instruction	path_concat	1277:0c34	f2ae	SCASB.REPNE ES:DI
+instruction	path_concat	1277:0c36	f7d1	NOT CX
+instruction	path_concat	1277:0c38	2bf9	SUB DI,CX
+instruction	path_concat	1277:0c3a	87fe	XCHG SI,DI
+instruction	path_concat	1277:0c3c	d1e9	SHR CX,0x1
+instruction	path_concat	1277:0c3e	f3a5	MOVSW.REP ES:DI,SI
+instruction	path_concat	1277:0c40	13c9	ADC CX,CX
+instruction	path_concat	1277:0c42	f3a4	MOVSB.REP ES:DI,SI
+instruction	path_concat	1277:0c44	be6434	MOV SI,0x3464
+instruction	path_concat	1277:0c47	8b7e06	MOV DI,word ptr [BP + 0x6]
+instruction	path_concat	1277:0c4a	b9ffff	MOV CX,0xffff
+instruction	path_concat	1277:0c4d	f2ae	SCASB.REPNE ES:DI
+instruction	path_concat	1277:0c4f	f7d1	NOT CX
+instruction	path_concat	1277:0c51	2bf9	SUB DI,CX
+instruction	path_concat	1277:0c53	8bd9	MOV BX,CX
+instruction	path_concat	1277:0c55	87fe	XCHG SI,DI
+instruction	path_concat	1277:0c57	b9ffff	MOV CX,0xffff
+instruction	path_concat	1277:0c5a	f2ae	SCASB.REPNE ES:DI
+instruction	path_concat	1277:0c5c	4f	DEC DI
+instruction	path_concat	1277:0c5d	8bcb	MOV CX,BX
+instruction	path_concat	1277:0c5f	d1e9	SHR CX,0x1
+instruction	path_concat	1277:0c61	f3a5	MOVSW.REP ES:DI,SI
+instruction	path_concat	1277:0c63	13c9	ADC CX,CX
+instruction	path_concat	1277:0c65	f3a4	MOVSB.REP ES:DI,SI
+instruction	path_concat	1277:0c67	b86434	MOV AX,0x3464
+instruction	path_concat	1277:0c6a	5e	POP SI
+instruction	path_concat	1277:0c6b	5f	POP DI
+instruction	path_concat	1277:0c6c	c9	LEAVE
+instruction	path_concat	1277:0c6d	cb	RETF

@@ -1,0 +1,39 @@
+decompile	path_concat	1277:0c20	true		
+instruction	path_concat	1277:0c20	c8520000	ENTER 0x52,0x0
+instruction	path_concat	1277:0c24	57	PUSH DI
+instruction	path_concat	1277:0c25	56	PUSH SI
+instruction	path_concat	1277:0c26	bf4c3c	MOV DI,0x3c4c
+instruction	path_concat	1277:0c29	8d76ae	LEA SI,[BP + -0x52]
+instruction	path_concat	1277:0c2c	8cd9	MOV CX,DS
+instruction	path_concat	1277:0c2e	8ec1	MOV ES,CX
+instruction	path_concat	1277:0c30	b9ffff	MOV CX,0xffff
+instruction	path_concat	1277:0c33	33c0	XOR AX,AX
+instruction	path_concat	1277:0c35	f2ae	SCASB.REPNE ES:DI
+instruction	path_concat	1277:0c37	f7d1	NOT CX
+instruction	path_concat	1277:0c39	2bf9	SUB DI,CX
+instruction	path_concat	1277:0c3b	87fe	XCHG SI,DI
+instruction	path_concat	1277:0c3d	d1e9	SHR CX,0x1
+instruction	path_concat	1277:0c3f	f3a5	MOVSW.REP ES:DI,SI
+instruction	path_concat	1277:0c41	13c9	ADC CX,CX
+instruction	path_concat	1277:0c43	f3a4	MOVSB.REP ES:DI,SI
+instruction	path_concat	1277:0c45	8d76ae	LEA SI,[BP + -0x52]
+instruction	path_concat	1277:0c48	8b7e06	MOV DI,word ptr [BP + 0x6]
+instruction	path_concat	1277:0c4b	b9ffff	MOV CX,0xffff
+instruction	path_concat	1277:0c4e	f2ae	SCASB.REPNE ES:DI
+instruction	path_concat	1277:0c50	f7d1	NOT CX
+instruction	path_concat	1277:0c52	2bf9	SUB DI,CX
+instruction	path_concat	1277:0c54	8bd9	MOV BX,CX
+instruction	path_concat	1277:0c56	87fe	XCHG SI,DI
+instruction	path_concat	1277:0c58	b9ffff	MOV CX,0xffff
+instruction	path_concat	1277:0c5b	f2ae	SCASB.REPNE ES:DI
+instruction	path_concat	1277:0c5d	4f	DEC DI
+instruction	path_concat	1277:0c5e	8bcb	MOV CX,BX
+instruction	path_concat	1277:0c60	d1e9	SHR CX,0x1
+instruction	path_concat	1277:0c62	f3a5	MOVSW.REP ES:DI,SI
+instruction	path_concat	1277:0c64	13c9	ADC CX,CX
+instruction	path_concat	1277:0c66	f3a4	MOVSB.REP ES:DI,SI
+instruction	path_concat	1277:0c68	8d46ae	LEA AX,[BP + -0x52]
+instruction	path_concat	1277:0c6b	5e	POP SI
+instruction	path_concat	1277:0c6c	5f	POP DI
+instruction	path_concat	1277:0c6d	c9	LEAVE
+instruction	path_concat	1277:0c6e	cb	RETF
