@@ -1,0 +1,30 @@
+decompile	error_return	21d1:05b7	true		
+instruction	error_return	21d1:05b7	7307	JNC 0x2000:22d0
+instruction	error_return	21d1:05b9	e80e00	CALL 0x2000:22da
+instruction	error_return	21d1:05bc	b8ffff	MOV AX,0xffff
+instruction	error_return	21d1:05bf	99	CWD
+instruction	error_return	21d1:05c0	8be5	MOV SP,BP
+instruction	error_return	21d1:05c2	5d	POP BP
+instruction	error_return	21d1:05c3	cb	RETF
+decompile	error_mapper	21d1:05ca	true		
+instruction	error_mapper	21d1:05ca	a2ea20	MOV [0x20ea],AL
+instruction	error_mapper	21d1:05cd	0ae4	OR AH,AH
+instruction	error_mapper	21d1:05cf	7522	JNZ 0x2000:2303
+instruction	error_mapper	21d1:05d1	803ee52003	CMP byte ptr [0x20e5],0x3
+instruction	error_mapper	21d1:05d6	720c	JC 0x2000:22f4
+instruction	error_mapper	21d1:05d8	3c22	CMP AL,0x22
+instruction	error_mapper	21d1:05da	730c	JNC 0x2000:22f8
+instruction	error_mapper	21d1:05dc	3c20	CMP AL,0x20
+instruction	error_mapper	21d1:05de	7204	JC 0x2000:22f4
+instruction	error_mapper	21d1:05e0	b005	MOV AL,0x5
+instruction	error_mapper	21d1:05e2	eb06	JMP 0x2000:22fa
+instruction	error_mapper	21d1:05e4	3c13	CMP AL,0x13
+instruction	error_mapper	21d1:05e6	7602	JBE 0x2000:22fa
+instruction	error_mapper	21d1:05e8	b013	MOV AL,0x13
+instruction	error_mapper	21d1:05ea	bb2421	MOV BX,0x2124
+instruction	error_mapper	21d1:05ed	d7	XLAT BX
+instruction	error_mapper	21d1:05ee	98	CBW
+instruction	error_mapper	21d1:05ef	a3dc20	MOV [0x20dc],AX
+instruction	error_mapper	21d1:05f2	c3	RET
+instruction	error_mapper	21d1:05f3	8ac4	MOV AL,AH
+instruction	error_mapper	21d1:05f5	ebf7	JMP 0x2000:22fe
