@@ -1,0 +1,62 @@
+decompile	glyph	1156:09c4	true		
+instruction	glyph	1156:09c4	55	PUSH BP
+instruction	glyph	1156:09c5	8bec	MOV BP,SP
+instruction	glyph	1156:09c7	57	PUSH DI
+instruction	glyph	1156:09c8	56	PUSH SI
+instruction	glyph	1156:09c9	1e	PUSH DS
+instruction	glyph	1156:09ca	a12e01	MOV AX,[0x12e]
+instruction	glyph	1156:09cd	837e0c00	CMP word ptr [BP + 0xc],0x0
+instruction	glyph	1156:09d1	7403	JZ 0x1000:1f36
+instruction	glyph	1156:09d3	a12c01	MOV AX,[0x12c]
+instruction	glyph	1156:09d6	8ec0	MOV ES,AX
+instruction	glyph	1156:09d8	8b4608	MOV AX,word ptr [BP + 0x8]
+instruction	glyph	1156:09db	bb5000	MOV BX,0x50
+instruction	glyph	1156:09de	f6e3	MUL BL
+instruction	glyph	1156:09e0	8bf8	MOV DI,AX
+instruction	glyph	1156:09e2	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	glyph	1156:09e5	8bc8	MOV CX,AX
+instruction	glyph	1156:09e7	d1e8	SHR AX,0x1
+instruction	glyph	1156:09e9	d1e8	SHR AX,0x1
+instruction	glyph	1156:09eb	03f8	ADD DI,AX
+instruction	glyph	1156:09ed	bac403	MOV DX,0x3c4
+instruction	glyph	1156:09f0	b002	MOV AL,0x2
+instruction	glyph	1156:09f2	ee	OUT DX,AL
+instruction	glyph	1156:09f3	42	INC DX
+instruction	glyph	1156:09f4	80e103	AND CL,0x3
+instruction	glyph	1156:09f7	b011	MOV AL,0x11
+instruction	glyph	1156:09f9	d2c0	ROL AL,CL
+instruction	glyph	1156:09fb	ee	OUT DX,AL
+instruction	glyph	1156:09fc	8ad8	MOV BL,AL
+instruction	glyph	1156:09fe	c5760e	LDS SI,[BP + 0xe]
+instruction	glyph	1156:0a01	8a6e0a	MOV CH,byte ptr [BP + 0xa]
+instruction	glyph	1156:0a04	ad	LODSW SI
+instruction	glyph	1156:0a05	8bd8	MOV BX,AX
+instruction	glyph	1156:0a07	80c707	ADD BH,0x7
+instruction	glyph	1156:0a0a	c0ef03	SHR BH,0x3
+instruction	glyph	1156:0a0d	57	PUSH DI
+instruction	glyph	1156:0a0e	53	PUSH BX
+instruction	glyph	1156:0a0f	33c0	XOR AX,AX
+instruction	glyph	1156:0a11	ac	LODSB SI
+instruction	glyph	1156:0a12	d3c0	ROL AX,CL
+instruction	glyph	1156:0a14	ee	OUT DX,AL
+instruction	glyph	1156:0a15	26882d	MOV byte ptr ES:[DI],CH
+instruction	glyph	1156:0a18	47	INC DI
+instruction	glyph	1156:0a19	c1c804	ROR AX,0x4
+instruction	glyph	1156:0a1c	ee	OUT DX,AL
+instruction	glyph	1156:0a1d	26882d	MOV byte ptr ES:[DI],CH
+instruction	glyph	1156:0a20	47	INC DI
+instruction	glyph	1156:0a21	c1c804	ROR AX,0x4
+instruction	glyph	1156:0a24	ee	OUT DX,AL
+instruction	glyph	1156:0a25	26882d	MOV byte ptr ES:[DI],CH
+instruction	glyph	1156:0a28	fecf	DEC BH
+instruction	glyph	1156:0a2a	75e3	JNZ 0x1000:1f6f
+instruction	glyph	1156:0a2c	5b	POP BX
+instruction	glyph	1156:0a2d	5f	POP DI
+instruction	glyph	1156:0a2e	83c750	ADD DI,0x50
+instruction	glyph	1156:0a31	fecb	DEC BL
+instruction	glyph	1156:0a33	75d8	JNZ 0x1000:1f6d
+instruction	glyph	1156:0a35	1f	POP DS
+instruction	glyph	1156:0a36	5e	POP SI
+instruction	glyph	1156:0a37	5f	POP DI
+instruction	glyph	1156:0a38	c9	LEAVE
+instruction	glyph	1156:0a39	cb	RETF
