@@ -1,0 +1,4 @@
+# Reproduce
+Extract the bundled dependency ZIP into baseline58/, preserving paths. With unicorn==2.1.4 run `python scripts/verify_cli_viewport.py`; expected72 passing cases. The script uses baseline instruction listings and original MZ inputs, plus pass75/evidence/parser_locations.json. Numeric conversion and unrelated parser calls are mocked; original dispatch and viewport chain execute.
+
+Ghidra12.2 PUBLIC20261016 / JDK25.0.2: baseline58/project N3D_Runtime54/inputs, process DOS*.exe readOnly/noanalysis, scriptPath pass75/ghidra_scripts, postScript RecoverCommandParser.java with absolute pass75/evidence directory. Script extends function bodies in memory; readOnly discards changes. Five decompilations fail, one succeeds. Logs and explicit status exports are included. Runtime/JDK not duplicated.

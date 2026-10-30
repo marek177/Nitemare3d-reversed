@@ -1,0 +1,70 @@
+function	145f:0332	145f:0521	recovered=false	decompile=false
+instruction	145f:0332	c8080000	ENTER 0x8,0x0
+instruction	145f:0336	57	PUSH DI
+instruction	145f:0337	56	PUSH SI
+instruction	145f:0338	c646fb00	MOV byte ptr [BP + -0x5],0x0
+instruction	145f:033c	b80100	MOV AX,0x1
+instruction	145f:033f	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	145f:0342	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	145f:0345	9a700c7712	CALLF 0x1000:33e0
+instruction	145f:034a	0e	PUSH CS
+instruction	145f:034b	e8befc	CALL 0x1000:45fc
+instruction	145f:034e	68710a	PUSH 0xa71
+instruction	145f:0351	9a8a24d121	CALLF 0x2000:419a
+instruction	145f:0356	83c402	ADD SP,0x2
+instruction	145f:0359	0bc0	OR AX,AX
+instruction	145f:035b	740b	JZ 0x1000:4958
+instruction	145f:035d	c6063f3c00	MOV byte ptr [0x3c3f],0x0
+instruction	145f:0362	c706323c1200	MOV word ptr [0x3c32],0x12
+instruction	145f:0368	be0100	MOV SI,0x1
+instruction	145f:036b	397606	CMP word ptr [BP + 0x6],SI
+instruction	145f:036e	0f8e8b01	JLE 0x1000:4aed
+instruction	145f:0372	8b7e08	MOV DI,word ptr [BP + 0x8]
+instruction	145f:0375	8bde	MOV BX,SI
+instruction	145f:0377	03de	ADD BX,SI
+instruction	145f:0379	03df	ADD BX,DI
+instruction	145f:037b	895ef8	MOV word ptr [BP + -0x8],BX
+instruction	145f:037e	8b1f	MOV BX,word ptr [BX]
+instruction	145f:0380	803f2d	CMP byte ptr [BX],0x2d
+instruction	145f:0383	740b	JZ 0x1000:4980
+instruction	145f:0385	57	PUSH DI
+instruction	145f:0386	ff7606	PUSH word ptr [BP + 0x6]
+instruction	145f:0389	0e	PUSH CS
+instruction	145f:038a	e893ff	CALL 0x1000:4910
+instruction	145f:038d	83c404	ADD SP,0x4
+instruction	145f:0390	8b5ef8	MOV BX,word ptr [BP + -0x8]
+instruction	145f:0393	8b1f	MOV BX,word ptr [BX]
+instruction	145f:0395	8a4701	MOV AL,byte ptr [BX + 0x1]
+instruction	145f:0398	98	CBW
+instruction	145f:0399	2d6100	SUB AX,0x61
+instruction	145f:039c	3d1700	CMP AX,0x17
+instruction	145f:039f	7739	JA 0x1000:49ca
+instruction	145f:03a1	03c0	ADD AX,AX
+instruction	145f:03a3	93	XCHG AX,BX
+instruction	145f:03a4	2effa7aa03	JMP word ptr CS:[BX + 0x3aa]
+instruction	145f:03da	57	PUSH DI
+instruction	145f:03db	ff7606	PUSH word ptr [BP + 0x6]
+instruction	145f:03de	0e	PUSH CS
+instruction	145f:03df	e83eff	CALL 0x1000:4910
+instruction	145f:03e2	83c404	ADD SP,0x4
+instruction	145f:03e5	e90d01	JMP 0x1000:4ae5
+instruction	145f:04f5	46	INC SI
+instruction	145f:04f6	3b7606	CMP SI,word ptr [BP + 0x6]
+instruction	145f:04f9	0f8c78fe	JL 0x1000:4965
+instruction	145f:04fd	0e	PUSH CS
+instruction	145f:04fe	e8d9fb	CALL 0x1000:46ca
+instruction	145f:0501	8a46fb	MOV AL,byte ptr [BP + -0x5]
+instruction	145f:0504	50	PUSH AX
+instruction	145f:0505	66ff76fc	PUSH dword ptr [BP + -0x4]
+instruction	145f:0509	9a1c270f1d	CALLF 0x1000:f80c
+instruction	145f:050e	83c406	ADD SP,0x6
+instruction	145f:0511	6a00	PUSH 0x0
+instruction	145f:0513	8a46fb	MOV AL,byte ptr [BP + -0x5]
+instruction	145f:0516	50	PUSH AX
+instruction	145f:0517	0e	PUSH CS
+instruction	145f:0518	e8c1fc	CALL 0x1000:47cc
+instruction	145f:051b	83c404	ADD SP,0x4
+instruction	145f:051e	5e	POP SI
+instruction	145f:051f	5f	POP DI
+instruction	145f:0520	c9	LEAVE
+instruction	145f:0521	cb	RETF
