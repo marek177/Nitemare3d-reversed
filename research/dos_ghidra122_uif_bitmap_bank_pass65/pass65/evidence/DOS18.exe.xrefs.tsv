@@ -1,0 +1,80 @@
+raw_loader	1d25:0198	UNCONDITIONAL_CALL	1d25:016e	CALLF 0x1000:40dc
+instruction	1d25:016e	1d25:016e	c8080000	ENTER 0x8,0x0
+instruction	1d25:016e	1d25:0172	57	PUSH DI
+instruction	1d25:016e	1d25:0173	56	PUSH SI
+instruction	1d25:016e	1d25:0174	8a5e06	MOV BL,byte ptr [BP + 0x6]
+instruction	1d25:016e	1d25:0177	881e8c36	MOV byte ptr [0x368c],BL
+instruction	1d25:016e	1d25:017b	2aff	SUB BH,BH
+instruction	1d25:016e	1d25:017d	38bf6a1c	CMP byte ptr [BX + 0x1c6a],BH
+instruction	1d25:016e	1d25:0181	0f85c700	JNZ 0x1000:d49c
+instruction	1d25:016e	1d25:0185	c6876a1c01	MOV byte ptr [BX + 0x1c6a],0x1
+instruction	1d25:016e	1d25:018a	69c3b004	IMUL AX,BX,0x4b0
+instruction	1d25:016e	1d25:018e	050000	ADD AX,0x0
+instruction	1d25:016e	1d25:0191	68b530	PUSH 0x30b5
+instruction	1d25:016e	1d25:0194	50	PUSH AX
+instruction	1d25:016e	1d25:0195	ff7606	PUSH word ptr [BP + 0x6]
+instruction	1d25:016e	1d25:0198	9a6c197712	CALLF 0x1000:40dc
+instruction	1d25:016e	1d25:019d	83c406	ADD SP,0x6
+instruction	1d25:016e	1d25:01a0	a08c36	MOV AL,[0x368c]
+instruction	1d25:016e	1d25:01a3	2ae4	SUB AH,AH
+instruction	1d25:016e	1d25:01a5	69c8b004	IMUL CX,AX,0x4b0
+instruction	1d25:016e	1d25:01a9	8bd8	MOV BX,AX
+instruction	1d25:016e	1d25:01ab	c1e309	SHL BX,0x9
+instruction	1d25:016e	1d25:01ae	81c10000	ADD CX,0x0
+instruction	1d25:016e	1d25:01b2	898f8e36	MOV word ptr [BX + 0x368e],CX
+instruction	1d25:016e	1d25:01b6	c7879036b530	MOV word ptr [BX + 0x3690],0x30b5
+instruction	1d25:016e	1d25:01bc	bf0200	MOV DI,0x2
+instruction	1d25:016e	1d25:01bf	be0100	MOV SI,0x1
+instruction	1d25:016e	1d25:01c2	8a1e8c36	MOV BL,byte ptr [0x368c]
+instruction	1d25:016e	1d25:01c6	2aff	SUB BH,BH
+instruction	1d25:016e	1d25:01c8	69c3b004	IMUL AX,BX,0x4b0
+instruction	1d25:016e	1d25:01cc	c1e307	SHL BX,0x7
+instruction	1d25:016e	1d25:01cf	03de	ADD BX,SI
+instruction	1d25:016e	1d25:01d1	c1e302	SHL BX,0x2
+instruction	1d25:016e	1d25:01d4	03c7	ADD AX,DI
+instruction	1d25:016e	1d25:01d6	8bc8	MOV CX,AX
+instruction	1d25:016e	1d25:01d8	050000	ADD AX,0x0
+instruction	1d25:016e	1d25:01db	bab530	MOV DX,0x30b5
+instruction	1d25:016e	1d25:01de	89878e36	MOV word ptr [BX + 0x368e],AX
+instruction	1d25:016e	1d25:01e2	89979036	MOV word ptr [BX + 0x3690],DX
+instruction	1d25:016e	1d25:01e6	8bd8	MOV BX,AX
+instruction	1d25:016e	1d25:01e8	8ec2	MOV ES,DX
+instruction	1d25:016e	1d25:01ea	268a07	MOV AL,byte ptr ES:[BX]
+instruction	1d25:016e	1d25:01ed	2ae4	SUB AH,AH
+instruction	1d25:016e	1d25:01ef	8bd9	MOV BX,CX
+instruction	1d25:016e	1d25:01f1	8e066825	MOV ES,word ptr [0x2568]
+instruction	1d25:016e	1d25:01f5	268a8f0100	MOV CL,byte ptr ES:[BX + 0x1]
+instruction	1d25:016e	1d25:01fa	2aed	SUB CH,CH
+instruction	1d25:016e	1d25:01fc	83c107	ADD CX,0x7
+instruction	1d25:016e	1d25:01ff	c1f903	SAR CX,0x3
+instruction	1d25:016e	1d25:0202	f7e9	IMUL CX
+instruction	1d25:016e	1d25:0204	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	1d25:016e	1d25:0207	c746fe0000	MOV word ptr [BP + -0x2],0x0
+instruction	1d25:016e	1d25:020c	0bc0	OR AX,AX
+instruction	1d25:016e	1d25:020e	7e2b	JLE 0x1000:d48b
+instruction	1d25:016e	1d25:0210	8976f8	MOV word ptr [BP + -0x8],SI
+instruction	1d25:016e	1d25:0213	8b76fe	MOV SI,word ptr [BP + -0x2]
+instruction	1d25:016e	1d25:0216	a08c36	MOV AL,[0x368c]
+instruction	1d25:016e	1d25:0219	2ae4	SUB AH,AH
+instruction	1d25:016e	1d25:021b	69c0b004	IMUL AX,AX,0x4b0
+instruction	1d25:016e	1d25:021f	03c7	ADD AX,DI
+instruction	1d25:016e	1d25:0221	03c6	ADD AX,SI
+instruction	1d25:016e	1d25:0223	050200	ADD AX,0x2
+instruction	1d25:016e	1d25:0226	68b530	PUSH 0x30b5
+instruction	1d25:016e	1d25:0229	50	PUSH AX
+instruction	1d25:016e	1d25:022a	9ac600b71f	CALLF 0x1000:fc36
+instruction	1d25:016e	1d25:022f	83c404	ADD SP,0x4
+instruction	1d25:016e	1d25:0232	46	INC SI
+instruction	1d25:016e	1d25:0233	3b76fc	CMP SI,word ptr [BP + -0x4]
+instruction	1d25:016e	1d25:0236	7cde	JL 0x1000:d466
+instruction	1d25:016e	1d25:0238	8b76f8	MOV SI,word ptr [BP + -0x8]
+instruction	1d25:016e	1d25:023b	8b46fc	MOV AX,word ptr [BP + -0x4]
+instruction	1d25:016e	1d25:023e	050200	ADD AX,0x2
+instruction	1d25:016e	1d25:0241	03f8	ADD DI,AX
+instruction	1d25:016e	1d25:0243	46	INC SI
+instruction	1d25:016e	1d25:0244	81fe8000	CMP SI,0x80
+instruction	1d25:016e	1d25:0248	0f8c76ff	JL 0x1000:d412
+instruction	1d25:016e	1d25:024c	5e	POP SI
+instruction	1d25:016e	1d25:024d	5f	POP DI
+instruction	1d25:016e	1d25:024e	c9	LEAVE
+instruction	1d25:016e	1d25:024f	cb	RETF
