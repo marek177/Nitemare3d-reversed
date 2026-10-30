@@ -1,0 +1,167 @@
+decompile	length	21ea:290e	true		
+instruction	length	21ea:290e	55	PUSH BP
+instruction	length	21ea:290f	8bec	MOV BP,SP
+instruction	length	21ea:2911	83ec08	SUB SP,0x8
+instruction	length	21ea:2914	56	PUSH SI
+instruction	length	21ea:2915	8b7606	MOV SI,word ptr [BP + 0x6]
+instruction	length	21ea:2918	0bf6	OR SI,SI
+instruction	length	21ea:291a	7c06	JL 0x2000:47c2
+instruction	length	21ea:291c	39362621	CMP word ptr [0x2126],SI
+instruction	length	21ea:2920	7f0c	JG 0x2000:47ce
+instruction	length	21ea:2922	c70616210900	MOV word ptr [0x2116],0x9
+instruction	length	21ea:2928	b8ffff	MOV AX,0xffff
+instruction	length	21ea:292b	99	CWD
+instruction	length	21ea:292c	eb61	JMP 0x2000:482f
+instruction	length	21ea:292e	b80100	MOV AX,0x1
+instruction	length	21ea:2931	50	PUSH AX
+instruction	length	21ea:2932	2bc0	SUB AX,AX
+instruction	length	21ea:2934	50	PUSH AX
+instruction	length	21ea:2935	50	PUSH AX
+instruction	length	21ea:2936	56	PUSH SI
+instruction	length	21ea:2937	9ada1bea21	CALLF 0x2000:3a7a
+instruction	length	21ea:293c	83c408	ADD SP,0x8
+instruction	length	21ea:293f	8946f8	MOV word ptr [BP + -0x8],AX
+instruction	length	21ea:2942	8956fa	MOV word ptr [BP + -0x6],DX
+instruction	length	21ea:2945	3dffff	CMP AX,0xffff
+instruction	length	21ea:2948	750c	JNZ 0x2000:47f6
+instruction	length	21ea:294a	3bd0	CMP DX,AX
+instruction	length	21ea:294c	7508	JNZ 0x2000:47f6
+instruction	length	21ea:294e	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	length	21ea:2951	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	length	21ea:2954	eb33	JMP 0x2000:4829
+instruction	length	21ea:2956	b80200	MOV AX,0x2
+instruction	length	21ea:2959	50	PUSH AX
+instruction	length	21ea:295a	2bc0	SUB AX,AX
+instruction	length	21ea:295c	50	PUSH AX
+instruction	length	21ea:295d	50	PUSH AX
+instruction	length	21ea:295e	56	PUSH SI
+instruction	length	21ea:295f	9ada1bea21	CALLF 0x2000:3a7a
+instruction	length	21ea:2964	83c408	ADD SP,0x8
+instruction	length	21ea:2967	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	length	21ea:296a	8956fe	MOV word ptr [BP + -0x2],DX
+instruction	length	21ea:296d	3b46f8	CMP AX,word ptr [BP + -0x8]
+instruction	length	21ea:2970	7505	JNZ 0x2000:4817
+instruction	length	21ea:2972	3b56fa	CMP DX,word ptr [BP + -0x6]
+instruction	length	21ea:2975	7412	JZ 0x2000:4829
+instruction	length	21ea:2977	33c0	XOR AX,AX
+instruction	length	21ea:2979	50	PUSH AX
+instruction	length	21ea:297a	ff76fa	PUSH word ptr [BP + -0x6]
+instruction	length	21ea:297d	ff76f8	PUSH word ptr [BP + -0x8]
+instruction	length	21ea:2980	56	PUSH SI
+instruction	length	21ea:2981	9ada1bea21	CALLF 0x2000:3a7a
+instruction	length	21ea:2986	83c408	ADD SP,0x8
+instruction	length	21ea:2989	8b46fc	MOV AX,word ptr [BP + -0x4]
+instruction	length	21ea:298c	8b56fe	MOV DX,word ptr [BP + -0x2]
+instruction	length	21ea:298f	5e	POP SI
+instruction	length	21ea:2990	8be5	MOV SP,BP
+instruction	length	21ea:2992	5d	POP BP
+instruction	length	21ea:2993	cb	RETF
+decompile	read	21ea:1e18	true		
+instruction	read	21ea:1e18	55	PUSH BP
+instruction	read	21ea:1e19	8bec	MOV BP,SP
+instruction	read	21ea:1e1b	83ec02	SUB SP,0x2
+instruction	read	21ea:1e1e	8b5e06	MOV BX,word ptr [BP + 0x6]
+instruction	read	21ea:1e21	3b1e2621	CMP BX,word ptr [0x2126]
+instruction	read	21ea:1e25	7206	JC 0x2000:3ccd
+instruction	read	21ea:1e27	f9	STC
+instruction	read	21ea:1e28	b80009	MOV AX,0x900
+instruction	read	21ea:1e2b	eb68	JMP 0x2000:3d35
+instruction	read	21ea:1e2d	33c0	XOR AX,AX
+instruction	read	21ea:1e2f	8b4e0a	MOV CX,word ptr [BP + 0xa]
+instruction	read	21ea:1e32	e361	JCXZ 0x2000:3d35
+instruction	read	21ea:1e34	f687282102	TEST byte ptr [BX + 0x2128],0x2
+instruction	read	21ea:1e39	755a	JNZ 0x2000:3d35
+instruction	read	21ea:1e3b	813e3225d6d6	CMP word ptr [0x2532],0xd6d6
+instruction	read	21ea:1e41	7504	JNZ 0x2000:3ce7
+instruction	read	21ea:1e43	ff163425	CALL word ptr [0x2534]
+instruction	read	21ea:1e47	8b4e0a	MOV CX,word ptr [BP + 0xa]
+instruction	read	21ea:1e4a	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	read	21ea:1e4d	b43f	MOV AH,0x3f
+instruction	read	21ea:1e4f	cd21	INT 0x21
+instruction	read	21ea:1e51	7304	JNC 0x2000:3cf7
+instruction	read	21ea:1e53	b409	MOV AH,0x9
+instruction	read	21ea:1e55	eb3e	JMP 0x2000:3d35
+instruction	read	21ea:1e57	f687282180	TEST byte ptr [BX + 0x2128],0x80
+instruction	read	21ea:1e5c	7437	JZ 0x2000:3d35
+instruction	read	21ea:1e5e	80a72821fb	AND byte ptr [BX + 0x2128],0xfb
+instruction	read	21ea:1e63	56	PUSH SI
+instruction	read	21ea:1e64	57	PUSH DI
+instruction	read	21ea:1e65	fc	CLD
+instruction	read	21ea:1e66	8bf2	MOV SI,DX
+instruction	read	21ea:1e68	8bfa	MOV DI,DX
+instruction	read	21ea:1e6a	8bc8	MOV CX,AX
+instruction	read	21ea:1e6c	e325	JCXZ 0x2000:3d33
+instruction	read	21ea:1e6e	b40d	MOV AH,0xd
+instruction	read	21ea:1e70	803c0a	CMP byte ptr [SI],0xa
+instruction	read	21ea:1e73	7505	JNZ 0x2000:3d1a
+instruction	read	21ea:1e75	808f282104	OR byte ptr [BX + 0x2128],0x4
+instruction	read	21ea:1e7a	ac	LODSB SI
+instruction	read	21ea:1e7b	3ac4	CMP AL,AH
+instruction	read	21ea:1e7d	7419	JZ 0x2000:3d38
+instruction	read	21ea:1e7f	3c1a	CMP AL,0x1a
+instruction	read	21ea:1e81	7507	JNZ 0x2000:3d2a
+instruction	read	21ea:1e83	808f282102	OR byte ptr [BX + 0x2128],0x2
+instruction	read	21ea:1e88	eb05	JMP 0x2000:3d2f
+instruction	read	21ea:1e8a	8805	MOV byte ptr [DI],AL
+instruction	read	21ea:1e8c	47	INC DI
+instruction	read	21ea:1e8d	e2eb	LOOP 0x2000:3d1a
+instruction	read	21ea:1e8f	8bc7	MOV AX,DI
+instruction	read	21ea:1e91	2bc2	SUB AX,DX
+instruction	read	21ea:1e93	5f	POP DI
+instruction	read	21ea:1e94	5e	POP SI
+instruction	read	21ea:1e95	e923e7	JMP 0x2000:245b
+instruction	read	21ea:1e98	83f901	CMP CX,0x1
+instruction	read	21ea:1e9b	7407	JZ 0x2000:3d44
+instruction	read	21ea:1e9d	803c0a	CMP byte ptr [SI],0xa
+instruction	read	21ea:1ea0	74eb	JZ 0x2000:3d2d
+instruction	read	21ea:1ea2	ebe6	JMP 0x2000:3d2a
+instruction	read	21ea:1ea4	f687282140	TEST byte ptr [BX + 0x2128],0x40
+instruction	read	21ea:1ea9	7418	JZ 0x2000:3d63
+instruction	read	21ea:1eab	b80044	MOV AX,0x4400
+instruction	read	21ea:1eae	cd21	INT 0x21
+instruction	read	21ea:1eb0	f7c22000	TEST DX,0x20
+instruction	read	21ea:1eb4	7509	JNZ 0x2000:3d5f
+instruction	read	21ea:1eb6	8d56ff	LEA DX,[BP + -0x1]
+instruction	read	21ea:1eb9	b43f	MOV AH,0x3f
+instruction	read	21ea:1ebb	cd21	INT 0x21
+instruction	read	21ea:1ebd	72d4	JC 0x2000:3d33
+instruction	read	21ea:1ebf	b00a	MOV AL,0xa
+instruction	read	21ea:1ec1	eb2c	JMP 0x2000:3d8f
+instruction	read	21ea:1ec3	c646ff00	MOV byte ptr [BP + -0x1],0x0
+instruction	read	21ea:1ec7	8d56ff	LEA DX,[BP + -0x1]
+instruction	read	21ea:1eca	b43f	MOV AH,0x3f
+instruction	read	21ea:1ecc	cd21	INT 0x21
+instruction	read	21ea:1ece	72c3	JC 0x2000:3d33
+instruction	read	21ea:1ed0	0bc0	OR AX,AX
+instruction	read	21ea:1ed2	7419	JZ 0x2000:3d8d
+instruction	read	21ea:1ed4	837e0a01	CMP word ptr [BP + 0xa],0x1
+instruction	read	21ea:1ed8	741f	JZ 0x2000:3d99
+instruction	read	21ea:1eda	b9ffff	MOV CX,0xffff
+instruction	read	21ea:1edd	8bd1	MOV DX,CX
+instruction	read	21ea:1edf	b80142	MOV AX,0x4201
+instruction	read	21ea:1ee2	cd21	INT 0x21
+instruction	read	21ea:1ee4	b90100	MOV CX,0x1
+instruction	read	21ea:1ee7	807eff0a	CMP byte ptr [BP + -0x1],0xa
+instruction	read	21ea:1eeb	7407	JZ 0x2000:3d94
+instruction	read	21ea:1eed	b00d	MOV AL,0xd
+instruction	read	21ea:1eef	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	read	21ea:1ef2	eb96	JMP 0x2000:3d2a
+instruction	read	21ea:1ef4	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	read	21ea:1ef7	eb94	JMP 0x2000:3d2d
+instruction	read	21ea:1ef9	807eff0a	CMP byte ptr [BP + -0x1],0xa
+instruction	read	21ea:1efd	75db	JNZ 0x2000:3d7a
+instruction	read	21ea:1eff	ebbe	JMP 0x2000:3d5f
+decompile	close	21ea:1bba	true		
+instruction	close	21ea:1bba	55	PUSH BP
+instruction	close	21ea:1bbb	8bec	MOV BP,SP
+instruction	close	21ea:1bbd	8b5e06	MOV BX,word ptr [BP + 0x6]
+instruction	close	21ea:1bc0	3b1e2621	CMP BX,word ptr [0x2126]
+instruction	close	21ea:1bc4	7206	JC 0x2000:3a6c
+instruction	close	21ea:1bc6	b80009	MOV AX,0x900
+instruction	close	21ea:1bc9	f9	STC
+instruction	close	21ea:1bca	eb0b	JMP 0x2000:3a77
+instruction	close	21ea:1bcc	b43e	MOV AH,0x3e
+instruction	close	21ea:1bce	cd21	INT 0x21
+instruction	close	21ea:1bd0	7205	JC 0x2000:3a77
+instruction	close	21ea:1bd2	c687282100	MOV byte ptr [BX + 0x2128],0x0
+instruction	close	21ea:1bd7	e9cce9	JMP 0x2000:2446
