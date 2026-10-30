@@ -1,0 +1,43 @@
+decompile	lookup	1277:1766	true		
+instruction	lookup	1277:1766	55	PUSH BP
+instruction	lookup	1277:1767	8bec	MOV BP,SP
+instruction	lookup	1277:1769	56	PUSH SI
+instruction	lookup	1277:176a	803e780600	CMP byte ptr [0x678],0x0
+instruction	lookup	1277:176f	7456	JZ 0x1000:3f37
+instruction	lookup	1277:1771	c606780600	MOV byte ptr [0x678],0x0
+instruction	lookup	1277:1776	680080	PUSH -0x8000
+instruction	lookup	1277:1779	687906	PUSH 0x679
+instruction	lookup	1277:177c	9a761cea21	CALLF 0x2000:3b16
+instruction	lookup	1277:1781	83c404	ADD SP,0x4
+instruction	lookup	1277:1784	8bf0	MOV SI,AX
+instruction	lookup	1277:1786	83feff	CMP SI,-0x1
+instruction	lookup	1277:1789	750e	JNZ 0x1000:3f09
+instruction	lookup	1277:178b	688106	PUSH 0x681
+instruction	lookup	1277:178e	688906	PUSH 0x689
+instruction	lookup	1277:1791	9a0000b71f	CALLF 0x1000:fb70
+instruction	lookup	1277:1796	83c404	ADD SP,0x4
+instruction	lookup	1277:1799	68c000	PUSH 0xc0
+instruction	lookup	1277:179c	68d72b	PUSH 0x2bd7
+instruction	lookup	1277:179f	680000	PUSH 0x0
+instruction	lookup	1277:17a2	56	PUSH SI
+instruction	lookup	1277:17a3	9a9200b71f	CALLF 0x1000:fc02
+instruction	lookup	1277:17a8	83c408	ADD SP,0x8
+instruction	lookup	1277:17ab	3dc000	CMP AX,0xc0
+instruction	lookup	1277:17ae	740e	JZ 0x1000:3f2e
+instruction	lookup	1277:17b0	689f06	PUSH 0x69f
+instruction	lookup	1277:17b3	68a706	PUSH 0x6a7
+instruction	lookup	1277:17b6	9a0000b71f	CALLF 0x1000:fb70
+instruction	lookup	1277:17bb	83c404	ADD SP,0x4
+instruction	lookup	1277:17be	56	PUSH SI
+instruction	lookup	1277:17bf	9aba1bea21	CALLF 0x2000:3a5a
+instruction	lookup	1277:17c4	83c402	ADD SP,0x2
+instruction	lookup	1277:17c7	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	lookup	1277:17ca	8bc8	MOV CX,AX
+instruction	lookup	1277:17cc	03c0	ADD AX,AX
+instruction	lookup	1277:17ce	03c1	ADD AX,CX
+instruction	lookup	1277:17d0	03c0	ADD AX,AX
+instruction	lookup	1277:17d2	050000	ADD AX,0x0
+instruction	lookup	1277:17d5	bad72b	MOV DX,0x2bd7
+instruction	lookup	1277:17d8	5e	POP SI
+instruction	lookup	1277:17d9	c9	LEAVE
+instruction	lookup	1277:17da	cb	RETF
