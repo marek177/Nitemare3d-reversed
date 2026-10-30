@@ -1,0 +1,98 @@
+decompile	save	1277:0cae	true		
+instruction	save	1277:0cae	56	PUSH SI
+instruction	save	1277:0caf	666801838000	PUSH 0x808301
+instruction	save	1277:0cb5	68d205	PUSH 0x5d2
+instruction	save	1277:0cb8	9a761cc721	CALLF 0x2000:38e6
+instruction	save	1277:0cbd	83c406	ADD SP,0x6
+instruction	save	1277:0cc0	8bf0	MOV SI,AX
+instruction	save	1277:0cc2	0bf0	OR SI,AX
+instruction	save	1277:0cc4	7e17	JLE 0x1000:344d
+instruction	save	1277:0cc6	6a10	PUSH 0x10
+instruction	save	1277:0cc8	687240	PUSH 0x4072
+instruction	save	1277:0ccb	56	PUSH SI
+instruction	save	1277:0ccc	9a021fc721	CALLF 0x2000:3b72
+instruction	save	1277:0cd1	83c406	ADD SP,0x6
+instruction	save	1277:0cd4	56	PUSH SI
+instruction	save	1277:0cd5	9aba1bc721	CALLF 0x2000:382a
+instruction	save	1277:0cda	83c402	ADD SP,0x2
+instruction	save	1277:0cdd	5e	POP SI
+instruction	save	1277:0cde	cb	RETF
+decompile	write	21c7:1f02	true		
+instruction	write	21c7:1f02	55	PUSH BP
+instruction	write	21c7:1f03	8bec	MOV BP,SP
+instruction	write	21c7:1f05	83ec08	SUB SP,0x8
+instruction	write	21c7:1f08	8b5e06	MOV BX,word ptr [BP + 0x6]
+instruction	write	21c7:1f0b	3b1ee820	CMP BX,word ptr [0x20e8]
+instruction	write	21c7:1f0f	7207	JC 0x2000:3b88
+instruction	write	21c7:1f11	b80009	MOV AX,0x900
+instruction	write	21c7:1f14	f9	STC
+instruction	write	21c7:1f15	e9a3e6	JMP 0x2000:222b
+instruction	write	21c7:1f18	813ef424d6d6	CMP word ptr [0x24f4],0xd6d6
+instruction	write	21c7:1f1e	7504	JNZ 0x2000:3b94
+instruction	write	21c7:1f20	ff16f624	CALL word ptr [0x24f6]
+instruction	write	21c7:1f24	f687ea2020	TEST byte ptr [BX + 0x20ea],0x20
+instruction	write	21c7:1f29	740b	JZ 0x2000:3ba6
+instruction	write	21c7:1f2b	b80242	MOV AX,0x4202
+instruction	write	21c7:1f2e	33c9	XOR CX,CX
+instruction	write	21c7:1f30	8bd1	MOV DX,CX
+instruction	write	21c7:1f32	cd21	INT 0x21
+instruction	write	21c7:1f34	72df	JC 0x2000:3b85
+instruction	write	21c7:1f36	f687ea2080	TEST byte ptr [BX + 0x20ea],0x80
+instruction	write	21c7:1f3b	7470	JZ 0x2000:3c1d
+instruction	write	21c7:1f3d	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	write	21c7:1f40	1e	PUSH DS
+instruction	write	21c7:1f41	07	POP ES
+instruction	write	21c7:1f42	33c0	XOR AX,AX
+instruction	write	21c7:1f44	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	write	21c7:1f47	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	write	21c7:1f4a	fc	CLD
+instruction	write	21c7:1f4b	57	PUSH DI
+instruction	write	21c7:1f4c	56	PUSH SI
+instruction	write	21c7:1f4d	8bfa	MOV DI,DX
+instruction	write	21c7:1f4f	8bf2	MOV SI,DX
+instruction	write	21c7:1f51	8966f8	MOV word ptr [BP + -0x8],SP
+instruction	write	21c7:1f54	8b4e0a	MOV CX,word ptr [BP + 0xa]
+instruction	write	21c7:1f57	e33a	JCXZ 0x2000:3c03
+instruction	write	21c7:1f59	b00a	MOV AL,0xa
+instruction	write	21c7:1f5b	f2ae	SCASB.REPNE ES:DI
+instruction	write	21c7:1f5d	754c	JNZ 0x2000:3c1b
+instruction	write	21c7:1f5f	9a4220c721	CALLF 0x2000:3cb2
+instruction	write	21c7:1f64	3da800	CMP AX,0xa8
+instruction	write	21c7:1f67	7646	JBE 0x2000:3c1f
+instruction	write	21c7:1f69	83ec02	SUB SP,0x2
+instruction	write	21c7:1f6c	8bdc	MOV BX,SP
+instruction	write	21c7:1f6e	ba0002	MOV DX,0x200
+instruction	write	21c7:1f71	3d2802	CMP AX,0x228
+instruction	write	21c7:1f74	7303	JNC 0x2000:3be9
+instruction	write	21c7:1f76	ba8000	MOV DX,0x80
+instruction	write	21c7:1f79	2be2	SUB SP,DX
+instruction	write	21c7:1f7b	8bd4	MOV DX,SP
+instruction	write	21c7:1f7d	8bfa	MOV DI,DX
+instruction	write	21c7:1f7f	16	PUSH SS
+instruction	write	21c7:1f80	07	POP ES
+instruction	write	21c7:1f81	8b4e0a	MOV CX,word ptr [BP + 0xa]
+instruction	write	21c7:1f84	ac	LODSB SI
+instruction	write	21c7:1f85	3c0a	CMP AL,0xa
+instruction	write	21c7:1f87	740c	JZ 0x2000:3c05
+instruction	write	21c7:1f89	3bfb	CMP DI,BX
+instruction	write	21c7:1f8b	7419	JZ 0x2000:3c16
+instruction	write	21c7:1f8d	aa	STOSB ES:DI
+instruction	write	21c7:1f8e	e2f4	LOOP 0x2000:3bf4
+instruction	write	21c7:1f90	e82300	CALL 0x2000:3c26
+instruction	write	21c7:1f93	eb6b	JMP 0x2000:3c70
+instruction	write	21c7:1f95	b00d	MOV AL,0xd
+instruction	write	21c7:1f97	3bfb	CMP DI,BX
+instruction	write	21c7:1f99	7503	JNZ 0x2000:3c0e
+instruction	write	21c7:1f9b	e81800	CALL 0x2000:3c26
+instruction	write	21c7:1f9e	aa	STOSB ES:DI
+instruction	write	21c7:1f9f	b00a	MOV AL,0xa
+instruction	write	21c7:1fa1	ff46fc	INC word ptr [BP + -0x4]
+instruction	write	21c7:1fa4	ebe3	JMP 0x2000:3bf9
+instruction	write	21c7:1fa6	e80d00	CALL 0x2000:3c26
+instruction	write	21c7:1fa9	ebe2	JMP 0x2000:3bfd
+instruction	write	21c7:1fab	5e	POP SI
+instruction	write	21c7:1fac	5f	POP DI
+instruction	write	21c7:1fad	eb5f	JMP 0x2000:3c7e
+instruction	write	21c7:1faf	b8fcff	MOV AX,0xfffc
+instruction	write	21c7:1fb2	0e	PUSH CS
+instruction	write	21c7:1fb3	e814e3	CALL 0x2000:1f3a
