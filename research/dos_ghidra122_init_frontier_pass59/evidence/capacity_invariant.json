@@ -1,0 +1,20 @@
+{
+  "model_inputs_checked": 65536,
+  "successful_raw_AX_range": [
+    64,
+    32767
+  ],
+  "successful_capacity_KiB_range": [
+    64,
+    2048
+  ],
+  "largest_tentative_sum_blocks": 2112,
+  "largest_returned_nonnegative_offset_bytes": 2097152,
+  "conditions": [
+    "manager detection succeeds",
+    "allocate and lock paths pass signed status guards",
+    "used starts at0",
+    "only validated store transitions update used and their capacity check succeeds"
+  ],
+  "limit": "Conditional arithmetic argument; arbitrary memory writes, alternate entry paths and real manager reporting policy are not established by this model. This is not65536 machine executions."
+}
