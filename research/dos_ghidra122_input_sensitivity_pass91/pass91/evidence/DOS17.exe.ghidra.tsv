@@ -1,0 +1,32 @@
+decompile	Mouse	1699:059c	true		
+instruction	Mouse	1699:059c	55	PUSH BP
+instruction	Mouse	1699:059d	8bec	MOV BP,SP
+instruction	Mouse	1699:059f	a0b840	MOV AL,[0x40b8]
+instruction	Mouse	1699:05a2	2ae4	SUB AH,AH
+instruction	Mouse	1699:05a4	f76e08	IMUL word ptr [BP + 0x8]
+instruction	Mouse	1699:05a7	b93200	MOV CX,0x32
+instruction	Mouse	1699:05aa	99	CWD
+instruction	Mouse	1699:05ab	f7f9	IDIV CX
+instruction	Mouse	1699:05ad	8b4e06	MOV CX,word ptr [BP + 0x6]
+instruction	Mouse	1699:05b0	03c9	ADD CX,CX
+instruction	Mouse	1699:05b2	3bc1	CMP AX,CX
+instruction	Mouse	1699:05b4	7e02	JLE 0x1000:6f48
+instruction	Mouse	1699:05b6	8bc1	MOV AX,CX
+instruction	Mouse	1699:05b8	c9	LEAVE
+instruction	Mouse	1699:05b9	cb	RETF
+decompile	Joystick	1699:05ba	true		
+instruction	Joystick	1699:05ba	55	PUSH BP
+instruction	Joystick	1699:05bb	8bec	MOV BP,SP
+instruction	Joystick	1699:05bd	a0b940	MOV AL,[0x40b9]
+instruction	Joystick	1699:05c0	2ae4	SUB AH,AH
+instruction	Joystick	1699:05c2	f76e08	IMUL word ptr [BP + 0x8]
+instruction	Joystick	1699:05c5	b9c800	MOV CX,0xc8
+instruction	Joystick	1699:05c8	99	CWD
+instruction	Joystick	1699:05c9	f7f9	IDIV CX
+instruction	Joystick	1699:05cb	8b4e06	MOV CX,word ptr [BP + 0x6]
+instruction	Joystick	1699:05ce	03c9	ADD CX,CX
+instruction	Joystick	1699:05d0	3bc1	CMP AX,CX
+instruction	Joystick	1699:05d2	7e02	JLE 0x1000:6f66
+instruction	Joystick	1699:05d4	8bc1	MOV AX,CX
+instruction	Joystick	1699:05d6	c9	LEAVE
+instruction	Joystick	1699:05d7	cb	RETF
