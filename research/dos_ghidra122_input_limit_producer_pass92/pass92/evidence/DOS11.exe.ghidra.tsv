@@ -1,0 +1,476 @@
+decompile	collector	1689:05e2	false	Low-level Error: Bad instruction count exceeded:
+    ...
+    Instruction at (ram,0x000103eb) overlaps instruction at (ram,0x000103ea)
+	Low-level Error: Bad instruction count exceeded:
+    ...
+    Instruction at (ram,0x000103eb) overlaps instruction at (ram,0x000103ea)
+
+instruction	collector	1689:05e2	c8180000	ENTER 0x18,0x0
+instruction	collector	1689:05e6	57	PUSH DI
+instruction	collector	1689:05e7	56	PUSH SI
+instruction	collector	1689:05e8	8d46f8	LEA AX,[BP + -0x8]
+instruction	collector	1689:05eb	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	collector	1689:05ee	833e743c01	CMP word ptr [0x3c74],0x1
+instruction	collector	1689:05f3	0f859505	JNZ 0x1000:741c
+instruction	collector	1689:05f7	803e370b00	CMP byte ptr [0xb37],0x0
+instruction	collector	1689:05fc	7420	JZ 0x1000:6eae
+instruction	collector	1689:05fe	8d46f6	LEA AX,[BP + -0xa]
+instruction	collector	1689:0601	50	PUSH AX
+instruction	collector	1689:0602	8d46fa	LEA AX,[BP + -0x6]
+instruction	collector	1689:0605	50	PUSH AX
+instruction	collector	1689:0606	8d4efc	LEA CX,[BP + -0x4]
+instruction	collector	1689:0609	51	PUSH CX
+instruction	collector	1689:060a	9a3c000b18	CALLF 0x1000:80ec
+instruction	collector	1689:060f	83c406	ADD SP,0x6
+instruction	collector	1689:0612	8b46fc	MOV AX,word ptr [BP + -0x4]
+instruction	collector	1689:0615	a36634	MOV [0x3466],AX
+instruction	collector	1689:0618	8b46fa	MOV AX,word ptr [BP + -0x6]
+instruction	collector	1689:061b	a36834	MOV [0x3468],AX
+instruction	collector	1689:061e	c606370b00	MOV byte ptr [0xb37],0x0
+instruction	collector	1689:0623	0e	PUSH CS
+instruction	collector	1689:0624	e86dfd	CALL 0x1000:6c24
+instruction	collector	1689:0627	8946f8	MOV word ptr [BP + -0x8],AX
+instruction	collector	1689:062a	0bc0	OR AX,AX
+instruction	collector	1689:062c	0f847c01	JZ 0x1000:703c
+instruction	collector	1689:0630	8a46f8	MOV AL,byte ptr [BP + -0x8]
+instruction	collector	1689:0633	2ae4	SUB AH,AH
+instruction	collector	1689:0635	8946e8	MOV word ptr [BP + -0x18],AX
+instruction	collector	1689:0638	3d2b00	CMP AX,0x2b
+instruction	collector	1689:063b	0f842901	JZ 0x1000:6ff8
+instruction	collector	1689:063f	7f19	JG 0x1000:6eea
+instruction	collector	1689:0641	3d1b00	CMP AX,0x1b
+instruction	collector	1689:0644	0f841801	JZ 0x1000:6ff0
+instruction	collector	1689:0648	0f876001	JA 0x1000:703c
+instruction	collector	1689:064c	0ac0	OR AL,AL
+instruction	collector	1689:064e	7426	JZ 0x1000:6f06
+instruction	collector	1689:0650	2c09	SUB AL,0x9
+instruction	collector	1689:0652	0f840201	JZ 0x1000:6fe8
+instruction	collector	1689:0656	e95301	JMP 0x1000:703c
+instruction	collector	1689:065a	2d2d00	SUB AX,0x2d
+instruction	collector	1689:065d	0f841501	JZ 0x1000:7006
+instruction	collector	1689:0661	2d0400	SUB AX,0x4
+instruction	collector	1689:0664	0f8c4401	JL 0x1000:703c
+instruction	collector	1689:0668	2d0800	SUB AX,0x8
+instruction	collector	1689:066b	0f8e1b01	JLE 0x1000:701a
+instruction	collector	1689:066f	2da700	SUB AX,0xa7
+instruction	collector	1689:0672	0f853601	JNZ 0x1000:703c
+instruction	collector	1689:0676	8a46f9	MOV AL,byte ptr [BP + -0x7]
+instruction	collector	1689:0679	2ae4	SUB AH,AH
+instruction	collector	1689:067b	3d8600	CMP AX,0x86
+instruction	collector	1689:067e	0f84ce00	JZ 0x1000:6fe0
+instruction	collector	1689:0682	0f8f2601	JG 0x1000:703c
+instruction	collector	1689:0686	2d3b00	SUB AX,0x3b
+instruction	collector	1689:0689	3d0900	CMP AX,0x9
+instruction	collector	1689:068c	0f871c01	JA 0x1000:703c
+instruction	collector	1689:0690	03c0	ADD AX,AX
+instruction	collector	1689:0692	93	XCHG AX,BX
+instruction	collector	1689:0693	2effa79806	JMP word ptr CS:[BX + 0x698]
+instruction	collector	1689:0750	9a1c0d1718	CALLF 0x1000:8e8c
+instruction	collector	1689:0755	eb55	JMP 0x1000:703c
+instruction	collector	1689:0758	9ae8261718	CALLF 0x1000:a858
+instruction	collector	1689:075d	eb4d	JMP 0x1000:703c
+instruction	collector	1689:0760	c706743c0000	MOV word ptr [0x3c74],0x0
+instruction	collector	1689:0766	eb44	JMP 0x1000:703c
+instruction	collector	1689:0768	f606ae3e40	TEST byte ptr [0x3eae],0x40
+instruction	collector	1689:076d	7412	JZ 0x1000:7011
+instruction	collector	1689:076f	fe06e540	INC byte ptr [0x40e5]
+instruction	collector	1689:0773	eb0c	JMP 0x1000:7011
+instruction	collector	1689:0776	f606ae3e40	TEST byte ptr [0x3eae],0x40
+instruction	collector	1689:077b	7404	JZ 0x1000:7011
+instruction	collector	1689:077d	fe0ee540	DEC byte ptr [0x40e5]
+instruction	collector	1689:0781	6a06	PUSH 0x6
+instruction	collector	1689:0783	9aca051718	CALLF 0x1000:873a
+instruction	collector	1689:0788	eb1f	JMP 0x1000:7039
+instruction	collector	1689:078a	8b46e8	MOV AX,word ptr [BP + -0x18]
+instruction	collector	1689:078d	2d3100	SUB AX,0x31
+instruction	collector	1689:0790	8bf0	MOV SI,AX
+instruction	collector	1689:0792	8bc8	MOV CX,AX
+instruction	collector	1689:0794	b80100	MOV AX,0x1
+instruction	collector	1689:0797	d3e0	SHL AX,CL
+instruction	collector	1689:0799	8a0ef040	MOV CL,byte ptr [0x40f0]
+instruction	collector	1689:079d	2aed	SUB CH,CH
+instruction	collector	1689:079f	85c1	TEST CX,AX
+instruction	collector	1689:07a1	7409	JZ 0x1000:703c
+instruction	collector	1689:07a3	56	PUSH SI
+instruction	collector	1689:07a4	9aae0c1718	CALLF 0x1000:8e1e
+instruction	collector	1689:07a9	83c402	ADD SP,0x2
+instruction	collector	1689:07ac	a0ae3e	MOV AL,[0x3eae]
+instruction	collector	1689:07af	2420	AND AL,0x20
+instruction	collector	1689:07b1	7409	JZ 0x1000:704c
+instruction	collector	1689:07b3	8b36b844	MOV SI,word ptr [0x44b8]
+instruction	collector	1689:07b7	03f6	ADD SI,SI
+instruction	collector	1689:07b9	eb05	JMP 0x1000:7050
+instruction	collector	1689:07bc	8b36b844	MOV SI,word ptr [0x44b8]
+instruction	collector	1689:07c0	a0ae3e	MOV AL,[0x3eae]
+instruction	collector	1689:07c3	2420	AND AL,0x20
+instruction	collector	1689:07c5	7409	JZ 0x1000:7060
+instruction	collector	1689:07c7	8b3eba44	MOV DI,word ptr [0x44ba]
+instruction	collector	1689:07cb	03ff	ADD DI,DI
+instruction	collector	1689:07cd	eb05	JMP 0x1000:7064
+instruction	collector	1689:07d0	8b3eba44	MOV DI,word ptr [0x44ba]
+instruction	collector	1689:07d4	a0ae3e	MOV AL,[0x3eae]
+instruction	collector	1689:07d7	2440	AND AL,0x40
+instruction	collector	1689:07d9	7403	JZ 0x1000:706e
+instruction	collector	1689:07db	be0100	MOV SI,0x1
+instruction	collector	1689:07de	a0ae3e	MOV AL,[0x3eae]
+instruction	collector	1689:07e1	2440	AND AL,0x40
+instruction	collector	1689:07e3	7403	JZ 0x1000:7078
+instruction	collector	1689:07e5	bf0100	MOV DI,0x1
+instruction	collector	1689:07e8	f606ae3e02	TEST byte ptr [0x3eae],0x2
+instruction	collector	1689:07ed	740f	JZ 0x1000:708e
+instruction	collector	1689:07ef	56	PUSH SI
+instruction	collector	1689:07f0	6a00	PUSH 0x0
+instruction	collector	1689:07f2	ff36b440	PUSH word ptr [0x40b4]
+instruction	collector	1689:07f6	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:07fb	83c406	ADD SP,0x6
+instruction	collector	1689:07fe	f606ae3e04	TEST byte ptr [0x3eae],0x4
+instruction	collector	1689:0803	7418	JZ 0x1000:70ad
+instruction	collector	1689:0805	56	PUSH SI
+instruction	collector	1689:0806	6a00	PUSH 0x0
+instruction	collector	1689:0808	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:080b	05b400	ADD AX,0xb4
+instruction	collector	1689:080e	b96801	MOV CX,0x168
+instruction	collector	1689:0811	99	CWD
+instruction	collector	1689:0812	f7f9	IDIV CX
+instruction	collector	1689:0814	52	PUSH DX
+instruction	collector	1689:0815	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:081a	83c406	ADD SP,0x6
+instruction	collector	1689:081d	f606ae3e08	TEST byte ptr [0x3eae],0x8
+instruction	collector	1689:0822	7430	JZ 0x1000:70e4
+instruction	collector	1689:0824	f606af3e01	TEST byte ptr [0x3eaf],0x1
+instruction	collector	1689:0829	741b	JZ 0x1000:70d6
+instruction	collector	1689:082b	56	PUSH SI
+instruction	collector	1689:082c	6a01	PUSH 0x1
+instruction	collector	1689:082e	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:0831	050e01	ADD AX,0x10e
+instruction	collector	1689:0834	b96801	MOV CX,0x168
+instruction	collector	1689:0837	99	CWD
+instruction	collector	1689:0838	f7f9	IDIV CX
+instruction	collector	1689:083a	52	PUSH DX
+instruction	collector	1689:083b	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:0840	83c406	ADD SP,0x6
+instruction	collector	1689:0843	eb0f	JMP 0x1000:70e4
+instruction	collector	1689:0846	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:0849	2bc7	SUB AX,DI
+instruction	collector	1689:084b	50	PUSH AX
+instruction	collector	1689:084c	9a6c00541c	CALLF 0x1000:c5ac
+instruction	collector	1689:0851	83c402	ADD SP,0x2
+instruction	collector	1689:0854	f606ae3e10	TEST byte ptr [0x3eae],0x10
+instruction	collector	1689:0859	742f	JZ 0x1000:711a
+instruction	collector	1689:085b	f606af3e01	TEST byte ptr [0x3eaf],0x1
+instruction	collector	1689:0860	741a	JZ 0x1000:710c
+instruction	collector	1689:0862	56	PUSH SI
+instruction	collector	1689:0863	6a01	PUSH 0x1
+instruction	collector	1689:0865	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:0868	055a00	ADD AX,0x5a
+instruction	collector	1689:086b	b96801	MOV CX,0x168
+instruction	collector	1689:086e	99	CWD
+instruction	collector	1689:086f	f7f9	IDIV CX
+instruction	collector	1689:0871	52	PUSH DX
+instruction	collector	1689:0872	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:0877	83c406	ADD SP,0x6
+instruction	collector	1689:087a	eb0e	JMP 0x1000:711a
+instruction	collector	1689:087c	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:087f	03c7	ADD AX,DI
+instruction	collector	1689:0881	50	PUSH AX
+instruction	collector	1689:0882	9a6c00541c	CALLF 0x1000:c5ac
+instruction	collector	1689:0887	83c402	ADD SP,0x2
+instruction	collector	1689:088a	a0ae3e	MOV AL,[0x3eae]
+instruction	collector	1689:088d	c0e807	SHR AL,0x7
+instruction	collector	1689:0890	8846fe	MOV byte ptr [BP + -0x2],AL
+instruction	collector	1689:0893	a0af3e	MOV AL,[0x3eaf]
+instruction	collector	1689:0896	2402	AND AL,0x2
+instruction	collector	1689:0898	d0e8	SHR AL,0x1
+instruction	collector	1689:089a	8846ff	MOV byte ptr [BP + -0x1],AL
+instruction	collector	1689:089d	803eaa4000	CMP byte ptr [0x40aa],0x0
+instruction	collector	1689:08a2	0f848901	JZ 0x1000:72bf
+instruction	collector	1689:08a6	8d46f6	LEA AX,[BP + -0xa]
+instruction	collector	1689:08a9	50	PUSH AX
+instruction	collector	1689:08aa	8d46fa	LEA AX,[BP + -0x6]
+instruction	collector	1689:08ad	50	PUSH AX
+instruction	collector	1689:08ae	8d4efc	LEA CX,[BP + -0x4]
+instruction	collector	1689:08b1	51	PUSH CX
+instruction	collector	1689:08b2	9a3c000b18	CALLF 0x1000:80ec
+instruction	collector	1689:08b7	83c406	ADD SP,0x6
+instruction	collector	1689:08ba	8b46fa	MOV AX,word ptr [BP + -0x6]
+instruction	collector	1689:08bd	39066834	CMP word ptr [0x3468],AX
+instruction	collector	1689:08c1	7e1e	JLE 0x1000:7171
+instruction	collector	1689:08c3	a16834	MOV AX,[0x3468]
+instruction	collector	1689:08c6	2b46fa	SUB AX,word ptr [BP + -0x6]
+instruction	collector	1689:08c9	50	PUSH AX
+instruction	collector	1689:08ca	56	PUSH SI
+instruction	collector	1689:08cb	0e	PUSH CS
+instruction	collector	1689:08cc	e8d7fc	CALL 0x1000:6e36
+instruction	collector	1689:08cf	83c404	ADD SP,0x4
+instruction	collector	1689:08d2	50	PUSH AX
+instruction	collector	1689:08d3	6a00	PUSH 0x0
+instruction	collector	1689:08d5	ff36b440	PUSH word ptr [0x40b4]
+instruction	collector	1689:08d9	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:08de	83c406	ADD SP,0x6
+instruction	collector	1689:08e1	8b46fa	MOV AX,word ptr [BP + -0x6]
+instruction	collector	1689:08e4	39066834	CMP word ptr [0x3468],AX
+instruction	collector	1689:08e8	7d25	JGE 0x1000:719f
+instruction	collector	1689:08ea	2b066834	SUB AX,word ptr [0x3468]
+instruction	collector	1689:08ee	50	PUSH AX
+instruction	collector	1689:08ef	56	PUSH SI
+instruction	collector	1689:08f0	0e	PUSH CS
+instruction	collector	1689:08f1	e8b2fc	CALL 0x1000:6e36
+instruction	collector	1689:08f4	83c404	ADD SP,0x4
+instruction	collector	1689:08f7	50	PUSH AX
+instruction	collector	1689:08f8	6a00	PUSH 0x0
+instruction	collector	1689:08fa	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:08fd	05b400	ADD AX,0xb4
+instruction	collector	1689:0900	b96801	MOV CX,0x168
+instruction	collector	1689:0903	99	CWD
+instruction	collector	1689:0904	f7f9	IDIV CX
+instruction	collector	1689:0906	52	PUSH DX
+instruction	collector	1689:0907	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:090c	83c406	ADD SP,0x6
+instruction	collector	1689:090f	8b46fc	MOV AX,word ptr [BP + -0x4]
+instruction	collector	1689:0912	39066634	CMP word ptr [0x3466],AX
+instruction	collector	1689:0916	7e57	JLE 0x1000:71ff
+instruction	collector	1689:0918	f606af3e01	TEST byte ptr [0x3eaf],0x1
+instruction	collector	1689:091d	7529	JNZ 0x1000:71d8
+instruction	collector	1689:091f	f646f602	TEST byte ptr [BP + -0xa],0x2
+instruction	collector	1689:0923	7523	JNZ 0x1000:71d8
+instruction	collector	1689:0925	a16634	MOV AX,[0x3466]
+instruction	collector	1689:0928	2b46fc	SUB AX,word ptr [BP + -0x4]
+instruction	collector	1689:092b	d1f8	SAR AX,0x1
+instruction	collector	1689:092d	50	PUSH AX
+instruction	collector	1689:092e	57	PUSH DI
+instruction	collector	1689:092f	0e	PUSH CS
+instruction	collector	1689:0930	e873fc	CALL 0x1000:6e36
+instruction	collector	1689:0933	83c404	ADD SP,0x4
+instruction	collector	1689:0936	2b06b440	SUB AX,word ptr [0x40b4]
+instruction	collector	1689:093a	f7d8	NEG AX
+instruction	collector	1689:093c	50	PUSH AX
+instruction	collector	1689:093d	9a6c00541c	CALLF 0x1000:c5ac
+instruction	collector	1689:0942	83c402	ADD SP,0x2
+instruction	collector	1689:0945	eb28	JMP 0x1000:71ff
+instruction	collector	1689:0948	a16634	MOV AX,[0x3466]
+instruction	collector	1689:094b	2b46fc	SUB AX,word ptr [BP + -0x4]
+instruction	collector	1689:094e	50	PUSH AX
+instruction	collector	1689:094f	56	PUSH SI
+instruction	collector	1689:0950	0e	PUSH CS
+instruction	collector	1689:0951	e852fc	CALL 0x1000:6e36
+instruction	collector	1689:0954	83c404	ADD SP,0x4
+instruction	collector	1689:0957	50	PUSH AX
+instruction	collector	1689:0958	6a01	PUSH 0x1
+instruction	collector	1689:095a	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:095d	050e01	ADD AX,0x10e
+instruction	collector	1689:0960	b96801	MOV CX,0x168
+instruction	collector	1689:0963	99	CWD
+instruction	collector	1689:0964	f7f9	IDIV CX
+instruction	collector	1689:0966	52	PUSH DX
+instruction	collector	1689:0967	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:096c	83c406	ADD SP,0x6
+instruction	collector	1689:096f	8b46fc	MOV AX,word ptr [BP + -0x4]
+instruction	collector	1689:0972	39066634	CMP word ptr [0x3466],AX
+instruction	collector	1689:0976	7d51	JGE 0x1000:7259
+instruction	collector	1689:0978	f606af3e01	TEST byte ptr [0x3eaf],0x1
+instruction	collector	1689:097d	7525	JNZ 0x1000:7234
+instruction	collector	1689:097f	f646f602	TEST byte ptr [BP + -0xa],0x2
+instruction	collector	1689:0983	751f	JNZ 0x1000:7234
+instruction	collector	1689:0985	2b066634	SUB AX,word ptr [0x3466]
+instruction	collector	1689:0989	d1f8	SAR AX,0x1
+instruction	collector	1689:098b	50	PUSH AX
+instruction	collector	1689:098c	57	PUSH DI
+instruction	collector	1689:098d	0e	PUSH CS
+instruction	collector	1689:098e	e815fc	CALL 0x1000:6e36
+instruction	collector	1689:0991	83c404	ADD SP,0x4
+instruction	collector	1689:0994	0306b440	ADD AX,word ptr [0x40b4]
+instruction	collector	1689:0998	50	PUSH AX
+instruction	collector	1689:0999	9a6c00541c	CALLF 0x1000:c5ac
+instruction	collector	1689:099e	83c402	ADD SP,0x2
+instruction	collector	1689:09a1	eb26	JMP 0x1000:7259
+instruction	collector	1689:09a4	2b066634	SUB AX,word ptr [0x3466]
+instruction	collector	1689:09a8	50	PUSH AX
+instruction	collector	1689:09a9	56	PUSH SI
+instruction	collector	1689:09aa	0e	PUSH CS
+instruction	collector	1689:09ab	e8f8fb	CALL 0x1000:6e36
+instruction	collector	1689:09ae	83c404	ADD SP,0x4
+instruction	collector	1689:09b1	50	PUSH AX
+instruction	collector	1689:09b2	6a01	PUSH 0x1
+instruction	collector	1689:09b4	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:09b7	055a00	ADD AX,0x5a
+instruction	collector	1689:09ba	b96801	MOV CX,0x168
+instruction	collector	1689:09bd	99	CWD
+instruction	collector	1689:09be	f7f9	IDIV CX
+instruction	collector	1689:09c0	52	PUSH DX
+instruction	collector	1689:09c1	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:09c6	83c406	ADD SP,0x6
+instruction	collector	1689:09c9	a1a444	MOV AX,[0x44a4]
+instruction	collector	1689:09cc	3946fc	CMP word ptr [BP + -0x4],AX
+instruction	collector	1689:09cf	7e18	JLE 0x1000:7279
+instruction	collector	1689:09d1	a1a644	MOV AX,[0x44a6]
+instruction	collector	1689:09d4	3946fc	CMP word ptr [BP + -0x4],AX
+instruction	collector	1689:09d7	7d10	JGE 0x1000:7279
+instruction	collector	1689:09d9	a1a844	MOV AX,[0x44a8]
+instruction	collector	1689:09dc	3946fa	CMP word ptr [BP + -0x6],AX
+instruction	collector	1689:09df	7e08	JLE 0x1000:7279
+instruction	collector	1689:09e1	a1aa44	MOV AX,[0x44aa]
+instruction	collector	1689:09e4	3946fa	CMP word ptr [BP + -0x6],AX
+instruction	collector	1689:09e7	7c1a	JL 0x1000:7293
+instruction	collector	1689:09e9	a1ae44	MOV AX,[0x44ae]
+instruction	collector	1689:09ec	d1f8	SAR AX,0x1
+instruction	collector	1689:09ee	8946fa	MOV word ptr [BP + -0x6],AX
+instruction	collector	1689:09f1	50	PUSH AX
+instruction	collector	1689:09f2	a1ac44	MOV AX,[0x44ac]
+instruction	collector	1689:09f5	d1f8	SAR AX,0x1
+instruction	collector	1689:09f7	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	collector	1689:09fa	50	PUSH AX
+instruction	collector	1689:09fb	9a70000b18	CALLF 0x1000:8120
+instruction	collector	1689:0a00	83c404	ADD SP,0x4
+instruction	collector	1689:0a03	8b46fc	MOV AX,word ptr [BP + -0x4]
+instruction	collector	1689:0a06	a36634	MOV [0x3466],AX
+instruction	collector	1689:0a09	8b46fa	MOV AX,word ptr [BP + -0x6]
+instruction	collector	1689:0a0c	a36834	MOV [0x3468],AX
+instruction	collector	1689:0a0f	8a46f6	MOV AL,byte ptr [BP + -0xa]
+instruction	collector	1689:0a12	250100	AND AX,0x1
+instruction	collector	1689:0a15	3d0100	CMP AX,0x1
+instruction	collector	1689:0a18	1ac0	SBB AL,AL
+instruction	collector	1689:0a1a	fec0	INC AL
+instruction	collector	1689:0a1c	0846fe	OR byte ptr [BP + -0x2],AL
+instruction	collector	1689:0a1f	8a46f6	MOV AL,byte ptr [BP + -0xa]
+instruction	collector	1689:0a22	250200	AND AX,0x2
+instruction	collector	1689:0a25	3d0100	CMP AX,0x1
+instruction	collector	1689:0a28	1ac0	SBB AL,AL
+instruction	collector	1689:0a2a	fec0	INC AL
+instruction	collector	1689:0a2c	0846ff	OR byte ptr [BP + -0x1],AL
+instruction	collector	1689:0a2f	803ead4000	CMP byte ptr [0x40ad],0x0
+instruction	collector	1689:0a34	0f841101	JZ 0x1000:73d9
+instruction	collector	1689:0a38	8d46ea	LEA AX,[BP + -0x16]
+instruction	collector	1689:0a3b	50	PUSH AX
+instruction	collector	1689:0a3c	9afe04ff1b	CALLF 0x1000:c4ee
+instruction	collector	1689:0a41	83c402	ADD SP,0x2
+instruction	collector	1689:0a44	837eecf6	CMP word ptr [BP + -0x14],-0xa
+instruction	collector	1689:0a48	7d1d	JGE 0x1000:72f7
+instruction	collector	1689:0a4a	8b46ec	MOV AX,word ptr [BP + -0x14]
+instruction	collector	1689:0a4d	f7d8	NEG AX
+instruction	collector	1689:0a4f	50	PUSH AX
+instruction	collector	1689:0a50	56	PUSH SI
+instruction	collector	1689:0a51	0e	PUSH CS
+instruction	collector	1689:0a52	e86ffb	CALL 0x1000:6e54
+instruction	collector	1689:0a55	83c404	ADD SP,0x4
+instruction	collector	1689:0a58	50	PUSH AX
+instruction	collector	1689:0a59	6a00	PUSH 0x0
+instruction	collector	1689:0a5b	ff36b440	PUSH word ptr [0x40b4]
+instruction	collector	1689:0a5f	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:0a64	83c406	ADD SP,0x6
+instruction	collector	1689:0a67	837eec0a	CMP word ptr [BP + -0x14],0xa
+instruction	collector	1689:0a6b	7e23	JLE 0x1000:7320
+instruction	collector	1689:0a6d	ff76ec	PUSH word ptr [BP + -0x14]
+instruction	collector	1689:0a70	56	PUSH SI
+instruction	collector	1689:0a71	0e	PUSH CS
+instruction	collector	1689:0a72	e84ffb	CALL 0x1000:6e54
+instruction	collector	1689:0a75	83c404	ADD SP,0x4
+instruction	collector	1689:0a78	50	PUSH AX
+instruction	collector	1689:0a79	6a00	PUSH 0x0
+instruction	collector	1689:0a7b	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:0a7e	05b400	ADD AX,0xb4
+instruction	collector	1689:0a81	b96801	MOV CX,0x168
+instruction	collector	1689:0a84	99	CWD
+instruction	collector	1689:0a85	f7f9	IDIV CX
+instruction	collector	1689:0a87	52	PUSH DX
+instruction	collector	1689:0a88	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:0a8d	83c406	ADD SP,0x6
+instruction	collector	1689:0a90	837eeaf6	CMP word ptr [BP + -0x16],-0xa
+instruction	collector	1689:0a94	7d54	JGE 0x1000:737a
+instruction	collector	1689:0a96	f606af3e01	TEST byte ptr [0x3eaf],0x1
+instruction	collector	1689:0a9b	7527	JNZ 0x1000:7354
+instruction	collector	1689:0a9d	837ef000	CMP word ptr [BP + -0x10],0x0
+instruction	collector	1689:0aa1	7521	JNZ 0x1000:7354
+instruction	collector	1689:0aa3	8b46ea	MOV AX,word ptr [BP + -0x16]
+instruction	collector	1689:0aa6	f7d8	NEG AX
+instruction	collector	1689:0aa8	d1f8	SAR AX,0x1
+instruction	collector	1689:0aaa	50	PUSH AX
+instruction	collector	1689:0aab	57	PUSH DI
+instruction	collector	1689:0aac	0e	PUSH CS
+instruction	collector	1689:0aad	e814fb	CALL 0x1000:6e54
+instruction	collector	1689:0ab0	83c404	ADD SP,0x4
+instruction	collector	1689:0ab3	2b06b440	SUB AX,word ptr [0x40b4]
+instruction	collector	1689:0ab7	f7d8	NEG AX
+instruction	collector	1689:0ab9	50	PUSH AX
+instruction	collector	1689:0aba	9a6c00541c	CALLF 0x1000:c5ac
+instruction	collector	1689:0abf	83c402	ADD SP,0x2
+instruction	collector	1689:0ac2	eb26	JMP 0x1000:737a
+instruction	collector	1689:0ac4	8b46ea	MOV AX,word ptr [BP + -0x16]
+instruction	collector	1689:0ac7	f7d8	NEG AX
+instruction	collector	1689:0ac9	50	PUSH AX
+instruction	collector	1689:0aca	56	PUSH SI
+instruction	collector	1689:0acb	0e	PUSH CS
+instruction	collector	1689:0acc	e8f5fa	CALL 0x1000:6e54
+instruction	collector	1689:0acf	83c404	ADD SP,0x4
+instruction	collector	1689:0ad2	50	PUSH AX
+instruction	collector	1689:0ad3	6a01	PUSH 0x1
+instruction	collector	1689:0ad5	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:0ad8	050e01	ADD AX,0x10e
+instruction	collector	1689:0adb	b96801	MOV CX,0x168
+instruction	collector	1689:0ade	99	CWD
+instruction	collector	1689:0adf	f7f9	IDIV CX
+instruction	collector	1689:0ae1	52	PUSH DX
+instruction	collector	1689:0ae2	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:0ae7	83c406	ADD SP,0x6
+instruction	collector	1689:0aea	837eea0a	CMP word ptr [BP + -0x16],0xa
+instruction	collector	1689:0aee	7e4d	JLE 0x1000:73cd
+instruction	collector	1689:0af0	f606af3e01	TEST byte ptr [0x3eaf],0x1
+instruction	collector	1689:0af5	7523	JNZ 0x1000:73aa
+instruction	collector	1689:0af7	837ef000	CMP word ptr [BP + -0x10],0x0
+instruction	collector	1689:0afb	751d	JNZ 0x1000:73aa
+instruction	collector	1689:0afd	8b46ea	MOV AX,word ptr [BP + -0x16]
+instruction	collector	1689:0b00	d1f8	SAR AX,0x1
+instruction	collector	1689:0b02	50	PUSH AX
+instruction	collector	1689:0b03	57	PUSH DI
+instruction	collector	1689:0b04	0e	PUSH CS
+instruction	collector	1689:0b05	e8bcfa	CALL 0x1000:6e54
+instruction	collector	1689:0b08	83c404	ADD SP,0x4
+instruction	collector	1689:0b0b	0306b440	ADD AX,word ptr [0x40b4]
+instruction	collector	1689:0b0f	50	PUSH AX
+instruction	collector	1689:0b10	9a6c00541c	CALLF 0x1000:c5ac
+instruction	collector	1689:0b15	83c402	ADD SP,0x2
+instruction	collector	1689:0b18	eb23	JMP 0x1000:73cd
+instruction	collector	1689:0b1a	ff76ea	PUSH word ptr [BP + -0x16]
+instruction	collector	1689:0b1d	56	PUSH SI
+instruction	collector	1689:0b1e	0e	PUSH CS
+instruction	collector	1689:0b1f	e8a2fa	CALL 0x1000:6e54
+instruction	collector	1689:0b22	83c404	ADD SP,0x4
+instruction	collector	1689:0b25	50	PUSH AX
+instruction	collector	1689:0b26	6a01	PUSH 0x1
+instruction	collector	1689:0b28	a1b440	MOV AX,[0x40b4]
+instruction	collector	1689:0b2b	055a00	ADD AX,0x5a
+instruction	collector	1689:0b2e	b96801	MOV CX,0x168
+instruction	collector	1689:0b31	99	CWD
+instruction	collector	1689:0b32	f7f9	IDIV CX
+instruction	collector	1689:0b34	52	PUSH DX
+instruction	collector	1689:0b35	9aaa051116	CALLF 0x1000:66ba
+instruction	collector	1689:0b3a	83c406	ADD SP,0x6
+instruction	collector	1689:0b3d	8a46ee	MOV AL,byte ptr [BP + -0x12]
+instruction	collector	1689:0b40	0846fe	OR byte ptr [BP + -0x2],AL
+instruction	collector	1689:0b43	8a46f0	MOV AL,byte ptr [BP + -0x10]
+instruction	collector	1689:0b46	0846ff	OR byte ptr [BP + -0x1],AL
+instruction	collector	1689:0b49	807efe00	CMP byte ptr [BP + -0x2],0x0
+instruction	collector	1689:0b4d	741d	JZ 0x1000:73fc
+instruction	collector	1689:0b4f	803e390b01	CMP byte ptr [0xb39],0x1
+instruction	collector	1689:0b54	1ac0	SBB AL,AL
+instruction	collector	1689:0b56	f6d8	NEG AL
+instruction	collector	1689:0b58	50	PUSH AX
+instruction	collector	1689:0b59	6a00	PUSH 0x0
+instruction	collector	1689:0b5b	9a580c1718	CALLF 0x1000:8dc8
+instruction	collector	1689:0b60	83c404	ADD SP,0x4
+instruction	collector	1689:0b63	0ac0	OR AL,AL
+instruction	collector	1689:0b65	7405	JZ 0x1000:73fc
+instruction	collector	1689:0b67	9a02061116	CALLF 0x1000:6712
+instruction	collector	1689:0b6c	807eff00	CMP byte ptr [BP + -0x1],0x0
+instruction	collector	1689:0b70	740e	JZ 0x1000:7410
+instruction	collector	1689:0b72	8a46ff	MOV AL,byte ptr [BP + -0x1]
+instruction	collector	1689:0b75	3806380b	CMP byte ptr [0xb38],AL
+instruction	collector	1689:0b79	7405	JZ 0x1000:7410
+instruction	collector	1689:0b7b	9afa060010	CALLF 0x1000:06fa
+instruction	collector	1689:0b80	8a46fe	MOV AL,byte ptr [BP + -0x2]
+instruction	collector	1689:0b83	a2390b	MOV [0xb39],AL
+instruction	collector	1689:0b86	8a46ff	MOV AL,byte ptr [BP + -0x1]
+instruction	collector	1689:0b89	a2380b	MOV [0xb38],AL
+instruction	collector	1689:0b8c	5e	POP SI
+instruction	collector	1689:0b8d	5f	POP DI
+instruction	collector	1689:0b8e	c9	LEAVE
+instruction	collector	1689:0b8f	cb	RETF
