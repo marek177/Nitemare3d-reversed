@@ -1,0 +1,834 @@
+bank_prepare	1d0f:07a7	UNCONDITIONAL_CALL	1d0f:079a	CALL 0x1000:d25a
+bank_prepare	1826:0023	UNCONDITIONAL_CALL	1826:000a	CALLF 0x1000:d25a
+bank_prepare	1826:004e	UNCONDITIONAL_CALL	1826:000a	CALLF 0x1000:d25a
+bank_prepare	1826:0126	UNCONDITIONAL_CALL	1826:000a	CALLF 0x1000:d25a
+bank_prepare	1d0f:1923	UNCONDITIONAL_CALL	1d0f:1916	CALL 0x1000:d25a
+bank_prepare	1d0f:0261	UNCONDITIONAL_CALL	1d0f:024c	CALL 0x1000:d25a
+bank_prepare	1d0f:03e6	UNCONDITIONAL_CALL	1d0f:03e0	CALL 0x1000:d25a
+bank_prepare	1d0f:053a	UNCONDITIONAL_CALL	1d0f:052e	CALL 0x1000:d25a
+bank_prepare	1d0f:0a33	UNCONDITIONAL_CALL	1d0f:0a10	CALL 0x1000:d25a
+bank_prepare	1d0f:0b46	UNCONDITIONAL_CALL	1d0f:0a10	CALL 0x1000:d25a
+current	1d0f:0015	READ	1d0f:000e	MOV BL,byte ptr [0x3600]
+current	1d0f:0039	READ	1d0f:0030	MOV AL,[0x3600]
+current	1d0f:009f	READ	1d0f:0096	MOV AL,[0x3600]
+current	1d0f:0173	WRITE	1d0f:016a	MOV byte ptr [0x3600],BL
+current	1d0f:019c	READ	1d0f:016a	MOV AL,[0x3600]
+current	1d0f:01be	READ	1d0f:016a	MOV BL,byte ptr [0x3600]
+current	1d0f:0212	READ	1d0f:016a	MOV AL,[0x3600]
+instruction	1d0f:079a	1d0f:079a	6a01	PUSH 0x1
+instruction	1d0f:079a	1d0f:079c	9a9802111c	CALLF 0x1000:c3a8
+instruction	1d0f:079a	1d0f:07a1	83c402	ADD SP,0x2
+instruction	1d0f:079a	1d0f:07a4	6a02	PUSH 0x2
+instruction	1d0f:079a	1d0f:07a6	0e	PUSH CS
+instruction	1d0f:079a	1d0f:07a7	e8c0f9	CALL 0x1000:d25a
+instruction	1d0f:079a	1d0f:07aa	83c402	ADD SP,0x2
+instruction	1d0f:079a	1d0f:07ad	9a0a002618	CALLF 0x1000:826a
+instruction	1d0f:079a	1d0f:07b2	0e	PUSH CS
+instruction	1d0f:079a	1d0f:07b3	e86efc	CALL 0x1000:d514
+instruction	1d0f:079a	1d0f:07b6	6a01	PUSH 0x1
+instruction	1d0f:079a	1d0f:07b8	9a54025611	CALLF 0x1000:17b4
+instruction	1d0f:079a	1d0f:07bd	83c402	ADD SP,0x2
+instruction	1d0f:079a	1d0f:07c0	6a03	PUSH 0x3
+instruction	1d0f:079a	1d0f:07c2	9a78167712	CALLF 0x1000:3de8
+instruction	1d0f:079a	1d0f:07c7	83c402	ADD SP,0x2
+instruction	1d0f:079a	1d0f:07ca	9a8e005611	CALLF 0x1000:15ee
+instruction	1d0f:079a	1d0f:07cf	6a02	PUSH 0x2
+instruction	1d0f:079a	1d0f:07d1	9a54025611	CALLF 0x1000:17b4
+instruction	1d0f:079a	1d0f:07d6	83c402	ADD SP,0x2
+instruction	1d0f:079a	1d0f:07d9	0e	PUSH CS
+instruction	1d0f:079a	1d0f:07da	e847fc	CALL 0x1000:d514
+instruction	1d0f:079a	1d0f:07dd	cb	RETF
+instruction	1826:000a	1826:000a	666801000100	PUSH 0x10001
+instruction	1826:000a	1826:0010	9a88017712	CALLF 0x1000:28f8
+instruction	1826:000a	1826:0015	83c402	ADD SP,0x2
+instruction	1826:000a	1826:0018	50	PUSH AX
+instruction	1826:000a	1826:0019	9a3a0a5611	CALLF 0x1000:1f9a
+instruction	1826:000a	1826:001e	83c404	ADD SP,0x4
+instruction	1826:000a	1826:0021	6a02	PUSH 0x2
+instruction	1826:000a	1826:0023	9a6a010f1d	CALLF 0x1000:d25a
+instruction	1826:000a	1826:0028	83c402	ADD SP,0x2
+instruction	1826:000a	1826:002b	66680e000100	PUSH 0x1000e
+instruction	1826:000a	1826:0031	9a88017712	CALLF 0x1000:28f8
+instruction	1826:000a	1826:0036	83c402	ADD SP,0x2
+instruction	1826:000a	1826:0039	50	PUSH AX
+instruction	1826:000a	1826:003a	1e	PUSH DS
+instruction	1826:000a	1826:003b	687013	PUSH 0x1370
+instruction	1826:000a	1826:003e	6668ffff2800	PUSH 0x28ffff
+instruction	1826:000a	1826:0044	9a16010f1d	CALLF 0x1000:d206
+instruction	1826:000a	1826:0049	83c40c	ADD SP,0xc
+instruction	1826:000a	1826:004c	6a01	PUSH 0x1
+instruction	1826:000a	1826:004e	9a6a010f1d	CALLF 0x1000:d25a
+instruction	1826:000a	1826:0053	83c402	ADD SP,0x2
+instruction	1826:000a	1826:0056	66680e000100	PUSH 0x1000e
+instruction	1826:000a	1826:005c	9a88017712	CALLF 0x1000:28f8
+instruction	1826:000a	1826:0061	83c402	ADD SP,0x2
+instruction	1826:000a	1826:0064	50	PUSH AX
+instruction	1826:000a	1826:0065	1e	PUSH DS
+instruction	1826:000a	1826:0066	687c13	PUSH 0x137c
+instruction	1826:000a	1826:0069	6668ffff3c00	PUSH 0x3cffff
+instruction	1826:000a	1826:006f	9a16010f1d	CALLF 0x1000:d206
+instruction	1826:000a	1826:0074	83c40c	ADD SP,0xc
+instruction	1826:000a	1826:0077	66680c000100	PUSH 0x1000c
+instruction	1826:000a	1826:007d	9a88017712	CALLF 0x1000:28f8
+instruction	1826:000a	1826:0082	83c402	ADD SP,0x2
+instruction	1826:000a	1826:0085	50	PUSH AX
+instruction	1826:000a	1826:0086	1e	PUSH DS
+instruction	1826:000a	1826:0087	688113	PUSH 0x1381
+instruction	1826:000a	1826:008a	6668ffff6400	PUSH 0x64ffff
+instruction	1826:000a	1826:0090	9a16010f1d	CALLF 0x1000:d206
+instruction	1826:000a	1826:0095	83c40c	ADD SP,0xc
+instruction	1826:000a	1826:0098	66680c000100	PUSH 0x1000c
+instruction	1826:000a	1826:009e	9a88017712	CALLF 0x1000:28f8
+instruction	1826:000a	1826:00a3	83c402	ADD SP,0x2
+instruction	1826:000a	1826:00a6	50	PUSH AX
+instruction	1826:000a	1826:00a7	6a02	PUSH 0x2
+instruction	1826:000a	1826:00a9	0e	PUSH CS
+instruction	1826:000a	1826:00aa	e8ed28	CALL 0x1000:abfa
+instruction	1826:000a	1826:00ad	83c402	ADD SP,0x2
+instruction	1826:000a	1826:00b0	52	PUSH DX
+instruction	1826:000a	1826:00b1	50	PUSH AX
+instruction	1826:000a	1826:00b2	6668ffff7300	PUSH 0x73ffff
+instruction	1826:000a	1826:00b8	9a16010f1d	CALLF 0x1000:d206
+instruction	1826:000a	1826:00bd	83c40c	ADD SP,0xc
+instruction	1826:000a	1826:00c0	6a01	PUSH 0x1
+instruction	1826:000a	1826:00c2	0e	PUSH CS
+instruction	1826:000a	1826:00c3	e8d428	CALL 0x1000:abfa
+instruction	1826:000a	1826:00c6	83c402	ADD SP,0x2
+instruction	1826:000a	1826:00c9	0bd0	OR DX,AX
+instruction	1826:000a	1826:00cb	7415	JZ 0x1000:8342
+instruction	1826:000a	1826:00cd	666804000100	PUSH 0x10004
+instruction	1826:000a	1826:00d3	9a88017712	CALLF 0x1000:28f8
+instruction	1826:000a	1826:00d8	83c402	ADD SP,0x2
+instruction	1826:000a	1826:00db	50	PUSH AX
+instruction	1826:000a	1826:00dc	1e	PUSH DS
+instruction	1826:000a	1826:00dd	689013	PUSH 0x1390
+instruction	1826:000a	1826:00e0	eb13	JMP 0x1000:8355
+instruction	1826:000a	1826:00e2	666804000100	PUSH 0x10004
+instruction	1826:000a	1826:00e8	9a88017712	CALLF 0x1000:28f8
+instruction	1826:000a	1826:00ed	83c402	ADD SP,0x2
+instruction	1826:000a	1826:00f0	50	PUSH AX
+instruction	1826:000a	1826:00f1	1e	PUSH DS
+instruction	1826:000a	1826:00f2	68a413	PUSH 0x13a4
+instruction	1826:000a	1826:00f5	6668ffff8c00	PUSH 0x8cffff
+instruction	1826:000a	1826:00fb	9a16010f1d	CALLF 0x1000:d206
+instruction	1826:000a	1826:0100	83c40c	ADD SP,0xc
+instruction	1826:000a	1826:0103	666806000100	PUSH 0x10006
+instruction	1826:000a	1826:0109	9a88017712	CALLF 0x1000:28f8
+instruction	1826:000a	1826:010e	83c402	ADD SP,0x2
+instruction	1826:000a	1826:0111	50	PUSH AX
+instruction	1826:000a	1826:0112	1e	PUSH DS
+instruction	1826:000a	1826:0113	68b613	PUSH 0x13b6
+instruction	1826:000a	1826:0116	6668ffffa000	PUSH 0xa0ffff
+instruction	1826:000a	1826:011c	9a16010f1d	CALLF 0x1000:d206
+instruction	1826:000a	1826:0121	83c40c	ADD SP,0xc
+instruction	1826:000a	1826:0124	6a00	PUSH 0x0
+instruction	1826:000a	1826:0126	9a6a010f1d	CALLF 0x1000:d25a
+instruction	1826:000a	1826:012b	83c402	ADD SP,0x2
+instruction	1826:000a	1826:012e	cb	RETF
+instruction	1d0f:1916	1d0f:1916	c80a0000	ENTER 0xa,0x0
+instruction	1d0f:1916	1d0f:191a	57	PUSH DI
+instruction	1d0f:1916	1d0f:191b	56	PUSH SI
+instruction	1d0f:1916	1d0f:191c	c646fe00	MOV byte ptr [BP + -0x2],0x0
+instruction	1d0f:1916	1d0f:1920	6a02	PUSH 0x2
+instruction	1d0f:1916	1d0f:1922	0e	PUSH CS
+instruction	1d0f:1916	1d0f:1923	e844e8	CALL 0x1000:d25a
+instruction	1d0f:1916	1d0f:1926	83c402	ADD SP,0x2
+instruction	1d0f:1916	1d0f:1929	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	1d0f:1916	1d0f:192c	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	1d0f:1916	1d0f:192f	8bf0	MOV SI,AX
+instruction	1d0f:1916	1d0f:1931	8956f8	MOV word ptr [BP + -0x8],DX
+instruction	1d0f:1916	1d0f:1934	8ec2	MOV ES,DX
+instruction	1d0f:1916	1d0f:1936	8bd8	MOV BX,AX
+instruction	1d0f:1916	1d0f:1938	26803f00	CMP byte ptr ES:[BX],0x0
+instruction	1d0f:1916	1d0f:193c	743d	JZ 0x1000:ea6b
+instruction	1d0f:1916	1d0f:193e	666800000100	PUSH 0x10000
+instruction	1d0f:1916	1d0f:1944	8bfe	MOV DI,SI
+instruction	1d0f:1916	1d0f:1946	8c46fc	MOV word ptr [BP + -0x4],ES
+instruction	1d0f:1916	1d0f:1949	6626ff740e	PUSH dword ptr ES:[SI + 0xe]
+instruction	1d0f:1916	1d0f:194e	268b440c	MOV AX,word ptr ES:[SI + 0xc]
+instruction	1d0f:1916	1d0f:1952	40	INC AX
+instruction	1d0f:1916	1d0f:1953	50	PUSH AX
+instruction	1d0f:1916	1d0f:1954	268b440a	MOV AX,word ptr ES:[SI + 0xa]
+instruction	1d0f:1916	1d0f:1958	40	INC AX
+instruction	1d0f:1916	1d0f:1959	50	PUSH AX
+instruction	1d0f:1916	1d0f:195a	0e	PUSH CS
+instruction	1d0f:1916	1d0f:195b	e838e7	CALL 0x1000:d186
+instruction	1d0f:1916	1d0f:195e	83c40c	ADD SP,0xc
+instruction	1d0f:1916	1d0f:1961	ff76f8	PUSH word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:1964	56	PUSH SI
+instruction	1d0f:1916	1d0f:1965	0e	PUSH CS
+instruction	1d0f:1916	1d0f:1966	e8b3fd	CALL 0x1000:e80c
+instruction	1d0f:1916	1d0f:1969	83c404	ADD SP,0x4
+instruction	1d0f:1916	1d0f:196c	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:196f	83c612	ADD SI,0x12
+instruction	1d0f:1916	1d0f:1972	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	1d0f:1916	1d0f:1976	75c6	JNZ 0x1000:ea2e
+instruction	1d0f:1916	1d0f:1978	897efa	MOV word ptr [BP + -0x6],DI
+instruction	1d0f:1916	1d0f:197b	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	1d0f:1916	1d0f:197e	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	1d0f:1916	1d0f:1981	8bf0	MOV SI,AX
+instruction	1d0f:1916	1d0f:1983	8956f8	MOV word ptr [BP + -0x8],DX
+instruction	1d0f:1916	1d0f:1986	8ec2	MOV ES,DX
+instruction	1d0f:1916	1d0f:1988	8bd8	MOV BX,AX
+instruction	1d0f:1916	1d0f:198a	26803f00	CMP byte ptr ES:[BX],0x0
+instruction	1d0f:1916	1d0f:198e	7410	JZ 0x1000:ea90
+instruction	1d0f:1916	1d0f:1990	26807c0400	CMP byte ptr ES:[SI + 0x4],0x0
+instruction	1d0f:1916	1d0f:1995	7509	JNZ 0x1000:ea90
+instruction	1d0f:1916	1d0f:1997	83c612	ADD SI,0x12
+instruction	1d0f:1916	1d0f:199a	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	1d0f:1916	1d0f:199e	75f0	JNZ 0x1000:ea80
+instruction	1d0f:1916	1d0f:19a0	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:19a3	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	1d0f:1916	1d0f:19a7	750b	JNZ 0x1000:eaa4
+instruction	1d0f:1916	1d0f:19a9	681e1e	PUSH 0x1e1e
+instruction	1d0f:1916	1d0f:19ac	9a0c009d1f	CALLF 0x1000:f9dc
+instruction	1d0f:1916	1d0f:19b1	83c402	ADD SP,0x2
+instruction	1d0f:1916	1d0f:19b4	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:19b7	26807c0506	CMP byte ptr ES:[SI + 0x5],0x6
+instruction	1d0f:1916	1d0f:19bc	7518	JNZ 0x1000:eac6
+instruction	1d0f:1916	1d0f:19be	6a01	PUSH 0x1
+instruction	1d0f:1916	1d0f:19c0	06	PUSH ES
+instruction	1d0f:1916	1d0f:19c1	56	PUSH SI
+instruction	1d0f:1916	1d0f:19c2	66ff76fa	PUSH dword ptr [BP + -0x6]
+instruction	1d0f:1916	1d0f:19c6	66ff7606	PUSH dword ptr [BP + 0x6]
+instruction	1d0f:1916	1d0f:19ca	0e	PUSH CS
+instruction	1d0f:1916	1d0f:19cb	e8b6fe	CALL 0x1000:e974
+instruction	1d0f:1916	1d0f:19ce	83c40e	ADD SP,0xe
+instruction	1d0f:1916	1d0f:19d1	8bf0	MOV SI,AX
+instruction	1d0f:1916	1d0f:19d3	8956f8	MOV word ptr [BP + -0x8],DX
+instruction	1d0f:1916	1d0f:19d6	8b7efa	MOV DI,word ptr [BP + -0x6]
+instruction	1d0f:1916	1d0f:19d9	9ac0039916	CALLF 0x1000:6d50
+instruction	1d0f:1916	1d0f:19de	8846ff	MOV byte ptr [BP + -0x1],AL
+instruction	1d0f:1916	1d0f:19e1	98	CBW
+instruction	1d0f:1916	1d0f:19e2	3d5000	CMP AX,0x50
+instruction	1d0f:1916	1d0f:19e5	0f84b100	JZ 0x1000:eb8a
+instruction	1d0f:1916	1d0f:19e9	0f87c700	JA 0x1000:eba4
+instruction	1d0f:1916	1d0f:19ed	3c20	CMP AL,0x20
+instruction	1d0f:1916	1d0f:19ef	741f	JZ 0x1000:eb00
+instruction	1d0f:1916	1d0f:19f1	7f0d	JG 0x1000:eaf0
+instruction	1d0f:1916	1d0f:19f3	2c0d	SUB AL,0xd
+instruction	1d0f:1916	1d0f:19f5	7419	JZ 0x1000:eb00
+instruction	1d0f:1916	1d0f:19f7	2c0e	SUB AL,0xe
+instruction	1d0f:1916	1d0f:19f9	0f84d100	JZ 0x1000:ebbe
+instruction	1d0f:1916	1d0f:19fd	e9b400	JMP 0x1000:eba4
+instruction	1d0f:1916	1d0f:1a00	2c48	SUB AL,0x48
+instruction	1d0f:1916	1d0f:1a02	7452	JZ 0x1000:eb46
+instruction	1d0f:1916	1d0f:1a04	2c03	SUB AL,0x3
+instruction	1d0f:1916	1d0f:1a06	7452	JZ 0x1000:eb4a
+instruction	1d0f:1916	1d0f:1a08	2c02	SUB AL,0x2
+instruction	1d0f:1916	1d0f:1a0a	744e	JZ 0x1000:eb4a
+instruction	1d0f:1916	1d0f:1a0c	e9a500	JMP 0x1000:eba4
+instruction	1d0f:1916	1d0f:1a10	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:1a13	268a4405	MOV AL,byte ptr ES:[SI + 0x5]
+instruction	1d0f:1916	1d0f:1a17	2ae4	SUB AH,AH
+instruction	1d0f:1916	1d0f:1a19	48	DEC AX
+instruction	1d0f:1916	1d0f:1a1a	740c	JZ 0x1000:eb18
+instruction	1d0f:1916	1d0f:1a1c	48	DEC AX
+instruction	1d0f:1916	1d0f:1a1d	740f	JZ 0x1000:eb1e
+instruction	1d0f:1916	1d0f:1a1f	48	DEC AX
+instruction	1d0f:1916	1d0f:1a20	7414	JZ 0x1000:eb26
+instruction	1d0f:1916	1d0f:1a22	48	DEC AX
+instruction	1d0f:1916	1d0f:1a23	7417	JZ 0x1000:eb2c
+instruction	1d0f:1916	1d0f:1a25	eb21	JMP 0x1000:eb38
+instruction	1d0f:1916	1d0f:1a28	c646fe01	MOV byte ptr [BP + -0x2],0x1
+instruction	1d0f:1916	1d0f:1a2c	eb1a	JMP 0x1000:eb38
+instruction	1d0f:1916	1d0f:1a2e	2680740201	XOR byte ptr ES:[SI + 0x2],0x1
+instruction	1d0f:1916	1d0f:1a33	eb13	JMP 0x1000:eb38
+instruction	1d0f:1916	1d0f:1a36	26f75c02	NEG word ptr ES:[SI + 0x2]
+instruction	1d0f:1916	1d0f:1a3a	eb0c	JMP 0x1000:eb38
+instruction	1d0f:1916	1d0f:1a3c	06	PUSH ES
+instruction	1d0f:1916	1d0f:1a3d	56	PUSH SI
+instruction	1d0f:1916	1d0f:1a3e	0e	PUSH CS
+instruction	1d0f:1916	1d0f:1a3f	e8dcf4	CALL 0x1000:e00e
+instruction	1d0f:1916	1d0f:1a42	83c404	ADD SP,0x4
+instruction	1d0f:1916	1d0f:1a45	8846fe	MOV byte ptr [BP + -0x2],AL
+instruction	1d0f:1916	1d0f:1a48	ff76f8	PUSH word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:1a4b	56	PUSH SI
+instruction	1d0f:1916	1d0f:1a4c	0e	PUSH CS
+instruction	1d0f:1916	1d0f:1a4d	e8ccfc	CALL 0x1000:e80c
+instruction	1d0f:1916	1d0f:1a50	83c404	ADD SP,0x4
+instruction	1d0f:1916	1d0f:1a53	eb5f	JMP 0x1000:eba4
+instruction	1d0f:1916	1d0f:1a56	6aff	PUSH -0x1
+instruction	1d0f:1916	1d0f:1a58	eb42	JMP 0x1000:eb8c
+instruction	1d0f:1916	1d0f:1a5a	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:1a5d	26807c0503	CMP byte ptr ES:[SI + 0x5],0x3
+instruction	1d0f:1916	1d0f:1a62	7550	JNZ 0x1000:eba4
+instruction	1d0f:1916	1d0f:1a64	268b4402	MOV AX,word ptr ES:[SI + 0x2]
+instruction	1d0f:1916	1d0f:1a68	99	CWD
+instruction	1d0f:1916	1d0f:1a69	33c2	XOR AX,DX
+instruction	1d0f:1916	1d0f:1a6b	2bc2	SUB AX,DX
+instruction	1d0f:1916	1d0f:1a6d	26894402	MOV word ptr ES:[SI + 0x2],AX
+instruction	1d0f:1916	1d0f:1a71	807eff4b	CMP byte ptr [BP + -0x1],0x4b
+instruction	1d0f:1916	1d0f:1a75	7505	JNZ 0x1000:eb6c
+instruction	1d0f:1916	1d0f:1a77	b8fbff	MOV AX,0xfffb
+instruction	1d0f:1916	1d0f:1a7a	eb03	JMP 0x1000:eb6f
+instruction	1d0f:1916	1d0f:1a7c	b80500	MOV AX,0x5
+instruction	1d0f:1916	1d0f:1a7f	26014402	ADD word ptr ES:[SI + 0x2],AX
+instruction	1d0f:1916	1d0f:1a83	7906	JNS 0x1000:eb7b
+instruction	1d0f:1916	1d0f:1a85	26c744020000	MOV word ptr ES:[SI + 0x2],0x0
+instruction	1d0f:1916	1d0f:1a8b	26837c0264	CMP word ptr ES:[SI + 0x2],0x64
+instruction	1d0f:1916	1d0f:1a90	7eb6	JLE 0x1000:eb38
+instruction	1d0f:1916	1d0f:1a92	26c744026400	MOV word ptr ES:[SI + 0x2],0x64
+instruction	1d0f:1916	1d0f:1a98	ebae	JMP 0x1000:eb38
+instruction	1d0f:1916	1d0f:1a9a	6a01	PUSH 0x1
+instruction	1d0f:1916	1d0f:1a9c	ff76f8	PUSH word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:1a9f	56	PUSH SI
+instruction	1d0f:1916	1d0f:1aa0	ff76fc	PUSH word ptr [BP + -0x4]
+instruction	1d0f:1916	1d0f:1aa3	57	PUSH DI
+instruction	1d0f:1916	1d0f:1aa4	66ff7606	PUSH dword ptr [BP + 0x6]
+instruction	1d0f:1916	1d0f:1aa8	0e	PUSH CS
+instruction	1d0f:1916	1d0f:1aa9	e8d8fd	CALL 0x1000:e974
+instruction	1d0f:1916	1d0f:1aac	83c40e	ADD SP,0xe
+instruction	1d0f:1916	1d0f:1aaf	8bf0	MOV SI,AX
+instruction	1d0f:1916	1d0f:1ab1	8956f8	MOV word ptr [BP + -0x8],DX
+instruction	1d0f:1916	1d0f:1ab4	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:1ab7	6626837c0600	CMP dword ptr ES:[SI + 0x6],0x0
+instruction	1d0f:1916	1d0f:1abd	7404	JZ 0x1000:ebb3
+instruction	1d0f:1916	1d0f:1abf	26ff5c06	CALLF [SI + 0x6]
+instruction	1d0f:1916	1d0f:1ac3	807efe00	CMP byte ptr [BP + -0x2],0x0
+instruction	1d0f:1916	1d0f:1ac7	0f840eff	JZ 0x1000:eac9
+instruction	1d0f:1916	1d0f:1acb	eb09	JMP 0x1000:ebc6
+instruction	1d0f:1916	1d0f:1ace	b80600	MOV AX,0x6
+instruction	1d0f:1916	1d0f:1ad1	5e	POP SI
+instruction	1d0f:1916	1d0f:1ad2	5f	POP DI
+instruction	1d0f:1916	1d0f:1ad3	c9	LEAVE
+instruction	1d0f:1916	1d0f:1ad4	cb	RETF
+instruction	1d0f:1916	1d0f:1ad6	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	1d0f:1916	1d0f:1ad9	268a04	MOV AL,byte ptr ES:[SI]
+instruction	1d0f:1916	1d0f:1adc	2ae4	SUB AH,AH
+instruction	1d0f:1916	1d0f:1ade	5e	POP SI
+instruction	1d0f:1916	1d0f:1adf	5f	POP DI
+instruction	1d0f:1916	1d0f:1ae0	c9	LEAVE
+instruction	1d0f:1916	1d0f:1ae1	cb	RETF
+instruction	1d0f:024c	1d0f:024c	55	PUSH BP
+instruction	1d0f:024c	1d0f:024d	8bec	MOV BP,SP
+instruction	1d0f:024c	1d0f:024f	57	PUSH DI
+instruction	1d0f:024c	1d0f:0250	56	PUSH SI
+instruction	1d0f:024c	1d0f:0251	8b7e08	MOV DI,word ptr [BP + 0x8]
+instruction	1d0f:024c	1d0f:0254	81ffc800	CMP DI,0xc8
+instruction	1d0f:024c	1d0f:0258	7d61	JGE 0x1000:d3ab
+instruction	1d0f:024c	1d0f:025a	8b7606	MOV SI,word ptr [BP + 0x6]
+instruction	1d0f:024c	1d0f:025d	ff7614	PUSH word ptr [BP + 0x14]
+instruction	1d0f:024c	1d0f:0260	0e	PUSH CS
+instruction	1d0f:024c	1d0f:0261	e806ff	CALL 0x1000:d25a
+instruction	1d0f:024c	1d0f:0264	83c402	ADD SP,0x2
+instruction	1d0f:024c	1d0f:0267	8a4612	MOV AL,byte ptr [BP + 0x12]
+instruction	1d0f:024c	1d0f:026a	50	PUSH AX
+instruction	1d0f:024c	1d0f:026b	ff7614	PUSH word ptr [BP + 0x14]
+instruction	1d0f:024c	1d0f:026e	0e	PUSH CS
+instruction	1d0f:024c	1d0f:026f	e88efd	CALL 0x1000:d0f0
+instruction	1d0f:024c	1d0f:0272	83c402	ADD SP,0x2
+instruction	1d0f:024c	1d0f:0275	50	PUSH AX
+instruction	1d0f:024c	1d0f:0276	ff760a	PUSH word ptr [BP + 0xa]
+instruction	1d0f:024c	1d0f:0279	57	PUSH DI
+instruction	1d0f:024c	1d0f:027a	56	PUSH SI
+instruction	1d0f:024c	1d0f:027b	9a46095611	CALLF 0x1000:1ea6
+instruction	1d0f:024c	1d0f:0280	83c40a	ADD SP,0xa
+instruction	1d0f:024c	1d0f:0283	6a00	PUSH 0x0
+instruction	1d0f:024c	1d0f:0285	8a4610	MOV AL,byte ptr [BP + 0x10]
+instruction	1d0f:024c	1d0f:0288	50	PUSH AX
+instruction	1d0f:024c	1d0f:0289	66ff760c	PUSH dword ptr [BP + 0xc]
+instruction	1d0f:024c	1d0f:028d	57	PUSH DI
+instruction	1d0f:024c	1d0f:028e	66ff760c	PUSH dword ptr [BP + 0xc]
+instruction	1d0f:024c	1d0f:0292	0e	PUSH CS
+instruction	1d0f:024c	1d0f:0293	e89afd	CALL 0x1000:d120
+instruction	1d0f:024c	1d0f:0296	83c404	ADD SP,0x4
+instruction	1d0f:024c	1d0f:0299	2b460a	SUB AX,word ptr [BP + 0xa]
+instruction	1d0f:024c	1d0f:029c	f7d8	NEG AX
+instruction	1d0f:024c	1d0f:029e	03f0	ADD SI,AX
+instruction	1d0f:024c	1d0f:02a0	56	PUSH SI
+instruction	1d0f:024c	1d0f:02a1	0e	PUSH CS
+instruction	1d0f:024c	1d0f:02a2	e8f1fd	CALL 0x1000:d186
+instruction	1d0f:024c	1d0f:02a5	83c40c	ADD SP,0xc
+instruction	1d0f:024c	1d0f:02a8	6a01	PUSH 0x1
+instruction	1d0f:024c	1d0f:02aa	8a4610	MOV AL,byte ptr [BP + 0x10]
+instruction	1d0f:024c	1d0f:02ad	50	PUSH AX
+instruction	1d0f:024c	1d0f:02ae	66ff760c	PUSH dword ptr [BP + 0xc]
+instruction	1d0f:024c	1d0f:02b2	57	PUSH DI
+instruction	1d0f:024c	1d0f:02b3	56	PUSH SI
+instruction	1d0f:024c	1d0f:02b4	0e	PUSH CS
+instruction	1d0f:024c	1d0f:02b5	e8defd	CALL 0x1000:d186
+instruction	1d0f:024c	1d0f:02b8	83c40c	ADD SP,0xc
+instruction	1d0f:024c	1d0f:02bb	5e	POP SI
+instruction	1d0f:024c	1d0f:02bc	5f	POP DI
+instruction	1d0f:024c	1d0f:02bd	c9	LEAVE
+instruction	1d0f:024c	1d0f:02be	cb	RETF
+instruction	1d0f:03e0	1d0f:03e0	55	PUSH BP
+instruction	1d0f:03e0	1d0f:03e1	8bec	MOV BP,SP
+instruction	1d0f:03e0	1d0f:03e3	6a01	PUSH 0x1
+instruction	1d0f:03e0	1d0f:03e5	0e	PUSH CS
+instruction	1d0f:03e0	1d0f:03e6	e881fd	CALL 0x1000:d25a
+instruction	1d0f:03e0	1d0f:03e9	8be5	MOV SP,BP
+instruction	1d0f:03e0	1d0f:03eb	6a00	PUSH 0x0
+instruction	1d0f:03e0	1d0f:03ed	8a460e	MOV AL,byte ptr [BP + 0xe]
+instruction	1d0f:03e0	1d0f:03f0	50	PUSH AX
+instruction	1d0f:03e0	1d0f:03f1	66ff760a	PUSH dword ptr [BP + 0xa]
+instruction	1d0f:03e0	1d0f:03f5	66ff7606	PUSH dword ptr [BP + 0x6]
+instruction	1d0f:03e0	1d0f:03f9	0e	PUSH CS
+instruction	1d0f:03e0	1d0f:03fa	e819fd	CALL 0x1000:d206
+instruction	1d0f:03e0	1d0f:03fd	c9	LEAVE
+instruction	1d0f:03e0	1d0f:03fe	cb	RETF
+instruction	1d0f:052e	1d0f:052e	c8100000	ENTER 0x10,0x0
+instruction	1d0f:052e	1d0f:0532	57	PUSH DI
+instruction	1d0f:052e	1d0f:0533	56	PUSH SI
+instruction	1d0f:052e	1d0f:0534	8b7e06	MOV DI,word ptr [BP + 0x6]
+instruction	1d0f:052e	1d0f:0537	6a01	PUSH 0x1
+instruction	1d0f:052e	1d0f:0539	0e	PUSH CS
+instruction	1d0f:052e	1d0f:053a	e82dfc	CALL 0x1000:d25a
+instruction	1d0f:052e	1d0f:053d	83c402	ADD SP,0x2
+instruction	1d0f:052e	1d0f:0540	6a0a	PUSH 0xa
+instruction	1d0f:052e	1d0f:0542	ff7608	PUSH word ptr [BP + 0x8]
+instruction	1d0f:052e	1d0f:0545	57	PUSH DI
+instruction	1d0f:052e	1d0f:0546	9a363cd121	CALLF 0x2000:5946
+instruction	1d0f:052e	1d0f:054b	83c406	ADD SP,0x6
+instruction	1d0f:052e	1d0f:054e	0bd0	OR DX,AX
+instruction	1d0f:052e	1d0f:0550	7404	JZ 0x1000:d646
+instruction	1d0f:052e	1d0f:0552	33f6	XOR SI,SI
+instruction	1d0f:052e	1d0f:0554	eb0d	JMP 0x1000:d653
+instruction	1d0f:052e	1d0f:0556	ff7608	PUSH word ptr [BP + 0x8]
+instruction	1d0f:052e	1d0f:0559	57	PUSH DI
+instruction	1d0f:052e	1d0f:055a	0e	PUSH CS
+instruction	1d0f:052e	1d0f:055b	e8d2fa	CALL 0x1000:d120
+instruction	1d0f:052e	1d0f:055e	83c404	ADD SP,0x4
+instruction	1d0f:052e	1d0f:0561	8bf0	MOV SI,AX
+instruction	1d0f:052e	1d0f:0563	c746f20b00	MOV word ptr [BP + -0xe],0xb
+instruction	1d0f:052e	1d0f:0568	8b4608	MOV AX,word ptr [BP + 0x8]
+instruction	1d0f:052e	1d0f:056b	897ef6	MOV word ptr [BP + -0xa],DI
+instruction	1d0f:052e	1d0f:056e	8946f8	MOV word ptr [BP + -0x8],AX
+instruction	1d0f:052e	1d0f:0571	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	1d0f:052e	1d0f:0574	8ec0	MOV ES,AX
+instruction	1d0f:052e	1d0f:0576	26803d00	CMP byte ptr ES:[DI],0x0
+instruction	1d0f:052e	1d0f:057a	7445	JZ 0x1000:d6b1
+instruction	1d0f:052e	1d0f:057c	8976f0	MOV word ptr [BP + -0x10],SI
+instruction	1d0f:052e	1d0f:057f	8bf7	MOV SI,DI
+instruction	1d0f:052e	1d0f:0581	26803c0a	CMP byte ptr ES:[SI],0xa
+instruction	1d0f:052e	1d0f:0585	752d	JNZ 0x1000:d6a4
+instruction	1d0f:052e	1d0f:0587	26c60400	MOV byte ptr ES:[SI],0x0
+instruction	1d0f:052e	1d0f:058b	66ff76f6	PUSH dword ptr [BP + -0xa]
+instruction	1d0f:052e	1d0f:058f	0e	PUSH CS
+instruction	1d0f:052e	1d0f:0590	e89dfa	CALL 0x1000:d120
+instruction	1d0f:052e	1d0f:0593	83c404	ADD SP,0x4
+instruction	1d0f:052e	1d0f:0596	8bf8	MOV DI,AX
+instruction	1d0f:052e	1d0f:0598	3b7ef0	CMP DI,word ptr [BP + -0x10]
+instruction	1d0f:052e	1d0f:059b	7e03	JLE 0x1000:d690
+instruction	1d0f:052e	1d0f:059d	8946f0	MOV word ptr [BP + -0x10],AX
+instruction	1d0f:052e	1d0f:05a0	8346f20b	ADD word ptr [BP + -0xe],0xb
+instruction	1d0f:052e	1d0f:05a4	8e46fe	MOV ES,word ptr [BP + -0x2]
+instruction	1d0f:052e	1d0f:05a7	26c6040a	MOV byte ptr ES:[SI],0xa
+instruction	1d0f:052e	1d0f:05ab	8bc6	MOV AX,SI
+instruction	1d0f:052e	1d0f:05ad	40	INC AX
+instruction	1d0f:052e	1d0f:05ae	8946f6	MOV word ptr [BP + -0xa],AX
+instruction	1d0f:052e	1d0f:05b1	8c46f8	MOV word ptr [BP + -0x8],ES
+instruction	1d0f:052e	1d0f:05b4	8e46fe	MOV ES,word ptr [BP + -0x2]
+instruction	1d0f:052e	1d0f:05b7	46	INC SI
+instruction	1d0f:052e	1d0f:05b8	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	1d0f:052e	1d0f:05bc	75c3	JNZ 0x1000:d671
+instruction	1d0f:052e	1d0f:05be	8b76f0	MOV SI,word ptr [BP + -0x10]
+instruction	1d0f:052e	1d0f:05c1	66ff76f6	PUSH dword ptr [BP + -0xa]
+instruction	1d0f:052e	1d0f:05c5	0e	PUSH CS
+instruction	1d0f:052e	1d0f:05c6	e867fa	CALL 0x1000:d120
+instruction	1d0f:052e	1d0f:05c9	83c404	ADD SP,0x4
+instruction	1d0f:052e	1d0f:05cc	8bf8	MOV DI,AX
+instruction	1d0f:052e	1d0f:05ce	3bfe	CMP DI,SI
+instruction	1d0f:052e	1d0f:05d0	7e02	JLE 0x1000:d6c4
+instruction	1d0f:052e	1d0f:05d2	8bf0	MOV SI,AX
+instruction	1d0f:052e	1d0f:05d4	8bc6	MOV AX,SI
+instruction	1d0f:052e	1d0f:05d6	99	CWD
+instruction	1d0f:052e	1d0f:05d7	2bc2	SUB AX,DX
+instruction	1d0f:052e	1d0f:05d9	d1f8	SAR AX,0x1
+instruction	1d0f:052e	1d0f:05db	2b06be44	SUB AX,word ptr [0x44be]
+instruction	1d0f:052e	1d0f:05df	f7d8	NEG AX
+instruction	1d0f:052e	1d0f:05e1	8946f4	MOV word ptr [BP + -0xc],AX
+instruction	1d0f:052e	1d0f:05e4	8b46f2	MOV AX,word ptr [BP + -0xe]
+instruction	1d0f:052e	1d0f:05e7	99	CWD
+instruction	1d0f:052e	1d0f:05e8	2bc2	SUB AX,DX
+instruction	1d0f:052e	1d0f:05ea	d1f8	SAR AX,0x1
+instruction	1d0f:052e	1d0f:05ec	8b3ec044	MOV DI,word ptr [0x44c0]
+instruction	1d0f:052e	1d0f:05f0	2bf8	SUB DI,AX
+instruction	1d0f:052e	1d0f:05f2	666808000100	PUSH 0x10008
+instruction	1d0f:052e	1d0f:05f8	9a88017712	CALLF 0x1000:28f8
+instruction	1d0f:052e	1d0f:05fd	83c402	ADD SP,0x2
+instruction	1d0f:052e	1d0f:0600	50	PUSH AX
+instruction	1d0f:052e	1d0f:0601	8b46f2	MOV AX,word ptr [BP + -0xe]
+instruction	1d0f:052e	1d0f:0604	051000	ADD AX,0x10
+instruction	1d0f:052e	1d0f:0607	50	PUSH AX
+instruction	1d0f:052e	1d0f:0608	8d4410	LEA AX,[SI + 0x10]
+instruction	1d0f:052e	1d0f:060b	50	PUSH AX
+instruction	1d0f:052e	1d0f:060c	8d45f8	LEA AX,[DI + -0x8]
+instruction	1d0f:052e	1d0f:060f	50	PUSH AX
+instruction	1d0f:052e	1d0f:0610	8b46f4	MOV AX,word ptr [BP + -0xc]
+instruction	1d0f:052e	1d0f:0613	2d0800	SUB AX,0x8
+instruction	1d0f:052e	1d0f:0616	50	PUSH AX
+instruction	1d0f:052e	1d0f:0617	9a7c095611	CALLF 0x1000:1edc
+instruction	1d0f:052e	1d0f:061c	83c40c	ADD SP,0xc
+instruction	1d0f:052e	1d0f:061f	668b4606	MOV EAX,dword ptr [BP + 0x6]
+instruction	1d0f:052e	1d0f:0623	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	1d0f:052e	1d0f:0626	668946f6	MOV dword ptr [BP + -0xa],EAX
+instruction	1d0f:052e	1d0f:062a	8956fe	MOV word ptr [BP + -0x2],DX
+instruction	1d0f:052e	1d0f:062d	8976f0	MOV word ptr [BP + -0x10],SI
+instruction	1d0f:052e	1d0f:0630	8ec2	MOV ES,DX
+instruction	1d0f:052e	1d0f:0632	8bd8	MOV BX,AX
+instruction	1d0f:052e	1d0f:0634	26803f00	CMP byte ptr ES:[BX],0x0
+instruction	1d0f:052e	1d0f:0638	7447	JZ 0x1000:d771
+instruction	1d0f:052e	1d0f:063a	8bf0	MOV SI,AX
+instruction	1d0f:052e	1d0f:063c	26803c0a	CMP byte ptr ES:[SI],0xa
+instruction	1d0f:052e	1d0f:0640	7535	JNZ 0x1000:d767
+instruction	1d0f:052e	1d0f:0642	26c60400	MOV byte ptr ES:[SI],0x0
+instruction	1d0f:052e	1d0f:0646	66680e000100	PUSH 0x1000e
+instruction	1d0f:052e	1d0f:064c	9a88017712	CALLF 0x1000:28f8
+instruction	1d0f:052e	1d0f:0651	83c402	ADD SP,0x2
+instruction	1d0f:052e	1d0f:0654	50	PUSH AX
+instruction	1d0f:052e	1d0f:0655	66ff76f6	PUSH dword ptr [BP + -0xa]
+instruction	1d0f:052e	1d0f:0659	57	PUSH DI
+instruction	1d0f:052e	1d0f:065a	ff76f4	PUSH word ptr [BP + -0xc]
+instruction	1d0f:052e	1d0f:065d	0e	PUSH CS
+instruction	1d0f:052e	1d0f:065e	e8b5fa	CALL 0x1000:d206
+instruction	1d0f:052e	1d0f:0661	83c40c	ADD SP,0xc
+instruction	1d0f:052e	1d0f:0664	83c70b	ADD DI,0xb
+instruction	1d0f:052e	1d0f:0667	8e46fe	MOV ES,word ptr [BP + -0x2]
+instruction	1d0f:052e	1d0f:066a	26c6040a	MOV byte ptr ES:[SI],0xa
+instruction	1d0f:052e	1d0f:066e	8bc6	MOV AX,SI
+instruction	1d0f:052e	1d0f:0670	40	INC AX
+instruction	1d0f:052e	1d0f:0671	8946f6	MOV word ptr [BP + -0xa],AX
+instruction	1d0f:052e	1d0f:0674	8c46f8	MOV word ptr [BP + -0x8],ES
+instruction	1d0f:052e	1d0f:0677	8e46fe	MOV ES,word ptr [BP + -0x2]
+instruction	1d0f:052e	1d0f:067a	46	INC SI
+instruction	1d0f:052e	1d0f:067b	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	1d0f:052e	1d0f:067f	75bb	JNZ 0x1000:d72c
+instruction	1d0f:052e	1d0f:0681	8bf7	MOV SI,DI
+instruction	1d0f:052e	1d0f:0683	66680e000100	PUSH 0x1000e
+instruction	1d0f:052e	1d0f:0689	9a88017712	CALLF 0x1000:28f8
+instruction	1d0f:052e	1d0f:068e	83c402	ADD SP,0x2
+instruction	1d0f:052e	1d0f:0691	50	PUSH AX
+instruction	1d0f:052e	1d0f:0692	66ff76f6	PUSH dword ptr [BP + -0xa]
+instruction	1d0f:052e	1d0f:0696	56	PUSH SI
+instruction	1d0f:052e	1d0f:0697	ff76f4	PUSH word ptr [BP + -0xc]
+instruction	1d0f:052e	1d0f:069a	0e	PUSH CS
+instruction	1d0f:052e	1d0f:069b	e878fa	CALL 0x1000:d206
+instruction	1d0f:052e	1d0f:069e	83c40c	ADD SP,0xc
+instruction	1d0f:052e	1d0f:06a1	8b5e0a	MOV BX,word ptr [BP + 0xa]
+instruction	1d0f:052e	1d0f:06a4	8b46f4	MOV AX,word ptr [BP + -0xc]
+instruction	1d0f:052e	1d0f:06a7	8907	MOV word ptr [BX],AX
+instruction	1d0f:052e	1d0f:06a9	897702	MOV word ptr [BX + 0x2],SI
+instruction	1d0f:052e	1d0f:06ac	8b46f0	MOV AX,word ptr [BP + -0x10]
+instruction	1d0f:052e	1d0f:06af	894704	MOV word ptr [BX + 0x4],AX
+instruction	1d0f:052e	1d0f:06b2	8b46f2	MOV AX,word ptr [BP + -0xe]
+instruction	1d0f:052e	1d0f:06b5	894706	MOV word ptr [BX + 0x6],AX
+instruction	1d0f:052e	1d0f:06b8	5e	POP SI
+instruction	1d0f:052e	1d0f:06b9	5f	POP DI
+instruction	1d0f:052e	1d0f:06ba	c9	LEAVE
+instruction	1d0f:052e	1d0f:06bb	cb	RETF
+instruction	1d0f:0a10	1d0f:0a10	c85e0000	ENTER 0x5e,0x0
+instruction	1d0f:0a10	1d0f:0a14	57	PUSH DI
+instruction	1d0f:0a10	1d0f:0a15	56	PUSH SI
+instruction	1d0f:0a10	1d0f:0a16	c746fe3c00	MOV word ptr [BP + -0x2],0x3c
+instruction	1d0f:0a10	1d0f:0a1b	33ff	XOR DI,DI
+instruction	1d0f:0a10	1d0f:0a1d	6a0a	PUSH 0xa
+instruction	1d0f:0a10	1d0f:0a1f	9a9802111c	CALLF 0x1000:c3a8
+instruction	1d0f:0a10	1d0f:0a24	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0a27	6a0e	PUSH 0xe
+instruction	1d0f:0a10	1d0f:0a29	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0a2a	e8d3f9	CALL 0x1000:d4f0
+instruction	1d0f:0a10	1d0f:0a2d	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0a30	6a02	PUSH 0x2
+instruction	1d0f:0a10	1d0f:0a32	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0a33	e834f7	CALL 0x1000:d25a
+instruction	1d0f:0a10	1d0f:0a36	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0a39	8d46e2	LEA AX,[BP + -0x1e]
+instruction	1d0f:0a10	1d0f:0a3c	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0a3d	9aae252618	CALLF 0x1000:a80e
+instruction	1d0f:0a10	1d0f:0a42	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0a45	397ee8	CMP word ptr [BP + -0x18],DI
+instruction	1d0f:0a10	1d0f:0a48	7503	JNZ 0x1000:db3d
+instruction	1d0f:0a10	1d0f:0a4a	bf8813	MOV DI,0x1388
+instruction	1d0f:0a10	1d0f:0a4d	837eea00	CMP word ptr [BP + -0x16],0x0
+instruction	1d0f:0a10	1d0f:0a51	7504	JNZ 0x1000:db47
+instruction	1d0f:0a10	1d0f:0a53	81c78813	ADD DI,0x1388
+instruction	1d0f:0a10	1d0f:0a57	660fbfc7	MOVSX EAX,DI
+instruction	1d0f:0a10	1d0f:0a5b	660106f040	ADD dword ptr [0x40f0],EAX
+instruction	1d0f:0a10	1d0f:0a60	a1da61	MOV AX,[0x61da]
+instruction	1d0f:0a10	1d0f:0a63	40	INC AX
+instruction	1d0f:0a10	1d0f:0a64	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0a65	68991c	PUSH 0x1c99
+instruction	1d0f:0a10	1d0f:0a68	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0a6b	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0a6c	9a8c27d121	CALLF 0x2000:449c
+instruction	1d0f:0a10	1d0f:0a71	83c406	ADD SP,0x6
+instruction	1d0f:0a10	1d0f:0a74	66680e000100	PUSH 0x1000e
+instruction	1d0f:0a10	1d0f:0a7a	9a88017712	CALLF 0x1000:28f8
+instruction	1d0f:0a10	1d0f:0a7f	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0a82	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0a83	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0a86	16	PUSH SS
+instruction	1d0f:0a10	1d0f:0a87	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0a88	6668dc003c00	PUSH 0x3c00dc
+instruction	1d0f:0a10	1d0f:0a8e	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0a8f	e884f6	CALL 0x1000:d206
+instruction	1d0f:0a10	1d0f:0a92	83c40c	ADD SP,0xc
+instruction	1d0f:0a10	1d0f:0a95	ff76e8	PUSH word ptr [BP + -0x18]
+instruction	1d0f:0a10	1d0f:0a98	689c1c	PUSH 0x1c9c
+instruction	1d0f:0a10	1d0f:0a9b	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0a9e	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0a9f	9a8c27d121	CALLF 0x2000:449c
+instruction	1d0f:0a10	1d0f:0aa4	83c406	ADD SP,0x6
+instruction	1d0f:0a10	1d0f:0aa7	66680e000100	PUSH 0x1000e
+instruction	1d0f:0a10	1d0f:0aad	9a88017712	CALLF 0x1000:28f8
+instruction	1d0f:0a10	1d0f:0ab2	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0ab5	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0ab6	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0ab9	16	PUSH SS
+instruction	1d0f:0a10	1d0f:0aba	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0abb	be5000	MOV SI,0x50
+instruction	1d0f:0a10	1d0f:0abe	56	PUSH SI
+instruction	1d0f:0a10	1d0f:0abf	68dc00	PUSH 0xdc
+instruction	1d0f:0a10	1d0f:0ac2	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0ac3	e850f6	CALL 0x1000:d206
+instruction	1d0f:0a10	1d0f:0ac6	83c40c	ADD SP,0xc
+instruction	1d0f:0a10	1d0f:0ac9	ff76ea	PUSH word ptr [BP + -0x16]
+instruction	1d0f:0a10	1d0f:0acc	689f1c	PUSH 0x1c9f
+instruction	1d0f:0a10	1d0f:0acf	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0ad2	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0ad3	9a8c27d121	CALLF 0x2000:449c
+instruction	1d0f:0a10	1d0f:0ad8	83c406	ADD SP,0x6
+instruction	1d0f:0a10	1d0f:0adb	66680e000100	PUSH 0x1000e
+instruction	1d0f:0a10	1d0f:0ae1	9a88017712	CALLF 0x1000:28f8
+instruction	1d0f:0a10	1d0f:0ae6	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0ae9	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0aea	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0aed	16	PUSH SS
+instruction	1d0f:0a10	1d0f:0aee	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0aef	83c614	ADD SI,0x14
+instruction	1d0f:0a10	1d0f:0af2	56	PUSH SI
+instruction	1d0f:0a10	1d0f:0af3	68dc00	PUSH 0xdc
+instruction	1d0f:0a10	1d0f:0af6	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0af7	e81cf6	CALL 0x1000:d206
+instruction	1d0f:0a10	1d0f:0afa	83c40c	ADD SP,0xc
+instruction	1d0f:0a10	1d0f:0afd	57	PUSH DI
+instruction	1d0f:0a10	1d0f:0afe	68a21c	PUSH 0x1ca2
+instruction	1d0f:0a10	1d0f:0b01	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0b04	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0b05	9a8c27d121	CALLF 0x2000:449c
+instruction	1d0f:0a10	1d0f:0b0a	83c406	ADD SP,0x6
+instruction	1d0f:0a10	1d0f:0b0d	66680e000100	PUSH 0x1000e
+instruction	1d0f:0a10	1d0f:0b13	9a88017712	CALLF 0x1000:28f8
+instruction	1d0f:0a10	1d0f:0b18	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0b1b	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0b1c	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0b1f	16	PUSH SS
+instruction	1d0f:0a10	1d0f:0b20	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0b21	83c614	ADD SI,0x14
+instruction	1d0f:0a10	1d0f:0b24	56	PUSH SI
+instruction	1d0f:0a10	1d0f:0b25	68dc00	PUSH 0xdc
+instruction	1d0f:0a10	1d0f:0b28	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0b29	e8eaf5	CALL 0x1000:d206
+instruction	1d0f:0a10	1d0f:0b2c	83c40c	ADD SP,0xc
+instruction	1d0f:0a10	1d0f:0b2f	66ff36f040	PUSH dword ptr [0x40f0]
+instruction	1d0f:0a10	1d0f:0b34	68a51c	PUSH 0x1ca5
+instruction	1d0f:0a10	1d0f:0b37	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0b3a	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0b3b	9a8c27d121	CALLF 0x2000:449c
+instruction	1d0f:0a10	1d0f:0b40	83c408	ADD SP,0x8
+instruction	1d0f:0a10	1d0f:0b43	6a01	PUSH 0x1
+instruction	1d0f:0a10	1d0f:0b45	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0b46	e821f6	CALL 0x1000:d25a
+instruction	1d0f:0a10	1d0f:0b49	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0b4c	66680e000100	PUSH 0x1000e
+instruction	1d0f:0a10	1d0f:0b52	9a88017712	CALLF 0x1000:28f8
+instruction	1d0f:0a10	1d0f:0b57	83c402	ADD SP,0x2
+instruction	1d0f:0a10	1d0f:0b5a	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0b5b	8d46a2	LEA AX,[BP + -0x5e]
+instruction	1d0f:0a10	1d0f:0b5e	16	PUSH SS
+instruction	1d0f:0a10	1d0f:0b5f	50	PUSH AX
+instruction	1d0f:0a10	1d0f:0b60	83c614	ADD SI,0x14
+instruction	1d0f:0a10	1d0f:0b63	56	PUSH SI
+instruction	1d0f:0a10	1d0f:0b64	68dc00	PUSH 0xdc
+instruction	1d0f:0a10	1d0f:0b67	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0b68	e8abf5	CALL 0x1000:d206
+instruction	1d0f:0a10	1d0f:0b6b	83c40c	ADD SP,0xc
+instruction	1d0f:0a10	1d0f:0b6e	0e	PUSH CS
+instruction	1d0f:0a10	1d0f:0b6f	e888f9	CALL 0x1000:d5ea
+instruction	1d0f:0a10	1d0f:0b72	5e	POP SI
+instruction	1d0f:0a10	1d0f:0b73	5f	POP DI
+instruction	1d0f:0a10	1d0f:0b74	c9	LEAVE
+instruction	1d0f:0a10	1d0f:0b75	cb	RETF
+instruction	1d0f:000e	1d0f:000e	55	PUSH BP
+instruction	1d0f:000e	1d0f:000f	8bec	MOV BP,SP
+instruction	1d0f:000e	1d0f:0011	8a4606	MOV AL,byte ptr [BP + 0x6]
+instruction	1d0f:000e	1d0f:0014	98	CBW
+instruction	1d0f:000e	1d0f:0015	8a1e0036	MOV BL,byte ptr [0x3600]
+instruction	1d0f:000e	1d0f:0019	2aff	SUB BH,BH
+instruction	1d0f:000e	1d0f:001b	c1e307	SHL BX,0x7
+instruction	1d0f:000e	1d0f:001e	03d8	ADD BX,AX
+instruction	1d0f:000e	1d0f:0020	c1e302	SHL BX,0x2
+instruction	1d0f:000e	1d0f:0023	c49f0236	LES BX,[BX + 0x3602]
+instruction	1d0f:000e	1d0f:0027	2ae4	SUB AH,AH
+instruction	1d0f:000e	1d0f:0029	268a4701	MOV AL,byte ptr ES:[BX + 0x1]
+instruction	1d0f:000e	1d0f:002d	40	INC AX
+instruction	1d0f:000e	1d0f:002e	c9	LEAVE
+instruction	1d0f:000e	1d0f:002f	cb	RETF
+instruction	1d0f:0030	1d0f:0030	c8020000	ENTER 0x2,0x0
+instruction	1d0f:0030	1d0f:0034	57	PUSH DI
+instruction	1d0f:0030	1d0f:0035	56	PUSH SI
+instruction	1d0f:0030	1d0f:0036	8b7606	MOV SI,word ptr [BP + 0x6]
+instruction	1d0f:0030	1d0f:0039	a00036	MOV AL,[0x3600]
+instruction	1d0f:0030	1d0f:003c	2ae4	SUB AH,AH
+instruction	1d0f:0030	1d0f:003e	8bf8	MOV DI,AX
+instruction	1d0f:0030	1d0f:0040	c1e709	SHL DI,0x9
+instruction	1d0f:0030	1d0f:0043	81c70236	ADD DI,0x3602
+instruction	1d0f:0030	1d0f:0047	33c9	XOR CX,CX
+instruction	1d0f:0030	1d0f:0049	8e4608	MOV ES,word ptr [BP + 0x8]
+instruction	1d0f:0030	1d0f:004c	26380c	CMP byte ptr ES:[SI],CL
+instruction	1d0f:0030	1d0f:004f	7421	JZ 0x1000:d162
+instruction	1d0f:0030	1d0f:0051	8e5e08	MOV DS,word ptr [BP + 0x8]
+instruction	1d0f:0030	1d0f:0054	8a04	MOV AL,byte ptr [SI]
+instruction	1d0f:0030	1d0f:0056	98	CBW
+instruction	1d0f:0030	1d0f:0057	8bd8	MOV BX,AX
+instruction	1d0f:0030	1d0f:0059	c1e302	SHL BX,0x2
+instruction	1d0f:0030	1d0f:005c	03df	ADD BX,DI
+instruction	1d0f:0030	1d0f:005e	36c41f	LES BX,SS:[BX]
+instruction	1d0f:0030	1d0f:0061	2ae4	SUB AH,AH
+instruction	1d0f:0030	1d0f:0063	268a4701	MOV AL,byte ptr ES:[BX + 0x1]
+instruction	1d0f:0030	1d0f:0067	40	INC AX
+instruction	1d0f:0030	1d0f:0068	03c8	ADD CX,AX
+instruction	1d0f:0030	1d0f:006a	46	INC SI
+instruction	1d0f:0030	1d0f:006b	803c00	CMP byte ptr [SI],0x0
+instruction	1d0f:0030	1d0f:006e	75e4	JNZ 0x1000:d144
+instruction	1d0f:0030	1d0f:0070	16	PUSH SS
+instruction	1d0f:0030	1d0f:0071	1f	POP DS
+instruction	1d0f:0030	1d0f:0072	8bc1	MOV AX,CX
+instruction	1d0f:0030	1d0f:0074	5e	POP SI
+instruction	1d0f:0030	1d0f:0075	5f	POP DI
+instruction	1d0f:0030	1d0f:0076	c9	LEAVE
+instruction	1d0f:0030	1d0f:0077	cb	RETF
+instruction	1d0f:0096	1d0f:0096	c8020000	ENTER 0x2,0x0
+instruction	1d0f:0096	1d0f:009a	57	PUSH DI
+instruction	1d0f:0096	1d0f:009b	56	PUSH SI
+instruction	1d0f:0096	1d0f:009c	8b7e06	MOV DI,word ptr [BP + 0x6]
+instruction	1d0f:0096	1d0f:009f	a00036	MOV AL,[0x3600]
+instruction	1d0f:0096	1d0f:00a2	2ae4	SUB AH,AH
+instruction	1d0f:0096	1d0f:00a4	c1e009	SHL AX,0x9
+instruction	1d0f:0096	1d0f:00a7	050236	ADD AX,0x3602
+instruction	1d0f:0096	1d0f:00aa	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	1d0f:0096	1d0f:00ad	8b760a	MOV SI,word ptr [BP + 0xa]
+instruction	1d0f:0096	1d0f:00b0	83ffff	CMP DI,-0x1
+instruction	1d0f:0096	1d0f:00b3	750d	JNZ 0x1000:d1b2
+instruction	1d0f:0096	1d0f:00b5	ff760c	PUSH word ptr [BP + 0xc]
+instruction	1d0f:0096	1d0f:00b8	56	PUSH SI
+instruction	1d0f:0096	1d0f:00b9	0e	PUSH CS
+instruction	1d0f:0096	1d0f:00ba	e8bbff	CALL 0x1000:d168
+instruction	1d0f:0096	1d0f:00bd	83c404	ADD SP,0x4
+instruction	1d0f:0096	1d0f:00c0	8bf8	MOV DI,AX
+instruction	1d0f:0096	1d0f:00c2	8e460c	MOV ES,word ptr [BP + 0xc]
+instruction	1d0f:0096	1d0f:00c5	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	1d0f:0096	1d0f:00c9	7446	JZ 0x1000:d201
+instruction	1d0f:0096	1d0f:00cb	268a04	MOV AL,byte ptr ES:[SI]
+instruction	1d0f:0096	1d0f:00ce	98	CBW
+instruction	1d0f:0096	1d0f:00cf	8bd8	MOV BX,AX
+instruction	1d0f:0096	1d0f:00d1	c1e302	SHL BX,0x2
+instruction	1d0f:0096	1d0f:00d4	035efe	ADD BX,word ptr [BP + -0x2]
+instruction	1d0f:0096	1d0f:00d7	66ff37	PUSH dword ptr [BX]
+instruction	1d0f:0096	1d0f:00da	ff7610	PUSH word ptr [BP + 0x10]
+instruction	1d0f:0096	1d0f:00dd	8a460e	MOV AL,byte ptr [BP + 0xe]
+instruction	1d0f:0096	1d0f:00e0	50	PUSH AX
+instruction	1d0f:0096	1d0f:00e1	ff7608	PUSH word ptr [BP + 0x8]
+instruction	1d0f:0096	1d0f:00e4	57	PUSH DI
+instruction	1d0f:0096	1d0f:00e5	9ac4095611	CALLF 0x1000:1f24
+instruction	1d0f:0096	1d0f:00ea	83c40c	ADD SP,0xc
+instruction	1d0f:0096	1d0f:00ed	8e460c	MOV ES,word ptr [BP + 0xc]
+instruction	1d0f:0096	1d0f:00f0	268a04	MOV AL,byte ptr ES:[SI]
+instruction	1d0f:0096	1d0f:00f3	98	CBW
+instruction	1d0f:0096	1d0f:00f4	8bd8	MOV BX,AX
+instruction	1d0f:0096	1d0f:00f6	c1e302	SHL BX,0x2
+instruction	1d0f:0096	1d0f:00f9	035efe	ADD BX,word ptr [BP + -0x2]
+instruction	1d0f:0096	1d0f:00fc	c41f	LES BX,[BX]
+instruction	1d0f:0096	1d0f:00fe	2ae4	SUB AH,AH
+instruction	1d0f:0096	1d0f:0100	268a4701	MOV AL,byte ptr ES:[BX + 0x1]
+instruction	1d0f:0096	1d0f:0104	40	INC AX
+instruction	1d0f:0096	1d0f:0105	03f8	ADD DI,AX
+instruction	1d0f:0096	1d0f:0107	8e460c	MOV ES,word ptr [BP + 0xc]
+instruction	1d0f:0096	1d0f:010a	46	INC SI
+instruction	1d0f:0096	1d0f:010b	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	1d0f:0096	1d0f:010f	75ba	JNZ 0x1000:d1bb
+instruction	1d0f:0096	1d0f:0111	5e	POP SI
+instruction	1d0f:0096	1d0f:0112	5f	POP DI
+instruction	1d0f:0096	1d0f:0113	c9	LEAVE
+instruction	1d0f:0096	1d0f:0114	cb	RETF
+instruction	1d0f:016a	1d0f:016a	c8080000	ENTER 0x8,0x0
+instruction	1d0f:016a	1d0f:016e	57	PUSH DI
+instruction	1d0f:016a	1d0f:016f	56	PUSH SI
+instruction	1d0f:016a	1d0f:0170	8a5e06	MOV BL,byte ptr [BP + 0x6]
+instruction	1d0f:016a	1d0f:0173	881e0036	MOV byte ptr [0x3600],BL
+instruction	1d0f:016a	1d0f:0177	2aff	SUB BH,BH
+instruction	1d0f:016a	1d0f:0179	38bf3c1c	CMP byte ptr [BX + 0x1c3c],BH
+instruction	1d0f:016a	1d0f:017d	0f85c700	JNZ 0x1000:d338
+instruction	1d0f:016a	1d0f:0181	c6873c1c01	MOV byte ptr [BX + 0x1c3c],0x1
+instruction	1d0f:016a	1d0f:0186	69c3b004	IMUL AX,BX,0x4b0
+instruction	1d0f:016a	1d0f:018a	050000	ADD AX,0x0
+instruction	1d0f:016a	1d0f:018d	689c30	PUSH 0x309c
+instruction	1d0f:016a	1d0f:0190	50	PUSH AX
+instruction	1d0f:016a	1d0f:0191	ff7606	PUSH word ptr [BP + 0x6]
+instruction	1d0f:016a	1d0f:0194	9a08187712	CALLF 0x1000:3f78
+instruction	1d0f:016a	1d0f:0199	83c406	ADD SP,0x6
+instruction	1d0f:016a	1d0f:019c	a00036	MOV AL,[0x3600]
+instruction	1d0f:016a	1d0f:019f	2ae4	SUB AH,AH
+instruction	1d0f:016a	1d0f:01a1	69c8b004	IMUL CX,AX,0x4b0
+instruction	1d0f:016a	1d0f:01a5	8bd8	MOV BX,AX
+instruction	1d0f:016a	1d0f:01a7	c1e309	SHL BX,0x9
+instruction	1d0f:016a	1d0f:01aa	81c10000	ADD CX,0x0
+instruction	1d0f:016a	1d0f:01ae	898f0236	MOV word ptr [BX + 0x3602],CX
+instruction	1d0f:016a	1d0f:01b2	c78704369c30	MOV word ptr [BX + 0x3604],0x309c
+instruction	1d0f:016a	1d0f:01b8	bf0200	MOV DI,0x2
+instruction	1d0f:016a	1d0f:01bb	be0100	MOV SI,0x1
+instruction	1d0f:016a	1d0f:01be	8a1e0036	MOV BL,byte ptr [0x3600]
+instruction	1d0f:016a	1d0f:01c2	2aff	SUB BH,BH
+instruction	1d0f:016a	1d0f:01c4	69c3b004	IMUL AX,BX,0x4b0
+instruction	1d0f:016a	1d0f:01c8	c1e307	SHL BX,0x7
+instruction	1d0f:016a	1d0f:01cb	03de	ADD BX,SI
+instruction	1d0f:016a	1d0f:01cd	c1e302	SHL BX,0x2
+instruction	1d0f:016a	1d0f:01d0	03c7	ADD AX,DI
+instruction	1d0f:016a	1d0f:01d2	8bc8	MOV CX,AX
+instruction	1d0f:016a	1d0f:01d4	050000	ADD AX,0x0
+instruction	1d0f:016a	1d0f:01d7	ba9c30	MOV DX,0x309c
+instruction	1d0f:016a	1d0f:01da	89870236	MOV word ptr [BX + 0x3602],AX
+instruction	1d0f:016a	1d0f:01de	89970436	MOV word ptr [BX + 0x3604],DX
+instruction	1d0f:016a	1d0f:01e2	8bd8	MOV BX,AX
+instruction	1d0f:016a	1d0f:01e4	8ec2	MOV ES,DX
+instruction	1d0f:016a	1d0f:01e6	268a07	MOV AL,byte ptr ES:[BX]
+instruction	1d0f:016a	1d0f:01e9	2ae4	SUB AH,AH
+instruction	1d0f:016a	1d0f:01eb	8bd9	MOV BX,CX
+instruction	1d0f:016a	1d0f:01ed	8e062e25	MOV ES,word ptr [0x252e]
+instruction	1d0f:016a	1d0f:01f1	268a8f0100	MOV CL,byte ptr ES:[BX + 0x1]
+instruction	1d0f:016a	1d0f:01f6	2aed	SUB CH,CH
+instruction	1d0f:016a	1d0f:01f8	83c107	ADD CX,0x7
+instruction	1d0f:016a	1d0f:01fb	c1f903	SAR CX,0x3
+instruction	1d0f:016a	1d0f:01fe	f7e9	IMUL CX
+instruction	1d0f:016a	1d0f:0200	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	1d0f:016a	1d0f:0203	c746fe0000	MOV word ptr [BP + -0x2],0x0
+instruction	1d0f:016a	1d0f:0208	0bc0	OR AX,AX
+instruction	1d0f:016a	1d0f:020a	7e2b	JLE 0x1000:d327
+instruction	1d0f:016a	1d0f:020c	8976f8	MOV word ptr [BP + -0x8],SI
+instruction	1d0f:016a	1d0f:020f	8b76fe	MOV SI,word ptr [BP + -0x2]
+instruction	1d0f:016a	1d0f:0212	a00036	MOV AL,[0x3600]
+instruction	1d0f:016a	1d0f:0215	2ae4	SUB AH,AH
+instruction	1d0f:016a	1d0f:0217	69c0b004	IMUL AX,AX,0x4b0
+instruction	1d0f:016a	1d0f:021b	03c7	ADD AX,DI
+instruction	1d0f:016a	1d0f:021d	03c6	ADD AX,SI
+instruction	1d0f:016a	1d0f:021f	050200	ADD AX,0x2
+instruction	1d0f:016a	1d0f:0222	689c30	PUSH 0x309c
+instruction	1d0f:016a	1d0f:0225	50	PUSH AX
+instruction	1d0f:016a	1d0f:0226	9ad2009d1f	CALLF 0x1000:faa2
+instruction	1d0f:016a	1d0f:022b	83c404	ADD SP,0x4
+instruction	1d0f:016a	1d0f:022e	46	INC SI
+instruction	1d0f:016a	1d0f:022f	3b76fc	CMP SI,word ptr [BP + -0x4]
+instruction	1d0f:016a	1d0f:0232	7cde	JL 0x1000:d302
+instruction	1d0f:016a	1d0f:0234	8b76f8	MOV SI,word ptr [BP + -0x8]
+instruction	1d0f:016a	1d0f:0237	8b46fc	MOV AX,word ptr [BP + -0x4]
+instruction	1d0f:016a	1d0f:023a	050200	ADD AX,0x2
+instruction	1d0f:016a	1d0f:023d	03f8	ADD DI,AX
+instruction	1d0f:016a	1d0f:023f	46	INC SI
+instruction	1d0f:016a	1d0f:0240	81fe8000	CMP SI,0x80
+instruction	1d0f:016a	1d0f:0244	0f8c76ff	JL 0x1000:d2ae
+instruction	1d0f:016a	1d0f:0248	5e	POP SI
+instruction	1d0f:016a	1d0f:0249	5f	POP DI
+instruction	1d0f:016a	1d0f:024a	c9	LEAVE
+instruction	1d0f:016a	1d0f:024b	cb	RETF
