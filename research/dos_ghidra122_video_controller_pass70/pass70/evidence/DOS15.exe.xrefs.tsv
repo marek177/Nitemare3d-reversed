@@ -1,0 +1,37 @@
+mode_init	1156:00ea	UNCONDITIONAL_CALL	1156:00d8	CALL 0x1000:1fc6
+instruction	1156:00d8	1156:00d8	c8020000	ENTER 0x2,0x0
+instruction	1156:00d8	1156:00dc	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	1156:00d8	1156:00df	eb3f	JMP 0x1000:1680
+instruction	1156:00d8	1156:00e2	b40f	MOV AH,0xf
+instruction	1156:00d8	1156:00e4	cd10	INT 0x10
+instruction	1156:00d8	1156:00e6	a21234	MOV [0x3412],AL
+instruction	1156:00d8	1156:00e9	0e	PUSH CS
+instruction	1156:00d8	1156:00ea	e87909	CALL 0x1000:1fc6
+instruction	1156:00d8	1156:00ed	b40f	MOV AH,0xf
+instruction	1156:00d8	1156:00ef	cd10	INT 0x10
+instruction	1156:00d8	1156:00f1	8846fe	MOV byte ptr [BP + -0x2],AL
+instruction	1156:00d8	1156:00f4	807efe13	CMP byte ptr [BP + -0x2],0x13
+instruction	1156:00d8	1156:00f8	7411	JZ 0x1000:166b
+instruction	1156:00d8	1156:00fa	8a46fe	MOV AL,byte ptr [BP + -0x2]
+instruction	1156:00d8	1156:00fd	2ae4	SUB AH,AH
+instruction	1156:00d8	1156:00ff	50	PUSH AX
+instruction	1156:00d8	1156:0100	683801	PUSH 0x138
+instruction	1156:00d8	1156:0103	9a0000941f	CALLF 0x1000:f940
+instruction	1156:00d8	1156:0108	83c404	ADD SP,0x4
+instruction	1156:00d8	1156:010b	0e	PUSH CS
+instruction	1156:00d8	1156:010c	e8f1fe	CALL 0x1000:1560
+instruction	1156:00d8	1156:010f	c9	LEAVE
+instruction	1156:00d8	1156:0110	cb	RETF
+instruction	1156:00d8	1156:0112	a01234	MOV AL,[0x3412]
+instruction	1156:00d8	1156:0115	3c00	CMP AL,0x0
+instruction	1156:00d8	1156:0117	7404	JZ 0x1000:167d
+instruction	1156:00d8	1156:0119	b400	MOV AH,0x0
+instruction	1156:00d8	1156:011b	cd10	INT 0x10
+instruction	1156:00d8	1156:011d	c9	LEAVE
+instruction	1156:00d8	1156:011e	cb	RETF
+instruction	1156:00d8	1156:0120	0bc0	OR AX,AX
+instruction	1156:00d8	1156:0122	74be	JZ 0x1000:1642
+instruction	1156:00d8	1156:0124	48	DEC AX
+instruction	1156:00d8	1156:0125	74eb	JZ 0x1000:1672
+instruction	1156:00d8	1156:0127	c9	LEAVE
+instruction	1156:00d8	1156:0128	cb	RETF

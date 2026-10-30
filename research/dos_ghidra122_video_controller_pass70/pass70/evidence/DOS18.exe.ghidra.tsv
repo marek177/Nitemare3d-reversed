@@ -1,0 +1,53 @@
+decompile	controller	1156:00d8	true		
+instruction	controller	1156:00d8	c8020000	ENTER 0x2,0x0
+instruction	controller	1156:00dc	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	controller	1156:00df	eb3f	JMP 0x1000:1680
+instruction	controller	1156:00e2	b40f	MOV AH,0xf
+instruction	controller	1156:00e4	cd10	INT 0x10
+instruction	controller	1156:00e6	a25034	MOV [0x3450],AL
+instruction	controller	1156:00e9	0e	PUSH CS
+instruction	controller	1156:00ea	e87909	CALL 0x1000:1fc6
+instruction	controller	1156:00ed	b40f	MOV AH,0xf
+instruction	controller	1156:00ef	cd10	INT 0x10
+instruction	controller	1156:00f1	8846fe	MOV byte ptr [BP + -0x2],AL
+instruction	controller	1156:00f4	807efe13	CMP byte ptr [BP + -0x2],0x13
+instruction	controller	1156:00f8	7411	JZ 0x1000:166b
+instruction	controller	1156:00fa	8a46fe	MOV AL,byte ptr [BP + -0x2]
+instruction	controller	1156:00fd	2ae4	SUB AH,AH
+instruction	controller	1156:00ff	50	PUSH AX
+instruction	controller	1156:0100	683801	PUSH 0x138
+instruction	controller	1156:0103	9a0000b71f	CALLF 0x1000:fb70
+instruction	controller	1156:0108	83c404	ADD SP,0x4
+instruction	controller	1156:010b	0e	PUSH CS
+instruction	controller	1156:010c	e8f1fe	CALL 0x1000:1560
+instruction	controller	1156:010f	c9	LEAVE
+instruction	controller	1156:0110	cb	RETF
+instruction	controller	1156:0112	a05034	MOV AL,[0x3450]
+instruction	controller	1156:0115	3c00	CMP AL,0x0
+instruction	controller	1156:0117	7404	JZ 0x1000:167d
+instruction	controller	1156:0119	b400	MOV AH,0x0
+instruction	controller	1156:011b	cd10	INT 0x10
+instruction	controller	1156:011d	c9	LEAVE
+instruction	controller	1156:011e	cb	RETF
+instruction	controller	1156:0120	0bc0	OR AX,AX
+instruction	controller	1156:0122	74be	JZ 0x1000:1642
+instruction	controller	1156:0124	48	DEC AX
+instruction	controller	1156:0125	74eb	JZ 0x1000:1672
+instruction	controller	1156:0127	c9	LEAVE
+instruction	controller	1156:0128	cb	RETF
+decompile	reciprocal	1156:0000	true		
+instruction	reciprocal	1156:0000	c8040000	ENTER 0x4,0x0
+instruction	reciprocal	1156:0004	56	PUSH SI
+instruction	reciprocal	1156:0005	66c746fc01000000	MOV dword ptr [BP + -0x4],0x1
+instruction	reciprocal	1156:000d	be5426	MOV SI,0x2654
+instruction	reciprocal	1156:0010	66b800004000	MOV EAX,0x400000
+instruction	reciprocal	1156:0016	6699	CDQ
+instruction	reciprocal	1156:0018	66f77efc	IDIV dword ptr [BP + -0x4]
+instruction	reciprocal	1156:001c	668904	MOV dword ptr [SI],EAX
+instruction	reciprocal	1156:001f	83c604	ADD SI,0x4
+instruction	reciprocal	1156:0022	66ff46fc	INC dword ptr [BP + -0x4]
+instruction	reciprocal	1156:0026	81fe502e	CMP SI,0x2e50
+instruction	reciprocal	1156:002a	72e4	JC 0x1000:1570
+instruction	reciprocal	1156:002c	5e	POP SI
+instruction	reciprocal	1156:002d	c9	LEAVE
+instruction	reciprocal	1156:002e	cb	RETF
