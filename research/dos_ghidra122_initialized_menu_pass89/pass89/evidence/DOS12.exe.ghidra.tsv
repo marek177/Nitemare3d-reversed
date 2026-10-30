@@ -1,0 +1,65 @@
+decompile	initializer	1d00:1e96	true		
+instruction	initializer	1d00:1e96	56	PUSH SI
+instruction	initializer	1d00:1e97	bb1212	MOV BX,0x1212
+instruction	initializer	1d00:1e9a	8e065825	MOV ES,word ptr [0x2558]
+instruction	initializer	1d00:1e9e	8bf3	MOV SI,BX
+instruction	initializer	1d00:1ea0	26803f00	CMP byte ptr ES:[BX],0x0
+instruction	initializer	1d00:1ea4	746e	JZ 0x1000:ef14
+instruction	initializer	1d00:1ea6	268a04	MOV AL,byte ptr ES:[SI]
+instruction	initializer	1d00:1ea9	2ae4	SUB AH,AH
+instruction	initializer	1d00:1eab	2d0a00	SUB AX,0xa
+instruction	initializer	1d00:1eae	740c	JZ 0x1000:eebc
+instruction	initializer	1d00:1eb0	48	DEC AX
+instruction	initializer	1d00:1eb1	741b	JZ 0x1000:eece
+instruction	initializer	1d00:1eb3	48	DEC AX
+instruction	initializer	1d00:1eb4	742a	JZ 0x1000:eee0
+instruction	initializer	1d00:1eb6	48	DEC AX
+instruction	initializer	1d00:1eb7	7439	JZ 0x1000:eef2
+instruction	initializer	1d00:1eb9	eb50	JMP 0x1000:ef0b
+instruction	initializer	1d00:1ebc	803eaa4000	CMP byte ptr [0x40aa],0x0
+instruction	initializer	1d00:1ec1	7405	JZ 0x1000:eec8
+instruction	initializer	1d00:1ec3	a0a640	MOV AL,[0x40a6]
+instruction	initializer	1d00:1ec6	eb34	JMP 0x1000:eefc
+instruction	initializer	1d00:1ec8	a0a640	MOV AL,[0x40a6]
+instruction	initializer	1d00:1ecb	eb36	JMP 0x1000:ef03
+instruction	initializer	1d00:1ece	803ead4000	CMP byte ptr [0x40ad],0x0
+instruction	initializer	1d00:1ed3	7405	JZ 0x1000:eeda
+instruction	initializer	1d00:1ed5	a0a740	MOV AL,[0x40a7]
+instruction	initializer	1d00:1ed8	eb22	JMP 0x1000:eefc
+instruction	initializer	1d00:1eda	a0a740	MOV AL,[0x40a7]
+instruction	initializer	1d00:1edd	eb24	JMP 0x1000:ef03
+instruction	initializer	1d00:1ee0	803eac4000	CMP byte ptr [0x40ac],0x0
+instruction	initializer	1d00:1ee5	7405	JZ 0x1000:eeec
+instruction	initializer	1d00:1ee7	a0a940	MOV AL,[0x40a9]
+instruction	initializer	1d00:1eea	eb10	JMP 0x1000:eefc
+instruction	initializer	1d00:1eec	a0a940	MOV AL,[0x40a9]
+instruction	initializer	1d00:1eef	eb12	JMP 0x1000:ef03
+instruction	initializer	1d00:1ef2	803eab4000	CMP byte ptr [0x40ab],0x0
+instruction	initializer	1d00:1ef7	7407	JZ 0x1000:ef00
+instruction	initializer	1d00:1ef9	a0a840	MOV AL,[0x40a8]
+instruction	initializer	1d00:1efc	2ae4	SUB AH,AH
+instruction	initializer	1d00:1efe	eb07	JMP 0x1000:ef07
+instruction	initializer	1d00:1f00	a0a840	MOV AL,[0x40a8]
+instruction	initializer	1d00:1f03	2ae4	SUB AH,AH
+instruction	initializer	1d00:1f05	f7d8	NEG AX
+instruction	initializer	1d00:1f07	26894402	MOV word ptr ES:[SI + 0x2],AX
+instruction	initializer	1d00:1f0b	83c612	ADD SI,0x12
+instruction	initializer	1d00:1f0e	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	initializer	1d00:1f12	7592	JNZ 0x1000:eea6
+instruction	initializer	1d00:1f14	6a0a	PUSH 0xa
+instruction	initializer	1d00:1f16	0e	PUSH CS
+instruction	initializer	1d00:1f17	e8ece4	CALL 0x1000:d406
+instruction	initializer	1d00:1f1a	83c402	ADD SP,0x2
+instruction	initializer	1d00:1f1d	68e32c	PUSH 0x2ce3
+instruction	initializer	1d00:1f20	681212	PUSH 0x1212
+instruction	initializer	1d00:1f23	0e	PUSH CS
+instruction	initializer	1d00:1f24	e8f5f9	CALL 0x1000:e91c
+instruction	initializer	1d00:1f27	83c404	ADD SP,0x4
+instruction	initializer	1d00:1f2a	3d1500	CMP AX,0x15
+instruction	initializer	1d00:1f2d	7505	JNZ 0x1000:ef34
+instruction	initializer	1d00:1f2f	b001	MOV AL,0x1
+instruction	initializer	1d00:1f31	5e	POP SI
+instruction	initializer	1d00:1f32	cb	RETF
+instruction	initializer	1d00:1f34	32c0	XOR AL,AL
+instruction	initializer	1d00:1f36	5e	POP SI
+instruction	initializer	1d00:1f37	cb	RETF
