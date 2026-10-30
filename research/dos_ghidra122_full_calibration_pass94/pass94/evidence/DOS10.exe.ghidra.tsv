@@ -1,0 +1,23 @@
+decompile	work	1b91:015a	true		
+instruction	work	1b91:015a	66ff069643	INC dword ptr [0x4396]
+instruction	work	1b91:015f	9a9604851f	CALLF 0x1000:fce6
+instruction	work	1b91:0164	9a30010012	CALLF 0x1000:2130
+instruction	work	1b91:0169	66ff369a43	PUSH dword ptr [0x439a]
+instruction	work	1b91:016e	ff36a243	PUSH word ptr [0x43a2]
+instruction	work	1b91:0172	ff369e43	PUSH word ptr [0x439e]
+instruction	work	1b91:0176	9a68045511	CALLF 0x1000:19b8
+instruction	work	1b91:017b	83c408	ADD SP,0x8
+instruction	work	1b91:017e	9af2040012	CALLF 0x1000:24f2
+instruction	work	1b91:0183	9ae2010012	CALLF 0x1000:21e2
+instruction	work	1b91:0188	9a1a070012	CALLF 0x1000:271a
+instruction	work	1b91:018d	cb	RETF
+decompile	counter	1b91:0098	true		
+instruction	counter	1b91:0098	803e693b00	CMP byte ptr [0x3b69],0x0
+instruction	counter	1b91:009d	750b	JNZ 0x1000:b9ba
+instruction	counter	1b91:009f	0e	PUSH CS
+instruction	counter	1b91:00a0	e879ff	CALL 0x1000:b92c
+instruction	counter	1b91:00a3	a3a207	MOV [0x7a2],AX
+instruction	counter	1b91:00a6	8916a407	MOV word ptr [0x7a4],DX
+instruction	counter	1b91:00aa	a1a207	MOV AX,[0x7a2]
+instruction	counter	1b91:00ad	8b16a407	MOV DX,word ptr [0x7a4]
+instruction	counter	1b91:00b1	cb	RETF

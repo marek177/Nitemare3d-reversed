@@ -1,0 +1,32 @@
+decompile	work	1bda:015a	true		
+instruction	work	1bda:015a	66ff063e45	INC dword ptr [0x453e]
+instruction	work	1bda:015f	9a9204d51f	CALLF 0x2000:01e2
+instruction	work	1bda:0164	9a2e010112	CALLF 0x1000:213e
+instruction	work	1bda:0169	66ff364245	PUSH dword ptr [0x4542]
+instruction	work	1bda:016e	ff364a45	PUSH word ptr [0x454a]
+instruction	work	1bda:0172	ff364645	PUSH word ptr [0x4546]
+instruction	work	1bda:0176	9a66045611	CALLF 0x1000:19c6
+instruction	work	1bda:017b	83c408	ADD SP,0x8
+instruction	work	1bda:017e	9af0040112	CALLF 0x1000:2500
+instruction	work	1bda:0183	9ae0010112	CALLF 0x1000:21f0
+instruction	work	1bda:0188	9a2c070112	CALLF 0x1000:273c
+instruction	work	1bda:018d	cb	RETF
+decompile	counter	1bda:0098	true		
+instruction	counter	1bda:0098	803ecf3c00	CMP byte ptr [0x3ccf],0x0
+instruction	counter	1bda:009d	750b	JNZ 0x1000:be4a
+instruction	counter	1bda:009f	0e	PUSH CS
+instruction	counter	1bda:00a0	e879ff	CALL 0x1000:bdbc
+instruction	counter	1bda:00a3	a31e08	MOV [0x81e],AX
+instruction	counter	1bda:00a6	89162008	MOV word ptr [0x820],DX
+instruction	counter	1bda:00aa	a11e08	MOV AX,[0x81e]
+instruction	counter	1bda:00ad	8b162008	MOV DX,word ptr [0x820]
+instruction	counter	1bda:00b1	cb	RETF
+decompile	setup	1bda:0008	true		
+instruction	setup	1bda:0008	55	PUSH BP
+instruction	setup	1bda:0009	8bec	MOV BP,SP
+instruction	setup	1bda:000b	803ecf3c00	CMP byte ptr [0x3ccf],0x0
+instruction	setup	1bda:0010	7408	JZ 0x1000:bdba
+instruction	setup	1bda:0012	ff7606	PUSH word ptr [BP + 0x6]
+instruction	setup	1bda:0015	9a7800c81b	CALLF 0x1000:bcf8
+instruction	setup	1bda:001a	c9	LEAVE
+instruction	setup	1bda:001b	cb	RETF
