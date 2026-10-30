@@ -371,6 +371,10 @@ add_executable(n3d_dos20_input_mask_contract_test
     tests/dos20_input_mask_contract_test.cpp)
 target_include_directories(n3d_dos20_input_mask_contract_test PRIVATE src)
 
+# Synthetic x86 operand-size regression; does not require original game assets.
+add_executable(n3d_x86_operand_size_semantics_test tests/x86_operand_size_semantics_test.cpp)
+target_include_directories(n3d_x86_operand_size_semantics_test PRIVATE src)
+
 include(cmake/RegressionTests.cmake)
 
 if(BUILD_TESTING)
