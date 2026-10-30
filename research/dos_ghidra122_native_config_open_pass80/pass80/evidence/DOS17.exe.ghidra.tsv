@@ -1,0 +1,158 @@
+decompile	native_open	21d1:1c72	true		
+instruction	native_open	21d1:1c72	55	PUSH BP
+instruction	native_open	21d1:1c73	8bec	MOV BP,SP
+instruction	native_open	21d1:1c75	83ec04	SUB SP,0x4
+instruction	native_open	21d1:1c78	32ff	XOR BH,BH
+instruction	native_open	21d1:1c7a	887efe	MOV byte ptr [BP + -0x2],BH
+instruction	native_open	21d1:1c7d	8b4608	MOV AX,word ptr [BP + 0x8]
+instruction	native_open	21d1:1c80	8bc8	MOV CX,AX
+instruction	native_open	21d1:1c82	c646fc00	MOV byte ptr [BP + -0x4],0x0
+instruction	native_open	21d1:1c86	a90080	TEST AX,0x8000
+instruction	native_open	21d1:1c89	7510	JNZ 0x2000:39ab
+instruction	native_open	21d1:1c8b	a90040	TEST AX,0x4000
+instruction	native_open	21d1:1c8e	7507	JNZ 0x2000:39a7
+instruction	native_open	21d1:1c90	f606f12280	TEST byte ptr [0x22f1],0x80
+instruction	native_open	21d1:1c95	7504	JNZ 0x2000:39ab
+instruction	native_open	21d1:1c97	c646fc80	MOV byte ptr [BP + -0x4],0x80
+instruction	native_open	21d1:1c9b	8b5606	MOV DX,word ptr [BP + 0x6]
+instruction	native_open	21d1:1c9e	2403	AND AL,0x3
+instruction	native_open	21d1:1ca0	0ac7	OR AL,BH
+instruction	native_open	21d1:1ca2	b43d	MOV AH,0x3d
+instruction	native_open	21d1:1ca4	cd21	INT 0x21
+instruction	native_open	21d1:1ca6	7312	JNC 0x2000:39ca
+instruction	native_open	21d1:1ca8	83f802	CMP AX,0x2
+instruction	native_open	21d1:1cab	7509	JNZ 0x2000:39c6
+instruction	native_open	21d1:1cad	f7c10001	TEST CX,0x100
+instruction	native_open	21d1:1cb1	7403	JZ 0x2000:39c6
+instruction	native_open	21d1:1cb3	e99f00	JMP 0x2000:3a65
+instruction	native_open	21d1:1cb6	f9	STC
+instruction	native_open	21d1:1cb7	e9fde8	JMP 0x2000:22c7
+instruction	native_open	21d1:1cba	93	XCHG AX,BX
+instruction	native_open	21d1:1cbb	8bc1	MOV AX,CX
+instruction	native_open	21d1:1cbd	250005	AND AX,0x500
+instruction	native_open	21d1:1cc0	3d0005	CMP AX,0x500
+instruction	native_open	21d1:1cc3	7509	JNZ 0x2000:39de
+instruction	native_open	21d1:1cc5	b43e	MOV AH,0x3e
+instruction	native_open	21d1:1cc7	cd21	INT 0x21
+instruction	native_open	21d1:1cc9	b80011	MOV AX,0x1100
+instruction	native_open	21d1:1ccc	ebe8	JMP 0x2000:39c6
+instruction	native_open	21d1:1cce	c646fd01	MOV byte ptr [BP + -0x3],0x1
+instruction	native_open	21d1:1cd2	b80044	MOV AX,0x4400
+instruction	native_open	21d1:1cd5	cd21	INT 0x21
+instruction	native_open	21d1:1cd7	f6c280	TEST DL,0x80
+instruction	native_open	21d1:1cda	7404	JZ 0x2000:39f0
+instruction	native_open	21d1:1cdc	804efc40	OR byte ptr [BP + -0x4],0x40
+instruction	native_open	21d1:1ce0	f646fc40	TEST byte ptr [BP + -0x4],0x40
+instruction	native_open	21d1:1ce4	7403	JZ 0x2000:39f9
+instruction	native_open	21d1:1ce6	e9d300	JMP 0x2000:3acc
+instruction	native_open	21d1:1ce9	8b4608	MOV AX,word ptr [BP + 0x8]
+instruction	native_open	21d1:1cec	a90002	TEST AX,0x200
+instruction	native_open	21d1:1cef	741c	JZ 0x2000:3a1d
+instruction	native_open	21d1:1cf1	a90300	TEST AX,0x3
+instruction	native_open	21d1:1cf4	7409	JZ 0x2000:3a0f
+instruction	native_open	21d1:1cf6	33c9	XOR CX,CX
+instruction	native_open	21d1:1cf8	b440	MOV AH,0x40
+instruction	native_open	21d1:1cfa	cd21	INT 0x21
+instruction	native_open	21d1:1cfc	e9bd00	JMP 0x2000:3acc
+instruction	native_open	21d1:1cff	b43e	MOV AH,0x3e
+instruction	native_open	21d1:1d01	cd21	INT 0x21
+instruction	native_open	21d1:1d03	8b5606	MOV DX,word ptr [BP + 0x6]
+instruction	native_open	21d1:1d06	b80043	MOV AX,0x4300
+instruction	native_open	21d1:1d09	cd21	INT 0x21
+instruction	native_open	21d1:1d0b	eb65	JMP 0x2000:3a82
+instruction	native_open	21d1:1d0d	f646fc80	TEST byte ptr [BP + -0x4],0x80
+instruction	native_open	21d1:1d11	7503	JNZ 0x2000:3a26
+instruction	native_open	21d1:1d13	e9a600	JMP 0x2000:3acc
+instruction	native_open	21d1:1d16	a90200	TEST AX,0x2
+instruction	native_open	21d1:1d19	7503	JNZ 0x2000:3a2e
+instruction	native_open	21d1:1d1b	e99e00	JMP 0x2000:3acc
+instruction	native_open	21d1:1d1e	b9ffff	MOV CX,0xffff
+instruction	native_open	21d1:1d21	8bd1	MOV DX,CX
+instruction	native_open	21d1:1d23	b80242	MOV AX,0x4202
+instruction	native_open	21d1:1d26	cd21	INT 0x21
+instruction	native_open	21d1:1d28	f7d9	NEG CX
+instruction	native_open	21d1:1d2a	8d56ff	LEA DX,[BP + -0x1]
+instruction	native_open	21d1:1d2d	b43f	MOV AH,0x3f
+instruction	native_open	21d1:1d2f	cd21	INT 0x21
+instruction	native_open	21d1:1d31	0bc0	OR AX,AX
+instruction	native_open	21d1:1d33	7415	JZ 0x2000:3a5a
+instruction	native_open	21d1:1d35	807eff1a	CMP byte ptr [BP + -0x1],0x1a
+instruction	native_open	21d1:1d39	750f	JNZ 0x2000:3a5a
+instruction	native_open	21d1:1d3b	f7d9	NEG CX
+instruction	native_open	21d1:1d3d	8bd1	MOV DX,CX
+instruction	native_open	21d1:1d3f	b80242	MOV AX,0x4202
+instruction	native_open	21d1:1d42	cd21	INT 0x21
+instruction	native_open	21d1:1d44	33c9	XOR CX,CX
+instruction	native_open	21d1:1d46	b440	MOV AH,0x40
+instruction	native_open	21d1:1d48	cd21	INT 0x21
+instruction	native_open	21d1:1d4a	33c9	XOR CX,CX
+instruction	native_open	21d1:1d4c	8bd1	MOV DX,CX
+instruction	native_open	21d1:1d4e	b80042	MOV AX,0x4200
+instruction	native_open	21d1:1d51	cd21	INT 0x21
+instruction	native_open	21d1:1d53	eb67	JMP 0x2000:3acc
+instruction	native_open	21d1:1d55	c646fd00	MOV byte ptr [BP + -0x3],0x0
+instruction	native_open	21d1:1d59	8b4e0a	MOV CX,word ptr [BP + 0xa]
+instruction	native_open	21d1:1d5c	e8a400	CALL 0x2000:3b13
+instruction	native_open	21d1:1d5f	894e0a	MOV word ptr [BP + 0xa],CX
+instruction	native_open	21d1:1d62	f646feff	TEST byte ptr [BP + -0x2],0xff
+instruction	native_open	21d1:1d66	7507	JNZ 0x2000:3a7f
+instruction	native_open	21d1:1d68	f746080200	TEST word ptr [BP + 0x8],0x2
+instruction	native_open	21d1:1d6d	7503	JNZ 0x2000:3a82
+instruction	native_open	21d1:1d6f	80e1fe	AND CL,0xfe
+instruction	native_open	21d1:1d72	8b5606	MOV DX,word ptr [BP + 0x6]
+instruction	native_open	21d1:1d75	b43c	MOV AH,0x3c
+instruction	native_open	21d1:1d77	cd21	INT 0x21
+instruction	native_open	21d1:1d79	7303	JNC 0x2000:3a8e
+instruction	native_open	21d1:1d7b	e939e8	JMP 0x2000:22c7
+instruction	native_open	21d1:1d7e	93	XCHG AX,BX
+instruction	native_open	21d1:1d7f	f646feff	TEST byte ptr [BP + -0x2],0xff
+instruction	native_open	21d1:1d83	7507	JNZ 0x2000:3a9c
+instruction	native_open	21d1:1d85	f746080200	TEST word ptr [BP + 0x8],0x2
+instruction	native_open	21d1:1d8a	7530	JNZ 0x2000:3acc
+instruction	native_open	21d1:1d8c	b43e	MOV AH,0x3e
+instruction	native_open	21d1:1d8e	cd21	INT 0x21
+instruction	native_open	21d1:1d90	8a4608	MOV AL,byte ptr [BP + 0x8]
+instruction	native_open	21d1:1d93	2403	AND AL,0x3
+instruction	native_open	21d1:1d95	0a46fe	OR AL,byte ptr [BP + -0x2]
+instruction	native_open	21d1:1d98	8b5606	MOV DX,word ptr [BP + 0x6]
+instruction	native_open	21d1:1d9b	b43d	MOV AH,0x3d
+instruction	native_open	21d1:1d9d	cd21	INT 0x21
+instruction	native_open	21d1:1d9f	72da	JC 0x2000:3a8b
+instruction	native_open	21d1:1da1	93	XCHG AX,BX
+instruction	native_open	21d1:1da2	f646fd01	TEST byte ptr [BP + -0x3],0x1
+instruction	native_open	21d1:1da6	7514	JNZ 0x2000:3acc
+instruction	native_open	21d1:1da8	f7460a0100	TEST word ptr [BP + 0xa],0x1
+instruction	native_open	21d1:1dad	740d	JZ 0x2000:3acc
+instruction	native_open	21d1:1daf	80c901	OR CL,0x1
+instruction	native_open	21d1:1db2	8b5606	MOV DX,word ptr [BP + 0x6]
+instruction	native_open	21d1:1db5	b80143	MOV AX,0x4301
+instruction	native_open	21d1:1db8	cd21	INT 0x21
+instruction	native_open	21d1:1dba	72bf	JC 0x2000:3a8b
+instruction	native_open	21d1:1dbc	f646fc40	TEST byte ptr [BP + -0x4],0x40
+instruction	native_open	21d1:1dc0	753d	JNZ 0x2000:3b0f
+instruction	native_open	21d1:1dc2	8b5606	MOV DX,word ptr [BP + 0x6]
+instruction	native_open	21d1:1dc5	b80043	MOV AX,0x4300
+instruction	native_open	21d1:1dc8	cd21	INT 0x21
+instruction	native_open	21d1:1dca	8bc1	MOV AX,CX
+instruction	native_open	21d1:1dcc	32c9	XOR CL,CL
+instruction	native_open	21d1:1dce	83e001	AND AX,0x1
+instruction	native_open	21d1:1dd1	7402	JZ 0x2000:3ae5
+instruction	native_open	21d1:1dd3	b110	MOV CL,0x10
+instruction	native_open	21d1:1dd5	f746080800	TEST word ptr [BP + 0x8],0x8
+instruction	native_open	21d1:1dda	7403	JZ 0x2000:3aef
+instruction	native_open	21d1:1ddc	80c920	OR CL,0x20
+instruction	native_open	21d1:1ddf	3b1eec20	CMP BX,word ptr [0x20ec]
+instruction	native_open	21d1:1de3	720a	JC 0x2000:3aff
+instruction	native_open	21d1:1de5	b43e	MOV AH,0x3e
+instruction	native_open	21d1:1de7	cd21	INT 0x21
+instruction	native_open	21d1:1de9	b80018	MOV AX,0x1800
+instruction	native_open	21d1:1dec	e9c7fe	JMP 0x2000:39c6
+instruction	native_open	21d1:1def	0a4efc	OR CL,byte ptr [BP + -0x4]
+instruction	native_open	21d1:1df2	80c901	OR CL,0x1
+instruction	native_open	21d1:1df5	888fee20	MOV byte ptr [BX + 0x20ee],CL
+instruction	native_open	21d1:1df9	8bc3	MOV AX,BX
+instruction	native_open	21d1:1dfb	8be5	MOV SP,BP
+instruction	native_open	21d1:1dfd	5d	POP BP
+instruction	native_open	21d1:1dfe	cb	RETF
+instruction	native_open	21d1:1dff	32c9	XOR CL,CL
+instruction	native_open	21d1:1e01	ebdc	JMP 0x2000:3aef
