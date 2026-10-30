@@ -1,0 +1,55 @@
+decompile	outer	1d05:2182	true		
+instruction	outer	1d05:2182	c8020000	ENTER 0x2,0x0
+instruction	outer	1d05:2186	c646ff00	MOV byte ptr [BP + -0x1],0x0
+instruction	outer	1d05:218a	6a09	PUSH 0x9
+instruction	outer	1d05:218c	0e	PUSH CS
+instruction	outer	1d05:218d	e874e2	CALL 0x1000:d454
+instruction	outer	1d05:2190	83c402	ADD SP,0x2
+instruction	outer	1d05:2193	689230	PUSH 0x3092
+instruction	outer	1d05:2196	683e10	PUSH 0x103e
+instruction	outer	1d05:2199	0e	PUSH CS
+instruction	outer	1d05:219a	e87df7	CALL 0x1000:e96a
+instruction	outer	1d05:219d	83c404	ADD SP,0x4
+instruction	outer	1d05:21a0	3d2300	CMP AX,0x23
+instruction	outer	1d05:21a3	741f	JZ 0x1000:f214
+instruction	outer	1d05:21a5	7724	JA 0x1000:f21b
+instruction	outer	1d05:21a7	2c06	SUB AL,0x6
+instruction	outer	1d05:21a9	740c	JZ 0x1000:f207
+instruction	outer	1d05:21ab	2c08	SUB AL,0x8
+instruction	outer	1d05:21ad	740f	JZ 0x1000:f20e
+instruction	outer	1d05:21af	2c07	SUB AL,0x7
+instruction	outer	1d05:21b1	7404	JZ 0x1000:f207
+instruction	outer	1d05:21b3	fec8	DEC AL
+instruction	outer	1d05:21b5	7514	JNZ 0x1000:f21b
+instruction	outer	1d05:21b7	c646ff01	MOV byte ptr [BP + -0x1],0x1
+instruction	outer	1d05:21bb	eb0e	JMP 0x1000:f21b
+instruction	outer	1d05:21be	0e	PUSH CS
+instruction	outer	1d05:21bf	e8bcfe	CALL 0x1000:f0ce
+instruction	outer	1d05:21c2	eb04	JMP 0x1000:f218
+instruction	outer	1d05:21c4	0e	PUSH CS
+instruction	outer	1d05:21c5	e8ccfc	CALL 0x1000:eee4
+instruction	outer	1d05:21c8	8846ff	MOV byte ptr [BP + -0x1],AL
+instruction	outer	1d05:21cb	807eff00	CMP byte ptr [BP + -0x1],0x0
+instruction	outer	1d05:21cf	74b9	JZ 0x1000:f1da
+instruction	outer	1d05:21d1	9aae0c7712	CALLF 0x1000:341e
+instruction	outer	1d05:21d6	c9	LEAVE
+instruction	outer	1d05:21d7	cb	RETF
+decompile	save	1277:0cae	true		
+instruction	save	1277:0cae	56	PUSH SI
+instruction	save	1277:0caf	666801838000	PUSH 0x808301
+instruction	save	1277:0cb5	68d205	PUSH 0x5d2
+instruction	save	1277:0cb8	9a761cc721	CALLF 0x2000:38e6
+instruction	save	1277:0cbd	83c406	ADD SP,0x6
+instruction	save	1277:0cc0	8bf0	MOV SI,AX
+instruction	save	1277:0cc2	0bf0	OR SI,AX
+instruction	save	1277:0cc4	7e17	JLE 0x1000:344d
+instruction	save	1277:0cc6	6a10	PUSH 0x10
+instruction	save	1277:0cc8	687240	PUSH 0x4072
+instruction	save	1277:0ccb	56	PUSH SI
+instruction	save	1277:0ccc	9a021fc721	CALLF 0x2000:3b72
+instruction	save	1277:0cd1	83c406	ADD SP,0x6
+instruction	save	1277:0cd4	56	PUSH SI
+instruction	save	1277:0cd5	9aba1bc721	CALLF 0x2000:382a
+instruction	save	1277:0cda	83c402	ADD SP,0x2
+instruction	save	1277:0cdd	5e	POP SI
+instruction	save	1277:0cde	cb	RETF

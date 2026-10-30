@@ -1,0 +1,176 @@
+decompile	menu	1d00:191a	true		
+instruction	menu	1d00:191a	c80a0000	ENTER 0xa,0x0
+instruction	menu	1d00:191e	57	PUSH DI
+instruction	menu	1d00:191f	56	PUSH SI
+instruction	menu	1d00:1920	c646fe00	MOV byte ptr [BP + -0x2],0x0
+instruction	menu	1d00:1924	6a02	PUSH 0x2
+instruction	menu	1d00:1926	0e	PUSH CS
+instruction	menu	1d00:1927	e844e8	CALL 0x1000:d16e
+instruction	menu	1d00:192a	83c402	ADD SP,0x2
+instruction	menu	1d00:192d	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	menu	1d00:1930	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	menu	1d00:1933	8bf0	MOV SI,AX
+instruction	menu	1d00:1935	8956f8	MOV word ptr [BP + -0x8],DX
+instruction	menu	1d00:1938	8ec2	MOV ES,DX
+instruction	menu	1d00:193a	8bd8	MOV BX,AX
+instruction	menu	1d00:193c	26803f00	CMP byte ptr ES:[BX],0x0
+instruction	menu	1d00:1940	743d	JZ 0x1000:e97f
+instruction	menu	1d00:1942	666800000100	PUSH 0x10000
+instruction	menu	1d00:1948	8bfe	MOV DI,SI
+instruction	menu	1d00:194a	8c46fc	MOV word ptr [BP + -0x4],ES
+instruction	menu	1d00:194d	6626ff740e	PUSH dword ptr ES:[SI + 0xe]
+instruction	menu	1d00:1952	268b440c	MOV AX,word ptr ES:[SI + 0xc]
+instruction	menu	1d00:1956	40	INC AX
+instruction	menu	1d00:1957	50	PUSH AX
+instruction	menu	1d00:1958	268b440a	MOV AX,word ptr ES:[SI + 0xa]
+instruction	menu	1d00:195c	40	INC AX
+instruction	menu	1d00:195d	50	PUSH AX
+instruction	menu	1d00:195e	0e	PUSH CS
+instruction	menu	1d00:195f	e838e7	CALL 0x1000:d09a
+instruction	menu	1d00:1962	83c40c	ADD SP,0xc
+instruction	menu	1d00:1965	ff76f8	PUSH word ptr [BP + -0x8]
+instruction	menu	1d00:1968	56	PUSH SI
+instruction	menu	1d00:1969	0e	PUSH CS
+instruction	menu	1d00:196a	e8b3fd	CALL 0x1000:e720
+instruction	menu	1d00:196d	83c404	ADD SP,0x4
+instruction	menu	1d00:1970	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	menu	1d00:1973	83c612	ADD SI,0x12
+instruction	menu	1d00:1976	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	menu	1d00:197a	75c6	JNZ 0x1000:e942
+instruction	menu	1d00:197c	897efa	MOV word ptr [BP + -0x6],DI
+instruction	menu	1d00:197f	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	menu	1d00:1982	8b5608	MOV DX,word ptr [BP + 0x8]
+instruction	menu	1d00:1985	8bf0	MOV SI,AX
+instruction	menu	1d00:1987	8956f8	MOV word ptr [BP + -0x8],DX
+instruction	menu	1d00:198a	8ec2	MOV ES,DX
+instruction	menu	1d00:198c	8bd8	MOV BX,AX
+instruction	menu	1d00:198e	26803f00	CMP byte ptr ES:[BX],0x0
+instruction	menu	1d00:1992	7410	JZ 0x1000:e9a4
+instruction	menu	1d00:1994	26807c0400	CMP byte ptr ES:[SI + 0x4],0x0
+instruction	menu	1d00:1999	7509	JNZ 0x1000:e9a4
+instruction	menu	1d00:199b	83c612	ADD SI,0x12
+instruction	menu	1d00:199e	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	menu	1d00:19a2	75f0	JNZ 0x1000:e994
+instruction	menu	1d00:19a4	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	menu	1d00:19a7	26803c00	CMP byte ptr ES:[SI],0x0
+instruction	menu	1d00:19ab	750b	JNZ 0x1000:e9b8
+instruction	menu	1d00:19ad	68561e	PUSH 0x1e56
+instruction	menu	1d00:19b0	9a0200891f	CALLF 0x1000:f892
+instruction	menu	1d00:19b5	83c402	ADD SP,0x2
+instruction	menu	1d00:19b8	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	menu	1d00:19bb	26807c0506	CMP byte ptr ES:[SI + 0x5],0x6
+instruction	menu	1d00:19c0	7518	JNZ 0x1000:e9da
+instruction	menu	1d00:19c2	6a01	PUSH 0x1
+instruction	menu	1d00:19c4	06	PUSH ES
+instruction	menu	1d00:19c5	56	PUSH SI
+instruction	menu	1d00:19c6	66ff76fa	PUSH dword ptr [BP + -0x6]
+instruction	menu	1d00:19ca	66ff7606	PUSH dword ptr [BP + 0x6]
+instruction	menu	1d00:19ce	0e	PUSH CS
+instruction	menu	1d00:19cf	e8b6fe	CALL 0x1000:e888
+instruction	menu	1d00:19d2	83c40e	ADD SP,0xe
+instruction	menu	1d00:19d5	8bf0	MOV SI,AX
+instruction	menu	1d00:19d7	8956f8	MOV word ptr [BP + -0x8],DX
+instruction	menu	1d00:19da	8b7efa	MOV DI,word ptr [BP + -0x6]
+instruction	menu	1d00:19dd	9aca038916	CALLF 0x1000:6c5a
+instruction	menu	1d00:19e2	8846ff	MOV byte ptr [BP + -0x1],AL
+instruction	menu	1d00:19e5	98	CBW
+instruction	menu	1d00:19e6	3d5000	CMP AX,0x50
+instruction	menu	1d00:19e9	0f84b100	JZ 0x1000:ea9e
+instruction	menu	1d00:19ed	0f87c700	JA 0x1000:eab8
+instruction	menu	1d00:19f1	3c20	CMP AL,0x20
+instruction	menu	1d00:19f3	741f	JZ 0x1000:ea14
+instruction	menu	1d00:19f5	7f0d	JG 0x1000:ea04
+instruction	menu	1d00:19f7	2c0d	SUB AL,0xd
+instruction	menu	1d00:19f9	7419	JZ 0x1000:ea14
+instruction	menu	1d00:19fb	2c0e	SUB AL,0xe
+instruction	menu	1d00:19fd	0f84d100	JZ 0x1000:ead2
+instruction	menu	1d00:1a01	e9b400	JMP 0x1000:eab8
+instruction	menu	1d00:1a04	2c48	SUB AL,0x48
+instruction	menu	1d00:1a06	7452	JZ 0x1000:ea5a
+instruction	menu	1d00:1a08	2c03	SUB AL,0x3
+instruction	menu	1d00:1a0a	7452	JZ 0x1000:ea5e
+instruction	menu	1d00:1a0c	2c02	SUB AL,0x2
+instruction	menu	1d00:1a0e	744e	JZ 0x1000:ea5e
+instruction	menu	1d00:1a10	e9a500	JMP 0x1000:eab8
+instruction	menu	1d00:1a14	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	menu	1d00:1a17	268a4405	MOV AL,byte ptr ES:[SI + 0x5]
+instruction	menu	1d00:1a1b	2ae4	SUB AH,AH
+instruction	menu	1d00:1a1d	48	DEC AX
+instruction	menu	1d00:1a1e	740c	JZ 0x1000:ea2c
+instruction	menu	1d00:1a20	48	DEC AX
+instruction	menu	1d00:1a21	740f	JZ 0x1000:ea32
+instruction	menu	1d00:1a23	48	DEC AX
+instruction	menu	1d00:1a24	7414	JZ 0x1000:ea3a
+instruction	menu	1d00:1a26	48	DEC AX
+instruction	menu	1d00:1a27	7417	JZ 0x1000:ea40
+instruction	menu	1d00:1a29	eb21	JMP 0x1000:ea4c
+instruction	menu	1d00:1a2c	c646fe01	MOV byte ptr [BP + -0x2],0x1
+instruction	menu	1d00:1a30	eb1a	JMP 0x1000:ea4c
+instruction	menu	1d00:1a32	2680740201	XOR byte ptr ES:[SI + 0x2],0x1
+instruction	menu	1d00:1a37	eb13	JMP 0x1000:ea4c
+instruction	menu	1d00:1a3a	26f75c02	NEG word ptr ES:[SI + 0x2]
+instruction	menu	1d00:1a3e	eb0c	JMP 0x1000:ea4c
+instruction	menu	1d00:1a40	06	PUSH ES
+instruction	menu	1d00:1a41	56	PUSH SI
+instruction	menu	1d00:1a42	0e	PUSH CS
+instruction	menu	1d00:1a43	e8dcf4	CALL 0x1000:df22
+instruction	menu	1d00:1a46	83c404	ADD SP,0x4
+instruction	menu	1d00:1a49	8846fe	MOV byte ptr [BP + -0x2],AL
+instruction	menu	1d00:1a4c	ff76f8	PUSH word ptr [BP + -0x8]
+instruction	menu	1d00:1a4f	56	PUSH SI
+instruction	menu	1d00:1a50	0e	PUSH CS
+instruction	menu	1d00:1a51	e8ccfc	CALL 0x1000:e720
+instruction	menu	1d00:1a54	83c404	ADD SP,0x4
+instruction	menu	1d00:1a57	eb5f	JMP 0x1000:eab8
+instruction	menu	1d00:1a5a	6aff	PUSH -0x1
+instruction	menu	1d00:1a5c	eb42	JMP 0x1000:eaa0
+instruction	menu	1d00:1a5e	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	menu	1d00:1a61	26807c0503	CMP byte ptr ES:[SI + 0x5],0x3
+instruction	menu	1d00:1a66	7550	JNZ 0x1000:eab8
+instruction	menu	1d00:1a68	268b4402	MOV AX,word ptr ES:[SI + 0x2]
+instruction	menu	1d00:1a6c	99	CWD
+instruction	menu	1d00:1a6d	33c2	XOR AX,DX
+instruction	menu	1d00:1a6f	2bc2	SUB AX,DX
+instruction	menu	1d00:1a71	26894402	MOV word ptr ES:[SI + 0x2],AX
+instruction	menu	1d00:1a75	807eff4b	CMP byte ptr [BP + -0x1],0x4b
+instruction	menu	1d00:1a79	7505	JNZ 0x1000:ea80
+instruction	menu	1d00:1a7b	b8fbff	MOV AX,0xfffb
+instruction	menu	1d00:1a7e	eb03	JMP 0x1000:ea83
+instruction	menu	1d00:1a80	b80500	MOV AX,0x5
+instruction	menu	1d00:1a83	26014402	ADD word ptr ES:[SI + 0x2],AX
+instruction	menu	1d00:1a87	7906	JNS 0x1000:ea8f
+instruction	menu	1d00:1a89	26c744020000	MOV word ptr ES:[SI + 0x2],0x0
+instruction	menu	1d00:1a8f	26837c0264	CMP word ptr ES:[SI + 0x2],0x64
+instruction	menu	1d00:1a94	7eb6	JLE 0x1000:ea4c
+instruction	menu	1d00:1a96	26c744026400	MOV word ptr ES:[SI + 0x2],0x64
+instruction	menu	1d00:1a9c	ebae	JMP 0x1000:ea4c
+instruction	menu	1d00:1a9e	6a01	PUSH 0x1
+instruction	menu	1d00:1aa0	ff76f8	PUSH word ptr [BP + -0x8]
+instruction	menu	1d00:1aa3	56	PUSH SI
+instruction	menu	1d00:1aa4	ff76fc	PUSH word ptr [BP + -0x4]
+instruction	menu	1d00:1aa7	57	PUSH DI
+instruction	menu	1d00:1aa8	66ff7606	PUSH dword ptr [BP + 0x6]
+instruction	menu	1d00:1aac	0e	PUSH CS
+instruction	menu	1d00:1aad	e8d8fd	CALL 0x1000:e888
+instruction	menu	1d00:1ab0	83c40e	ADD SP,0xe
+instruction	menu	1d00:1ab3	8bf0	MOV SI,AX
+instruction	menu	1d00:1ab5	8956f8	MOV word ptr [BP + -0x8],DX
+instruction	menu	1d00:1ab8	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	menu	1d00:1abb	6626837c0600	CMP dword ptr ES:[SI + 0x6],0x0
+instruction	menu	1d00:1ac1	7404	JZ 0x1000:eac7
+instruction	menu	1d00:1ac3	26ff5c06	CALLF [SI + 0x6]
+instruction	menu	1d00:1ac7	807efe00	CMP byte ptr [BP + -0x2],0x0
+instruction	menu	1d00:1acb	0f840eff	JZ 0x1000:e9dd
+instruction	menu	1d00:1acf	eb09	JMP 0x1000:eada
+instruction	menu	1d00:1ad2	b80600	MOV AX,0x6
+instruction	menu	1d00:1ad5	5e	POP SI
+instruction	menu	1d00:1ad6	5f	POP DI
+instruction	menu	1d00:1ad7	c9	LEAVE
+instruction	menu	1d00:1ad8	cb	RETF
+instruction	menu	1d00:1ada	8e46f8	MOV ES,word ptr [BP + -0x8]
+instruction	menu	1d00:1add	268a04	MOV AL,byte ptr ES:[SI]
+instruction	menu	1d00:1ae0	2ae4	SUB AH,AH
+instruction	menu	1d00:1ae2	5e	POP SI
+instruction	menu	1d00:1ae3	5f	POP DI
+instruction	menu	1d00:1ae4	c9	LEAVE
+instruction	menu	1d00:1ae5	cb	RETF
