@@ -1,0 +1,150 @@
+instruction	1453:0330	c8080000	c8080000	true	ENTER 0x8,0x0
+instruction	1453:0334	57	57	true	PUSH DI
+instruction	1453:0335	56	56	true	PUSH SI
+instruction	1453:0336	c646fb00	c646fb00	true	MOV byte ptr [BP + -0x5],0x0
+instruction	1453:033a	b80100	b80100	true	MOV AX,0x1
+instruction	1453:033d	8946fc	8946fc	true	MOV word ptr [BP + -0x4],AX
+instruction	1453:0340	8946fe	8946fe	true	MOV word ptr [BP + -0x2],AX
+instruction	1453:0343	9af80b7512	9af80b7512	true	CALLF 0x1000:3348
+instruction	1453:0348	0e	0e	true	PUSH CS
+instruction	1453:0349	e8c0fc	e8c0fc	true	CALL 0x1000:453c
+instruction	1453:034c	686d0a	686d0a	true	PUSH 0xa6d
+instruction	1453:034f	9a8a24c221	9a8a24c221	true	CALLF 0x2000:40aa
+instruction	1453:0354	83c402	83c402	true	ADD SP,0x2
+instruction	1453:0357	0bc0	0bc0	true	OR AX,AX
+instruction	1453:0359	740b	740b	true	JZ 0x1000:4896
+instruction	1453:035b	c6066f3c00	c6066f3c00	true	MOV byte ptr [0x3c6f],0x0
+instruction	1453:0360	c706623c1200	c706623c1200	true	MOV word ptr [0x3c62],0x12
+instruction	1453:0366	be0100	be0100	true	MOV SI,0x1
+instruction	1453:0369	397606	397606	true	CMP word ptr [BP + 0x6],SI
+instruction	1453:036c	0f8e6901	0f8e6901	true	JLE 0x1000:4a09
+instruction	1453:0370	8b7e08	8b7e08	true	MOV DI,word ptr [BP + 0x8]
+instruction	1453:0373	8bde	8bde	true	MOV BX,SI
+instruction	1453:0375	03de	03de	true	ADD BX,SI
+instruction	1453:0377	03df	03df	true	ADD BX,DI
+instruction	1453:0379	895ef8	895ef8	true	MOV word ptr [BP + -0x8],BX
+instruction	1453:037c	8b1f	8b1f	true	MOV BX,word ptr [BX]
+instruction	1453:037e	803f2d	803f2d	true	CMP byte ptr [BX],0x2d
+instruction	1453:0381	740b	740b	true	JZ 0x1000:48be
+instruction	1453:0383	57	57	true	PUSH DI
+instruction	1453:0384	ff7606	ff7606	true	PUSH word ptr [BP + 0x6]
+instruction	1453:0387	0e	0e	true	PUSH CS
+instruction	1453:0388	e893ff	e893ff	true	CALL 0x1000:484e
+instruction	1453:038b	83c404	83c404	true	ADD SP,0x4
+instruction	1453:038e	8b5ef8	8b5ef8	true	MOV BX,word ptr [BP + -0x8]
+instruction	1453:0391	8b1f	8b1f	true	MOV BX,word ptr [BX]
+instruction	1453:0393	8a4701	8a4701	true	MOV AL,byte ptr [BX + 0x1]
+instruction	1453:0396	98	98	true	CBW
+instruction	1453:0397	2d6200	2d6200	true	SUB AX,0x62
+instruction	1453:039a	3d1600	3d1600	true	CMP AX,0x16
+instruction	1453:039d	7737	7737	true	JA 0x1000:4906
+instruction	1453:039f	03c0	03c0	true	ADD AX,AX
+instruction	1453:03a1	93	93	true	XCHG AX,BX
+instruction	1453:03a2	2effa7a803	2effa7a803	true	JMP word ptr CS:[BX + 0x3a8]
+instruction	1453:03d6	57	57	true	PUSH DI
+instruction	1453:03d7	ff7606	ff7606	true	PUSH word ptr [BP + 0x6]
+instruction	1453:03da	0e	0e	true	PUSH CS
+instruction	1453:03db	e840ff	e840ff	true	CALL 0x1000:484e
+instruction	1453:03de	83c404	83c404	true	ADD SP,0x4
+instruction	1453:03e1	e9ed00	e9ed00	true	JMP 0x1000:4a01
+instruction	1453:03e4	c646fb01	c646fb01	true	MOV byte ptr [BP + -0x5],0x1
+instruction	1453:03e8	e9e600	e9e600	true	JMP 0x1000:4a01
+instruction	1453:03ec	68603c	68603c	true	PUSH 0x3c60
+instruction	1453:03ef	68740a	68740a	true	PUSH 0xa74
+instruction	1453:03f2	46	46	true	INC SI
+instruction	1453:03f3	8bde	8bde	true	MOV BX,SI
+instruction	1453:03f5	03de	03de	true	ADD BX,SI
+instruction	1453:03f7	ff31	ff31	true	PUSH word ptr [BX + DI]
+instruction	1453:03f9	9ae427c221	9ae427c221	true	CALLF 0x2000:4404
+instruction	1453:03fe	83c406	83c406	true	ADD SP,0x6
+instruction	1453:0401	e9cd00	e9cd00	true	JMP 0x1000:4a01
+instruction	1453:0404	685c3c	685c3c	true	PUSH 0x3c5c
+instruction	1453:0407	68770a	68770a	true	PUSH 0xa77
+instruction	1453:040a	ebe6	ebe6	true	JMP 0x1000:4922
+instruction	1453:040c	8d46fc	8d46fc	true	LEA AX,[BP + -0x4]
+instruction	1453:040f	50	50	true	PUSH AX
+instruction	1453:0410	687a0a	687a0a	true	PUSH 0xa7a
+instruction	1453:0413	ebdd	ebdd	true	JMP 0x1000:4922
+instruction	1453:0416	685e3c	685e3c	true	PUSH 0x3c5e
+instruction	1453:0419	687d0a	687d0a	true	PUSH 0xa7d
+instruction	1453:041c	ebd4	ebd4	true	JMP 0x1000:4922
+instruction	1453:041e	8d46fe	8d46fe	true	LEA AX,[BP + -0x2]
+instruction	1453:0421	50	50	true	PUSH AX
+instruction	1453:0422	68800a	68800a	true	PUSH 0xa80
+instruction	1453:0425	46	46	true	INC SI
+instruction	1453:0426	8bde	8bde	true	MOV BX,SI
+instruction	1453:0428	03de	03de	true	ADD BX,SI
+instruction	1453:042a	ff31	ff31	true	PUSH word ptr [BX + DI]
+instruction	1453:042c	9ae427c221	9ae427c221	true	CALLF 0x2000:4404
+instruction	1453:0431	83c406	83c406	true	ADD SP,0x6
+instruction	1453:0434	0bc0	0bc0	true	OR AX,AX
+instruction	1453:0436	0f859700	0f859700	true	JNZ 0x1000:4a01
+instruction	1453:043a	eb9a	eb9a	true	JMP 0x1000:4906
+instruction	1453:043c	c606703c01	c606703c01	true	MOV byte ptr [0x3c70],0x1
+instruction	1453:0441	e98d00	e98d00	true	JMP 0x1000:4a01
+instruction	1453:0444	c606673c00	c606673c00	true	MOV byte ptr [0x3c67],0x0
+instruction	1453:0449	e98500	e98500	true	JMP 0x1000:4a01
+instruction	1453:044c	c606683c01	c606683c01	true	MOV byte ptr [0x3c68],0x1
+instruction	1453:0451	686a3c	686a3c	true	PUSH 0x3c6a
+instruction	1453:0454	68830a	68830a	true	PUSH 0xa83
+instruction	1453:0457	46	46	true	INC SI
+instruction	1453:0458	8bde	8bde	true	MOV BX,SI
+instruction	1453:045a	03de	03de	true	ADD BX,SI
+instruction	1453:045c	ff31	ff31	true	PUSH word ptr [BX + DI]
+instruction	1453:045e	9ae427c221	9ae427c221	true	CALLF 0x2000:4404
+instruction	1453:0463	83c406	83c406	true	ADD SP,0x6
+instruction	1453:0466	48	48	true	DEC AX
+instruction	1453:0467	0f856bff	0f856bff	true	JNZ 0x1000:4906
+instruction	1453:046b	686c3c	686c3c	true	PUSH 0x3c6c
+instruction	1453:046e	68860a	68860a	true	PUSH 0xa86
+instruction	1453:0471	46	46	true	INC SI
+instruction	1453:0472	8bde	8bde	true	MOV BX,SI
+instruction	1453:0474	03de	03de	true	ADD BX,SI
+instruction	1453:0476	ff31	ff31	true	PUSH word ptr [BX + DI]
+instruction	1453:0478	9ae427c221	9ae427c221	true	CALLF 0x2000:4404
+instruction	1453:047d	83c406	83c406	true	ADD SP,0x6
+instruction	1453:0480	48	48	true	DEC AX
+instruction	1453:0481	744e	744e	true	JZ 0x1000:4a01
+instruction	1453:0483	e950ff	e950ff	true	JMP 0x1000:4906
+instruction	1453:0486	c706763c0100	c706763c0100	true	MOV word ptr [0x3c76],0x1
+instruction	1453:048c	eb43	eb43	true	JMP 0x1000:4a01
+instruction	1453:048e	c606663c00	c606663c00	true	MOV byte ptr [0x3c66],0x0
+instruction	1453:0493	eb3c	eb3c	true	JMP 0x1000:4a01
+instruction	1453:0496	c6066f3c00	c6066f3c00	true	MOV byte ptr [0x3c6f],0x0
+instruction	1453:049b	c706623c1200	c706623c1200	true	MOV word ptr [0x3c62],0x12
+instruction	1453:04a1	eb2e	eb2e	true	JMP 0x1000:4a01
+instruction	1453:04a4	68a240	68a240	true	PUSH 0x40a2
+instruction	1453:04a7	68890a	68890a	true	PUSH 0xa89
+instruction	1453:04aa	46	46	true	INC SI
+instruction	1453:04ab	8bde	8bde	true	MOV BX,SI
+instruction	1453:04ad	03de	03de	true	ADD BX,SI
+instruction	1453:04af	ff31	ff31	true	PUSH word ptr [BX + DI]
+instruction	1453:04b1	9ae427c221	9ae427c221	true	CALLF 0x2000:4404
+instruction	1453:04b6	83c406	83c406	true	ADD SP,0x6
+instruction	1453:04b9	8026a240f8	8026a240f8	true	AND byte ptr [0x40a2],0xf8
+instruction	1453:04be	ff36a240	ff36a240	true	PUSH word ptr [0x40a2]
+instruction	1453:04c2	9a9a0b7512	9a9a0b7512	true	CALLF 0x1000:32ea
+instruction	1453:04c7	83c402	83c402	true	ADD SP,0x2
+instruction	1453:04ca	eb05	eb05	true	JMP 0x1000:4a01
+instruction	1453:04cc	c6066e3c00	c6066e3c00	true	MOV byte ptr [0x3c6e],0x0
+instruction	1453:04d1	46	46	true	INC SI
+instruction	1453:04d2	3b7606	3b7606	true	CMP SI,word ptr [BP + 0x6]
+instruction	1453:04d5	0f8c9afe	0f8c9afe	true	JL 0x1000:48a3
+instruction	1453:04d9	0e	0e	true	PUSH CS
+instruction	1453:04da	e8fbfb	e8fbfb	true	CALL 0x1000:4608
+instruction	1453:04dd	8a46fb	8a46fb	true	MOV AL,byte ptr [BP + -0x5]
+instruction	1453:04e0	50	50	true	PUSH AX
+instruction	1453:04e1	66ff76fc	66ff76fc	true	PUSH dword ptr [BP + -0x4]
+instruction	1453:04e5	9a2227001d	9a2227001d	true	CALLF 0x1000:f722
+instruction	1453:04ea	83c406	83c406	true	ADD SP,0x6
+instruction	1453:04ed	6a00	6a00	true	PUSH 0x0
+instruction	1453:04ef	8a46fb	8a46fb	true	MOV AL,byte ptr [BP + -0x5]
+instruction	1453:04f2	50	50	true	PUSH AX
+instruction	1453:04f3	0e	0e	true	PUSH CS
+instruction	1453:04f4	e8e3fc	e8e3fc	true	CALL 0x1000:470a
+instruction	1453:04f7	83c404	83c404	true	ADD SP,0x4
+instruction	1453:04fa	5e	5e	true	POP SI
+instruction	1453:04fb	5f	5f	true	POP DI
+instruction	1453:04fc	c9	c9	true	LEAVE
+instruction	1453:04fd	cb	cb	true	RETF
+result	matched=149	mismatch=0	decompile=true	
