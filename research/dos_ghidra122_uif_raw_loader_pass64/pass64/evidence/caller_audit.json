@@ -1,0 +1,1714 @@
+[
+  {
+    "build": "10",
+    "initial_gate": 1,
+    "xrefs": [
+      [
+        "lookup",
+        "1273:15b6",
+        "UNCONDITIONAL_CALL",
+        "1273:15a0",
+        "CALL 0x1000:3c5a"
+      ],
+      [
+        "lookup",
+        "1273:175f",
+        "UNCONDITIONAL_CALL",
+        "1273:1730",
+        "CALL 0x1000:3c5a"
+      ],
+      [
+        "gate",
+        "1273:152e",
+        "READ",
+        "1273:152a",
+        "CMP byte ptr [0x5fd],0x0"
+      ],
+      [
+        "gate",
+        "1273:1535",
+        "WRITE",
+        "1273:152a",
+        "MOV byte ptr [0x5fd],0x0"
+      ],
+      [
+        "decoder",
+        "144e:0203",
+        "UNCONDITIONAL_CALL",
+        "144e:01e2",
+        "CALLF 0x1000:3cd0"
+      ],
+      [
+        "decoder",
+        "1cdc:040f",
+        "UNCONDITIONAL_CALL",
+        "1cdc:0400",
+        "CALLF 0x1000:3cd0"
+      ],
+      [
+        "decoder",
+        "1cdc:07c2",
+        "UNCONDITIONAL_CALL",
+        "1cdc:079a",
+        "CALLF 0x1000:3cd0"
+      ],
+      [
+        "decoder",
+        "1cdc:168d",
+        "UNCONDITIONAL_CALL",
+        "1cdc:1676",
+        "CALLF 0x1000:3cd0"
+      ],
+      [
+        "decoder",
+        "1cdc:169c",
+        "UNCONDITIONAL_CALL",
+        "1cdc:1676",
+        "CALLF 0x1000:3cd0"
+      ],
+      [
+        "decoder",
+        "1cdc:24de",
+        "UNCONDITIONAL_CALL",
+        "17f5:0db0",
+        "CALLF 0x1000:3cd0"
+      ],
+      [
+        "decoder",
+        "1cdc:24f7",
+        "UNCONDITIONAL_CALL",
+        "17f5:0db0",
+        "CALLF 0x1000:3cd0"
+      ]
+    ],
+    "decoder_call_contexts": [
+      [
+        [
+          "instruction",
+          "144e:01e2",
+          "144e:01fb",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "144e:01e2",
+          "144e:01fd",
+          "0bd0",
+          "OR DX,AX"
+        ],
+        [
+          "instruction",
+          "144e:01e2",
+          "144e:01ff",
+          "7520",
+          "JNZ 0x1000:4701"
+        ],
+        [
+          "instruction",
+          "144e:01e2",
+          "144e:0201",
+          "6a0f",
+          "PUSH 0xf"
+        ],
+        [
+          "instruction",
+          "144e:01e2",
+          "144e:0203",
+          "9aa0157312",
+          "CALLF 0x1000:3cd0"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1cdc:0400",
+          "1cdc:0403",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1cdc:0400",
+          "1cdc:0405",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1cdc:0400",
+          "1cdc:040a",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1cdc:0400",
+          "1cdc:040c",
+          "ff7606",
+          "PUSH word ptr [BP + 0x6]"
+        ],
+        [
+          "instruction",
+          "1cdc:0400",
+          "1cdc:040f",
+          "9aa0157312",
+          "CALLF 0x1000:3cd0"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1cdc:079a",
+          "1cdc:07b6",
+          "6a01",
+          "PUSH 0x1"
+        ],
+        [
+          "instruction",
+          "1cdc:079a",
+          "1cdc:07b8",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1cdc:079a",
+          "1cdc:07bd",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1cdc:079a",
+          "1cdc:07c0",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1cdc:079a",
+          "1cdc:07c2",
+          "9aa0157312",
+          "CALLF 0x1000:3cd0"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:1681",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:1683",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:1688",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:168b",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:168d",
+          "9aa0157312",
+          "CALLF 0x1000:3cd0"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:168d",
+          "9aa0157312",
+          "CALLF 0x1000:3cd0"
+        ],
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:1692",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:1695",
+          "9a8e01911b",
+          "CALLF 0x1000:ba9e"
+        ],
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:169a",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1cdc:1676",
+          "1cdc:169c",
+          "9aa0157312",
+          "CALLF 0x1000:3cd0"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24d0",
+          "ff36643b",
+          "PUSH word ptr [0x3b64]"
+        ],
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24d4",
+          "9aa8107312",
+          "CALLF 0x1000:37d8"
+        ],
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24d9",
+          "83c404",
+          "ADD SP,0x4"
+        ],
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24dc",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24de",
+          "9aa0157312",
+          "CALLF 0x1000:3cd0"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24e8",
+          "9aca05f517",
+          "CALLF 0x1000:851a"
+        ],
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24ed",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24f0",
+          "9a8e01911b",
+          "CALLF 0x1000:ba9e"
+        ],
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24f5",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "17f5:0db0",
+          "1cdc:24f7",
+          "9aa0157312",
+          "CALLF 0x1000:3cd0"
+        ]
+      ]
+    ]
+  },
+  {
+    "build": "11",
+    "initial_gate": 1,
+    "xrefs": [
+      [
+        "lookup",
+        "1275:15dc",
+        "UNCONDITIONAL_CALL",
+        "1275:15c6",
+        "CALL 0x1000:3ca0"
+      ],
+      [
+        "lookup",
+        "1275:1785",
+        "UNCONDITIONAL_CALL",
+        "1275:1756",
+        "CALL 0x1000:3ca0"
+      ],
+      [
+        "gate",
+        "1275:1554",
+        "READ",
+        "1275:1550",
+        "CMP byte ptr [0x63c],0x0"
+      ],
+      [
+        "gate",
+        "1275:155b",
+        "WRITE",
+        "1275:1550",
+        "MOV byte ptr [0x63c],0x0"
+      ],
+      [
+        "decoder",
+        "1452:01ff",
+        "UNCONDITIONAL_CALL",
+        "1452:01de",
+        "CALLF 0x1000:3d16"
+      ],
+      [
+        "decoder",
+        "1d00:0413",
+        "UNCONDITIONAL_CALL",
+        "1d00:0404",
+        "CALLF 0x1000:3d16"
+      ],
+      [
+        "decoder",
+        "1d00:07c6",
+        "UNCONDITIONAL_CALL",
+        "1d00:079e",
+        "CALLF 0x1000:3d16"
+      ],
+      [
+        "decoder",
+        "1d00:1671",
+        "UNCONDITIONAL_CALL",
+        "1d00:165a",
+        "CALLF 0x1000:3d16"
+      ],
+      [
+        "decoder",
+        "1d00:1680",
+        "UNCONDITIONAL_CALL",
+        "1d00:165a",
+        "CALLF 0x1000:3d16"
+      ]
+    ],
+    "decoder_call_contexts": [
+      [
+        [
+          "instruction",
+          "1452:01de",
+          "1452:01f7",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1452:01de",
+          "1452:01f9",
+          "0bd0",
+          "OR DX,AX"
+        ],
+        [
+          "instruction",
+          "1452:01de",
+          "1452:01fb",
+          "7520",
+          "JNZ 0x1000:473d"
+        ],
+        [
+          "instruction",
+          "1452:01de",
+          "1452:01fd",
+          "6a0f",
+          "PUSH 0xf"
+        ],
+        [
+          "instruction",
+          "1452:01de",
+          "1452:01ff",
+          "9ac6157512",
+          "CALLF 0x1000:3d16"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d00:0404",
+          "1d00:0407",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d00:0404",
+          "1d00:0409",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1d00:0404",
+          "1d00:040e",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1d00:0404",
+          "1d00:0410",
+          "ff7606",
+          "PUSH word ptr [BP + 0x6]"
+        ],
+        [
+          "instruction",
+          "1d00:0404",
+          "1d00:0413",
+          "9ac6157512",
+          "CALLF 0x1000:3d16"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d00:079e",
+          "1d00:07ba",
+          "6a01",
+          "PUSH 0x1"
+        ],
+        [
+          "instruction",
+          "1d00:079e",
+          "1d00:07bc",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1d00:079e",
+          "1d00:07c1",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d00:079e",
+          "1d00:07c4",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d00:079e",
+          "1d00:07c6",
+          "9ac6157512",
+          "CALLF 0x1000:3d16"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:1665",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:1667",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:166c",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:166f",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:1671",
+          "9ac6157512",
+          "CALLF 0x1000:3d16"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:1671",
+          "9ac6157512",
+          "CALLF 0x1000:3d16"
+        ],
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:1676",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:1679",
+          "9a8601b21b",
+          "CALLF 0x1000:bca6"
+        ],
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:167e",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d00:165a",
+          "1d00:1680",
+          "9ac6157512",
+          "CALLF 0x1000:3d16"
+        ]
+      ]
+    ]
+  },
+  {
+    "build": "12",
+    "initial_gate": 1,
+    "xrefs": [
+      [
+        "lookup",
+        "1275:15ee",
+        "UNCONDITIONAL_CALL",
+        "1275:15d8",
+        "CALL 0x1000:3cb2"
+      ],
+      [
+        "lookup",
+        "1275:1797",
+        "UNCONDITIONAL_CALL",
+        "1275:1768",
+        "CALL 0x1000:3cb2"
+      ],
+      [
+        "gate",
+        "1275:1566",
+        "READ",
+        "1275:1562",
+        "CMP byte ptr [0x647],0x0"
+      ],
+      [
+        "gate",
+        "1275:156d",
+        "WRITE",
+        "1275:1562",
+        "MOV byte ptr [0x647],0x0"
+      ],
+      [
+        "decoder",
+        "1453:01fb",
+        "UNCONDITIONAL_CALL",
+        "1453:01da",
+        "CALLF 0x1000:3d28"
+      ],
+      [
+        "decoder",
+        "1d00:0415",
+        "UNCONDITIONAL_CALL",
+        "1d00:0406",
+        "CALLF 0x1000:3d28"
+      ],
+      [
+        "decoder",
+        "1d00:07c8",
+        "UNCONDITIONAL_CALL",
+        "1d00:07a0",
+        "CALLF 0x1000:3d28"
+      ],
+      [
+        "decoder",
+        "1d00:1483",
+        "UNCONDITIONAL_CALL",
+        "1818:1404",
+        "CALLF 0x1000:3d28"
+      ],
+      [
+        "decoder",
+        "1d00:14a8",
+        "UNCONDITIONAL_CALL",
+        "1818:1404",
+        "CALLF 0x1000:3d28"
+      ],
+      [
+        "decoder",
+        "1d00:1673",
+        "UNCONDITIONAL_CALL",
+        "1d00:165c",
+        "CALLF 0x1000:3d28"
+      ],
+      [
+        "decoder",
+        "1d00:1682",
+        "UNCONDITIONAL_CALL",
+        "1d00:165c",
+        "CALLF 0x1000:3d28"
+      ]
+    ],
+    "decoder_call_contexts": [
+      [
+        [
+          "instruction",
+          "1453:01da",
+          "1453:01f3",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1453:01da",
+          "1453:01f5",
+          "0bd0",
+          "OR DX,AX"
+        ],
+        [
+          "instruction",
+          "1453:01da",
+          "1453:01f7",
+          "7520",
+          "JNZ 0x1000:4749"
+        ],
+        [
+          "instruction",
+          "1453:01da",
+          "1453:01f9",
+          "6a0f",
+          "PUSH 0xf"
+        ],
+        [
+          "instruction",
+          "1453:01da",
+          "1453:01fb",
+          "9ad8157512",
+          "CALLF 0x1000:3d28"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d00:0406",
+          "1d00:0409",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d00:0406",
+          "1d00:040b",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1d00:0406",
+          "1d00:0410",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1d00:0406",
+          "1d00:0412",
+          "ff7606",
+          "PUSH word ptr [BP + 0x6]"
+        ],
+        [
+          "instruction",
+          "1d00:0406",
+          "1d00:0415",
+          "9ad8157512",
+          "CALLF 0x1000:3d28"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d00:07a0",
+          "1d00:07bc",
+          "6a01",
+          "PUSH 0x1"
+        ],
+        [
+          "instruction",
+          "1d00:07a0",
+          "1d00:07be",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1d00:07a0",
+          "1d00:07c3",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d00:07a0",
+          "1d00:07c6",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d00:07a0",
+          "1d00:07c8",
+          "9ad8157512",
+          "CALLF 0x1000:3d28"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:1476",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:1478",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:147d",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:1480",
+          "ff7606",
+          "PUSH word ptr [BP + 0x6]"
+        ],
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:1483",
+          "9ad8157512",
+          "CALLF 0x1000:3d28"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:149b",
+          "6a02",
+          "PUSH 0x2"
+        ],
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:149d",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:14a2",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:14a5",
+          "ff7606",
+          "PUSH word ptr [BP + 0x6]"
+        ],
+        [
+          "instruction",
+          "1818:1404",
+          "1d00:14a8",
+          "9ad8157512",
+          "CALLF 0x1000:3d28"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:1667",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:1669",
+          "9a56025511",
+          "CALLF 0x1000:17a6"
+        ],
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:166e",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:1671",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:1673",
+          "9ad8157512",
+          "CALLF 0x1000:3d28"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:1673",
+          "9ad8157512",
+          "CALLF 0x1000:3d28"
+        ],
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:1678",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:167b",
+          "9a8801b21b",
+          "CALLF 0x1000:bca8"
+        ],
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:1680",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d00:165c",
+          "1d00:1682",
+          "9ad8157512",
+          "CALLF 0x1000:3d28"
+        ]
+      ]
+    ]
+  },
+  {
+    "build": "15",
+    "initial_gate": 1,
+    "xrefs": [
+      [
+        "lookup",
+        "1277:1616",
+        "UNCONDITIONAL_CALL",
+        "1277:1600",
+        "CALL 0x1000:3cfa"
+      ],
+      [
+        "lookup",
+        "1277:17bf",
+        "UNCONDITIONAL_CALL",
+        "1277:1790",
+        "CALL 0x1000:3cfa"
+      ],
+      [
+        "gate",
+        "1277:158e",
+        "READ",
+        "1277:158a",
+        "CMP byte ptr [0x64b],0x0"
+      ],
+      [
+        "gate",
+        "1277:1595",
+        "WRITE",
+        "1277:158a",
+        "MOV byte ptr [0x64b],0x0"
+      ],
+      [
+        "decoder",
+        "1458:01f3",
+        "UNCONDITIONAL_CALL",
+        "1458:01d2",
+        "CALLF 0x1000:3d70"
+      ],
+      [
+        "decoder",
+        "1d05:0413",
+        "UNCONDITIONAL_CALL",
+        "1d05:0404",
+        "CALLF 0x1000:3d70"
+      ],
+      [
+        "decoder",
+        "1d05:07c6",
+        "UNCONDITIONAL_CALL",
+        "1d05:079e",
+        "CALLF 0x1000:3d70"
+      ],
+      [
+        "decoder",
+        "1d05:1671",
+        "UNCONDITIONAL_CALL",
+        "1d05:165a",
+        "CALLF 0x1000:3d70"
+      ],
+      [
+        "decoder",
+        "1d05:1680",
+        "UNCONDITIONAL_CALL",
+        "1d05:165a",
+        "CALLF 0x1000:3d70"
+      ]
+    ],
+    "decoder_call_contexts": [
+      [
+        [
+          "instruction",
+          "1458:01d2",
+          "1458:01eb",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1458:01d2",
+          "1458:01ed",
+          "0bd0",
+          "OR DX,AX"
+        ],
+        [
+          "instruction",
+          "1458:01d2",
+          "1458:01ef",
+          "7520",
+          "JNZ 0x1000:4791"
+        ],
+        [
+          "instruction",
+          "1458:01d2",
+          "1458:01f1",
+          "6a0f",
+          "PUSH 0xf"
+        ],
+        [
+          "instruction",
+          "1458:01d2",
+          "1458:01f3",
+          "9a00167712",
+          "CALLF 0x1000:3d70"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d05:0404",
+          "1d05:0407",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d05:0404",
+          "1d05:0409",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d05:0404",
+          "1d05:040e",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1d05:0404",
+          "1d05:0410",
+          "ff7606",
+          "PUSH word ptr [BP + 0x6]"
+        ],
+        [
+          "instruction",
+          "1d05:0404",
+          "1d05:0413",
+          "9a00167712",
+          "CALLF 0x1000:3d70"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d05:079e",
+          "1d05:07ba",
+          "6a01",
+          "PUSH 0x1"
+        ],
+        [
+          "instruction",
+          "1d05:079e",
+          "1d05:07bc",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d05:079e",
+          "1d05:07c1",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d05:079e",
+          "1d05:07c4",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d05:079e",
+          "1d05:07c6",
+          "9a00167712",
+          "CALLF 0x1000:3d70"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:1665",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:1667",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:166c",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:166f",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:1671",
+          "9a00167712",
+          "CALLF 0x1000:3d70"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:1671",
+          "9a00167712",
+          "CALLF 0x1000:3d70"
+        ],
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:1676",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:1679",
+          "9a8e01ba1b",
+          "CALLF 0x1000:bd2e"
+        ],
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:167e",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d05:165a",
+          "1d05:1680",
+          "9a00167712",
+          "CALLF 0x1000:3d70"
+        ]
+      ]
+    ]
+  },
+  {
+    "build": "17",
+    "initial_gate": 1,
+    "xrefs": [
+      [
+        "lookup",
+        "1277:168e",
+        "UNCONDITIONAL_CALL",
+        "1277:1678",
+        "CALL 0x1000:3d72"
+      ],
+      [
+        "lookup",
+        "1277:1837",
+        "UNCONDITIONAL_CALL",
+        "1277:1808",
+        "CALL 0x1000:3d72"
+      ],
+      [
+        "gate",
+        "1277:1606",
+        "READ",
+        "1277:1602",
+        "CMP byte ptr [0x64b],0x0"
+      ],
+      [
+        "gate",
+        "1277:160d",
+        "WRITE",
+        "1277:1602",
+        "MOV byte ptr [0x64b],0x0"
+      ],
+      [
+        "decoder",
+        "145f:01fd",
+        "UNCONDITIONAL_CALL",
+        "145f:01dc",
+        "CALLF 0x1000:3de8"
+      ],
+      [
+        "decoder",
+        "1d0f:040f",
+        "UNCONDITIONAL_CALL",
+        "1d0f:0400",
+        "CALLF 0x1000:3de8"
+      ],
+      [
+        "decoder",
+        "1d0f:07c2",
+        "UNCONDITIONAL_CALL",
+        "1d0f:079a",
+        "CALLF 0x1000:3de8"
+      ],
+      [
+        "decoder",
+        "1d0f:166d",
+        "UNCONDITIONAL_CALL",
+        "1d0f:1656",
+        "CALLF 0x1000:3de8"
+      ],
+      [
+        "decoder",
+        "1d0f:167c",
+        "UNCONDITIONAL_CALL",
+        "1d0f:1656",
+        "CALLF 0x1000:3de8"
+      ]
+    ],
+    "decoder_call_contexts": [
+      [
+        [
+          "instruction",
+          "145f:01dc",
+          "145f:01f5",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "145f:01dc",
+          "145f:01f7",
+          "0bd0",
+          "OR DX,AX"
+        ],
+        [
+          "instruction",
+          "145f:01dc",
+          "145f:01f9",
+          "7520",
+          "JNZ 0x1000:480b"
+        ],
+        [
+          "instruction",
+          "145f:01dc",
+          "145f:01fb",
+          "6a0f",
+          "PUSH 0xf"
+        ],
+        [
+          "instruction",
+          "145f:01dc",
+          "145f:01fd",
+          "9a78167712",
+          "CALLF 0x1000:3de8"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d0f:0400",
+          "1d0f:0403",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d0f:0400",
+          "1d0f:0405",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d0f:0400",
+          "1d0f:040a",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1d0f:0400",
+          "1d0f:040c",
+          "ff7606",
+          "PUSH word ptr [BP + 0x6]"
+        ],
+        [
+          "instruction",
+          "1d0f:0400",
+          "1d0f:040f",
+          "9a78167712",
+          "CALLF 0x1000:3de8"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d0f:079a",
+          "1d0f:07b6",
+          "6a01",
+          "PUSH 0x1"
+        ],
+        [
+          "instruction",
+          "1d0f:079a",
+          "1d0f:07b8",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d0f:079a",
+          "1d0f:07bd",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d0f:079a",
+          "1d0f:07c0",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d0f:079a",
+          "1d0f:07c2",
+          "9a78167712",
+          "CALLF 0x1000:3de8"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:1661",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:1663",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:1668",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:166b",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:166d",
+          "9a78167712",
+          "CALLF 0x1000:3de8"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:166d",
+          "9a78167712",
+          "CALLF 0x1000:3de8"
+        ],
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:1672",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:1675",
+          "9a8a01c41b",
+          "CALLF 0x1000:bdca"
+        ],
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:167a",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d0f:1656",
+          "1d0f:167c",
+          "9a78167712",
+          "CALLF 0x1000:3de8"
+        ]
+      ]
+    ]
+  },
+  {
+    "build": "18",
+    "initial_gate": 1,
+    "xrefs": [
+      [
+        "lookup",
+        "1277:17f2",
+        "UNCONDITIONAL_CALL",
+        "1277:17dc",
+        "CALL 0x1000:3ed6"
+      ],
+      [
+        "lookup",
+        "1277:199b",
+        "UNCONDITIONAL_CALL",
+        "1277:196c",
+        "CALL 0x1000:3ed6"
+      ],
+      [
+        "gate",
+        "1277:176a",
+        "READ",
+        "1277:1766",
+        "CMP byte ptr [0x678],0x0"
+      ],
+      [
+        "gate",
+        "1277:1771",
+        "WRITE",
+        "1277:1766",
+        "MOV byte ptr [0x678],0x0"
+      ],
+      [
+        "decoder",
+        "1476:01f1",
+        "UNCONDITIONAL_CALL",
+        "1476:01d0",
+        "CALLF 0x1000:3f4c"
+      ],
+      [
+        "decoder",
+        "1d25:0413",
+        "UNCONDITIONAL_CALL",
+        "1d25:0404",
+        "CALLF 0x1000:3f4c"
+      ],
+      [
+        "decoder",
+        "1d25:07f6",
+        "UNCONDITIONAL_CALL",
+        "1d25:07ca",
+        "CALLF 0x1000:3f4c"
+      ],
+      [
+        "decoder",
+        "1d25:16a1",
+        "UNCONDITIONAL_CALL",
+        "1d25:168a",
+        "CALLF 0x1000:3f4c"
+      ],
+      [
+        "decoder",
+        "1d25:16b0",
+        "UNCONDITIONAL_CALL",
+        "1d25:168a",
+        "CALLF 0x1000:3f4c"
+      ]
+    ],
+    "decoder_call_contexts": [
+      [
+        [
+          "instruction",
+          "1476:01d0",
+          "1476:01e9",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1476:01d0",
+          "1476:01eb",
+          "0bd0",
+          "OR DX,AX"
+        ],
+        [
+          "instruction",
+          "1476:01d0",
+          "1476:01ed",
+          "7520",
+          "JNZ 0x1000:496f"
+        ],
+        [
+          "instruction",
+          "1476:01d0",
+          "1476:01ef",
+          "6a0f",
+          "PUSH 0xf"
+        ],
+        [
+          "instruction",
+          "1476:01d0",
+          "1476:01f1",
+          "9adc177712",
+          "CALLF 0x1000:3f4c"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d25:0404",
+          "1d25:0407",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d25:0404",
+          "1d25:0409",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d25:0404",
+          "1d25:040e",
+          "8be5",
+          "MOV SP,BP"
+        ],
+        [
+          "instruction",
+          "1d25:0404",
+          "1d25:0410",
+          "ff7606",
+          "PUSH word ptr [BP + 0x6]"
+        ],
+        [
+          "instruction",
+          "1d25:0404",
+          "1d25:0413",
+          "9adc177712",
+          "CALLF 0x1000:3f4c"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d25:07ca",
+          "1d25:07ea",
+          "6a01",
+          "PUSH 0x1"
+        ],
+        [
+          "instruction",
+          "1d25:07ca",
+          "1d25:07ec",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d25:07ca",
+          "1d25:07f1",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d25:07ca",
+          "1d25:07f4",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d25:07ca",
+          "1d25:07f6",
+          "9adc177712",
+          "CALLF 0x1000:3f4c"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:1695",
+          "6a03",
+          "PUSH 0x3"
+        ],
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:1697",
+          "9a54025611",
+          "CALLF 0x1000:17b4"
+        ],
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:169c",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:169f",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:16a1",
+          "9adc177712",
+          "CALLF 0x1000:3f4c"
+        ]
+      ],
+      [
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:16a1",
+          "9adc177712",
+          "CALLF 0x1000:3f4c"
+        ],
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:16a6",
+          "83c402",
+          "ADD SP,0x2"
+        ],
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:16a9",
+          "9a8e01da1b",
+          "CALLF 0x1000:bf2e"
+        ],
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:16ae",
+          "6a05",
+          "PUSH 0x5"
+        ],
+        [
+          "instruction",
+          "1d25:168a",
+          "1d25:16b0",
+          "9adc177712",
+          "CALLF 0x1000:3f4c"
+        ]
+      ]
+    ]
+  }
+]
