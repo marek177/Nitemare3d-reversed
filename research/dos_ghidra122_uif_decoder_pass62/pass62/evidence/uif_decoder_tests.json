@@ -1,0 +1,1004 @@
+{
+  "locations": [
+    {
+      "build": "10",
+      "entry": "1273:15a0",
+      "exe_sha256": "d70158d9f3199aff74190ca315a60931542ccc94b8847246a2a94d8d40e93702",
+      "calls": {
+        "lookup": "1273:15b6",
+        "open": "1273:15d8",
+        "seek": "1273:15ed",
+        "read_header": "1273:1601",
+        "fatal_manufacturer": "1273:1616",
+        "fatal_dimensions": "1273:163b",
+        "read_code": "1273:1650",
+        "read_value": "1273:166e",
+        "blit_rle": "1273:16ba",
+        "blit_literal": "1273:170d",
+        "close": "1273:1721"
+      }
+    },
+    {
+      "build": "11",
+      "entry": "1275:15c6",
+      "exe_sha256": "f54eba56e4c247288aec5212b335ee553aa1080219caf2137027a5c9b7474a52",
+      "calls": {
+        "lookup": "1275:15dc",
+        "open": "1275:15fe",
+        "seek": "1275:1613",
+        "read_header": "1275:1627",
+        "fatal_manufacturer": "1275:163c",
+        "fatal_dimensions": "1275:1661",
+        "read_code": "1275:1676",
+        "read_value": "1275:1694",
+        "blit_rle": "1275:16e0",
+        "blit_literal": "1275:1733",
+        "close": "1275:1747"
+      }
+    },
+    {
+      "build": "12",
+      "entry": "1275:15d8",
+      "exe_sha256": "0acdfc58ee45517a43b842bfae6b640a3ad17f49bfc0288a1c6be1c67ff9892a",
+      "calls": {
+        "lookup": "1275:15ee",
+        "open": "1275:1610",
+        "seek": "1275:1625",
+        "read_header": "1275:1639",
+        "fatal_manufacturer": "1275:164e",
+        "fatal_dimensions": "1275:1673",
+        "read_code": "1275:1688",
+        "read_value": "1275:16a6",
+        "blit_rle": "1275:16f2",
+        "blit_literal": "1275:1745",
+        "close": "1275:1759"
+      }
+    },
+    {
+      "build": "15",
+      "entry": "1277:1600",
+      "exe_sha256": "d75ece51f360d8a9b85126674b19901f57f3e83c0fdb24bc45cf4ec3f68a7c0b",
+      "calls": {
+        "lookup": "1277:1616",
+        "open": "1277:1638",
+        "seek": "1277:164d",
+        "read_header": "1277:1661",
+        "fatal_manufacturer": "1277:1676",
+        "fatal_dimensions": "1277:169b",
+        "read_code": "1277:16b0",
+        "read_value": "1277:16ce",
+        "blit_rle": "1277:171a",
+        "blit_literal": "1277:176d",
+        "close": "1277:1781"
+      }
+    },
+    {
+      "build": "17",
+      "entry": "1277:1678",
+      "exe_sha256": "b95e697bbd91e9abc0a441b4e9b875cc817bc5ae4aa709a6eaad676024972d3c",
+      "calls": {
+        "lookup": "1277:168e",
+        "open": "1277:16b0",
+        "seek": "1277:16c5",
+        "read_header": "1277:16d9",
+        "fatal_manufacturer": "1277:16ee",
+        "fatal_dimensions": "1277:1713",
+        "read_code": "1277:1728",
+        "read_value": "1277:1746",
+        "blit_rle": "1277:1792",
+        "blit_literal": "1277:17e5",
+        "close": "1277:17f9"
+      }
+    },
+    {
+      "build": "18",
+      "entry": "1277:17dc",
+      "exe_sha256": "943d063f34ddc889f74ad9bae696daef08fac445c1c1593508ed990a3aaaed7c",
+      "calls": {
+        "lookup": "1277:17f2",
+        "open": "1277:1814",
+        "seek": "1277:1829",
+        "read_header": "1277:183d",
+        "fatal_manufacturer": "1277:1852",
+        "fatal_dimensions": "1277:1877",
+        "read_code": "1277:188c",
+        "read_value": "1277:18aa",
+        "blit_rle": "1277:18f6",
+        "blit_literal": "1277:1949",
+        "close": "1277:195d"
+      }
+    }
+  ],
+  "cases": [
+    {
+      "build": "10",
+      "case": "missing",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": null,
+      "events": [
+        "lookup"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "constant",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "literal",
+      "rows": 200,
+      "input_bytes_consumed": 64000,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "mixed",
+      "rows": 200,
+      "input_bytes_consumed": 18286,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "zero_run",
+      "rows": 200,
+      "input_bytes_consumed": 2034,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "manufacturer",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_manufacturer",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_manufacturer"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "width_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "height_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "both_wrong",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_dimensions",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_dimensions"
+      ],
+      "passed": true
+    },
+    {
+      "build": "10",
+      "case": "other_fields",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "missing",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": null,
+      "events": [
+        "lookup"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "constant",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "literal",
+      "rows": 200,
+      "input_bytes_consumed": 64000,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "mixed",
+      "rows": 200,
+      "input_bytes_consumed": 18286,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "zero_run",
+      "rows": 200,
+      "input_bytes_consumed": 2034,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "manufacturer",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_manufacturer",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_manufacturer"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "width_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "height_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "both_wrong",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_dimensions",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_dimensions"
+      ],
+      "passed": true
+    },
+    {
+      "build": "11",
+      "case": "other_fields",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "missing",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": null,
+      "events": [
+        "lookup"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "constant",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "literal",
+      "rows": 200,
+      "input_bytes_consumed": 64000,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "mixed",
+      "rows": 200,
+      "input_bytes_consumed": 18286,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "zero_run",
+      "rows": 200,
+      "input_bytes_consumed": 2034,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "manufacturer",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_manufacturer",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_manufacturer"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "width_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "height_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "both_wrong",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_dimensions",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_dimensions"
+      ],
+      "passed": true
+    },
+    {
+      "build": "12",
+      "case": "other_fields",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "missing",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": null,
+      "events": [
+        "lookup"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "constant",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "literal",
+      "rows": 200,
+      "input_bytes_consumed": 64000,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "mixed",
+      "rows": 200,
+      "input_bytes_consumed": 18286,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "zero_run",
+      "rows": 200,
+      "input_bytes_consumed": 2034,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "manufacturer",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_manufacturer",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_manufacturer"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "width_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "height_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "both_wrong",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_dimensions",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_dimensions"
+      ],
+      "passed": true
+    },
+    {
+      "build": "15",
+      "case": "other_fields",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "missing",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": null,
+      "events": [
+        "lookup"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "constant",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "literal",
+      "rows": 200,
+      "input_bytes_consumed": 64000,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "mixed",
+      "rows": 200,
+      "input_bytes_consumed": 18286,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "zero_run",
+      "rows": 200,
+      "input_bytes_consumed": 2034,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "manufacturer",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_manufacturer",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_manufacturer"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "width_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "height_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "both_wrong",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_dimensions",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_dimensions"
+      ],
+      "passed": true
+    },
+    {
+      "build": "17",
+      "case": "other_fields",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "missing",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": null,
+      "events": [
+        "lookup"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "constant",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "literal",
+      "rows": 200,
+      "input_bytes_consumed": 64000,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "mixed",
+      "rows": 200,
+      "input_bytes_consumed": 18286,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "zero_run",
+      "rows": 200,
+      "input_bytes_consumed": 2034,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "manufacturer",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_manufacturer",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_manufacturer"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "width_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "height_wrong",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "both_wrong",
+      "rows": 0,
+      "input_bytes_consumed": 0,
+      "fatal": "fatal_dimensions",
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "fatal_dimensions"
+      ],
+      "passed": true
+    },
+    {
+      "build": "18",
+      "case": "other_fields",
+      "rows": 200,
+      "input_bytes_consumed": 2032,
+      "fatal": null,
+      "events": [
+        "lookup",
+        "open",
+        "seek",
+        "read_header",
+        "close"
+      ],
+      "passed": true
+    }
+  ],
+  "passed": 60,
+  "boundary_mocks": [
+    "lookup",
+    "open",
+    "seek",
+    "read_header",
+    "fatal_manufacturer",
+    "fatal_dimensions",
+    "read_code",
+    "read_value",
+    "blit_rle",
+    "blit_literal",
+    "close"
+  ]
+}
