@@ -1,0 +1,109 @@
+{
+  "scenarios": 324,
+  "original_teardown_invocations_per_scenario": 2,
+  "all_passed": true,
+  "distinct_images": 6,
+  "callee_mocks": 0,
+  "interrupts_observed": 0,
+  "diagnostic_C_outputs": 12,
+  "version_difference": "DOS1.0 second registry frees far child pointers at stride10 then near child arrays; later versions near-free stride8 entries directly",
+  "locations": [
+    {
+      "build": "10",
+      "entry": "1cdc:07de",
+      "heap_free": "219b:3d72",
+      "far_free_entry": "219b:214e",
+      "second_table_model": "nested10_then_array_free",
+      "count_globals": [
+        "0x60c8",
+        "0x60ca",
+        "0x60c6"
+      ],
+      "first_table": "0x416c",
+      "second_table": "0x3b76",
+      "class_pointer_table": "0x3b7a",
+      "object_segment_global": "0x2466"
+    },
+    {
+      "build": "11",
+      "entry": "1d00:07e2",
+      "heap_free": "21bc:3cae",
+      "far_free_entry": null,
+      "second_table_model": "stride8_direct",
+      "count_globals": [
+        "0x61ce",
+        "0x61d0",
+        "0x61cc"
+      ],
+      "first_table": "0x4272",
+      "second_table": "0x3c82",
+      "class_pointer_table": "0x3c80",
+      "object_segment_global": "0x255e"
+    },
+    {
+      "build": "12",
+      "entry": "1d00:07e4",
+      "heap_free": "21c2:3cae",
+      "far_free_entry": null,
+      "second_table_model": "stride8_direct",
+      "count_globals": [
+        "0x61ce",
+        "0x61d0",
+        "0x61cc"
+      ],
+      "first_table": "0x4272",
+      "second_table": "0x3c82",
+      "class_pointer_table": "0x3c80",
+      "object_segment_global": "0x255a"
+    },
+    {
+      "build": "15",
+      "entry": "1d05:07e2",
+      "heap_free": "21c7:3cb2",
+      "far_free_entry": null,
+      "second_table_model": "stride8_direct",
+      "count_globals": [
+        "0x619e",
+        "0x61a0",
+        "0x619c"
+      ],
+      "first_table": "0x4242",
+      "second_table": "0x3c52",
+      "class_pointer_table": "0x3c50",
+      "object_segment_global": "0x252c"
+    },
+    {
+      "build": "17",
+      "entry": "1d0f:07de",
+      "heap_free": "21d1:3cae",
+      "far_free_entry": null,
+      "second_table_model": "stride8_direct",
+      "count_globals": [
+        "0x61e0",
+        "0x61e2",
+        "0x61de"
+      ],
+      "first_table": "0x4284",
+      "second_table": "0x3c94",
+      "class_pointer_table": "0x3c92",
+      "object_segment_global": "0x2530"
+    },
+    {
+      "build": "18",
+      "entry": "1d25:0812",
+      "heap_free": "21ea:3cb2",
+      "far_free_entry": null,
+      "second_table_model": "stride8_direct",
+      "count_globals": [
+        "0x6270",
+        "0x6272",
+        "0x626e"
+      ],
+      "first_table": "0x4314",
+      "second_table": "0x3d24",
+      "class_pointer_table": "0x3d22",
+      "object_segment_global": "0x256a"
+    }
+  ],
+  "scope": "Original higher-level teardown, original mode2 reset and original near-heap free execute twice. No callee/interrupt mocks; synthetic heap/buffers/records, no full allocator or asset files."
+}
