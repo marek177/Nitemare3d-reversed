@@ -1,0 +1,27 @@
+decompile	native_scan	21c2:27e4	true		
+instruction	native_scan	21c2:27e4	55	PUSH BP
+instruction	native_scan	21c2:27e5	8bec	MOV BP,SP
+instruction	native_scan	21c2:27e7	83ec04	SUB SP,0x4
+instruction	native_scan	21c2:27ea	57	PUSH DI
+instruction	native_scan	21c2:27eb	56	PUSH SI
+instruction	native_scan	21c2:27ec	8b7606	MOV SI,word ptr [BP + 0x6]
+instruction	native_scan	21c2:27ef	c606403c49	MOV byte ptr [0x3c40],0x49
+instruction	native_scan	21c2:27f4	89363e3c	MOV word ptr [0x3c3e],SI
+instruction	native_scan	21c2:27f8	bf3a3c	MOV DI,0x3c3a
+instruction	native_scan	21c2:27fb	8935	MOV word ptr [DI],SI
+instruction	native_scan	21c2:27fd	56	PUSH SI
+instruction	native_scan	21c2:27fe	9a9823c221	CALLF 0x2000:3fb8
+instruction	native_scan	21c2:2803	83c402	ADD SP,0x2
+instruction	native_scan	21c2:2806	a33c3c	MOV [0x3c3c],AX
+instruction	native_scan	21c2:2809	8d460a	LEA AX,[BP + 0xa]
+instruction	native_scan	21c2:280c	50	PUSH AX
+instruction	native_scan	21c2:280d	ff7608	PUSH word ptr [BP + 0x8]
+instruction	native_scan	21c2:2810	b83a3c	MOV AX,0x3c3a
+instruction	native_scan	21c2:2813	50	PUSH AX
+instruction	native_scan	21c2:2814	9a360dc221	CALLF 0x2000:2956
+instruction	native_scan	21c2:2819	83c406	ADD SP,0x6
+instruction	native_scan	21c2:281c	5e	POP SI
+instruction	native_scan	21c2:281d	5f	POP DI
+instruction	native_scan	21c2:281e	8be5	MOV SP,BP
+instruction	native_scan	21c2:2820	5d	POP BP
+instruction	native_scan	21c2:2821	cb	RETF
