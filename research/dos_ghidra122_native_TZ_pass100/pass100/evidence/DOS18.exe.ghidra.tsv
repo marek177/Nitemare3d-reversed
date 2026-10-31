@@ -1,0 +1,146 @@
+decompile	tz_init	21ea:2c0a	true		
+instruction	tz_init	21ea:2c0a	57	PUSH DI
+instruction	tz_init	21ea:2c0b	56	PUSH SI
+instruction	tz_init	21ea:2c0c	33ff	XOR DI,DI
+instruction	tz_init	21ea:2c0e	b8a024	MOV AX,0x24a0
+instruction	tz_init	21ea:2c11	50	PUSH AX
+instruction	tz_init	21ea:2c12	9a8e24ea21	CALLF 0x2000:432e
+instruction	tz_init	21ea:2c17	83c402	ADD SP,0x2
+instruction	tz_init	21ea:2c1a	8bf0	MOV SI,AX
+instruction	tz_init	21ea:2c1c	0bf0	OR SI,AX
+instruction	tz_init	21ea:2c1e	7503	JNZ 0x2000:4ac3
+instruction	tz_init	21ea:2c20	e9de00	JMP 0x2000:4ba1
+instruction	tz_init	21ea:2c23	803c00	CMP byte ptr [SI],0x0
+instruction	tz_init	21ea:2c26	7503	JNZ 0x2000:4acb
+instruction	tz_init	21ea:2c28	e9d600	JMP 0x2000:4ba1
+instruction	tz_init	21ea:2c2b	b80300	MOV AX,0x3
+instruction	tz_init	21ea:2c2e	50	PUSH AX
+instruction	tz_init	21ea:2c2f	56	PUSH SI
+instruction	tz_init	21ea:2c30	ff36b224	PUSH word ptr [0x24b2]
+instruction	tz_init	21ea:2c34	9ab823ea21	CALLF 0x2000:4258
+instruction	tz_init	21ea:2c39	83c406	ADD SP,0x6
+instruction	tz_init	21ea:2c3c	83c603	ADD SI,0x3
+instruction	tz_init	21ea:2c3f	803c2d	CMP byte ptr [SI],0x2d
+instruction	tz_init	21ea:2c42	7502	JNZ 0x2000:4ae6
+instruction	tz_init	21ea:2c44	47	INC DI
+instruction	tz_init	21ea:2c45	46	INC SI
+instruction	tz_init	21ea:2c46	b8100e	MOV AX,0xe10
+instruction	tz_init	21ea:2c49	99	CWD
+instruction	tz_init	21ea:2c4a	52	PUSH DX
+instruction	tz_init	21ea:2c4b	50	PUSH AX
+instruction	tz_init	21ea:2c4c	56	PUSH SI
+instruction	tz_init	21ea:2c4d	9a1a24ea21	CALLF 0x2000:42ba
+instruction	tz_init	21ea:2c52	83c402	ADD SP,0x2
+instruction	tz_init	21ea:2c55	52	PUSH DX
+instruction	tz_init	21ea:2c56	50	PUSH AX
+instruction	tz_init	21ea:2c57	9adc3aea21	CALLF 0x2000:597c
+instruction	tz_init	21ea:2c5c	a3a424	MOV [0x24a4],AX
+instruction	tz_init	21ea:2c5f	8916a624	MOV word ptr [0x24a6],DX
+instruction	tz_init	21ea:2c63	803c2b	CMP byte ptr [SI],0x2b
+instruction	tz_init	21ea:2c66	740a	JZ 0x2000:4b12
+instruction	tz_init	21ea:2c68	803c30	CMP byte ptr [SI],0x30
+instruction	tz_init	21ea:2c6b	7c09	JL 0x2000:4b16
+instruction	tz_init	21ea:2c6d	803c39	CMP byte ptr [SI],0x39
+instruction	tz_init	21ea:2c70	7f04	JG 0x2000:4b16
+instruction	tz_init	21ea:2c72	46	INC SI
+instruction	tz_init	21ea:2c73	ebee	JMP 0x2000:4b03
+instruction	tz_init	21ea:2c76	803c3a	CMP byte ptr [SI],0x3a
+instruction	tz_init	21ea:2c79	7550	JNZ 0x2000:4b6b
+instruction	tz_init	21ea:2c7b	b83c00	MOV AX,0x3c
+instruction	tz_init	21ea:2c7e	99	CWD
+instruction	tz_init	21ea:2c7f	52	PUSH DX
+instruction	tz_init	21ea:2c80	50	PUSH AX
+instruction	tz_init	21ea:2c81	46	INC SI
+instruction	tz_init	21ea:2c82	56	PUSH SI
+instruction	tz_init	21ea:2c83	9a1a24ea21	CALLF 0x2000:42ba
+instruction	tz_init	21ea:2c88	83c402	ADD SP,0x2
+instruction	tz_init	21ea:2c8b	52	PUSH DX
+instruction	tz_init	21ea:2c8c	50	PUSH AX
+instruction	tz_init	21ea:2c8d	9adc3aea21	CALLF 0x2000:597c
+instruction	tz_init	21ea:2c92	0106a424	ADD word ptr [0x24a4],AX
+instruction	tz_init	21ea:2c96	1116a624	ADC word ptr [0x24a6],DX
+instruction	tz_init	21ea:2c9a	eb06	JMP 0x2000:4b42
+instruction	tz_init	21ea:2c9c	803c39	CMP byte ptr [SI],0x39
+instruction	tz_init	21ea:2c9f	7f06	JG 0x2000:4b47
+instruction	tz_init	21ea:2ca1	46	INC SI
+instruction	tz_init	21ea:2ca2	803c30	CMP byte ptr [SI],0x30
+instruction	tz_init	21ea:2ca5	7df5	JGE 0x2000:4b3c
+instruction	tz_init	21ea:2ca7	803c3a	CMP byte ptr [SI],0x3a
+instruction	tz_init	21ea:2caa	751f	JNZ 0x2000:4b6b
+instruction	tz_init	21ea:2cac	46	INC SI
+instruction	tz_init	21ea:2cad	56	PUSH SI
+instruction	tz_init	21ea:2cae	9a1a24ea21	CALLF 0x2000:42ba
+instruction	tz_init	21ea:2cb3	83c402	ADD SP,0x2
+instruction	tz_init	21ea:2cb6	0106a424	ADD word ptr [0x24a4],AX
+instruction	tz_init	21ea:2cba	1116a624	ADC word ptr [0x24a6],DX
+instruction	tz_init	21ea:2cbe	eb06	JMP 0x2000:4b66
+instruction	tz_init	21ea:2cc0	803c39	CMP byte ptr [SI],0x39
+instruction	tz_init	21ea:2cc3	7f06	JG 0x2000:4b6b
+instruction	tz_init	21ea:2cc5	46	INC SI
+instruction	tz_init	21ea:2cc6	803c30	CMP byte ptr [SI],0x30
+instruction	tz_init	21ea:2cc9	7df5	JGE 0x2000:4b60
+instruction	tz_init	21ea:2ccb	0bff	OR DI,DI
+instruction	tz_init	21ea:2ccd	740d	JZ 0x2000:4b7c
+instruction	tz_init	21ea:2ccf	f71ea424	NEG word ptr [0x24a4]
+instruction	tz_init	21ea:2cd3	8316a62400	ADC word ptr [0x24a6],0x0
+instruction	tz_init	21ea:2cd8	f71ea624	NEG word ptr [0x24a6]
+instruction	tz_init	21ea:2cdc	8a04	MOV AL,byte ptr [SI]
+instruction	tz_init	21ea:2cde	98	CBW
+instruction	tz_init	21ea:2cdf	a3a824	MOV [0x24a8],AX
+instruction	tz_init	21ea:2ce2	0bc0	OR AX,AX
+instruction	tz_init	21ea:2ce4	7414	JZ 0x2000:4b9a
+instruction	tz_init	21ea:2ce6	b80300	MOV AX,0x3
+instruction	tz_init	21ea:2ce9	50	PUSH AX
+instruction	tz_init	21ea:2cea	56	PUSH SI
+instruction	tz_init	21ea:2ceb	ff36b424	PUSH word ptr [0x24b4]
+instruction	tz_init	21ea:2cef	9ab823ea21	CALLF 0x2000:4258
+instruction	tz_init	21ea:2cf4	83c406	ADD SP,0x6
+instruction	tz_init	21ea:2cf7	eb08	JMP 0x2000:4ba1
+instruction	tz_init	21ea:2cfa	8b1eb424	MOV BX,word ptr [0x24b4]
+instruction	tz_init	21ea:2cfe	c60700	MOV byte ptr [BX],0x0
+instruction	tz_init	21ea:2d01	5e	POP SI
+instruction	tz_init	21ea:2d02	5f	POP DI
+instruction	tz_init	21ea:2d03	cb	RETF
+decompile	getenv	21ea:248e	true		
+instruction	getenv	21ea:248e	55	PUSH BP
+instruction	getenv	21ea:248f	8bec	MOV BP,SP
+instruction	getenv	21ea:2491	57	PUSH DI
+instruction	getenv	21ea:2492	56	PUSH SI
+instruction	getenv	21ea:2493	8b364021	MOV SI,word ptr [0x2140]
+instruction	getenv	21ea:2497	0bf6	OR SI,SI
+instruction	getenv	21ea:2499	744b	JZ 0x2000:4386
+instruction	getenv	21ea:249b	837e0600	CMP word ptr [BP + 0x6],0x0
+instruction	getenv	21ea:249f	7445	JZ 0x2000:4386
+instruction	getenv	21ea:24a1	ff7606	PUSH word ptr [BP + 0x6]
+instruction	getenv	21ea:24a4	9a9c23ea21	CALLF 0x2000:423c
+instruction	getenv	21ea:24a9	83c402	ADD SP,0x2
+instruction	getenv	21ea:24ac	8bf8	MOV DI,AX
+instruction	getenv	21ea:24ae	eb31	JMP 0x2000:4381
+instruction	getenv	21ea:24b0	ff34	PUSH word ptr [SI]
+instruction	getenv	21ea:24b2	9a9c23ea21	CALLF 0x2000:423c
+instruction	getenv	21ea:24b7	83c402	ADD SP,0x2
+instruction	getenv	21ea:24ba	3bc7	CMP AX,DI
+instruction	getenv	21ea:24bc	7620	JBE 0x2000:437e
+instruction	getenv	21ea:24be	8b1c	MOV BX,word ptr [SI]
+instruction	getenv	21ea:24c0	80393d	CMP byte ptr [BX + DI],0x3d
+instruction	getenv	21ea:24c3	7519	JNZ 0x2000:437e
+instruction	getenv	21ea:24c5	57	PUSH DI
+instruction	getenv	21ea:24c6	ff7606	PUSH word ptr [BP + 0x6]
+instruction	getenv	21ea:24c9	53	PUSH BX
+instruction	getenv	21ea:24ca	9ae023ea21	CALLF 0x2000:4280
+instruction	getenv	21ea:24cf	83c406	ADD SP,0x6
+instruction	getenv	21ea:24d2	0bc0	OR AX,AX
+instruction	getenv	21ea:24d4	7508	JNZ 0x2000:437e
+instruction	getenv	21ea:24d6	8b04	MOV AX,word ptr [SI]
+instruction	getenv	21ea:24d8	03c7	ADD AX,DI
+instruction	getenv	21ea:24da	40	INC AX
+instruction	getenv	21ea:24db	eb0b	JMP 0x2000:4388
+instruction	getenv	21ea:24de	83c602	ADD SI,0x2
+instruction	getenv	21ea:24e1	833c00	CMP word ptr [SI],0x0
+instruction	getenv	21ea:24e4	75ca	JNZ 0x2000:4350
+instruction	getenv	21ea:24e6	33c0	XOR AX,AX
+instruction	getenv	21ea:24e8	5e	POP SI
+instruction	getenv	21ea:24e9	5f	POP DI
+instruction	getenv	21ea:24ea	8be5	MOV SP,BP
+instruction	getenv	21ea:24ec	5d	POP BP
+instruction	getenv	21ea:24ed	cb	RETF
