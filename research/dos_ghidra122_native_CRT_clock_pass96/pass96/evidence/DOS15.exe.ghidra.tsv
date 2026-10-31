@@ -1,0 +1,137 @@
+decompile	clock	1bba:001c	true		
+instruction	clock	1bba:001c	c80e0000	ENTER 0xe,0x0
+instruction	clock	1bba:0020	803e373c00	CMP byte ptr [0x3c37],0x0
+instruction	clock	1bba:0025	7549	JNZ 0x1000:bc10
+instruction	clock	1bba:0027	803e3f3c00	CMP byte ptr [0x3c3f],0x0
+instruction	clock	1bba:002c	7442	JZ 0x1000:bc10
+instruction	clock	1bba:002e	b84000	MOV AX,0x40
+instruction	clock	1bba:0031	8ec0	MOV ES,AX
+instruction	clock	1bba:0033	268b066c00	MOV AX,word ptr ES:[0x6c]
+instruction	clock	1bba:0038	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	clock	1bba:003b	268b066e00	MOV AX,word ptr ES:[0x6e]
+instruction	clock	1bba:0040	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	clock	1bba:0043	a1c016	MOV AX,[0x16c0]
+instruction	clock	1bba:0046	0b06be16	OR AX,word ptr [0x16be]
+instruction	clock	1bba:004a	7508	JNZ 0x1000:bbf4
+instruction	clock	1bba:004c	668b46fc	MOV EAX,dword ptr [BP + -0x4]
+instruction	clock	1bba:0050	66a3be16	MOV [0x16be],EAX
+instruction	clock	1bba:0054	668b46fc	MOV EAX,dword ptr [BP + -0x4]
+instruction	clock	1bba:0058	662b06be16	SUB EAX,dword ptr [0x16be]
+instruction	clock	1bba:005d	66b937000000	MOV ECX,0x37
+instruction	clock	1bba:0063	66f7e1	MUL ECX
+instruction	clock	1bba:0066	668946fc	MOV dword ptr [BP + -0x4],EAX
+instruction	clock	1bba:006a	8b56fe	MOV DX,word ptr [BP + -0x2]
+instruction	clock	1bba:006d	c9	LEAVE
+instruction	clock	1bba:006e	cb	RETF
+instruction	clock	1bba:0070	8d46f2	LEA AX,[BP + -0xe]
+instruction	clock	1bba:0073	50	PUSH AX
+instruction	clock	1bba:0074	9aee2ac721	CALLF 0x2000:475e
+instruction	clock	1bba:0079	83c402	ADD SP,0x2
+instruction	clock	1bba:007c	668b46f2	MOV EAX,dword ptr [BP + -0xe]
+instruction	clock	1bba:0080	66b9e8030000	MOV ECX,0x3e8
+instruction	clock	1bba:0086	66f7e1	MUL ECX
+instruction	clock	1bba:0089	668bd0	MOV EDX,EAX
+instruction	clock	1bba:008c	66c1ea10	SHR EDX,0x10
+instruction	clock	1bba:0090	0346f6	ADD AX,word ptr [BP + -0xa]
+instruction	clock	1bba:0093	83d200	ADC DX,0x0
+instruction	clock	1bba:0096	c9	LEAVE
+instruction	clock	1bba:0097	cb	RETF
+decompile	crt_time	21c7:2aee	true		
+instruction	crt_time	21c7:2aee	55	PUSH BP
+instruction	crt_time	21c7:2aef	8bec	MOV BP,SP
+instruction	crt_time	21c7:2af1	83ec22	SUB SP,0x22
+instruction	crt_time	21c7:2af4	56	PUSH SI
+instruction	crt_time	21c7:2af5	9af82bc721	CALLF 0x2000:4868
+instruction	crt_time	21c7:2afa	b83c00	MOV AX,0x3c
+instruction	crt_time	21c7:2afd	99	CWD
+instruction	crt_time	21c7:2afe	52	PUSH DX
+instruction	crt_time	21c7:2aff	50	PUSH AX
+instruction	crt_time	21c7:2b00	ff366824	PUSH word ptr [0x2468]
+instruction	crt_time	21c7:2b04	ff366624	PUSH word ptr [0x2466]
+instruction	crt_time	21c7:2b08	9a423ac721	CALLF 0x2000:56b2
+instruction	crt_time	21c7:2b0d	8b5e06	MOV BX,word ptr [BP + 0x6]
+instruction	crt_time	21c7:2b10	894706	MOV word ptr [BX + 0x6],AX
+instruction	crt_time	21c7:2b13	8d46f4	LEA AX,[BP + -0xc]
+instruction	crt_time	21c7:2b16	50	PUSH AX
+instruction	crt_time	21c7:2b17	9a0e3ac721	CALLF 0x2000:567e
+instruction	crt_time	21c7:2b1c	83c402	ADD SP,0x2
+instruction	crt_time	21c7:2b1f	8d46f0	LEA AX,[BP + -0x10]
+instruction	crt_time	21c7:2b22	50	PUSH AX
+instruction	crt_time	21c7:2b23	9a283ac721	CALLF 0x2000:5698
+instruction	crt_time	21c7:2b28	83c402	ADD SP,0x2
+instruction	crt_time	21c7:2b2b	807ef000	CMP byte ptr [BP + -0x10],0x0
+instruction	crt_time	21c7:2b2f	7512	JNZ 0x2000:47b3
+instruction	crt_time	21c7:2b31	807ef100	CMP byte ptr [BP + -0xf],0x0
+instruction	crt_time	21c7:2b35	750c	JNZ 0x2000:47b3
+instruction	crt_time	21c7:2b37	8d46f4	LEA AX,[BP + -0xc]
+instruction	crt_time	21c7:2b3a	50	PUSH AX
+instruction	crt_time	21c7:2b3b	9a0e3ac721	CALLF 0x2000:567e
+instruction	crt_time	21c7:2b40	83c402	ADD SP,0x2
+instruction	crt_time	21c7:2b43	8b46f6	MOV AX,word ptr [BP + -0xa]
+instruction	crt_time	21c7:2b46	2dbc07	SUB AX,0x7bc
+instruction	crt_time	21c7:2b49	8bc8	MOV CX,AX
+instruction	crt_time	21c7:2b4b	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	crt_time	21c7:2b4e	055000	ADD AX,0x50
+instruction	crt_time	21c7:2b51	8946e8	MOV word ptr [BP + -0x18],AX
+instruction	crt_time	21c7:2b54	8a46f4	MOV AL,byte ptr [BP + -0xc]
+instruction	crt_time	21c7:2b57	2ae4	SUB AH,AH
+instruction	crt_time	21c7:2b59	8bd0	MOV DX,AX
+instruction	crt_time	21c7:2b5b	8946fa	MOV word ptr [BP + -0x6],AX
+instruction	crt_time	21c7:2b5e	8946e4	MOV word ptr [BP + -0x1c],AX
+instruction	crt_time	21c7:2b61	8a5ef5	MOV BL,byte ptr [BP + -0xb]
+instruction	crt_time	21c7:2b64	2aff	SUB BH,BH
+instruction	crt_time	21c7:2b66	895efc	MOV word ptr [BP + -0x4],BX
+instruction	crt_time	21c7:2b69	8d77ff	LEA SI,[BX + -0x1]
+instruction	crt_time	21c7:2b6c	8976e6	MOV word ptr [BP + -0x1a],SI
+instruction	crt_time	21c7:2b6f	03f6	ADD SI,SI
+instruction	crt_time	21c7:2b71	03944824	ADD DX,word ptr [SI + 0x2448]
+instruction	crt_time	21c7:2b75	8956ec	MOV word ptr [BP + -0x14],DX
+instruction	crt_time	21c7:2b78	f6c103	TEST CL,0x3
+instruction	crt_time	21c7:2b7b	7509	JNZ 0x2000:47f6
+instruction	crt_time	21c7:2b7d	83fb02	CMP BX,0x2
+instruction	crt_time	21c7:2b80	7e04	JLE 0x2000:47f6
+instruction	crt_time	21c7:2b82	42	INC DX
+instruction	crt_time	21c7:2b83	8956ec	MOV word ptr [BP + -0x14],DX
+instruction	crt_time	21c7:2b86	8a46f0	MOV AL,byte ptr [BP + -0x10]
+instruction	crt_time	21c7:2b89	2ae4	SUB AH,AH
+instruction	crt_time	21c7:2b8b	8946e2	MOV word ptr [BP + -0x1e],AX
+instruction	crt_time	21c7:2b8e	8a46f3	MOV AL,byte ptr [BP + -0xd]
+instruction	crt_time	21c7:2b91	8bc8	MOV CX,AX
+instruction	crt_time	21c7:2b93	03c0	ADD AX,AX
+instruction	crt_time	21c7:2b95	03c0	ADD AX,AX
+instruction	crt_time	21c7:2b97	03c1	ADD AX,CX
+instruction	crt_time	21c7:2b99	8b5e06	MOV BX,word ptr [BP + 0x6]
+instruction	crt_time	21c7:2b9c	03c0	ADD AX,AX
+instruction	crt_time	21c7:2b9e	894704	MOV word ptr [BX + 0x4],AX
+instruction	crt_time	21c7:2ba1	8a46f2	MOV AL,byte ptr [BP + -0xe]
+instruction	crt_time	21c7:2ba4	2ae4	SUB AH,AH
+instruction	crt_time	21c7:2ba6	50	PUSH AX
+instruction	crt_time	21c7:2ba7	8a46f1	MOV AL,byte ptr [BP + -0xf]
+instruction	crt_time	21c7:2baa	50	PUSH AX
+instruction	crt_time	21c7:2bab	8a46f0	MOV AL,byte ptr [BP + -0x10]
+instruction	crt_time	21c7:2bae	50	PUSH AX
+instruction	crt_time	21c7:2baf	ff76fa	PUSH word ptr [BP + -0x6]
+instruction	crt_time	21c7:2bb2	ff76fc	PUSH word ptr [BP + -0x4]
+instruction	crt_time	21c7:2bb5	ff76fe	PUSH word ptr [BP + -0x2]
+instruction	crt_time	21c7:2bb8	9ac42dc721	CALLF 0x2000:4a34
+instruction	crt_time	21c7:2bbd	8b5e06	MOV BX,word ptr [BP + 0x6]
+instruction	crt_time	21c7:2bc0	83c40c	ADD SP,0xc
+instruction	crt_time	21c7:2bc3	8907	MOV word ptr [BX],AX
+instruction	crt_time	21c7:2bc5	895702	MOV word ptr [BX + 0x2],DX
+instruction	crt_time	21c7:2bc8	833e6a2400	CMP word ptr [0x246a],0x0
+instruction	crt_time	21c7:2bcd	741b	JZ 0x2000:485a
+instruction	crt_time	21c7:2bcf	8d46de	LEA AX,[BP + -0x22]
+instruction	crt_time	21c7:2bd2	50	PUSH AX
+instruction	crt_time	21c7:2bd3	9a042dc721	CALLF 0x2000:4974
+instruction	crt_time	21c7:2bd8	83c402	ADD SP,0x2
+instruction	crt_time	21c7:2bdb	0bc0	OR AX,AX
+instruction	crt_time	21c7:2bdd	740b	JZ 0x2000:485a
+instruction	crt_time	21c7:2bdf	8b5e06	MOV BX,word ptr [BP + 0x6]
+instruction	crt_time	21c7:2be2	c747080100	MOV word ptr [BX + 0x8],0x1
+instruction	crt_time	21c7:2be7	eb09	JMP 0x2000:4862
+instruction	crt_time	21c7:2bea	8b5e06	MOV BX,word ptr [BP + 0x6]
+instruction	crt_time	21c7:2bed	c747080000	MOV word ptr [BX + 0x8],0x0
+instruction	crt_time	21c7:2bf2	5e	POP SI
+instruction	crt_time	21c7:2bf3	8be5	MOV SP,BP
+instruction	crt_time	21c7:2bf5	5d	POP BP
+instruction	crt_time	21c7:2bf6	cb	RETF
