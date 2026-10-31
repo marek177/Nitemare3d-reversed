@@ -1,0 +1,112 @@
+{
+  "passed": 5376,
+  "per_build": {
+    "10": 896,
+    "11": 896,
+    "12": 896,
+    "15": 896,
+    "17": 896,
+    "18": 896
+  },
+  "full_evidence_file": "deadline_tests.json",
+  "full_evidence_sha256": "bc7b04ce7bcabf3675f276d76c0737f9d65884d06305577712c3289d856b65b5",
+  "scope": "Only original animation state1 deadline/update basic-block region executes; entry registers, descriptor and slot record are fixtures. Stops before render/position helper. No IRQ interleaving; not a complete scheduler or function test.",
+  "examples": [
+    {
+      "build": "18",
+      "now": 100,
+      "deadline": 99,
+      "frame": 0,
+      "count": 2,
+      "delay": 10,
+      "due": true,
+      "frame_after": 1,
+      "deadline_after": 110,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "now": 100,
+      "deadline": 100,
+      "frame": 0,
+      "count": 2,
+      "delay": 10,
+      "due": true,
+      "frame_after": 1,
+      "deadline_after": 110,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "now": 100,
+      "deadline": 101,
+      "frame": 0,
+      "count": 2,
+      "delay": 10,
+      "due": false,
+      "frame_after": 0,
+      "deadline_after": 101,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "now": 0,
+      "deadline": 0,
+      "frame": 0,
+      "count": 2,
+      "delay": 10,
+      "due": true,
+      "frame_after": 1,
+      "deadline_after": 10,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "now": 4294967295,
+      "deadline": 0,
+      "frame": 0,
+      "count": 2,
+      "delay": 10,
+      "due": true,
+      "frame_after": 1,
+      "deadline_after": 9,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "now": 4294967295,
+      "deadline": 4294967295,
+      "frame": 0,
+      "count": 2,
+      "delay": 10,
+      "due": true,
+      "frame_after": 1,
+      "deadline_after": 9,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "now": 2,
+      "deadline": 4294967294,
+      "frame": 0,
+      "count": 2,
+      "delay": 10,
+      "due": false,
+      "frame_after": 0,
+      "deadline_after": 4294967294,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "now": 4294967294,
+      "deadline": 8,
+      "frame": 0,
+      "count": 2,
+      "delay": 10,
+      "due": true,
+      "frame_after": 1,
+      "deadline_after": 8,
+      "passed": true
+    }
+  ]
+}

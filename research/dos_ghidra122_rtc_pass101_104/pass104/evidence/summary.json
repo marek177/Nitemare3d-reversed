@@ -1,0 +1,61 @@
+{
+  "passed": 144,
+  "per_build": {
+    "10": 24,
+    "11": 24,
+    "12": 24,
+    "15": 24,
+    "17": 24,
+    "18": 24
+  },
+  "full_evidence_file": "counter_interrupt_tests.json",
+  "full_evidence_sha256": "3fe1254590cff2d7df6e05d522edb7b7afde2758e259c9bbf9dd31f1bfe3ac31",
+  "scope": "Original reader interrupted by original RTC ISR at controlled instruction boundary; hardware-entry stack/IF/TF and CMOS reply modeled. No function mocks; proves possible interleaving, not observed real DOS occurrence/frequency.",
+  "torn_cases": 24,
+  "examples": [
+    {
+      "build": "18",
+      "where": "between_words",
+      "interrupted_at": "1bda:00ad",
+      "before": 65535,
+      "after": 65536,
+      "returned": 131071,
+      "next_read": 65536,
+      "torn": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "where": "between_words",
+      "interrupted_at": "1bda:00ad",
+      "before": 305463295,
+      "after": 305463296,
+      "returned": 305528831,
+      "next_read": 305463296,
+      "torn": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "where": "between_words",
+      "interrupted_at": "1bda:00ad",
+      "before": 2147483647,
+      "after": 2147483648,
+      "returned": 2147549183,
+      "next_read": 2147483648,
+      "torn": true,
+      "passed": true
+    },
+    {
+      "build": "18",
+      "where": "between_words",
+      "interrupted_at": "1bda:00ad",
+      "before": 4294967295,
+      "after": 0,
+      "returned": 65535,
+      "next_read": 0,
+      "torn": true,
+      "passed": true
+    }
+  ]
+}

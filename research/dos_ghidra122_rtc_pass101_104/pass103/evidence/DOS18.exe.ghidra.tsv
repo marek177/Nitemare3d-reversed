@@ -1,0 +1,87 @@
+decompile	animation_slots	17ed:0356	true		
+instruction	animation_slots	17ed:0356	c8060000	ENTER 0x6,0x0
+instruction	animation_slots	17ed:035a	57	PUSH DI
+instruction	animation_slots	17ed:035b	56	PUSH SI
+instruction	animation_slots	17ed:035c	bfb441	MOV DI,0x41b4
+instruction	animation_slots	17ed:035f	c746fe0800	MOV word ptr [BP + -0x2],0x8
+instruction	animation_slots	17ed:0364	8d450e	LEA AX,[DI + 0xe]
+instruction	animation_slots	17ed:0367	8bf0	MOV SI,AX
+instruction	animation_slots	17ed:0369	1e	PUSH DS
+instruction	animation_slots	17ed:036a	07	POP ES
+instruction	animation_slots	17ed:036b	8bd8	MOV BX,AX
+instruction	animation_slots	17ed:036d	2aed	SUB CH,CH
+instruction	animation_slots	17ed:036f	268a4f04	MOV CL,byte ptr ES:[BX + 0x4]
+instruction	animation_slots	17ed:0373	c1e103	SHL CX,0x3
+instruction	animation_slots	17ed:0376	81c11e3d	ADD CX,0x3d1e
+instruction	animation_slots	17ed:037a	8a450c	MOV AL,byte ptr [DI + 0xc]
+instruction	animation_slots	17ed:037d	2ae4	SUB AH,AH
+instruction	animation_slots	17ed:037f	48	DEC AX
+instruction	animation_slots	17ed:0380	7406	JZ 0x1000:8258
+instruction	animation_slots	17ed:0382	48	DEC AX
+instruction	animation_slots	17ed:0383	746b	JZ 0x1000:82c0
+instruction	animation_slots	17ed:0385	e9ad00	JMP 0x1000:8305
+instruction	animation_slots	17ed:0388	66a11e08	MOV EAX,[0x81e]
+instruction	animation_slots	17ed:038c	6626394408	CMP dword ptr ES:[SI + 0x8],EAX
+instruction	animation_slots	17ed:0391	7729	JA 0x1000:828c
+instruction	animation_slots	17ed:0393	26fe4403	INC byte ptr ES:[SI + 0x3]
+instruction	animation_slots	17ed:0397	268a4403	MOV AL,byte ptr ES:[SI + 0x3]
+instruction	animation_slots	17ed:039b	2ae4	SUB AH,AH
+instruction	animation_slots	17ed:039d	8bd9	MOV BX,CX
+instruction	animation_slots	17ed:039f	3b07	CMP AX,word ptr [BX]
+instruction	animation_slots	17ed:03a1	7c04	JL 0x1000:8277
+instruction	animation_slots	17ed:03a3	26886403	MOV byte ptr ES:[SI + 0x3],AH
+instruction	animation_slots	17ed:03a7	a11e08	MOV AX,[0x81e]
+instruction	animation_slots	17ed:03aa	8b162008	MOV DX,word ptr [0x820]
+instruction	animation_slots	17ed:03ae	034702	ADD AX,word ptr [BX + 0x2]
+instruction	animation_slots	17ed:03b1	83d200	ADC DX,0x0
+instruction	animation_slots	17ed:03b4	26894408	MOV word ptr ES:[SI + 0x8],AX
+instruction	animation_slots	17ed:03b8	2689540a	MOV word ptr ES:[SI + 0xa],DX
+instruction	animation_slots	17ed:03bc	8c46fc	MOV word ptr [BP + -0x4],ES
+instruction	animation_slots	17ed:03bf	57	PUSH DI
+instruction	animation_slots	17ed:03c0	0e	PUSH CS
+instruction	animation_slots	17ed:03c1	e8a4fe	CALL 0x1000:8138
+instruction	animation_slots	17ed:03c4	83c402	ADD SP,0x2
+instruction	animation_slots	17ed:03c7	8e46fc	MOV ES,word ptr [BP + -0x4]
+instruction	animation_slots	17ed:03ca	268b4410	MOV AX,word ptr ES:[SI + 0x10]
+instruction	animation_slots	17ed:03ce	2b066241	SUB AX,word ptr [0x4162]
+instruction	animation_slots	17ed:03d2	99	CWD
+instruction	animation_slots	17ed:03d3	33c2	XOR AX,DX
+instruction	animation_slots	17ed:03d5	2bc2	SUB AX,DX
+instruction	animation_slots	17ed:03d7	3d1400	CMP AX,0x14
+instruction	animation_slots	17ed:03da	7f4f	JG 0x1000:82fb
+instruction	animation_slots	17ed:03dc	268b4412	MOV AX,word ptr ES:[SI + 0x12]
+instruction	animation_slots	17ed:03e0	2b066441	SUB AX,word ptr [0x4164]
+instruction	animation_slots	17ed:03e4	99	CWD
+instruction	animation_slots	17ed:03e5	33c2	XOR AX,DX
+instruction	animation_slots	17ed:03e7	2bc2	SUB AX,DX
+instruction	animation_slots	17ed:03e9	3d1400	CMP AX,0x14
+instruction	animation_slots	17ed:03ec	7e47	JLE 0x1000:8305
+instruction	animation_slots	17ed:03ee	eb3b	JMP 0x1000:82fb
+instruction	animation_slots	17ed:03f0	66a11e08	MOV EAX,[0x81e]
+instruction	animation_slots	17ed:03f4	6626394408	CMP dword ptr ES:[SI + 0x8],EAX
+instruction	animation_slots	17ed:03f9	771b	JA 0x1000:82e6
+instruction	animation_slots	17ed:03fb	26fe4403	INC byte ptr ES:[SI + 0x3]
+instruction	animation_slots	17ed:03ff	a11e08	MOV AX,[0x81e]
+instruction	animation_slots	17ed:0402	8bd9	MOV BX,CX
+instruction	animation_slots	17ed:0404	8b162008	MOV DX,word ptr [0x820]
+instruction	animation_slots	17ed:0408	034702	ADD AX,word ptr [BX + 0x2]
+instruction	animation_slots	17ed:040b	83d200	ADC DX,0x0
+instruction	animation_slots	17ed:040e	26894408	MOV word ptr ES:[SI + 0x8],AX
+instruction	animation_slots	17ed:0412	2689540a	MOV word ptr ES:[SI + 0xa],DX
+instruction	animation_slots	17ed:0416	268a4403	MOV AL,byte ptr ES:[SI + 0x3]
+instruction	animation_slots	17ed:041a	2ae4	SUB AH,AH
+instruction	animation_slots	17ed:041c	8bd9	MOV BX,CX
+instruction	animation_slots	17ed:041e	3b07	CMP AX,word ptr [BX]
+instruction	animation_slots	17ed:0420	7c06	JL 0x1000:82f8
+instruction	animation_slots	17ed:0422	88650c	MOV byte ptr [DI + 0xc],AH
+instruction	animation_slots	17ed:0425	eb0e	JMP 0x1000:8305
+instruction	animation_slots	17ed:0428	8c46fc	MOV word ptr [BP + -0x4],ES
+instruction	animation_slots	17ed:042b	06	PUSH ES
+instruction	animation_slots	17ed:042c	56	PUSH SI
+instruction	animation_slots	17ed:042d	9a2804e71a	CALLF 0x1000:b298
+instruction	animation_slots	17ed:0432	83c404	ADD SP,0x4
+instruction	animation_slots	17ed:0435	83c72a	ADD DI,0x2a
+instruction	animation_slots	17ed:0438	ff4efe	DEC word ptr [BP + -0x2]
+instruction	animation_slots	17ed:043b	0f8525ff	JNZ 0x1000:8234
+instruction	animation_slots	17ed:043f	5e	POP SI
+instruction	animation_slots	17ed:0440	5f	POP DI

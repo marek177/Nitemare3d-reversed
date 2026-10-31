@@ -1,0 +1,155 @@
+recovered_entry	rtc_isr	1bc8:0006
+decompile	rtc_isr	1bc8:0006	true		
+instruction	rtc_isr	1bc8:0006	6660	PUSHAD
+instruction	rtc_isr	1bc8:0008	1e	PUSH DS
+instruction	rtc_isr	1bc8:0009	06	PUSH ES
+instruction	rtc_isr	1bc8:000a	8bec	MOV BP,SP
+instruction	rtc_isr	1bc8:000c	1e	PUSH DS
+instruction	rtc_isr	1bc8:000d	b86d37	MOV AX,0x376d
+instruction	rtc_isr	1bc8:0010	8ed8	MOV DS,AX
+instruction	rtc_isr	1bc8:0012	fc	CLD
+instruction	rtc_isr	1bc8:0013	66ff061e08	INC dword ptr [0x81e]
+instruction	rtc_isr	1bc8:0018	b00c	MOV AL,0xc
+instruction	rtc_isr	1bc8:001a	e670	OUT 0x70,AL
+instruction	rtc_isr	1bc8:001c	e471	IN AL,0x71
+instruction	rtc_isr	1bc8:001e	b020	MOV AL,0x20
+instruction	rtc_isr	1bc8:0020	e6a0	OUT 0xa0,AL
+instruction	rtc_isr	1bc8:0022	e620	OUT 0x20,AL
+instruction	rtc_isr	1bc8:0024	8be5	MOV SP,BP
+instruction	rtc_isr	1bc8:0026	07	POP ES
+instruction	rtc_isr	1bc8:0027	1f	POP DS
+instruction	rtc_isr	1bc8:0028	6661	POPAD
+instruction	rtc_isr	1bc8:002a	cf	IRET
+decompile	rtc_setup	1bc8:0078	true		
+instruction	rtc_setup	1bc8:0078	55	PUSH BP
+instruction	rtc_setup	1bc8:0079	8bec	MOV BP,SP
+instruction	rtc_setup	1bc8:007b	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	rtc_setup	1bc8:007e	0bc0	OR AX,AX
+instruction	rtc_setup	1bc8:0080	7406	JZ 0x1000:bd08
+instruction	rtc_setup	1bc8:0082	48	DEC AX
+instruction	rtc_setup	1bc8:0083	746b	JZ 0x1000:bd70
+instruction	rtc_setup	1bc8:0085	c9	LEAVE
+instruction	rtc_setup	1bc8:0086	cb	RETF
+instruction	rtc_setup	1bc8:0088	803eee1600	CMP byte ptr [0x16ee],0x0
+instruction	rtc_setup	1bc8:008d	0f859400	JNZ 0x1000:bda5
+instruction	rtc_setup	1bc8:0091	fa	CLI
+instruction	rtc_setup	1bc8:0092	6a0a	PUSH 0xa
+instruction	rtc_setup	1bc8:0094	0e	PUSH CS
+instruction	rtc_setup	1bc8:0095	e8a2ff	CALL 0x1000:bcba
+instruction	rtc_setup	1bc8:0098	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:009a	25f000	AND AX,0xf0
+instruction	rtc_setup	1bc8:009d	0c06	OR AL,0x6
+instruction	rtc_setup	1bc8:009f	50	PUSH AX
+instruction	rtc_setup	1bc8:00a0	6a0a	PUSH 0xa
+instruction	rtc_setup	1bc8:00a2	0e	PUSH CS
+instruction	rtc_setup	1bc8:00a3	e8b6ff	CALL 0x1000:bcdc
+instruction	rtc_setup	1bc8:00a6	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:00a8	6a70	PUSH 0x70
+instruction	rtc_setup	1bc8:00aa	9ae639ea21	CALLF 0x2000:5886
+instruction	rtc_setup	1bc8:00af	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:00b1	a36c36	MOV [0x366c],AX
+instruction	rtc_setup	1bc8:00b4	89166e36	MOV word ptr [0x366e],DX
+instruction	rtc_setup	1bc8:00b8	68c81b	PUSH 0x1bc8
+instruction	rtc_setup	1bc8:00bb	680600	PUSH 0x6
+instruction	rtc_setup	1bc8:00be	6a70	PUSH 0x70
+instruction	rtc_setup	1bc8:00c0	9af839ea21	CALLF 0x2000:5898
+instruction	rtc_setup	1bc8:00c5	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:00c7	6a0b	PUSH 0xb
+instruction	rtc_setup	1bc8:00c9	0e	PUSH CS
+instruction	rtc_setup	1bc8:00ca	e86dff	CALL 0x1000:bcba
+instruction	rtc_setup	1bc8:00cd	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:00cf	0c40	OR AL,0x40
+instruction	rtc_setup	1bc8:00d1	50	PUSH AX
+instruction	rtc_setup	1bc8:00d2	6a0b	PUSH 0xb
+instruction	rtc_setup	1bc8:00d4	0e	PUSH CS
+instruction	rtc_setup	1bc8:00d5	e884ff	CALL 0x1000:bcdc
+instruction	rtc_setup	1bc8:00d8	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:00da	6a0c	PUSH 0xc
+instruction	rtc_setup	1bc8:00dc	0e	PUSH CS
+instruction	rtc_setup	1bc8:00dd	e85aff	CALL 0x1000:bcba
+instruction	rtc_setup	1bc8:00e0	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:00e2	e4a1	IN AL,0xa1
+instruction	rtc_setup	1bc8:00e4	25fe00	AND AX,0xfe
+instruction	rtc_setup	1bc8:00e7	e6a1	OUT 0xa1,AL
+instruction	rtc_setup	1bc8:00e9	c606ee1601	MOV byte ptr [0x16ee],0x1
+instruction	rtc_setup	1bc8:00ee	eb34	JMP 0x1000:bda4
+instruction	rtc_setup	1bc8:00f0	803eee1600	CMP byte ptr [0x16ee],0x0
+instruction	rtc_setup	1bc8:00f5	742e	JZ 0x1000:bda5
+instruction	rtc_setup	1bc8:00f7	fa	CLI
+instruction	rtc_setup	1bc8:00f8	e4a1	IN AL,0xa1
+instruction	rtc_setup	1bc8:00fa	0c01	OR AL,0x1
+instruction	rtc_setup	1bc8:00fc	2ae4	SUB AH,AH
+instruction	rtc_setup	1bc8:00fe	e6a1	OUT 0xa1,AL
+instruction	rtc_setup	1bc8:0100	6a0b	PUSH 0xb
+instruction	rtc_setup	1bc8:0102	0e	PUSH CS
+instruction	rtc_setup	1bc8:0103	e834ff	CALL 0x1000:bcba
+instruction	rtc_setup	1bc8:0106	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:0108	24bf	AND AL,0xbf
+instruction	rtc_setup	1bc8:010a	50	PUSH AX
+instruction	rtc_setup	1bc8:010b	6a0b	PUSH 0xb
+instruction	rtc_setup	1bc8:010d	0e	PUSH CS
+instruction	rtc_setup	1bc8:010e	e84bff	CALL 0x1000:bcdc
+instruction	rtc_setup	1bc8:0111	8be5	MOV SP,BP
+instruction	rtc_setup	1bc8:0113	66ff366c36	PUSH dword ptr [0x366c]
+instruction	rtc_setup	1bc8:0118	6a70	PUSH 0x70
+instruction	rtc_setup	1bc8:011a	9af839ea21	CALLF 0x2000:5898
+instruction	rtc_setup	1bc8:011f	c606ee1600	MOV byte ptr [0x16ee],0x0
+instruction	rtc_setup	1bc8:0124	fb	STI
+instruction	rtc_setup	1bc8:0125	c9	LEAVE
+instruction	rtc_setup	1bc8:0126	cb	RETF
+decompile	cmos_read	1bc8:003a	true		
+instruction	cmos_read	1bc8:003a	c8020000	ENTER 0x2,0x0
+instruction	cmos_read	1bc8:003e	9c	PUSHF
+instruction	cmos_read	1bc8:003f	fa	CLI
+instruction	cmos_read	1bc8:0040	837e060a	CMP word ptr [BP + 0x6],0xa
+instruction	cmos_read	1bc8:0044	7d04	JGE 0x1000:bcca
+instruction	cmos_read	1bc8:0046	0e	PUSH CS
+instruction	cmos_read	1bc8:0047	e8e1ff	CALL 0x1000:bcab
+instruction	cmos_read	1bc8:004a	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	cmos_read	1bc8:004d	e670	OUT 0x70,AL
+instruction	cmos_read	1bc8:004f	e471	IN AL,0x71
+instruction	cmos_read	1bc8:0051	2ae4	SUB AH,AH
+instruction	cmos_read	1bc8:0053	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	cmos_read	1bc8:0056	9d	POPF
+instruction	cmos_read	1bc8:0057	8b46fe	MOV AX,word ptr [BP + -0x2]
+instruction	cmos_read	1bc8:005a	c9	LEAVE
+instruction	cmos_read	1bc8:005b	cb	RETF
+decompile	cmos_write	1bc8:005c	true		
+instruction	cmos_write	1bc8:005c	55	PUSH BP
+instruction	cmos_write	1bc8:005d	8bec	MOV BP,SP
+instruction	cmos_write	1bc8:005f	9c	PUSHF
+instruction	cmos_write	1bc8:0060	fa	CLI
+instruction	cmos_write	1bc8:0061	837e060a	CMP word ptr [BP + 0x6],0xa
+instruction	cmos_write	1bc8:0065	7d04	JGE 0x1000:bceb
+instruction	cmos_write	1bc8:0067	0e	PUSH CS
+instruction	cmos_write	1bc8:0068	e8c0ff	CALL 0x1000:bcab
+instruction	cmos_write	1bc8:006b	8b4606	MOV AX,word ptr [BP + 0x6]
+instruction	cmos_write	1bc8:006e	e670	OUT 0x70,AL
+instruction	cmos_write	1bc8:0070	8b4608	MOV AX,word ptr [BP + 0x8]
+instruction	cmos_write	1bc8:0073	e671	OUT 0x71,AL
+instruction	cmos_write	1bc8:0075	9d	POPF
+instruction	cmos_write	1bc8:0076	c9	LEAVE
+instruction	cmos_write	1bc8:0077	cb	RETF
+decompile	counter	1bda:0098	true		
+instruction	counter	1bda:0098	803ecf3c00	CMP byte ptr [0x3ccf],0x0
+instruction	counter	1bda:009d	750b	JNZ 0x1000:be4a
+instruction	counter	1bda:009f	0e	PUSH CS
+instruction	counter	1bda:00a0	e879ff	CALL 0x1000:bdbc
+instruction	counter	1bda:00a3	a31e08	MOV [0x81e],AX
+instruction	counter	1bda:00a6	89162008	MOV word ptr [0x820],DX
+instruction	counter	1bda:00aa	a11e08	MOV AX,[0x81e]
+instruction	counter	1bda:00ad	8b162008	MOV DX,word ptr [0x820]
+instruction	counter	1bda:00b1	cb	RETF
+used_xref	1201:0417	READ	MOV EAX,[0x81e]
+used_xref	1201:04d6	READ	MOV AX,[0x81e]
+used_xref	1ae7:0302	READ	MOV EAX,[0x81e]
+used_xref	1ae7:031d	READ	MOV EAX,[0x81e]
+used_xref	1ae7:0389	READ	MOV EAX,[0x81e]
+used_xref	1ae7:040b	READ	MOV AX,[0x81e]
+used_xref	1bda:00a3	WRITE	MOV [0x81e],AX
+used_xref	1bda:00aa	READ	MOV AX,[0x81e]
+used_xref	17ed:03f0	READ	MOV EAX,[0x81e]
+used_xref	17ed:03ff	READ	MOV AX,[0x81e]
+used_xref	17ed:0388	READ	MOV EAX,[0x81e]
+used_xref	17ed:03a7	READ	MOV AX,[0x81e]
+used_xref	17ed:01a5	READ	MOV AX,[0x81e]

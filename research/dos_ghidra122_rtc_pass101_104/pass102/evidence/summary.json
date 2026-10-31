@@ -1,0 +1,219 @@
+{
+  "passed": 96,
+  "per_build": {
+    "10": 16,
+    "11": 16,
+    "12": 16,
+    "15": 16,
+    "17": 16,
+    "18": 16
+  },
+  "full_evidence_file": "rtc_lifecycle_tests.json",
+  "full_evidence_sha256": "ac35f7b4c88c80293e9bca098e7461b56336558779ee74446cb9d3b0e2df5373",
+  "scope": "Original RTC setup, CMOS helpers, DOS getvect/setvect wrappers execute. CMOS/PIC state and DOS interrupt-vector replies/effects are modeled; no application or CRT function mock. No asynchronous IRQ delivery.",
+  "native_calls": 480,
+  "example": {
+    "build": "18",
+    "regA": 112,
+    "regB": 255,
+    "PIC": 255,
+    "entry_flags": 514,
+    "snapshots": [
+      {
+        "stage": "installed",
+        "active": 1,
+        "cmos": {
+          "10": 118,
+          "11": 255,
+          "12": 64
+        },
+        "pic": 254,
+        "vector": [
+          6,
+          7112
+        ],
+        "ports": 12,
+        "interrupts": 2,
+        "IF": true
+      },
+      {
+        "stage": "install_again",
+        "active": 1,
+        "cmos": {
+          "10": 118,
+          "11": 255,
+          "12": 64
+        },
+        "pic": 254,
+        "vector": [
+          6,
+          7112
+        ],
+        "ports": 12,
+        "interrupts": 2,
+        "IF": true
+      },
+      {
+        "stage": "removed",
+        "active": 0,
+        "cmos": {
+          "10": 118,
+          "11": 191,
+          "12": 64
+        },
+        "pic": 255,
+        "vector": [
+          17185,
+          4660
+        ],
+        "ports": 18,
+        "interrupts": 3,
+        "IF": true
+      },
+      {
+        "stage": "remove_again",
+        "active": 0,
+        "cmos": {
+          "10": 118,
+          "11": 191,
+          "12": 64
+        },
+        "pic": 255,
+        "vector": [
+          17185,
+          4660
+        ],
+        "ports": 18,
+        "interrupts": 3,
+        "IF": true
+      },
+      {
+        "stage": "unknown_arg",
+        "active": 0,
+        "cmos": {
+          "10": 118,
+          "11": 191,
+          "12": 64
+        },
+        "pic": 255,
+        "vector": [
+          17185,
+          4660
+        ],
+        "ports": 18,
+        "interrupts": 3,
+        "IF": true
+      }
+    ],
+    "ports": [
+      [
+        "out",
+        112,
+        10
+      ],
+      [
+        "in",
+        113,
+        112
+      ],
+      [
+        "out",
+        112,
+        10
+      ],
+      [
+        "out",
+        113,
+        118
+      ],
+      [
+        "out",
+        112,
+        11
+      ],
+      [
+        "in",
+        113,
+        255
+      ],
+      [
+        "out",
+        112,
+        11
+      ],
+      [
+        "out",
+        113,
+        255
+      ],
+      [
+        "out",
+        112,
+        12
+      ],
+      [
+        "in",
+        113,
+        64
+      ],
+      [
+        "in",
+        161,
+        255
+      ],
+      [
+        "out",
+        161,
+        254
+      ],
+      [
+        "in",
+        161,
+        254
+      ],
+      [
+        "out",
+        161,
+        255
+      ],
+      [
+        "out",
+        112,
+        11
+      ],
+      [
+        "in",
+        113,
+        255
+      ],
+      [
+        "out",
+        112,
+        11
+      ],
+      [
+        "out",
+        113,
+        191
+      ]
+    ],
+    "interrupts": [
+      [
+        "get",
+        17185,
+        4660
+      ],
+      [
+        "set",
+        6,
+        7112
+      ],
+      [
+        "set",
+        17185,
+        4660
+      ]
+    ],
+    "passed": true
+  }
+}
