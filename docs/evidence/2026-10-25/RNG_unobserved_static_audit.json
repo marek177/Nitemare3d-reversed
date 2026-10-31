@@ -1,0 +1,2502 @@
+{
+  "source_exe_sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301",
+  "asm_sha256": "e4c72b9ac703a43830ecc83fdaf232f4232f4711d61f3750de6d444fb2121cdc",
+  "scope": "Byte-matched inherited ASM membership in six selected segments (0201,04C7,083D,0AEA,0FBA,11EE); original EXE bytes decoded with iced in 16-bit mode. Candidate ownership and global reachability remain open.",
+  "scoped_asm_unique_byte_matches": 14480,
+  "sites": [
+    {
+      "pc": "0201:0468",
+      "candidate_owners": [
+        "0201:040E"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "0201:046D",
+          "bytes": "2407",
+          "instruction": "and al,7",
+          "register_effects_iced": [
+            {
+              "register": "al",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 38,
+          "rflags_cleared": 17,
+          "rflags_set": 0,
+          "rflags_undefined": 8
+        },
+        {
+          "pc": "0201:046F",
+          "bytes": "884402",
+          "instruction": "mov [si+2],al",
+          "register_effects_iced": [
+            {
+              "register": "ds",
+              "access": "read"
+            },
+            {
+              "register": "si",
+              "access": "read"
+            },
+            {
+              "register": "al",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0201:0472",
+          "bytes": "8ad8",
+          "instruction": "mov bl,al",
+          "register_effects_iced": [
+            {
+              "register": "bl",
+              "access": "write"
+            },
+            {
+              "register": "al",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0201:0474",
+          "bytes": "2aff",
+          "instruction": "sub bh,bh",
+          "register_effects_iced": [
+            {
+              "register": "bh",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 27,
+          "rflags_set": 36,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0201:0476",
+          "bytes": "03db",
+          "instruction": "add bx,bx",
+          "register_effects_iced": [
+            {
+              "register": "bx",
+              "access": "read_write"
+            },
+            {
+              "register": "bx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0201:0478",
+          "bytes": "035d04",
+          "instruction": "add bx,[di+4]",
+          "register_effects_iced": [
+            {
+              "register": "bx",
+              "access": "read_write"
+            },
+            {
+              "register": "ds",
+              "access": "read"
+            },
+            {
+              "register": "di",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0201:047B",
+          "bytes": "8b4704",
+          "instruction": "mov ax,[bx+4]",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "write"
+            },
+            {
+              "register": "ds",
+              "access": "read"
+            },
+            {
+              "register": "bx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0201:047E",
+          "bytes": "8946fe",
+          "instruction": "mov [bp-2],ax",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0201:0481",
+          "bytes": "807eff00",
+          "instruction": "cmp byte ptr [bp-1],0",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "04C7:09F6",
+      "candidate_owners": [
+        "04C7:0938"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "04C7:09FB",
+          "bytes": "b90800",
+          "instruction": "mov cx,8",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:09FE",
+          "bytes": "99",
+          "instruction": "cwd",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:09FF",
+          "bytes": "f7f9",
+          "instruction": "idiv cx",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read_write"
+            },
+            {
+              "register": "dx",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 63
+        },
+        {
+          "pc": "04C7:0A01",
+          "bytes": "03d1",
+          "instruction": "add dx,cx",
+          "register_effects_iced": [
+            {
+              "register": "dx",
+              "access": "read_write"
+            },
+            {
+              "register": "cx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0A03",
+          "bytes": "8e4608",
+          "instruction": "mov es,[bp+8]",
+          "register_effects_iced": [
+            {
+              "register": "es",
+              "access": "write"
+            },
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0A06",
+          "bytes": "26895406",
+          "instruction": "mov es:[si+6],dx",
+          "register_effects_iced": [
+            {
+              "register": "es",
+              "access": "read"
+            },
+            {
+              "register": "si",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0A0A",
+          "bytes": "e9fd00",
+          "instruction": "jmp 0B0Ah",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0A0E",
+          "bytes": "a16241",
+          "instruction": "mov ax,[4162h]",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "write"
+            },
+            {
+              "register": "ds",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0A11",
+          "bytes": "c45e0a",
+          "instruction": "les bx,[bp+0Ah]",
+          "register_effects_iced": [
+            {
+              "register": "bx",
+              "access": "write"
+            },
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            },
+            {
+              "register": "es",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "04C7:0C37",
+      "candidate_owners": [
+        "04C7:0C30"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "04C7:0C3C",
+          "bytes": "b95000",
+          "instruction": "mov cx,50h",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0C3F",
+          "bytes": "99",
+          "instruction": "cwd",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0C40",
+          "bytes": "f7f9",
+          "instruction": "idiv cx",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read_write"
+            },
+            {
+              "register": "dx",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 63
+        },
+        {
+          "pc": "04C7:0C42",
+          "bytes": "83c208",
+          "instruction": "add dx,8",
+          "register_effects_iced": [
+            {
+              "register": "dx",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0C45",
+          "bytes": "8e4608",
+          "instruction": "mov es,[bp+8]",
+          "register_effects_iced": [
+            {
+              "register": "es",
+              "access": "write"
+            },
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0C48",
+          "bytes": "26895406",
+          "instruction": "mov es:[si+6],dx",
+          "register_effects_iced": [
+            {
+              "register": "es",
+              "access": "read"
+            },
+            {
+              "register": "si",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0C4C",
+          "bytes": "26c6440b13",
+          "instruction": "mov byte ptr es:[si+0Bh],13h",
+          "register_effects_iced": [
+            {
+              "register": "es",
+              "access": "read"
+            },
+            {
+              "register": "si",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "04C7:0C51",
+          "bytes": "268a5c11",
+          "instruction": "mov bl,es:[si+11h]",
+          "register_effects_iced": [
+            {
+              "register": "bl",
+              "access": "write"
+            },
+            {
+              "register": "es",
+              "access": "read"
+            },
+            {
+              "register": "si",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "083D:0490",
+      "candidate_owners": [
+        "083D:0408"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "083D:0495",
+          "bytes": "250700",
+          "instruction": "and ax,7",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 38,
+          "rflags_cleared": 17,
+          "rflags_set": 0,
+          "rflags_undefined": 8
+        },
+        {
+          "pc": "083D:0498",
+          "bytes": "8bf0",
+          "instruction": "mov si,ax",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "write"
+            },
+            {
+              "register": "ax",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:049A",
+          "bytes": "eb31",
+          "instruction": "jmp short 04CDh",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:049C",
+          "bytes": "9aa001ba0f",
+          "instruction": "call far 01A0h,0FBAh",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04A1",
+          "bytes": "250f00",
+          "instruction": "and ax,0Fh",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 38,
+          "rflags_cleared": 17,
+          "rflags_set": 0,
+          "rflags_undefined": 8
+        },
+        {
+          "pc": "083D:04A4",
+          "bytes": "ebf2",
+          "instruction": "jmp short 0498h",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04A6",
+          "bytes": "c1fe02",
+          "instruction": "sar si,2",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 54,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 9
+        },
+        {
+          "pc": "083D:04A9",
+          "bytes": "eb22",
+          "instruction": "jmp short 04CDh",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04AC",
+          "bytes": "9aa001ba0f",
+          "instruction": "call far 01A0h,0FBAh",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "083D:049C",
+      "candidate_owners": [
+        "083D:0408"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "083D:04A1",
+          "bytes": "250f00",
+          "instruction": "and ax,0Fh",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 38,
+          "rflags_cleared": 17,
+          "rflags_set": 0,
+          "rflags_undefined": 8
+        },
+        {
+          "pc": "083D:04A4",
+          "bytes": "ebf2",
+          "instruction": "jmp short 0498h",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04A6",
+          "bytes": "c1fe02",
+          "instruction": "sar si,2",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 54,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 9
+        },
+        {
+          "pc": "083D:04A9",
+          "bytes": "eb22",
+          "instruction": "jmp short 04CDh",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04AC",
+          "bytes": "9aa001ba0f",
+          "instruction": "call far 01A0h,0FBAh",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04B1",
+          "bytes": "251f00",
+          "instruction": "and ax,1Fh",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 38,
+          "rflags_cleared": 17,
+          "rflags_set": 0,
+          "rflags_undefined": 8
+        },
+        {
+          "pc": "083D:04B4",
+          "bytes": "ebe2",
+          "instruction": "jmp short 0498h",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04B6",
+          "bytes": "833e6a6203",
+          "instruction": "cmp word ptr [626Ah],3",
+          "register_effects_iced": [
+            {
+              "register": "ds",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "083D:04AC",
+      "candidate_owners": [
+        "083D:0408"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "083D:04B1",
+          "bytes": "251f00",
+          "instruction": "and ax,1Fh",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 38,
+          "rflags_cleared": 17,
+          "rflags_set": 0,
+          "rflags_undefined": 8
+        },
+        {
+          "pc": "083D:04B4",
+          "bytes": "ebe2",
+          "instruction": "jmp short 0498h",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04B6",
+          "bytes": "833e6a6203",
+          "instruction": "cmp word ptr [626Ah],3",
+          "register_effects_iced": [
+            {
+              "register": "ds",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04BB",
+          "bytes": "740d",
+          "instruction": "je short 04CAh",
+          "register_effects_iced": [],
+          "rflags_read": 4,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04BD",
+          "bytes": "803e0a4300",
+          "instruction": "cmp byte ptr [430Ah],0",
+          "register_effects_iced": [
+            {
+              "register": "ds",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04C2",
+          "bytes": "7506",
+          "instruction": "jne short 04CAh",
+          "register_effects_iced": [],
+          "rflags_read": 4,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04C4",
+          "bytes": "be2100",
+          "instruction": "mov si,21h",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:04C7",
+          "bytes": "eb04",
+          "instruction": "jmp short 04CDh",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "083D:1698",
+      "candidate_owners": [
+        "083D:143C"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "083D:169D",
+          "bytes": "b93e00",
+          "instruction": "mov cx,3Eh",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16A0",
+          "bytes": "99",
+          "instruction": "cwd",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16A1",
+          "bytes": "f7f9",
+          "instruction": "idiv cx",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read_write"
+            },
+            {
+              "register": "dx",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 63
+        },
+        {
+          "pc": "083D:16A3",
+          "bytes": "89163236",
+          "instruction": "mov [3632h],dx",
+          "register_effects_iced": [
+            {
+              "register": "ds",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16A7",
+          "bytes": "9aa001ba0f",
+          "instruction": "call far 01A0h,0FBAh",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16AC",
+          "bytes": "b92400",
+          "instruction": "mov cx,24h",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16AF",
+          "bytes": "99",
+          "instruction": "cwd",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16B0",
+          "bytes": "f7f9",
+          "instruction": "idiv cx",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read_write"
+            },
+            {
+              "register": "dx",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 63
+        },
+        {
+          "pc": "083D:16B2",
+          "bytes": "89163036",
+          "instruction": "mov [3630h],dx",
+          "register_effects_iced": [
+            {
+              "register": "ds",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "083D:16A7",
+      "candidate_owners": [
+        "083D:143C"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "083D:16AC",
+          "bytes": "b92400",
+          "instruction": "mov cx,24h",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16AF",
+          "bytes": "99",
+          "instruction": "cwd",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16B0",
+          "bytes": "f7f9",
+          "instruction": "idiv cx",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read_write"
+            },
+            {
+              "register": "dx",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 63
+        },
+        {
+          "pc": "083D:16B2",
+          "bytes": "89163036",
+          "instruction": "mov [3630h],dx",
+          "register_effects_iced": [
+            {
+              "register": "ds",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16B6",
+          "bytes": "666a0f",
+          "instruction": "data32 push 0Fh",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16B9",
+          "bytes": "9a88017702",
+          "instruction": "call far 0188h,0277h",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16BE",
+          "bytes": "83c402",
+          "instruction": "add sp,2",
+          "register_effects_iced": [
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16C1",
+          "bytes": "50",
+          "instruction": "push ax",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read"
+            },
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:16C2",
+          "bytes": "a13036",
+          "instruction": "mov ax,[3630h]",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "write"
+            },
+            {
+              "register": "ds",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "083D:18F2",
+      "candidate_owners": [
+        "083D:1866"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "083D:18F7",
+          "bytes": "b90400",
+          "instruction": "mov cx,4",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:18FA",
+          "bytes": "99",
+          "instruction": "cwd",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:18FB",
+          "bytes": "f7f9",
+          "instruction": "idiv cx",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read_write"
+            },
+            {
+              "register": "dx",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 63
+        },
+        {
+          "pc": "083D:18FD",
+          "bytes": "8bf2",
+          "instruction": "mov si,dx",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "write"
+            },
+            {
+              "register": "dx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:18FF",
+          "bytes": "83c64b",
+          "instruction": "add si,4Bh",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1902",
+          "bytes": "6a01",
+          "instruction": "push 1",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1904",
+          "bytes": "66ff760a",
+          "instruction": "push dword ptr [bp+0Ah]",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            },
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1908",
+          "bytes": "66ff7606",
+          "instruction": "push dword ptr [bp+6]",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            },
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:190C",
+          "bytes": "9a4400c704",
+          "instruction": "call far 0044h,04C7h",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "sp",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "083D:1B3C",
+      "candidate_owners": [
+        "083D:1AE4"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "083D:1B41",
+          "bytes": "b90300",
+          "instruction": "mov cx,3",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1B44",
+          "bytes": "99",
+          "instruction": "cwd",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "read"
+            },
+            {
+              "register": "dx",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1B45",
+          "bytes": "f7f9",
+          "instruction": "idiv cx",
+          "register_effects_iced": [
+            {
+              "register": "cx",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read_write"
+            },
+            {
+              "register": "dx",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 63
+        },
+        {
+          "pc": "083D:1B47",
+          "bytes": "8bf2",
+          "instruction": "mov si,dx",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "write"
+            },
+            {
+              "register": "dx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1B49",
+          "bytes": "83c638",
+          "instruction": "add si,38h",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1B4C",
+          "bytes": "eb63",
+          "instruction": "jmp short 1BB1h",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1B4E",
+          "bytes": "be3b00",
+          "instruction": "mov si,3Bh",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1B51",
+          "bytes": "eb5e",
+          "instruction": "jmp short 1BB1h",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1B54",
+          "bytes": "be1400",
+          "instruction": "mov si,14h",
+          "register_effects_iced": [
+            {
+              "register": "si",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "083D:1B57",
+          "bytes": "eb58",
+          "instruction": "jmp short 1BB1h",
+          "register_effects_iced": [],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    },
+    {
+      "pc": "0AEA:03D6",
+      "candidate_owners": [
+        "0AEA:038C"
+      ],
+      "runtime_status": "NOT_OBSERVED_IN_run_f_ONLY",
+      "post_call_effects": [
+        {
+          "pc": "0AEA:03DB",
+          "bytes": "2407",
+          "instruction": "and al,7",
+          "register_effects_iced": [
+            {
+              "register": "al",
+              "access": "read_write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 38,
+          "rflags_cleared": 17,
+          "rflags_set": 0,
+          "rflags_undefined": 8
+        },
+        {
+          "pc": "0AEA:03DD",
+          "bytes": "8e4608",
+          "instruction": "mov es,[bp+8]",
+          "register_effects_iced": [
+            {
+              "register": "es",
+              "access": "write"
+            },
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0AEA:03E0",
+          "bytes": "26884402",
+          "instruction": "mov es:[si+2],al",
+          "register_effects_iced": [
+            {
+              "register": "es",
+              "access": "read"
+            },
+            {
+              "register": "si",
+              "access": "read"
+            },
+            {
+              "register": "al",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0AEA:03E4",
+          "bytes": "8ad8",
+          "instruction": "mov bl,al",
+          "register_effects_iced": [
+            {
+              "register": "bl",
+              "access": "write"
+            },
+            {
+              "register": "al",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0AEA:03E6",
+          "bytes": "2aff",
+          "instruction": "sub bh,bh",
+          "register_effects_iced": [
+            {
+              "register": "bh",
+              "access": "write"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 27,
+          "rflags_set": 36,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0AEA:03E8",
+          "bytes": "03db",
+          "instruction": "add bx,bx",
+          "register_effects_iced": [
+            {
+              "register": "bx",
+              "access": "read_write"
+            },
+            {
+              "register": "bx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0AEA:03EA",
+          "bytes": "035d04",
+          "instruction": "add bx,[di+4]",
+          "register_effects_iced": [
+            {
+              "register": "bx",
+              "access": "read_write"
+            },
+            {
+              "register": "ds",
+              "access": "read"
+            },
+            {
+              "register": "di",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 63,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0AEA:03ED",
+          "bytes": "8b4704",
+          "instruction": "mov ax,[bx+4]",
+          "register_effects_iced": [
+            {
+              "register": "ax",
+              "access": "write"
+            },
+            {
+              "register": "ds",
+              "access": "read"
+            },
+            {
+              "register": "bx",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        },
+        {
+          "pc": "0AEA:03F0",
+          "bytes": "8946fe",
+          "instruction": "mov [bp-2],ax",
+          "register_effects_iced": [
+            {
+              "register": "ss",
+              "access": "read"
+            },
+            {
+              "register": "bp",
+              "access": "read"
+            },
+            {
+              "register": "ax",
+              "access": "read"
+            }
+          ],
+          "rflags_read": 0,
+          "rflags_written": 0,
+          "rflags_cleared": 0,
+          "rflags_set": 0,
+          "rflags_undefined": 0
+        }
+      ]
+    }
+  ],
+  "jump_tables": [
+    {
+      "pc": "083D:045E",
+      "sha256": "7f61ce974fb540ef0ee11f04d2f14b8f9ef95a8cce65c248d8552487790982b2",
+      "selector_to_target": {
+        "8": "083D:0490",
+        "9": "083D:049C",
+        "10": "083D:049C",
+        "11": "083D:04A6",
+        "12": "083D:04CD",
+        "13": "083D:048C",
+        "14": "083D:048C",
+        "15": "083D:048C",
+        "16": "083D:048C",
+        "17": "083D:04AC",
+        "18": "083D:04AC",
+        "19": "083D:04AC",
+        "20": "083D:04AC",
+        "21": "083D:048C",
+        "22": "083D:04B6",
+        "23": "083D:048C",
+        "24": "083D:048C",
+        "25": "083D:04CA",
+        "26": "083D:048C",
+        "27": "083D:048C",
+        "28": "083D:048C",
+        "29": "083D:04CD",
+        "30": "083D:04CD"
+      }
+    },
+    {
+      "pc": "083D:1888",
+      "sha256": "75af8d42ed361bf3fbae2100737e0d8bce4cb9caea2dc3d3a722275ee72ab91a",
+      "selector_to_target": {
+        "9": "083D:18B6",
+        "10": "083D:18B6",
+        "11": "083D:18BC",
+        "12": "083D:18C2",
+        "13": "083D:18C2",
+        "14": "083D:18C2",
+        "15": "083D:18C8",
+        "16": "083D:18C8",
+        "17": "083D:1902",
+        "18": "083D:18DA",
+        "19": "083D:18E0",
+        "20": "083D:1902",
+        "21": "083D:1902",
+        "22": "083D:18C8",
+        "23": "083D:18E6",
+        "24": "083D:18C2",
+        "25": "083D:18EC",
+        "26": "083D:18BC",
+        "27": "083D:18F2",
+        "28": "083D:18F2",
+        "29": "083D:18F2",
+        "30": "083D:18F2",
+        "31": "083D:18F2"
+      }
+    },
+    {
+      "pc": "083D:1B06",
+      "sha256": "a4c1aa298631d1a1314d7575a28520f2fe4ccd0730d23d2322d56fa26ae7b4a3",
+      "selector_to_target": {
+        "8": "083D:1B36",
+        "9": "083D:1B3C",
+        "10": "083D:1B3C",
+        "11": "083D:1B4E",
+        "12": "083D:1B54",
+        "13": "083D:1B5A",
+        "14": "083D:1B60",
+        "15": "083D:1B66",
+        "16": "083D:1B66",
+        "17": "083D:1B78",
+        "18": "083D:1B7E",
+        "19": "083D:1B84",
+        "20": "083D:1BB1",
+        "21": "083D:1BB1",
+        "22": "083D:1B8A",
+        "23": "083D:1B90",
+        "24": "083D:1B96",
+        "25": "083D:1BB1",
+        "26": "083D:1B9C",
+        "27": "083D:1BA2",
+        "28": "083D:1BA2",
+        "29": "083D:1BA8",
+        "30": "083D:1BAE",
+        "31": "083D:1BAE"
+      }
+    },
+    {
+      "pc": "083D:1458",
+      "sha256": "6a405347b13d44937530ef3476ccc5a205bb369f44b2c325ac5cdc80cc53a282",
+      "selector_to_target": {
+        "0": "083D:146C",
+        "1": "083D:1479",
+        "2": "083D:14C4",
+        "3": "083D:14DC",
+        "4": "083D:14F6",
+        "5": "083D:1504",
+        "6": "083D:1594",
+        "7": "083D:1678",
+        "8": "083D:16FA",
+        "9": "083D:1712"
+      }
+    },
+    {
+      "pc": "04C7:0DA0",
+      "sha256": "2df8c674d9dd98cb01a2f38612511891a73fe84919118b8ec1365f60f6aafd84",
+      "selector_to_target": {
+        "0": "04C7:0DCC",
+        "1": "04C7:0E0A",
+        "2": "04C7:0E24",
+        "3": "04C7:0E64",
+        "4": "04C7:0EAA",
+        "5": "04C7:0F06",
+        "6": "04C7:0F0E",
+        "7": "04C7:0F4A",
+        "8": "04C7:0F9A",
+        "9": "04C7:1004",
+        "10": "04C7:12B0",
+        "11": "04C7:12B0",
+        "12": "04C7:106C",
+        "13": "04C7:106C",
+        "14": "04C7:1082",
+        "15": "04C7:10B2",
+        "16": "04C7:1138",
+        "17": "04C7:119E",
+        "18": "04C7:11FC",
+        "19": "04C7:1246",
+        "20": "04C7:1258",
+        "21": "04C7:128A"
+      }
+    }
+  ],
+  "direct_inbound_candidates": [
+    {
+      "pc": "0201:0191",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "0201:012E"
+      ]
+    },
+    {
+      "pc": "0201:0711",
+      "target": "0201:040E",
+      "candidate_owners": [
+        "0201:04F0"
+      ]
+    },
+    {
+      "pc": "04C7:0E34",
+      "target": "083D:1AE4",
+      "candidate_owners": [
+        "04C7:0D80"
+      ]
+    },
+    {
+      "pc": "04C7:0EA1",
+      "target": "04C7:0938",
+      "candidate_owners": [
+        "04C7:0D80"
+      ]
+    },
+    {
+      "pc": "04C7:0ECA",
+      "target": "083D:1866",
+      "candidate_owners": [
+        "04C7:0D80"
+      ]
+    },
+    {
+      "pc": "04C7:0F91",
+      "target": "04C7:0C30",
+      "candidate_owners": [
+        "04C7:0D80"
+      ]
+    },
+    {
+      "pc": "04C7:10F4",
+      "target": "083D:1866",
+      "candidate_owners": [
+        "04C7:0D80"
+      ]
+    },
+    {
+      "pc": "04C7:13ED",
+      "target": "083D:1AE4",
+      "candidate_owners": [
+        "04C7:1304"
+      ]
+    },
+    {
+      "pc": "083D:1E1F",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1DCA"
+      ]
+    },
+    {
+      "pc": "083D:1E3F",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1DCA"
+      ]
+    },
+    {
+      "pc": "083D:1E99",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1E66"
+      ]
+    },
+    {
+      "pc": "083D:1EB1",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1E66"
+      ]
+    },
+    {
+      "pc": "083D:1EC9",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1E66"
+      ]
+    },
+    {
+      "pc": "083D:1ED3",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1E66"
+      ]
+    },
+    {
+      "pc": "083D:1EEB",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1E66"
+      ]
+    },
+    {
+      "pc": "083D:1F04",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1EF2"
+      ]
+    },
+    {
+      "pc": "083D:1F26",
+      "target": "083D:143C",
+      "candidate_owners": [
+        "083D:1F14"
+      ]
+    },
+    {
+      "pc": "0AEA:0681",
+      "target": "0AEA:038C",
+      "candidate_owners": [
+        "0AEA:0434"
+      ]
+    }
+  ],
+  "runtime_csv_rows": 229,
+  "coordinate_pre_gate": {
+    "0": "IDIV_DE",
+    "1": 500,
+    "2": 62,
+    "3": 18,
+    "4": 7,
+    "5": 4,
+    "6": 2,
+    "7": 1,
+    "8": 0,
+    "9": 0,
+    "10": 0,
+    "11": 0,
+    "12": 0,
+    "13": 0,
+    "14": 0,
+    "15": 0,
+    "16": 0,
+    "17": 0,
+    "18": 0,
+    "19": 0,
+    "20": 0,
+    "21": 0,
+    "22": 0,
+    "23": 0,
+    "24": 0,
+    "25": 0,
+    "26": 0,
+    "27": 0,
+    "28": 0,
+    "29": 0,
+    "30": 0,
+    "31": 0,
+    "32": 0,
+    "33": 0,
+    "34": 0,
+    "35": 0,
+    "36": 0,
+    "37": 0,
+    "38": 0,
+    "39": 0,
+    "40": 0,
+    "41": 0,
+    "42": 0,
+    "43": 0,
+    "44": 0,
+    "45": 0,
+    "46": 0,
+    "47": 0,
+    "48": 0,
+    "49": 0,
+    "50": 0,
+    "51": 0,
+    "52": 0,
+    "53": 0,
+    "54": 0,
+    "55": 0,
+    "56": 0,
+    "57": 0,
+    "58": 0,
+    "59": 0,
+    "60": 0,
+    "61": 0,
+    "62": 0,
+    "63": 0,
+    "64": "IDIV_DE",
+    "65": 0,
+    "66": 0,
+    "67": 0,
+    "68": 0,
+    "69": 0,
+    "70": 0,
+    "71": 0,
+    "72": 0,
+    "73": 0,
+    "74": 0,
+    "75": 0,
+    "76": 0,
+    "77": 0,
+    "78": 0,
+    "79": 0,
+    "80": 0,
+    "81": 0,
+    "82": 0,
+    "83": 0,
+    "84": 0,
+    "85": 0,
+    "86": 0,
+    "87": 0,
+    "88": 0,
+    "89": 0,
+    "90": 0,
+    "91": 0,
+    "92": 0,
+    "93": 0,
+    "94": 0,
+    "95": 0,
+    "96": 0,
+    "97": 0,
+    "98": 0,
+    "99": 0,
+    "100": 0,
+    "101": 0,
+    "102": 0,
+    "103": 0,
+    "104": 0,
+    "105": 0,
+    "106": 0,
+    "107": 0,
+    "108": 0,
+    "109": 0,
+    "110": 0,
+    "111": 0,
+    "112": 0,
+    "113": 0,
+    "114": 0,
+    "115": 0,
+    "116": 0,
+    "117": 0,
+    "118": 0,
+    "119": 0,
+    "120": 0,
+    "121": 0,
+    "122": 0,
+    "123": 0,
+    "124": 0,
+    "125": 0,
+    "126": 0,
+    "127": 0,
+    "128": "IDIV_DE",
+    "129": 0,
+    "130": 0,
+    "131": 0,
+    "132": 0,
+    "133": 0,
+    "134": 0,
+    "135": 0,
+    "136": 0,
+    "137": 0,
+    "138": 0,
+    "139": 0,
+    "140": 0,
+    "141": 0,
+    "142": 0,
+    "143": 0,
+    "144": 0,
+    "145": 0,
+    "146": 0,
+    "147": 0,
+    "148": 0,
+    "149": 0,
+    "150": 0,
+    "151": 0,
+    "152": 0,
+    "153": 0,
+    "154": 0,
+    "155": 0,
+    "156": 0,
+    "157": 0,
+    "158": 0,
+    "159": 0,
+    "160": 0,
+    "161": 0,
+    "162": 0,
+    "163": 0,
+    "164": 0,
+    "165": 0,
+    "166": 0,
+    "167": 0,
+    "168": 0,
+    "169": 0,
+    "170": 0,
+    "171": 0,
+    "172": 0,
+    "173": 1,
+    "174": 0,
+    "175": 0,
+    "176": 0,
+    "177": 0,
+    "178": 0,
+    "179": 0,
+    "180": 0,
+    "181": 0,
+    "182": 0,
+    "183": 0,
+    "184": 0,
+    "185": 0,
+    "186": 0,
+    "187": 0,
+    "188": 0,
+    "189": 0,
+    "190": 0,
+    "191": 0,
+    "192": "IDIV_DE",
+    "193": 0,
+    "194": 0,
+    "195": 0,
+    "196": 0,
+    "197": 0,
+    "198": 0,
+    "199": 0,
+    "200": 0,
+    "201": 0,
+    "202": 0,
+    "203": 0,
+    "204": 0,
+    "205": 0,
+    "206": 0,
+    "207": 0,
+    "208": 0,
+    "209": 0,
+    "210": 0,
+    "211": 0,
+    "212": 0,
+    "213": 0,
+    "214": 0,
+    "215": 0,
+    "216": 0,
+    "217": 0,
+    "218": 0,
+    "219": 0,
+    "220": 0,
+    "221": 0,
+    "222": 0,
+    "223": 0,
+    "224": 0,
+    "225": 0,
+    "226": 0,
+    "227": 0,
+    "228": 0,
+    "229": 0,
+    "230": 0,
+    "231": 0,
+    "232": 0,
+    "233": 0,
+    "234": 0,
+    "235": 0,
+    "236": 0,
+    "237": 0,
+    "238": 0,
+    "239": 0,
+    "240": 0,
+    "241": 0,
+    "242": 0,
+    "243": 0,
+    "244": 0,
+    "245": 0,
+    "246": 0,
+    "247": 0,
+    "248": 0,
+    "249": 0,
+    "250": 0,
+    "251": 0,
+    "252": 0,
+    "253": 0,
+    "254": 0,
+    "255": 0
+  },
+  "global_rng_coverage": false,
+  "paired_remake_parity": false,
+  "original_bytes_synthetic_contract": {
+    "status": "SYNTHETIC_CPU_ONLY",
+    "source_sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301",
+    "cases": [
+      {
+        "seed": 0,
+        "state": 2531011,
+        "AX": 38,
+        "DX": 38,
+        "CX": 17405
+      },
+      {
+        "seed": 1,
+        "state": 2745024,
+        "AX": 41,
+        "DX": 41,
+        "CX": 17405
+      },
+      {
+        "seed": 2,
+        "state": 2959037,
+        "AX": 45,
+        "DX": 45,
+        "CX": 17405
+      },
+      {
+        "seed": 2147483647,
+        "state": 2149800646,
+        "AX": 35,
+        "DX": 32803,
+        "CX": 17405
+      },
+      {
+        "seed": 2147483648,
+        "state": 2150014659,
+        "AX": 38,
+        "DX": 32806,
+        "CX": 17405
+      },
+      {
+        "seed": 4294967295,
+        "state": 2316998,
+        "AX": 35,
+        "DX": 35,
+        "CX": 17405
+      },
+      {
+        "seed": 305419896,
+        "state": 3018423131,
+        "AX": 13289,
+        "DX": 46057,
+        "CX": 17405
+      }
+    ],
+    "upper_register_halves_preserved": true,
+    "stack_and_saved_registers_preserved": true,
+    "byte_AH_flags_checked_AF_undefined": true
+  }
+}
