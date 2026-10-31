@@ -1,0 +1,290 @@
+{
+  "binary_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+  "inherited_unique_sites_scanned": 37531,
+  "explicit_4153_refs": [
+    {
+      "pc": "083D:2735",
+      "asm": "cmp byte ptr [0x4153], 0",
+      "read": true,
+      "write": false,
+      "segment": "ds",
+      "width": 1
+    },
+    {
+      "pc": "0D29:28C9",
+      "asm": "mov byte ptr [0x4153], al",
+      "read": false,
+      "write": true,
+      "segment": "ds",
+      "width": 1
+    },
+    {
+      "pc": "0277:0CA3",
+      "asm": "mov byte ptr [0x4153], al",
+      "read": false,
+      "write": true,
+      "segment": "ds",
+      "width": 1
+    },
+    {
+      "pc": "0D29:218C",
+      "asm": "mov byte ptr [0x4153], al",
+      "read": false,
+      "write": true,
+      "segment": "ds",
+      "width": 1
+    },
+    {
+      "pc": "0D29:215D",
+      "asm": "mov byte ptr ss:[0x4153], al",
+      "read": false,
+      "write": true,
+      "segment": "ss",
+      "width": 1
+    },
+    {
+      "pc": "0D29:20EA",
+      "asm": "mov al, byte ptr ss:[0x4153]",
+      "read": true,
+      "write": false,
+      "segment": "ss",
+      "width": 1
+    },
+    {
+      "pc": "04C7:0FDA",
+      "asm": "cmp byte ptr [0x4153], 0",
+      "read": true,
+      "write": false,
+      "segment": "ds",
+      "width": 1
+    },
+    {
+      "pc": "04C7:0F60",
+      "asm": "cmp byte ptr [0x4153], 0",
+      "read": true,
+      "write": false,
+      "segment": "ds",
+      "width": 1
+    }
+  ],
+  "global_writer_closure": false,
+  "config": {
+    "filename_literal": "2771:0598 config.sav",
+    "sha256": "6844e1592ca05aa8e0f8f13db63d40d261bda71be5ab9a2532df918c9ed80d8f",
+    "size": 16,
+    "block": "DS:4144..4153",
+    "flag_file_offset": 15,
+    "input_flag_value": 1,
+    "native_default_writer": "0277:0CA3 clears to0",
+    "native_read": "0277:0CE5 ->11EE:1E14(fd,DS:4144,16)",
+    "native_write": "0277:0D2A ->11EE:1EFE(fd,DS:4144,16)"
+  },
+  "menu_records": [
+    {
+      "record": "20B9:127E",
+      "id": 31,
+      "state_word_offset": 2,
+      "label_pointer": "2771:1B7A",
+      "label": "Omniscient (all-knowing)",
+      "record_sha256": "6cb358976c6416a4d9091785fd3fc22d9fbb1f696167004568a52f748ec147ca"
+    },
+    {
+      "record": "20B9:1290",
+      "id": 32,
+      "state_word_offset": 2,
+      "label_pointer": "2771:1B93",
+      "label": "Omnipotent (all-powerful)",
+      "record_sha256": "712f26d12b61b16b57e9eb5fb7fd8800d65fbe2d300f3bbd50ba85cc7a4d3b4b"
+    },
+    {
+      "record": "20B9:12A2",
+      "id": 33,
+      "state_word_offset": 2,
+      "label_pointer": "2771:1BAD",
+      "label": "Omnificent (all-cunning)",
+      "record_sha256": "cdc2fb416a8d8d16e71e857c7eb476f6413c675b4f144376d4bc64380e983f35"
+    },
+    {
+      "record": "20B9:12B4",
+      "id": 34,
+      "state_word_offset": 2,
+      "label_pointer": "2771:1BC6",
+      "label": "Omnifarious (all things)",
+      "record_sha256": "663499675ad93dcaabc3b7a11dc7806dbfbe20ba9c2b21910f9c964c02929158"
+    },
+    {
+      "record": "20B9:12C6",
+      "id": 21,
+      "state_word_offset": 2,
+      "label_pointer": "2771:1BDF",
+      "label": "Done",
+      "record_sha256": "1a2b894f5811b21115ccae7cfb98c94d8fd24b92d198631892be17995974f974"
+    },
+    {
+      "record": "20B9:12D8",
+      "id": 22,
+      "state_word_offset": 2,
+      "label_pointer": "2771:1BE4",
+      "label": "Cancel",
+      "record_sha256": "533e2c3f1cce4c675e25f360fdf49b720e9b17ca402ed845463ce41fcb255391"
+    }
+  ],
+  "flag_menu_item": {
+    "record": "20B9:12A2",
+    "id": 33,
+    "state_word_offset": 2,
+    "label_pointer": "2771:1BAD",
+    "label": "Omnificent (all-cunning)",
+    "record_sha256": "cdc2fb416a8d8d16e71e857c7eb476f6413c675b4f144376d4bc64380e983f35"
+  },
+  "menu_mapping": "ID21 reads SS:4153 at0D29:20EA; committed item+2 low byte writes SS:4153 at215D; failed availability query locally resets at218C",
+  "HUD": "083D:2735..273F emits character I when flag nonzero; full visibility semantics not inferred from marker alone",
+  "native_demo": "0D29:28BE caches16 bytes;28C9 clears flag;28F2 REP MOVSD restores original16-byte block on native Demo exit",
+  "mode3_constructor": {
+    "table": "083D:11B8",
+    "table_sha256": "ff677079fb522338760a0c42a1657d6e0d8bf26645b4201069ac90d29ce87e0c",
+    "bounded_selectors": "zero-extended type minus8 <=25",
+    "selector_to_target": {
+      "8": "083D:11EC",
+      "9": "083D:11EC",
+      "10": "083D:11EC",
+      "11": "083D:122A",
+      "12": "083D:122A",
+      "13": "083D:122A",
+      "14": "083D:122A",
+      "15": "083D:122A",
+      "16": "083D:122A",
+      "17": "083D:11EC",
+      "18": "083D:11F6",
+      "19": "083D:11F6",
+      "20": "083D:11EC",
+      "21": "083D:1206",
+      "22": "083D:1206",
+      "23": "083D:122A",
+      "24": "083D:122A",
+      "25": "083D:120C",
+      "26": "083D:11EC",
+      "27": "083D:122A",
+      "28": "083D:122A",
+      "29": "083D:122A",
+      "30": "083D:122A",
+      "31": "083D:122A",
+      "32": "083D:122A",
+      "33": "083D:121C"
+    },
+    "mode3_initial_selectors": [
+      18,
+      19
+    ],
+    "setter": "083D:11FE actor+0A=3",
+    "later_overrides": "083D:125F/126A can replace mode with2/1; timer/reset paths may later clear; type is not alone sufficient"
+  },
+  "target_gate": "actor state7; DS4153==0; helper06D2 returnsAL!=0; actor+0A==3 ->call0C30 ->0C37 RNG",
+  "helper06D2": "Signed tile deltas versus SS415E/4160, absolute axis distances<=8, direction-mask gate unless argument+10 nonzero, then0AEA:0CC0 grid/ray result; not a complete universal visibility proof",
+  "byte_membership_proofs": [
+    {
+      "candidate_function": "0277:00EC",
+      "membership_instructions": 51,
+      "offset_size_bytes_sha256": "df6fea048c17f600d0bdf033c0eb9594339c04ae1e911084104ad5dcc8411621",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "0277:0C6E",
+      "membership_instructions": 52,
+      "offset_size_bytes_sha256": "384961271e745e5e4869ff8b2222b7603912cdbfd2eb9c93723f39e77347dc76",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "0277:0D04",
+      "membership_instructions": 22,
+      "offset_size_bytes_sha256": "f020a4ec35cf07c7967de14999347447d91bd6d7778e662b8e3e579010cc7d0b",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "0D29:20AA",
+      "membership_instructions": 104,
+      "offset_size_bytes_sha256": "7242101b17f25e84f52746961ebc94772dcac885f7b3b8e597d821c15d7aeb94",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "0D29:2696",
+      "membership_instructions": 31,
+      "offset_size_bytes_sha256": "3b393eb0af72f07fc746888413933db1938508aa9fc3c38fb3eb45e43452fd53",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "0D29:26E2",
+      "membership_instructions": 13,
+      "offset_size_bytes_sha256": "020941426a9ce7250f74383c0fea36d4f0410f992e8ed45989b632ce371617a9",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "0D29:26FC",
+      "membership_instructions": 16,
+      "offset_size_bytes_sha256": "e1a728a34d9ecec34f3bb8d64553127cdc5d7a02982d67950493df57ea530193",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "0D29:274C",
+      "membership_instructions": 160,
+      "offset_size_bytes_sha256": "b3f7f3facdbc474bca9d254dd1ae8d1ca1c000c8a52b30ee4d357cc3a2abdbfe",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "04C7:06D2",
+      "membership_instructions": 111,
+      "offset_size_bytes_sha256": "15ba3e18754bb14dbc9b35c3396f0fb29694300a8d00b52626a13fa59e77e8ee",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "04C7:0C30",
+      "membership_instructions": 22,
+      "offset_size_bytes_sha256": "911a6dfe75d1bd1af470eaf3176460c2a18c1927cb903138f8f697783c5ba339",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "04C7:0D80",
+      "membership_instructions": 474,
+      "offset_size_bytes_sha256": "dfe9cd6f9c094e8fe7f09f714665b9df2924e1aff93974362badbb2a58175e8f",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "0AEA:0CC0",
+      "membership_instructions": 135,
+      "offset_size_bytes_sha256": "64a901ea666ba198080f17df09e72489188049eaaca1182b73c0d1f2f85cbe5c",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "083D:117A",
+      "membership_instructions": 64,
+      "offset_size_bytes_sha256": "73c6ef1358d88b19311b6456c476e4f8d8ecc3d33d0b7fc9ca977e73c110d949",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    },
+    {
+      "candidate_function": "083D:25DE",
+      "membership_instructions": 130,
+      "offset_size_bytes_sha256": "0fa14f09e2d10b0db55ed827b046c2b0d3c3b7d2c95695aa2e3a8ff5dd60a540",
+      "scope": "Inherited membership bytes only; whole boundary/ABI remains open"
+    }
+  ],
+  "scope": "Static local contracts and endpoint provenance; arbitrary aliases, save/load, interrupts and all writers still open",
+  "native_demo_selection": {
+    "formatter_literal": "2771:2000 map.",
+    "format_literal": "2771:2005 %s%d",
+    "function": "0D29:2696 scans readable map.N and original availability query; it does NOT scan demo.N",
+    "level_rule": "0D29:26E2 selects levelIndex10 for episode1, otherwise0",
+    "scope": "Readability/availability semantics must be observed; no claim of whole registration/DRM implementation"
+  },
+  "native_demo_direction_flag_scope": "Four MOVSD operations cache/restore ascending16-byte blocks whenDF=0; no universal callerDF contract proved. Actual captured contexts and cache content are independently checked.",
+  "grid_helper_scope": {
+    "function": "0AEA:0CC0",
+    "algorithm": "16-bit Bresenham-like cell stepping, maxStep budget, endpoint accepted before per-tile blocker tests",
+    "empty_grid_zero_delta": "Does not accept identical start/end; synthetic original-CPU check confirms",
+    "wall_traits": "DS:D00C indexed by wall byte; object traitsDS:D10C if optional flag nonzero",
+    "mutable_or_external_dependencies": [
+      "0AEA:0DCE FAR call encoded0:0 in unloaded image",
+      "0AEA:0DD8 FAR call encoded0:01E0 in unloaded image"
+    ],
+    "global_visibility_or_indirect_target_closure": false
+  }
+}
