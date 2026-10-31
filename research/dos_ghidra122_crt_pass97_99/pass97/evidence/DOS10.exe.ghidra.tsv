@@ -1,0 +1,190 @@
+decompile	calendar	219b:2e84	true		
+instruction	calendar	219b:2e84	55	PUSH BP
+instruction	calendar	219b:2e85	8bec	MOV BP,SP
+instruction	calendar	219b:2e87	83ec16	SUB SP,0x16
+instruction	calendar	219b:2e8a	57	PUSH DI
+instruction	calendar	219b:2e8b	56	PUSH SI
+instruction	calendar	219b:2e8c	8b7606	MOV SI,word ptr [BP + 0x6]
+instruction	calendar	219b:2e8f	8b5e08	MOV BX,word ptr [BP + 0x8]
+instruction	calendar	219b:2e92	03db	ADD BX,BX
+instruction	calendar	219b:2e94	8bbf8023	MOV DI,word ptr [BX + 0x2380]
+instruction	calendar	219b:2e98	f7c60300	TEST SI,0x3
+instruction	calendar	219b:2e9c	7507	JNZ 0x2000:4855
+instruction	calendar	219b:2e9e	837e0802	CMP word ptr [BP + 0x8],0x2
+instruction	calendar	219b:2ea2	7e01	JLE 0x2000:4855
+instruction	calendar	219b:2ea4	47	INC DI
+instruction	calendar	219b:2ea5	9ab82c9b21	CALLF 0x2000:4668
+instruction	calendar	219b:2eaa	b83c00	MOV AX,0x3c
+instruction	calendar	219b:2ead	99	CWD
+instruction	calendar	219b:2eae	52	PUSH DX
+instruction	calendar	219b:2eaf	50	PUSH AX
+instruction	calendar	219b:2eb0	52	PUSH DX
+instruction	calendar	219b:2eb1	50	PUSH AX
+instruction	calendar	219b:2eb2	b81800	MOV AX,0x18
+instruction	calendar	219b:2eb5	99	CWD
+instruction	calendar	219b:2eb6	52	PUSH DX
+instruction	calendar	219b:2eb7	50	PUSH AX
+instruction	calendar	219b:2eb8	8bc6	MOV AX,SI
+instruction	calendar	219b:2eba	b96d01	MOV CX,0x16d
+instruction	calendar	219b:2ebd	f7e9	IMUL CX
+instruction	calendar	219b:2ebf	8bc8	MOV CX,AX
+instruction	calendar	219b:2ec1	8d4403	LEA AX,[SI + 0x3]
+instruction	calendar	219b:2ec4	d1f8	SAR AX,0x1
+instruction	calendar	219b:2ec6	d1f8	SAR AX,0x1
+instruction	calendar	219b:2ec8	8bda	MOV BX,DX
+instruction	calendar	219b:2eca	99	CWD
+instruction	calendar	219b:2ecb	03c1	ADD AX,CX
+instruction	calendar	219b:2ecd	13d3	ADC DX,BX
+instruction	calendar	219b:2ecf	8bc8	MOV CX,AX
+instruction	calendar	219b:2ed1	8b460a	MOV AX,word ptr [BP + 0xa]
+instruction	calendar	219b:2ed4	8bda	MOV BX,DX
+instruction	calendar	219b:2ed6	99	CWD
+instruction	calendar	219b:2ed7	03c8	ADD CX,AX
+instruction	calendar	219b:2ed9	13da	ADC BX,DX
+instruction	calendar	219b:2edb	8bc7	MOV AX,DI
+instruction	calendar	219b:2edd	99	CWD
+instruction	calendar	219b:2ede	03cf	ADD CX,DI
+instruction	calendar	219b:2ee0	13da	ADC BX,DX
+instruction	calendar	219b:2ee2	81c1440e	ADD CX,0xe44
+instruction	calendar	219b:2ee6	83d300	ADC BX,0x0
+instruction	calendar	219b:2ee9	53	PUSH BX
+instruction	calendar	219b:2eea	51	PUSH CX
+instruction	calendar	219b:2eeb	9a9c3b9b21	CALLF 0x2000:554c
+instruction	calendar	219b:2ef0	8bc8	MOV CX,AX
+instruction	calendar	219b:2ef2	8b460c	MOV AX,word ptr [BP + 0xc]
+instruction	calendar	219b:2ef5	8bda	MOV BX,DX
+instruction	calendar	219b:2ef7	99	CWD
+instruction	calendar	219b:2ef8	03c8	ADD CX,AX
+instruction	calendar	219b:2efa	13da	ADC BX,DX
+instruction	calendar	219b:2efc	53	PUSH BX
+instruction	calendar	219b:2efd	51	PUSH CX
+instruction	calendar	219b:2efe	9a9c3b9b21	CALLF 0x2000:554c
+instruction	calendar	219b:2f03	8bc8	MOV CX,AX
+instruction	calendar	219b:2f05	8b460e	MOV AX,word ptr [BP + 0xe]
+instruction	calendar	219b:2f08	8bda	MOV BX,DX
+instruction	calendar	219b:2f0a	99	CWD
+instruction	calendar	219b:2f0b	03c8	ADD CX,AX
+instruction	calendar	219b:2f0d	13da	ADC BX,DX
+instruction	calendar	219b:2f0f	53	PUSH BX
+instruction	calendar	219b:2f10	51	PUSH CX
+instruction	calendar	219b:2f11	9a9c3b9b21	CALLF 0x2000:554c
+instruction	calendar	219b:2f16	8bc8	MOV CX,AX
+instruction	calendar	219b:2f18	8b4610	MOV AX,word ptr [BP + 0x10]
+instruction	calendar	219b:2f1b	8bda	MOV BX,DX
+instruction	calendar	219b:2f1d	99	CWD
+instruction	calendar	219b:2f1e	03c8	ADD CX,AX
+instruction	calendar	219b:2f20	13da	ADC BX,DX
+instruction	calendar	219b:2f22	030ea023	ADD CX,word ptr [0x23a0]
+instruction	calendar	219b:2f26	131ea223	ADC BX,word ptr [0x23a2]
+instruction	calendar	219b:2f2a	894eea	MOV word ptr [BP + -0x16],CX
+instruction	calendar	219b:2f2d	895eec	MOV word ptr [BP + -0x14],BX
+instruction	calendar	219b:2f30	8b460a	MOV AX,word ptr [BP + 0xa]
+instruction	calendar	219b:2f33	03c7	ADD AX,DI
+instruction	calendar	219b:2f35	8946fc	MOV word ptr [BP + -0x4],AX
+instruction	calendar	219b:2f38	8d4450	LEA AX,[SI + 0x50]
+instruction	calendar	219b:2f3b	8946f8	MOV word ptr [BP + -0x8],AX
+instruction	calendar	219b:2f3e	8b4608	MOV AX,word ptr [BP + 0x8]
+instruction	calendar	219b:2f41	48	DEC AX
+instruction	calendar	219b:2f42	8946f6	MOV word ptr [BP + -0xa],AX
+instruction	calendar	219b:2f45	8b460c	MOV AX,word ptr [BP + 0xc]
+instruction	calendar	219b:2f48	8946f2	MOV word ptr [BP + -0xe],AX
+instruction	calendar	219b:2f4b	833ea42300	CMP word ptr [0x23a4],0x0
+instruction	calendar	219b:2f50	7419	JZ 0x2000:491b
+instruction	calendar	219b:2f52	8d46ee	LEA AX,[BP + -0x12]
+instruction	calendar	219b:2f55	50	PUSH AX
+instruction	calendar	219b:2f56	9ac42d9b21	CALLF 0x2000:4774
+instruction	calendar	219b:2f5b	83c402	ADD SP,0x2
+instruction	calendar	219b:2f5e	0bc0	OR AX,AX
+instruction	calendar	219b:2f60	7409	JZ 0x2000:491b
+instruction	calendar	219b:2f62	816eea100e	SUB word ptr [BP + -0x16],0xe10
+instruction	calendar	219b:2f67	835eec00	SBB word ptr [BP + -0x14],0x0
+instruction	calendar	219b:2f6b	8b46ea	MOV AX,word ptr [BP + -0x16]
+instruction	calendar	219b:2f6e	8b56ec	MOV DX,word ptr [BP + -0x14]
+instruction	calendar	219b:2f71	5e	POP SI
+instruction	calendar	219b:2f72	5f	POP DI
+instruction	calendar	219b:2f73	8be5	MOV SP,BP
+instruction	calendar	219b:2f75	5d	POP BP
+instruction	calendar	219b:2f76	cb	RETF
+decompile	dst	219b:2dc4	true		
+instruction	dst	219b:2dc4	55	PUSH BP
+instruction	dst	219b:2dc5	8bec	MOV BP,SP
+instruction	dst	219b:2dc7	83ec04	SUB SP,0x4
+instruction	dst	219b:2dca	57	PUSH DI
+instruction	dst	219b:2dcb	56	PUSH SI
+instruction	dst	219b:2dcc	8b7606	MOV SI,word ptr [BP + 0x6]
+instruction	dst	219b:2dcf	837c0a43	CMP word ptr [SI + 0xa],0x43
+instruction	dst	219b:2dd3	7d03	JGE 0x2000:4788
+instruction	dst	219b:2dd5	e9a300	JMP 0x2000:482b
+instruction	dst	219b:2dd8	837c0803	CMP word ptr [SI + 0x8],0x3
+instruction	dst	219b:2ddc	7d03	JGE 0x2000:4791
+instruction	dst	219b:2dde	e99a00	JMP 0x2000:482b
+instruction	dst	219b:2de1	837c0809	CMP word ptr [SI + 0x8],0x9
+instruction	dst	219b:2de5	7e03	JLE 0x2000:479a
+instruction	dst	219b:2de7	e99100	JMP 0x2000:482b
+instruction	dst	219b:2dea	837c0803	CMP word ptr [SI + 0x8],0x3
+instruction	dst	219b:2dee	7e06	JLE 0x2000:47a6
+instruction	dst	219b:2df0	837c0809	CMP word ptr [SI + 0x8],0x9
+instruction	dst	219b:2df4	7c73	JL 0x2000:4819
+instruction	dst	219b:2df6	8b7c0a	MOV DI,word ptr [SI + 0xa]
+instruction	dst	219b:2df9	83ff56	CMP DI,0x56
+instruction	dst	219b:2dfc	7e16	JLE 0x2000:47c4
+instruction	dst	219b:2dfe	837c0803	CMP word ptr [SI + 0x8],0x3
+instruction	dst	219b:2e02	7510	JNZ 0x2000:47c4
+instruction	dst	219b:2e04	8b5c08	MOV BX,word ptr [SI + 0x8]
+instruction	dst	219b:2e07	03db	ADD BX,BX
+instruction	dst	219b:2e09	8b878223	MOV AX,word ptr [BX + 0x2382]
+instruction	dst	219b:2e0d	050700	ADD AX,0x7
+instruction	dst	219b:2e10	eb0b	JMP 0x2000:47cd
+instruction	dst	219b:2e14	8b5c08	MOV BX,word ptr [SI + 0x8]
+instruction	dst	219b:2e17	03db	ADD BX,BX
+instruction	dst	219b:2e19	8b878423	MOV AX,word ptr [BX + 0x2384]
+instruction	dst	219b:2e1d	8946fe	MOV word ptr [BP + -0x2],AX
+instruction	dst	219b:2e20	f7c70300	TEST DI,0x3
+instruction	dst	219b:2e24	7503	JNZ 0x2000:47d9
+instruction	dst	219b:2e26	ff46fe	INC word ptr [BP + -0x2]
+instruction	dst	219b:2e29	b80700	MOV AX,0x7
+instruction	dst	219b:2e2c	99	CWD
+instruction	dst	219b:2e2d	52	PUSH DX
+instruction	dst	219b:2e2e	50	PUSH AX
+instruction	dst	219b:2e2f	b96d01	MOV CX,0x16d
+instruction	dst	219b:2e32	8d45ba	LEA AX,[DI + -0x46]
+instruction	dst	219b:2e35	f7e9	IMUL CX
+instruction	dst	219b:2e37	8d4dff	LEA CX,[DI + -0x1]
+instruction	dst	219b:2e3a	d1f9	SAR CX,0x1
+instruction	dst	219b:2e3c	d1f9	SAR CX,0x1
+instruction	dst	219b:2e3e	03c1	ADD AX,CX
+instruction	dst	219b:2e40	0346fe	ADD AX,word ptr [BP + -0x2]
+instruction	dst	219b:2e43	99	CWD
+instruction	dst	219b:2e44	2d0d00	SUB AX,0xd
+instruction	dst	219b:2e47	83da00	SBB DX,0x0
+instruction	dst	219b:2e4a	52	PUSH DX
+instruction	dst	219b:2e4b	50	PUSH AX
+instruction	dst	219b:2e4c	9ace3b9b21	CALLF 0x2000:557e
+instruction	dst	219b:2e51	2b46fe	SUB AX,word ptr [BP + -0x2]
+instruction	dst	219b:2e54	f7d8	NEG AX
+instruction	dst	219b:2e56	837c0803	CMP word ptr [SI + 0x8],0x3
+instruction	dst	219b:2e5a	7512	JNZ 0x2000:481e
+instruction	dst	219b:2e5c	3b440e	CMP AX,word ptr [SI + 0xe]
+instruction	dst	219b:2e5f	7c08	JL 0x2000:4819
+instruction	dst	219b:2e61	7518	JNZ 0x2000:482b
+instruction	dst	219b:2e63	837c0402	CMP word ptr [SI + 0x4],0x2
+instruction	dst	219b:2e67	7c12	JL 0x2000:482b
+instruction	dst	219b:2e69	b80100	MOV AX,0x1
+instruction	dst	219b:2e6c	eb0f	JMP 0x2000:482d
+instruction	dst	219b:2e6e	39440e	CMP word ptr [SI + 0xe],AX
+instruction	dst	219b:2e71	7cf6	JL 0x2000:4819
+instruction	dst	219b:2e73	7506	JNZ 0x2000:482b
+instruction	dst	219b:2e75	837c0401	CMP word ptr [SI + 0x4],0x1
+instruction	dst	219b:2e79	7cee	JL 0x2000:4819
+instruction	dst	219b:2e7b	33c0	XOR AX,AX
+instruction	dst	219b:2e7d	5e	POP SI
+instruction	dst	219b:2e7e	5f	POP DI
+instruction	dst	219b:2e7f	8be5	MOV SP,BP
+instruction	dst	219b:2e81	5d	POP BP
+instruction	dst	219b:2e82	cb	RETF
+decompile	tz_gate	219b:2cb8	true		
+instruction	tz_gate	219b:2cb8	833e4c3b00	CMP word ptr [0x3b4c],0x0
+instruction	tz_gate	219b:2cbd	7509	JNZ 0x2000:4678
+instruction	tz_gate	219b:2cbf	9aca2c9b21	CALLF 0x2000:467a
+instruction	tz_gate	219b:2cc4	ff064c3b	INC word ptr [0x3b4c]
+instruction	tz_gate	219b:2cc8	cb	RETF
