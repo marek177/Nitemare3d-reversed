@@ -77,8 +77,8 @@ The dispatcher around `3:7B55` accepts states `0x00..0x15`, giving 22 numeric st
 | `09` | `7DEC` | special/collision/action path | partial semantic |
 | `0A` | `80A4` | no local action in dispatcher | strong |
 | `0B` | `80A4` | no local action in dispatcher | strong |
-| `0C` | `7E54` | shared handler with `0D` | partial semantic |
-| `0D` | `7E54` | shared handler with `0C` | partial semantic |
+| `0C` | `7E54` | dormant retail branch; sequence refresh only; USE residual message | reachability closed |
+| `0D` | `7E54` | dormant sibling; same sequence-refresh handler | reachability closed |
 | `0E` | `7E6C` | conditional transition to `0F` | strong control flow |
 | `0F` | `7E9E` | timer/action; transition to `10` or back to `0E` | strong control flow |
 | `10` | `7F26` | timer then return to `0F` | strong control flow |
@@ -89,6 +89,16 @@ The dispatcher around `3:7B55` accepts states `0x00..0x15`, giving 22 numeric st
 | `15` | `807E` | confirmed pain/hit reaction; then `state=nextstate` | VERIFIED/strong |
 
 Human-readable labels for states `02..14` remain unresolved until animation, movement, attack, sight and sound callers are bound.
+
+### Dormant states 0x0C and 0x0D
+
+The 2026-09-29 writer audit finds no recovered normal current-state writer for `0x0C` or `0x0D` in Win16 1.3/1.6/1.8/1.10. Raw 1.10 inspection of every call to the generic state/sequence setter also yields no transition that introduces either value. The values can still be processed if injected/restored: both dispatch through `7E54`, which only refreshes the directional sequence.
+
+The same residual `state==0x0C` interaction test exists in DOS 1.0, 1.7, 1.8 and 2.0; DOS 1.9 is byte-identical to the audited 1.8 executable. None of the audited DOS writer sets introduces `0x0C` or `0x0D`.
+
+State `0x0C` has one additional retained semantic: the USE hook displays **"I've nothing left!"**. This is treated as a fossil/legacy-compatible interaction, not proof that `0x0C` was a corpse or loot state in the shipped game.
+
+Reachability classification: **dormant in the recovered retail graph; handler retained**.
 
 ## Hit/pain transition
 
@@ -306,7 +316,7 @@ GUARD+0B all writes/reads
 
 ## High-priority remaining AI work
 
-1. Assign exact semantic names to states `02..14` only after original XREF evidence.
+1. Assign exact semantic names to the remaining reachable partially named states only after original XREF evidence; states `0x0C/0x0D` are now classified as dormant rather than awaiting active-AI names.
 2. Recover all strategy values and transition differences.
 3. Derive exact per-class movement speed/cadence.
 4. Recover sight/FOV/LOS/hearing and Omnificent hostility gate.
@@ -315,3 +325,60 @@ GUARD+0B all writes/reads
 7. Resolve GUARD25 reachability/identity and GUARD26 dancer script.
 8. Finish unresolved tail fields of the 26-byte GUARD record.
 9. Finish Dracula-Bat resource/sound/corpse chain while preserving resolved class/HP/state facts.
+
+
+## Producer/reachability closure — 2026-09-29
+
+The current/next-state writer audit now accounts for every numeric state `0x00..0x15` in Win16 1.10.
+
+- **20/22** states have a normal, conditional, class-specific, scripted, or terminal retail producer.
+- **0x0C/0x0D** are the only retained handlers without a recovered normal producer.
+- **0x0A/0x0B** are not missing handlers: they are deliberate terminal states.
+- lethal damage uses either `state 0 -> next 9` or `state 0x12 -> next 9`, depending on OBJECT `+0x1A`;
+- `0x09` then performs death/special finalization;
+- normal finalization terminates at `0x0A`, while Dracula performs the already documented transform to class `0x14` / state `0x08`;
+- `0x11` is entered by the strategy-1 door maneuver;
+- `0x14` is entered by the E1M9 Radio/Dancers script and restored to `0x06`;
+- ordinary non-lethal reaction enters `0x15` unless one of the special recovery branches is selected.
+
+State-ID/reachability is therefore **100% for Win16 1.10**. Full AI semantics and DOS parity remain separate.
+
+
+## Strategy matrix + states 02–08 closure — 2026-09-29
+
+The normal Win16 1.10 strategy value set is exactly `0..4`; no normal strategy-5 writer was recovered.
+
+- 0 = default player-biased movement;
+- 1 = wounded door-seeking (nearest DoorRuntime anchor while HP < 0x7F);
+- 2 = route-marker movement selected from RETREAT/ACTIONSPOT, using 16-unit movement and alternate move sequences;
+- 3 = gargoyle ONE_SHOT movement through state 0x13;
+- 4 = Cannon-specific state machine.
+
+Functional state names are now justified directly from control flow:
+
+```text
+02 AlertSequence
+03 AttackOpportunityCheck
+04 AttackExecution
+05 MovementReplan
+06 TimedMovement
+07 StationaryAcquire
+08 MovingAcquire
+```
+
+The ordinary active loop is `02 -> 03 -> 04 -> 05 -> 06 -> 03`; failed opportunity checks route 03 -> 05. State 7/8 feed the loop through LOS acquisition, with Omnificent suppression and the strategy-3 special branch preserved.
+
+Strategy IDs/writers and state-02..08 control flow are closed for Win16 1.10. Exact per-class sequence token names and full DOS dispatcher parity remain separate.
+
+
+## Engagement mode closure — 2026-09-29
+
+`GUARD+0x16` selects the result returned by `7594` for attack-opportunity checks:
+
+- 0 -> close square (both world-axis deltas <= 64);
+- 1 -> LOS/path result;
+- 2 -> same LOS/path result, retained but no normal writer in audited Win16 builds.
+
+`7594` stores LOS in +0x17 and close-proximity in +0x18 before selecting one. Initializer B02C writes mode 1 by default and mode 0 for classes 08/09/0A/11/12/13/14/1A.
+
+State 7/8 acquisition uses the frontal `7494` path directly; state 3/4 attack continuation uses `7594`, whose internal visibility call bypasses the frontal-sector gate. This closes the acquisition-versus-continued-attack distinction in the active AI loop.
