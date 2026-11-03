@@ -1,5 +1,7 @@
 # Nitemare3D-Reversed — reconstruction v0.78
 
+**3 Nov 2026 RE instrumentation:** [function inventory CSV validator and unknown-code closure plan](docs/RE_NOV03_FUNCTION_CLOSURE_AND_TOOLING.md). New tests validate only the supplied-inventory tooling, not original-game function coverage.
+
 Nitemare3D-Reversed is an AI-assisted reverse-engineering research project and work-in-progress C++/SDL3 reconstruction of **Nitemare 3D (Nitemare-3D)**, covering the original **DOS and Windows 3.1 (Win16)** versions. It documents game data formats, rendering, gameplay logic and executable analysis, with reconstructed components and validation tools.
 
 **Project status:** full original-versus-reconstruction gameplay and pixel-perfect parity are **not verified**. The active 3-D renderer remains a diagnostic DDA preview; recovered original rendering components have bounded verification described in the research reports. Original game assets are excluded; use your own game files.
