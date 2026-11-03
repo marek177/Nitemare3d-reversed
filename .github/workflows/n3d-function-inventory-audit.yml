@@ -1,0 +1,22 @@
+name: N3D function inventory audit tests
+on:
+  push:
+    paths:
+      - 'tools/n3d_function_inventory_audit.py'
+      - 'tests/test_n3d_function_inventory_audit.py'
+      - '.github/workflows/n3d-function-inventory-audit.yml'
+  pull_request:
+    paths:
+      - 'tools/n3d_function_inventory_audit.py'
+      - 'tests/test_n3d_function_inventory_audit.py'
+      - '.github/workflows/n3d-function-inventory-audit.yml'
+jobs:
+  function-inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run synthetic inventory validation tests
+        run: python3 -m unittest discover -s tests -p 'test_n3d_function_inventory_audit.py' -v
