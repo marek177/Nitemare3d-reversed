@@ -282,9 +282,21 @@
     "empty_grid_zero_delta": "Does not accept identical start/end; synthetic original-CPU check confirms",
     "wall_traits": "DS:D00C indexed by wall byte; object traitsDS:D10C if optional flag nonzero",
     "mutable_or_external_dependencies": [
-      "0AEA:0DCE FAR call encoded0:0 in unloaded image",
-      "0AEA:0DD8 FAR call encoded0:01E0 in unloaded image"
+      "Lookup-record count, FAR tile keys and state word+8 remain mutable; absent-record error behavior and global code-write closure remain open."
     ],
-    "global_visibility_or_indirect_target_closure": false
+    "global_visibility_or_indirect_target_closure": false,
+    "resolved_direct_calls": [
+      {
+        "site": "0AEA:0DCE",
+        "target": "0000:0000",
+        "MZ_segment_relocation_linear": 48241
+      },
+      {
+        "site": "0AEA:0DD8",
+        "target": "0000:01E0",
+        "MZ_segment_relocation_linear": 48251
+      }
+    ],
+    "correction_evidence": "../2026-11-06/visibility_direct_targets.json"
   }
 }
