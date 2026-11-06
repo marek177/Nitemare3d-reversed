@@ -1,3 +1,5 @@
+> Correction (2026-11-06): the FAR operands at 0AEA:0DCE/0DD8 are ordinary MZ-relocated direct calls to logical 0000:0000 and 0000:01E0. The unresolved-callback wording below is superseded by [the relocation and wall-state proof](../2026-11-06/visibility_direct_targets_report.md). Historical checkpoint ZIPs retain their original text.
+
 # Omnificent provenance and natural RNG activation conditions — 2026-10-31
 
 ## Result and proof status
