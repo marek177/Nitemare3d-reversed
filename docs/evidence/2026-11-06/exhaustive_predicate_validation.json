@@ -1,0 +1,35 @@
+{
+  "status": "SYNTHETIC_CPU_ONLY",
+  "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+  "predicate": "0000:01E0",
+  "code_span_sha256": "f1869a55b1fe9d0c6f8884bf9d8c68df98f5cff1f8480c06b8a3c93d50c75a2a",
+  "cases": 65536,
+  "accepted_states": [
+    0,
+    4
+  ],
+  "returned_AL": "1 iff word+8 in{0,4}; otherwise0",
+  "AH_preserved_fixture": "A5",
+  "clobbers_verified": [
+    "BX=argument.offset",
+    "ES=argument.segment",
+    "CX=record.word+8",
+    "AL"
+  ],
+  "preserved_verified": [
+    "DX",
+    "SI",
+    "DI",
+    "BP",
+    "DS",
+    "SS",
+    "AH fixture",
+    "IF",
+    "DF both values"
+  ],
+  "flags_on_all_local_returns": "CF0 PF1 ZF1 SF0 OF0; AF excluded",
+  "stack": "FAR RETF consumes4 bytes; caller retains4-byte argument; one BP push write only",
+  "case_digest_sha256": "cb470d556ce12db102adb4c866f622a753135587fc4d9b39a4d4560a85dca542",
+  "unicorn": "2.1.4",
+  "scope": "Original predicate instructions only, valid FAR object and stack, no IRQs, no arbitrary alternate entry; not native game execution or all caller ABI proof"
+}
