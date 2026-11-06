@@ -1,0 +1,67 @@
+{
+  "status": "VERIFIED_RUNTIME_RAW_RPC_CORRELATED",
+  "function": "0FD9:005E",
+  "sort_function": "11EE:3090",
+  "counts": [
+    237,
+    254,
+    238,
+    231
+  ],
+  "sorts": [
+    {
+      "direction": 0,
+      "count": 237,
+      "permutation_checked": true,
+      "adjacent_signed_comparator_order_checked": true,
+      "changed_pointer_positions": 24
+    },
+    {
+      "direction": 1,
+      "count": 254,
+      "permutation_checked": true,
+      "adjacent_signed_comparator_order_checked": true,
+      "changed_pointer_positions": 18
+    },
+    {
+      "direction": 2,
+      "count": 238,
+      "permutation_checked": true,
+      "adjacent_signed_comparator_order_checked": true,
+      "changed_pointer_positions": 8
+    },
+    {
+      "direction": 3,
+      "count": 231,
+      "permutation_checked": true,
+      "adjacent_signed_comparator_order_checked": true,
+      "changed_pointer_positions": 8
+    }
+  ],
+  "callbacks": [
+    {
+      "site": "11EE:30AD",
+      "executed_target": "0FD9:0016",
+      "AX": 0,
+      "trace_events": 25,
+      "actual_FAR_return": "11EE:30B0"
+    },
+    {
+      "site": "11EE:312F",
+      "executed_target": "0FD9:0016",
+      "AX": 0,
+      "trace_events": 25,
+      "actual_FAR_return": "11EE:3133"
+    },
+    {
+      "site": "11EE:314D",
+      "executed_target": "0FD9:0016",
+      "AX": 65535,
+      "trace_events": 25,
+      "actual_FAR_return": "11EE:3151"
+    }
+  ],
+  "buffer_and_descriptors_unchanged": true,
+  "native_FAR_return": "0277:0B9E",
+  "scope": "One native grouping/four-sort case and one actual comparator execution per sampled indirect site. No whole indirect target domain, all comparator invocations, sort stability, error/capacity/alias/IRQ or full initialization/RNG/remake closure."
+}
