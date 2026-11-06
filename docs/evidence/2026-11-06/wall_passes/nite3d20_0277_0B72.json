@@ -1,0 +1,60 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:0277:0B72",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 631,
+    "entry_offset": 2930,
+    "ranges": [
+      [
+        2930,
+        3009
+      ]
+    ],
+    "end_exclusive_envelope": 3009,
+    "file_offset": 19746,
+    "candidate_bytes": "79",
+    "instruction_count": 25,
+    "entries": [
+      2930
+    ],
+    "decoded_exits": [
+      {
+        "offset": 3008,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "relocated far call/jump"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_0277_0B72.json",
+  "calling_convention": "UNKNOWN",
+  "parameters": "UNKNOWN parent ABI; staticPUSHDI/POPDI andRETF envelope",
+  "algorithm": "Static canonical sequence savesDI; zeroes9 dwords atDS:E006; PUSH-CS/NEAR calls0277:00EC; FAR calls00F7:01B6 and00F7:0250 then several further subsystem initializers. Native child entries/returns verify the two table builders and actual continuation boundaries0B8F/0B94 only. Parent entry, initialzeroing, remaining callees and parentRETF not traced in this case.",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "UNKNOWN",
+  "runtime_evidence": [
+    "native_trait_20261106/native_trait_report.md: native wall/object builders with raw-RPC correlation,256 ordered stores each, actualFAR returns and split/interleaved trace scope",
+    "wall_passes_20261106/wall_pass_report.md: native E1C four B02 passes,237/254/238/231 counts,total960, actualFAR return0277:0B99; endpoint proof, not full inner write/IRQ trace"
+  ],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN for whole domain, aliases, IRQ ordering and live remake",
+  "open_questions": [
+    "Validate entry reachability and all indirect branches",
+    "Validate shared ownership and semantic function boundary",
+    "Recover algorithm, ABI and full side effects",
+    "Parent complete entry/exit, zeroing and remaining initializer side effects are not closed by child captures"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "bounded_analysis_status": "VERIFIED_STATIC_LOCAL_WITH_TWO_NATIVE_CHILD_CALLS",
+  "native_third_child": "0FD9:0E1C entry and actualreturn0277:0B99 now verified, including four B02 pass frames/counts. Parent entry/zeroing/remaining calls/final exit remainopen."
+}
