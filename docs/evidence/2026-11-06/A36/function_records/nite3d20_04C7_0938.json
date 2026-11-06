@@ -1,0 +1,124 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:04C7:0938",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 1223,
+    "entry_offset": 2360,
+    "ranges": [
+      [
+        2360,
+        2397
+      ],
+      [
+        2398,
+        2481
+      ],
+      [
+        2482,
+        2573
+      ],
+      [
+        2574,
+        2657
+      ],
+      [
+        2658,
+        2665
+      ],
+      [
+        2666,
+        2689
+      ],
+      [
+        2690,
+        2717
+      ],
+      [
+        2718,
+        2759
+      ],
+      [
+        2760,
+        2803
+      ],
+      [
+        2804,
+        2891
+      ]
+    ],
+    "end_exclusive_envelope": 2891,
+    "file_offset": 28648,
+    "candidate_bytes": "522",
+    "instruction_count": 181,
+    "entries": [
+      2360
+    ],
+    "decoded_exits": [
+      {
+        "offset": 2890,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_04C7_0938.json",
+  "calling_convention": "FAR-compatible frame; actor FAR pointer BP+6/+8, object FAR pointer BP+0A/+0C; ENTER0Ah, saves DI/SI; local FAR return with caller argument cleanup",
+  "parameters": {
+    "BP+6": "actor offset",
+    "BP+8": "actor segment",
+    "BP+0A": "object offset",
+    "BP+0C": "object segment"
+  },
+  "algorithm": "Local mode dispatch: mode0\u21920A0E; mode1 may use external0000:00FE unless actor+10>=7Fh, then joins0A0E; mode2 draws09F6 and timer=RNG%8+8; other modes join0B0A. The0A0E path computes signed16-truncated player/object deltas divided toward zero by32, draws0A36 and masks by3 when actor+17=0 or7 otherwise. Selector0/1 conditionally preserves direction, other selectors set sign-based \u00b18/0 directions. actor+18!=0 selects timer8; otherwise actor+17=0 selects24; else second draw0ACF gives%8+8, halved if difficulty2 or doubled if0. All local modes join state6 store0B0D, then calls000B0,0012A and00422 before local FAR return. Mode1 callee, all mode-entry reachability and nested side effects remain incomplete.",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "SI/DI/BP saved by local prologue/epilogue. Actual observed FAR return04C7:0EA4 and stack frame validated. Alternate entry, all aliases, IRQ mutations and callee clobber domains remain open.",
+  "runtime_evidence": [
+    "a36_20261106/A36_runtime_validation.json: natural mode0,type8,state3 actor, counter1267; two wrapper returns, all26 consumer record bytes, exact state6 store and FAR return",
+    "runtime/rng_targets_m_20261106/next_rng_call_observation.json",
+    "runtime/rng_targets_m_20261106/A36_consumer_observation.json",
+    "runtime/rng_targets_m_20261106/A36_exit_observation.json"
+  ],
+  "timing_rng_dependencies": "Observed A36 then conditionalACF in this mode0 path. Mode2 site09F6 remains unobserved in the eleven-target search. Debugger phase pauses and global IRQ/tick ordering are not temporal parity.",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN; bounded original-only natural evidence",
+  "open_questions": [
+    "Natural mode2 site09F6",
+    "Full mode1 external target/failure behavior",
+    "Function entry, alternate entries and whole ownership",
+    "All nested writes, alias and IRQ/scheduler ordering",
+    "Cross-version and live remake parity"
+  ],
+  "next_test": "Trace natural0938 entry and mode2 domain separately; continue mode0 state6 at later scheduler tick and mode3 activation0C37",
+  "semantic_decoder_corrections": "sign_extension_normalization.json; width-sensitive98/99 corrected, raw Capstone effects retained; other semantics unproven",
+  "bounded_analysis_status": "VERIFIED_STATIC",
+  "arithmetic_scope": "Unprefixed99 is CWD,98 is CBW. Coordinate subtraction/addition wrap to16 bits before signed shifts; not ideal unbounded Euclidean arithmetic. RNG15-bit values are nonnegative for signed IDIV8.",
+  "memory_dependencies": {
+    "actor_reads": [
+      "mode+0A",
+      "flags+17/+18",
+      "mode1 field+10",
+      "direction+13/+14 for preserve branches"
+    ],
+    "actor_writes": [
+      "timer word+6",
+      "direction bytes+13/+14",
+      "state byte+0B=6"
+    ],
+    "global_reads": [
+      "DS4162/4164 player coordinates",
+      "DS4180 difficulty",
+      "RNG wrapper state24B8 indirectly"
+    ],
+    "external_effects": "0000:00FE and nested000B0/0012A/00422 not globally closed"
+  }
+}
