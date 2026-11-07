@@ -1,0 +1,20 @@
+{
+  "status": "SYNTHETIC_ORIGINAL_CPU_ONLY",
+  "cases": 1028,
+  "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+  "span_sha256": "a4ed7f52cdc2932e6759f2ef6ba3106ff25b92e429116023569a0fd6d6291457",
+  "switch_targets": [
+    "29F2",
+    "2A7C",
+    "2A90",
+    "2A9A",
+    "2AA8",
+    "2AB6"
+  ],
+  "selector1": "DX:AX=DS:363B iff byteDS363B!=0, else0:0; pointer, not byte value",
+  "selector2": "DX:AX=DS:363C",
+  "invalid_selector_cases": "6 andFFFF expose incoming uninitialized stack locals atBP-4/BP-2; not a safe general query API",
+  "preserved_fixture": "BP,SI,DI,CX,DS,SS,ES,IF/DF; FAR frame/argument checked",
+  "case_digest_sha256": "881b9a8e3b829e6b9881eaa219b66e43dccc1d9678de0f73b79ac20f64ee5d82",
+  "scope": "Selectors0/3/4/5 invoke unexecuted callees; no arbitrary alias/IRQ/domain/nativeWin16 parity claim."
+}
