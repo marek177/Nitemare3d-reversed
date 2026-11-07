@@ -1,0 +1,114 @@
+{
+  "boundary": {
+    "function_id": "nite3d19:0000:01E0",
+    "binary_id": "nite3d19",
+    "source_sha256": "d79c515d736da385cc27d78e37206b4902efb8e2648a83062b5d474474eca6fc",
+    "logical_segment": 0,
+    "entry_offset": 480,
+    "ranges": [
+      [
+        480,
+        503
+      ],
+      [
+        504,
+        508
+      ]
+    ],
+    "end_exclusive_envelope": 508,
+    "file_offset": 7200,
+    "candidate_bytes": "27",
+    "instruction_count": 14,
+    "entries": [
+      480
+    ],
+    "decoded_exits": [
+      {
+        "offset": 502,
+        "kind": "retf"
+      },
+      {
+        "offset": 507,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic",
+      "relocated far call/jump",
+      "relocated pointer + frame prologue"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d19_0000_01E0.json",
+  "calling_convention": "FAR call; 4-byte argument FAR pointer at entry SS:SP+4 (after PUSH BP at BP+6), RETF consumes4-byte return, caller cleans4-byte argument; valid stack assumed",
+  "parameters": {
+    "BP+6": "offset word",
+    "BP+8": "segment word"
+  },
+  "algorithm": "LES BX,[BP+6]; CX=word ES:[BX+8]; AL=(CX==0 or CX==4). AH retained. Two RETF paths at01F6/01FB. No whole-word AX boolean claim.",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "Push/restore BP; FAR pointer and stack must be valid and non-corrupting. BX/ES become argument; CX becomes state. DX/SI/DI/DS/SS and AH retained on local paths.",
+  "runtime_evidence": [],
+  "timing_rng_dependencies": "No local RNG, loop or I/O. IRQ timing and caller ordering remain open.",
+  "cross_version_mapping": {
+    "evidence_status": "VERIFIED_STATIC",
+    "proof": "lookup_edges_20261106/predicate_crossversion_mapping.json",
+    "matched_function_ids": [
+      "local_dos_12:0000:01E0",
+      "local_dos_cd:0000:01E0",
+      "nite3d10:0000:01E0",
+      "nite3d11:0000:01E0",
+      "nite3d15:0000:01E0",
+      "nite3d17:0000:01E0",
+      "nite3d19:0000:01E0",
+      "nite3d20:0000:01E0"
+    ],
+    "scope": "Exact14-instruction body/CFG and local valid-pointer contract; no global record meaning, runtime timing, reachability or whole-boundary equivalence"
+  },
+  "parity": "UNKNOWN; identical bounded original bodies do not establish live remake or whole-game parity",
+  "open_questions": [
+    "Natural entry/exit and callers in this version",
+    "Global record/alias and whole-boundary closure",
+    "IRQ/timing and live remake parity"
+  ],
+  "next_test": "Validate native version-specific entry, FAR arguments, return and record provenance",
+  "bounded_analysis_status": "VERIFIED_STATIC",
+  "registers_and_flags": {
+    "clobbered": [
+      "AL",
+      "BX",
+      "CX",
+      "ES"
+    ],
+    "preserved": [
+      "AH",
+      "DX",
+      "SI",
+      "DI",
+      "BP",
+      "DS",
+      "SS",
+      "IF",
+      "DF"
+    ],
+    "return_flags": "CF=0 PF=1 ZF=1 SF=0 OF=0; AF is not defined uniformly"
+  },
+  "memory_dependencies": {
+    "reads": [
+      "SS stack FAR return/argument/saved BP",
+      "argument.FAR+8 word"
+    ],
+    "writes": [
+      "SS:entrySP-2 saved BP word only under valid nonaliasing stack fixture"
+    ]
+  },
+  "synthetic_cpu_evidence": [
+    "predicate_20261106/exhaustive_predicate_validation.json: DOS20 private bytes tested; identical local body established statically for this image, not native execution of this version"
+  ]
+}

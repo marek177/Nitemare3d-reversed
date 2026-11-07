@@ -1,0 +1,100 @@
+{
+  "boundary": {
+    "function_id": "nite3w13:0003:1256",
+    "binary_id": "nite3w13",
+    "source_sha256": "926c0001944b9822cdae10b35c92c2d6cd3772bc774c4c88fb17df7465d1f156",
+    "logical_segment": 3,
+    "entry_offset": 4694,
+    "ranges": [
+      [
+        4694,
+        4761
+      ],
+      [
+        4762,
+        4776
+      ]
+    ],
+    "end_exclusive_envelope": 4776,
+    "file_offset": 94710,
+    "candidate_bytes": "81",
+    "instruction_count": 38,
+    "entries": [
+      4694
+    ],
+    "decoded_exits": [
+      {
+        "offset": 4775,
+        "kind": "retf"
+      },
+      {
+        "offset": 4760,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "NE selector relocation + frame prologue",
+      "decoded direct call",
+      "frame prologue heuristic"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3w13_0003_1256.json",
+  "calling_convention": "FAR call, FAR pointer argument at BP+6/+8 after PUSH BP; RETF local returns; caller ADD SP4 witnessed in paired chains",
+  "parameters": {
+    "BP+6": "argument offset",
+    "BP+8": "argument segment"
+  },
+  "algorithm": "Found-path scan: logical data-segment index9, signed count word0000, base9DD6, stride22, exact FAR key+8/+0Ah. Returns DX:AX record and sets DS=SS. Missing path passes diagnostic near offset0CB0; external behavior remains open. Actual native selectors are loader-assigned, not these logical indices.",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "Exact segment/offset comparison; no physical alias normalization. Stable nonwrapping arrays needed for projected DOS/NE found-path relation; count mutation, wrapped arrays and error callees remain open.",
+  "runtime_evidence": [],
+  "timing_rng_dependencies": "Count-dependent scan; actual Win16 scheduling, mutations and error-callee behavior remain open",
+  "cross_version_mapping": {
+    "evidence_status": "VERIFIED_STATIC",
+    "source_function": "nite3d20:0000:0000",
+    "proof": "ne_door_20261106/NE_door_contract_mapping.json",
+    "scope": "Normalized local lookup/found path with explicit count/base/stride/key-field projection; different error callees and alias/wrap domains remain open"
+  },
+  "parity": "UNKNOWN for native Win16, full version/record and live remake parity",
+  "open_questions": [
+    "Native Win16 entry/exit/selector validity",
+    "Whole boundary/alternate entries",
+    "Error behavior and global aliases/writers",
+    "Full state/tick/render/remake parity"
+  ],
+  "next_test": "Run native Win16 paired caller path with actual loaded selectors and record provenance",
+  "bounded_analysis_status": "VERIFIED_STATIC",
+  "registers_and_flags": {
+    "found_clobbers": [
+      "AX",
+      "DX",
+      "BX",
+      "CX",
+      "DS",
+      "ES"
+    ],
+    "found_preserved": [
+      "DI",
+      "SI",
+      "BP",
+      "SS"
+    ],
+    "found_flags": "Final matching segment-word CMP; ZF1; no external error-path contract"
+  },
+  "memory_dependencies": {
+    "reads": [
+      "logical data segment count word0000",
+      "array22-byte record key+8/+0Ah",
+      "SS stack arguments"
+    ],
+    "writes": [
+      "stack saves; external error effects remain open"
+    ]
+  }
+}

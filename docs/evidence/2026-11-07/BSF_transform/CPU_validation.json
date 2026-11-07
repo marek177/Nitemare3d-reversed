@@ -1,0 +1,20 @@
+{
+  "status": "SYNTHETIC_ORIGINAL_CPU_PLUS_NATIVE_ENDPOINT_DATA_COMPARISON",
+  "cases": 716,
+  "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+  "code_span_sha256": "0ed79b34d67b7a1cde7c165b458b361ccc47e118e1f7d36681493b926f8d7398",
+  "key52_sha256": "fe5dad644b26d76239bdc703cd337b65d47c4b00e2a653246107dbbcf6b060e6",
+  "transform": "In place byte[i] ^= SS:[2045+(i mod52)], SI wraps16 bits; AL is XOR of pre-transform bytes",
+  "nonzero_return": "DS=SS; AH=high byte of floor((count-1)/52); FAR consumes4 returnbytes, leaves6 argumentbytes",
+  "zero_return": "AL0,AH fixture preserved, incomingDS retained",
+  "preserved_fixture": "BP,SI,DI,SS,ES,IF/DF; allowed writes and exact write counts checked",
+  "domains": "all256 one-byte inputs; zero/boundary/65535 lengths; SI wrap; three key/buffer aliases with sequential-memory oracle",
+  "native_endpoint_header_byte_exact": true,
+  "header_cipher_sha256": "87dc27d30f2c42aa47559b7871636b647b7836d237fe37723d33d26e1e5267a7",
+  "header_decoded_sha256": "a16cc99023b1b48bc63e4bf92e8eb5a5bf3fb166e1a7512844efbb8501ffecaf",
+  "header_checksum_AL": 0,
+  "header_offset3": 1,
+  "case_digest_sha256": "f04c1383cd738eb4c7ba89449c21c3200bd17561a7ab59d8c767da08974786ef",
+  "unicorn": "2.1.4",
+  "scope": "No native transform entry/exit trace, no arbitrary stack/code aliases, IRQs or Win16/remake parity. Byte3 is the selector1 gate; broader feature/format meaning remainspartial."
+}

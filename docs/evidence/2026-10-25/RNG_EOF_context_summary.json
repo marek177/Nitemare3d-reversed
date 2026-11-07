@@ -1,0 +1,44 @@
+{
+  "status": "VERIFIED_RUNTIME_CONTEXT",
+  "run": "rng_run_f",
+  "emulator_sha256": "78fd1926272de172c2a87b9456aafce5eb54ea928ad1e5103a6d943bc26f0f57",
+  "PDB_sha256": "a059aca95a991b703e034bc8c55b9dce9525420b1d3607e4e79f34381a6ad880",
+  "version_resource": "2026.10.01",
+  "disk_configuration_sha256": "ee679800ce8e3e94270d9db8b0ccddbf79bf592c3e36fac1c5a03a50400356e9",
+  "disk_configuration_size": 125070,
+  "effective_loaded_configuration_proven": false,
+  "RNG_calls_with_RTC_change": 5,
+  "max_RTC_change_within_observed_RNG_call": 1,
+  "all_RNG_entry_IF_set": true,
+  "low16_register_equal_entry_return_counts": {
+    "ebp": 229,
+    "ebx": 229,
+    "esi": 229,
+    "edi": 229,
+    "ecx": 0
+  },
+  "RNG_return_count": 229,
+  "debugger_memory_writes": {
+    "total": 14,
+    "all_BIOS_queue": true,
+    "during_measured_window": 0
+  },
+  "post_EOF": {
+    "trace_events": 32,
+    "capacity": 500,
+    "returned_key_AX": "74E0",
+    "flags_word": "0090",
+    "prefetch_unchanged": true,
+    "queue_empty": true,
+    "saved_return_SP_valid": true,
+    "final_PC": "06B0:039C",
+    "revision": 1031
+  },
+  "VGA_context": {
+    "programmed_start": 16384,
+    "latched_start": 0,
+    "frame_boundary_aligned": false,
+    "paired_remake": false
+  },
+  "scope": "RTC intervals and observed low16 register equality are case evidence, not every-IRQ or global ABI/configuration closure"
+}

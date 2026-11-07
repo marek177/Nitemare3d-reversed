@@ -1,0 +1,110 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:083D:29CA",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 2109,
+    "entry_offset": 10698,
+    "ranges": [
+      [
+        10698,
+        10719
+      ],
+      [
+        10732,
+        10875
+      ],
+      [
+        10876,
+        10895
+      ],
+      [
+        10896,
+        10967
+      ]
+    ],
+    "end_exclusive_envelope": 10967,
+    "file_offset": 51162,
+    "candidate_bytes": "254",
+    "instruction_count": 89,
+    "entries": [
+      10698
+    ],
+    "decoded_exits": [
+      {
+        "offset": 10966,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic",
+      "relocated far call/jump"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_083D_29CA.json",
+  "calling_convention": "UNKNOWN",
+  "parameters": "UNKNOWN",
+  "algorithm": "UNKNOWN; instruction semantics recorded, no inferred gameplay name",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "UNKNOWN",
+  "runtime_evidence": [
+    "P native selection at26C5/26CA, saved in episode3_p_20261107/native_episode3_observation.json; rawRPC validated"
+  ],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN for whole-function, arbitrary aliases/IRQ, nativeWin16 and live remake",
+  "open_questions": [
+    "Validate entry reachability and all indirect branches",
+    "Validate shared ownership and semantic function boundary",
+    "Recover algorithm, ABI and full side effects"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "semantic_decoder_corrections": "sign_extension_normalization.json; width-sensitive98/99 corrected, raw Capstone effects retained; other semantics unproven",
+  "bounded_selector_contract": {
+    "status": "BYTE_MATCHED_STATIC_PLUS_ISOLATED_CPU",
+    "scope": "Selector1/2 and invalidselector fixtures; nativeP selector1 return observed separately. Whole-function ownership/callee/error/IRQ domains remainopen.",
+    "parameter": "word atSS:[entrySP+4], FAR return; caller removes2 bytes",
+    "dispatch": "unsigned selector<=5, CS table29E0 has6 wordtargets; other words use uninitializedSS localsBP-4/BP-2",
+    "targets": [
+      "29F2",
+      "2A7C",
+      "2A90",
+      "2A9A",
+      "2AA8",
+      "2AB6"
+    ],
+    "selector1": "ReturnDX:AX=DS:363B iff byteDS363B nonzero, else0:0. No callee on this path.",
+    "selector2": "ReturnDX:AX=DS:363C; no callee on this path.",
+    "selector0_partial": "Opens near literal nite3d.bsf with rb; requests36h headerbytes intoDS3638, invokesFBA01B2 and other callees. Header decoding/format/error semantics not closed.",
+    "other_selectors": "3/4/5 passDS globals via0277:1B02; return semantics not analyzed here.",
+    "nativeP": "Caller26C5 argument1; return26CA DX:AX=2F93:363B. This proves nonnull pointer, not numerical boolean1 or episode-specific entitlement.",
+    "evidence": "episode3_p_continuation_20261107/gate_CPU_validation.json"
+  },
+  "bounded_header_data_join": {
+    "status": "ORIGINAL_CPU_WITH_NATIVE_ENDPOINT_DATA_COMPARISON",
+    "source": "NITE3D.BSF first54bytes",
+    "transform": "0FBA:01B2 at caller2A35",
+    "checksum_branch": "2A3D OR AL,AL;2A3F JE2A4F; nonzero enters errorcallee path, which is not executed in this test",
+    "byte3": "Decoded1 is exactlyDS363B selector1 gate",
+    "scope": "No new native file-read/transform trace, no full format/entitlement claim."
+  },
+  "Q_native_startup_evidence": {
+    "status": "VERIFIED_NATIVE_BOUNDED_INVOCATION",
+    "pid": 58896,
+    "loadbase": "0823",
+    "trace_events": 719,
+    "ordered_transform_sites": 54,
+    "actual_FAR_return": "083D:2A3A",
+    "checksum_branch": "2A3A ->2A3D ->2A3F ->2A4F",
+    "decoded_DS363B": 1,
+    "proof": "bsf_native_q_20261107/validation.json",
+    "scope": "One original startup invocation; current trace includes caller stop instruction without claiming it executed. Full file-read, error, arbitrary alias/IRQ and boundary domains remainopen."
+  }
+}

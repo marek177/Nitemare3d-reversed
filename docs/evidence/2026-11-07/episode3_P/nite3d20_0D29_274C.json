@@ -1,0 +1,99 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:0D29:274C",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 3369,
+    "entry_offset": 10060,
+    "ranges": [
+      [
+        10060,
+        10149
+      ],
+      [
+        10166,
+        10311
+      ],
+      [
+        10312,
+        10339
+      ],
+      [
+        10340,
+        10385
+      ],
+      [
+        10386,
+        10523
+      ]
+    ],
+    "end_exclusive_envelope": 10523,
+    "file_offset": 70684,
+    "candidate_bytes": "443",
+    "instruction_count": 160,
+    "entries": [
+      10060
+    ],
+    "decoded_exits": [
+      {
+        "offset": 10522,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic",
+      "relocated far call/jump"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_0D29_274C.json",
+  "calling_convention": "UNKNOWN",
+  "parameters": "UNKNOWN",
+  "algorithm": "Recovered Demo case only: cache four dwords, clear Omnificent and other options, iterateDemo, restore four dwords and input mode; full menu semantics still open",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "UNKNOWN",
+  "runtime_evidence": [
+    "omnificent_20261031/frozen_runtime_K/config_origin_runtime.json",
+    "omnificent_20261031/frozen_runtime_K/native_demo_4153_clear.json",
+    "target_maps_20261107/level1_report.md: independentO0822 with temporary UI option restore/native cache and loader10-to0; bounded no-hit search ends at next-loader sentinel"
+  ],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN for whole boundaries/domains, aliases, IRQ and live remake",
+  "open_questions": [
+    "Validate entry reachability and all indirect branches",
+    "Validate shared ownership and semantic function boundary",
+    "Recover algorithm, ABI and full side effects",
+    "Global aliases, all alternate entries and external/IRQ effects remain open; no global visibility or writer closure"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "algorithm_evidence_status": "VERIFIED_STATIC_LOCAL_CONTRACT; runtime/CPU scope in Omnificent report",
+  "Omnificent_followup": "omnificent_20261031/Omnificent_provenance_report.md",
+  "O_config_cache_and_clear_case": {
+    "status": "VERIFIED_RUNTIME",
+    "restored_input_option": 1,
+    "native_cache": "28BE REP MOVSD four dwords intoSS:[BP-18h]",
+    "all16_cached_bytes_equal_supplied_CONFIG": true,
+    "native_clear": "28C9 DS4153 1-to0",
+    "scope": "Controlled UI option restored before native cache. Not full parent entry/exit/menu-switch ownership closure."
+  },
+  "P_native_episode3_case": {
+    "status": "VERIFIED_RUNTIME_BOUNDED",
+    "source": "episode3_p_20261107/episode3_report.md",
+    "selection": "Native2696 probes map.1/map.2/map.3; AXFFFF/FFFF/0; conditional gateDX:AX nonzero; returns3 at26E6",
+    "loader_frame": [
+      "runtimeCS",
+      0,
+      3
+    ],
+    "header": "episode3/index0 at06B0:02E0",
+    "config": "Native16-byte cache contains option8=1 despite inputfile0; native28C9 clearsOmnificent1-to0. Origin of option8 transition not localized.",
+    "scope": "No loader/actor/position/RNG/code API write. File/config input variant and BIOS queue fixtures. Whole boundaries/domains/IRQ/remake parity remainUNKNOWN."
+  }
+}
