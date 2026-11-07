@@ -11,6 +11,7 @@ def check(x):
  elif isinstance(x,list):
   for z in x:check(z)
 check(v);b=v['before'];a=v['after'];data=lambda x:base64.b64decode(x['result']['data_base64']);src=data(b['buffer']);key=data(b['key']);want=bytes(x^key[i%52] for i,x in enumerate(src));assert data(a['buffer'])==want and data(a['key'])==key
+rawexe=Path('C:/Users/Marek-Medved/Documents/Codex/2026-10-25/goal-x20-3/work/decoded/nite3d20/output.000.exe').read_bytes();assert hashlib.sha256(rawexe).hexdigest()=='5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3';im=rawexe[int.from_bytes(rawexe[8:10],'little')*16:];assert data(b['code'])==im[0xfba*16+0x1b2:0xfba*16+0x1f0];assert data(b['caller_code'])==bytes.fromhex('9ab201')+struct.pack('<H',0x823+0xfba)
 r=b['registers']['result'];t=a['registers']['result'];sp=int(r['general']['esp'],16)&65535;assert int(t['general']['esp'],16)&65535==sp+4 and int(t['general']['eax'],16)&65535==0
 for k in ['esi','edi','ebp']:assert r['general'][k]==t['general'][k]
 ev=v['trace']['result']['events'];assert len(ev)==719 and [x['sequence'] for x in ev]==list(range(1,720)) and v['trace']['result']['next_cursor'] is None
