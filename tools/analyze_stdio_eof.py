@@ -1,0 +1,9 @@
+from pathlib import Path
+import json,hashlib
+R=Path.cwd();E=R/'outputs/evidence';O=R/'outputs/stdio_eof_20261107';O.mkdir(exist_ok=True);raw=Path('C:/Users/Marek-Medved/Documents/Codex/2026-10-25/goal-x20-3/work/decoded/nite3d20/output.000.exe').read_bytes();assert hashlib.sha256(raw).hexdigest()=='5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3';im=raw[int.from_bytes(raw[8:10],'little')*16:];proof=[]
+for fid in ['11EE:06FC','11EE:0834']:
+ n='nite3d20_'+fid.replace(':','_')+'.json';cfg=json.loads((E/'function_cfg'/n).read_text())
+ for i in cfg['instructions']:
+  b=bytes.fromhex(i['bytes']);assert im[0x11ee*16+i['offset']:0x11ee*16+i['offset']+len(b)]==b
+ p=E/'function_records'/n;v=json.loads(p.read_text());v['bounded_EOF_analysis']={'status':'BYTE_MATCHED_STATIC_CONDITIONAL_PATH','06FC':'For size=count=1, refill0834 returningFFFF branches07B0->07C8 before store07B2; destinationbyte unchanged, remainingCX1 yieldsAX0. Directread returning0 sets streamflag10 at07BE and likewise writes no destinationbyte.','0834':'Underlying1E14 return0 branches0880->0893, setsstreamflag10, zeros bufferedcount, returnsAXFFFF via089C. Underlyingread/error/OS semantics not closed.','caller28EE':'Its zero-count loop XORs localbyte afterread without checkingAX; on these EOF paths the previous localbyte is reused. Firstemptyread before any successfulbyte can instead expose uninitialized local data.','scope':'Conditional original instruction paths, not new native finalread capture; buffer/stream/frame aliases and low16 size*count overflow remainopen.'};p.write_text(json.dumps(v,indent=2));(O/n).write_text(json.dumps(v,indent=2));proof.append({'function':fid,'byte_matched_instructions':len(cfg['instructions']),'whole_boundary':v['boundary']['boundary_status']})
+(O/'validation.json').write_text(json.dumps({'status':'VERIFIED_STATIC_BYTES_CONDITIONAL_EOF_PATHS','records':proof,'native_final_read_proven':False},indent=2));print(json.dumps(proof))
