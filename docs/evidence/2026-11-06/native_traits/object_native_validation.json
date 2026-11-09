@@ -1,0 +1,66 @@
+{
+  "status": "VERIFIED_RUNTIME_RAW_RPC_CORRELATED",
+  "function": "00F7:0250",
+  "server_pid": 23808,
+  "loadbase": "0823",
+  "initial_local_byte": 7,
+  "output_bit7": 0,
+  "trace_window_event_counts": [
+    10000,
+    363
+  ],
+  "loadbase_normalized_segment_event_counts": {
+    "15BF": 176,
+    "0BCC": 60
+  },
+  "interleaved_runs": [
+    {
+      "window": 0,
+      "first_sequence": 1107,
+      "last_sequence": 1194,
+      "event_count": 88,
+      "entry_loadbase_normalized": "15BF:4150",
+      "last_instruction": "iret"
+    },
+    {
+      "window": 0,
+      "first_sequence": 2444,
+      "last_sequence": 2463,
+      "event_count": 20,
+      "entry_loadbase_normalized": "0BCC:0002",
+      "last_instruction": "iret"
+    },
+    {
+      "window": 0,
+      "first_sequence": 5331,
+      "last_sequence": 5350,
+      "event_count": 20,
+      "entry_loadbase_normalized": "0BCC:0002",
+      "last_instruction": "iret"
+    },
+    {
+      "window": 0,
+      "first_sequence": 7027,
+      "last_sequence": 7114,
+      "event_count": 88,
+      "entry_loadbase_normalized": "15BF:4150",
+      "last_instruction": "iret"
+    },
+    {
+      "window": 0,
+      "first_sequence": 8239,
+      "last_sequence": 8258,
+      "event_count": 20,
+      "entry_loadbase_normalized": "0BCC:0002",
+      "last_instruction": "iret"
+    }
+  ],
+  "ordered_store_sites_checked": 256,
+  "all256_output_bytes_match": true,
+  "header_unchanged": true,
+  "output_bytes_changed_from_entry": 0,
+  "native_FAR_return": "0277:0B94",
+  "stack_delta": 4,
+  "defined_FLAGS_and_DF_checked": true,
+  "scope": "One native invocation after Escape/Enter BIOS queue fixtures and original Demo reload, including interleaved execution in other segments. Capacity windows remain separately identified; stop instructions are not presumed executed. RETF is separately stepped. This verifies initialbit7=0 in this case, not all native stack provenance, boundaries, aliases, interrupt entry/side-effect closure, bit7 consumers, C37 or remake parity."
+}

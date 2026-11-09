@@ -1,0 +1,13 @@
+# DOS/Win16 door contracts under field projection — 2026-11-06
+
+All five NE images now have a byte/CFG-verified bounded counterpart for DOS0000:01E0, found through the door diagnostic and actual paired lookup-to-predicate calls. Each NE predicate has14 instructions; only the state displacement differs (+0Ch versus DOS+08h), with the same relative CFG. The five lookup functions each match38 local DOS instructions after an explicit whitelist of selector/base, key-field, stride, diagnostic and error-call substitutions. NE fixed nonadditive internal selector relocation chains are checked at both paired CALL operands. No general NE loader/import or actual loaded-selector equivalence is inferred.
+
+Twenty immediate call chains return lookup DX:AX, push DX then AX, and call the state predicate, with caller stack cleanup. NE lookup keys are+08h/+0Ah and stride22; DOS keys are+04h/+06h and stride18. Both local predicates accept state0/4. These projections do not establish a complete record isomorphism; wrapped/mutating arrays, missing-key error callees and physical aliases remain open. Boundaries stay UNKNOWN. Other predicate caller provenance is not closed by these twenty immediate chains.
+
+A representative historical_11/DOS20 original-byte differential CPU test executes65536 paired cases with DOS.word+8 equalNE.word+12. AX, CX, defined FLAGS, preserved registers and FAR return agree under the projection. The fixture uses AH=A5, IF1 and alternatingDF. The test runs isolated body bytes in a real-mode CPU model; it is not native Win16 loader/protected-mode/IRQ execution. Equal raw offsets are not interchangeable: NE word8=0, word12=1 yieldsAL0 while DOS word8=0 yieldsAL1. The other NE bodies are related statically by the checked identical envelope.
+
+Ten NE function records and ten bounded version-mapping rows were added to the canonical local database. Five previously UNKNOWN NE predicate candidates are now mapped for these constrained local contracts. Full function ownership, global record semantics, native Win16 paths, timing, renderer and live remake parity remain unverified.
+
+Original M separately advances counter683→1256, with0 captured target invocations and endpoint RNG2745024; final revision77 is stopped with no pending return. All eleven targets remain enabled. The requested600-second window and actual end condition are bounded observations, not global RNG ordering or IRQ closure. The existing controlled MAP availability and BIOS queue input limitations remain in force.
+
+Private binaries, assets and frozen raw RPC traces stay local. Public data are derived mappings, records, validation summaries and reproducible tools. No P0/full-goal completion is claimed.

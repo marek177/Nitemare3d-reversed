@@ -1,0 +1,105 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:083D:117A",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 2109,
+    "entry_offset": 4474,
+    "ranges": [
+      [
+        4474,
+        4536
+      ],
+      [
+        4588,
+        4613
+      ],
+      [
+        4614,
+        4619
+      ],
+      [
+        4620,
+        4635
+      ],
+      [
+        4636,
+        4725
+      ]
+    ],
+    "end_exclusive_envelope": 4725,
+    "file_offset": 44938,
+    "candidate_bytes": "196",
+    "instruction_count": 64,
+    "entries": [
+      4474
+    ],
+    "decoded_exits": [
+      {
+        "offset": 4713,
+        "kind": "retf"
+      },
+      {
+        "offset": 4724,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic",
+      "relocated far call/jump",
+      "relocated pointer + frame prologue"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_083D_117A.json",
+  "calling_convention": "UNKNOWN",
+  "parameters": "UNKNOWN",
+  "algorithm": "Local actor mode/state initialization; bounded selectors18/19 set mode3; later byte-class overrides may replace it; native39-actor endpoint join supports one map only",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "UNKNOWN",
+  "runtime_evidence": [
+    "level_fixture_20261106/mode2_runtime_validation.json: explicit loader input10->4, original ctor0->2, target09F6/timer14/state5->6/FAR return; not native UI selection"
+  ],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN for full boundaries, native UI timing and live remake parity",
+  "open_questions": [
+    "Validate entry reachability and all indirect branches",
+    "Validate shared ownership and semantic function boundary",
+    "Recover algorithm, ABI and full side effects",
+    "Global aliases, all alternate entries and external/IRQ effects remain open; no global visibility or writer closure"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "algorithm_evidence_status": "VERIFIED_STATIC_LOCAL_CONTRACT; runtime/CPU scope in Omnificent report",
+  "Omnificent_followup": "omnificent_20261031/Omnificent_provenance_report.md",
+  "mode_override_map_provenance": {
+    "evidence_status": "VERIFIED_STATIC",
+    "map_header_reader": "0277:039B..03A7 reads514 bytes intoDS:D30C",
+    "loaded_table_proof": "selector8_20261106/selector8_runtime_validation.json",
+    "mode2": "first map class tableDS:D30E[object-origin even wall byte] in{42h,46h}",
+    "mode1": "class43h",
+    "scope": "Runtime endpoint proves loadedMAP2 header and even wall pointer; no newly traced constructor entry. Labels mostlyRETREAT; Episode1 ACTIONSPOT is an explicit exception. Not monster-name/OBJECTS-letter classification."
+  },
+  "mode2_runtime_constructor": {
+    "tile": [
+      29,
+      10
+    ],
+    "engine_type": 15,
+    "class_byte": 66,
+    "mode_store": "083D:1262",
+    "mode_change": [
+      0,
+      2
+    ],
+    "FAR_return": "04C7:1700",
+    "initial_mode2_count": 13,
+    "scope": "Explicit original loader argument fixture, valid originalMAP1 level5; not UI access or all constructor domains"
+  }
+}

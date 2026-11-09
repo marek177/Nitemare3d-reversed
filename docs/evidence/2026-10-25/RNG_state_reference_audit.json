@@ -1,0 +1,636 @@
+{
+  "binary_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+  "analysis_membership_sha256": "9c3049681c852a3cf0c1ed66fc984f6c00d626459cc09be0029283156a927f30",
+  "scope": "All unique segment:offset members inherited from nite3d20/functions.json, decoded as 16-bit x86. Explicit absolute byte overlap with offsets24B8..24BB; offset equality does not establish segment identity. Not arbitrary-byte discovery or a global writer proof.",
+  "independent_iced_instruction_lengths_checked": true,
+  "counts": {
+    "decoded_unique_segment_offset": 37531,
+    "absolute_memory_operands": 2598,
+    "indexed_memory_operands": 8335,
+    "indexed_explicit_write_operands": 2654
+  },
+  "decode_failures": [],
+  "absolute_overlap_operands": [
+    {
+      "pc": "11EE:31EC",
+      "instruction": "mov word ptr [0x24b8], ax",
+      "bytes": "a3b824",
+      "operand": 0,
+      "candidate_owners": [
+        "11EE:31E6"
+      ],
+      "width": 2,
+      "segment": "ds",
+      "read": false,
+      "write": true,
+      "access_unknown": false
+    },
+    {
+      "pc": "11EE:31EF",
+      "instruction": "mov word ptr [0x24ba], 0",
+      "bytes": "c706ba240000",
+      "operand": 0,
+      "candidate_owners": [
+        "11EE:31E6"
+      ],
+      "width": 2,
+      "segment": "ds",
+      "read": false,
+      "write": true,
+      "access_unknown": false
+    },
+    {
+      "pc": "11EE:3200",
+      "instruction": "push word ptr [0x24ba]",
+      "bytes": "ff36ba24",
+      "operand": 0,
+      "candidate_owners": [
+        "11EE:31F8"
+      ],
+      "width": 2,
+      "segment": "ds",
+      "read": true,
+      "write": false,
+      "access_unknown": false
+    },
+    {
+      "pc": "11EE:3204",
+      "instruction": "push word ptr [0x24b8]",
+      "bytes": "ff36b824",
+      "operand": 0,
+      "candidate_owners": [
+        "11EE:31F8"
+      ],
+      "width": 2,
+      "segment": "ds",
+      "read": true,
+      "write": false,
+      "access_unknown": false
+    },
+    {
+      "pc": "11EE:3213",
+      "instruction": "mov word ptr [0x24b8], ax",
+      "bytes": "a3b824",
+      "operand": 0,
+      "candidate_owners": [
+        "11EE:31F8"
+      ],
+      "width": 2,
+      "segment": "ds",
+      "read": false,
+      "write": true,
+      "access_unknown": false
+    },
+    {
+      "pc": "11EE:3216",
+      "instruction": "mov word ptr [0x24ba], dx",
+      "bytes": "8916ba24",
+      "operand": 0,
+      "candidate_owners": [
+        "11EE:31F8"
+      ],
+      "width": 2,
+      "segment": "ds",
+      "read": false,
+      "write": true,
+      "access_unknown": false
+    }
+  ],
+  "pointer_candidates": [],
+  "direct_far_edges": [
+    {
+      "pc": "0201:0468",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "0201:040E"
+      ]
+    },
+    {
+      "pc": "04C7:05EE",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "04C7:0422"
+      ]
+    },
+    {
+      "pc": "04C7:0912",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "04C7:08A0"
+      ]
+    },
+    {
+      "pc": "04C7:09F6",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "04C7:0938"
+      ]
+    },
+    {
+      "pc": "04C7:0A36",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "04C7:0938"
+      ]
+    },
+    {
+      "pc": "04C7:0ACF",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "04C7:0938"
+      ]
+    },
+    {
+      "pc": "04C7:0C37",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "04C7:0C30"
+      ]
+    },
+    {
+      "pc": "083D:01DD",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:01C0"
+      ]
+    },
+    {
+      "pc": "083D:0490",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:0408"
+      ]
+    },
+    {
+      "pc": "083D:049C",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:0408"
+      ]
+    },
+    {
+      "pc": "083D:04AC",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:0408"
+      ]
+    },
+    {
+      "pc": "083D:1698",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:143C"
+      ]
+    },
+    {
+      "pc": "083D:16A7",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:143C"
+      ]
+    },
+    {
+      "pc": "083D:18C8",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:1866"
+      ]
+    },
+    {
+      "pc": "083D:18F2",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:1866"
+      ]
+    },
+    {
+      "pc": "083D:199E",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:1922"
+      ]
+    },
+    {
+      "pc": "083D:1B3C",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:1AE4"
+      ]
+    },
+    {
+      "pc": "083D:1B66",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:1AE4"
+      ]
+    },
+    {
+      "pc": "083D:1C13",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:1BE4"
+      ]
+    },
+    {
+      "pc": "083D:1C77",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:1C48"
+      ]
+    },
+    {
+      "pc": "083D:1D5B",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "083D:1CFC"
+      ]
+    },
+    {
+      "pc": "0AEA:03D6",
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "0AEA:038C"
+      ]
+    },
+    {
+      "pc": "0D29:271C",
+      "target": "0FBA:01A6",
+      "role": "seed1_wrapper",
+      "kind": "lcall",
+      "candidate_owners": [
+        "0D29:26FC"
+      ]
+    },
+    {
+      "pc": "0FBA:01A0",
+      "target": "11EE:31F8",
+      "role": "RNG_core",
+      "kind": "lcall",
+      "candidate_owners": [
+        "0FBA:01A0"
+      ]
+    },
+    {
+      "pc": "0FBA:01A8",
+      "target": "11EE:31E6",
+      "role": "seed_setter",
+      "kind": "lcall",
+      "candidate_owners": [
+        "0FBA:01A6"
+      ]
+    }
+  ],
+  "encoded_far_pointer_occurrences": [
+    {
+      "image_offset": 64841,
+      "target": "11EE:31E6",
+      "role": "seed_setter",
+      "overlapping_inherited_instructions": [
+        "0FBA:01A8"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "0FBA:01A8"
+      ]
+    },
+    {
+      "image_offset": 64833,
+      "target": "11EE:31F8",
+      "role": "RNG_core",
+      "overlapping_inherited_instructions": [
+        "0FBA:01A0"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "0FBA:01A0"
+      ]
+    },
+    {
+      "image_offset": 9337,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "0201:0468"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "0201:0468"
+      ]
+    },
+    {
+      "image_offset": 21087,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "04C7:05EE"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "04C7:05EE"
+      ]
+    },
+    {
+      "image_offset": 21891,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "04C7:0912"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "04C7:0912"
+      ]
+    },
+    {
+      "image_offset": 22119,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "04C7:09F6"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "04C7:09F6"
+      ]
+    },
+    {
+      "image_offset": 22183,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "04C7:0A36"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "04C7:0A36"
+      ]
+    },
+    {
+      "image_offset": 22336,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "04C7:0ACF"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "04C7:0ACF"
+      ]
+    },
+    {
+      "image_offset": 22696,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "04C7:0C37"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "04C7:0C37"
+      ]
+    },
+    {
+      "image_offset": 34222,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:01DD"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:01DD"
+      ]
+    },
+    {
+      "image_offset": 34913,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:0490"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:0490"
+      ]
+    },
+    {
+      "image_offset": 34925,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:049C"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:049C"
+      ]
+    },
+    {
+      "image_offset": 34941,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:04AC"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:04AC"
+      ]
+    },
+    {
+      "image_offset": 39529,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:1698"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:1698"
+      ]
+    },
+    {
+      "image_offset": 39544,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:16A7"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:16A7"
+      ]
+    },
+    {
+      "image_offset": 40089,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:18C8"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:18C8"
+      ]
+    },
+    {
+      "image_offset": 40131,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:18F2"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:18F2"
+      ]
+    },
+    {
+      "image_offset": 40303,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:199E"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:199E"
+      ]
+    },
+    {
+      "image_offset": 40717,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:1B3C"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:1B3C"
+      ]
+    },
+    {
+      "image_offset": 40759,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:1B66"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:1B66"
+      ]
+    },
+    {
+      "image_offset": 40932,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:1C13"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:1C13"
+      ]
+    },
+    {
+      "image_offset": 41032,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:1C77"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:1C77"
+      ]
+    },
+    {
+      "image_offset": 41260,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "083D:1D5B"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "083D:1D5B"
+      ]
+    },
+    {
+      "image_offset": 45687,
+      "target": "0FBA:01A0",
+      "role": "RNG_wrapper",
+      "overlapping_inherited_instructions": [
+        "0AEA:03D6"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "0AEA:03D6"
+      ]
+    },
+    {
+      "image_offset": 63917,
+      "target": "0FBA:01A6",
+      "role": "seed1_wrapper",
+      "overlapping_inherited_instructions": [
+        "0D29:271C"
+      ],
+      "status": "ENCODED_BYTES_ONLY; execution and relocation not implied",
+      "exact_direct_far_operand_matches": [
+        "0D29:271C"
+      ]
+    }
+  ],
+  "global_alias_closure": false,
+  "remaining_domains": [
+    "Unknown DS/segment values at non-runtime sites",
+    "Indexed/register-derived addresses, string stores and implicit writes",
+    "DOS/BIOS/interrupt/external writes and self-modifying or unenumerated code",
+    "Other binary versions and Windows16 relocation/segment mapping"
+  ]
+}

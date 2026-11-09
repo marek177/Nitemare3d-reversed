@@ -1,0 +1,101 @@
+{
+  "status": "VERIFIED_STATIC_LOCAL_WITH_EMPTY_RUNTIME_SNAPSHOT",
+  "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+  "pool": {
+    "base": "DS:41B6",
+    "slots": 8,
+    "stride": 42,
+    "state_offset": 12,
+    "state_addresses": [
+      "DS:41C2",
+      "DS:41EC",
+      "DS:4216",
+      "DS:4240",
+      "DS:426A",
+      "DS:4294",
+      "DS:42BE",
+      "DS:42E8"
+    ],
+    "embedded_record_offset": 14,
+    "embedded_record_size": 28
+  },
+  "spans": [
+    {
+      "function": "07ED:000E",
+      "end_exclusive": 198,
+      "span_sha256": "347ae884aacea76f9747e29d9a758e0e54fbf67bcb4184cf2417eddc3389fb91",
+      "instructions": 62,
+      "independent_instruction_lengths_agree": true
+    },
+    {
+      "function": "07ED:0272",
+      "end_exclusive": 863,
+      "span_sha256": "7fd9dc638424072af621ca2ef3b79c71db3f184d2925ae484ca3e1e54a368a72",
+      "instructions": 86,
+      "independent_instruction_lengths_agree": true
+    },
+    {
+      "function": "07ED:0360",
+      "end_exclusive": 1101,
+      "span_sha256": "ab29ac0535efd52cec88ceeb2913866a9555d92e7efdbec5e0da7a7f0c91a6df",
+      "instructions": 89,
+      "independent_instruction_lengths_agree": true
+    }
+  ],
+  "literal_allocator_callers": [
+    "0637:06DA"
+  ],
+  "activation_order": [
+    "Scan first zero state, or return AL0 if all8 nonzero",
+    "Call083D:0B42; if AL0 return AL0",
+    "Set selected state=1 at07ED:003E",
+    "Write local direction and source words",
+    "Update selected embedded flags then call083D:0AF6",
+    "Initialize embedded type/frame/deadline/pointer/position/field1A",
+    "Return AL1"
+  ],
+  "collision_transition": {
+    "site": "07ED:0320",
+    "transition": "state1 -> state2 when nested00C6 returns nonzero",
+    "subsequent_effects": [
+      "embedded frame03=0",
+      "call083D:0B1C then embedded type04=AL",
+      "OR embedded flags05 with10"
+    ],
+    "deadline_cleared_in_transition": false
+  },
+  "release_transition": {
+    "site": "07ED:042C",
+    "transition": "state2 -> state0 when zero-extended frame byte is not signed-less-than animation-table frame count",
+    "other_slot_bytes_cleared_here": false
+  },
+  "snapshot": {
+    "revision": 197,
+    "states": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "server_pid_expected": 10784,
+    "activation_runtime_observed": false,
+    "release_runtime_observed": false,
+    "same_slot_reuse_runtime_observed": false
+  },
+  "input_attempt": {
+    "agent_input_method_advertised": false,
+    "owned_run_targetable_UI_window_found": false,
+    "UI_keys_sent": false,
+    "guest_state_fixture_written": false
+  },
+  "limits": [
+    "Static encoded local contracts and one stopped empty-pool snapshot only",
+    "Nested ammo/gate, collision and rendering side effects not closed",
+    "No generation/ABA, reentrancy or paired remake proof",
+    "Motion records at21FD:36B6 are a separate six-byte population, not conflated with this pool"
+  ]
+}
