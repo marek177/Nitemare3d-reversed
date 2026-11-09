@@ -1,0 +1,82 @@
+{
+  "pass": 153,
+  "source": "N3D_PASS150_evidence.json",
+  "method": "reanalysis of PASS150 evidence, not new original-binary disassembly",
+  "builds": {
+    "DOS_1.8": {
+      "references": 53,
+      "segment_load_reads": 51,
+      "cx_reads": 1,
+      "indirect_far_jumps": 1,
+      "far_pointer": {
+        "offset_word": "2550",
+        "segment_word": "2552",
+        "size_bytes": 4,
+        "instruction": "ljmp [0x2550]",
+        "address": "11EA:3984",
+        "cx_read": "11EA:397E",
+        "cx_word": "2552",
+        "address_delta_from_cx": 6,
+        "possible_intervening_bytes": 2
+      },
+      "distinct_segment_slots": [
+        "2554",
+        "2556",
+        "2558",
+        "255A",
+        "255C",
+        "255E",
+        "2560",
+        "2562",
+        "2564",
+        "2566",
+        "2568",
+        "256A"
+      ],
+      "static_zero_block": true
+    },
+    "DOS_2.0": {
+      "references": 53,
+      "segment_load_reads": 51,
+      "cx_reads": 1,
+      "indirect_far_jumps": 1,
+      "far_pointer": {
+        "offset_word": "2552",
+        "segment_word": "2554",
+        "size_bytes": 4,
+        "instruction": "ljmp [0x2552]",
+        "address": "11EE:3980",
+        "cx_read": "11EE:397A",
+        "cx_word": "2554",
+        "address_delta_from_cx": 6,
+        "possible_intervening_bytes": 2
+      },
+      "distinct_segment_slots": [
+        "2556",
+        "2558",
+        "255A",
+        "255C",
+        "255E",
+        "2560",
+        "2562",
+        "2564",
+        "2566",
+        "2568",
+        "256A",
+        "256C"
+      ],
+      "static_zero_block": true
+    }
+  },
+  "paired": {
+    "segment_reads_51_plus_2_special_reads": 53,
+    "field_shifts_all_plus_2": true,
+    "same_function_kinds": true
+  },
+  "limits": [
+    "Only 53 candidate explicit reads per build are analyzed; the scan is not comprehensive for pointer writes, aliasing, relocation and copies.",
+    "MOV CX and LJMP instruction starts are 6 bytes apart. Without the two intervening bytes there is no proof that CX still contains the FAR-pointer segment at jump time.",
+    "Static zeros do not imply zero during runtime; indirect JMP target cannot be determined.",
+    "The DOS_1.8 label is contested by an older audit attributing the same normalized-image digest to DOS 1.9."
+  ]
+}
