@@ -1,0 +1,94 @@
+{
+  "pass": 154,
+  "scope": "static original DOS 2.0 from all-nite3d.zip (EXEPACK expansion); no game execution",
+  "original_exe_sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301",
+  "normalized_image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "exact_byte_checks": {
+    "caller_argument_gate": {
+      "offset": "0x15526",
+      "bytes": "83 7e 06 02 75 12",
+      "verified": true
+    },
+    "caller_target": {
+      "offset": "0x15533",
+      "bytes": "9a 7a 39 ee 11",
+      "verified": true
+    },
+    "guard_and_jmp": {
+      "offset": "0x1585A",
+      "bytes": "8b 0e 54 25 e3 04 ff 2e 52 25",
+      "verified": true
+    },
+    "fallback": {
+      "offset": "0x15864",
+      "bytes": "b8 ff ff c7 06 18 21 16 00 e9 27 cc",
+      "verified": true
+    },
+    "callback_range_1": {
+      "offset": "0x120C1",
+      "bytes": "be 52 25 bf 52 25 e8 a1 00",
+      "verified": true
+    },
+    "callback_range_2": {
+      "offset": "0x12113",
+      "bytes": "be 52 25 bf 52 25 e8 4f 00",
+      "verified": true
+    },
+    "callback_scan": {
+      "offset": "0x1216B",
+      "bytes": "3b f7 73 0e 83 ef 04 8b 05 0b 45 02 74 f2 ff 1d eb ee c3",
+      "verified": true
+    }
+  },
+  "decoded_guard": {
+    "mov_CX": "11EE:397A mov cx,word ptr ds:[2554h]",
+    "conditional": "11EE:397E jcxz 11EE:3984",
+    "far_jump": "11EE:3980 jmp far ptr ds:[2552h]",
+    "fallback": "11EE:3984 mov ax,0FFFFh; mov word ptr ds:[2118h],0016h; jmp common 0x12497 (image-linear)"
+  },
+  "direct_caller": {
+    "image_linear": "0x15533",
+    "address": "11EE:3653",
+    "gate": "cmp [bp+06],2; jne bypass",
+    "argument_pushes": 3
+  },
+  "static_far_pointer": {
+    "linear": "0x24522",
+    "bytes": "00000000",
+    "relocation_intersects_any_byte": false,
+    "reloc_exact_word_start": []
+  },
+  "whole_image_raw_signature_occurrences": {
+    "direct_call_11EE_397A": [
+      "0x15533"
+    ],
+    "indirect_far_jmp_DS_2552": [
+      "0x15860"
+    ],
+    "SI_2552": [
+      "0x120C1",
+      "0x12113",
+      "0x1211C"
+    ],
+    "DI_2552": [
+      "0x120C4",
+      "0x12101",
+      "0x12116",
+      "0x1211F"
+    ],
+    "mov_CX_DS_2554": [
+      "0x1585A"
+    ]
+  },
+  "older_distribution_binary_identity": {
+    "dos18_exe_sha256": "1cbb55c193b75424ee6b287f3a902a0a3c243a392d034086d040b07c99994be8",
+    "dos19_exe_sha256": "1cbb55c193b75424ee6b287f3a902a0a3c243a392d034086d040b07c99994be8",
+    "byte_identical": true
+  },
+  "limitations": [
+    "Byte pattern hits are not complete disassembly or writer census.",
+    "No runtime pointer target or last-writer trace.",
+    "Range-walker helper checks 4-byte entries and can invoke them; does not prove writes to callback slot.",
+    "Expanded image is unrelocated; memory initialization after loader remains unobserved."
+  ]
+}
