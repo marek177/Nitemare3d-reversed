@@ -1,0 +1,58 @@
+{
+  "pass": 148,
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "image_bytes": 171360,
+  "verified": [
+    {
+      "function": "0000_0212",
+      "instructions": 162,
+      "bytes": 488,
+      "mismatches": 0,
+      "failures": []
+    },
+    {
+      "function": "0277_1176",
+      "instructions": 421,
+      "bytes": 1151,
+      "mismatches": 0,
+      "failures": []
+    },
+    {
+      "function": "0D29_095A",
+      "instructions": 68,
+      "bytes": 230,
+      "mismatches": 0,
+      "failures": []
+    },
+    {
+      "function": "0D29_2204",
+      "instructions": 122,
+      "bytes": 320,
+      "mismatches": 0,
+      "failures": []
+    },
+    {
+      "function": "0D29_2496",
+      "instructions": 54,
+      "bytes": 151,
+      "mismatches": 0,
+      "failures": []
+    },
+    {
+      "function": "0D29_252E",
+      "instructions": 86,
+      "bytes": 219,
+      "mismatches": 0,
+      "failures": []
+    }
+  ],
+  "total_instructions": 913,
+  "total_bytes": 2559,
+  "total_mismatches": 0,
+  "findings": {
+    "selection_load": "0D29:2204 on selected entry: skip init iff BP+6 nonzero and both IDs match globals 626C/626A; otherwise call 095A",
+    "cached_load": "0D29:2496 direct 1176 when DS:3CC4>=0 and decision != 1Bh; if DS:3CC4<0 calls 2204 with argument 1",
+    "conditional_load": "0D29:252E direct 1176 only when DS:3CD4==3, BP+8>=0, parsed ID matches 626C/626A; no local 095A",
+    "preservation": "0277:1176 saves and restores first eight bytes per 18-byte record; global proof of link validity requires separate runtime or alias analysis"
+  }
+}
