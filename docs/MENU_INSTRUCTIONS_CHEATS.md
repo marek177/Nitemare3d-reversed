@@ -16,7 +16,16 @@ The one-episode/demo edition still exposes the Cheats command but rejects activa
 
 ## Cheat modes
 
-Four original modes are represented by `CheatMode`: Omniscient, Omnipotent, Omnificent and Omnifarious. Binary anchors and recovered state effects are documented in the source and EXE notes. Confirmed reconstructed effects include mapping-power bypass, ammunition/health bypass, enemy acquisition suppression, and broad inventory grant behavior.
+Four original modes are represented by `CheatMode`: Omniscient, Omnipotent, Omnificent and Omnifarious.
+
+The Win16 1.10 effects are now statically closed:
+
+- **Omniscient** keeps both mapper-power resources from draining and immediately restores them to 100 when the grant helper runs.
+- **Omnipotent** supplies all four weapons, keeps weapon resources from being consumed, prevents normal player damage, and immediately restores HP/ammo to 100.
+- **Omnifarious** grants the full collectible-access set: weapons, ammo, HP, keys, ID cards, pentagrams, mapper powers and special-use count 99.
+- **Omnificent** does not globally freeze enemies. It suppresses autonomous acquisition in GUARD state 7 and the relevant state-8 branch. An accepted player fire action separately wakes eligible strategy-0 guards in the player's saved selector group into state 1; the global Omnificent flag remains enabled.
+
+This distinction matters for a faithful reconstruction: the original instruction wording "unless you fire at them" is implemented by a saved, one-shot guard wake cache rather than by disabling Omnificent.
 
 ## Instructions flow
 
