@@ -1,0 +1,181 @@
+{
+  "date": "2026-11-11",
+  "source_kind": "historical_chat_summary_not_independently_verified",
+  "source_chat": "6af32da3-6640-83eb-a3e8-40b8bc2a2661",
+  "source_passes": [
+    320,
+    321
+  ],
+  "canonical_image_sha256": null,
+  "expected_image_bytes": 171360,
+  "expected_interval_count": 1488,
+  "categories": {
+    "DEEP_VERIFIED": 0,
+    "PARTIAL": 72014,
+    "ALIGNMENT": 84,
+    "NOP": 597,
+    "EMBEDDED_TABLE": 752,
+    "UNASSESSED_N3D": 0,
+    "NON_CODE": 57295,
+    "EXTERNAL_CRT_WORX": 40618
+  },
+  "independently_verified_bytes_this_batch": 0,
+  "runtime_tests_this_batch": 0,
+  "intervals": null,
+  "data_catalog": null,
+  "function_catalog": null,
+  "missing": [
+    "canonical DOS2.0 BIN and its provenance/address-space definition",
+    "PASS320/321 full interval CSV/JSON and per-interval hashes",
+    "original EXE and load/relocation mapping",
+    "ASM export with segment context",
+    "Win1.10 EXE, NE relocation tables and hash"
+  ],
+  "coverage_areas": [
+    {
+      "area": "Mapy a dátové formáty",
+      "previous_estimate_pct": 99,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "overené polia / inventár polí",
+      "new_binary_findings": [],
+      "remaining_unknown": "úplnosť polí a variantov",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "inventár formátov a parserových vetiev"
+    },
+    {
+      "area": "Dátové typy a konštanty",
+      "previous_estimate_pct": 95,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "sémanticky uzavreté dátové bajty / všetky dátové bajty",
+      "new_binary_findings": [],
+      "remaining_unknown": "typy NON-CODE intervalov",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "importovať NON-CODE intervaly a ich xrefs"
+    },
+    {
+      "area": "Tabuľky a ukazovatele",
+      "previous_estimate_pct": 93,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté položky / inventár položiek",
+      "new_binary_findings": [],
+      "remaining_unknown": "segmentové bázy a nepriame ciele",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "zostaviť pointer ledger s relokáciami"
+    },
+    {
+      "area": "Funkcie / ASM / CFG",
+      "previous_estimate_pct": 90,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "funkcie so všetkými bránami / overený inventár funkcií",
+      "new_binary_findings": [],
+      "remaining_unknown": "hranice a nepriame hrany",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "rekurzívna dosiahnuteľnosť z potvrdených vstupov"
+    },
+    {
+      "area": "RNG a determinizmus",
+      "previous_estimate_pct": 97,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté callsites / inventár callsites; runtime osobitne",
+      "new_binary_findings": [],
+      "remaining_unknown": "poradie a spotreba RNG",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "zachytiť RNG pred/po každom volaní"
+    },
+    {
+      "area": "Scheduler / herná slučka",
+      "previous_estimate_pct": 96,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté vetvy / inventár vetiev",
+      "new_binary_findings": [],
+      "remaining_unknown": "poradie tickov a mutácie aktérov",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "zachytiť vstup a všetky aktualizácie jedného ticku"
+    },
+    {
+      "area": "DEMO a vstupy",
+      "previous_estimate_pct": 96,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté vetvy / inventár vetiev",
+      "new_binary_findings": [],
+      "remaining_unknown": "vzorkovanie vstupov a prehrávanie",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "opakovať identické DEMO z totožného stavu"
+    },
+    {
+      "area": "Renderer / VGA",
+      "previous_estimate_pct": 94,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté vetvy / inventár vetiev; pixely osobitne",
+      "new_binary_findings": [],
+      "remaining_unknown": "clipping a VGA stav",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "zachytiť indexed framebuffer a DAC"
+    },
+    {
+      "area": "GUARD AI / bossovia",
+      "previous_estimate_pct": 93,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté prechody / inventár prechodov",
+      "new_binary_findings": [],
+      "remaining_unknown": "špeciálne stavy a dosiahnuteľnosť",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "inventár dispatcherov a bossových prechodov"
+    },
+    {
+      "area": "Zbrane / projektily",
+      "previous_estimate_pct": 92,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté vetvy / inventár vetiev",
+      "new_binary_findings": [],
+      "remaining_unknown": "kolízie a slot lifecycle",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "zachytiť slot pred/po kolízii a damage"
+    },
+    {
+      "area": "Sprity / HUD / paleta",
+      "previous_estimate_pct": 92,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté operácie / inventár operácií",
+      "new_binary_findings": [],
+      "remaining_unknown": "resource binding a clipping",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "spárovať zdrojové dáta s draw callsites"
+    },
+    {
+      "area": "SAVE / LOAD",
+      "previous_estimate_pct": 92,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté polia / inventár polí; roundtrip osobitne",
+      "new_binary_findings": [],
+      "remaining_unknown": "cache a prvý tick po LOAD",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "SAVE/LOAD stopa vrátane prvého herného ticku"
+    },
+    {
+      "area": "Windows Win16",
+      "previous_estimate_pct": 92,
+      "measured_pct": null,
+      "status": "UNKNOWN",
+      "methodology": "uzavreté funkcie / Win1.10 inventár",
+      "new_binary_findings": [],
+      "remaining_unknown": "NE relokácie a DOS/Win odlišnosti",
+      "blocker": "Chýba autentifikovaný vstupný obraz a úplný inventár menovateľa.",
+      "next_step": "autentifikovať Win1.10 EXE a NE segmenty"
+    }
+  ],
+  "user_supplied_exe_path": "L:\\nite3d\\nite3\\dos\\N3D-UNFU.exe",
+  "user_supplied_exe_verified": false
+}
