@@ -1,0 +1,85 @@
+image_offset,cs,ip,bytes,instruction,status,scope
+73464,4590,24,b430,"mov ah,30h",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73466,4590,26,cd21,int 21h,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73468,4590,28,3c02,"cmp al,2",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73470,4590,30,7305,jae short 0025h,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73472,4590,32,33c0,"xor ax,ax",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73474,4590,34,06,push es,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73475,4590,35,50,push ax,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73476,4590,36,cb,ret far,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73477,4590,37,bf7127,"mov di,2771h",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73480,4590,40,8b360200,"mov si,[2]",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73484,4590,44,2bf7,"sub si,di",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73486,4590,46,81fe0010,"cmp si,1000h",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73490,4590,50,7203,jb short 0037h,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73492,4590,52,be0010,"mov si,1000h",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73495,4590,55,fa,cli,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73496,4590,56,8ed7,"mov ss,di",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73498,4590,58,81c42ee0,"add sp,0E02Eh",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73502,4590,62,fb,sti,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73503,4590,63,7312,jae short 0053h,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73505,4590,65,16,push ss,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73506,4590,66,1f,pop ds,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73507,4590,67,0e,push cs,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73508,4590,68,e85702,call 029Eh,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73511,4590,71,33c0,"xor ax,ax",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73513,4590,73,50,push ax,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73514,4590,74,0e,push cs,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73515,4590,75,e8f704,call 0545h,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73518,4590,78,b8ff4c,"mov ax,4CFFh",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73521,4590,81,cd21,int 21h,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73523,4590,83,36a32221,"mov ss:[2122h],ax",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73527,4590,87,86e0,"xchg al,ah",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73529,4590,89,36a32021,"mov ss:[2120h],ax",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73533,4590,93,8bc6,"mov ax,si",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73535,4590,95,b104,"mov cl,4",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73537,4590,97,d3e0,"shl ax,cl",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73539,4590,99,48,dec ax,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73540,4590,100,36a3e020,"mov ss:[20E0h],ax",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73544,4590,104,bbe220,"mov bx,20E2h",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73547,4590,107,368c17,"mov ss:[bx],ss",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73550,4590,110,83e4fe,"and sp,0FFFEh",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73553,4590,113,36896704,"mov ss:[bx+4],sp",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73557,4590,117,b8feff,"mov ax,0FFFEh",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73560,4590,120,50,push ax,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73561,4590,121,3689670a,"mov ss:[bx+0Ah],sp",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73565,4590,125,f7d0,not ax,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73567,4590,127,50,push ax,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73568,4590,128,36896706,"mov ss:[bx+6],sp",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73572,4590,132,36896708,"mov ss:[bx+8],sp",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73576,4590,136,368926dc20,"mov ss:[20DCh],sp",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73581,4590,141,03f7,"add si,di",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73583,4590,143,89360200,"mov [2],si",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73587,4590,147,8cc3,"mov bx,es",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73589,4590,149,2bde,"sub bx,si",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73591,4590,151,f7db,neg bx,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73593,4590,153,b44a,"mov ah,4Ah",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73595,4590,155,cd21,int 21h,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73597,4590,157,368c1e1e21,"mov ss:[211Eh],ds",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73602,4590,162,16,push ss,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73603,4590,163,07,pop es,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73604,4590,164,fc,cld,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73605,4590,165,bf5026,"mov di,2650h",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73608,4590,168,b930e0,"mov cx,0E030h",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73611,4590,171,2bcf,"sub cx,di",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73613,4590,173,33c0,"xor ax,ax",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73615,4590,175,f3aa,rep stosb [di],PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73617,4590,177,16,push ss,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73618,4590,178,1f,pop ds,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73619,4590,179,8b0e3225,"mov cx,[2532h]",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73623,4590,183,e302,jcxz 00BBh,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73625,4590,185,ffd1,call cx,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73627,4590,187,9a9c04ee11,"call far 049Ch,11EEh",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73632,4590,192,9a0e03ee11,"call far 030Eh,11EEh",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73637,4590,197,33ed,"xor bp,bp",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73639,4590,199,9a2201ee11,"call far 0122h,11EEh",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73644,4590,204,16,push ss,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73645,4590,205,1f,pop ds,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73646,4590,206,ff364221,push word ptr [2142h],PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73650,4590,210,ff364021,push word ptr [2140h],PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73654,4590,214,ff363e21,push word ptr [213Eh],PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73658,4590,218,9a26037604,"call far 0326h,0476h",PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73663,4590,223,50,push ax,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73664,4590,224,0e,push cs,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73665,4590,225,e80701,call 01EBh,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open
+73668,4590,228,c3,ret,PARTIAL,startup candidate; normal path preconditions and external DOS ABI remain open

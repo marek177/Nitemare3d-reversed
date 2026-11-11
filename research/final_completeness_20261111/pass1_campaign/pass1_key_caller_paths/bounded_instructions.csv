@@ -1,0 +1,40 @@
+window,image_offset,cs,ip,bytes,instruction,status
+dispatcher_prefix,5108,247,1156,c8080000,"enter 8,0",PARTIAL
+dispatcher_prefix,5112,247,1160,57,push di,PARTIAL
+dispatcher_prefix,5113,247,1161,56,push si,PARTIAL
+dispatcher_prefix,5114,247,1162,8b760a,"mov si,[bp+0Ah]",PARTIAL
+dispatcher_prefix,5117,247,1165,c646fd00,"mov byte ptr [bp-3],0",PARTIAL
+dispatcher_prefix,5121,247,1169,c45e06,"les bx,[bp+6]",PARTIAL
+dispatcher_prefix,5124,247,1172,268a07,"mov al,es:[bx]",PARTIAL
+dispatcher_prefix,5127,247,1175,8846fc,"mov [bp-4],al",PARTIAL
+dispatcher_prefix,5130,247,1178,83fe0d,"cmp si,0Dh",PARTIAL
+dispatcher_prefix,5133,247,1181,0f8c4901,jl 05EAh,PARTIAL
+dispatcher_prefix,5137,247,1185,83fe2c,"cmp si,2Ch",PARTIAL
+dispatcher_prefix,5140,247,1188,0f8f4201,jg 05EAh,PARTIAL
+dispatcher_prefix,5144,247,1192,83fe15,"cmp si,15h",PARTIAL
+dispatcher_prefix,5147,247,1195,7c0f,jl short 04BCh,PARTIAL
+dispatcher_prefix,5149,247,1197,83fe18,"cmp si,18h",PARTIAL
+dispatcher_prefix,5152,247,1200,7f0a,jg short 04BCh,PARTIAL
+dispatcher_prefix,5154,247,1202,56,push si,PARTIAL
+dispatcher_prefix,5155,247,1203,50,push ax,PARTIAL
+dispatcher_prefix,5156,247,1204,9a8e233d08,"call far 238Eh,083Dh",PARTIAL
+dispatcher_prefix,5161,247,1209,eb4f,jmp short 050Ah,PARTIAL
+dispatcher_prefix,5163,247,1211,90,nop,PARTIAL
+dispatcher_prefix,5164,247,1212,83fe19,"cmp si,19h",PARTIAL
+dispatcher_prefix,5167,247,1215,7c13,jl short 04D4h,PARTIAL
+dispatcher_prefix,5169,247,1217,83fe1c,"cmp si,1Ch",PARTIAL
+dispatcher_prefix,5172,247,1220,7f0e,jg short 04D4h,PARTIAL
+dispatcher_prefix,5174,247,1222,56,push si,PARTIAL
+dispatcher_prefix,5175,247,1223,8a46fc,"mov al,[bp-4]",PARTIAL
+dispatcher_prefix,5178,247,1226,2ae4,"sub ah,ah",PARTIAL
+dispatcher_prefix,5180,247,1228,50,push ax,PARTIAL
+dispatcher_prefix,5181,247,1229,9a1a1e290d,"call far 1E1Ah,0D29h",PARTIAL
+dispatcher_prefix,5186,247,1234,eb36,jmp short 050Ah,PARTIAL
+wrapper_to_selector,61610,3369,7706,c8460000,"enter 46h,0",PARTIAL
+wrapper_to_selector,61614,3369,7710,57,push di,PARTIAL
+wrapper_to_selector,61615,3369,7711,56,push si,PARTIAL
+wrapper_to_selector,61616,3369,7712,8b7e08,"mov di,[bp+8]",PARTIAL
+wrapper_to_selector,61619,3369,7715,8d45e7,"lea ax,[di-19h]",PARTIAL
+wrapper_to_selector,61622,3369,7718,50,push ax,PARTIAL
+wrapper_to_selector,61623,3369,7719,8bf8,"mov di,ax",PARTIAL
+wrapper_to_selector,61625,3369,7721,9a361f3d08,"call far 1F36h,083Dh",PARTIAL

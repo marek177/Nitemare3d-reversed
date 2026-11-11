@@ -1,0 +1,40 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "direct_calls": [
+    {
+      "source_image": 5181,
+      "cs": 247,
+      "ip": 1229,
+      "bytes": "9a1a1e290d",
+      "instruction": "call far 1E1Ah,0D29h",
+      "target_image": 61610,
+      "scope": "direct encoded call in pinned inventory; not complete runtime caller graph"
+    },
+    {
+      "source_image": 61625,
+      "cs": 3369,
+      "ip": 7721,
+      "bytes": "9a361f3d08",
+      "instruction": "call far 1F36h,083Dh",
+      "target_image": 41734,
+      "scope": "direct encoded call in pinned inventory; not complete runtime caller graph"
+    }
+  ],
+  "key_route_item_bounds": [
+    25,
+    28
+  ],
+  "index_formula": "(item_code-25) & FFFFh",
+  "index_bounds_on_this_route": [
+    0,
+    3
+  ],
+  "caller_argument_layout": "dispatcher pushes item SI then zero-extended record BYTE; wrapper reads item at BP+8",
+  "DS_context": "inherited; no default-DS establishment before selector on this route",
+  "global_caller_graph_complete": false,
+  "natural_dispatch_entry_DS_proven": false,
+  "byte_status_promotions": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0
+}
