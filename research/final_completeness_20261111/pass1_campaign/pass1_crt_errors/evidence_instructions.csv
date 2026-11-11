@@ -1,0 +1,22 @@
+block,image_offset,cs,ip,bytes,instruction
+error_mapper,74922,4590,1482,a22621,"mov [2126h],al"
+error_mapper,74925,4590,1485,0ae4,"or ah,ah"
+error_mapper,74927,4590,1487,7522,jne short 05F3h
+error_mapper,74929,4590,1489,803e212103,"cmp byte ptr [2121h],3"
+error_mapper,74934,4590,1494,720c,jb short 05E4h
+error_mapper,74936,4590,1496,3c22,"cmp al,22h"
+error_mapper,74938,4590,1498,730c,jae short 05E8h
+error_mapper,74940,4590,1500,3c20,"cmp al,20h"
+error_mapper,74942,4590,1502,7204,jb short 05E4h
+error_mapper,74944,4590,1504,b005,"mov al,5"
+error_mapper,74946,4590,1506,eb06,jmp short 05EAh
+error_mapper,74948,4590,1508,3c13,"cmp al,13h"
+error_mapper,74950,4590,1510,7602,jbe short 05EAh
+error_mapper,74952,4590,1512,b013,"mov al,13h"
+error_mapper,74954,4590,1514,bb6021,"mov bx,2160h"
+error_mapper,74957,4590,1517,d7,xlat [bx]
+error_mapper,74958,4590,1518,98,cbw
+error_mapper,74959,4590,1519,a31821,"mov [2118h],ax"
+error_mapper,74962,4590,1522,c3,ret
+error_mapper,74963,4590,1523,8ac4,"mov al,ah"
+error_mapper,74965,4590,1525,ebf7,jmp short 05EEh

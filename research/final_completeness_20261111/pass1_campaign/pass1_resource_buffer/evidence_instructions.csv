@@ -1,0 +1,66 @@
+block,image_offset,cs,ip,bytes,instruction
+bounded_resource_loader,50766,3115,926,c8020000,"enter 2,0"
+bounded_resource_loader,50770,3115,930,56,push si
+bounded_resource_loader,50771,3115,931,8b7606,"mov si,[bp+6]"
+bounded_resource_loader,50774,3115,934,8bde,"mov bx,si"
+bounded_resource_loader,50776,3115,936,03de,"add bx,si"
+bounded_resource_loader,50778,3115,938,03de,"add bx,si"
+bounded_resource_loader,50780,3115,940,03db,"add bx,bx"
+bounded_resource_loader,50782,3115,942,81bf643f983a,"cmp word ptr [bx+3F64h],3A98h"
+bounded_resource_loader,50788,3115,948,7717,ja short 03CDh
+bounded_resource_loader,50790,3115,950,ffb7643f,push word ptr [bx+3F64h]
+bounded_resource_loader,50794,3115,954,66ffb7663f,push dword ptr [bx+3F66h]
+bounded_resource_loader,50799,3115,959,680f1d,push 1D0Fh
+bounded_resource_loader,50802,3115,962,680000,push 0
+bounded_resource_loader,50805,3115,965,9a8a007702,"call far 008Ah,0277h"
+bounded_resource_loader,50810,3115,970,83c40a,"add sp,0Ah"
+bounded_resource_loader,50813,3115,973,b80000,"mov ax,0"
+bounded_resource_loader,50816,3115,976,ba0f1d,"mov dx,1D0Fh"
+bounded_resource_loader,50819,3115,979,5e,pop si
+bounded_resource_loader,50820,3115,980,c9,leave
+bounded_resource_loader,50821,3115,981,cb,ret far
+seek_and_read_helper,10234,631,138,55,push bp
+seek_and_read_helper,10235,631,139,8bec,"mov bp,sp"
+seek_and_read_helper,10237,631,141,833eac0100,"cmp word ptr [1ACh],0"
+seek_and_read_helper,10242,631,146,7522,jne short 00B6h
+seek_and_read_helper,10244,631,148,680080,push 8000h
+seek_and_read_helper,10247,631,151,68ae01,push 1AEh
+seek_and_read_helper,10250,631,154,9a721cee11,"call far 1C72h,11EEh"
+seek_and_read_helper,10255,631,159,8be5,"mov sp,bp"
+seek_and_read_helper,10257,631,161,a3ac01,"mov [1ACh],ax"
+seek_and_read_helper,10260,631,164,3dffff,"cmp ax,0FFFFh"
+seek_and_read_helper,10263,631,167,750d,jne short 00B6h
+seek_and_read_helper,10265,631,169,68b601,push 1B6h
+seek_and_read_helper,10268,631,172,68be01,push 1BEh
+seek_and_read_helper,10271,631,175,9a0c00ba0f,"call far 000Ch,0FBAh"
+seek_and_read_helper,10276,631,180,8be5,"mov sp,bp"
+seek_and_read_helper,10278,631,182,6a00,push 0
+seek_and_read_helper,10280,631,184,66ff760a,push dword ptr [bp+0Ah]
+seek_and_read_helper,10284,631,188,ff36ac01,push word ptr [1ACh]
+seek_and_read_helper,10288,631,192,9ad61bee11,"call far 1BD6h,11EEh"
+seek_and_read_helper,10293,631,197,8be5,"mov sp,bp"
+seek_and_read_helper,10295,631,199,ff760e,push word ptr [bp+0Eh]
+seek_and_read_helper,10298,631,202,66ff7606,push dword ptr [bp+6]
+seek_and_read_helper,10302,631,206,ff36ac01,push word ptr [1ACh]
+seek_and_read_helper,10306,631,210,9a9e00ba0f,"call far 009Eh,0FBAh"
+seek_and_read_helper,10311,631,215,8be5,"mov sp,bp"
+seek_and_read_helper,10313,631,217,3b460e,"cmp ax,[bp+0Eh]"
+seek_and_read_helper,10316,631,220,740b,je short 00E9h
+seek_and_read_helper,10318,631,222,68d401,push 1D4h
+seek_and_read_helper,10321,631,225,68dc01,push 1DCh
+seek_and_read_helper,10324,631,228,9a0c00ba0f,"call far 000Ch,0FBAh"
+seek_and_read_helper,10329,631,233,c9,leave
+seek_and_read_helper,10330,631,234,cb,ret far
+dos_read_primitive,64574,4026,158,55,push bp
+dos_read_primitive,64575,4026,159,8bec,"mov bp,sp"
+dos_read_primitive,64577,4026,161,1e,push ds
+dos_read_primitive,64578,4026,162,8b5e06,"mov bx,[bp+6]"
+dos_read_primitive,64581,4026,165,c55608,"lds dx,[bp+8]"
+dos_read_primitive,64584,4026,168,b43f,"mov ah,3Fh"
+dos_read_primitive,64586,4026,170,8b4e0c,"mov cx,[bp+0Ch]"
+dos_read_primitive,64589,4026,173,cd21,int 21h
+dos_read_primitive,64591,4026,175,7303,jae short 00B4h
+dos_read_primitive,64593,4026,177,b8ffff,"mov ax,0FFFFh"
+dos_read_primitive,64596,4026,180,1f,pop ds
+dos_read_primitive,64597,4026,181,c9,leave
+dos_read_primitive,64598,4026,182,cb,ret far

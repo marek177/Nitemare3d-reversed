@@ -1,0 +1,84 @@
+block,image_offset,cs,ip,bytes,instruction
+buffer_flush,76588,4590,3148,55,push bp
+buffer_flush,76589,4590,3149,8bec,"mov bp,sp"
+buffer_flush,76591,4590,3151,83ec02,"sub sp,2"
+buffer_flush,76594,4590,3154,57,push di
+buffer_flush,76595,4590,3155,56,push si
+buffer_flush,76596,4590,3156,33ff,"xor di,di"
+buffer_flush,76598,4590,3158,8b4604,"mov ax,[bp+4]"
+buffer_flush,76601,4590,3161,8bd8,"mov bx,ax"
+buffer_flush,76603,4590,3163,8bf0,"mov si,ax"
+buffer_flush,76605,4590,3165,8a4f06,"mov cl,[bx+6]"
+buffer_flush,76608,4590,3168,8bd1,"mov dx,cx"
+buffer_flush,76610,4590,3170,80e103,"and cl,3"
+buffer_flush,76613,4590,3173,80f902,"cmp cl,2"
+buffer_flush,76616,4590,3176,7547,jne short 0CB1h
+buffer_flush,76618,4590,3178,f6c208,"test dl,8"
+buffer_flush,76621,4590,3181,750b,jne short 0C7Ah
+buffer_flush,76623,4590,3183,81eb7a21,"sub bx,217Ah"
+buffer_flush,76627,4590,3187,f6871a2201,"test byte ptr [bx+221Ah],1"
+buffer_flush,76632,4590,3192,7437,je short 0CB1h
+buffer_flush,76634,4590,3194,8b04,"mov ax,[si]"
+buffer_flush,76636,4590,3196,2b4404,"sub ax,[si+4]"
+buffer_flush,76639,4590,3199,8946fe,"mov [bp-2],ax"
+buffer_flush,76642,4590,3202,0bc0,"or ax,ax"
+buffer_flush,76644,4590,3204,7e2b,jle short 0CB1h
+buffer_flush,76646,4590,3206,50,push ax
+buffer_flush,76647,4590,3207,ff7404,push word ptr [si+4]
+buffer_flush,76650,4590,3210,8a4407,"mov al,[si+7]"
+buffer_flush,76653,4590,3213,2ae4,"sub ah,ah"
+buffer_flush,76655,4590,3215,50,push ax
+buffer_flush,76656,4590,3216,9afe1eee11,"call far 1EFEh,11EEh"
+buffer_flush,76661,4590,3221,83c406,"add sp,6"
+buffer_flush,76664,4590,3224,3b46fe,"cmp ax,[bp-2]"
+buffer_flush,76667,4590,3227,750d,jne short 0CAAh
+buffer_flush,76669,4590,3229,f6440680,"test byte ptr [si+6],80h"
+buffer_flush,76673,4590,3233,740e,je short 0CB1h
+buffer_flush,76675,4590,3235,806406fd,"and byte ptr [si+6],0FDh"
+buffer_flush,76679,4590,3239,eb08,jmp short 0CB1h
+buffer_flush,76681,4590,3241,90,nop
+buffer_flush,76682,4590,3242,804c0620,"or byte ptr [si+6],20h"
+buffer_flush,76686,4590,3246,bfffff,"mov di,0FFFFh"
+buffer_flush,76689,4590,3249,8b4404,"mov ax,[si+4]"
+buffer_flush,76692,4590,3252,8904,"mov [si],ax"
+buffer_flush,76694,4590,3254,c744020000,"mov word ptr [si+2],0"
+buffer_flush,76699,4590,3259,8bc7,"mov ax,di"
+buffer_flush,76701,4590,3261,5e,pop si
+buffer_flush,76702,4590,3262,5f,pop di
+buffer_flush,76703,4590,3263,8be5,"mov sp,bp"
+buffer_flush,76705,4590,3265,5d,pop bp
+buffer_flush,76706,4590,3266,c3,ret
+flush_wrapper,76508,4590,3068,55,push bp
+flush_wrapper,76509,4590,3069,8bec,"mov bp,sp"
+flush_wrapper,76511,4590,3071,56,push si
+flush_wrapper,76512,4590,3072,837e0600,"cmp word ptr [bp+6],0"
+flush_wrapper,76516,4590,3076,7508,jne short 0C0Eh
+flush_wrapper,76518,4590,3078,33c0,"xor ax,ax"
+flush_wrapper,76520,4590,3080,50,push ax
+flush_wrapper,76521,4590,3081,e8c000,call 0CCCh
+flush_wrapper,76524,4590,3084,eb39,jmp short 0C47h
+flush_wrapper,76526,4590,3086,ff7606,push word ptr [bp+6]
+flush_wrapper,76529,4590,3089,e83800,call 0C4Ch
+flush_wrapper,76532,4590,3092,83c402,"add sp,2"
+flush_wrapper,76535,4590,3095,0bc0,"or ax,ax"
+flush_wrapper,76537,4590,3097,7405,je short 0C20h
+flush_wrapper,76539,4590,3099,b8ffff,"mov ax,0FFFFh"
+flush_wrapper,76542,4590,3102,eb27,jmp short 0C47h
+flush_wrapper,76544,4590,3104,8b7606,"mov si,[bp+6]"
+flush_wrapper,76547,4590,3107,81ee7a21,"sub si,217Ah"
+flush_wrapper,76551,4590,3111,81c61a22,"add si,221Ah"
+flush_wrapper,76555,4590,3115,f60440,"test byte ptr [si],40h"
+flush_wrapper,76558,4590,3118,7417,je short 0C47h
+flush_wrapper,76560,4590,3120,8b5e06,"mov bx,[bp+6]"
+flush_wrapper,76563,4590,3123,2ae4,"sub ah,ah"
+flush_wrapper,76565,4590,3125,8a4707,"mov al,[bx+7]"
+flush_wrapper,76568,4590,3128,50,push ax
+flush_wrapper,76569,4590,3129,9ab028ee11,"call far 28B0h,11EEh"
+flush_wrapper,76574,4590,3134,83c402,"add sp,2"
+flush_wrapper,76577,4590,3137,3d0100,"cmp ax,1"
+flush_wrapper,76580,4590,3140,f5,cmc
+flush_wrapper,76581,4590,3141,1bc0,"sbb ax,ax"
+flush_wrapper,76583,4590,3143,5e,pop si
+flush_wrapper,76584,4590,3144,8be5,"mov sp,bp"
+flush_wrapper,76586,4590,3146,5d,pop bp
+flush_wrapper,76587,4590,3147,cb,ret far

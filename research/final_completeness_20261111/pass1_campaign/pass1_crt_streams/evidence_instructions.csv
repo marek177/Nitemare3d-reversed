@@ -1,0 +1,79 @@
+block,image_offset,cs,ip,bytes,instruction
+iterator,76716,4590,3276,55,push bp
+iterator,76717,4590,3277,8bec,"mov bp,sp"
+iterator,76719,4590,3279,83ec02,"sub sp,2"
+iterator,76722,4590,3282,57,push di
+iterator,76723,4590,3283,56,push si
+iterator,76724,4590,3284,be7a21,"mov si,217Ah"
+iterator,76727,4590,3287,33ff,"xor di,di"
+iterator,76729,4590,3289,897efe,"mov [bp-2],di"
+iterator,76732,4590,3292,eb20,jmp short 0CFEh
+iterator,76734,4590,3294,837e0400,"cmp word ptr [bp+4],0"
+iterator,76738,4590,3298,7517,jne short 0CFBh
+iterator,76740,4590,3300,f6440602,"test byte ptr [si+6],2"
+iterator,76744,4590,3304,7411,je short 0CFBh
+iterator,76746,4590,3306,56,push si
+iterator,76747,4590,3307,9afc0bee11,"call far 0BFCh,11EEh"
+iterator,76752,4590,3312,83c402,"add sp,2"
+iterator,76755,4590,3315,40,inc ax
+iterator,76756,4590,3316,7505,jne short 0CFBh
+iterator,76758,4590,3318,c746feffff,"mov word ptr [bp-2],0FFFFh"
+iterator,76763,4590,3323,83c608,"add si,8"
+iterator,76766,4590,3326,3936ba22,"cmp [22BAh],si"
+iterator,76770,4590,3330,721c,jb short 0D20h
+iterator,76772,4590,3332,837e0401,"cmp word ptr [bp+4],1"
+iterator,76776,4590,3336,75d4,jne short 0CDEh
+iterator,76778,4590,3338,f6440683,"test byte ptr [si+6],83h"
+iterator,76782,4590,3342,74ce,je short 0CDEh
+iterator,76784,4590,3344,56,push si
+iterator,76785,4590,3345,9afc0bee11,"call far 0BFCh,11EEh"
+iterator,76790,4590,3350,83c402,"add sp,2"
+iterator,76793,4590,3353,40,inc ax
+iterator,76794,4590,3354,74df,je short 0CFBh
+iterator,76796,4590,3356,47,inc di
+iterator,76797,4590,3357,ebdc,jmp short 0CFBh
+iterator,76799,4590,3359,90,nop
+iterator,76800,4590,3360,837e0401,"cmp word ptr [bp+4],1"
+iterator,76804,4590,3364,7504,jne short 0D2Ah
+iterator,76806,4590,3366,8bc7,"mov ax,di"
+iterator,76808,4590,3368,eb03,jmp short 0D2Dh
+iterator,76810,4590,3370,8b46fe,"mov ax,[bp-2]"
+iterator,76813,4590,3373,5e,pop si
+iterator,76814,4590,3374,5f,pop di
+iterator,76815,4590,3375,8be5,"mov sp,bp"
+iterator,76817,4590,3377,5d,pop bp
+iterator,76818,4590,3378,c20200,ret 2
+record_consumer_prefix,76508,4590,3068,55,push bp
+record_consumer_prefix,76509,4590,3069,8bec,"mov bp,sp"
+record_consumer_prefix,76511,4590,3071,56,push si
+record_consumer_prefix,76512,4590,3072,837e0600,"cmp word ptr [bp+6],0"
+record_consumer_prefix,76516,4590,3076,7508,jne short 0C0Eh
+record_consumer_prefix,76518,4590,3078,33c0,"xor ax,ax"
+record_consumer_prefix,76520,4590,3080,50,push ax
+record_consumer_prefix,76521,4590,3081,e8c000,call 0CCCh
+record_consumer_prefix,76524,4590,3084,eb39,jmp short 0C47h
+record_consumer_prefix,76526,4590,3086,ff7606,push word ptr [bp+6]
+record_consumer_prefix,76529,4590,3089,e83800,call 0C4Ch
+record_consumer_prefix,76532,4590,3092,83c402,"add sp,2"
+record_consumer_prefix,76535,4590,3095,0bc0,"or ax,ax"
+record_consumer_prefix,76537,4590,3097,7405,je short 0C20h
+record_consumer_prefix,76539,4590,3099,b8ffff,"mov ax,0FFFFh"
+record_consumer_prefix,76542,4590,3102,eb27,jmp short 0C47h
+record_consumer_prefix,76544,4590,3104,8b7606,"mov si,[bp+6]"
+record_consumer_prefix,76547,4590,3107,81ee7a21,"sub si,217Ah"
+record_consumer_prefix,76551,4590,3111,81c61a22,"add si,221Ah"
+record_consumer_prefix,76555,4590,3115,f60440,"test byte ptr [si],40h"
+record_consumer_prefix,76558,4590,3118,7417,je short 0C47h
+record_consumer_prefix,76560,4590,3120,8b5e06,"mov bx,[bp+6]"
+record_consumer_prefix,76563,4590,3123,2ae4,"sub ah,ah"
+record_consumer_prefix,76565,4590,3125,8a4707,"mov al,[bx+7]"
+record_consumer_prefix,76568,4590,3128,50,push ax
+record_consumer_prefix,76569,4590,3129,9ab028ee11,"call far 28B0h,11EEh"
+record_consumer_prefix,76574,4590,3134,83c402,"add sp,2"
+record_consumer_prefix,76577,4590,3137,3d0100,"cmp ax,1"
+record_consumer_prefix,76580,4590,3140,f5,cmc
+record_consumer_prefix,76581,4590,3141,1bc0,"sbb ax,ax"
+record_consumer_prefix,76583,4590,3143,5e,pop si
+record_consumer_prefix,76584,4590,3144,8be5,"mov sp,bp"
+record_consumer_prefix,76586,4590,3146,5d,pop bp
+record_consumer_prefix,76587,4590,3147,cb,ret far

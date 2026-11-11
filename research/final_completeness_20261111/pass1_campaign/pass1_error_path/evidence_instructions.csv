@@ -1,0 +1,107 @@
+block,image_offset,cs,ip,bytes,instruction
+error_helper,64428,4026,12,55,push bp
+error_helper,64429,4026,13,8bec,"mov bp,sp"
+error_helper,64431,4026,15,9a92017604,"call far 0192h,0476h"
+error_helper,64436,4026,20,8d4608,"lea ax,[bp+8]"
+error_helper,64439,4026,23,50,push ax
+error_helper,64440,4026,24,ff7606,push word ptr [bp+6]
+error_helper,64443,4026,27,9a5a28ee11,"call far 285Ah,11EEh"
+error_helper,64448,4026,32,8be5,"mov sp,bp"
+error_helper,64450,4026,34,683a20,push 203Ah
+error_helper,64453,4026,37,9ae007ee11,"call far 07E0h,11EEh"
+error_helper,64458,4026,42,8be5,"mov sp,bp"
+error_helper,64460,4026,44,6a01,push 1
+error_helper,64462,4026,46,9aeb01ee11,"call far 01EBh,11EEh"
+error_helper,64467,4026,51,c9,leave
+error_helper,64468,4026,52,cb,ret far
+exit_entry,73931,4590,491,55,push bp
+exit_entry,73932,4590,492,8bec,"mov bp,sp"
+exit_entry,73934,4590,494,33c9,"xor cx,cx"
+exit_entry,73936,4590,496,eb1a,jmp short 020Ch
+exit_shared,73964,4590,524,882e5121,"mov [2151h],ch"
+exit_shared,73968,4590,528,51,push cx
+exit_shared,73969,4590,529,0ac9,"or cl,cl"
+exit_shared,73971,4590,531,751e,jne short 0233h
+exit_shared,73973,4590,533,beaa3c,"mov si,3CAAh"
+exit_shared,73976,4590,536,bfaa3c,"mov di,3CAAh"
+exit_shared,73979,4590,539,e86d00,call 028Bh
+exit_shared,73982,4590,542,be4e25,"mov si,254Eh"
+exit_shared,73985,4590,545,bf5225,"mov di,2552h"
+exit_shared,73988,4590,548,e86400,call 028Bh
+exit_shared,73991,4590,551,813e3425d6d6,"cmp word ptr [2534h],0D6D6h"
+exit_shared,73997,4590,557,7504,jne short 0233h
+exit_shared,73999,4590,559,ff163a25,call word ptr [253Ah]
+exit_shared,74003,4590,563,be5225,"mov si,2552h"
+exit_shared,74006,4590,566,bf5225,"mov di,2552h"
+exit_shared,74009,4590,569,e84f00,call 028Bh
+exit_shared,74012,4590,572,be5225,"mov si,2552h"
+exit_shared,74015,4590,575,bf5225,"mov di,2552h"
+exit_shared,74018,4590,578,e84600,call 028Bh
+exit_shared,74021,4590,581,9aea02ee11,"call far 02EAh,11EEh"
+exit_shared,74026,4590,586,0bc0,"or ax,ax"
+exit_shared,74028,4590,588,7411,je short 025Fh
+exit_shared,74030,4590,590,58,pop ax
+exit_shared,74031,4590,591,0ae4,"or ah,ah"
+exit_shared,74033,4590,593,50,push ax
+exit_shared,74034,4590,594,750b,jne short 025Fh
+exit_shared,74036,4590,596,837e0600,"cmp word ptr [bp+6],0"
+exit_shared,74040,4590,600,7505,jne short 025Fh
+exit_shared,74042,4590,602,c74606ff00,"mov word ptr [bp+6],0FFh"
+exit_shared,74047,4590,607,e81000,call 0272h
+exit_shared,74050,4590,610,58,pop ax
+exit_shared,74051,4590,611,0ae4,"or ah,ah"
+exit_shared,74053,4590,613,7507,jne short 026Eh
+exit_shared,74055,4590,615,8b4606,"mov ax,[bp+6]"
+exit_shared,74058,4590,618,b44c,"mov ah,4Ch"
+exit_shared,74060,4590,620,cd21,int 21h
+exit_shared,74062,4590,622,5f,pop di
+exit_shared,74063,4590,623,5e,pop si
+exit_shared,74064,4590,624,5d,pop bp
+exit_shared,74065,4590,625,cb,ret far
+cleanup_indirect,74066,4590,626,8b0e4425,"mov cx,[2544h]"
+cleanup_indirect,74070,4590,630,e307,jcxz 027Fh
+cleanup_indirect,74072,4590,632,bb0200,"mov bx,2"
+cleanup_indirect,74075,4590,635,ff1e4225,call far dword ptr [2542h]
+cleanup_indirect,74079,4590,639,1e,push ds
+cleanup_indirect,74080,4590,640,c5160a21,"lds dx,[210Ah]"
+cleanup_indirect,74084,4590,644,b80025,"mov ax,2500h"
+cleanup_indirect,74087,4590,647,cd21,int 21h
+cleanup_indirect,74089,4590,649,1f,pop ds
+cleanup_indirect,74090,4590,650,c3,ret
+cleanup_indirect,74091,4590,651,3bf7,"cmp si,di"
+cleanup_indirect,74093,4590,653,730e,jae short 029Dh
+cleanup_indirect,74095,4590,655,83ef04,"sub di,4"
+cleanup_indirect,74098,4590,658,8b05,"mov ax,[di]"
+cleanup_indirect,74100,4590,660,0b4502,"or ax,[di+2]"
+cleanup_indirect,74103,4590,663,74f2,je short 028Bh
+cleanup_indirect,74105,4590,665,ff1d,call far dword ptr [di]
+cleanup_indirect,74107,4590,667,ebee,jmp short 028Bh
+cleanup_indirect,74109,4590,669,c3,ret
+format_wrapper,83770,4590,10330,55,push bp
+format_wrapper,83771,4590,10331,8bec,"mov bp,sp"
+format_wrapper,83773,4590,10333,83ec02,"sub sp,2"
+format_wrapper,83776,4590,10336,57,push di
+format_wrapper,83777,4590,10337,56,push si
+format_wrapper,83778,4590,10338,be8221,"mov si,2182h"
+format_wrapper,83781,4590,10341,56,push si
+format_wrapper,83782,4590,10342,e8e1e2,call 0B4Ah
+format_wrapper,83785,4590,10345,83c402,"add sp,2"
+format_wrapper,83788,4590,10348,8bf8,"mov di,ax"
+format_wrapper,83790,4590,10350,ff7608,push word ptr [bp+8]
+format_wrapper,83793,4590,10353,ff7606,push word ptr [bp+6]
+format_wrapper,83796,4590,10356,b88221,"mov ax,2182h"
+format_wrapper,83799,4590,10359,50,push ax
+format_wrapper,83800,4590,10360,9a4816ee11,"call far 1648h,11EEh"
+format_wrapper,83805,4590,10365,83c406,"add sp,6"
+format_wrapper,83808,4590,10368,8946fe,"mov [bp-2],ax"
+format_wrapper,83811,4590,10371,b88221,"mov ax,2182h"
+format_wrapper,83814,4590,10374,50,push ax
+format_wrapper,83815,4590,10375,57,push di
+format_wrapper,83816,4590,10376,e832e3,call 0BBDh
+format_wrapper,83819,4590,10379,83c404,"add sp,4"
+format_wrapper,83822,4590,10382,8b46fe,"mov ax,[bp-2]"
+format_wrapper,83825,4590,10385,5e,pop si
+format_wrapper,83826,4590,10386,5f,pop di
+format_wrapper,83827,4590,10387,8be5,"mov sp,bp"
+format_wrapper,83829,4590,10389,5d,pop bp
+format_wrapper,83830,4590,10390,cb,ret far

@@ -1,0 +1,27 @@
+block,image_offset,cs,ip,bytes,instruction
+serialize_map,14023,631,3927,680020,push 2000h
+serialize_map,14026,631,3930,68fd21,push 21FDh
+serialize_map,14029,631,3933,683e37,push 373Eh
+serialize_map,14032,631,3936,ff76f6,push word ptr [bp-0Ah]
+serialize_map,14035,631,3939,9ab800ba0f,"call far 00B8h,0FBAh"
+serialize_map,14040,631,3944,83c408,"add sp,8"
+serialize_flags,14383,631,4287,6a40,push 40h
+serialize_flags,14385,631,4289,68fd21,push 21FDh
+serialize_flags,14388,631,4292,68fe36,push 36FEh
+serialize_flags,14391,631,4295,ff76f6,push word ptr [bp-0Ah]
+serialize_flags,14394,631,4298,9ab800ba0f,"call far 00B8h,0FBAh"
+serialize_flags,14399,631,4303,83c408,"add sp,8"
+clear_flags,21796,1223,2228,6633c0,"xor eax,eax"
+clear_flags,21799,1223,2231,8e065e25,"mov es,[255Eh]"
+clear_flags,21803,1223,2235,66b910000000,"mov ecx,10h"
+clear_flags,21809,1223,2241,bffe36,"mov di,36FEh"
+clear_flags,21812,1223,2244,f366ab,rep stosd [di]
+clear_flags,21815,1223,2247,5e,pop si
+clear_flags,21816,1223,2248,5f,pop di
+clear_flags,21817,1223,2249,c9,leave
+clear_flags,21818,1223,2250,cb,ret far
+flags_access,21820,1223,2252,b8fd21,"mov ax,21FDh"
+flags_access,21823,1223,2255,8ec0,"mov es,ax"
+flags_access,21825,1223,2257,2680bffe3600,"cmp byte ptr es:[bx+36FEh],0"
+flags_access,21831,1223,2263,755a,jne short 0933h
+flags_access,21833,1223,2265,26c687fe3601,"mov byte ptr es:[bx+36FEh],1"

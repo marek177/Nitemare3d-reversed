@@ -1,0 +1,51 @@
+block,image_offset,cs,ip,bytes,instruction
+clamp_and_pointer_producer,30592,1896,256,a30435,"mov [3504h],ax"
+clamp_and_pointer_producer,30595,1896,259,3d8000,"cmp ax,80h"
+clamp_and_pointer_producer,30598,1896,262,7e03,jle short 010Bh
+clamp_and_pointer_producer,30600,1896,264,b88000,"mov ax,80h"
+clamp_and_pointer_producer,30603,1896,267,a30435,"mov [3504h],ax"
+clamp_and_pointer_producer,30606,1896,270,3d0100,"cmp ax,1"
+clamp_and_pointer_producer,30609,1896,273,7d0b,jge short 011Eh
+clamp_and_pointer_producer,30611,1896,275,68ee0b,push 0BEEh
+clamp_and_pointer_producer,30614,1896,278,9a0c00ba0f,"call far 000Ch,0FBAh"
+clamp_and_pointer_producer,30619,1896,283,83c402,"add sp,2"
+clamp_and_pointer_producer,30622,1896,286,33ff,"xor di,di"
+clamp_and_pointer_producer,30624,1896,288,393e0435,"cmp [3504h],di"
+clamp_and_pointer_producer,30628,1896,292,7e41,jle short 0167h
+clamp_and_pointer_producer,30630,1896,294,be0000,"mov si,0"
+clamp_and_pointer_producer,30633,1896,297,68020c,push 0C02h
+clamp_and_pointer_producer,30636,1896,300,9a6520ee11,"call far 2065h,11EEh"
+clamp_and_pointer_producer,30641,1896,305,83c402,"add sp,2"
+clamp_and_pointer_producer,30644,1896,308,8e066025,"mov es,[2560h]"
+clamp_and_pointer_producer,30648,1896,312,268904,"mov es:[si],ax"
+clamp_and_pointer_producer,30651,1896,315,26895402,"mov es:[si+2],dx"
+clamp_and_pointer_producer,30655,1896,319,8bc2,"mov ax,dx"
+clamp_and_pointer_producer,30657,1896,321,260b04,"or ax,es:[si]"
+clamp_and_pointer_producer,30660,1896,324,750b,jne short 0151h
+clamp_and_pointer_producer,30662,1896,326,68220c,push 0C22h
+clamp_and_pointer_producer,30665,1896,329,9a0c00ba0f,"call far 000Ch,0FBAh"
+clamp_and_pointer_producer,30670,1896,334,83c402,"add sp,2"
+clamp_and_pointer_producer,30673,1896,337,8e066025,"mov es,[2560h]"
+clamp_and_pointer_producer,30677,1896,341,26c41c,"les bx,es:[si]"
+clamp_and_pointer_producer,30680,1896,344,83c604,"add si,4"
+clamp_and_pointer_producer,30683,1896,347,26c7070000,"mov word ptr es:[bx],0"
+clamp_and_pointer_producer,30688,1896,352,47,inc di
+clamp_and_pointer_producer,30689,1896,353,3b3e0435,"cmp di,[3504h]"
+clamp_and_pointer_producer,30693,1896,357,7cc2,jl short 0129h
+pointer_consumer,30903,1896,567,33c9,"xor cx,cx"
+pointer_consumer,30905,1896,569,39060435,"cmp [3504h],ax"
+pointer_consumer,30909,1896,573,7e30,jle short 026Fh
+pointer_consumer,30911,1896,575,bb0000,"mov bx,0"
+pointer_consumer,30914,1896,578,b8e71b,"mov ax,1BE7h"
+pointer_consumer,30917,1896,581,8ed8,"mov ds,ax"
+pointer_consumer,30919,1896,583,c437,"les si,[bx]"
+pointer_consumer,30921,1896,585,26833c00,"cmp word ptr es:[si],0"
+pointer_consumer,30925,1896,589,740c,je short 025Bh
+pointer_consumer,30927,1896,591,268b34,"mov si,es:[si]"
+pointer_consumer,30930,1896,594,6636c7440600000000,"mov dword ptr ss:[si+6],0"
+pointer_consumer,30939,1896,603,c437,"les si,[bx]"
+pointer_consumer,30941,1896,605,83c304,"add bx,4"
+pointer_consumer,30944,1896,608,26c7040000,"mov word ptr es:[si],0"
+pointer_consumer,30949,1896,613,41,inc cx
+pointer_consumer,30950,1896,614,36390e0435,"cmp ss:[3504h],cx"
+pointer_consumer,30955,1896,619,7fda,jg short 0247h

@@ -1,0 +1,89 @@
+block,image_offset,cs,ip,bytes,instruction
+block_loader_and_parser,54266,3369,362,c8080000,"enter 8,0"
+block_loader_and_parser,54270,3369,366,57,push di
+block_loader_and_parser,54271,3369,367,56,push si
+block_loader_and_parser,54272,3369,368,8a5e06,"mov bl,[bp+6]"
+block_loader_and_parser,54275,3369,371,881e8e36,"mov [368Eh],bl"
+block_loader_and_parser,54279,3369,375,2aff,"sub bh,bh"
+block_loader_and_parser,54281,3369,377,38bf6c1c,"cmp [bx+1C6Ch],bh"
+block_loader_and_parser,54285,3369,381,0f85c700,jne 0248h
+block_loader_and_parser,54289,3369,385,c6876c1c01,"mov byte ptr [bx+1C6Ch],1"
+block_loader_and_parser,54294,3369,390,69c3b004,"imul ax,bx,4B0h"
+block_loader_and_parser,54298,3369,394,050000,"add ax,0"
+block_loader_and_parser,54301,3369,397,68b920,push 20B9h
+block_loader_and_parser,54304,3369,400,50,push ax
+block_loader_and_parser,54305,3369,401,ff7606,push word ptr [bp+6]
+block_loader_and_parser,54308,3369,404,9a6c197702,"call far 196Ch,0277h"
+block_loader_and_parser,54313,3369,409,83c406,"add sp,6"
+block_loader_and_parser,54316,3369,412,a08e36,"mov al,[368Eh]"
+block_loader_and_parser,54319,3369,415,2ae4,"sub ah,ah"
+block_loader_and_parser,54321,3369,417,69c8b004,"imul cx,ax,4B0h"
+block_loader_and_parser,54325,3369,421,8bd8,"mov bx,ax"
+block_loader_and_parser,54327,3369,423,c1e309,"shl bx,9"
+block_loader_and_parser,54330,3369,426,81c10000,"add cx,0"
+block_loader_and_parser,54334,3369,430,898f9036,"mov [bx+3690h],cx"
+block_loader_and_parser,54338,3369,434,c7879236b920,"mov word ptr [bx+3692h],20B9h"
+block_loader_and_parser,54344,3369,440,bf0200,"mov di,2"
+block_loader_and_parser,54347,3369,443,be0100,"mov si,1"
+block_loader_and_parser,54350,3369,446,8a1e8e36,"mov bl,[368Eh]"
+block_loader_and_parser,54354,3369,450,2aff,"sub bh,bh"
+block_loader_and_parser,54356,3369,452,69c3b004,"imul ax,bx,4B0h"
+block_loader_and_parser,54360,3369,456,c1e307,"shl bx,7"
+block_loader_and_parser,54363,3369,459,03de,"add bx,si"
+block_loader_and_parser,54365,3369,461,c1e302,"shl bx,2"
+block_loader_and_parser,54368,3369,464,03c7,"add ax,di"
+block_loader_and_parser,54370,3369,466,8bc8,"mov cx,ax"
+block_loader_and_parser,54372,3369,468,050000,"add ax,0"
+block_loader_and_parser,54375,3369,471,bab920,"mov dx,20B9h"
+block_loader_and_parser,54378,3369,474,89879036,"mov [bx+3690h],ax"
+block_loader_and_parser,54382,3369,478,89979236,"mov [bx+3692h],dx"
+block_loader_and_parser,54386,3369,482,8bd8,"mov bx,ax"
+block_loader_and_parser,54388,3369,484,8ec2,"mov es,dx"
+block_loader_and_parser,54390,3369,486,268a07,"mov al,es:[bx]"
+block_loader_and_parser,54393,3369,489,2ae4,"sub ah,ah"
+block_loader_and_parser,54395,3369,491,8bd9,"mov bx,cx"
+block_loader_and_parser,54397,3369,493,8e066a25,"mov es,[256Ah]"
+block_loader_and_parser,54401,3369,497,268a8f0100,"mov cl,es:[bx+1]"
+block_loader_and_parser,54406,3369,502,2aed,"sub ch,ch"
+block_loader_and_parser,54408,3369,504,83c107,"add cx,7"
+block_loader_and_parser,54411,3369,507,c1f903,"sar cx,3"
+block_loader_and_parser,54414,3369,510,f7e9,imul cx
+block_loader_and_parser,54416,3369,512,8946fc,"mov [bp-4],ax"
+block_loader_and_parser,54419,3369,515,c746fe0000,"mov word ptr [bp-2],0"
+block_loader_and_parser,54424,3369,520,0bc0,"or ax,ax"
+block_loader_and_parser,54426,3369,522,7e2b,jle short 0237h
+block_loader_and_parser,54428,3369,524,8976f8,"mov [bp-8],si"
+block_loader_and_parser,54431,3369,527,8b76fe,"mov si,[bp-2]"
+block_loader_and_parser,54434,3369,530,a08e36,"mov al,[368Eh]"
+block_loader_and_parser,54437,3369,533,2ae4,"sub ah,ah"
+block_loader_and_parser,54439,3369,535,69c0b004,"imul ax,4B0h"
+block_loader_and_parser,54443,3369,539,03c7,"add ax,di"
+block_loader_and_parser,54445,3369,541,03c6,"add ax,si"
+block_loader_and_parser,54447,3369,543,050200,"add ax,2"
+block_loader_and_parser,54450,3369,546,68b920,push 20B9h
+block_loader_and_parser,54453,3369,549,50,push ax
+block_loader_and_parser,54454,3369,550,9ad200ba0f,"call far 00D2h,0FBAh"
+block_loader_and_parser,54459,3369,555,83c404,"add sp,4"
+block_loader_and_parser,54462,3369,558,46,inc si
+block_loader_and_parser,54463,3369,559,3b76fc,"cmp si,[bp-4]"
+block_loader_and_parser,54466,3369,562,7cde,jl short 0212h
+block_loader_and_parser,54468,3369,564,8b76f8,"mov si,[bp-8]"
+block_loader_and_parser,54471,3369,567,8b46fc,"mov ax,[bp-4]"
+block_loader_and_parser,54474,3369,570,050200,"add ax,2"
+block_loader_and_parser,54477,3369,573,03f8,"add di,ax"
+block_loader_and_parser,54479,3369,575,46,inc si
+block_loader_and_parser,54480,3369,576,81fe8000,"cmp si,80h"
+block_loader_and_parser,54484,3369,580,0f8c76ff,jl 01BEh
+block_loader_and_parser,54488,3369,584,5e,pop si
+block_loader_and_parser,54489,3369,585,5f,pop di
+block_loader_and_parser,54490,3369,586,c9,leave
+block_loader_and_parser,54491,3369,587,cb,ret far
+caller2,33775,2109,31,6a02,push 2
+caller2,33777,2109,33,9a6a01290d,"call far 016Ah,0D29h"
+caller2,33782,2109,38,83c402,"add sp,2"
+caller1,33818,2109,74,6a01,push 1
+caller1,33820,2109,76,9a6a01290d,"call far 016Ah,0D29h"
+caller1,33825,2109,81,83c402,"add sp,2"
+caller0,34034,2109,290,6a00,push 0
+caller0,34036,2109,292,9a6a01290d,"call far 016Ah,0D29h"
+caller0,34041,2109,297,83c402,"add sp,2"

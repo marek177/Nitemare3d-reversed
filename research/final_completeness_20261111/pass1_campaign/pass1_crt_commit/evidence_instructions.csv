@@ -1,0 +1,58 @@
+block,image_offset,cs,ip,bytes,instruction
+commit_wrapper,83856,4590,10416,55,push bp
+commit_wrapper,83857,4590,10417,8bec,"mov bp,sp"
+commit_wrapper,83859,4590,10419,57,push di
+commit_wrapper,83860,4590,10420,56,push si
+commit_wrapper,83861,4590,10421,8b7606,"mov si,[bp+6]"
+commit_wrapper,83864,4590,10424,0bf6,"or si,si"
+commit_wrapper,83866,4590,10426,7c06,jl short 28C2h
+commit_wrapper,83868,4590,10428,39362821,"cmp [2128h],si"
+commit_wrapper,83872,4590,10432,7f0c,jg short 28CEh
+commit_wrapper,83874,4590,10434,c70618210900,"mov word ptr [2118h],9"
+commit_wrapper,83880,4590,10440,b8ffff,"mov ax,0FFFFh"
+commit_wrapper,83883,4590,10443,eb36,jmp short 2903h
+commit_wrapper,83885,4590,10445,90,nop
+commit_wrapper,83886,4590,10446,a02021,"mov al,[2120h]"
+commit_wrapper,83889,4590,10449,8a262121,"mov ah,[2121h]"
+commit_wrapper,83893,4590,10453,3d1e03,"cmp ax,31Eh"
+commit_wrapper,83896,4590,10456,7d04,jge short 28DEh
+commit_wrapper,83898,4590,10458,33c0,"xor ax,ax"
+commit_wrapper,83900,4590,10460,eb25,jmp short 2903h
+commit_wrapper,83902,4590,10462,f6842a2101,"test byte ptr [si+212Ah],1"
+commit_wrapper,83907,4590,10467,7413,je short 28F8h
+commit_wrapper,83909,4590,10469,56,push si
+commit_wrapper,83910,4590,10470,9ad439ee11,"call far 39D4h,11EEh"
+commit_wrapper,83915,4590,10475,83c402,"add sp,2"
+commit_wrapper,83918,4590,10478,8bf8,"mov di,ax"
+commit_wrapper,83920,4590,10480,0bf8,"or di,ax"
+commit_wrapper,83922,4590,10482,740d,je short 2901h
+commit_wrapper,83924,4590,10484,893e2621,"mov [2126h],di"
+commit_wrapper,83928,4590,10488,c70618210900,"mov word ptr [2118h],9"
+commit_wrapper,83934,4590,10494,bfffff,"mov di,0FFFFh"
+commit_wrapper,83937,4590,10497,8bc7,"mov ax,di"
+commit_wrapper,83939,4590,10499,5e,pop si
+commit_wrapper,83940,4590,10500,5f,pop di
+commit_wrapper,83941,4590,10501,8be5,"mov sp,bp"
+commit_wrapper,83943,4590,10503,5d,pop bp
+commit_wrapper,83944,4590,10504,cb,ret far
+dos_commit_primitive,88244,4590,14804,55,push bp
+dos_commit_primitive,88245,4590,14805,8bec,"mov bp,sp"
+dos_commit_primitive,88247,4590,14807,8b5e06,"mov bx,[bp+6]"
+dos_commit_primitive,88250,4590,14810,b468,"mov ah,68h"
+dos_commit_primitive,88252,4590,14812,cd21,int 21h
+dos_commit_primitive,88254,4590,14814,e9c9cb,jmp 05AAh
+success_error_dispatch,74884,4590,1444,33c0,"xor ax,ax"
+success_error_dispatch,74886,4590,1446,8be5,"mov sp,bp"
+success_error_dispatch,74888,4590,1448,5d,pop bp
+success_error_dispatch,74889,4590,1449,cb,ret far
+success_error_dispatch,74890,4590,1450,73f8,jae short 05A4h
+success_error_dispatch,74892,4590,1452,50,push ax
+success_error_dispatch,74893,4590,1453,e81a00,call 05CAh
+success_error_dispatch,74896,4590,1456,58,pop ax
+success_error_dispatch,74897,4590,1457,32e4,"xor ah,ah"
+success_error_dispatch,74899,4590,1459,8be5,"mov sp,bp"
+success_error_dispatch,74901,4590,1461,5d,pop bp
+success_error_dispatch,74902,4590,1462,cb,ret far
+version_store,73523,4590,83,36a32221,"mov ss:[2122h],ax"
+version_store,73527,4590,87,86e0,"xchg al,ah"
+version_store,73529,4590,89,36a32021,"mov ss:[2120h],ax"

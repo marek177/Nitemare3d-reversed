@@ -1,0 +1,56 @@
+block,image_offset,cs,ip,bytes,instruction
+clear,39060,2109,5316,33c0,"xor ax,ax"
+clear,39062,2109,5318,8e066425,"mov es,[2564h]"
+clear,39066,2109,5322,b90010,"mov cx,1000h"
+clear,39069,2109,5325,bf0000,"mov di,0"
+clear,39072,2109,5328,d1e9,"shr cx,1"
+clear,39074,2109,5330,f3ab,rep stosw [di]
+clear,39076,2109,5332,0f833303,jae 180Bh
+clear,39080,2109,5336,aa,stosb [di]
+clear,39081,2109,5337,e92f03,jmp 180Bh
+cell_write,39039,2109,5295,8e066425,"mov es,[2564h]"
+cell_write,39043,2109,5299,8b5ef6,"mov bx,[bp-0Ah]"
+cell_write,39046,2109,5302,c1e306,"shl bx,6"
+cell_write,39049,2109,5305,035ef4,"add bx,[bp-0Ch]"
+cell_write,39052,2109,5308,2688870000,"mov es:[bx],al"
+cell_write,39057,2109,5313,e94703,jmp 180Bh
+line_writes,39802,2109,6058,8b46f6,"mov ax,[bp-0Ah]"
+line_writes,39805,2109,6061,c1e006,"shl ax,6"
+line_writes,39808,2109,6064,0346f4,"add ax,[bp-0Ch]"
+line_writes,39811,2109,6067,050000,"add ax,0"
+line_writes,39814,2109,6070,b9081c,"mov cx,1C08h"
+line_writes,39817,2109,6073,8bf0,"mov si,ax"
+line_writes,39819,2109,6075,894efc,"mov [bp-4],cx"
+line_writes,39822,2109,6078,8b46f6,"mov ax,[bp-0Ah]"
+line_writes,39825,2109,6081,3946f2,"cmp [bp-0Eh],ax"
+line_writes,39828,2109,6084,7524,jne short 17EAh
+line_writes,39830,2109,6086,8b46f4,"mov ax,[bp-0Ch]"
+line_writes,39833,2109,6089,a32e36,"mov [362Eh],ax"
+line_writes,39836,2109,6092,3946f0,"cmp [bp-10h],ax"
+line_writes,39839,2109,6095,7e3a,jle short 180Bh
+line_writes,39841,2109,6097,8e46fc,"mov es,[bp-4]"
+line_writes,39844,2109,6100,8a46ff,"mov al,[bp-1]"
+line_writes,39847,2109,6103,268804,"mov es:[si],al"
+line_writes,39850,2109,6106,46,inc si
+line_writes,39851,2109,6107,8b46f0,"mov ax,[bp-10h]"
+line_writes,39854,2109,6110,ff062e36,inc word ptr [362Eh]
+line_writes,39858,2109,6114,39062e36,"cmp [362Eh],ax"
+line_writes,39862,2109,6118,7cec,jl short 17D4h
+line_writes,39864,2109,6120,eb21,jmp short 180Bh
+line_writes,39866,2109,6122,a32c36,"mov [362Ch],ax"
+line_writes,39869,2109,6125,3946f2,"cmp [bp-0Eh],ax"
+line_writes,39872,2109,6128,7e19,jle short 180Bh
+line_writes,39874,2109,6130,8e46fc,"mov es,[bp-4]"
+line_writes,39877,2109,6133,8a46ff,"mov al,[bp-1]"
+line_writes,39880,2109,6136,268804,"mov es:[si],al"
+line_writes,39883,2109,6139,83c640,"add si,40h"
+line_writes,39886,2109,6142,8b46f2,"mov ax,[bp-0Eh]"
+line_writes,39889,2109,6145,ff062c36,inc word ptr [362Ch]
+line_writes,39893,2109,6149,39062c36,"cmp [362Ch],ax"
+line_writes,39897,2109,6153,7cea,jl short 17F5h
+line_writes,39899,2109,6155,b80000,"mov ax,0"
+line_writes,39902,2109,6158,ba081c,"mov dx,1C08h"
+line_writes,39905,2109,6161,5e,pop si
+line_writes,39906,2109,6162,5f,pop di
+line_writes,39907,2109,6163,c9,leave
+line_writes,39908,2109,6164,cb,ret far

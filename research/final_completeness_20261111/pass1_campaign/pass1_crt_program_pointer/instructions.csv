@@ -1,0 +1,27 @@
+block,image_offset,cs,ip,bytes,instruction
+initializer,74230,4590,790,a12221,"mov ax,[2122h]"
+initializer,74233,4590,793,ba0100,"mov dx,1"
+initializer,74236,4590,796,3c02,"cmp al,2"
+initializer,74238,4590,798,7429,je short 0349h
+initializer,74240,4590,800,8e061e21,"mov es,[211Eh]"
+initializer,74244,4590,804,268e062c00,"mov es,es:[2Ch]"
+initializer,74249,4590,809,8c064621,"mov [2146h],es"
+initializer,74253,4590,813,33c0,"xor ax,ax"
+initializer,74255,4590,815,99,cwd
+initializer,74256,4590,816,b90080,"mov cx,8000h"
+initializer,74259,4590,819,33ff,"xor di,di"
+initializer,74261,4590,821,f2ae,repne scasb [di]
+initializer,74263,4590,823,ae,scasb [di]
+initializer,74264,4590,824,75fb,jne short 0335h
+initializer,74266,4590,826,47,inc di
+initializer,74267,4590,827,47,inc di
+initializer,74268,4590,828,893e4421,"mov [2144h],di"
+initializer,74272,4590,832,b9ffff,"mov cx,0FFFFh"
+initializer,74275,4590,835,f2ae,repne scasb [di]
+initializer,74277,4590,837,f7d1,not cx
+initializer,74279,4590,839,8bd1,"mov dx,cx"
+pointer_consumer,74450,4590,1010,c5364421,"lds si,[2144h]"
+pointer_consumer,74454,4590,1014,ac,lodsb [si]
+pointer_consumer,74455,4590,1015,aa,stosb [di]
+pointer_consumer,74456,4590,1016,0ac0,"or al,al"
+pointer_consumer,74458,4590,1018,75fa,jne short 03F6h

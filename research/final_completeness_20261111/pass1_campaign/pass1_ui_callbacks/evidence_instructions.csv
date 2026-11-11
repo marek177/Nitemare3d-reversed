@@ -1,0 +1,48 @@
+block,image_offset,cs,ip,bytes,instruction
+callback_dispatch,60788,3369,6884,8e46f8,"mov es,[bp-8]"
+callback_dispatch,60791,3369,6887,6626837c0600,"cmp dword ptr es:[si+6],0"
+callback_dispatch,60797,3369,6893,7404,je short 1AF3h
+callback_dispatch,60799,3369,6895,26ff5c06,call far dword ptr es:[si+6]
+direct_ui_caller,61911,3369,8007,68b920,push 20B9h
+direct_ui_caller,61914,3369,8010,681212,push 1212h
+direct_ui_caller,61917,3369,8013,0e,push cs
+direct_ui_caller,61918,3369,8014,e8f5f9,call 1946h
+direct_ui_caller,61921,3369,8017,83c404,"add sp,4"
+record_consumer_prefix,60374,3369,6470,c80a0000,"enter 0Ah,0"
+record_consumer_prefix,60378,3369,6474,57,push di
+record_consumer_prefix,60379,3369,6475,56,push si
+record_consumer_prefix,60380,3369,6476,c646fe00,"mov byte ptr [bp-2],0"
+record_consumer_prefix,60384,3369,6480,6a02,push 2
+record_consumer_prefix,60386,3369,6482,0e,push cs
+record_consumer_prefix,60387,3369,6483,e814e8,call 016Ah
+record_consumer_prefix,60390,3369,6486,83c402,"add sp,2"
+record_consumer_prefix,60393,3369,6489,8b4606,"mov ax,[bp+6]"
+record_consumer_prefix,60396,3369,6492,8b5608,"mov dx,[bp+8]"
+record_consumer_prefix,60399,3369,6495,8bf0,"mov si,ax"
+record_consumer_prefix,60401,3369,6497,8956f8,"mov [bp-8],dx"
+record_consumer_prefix,60404,3369,6500,8ec2,"mov es,dx"
+record_consumer_prefix,60406,3369,6502,8bd8,"mov bx,ax"
+record_consumer_prefix,60408,3369,6504,26803f00,"cmp byte ptr es:[bx],0"
+record_consumer_prefix,60412,3369,6508,743d,je short 19ABh
+record_consumer_prefix,60414,3369,6510,666800000100,data32 push 10000h
+record_consumer_prefix,60420,3369,6516,8bfe,"mov di,si"
+record_consumer_prefix,60422,3369,6518,8c46fc,"mov [bp-4],es"
+record_consumer_prefix,60425,3369,6521,6626ff740e,push dword ptr es:[si+0Eh]
+record_consumer_prefix,60430,3369,6526,268b440c,"mov ax,es:[si+0Ch]"
+record_consumer_prefix,60434,3369,6530,40,inc ax
+record_consumer_prefix,60435,3369,6531,50,push ax
+record_consumer_prefix,60436,3369,6532,268b440a,"mov ax,es:[si+0Ah]"
+record_consumer_prefix,60440,3369,6536,40,inc ax
+record_consumer_prefix,60441,3369,6537,50,push ax
+record_consumer_prefix,60442,3369,6538,0e,push cs
+record_consumer_prefix,60443,3369,6539,e808e7,call 0096h
+record_consumer_prefix,60446,3369,6542,83c40c,"add sp,0Ch"
+record_consumer_prefix,60449,3369,6545,ff76f8,push word ptr [bp-8]
+record_consumer_prefix,60452,3369,6548,56,push si
+record_consumer_prefix,60453,3369,6549,0e,push cs
+record_consumer_prefix,60454,3369,6550,e8b3fd,call 174Ch
+record_consumer_prefix,60457,3369,6553,83c404,"add sp,4"
+record_consumer_prefix,60460,3369,6556,8e46f8,"mov es,[bp-8]"
+record_consumer_prefix,60463,3369,6559,83c612,"add si,12h"
+record_consumer_prefix,60466,3369,6562,26803c00,"cmp byte ptr es:[si],0"
+record_consumer_prefix,60470,3369,6566,75c6,jne short 196Eh

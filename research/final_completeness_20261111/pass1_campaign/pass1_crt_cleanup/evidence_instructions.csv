@@ -1,0 +1,45 @@
+block,image_offset,cs,ip,bytes,instruction
+callback_guards,73991,4590,551,813e3425d6d6,"cmp word ptr [2534h],0D6D6h"
+callback_guards,73997,4590,557,7504,jne short 0233h
+callback_guards,73999,4590,559,ff163a25,call word ptr [253Ah]
+callback_guards,74003,4590,563,be5225,"mov si,2552h"
+callback_guards,74006,4590,566,bf5225,"mov di,2552h"
+callback_guards,74009,4590,569,e84f00,call 028Bh
+callback_guards,74012,4590,572,be5225,"mov si,2552h"
+callback_guards,74015,4590,575,bf5225,"mov di,2552h"
+callback_guards,74018,4590,578,e84600,call 028Bh
+cleanup_call_range,73982,4590,542,be4e25,"mov si,254Eh"
+cleanup_call_range,73985,4590,545,bf5225,"mov di,2552h"
+cleanup_call_range,73988,4590,548,e86400,call 028Bh
+final_callback,74066,4590,626,8b0e4425,"mov cx,[2544h]"
+final_callback,74070,4590,630,e307,jcxz 027Fh
+final_callback,74072,4590,632,bb0200,"mov bx,2"
+final_callback,74075,4590,635,ff1e4225,call far dword ptr [2542h]
+final_callback,74079,4590,639,1e,push ds
+final_callback,74080,4590,640,c5160a21,"lds dx,[210Ah]"
+final_callback,74084,4590,644,b80025,"mov ax,2500h"
+final_callback,74087,4590,647,cd21,int 21h
+final_callback,74089,4590,649,1f,pop ds
+final_callback,74090,4590,650,c3,ret
+reverse_far_iterator,74091,4590,651,3bf7,"cmp si,di"
+reverse_far_iterator,74093,4590,653,730e,jae short 029Dh
+reverse_far_iterator,74095,4590,655,83ef04,"sub di,4"
+reverse_far_iterator,74098,4590,658,8b05,"mov ax,[di]"
+reverse_far_iterator,74100,4590,660,0b4502,"or ax,[di+2]"
+reverse_far_iterator,74103,4590,663,74f2,je short 028Bh
+reverse_far_iterator,74105,4590,665,ff1d,call far dword ptr [di]
+reverse_far_iterator,74107,4590,667,ebee,jmp short 028Bh
+reverse_far_iterator,74109,4590,669,c3,ret
+initial_cleanup_target,75518,4590,2078,55,push bp
+initial_cleanup_target,75519,4590,2079,8bec,"mov bp,sp"
+initial_cleanup_target,75521,4590,2081,9ac40cee11,"call far 0CC4h,11EEh"
+initial_cleanup_target,75526,4590,2086,a05121,"mov al,[2151h]"
+initial_cleanup_target,75529,4590,2089,0ac0,"or al,al"
+initial_cleanup_target,75531,4590,2091,7405,je short 0832h
+initial_cleanup_target,75533,4590,2093,9a6a25ee11,"call far 256Ah,11EEh"
+initial_cleanup_target,75538,4590,2098,5d,pop bp
+initial_cleanup_target,75539,4590,2099,cb,ret far
+target_subcall_entry,76708,4590,3268,b80100,"mov ax,1"
+target_subcall_entry,76711,4590,3271,50,push ax
+target_subcall_entry,76712,4590,3272,e80100,call 0CCCh
+target_subcall_entry,76715,4590,3275,cb,ret far

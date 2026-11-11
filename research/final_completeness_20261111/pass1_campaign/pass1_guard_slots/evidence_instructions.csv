@@ -1,0 +1,73 @@
+block,image_offset,cs,ip,bytes,instruction
+guard_constructor,25346,1223,5778,c8040000,"enter 4,0"
+guard_constructor,25350,1223,5782,57,push di
+guard_constructor,25351,1223,5783,56,push si
+guard_constructor,25352,1223,5784,6b5e061a,"imul bx,[bp+6],1Ah"
+guard_constructor,25356,1223,5788,81c34e26,"add bx,264Eh"
+guard_constructor,25360,1223,5792,8e065e25,"mov es,[255Eh]"
+guard_constructor,25364,1223,5796,8bf3,"mov si,bx"
+guard_constructor,25366,1223,5798,8c46fe,"mov [bp-2],es"
+guard_constructor,25369,1223,5801,662bc0,"sub eax,eax"
+guard_constructor,25372,1223,5804,6626894702,"mov es:[bx+2],eax"
+guard_constructor,25377,1223,5809,26894706,"mov es:[bx+6],ax"
+guard_constructor,25381,1223,5813,8b460c,"mov ax,[bp+0Ch]"
+guard_constructor,25384,1223,5816,26894708,"mov es:[bx+8],ax"
+guard_constructor,25388,1223,5820,26c6470d00,"mov byte ptr es:[bx+0Dh],0"
+guard_constructor,25393,1223,5825,26c64710ff,"mov byte ptr es:[bx+10h],0FFh"
+guard_constructor,25398,1223,5830,c45e08,"les bx,[bp+8]"
+guard_constructor,25401,1223,5833,6626ff770c,push dword ptr es:[bx+0Ch]
+guard_constructor,25406,1223,5838,9a7601f700,"call far 0176h,00F7h"
+guard_constructor,25411,1223,5843,83c404,"add sp,4"
+guard_constructor,25414,1223,5846,8bf8,"mov di,ax"
+guard_constructor,25416,1223,5848,83ffff,"cmp di,0FFFFh"
+guard_constructor,25419,1223,5851,7407,je short 16E4h
+guard_constructor,25421,1223,5853,8e46fe,"mov es,[bp-2]"
+guard_constructor,25424,1223,5856,2688440e,"mov es:[si+0Eh],al"
+guard_constructor,25428,1223,5860,ff760e,push word ptr [bp+0Eh]
+guard_constructor,25431,1223,5863,8b46fe,"mov ax,[bp-2]"
+guard_constructor,25434,1223,5866,50,push ax
+guard_constructor,25435,1223,5867,56,push si
+guard_constructor,25436,1223,5868,8bf8,"mov di,ax"
+guard_constructor,25438,1223,5870,0e,push cs
+guard_constructor,25439,1223,5871,e86eff,call 1660h
+guard_constructor,25442,1223,5874,83c406,"add sp,6"
+guard_constructor,25445,1223,5877,66ff7608,push dword ptr [bp+8]
+guard_constructor,25449,1223,5881,57,push di
+guard_constructor,25450,1223,5882,56,push si
+guard_constructor,25451,1223,5883,9a7a113d08,"call far 117Ah,083Dh"
+guard_constructor,25456,1223,5888,83c408,"add sp,8"
+guard_constructor,25459,1223,5891,5e,pop si
+guard_constructor,25460,1223,5892,5f,pop di
+guard_constructor,25461,1223,5893,c9,leave
+guard_constructor,25462,1223,5894,cb,ret far
+guard_count_and_call,47323,2794,2619,26f6470508,"test byte ptr es:[bx+5],8"
+guard_count_and_call,47328,2794,2624,7452,je short 0A94h
+guard_count_and_call,47330,2794,2626,833e766264,"cmp word ptr [6276h],64h"
+guard_count_and_call,47335,2794,2631,7c0d,jl short 0A56h
+guard_count_and_call,47337,2794,2633,6a64,push 64h
+guard_count_and_call,47339,2794,2635,68c216,push 16C2h
+guard_count_and_call,47342,2794,2638,9a0c00ba0f,"call far 000Ch,0FBAh"
+guard_count_and_call,47347,2794,2643,83c404,"add sp,4"
+guard_count_and_call,47350,2794,2646,a07662,"mov al,[6276h]"
+guard_count_and_call,47353,2794,2649,c45efc,"les bx,[bp-4]"
+guard_count_and_call,47356,2794,2652,26884707,"mov es:[bx+7],al"
+guard_count_and_call,47360,2794,2656,6a00,push 0
+guard_count_and_call,47362,2794,2658,268a4706,"mov al,es:[bx+6]"
+guard_count_and_call,47366,2794,2662,2ae4,"sub ah,ah"
+guard_count_and_call,47368,2794,2664,50,push ax
+guard_count_and_call,47369,2794,2665,9a4e00f700,"call far 004Eh,00F7h"
+guard_count_and_call,47374,2794,2670,83c404,"add sp,4"
+guard_count_and_call,47377,2794,2673,2ae4,"sub ah,ah"
+guard_count_and_call,47379,2794,2675,c45efc,"les bx,[bp-4]"
+guard_count_and_call,47382,2794,2678,2aed,"sub ch,ch"
+guard_count_and_call,47384,2794,2680,268a0f,"mov cl,es:[bx]"
+guard_count_and_call,47387,2794,2683,2bc8,"sub cx,ax"
+guard_count_and_call,47389,2794,2685,894efa,"mov [bp-6],cx"
+guard_count_and_call,47392,2794,2688,51,push cx
+guard_count_and_call,47393,2794,2689,56,push si
+guard_count_and_call,47394,2794,2690,06,push es
+guard_count_and_call,47395,2794,2691,53,push bx
+guard_count_and_call,47396,2794,2692,ff367662,push word ptr [6276h]
+guard_count_and_call,47400,2794,2696,ff067662,inc word ptr [6276h]
+guard_count_and_call,47404,2794,2700,9a9216c704,"call far 1692h,04C7h"
+guard_count_and_call,47409,2794,2705,83c40a,"add sp,0Ah"

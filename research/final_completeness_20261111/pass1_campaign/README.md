@@ -1,3 +1,11 @@
+# Current consolidated snapshot
+
+This section supersedes older snapshot counts below. Latest map: `pass1_id_card_selector/noncode_intervals.csv` and `.json`: PARTIAL 49,867 B; CLASSIFIED ONLY 7,384 B; UNKNOWN 44 B; DEEP VERIFIED 0 B, total 57,295 B. See `CAMPAIGN_CATALOG_REPORT.md` and individual evidence reports. Correct map extent: [2570E,2770E); the older scan-only extent was superseded. All executable bytes and assets remain external inputs.
+
+The central catalog contains 164 current data fields from 29 sources. These are PARTIAL local types, not full semantic closure. Controlled instruction replay cases: 2,603; natural DOSBox-X runtime tests: 0. Reproduce each report with the named scripts and pinned input image; preserve intermediate outputs when following the ordered PASS1 map chain. `independent_decode_and_catalog.py` also requires earlier verified batches in a common outputs root. This publication includes current scripts, reports, per-batch typed fields/ASM, and the final CSV/JSON map; it does not claim completion or ship native dependencies/game binaries.
+
+---
+
 # Recovered PASS320 and active PASS1 evidence
 
 Snapshot: 2026-11-11. This directory is a separate, source-pinned PASS1 evidence bundle. Older reports in `../verified_batches` are historical stages and may still state that the original ledger was missing. That blocker was removed by the user-supplied `N3D_PASS300-322_VSETKY_ZIP.zip`.
@@ -36,3 +44,4 @@ The large initial-content-run CSV and redundant intermediate JSON maps are regen
 ## Next work
 
 Close natural caller DS and global writer/lifetime contracts; inspect ID-card labels; reconstruct FAR-segment buffers in the 47,470 B region before default DS. Do not infer padding/BSS from zero content or FAR pointers from adjacent WORDs alone. Every promotion needs an explicit, reproducible proof.
+

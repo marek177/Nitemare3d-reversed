@@ -1,0 +1,90 @@
+block,image_offset,cs,ip,bytes,instruction
+directory_loader,16086,631,5990,55,push bp
+directory_loader,16087,631,5991,8bec,"mov bp,sp"
+directory_loader,16089,631,5993,56,push si
+directory_loader,16090,631,5994,803e780600,"cmp byte ptr [678h],0"
+directory_loader,16095,631,5999,7456,je short 17C7h
+directory_loader,16097,631,6001,c606780600,"mov byte ptr [678h],0"
+directory_loader,16102,631,6006,680080,push 8000h
+directory_loader,16105,631,6009,687906,push 679h
+directory_loader,16108,631,6012,9a721cee11,"call far 1C72h,11EEh"
+directory_loader,16113,631,6017,83c404,"add sp,4"
+directory_loader,16116,631,6020,8bf0,"mov si,ax"
+directory_loader,16118,631,6022,83feff,"cmp si,0FFFFh"
+directory_loader,16121,631,6025,750e,jne short 1799h
+directory_loader,16123,631,6027,688106,push 681h
+directory_loader,16126,631,6030,688906,push 689h
+directory_loader,16129,631,6033,9a0c00ba0f,"call far 000Ch,0FBAh"
+directory_loader,16134,631,6038,83c404,"add sp,4"
+directory_loader,16137,631,6041,68c000,push 0C0h
+directory_loader,16140,631,6044,68db1b,push 1BDBh
+directory_loader,16143,631,6047,680000,push 0
+directory_loader,16146,631,6050,56,push si
+directory_loader,16147,631,6051,9a9e00ba0f,"call far 009Eh,0FBAh"
+directory_loader,16152,631,6056,83c408,"add sp,8"
+directory_loader,16155,631,6059,3dc000,"cmp ax,0C0h"
+directory_loader,16158,631,6062,740e,je short 17BEh
+directory_loader,16160,631,6064,689f06,push 69Fh
+directory_loader,16163,631,6067,68a706,push 6A7h
+directory_loader,16166,631,6070,9a0c00ba0f,"call far 000Ch,0FBAh"
+directory_loader,16171,631,6075,83c404,"add sp,4"
+directory_loader,16174,631,6078,56,push si
+directory_loader,16175,631,6079,9ab61bee11,"call far 1BB6h,11EEh"
+directory_loader,16180,631,6084,83c402,"add sp,2"
+directory_loader,16183,631,6087,8b4606,"mov ax,[bp+6]"
+directory_loader,16186,631,6090,8bc8,"mov cx,ax"
+directory_loader,16188,631,6092,03c0,"add ax,ax"
+directory_loader,16190,631,6094,03c1,"add ax,cx"
+directory_loader,16192,631,6096,03c0,"add ax,ax"
+directory_loader,16194,631,6098,050000,"add ax,0"
+directory_loader,16197,631,6101,badb1b,"mov dx,1BDBh"
+directory_loader,16200,631,6104,5e,pop si
+directory_loader,16201,631,6105,c9,leave
+directory_loader,16202,631,6106,cb,ret far
+directory_consumer,16604,631,6508,c8060000,"enter 6,0"
+directory_consumer,16608,631,6512,57,push di
+directory_consumer,16609,631,6513,56,push si
+directory_consumer,16610,631,6514,680080,push 8000h
+directory_consumer,16613,631,6517,68f206,push 6F2h
+directory_consumer,16616,631,6520,9a721cee11,"call far 1C72h,11EEh"
+directory_consumer,16621,631,6525,83c404,"add sp,4"
+directory_consumer,16624,631,6528,8946fe,"mov [bp-2],ax"
+directory_consumer,16627,631,6531,0bc0,"or ax,ax"
+directory_consumer,16629,631,6533,7d0e,jge short 1995h
+directory_consumer,16631,631,6535,68fa06,push 6FAh
+directory_consumer,16634,631,6538,680207,push 702h
+directory_consumer,16637,631,6541,9a0c00ba0f,"call far 000Ch,0FBAh"
+directory_consumer,16642,631,6546,83c404,"add sp,4"
+directory_consumer,16645,631,6549,6a00,push 0
+directory_consumer,16647,631,6551,ff7606,push word ptr [bp+6]
+directory_consumer,16650,631,6554,0e,push cs
+directory_consumer,16651,631,6555,e8c8fd,call 1766h
+directory_consumer,16654,631,6558,83c402,"add sp,2"
+directory_consumer,16657,631,6561,8ec2,"mov es,dx"
+directory_consumer,16659,631,6563,8bd8,"mov bx,ax"
+directory_consumer,16661,631,6565,6626ff7702,push dword ptr es:[bx+2]
+directory_consumer,16666,631,6570,ff76fe,push word ptr [bp-2]
+directory_consumer,16669,631,6573,8bf0,"mov si,ax"
+directory_consumer,16671,631,6575,8bfa,"mov di,dx"
+directory_consumer,16673,631,6577,9ad61bee11,"call far 1BD6h,11EEh"
+directory_consumer,16678,631,6582,83c408,"add sp,8"
+directory_consumer,16681,631,6585,8ec7,"mov es,di"
+directory_consumer,16683,631,6587,26ff34,push word ptr es:[si]
+directory_consumer,16686,631,6590,66ff7608,push dword ptr [bp+8]
+directory_consumer,16690,631,6594,ff76fe,push word ptr [bp-2]
+directory_consumer,16693,631,6597,9a9e00ba0f,"call far 009Eh,0FBAh"
+directory_consumer,16698,631,6602,83c408,"add sp,8"
+directory_consumer,16701,631,6605,8ec7,"mov es,di"
+directory_consumer,16703,631,6607,263904,"cmp es:[si],ax"
+directory_consumer,16706,631,6610,740e,je short 19E2h
+directory_consumer,16708,631,6612,681807,push 718h
+directory_consumer,16711,631,6615,682007,push 720h
+directory_consumer,16714,631,6618,9a0c00ba0f,"call far 000Ch,0FBAh"
+directory_consumer,16719,631,6623,83c404,"add sp,4"
+directory_consumer,16722,631,6626,ff76fe,push word ptr [bp-2]
+directory_consumer,16725,631,6629,9ab61bee11,"call far 1BB6h,11EEh"
+directory_consumer,16730,631,6634,83c402,"add sp,2"
+directory_consumer,16733,631,6637,5e,pop si
+directory_consumer,16734,631,6638,5f,pop di
+directory_consumer,16735,631,6639,c9,leave
+directory_consumer,16736,631,6640,cb,ret far
