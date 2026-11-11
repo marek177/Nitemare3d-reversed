@@ -1,0 +1,51 @@
+block,image_offset,cs,ip,bytes,instruction
+indexed_comparison_caller,37658,2109,3914,2ae4,"sub ah,ah"
+indexed_comparison_caller,37660,2109,3916,c45e06,"les bx,[bp+6]"
+indexed_comparison_caller,37663,2109,3919,268a1f,"mov bl,es:[bx]"
+indexed_comparison_caller,37666,2109,3922,2aff,"sub bh,bh"
+indexed_comparison_caller,37668,2109,3924,2bd8,"sub bx,ax"
+indexed_comparison_caller,37670,2109,3926,c1e302,"shl bx,2"
+indexed_comparison_caller,37673,2109,3929,66ffb70a11,push dword ptr [bx+110Ah]
+indexed_comparison_caller,37678,2109,3934,8d46f2,"lea ax,[bp-0Eh]"
+indexed_comparison_caller,37681,2109,3937,16,push ss
+indexed_comparison_caller,37682,2109,3938,50,push ax
+indexed_comparison_caller,37683,2109,3939,9a683cee11,"call far 3C68h,11EEh"
+indexed_comparison_caller,37688,2109,3944,83c408,"add sp,8"
+indexed_comparison_caller,37691,2109,3947,0bc0,"or ax,ax"
+indexed_comparison_caller,37693,2109,3949,7407,je short 0F76h
+case_insensitive_compare,88904,4590,15464,55,push bp
+case_insensitive_compare,88905,4590,15465,8bec,"mov bp,sp"
+case_insensitive_compare,88907,4590,15467,8bd6,"mov dx,si"
+case_insensitive_compare,88909,4590,15469,1e,push ds
+case_insensitive_compare,88910,4590,15470,c5760a,"lds si,[bp+0Ah]"
+case_insensitive_compare,88913,4590,15473,c45e06,"les bx,[bp+6]"
+case_insensitive_compare,88916,4590,15476,b0ff,"mov al,0FFh"
+case_insensitive_compare,88918,4590,15478,0ac0,"or al,al"
+case_insensitive_compare,88920,4590,15480,742d,je short 3CA7h
+case_insensitive_compare,88922,4590,15482,ac,lodsb [si]
+case_insensitive_compare,88923,4590,15483,268a27,"mov ah,es:[bx]"
+case_insensitive_compare,88926,4590,15486,43,inc bx
+case_insensitive_compare,88927,4590,15487,3ae0,"cmp ah,al"
+case_insensitive_compare,88929,4590,15489,74f3,je short 3C76h
+case_insensitive_compare,88931,4590,15491,2c41,"sub al,41h"
+case_insensitive_compare,88933,4590,15493,3c1a,"cmp al,1Ah"
+case_insensitive_compare,88935,4590,15495,1ac9,"sbb cl,cl"
+case_insensitive_compare,88937,4590,15497,80e120,"and cl,20h"
+case_insensitive_compare,88940,4590,15500,02c1,"add al,cl"
+case_insensitive_compare,88942,4590,15502,0441,"add al,41h"
+case_insensitive_compare,88944,4590,15504,86e0,"xchg al,ah"
+case_insensitive_compare,88946,4590,15506,2c41,"sub al,41h"
+case_insensitive_compare,88948,4590,15508,3c1a,"cmp al,1Ah"
+case_insensitive_compare,88950,4590,15510,1ac9,"sbb cl,cl"
+case_insensitive_compare,88952,4590,15512,80e120,"and cl,20h"
+case_insensitive_compare,88955,4590,15515,02c1,"add al,cl"
+case_insensitive_compare,88957,4590,15517,0441,"add al,41h"
+case_insensitive_compare,88959,4590,15519,3ac4,"cmp al,ah"
+case_insensitive_compare,88961,4590,15521,74d3,je short 3C76h
+case_insensitive_compare,88963,4590,15523,1ac0,"sbb al,al"
+case_insensitive_compare,88965,4590,15525,1cff,"sbb al,0FFh"
+case_insensitive_compare,88967,4590,15527,98,cbw
+case_insensitive_compare,88968,4590,15528,1f,pop ds
+case_insensitive_compare,88969,4590,15529,8bf2,"mov si,dx"
+case_insensitive_compare,88971,4590,15531,5d,pop bp
+case_insensitive_compare,88972,4590,15532,cb,ret far

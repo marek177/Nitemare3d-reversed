@@ -1,0 +1,77 @@
+function,image_offset,cs,ip,bytes,instruction
+sin,53170,3197,2018,55,push bp
+sin,53171,3197,2019,8bec,"mov bp,sp"
+sin,53173,3197,2021,56,push si
+sin,53174,3197,2022,8b5e06,"mov bx,[bp+6]"
+sin,53177,3197,2025,83fb5a,"cmp bx,5Ah"
+sin,53180,3197,2028,7d0c,jge short 07FAh
+sin,53182,3197,2030,8bf3,"mov si,bx"
+sin,53184,3197,2032,03f3,"add si,bx"
+sin,53186,3197,2034,8b84e817,"mov ax,[si+17E8h]"
+sin,53190,3197,2038,5e,pop si
+sin,53191,3197,2039,c9,leave
+sin,53192,3197,2040,cb,ret far
+sin,53193,3197,2041,90,nop
+sin,53194,3197,2042,81fbb400,"cmp bx,0B4h"
+sin,53198,3197,2046,7d0e,jge short 080Eh
+sin,53200,3197,2048,be5019,"mov si,1950h"
+sin,53203,3197,2051,8bc3,"mov ax,bx"
+sin,53205,3197,2053,03c3,"add ax,bx"
+sin,53207,3197,2055,2bf0,"sub si,ax"
+sin,53209,3197,2057,8b04,"mov ax,[si]"
+sin,53211,3197,2059,5e,pop si
+sin,53212,3197,2060,c9,leave
+sin,53213,3197,2061,cb,ret far
+sin,53214,3197,2062,81fb0e01,"cmp bx,10Eh"
+sin,53218,3197,2066,7d0a,jge short 081Eh
+sin,53220,3197,2068,8bf3,"mov si,bx"
+sin,53222,3197,2070,03f3,"add si,bx"
+sin,53224,3197,2072,8b848016,"mov ax,[si+1680h]"
+sin,53228,3197,2076,eb0b,jmp short 0829h
+sin,53230,3197,2078,beb81a,"mov si,1AB8h"
+sin,53233,3197,2081,8bc3,"mov ax,bx"
+sin,53235,3197,2083,03c3,"add ax,bx"
+sin,53237,3197,2085,2bf0,"sub si,ax"
+sin,53239,3197,2087,8b04,"mov ax,[si]"
+sin,53241,3197,2089,f7d8,neg ax
+sin,53243,3197,2091,5e,pop si
+sin,53244,3197,2092,c9,leave
+sin,53245,3197,2093,cb,ret far
+cos,53246,3197,2094,55,push bp
+cos,53247,3197,2095,8bec,"mov bp,sp"
+cos,53249,3197,2097,56,push si
+cos,53250,3197,2098,8b5e06,"mov bx,[bp+6]"
+cos,53253,3197,2101,83fb5a,"cmp bx,5Ah"
+cos,53256,3197,2104,7d0c,jge short 0846h
+cos,53258,3197,2106,8bf3,"mov si,bx"
+cos,53260,3197,2108,03f3,"add si,bx"
+cos,53262,3197,2110,8b849e18,"mov ax,[si+189Eh]"
+cos,53266,3197,2114,5e,pop si
+cos,53267,3197,2115,c9,leave
+cos,53268,3197,2116,cb,ret far
+cos,53269,3197,2117,90,nop
+cos,53270,3197,2118,81fbb400,"cmp bx,0B4h"
+cos,53274,3197,2122,7d10,jge short 085Ch
+cos,53276,3197,2124,be061a,"mov si,1A06h"
+cos,53279,3197,2127,8bc3,"mov ax,bx"
+cos,53281,3197,2129,03c3,"add ax,bx"
+cos,53283,3197,2131,2bf0,"sub si,ax"
+cos,53285,3197,2133,8b04,"mov ax,[si]"
+cos,53287,3197,2135,f7d8,neg ax
+cos,53289,3197,2137,5e,pop si
+cos,53290,3197,2138,c9,leave
+cos,53291,3197,2139,cb,ret far
+cos,53292,3197,2140,81fb0e01,"cmp bx,10Eh"
+cos,53296,3197,2144,7d0a,jge short 086Ch
+cos,53298,3197,2146,8bf3,"mov si,bx"
+cos,53300,3197,2148,03f3,"add si,bx"
+cos,53302,3197,2150,8b843617,"mov ax,[si+1736h]"
+cos,53306,3197,2154,ebeb,jmp short 0857h
+cos,53308,3197,2156,be6e1b,"mov si,1B6Eh"
+cos,53311,3197,2159,8bc3,"mov ax,bx"
+cos,53313,3197,2161,03c3,"add ax,bx"
+cos,53315,3197,2163,2bf0,"sub si,ax"
+cos,53317,3197,2165,8b04,"mov ax,[si]"
+cos,53319,3197,2167,5e,pop si
+cos,53320,3197,2168,c9,leave
+cos,53321,3197,2169,cb,ret far

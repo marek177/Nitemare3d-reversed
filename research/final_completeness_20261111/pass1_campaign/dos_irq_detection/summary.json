@@ -1,0 +1,76 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "instruction_inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "device_init",
+      "start": 107389,
+      "end_exclusive": 107594,
+      "instructions": 87,
+      "instruction_bytes": 205,
+      "starts_absent_from_historical_inventory": [],
+      "status": "PARTIAL"
+    },
+    {
+      "name": "temporary_irq_handler",
+      "start": 112114,
+      "end_exclusive": 112142,
+      "instructions": 13,
+      "instruction_bytes": 28,
+      "starts_absent_from_historical_inventory": [
+        112114,
+        112115,
+        112116,
+        112117,
+        112122,
+        112125,
+        112126,
+        112133,
+        112135,
+        112137,
+        112139,
+        112140,
+        112141
+      ],
+      "status": "PARTIAL"
+    },
+    {
+      "name": "dsp_read_byte",
+      "start": 112142,
+      "end_exclusive": 112175,
+      "instructions": 15,
+      "instruction_bytes": 33,
+      "starts_absent_from_historical_inventory": [],
+      "status": "PARTIAL"
+    },
+    {
+      "name": "dsp_write_byte",
+      "start": 112175,
+      "end_exclusive": 112220,
+      "instructions": 32,
+      "instruction_bytes": 45,
+      "starts_absent_from_historical_inventory": [],
+      "status": "PARTIAL"
+    },
+    {
+      "name": "irq_candidate_probe",
+      "start": 112220,
+      "end_exclusive": 112488,
+      "instructions": 96,
+      "instruction_bytes": 268,
+      "starts_absent_from_historical_inventory": [],
+      "status": "PARTIAL"
+    }
+  ],
+  "total_instruction_bytes": 579,
+  "data_bytes": 36,
+  "profile_count": 5,
+  "temporary_handler_installed_ip": 23042,
+  "temporary_handler_image": 112114,
+  "temporary_handler_prior_inventory_starts": 0,
+  "caller_checks_probe_cf": true,
+  "base_reset_after_failure": false,
+  "hardware_irq_reachability_proven": false,
+  "new_deep_verified_bytes": 0,
+  "runtime_tests": 0
+}

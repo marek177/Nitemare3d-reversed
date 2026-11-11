@@ -1,0 +1,14 @@
+cs,ip,image_offset,bytes,instruction
+4026,158,64574,55,push bp
+4026,159,64575,8bec,"mov bp,sp"
+4026,161,64577,1e,push ds
+4026,162,64578,8b5e06,"mov bx,[bp+6]"
+4026,165,64581,c55608,"lds dx,[bp+8]"
+4026,168,64584,b43f,"mov ah,3Fh"
+4026,170,64586,8b4e0c,"mov cx,[bp+0Ch]"
+4026,173,64589,cd21,int 21h
+4026,175,64591,7303,jae short 00B4h
+4026,177,64593,b8ffff,"mov ax,0FFFFh"
+4026,180,64596,1f,pop ds
+4026,181,64597,c9,leave
+4026,182,64598,cb,ret far

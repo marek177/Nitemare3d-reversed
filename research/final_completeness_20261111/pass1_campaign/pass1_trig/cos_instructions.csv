@@ -1,0 +1,39 @@
+function,image_offset,cs,ip,bytes,instruction
+cos,53246,3197,2094,55,push bp
+cos,53247,3197,2095,8bec,"mov bp,sp"
+cos,53249,3197,2097,56,push si
+cos,53250,3197,2098,8b5e06,"mov bx,[bp+6]"
+cos,53253,3197,2101,83fb5a,"cmp bx,5Ah"
+cos,53256,3197,2104,7d0c,jge short 0846h
+cos,53258,3197,2106,8bf3,"mov si,bx"
+cos,53260,3197,2108,03f3,"add si,bx"
+cos,53262,3197,2110,8b849e18,"mov ax,[si+189Eh]"
+cos,53266,3197,2114,5e,pop si
+cos,53267,3197,2115,c9,leave
+cos,53268,3197,2116,cb,ret far
+cos,53269,3197,2117,90,nop
+cos,53270,3197,2118,81fbb400,"cmp bx,0B4h"
+cos,53274,3197,2122,7d10,jge short 085Ch
+cos,53276,3197,2124,be061a,"mov si,1A06h"
+cos,53279,3197,2127,8bc3,"mov ax,bx"
+cos,53281,3197,2129,03c3,"add ax,bx"
+cos,53283,3197,2131,2bf0,"sub si,ax"
+cos,53285,3197,2133,8b04,"mov ax,[si]"
+cos,53287,3197,2135,f7d8,neg ax
+cos,53289,3197,2137,5e,pop si
+cos,53290,3197,2138,c9,leave
+cos,53291,3197,2139,cb,ret far
+cos,53292,3197,2140,81fb0e01,"cmp bx,10Eh"
+cos,53296,3197,2144,7d0a,jge short 086Ch
+cos,53298,3197,2146,8bf3,"mov si,bx"
+cos,53300,3197,2148,03f3,"add si,bx"
+cos,53302,3197,2150,8b843617,"mov ax,[si+1736h]"
+cos,53306,3197,2154,ebeb,jmp short 0857h
+cos,53308,3197,2156,be6e1b,"mov si,1B6Eh"
+cos,53311,3197,2159,8bc3,"mov ax,bx"
+cos,53313,3197,2161,03c3,"add ax,bx"
+cos,53315,3197,2163,2bf0,"sub si,ax"
+cos,53317,3197,2165,8b04,"mov ax,[si]"
+cos,53319,3197,2167,5e,pop si
+cos,53320,3197,2168,c9,leave
+cos,53321,3197,2169,cb,ret far

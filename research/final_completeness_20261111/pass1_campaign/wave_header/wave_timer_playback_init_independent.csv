@@ -1,0 +1,76 @@
+image_offset,bytes,iced_text
+102791,fa,cli
+102792,2e803eca2d00,"cmp byte ptr cs:[2DCAh],0"
+102798,7403,je short 35A3h
+102800,e83f01,call 36E2h
+102803,e88a10,call 4630h
+102806,b92c00,"mov cx,2Ch"
+102809,8bf7,"mov si,di"
+102811,8cc0,"mov ax,es"
+102813,8ed8,"mov ds,ax"
+102815,bf9859,"mov di,5998h"
+102818,8cc8,"mov ax,cs"
+102820,8ec0,"mov es,ax"
+102822,fc,cld
+102823,f3a4,"rep movsb [di],[si]"
+102825,1e,push ds
+102826,07,pop es
+102827,8bfe,"mov di,si"
+102829,0e,push cs
+102830,1f,pop ds
+102831,2ea1c059,"mov ax,cs:[59C0h]"
+102835,03c7,"add ax,di"
+102837,2ea36c36,"mov cs:[366Ch],ax"
+102841,2ea1b059,"mov ax,cs:[59B0h]"
+102845,33d2,"xor dx,dx"
+102847,2e8b1eb934,"mov bx,cs:[34B9h]"
+102852,f7f3,div bx
+102854,2ea37c36,"mov cs:[367Ch],ax"
+102858,33c0,"xor ax,ax"
+102860,2e8b1eb934,"mov bx,cs:[34B9h]"
+102865,f7f3,div bx
+102867,2ea37536,"mov cs:[3675h],ax"
+102871,2e893ecf2d,"mov cs:[2DCFh],di"
+102876,8cc0,"mov ax,es"
+102878,2ea3d12d,"mov cs:[2DD1h],ax"
+102882,50,push ax
+102883,53,push bx
+102884,1e,push ds
+102885,52,push dx
+102886,06,push es
+102887,b435,"mov ah,35h"
+102889,b008,"mov al,8"
+102891,cd21,int 21h
+102893,2e891ecb2d,"mov cs:[2DCBh],bx"
+102898,2e8c06cd2d,"mov cs:[2DCDh],es"
+102903,b425,"mov ah,25h"
+102905,b008,"mov al,8"
+102907,ba5136,"mov dx,3651h"
+102910,0e,push cs
+102911,1f,pop ds
+102912,cd21,int 21h
+102914,07,pop es
+102915,5a,pop dx
+102916,1f,pop ds
+102917,5b,pop bx
+102918,58,pop ax
+102919,b0b0,"mov al,0B0h"
+102921,e643,"out 43h,al"
+102923,2e8b3ecf2d,"mov di,cs:[2DCFh]"
+102928,2e893e8436,"mov cs:[3684h],di"
+102933,2ea1d12d,"mov ax,cs:[2DD1h]"
+102937,2ea37f36,"mov cs:[367Fh],ax"
+102941,8ec0,"mov es,ax"
+102943,e461,"in al,61h"
+102945,0c03,"or al,3"
+102947,e661,"out 61h,al"
+102949,ba1200,"mov dx,12h"
+102952,b80c2d,"mov ax,2D0Ch"
+102955,2e8b1eb934,"mov bx,cs:[34B9h]"
+102960,f7f3,div bx
+102962,32e4,"xor ah,ah"
+102964,e82310,call 466Ah
+102967,b001,"mov al,1"
+102969,2ea2ca2d,"mov cs:[2DCAh],al"
+102973,fb,sti
+102974,c3,ret

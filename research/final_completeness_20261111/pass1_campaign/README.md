@@ -1,47 +1,11 @@
-# Current consolidated snapshot
+# Nitemare 3D evidence campaign snapshot
 
-This section supersedes older snapshot counts below. Latest map: `pass1_id_card_selector/noncode_intervals.csv` and `.json`: PARTIAL 49,867 B; CLASSIFIED ONLY 7,384 B; UNKNOWN 44 B; DEEP VERIFIED 0 B, total 57,295 B. See `CAMPAIGN_CATALOG_REPORT.md` and individual evidence reports. Correct map extent: [2570E,2770E); the older scan-only extent was superseded. All executable bytes and assets remain external inputs.
+This publication extends commit a43690cac60dea52020b557c733c239504ba9bf1. The campaign is incomplete. No original game executable, asset, native decoder or emulator binary is included.
 
-The central catalog contains 164 current data fields from 29 sources. These are PARTIAL local types, not full semantic closure. Controlled instruction replay cases: 2,603; natural DOSBox-X runtime tests: 0. Reproduce each report with the named scripts and pinned input image; preserve intermediate outputs when following the ordered PASS1 map chain. `independent_decode_and_catalog.py` also requires earlier verified batches in a common outputs root. This publication includes current scripts, reports, per-batch typed fields/ASM, and the final CSV/JSON map; it does not claim completion or ship native dependencies/game binaries.
+Current NON-CODE map: `pass1_episode_files/noncode_intervals.csv` and `.json`, exactly 57,295 baseline bytes: PARTIAL 54,746; CLASSIFIED ONLY 2,505; UNKNOWN 44; DEEP VERIFIED 0. See `CAMPAIGN_CONSOLIDATED_REPORT.md` for current scope and the thirteen-area report. Historical batch reports retain the state and publication notes at their original analysis time; those notes are not current branch status.
 
----
+Current bounded function catalog: 48 ranges, 1,691 instructions / 4,028 code bytes; 55,592 typed data bytes across the whole image. These are campaign bounds, not an inventory of every game function. Controlled replay: 7,909 cases plus a separate 65,548-case normalization-prefix campaign. Original DOSBox-X/game runtime tests: zero. A mock, fixture, seeded replay or chunk parser never proves full gameplay parity.
 
-# Recovered PASS320 and active PASS1 evidence
+New findings include the real MAP.1 count of eleven levels, conditional music-table cross-row access, signed-only upper level guard, audio selectors/loader/toggles, DOS I/O wrappers, Win110 relocation-backed trig callers and corrected angle-function boundary. Follow individual reports for limitations.
 
-Snapshot: 2026-11-11. This directory is a separate, source-pinned PASS1 evidence bundle. Older reports in `../verified_batches` are historical stages and may still state that the original ledger was missing. That blocker was removed by the user-supplied `N3D_PASS300-322_VSETKY_ZIP.zip`.
-
-## Current bounded result
-
-- Original NON-CODE: 57,295 B in two intervals, from the genuine supplied 1,488-row PASS320 ledger.
-- Latest map: `pass1_key_labels/noncode_intervals.csv` and `.json`.
-- PARTIAL 306 B; CLASSIFIED ONLY 9,649 B; UNKNOWN 47,340 B; DEEP VERIFIED 0 B.
-- PARTIAL includes 260 loader-relocated WORD bytes, plus consumer-backed key pointer/text objects, with overlap deduplicated.
-- Seven caller-path experiments prove the known item25..28 route produces index0..3, but do not establish the upstream natural DS context.
-- No original DOSBox-X runtime tests, no PE32 port, no global completeness or semantic percentage claim.
-
-## Input provenance
-
-Canonical image: 171,360 B, SHA-256 `e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297`. Original game executable/assets are not distributed here.
-
-Supplied aggregate ZIP SHA-256 `d54e2b05a9e5fb6c5091f804a2af14404df6c86c03b9057739f45ce199e9b27d`.
-
-Exact original PASS320 CSV bytes: `pass320_recovered/source_ledgers/N3D_PASS320_INT63_COUNTER_WRAP_AUDIT.csv`, SHA-256 `8bf6afc62977ff68f6b7030288db48adb12cbba2d0157a14195f1708307830d2`. This is preserved historical evidence, including its provisional labels, not a new semantic certification.
-
-The relocation CSV comes from the independently reproduced EXEPACK transformation described in the earlier verified batch. Its SHA-256 is pinned by the PASS1 scripts. The historical instruction JSON required for the caller inventory is identified by SHA-256 `a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a`; it is an external input, not silently reconstructed from a linear disassembly.
-
-## Reproduction order
-
-1. Recover and authenticate the canonical image and relocation CSV using the existing EXEPACK reproduction evidence; install iced-x86 1.21.0 separately.
-2. `import_pass300_322_ledgers.py ZIP IMAGE CAMPAIGN_CSV OUT_DIR` validates the supplied 24 nested ledgers. Its campaign intersection is relative to the explicitly hashed input snapshot; the published initial import snapshot predates the key-label data promotion and has zero overlap.
-3. `audit_pass1_startup_segments.py IMAGE RELOCS NONCODE_CSV DECODER_DIR OUT_DIR` produces the structural map.
-4. `audit_pass1_relocation_content.py IMAGE RELOCS NONCODE_CSV STRUCTURAL_CSV OUT_DIR` produces the loader-WORD/content/string candidates.
-5. `audit_pass1_key_labels.py IMAGE RELOCS PRIOR_PASS1_MAP DECODER_DIR OUT_DIR` produces the latest typed object map.
-6. `replay_pass1_key_selector.py IMAGE RELOCS UNICORN_DIR OUT_DIR` runs eight prepared relocation/index cases.
-7. `audit_pass1_key_caller_paths.py IMAGE INVENTORY DECODER_DIR OUT_DIR` and `replay_pass1_key_callers.py IMAGE UNICORN_DIR OUT_DIR` reproduce the bounded direct caller result.
-
-The large initial-content-run CSV and redundant intermediate JSON maps are regenerated by these scripts rather than duplicated here. The current typed map is provided as both CSV and JSON. Per-stage summaries record input hashes; do not conflate old and current map statuses or add overlapping layers.
-
-## Next work
-
-Close natural caller DS and global writer/lifetime contracts; inspect ID-card labels; reconstruct FAR-segment buffers in the 47,470 B region before default DS. Do not infer padding/BSS from zero content or FAR pointers from adjacent WORDs alone. Every promotion needs an explicit, reproducible proof.
-
+Reproduction requires the exact user-supplied game files and historical inventories pinned in the scripts. The latest map has an independent membership/hash/overlap check. Full generated case dumps can be regenerated; `PUBLICATION_OMITTED_GENERATED.json` records their local hashes and sizes. Existing remote files are retained, including older snapshots. Publication manifests cover this delta only, and do not assert semantic completeness.

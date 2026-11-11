@@ -1,0 +1,27 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "dos_read_wrapper",
+      "start": 64574,
+      "end_exclusive": 64599,
+      "instruction_bytes": 25,
+      "instructions": 13
+    },
+    {
+      "name": "dos_write_wrapper",
+      "start": 64600,
+      "end_exclusive": 64625,
+      "instruction_bytes": 25,
+      "instructions": 13
+    }
+  ],
+  "cases": 160,
+  "failures": 0,
+  "direct_far_callers": 23,
+  "scope": "original wrapper instructions; INT 21h outputs explicitly seeded; no original DOS/filesystem operation",
+  "dos_callee_behavior_closed": false,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0
+}

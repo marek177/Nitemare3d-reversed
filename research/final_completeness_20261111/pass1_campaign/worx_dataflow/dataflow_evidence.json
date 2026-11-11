@@ -1,0 +1,152 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "counted_to_asciiz",
+      "start": 100934,
+      "end_exclusive": 100966,
+      "instruction_bytes": 32,
+      "inventory_gaps": [],
+      "instructions": 20,
+      "range_sha256": "5751763eb089beff0855042c7b2a7bcaaf9d1d33cb3a435ac4df200b6a9c11a4",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "name": "counted_mode_setter",
+      "start": 100966,
+      "end_exclusive": 100973,
+      "instruction_bytes": 7,
+      "inventory_gaps": [],
+      "instructions": 2,
+      "range_sha256": "2a63f8ceca7268a366534e2267849154f886f626f23092670d956e809fefad55",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "name": "container_open",
+      "start": 102130,
+      "end_exclusive": 102219,
+      "instruction_bytes": 87,
+      "inventory_gaps": [
+        {
+          "start": 102176,
+          "end_exclusive": 102177,
+          "hex": "90",
+          "status": "UNKNOWN"
+        },
+        {
+          "start": 102202,
+          "end_exclusive": 102203,
+          "hex": "90",
+          "status": "UNKNOWN"
+        }
+      ],
+      "instructions": 39,
+      "range_sha256": "a30ae1517a8de7dd730762b1b565749513a773ea1324d6a1b2a427b99ee3c39f",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "name": "container_close",
+      "start": 102219,
+      "end_exclusive": 102251,
+      "instruction_bytes": 32,
+      "inventory_gaps": [],
+      "instructions": 12,
+      "range_sha256": "6b1989e83bf4dac57a4221699f0024d57ab42e269c277c739d248fa1850d9ad6",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "name": "callback_locate",
+      "start": 97800,
+      "end_exclusive": 97849,
+      "instruction_bytes": 49,
+      "inventory_gaps": [],
+      "instructions": 17,
+      "range_sha256": "2720eeaacbe0c1a6fc4e910fe5a33e6f4636f1fc1a9c7f97f4a15bd074b40bcc",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    }
+  ],
+  "data_intervals": [
+    {
+      "start": 97718,
+      "end_exclusive": 97720,
+      "length": 2,
+      "cs": "15BF",
+      "offset": 8646,
+      "initial_hex": "ffff",
+      "range_sha256": "ca2fd00fa001190744c15c317643ab092e7048ce086a243e2be9437c898de1bb",
+      "role": "word assigned from incoming BX saved across callback AH=0",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "start": 97720,
+      "end_exclusive": 97724,
+      "length": 4,
+      "cs": "15BF",
+      "offset": 8648,
+      "initial_hex": "00000000",
+      "range_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "role": "FAR callback: BX offset, ES segment after INT2F AX4310",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "start": 100348,
+      "end_exclusive": 100349,
+      "length": 1,
+      "cs": "15BF",
+      "offset": 11276,
+      "initial_hex": "00",
+      "range_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "role": "counted-string conversion enable",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "start": 100835,
+      "end_exclusive": 100837,
+      "length": 2,
+      "cs": "15BF",
+      "offset": 11763,
+      "initial_hex": "ffff",
+      "range_sha256": "ca2fd00fa001190744c15c317643ab092e7048ce086a243e2be9437c898de1bb",
+      "role": "DOS file handle; FFFF sentinel",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "start": 100837,
+      "end_exclusive": 100839,
+      "length": 2,
+      "cs": "15BF",
+      "offset": 11765,
+      "initial_hex": "0000",
+      "range_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "role": "container record count loaded by DOS read request of 2 bytes",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    },
+    {
+      "start": 100864,
+      "end_exclusive": 100865,
+      "length": 1,
+      "cs": "15BF",
+      "offset": 11792,
+      "initial_hex": "00",
+      "range_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "role": "container-open mode flag",
+      "status": "PARTIAL",
+      "pass320_membership": "UNKNOWN"
+    }
+  ],
+  "xref_count": 46,
+  "xref_exhaustiveness": "NOT_PROVEN",
+  "new_deep_verified_bytes": 0,
+  "runtime_tests": 0
+}

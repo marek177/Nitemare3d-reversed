@@ -1,0 +1,39 @@
+function,image_offset,cs,ip,bytes,instruction
+tangent_magnitude,53322,3197,2170,55,push bp
+tangent_magnitude,53323,3197,2171,8bec,"mov bp,sp"
+tangent_magnitude,53325,3197,2173,56,push si
+tangent_magnitude,53326,3197,2174,8b5e06,"mov bx,[bp+6]"
+tangent_magnitude,53329,3197,2177,83fb5a,"cmp bx,5Ah"
+tangent_magnitude,53332,3197,2180,7d0c,jge short 0892h
+tangent_magnitude,53334,3197,2182,8bf3,"mov si,bx"
+tangent_magnitude,53336,3197,2184,03f3,"add si,bx"
+tangent_magnitude,53338,3197,2186,8b845419,"mov ax,[si+1954h]"
+tangent_magnitude,53342,3197,2190,5e,pop si
+tangent_magnitude,53343,3197,2191,c9,leave
+tangent_magnitude,53344,3197,2192,cb,ret far
+tangent_magnitude,53345,3197,2193,90,nop
+tangent_magnitude,53346,3197,2194,81fbb400,"cmp bx,0B4h"
+tangent_magnitude,53350,3197,2198,7d0e,jge short 08A6h
+tangent_magnitude,53352,3197,2200,bebc1a,"mov si,1ABCh"
+tangent_magnitude,53355,3197,2203,8bc3,"mov ax,bx"
+tangent_magnitude,53357,3197,2205,03c3,"add ax,bx"
+tangent_magnitude,53359,3197,2207,2bf0,"sub si,ax"
+tangent_magnitude,53361,3197,2209,8b04,"mov ax,[si]"
+tangent_magnitude,53363,3197,2211,5e,pop si
+tangent_magnitude,53364,3197,2212,c9,leave
+tangent_magnitude,53365,3197,2213,cb,ret far
+tangent_magnitude,53366,3197,2214,81fb0e01,"cmp bx,10Eh"
+tangent_magnitude,53370,3197,2218,7d0a,jge short 08B6h
+tangent_magnitude,53372,3197,2220,8bf3,"mov si,bx"
+tangent_magnitude,53374,3197,2222,03f3,"add si,bx"
+tangent_magnitude,53376,3197,2224,8b84ec17,"mov ax,[si+17ECh]"
+tangent_magnitude,53380,3197,2228,eb0b,jmp short 08C1h
+tangent_magnitude,53382,3197,2230,be241c,"mov si,1C24h"
+tangent_magnitude,53385,3197,2233,8bc3,"mov ax,bx"
+tangent_magnitude,53387,3197,2235,03c3,"add ax,bx"
+tangent_magnitude,53389,3197,2237,2bf0,"sub si,ax"
+tangent_magnitude,53391,3197,2239,8b04,"mov ax,[si]"
+tangent_magnitude,53393,3197,2241,f7d8,neg ax
+tangent_magnitude,53395,3197,2243,5e,pop si
+tangent_magnitude,53396,3197,2244,c9,leave
+tangent_magnitude,53397,3197,2245,cb,ret far

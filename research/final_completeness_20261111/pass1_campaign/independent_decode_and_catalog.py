@@ -54,6 +54,32 @@ def main():
     if key_labels:sources.append(('key_label_selector',root/'pass1_key_labels/selector_instructions.csv'))
     bit_reverse=root/'bitmap_bit_reverse_replay/instructions.csv'
     if bit_reverse.exists():sources.append(('bitmap_bit_reverse',bit_reverse))
+    prompt_instructions=root/'pass1_prompt_fields/instructions.csv'
+    if prompt_instructions.exists():sources.append(('prompt_helper_0720',prompt_instructions))
+    runtime_lookup=root/'pass1_runtime_messages/lookup_instructions.csv'
+    if runtime_lookup.exists():sources.append(('crt_runtime_message_lookup',runtime_lookup))
+    for trig_name in ['sin','cos']:
+        trig_path=root/'pass1_trig'/(trig_name+'_instructions.csv')
+        if trig_path.exists():sources.append(('fixed_point_'+trig_name,trig_path))
+    tangent_path=root/'pass1_tangent/tangent_magnitude_instructions.csv'
+    if tangent_path.exists():sources.append(('signed_tangent_magnitude',tangent_path))
+    angle_path=root/'angle_lookup/instructions.csv'
+    if angle_path.exists():sources.append(('integer_ratio_angle_lookup',angle_path))
+    debug_path=root/'pass1_debug_logger/instructions.csv'
+    if debug_path.exists():sources.append(('debug_logger',debug_path))
+    dsp_path=root/'pass1_dsp_status/instructions.csv'
+    if dsp_path.exists():sources.append(('dsp_status_wrapper',dsp_path))
+    music_path=root/'pass1_music_selector/instructions.csv'
+    if music_path.exists():sources.append(('music_selection_dispatch',music_path))
+    music_resource_path=root/'pass1_music_resource/instructions.csv'
+    if music_resource_path.exists():sources.append(('music_resource_loader',music_resource_path))
+    episode_path=root/'pass1_episode_files/instructions.csv'
+    if episode_path.exists():sources.append(('episode_filenames_and_map_header',episode_path))
+    map_level_path=root/'map_level_loader_replay/instructions.csv'
+    if map_level_path.exists():sources.append(('map_level_record_loader',map_level_path))
+    dos_wrappers=root/'dos_io_wrappers_replay/summary.json'
+    if dos_wrappers.exists():
+        for f in readjson(dos_wrappers)['functions']:sources.append((f['name'],root/'dos_io_wrappers_replay'/(f['name']+'.csv')))
     fmt=Formatter(FormatterSyntax.INTEL); decoded=[]; code_owners={}; functions=[]
     for name,path in sources:
         rows=readcsv(path); byte_count=0
@@ -149,7 +175,14 @@ def main():
         'pass1_resource_buffer','pass1_resource_directory','pass1_graphics_blocks',
         'pass1_byte_grid','pass1_guard_slots','pass1_allocated_pointer_table',
         'pass1_menu_records','pass1_menu_records_more','pass1_menu_tail',
-        'pass1_ui_callbacks','pass1_dynamic_ui','pass1_grid_ui','pass1_flags_map_boundary','pass1_ui_strings','pass1_segment_globals','pass1_crt_hook_slots','pass1_message_fields','pass1_split_strings','pass1_crt_program_pointer','pass1_id_card_selector']
+        'pass1_ui_callbacks','pass1_dynamic_ui','pass1_grid_ui','pass1_flags_map_boundary','pass1_ui_strings','pass1_segment_globals','pass1_crt_hook_slots','pass1_message_fields','pass1_split_strings','pass1_crt_program_pointer','pass1_id_card_selector','pass1_scroll_selector','pass1_comparison_strings','pass1_prompt_fields','pass1_ctype','pass1_branched_texts','pass1_display_selector','pass1_calendar','pass1_io_strings','pass1_runtime_messages','pass1_error_formats','pass1_io_argument_strings','pass1_trig','pass1_tangent']
+    current_pass1_sources.append('pass1_debug_logger')
+    current_pass1_sources.append('pass1_dsp_status')
+    current_pass1_sources.append('pass1_direction_fields')
+    current_pass1_sources.append('pass1_music_selector')
+    current_pass1_sources.append('pass1_music_resource')
+    current_pass1_sources.append('pass1_audio_toggles')
+    current_pass1_sources.append('pass1_episode_files')
     typed_catalog=[]
     for evidence in current_pass1_sources:
         path=root/evidence/'data_fields.csv'
@@ -214,11 +247,17 @@ def main():
     if key_replay_path.exists():result['controlled_instruction_replay_cases'] += readjson(key_replay_path)['controlled_replay_cases']
     key_caller_replay_path=root/'pass1_key_caller_replay/evidence.json'
     if key_caller_replay_path.exists():result['controlled_instruction_replay_cases'] += readjson(key_caller_replay_path)['controlled_replay_cases']
-    for replay_folder in ['crt_error_replay','bitmap_bit_reverse_replay']:
+    for replay_folder in ['crt_error_replay','bitmap_bit_reverse_replay','crt_string_compare_replay','runtime_message_lookup_replay','pass1_trig','pass1_tangent','angle_lookup','pass1_music_selector','pass1_audio_toggles','map_level_loader_replay','dos_io_wrappers_replay']:
         replay_summary=readjson(root/replay_folder/'summary.json')
         if replay_summary['failures']!=0:raise ValueError('failed replay batch')
         result['controlled_instruction_replay_cases']+=replay_summary['cases']
-    latest_map=root/'pass1_id_card_selector/noncode_intervals.csv'
+    prefix_path=root/'direction_index_replay/summary.json'
+    if prefix_path.exists():
+        prefix=readjson(prefix_path)
+        if prefix['failures']!=0:raise ValueError('failed direction prefix replay')
+        result['direction_index_prefix_replay_cases']=prefix['cases']
+        result['direction_index_prefix_replay_scope']=prefix['scope']
+    latest_map=root/'pass1_episode_files/noncode_intervals.csv'
     latest_partial=set()
     for row in readcsv(latest_map):
         if row['status']=='PARTIAL':latest_partial.update(range(int(row['start']),int(row['end_exclusive'])))
