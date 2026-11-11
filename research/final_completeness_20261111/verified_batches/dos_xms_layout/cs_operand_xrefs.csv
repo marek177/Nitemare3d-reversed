@@ -1,0 +1,72 @@
+image_offset,cs,ip,bytes,instruction,displacement,width,base_register,index_register,access_enum,address_kind,status
+97806,5567,8734,2e891ec821,"mov cs:[21C8h],bx",8648,2,0,0,3,fixed_CS,PARTIAL
+97811,5567,8739,2e8c06ca21,"mov cs:[21CAh],es",8650,2,0,0,3,fixed_CS,PARTIAL
+97818,5567,8746,2eff1ec821,call far dword ptr cs:[21C8h],8648,4,0,0,1,fixed_CS,PARTIAL
+97826,5567,8754,2eff1ec821,call far dword ptr cs:[21C8h],8648,4,0,0,1,fixed_CS,PARTIAL
+97836,5567,8764,2e8916c621,"mov cs:[21C6h],dx",8646,2,0,0,3,fixed_CS,PARTIAL
+98120,5567,9048,2eff06c420,inc word ptr cs:[20C4h],8388,2,0,0,5,fixed_CS,PARTIAL
+98130,5567,9058,2ec706ce210000,"mov word ptr cs:[21CEh],0",8654,2,0,0,3,fixed_CS,PARTIAL
+98137,5567,9065,2ec706d0210000,"mov word ptr cs:[21D0h],0",8656,2,0,0,3,fixed_CS,PARTIAL
+98144,5567,9072,2e893ed221,"mov cs:[21D2h],di",8658,2,0,0,3,fixed_CS,PARTIAL
+98149,5567,9077,2e8c06d421,"mov cs:[21D4h],es",8660,2,0,0,3,fixed_CS,PARTIAL
+98154,5567,9082,2ea1c621,"mov ax,cs:[21C6h]",8646,2,0,0,1,fixed_CS,PARTIAL
+98158,5567,9086,2ea3d621,"mov cs:[21D6h],ax",8662,2,0,0,3,fixed_CS,PARTIAL
+98162,5567,9090,2e8b1ec420,"mov bx,cs:[20C4h]",8388,2,0,0,1,fixed_CS,PARTIAL
+98171,5567,9099,2e8b87c620,"mov ax,cs:[bx+20C6h]",8390,2,24,0,1,indexed_base_not_resolved,PARTIAL
+98176,5567,9104,2ea3d821,"mov cs:[21D8h],ax",8664,2,0,0,3,fixed_CS,PARTIAL
+98180,5567,9108,2e8987ca20,"mov cs:[bx+20CAh],ax",8394,2,24,0,3,indexed_base_not_resolved,PARTIAL
+98185,5567,9113,2e8b87c820,"mov ax,cs:[bx+20C8h]",8392,2,24,0,1,indexed_base_not_resolved,PARTIAL
+98190,5567,9118,2e8987cc20,"mov cs:[bx+20CCh],ax",8396,2,24,0,3,indexed_base_not_resolved,PARTIAL
+98195,5567,9123,2ea3da21,"mov cs:[21DAh],ax",8666,2,0,0,3,fixed_CS,PARTIAL
+98210,5567,9138,2ea3cc21,"mov cs:[21CCh],ax",8652,2,0,0,3,fixed_CS,PARTIAL
+98220,5567,9148,2eff1ec821,call far dword ptr cs:[21C8h],8648,4,0,0,1,fixed_CS,PARTIAL
+98227,5567,9155,2ea1cc21,"mov ax,cs:[21CCh]",8652,2,0,0,1,fixed_CS,PARTIAL
+98231,5567,9159,2e8b1ec420,"mov bx,cs:[20C4h]",8388,2,0,0,1,fixed_CS,PARTIAL
+98240,5567,9168,2e0187ca20,"add cs:[bx+20CAh],ax",8394,2,24,0,5,indexed_base_not_resolved,PARTIAL
+98245,5567,9173,2e8397cc2000,"adc word ptr cs:[bx+20CCh],0",8396,2,24,0,5,indexed_base_not_resolved,PARTIAL
+98251,5567,9179,2e0106d821,"add cs:[21D8h],ax",8664,2,0,0,5,fixed_CS,PARTIAL
+98256,5567,9184,2e8316da2100,"adc word ptr cs:[21DAh],0",8666,2,0,0,5,fixed_CS,PARTIAL
+98264,5567,9192,2ea1c420,"mov ax,cs:[20C4h]",8388,2,0,0,1,fixed_CS,PARTIAL
+101280,5567,12208,2e833ec621ff,"cmp word ptr cs:[21C6h],0FFFFh",8646,2,0,0,1,fixed_CS,PARTIAL
+101290,5567,12218,2e8b16c621,"mov dx,cs:[21C6h]",8646,2,0,0,1,fixed_CS,PARTIAL
+101295,5567,12223,2eff1ec821,call far dword ptr cs:[21C8h],8648,4,0,0,1,fixed_CS,PARTIAL
+111359,5567,22287,2e8b87c620,"mov ax,cs:[bx+20C6h]",8390,2,24,0,1,indexed_base_not_resolved,PARTIAL
+111364,5567,22292,2ea3d221,"mov cs:[21D2h],ax",8658,2,0,0,3,fixed_CS,PARTIAL
+111368,5567,22296,2e8b87c820,"mov ax,cs:[bx+20C8h]",8392,2,24,0,1,indexed_base_not_resolved,PARTIAL
+111373,5567,22301,2ea3d421,"mov cs:[21D4h],ax",8660,2,0,0,3,fixed_CS,PARTIAL
+111377,5567,22305,2ea1c621,"mov ax,cs:[21C6h]",8646,2,0,0,1,fixed_CS,PARTIAL
+111381,5567,22309,2ea3d021,"mov cs:[21D0h],ax",8656,2,0,0,3,fixed_CS,PARTIAL
+111385,5567,22313,2ec706cc214000,"mov word ptr cs:[21CCh],40h",8652,2,0,0,3,fixed_CS,PARTIAL
+111392,5567,22320,2ec706ce210000,"mov word ptr cs:[21CEh],0",8654,2,0,0,3,fixed_CS,PARTIAL
+111399,5567,22327,2ec706d6210000,"mov word ptr cs:[21D6h],0",8662,2,0,0,3,fixed_CS,PARTIAL
+111406,5567,22334,2ec706d8218c56,"mov word ptr cs:[21D8h],568Ch",8664,2,0,0,3,fixed_CS,PARTIAL
+111413,5567,22341,2ec706da21bf15,"mov word ptr cs:[21DAh],15BFh",8666,2,0,0,3,fixed_CS,PARTIAL
+111426,5567,22354,2eff1ec821,call far dword ptr cs:[21C8h],8648,4,0,0,1,fixed_CS,PARTIAL
+111434,5567,22362,2e8b3ed821,"mov di,cs:[21D8h]",8664,2,0,0,1,fixed_CS,PARTIAL
+111439,5567,22367,2e8e06da21,"mov es,cs:[21DAh]",8666,2,0,0,1,fixed_CS,PARTIAL
+111521,5567,22449,2e8b87c620,"mov ax,cs:[bx+20C6h]",8390,2,24,0,1,indexed_base_not_resolved,PARTIAL
+111526,5567,22454,2ea3d221,"mov cs:[21D2h],ax",8658,2,0,0,3,fixed_CS,PARTIAL
+111530,5567,22458,2e8b87c820,"mov ax,cs:[bx+20C8h]",8392,2,24,0,1,indexed_base_not_resolved,PARTIAL
+111535,5567,22463,2ea3d421,"mov cs:[21D4h],ax",8660,2,0,0,3,fixed_CS,PARTIAL
+111539,5567,22467,2ea1c621,"mov ax,cs:[21C6h]",8646,2,0,0,1,fixed_CS,PARTIAL
+111543,5567,22471,2ea3d021,"mov cs:[21D0h],ax",8656,2,0,0,3,fixed_CS,PARTIAL
+111547,5567,22475,2ec706cc214000,"mov word ptr cs:[21CCh],40h",8652,2,0,0,3,fixed_CS,PARTIAL
+111554,5567,22482,2ec706ce210000,"mov word ptr cs:[21CEh],0",8654,2,0,0,3,fixed_CS,PARTIAL
+111561,5567,22489,2ec706d6210000,"mov word ptr cs:[21D6h],0",8662,2,0,0,3,fixed_CS,PARTIAL
+111568,5567,22496,2ec706d8218c56,"mov word ptr cs:[21D8h],568Ch",8664,2,0,0,3,fixed_CS,PARTIAL
+111575,5567,22503,2ec706da21bf15,"mov word ptr cs:[21DAh],15BFh",8666,2,0,0,3,fixed_CS,PARTIAL
+111588,5567,22516,2eff1ec821,call far dword ptr cs:[21C8h],8648,4,0,0,1,fixed_CS,PARTIAL
+111596,5567,22524,2e8b3ed821,"mov di,cs:[21D8h]",8664,2,0,0,1,fixed_CS,PARTIAL
+111601,5567,22529,2e8e06da21,"mov es,cs:[21DAh]",8666,2,0,0,1,fixed_CS,PARTIAL
+111713,5567,22641,2ea3d821,"mov cs:[21D8h],ax",8664,2,0,0,3,fixed_CS,PARTIAL
+111717,5567,22645,2e8c0eda21,"mov cs:[21DAh],cs",8666,2,0,0,3,fixed_CS,PARTIAL
+111722,5567,22650,2ec706cc210001,"mov word ptr cs:[21CCh],100h",8652,2,0,0,3,fixed_CS,PARTIAL
+111729,5567,22657,2ec706d6210000,"mov word ptr cs:[21D6h],0",8662,2,0,0,3,fixed_CS,PARTIAL
+111736,5567,22664,2ea1c621,"mov ax,cs:[21C6h]",8646,2,0,0,1,fixed_CS,PARTIAL
+111740,5567,22668,2ea3d021,"mov cs:[21D0h],ax",8656,2,0,0,3,fixed_CS,PARTIAL
+111763,5567,22691,2e0387c620,"add ax,cs:[bx+20C6h]",8390,2,24,0,1,indexed_base_not_resolved,PARTIAL
+111768,5567,22696,2ea3d221,"mov cs:[21D2h],ax",8658,2,0,0,3,fixed_CS,PARTIAL
+111772,5567,22700,2e8b87c820,"mov ax,cs:[bx+20C8h]",8392,2,24,0,1,indexed_base_not_resolved,PARTIAL
+111777,5567,22705,2ec706d4210000,"mov word ptr cs:[21D4h],0",8660,2,0,0,3,fixed_CS,PARTIAL
+111784,5567,22712,2e1106d421,"adc cs:[21D4h],ax",8660,2,0,0,5,fixed_CS,PARTIAL
+111795,5567,22723,2eff1ec821,call far dword ptr cs:[21C8h],8648,4,0,0,1,fixed_CS,PARTIAL

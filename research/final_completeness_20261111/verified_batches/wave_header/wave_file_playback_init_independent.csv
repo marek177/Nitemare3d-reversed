@@ -1,0 +1,35 @@
+image_offset,bytes,iced_text
+112870,fa,cli
+112871,e847ea,call 4741h
+112874,33db,"xor bx,bx"
+112876,e8cbd4,call 31CAh
+112879,726d,jb short 5D6Eh
+112881,bf9859,"mov di,5998h"
+112884,0e,push cs
+112885,07,pop es
+112886,bb2c00,"mov bx,2Ch"
+112889,e822d4,call 312Eh
+112892,2ea1c059,"mov ax,cs:[59C0h]"
+112896,2ea3df48,"mov cs:[48DFh],ax"
+112900,2ea1c259,"mov ax,cs:[59C2h]"
+112904,2ea3e148,"mov cs:[48E1h],ax"
+112908,2ec606e44800,"mov byte ptr cs:[48E4h],0"
+112914,2e8b1eb059,"mov bx,cs:[59B0h]"
+112919,ba0f00,"mov dx,0Fh"
+112922,b84042,"mov ax,4240h"
+112925,f7f3,div bx
+112927,bb0001,"mov bx,100h"
+112930,2bd8,"sub bx,ax"
+112932,2e881ee548,"mov cs:[48E5h],bl"
+112937,2ec706ba490000,"mov word ptr cs:[49BAh],0"
+112944,b90010,"mov cx,1000h"
+112947,2ec606e34802,"mov byte ptr cs:[48E3h],2"
+112953,2ec706db480010,"mov word ptr cs:[48DBh],1000h"
+112960,2ec706ba490000,"mov word ptr cs:[49BAh],0"
+112967,2ec706ee480000,"mov word ptr cs:[48EEh],0"
+112974,e8ab03,call 610Ch
+112977,2ec606ea2d01,"mov byte ptr cs:[2DEAh],1"
+112983,e887eb,call 48F1h
+112986,f8,clc
+112987,b80000,"mov ax,0"
+112990,c3,ret

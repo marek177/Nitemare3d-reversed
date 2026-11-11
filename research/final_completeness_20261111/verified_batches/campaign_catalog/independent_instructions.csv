@@ -1,0 +1,786 @@
+function,image_offset,cs,ip,bytes,iced_text,historical_text,flow_control,direct_target_image,status
+helper_31ca,101818,5567,12746,53,push bx,push bx,0,,PARTIAL
+helper_31ca,101819,5567,12747,51,push cx,push cx,0,,PARTIAL
+helper_31ca,101820,5567,12748,56,push si,push si,0,,PARTIAL
+helper_31ca,101821,5567,12749,57,push di,push di,0,,PARTIAL
+helper_31ca,101822,5567,12750,06,push es,push es,0,,PARTIAL
+helper_31ca,101823,5567,12751,0e,push cs,push cs,0,,PARTIAL
+helper_31ca,101824,5567,12752,1f,pop ds,pop ds,0,,PARTIAL
+helper_31ca,101825,5567,12753,e85c14,call 4630h,call 0x4630,5,107040,PARTIAL
+helper_31ca,101828,5567,12756,83fb00,"cmp bx,0","cmp bx, 0",0,,PARTIAL
+helper_31ca,101831,5567,12759,7430,je short 3209h,je 0x3209,3,101881,PARTIAL
+helper_31ca,101833,5567,12761,2ec6062d3101,"mov byte ptr cs:[312Dh],1","mov byte ptr cs:[0x312d], 1",0,,PARTIAL
+helper_31ca,101839,5567,12767,2e893e2931,"mov cs:[3129h],di","mov word ptr cs:[0x3129], di",0,,PARTIAL
+helper_31ca,101844,5567,12772,2e8c062b31,"mov cs:[312Bh],es","mov word ptr cs:[0x312b], es",0,,PARTIAL
+helper_31ca,101849,5567,12777,2e891ef72d,"mov cs:[2DF7h],bx","mov word ptr cs:[0x2df7], bx",0,,PARTIAL
+helper_31ca,101854,5567,12782,2ec706f92d0000,"mov word ptr cs:[2DF9h],0","mov word ptr cs:[0x2df9], 0",0,,PARTIAL
+helper_31ca,101861,5567,12789,2ec706ff2d0000,"mov word ptr cs:[2DFFh],0","mov word ptr cs:[0x2dff], 0",0,,PARTIAL
+helper_31ca,101868,5567,12796,2ec706012e0000,"mov word ptr cs:[2E01h],0","mov word ptr cs:[0x2e01], 0",0,,PARTIAL
+helper_31ca,101875,5567,12803,8bc3,"mov ax,bx","mov ax, bx",0,,PARTIAL
+helper_31ca,101877,5567,12805,f8,clc,clc ,0,,PARTIAL
+helper_31ca,101878,5567,12806,e9f300,jmp 32FCh,jmp 0x32fc,1,102124,PARTIAL
+helper_31ca,101881,5567,12809,2ec6062d3100,"mov byte ptr cs:[312Dh],0","mov byte ptr cs:[0x312d], 0",0,,PARTIAL
+helper_31ca,101887,5567,12815,2e803e0c2c00,"cmp byte ptr cs:[2C0Ch],0","cmp byte ptr cs:[0x2c0c], 0",0,,PARTIAL
+helper_31ca,101893,5567,12821,7403,je short 321Ah,je 0x321a,3,101898,PARTIAL
+helper_31ca,101895,5567,12823,e83cfc,call 2E56h,call 0x2e56,5,100934,PARTIAL
+helper_31ca,101898,5567,12826,2e803e102e00,"cmp byte ptr cs:[2E10h],0","cmp byte ptr cs:[0x2e10], 0",0,,PARTIAL
+helper_31ca,101904,5567,12832,7570,jne short 3292h,jne 0x3292,3,102018,PARTIAL
+helper_31ca,101906,5567,12834,2ea1f32d,"mov ax,cs:[2DF3h]","mov ax, word ptr cs:[0x2df3]",0,,PARTIAL
+helper_31ca,101910,5567,12838,3dffff,"cmp ax,0FFFFh","cmp ax, 0xffff",0,,PARTIAL
+helper_31ca,101913,5567,12841,7418,je short 3243h,je 0x3243,3,101939,PARTIAL
+helper_31ca,101915,5567,12843,2ec706f32dffff,"mov word ptr cs:[2DF3h],0FFFFh","mov word ptr cs:[0x2df3], 0xffff",0,,PARTIAL
+helper_31ca,101922,5567,12850,8bd8,"mov bx,ax","mov bx, ax",0,,PARTIAL
+helper_31ca,101924,5567,12852,b43e,"mov ah,3Eh","mov ah, 0x3e",0,,PARTIAL
+helper_31ca,101926,5567,12854,32c0,"xor al,al","xor al, al",0,,PARTIAL
+helper_31ca,101928,5567,12856,cd21,int 21h,int 0x21,7,,PARTIAL
+helper_31ca,101930,5567,12858,7307,jae short 3243h,jae 0x3243,3,101939,PARTIAL
+helper_31ca,101932,5567,12860,2ea3472c,"mov cs:[2C47h],ax","mov word ptr cs:[0x2c47], ax",0,,PARTIAL
+helper_31ca,101936,5567,12864,e9b200,jmp 32F5h,jmp 0x32f5,1,102117,PARTIAL
+helper_31ca,101939,5567,12867,1e,push ds,push ds,0,,PARTIAL
+helper_31ca,101940,5567,12868,52,push dx,push dx,0,,PARTIAL
+helper_31ca,101941,5567,12869,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL
+helper_31ca,101943,5567,12871,8ed8,"mov ds,ax","mov ds, ax",0,,PARTIAL
+helper_31ca,101945,5567,12873,b8003d,"mov ax,3D00h","mov ax, 0x3d00",0,,PARTIAL
+helper_31ca,101948,5567,12876,8bd7,"mov dx,di","mov dx, di",0,,PARTIAL
+helper_31ca,101950,5567,12878,cd21,int 21h,int 0x21,7,,PARTIAL
+helper_31ca,101952,5567,12880,5a,pop dx,pop dx,0,,PARTIAL
+helper_31ca,101953,5567,12881,1f,pop ds,pop ds,0,,PARTIAL
+helper_31ca,101954,5567,12882,7307,jae short 325Bh,jae 0x325b,3,101963,PARTIAL
+helper_31ca,101956,5567,12884,2ea3472c,"mov cs:[2C47h],ax","mov word ptr cs:[0x2c47], ax",0,,PARTIAL
+helper_31ca,101960,5567,12888,e99a00,jmp 32F5h,jmp 0x32f5,1,102117,PARTIAL
+helper_31ca,101963,5567,12891,2ea3f32d,"mov cs:[2DF3h],ax","mov word ptr cs:[0x2df3], ax",0,,PARTIAL
+helper_31ca,101967,5567,12895,8bd8,"mov bx,ax","mov bx, ax",0,,PARTIAL
+helper_31ca,101969,5567,12897,b80242,"mov ax,4202h","mov ax, 0x4202",0,,PARTIAL
+helper_31ca,101972,5567,12900,33c9,"xor cx,cx","xor cx, cx",0,,PARTIAL
+helper_31ca,101974,5567,12902,33d2,"xor dx,dx","xor dx, dx",0,,PARTIAL
+helper_31ca,101976,5567,12904,cd21,int 21h,int 0x21,7,,PARTIAL
+helper_31ca,101978,5567,12906,bef72d,"mov si,2DF7h","mov si, 0x2df7",0,,PARTIAL
+helper_31ca,101981,5567,12909,8904,"mov [si],ax","mov word ptr [si], ax",0,,PARTIAL
+helper_31ca,101983,5567,12911,895402,"mov [si+2],dx","mov word ptr [si + 2], dx",0,,PARTIAL
+helper_31ca,101986,5567,12914,c744080000,"mov word ptr [si+8],0","mov word ptr [si + 8], 0",0,,PARTIAL
+helper_31ca,101991,5567,12919,c7440a0000,"mov word ptr [si+0Ah],0","mov word ptr [si + 0xa], 0",0,,PARTIAL
+helper_31ca,101996,5567,12924,2e8b1ef32d,"mov bx,cs:[2DF3h]","mov bx, word ptr cs:[0x2df3]",0,,PARTIAL
+helper_31ca,102001,5567,12929,b80042,"mov ax,4200h","mov ax, 0x4200",0,,PARTIAL
+helper_31ca,102004,5567,12932,33c9,"xor cx,cx","xor cx, cx",0,,PARTIAL
+helper_31ca,102006,5567,12934,33d2,"xor dx,dx","xor dx, dx",0,,PARTIAL
+helper_31ca,102008,5567,12936,cd21,int 21h,int 0x21,7,,PARTIAL
+helper_31ca,102010,5567,12938,8b04,"mov ax,[si]","mov ax, word ptr [si]",0,,PARTIAL
+helper_31ca,102012,5567,12940,8b5402,"mov dx,[si+2]","mov dx, word ptr [si + 2]",0,,PARTIAL
+helper_31ca,102015,5567,12943,eb6b,jmp short 32FCh,jmp 0x32fc,1,102124,PARTIAL
+helper_31ca,102018,5567,12946,e81a16,call 48AFh,call 0x48af,5,107679,PARTIAL
+helper_31ca,102021,5567,12949,b80042,"mov ax,4200h","mov ax, 0x4200",0,,PARTIAL
+helper_31ca,102024,5567,12952,2e8b1ef32d,"mov bx,cs:[2DF3h]","mov bx, word ptr cs:[0x2df3]",0,,PARTIAL
+helper_31ca,102029,5567,12957,33c9,"xor cx,cx","xor cx, cx",0,,PARTIAL
+helper_31ca,102031,5567,12959,ba0200,"mov dx,2","mov dx, 2",0,,PARTIAL
+helper_31ca,102034,5567,12962,cd21,int 21h,int 0x21,7,,PARTIAL
+helper_31ca,102036,5567,12964,7256,jb short 32FCh,jb 0x32fc,3,102124,PARTIAL
+helper_31ca,102038,5567,12966,2e8b0ef52d,"mov cx,cs:[2DF5h]","mov cx, word ptr cs:[0x2df5]",0,,PARTIAL
+helper_31ca,102043,5567,12971,e348,jcxz 32F5h,jcxz 0x32f5,3,102117,PARTIAL
+helper_31ca,102045,5567,12973,51,push cx,push cx,0,,PARTIAL
+helper_31ca,102046,5567,12974,b91900,"mov cx,19h","mov cx, 0x19",0,,PARTIAL
+helper_31ca,102049,5567,12977,baf72d,"mov dx,2DF7h","mov dx, 0x2df7",0,,PARTIAL
+helper_31ca,102052,5567,12980,2e8b1ef32d,"mov bx,cs:[2DF3h]","mov bx, word ptr cs:[0x2df3]",0,,PARTIAL
+helper_31ca,102057,5567,12985,b43f,"mov ah,3Fh","mov ah, 0x3f",0,,PARTIAL
+helper_31ca,102059,5567,12987,cd21,int 21h,int 0x21,7,,PARTIAL
+helper_31ca,102061,5567,12989,59,pop cx,pop cx,0,,PARTIAL
+helper_31ca,102062,5567,12990,49,dec cx,dec cx,0,,PARTIAL
+helper_31ca,102063,5567,12991,33db,"xor bx,bx","xor bx, bx",0,,PARTIAL
+helper_31ca,102065,5567,12993,8bf2,"mov si,dx","mov si, dx",0,,PARTIAL
+helper_31ca,102067,5567,12995,83c60c,"add si,0Ch","add si, 0xc",0,,PARTIAL
+helper_31ca,102070,5567,12998,ac,lodsb [si],"lodsb al, byte ptr [si]",0,,PARTIAL
+helper_31ca,102071,5567,12999,3c00,"cmp al,0","cmp al, 0",0,,PARTIAL
+helper_31ca,102073,5567,13001,7408,je short 32D3h,je 0x32d3,3,102083,PARTIAL
+helper_31ca,102075,5567,13003,263a01,"cmp al,es:[bx+di]","cmp al, byte ptr es:[bx + di]",0,,PARTIAL
+helper_31ca,102078,5567,13006,75db,jne short 32ABh,jne 0x32ab,3,102043,PARTIAL
+helper_31ca,102080,5567,13008,43,inc bx,inc bx,0,,PARTIAL
+helper_31ca,102081,5567,13009,ebf3,jmp short 32C6h,jmp 0x32c6,1,102070,PARTIAL
+helper_31ca,102083,5567,13011,26803900,"cmp byte ptr es:[bx+di],0","cmp byte ptr es:[bx + di], 0",0,,PARTIAL
+helper_31ca,102087,5567,13015,7402,je short 32DBh,je 0x32db,3,102091,PARTIAL
+helper_31ca,102089,5567,13017,ebd0,jmp short 32ABh,jmp 0x32ab,1,102043,PARTIAL
+helper_31ca,102091,5567,13019,bef72d,"mov si,2DF7h","mov si, 0x2df7",0,,PARTIAL
+helper_31ca,102094,5567,13022,8b5408,"mov dx,[si+8]","mov dx, word ptr [si + 8]",0,,PARTIAL
+helper_31ca,102097,5567,13025,8b4c0a,"mov cx,[si+0Ah]","mov cx, word ptr [si + 0xa]",0,,PARTIAL
+helper_31ca,102100,5567,13028,2e8b1ef32d,"mov bx,cs:[2DF3h]","mov bx, word ptr cs:[0x2df3]",0,,PARTIAL
+helper_31ca,102105,5567,13033,b80042,"mov ax,4200h","mov ax, 0x4200",0,,PARTIAL
+helper_31ca,102108,5567,13036,cd21,int 21h,int 0x21,7,,PARTIAL
+helper_31ca,102110,5567,13038,8b04,"mov ax,[si]","mov ax, word ptr [si]",0,,PARTIAL
+helper_31ca,102112,5567,13040,8b5402,"mov dx,[si+2]","mov dx, word ptr [si + 2]",0,,PARTIAL
+helper_31ca,102115,5567,13043,7307,jae short 32FCh,jae 0x32fc,3,102124,PARTIAL
+helper_31ca,102117,5567,13045,f9,stc,stc ,0,,PARTIAL
+helper_31ca,102118,5567,13046,baffff,"mov dx,0FFFFh","mov dx, 0xffff",0,,PARTIAL
+helper_31ca,102121,5567,13049,b8ffff,"mov ax,0FFFFh","mov ax, 0xffff",0,,PARTIAL
+helper_31ca,102124,5567,13052,07,pop es,pop es,0,,PARTIAL
+helper_31ca,102125,5567,13053,5f,pop di,pop di,0,,PARTIAL
+helper_31ca,102126,5567,13054,5e,pop si,pop si,0,,PARTIAL
+helper_31ca,102127,5567,13055,59,pop cx,pop cx,0,,PARTIAL
+helper_31ca,102128,5567,13056,5b,pop bx,pop bx,0,,PARTIAL
+helper_31ca,102129,5567,13057,c3,ret,ret ,4,,PARTIAL
+normalize_es_di,107040,5567,17968,50,push ax,push ax,0,,PARTIAL
+normalize_es_di,107041,5567,17969,52,push dx,push dx,0,,PARTIAL
+normalize_es_di,107042,5567,17970,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL
+normalize_es_di,107044,5567,17972,3d0000,"cmp ax,0","cmp ax, 0",0,,PARTIAL
+normalize_es_di,107047,5567,17975,742e,je short 4667h,je 0x4667,3,107095,PARTIAL
+normalize_es_di,107049,5567,17977,33d2,"xor dx,dx","xor dx, dx",0,,PARTIAL
+normalize_es_di,107051,5567,17979,d1e0,"shl ax,1","shl ax, 1",0,,PARTIAL
+normalize_es_di,107053,5567,17981,d1d2,"rcl dx,1","rcl dx, 1",0,,PARTIAL
+normalize_es_di,107055,5567,17983,d1e0,"shl ax,1","shl ax, 1",0,,PARTIAL
+normalize_es_di,107057,5567,17985,d1d2,"rcl dx,1","rcl dx, 1",0,,PARTIAL
+normalize_es_di,107059,5567,17987,d1e0,"shl ax,1","shl ax, 1",0,,PARTIAL
+normalize_es_di,107061,5567,17989,d1d2,"rcl dx,1","rcl dx, 1",0,,PARTIAL
+normalize_es_di,107063,5567,17991,d1e0,"shl ax,1","shl ax, 1",0,,PARTIAL
+normalize_es_di,107065,5567,17993,d1d2,"rcl dx,1","rcl dx, 1",0,,PARTIAL
+normalize_es_di,107067,5567,17995,03c7,"add ax,di","add ax, di",0,,PARTIAL
+normalize_es_di,107069,5567,17997,83d200,"adc dx,0","adc dx, 0",0,,PARTIAL
+normalize_es_di,107072,5567,18000,8bf8,"mov di,ax","mov di, ax",0,,PARTIAL
+normalize_es_di,107074,5567,18002,83e70f,"and di,0Fh","and di, 0xf",0,,PARTIAL
+normalize_es_di,107077,5567,18005,d1ea,"shr dx,1","shr dx, 1",0,,PARTIAL
+normalize_es_di,107079,5567,18007,d1d8,"rcr ax,1","rcr ax, 1",0,,PARTIAL
+normalize_es_di,107081,5567,18009,d1ea,"shr dx,1","shr dx, 1",0,,PARTIAL
+normalize_es_di,107083,5567,18011,d1d8,"rcr ax,1","rcr ax, 1",0,,PARTIAL
+normalize_es_di,107085,5567,18013,d1ea,"shr dx,1","shr dx, 1",0,,PARTIAL
+normalize_es_di,107087,5567,18015,d1d8,"rcr ax,1","rcr ax, 1",0,,PARTIAL
+normalize_es_di,107089,5567,18017,d1ea,"shr dx,1","shr dx, 1",0,,PARTIAL
+normalize_es_di,107091,5567,18019,d1d8,"rcr ax,1","rcr ax, 1",0,,PARTIAL
+normalize_es_di,107093,5567,18021,8ec0,"mov es,ax","mov es, ax",0,,PARTIAL
+normalize_es_di,107095,5567,18023,5a,pop dx,pop dx,0,,PARTIAL
+normalize_es_di,107096,5567,18024,58,pop ax,pop ax,0,,PARTIAL
+normalize_es_di,107097,5567,18025,c3,ret,ret ,4,,PARTIAL
+uppercase_asciiz_in_place,107679,5567,18607,50,push ax,push ax,0,,PARTIAL
+uppercase_asciiz_in_place,107680,5567,18608,53,push bx,push bx,0,,PARTIAL
+uppercase_asciiz_in_place,107681,5567,18609,51,push cx,push cx,0,,PARTIAL
+uppercase_asciiz_in_place,107682,5567,18610,52,push dx,push dx,0,,PARTIAL
+uppercase_asciiz_in_place,107683,5567,18611,55,push bp,push bp,0,,PARTIAL
+uppercase_asciiz_in_place,107684,5567,18612,57,push di,push di,0,,PARTIAL
+uppercase_asciiz_in_place,107685,5567,18613,56,push si,push si,0,,PARTIAL
+uppercase_asciiz_in_place,107686,5567,18614,1e,push ds,push ds,0,,PARTIAL
+uppercase_asciiz_in_place,107687,5567,18615,06,push es,push es,0,,PARTIAL
+uppercase_asciiz_in_place,107688,5567,18616,06,push es,push es,0,,PARTIAL
+uppercase_asciiz_in_place,107689,5567,18617,1f,pop ds,pop ds,0,,PARTIAL
+uppercase_asciiz_in_place,107690,5567,18618,57,push di,push di,0,,PARTIAL
+uppercase_asciiz_in_place,107691,5567,18619,5e,pop si,pop si,0,,PARTIAL
+uppercase_asciiz_in_place,107692,5567,18620,eb0c,jmp short 48CAh,jmp 0x48ca,1,107706,PARTIAL
+uppercase_asciiz_in_place,107695,5567,18623,2c61,"sub al,61h","sub al, 0x61",0,,PARTIAL
+uppercase_asciiz_in_place,107697,5567,18625,3c19,"cmp al,19h","cmp al, 0x19",0,,PARTIAL
+uppercase_asciiz_in_place,107699,5567,18627,7705,ja short 48CAh,ja 0x48ca,3,107706,PARTIAL
+uppercase_asciiz_in_place,107701,5567,18629,0441,"add al,41h","add al, 0x41",0,,PARTIAL
+uppercase_asciiz_in_place,107703,5567,18631,8844ff,"mov [si-1],al","mov byte ptr [si - 1], al",0,,PARTIAL
+uppercase_asciiz_in_place,107706,5567,18634,ac,lodsb [si],"lodsb al, byte ptr [si]",0,,PARTIAL
+uppercase_asciiz_in_place,107707,5567,18635,22c0,"and al,al","and al, al",0,,PARTIAL
+uppercase_asciiz_in_place,107709,5567,18637,75f0,jne short 48BFh,jne 0x48bf,3,107695,PARTIAL
+uppercase_asciiz_in_place,107711,5567,18639,07,pop es,pop es,0,,PARTIAL
+uppercase_asciiz_in_place,107712,5567,18640,1f,pop ds,pop ds,0,,PARTIAL
+uppercase_asciiz_in_place,107713,5567,18641,5e,pop si,pop si,0,,PARTIAL
+uppercase_asciiz_in_place,107714,5567,18642,5f,pop di,pop di,0,,PARTIAL
+uppercase_asciiz_in_place,107715,5567,18643,5d,pop bp,pop bp,0,,PARTIAL
+uppercase_asciiz_in_place,107716,5567,18644,5a,pop dx,pop dx,0,,PARTIAL
+uppercase_asciiz_in_place,107717,5567,18645,59,pop cx,pop cx,0,,PARTIAL
+uppercase_asciiz_in_place,107718,5567,18646,5b,pop bx,pop bx,0,,PARTIAL
+uppercase_asciiz_in_place,107719,5567,18647,58,pop ax,pop ax,0,,PARTIAL
+uppercase_asciiz_in_place,107720,5567,18648,c3,ret,ret ,4,,PARTIAL
+counted_to_asciiz,100934,5567,11862,51,push cx,push cx,0,,PARTIAL
+counted_to_asciiz,100935,5567,11863,1e,push ds,push ds,0,,PARTIAL
+counted_to_asciiz,100936,5567,11864,56,push si,push si,0,,PARTIAL
+counted_to_asciiz,100937,5567,11865,268a0d,"mov cl,es:[di]","mov cl, byte ptr es:[di]",0,,PARTIAL
+counted_to_asciiz,100940,5567,11868,32ed,"xor ch,ch","xor ch, ch",0,,PARTIAL
+counted_to_asciiz,100942,5567,11870,8bf7,"mov si,di","mov si, di",0,,PARTIAL
+counted_to_asciiz,100944,5567,11872,bfd92b,"mov di,2BD9h","mov di, 0x2bd9",0,,PARTIAL
+counted_to_asciiz,100947,5567,11875,1e,push ds,push ds,0,,PARTIAL
+counted_to_asciiz,100948,5567,11876,06,push es,push es,0,,PARTIAL
+counted_to_asciiz,100949,5567,11877,1f,pop ds,pop ds,0,,PARTIAL
+counted_to_asciiz,100950,5567,11878,07,pop es,pop es,0,,PARTIAL
+counted_to_asciiz,100951,5567,11879,46,inc si,inc si,0,,PARTIAL
+counted_to_asciiz,100952,5567,11880,f3a4,"rep movsb [di],[si]","rep movsb byte ptr es:[di], byte ptr [si]",0,,PARTIAL
+counted_to_asciiz,100954,5567,11882,32c9,"xor cl,cl","xor cl, cl",0,,PARTIAL
+counted_to_asciiz,100956,5567,11884,26880d,"mov es:[di],cl","mov byte ptr es:[di], cl",0,,PARTIAL
+counted_to_asciiz,100959,5567,11887,5e,pop si,pop si,0,,PARTIAL
+counted_to_asciiz,100960,5567,11888,1f,pop ds,pop ds,0,,PARTIAL
+counted_to_asciiz,100961,5567,11889,59,pop cx,pop cx,0,,PARTIAL
+counted_to_asciiz,100962,5567,11890,bfd92b,"mov di,2BD9h","mov di, 0x2bd9",0,,PARTIAL
+counted_to_asciiz,100965,5567,11893,c3,ret,ret ,4,,PARTIAL
+counted_mode_setter,100966,5567,11894,2ec6060c2c01,"mov byte ptr cs:[2C0Ch],1","mov byte ptr cs:[0x2c0c], 1",0,,PARTIAL
+counted_mode_setter,100972,5567,11900,c3,ret,ret ,4,,PARTIAL
+container_open,102130,5567,13058,53,push bx,push bx,0,,PARTIAL
+container_open,102131,5567,13059,51,push cx,push cx,0,,PARTIAL
+container_open,102132,5567,13060,52,push dx,push dx,0,,PARTIAL
+container_open,102133,5567,13061,06,push es,push es,0,,PARTIAL
+container_open,102134,5567,13062,e85200,call 335Bh,call 0x335b,5,102219,PARTIAL
+container_open,102137,5567,13065,e82413,call 4630h,call 0x4630,5,107040,PARTIAL
+container_open,102140,5567,13068,2e803e0c2c00,"cmp byte ptr cs:[2C0Ch],0","cmp byte ptr cs:[0x2c0c], 0",0,,PARTIAL
+container_open,102146,5567,13074,7403,je short 3317h,je 0x3317,3,102151,PARTIAL
+container_open,102148,5567,13076,e83ffb,call 2E56h,call 0x2e56,5,100934,PARTIAL
+container_open,102151,5567,13079,1e,push ds,push ds,0,,PARTIAL
+container_open,102152,5567,13080,8bd7,"mov dx,di","mov dx, di",0,,PARTIAL
+container_open,102154,5567,13082,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL
+container_open,102156,5567,13084,8ed8,"mov ds,ax","mov ds, ax",0,,PARTIAL
+container_open,102158,5567,13086,b8003d,"mov ax,3D00h","mov ax, 0x3d00",0,,PARTIAL
+container_open,102161,5567,13089,cd21,int 21h,int 0x21,7,,PARTIAL
+container_open,102163,5567,13091,1f,pop ds,pop ds,0,,PARTIAL
+container_open,102164,5567,13092,730b,jae short 3331h,jae 0x3331,3,102177,PARTIAL
+container_open,102166,5567,13094,2ea3472c,"mov cs:[2C47h],ax","mov word ptr cs:[0x2c47], ax",0,,PARTIAL
+container_open,102170,5567,13098,f9,stc,stc ,0,,PARTIAL
+container_open,102171,5567,13099,b8ffff,"mov ax,0FFFFh","mov ax, 0xffff",0,,PARTIAL
+container_open,102174,5567,13102,eb26,jmp short 3356h,jmp 0x3356,1,102214,PARTIAL
+container_open,102177,5567,13105,2ea3f32d,"mov cs:[2DF3h],ax","mov word ptr cs:[0x2df3], ax",0,,PARTIAL
+container_open,102181,5567,13109,8bd8,"mov bx,ax","mov bx, ax",0,,PARTIAL
+container_open,102183,5567,13111,b43f,"mov ah,3Fh","mov ah, 0x3f",0,,PARTIAL
+container_open,102185,5567,13113,b90200,"mov cx,2","mov cx, 2",0,,PARTIAL
+container_open,102188,5567,13116,baf52d,"mov dx,2DF5h","mov dx, 0x2df5",0,,PARTIAL
+container_open,102191,5567,13119,cd21,int 21h,int 0x21,7,,PARTIAL
+container_open,102193,5567,13121,7308,jae short 334Bh,jae 0x334b,3,102203,PARTIAL
+container_open,102195,5567,13123,2ea3472c,"mov cs:[2C47h],ax","mov word ptr cs:[0x2c47], ax",0,,PARTIAL
+container_open,102199,5567,13127,f9,stc,stc ,0,,PARTIAL
+container_open,102200,5567,13128,eb0c,jmp short 3356h,jmp 0x3356,1,102214,PARTIAL
+container_open,102203,5567,13131,2ec606102e01,"mov byte ptr cs:[2E10h],1","mov byte ptr cs:[0x2e10], 1",0,,PARTIAL
+container_open,102209,5567,13137,2ea1f52d,"mov ax,cs:[2DF5h]","mov ax, word ptr cs:[0x2df5]",0,,PARTIAL
+container_open,102213,5567,13141,f8,clc,clc ,0,,PARTIAL
+container_open,102214,5567,13142,07,pop es,pop es,0,,PARTIAL
+container_open,102215,5567,13143,5a,pop dx,pop dx,0,,PARTIAL
+container_open,102216,5567,13144,59,pop cx,pop cx,0,,PARTIAL
+container_open,102217,5567,13145,5b,pop bx,pop bx,0,,PARTIAL
+container_open,102218,5567,13146,c3,ret,ret ,4,,PARTIAL
+container_close,102219,5567,13147,50,push ax,push ax,0,,PARTIAL
+container_close,102220,5567,13148,53,push bx,push bx,0,,PARTIAL
+container_close,102221,5567,13149,2e8b1ef32d,"mov bx,cs:[2DF3h]","mov bx, word ptr cs:[0x2df3]",0,,PARTIAL
+container_close,102226,5567,13154,83fbff,"cmp bx,0FFFFh","cmp bx, -1",0,,PARTIAL
+container_close,102229,5567,13157,7404,je short 336Bh,je 0x336b,3,102235,PARTIAL
+container_close,102231,5567,13159,b43e,"mov ah,3Eh","mov ah, 0x3e",0,,PARTIAL
+container_close,102233,5567,13161,cd21,int 21h,int 0x21,7,,PARTIAL
+container_close,102235,5567,13163,2ec606102e00,"mov byte ptr cs:[2E10h],0","mov byte ptr cs:[0x2e10], 0",0,,PARTIAL
+container_close,102241,5567,13169,2ec706f32dffff,"mov word ptr cs:[2DF3h],0FFFFh","mov word ptr cs:[0x2df3], 0xffff",0,,PARTIAL
+container_close,102248,5567,13176,5b,pop bx,pop bx,0,,PARTIAL
+container_close,102249,5567,13177,58,pop ax,pop ax,0,,PARTIAL
+container_close,102250,5567,13178,c3,ret,ret ,4,,PARTIAL
+callback_locate,97800,5567,8728,53,push bx,push bx,0,,PARTIAL
+callback_locate,97801,5567,8729,b81043,"mov ax,4310h","mov ax, 0x4310",0,,PARTIAL
+callback_locate,97804,5567,8732,cd2f,int 2Fh,int 0x2f,7,,PARTIAL
+callback_locate,97806,5567,8734,2e891ec821,"mov cs:[21C8h],bx","mov word ptr cs:[0x21c8], bx",0,,PARTIAL
+callback_locate,97811,5567,8739,2e8c06ca21,"mov cs:[21CAh],es","mov word ptr cs:[0x21ca], es",0,,PARTIAL
+callback_locate,97816,5567,8744,b400,"mov ah,0","mov ah, 0",0,,PARTIAL
+callback_locate,97818,5567,8746,2eff1ec821,call far dword ptr cs:[21C8h],lcall cs:[0x21c8],6,,PARTIAL
+callback_locate,97823,5567,8751,5a,pop dx,pop dx,0,,PARTIAL
+callback_locate,97824,5567,8752,b409,"mov ah,9","mov ah, 9",0,,PARTIAL
+callback_locate,97826,5567,8754,2eff1ec821,call far dword ptr cs:[21C8h],lcall cs:[0x21c8],6,,PARTIAL
+callback_locate,97831,5567,8759,3d0100,"cmp ax,1","cmp ax, 1",0,,PARTIAL
+callback_locate,97834,5567,8762,7509,jne short 2245h,jne 0x2245,3,97845,PARTIAL
+callback_locate,97836,5567,8764,2e8916c621,"mov cs:[21C6h],dx","mov word ptr cs:[0x21c6], dx",0,,PARTIAL
+callback_locate,97841,5567,8769,b80000,"mov ax,0","mov ax, 0",0,,PARTIAL
+callback_locate,97844,5567,8772,c3,ret,ret ,4,,PARTIAL
+callback_locate,97845,5567,8773,b8ffff,"mov ax,0FFFFh","mov ax, 0xffff",0,,PARTIAL
+callback_locate,97848,5567,8776,c3,ret,ret ,4,,PARTIAL
+int63_dispatcher,101590,5567,12518,2eff06d43e,inc word ptr cs:[3ED4h],new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101595,5567,12523,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101596,5567,12524,53,push bx,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101597,5567,12525,51,push cx,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101598,5567,12526,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101599,5567,12527,55,push bp,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101600,5567,12528,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101601,5567,12529,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101602,5567,12530,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101603,5567,12531,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101604,5567,12532,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101605,5567,12533,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101606,5567,12534,fc,cld,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101607,5567,12535,8ec2,"mov es,dx",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101609,5567,12537,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101610,5567,12538,86e0,"xchg al,ah",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101612,5567,12540,32e4,"xor ah,ah",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101614,5567,12542,d1e0,"shl ax,1",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101616,5567,12544,8bf0,"mov si,ax",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101618,5567,12546,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101619,5567,12547,2eff942020,call word ptr cs:[si+2020h],new independent decode; no historical text imported,6,,PARTIAL
+int63_dispatcher,101624,5567,12552,2ea3e230,"mov cs:[30E2h],ax",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101628,5567,12556,2e8916e430,"mov cs:[30E4h],dx",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101633,5567,12561,07,pop es,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101634,5567,12562,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101635,5567,12563,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101636,5567,12564,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101637,5567,12565,5d,pop bp,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101638,5567,12566,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101639,5567,12567,59,pop cx,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101640,5567,12568,5b,pop bx,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101641,5567,12569,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101642,5567,12570,2eff0ed43e,dec word ptr cs:[3ED4h],new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101647,5567,12575,2ea1e230,"mov ax,cs:[30E2h]",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101651,5567,12579,2e8b16e430,"mov dx,cs:[30E4h]",new independent decode; no historical text imported,0,,PARTIAL
+int63_dispatcher,101656,5567,12584,cf,iret,new independent decode; no historical text imported,4,,PARTIAL
+wave_timer_playback_init,102791,5567,13719,fa,cli,cli ,0,,PARTIAL
+wave_timer_playback_init,102792,5567,13720,2e803eca2d00,"cmp byte ptr cs:[2DCAh],0","cmp byte ptr cs:[0x2dca], 0",0,,PARTIAL
+wave_timer_playback_init,102798,5567,13726,7403,je short 35A3h,je 0x35a3,3,102803,PARTIAL
+wave_timer_playback_init,102800,5567,13728,e83f01,call 36E2h,call 0x36e2,5,103122,PARTIAL
+wave_timer_playback_init,102803,5567,13731,e88a10,call 4630h,call 0x4630,5,107040,PARTIAL
+wave_timer_playback_init,102806,5567,13734,b92c00,"mov cx,2Ch","mov cx, 0x2c",0,,PARTIAL
+wave_timer_playback_init,102809,5567,13737,8bf7,"mov si,di","mov si, di",0,,PARTIAL
+wave_timer_playback_init,102811,5567,13739,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL
+wave_timer_playback_init,102813,5567,13741,8ed8,"mov ds,ax","mov ds, ax",0,,PARTIAL
+wave_timer_playback_init,102815,5567,13743,bf9859,"mov di,5998h","mov di, 0x5998",0,,PARTIAL
+wave_timer_playback_init,102818,5567,13746,8cc8,"mov ax,cs","mov ax, cs",0,,PARTIAL
+wave_timer_playback_init,102820,5567,13748,8ec0,"mov es,ax","mov es, ax",0,,PARTIAL
+wave_timer_playback_init,102822,5567,13750,fc,cld,cld ,0,,PARTIAL
+wave_timer_playback_init,102823,5567,13751,f3a4,"rep movsb [di],[si]","rep movsb byte ptr es:[di], byte ptr [si]",0,,PARTIAL
+wave_timer_playback_init,102825,5567,13753,1e,push ds,push ds,0,,PARTIAL
+wave_timer_playback_init,102826,5567,13754,07,pop es,pop es,0,,PARTIAL
+wave_timer_playback_init,102827,5567,13755,8bfe,"mov di,si","mov di, si",0,,PARTIAL
+wave_timer_playback_init,102829,5567,13757,0e,push cs,push cs,0,,PARTIAL
+wave_timer_playback_init,102830,5567,13758,1f,pop ds,pop ds,0,,PARTIAL
+wave_timer_playback_init,102831,5567,13759,2ea1c059,"mov ax,cs:[59C0h]","mov ax, word ptr cs:[0x59c0]",0,,PARTIAL
+wave_timer_playback_init,102835,5567,13763,03c7,"add ax,di","add ax, di",0,,PARTIAL
+wave_timer_playback_init,102837,5567,13765,2ea36c36,"mov cs:[366Ch],ax","mov word ptr cs:[0x366c], ax",0,,PARTIAL
+wave_timer_playback_init,102841,5567,13769,2ea1b059,"mov ax,cs:[59B0h]","mov ax, word ptr cs:[0x59b0]",0,,PARTIAL
+wave_timer_playback_init,102845,5567,13773,33d2,"xor dx,dx","xor dx, dx",0,,PARTIAL
+wave_timer_playback_init,102847,5567,13775,2e8b1eb934,"mov bx,cs:[34B9h]","mov bx, word ptr cs:[0x34b9]",0,,PARTIAL
+wave_timer_playback_init,102852,5567,13780,f7f3,div bx,div bx,0,,PARTIAL
+wave_timer_playback_init,102854,5567,13782,2ea37c36,"mov cs:[367Ch],ax","mov word ptr cs:[0x367c], ax",0,,PARTIAL
+wave_timer_playback_init,102858,5567,13786,33c0,"xor ax,ax","xor ax, ax",0,,PARTIAL
+wave_timer_playback_init,102860,5567,13788,2e8b1eb934,"mov bx,cs:[34B9h]","mov bx, word ptr cs:[0x34b9]",0,,PARTIAL
+wave_timer_playback_init,102865,5567,13793,f7f3,div bx,div bx,0,,PARTIAL
+wave_timer_playback_init,102867,5567,13795,2ea37536,"mov cs:[3675h],ax","mov word ptr cs:[0x3675], ax",0,,PARTIAL
+wave_timer_playback_init,102871,5567,13799,2e893ecf2d,"mov cs:[2DCFh],di","mov word ptr cs:[0x2dcf], di",0,,PARTIAL
+wave_timer_playback_init,102876,5567,13804,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL
+wave_timer_playback_init,102878,5567,13806,2ea3d12d,"mov cs:[2DD1h],ax","mov word ptr cs:[0x2dd1], ax",0,,PARTIAL
+wave_timer_playback_init,102882,5567,13810,50,push ax,push ax,0,,PARTIAL
+wave_timer_playback_init,102883,5567,13811,53,push bx,push bx,0,,PARTIAL
+wave_timer_playback_init,102884,5567,13812,1e,push ds,push ds,0,,PARTIAL
+wave_timer_playback_init,102885,5567,13813,52,push dx,push dx,0,,PARTIAL
+wave_timer_playback_init,102886,5567,13814,06,push es,push es,0,,PARTIAL
+wave_timer_playback_init,102887,5567,13815,b435,"mov ah,35h","mov ah, 0x35",0,,PARTIAL
+wave_timer_playback_init,102889,5567,13817,b008,"mov al,8","mov al, 8",0,,PARTIAL
+wave_timer_playback_init,102891,5567,13819,cd21,int 21h,int 0x21,7,,PARTIAL
+wave_timer_playback_init,102893,5567,13821,2e891ecb2d,"mov cs:[2DCBh],bx","mov word ptr cs:[0x2dcb], bx",0,,PARTIAL
+wave_timer_playback_init,102898,5567,13826,2e8c06cd2d,"mov cs:[2DCDh],es","mov word ptr cs:[0x2dcd], es",0,,PARTIAL
+wave_timer_playback_init,102903,5567,13831,b425,"mov ah,25h","mov ah, 0x25",0,,PARTIAL
+wave_timer_playback_init,102905,5567,13833,b008,"mov al,8","mov al, 8",0,,PARTIAL
+wave_timer_playback_init,102907,5567,13835,ba5136,"mov dx,3651h","mov dx, 0x3651",0,,PARTIAL
+wave_timer_playback_init,102910,5567,13838,0e,push cs,push cs,0,,PARTIAL
+wave_timer_playback_init,102911,5567,13839,1f,pop ds,pop ds,0,,PARTIAL
+wave_timer_playback_init,102912,5567,13840,cd21,int 21h,int 0x21,7,,PARTIAL
+wave_timer_playback_init,102914,5567,13842,07,pop es,pop es,0,,PARTIAL
+wave_timer_playback_init,102915,5567,13843,5a,pop dx,pop dx,0,,PARTIAL
+wave_timer_playback_init,102916,5567,13844,1f,pop ds,pop ds,0,,PARTIAL
+wave_timer_playback_init,102917,5567,13845,5b,pop bx,pop bx,0,,PARTIAL
+wave_timer_playback_init,102918,5567,13846,58,pop ax,pop ax,0,,PARTIAL
+wave_timer_playback_init,102919,5567,13847,b0b0,"mov al,0B0h","mov al, 0xb0",0,,PARTIAL
+wave_timer_playback_init,102921,5567,13849,e643,"out 43h,al","out 0x43, al",0,,PARTIAL
+wave_timer_playback_init,102923,5567,13851,2e8b3ecf2d,"mov di,cs:[2DCFh]","mov di, word ptr cs:[0x2dcf]",0,,PARTIAL
+wave_timer_playback_init,102928,5567,13856,2e893e8436,"mov cs:[3684h],di","mov word ptr cs:[0x3684], di",0,,PARTIAL
+wave_timer_playback_init,102933,5567,13861,2ea1d12d,"mov ax,cs:[2DD1h]","mov ax, word ptr cs:[0x2dd1]",0,,PARTIAL
+wave_timer_playback_init,102937,5567,13865,2ea37f36,"mov cs:[367Fh],ax","mov word ptr cs:[0x367f], ax",0,,PARTIAL
+wave_timer_playback_init,102941,5567,13869,8ec0,"mov es,ax","mov es, ax",0,,PARTIAL
+wave_timer_playback_init,102943,5567,13871,e461,"in al,61h","in al, 0x61",0,,PARTIAL
+wave_timer_playback_init,102945,5567,13873,0c03,"or al,3","or al, 3",0,,PARTIAL
+wave_timer_playback_init,102947,5567,13875,e661,"out 61h,al","out 0x61, al",0,,PARTIAL
+wave_timer_playback_init,102949,5567,13877,ba1200,"mov dx,12h","mov dx, 0x12",0,,PARTIAL
+wave_timer_playback_init,102952,5567,13880,b80c2d,"mov ax,2D0Ch","mov ax, 0x2d0c",0,,PARTIAL
+wave_timer_playback_init,102955,5567,13883,2e8b1eb934,"mov bx,cs:[34B9h]","mov bx, word ptr cs:[0x34b9]",0,,PARTIAL
+wave_timer_playback_init,102960,5567,13888,f7f3,div bx,div bx,0,,PARTIAL
+wave_timer_playback_init,102962,5567,13890,32e4,"xor ah,ah","xor ah, ah",0,,PARTIAL
+wave_timer_playback_init,102964,5567,13892,e82310,call 466Ah,call 0x466a,5,107098,PARTIAL
+wave_timer_playback_init,102967,5567,13895,b001,"mov al,1","mov al, 1",0,,PARTIAL
+wave_timer_playback_init,102969,5567,13897,2ea2ca2d,"mov cs:[2DCAh],al","mov byte ptr cs:[0x2dca], al",0,,PARTIAL
+wave_timer_playback_init,102973,5567,13901,fb,sti,sti ,0,,PARTIAL
+wave_timer_playback_init,102974,5567,13902,c3,ret,ret ,4,,PARTIAL
+wave_file_playback_init,112870,5567,23798,fa,cli,cli ,0,,PARTIAL
+wave_file_playback_init,112871,5567,23799,e847ea,call 4741h,call 0x4741,5,107313,PARTIAL
+wave_file_playback_init,112874,5567,23802,33db,"xor bx,bx","xor bx, bx",0,,PARTIAL
+wave_file_playback_init,112876,5567,23804,e8cbd4,call 31CAh,call 0x31ca,5,101818,PARTIAL
+wave_file_playback_init,112879,5567,23807,726d,jb short 5D6Eh,jb 0x5d6e,3,112990,PARTIAL
+wave_file_playback_init,112881,5567,23809,bf9859,"mov di,5998h","mov di, 0x5998",0,,PARTIAL
+wave_file_playback_init,112884,5567,23812,0e,push cs,push cs,0,,PARTIAL
+wave_file_playback_init,112885,5567,23813,07,pop es,pop es,0,,PARTIAL
+wave_file_playback_init,112886,5567,23814,bb2c00,"mov bx,2Ch","mov bx, 0x2c",0,,PARTIAL
+wave_file_playback_init,112889,5567,23817,e822d4,call 312Eh,call 0x312e,5,101662,PARTIAL
+wave_file_playback_init,112892,5567,23820,2ea1c059,"mov ax,cs:[59C0h]","mov ax, word ptr cs:[0x59c0]",0,,PARTIAL
+wave_file_playback_init,112896,5567,23824,2ea3df48,"mov cs:[48DFh],ax","mov word ptr cs:[0x48df], ax",0,,PARTIAL
+wave_file_playback_init,112900,5567,23828,2ea1c259,"mov ax,cs:[59C2h]","mov ax, word ptr cs:[0x59c2]",0,,PARTIAL
+wave_file_playback_init,112904,5567,23832,2ea3e148,"mov cs:[48E1h],ax","mov word ptr cs:[0x48e1], ax",0,,PARTIAL
+wave_file_playback_init,112908,5567,23836,2ec606e44800,"mov byte ptr cs:[48E4h],0","mov byte ptr cs:[0x48e4], 0",0,,PARTIAL
+wave_file_playback_init,112914,5567,23842,2e8b1eb059,"mov bx,cs:[59B0h]","mov bx, word ptr cs:[0x59b0]",0,,PARTIAL
+wave_file_playback_init,112919,5567,23847,ba0f00,"mov dx,0Fh","mov dx, 0xf",0,,PARTIAL
+wave_file_playback_init,112922,5567,23850,b84042,"mov ax,4240h","mov ax, 0x4240",0,,PARTIAL
+wave_file_playback_init,112925,5567,23853,f7f3,div bx,div bx,0,,PARTIAL
+wave_file_playback_init,112927,5567,23855,bb0001,"mov bx,100h","mov bx, 0x100",0,,PARTIAL
+wave_file_playback_init,112930,5567,23858,2bd8,"sub bx,ax","sub bx, ax",0,,PARTIAL
+wave_file_playback_init,112932,5567,23860,2e881ee548,"mov cs:[48E5h],bl","mov byte ptr cs:[0x48e5], bl",0,,PARTIAL
+wave_file_playback_init,112937,5567,23865,2ec706ba490000,"mov word ptr cs:[49BAh],0","mov word ptr cs:[0x49ba], 0",0,,PARTIAL
+wave_file_playback_init,112944,5567,23872,b90010,"mov cx,1000h","mov cx, 0x1000",0,,PARTIAL
+wave_file_playback_init,112947,5567,23875,2ec606e34802,"mov byte ptr cs:[48E3h],2","mov byte ptr cs:[0x48e3], 2",0,,PARTIAL
+wave_file_playback_init,112953,5567,23881,2ec706db480010,"mov word ptr cs:[48DBh],1000h","mov word ptr cs:[0x48db], 0x1000",0,,PARTIAL
+wave_file_playback_init,112960,5567,23888,2ec706ba490000,"mov word ptr cs:[49BAh],0","mov word ptr cs:[0x49ba], 0",0,,PARTIAL
+wave_file_playback_init,112967,5567,23895,2ec706ee480000,"mov word ptr cs:[48EEh],0","mov word ptr cs:[0x48ee], 0",0,,PARTIAL
+wave_file_playback_init,112974,5567,23902,e8ab03,call 610Ch,call 0x610c,5,113916,PARTIAL
+wave_file_playback_init,112977,5567,23905,2ec606ea2d01,"mov byte ptr cs:[2DEAh],1","mov byte ptr cs:[0x2dea], 1",0,,PARTIAL
+wave_file_playback_init,112983,5567,23911,e887eb,call 48F1h,call 0x48f1,5,107745,PARTIAL
+wave_file_playback_init,112986,5567,23914,f8,clc,clc ,0,,PARTIAL
+wave_file_playback_init,112987,5567,23915,b80000,"mov ax,0","mov ax, 0",0,,PARTIAL
+wave_file_playback_init,112990,5567,23918,c3,ret,ret ,4,,PARTIAL
+wave_memory_playback_init,112991,5567,23919,fa,cli,cli ,0,,PARTIAL
+wave_memory_playback_init,112992,5567,23920,e8bde8,call 4630h,call 0x4630,5,107040,PARTIAL
+wave_memory_playback_init,112995,5567,23923,e8cbe9,call 4741h,call 0x4741,5,107313,PARTIAL
+wave_memory_playback_init,112998,5567,23926,268b5d28,"mov bx,es:[di+28h]","mov bx, word ptr es:[di + 0x28]",0,,PARTIAL
+wave_memory_playback_init,113002,5567,23930,83c32c,"add bx,2Ch","add bx, 0x2c",0,,PARTIAL
+wave_memory_playback_init,113005,5567,23933,e8b0e8,call 4630h,call 0x4630,5,107040,PARTIAL
+wave_memory_playback_init,113008,5567,23936,e847d4,call 31CAh,call 0x31ca,5,101818,PARTIAL
+wave_memory_playback_init,113011,5567,23939,bf9859,"mov di,5998h","mov di, 0x5998",0,,PARTIAL
+wave_memory_playback_init,113014,5567,23942,1e,push ds,push ds,0,,PARTIAL
+wave_memory_playback_init,113015,5567,23943,07,pop es,pop es,0,,PARTIAL
+wave_memory_playback_init,113016,5567,23944,bb2c00,"mov bx,2Ch","mov bx, 0x2c",0,,PARTIAL
+wave_memory_playback_init,113019,5567,23947,e8a0d3,call 312Eh,call 0x312e,5,101662,PARTIAL
+wave_memory_playback_init,113022,5567,23950,2ea1c059,"mov ax,cs:[59C0h]","mov ax, word ptr cs:[0x59c0]",0,,PARTIAL
+wave_memory_playback_init,113026,5567,23954,2ea3df48,"mov cs:[48DFh],ax","mov word ptr cs:[0x48df], ax",0,,PARTIAL
+wave_memory_playback_init,113030,5567,23958,2ea1c259,"mov ax,cs:[59C2h]","mov ax, word ptr cs:[0x59c2]",0,,PARTIAL
+wave_memory_playback_init,113034,5567,23962,2ea3e148,"mov cs:[48E1h],ax","mov word ptr cs:[0x48e1], ax",0,,PARTIAL
+wave_memory_playback_init,113038,5567,23966,2ec606e44800,"mov byte ptr cs:[48E4h],0","mov byte ptr cs:[0x48e4], 0",0,,PARTIAL
+wave_memory_playback_init,113044,5567,23972,2e8b1eb059,"mov bx,cs:[59B0h]","mov bx, word ptr cs:[0x59b0]",0,,PARTIAL
+wave_memory_playback_init,113049,5567,23977,ba0f00,"mov dx,0Fh","mov dx, 0xf",0,,PARTIAL
+wave_memory_playback_init,113052,5567,23980,b84042,"mov ax,4240h","mov ax, 0x4240",0,,PARTIAL
+wave_memory_playback_init,113055,5567,23983,f7f3,div bx,div bx,0,,PARTIAL
+wave_memory_playback_init,113057,5567,23985,bb0001,"mov bx,100h","mov bx, 0x100",0,,PARTIAL
+wave_memory_playback_init,113060,5567,23988,2bd8,"sub bx,ax","sub bx, ax",0,,PARTIAL
+wave_memory_playback_init,113062,5567,23990,2e881ee548,"mov cs:[48E5h],bl","mov byte ptr cs:[0x48e5], bl",0,,PARTIAL
+wave_memory_playback_init,113067,5567,23995,2ec706ba490000,"mov word ptr cs:[49BAh],0","mov word ptr cs:[0x49ba], 0",0,,PARTIAL
+wave_memory_playback_init,113074,5567,24002,b90010,"mov cx,1000h","mov cx, 0x1000",0,,PARTIAL
+wave_memory_playback_init,113077,5567,24005,2ec606e34802,"mov byte ptr cs:[48E3h],2","mov byte ptr cs:[0x48e3], 2",0,,PARTIAL
+wave_memory_playback_init,113083,5567,24011,2ec706db480010,"mov word ptr cs:[48DBh],1000h","mov word ptr cs:[0x48db], 0x1000",0,,PARTIAL
+wave_memory_playback_init,113090,5567,24018,2ec706ba490000,"mov word ptr cs:[49BAh],0","mov word ptr cs:[0x49ba], 0",0,,PARTIAL
+wave_memory_playback_init,113097,5567,24025,2ec706ee480000,"mov word ptr cs:[48EEh],0","mov word ptr cs:[0x48ee], 0",0,,PARTIAL
+wave_memory_playback_init,113104,5567,24032,e82903,call 610Ch,call 0x610c,5,113916,PARTIAL
+wave_memory_playback_init,113107,5567,24035,2ec606ea2d01,"mov byte ptr cs:[2DEAh],1","mov byte ptr cs:[0x2dea], 1",0,,PARTIAL
+wave_memory_playback_init,113113,5567,24041,e805eb,call 48F1h,call 0x48f1,5,107745,PARTIAL
+wave_memory_playback_init,113116,5567,24044,f8,clc,clc ,0,,PARTIAL
+wave_memory_playback_init,113117,5567,24045,b80000,"mov ax,0","mov ax, 0",0,,PARTIAL
+wave_memory_playback_init,113120,5567,24048,f8,clc,clc ,0,,PARTIAL
+wave_memory_playback_init,113121,5567,24049,c3,ret,ret ,4,,PARTIAL
+read_helper_312e,101662,5567,12590,53,push bx,push bx,0,,PARTIAL
+read_helper_312e,101663,5567,12591,51,push cx,push cx,0,,PARTIAL
+read_helper_312e,101664,5567,12592,52,push dx,push dx,0,,PARTIAL
+read_helper_312e,101665,5567,12593,55,push bp,push bp,0,,PARTIAL
+read_helper_312e,101666,5567,12594,57,push di,push di,0,,PARTIAL
+read_helper_312e,101667,5567,12595,56,push si,push si,0,,PARTIAL
+read_helper_312e,101668,5567,12596,1e,push ds,push ds,0,,PARTIAL
+read_helper_312e,101669,5567,12597,06,push es,push es,0,,PARTIAL
+read_helper_312e,101670,5567,12598,0e,push cs,push cs,0,,PARTIAL
+read_helper_312e,101671,5567,12599,1f,pop ds,pop ds,0,,PARTIAL
+read_helper_312e,101672,5567,12600,53,push bx,push bx,0,,PARTIAL
+read_helper_312e,101673,5567,12601,2e803e2d3100,"cmp byte ptr cs:[312Dh],0","cmp byte ptr cs:[0x312d], 0",0,,PARTIAL
+read_helper_312e,101679,5567,12607,7429,je short 316Ah,je 0x316a,3,101722,PARTIAL
+read_helper_312e,101681,5567,12609,5b,pop bx,pop bx,0,,PARTIAL
+read_helper_312e,101682,5567,12610,2ec5362931,"lds si,cs:[3129h]","lds si, ptr cs:[0x3129]",0,,PARTIAL
+read_helper_312e,101687,5567,12615,2e0336ff2d,"add si,cs:[2DFFh]","add si, word ptr cs:[0x2dff]",0,,PARTIAL
+read_helper_312e,101692,5567,12620,2ea1f72d,"mov ax,cs:[2DF7h]","mov ax, word ptr cs:[0x2df7]",0,,PARTIAL
+read_helper_312e,101696,5567,12624,2e2b06ff2d,"sub ax,cs:[2DFFh]","sub ax, word ptr cs:[0x2dff]",0,,PARTIAL
+read_helper_312e,101701,5567,12629,3bc3,"cmp ax,bx","cmp ax, bx",0,,PARTIAL
+read_helper_312e,101703,5567,12631,7302,jae short 315Bh,jae 0x315b,3,101707,PARTIAL
+read_helper_312e,101705,5567,12633,8bd8,"mov bx,ax","mov bx, ax",0,,PARTIAL
+read_helper_312e,101707,5567,12635,2e011eff2d,"add cs:[2DFFh],bx","add word ptr cs:[0x2dff], bx",0,,PARTIAL
+read_helper_312e,101712,5567,12640,8bcb,"mov cx,bx","mov cx, bx",0,,PARTIAL
+read_helper_312e,101714,5567,12642,f3a4,"rep movsb [di],[si]","rep movsb byte ptr es:[di], byte ptr [si]",0,,PARTIAL
+read_helper_312e,101716,5567,12644,8bc3,"mov ax,bx","mov ax, bx",0,,PARTIAL
+read_helper_312e,101718,5567,12646,f8,clc,clc ,0,,PARTIAL
+read_helper_312e,101719,5567,12647,eb58,jmp short 31C1h,jmp 0x31c1,1,101809,PARTIAL
+read_helper_312e,101722,5567,12650,b80142,"mov ax,4201h","mov ax, 0x4201",0,,PARTIAL
+read_helper_312e,101725,5567,12653,33c9,"xor cx,cx","xor cx, cx",0,,PARTIAL
+read_helper_312e,101727,5567,12655,33d2,"xor dx,dx","xor dx, dx",0,,PARTIAL
+read_helper_312e,101729,5567,12657,2e8b1ef32d,"mov bx,cs:[2DF3h]","mov bx, word ptr cs:[0x2df3]",0,,PARTIAL
+read_helper_312e,101734,5567,12662,cd21,int 21h,int 0x21,7,,PARTIAL
+read_helper_312e,101736,5567,12664,bef72d,"mov si,2DF7h","mov si, 0x2df7",0,,PARTIAL
+read_helper_312e,101739,5567,12667,2b4408,"sub ax,[si+8]","sub ax, word ptr [si + 8]",0,,PARTIAL
+read_helper_312e,101742,5567,12670,1b540a,"sbb dx,[si+0Ah]","sbb dx, word ptr [si + 0xa]",0,,PARTIAL
+read_helper_312e,101745,5567,12673,3b5402,"cmp dx,[si+2]","cmp dx, word ptr [si + 2]",0,,PARTIAL
+read_helper_312e,101748,5567,12676,720b,jb short 3191h,jb 0x3191,3,101761,PARTIAL
+read_helper_312e,101750,5567,12678,3b04,"cmp ax,[si]","cmp ax, word ptr [si]",0,,PARTIAL
+read_helper_312e,101752,5567,12680,7207,jb short 3191h,jb 0x3191,3,101761,PARTIAL
+read_helper_312e,101754,5567,12682,33c0,"xor ax,ax","xor ax, ax",0,,PARTIAL
+read_helper_312e,101756,5567,12684,33d2,"xor dx,dx","xor dx, dx",0,,PARTIAL
+read_helper_312e,101758,5567,12686,eb2f,jmp short 31BFh,jmp 0x31bf,1,101807,PARTIAL
+read_helper_312e,101761,5567,12689,93,"xchg bx,ax","xchg bx, ax",0,,PARTIAL
+read_helper_312e,101762,5567,12690,87ca,"xchg dx,cx","xchg dx, cx",0,,PARTIAL
+read_helper_312e,101764,5567,12692,8b04,"mov ax,[si]","mov ax, word ptr [si]",0,,PARTIAL
+read_helper_312e,101766,5567,12694,8b5402,"mov dx,[si+2]","mov dx, word ptr [si + 2]",0,,PARTIAL
+read_helper_312e,101769,5567,12697,2bc3,"sub ax,bx","sub ax, bx",0,,PARTIAL
+read_helper_312e,101771,5567,12699,1bd1,"sbb dx,cx","sbb dx, cx",0,,PARTIAL
+read_helper_312e,101773,5567,12701,5b,pop bx,pop bx,0,,PARTIAL
+read_helper_312e,101774,5567,12702,83fa00,"cmp dx,0","cmp dx, 0",0,,PARTIAL
+read_helper_312e,101777,5567,12705,7706,ja short 31A9h,ja 0x31a9,3,101785,PARTIAL
+read_helper_312e,101779,5567,12707,3bd8,"cmp bx,ax","cmp bx, ax",0,,PARTIAL
+read_helper_312e,101781,5567,12709,7602,jbe short 31A9h,jbe 0x31a9,3,101785,PARTIAL
+read_helper_312e,101783,5567,12711,8bd8,"mov bx,ax","mov bx, ax",0,,PARTIAL
+read_helper_312e,101785,5567,12713,1e,push ds,push ds,0,,PARTIAL
+read_helper_312e,101786,5567,12714,8bcb,"mov cx,bx","mov cx, bx",0,,PARTIAL
+read_helper_312e,101788,5567,12716,8bd7,"mov dx,di","mov dx, di",0,,PARTIAL
+read_helper_312e,101790,5567,12718,2e8b1ef32d,"mov bx,cs:[2DF3h]","mov bx, word ptr cs:[0x2df3]",0,,PARTIAL
+read_helper_312e,101795,5567,12723,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL
+read_helper_312e,101797,5567,12725,8ed8,"mov ds,ax","mov ds, ax",0,,PARTIAL
+read_helper_312e,101799,5567,12727,b43f,"mov ah,3Fh","mov ah, 0x3f",0,,PARTIAL
+read_helper_312e,101801,5567,12729,cd21,int 21h,int 0x21,7,,PARTIAL
+read_helper_312e,101803,5567,12731,1f,pop ds,pop ds,0,,PARTIAL
+read_helper_312e,101804,5567,12732,eb03,jmp short 31C1h,jmp 0x31c1,1,101809,PARTIAL
+read_helper_312e,101807,5567,12735,5b,pop bx,pop bx,0,,PARTIAL
+read_helper_312e,101808,5567,12736,f9,stc,stc ,0,,PARTIAL
+read_helper_312e,101809,5567,12737,07,pop es,pop es,0,,PARTIAL
+read_helper_312e,101810,5567,12738,1f,pop ds,pop ds,0,,PARTIAL
+read_helper_312e,101811,5567,12739,5e,pop si,pop si,0,,PARTIAL
+read_helper_312e,101812,5567,12740,5f,pop di,pop di,0,,PARTIAL
+read_helper_312e,101813,5567,12741,5d,pop bp,pop bp,0,,PARTIAL
+read_helper_312e,101814,5567,12742,5a,pop dx,pop dx,0,,PARTIAL
+read_helper_312e,101815,5567,12743,59,pop cx,pop cx,0,,PARTIAL
+read_helper_312e,101816,5567,12744,5b,pop bx,pop bx,0,,PARTIAL
+read_helper_312e,101817,5567,12745,c3,ret,ret ,4,,PARTIAL
+audio_install,100973,5567,11901,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100974,5567,11902,53,push bx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100975,5567,11903,51,push cx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100976,5567,11904,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100977,5567,11905,55,push bp,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100978,5567,11906,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100979,5567,11907,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100980,5567,11908,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100981,5567,11909,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100982,5567,11910,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100983,5567,11911,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100984,5567,11912,fa,cli,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100985,5567,11913,fc,cld,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100986,5567,11914,2ec7061e200000,"mov word ptr cs:[201Eh],0",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100993,5567,11921,2ec6060c2c00,"mov byte ptr cs:[2C0Ch],0",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,100999,5567,11927,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101000,5567,11928,53,push bx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101001,5567,11929,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101002,5567,11930,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101003,5567,11931,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101004,5567,11932,b435,"mov ah,35h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101006,5567,11934,b063,"mov al,63h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101008,5567,11936,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
+audio_install,101010,5567,11938,2e891e112e,"mov cs:[2E11h],bx",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101015,5567,11943,2e8c06132e,"mov cs:[2E13h],es",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101020,5567,11948,b425,"mov ah,25h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101022,5567,11950,b063,"mov al,63h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101024,5567,11952,bae630,"mov dx,30E6h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101027,5567,11955,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101028,5567,11956,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101029,5567,11957,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
+audio_install,101031,5567,11959,07,pop es,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101032,5567,11960,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101033,5567,11961,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101034,5567,11962,5b,pop bx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101035,5567,11963,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101036,5567,11964,b8e540,"mov ax,40E5h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101039,5567,11967,2d0400,"sub ax,4",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101042,5567,11970,2ea3e13e,"mov cs:[3EE1h],ax",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101046,5567,11974,8cc8,"mov ax,cs",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101048,5567,11976,2ea3e33e,"mov cs:[3EE3h],ax",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101052,5567,11980,33c0,"xor ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101054,5567,11982,e8d609,call 38A7h,new independent decode; no historical text imported,5,103575,PARTIAL
+audio_install,101057,5567,11985,fec4,inc ah,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101059,5567,11987,80fc00,"cmp ah,0",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101062,5567,11990,75f6,jne short 2ECEh,new independent decode; no historical text imported,3,101054,PARTIAL
+audio_install,101064,5567,11992,b80120,"mov ax,2001h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101067,5567,11995,e8c909,call 38A7h,new independent decode; no historical text imported,5,103575,PARTIAL
+audio_install,101070,5567,11998,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101071,5567,11999,53,push bx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101072,5567,12000,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101073,5567,12001,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101074,5567,12002,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101075,5567,12003,b435,"mov ah,35h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101077,5567,12005,b008,"mov al,8",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101079,5567,12007,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
+audio_install,101081,5567,12009,2e891e0a00,"mov cs:[0Ah],bx",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101086,5567,12014,2e8c060c00,"mov cs:[0Ch],es",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101091,5567,12019,b425,"mov ah,25h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101093,5567,12021,b008,"mov al,8",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101095,5567,12023,ba5041,"mov dx,4150h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101098,5567,12026,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101099,5567,12027,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101100,5567,12028,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
+audio_install,101102,5567,12030,07,pop es,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101103,5567,12031,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101104,5567,12032,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101105,5567,12033,5b,pop bx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101106,5567,12034,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101107,5567,12035,b85209,"mov ax,952h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101110,5567,12038,e86117,call 466Ah,new independent decode; no historical text imported,5,107098,PARTIAL
+audio_install,101113,5567,12041,2ec706492c5209,"mov word ptr cs:[2C49h],952h",new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101120,5567,12048,07,pop es,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101121,5567,12049,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101122,5567,12050,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101123,5567,12051,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101124,5567,12052,5d,pop bp,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101125,5567,12053,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101126,5567,12054,59,pop cx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101127,5567,12055,5b,pop bx,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101128,5567,12056,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101129,5567,12057,fb,sti,new independent decode; no historical text imported,0,,PARTIAL
+audio_install,101130,5567,12058,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+audio_uninstall,101206,5567,12134,fc,cld,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101207,5567,12135,fa,cli,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101208,5567,12136,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101209,5567,12137,53,push bx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101210,5567,12138,51,push cx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101211,5567,12139,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101212,5567,12140,55,push bp,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101213,5567,12141,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101214,5567,12142,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101215,5567,12143,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101216,5567,12144,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101217,5567,12145,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101218,5567,12146,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101219,5567,12147,e8cb17,call 4741h,new independent decode; no historical text imported,5,107313,PARTIAL
+audio_uninstall,101222,5567,12150,e8fe0e,call 3E77h,new independent decode; no historical text imported,5,105063,PARTIAL
+audio_uninstall,101225,5567,12153,e84808,call 37C4h,new independent decode; no historical text imported,5,103348,PARTIAL
+audio_uninstall,101228,5567,12156,e8e80e,call 3E67h,new independent decode; no historical text imported,5,105047,PARTIAL
+audio_uninstall,101231,5567,12159,e8d903,call 335Bh,new independent decode; no historical text imported,5,102219,PARTIAL
+audio_uninstall,101234,5567,12162,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101235,5567,12163,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101236,5567,12164,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101237,5567,12165,b425,"mov ah,25h",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101239,5567,12167,b008,"mov al,8",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101241,5567,12169,2e8b160a00,"mov dx,cs:[0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101246,5567,12174,2e8e1e0c00,"mov ds,cs:[0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101251,5567,12179,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
+audio_uninstall,101253,5567,12181,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101254,5567,12182,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101255,5567,12183,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101256,5567,12184,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101257,5567,12185,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101258,5567,12186,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101259,5567,12187,b425,"mov ah,25h",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101261,5567,12189,b063,"mov al,63h",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101263,5567,12191,2e8b16112e,"mov dx,cs:[2E11h]",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101268,5567,12196,2e8e1e132e,"mov ds,cs:[2E13h]",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101273,5567,12201,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
+audio_uninstall,101275,5567,12203,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101276,5567,12204,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101277,5567,12205,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101278,5567,12206,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101279,5567,12207,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101280,5567,12208,2e833ec621ff,"cmp word ptr cs:[21C6h],0FFFFh",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101286,5567,12214,740c,je short 2FC4h,new independent decode; no historical text imported,3,101300,PARTIAL
+audio_uninstall,101288,5567,12216,b40a,"mov ah,0Ah",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101290,5567,12218,2e8b16c621,"mov dx,cs:[21C6h]",new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101295,5567,12223,2eff1ec821,call far dword ptr cs:[21C8h],new independent decode; no historical text imported,6,,PARTIAL
+audio_uninstall,101300,5567,12228,07,pop es,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101301,5567,12229,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101302,5567,12230,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101303,5567,12231,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101304,5567,12232,5d,pop bp,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101305,5567,12233,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101306,5567,12234,59,pop cx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101307,5567,12235,5b,pop bx,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101308,5567,12236,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101309,5567,12237,fb,sti,new independent decode; no historical text imported,0,,PARTIAL
+audio_uninstall,101310,5567,12238,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+port388_write,103575,5567,14503,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103576,5567,14504,53,push bx,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103577,5567,14505,51,push cx,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103578,5567,14506,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103579,5567,14507,ba8803,"mov dx,388h",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103582,5567,14510,ee,"out dx,al",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103583,5567,14511,b90600,"mov cx,6",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103586,5567,14514,ec,"in al,dx",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103587,5567,14515,e2fd,loop 38B2h,new independent decode; no historical text imported,3,103586,PARTIAL
+port388_write,103589,5567,14517,42,inc dx,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103590,5567,14518,86c4,"xchg ah,al",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103592,5567,14520,ee,"out dx,al",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103593,5567,14521,b92300,"mov cx,23h",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103596,5567,14524,ec,"in al,dx",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103597,5567,14525,ec,"in al,dx",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103598,5567,14526,e2fc,loop 38BCh,new independent decode; no historical text imported,3,103596,PARTIAL
+port388_write,103600,5567,14528,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103601,5567,14529,59,pop cx,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103602,5567,14530,5b,pop bx,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103603,5567,14531,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103604,5567,14532,2e833e983800,"cmp word ptr cs:[3898h],0",new independent decode; no historical text imported,0,,PARTIAL
+port388_write,103610,5567,14538,7405,je short 38D1h,new independent decode; no historical text imported,3,103617,PARTIAL
+port388_write,103612,5567,14540,2eff1e9638,call far dword ptr cs:[3896h],new independent decode; no historical text imported,6,,PARTIAL
+port388_write,103617,5567,14545,c3,ret,new independent decode; no historical text imported,4,,PARTIAL
+port_callback_setter,103562,5567,14490,fa,cli,new independent decode; no historical text imported,0,,PARTIAL
+port_callback_setter,103563,5567,14491,2e891e9638,"mov cs:[3896h],bx",new independent decode; no historical text imported,0,,PARTIAL
+port_callback_setter,103568,5567,14496,2e89169838,"mov cs:[3898h],dx",new independent decode; no historical text imported,0,,PARTIAL
+port_callback_setter,103573,5567,14501,fb,sti,new independent decode; no historical text imported,0,,PARTIAL
+port_callback_setter,103574,5567,14502,c3,ret,new independent decode; no historical text imported,4,,PARTIAL
+pit_divisor_setter,107098,5567,18026,2e833e1e2001,"cmp word ptr cs:[201Eh],1",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107104,5567,18032,7501,jne short 4673h,new independent decode; no historical text imported,3,107107,PARTIAL
+pit_divisor_setter,107106,5567,18034,c3,ret,new independent decode; no historical text imported,4,,PARTIAL
+pit_divisor_setter,107107,5567,18035,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107108,5567,18036,53,push bx,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107109,5567,18037,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107110,5567,18038,8ccb,"mov bx,cs",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107112,5567,18040,8edb,"mov ds,bx",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107114,5567,18042,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107115,5567,18043,53,push bx,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107116,5567,18044,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107117,5567,18045,8bd8,"mov bx,ax",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107119,5567,18047,33d2,"xor dx,dx",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107121,5567,18049,b8ffff,"mov ax,0FFFFh",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107124,5567,18052,f7f3,div bx,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107126,5567,18054,2ea3b62d,"mov cs:[2DB6h],ax",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107130,5567,18058,2ea3b42d,"mov cs:[2DB4h],ax",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107134,5567,18062,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107135,5567,18063,5b,pop bx,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107136,5567,18064,b034,"mov al,34h",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107138,5567,18066,e643,"out 43h,al",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107140,5567,18068,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107141,5567,18069,e640,"out 40h,al",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107143,5567,18071,8ac4,"mov al,ah",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107145,5567,18073,e640,"out 40h,al",new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107147,5567,18075,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107148,5567,18076,5b,pop bx,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107149,5567,18077,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+pit_divisor_setter,107150,5567,18078,c3,ret,new independent decode; no historical text imported,4,,PARTIAL
+timer_base_setter,102571,5567,13499,2e891eb934,"mov cs:[34B9h],bx",new independent decode; no historical text imported,0,,PARTIAL
+timer_base_setter,102576,5567,13504,c3,ret,new independent decode; no historical text imported,4,,PARTIAL
+sample_irq,102977,5567,13905,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,102978,5567,13906,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,102979,5567,13907,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,102980,5567,13908,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,102981,5567,13909,2e832e4b2c40,"sub word ptr cs:[2C4Bh],40h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,102987,5567,13915,2e831e4d2c00,"sbb word ptr cs:[2C4Dh],0",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,102993,5567,13921,2e8016532c00,"adc byte ptr cs:[2C53h],0",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,102999,5567,13927,2e813e84365555,"cmp word ptr cs:[3684h],5555h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103006,5567,13934,7330,jae short 36A0h,new independent decode; no historical text imported,3,103056,PARTIAL
+sample_irq,103008,5567,13936,2e81064f365555,"add word ptr cs:[364Fh],5555h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103015,5567,13943,2e811684365555,"adc word ptr cs:[3684h],5555h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103022,5567,13950,b85555,"mov ax,5555h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103025,5567,13953,8ed8,"mov ds,ax",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103027,5567,13955,a05555,"mov al,[5555h]",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103030,5567,13958,32e4,"xor ah,ah",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103032,5567,13960,05b933,"add ax,33B9h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103035,5567,13963,2ea39136,"mov cs:[3691h],ax",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103039,5567,13967,2ea05555,"mov al,cs:[5555h]",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103043,5567,13971,e642,"out 42h,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103045,5567,13973,32c0,"xor al,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103047,5567,13975,e642,"out 42h,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103049,5567,13977,b020,"mov al,20h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103051,5567,13979,e620,"out 20h,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103053,5567,13981,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103054,5567,13982,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103055,5567,13983,cf,iret,new independent decode; no historical text imported,4,,PARTIAL
+sample_irq,103056,5567,13984,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103057,5567,13985,b034,"mov al,34h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103059,5567,13987,e643,"out 43h,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103061,5567,13989,2ea1492c,"mov ax,cs:[2C49h]",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103065,5567,13993,e8be0f,call 466Ah,new independent decode; no historical text imported,5,107098,PARTIAL
+sample_irq,103068,5567,13996,e461,"in al,61h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103070,5567,13998,24fc,"and al,0FCh",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103072,5567,14000,e661,"out 61h,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103074,5567,14002,2ea1be2d,"mov ax,cs:[2DBEh]",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103078,5567,14006,e642,"out 42h,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103080,5567,14008,86c4,"xchg ah,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103082,5567,14010,e642,"out 42h,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103084,5567,14012,32c0,"xor al,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103086,5567,14014,2ea2ca2d,"mov cs:[2DCAh],al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103090,5567,14018,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103091,5567,14019,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103092,5567,14020,1e,push ds,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103093,5567,14021,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103094,5567,14022,b425,"mov ah,25h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103096,5567,14024,b008,"mov al,8",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103098,5567,14026,2e8b16cb2d,"mov dx,cs:[2DCBh]",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103103,5567,14031,2e8e1ecd2d,"mov ds,cs:[2DCDh]",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103108,5567,14036,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
+sample_irq,103110,5567,14038,5a,pop dx,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103111,5567,14039,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103112,5567,14040,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103113,5567,14041,07,pop es,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103114,5567,14042,b020,"mov al,20h",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103116,5567,14044,e620,"out 20h,al",new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103118,5567,14046,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103119,5567,14047,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103120,5567,14048,58,pop ax,new independent decode; no historical text imported,0,,PARTIAL
+sample_irq,103121,5567,14049,cf,iret,new independent decode; no historical text imported,4,,PARTIAL
