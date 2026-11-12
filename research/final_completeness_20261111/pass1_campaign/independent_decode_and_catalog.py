@@ -34,7 +34,7 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
-    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay','xms_lifecycle_wrappers_replay'):
+    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay','xms_lifecycle_wrappers_replay','cache_memory_probe_replay'):
         for f in readjson(root/folder/'summary.json')['functions']:
             if folder=='worx_register_bank_replay' and f['name'] in ('worx_port_callback_set','worx_port_write_delayed'):continue # already owned by prior independent functions
             sources.append((f['name'],root/folder/(f['name']+'.csv')))
@@ -531,7 +531,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -560,7 +560,7 @@ def main():
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
     runtime_evidence=[];runtime_sessions=set()
-    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime','dosbox_newgame_map_runtime_v3','dosbox_scheduler_runtime','dosbox_palette_writer_runtime','dosbox_palette_cycle_runtime_v2','dosbox_map_writers_runtime','dosbox_validator_branches_runtime','dosbox_guard_orientation_runtime_v2','dosbox_class_descriptor_copy_runtime','dosbox_image_record_runtime','dosbox_image_retrieval_runtime','dosbox_calendar_runtime','dosbox_ftime_runtime_v2','dosbox_object_cache_draw_runtime'):
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime','dosbox_newgame_map_runtime_v3','dosbox_scheduler_runtime','dosbox_palette_writer_runtime','dosbox_palette_cycle_runtime_v2','dosbox_map_writers_runtime','dosbox_validator_branches_runtime','dosbox_guard_orientation_runtime_v2','dosbox_class_descriptor_copy_runtime','dosbox_image_record_runtime','dosbox_image_retrieval_runtime','dosbox_calendar_runtime','dosbox_ftime_runtime_v2','dosbox_object_cache_draw_runtime','dosbox_cache_initialization_runtime'):
         runtime_path=root/runtime_folder/'independent_verification.json'
         if not runtime_path.exists():continue
         runtime=readjson(runtime_path)
@@ -683,6 +683,20 @@ def main():
         result['object_asset_capacity_records_separate']=v['object_records_checked']
         result['object_asset_max_logical_bytes_separate']=v['max_logical_bytes']
         result['object_asset_max_XMS_rounded_bytes_separate']=v['max_rounded_bytes']
+    cache_init_path=root/'dosbox_cache_initialization_runtime/independent_verification.json'
+    if cache_init_path.exists():
+        init_proof=readjson(cache_init_path);init_replay=readjson(root/'cache_initialization_replay/summary.json')
+        if not init_proof['verified'] or init_replay['failures']:raise ValueError('cache initialization proof')
+        result['cache_initialization_native_metrics']=init_proof['metrics']
+        result['cache_initialization_controlled_cases']=init_replay['cases']
+        result['cache_initialization_unexecuted_dispatch_starts']=init_replay['remaining_unexecuted_dispatch_starts']
+        result['runtime_tests_scope']+='; natural wholemode0 cacheinit76realallocations,probe257/count62,query14912/cap2048/handle1/lockphysical00170000,85calleeentry-returnrecords;531cacheownedfinalbytes matchmodel,notfullRAMcalleeclosure/managerfailureparity'
+    init_endpoint_path=root/'pass1_cache_init_endpoints/summary.json'
+    if init_endpoint_path.exists():
+        endpoint=readjson(init_endpoint_path)
+        for item in endpoint['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('cache init NONCODE endpoint proof')
+        result['cache_init_NONCODE_endpoint_summary']={k:endpoint[k] for k in ('intervals','original_noncode_bytes','full_interval_endpoint_samples','changed_byte_positions','remaining177_changed_positions','active_vector_records','active_vector_bytes','inactive_capacity_bytes')}
     cleanup_seed=root/'dosbox_cache_reset_seed_runtime/independent_verification.json'
     if cleanup_seed.exists():
         proof=readjson(cleanup_seed)

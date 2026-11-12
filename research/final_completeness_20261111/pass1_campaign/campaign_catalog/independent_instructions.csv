@@ -2820,6 +2820,28 @@ xms_unlock_handle,32471,1896,2135,8af3,"mov dh,bl",new independent decode; no hi
 xms_unlock_handle,32473,1896,2137,b80000,"mov ax,0",new independent decode; no historical text imported,0,,PARTIAL
 xms_unlock_handle,32476,1896,2140,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
 xms_unlock_handle,32477,1896,2141,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+descending_memory_probe,64504,4026,88,c8080000,"enter 8,0",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64508,4026,92,66c746fc00040000,"mov dword ptr [bp-4],400h",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64516,4026,100,668b46fc,"mov eax,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64520,4026,104,66ff4efc,dec dword ptr [bp-4],new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64524,4026,108,660bc0,"or eax,eax",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64527,4026,111,742a,je short 009Bh,new independent decode; no historical text imported,3,64571,PARTIAL
+descending_memory_probe,64529,4026,113,6a01,push 1,new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64531,4026,115,668b46fc,"mov eax,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64535,4026,119,66c1e00a,"shl eax,0Ah",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64539,4026,123,6650,push eax,new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64541,4026,125,9a162aee11,"call far 2A16h,11EEh",new independent decode; no historical text imported,5,64416,PARTIAL
+descending_memory_probe,64546,4026,130,83c406,"add sp,6",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64549,4026,133,8956fa,"mov [bp-6],dx",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64552,4026,136,0bd0,"or dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64554,4026,138,74d8,je short 0064h,new independent decode; no historical text imported,3,64516,PARTIAL
+descending_memory_probe,64556,4026,140,ff76fa,push word ptr [bp-6],new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64559,4026,143,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64560,4026,144,9a0a2aee11,"call far 2A0Ah,11EEh",new independent decode; no historical text imported,5,64416,PARTIAL
+descending_memory_probe,64565,4026,149,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64568,4026,152,8b46fc,"mov ax,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64571,4026,155,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+descending_memory_probe,64572,4026,156,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
 normalize_es_di,107040,5567,17968,50,push ax,push ax,0,,PARTIAL
 normalize_es_di,107041,5567,17969,52,push dx,push dx,0,,PARTIAL
 normalize_es_di,107042,5567,17970,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL

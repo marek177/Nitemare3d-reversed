@@ -1,0 +1,23 @@
+cs,ip,image_offset,bytes,instruction
+4026,88,64504,c8080000,"enter 8,0"
+4026,92,64508,66c746fc00040000,"mov dword ptr [bp-4],400h"
+4026,100,64516,668b46fc,"mov eax,[bp-4]"
+4026,104,64520,66ff4efc,dec dword ptr [bp-4]
+4026,108,64524,660bc0,"or eax,eax"
+4026,111,64527,742a,je short 009Bh
+4026,113,64529,6a01,push 1
+4026,115,64531,668b46fc,"mov eax,[bp-4]"
+4026,119,64535,66c1e00a,"shl eax,0Ah"
+4026,123,64539,6650,push eax
+4026,125,64541,9a162aee11,"call far 2A16h,11EEh"
+4026,130,64546,83c406,"add sp,6"
+4026,133,64549,8956fa,"mov [bp-6],dx"
+4026,136,64552,0bd0,"or dx,ax"
+4026,138,64554,74d8,je short 0064h
+4026,140,64556,ff76fa,push word ptr [bp-6]
+4026,143,64559,50,push ax
+4026,144,64560,9a0a2aee11,"call far 2A0Ah,11EEh"
+4026,149,64565,83c404,"add sp,4"
+4026,152,64568,8b46fc,"mov ax,[bp-4]"
+4026,155,64571,c9,leave
+4026,156,64572,cb,ret far
