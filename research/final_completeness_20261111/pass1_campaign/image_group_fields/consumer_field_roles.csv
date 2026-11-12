@@ -1,0 +1,8 @@
+record,offset,width,role,consumer
+class8_record,0,2,WORD image_count from descriptorBYTE2,0277:096F..0989 producer;04C7:012A frame consumer;PARTIAL
+class8_record,2,2,WORD descriptor_header0,0277:096F..0989 producer;04C7:012A frame consumer;PARTIAL
+class8_record,4,2,"NEAR_DS90BYTEbank pointer,zero if absent",0277:096F..0989 producer;04C7:012A frame consumer;PARTIAL
+class8_record,6,2,NEAR_DS image_count*10 decoded-record array pointer,0277:096F..0989 producer;04C7:012A frame consumer;PARTIAL
+IMG90_descriptor,0,2,WORD copied into class-record+2;meaning open,0277:0975..0978;PARTIAL
+IMG90_descriptor,2,1,"BYTE image_count,alloc count*10",0277:0609..0617;PARTIAL
+IMG90_descriptor,3,1,BYTE nonzero gates90BYTEbank allocation/copy,0277:0997..09D6;PARTIAL
