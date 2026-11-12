@@ -3,7 +3,8 @@ import csv,json,sys
 from pathlib import Path
 root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_near_heap_flags';report=sys.argv[3] if len(sys.argv)>3 else 'HOOK_FAMILY_CROSS_VERSION_REPORT.md'
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
-receipt_path=root/'CAMPAIGN_PUBLICATION_RECEIPT_20261112.json'
+receipt_path=root/'CAMPAIGN_RUNTIME_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_PUBLICATION_RECEIPT.json'
 publication=json.loads(receipt_path.read_text())
 publication_state='Hash aktualnej mapy sa zhoduje s publikovanou analytickou snimkou.' if publication.get('map_sha256')==p['map_sha256'] else 'Aktualna mapa bola od publikovanej snimky zmenena; nova lokalna davka tym nie je automaticky publikovana.'
