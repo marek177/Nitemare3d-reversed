@@ -128,7 +128,7 @@ Refinement všetkých troch bufferov má3600 už PARTIAL file-backed B; nejde o3
 - `audit_font1_keyboard_fields.py IMAGE UIF RUNTIME WORK OUT`:127 záznamov/128 pointerov, dátové intervaly, consumer BSS polia,9 keyboard-stage riadkov a atlas.
 - Centrálny katalóg importuje4 nové rozsahy,14336 úspešných testov a1 unikátny runtime proof. Nepridáva staršie prípady opakovane.
 
-Najnovšia publikovaná analytická snímka pred touto dávkou má16 runtime scenárov. Táto nová dávka zostáva lokálna, kým nebude zaznamenané nové potvrdenie GitHub publikácie.
+Táto dávka je publikovaná a blob po blobe overená v analytickom commite 57bbe32e23400cb4d6059131ba2364979a0c3fe1. Metadata follow-up môže mať novší branch head; strojové potvrdenie je CAMPAIGN_KEYBOARD_FONT1_PUBLICATION_RECEIPT_20261112.json.
 
 ## Aktualizácia 13 oblastí
 
