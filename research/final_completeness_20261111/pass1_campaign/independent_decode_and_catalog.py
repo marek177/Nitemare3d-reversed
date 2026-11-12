@@ -526,7 +526,7 @@ def main():
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
     runtime_evidence=[];runtime_sessions=set()
-    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3'):
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime'):
         runtime_path=root/runtime_folder/'independent_verification.json'
         if not runtime_path.exists():continue
         runtime=readjson(runtime_path)
@@ -540,14 +540,25 @@ def main():
         runtime_evidence.append(dict(path=str(runtime_path),sha256=sha(runtime_path.read_bytes()),runtime_image_sha256=runtime['runtime_image_sha256'],scope=runtime['scope']))
     if runtime_evidence:
         result['runtime_tests']=len(runtime_evidence)
-        result['runtime_tests_scope']='retained original packed DOS2 EXE scenarios under DOSBox-X built-in DOS with debugger stops: startup/B3, main/defaults35C, BSF/audio/VGA, post-VGA slot/resource, keyboard/auxiliary, episode/asset names, palette/DAC readback, sound directory/CPU trace, UIF font2, optional intro missing-file return and explicit added CD asset back-buffer four-plane readback with paused read-map intervention/restoration; only independently retained proofs counted; no gameplay/audio-output/visible-frame/Win16 runtime parity; repeated prefixes overlap'
+        result['runtime_tests_scope']='retained original packed DOS2 EXE under DOSBox-X built-in DOS with debugger stops: startup/main/defaults, BSF/audio/VGA, slots/resources, keyboard/auxiliary, episode names, palette/DAC, sound directory/trace, UIF font2; optional intro missing branch and explicit CD asset back-buffer/flip/font0 scenarios with four-plane read-map intervention/restoration; native programmed4000h then latched4000h and usedRGB6 state checked; no host-surface/physical-monitor/gameplay/Win16 parity; repeated prefixes overlap'
         result['runtime_evidence']=runtime_evidence
     bss_tables=[]
-    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv'):
+    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv'):
         if runtime_bss.exists():bss_tables.extend(readcsv(runtime_bss))
     if bss_tables:
         csvout(dest/'runtime_bss_tables.csv',bss_tables)
         result['runtime_bss_table_bytes_outside_file']=sum(int(row['length']) for row in bss_tables)
+    runtime_buffers=[];runtime_buffer_bytes=set()
+    for path in (root/'font2_runtime_fields/runtime_field_intervals.csv',root/'intro_flip_font0_fields/runtime_field_intervals.csv'):
+        if not path.exists():continue
+        for row in readcsv(path):
+            a,z=int(row['start']),int(row['end_exclusive'])
+            if z-a!=int(row['length']) or any(p not in noncode for p in range(a,z)):raise ValueError('runtime buffer outside original NONCODE')
+            runtime_buffers.append(dict(source=str(path),source_sha256=sha(path.read_bytes()),start=a,end_exclusive=z,length=z-a,type=row['type'],status='PARTIAL',scope='runtime layout refinement of inherited file-backed buffer, not new typed coverage',original_file_range_sha256=sha(image[a:z])))
+            runtime_buffer_bytes.update(range(a,z))
+    if runtime_buffers:
+        csvout(dest/'runtime_buffer_refinements.csv',runtime_buffers)
+        result['runtime_buffer_refinement_records']=len(runtime_buffers);result['runtime_buffer_refinement_bytes_already_in_pass1']=len(runtime_buffer_bytes)
     refinement_paths=[root/'action_dispatch_replay/record_field_roles.csv',root/'damage_effect_replay/consumer_field_roles.csv']
     refinement_paths.append(root/'pass1_guard_diagnostics/consumer_field_roles.csv')
     records=[]

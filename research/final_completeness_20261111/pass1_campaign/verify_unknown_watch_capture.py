@@ -17,7 +17,9 @@ commands=[r['command'] for r in t];installs=[int(c.split()[-1],16) for c in comm
 allowed=('EXEC EV ','EXEC BP ','EXEC BPLM ','EXEC BPLIST','EXEC BPDEL ','EXEC RUN','EXEC MEMDUMPBIN ')
 trace_manifest_path=out/'trace_manifest.json';trace_present=trace_manifest_path.exists()
 loaded_intro=bool(s.get('optional_intro_loaded_branch'))
-loaded_queries=('EXEC VGA GC','EXEC VGA SEQ','EXEC VGA MODE')
+display_intro=bool(s.get('optional_intro_display_branch'))
+font0_intro=bool(s.get('font0_runtime_branch'))
+loaded_queries=('EXEC VGA GC','EXEC VGA SEQ','EXEC VGA MODE')+(('EXEC VGA AC',) if display_intro else ())
 loaded_ports=('EXEC OUTP 03CE 0004','EXEC OUTP 03CE 0006')+tuple('EXEC OUTP 03CF %04X'%n for n in range(4))
 assert all(c=='PING' or c.startswith(allowed) or c in ('EXEC VGA DAC','EXEC VGA DACPAL') or loaded_intro and c in loaded_queries+loaded_ports or trace_present and c=='EXEC LOGL 00010000' for c in commands)
 assert commands.count('EXEC RUN')==2 and commands.count('EXEC BPDEL *')==2
@@ -31,7 +33,7 @@ for response in t:
   if m:values[int(m[1],16)]=int(m[2],16)
  assert values==cache
 stages=s['snapshots'];assert len(stages)==(3 if trace_present else 2)
-sound_path=work/'sound_directory_runtime.bin';sound_present=sound_path.exists();font_present=(work/'font2_block_runtime.bin').exists();optional_intro=bool(s.get('optional_intro_missing_branch'));endpoint=(0x7a2 if loaded_intro else 0x7dd if optional_intro else 0x7d9) if font_present else 0x190 if sound_present else 0x17c;endpoint_cs=load+(0xd29 if font_present else 0x476)
+sound_path=work/'sound_directory_runtime.bin';sound_present=sound_path.exists();font_present=(work/'font2_block_runtime.bin').exists();optional_intro=bool(s.get('optional_intro_missing_branch'));endpoint=(0x7c1 if font0_intro else 0x7ae if display_intro else 0x7a2 if loaded_intro else 0x7dd if optional_intro else 0x7d9) if font_present else 0x190 if sound_present else 0x17c;endpoint_cs=load+(0xd29 if font_present else 0x476)
 a,z=stages[0]['registers'],stages[-1]['registers'];assert (a['CS'],a['IP'])==(load+0x11ee,0x18) and (z['CS'],z['IP'])==(endpoint_cs,endpoint) and z['DS']==z['SS']==load+0x2771
 if optional_intro:
  assert font_present and z['AX']&255==0 and stages[-1]['stage']=='after_optional_intro_missing'
@@ -39,7 +41,7 @@ if optional_intro:
  assert 'DSTOPEN.IMG' not in {name.upper() for name in s['drive_filenames']}
  assert 'EXEC BP %04X:000007DD'%endpoint_cs in commands
 files=[Path(p) for p in s['capture_files']]+[out/name for name in ('summary.json','transcript.json','snapshots.json','watch_events.json','inputs.csv','runtime.conf')]
-dac_path=out/'dac_readback.json';dac_present=dac_path.exists();assert len(s['capture_files'])==13+int(dac_present)+int(sound_present)+5*int(font_present)+7*int(loaded_intro)
+dac_path=out/'dac_readback.json';dac_present=dac_path.exists();assert len(s['capture_files'])==13+int(dac_present)+int(sound_present)+5*int(font_present)+7*int(loaded_intro)+int(display_intro)+2*int(font0_intro)
 for r in csv.DictReader((out/'inputs.csv').open()):
  assert sha(Path(r['source']).read_bytes())==sha(Path(r['copy']).read_bytes())==r['sha256']
 for region in s['regions']:
@@ -75,7 +77,7 @@ if font_present:
         q+=2+size
     assert q==907 and (work/'font2_block_runtime.bin').read_bytes()==expected_font+b'\0'*293
     assert (work/'font2_pointers_runtime.bin').read_bytes()==b''.join(struct.pack('<HH',*pair) for pair in pointers)
-    assert (work/'font_flags_runtime.bin').read_bytes()[2]==1 and (work/'font_selected_runtime.bin').read_bytes()==b'\2'
+    assert (work/'font_flags_runtime.bin').read_bytes()[2]==1 and (work/'font_selected_runtime.bin').read_bytes()==(b'\0' if font0_intro else b'\2')
     result['font2_runtime_verified']=True;result['font2_records']=127;result['font2_pointer_slots']=128;result['scope']='one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07D9; '+result['scope'].replace('main0190','UI07D9').replace('main017C','UI07D9')
     if optional_intro:
         result['optional_intro_missing_branch_verified']=True
@@ -87,8 +89,8 @@ if trace_present:
     assert commands.count('EXEC LOGL 00010000')==1 and commands.count('EXEC BPDEL 0')==1
     result['cpu_trace_manifest_verified']=True;result['cpu_trace_records']=len(lines);result['scope']='bounded original CPU pre-instruction trace main017C..0190 (terminal record not executed); '+result['scope'];result['files'] += [dict(path=str(path),sha256=sha(path.read_bytes())) for path in (trace_manifest_path,trace_path)]
 if loaded_intro:
-    assert font_present and not optional_intro and z['AX']&255==1 and stages[-1]['stage']=='after_optional_intro_loaded'
-    assert 'EXEC BP %04X:000007A2'%endpoint_cs in commands and len(s['drive_filenames'])==23
+    assert font_present and not optional_intro and (font0_intro or z['AX']&255==(12 if display_intro else 1)) and stages[-1]['stage']==('after_optional_intro_font0' if font0_intro else 'after_optional_intro_flip' if display_intro else 'after_optional_intro_loaded')
+    assert 'EXEC BP %04X:%08X'%(endpoint_cs,endpoint) in commands and len(s['drive_filenames'])==23
     assetrow=next(r for r in csv.DictReader((out/'inputs.csv').open()) if Path(r['source']).name.upper()=='DSTOPEN.IMG');asset=Path(assetrow['source']).read_bytes()
     assert sha(asset)=='af574568089f1998ca50ceeba310ff068c728279ff470cd39f47a8919228b95a' and (work/'drive_c/DSTOPEN.IMG').read_bytes()==asset
     q=128;pixels=bytearray()
@@ -97,13 +99,13 @@ if loaded_intro:
         if value&192==192:count=value&63;value=asset[q];q+=1
         pixels.extend(bytes([value])*count)
     assert len(pixels)==64000 and q==19909
-    assert struct.unpack('<HH',(work/'vga_page_words.bin').read_bytes())==(0xa000,0xa400)
+    assert struct.unpack('<HH',(work/'vga_page_words.bin').read_bytes())==((0xa400,0xa000) if display_intro else (0xa000,0xa400))
     before=json.loads((out/'vga_state.json').read_text());after=json.loads((out/'vga_state_restored.json').read_text())
-    for name in ('GC','SEQ','MODE'):
+    for name in (('GC','SEQ','MODE','AC') if display_intro else ('GC','SEQ','MODE')):
         rows=[row['response'] for row in t if row['command']=='EXEC VGA '+name]
         assert rows==[before[name],after[name]] and before[name][1:-1]==after[name][1:-1]
     gc='\n'.join(before['GC']);mode='\n'.join(before['MODE']);assert 'index=06h' in gc and 'rdmapsel=00h' in gc and 'bitmask=ffh' in gc
-    assert 'rd-mode=0 wr-mode=0 rdmap-sel=0' in mode and 'chained=0' in mode and 'disp-start=0h' in mode
+    assert 'rd-mode=0 wr-mode=0 rdmap-sel=0' in mode and 'chained=0' in mode and ('disp-start=4000h' if display_intro else 'disp-start=0h') in mode
     first_port=commands.index('EXEC OUTP 03CE 0004');last_port=commands.index('EXEC OUTP 03CE 0006')
     assert first_port>run_watch and not any(c=='EXEC RUN' for c in commands[first_port:])
     assert [c for c in commands if c.startswith('EXEC OUTP ')]==['EXEC OUTP 03CE 0004']+['EXEC OUTP 03CF %04X'%n for n in range(4)]+['EXEC OUTP 03CF 0000','EXEC OUTP 03CE 0006']
@@ -112,6 +114,35 @@ if loaded_intro:
         actual=(work/('vga_plane_%d.bin'%plane)).read_bytes();assert actual==pixels[plane::4] and len(actual)==16000;plane_hashes.append(sha(actual))
     assert (work/'vga_read_page_a400.bin').read_bytes()==pixels[0::4] and (work/'vga_read_page_a000.bin').read_bytes()==bytes(16000)
     result.update(optional_intro_loaded_branch_verified=True,runtime_vga_planes_verified=True,runtime_vga_plane_bytes=64000,runtime_vga_page=0xa400,runtime_vga_plane_sha256=plane_hashes,read_map_and_index_restored=True,asset_pixels_sha256=sha(pixels))
-    result['scope']=result['scope'].replace('UI07D9','UI07A2')+'; original DOS2 EXE with explicit added CD asset: native decoded back-page four planes equal64000asset pixels; paused OUTP read-map intervention only after endpoint, original GC/index restored, no RUN after intervention; front-page plane0 iszero; VGA read latches not restored or verified; not visible-frame/RGB/gameplay parity'
+    result['scope']=result['scope'].replace('UI07D9','UI%04X'%endpoint)+'; original DOS2 EXE with explicit added CD asset: native decoded '+('page selected by programmed display start' if display_intro else 'back-page')+' four planes equal64000asset pixels; paused OUTP read-map intervention only after endpoint, original GC/index restored, no RUN after intervention; A000 page plane0 iszero; VGA read latches not restored or verified; not host-surface/physical-monitor/gameplay parity'
     result['files'] += [dict(path=str(path),sha256=sha(path.read_bytes())) for path in (out/'vga_state.json',out/'vga_state_restored.json')]
+    if display_intro:
+        dac_path=out/'intro_dac_readback.json';dac=json.loads(dac_path.read_text());info=[row['response'] for row in t if row['command']=='EXEC VGA DAC'];palette=[row['response'] for row in t if row['command']=='EXEC VGA DACPAL']
+        assert info==[dac['info_response']] and palette==[dac['palette_response']]
+        decoded=bytearray()
+        for line in palette[0]:
+            match=re.match(r'^([0-9A-Fa-f]{2}):\s+(.+)$',line)
+            if not match:continue
+            assert int(match[1],16)*3==len(decoded);entries=re.findall(r'[0-9A-Fa-f]{6}',match[2]);assert len(entries)==8;decoded.extend(bytes.fromhex(''.join(entries)))
+        assert len(decoded)==768 and max(decoded)<=63 and 'bits=6' in '\n'.join(info[0]) and 'pel_mask=ffh' in '\n'.join(info[0])
+        palrow=next(r for r in csv.DictReader((out/'inputs.csv').open()) if Path(r['source']).name.upper()=='GAME.PAL');game_palette=Path(palrow['source']).read_bytes();assert sha(game_palette)=='efd52442cbee3327d8cec045b31559049e8767b298c25674a557eb6e096a759f'
+        assert decoded==bytes(n>>2 for n in game_palette[-768:])==(work/'palette_buffer_runtime.bin').read_bytes()
+        cd_palette=bytes(n>>2 for n in asset[-768:]);used=set(pixels);different=[n for n in range(256) if decoded[n*3:n*3+3]!=cd_palette[n*3:n*3+3]]
+        assert different==[255] and 255 not in used and all(decoded[n*3:n*3+3]==cd_palette[n*3:n*3+3] for n in used)
+        ac='\n'.join(before['AC']);assert 'color-plane-en=0fh' in ac and 'disabled-by-index=0' in ac and 'disabled-by-idx1-bit5=0' in ac
+        real_start=int(re.search(r'\breal-start=([0-9a-f]+)h',mode).group(1),16);assert real_start==(0x4000 if font0_intro else 0)
+        result.update(optional_intro_display_branch_verified=True,display_start=0x4000,programmed_display_segment=0xa400,latched_display_start=real_start,display_selected_segment=0xa400 if font0_intro else 0xa000,latched_scanout_page_matches_asset=font0_intro,dac_register_readback_verified=True,dac_components_verified=768,dac_sha256=sha(decoded),used_palette_entries=len(used),used_pixel_dac6_matches_cd=True,unused_different_palette_indices=different)
+        result['scope']+='; native page flip programs4000h plane offset; actual latched real-start=%04Xh; AC enabled, actualDAC768 components equal GAME.PALtail>>2 and all used CD colors quantized6bit; unused index255 differs; paused device-state evidence, no host screenshot or full scanout trace'%real_start
+        result['files'].append(dict(path=str(dac_path),sha256=sha(dac_path.read_bytes())))
+if font0_intro:
+    assert display_intro and result['font2_runtime_verified'] and (work/'font_flags_runtime.bin').read_bytes()[0]==1
+    length,offset=struct.unpack_from('<HI',uif,0);assert (length,offset)==(900,192);raw=uif[offset:offset+length];expected0=bytearray(raw);q=2;pointers0=[(0,load+0x20b9)]
+    for glyph in range(1,128):
+        height,width=raw[q:q+2];size=height*((width+7)//8);pointers0.append((q,load+0x20b9))
+        for j in range(q+2,q+2+size):expected0[j]=int(format(raw[j],'08b')[::-1],2)
+        q+=2+size
+    assert q==900 and (work/'font0_block_runtime.bin').read_bytes()==expected0+b'\0'*300
+    assert (work/'font0_pointers_runtime.bin').read_bytes()==b''.join(struct.pack('<HH',*pair) for pair in pointers0)
+    result.update(font0_runtime_verified=True,font0_records=127,font0_pointer_slots=128,font0_source_bytes=900)
+    result['scope']+='; font0 transformed900B plus300B observed tail and128FAR pointers exact at UI07C1 before wait0424; selected group0, cache flags0/2 set; no font1 or keyboard event proof'
 (out/'independent_verification.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items() if k!='files'},indent=2))

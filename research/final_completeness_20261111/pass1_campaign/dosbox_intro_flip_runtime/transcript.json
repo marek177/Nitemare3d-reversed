@@ -1,0 +1,3306 @@
+[
+  {
+    "id": "1",
+    "command": "PING",
+    "response": [
+      "BEGIN 1 OK",
+      "PONG",
+      "END 1"
+    ]
+  },
+  {
+    "id": "2",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 2 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "2396 10 814 814 32e0 80 0 0 ff 814",
+      "END 2"
+    ]
+  },
+  {
+    "id": "3",
+    "command": "EXEC BP 1A12:00000018",
+    "response": [
+      "BEGIN 3 OK",
+      "DEBUG: Set breakpoint at 1A12:0018",
+      "END 3"
+    ]
+  },
+  {
+    "id": "4",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 4 OK",
+      "OK",
+      "END 4"
+    ]
+  },
+  {
+    "id": "5",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 5 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "2396 12 814 814 32e0 80 0 0 ff 814",
+      "END 5"
+    ]
+  },
+  {
+    "id": "6",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 6 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 18 814 814 3d98 800 0 0 0 f000",
+      "END 6"
+    ]
+  },
+  {
+    "id": "7",
+    "command": "EXEC MEMDUMPBIN 0824:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\unpacked_runtime.bin.part0",
+    "response": [
+      "BEGIN 7 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 7"
+    ]
+  },
+  {
+    "id": "8",
+    "command": "EXEC MEMDUMPBIN 1024:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\unpacked_runtime.bin.part32768",
+    "response": [
+      "BEGIN 8 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 8"
+    ]
+  },
+  {
+    "id": "9",
+    "command": "EXEC MEMDUMPBIN 1824:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\unpacked_runtime.bin.part65536",
+    "response": [
+      "BEGIN 9 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 9"
+    ]
+  },
+  {
+    "id": "10",
+    "command": "EXEC MEMDUMPBIN 2024:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\unpacked_runtime.bin.part98304",
+    "response": [
+      "BEGIN 10 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 10"
+    ]
+  },
+  {
+    "id": "11",
+    "command": "EXEC MEMDUMPBIN 2824:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\unpacked_runtime.bin.part131072",
+    "response": [
+      "BEGIN 11 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 11"
+    ]
+  },
+  {
+    "id": "12",
+    "command": "EXEC MEMDUMPBIN 3024:00000000 00001D60 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\unpacked_runtime.bin.part163840",
+    "response": [
+      "BEGIN 12 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 12"
+    ]
+  },
+  {
+    "id": "13",
+    "command": "EXEC MEMDUMPBIN 23FE:00000002 0000000E C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\initial_1bda2.bin.part0",
+    "response": [
+      "BEGIN 13 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 13"
+    ]
+  },
+  {
+    "id": "14",
+    "command": "EXEC MEMDUMPBIN 242B:00000000 00000010 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\initial_1c070.bin.part0",
+    "response": [
+      "BEGIN 14 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 14"
+    ]
+  },
+  {
+    "id": "15",
+    "command": "EXEC MEMDUMPBIN 2532:0000000C 00000004 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\initial_1d0ec.bin.part0",
+    "response": [
+      "BEGIN 15 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 15"
+    ]
+  },
+  {
+    "id": "16",
+    "command": "EXEC MEMDUMPBIN 28DC:00000008 00000008 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\initial_20b88.bin.part0",
+    "response": [
+      "BEGIN 16 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 16"
+    ]
+  },
+  {
+    "id": "17",
+    "command": "EXEC MEMDUMPBIN 2F94:0000000E 00000002 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\initial_2770e.bin.part0",
+    "response": [
+      "BEGIN 17 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 17"
+    ]
+  },
+  {
+    "id": "18",
+    "command": "EXEC MEMDUMPBIN 31CA:00000006 00000004 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\initial_29a66.bin.part0",
+    "response": [
+      "BEGIN 18 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 18"
+    ]
+  },
+  {
+    "id": "19",
+    "command": "EXEC BPDEL *",
+    "response": [
+      "BEGIN 19 OK",
+      "DEBUG: Breakpoints deleted.",
+      "END 19"
+    ]
+  },
+  {
+    "id": "20",
+    "command": "EXEC BPLM 00023FE2",
+    "response": [
+      "BEGIN 20 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FE2",
+      "END 20"
+    ]
+  },
+  {
+    "id": "21",
+    "command": "EXEC BPLM 00023FE3",
+    "response": [
+      "BEGIN 21 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FE3",
+      "END 21"
+    ]
+  },
+  {
+    "id": "22",
+    "command": "EXEC BPLM 00023FE4",
+    "response": [
+      "BEGIN 22 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FE4",
+      "END 22"
+    ]
+  },
+  {
+    "id": "23",
+    "command": "EXEC BPLM 00023FE5",
+    "response": [
+      "BEGIN 23 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FE5",
+      "END 23"
+    ]
+  },
+  {
+    "id": "24",
+    "command": "EXEC BPLM 00023FE6",
+    "response": [
+      "BEGIN 24 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FE6",
+      "END 24"
+    ]
+  },
+  {
+    "id": "25",
+    "command": "EXEC BPLM 00023FE7",
+    "response": [
+      "BEGIN 25 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FE7",
+      "END 25"
+    ]
+  },
+  {
+    "id": "26",
+    "command": "EXEC BPLM 00023FE8",
+    "response": [
+      "BEGIN 26 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FE8",
+      "END 26"
+    ]
+  },
+  {
+    "id": "27",
+    "command": "EXEC BPLM 00023FE9",
+    "response": [
+      "BEGIN 27 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FE9",
+      "END 27"
+    ]
+  },
+  {
+    "id": "28",
+    "command": "EXEC BPLM 00023FEA",
+    "response": [
+      "BEGIN 28 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FEA",
+      "END 28"
+    ]
+  },
+  {
+    "id": "29",
+    "command": "EXEC BPLM 00023FEB",
+    "response": [
+      "BEGIN 29 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FEB",
+      "END 29"
+    ]
+  },
+  {
+    "id": "30",
+    "command": "EXEC BPLM 00023FEC",
+    "response": [
+      "BEGIN 30 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FEC",
+      "END 30"
+    ]
+  },
+  {
+    "id": "31",
+    "command": "EXEC BPLM 00023FED",
+    "response": [
+      "BEGIN 31 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FED",
+      "END 31"
+    ]
+  },
+  {
+    "id": "32",
+    "command": "EXEC BPLM 00023FEE",
+    "response": [
+      "BEGIN 32 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FEE",
+      "END 32"
+    ]
+  },
+  {
+    "id": "33",
+    "command": "EXEC BPLM 00023FEF",
+    "response": [
+      "BEGIN 33 OK",
+      "DEBUG: Set linear memory breakpoint at 00023FEF",
+      "END 33"
+    ]
+  },
+  {
+    "id": "34",
+    "command": "EXEC BPLM 000242B0",
+    "response": [
+      "BEGIN 34 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B0",
+      "END 34"
+    ]
+  },
+  {
+    "id": "35",
+    "command": "EXEC BPLM 000242B1",
+    "response": [
+      "BEGIN 35 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B1",
+      "END 35"
+    ]
+  },
+  {
+    "id": "36",
+    "command": "EXEC BPLM 000242B2",
+    "response": [
+      "BEGIN 36 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B2",
+      "END 36"
+    ]
+  },
+  {
+    "id": "37",
+    "command": "EXEC BPLM 000242B3",
+    "response": [
+      "BEGIN 37 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B3",
+      "END 37"
+    ]
+  },
+  {
+    "id": "38",
+    "command": "EXEC BPLM 000242B4",
+    "response": [
+      "BEGIN 38 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B4",
+      "END 38"
+    ]
+  },
+  {
+    "id": "39",
+    "command": "EXEC BPLM 000242B5",
+    "response": [
+      "BEGIN 39 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B5",
+      "END 39"
+    ]
+  },
+  {
+    "id": "40",
+    "command": "EXEC BPLM 000242B6",
+    "response": [
+      "BEGIN 40 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B6",
+      "END 40"
+    ]
+  },
+  {
+    "id": "41",
+    "command": "EXEC BPLM 000242B7",
+    "response": [
+      "BEGIN 41 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B7",
+      "END 41"
+    ]
+  },
+  {
+    "id": "42",
+    "command": "EXEC BPLM 000242B8",
+    "response": [
+      "BEGIN 42 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B8",
+      "END 42"
+    ]
+  },
+  {
+    "id": "43",
+    "command": "EXEC BPLM 000242B9",
+    "response": [
+      "BEGIN 43 OK",
+      "DEBUG: Set linear memory breakpoint at 000242B9",
+      "END 43"
+    ]
+  },
+  {
+    "id": "44",
+    "command": "EXEC BPLM 000242BA",
+    "response": [
+      "BEGIN 44 OK",
+      "DEBUG: Set linear memory breakpoint at 000242BA",
+      "END 44"
+    ]
+  },
+  {
+    "id": "45",
+    "command": "EXEC BPLM 000242BB",
+    "response": [
+      "BEGIN 45 OK",
+      "DEBUG: Set linear memory breakpoint at 000242BB",
+      "END 45"
+    ]
+  },
+  {
+    "id": "46",
+    "command": "EXEC BPLM 000242BC",
+    "response": [
+      "BEGIN 46 OK",
+      "DEBUG: Set linear memory breakpoint at 000242BC",
+      "END 46"
+    ]
+  },
+  {
+    "id": "47",
+    "command": "EXEC BPLM 000242BD",
+    "response": [
+      "BEGIN 47 OK",
+      "DEBUG: Set linear memory breakpoint at 000242BD",
+      "END 47"
+    ]
+  },
+  {
+    "id": "48",
+    "command": "EXEC BPLM 000242BE",
+    "response": [
+      "BEGIN 48 OK",
+      "DEBUG: Set linear memory breakpoint at 000242BE",
+      "END 48"
+    ]
+  },
+  {
+    "id": "49",
+    "command": "EXEC BPLM 000242BF",
+    "response": [
+      "BEGIN 49 OK",
+      "DEBUG: Set linear memory breakpoint at 000242BF",
+      "END 49"
+    ]
+  },
+  {
+    "id": "50",
+    "command": "EXEC BPLM 0002532C",
+    "response": [
+      "BEGIN 50 OK",
+      "DEBUG: Set linear memory breakpoint at 0002532C",
+      "END 50"
+    ]
+  },
+  {
+    "id": "51",
+    "command": "EXEC BPLM 0002532D",
+    "response": [
+      "BEGIN 51 OK",
+      "DEBUG: Set linear memory breakpoint at 0002532D",
+      "END 51"
+    ]
+  },
+  {
+    "id": "52",
+    "command": "EXEC BPLM 0002532E",
+    "response": [
+      "BEGIN 52 OK",
+      "DEBUG: Set linear memory breakpoint at 0002532E",
+      "END 52"
+    ]
+  },
+  {
+    "id": "53",
+    "command": "EXEC BPLM 0002532F",
+    "response": [
+      "BEGIN 53 OK",
+      "DEBUG: Set linear memory breakpoint at 0002532F",
+      "END 53"
+    ]
+  },
+  {
+    "id": "54",
+    "command": "EXEC BPLM 00028DC8",
+    "response": [
+      "BEGIN 54 OK",
+      "DEBUG: Set linear memory breakpoint at 00028DC8",
+      "END 54"
+    ]
+  },
+  {
+    "id": "55",
+    "command": "EXEC BPLM 00028DC9",
+    "response": [
+      "BEGIN 55 OK",
+      "DEBUG: Set linear memory breakpoint at 00028DC9",
+      "END 55"
+    ]
+  },
+  {
+    "id": "56",
+    "command": "EXEC BPLM 00028DCA",
+    "response": [
+      "BEGIN 56 OK",
+      "DEBUG: Set linear memory breakpoint at 00028DCA",
+      "END 56"
+    ]
+  },
+  {
+    "id": "57",
+    "command": "EXEC BPLM 00028DCB",
+    "response": [
+      "BEGIN 57 OK",
+      "DEBUG: Set linear memory breakpoint at 00028DCB",
+      "END 57"
+    ]
+  },
+  {
+    "id": "58",
+    "command": "EXEC BPLM 00028DCC",
+    "response": [
+      "BEGIN 58 OK",
+      "DEBUG: Set linear memory breakpoint at 00028DCC",
+      "END 58"
+    ]
+  },
+  {
+    "id": "59",
+    "command": "EXEC BPLM 00028DCD",
+    "response": [
+      "BEGIN 59 OK",
+      "DEBUG: Set linear memory breakpoint at 00028DCD",
+      "END 59"
+    ]
+  },
+  {
+    "id": "60",
+    "command": "EXEC BPLM 00028DCE",
+    "response": [
+      "BEGIN 60 OK",
+      "DEBUG: Set linear memory breakpoint at 00028DCE",
+      "END 60"
+    ]
+  },
+  {
+    "id": "61",
+    "command": "EXEC BPLM 00028DCF",
+    "response": [
+      "BEGIN 61 OK",
+      "DEBUG: Set linear memory breakpoint at 00028DCF",
+      "END 61"
+    ]
+  },
+  {
+    "id": "62",
+    "command": "EXEC BPLM 0002F94E",
+    "response": [
+      "BEGIN 62 OK",
+      "DEBUG: Set linear memory breakpoint at 0002F94E",
+      "END 62"
+    ]
+  },
+  {
+    "id": "63",
+    "command": "EXEC BPLM 0002F94F",
+    "response": [
+      "BEGIN 63 OK",
+      "DEBUG: Set linear memory breakpoint at 0002F94F",
+      "END 63"
+    ]
+  },
+  {
+    "id": "64",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 64 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BPLM 0002F94F (00)",
+      "01. BPLM 0002F94E (00)",
+      "02. BPLM 00028DCF (00)",
+      "03. BPLM 00028DCE (00)",
+      "04. BPLM 00028DCD (00)",
+      "05. BPLM 00028DCC (00)",
+      "06. BPLM 00028DCB (00)",
+      "07. BPLM 00028DCA (00)",
+      "08. BPLM 00028DC9 (00)",
+      "09. BPLM 00028DC8 (00)",
+      "0A. BPLM 0002532F (00)",
+      "0B. BPLM 0002532E (00)",
+      "0C. BPLM 0002532D (00)",
+      "0D. BPLM 0002532C (00)",
+      "0E. BPLM 000242BF (00)",
+      "0F. BPLM 000242BE (00)",
+      "10. BPLM 000242BD (00)",
+      "11. BPLM 000242BC (00)",
+      "12. BPLM 000242BB (00)",
+      "13. BPLM 000242BA (00)",
+      "14. BPLM 000242B9 (00)",
+      "15. BPLM 000242B8 (00)",
+      "16. BPLM 000242B7 (00)",
+      "17. BPLM 000242B6 (00)",
+      "18. BPLM 000242B5 (00)",
+      "19. BPLM 000242B4 (00)",
+      "1A. BPLM 000242B3 (00)",
+      "1B. BPLM 000242B2 (00)",
+      "1C. BPLM 000242B1 (00)",
+      "1D. BPLM 000242B0 (00)",
+      "1E. BPLM 00023FEF (00)",
+      "1F. BPLM 00023FEE (00)",
+      "20. BPLM 00023FED (00)",
+      "21. BPLM 00023FEC (00)",
+      "22. BPLM 00023FEB (00)",
+      "23. BPLM 00023FEA (00)",
+      "24. BPLM 00023FE9 (00)",
+      "25. BPLM 00023FE8 (00)",
+      "26. BPLM 00023FE7 (00)",
+      "27. BPLM 00023FE6 (00)",
+      "28. BPLM 00023FE5 (00)",
+      "29. BPLM 00023FE4 (00)",
+      "2A. BPLM 00023FE3 (00)",
+      "2B. BPLM 00023FE2 (00)",
+      "END 64"
+    ]
+  },
+  {
+    "id": "65",
+    "command": "EXEC BP 154D:000007AE",
+    "response": [
+      "BEGIN 65 OK",
+      "DEBUG: Set breakpoint at 154D:07AE",
+      "END 65"
+    ]
+  },
+  {
+    "id": "66",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 66 OK",
+      "OK",
+      "END 66"
+    ]
+  },
+  {
+    "id": "67",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 67 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 1a 814 814 3d98 800 3000 0 0 f000",
+      "END 67"
+    ]
+  },
+  {
+    "id": "68",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 68 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 68"
+    ]
+  },
+  {
+    "id": "69",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 69 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 7c8 2f95 2f95 2f95 e7b6 1 e7d7 0 2242",
+      "END 69"
+    ]
+  },
+  {
+    "id": "70",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 70 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 70"
+    ]
+  },
+  {
+    "id": "71",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 71 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 70e 2f95 2f95 2f95 e7b6 1 e7d7 1 0",
+      "END 71"
+    ]
+  },
+  {
+    "id": "72",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 72 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 72"
+    ]
+  },
+  {
+    "id": "73",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 73 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 74d 2f95 2f95 2f95 e7b6 f4 e7d6 1 0",
+      "END 73"
+    ]
+  },
+  {
+    "id": "74",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 74 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 74"
+    ]
+  },
+  {
+    "id": "75",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 75 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 765 2f95 2f95 2f95 e7b6 1 e7d6 0 2242",
+      "END 75"
+    ]
+  },
+  {
+    "id": "76",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 76 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 76"
+    ]
+  },
+  {
+    "id": "77",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 77 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 2f8b 2f95 2f95 2f95 e7a4 1 21a2 1 2242",
+      "END 77"
+    ]
+  },
+  {
+    "id": "78",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 78 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 78"
+    ]
+  },
+  {
+    "id": "79",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 79 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 75f 2f95 2f95 2f95 e7b4 e7d6 e7d6 1 2242",
+      "END 79"
+    ]
+  },
+  {
+    "id": "80",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 80 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 80"
+    ]
+  },
+  {
+    "id": "81",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 81 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1061 298e 2f95 2f95 2f95 e7c6 f2 e7d7 0 2242",
+      "END 81"
+    ]
+  },
+  {
+    "id": "82",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 82 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 82"
+    ]
+  },
+  {
+    "id": "83",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 83 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4b 1de3 0 2f95 e736 0 f2c4 a f2c4",
+      "END 83"
+    ]
+  },
+  {
+    "id": "84",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 84 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 84"
+    ]
+  },
+  {
+    "id": "85",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 85 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e730 0 f2c6 a f2c5",
+      "END 85"
+    ]
+  },
+  {
+    "id": "86",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 86 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 86"
+    ]
+  },
+  {
+    "id": "87",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 87 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e730 0 f2c6 a f2c5",
+      "END 87"
+    ]
+  },
+  {
+    "id": "88",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 88 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 88"
+    ]
+  },
+  {
+    "id": "89",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 89 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e730 0 f2c6 a f2c6",
+      "END 89"
+    ]
+  },
+  {
+    "id": "90",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 90 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 90"
+    ]
+  },
+  {
+    "id": "91",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 91 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe1 1de3 0 2f95 e730 0 f2c8 a f2c7",
+      "END 91"
+    ]
+  },
+  {
+    "id": "92",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 92 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 92"
+    ]
+  },
+  {
+    "id": "93",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 93 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4f 1de3 0 2f95 e736 0 f2c8 a f2c7",
+      "END 93"
+    ]
+  },
+  {
+    "id": "94",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 94 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 94"
+    ]
+  },
+  {
+    "id": "95",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 95 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4d 1de3 0 2f95 e736 0 f2c8 a f2c8",
+      "END 95"
+    ]
+  },
+  {
+    "id": "96",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 96 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 96"
+    ]
+  },
+  {
+    "id": "97",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 97 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e730 0 f2cd a f2c9",
+      "END 97"
+    ]
+  },
+  {
+    "id": "98",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 98 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 98"
+    ]
+  },
+  {
+    "id": "99",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 99 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4d 1de3 0 2f95 e736 0 f2cd a f2ca",
+      "END 99"
+    ]
+  },
+  {
+    "id": "100",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 100 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 100"
+    ]
+  },
+  {
+    "id": "101",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 101 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe1 1de3 0 2f95 e730 0 f2cd a f2cb",
+      "END 101"
+    ]
+  },
+  {
+    "id": "102",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 102 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 102"
+    ]
+  },
+  {
+    "id": "103",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 103 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4f 1de3 0 2f95 e736 0 f2cd a f2cb",
+      "END 103"
+    ]
+  },
+  {
+    "id": "104",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 104 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 104"
+    ]
+  },
+  {
+    "id": "105",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 105 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e730 0 f2cd a f2cc",
+      "END 105"
+    ]
+  },
+  {
+    "id": "106",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 106 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 106"
+    ]
+  },
+  {
+    "id": "107",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 107 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4f 1de3 0 2f95 e736 0 f2cd a f2cd",
+      "END 107"
+    ]
+  },
+  {
+    "id": "108",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 108 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 108"
+    ]
+  },
+  {
+    "id": "109",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 109 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4b 1de3 0 2f95 e736 0 f2cd a f2cd",
+      "END 109"
+    ]
+  },
+  {
+    "id": "110",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 110 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 110"
+    ]
+  },
+  {
+    "id": "111",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 111 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4b 1de3 0 2f95 e734 0 f2d1 a f2ce",
+      "END 111"
+    ]
+  },
+  {
+    "id": "112",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 112 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 112"
+    ]
+  },
+  {
+    "id": "113",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 113 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e72e 0 f2d1 a f2cf",
+      "END 113"
+    ]
+  },
+  {
+    "id": "114",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 114 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 114"
+    ]
+  },
+  {
+    "id": "115",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 115 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe1 1de3 0 2f95 e72e 0 f2d1 a f2d0",
+      "END 115"
+    ]
+  },
+  {
+    "id": "116",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 116 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 116"
+    ]
+  },
+  {
+    "id": "117",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 117 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe1 1de3 0 2f95 e72e 0 f2d1 a f2d0",
+      "END 117"
+    ]
+  },
+  {
+    "id": "118",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 118 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 118"
+    ]
+  },
+  {
+    "id": "119",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 119 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4d 1de3 0 2f95 e734 0 f2d1 a f2d1",
+      "END 119"
+    ]
+  },
+  {
+    "id": "120",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 120 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 120"
+    ]
+  },
+  {
+    "id": "121",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 121 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 3015 1de3 0 2f95 e77e 23ff c000 3c4 389",
+      "END 121"
+    ]
+  },
+  {
+    "id": "122",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 122 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 122"
+    ]
+  },
+  {
+    "id": "123",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 123 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "a9b 16f8 2f95 2f95 2f95 e5fa e73e e7c5 0 2242",
+      "END 123"
+    ]
+  },
+  {
+    "id": "124",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 124 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 124"
+    ]
+  },
+  {
+    "id": "125",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 125 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "97a 83f 2f95 a400 2f95 e5d4 11 11 0 3c5",
+      "END 125"
+    ]
+  },
+  {
+    "id": "126",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 126 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 126"
+    ]
+  },
+  {
+    "id": "127",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 127 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "97a 837 2f95 a400 2f95 e5d4 1 11 0 3c5",
+      "END 127"
+    ]
+  },
+  {
+    "id": "128",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 128 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 128"
+    ]
+  },
+  {
+    "id": "129",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 129 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 767 2f95 2f95 2f95 e5e4 1 e7c6 0 2242",
+      "END 129"
+    ]
+  },
+  {
+    "id": "130",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 130 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 130"
+    ]
+  },
+  {
+    "id": "131",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 131 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "97a 83d 2f95 a400 2f95 e5d4 11 11 0 3c5",
+      "END 131"
+    ]
+  },
+  {
+    "id": "132",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 132 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 132"
+    ]
+  },
+  {
+    "id": "133",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 133 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "154d 7ae 2f95 a400 2f95 e7d0 400c 6 e804 3d4",
+      "END 133"
+    ]
+  },
+  {
+    "id": "134",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 134 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 134"
+    ]
+  },
+  {
+    "id": "135",
+    "command": "EXEC MEMDUMPBIN 23FE:00000002 0000000E C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\final_1bda2.bin.part0",
+    "response": [
+      "BEGIN 135 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 135"
+    ]
+  },
+  {
+    "id": "136",
+    "command": "EXEC MEMDUMPBIN 242B:00000000 00000010 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\final_1c070.bin.part0",
+    "response": [
+      "BEGIN 136 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 136"
+    ]
+  },
+  {
+    "id": "137",
+    "command": "EXEC MEMDUMPBIN 2532:0000000C 00000004 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\final_1d0ec.bin.part0",
+    "response": [
+      "BEGIN 137 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 137"
+    ]
+  },
+  {
+    "id": "138",
+    "command": "EXEC MEMDUMPBIN 28DC:00000008 00000008 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\final_20b88.bin.part0",
+    "response": [
+      "BEGIN 138 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 138"
+    ]
+  },
+  {
+    "id": "139",
+    "command": "EXEC MEMDUMPBIN 2F94:0000000E 00000002 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\final_2770e.bin.part0",
+    "response": [
+      "BEGIN 139 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 139"
+    ]
+  },
+  {
+    "id": "140",
+    "command": "EXEC MEMDUMPBIN 31CA:00000006 00000004 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\final_29a66.bin.part0",
+    "response": [
+      "BEGIN 140 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 140"
+    ]
+  },
+  {
+    "id": "141",
+    "command": "EXEC BPLIST",
+    "response": [
+      "BEGIN 141 OK",
+      "Breakpoint list:",
+      "-------------------------------------------------------------------------",
+      "00. BP 154D:07AE",
+      "01. BPLM 0002F94F (00)",
+      "02. BPLM 0002F94E (00)",
+      "03. BPLM 00028DCF (00)",
+      "04. BPLM 00028DCE (00)",
+      "05. BPLM 00028DCD (00)",
+      "06. BPLM 00028DCC (00)",
+      "07. BPLM 00028DCB (00)",
+      "08. BPLM 00028DCA (00)",
+      "09. BPLM 00028DC9 (00)",
+      "0A. BPLM 00028DC8 (00)",
+      "0B. BPLM 0002532F (00)",
+      "0C. BPLM 0002532E (00)",
+      "0D. BPLM 0002532D (00)",
+      "0E. BPLM 0002532C (00)",
+      "0F. BPLM 000242BF (00)",
+      "10. BPLM 000242BE (00)",
+      "11. BPLM 000242BD (00)",
+      "12. BPLM 000242BC (00)",
+      "13. BPLM 000242BB (00)",
+      "14. BPLM 000242BA (00)",
+      "15. BPLM 000242B9 (00)",
+      "16. BPLM 000242B8 (00)",
+      "17. BPLM 000242B7 (00)",
+      "18. BPLM 000242B6 (00)",
+      "19. BPLM 000242B5 (00)",
+      "1A. BPLM 000242B4 (00)",
+      "1B. BPLM 000242B3 (00)",
+      "1C. BPLM 000242B2 (00)",
+      "1D. BPLM 000242B1 (00)",
+      "1E. BPLM 000242B0 (00)",
+      "1F. BPLM 00023FEF (00)",
+      "20. BPLM 00023FEE (00)",
+      "21. BPLM 00023FED (00)",
+      "22. BPLM 00023FEC (00)",
+      "23. BPLM 00023FEB (00)",
+      "24. BPLM 00023FEA (00)",
+      "25. BPLM 00023FE9 (00)",
+      "26. BPLM 00023FE8 (00)",
+      "27. BPLM 00023FE7 (00)",
+      "28. BPLM 00023FE6 (00)",
+      "29. BPLM 00023FE5 (00)",
+      "2A. BPLM 00023FE4 (00)",
+      "2B. BPLM 00023FE3 (00)",
+      "2C. BPLM 00023FE2 (00)",
+      "END 141"
+    ]
+  },
+  {
+    "id": "142",
+    "command": "EXEC MEMDUMPBIN 338B:00000004 000001DA C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\sound_directory_runtime.bin.part0",
+    "response": [
+      "BEGIN 142 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 142"
+    ]
+  },
+  {
+    "id": "143",
+    "command": "EXEC MEMDUMPBIN 23FF:00000000 000000C0 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\uif_directory_runtime.bin.part0",
+    "response": [
+      "BEGIN 143 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 143"
+    ]
+  },
+  {
+    "id": "144",
+    "command": "EXEC MEMDUMPBIN 2973:00000000 000004B0 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\font2_block_runtime.bin.part0",
+    "response": [
+      "BEGIN 144 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 144"
+    ]
+  },
+  {
+    "id": "145",
+    "command": "EXEC MEMDUMPBIN 333E:00000000 00000200 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\font2_pointers_runtime.bin.part0",
+    "response": [
+      "BEGIN 145 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 145"
+    ]
+  },
+  {
+    "id": "146",
+    "command": "EXEC MEMDUMPBIN 315B:0000000C 00000003 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\font_flags_runtime.bin.part0",
+    "response": [
+      "BEGIN 146 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 146"
+    ]
+  },
+  {
+    "id": "147",
+    "command": "EXEC MEMDUMPBIN 32FD:0000000E 00000001 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\font_selected_runtime.bin.part0",
+    "response": [
+      "BEGIN 147 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 147"
+    ]
+  },
+  {
+    "id": "148",
+    "command": "EXEC MEMDUMPBIN 2FA7:0000000C 00000004 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\vga_page_words.bin.part0",
+    "response": [
+      "BEGIN 148 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 148"
+    ]
+  },
+  {
+    "id": "149",
+    "command": "EXEC VGA GC",
+    "response": [
+      "BEGIN 149 OK",
+      "VGA Graphics controller info: index=06h setreset=00h",
+      "enablesetreset=00h color-comp=00h data-rotate=00h rdmapsel=00h",
+      "mode=40h misc=05h color-dont-care=0fh bitmask=ffh",
+      "END 149"
+    ]
+  },
+  {
+    "id": "150",
+    "command": "EXEC VGA SEQ",
+    "response": [
+      "BEGIN 150 OK",
+      "VGA Sequencer info: index=02h",
+      "reset=03h clockmode=01h map_mask=01h charmapsel=00h memmode=06h",
+      "END 150"
+    ]
+  },
+  {
+    "id": "151",
+    "command": "EXEC VGA MODE",
+    "response": [
+      "BEGIN 151 OK",
+      "VGA mode info:",
+      "mode=M_VGA vref=70.087Hz href=31468.750Hz chrclk=3146875.000Hz dotclk=25175000.000Hz",
+      "disp-start=4000h real-start=0h retrace=0 scanlen=40 cursor-start=0h",
+      "line-compare=1023 chained=0 compat-chain4=1 pel-pan=0 hline-skip=0",
+      "byte-skip=0 addr-shift=0 rd-mode=0 wr-mode=0 rdmap-sel=0",
+      "col-dont-care=15 color-compare=0 data-rotate=0 raster-op=00h",
+      "fbmsk=ffffffff fmmsk=ff fnmmsk=ffffff00 fsr=0 fnesr=ffffffff fesr=0 feasr=0",
+      "complexity-flags=0x0=",
+      "END 151"
+    ]
+  },
+  {
+    "id": "152",
+    "command": "EXEC VGA AC",
+    "response": [
+      "BEGIN 152 OK",
+      "VGA Attribute Controller info: attrindexmode=0",
+      "mode_control=49h horz-pel-pan=00h overscan-color=00h",
+      "color-plane-en=0fh color-select=00h index=00h",
+      "disabled-by-index=0 disabled-by-idx1-bit5=0 index-written=0",
+      "palette={ 00 01 02 03-04 05 06 07-08 09 0a 0b-0c 0d 0e 0f }",
+      "END 152"
+    ]
+  },
+  {
+    "id": "153",
+    "command": "EXEC MEMDUMPBIN A000:00000000 00003E80 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\vga_read_page_a000.bin.part0",
+    "response": [
+      "BEGIN 153 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 153"
+    ]
+  },
+  {
+    "id": "154",
+    "command": "EXEC MEMDUMPBIN A400:00000000 00003E80 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\vga_read_page_a400.bin.part0",
+    "response": [
+      "BEGIN 154 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 154"
+    ]
+  },
+  {
+    "id": "155",
+    "command": "EXEC MEMDUMPBIN 343B:00000004 00000300 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\palette_buffer_runtime.bin.part0",
+    "response": [
+      "BEGIN 155 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 155"
+    ]
+  },
+  {
+    "id": "156",
+    "command": "EXEC VGA DAC",
+    "response": [
+      "BEGIN 156 OK",
+      "VGA DAC info: bits=6 pel_mask=ffh pel_index[RGB]=00h",
+      "state=01h write_index=00h read_index=ffh first_changed=256",
+      "hidac_counter=0 reg02=00h",
+      "END 156"
+    ]
+  },
+  {
+    "id": "157",
+    "command": "EXEC VGA DACPAL",
+    "response": [
+      "BEGIN 157 OK",
+      "VGA DAC palette (RGB):",
+      "00: 000000 020202 040404 060606-080808 0a0a0a 0c0c0c 0e0e0e ",
+      "08: 101010 121212 141414 161616-181818 1a1a1a 1c1c1c 1e1e1e ",
+      "10: 212121 232323 252525 272727-292929 2b2b2b 2d2d2d 2f2f2f ",
+      "18: 313131 333333 353535 373737-393939 3b3b3b 3d3d3d 3f3f3f ",
+      "20: 26120f 28130f 281310 2a1410-2b1411 2d1511 2e1511 2f1612 ",
+      "28: 301713 311814 311a15 321b16-331c18 331d19 341e1a 35201b ",
+      "30: 35201c 36221e 36231f 372420-382521 382622 392724 392925 ",
+      "38: 3a2a26 3a2b28 3b2d29 3b2e2b-3b2f2c 3c302e 3c312f 3d3330 ",
+      "40: 140c02 130e02 150f02 171003-181103 1a1103 1b1204 1c1304 ",
+      "48: 1e1305 1f1405 211506 221606-241606 251707 261807 281908 ",
+      "50: 291908 2b1a09 2c1b09 2e1b09-2f1c0a 301d0a 321e0b 331e0b ",
+      "58: 351f0c 36200c 38210c 39210d-3a220d 3c230e 3d230e 3f240f ",
+      "60: 100606 120606 130707 150707-160707 180707 190808 1b0808 ",
+      "68: 1c0808 1e0909 1f0909 210909-220909 240a0a 250a0a 270a0a ",
+      "70: 280a0a 2a0b0b 2b0b0b 2d0b0b-2e0c0c 300c0c 310c0c 330c0c ",
+      "78: 340d0d 360d0d 370d0d 390e0e-3a0e0e 3c0e0e 3d0e0e 3f0f0f ",
+      "80: 110c02 130e02 150f02 161002-171003 181103 191103 1a1203 ",
+      "88: 1b1203 1c1304 1d1304 1e1304-1e1404 1f1404 201505 211505 ",
+      "90: 221605 231605 241705 251706-261806 271806 271906 281906 ",
+      "98: 291a07 2a1a07 2b1b07 2c1b07-2d1c08 2e1c08 2f1d08 301d08 ",
+      "a0: 3f130d 3f150f 3f1b0f 3f1d0f-3f200f 3f230f 3f260f 3f280f ",
+      "a8: 3f2b0f 3f2e0f 3f310f 3f340f-3f360f 3f390f 3f3c0f 3f3f0f ",
+      "b0: 1c1913 1e1b15 1f1c15 211e17-221f18 242119 25231b 27251c ",
+      "b8: 28261d 2a281f 2b2a20 2d2c21-2e2d23 302f24 313125 333327 ",
+      "c0: 0f102a 0f102c 10102e 10102e-11122e 12142f 141530 151730 ",
+      "c8: 161931 181a32 191c33 1a1e33-1b2034 1d2135 1e2335 1f2536 ",
+      "d0: 151832 161a32 181b32 191d33-1b1f34 1d2135 1e2336 202636 ",
+      "d8: 212837 232a38 252c39 262e3a-28303b 29323c 2b343d 2d373d ",
+      "e0: 150410 170412 190414 1a0515-1b0516 1d0517 1e0518 1f0519 ",
+      "e8: 20051a 21061b 22061c 24061d-25061e 26061f 270620 280721 ",
+      "f0: 050a02 060d02 070f02 071102-081302 091502 091702 0a1803 ",
+      "f8: 0b1a03 0b1c03 0c1e03 0d2003-0d2103 0e2303 0e2503 0f2703 ",
+      "END 157"
+    ]
+  },
+  {
+    "id": "158",
+    "command": "EXEC OUTP 03CE 0004",
+    "response": [
+      "BEGIN 158 OK",
+      "END 158"
+    ]
+  },
+  {
+    "id": "159",
+    "command": "EXEC OUTP 03CF 0000",
+    "response": [
+      "BEGIN 159 OK",
+      "END 159"
+    ]
+  },
+  {
+    "id": "160",
+    "command": "EXEC MEMDUMPBIN A400:00000000 00003E80 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\vga_plane_0.bin.part0",
+    "response": [
+      "BEGIN 160 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 160"
+    ]
+  },
+  {
+    "id": "161",
+    "command": "EXEC OUTP 03CF 0001",
+    "response": [
+      "BEGIN 161 OK",
+      "END 161"
+    ]
+  },
+  {
+    "id": "162",
+    "command": "EXEC MEMDUMPBIN A400:00000000 00003E80 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\vga_plane_1.bin.part0",
+    "response": [
+      "BEGIN 162 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 162"
+    ]
+  },
+  {
+    "id": "163",
+    "command": "EXEC OUTP 03CF 0002",
+    "response": [
+      "BEGIN 163 OK",
+      "END 163"
+    ]
+  },
+  {
+    "id": "164",
+    "command": "EXEC MEMDUMPBIN A400:00000000 00003E80 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\vga_plane_2.bin.part0",
+    "response": [
+      "BEGIN 164 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 164"
+    ]
+  },
+  {
+    "id": "165",
+    "command": "EXEC OUTP 03CF 0003",
+    "response": [
+      "BEGIN 165 OK",
+      "END 165"
+    ]
+  },
+  {
+    "id": "166",
+    "command": "EXEC MEMDUMPBIN A400:00000000 00003E80 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_intro_flip_runtime\\vga_plane_3.bin.part0",
+    "response": [
+      "BEGIN 166 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 166"
+    ]
+  },
+  {
+    "id": "167",
+    "command": "EXEC OUTP 03CF 0000",
+    "response": [
+      "BEGIN 167 OK",
+      "END 167"
+    ]
+  },
+  {
+    "id": "168",
+    "command": "EXEC OUTP 03CE 0006",
+    "response": [
+      "BEGIN 168 OK",
+      "END 168"
+    ]
+  },
+  {
+    "id": "169",
+    "command": "EXEC VGA GC",
+    "response": [
+      "BEGIN 169 OK",
+      "VGA Graphics controller info: index=06h setreset=00h",
+      "enablesetreset=00h color-comp=00h data-rotate=00h rdmapsel=00h",
+      "mode=40h misc=05h color-dont-care=0fh bitmask=ffh",
+      "END 169"
+    ]
+  },
+  {
+    "id": "170",
+    "command": "EXEC VGA SEQ",
+    "response": [
+      "BEGIN 170 OK",
+      "VGA Sequencer info: index=02h",
+      "reset=03h clockmode=01h map_mask=01h charmapsel=00h memmode=06h",
+      "END 170"
+    ]
+  },
+  {
+    "id": "171",
+    "command": "EXEC VGA MODE",
+    "response": [
+      "BEGIN 171 OK",
+      "VGA mode info:",
+      "mode=M_VGA vref=70.087Hz href=31468.750Hz chrclk=3146875.000Hz dotclk=25175000.000Hz",
+      "disp-start=4000h real-start=0h retrace=0 scanlen=40 cursor-start=0h",
+      "line-compare=1023 chained=0 compat-chain4=1 pel-pan=0 hline-skip=0",
+      "byte-skip=0 addr-shift=0 rd-mode=0 wr-mode=0 rdmap-sel=0",
+      "col-dont-care=15 color-compare=0 data-rotate=0 raster-op=00h",
+      "fbmsk=ffffffff fmmsk=ff fnmmsk=ffffff00 fsr=0 fnesr=ffffffff fesr=0 feasr=0",
+      "complexity-flags=0x0=",
+      "END 171"
+    ]
+  },
+  {
+    "id": "172",
+    "command": "EXEC VGA AC",
+    "response": [
+      "BEGIN 172 OK",
+      "VGA Attribute Controller info: attrindexmode=0",
+      "mode_control=49h horz-pel-pan=00h overscan-color=00h",
+      "color-plane-en=0fh color-select=00h index=00h",
+      "disabled-by-index=0 disabled-by-idx1-bit5=0 index-written=0",
+      "palette={ 00 01 02 03-04 05 06 07-08 09 0a 0b-0c 0d 0e 0f }",
+      "END 172"
+    ]
+  },
+  {
+    "id": "173",
+    "command": "EXEC BPDEL *",
+    "response": [
+      "BEGIN 173 OK",
+      "DEBUG: Breakpoints deleted.",
+      "END 173"
+    ]
+  }
+]
