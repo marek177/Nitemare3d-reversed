@@ -1,0 +1,526 @@
+{
+  "verified": true,
+  "runtime_tests": 1,
+  "new_deep_verified_bytes": 0,
+  "summary_sha256": "86f5999ce0a44892e05e31ca1a5132198d7ac4b3e0dbad40a24bded5fa4f74f6",
+  "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+  "scope": "Natural whole CRT2065 cache8198B allocation,existingheap3F96 grows3232to16384 viaactualDOS4AES3F96/BX400/CF0; returned3F96:0C9C. Originalcaller/scan/grow/resize replay onlyinjects1capturedDOSregisterresponse; fullreplayRAMmodel/orderedstores/capturedregsCFDF match. Nativeoriginal-storetargets/DGROUPexceptclock match,residualDOS/IRQ/stack memoryexported; notwholeDOSmanagerclosure/callbackbody/Win16parity. v1capturelacked4Atrace,uncounted.",
+  "metrics": {
+    "request_WORD": 8198,
+    "returned_segment": 16278,
+    "returned_offset": 3228,
+    "old_heap_size_WORD": 3232,
+    "new_heap_size_WORD": 16384,
+    "old_heap_cursor": 3226,
+    "new_heap_cursor": 11426,
+    "DOS4A_ES": 16278,
+    "DOS4A_paragraphs": 1024,
+    "DOS4A_CF": 0,
+    "DOS4A_AX": 16278,
+    "original_instruction_events": 271,
+    "original_unique_starts": 201,
+    "original_ordered_nonstack_stores": 12,
+    "original_store_target_bytes_checked": 18,
+    "replay_RAM_bytes_checked": 2097080,
+    "native_DGROUP_bytes_checked": 57388,
+    "native_replay_residual_positions": 42,
+    "code_bytes_before_after_checked": 701,
+    "callback_2332_before": "00000000",
+    "callback_246A_before": "00000000",
+    "native_writer_PCs_directly_trapped": false
+  },
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\relocations.csv",
+      "sha256": "5faab828945fa774c340ce1b612a0cd6379f7507cfddcdcccd395d37a58b3256"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\verify_crt_far_malloc_capture.py",
+      "sha256": "c3b2a6dd24671ecc01dfc429bccd8a69cec6a20849626612c6ad187dc38bba54"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\crt_far_malloc_model.py",
+      "sha256": "8ef346f17a6ed52769d169c4c4ba605cabfd16c8365b69163fbbee8f93e25999"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\runtime_watch_crt_far_malloc_v2.py",
+      "sha256": "3033e6c856216472587c5ab343c3df3c3cbe50090d24e35da9f8ad3b78997142"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_watch_support_newgame_v1.py",
+      "sha256": "64675a5c918b22eb1d80e1d522efc1d459342a9ee04abf768a04b6a2e043fc89"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\summary.json",
+      "sha256": "86f5999ce0a44892e05e31ca1a5132198d7ac4b3e0dbad40a24bded5fa4f74f6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\transcript.json",
+      "sha256": "88e7e91292b354b97d2023d6c80eb9f8549258164d22c71124366ae0949e2748"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\snapshots.json",
+      "sha256": "0036beb039e02d85ea3cdf1578b8594e21d5263ca843fb27d8b18e1bdc552ad3"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\DOS_events.json",
+      "sha256": "fc39b53a92433db0db672066c958dd154a9b8696c89920ac1a5bb5fdeb8d33b2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\inputs.csv",
+      "sha256": "59d800ea110ee4669038d2a760269c394a28511c1a3787197549f35e1e3b4a95"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\launch_arguments.json",
+      "sha256": "7c77626017201898d85bab0ce2bab2c70f4379072f4b9ca5ae0d4004ecaf4d36"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\runtime.conf",
+      "sha256": "678d32efa393dec515c15f8268b597e1b73c95fedbce4f90f636818c444ad8df"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\verification_metrics.json",
+      "sha256": "81f0f4554228371a71084e9062c19253d234b851bf4abc673aa614dc8e1cddad"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\RAM_replay_residuals.csv",
+      "sha256": "2ef19bc727fc6dc5133d285c854975a732010edb9e83ca24103ffab8394b2574"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_crt_far_malloc_runtime_v2\\ordered_original_writes.csv",
+      "sha256": "7ac1e4fd74c4813e16ca50fa1840d8e7c765df80cff477addc766efa61ea36df"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\unpacked_runtime.bin",
+      "sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_entry_frame.bin",
+      "sha256": "b5e906dba402737a9aed7194f8fc761b70b352c41900b5c77910b8c1ad175412"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin",
+      "sha256": "43fe136ad4e852eb597946703abbced7db10f86db2f413e6c0a7f75b61f4b1ee"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin",
+      "sha256": "b12d0b4d0776a7f99082a8cfab9c5bb1d9eafc0f376ffcce9be565335c6020e7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\UNPACKED_RUNTIME.BIN.PART0",
+      "sha256": "30f19607880f4474f2d00debc8a9e08bfa9ed70e160217a803c97948162c31ff"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\UNPACKED_RUNTIME.BIN.PART32768",
+      "sha256": "8930d254f047a7a31bf741286bb89e7d80d23f8635987c191b4770b2052cbe7c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\UNPACKED_RUNTIME.BIN.PART65536",
+      "sha256": "5b171a9e99ce11321faa97104e0f177de087de64f62c513a9c4e92479e9556a3"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\UNPACKED_RUNTIME.BIN.PART98304",
+      "sha256": "b44b508c13fe34e3309fc0be8d3141b6a9a4fb5c5aab6038a480b7840801f881"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\UNPACKED_RUNTIME.BIN.PART131072",
+      "sha256": "c250a3ec0f1fd69248c9f0d47df21364edfae6f5b29c5ccd4d8452e51fc71948"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\UNPACKED_RUNTIME.BIN.PART163840",
+      "sha256": "0b4833aa392b4778064cbc84df10f7c749ae264462824748223b5a791c0f1567"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_ENTRY_FRAME.BIN.PART0",
+      "sha256": "b5e906dba402737a9aed7194f8fc761b70b352c41900b5c77910b8c1ad175412"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART0",
+      "sha256": "23d5df170435439ea2e24a2bbf50ffa02c102e1576819b8551241ed49534f246"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART32768",
+      "sha256": "9434c079cfa0f256f1bec87d360901e2495387e2c5939a7cc7929eb776e232ba"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART65536",
+      "sha256": "c7da575b534409d426b2acf710cb62cb4576488b2f8b8325c107e49b7101d80c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART98304",
+      "sha256": "3346719646e38fd4dddd586edc57600ac6ffc00ac6afdd6a9c7f98ecfc124ed9"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART131072",
+      "sha256": "89454d54dcee4755fcbdb95d35bc4a31dcd773d7eadf8bccedad86b0e42e2708"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART163840",
+      "sha256": "708f702e50e136300aa318ce81b0047b52b179d83ba5476f9e5bc3abfdb0a36a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART196608",
+      "sha256": "5d12e3eb5e9ca307a73538d2bb559e6d59048745473a4d6266fb2860016b4fd7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART229376",
+      "sha256": "e90b1cda35b9c361eaf73d8ea20b7e090c690f16c9882a67024f52c1e5393081"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART262144",
+      "sha256": "2c3693fddf5cb520699ad6a8d553b7f6a8b91ba404d69932d67939ac76bbee30"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART294912",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART327680",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART360448",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART393216",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART425984",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART458752",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART491520",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART524288",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART557056",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART589824",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_BEFORE_RAM.BIN.PART622592",
+      "sha256": "dc0a81e78aa32c408d798825610f302039fb8c50b829546b72cf947f5a61f197"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART0",
+      "sha256": "23d5df170435439ea2e24a2bbf50ffa02c102e1576819b8551241ed49534f246"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART32768",
+      "sha256": "01a1a53236f5d4ecc3e02dac2507fb3f372e71ae45084ecdc3b9a022a824aed8"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART65536",
+      "sha256": "c7da575b534409d426b2acf710cb62cb4576488b2f8b8325c107e49b7101d80c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART98304",
+      "sha256": "3346719646e38fd4dddd586edc57600ac6ffc00ac6afdd6a9c7f98ecfc124ed9"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART131072",
+      "sha256": "89454d54dcee4755fcbdb95d35bc4a31dcd773d7eadf8bccedad86b0e42e2708"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART163840",
+      "sha256": "708f702e50e136300aa318ce81b0047b52b179d83ba5476f9e5bc3abfdb0a36a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART196608",
+      "sha256": "27616702af53fa5d77f807a4619dfada55e700e59f89c2257a29f4a17ca38725"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART229376",
+      "sha256": "7b788e8cd6085563857443163b2b2623d257df1998ea7cbc92685effde5fd6f9"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART262144",
+      "sha256": "562aaf695b21b271d89088ab08416e19c22259f03c0d57258d48c448ab29653f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART294912",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART327680",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART360448",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART393216",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART425984",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART458752",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART491520",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART524288",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART557056",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART589824",
+      "sha256": "c35020473aed1b4642cd726cad727b63fff2824ad68cedd7ffb73c7cbd890479"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\MALLOC_AFTER_RAM.BIN.PART622592",
+      "sha256": "dc0a81e78aa32c408d798825610f302039fb8c50b829546b72cf947f5a61f197"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\pass1_crt_allocator_state\\allocator_instructions.csv",
+      "sha256": "e581d5301ed4f98489231878d19dfd7c23ca510023f46630b72e187ca50ae7a2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\near_heap_scan\\near_heap_next_fit_scan.csv",
+      "sha256": "989f6d9361a706c566959b2296f0cb1b0a9962bb62971a0cdf95ebd8aeec59b5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\near_heap_grow\\near_heap_grow.csv",
+      "sha256": "e16a58e15ec480c7ffee51412f6ca53bff59ae1863cdc3db6fef8cd3012acfe2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\near_heap_grow\\near_heap_last_block.csv",
+      "sha256": "24072db588410f7ebe3e05acef34e25a2b4e403b225cf447dba1fb5f46b208df"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\pass1_near_heap_flags\\near_heap_resize_or_accept.csv",
+      "sha256": "80c66c282f0114d1da7a7f938ac785745d2d79e2eb9ea92548eff2ae853a99c6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\pass1_heap_root\\heap_block_initialize.csv",
+      "sha256": "77ed549d3c2ff439ebd9cc19574148bb6cf2713ff366fd3a767a27ae824f6556"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\pass1_heap_root\\heap_root_append.csv",
+      "sha256": "dd126b7478435d6ae19a1b522aaa4eb13c81af84dbdfc967b02ab76075f08f5c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\pass1_heap_root\\heap_os_allocate.csv",
+      "sha256": "ea6605e9e967520b9a0082979cc81309888dcf29a3f41a3296ab5193c93ca081"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\N3D-UNFU.exe",
+      "sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\N3D20.EXE",
+      "sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\N3d.exe",
+      "sha256": "32029326da3e9e356f5d17ca98e420dee178486f1384af8e7ccc662671c12511"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\N3d.exe",
+      "sha256": "32029326da3e9e356f5d17ca98e420dee178486f1384af8e7ccc662671c12511"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\NITE3D.BSF",
+      "sha256": "76a30c0d52356584ddc51bfab3823a706a1d02985b5c6342dd8a9b98cefae7cb"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\NITE3D.BSF",
+      "sha256": "76a30c0d52356584ddc51bfab3823a706a1d02985b5c6342dd8a9b98cefae7cb"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\GAME.PAL",
+      "sha256": "efd52442cbee3327d8cec045b31559049e8767b298c25674a557eb6e096a759f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\GAME.PAL",
+      "sha256": "efd52442cbee3327d8cec045b31559049e8767b298c25674a557eb6e096a759f"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\SND.DAT",
+      "sha256": "f3434984d315531602d32285cb8ff55990bba786f5fb37f53710e88379388614"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\SND.DAT",
+      "sha256": "f3434984d315531602d32285cb8ff55990bba786f5fb37f53710e88379388614"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\UIF.DAT",
+      "sha256": "d5964c31144a67da8b2524e545488fe243f1394e5e4e231b439284c55276c45d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\UIF.DAT",
+      "sha256": "d5964c31144a67da8b2524e545488fe243f1394e5e4e231b439284c55276c45d"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\ENDING.FLI",
+      "sha256": "8301513562c1150844b19a439016d470bd787667dd50109cbd945196d2befd49"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\ENDING.FLI",
+      "sha256": "8301513562c1150844b19a439016d470bd787667dd50109cbd945196d2befd49"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\MAP.1",
+      "sha256": "82b12a19072efebb87dda98b4d68470ee236ef06cab2b32d07d0acd98eb1c546"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\MAP.1",
+      "sha256": "82b12a19072efebb87dda98b4d68470ee236ef06cab2b32d07d0acd98eb1c546"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\MAP.2",
+      "sha256": "938b7e79c9881eab71fdef4b7afa9b0482c870c808785f599a4ba52093d44756"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\MAP.2",
+      "sha256": "938b7e79c9881eab71fdef4b7afa9b0482c870c808785f599a4ba52093d44756"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\MAP.3",
+      "sha256": "e0ac69bb6de33726c65eb7bc30c594700929929f316b805547c6bf84ad74b5d5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\MAP.3",
+      "sha256": "e0ac69bb6de33726c65eb7bc30c594700929929f316b805547c6bf84ad74b5d5"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\IMG.1",
+      "sha256": "5b34c4750a31285a167647f4f09e3d9c8368d00d0730294cc0181ab7f6cd637d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\IMG.1",
+      "sha256": "5b34c4750a31285a167647f4f09e3d9c8368d00d0730294cc0181ab7f6cd637d"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\IMG.2",
+      "sha256": "3c41768224bf4c550f6382b72630ad8280c37a73ef133907876cfeee4650d9c7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\IMG.2",
+      "sha256": "3c41768224bf4c550f6382b72630ad8280c37a73ef133907876cfeee4650d9c7"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\IMG.3",
+      "sha256": "23c18ac3b6d7ac35b18156360ca9b6a3dac5ee68844f192ba69c8d230d5f0822"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\IMG.3",
+      "sha256": "23c18ac3b6d7ac35b18156360ca9b6a3dac5ee68844f192ba69c8d230d5f0822"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\DEMO.1",
+      "sha256": "25ae7e97f61d19bc3fa61d630ec13b9614a4f3193da84f7c1a3c3d519f795840"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\DEMO.1",
+      "sha256": "25ae7e97f61d19bc3fa61d630ec13b9614a4f3193da84f7c1a3c3d519f795840"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\DEMO.2",
+      "sha256": "deb7fe959b6b1c9f0f7f4a793a40e0ef75873b436c715bd9f74d4ef965ac304d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\DEMO.2",
+      "sha256": "deb7fe959b6b1c9f0f7f4a793a40e0ef75873b436c715bd9f74d4ef965ac304d"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\DEMO.3",
+      "sha256": "8cc9899520b0c60aabba7fd73cb38025bfb0978bd31eb20551bcf5555e4939e1"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\DEMO.3",
+      "sha256": "8cc9899520b0c60aabba7fd73cb38025bfb0978bd31eb20551bcf5555e4939e1"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\WALLS.1",
+      "sha256": "9fbbf889440cf7200c7c2dad271f47c79652baf237c27f1bbb354ee1e8b1cf84"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\WALLS.1",
+      "sha256": "9fbbf889440cf7200c7c2dad271f47c79652baf237c27f1bbb354ee1e8b1cf84"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\WALLS.2",
+      "sha256": "23f9cb3757ad92876d8f43a8ad9987cecc596e3c2d9a9ebb09b10ce0a2af59fe"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\WALLS.2",
+      "sha256": "23f9cb3757ad92876d8f43a8ad9987cecc596e3c2d9a9ebb09b10ce0a2af59fe"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\WALLS.3",
+      "sha256": "abf6c2bc6779e6261998bc26bd03bbbce7e3ea608f28ddc4d78a13fd80a39cae"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\WALLS.3",
+      "sha256": "abf6c2bc6779e6261998bc26bd03bbbce7e3ea608f28ddc4d78a13fd80a39cae"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\OBJECTS.1",
+      "sha256": "2ea1a323a56933c559fe4298fd7122fb449f587dece4af3555b3bc9915184b49"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\OBJECTS.1",
+      "sha256": "2ea1a323a56933c559fe4298fd7122fb449f587dece4af3555b3bc9915184b49"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\OBJECTS.2",
+      "sha256": "c5731a1d2e9efe0e45f93f893a477cfa6a941fd89e95c95afd00d50110d03bea"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\OBJECTS.2",
+      "sha256": "c5731a1d2e9efe0e45f93f893a477cfa6a941fd89e95c95afd00d50110d03bea"
+    },
+    {
+      "path": "L:\\nite3d\\nite3\\dos\\OBJECTS.3",
+      "sha256": "dca029da1358965147e24a8e2661eef77098f03a1b9f5b678bcaac2201ea42be"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\OBJECTS.3",
+      "sha256": "dca029da1358965147e24a8e2661eef77098f03a1b9f5b678bcaac2201ea42be"
+    },
+    {
+      "path": "L:\\nite3d\\dos\\n3dcd\\DSTOPEN.IMG",
+      "sha256": "af574568089f1998ca50ceeba310ff068c728279ff470cd39f47a8919228b95a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\drive_c\\DSTOPEN.IMG",
+      "sha256": "af574568089f1998ca50ceeba310ff068c728279ff470cd39f47a8919228b95a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx-win64-20261001\\dosbox-x.exe",
+      "sha256": "a82adcfa7af2784566cfeff74c077cefed08505396db2948b7e6aa7d4cee0832"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\emulator\\unicorn\\lib\\unicorn.dll",
+      "sha256": "010d85dce84b8f6ffaec3d5420f1b5f7768f859eb831be574c7da23e656ee8f1"
+    }
+  ]
+}

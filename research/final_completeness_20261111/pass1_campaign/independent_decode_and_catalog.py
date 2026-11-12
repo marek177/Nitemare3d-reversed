@@ -531,7 +531,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay','crt_large_allocation_replay','probe_original_crt_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay','crt_large_allocation_replay','probe_original_crt_replay','crt_far_malloc_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -560,7 +560,7 @@ def main():
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
     runtime_evidence=[];runtime_sessions=set()
-    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime','dosbox_newgame_map_runtime_v3','dosbox_scheduler_runtime','dosbox_palette_writer_runtime','dosbox_palette_cycle_runtime_v2','dosbox_map_writers_runtime','dosbox_validator_branches_runtime','dosbox_guard_orientation_runtime_v2','dosbox_class_descriptor_copy_runtime','dosbox_image_record_runtime','dosbox_image_retrieval_runtime','dosbox_calendar_runtime','dosbox_ftime_runtime_v2','dosbox_object_cache_draw_runtime','dosbox_cache_initialization_runtime','dosbox_crt_large_allocation_runtime'):
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime','dosbox_newgame_map_runtime_v3','dosbox_scheduler_runtime','dosbox_palette_writer_runtime','dosbox_palette_cycle_runtime_v2','dosbox_map_writers_runtime','dosbox_validator_branches_runtime','dosbox_guard_orientation_runtime_v2','dosbox_class_descriptor_copy_runtime','dosbox_image_record_runtime','dosbox_image_retrieval_runtime','dosbox_calendar_runtime','dosbox_ftime_runtime_v2','dosbox_object_cache_draw_runtime','dosbox_cache_initialization_runtime','dosbox_crt_large_allocation_runtime','dosbox_crt_far_malloc_runtime_v2'):
         runtime_path=root/runtime_folder/'independent_verification.json'
         if not runtime_path.exists():continue
         runtime=readjson(runtime_path)
@@ -710,6 +710,27 @@ def main():
         for item in fields['files']:
             if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('CRT large field proof')
         result['crt_large_already_PARTIAL_field_bytes_refined']=fields['refined_already_PARTIAL_bytes']
+    far_malloc_native=root/'dosbox_crt_far_malloc_runtime_v2/independent_verification.json'
+    if far_malloc_native.exists():
+        proof=readjson(far_malloc_native);replay=readjson(root/'crt_far_malloc_replay/summary.json')
+        if not proof['verified'] or replay['failures']:raise ValueError('CRTfar malloc proof')
+        result['crt_far_malloc_native_metrics']=proof['metrics']
+        result['crt_far_malloc_controlled_cases']=replay['cases']
+        result['runtime_tests_scope']+='; wholeoriginalCRT2065 firstcache8198B call,growsheap3232to16384 through actualDOS4AES3F96/BX400/CF0,returns3F96:0C9C.271originalreplayevents/12stores/18targetB/allcapturedregsCFDF match;1capturedDOSresponsefixture,42residualDOSIRQstackpositionsnotclosed. v1lacked4Atrace,uncounted.'
+    retry_reference_path=root/'crt_retry_reference_audit/summary.json'
+    if retry_reference_path.exists():
+        refs=readjson(retry_reference_path)
+        for item in refs['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('CRT retry reference census')
+        result['crt_retry_reference_decoded_starts']=refs['decoded_starts']
+        result['crt_retry_reference_fields']=refs['fields']
+        result['crt_retry_reference_scope']=refs['scope']
+    far_malloc_fields=root/'crt_far_malloc_fields/summary.json'
+    if far_malloc_fields.exists():
+        fields=readjson(far_malloc_fields)
+        for item in fields['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('CRT far malloc field refinement')
+        result['crt_far_malloc_already_PARTIAL_field_bytes_refined']=fields['refined_already_PARTIAL_bytes']
     cleanup_seed=root/'dosbox_cache_reset_seed_runtime/independent_verification.json'
     if cleanup_seed.exists():
         proof=readjson(cleanup_seed)

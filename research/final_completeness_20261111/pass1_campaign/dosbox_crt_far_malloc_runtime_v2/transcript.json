@@ -1,0 +1,1037 @@
+[
+  {
+    "id": "1",
+    "command": "PING",
+    "response": [
+      "BEGIN 1 OK",
+      "PONG",
+      "END 1"
+    ]
+  },
+  {
+    "id": "2",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 2 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "2396 10 814 814 32e0 80 0 0 ff 814",
+      "END 2"
+    ]
+  },
+  {
+    "id": "3",
+    "command": "EXEC BP 1A12:00000018",
+    "response": [
+      "BEGIN 3 OK",
+      "DEBUG: Set breakpoint at 1A12:0018",
+      "END 3"
+    ]
+  },
+  {
+    "id": "4",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 4 OK",
+      "OK",
+      "END 4"
+    ]
+  },
+  {
+    "id": "5",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 5 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "2396 12 814 814 32e0 80 0 0 ff 814",
+      "END 5"
+    ]
+  },
+  {
+    "id": "6",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 6 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 18 814 814 3d98 800 0 0 0 f000",
+      "END 6"
+    ]
+  },
+  {
+    "id": "7",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 7 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 18 814 814 3d98 800 0 0 0 f000",
+      "END 7"
+    ]
+  },
+  {
+    "id": "8",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 8 OK",
+      "EV of 'SI DI BP' is:",
+      "3d98 800 0",
+      "END 8"
+    ]
+  },
+  {
+    "id": "9",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 9 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 9"
+    ]
+  },
+  {
+    "id": "10",
+    "command": "EXEC MEMDUMPBIN 0824:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\unpacked_runtime.bin.part0",
+    "response": [
+      "BEGIN 10 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 10"
+    ]
+  },
+  {
+    "id": "11",
+    "command": "EXEC MEMDUMPBIN 1024:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\unpacked_runtime.bin.part32768",
+    "response": [
+      "BEGIN 11 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 11"
+    ]
+  },
+  {
+    "id": "12",
+    "command": "EXEC MEMDUMPBIN 1824:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\unpacked_runtime.bin.part65536",
+    "response": [
+      "BEGIN 12 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 12"
+    ]
+  },
+  {
+    "id": "13",
+    "command": "EXEC MEMDUMPBIN 2024:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\unpacked_runtime.bin.part98304",
+    "response": [
+      "BEGIN 13 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 13"
+    ]
+  },
+  {
+    "id": "14",
+    "command": "EXEC MEMDUMPBIN 2824:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\unpacked_runtime.bin.part131072",
+    "response": [
+      "BEGIN 14 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 14"
+    ]
+  },
+  {
+    "id": "15",
+    "command": "EXEC MEMDUMPBIN 3024:00000000 00001D60 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\unpacked_runtime.bin.part163840",
+    "response": [
+      "BEGIN 15 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 15"
+    ]
+  },
+  {
+    "id": "16",
+    "command": "EXEC BPDEL *",
+    "response": [
+      "BEGIN 16 OK",
+      "DEBUG: Breakpoints deleted.",
+      "END 16"
+    ]
+  },
+  {
+    "id": "17",
+    "command": "EXEC BP 0F8C:00000024",
+    "response": [
+      "BEGIN 17 OK",
+      "DEBUG: Set breakpoint at 0F8C:0024",
+      "END 17"
+    ]
+  },
+  {
+    "id": "18",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 18 OK",
+      "OK",
+      "END 18"
+    ]
+  },
+  {
+    "id": "19",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 19 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 1a 814 814 3d98 800 3000 0 0 f000",
+      "END 19"
+    ]
+  },
+  {
+    "id": "20",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 20 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 737 2f95 2f95 2f95 e7b6 200 e7d6 1 0",
+      "END 20"
+    ]
+  },
+  {
+    "id": "21",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 21 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 769 2f95 2f95 2f95 e7b6 1 e7d7 0 2242",
+      "END 21"
+    ]
+  },
+  {
+    "id": "22",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 22 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 38bd 1de3 2f95 2f95 e7c2 ff e7e6 c 389",
+      "END 22"
+    ]
+  },
+  {
+    "id": "23",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 23 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e730 0 aa7e 13 aa7d",
+      "END 23"
+    ]
+  },
+  {
+    "id": "24",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 24 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e730 0 aa80 13 aa7f",
+      "END 24"
+    ]
+  },
+  {
+    "id": "25",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 25 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4b 1de3 0 2f95 e736 0 aa85 13 aa81",
+      "END 25"
+    ]
+  },
+  {
+    "id": "26",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 26 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 2e4b 1de3 0 2f95 e736 0 aa85 13 aa83",
+      "END 26"
+    ]
+  },
+  {
+    "id": "27",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 27 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e730 0 aa85 13 aa85",
+      "END 27"
+    ]
+  },
+  {
+    "id": "28",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 28 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe0 1de3 0 2f95 e72e 0 aa89 13 aa87",
+      "END 28"
+    ]
+  },
+  {
+    "id": "29",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 29 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 cbe5 1de3 0 2f95 e72e 0 aa89 13 aa89",
+      "END 29"
+    ]
+  },
+  {
+    "id": "30",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 30 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1de3 3017 1de3 0 2f95 e77e 23ff c000 4b0 389",
+      "END 30"
+    ]
+  },
+  {
+    "id": "31",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 31 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f8c 24 2f95 a400 2f95 e7f6 2010 57fa 0 10",
+      "END 31"
+    ]
+  },
+  {
+    "id": "32",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 32 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f8c 24 2f95 a400 2f95 e7f6 2010 57fa 0 10",
+      "END 32"
+    ]
+  },
+  {
+    "id": "33",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 33 OK",
+      "EV of 'SI DI BP' is:",
+      "1 2552 e80c",
+      "END 33"
+    ]
+  },
+  {
+    "id": "34",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 34 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 34"
+    ]
+  },
+  {
+    "id": "35",
+    "command": "EXEC BPDEL *",
+    "response": [
+      "BEGIN 35 OK",
+      "DEBUG: Breakpoints deleted.",
+      "END 35"
+    ]
+  },
+  {
+    "id": "36",
+    "command": "EXEC BP 1A12:00002065",
+    "response": [
+      "BEGIN 36 OK",
+      "DEBUG: Set breakpoint at 1A12:2065",
+      "END 36"
+    ]
+  },
+  {
+    "id": "37",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 37 OK",
+      "OK",
+      "END 37"
+    ]
+  },
+  {
+    "id": "38",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 38 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f8c 28 2f95 a400 2f95 e7ee 2010 57fa 0 10",
+      "END 38"
+    ]
+  },
+  {
+    "id": "39",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 39 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 2065 2f95 a400 2f95 e7e4 0 57fa 0 10",
+      "END 39"
+    ]
+  },
+  {
+    "id": "40",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 40 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 2065 2f95 a400 2f95 e7e4 0 57fa 0 10",
+      "END 40"
+    ]
+  },
+  {
+    "id": "41",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 41 OK",
+      "EV of 'SI DI BP' is:",
+      "34cc 2552 e7f4",
+      "END 41"
+    ]
+  },
+  {
+    "id": "42",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 42 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 42"
+    ]
+  },
+  {
+    "id": "43",
+    "command": "EXEC MEMDUMPBIN 3E13:00000004 00000006 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_entry_frame.bin.part0",
+    "response": [
+      "BEGIN 43 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 43"
+    ]
+  },
+  {
+    "id": "44",
+    "command": "EXEC MEMDUMPBIN 0000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part0",
+    "response": [
+      "BEGIN 44 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 44"
+    ]
+  },
+  {
+    "id": "45",
+    "command": "EXEC MEMDUMPBIN 0800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part32768",
+    "response": [
+      "BEGIN 45 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 45"
+    ]
+  },
+  {
+    "id": "46",
+    "command": "EXEC MEMDUMPBIN 1000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part65536",
+    "response": [
+      "BEGIN 46 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 46"
+    ]
+  },
+  {
+    "id": "47",
+    "command": "EXEC MEMDUMPBIN 1800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part98304",
+    "response": [
+      "BEGIN 47 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 47"
+    ]
+  },
+  {
+    "id": "48",
+    "command": "EXEC MEMDUMPBIN 2000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part131072",
+    "response": [
+      "BEGIN 48 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 48"
+    ]
+  },
+  {
+    "id": "49",
+    "command": "EXEC MEMDUMPBIN 2800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part163840",
+    "response": [
+      "BEGIN 49 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 49"
+    ]
+  },
+  {
+    "id": "50",
+    "command": "EXEC MEMDUMPBIN 3000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part196608",
+    "response": [
+      "BEGIN 50 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 50"
+    ]
+  },
+  {
+    "id": "51",
+    "command": "EXEC MEMDUMPBIN 3800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part229376",
+    "response": [
+      "BEGIN 51 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 51"
+    ]
+  },
+  {
+    "id": "52",
+    "command": "EXEC MEMDUMPBIN 4000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part262144",
+    "response": [
+      "BEGIN 52 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 52"
+    ]
+  },
+  {
+    "id": "53",
+    "command": "EXEC MEMDUMPBIN 4800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part294912",
+    "response": [
+      "BEGIN 53 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 53"
+    ]
+  },
+  {
+    "id": "54",
+    "command": "EXEC MEMDUMPBIN 5000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part327680",
+    "response": [
+      "BEGIN 54 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 54"
+    ]
+  },
+  {
+    "id": "55",
+    "command": "EXEC MEMDUMPBIN 5800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part360448",
+    "response": [
+      "BEGIN 55 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 55"
+    ]
+  },
+  {
+    "id": "56",
+    "command": "EXEC MEMDUMPBIN 6000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part393216",
+    "response": [
+      "BEGIN 56 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 56"
+    ]
+  },
+  {
+    "id": "57",
+    "command": "EXEC MEMDUMPBIN 6800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part425984",
+    "response": [
+      "BEGIN 57 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 57"
+    ]
+  },
+  {
+    "id": "58",
+    "command": "EXEC MEMDUMPBIN 7000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part458752",
+    "response": [
+      "BEGIN 58 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 58"
+    ]
+  },
+  {
+    "id": "59",
+    "command": "EXEC MEMDUMPBIN 7800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part491520",
+    "response": [
+      "BEGIN 59 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 59"
+    ]
+  },
+  {
+    "id": "60",
+    "command": "EXEC MEMDUMPBIN 8000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part524288",
+    "response": [
+      "BEGIN 60 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 60"
+    ]
+  },
+  {
+    "id": "61",
+    "command": "EXEC MEMDUMPBIN 8800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part557056",
+    "response": [
+      "BEGIN 61 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 61"
+    ]
+  },
+  {
+    "id": "62",
+    "command": "EXEC MEMDUMPBIN 9000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part589824",
+    "response": [
+      "BEGIN 62 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 62"
+    ]
+  },
+  {
+    "id": "63",
+    "command": "EXEC MEMDUMPBIN 9800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_before_RAM.bin.part622592",
+    "response": [
+      "BEGIN 63 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 63"
+    ]
+  },
+  {
+    "id": "64",
+    "command": "EXEC BPDEL *",
+    "response": [
+      "BEGIN 64 OK",
+      "DEBUG: Breakpoints deleted.",
+      "END 64"
+    ]
+  },
+  {
+    "id": "65",
+    "command": "EXEC BP 0F8C:0000004B",
+    "response": [
+      "BEGIN 65 OK",
+      "DEBUG: Set breakpoint at 0F8C:004B",
+      "END 65"
+    ]
+  },
+  {
+    "id": "66",
+    "command": "EXEC BP 1A12:000022FB",
+    "response": [
+      "BEGIN 66 OK",
+      "DEBUG: Set breakpoint at 1A12:22FB",
+      "END 66"
+    ]
+  },
+  {
+    "id": "67",
+    "command": "EXEC BP 1A12:000022FD",
+    "response": [
+      "BEGIN 67 OK",
+      "DEBUG: Set breakpoint at 1A12:22FD",
+      "END 67"
+    ]
+  },
+  {
+    "id": "68",
+    "command": "EXEC BP 1A12:000022AA",
+    "response": [
+      "BEGIN 68 OK",
+      "DEBUG: Set breakpoint at 1A12:22AA",
+      "END 68"
+    ]
+  },
+  {
+    "id": "69",
+    "command": "EXEC BP 1A12:000022AC",
+    "response": [
+      "BEGIN 69 OK",
+      "DEBUG: Set breakpoint at 1A12:22AC",
+      "END 69"
+    ]
+  },
+  {
+    "id": "70",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 70 OK",
+      "OK",
+      "END 70"
+    ]
+  },
+  {
+    "id": "71",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 71 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 2066 2f95 a400 2f95 e7e2 0 57fa 0 10",
+      "END 71"
+    ]
+  },
+  {
+    "id": "72",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 72 OK",
+      "EV of 'SI DI BP' is:",
+      "3f96 c9a e7e2",
+      "END 72"
+    ]
+  },
+  {
+    "id": "73",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 73 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 73"
+    ]
+  },
+  {
+    "id": "74",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 74 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 22aa 3f96 3f96 2f95 e7c8 4a00 400 2c04 4000",
+      "END 74"
+    ]
+  },
+  {
+    "id": "75",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 75 OK",
+      "EV of 'SI DI BP' is:",
+      "3f96 c9a e7e2",
+      "END 75"
+    ]
+  },
+  {
+    "id": "76",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 76 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 76"
+    ]
+  },
+  {
+    "id": "77",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 77 OK",
+      "OK",
+      "END 77"
+    ]
+  },
+  {
+    "id": "78",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 78 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f000 d100 3f96 3f96 2f95 e7c2 4a00 400 2c04 4000",
+      "END 78"
+    ]
+  },
+  {
+    "id": "79",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 79 OK",
+      "EV of 'SI DI BP' is:",
+      "3f96 c9a e7e2",
+      "END 79"
+    ]
+  },
+  {
+    "id": "80",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 80 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 80"
+    ]
+  },
+  {
+    "id": "81",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 81 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 22ac 3f96 3f96 2f95 e7c8 3f96 400 2c04 4000",
+      "END 81"
+    ]
+  },
+  {
+    "id": "82",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 82 OK",
+      "EV of 'SI DI BP' is:",
+      "3f96 c9a e7e2",
+      "END 82"
+    ]
+  },
+  {
+    "id": "83",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 83 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 83"
+    ]
+  },
+  {
+    "id": "84",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 84 OK",
+      "OK",
+      "END 84"
+    ]
+  },
+  {
+    "id": "85",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 85 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 22ad 3f96 3f96 2f95 e7ca 3f96 400 2ca4 4000",
+      "END 85"
+    ]
+  },
+  {
+    "id": "86",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 86 OK",
+      "EV of 'SI DI BP' is:",
+      "34cc 2552 e7f4",
+      "END 86"
+    ]
+  },
+  {
+    "id": "87",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 87 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 87"
+    ]
+  },
+  {
+    "id": "88",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 88 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "f8c 4b 2f95 3f96 2f95 e7e8 c9c 0 2006 3f96",
+      "END 88"
+    ]
+  },
+  {
+    "id": "89",
+    "command": "EXEC EV SI DI BP",
+    "response": [
+      "BEGIN 89 OK",
+      "EV of 'SI DI BP' is:",
+      "34cc 2552 e7f4",
+      "END 89"
+    ]
+  },
+  {
+    "id": "90",
+    "command": "EXEC EV CF DF",
+    "response": [
+      "BEGIN 90 OK",
+      "EV of 'CF DF' is:",
+      "0 0",
+      "END 90"
+    ]
+  },
+  {
+    "id": "91",
+    "command": "EXEC MEMDUMPBIN 0000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part0",
+    "response": [
+      "BEGIN 91 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 91"
+    ]
+  },
+  {
+    "id": "92",
+    "command": "EXEC MEMDUMPBIN 0800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part32768",
+    "response": [
+      "BEGIN 92 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 92"
+    ]
+  },
+  {
+    "id": "93",
+    "command": "EXEC MEMDUMPBIN 1000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part65536",
+    "response": [
+      "BEGIN 93 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 93"
+    ]
+  },
+  {
+    "id": "94",
+    "command": "EXEC MEMDUMPBIN 1800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part98304",
+    "response": [
+      "BEGIN 94 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 94"
+    ]
+  },
+  {
+    "id": "95",
+    "command": "EXEC MEMDUMPBIN 2000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part131072",
+    "response": [
+      "BEGIN 95 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 95"
+    ]
+  },
+  {
+    "id": "96",
+    "command": "EXEC MEMDUMPBIN 2800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part163840",
+    "response": [
+      "BEGIN 96 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 96"
+    ]
+  },
+  {
+    "id": "97",
+    "command": "EXEC MEMDUMPBIN 3000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part196608",
+    "response": [
+      "BEGIN 97 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 97"
+    ]
+  },
+  {
+    "id": "98",
+    "command": "EXEC MEMDUMPBIN 3800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part229376",
+    "response": [
+      "BEGIN 98 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 98"
+    ]
+  },
+  {
+    "id": "99",
+    "command": "EXEC MEMDUMPBIN 4000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part262144",
+    "response": [
+      "BEGIN 99 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 99"
+    ]
+  },
+  {
+    "id": "100",
+    "command": "EXEC MEMDUMPBIN 4800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part294912",
+    "response": [
+      "BEGIN 100 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 100"
+    ]
+  },
+  {
+    "id": "101",
+    "command": "EXEC MEMDUMPBIN 5000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part327680",
+    "response": [
+      "BEGIN 101 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 101"
+    ]
+  },
+  {
+    "id": "102",
+    "command": "EXEC MEMDUMPBIN 5800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part360448",
+    "response": [
+      "BEGIN 102 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 102"
+    ]
+  },
+  {
+    "id": "103",
+    "command": "EXEC MEMDUMPBIN 6000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part393216",
+    "response": [
+      "BEGIN 103 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 103"
+    ]
+  },
+  {
+    "id": "104",
+    "command": "EXEC MEMDUMPBIN 6800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part425984",
+    "response": [
+      "BEGIN 104 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 104"
+    ]
+  },
+  {
+    "id": "105",
+    "command": "EXEC MEMDUMPBIN 7000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part458752",
+    "response": [
+      "BEGIN 105 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 105"
+    ]
+  },
+  {
+    "id": "106",
+    "command": "EXEC MEMDUMPBIN 7800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part491520",
+    "response": [
+      "BEGIN 106 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 106"
+    ]
+  },
+  {
+    "id": "107",
+    "command": "EXEC MEMDUMPBIN 8000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part524288",
+    "response": [
+      "BEGIN 107 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 107"
+    ]
+  },
+  {
+    "id": "108",
+    "command": "EXEC MEMDUMPBIN 8800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part557056",
+    "response": [
+      "BEGIN 108 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 108"
+    ]
+  },
+  {
+    "id": "109",
+    "command": "EXEC MEMDUMPBIN 9000:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part589824",
+    "response": [
+      "BEGIN 109 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 109"
+    ]
+  },
+  {
+    "id": "110",
+    "command": "EXEC MEMDUMPBIN 9800:00000000 00008000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_crt_far_malloc_runtime_v2\\malloc_after_RAM.bin.part622592",
+    "response": [
+      "BEGIN 110 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 110"
+    ]
+  }
+]

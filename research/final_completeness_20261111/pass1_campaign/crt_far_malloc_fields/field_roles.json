@@ -1,0 +1,58 @@
+[
+  {
+    "field": "far_malloc_retry",
+    "start": 170562,
+    "end_exclusive": 170566,
+    "length": 4,
+    "type": "optional FAR16 callback; one requestWORD,nonzero AX retries/reloads",
+    "initial_bytes": "00000000",
+    "range_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+    "fixed_DS_references": 3,
+    "fixed_DS_writers": 0,
+    "global_alias_writers_excluded": false,
+    "status": "PARTIAL",
+    "new_bytes_typed": 0
+  },
+  {
+    "field": "large_allocation_retry",
+    "start": 170874,
+    "end_exclusive": 170878,
+    "length": 4,
+    "type": "optional FAR16 callback; sizeWORD/countLowWORD/countHighWORD,nonzero AX retries/reloads",
+    "initial_bytes": "00000000",
+    "range_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+    "fixed_DS_references": 3,
+    "fixed_DS_writers": 0,
+    "global_alias_writers_excluded": false,
+    "status": "PARTIAL",
+    "new_bytes_typed": 0
+  },
+  {
+    "field": "shared_segment_marker",
+    "start": 169990,
+    "end_exclusive": 169992,
+    "length": 2,
+    "type": "unsignedWORD high-water marker; heapOS22E2 compares start_segment,large2A16 compares wrapping end_segment",
+    "initial_bytes": "0000",
+    "range_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+    "fixed_DS_references": 4,
+    "fixed_DS_writers": 2,
+    "global_alias_writers_excluded": false,
+    "status": "PARTIAL",
+    "new_bytes_typed": 0
+  },
+  {
+    "field": "segment_lower_bound",
+    "start": 169992,
+    "end_exclusive": 169994,
+    "length": 2,
+    "type": "unsignedWORD acceptance lower bound consumed by both allocation helpers",
+    "initial_bytes": "0000",
+    "range_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+    "fixed_DS_references": 2,
+    "fixed_DS_writers": 0,
+    "global_alias_writers_excluded": false,
+    "status": "PARTIAL",
+    "new_bytes_typed": 0
+  }
+]

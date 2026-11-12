@@ -1,0 +1,13 @@
+field,cs,ip,image_offset,bytes,instruction,DS_offset,width,access_enum,contains_write,DS_context
+far_malloc_retry,4590,8414,81854,8b0e3423,"mov cx,[2334h]",9012,2,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+far_malloc_retry,4590,8418,81858,0b0e3223,"or cx,[2332h]",9010,2,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+far_malloc_retry,4590,8427,81867,ff1e3223,call far dword ptr [2332h],9010,4,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+segment_lower_bound,4590,8959,82399,3b06f820,"cmp ax,[20F8h]",8440,2,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+shared_segment_marker,4590,8965,82405,3b06f620,"cmp ax,[20F6h]",8438,2,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+shared_segment_marker,4590,8971,82411,a3f620,"mov [20F6h],ax",8438,2,3,True,fixed DS-relative candidate; actual DS must equal game DGROUP
+segment_lower_bound,4590,10881,84321,3b06f820,"cmp ax,[20F8h]",8440,2,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+shared_segment_marker,4590,10892,84332,3b16f620,"cmp dx,[20F6h]",8438,2,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+shared_segment_marker,4590,10898,84338,8916f620,"mov [20F6h],dx",8438,2,3,True,fixed DS-relative candidate; actual DS must equal game DGROUP
+large_allocation_retry,4590,10948,84388,8b0e6c24,"mov cx,[246Ch]",9324,2,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+large_allocation_retry,4590,10952,84392,0b0e6a24,"or cx,[246Ah]",9322,2,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
+large_allocation_retry,4590,10967,84407,ff1e6a24,call far dword ptr [246Ah],9322,4,1,False,fixed DS-relative candidate; actual DS must equal game DGROUP
