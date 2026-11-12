@@ -1,0 +1,12 @@
+cs,ip,image_offset,bytes,instruction
+0,508,508,55,push bp
+0,509,509,8bec,"mov bp,sp"
+0,511,511,c45e06,"les bx,[bp+6]"
+0,514,514,26837f0801,"cmp word ptr es:[bx+8],1"
+0,519,519,7505,jne short 020Eh
+0,521,521,b001,"mov al,1"
+0,523,523,c9,leave
+0,524,524,cb,ret far
+0,526,526,32c0,"xor al,al"
+0,528,528,c9,leave
+0,529,529,cb,ret far

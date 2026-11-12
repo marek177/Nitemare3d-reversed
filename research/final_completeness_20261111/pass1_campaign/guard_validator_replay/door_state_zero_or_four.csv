@@ -1,0 +1,15 @@
+cs,ip,image_offset,bytes,instruction
+0,480,480,55,push bp
+0,481,481,8bec,"mov bp,sp"
+0,483,483,c45e06,"les bx,[bp+6]"
+0,486,486,268b4f08,"mov cx,es:[bx+8]"
+0,490,490,0bc9,"or cx,cx"
+0,492,492,740a,je short 01F8h
+0,494,494,83f904,"cmp cx,4"
+0,497,497,7405,je short 01F8h
+0,499,499,32c0,"xor al,al"
+0,501,501,c9,leave
+0,502,502,cb,ret far
+0,504,504,b001,"mov al,1"
+0,506,506,c9,leave
+0,507,507,cb,ret far

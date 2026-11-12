@@ -1,0 +1,39 @@
+cs,ip,image_offset,bytes,instruction
+0,0,0,55,push bp
+0,1,1,8bec,"mov bp,sp"
+0,3,3,57,push di
+0,4,4,b8fd21,"mov ax,21FDh"
+0,7,7,8ed8,"mov ds,ax"
+0,9,9,33c9,"xor cx,cx"
+0,11,11,b87630,"mov ax,3076h"
+0,14,14,8cda,"mov dx,ds"
+0,16,16,8bd8,"mov bx,ax"
+0,18,18,8ec2,"mov es,dx"
+0,20,20,390e0000,"cmp [0],cx"
+0,24,24,7e1c,jle short 0036h
+0,26,26,8b7e06,"mov di,[bp+6]"
+0,29,29,8b4608,"mov ax,[bp+8]"
+0,32,32,26397f04,"cmp es:[bx+4],di"
+0,36,36,7506,jne short 002Ch
+0,38,38,26394706,"cmp es:[bx+6],ax"
+0,42,42,740e,je short 003Ah
+0,44,44,83c312,"add bx,12h"
+0,47,47,41,inc cx
+0,48,48,390e0000,"cmp [0],cx"
+0,52,52,7fe7,jg short 001Dh
+0,54,54,16,push ss
+0,55,55,1f,pop ds
+0,56,56,eb0a,jmp short 0044h
+0,58,58,16,push ss
+0,59,59,1f,pop ds
+0,60,60,8bc3,"mov ax,bx"
+0,62,62,8cc2,"mov dx,es"
+0,64,64,5f,pop di
+0,65,65,c9,leave
+0,66,66,cb,ret far
+0,68,68,684200,push 42h
+0,71,71,9a0c00ba0f,"call far 000Ch,0FBAh"
+0,76,76,83c402,"add sp,2"
+0,79,79,5f,pop di
+0,80,80,c9,leave
+0,81,81,cb,ret far

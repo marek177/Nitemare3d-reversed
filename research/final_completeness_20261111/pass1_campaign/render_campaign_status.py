@@ -4,11 +4,13 @@ import csv,json,sys
 
 from pathlib import Path
 
-root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'GUARD_MAP_WRITER_REPORT.md'
+root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'GUARD_VALIDATOR_REPORT.md'
 
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
 
-receipt_path=root/'CAMPAIGN_GUARD_MOVE_PUBLICATION_RECEIPT_20261112.json'
+receipt_path=root/'CAMPAIGN_GUARD_VALIDATOR_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_GUARD_VALIDATOR_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_GUARD_MOVE_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_PALETTE_EFFECT_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_SCHEDULER_PUBLICATION_RECEIPT_20261112.json'
 
@@ -46,7 +48,7 @@ assert sum(s['primary_type_bytes'].values())==s['image_bytes']
 
 assert s['pass1_partial_bytes_without_typed_data']==p['status_bytes']['PARTIAL']-s['original_noncode_intersection_data_bytes']
 
-latest=(root/report).read_text(encoding='utf-8');table=latest[latest.index('## Aktualizácia 13 oblastí'):latest.index('## Runtime testy na vykonanie')]
+latest=(root/report).read_text(encoding='utf-8');table=latest[latest.index('## Coverage update: 13 areas'):latest.index('## Required next runtime tests')]
 
 win=s.get('win110_palette_supplement');win_note=('Samostatny Win110 paletovy doplnok: '+str(win['functions'])+' rozsahy, '+str(win['instructions'])+' instrukcii / '+str(win['instruction_bytes'])+' B, '+str(win['replay_cases_separate'])+' seeded pripadov. Nie je zahrnuty v DOS adresnej partition ani v DOS replay sucte; skutocny Win16 runtime 0.\n\n') if win else ''
 

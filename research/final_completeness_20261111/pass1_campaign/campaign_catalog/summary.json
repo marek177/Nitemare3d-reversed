@@ -8,21 +8,21 @@
       "sha256": "e4c77ac69a936c859d1ca4b4d573b7ef35da4aafd443b2466792f4320c425ab5"
     }
   ],
-  "functions": 146,
-  "independent_instruction_count": 6034,
-  "independent_instruction_bytes": 15260,
+  "functions": 150,
+  "independent_instruction_count": 6257,
+  "independent_instruction_bytes": 15846,
   "data_bytes_with_local_evidence": 58034,
   "primary_type_bytes": {
-    "UNKNOWN_CONTENT": 98066,
-    "EXECUTABLE_CODE": 15260,
+    "EXECUTABLE_CODE": 15846,
+    "UNKNOWN_CONTENT": 97480,
     "DATA": 58034
   },
-  "interval_count": 745,
+  "interval_count": 766,
   "original_pass320_ledger_imported": true,
   "new_deep_verified_bytes": 0,
-  "runtime_tests": 26,
+  "runtime_tests": 27,
   "scope": "Current campaign partition only; PARTIAL does not mean closed semantics; UNKNOWN is not historical reclassification",
-  "controlled_instruction_replay_cases": 1003217,
+  "controlled_instruction_replay_cases": 1013689,
   "original_noncode_bytes": 57295,
   "original_noncode_intersection_code_bytes": 0,
   "original_noncode_intersection_data_bytes": 57116,
@@ -30,169 +30,176 @@
   "direction_index_prefix_replay_scope": "seeded prefix only; stop before 0099; no trig callee or natural callers",
   "latest_pass1_map_sha256": "497d10a11959dbae3d17f495e803569e229c13434658ec94c231d29784f47efe",
   "pass1_partial_bytes_without_typed_data": 2,
-  "runtime_tests_scope": "retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; exact98 before/after MOV mapBYTE1 stores bind GUARD24/actor168/A5 andGUARD25/actor174/A4, restore-underlay044C andoccupy06A9; map-writer endpoint06AD is mid-function; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap",
+  "runtime_tests_scope": "retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; exact98 before/after MOV mapBYTE1 stores bind GUARD24/actor168/A5 andGUARD25/actor174/A4, restore-underlay044C andoccupy06A9; map-writer endpoint06AD is mid-function; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap; original0254 allowed/blocked sparse decision-to-return tails, with blocked door7 state2 snapshot, no demonstrated entry-state transition",
   "runtime_evidence": [
     {
-      "path": "outputs\\dosbox_startup_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_startup_runtime\\independent_verification.json",
       "sha256": "174550c099f59c8d37e517b7d64b6b2e99e2b8b0ebc44792fdb29fc00c111073",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one actual DOSBox-X built-in-DOS original EXE startup capture, not full game or original hardware parity"
     },
     {
-      "path": "outputs\\dosbox_game_entry_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_game_entry_runtime\\independent_verification.json",
       "sha256": "641dc7067a85405abf5bdf90adeda055b134c08cda15c526d20f2063e36c5aad",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one actual DOSBox-X built-in-DOS original EXE game-entry/CRT/defaults capture, not full gameplay or original hardware parity"
     },
     {
-      "path": "outputs\\dosbox_initialization_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_initialization_runtime\\independent_verification.json",
       "sha256": "42a2012e6f19222a215a1ae742357b102cbe475fde4d80db76b91e5ad406ae87",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one actual DOSBox-X built-in-DOS original EXE BSF/audio/VGA initialization capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
     },
     {
-      "path": "outputs\\dosbox_post_vga_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_post_vga_runtime\\independent_verification.json",
       "sha256": "292ba6c5ffa5b29a5a0813b21e2c1c820e572172979163b0b1e628510a6e0f9c",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one actual DOSBox-X built-in-DOS original EXE post-VGA slot/resource initialization capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
     },
     {
-      "path": "outputs\\dosbox_input_init_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_input_init_runtime\\independent_verification.json",
       "sha256": "07905c5d36d2472992f1c81f73e2fe85f024760cd4140b1fc06e4b849c9f6dfb",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one actual DOSBox-X built-in-DOS original EXE keyboard/auxiliary initialization capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
     },
     {
-      "path": "outputs\\dosbox_episode_init_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_episode_init_runtime\\independent_verification.json",
       "sha256": "19f9e204adf2fb77f8f521f19d45a4917d9dc541a3539068986b9efebc00a720",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one actual DOSBox-X built-in-DOS original EXE episode selection/access/BSFmode1 and asset-name preparation capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
     },
     {
-      "path": "outputs\\dosbox_palette_init_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_init_runtime\\independent_verification.json",
       "sha256": "7893e5d95af4e656d5522ce5286a02e2237b1dd3438c2ef3c8bb310245038a45",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one actual DOSBox-X built-in-DOS original EXE palette tail seek/conversion and DAC routine return capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
     },
     {
-      "path": "outputs\\dosbox_unknown_watch_runtime_v3\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_unknown_watch_runtime_v3\\independent_verification.json",
       "sha256": "0f641bd5bbc42f3a0f868adc00d74f2defaa085536ec8ed51075b4c70816eba8",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to main017C, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
     },
     {
-      "path": "outputs\\dosbox_dac_readback_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_dac_readback_runtime\\independent_verification.json",
       "sha256": "9af71da31cc3048a6ab114c54bc4ddbea4a287f352af626f736dae70f6740ae6",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session: read-only emulated DAC768component state equals actual palette buffer and GAME.PAL tail>>2; not physical hardware or rendered-frame parity; 44UNKNOWN BYTE cached-value breakpoints from CRT0018 to main017C, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
     },
     {
-      "path": "outputs\\dosbox_sound_directory_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_sound_directory_runtime\\independent_verification.json",
       "sha256": "e6f45cdfc56bb91e65bfc8f6f23aba6722cce98cecdbdbf0cfb547b304bae61b",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at main0190; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to main0190, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
     },
     {
-      "path": "outputs\\dosbox_sound_trace_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_sound_trace_runtime\\independent_verification.json",
       "sha256": "195695b418de7d200ba90ce21ec8fc3f439a67dac9a8d094bc4dbea8b89bcb24",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "bounded original CPU pre-instruction trace main017C..0190 (terminal record not executed); one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at main0190; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to main0190, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
     },
     {
-      "path": "outputs\\dosbox_font2_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_font2_runtime\\independent_verification.json",
       "sha256": "665010b028ec0f450181a5c9deaaf8f03c4f503aa3a4847ebfe11f43f23a36ea",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07D9; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07D9; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07D9, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
     },
     {
-      "path": "outputs\\dosbox_optional_intro_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_optional_intro_runtime\\independent_verification.json",
       "sha256": "644a107f226c004a1304dd0d6871ec7061fac7c2eaf4258616ab06e2addc07ae",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07DD; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07DD; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07DD, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only; optional intro returns AL0 with DSTOPEN.IMG absent in retained isolated drive; no successful intro decode or VGA frame proof"
     },
     {
-      "path": "outputs\\dosbox_intro_loaded_runtime_v3\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_intro_loaded_runtime_v3\\independent_verification.json",
       "sha256": "5c9c04ecd7afb34c39621f669841b28ef24fb802e87a1566db0de4c035d65d56",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07A2; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07A2; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07A2, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only; original DOS2 EXE with explicit added CD asset: native decoded back-page four planes equal64000asset pixels; paused OUTP read-map intervention only after endpoint, original GC/index restored, no RUN after intervention; front-page plane0 iszero; VGA read latches not restored or verified; not visible-frame/RGB/gameplay parity"
     },
     {
-      "path": "outputs\\dosbox_intro_flip_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_intro_flip_runtime\\independent_verification.json",
       "sha256": "5fc0ee9de62e2ae346d6222272b4c4b698f7c9e504cda3631e3a37d8b13c8dc0",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07AE; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07AE; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07AE, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only; original DOS2 EXE with explicit added CD asset: native decoded page selected by programmed display start four planes equal64000asset pixels; paused OUTP read-map intervention only after endpoint, original GC/index restored, no RUN after intervention; A000 page plane0 iszero; VGA read latches not restored or verified; not host-surface/physical-monitor/gameplay parity; native page flip programs4000h plane offset; actual latched real-start=0000h; AC enabled, actualDAC768 components equal GAME.PALtail>>2 and all used CD colors quantized6bit; unused index255 differs; paused device-state evidence, no host screenshot or full scanout trace"
     },
     {
-      "path": "outputs\\dosbox_intro_font0_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_intro_font0_runtime\\independent_verification.json",
       "sha256": "61bdc0b5cbb8cb248fe08a6b4d6c3d0b7b821fdd5af7bc30203b866de3c20e82",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07C1; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07C1; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07C1, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only; original DOS2 EXE with explicit added CD asset: native decoded page selected by programmed display start four planes equal64000asset pixels; paused OUTP read-map intervention only after endpoint, original GC/index restored, no RUN after intervention; A000 page plane0 iszero; VGA read latches not restored or verified; not host-surface/physical-monitor/gameplay parity; native page flip programs4000h plane offset; actual latched real-start=4000h; AC enabled, actualDAC768 components equal GAME.PALtail>>2 and all used CD colors quantized6bit; unused index255 differs; paused device-state evidence, no host screenshot or full scanout trace; font0 transformed900B plus300B observed tail and128FAR pointers exact at UI07C1 before wait0424; selected group0, cache flags0/2 set; no font1 or keyboard event proof"
     },
     {
-      "path": "outputs\\dosbox_keyboard_font1_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_keyboard_font1_runtime\\independent_verification.json",
       "sha256": "2003fac20e5244efe4fa52dc48c6abb171dcb09ff7711b453801277a47789c37",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original packed DOS2 with added CD asset and supported AUTOTYPE space; actual IRQ1 make/break port reads, game bit0200, BIOS3920 queue/consumption and natural wait return; original font1 transformed1145B/128FAR plus font0/2 exact; breakpoints pause CPU and can affect timing; no host scanout, arbitrary keyboard/DEMO, gameplay or Win16 parity; UNKNOWN44 cached-change only"
     },
     {
-      "path": "outputs\\dosbox_keyboard_stack_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_keyboard_stack_runtime\\independent_verification.json",
       "sha256": "ad8f722408a769e750d55b6a6359d5b570fd60ad09f11108ca4586db2e4a8103",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original packed DOS2 with added CD asset and supported AUTOTYPE space; actual IRQ1 make/break port reads, game bit0200, BIOS3920 queue/consumption and natural wait return; original font1 transformed1145B/128FAR plus font0/2 exact; breakpoints pause CPU and can affect timing; no host scanout, arbitrary keyboard/DEMO, gameplay or Win16 parity; UNKNOWN44 cached-change only; entry/exit hardware interrupt frames exact, both interrupted canonical0BDE:00C6 in this run; no alternate IRQ stack observed in this run"
     },
     {
-      "path": "outputs\\dosbox_worx_stack_window_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_worx_stack_window_runtime\\independent_verification.json",
       "sha256": "390cdfd47c447f59cdc22c51dc4a188fb6fc25cb30fa9084b7c1a432ac05365c",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original packed DOS2 with added CD asset and supported AUTOTYPE space; actual IRQ1 make/break port reads, game bit0200, BIOS3920 queue/consumption and natural wait return; original font1 transformed1145B/128FAR plus font0/2 exact; breakpoints pause CPU and can affect timing; no host scanout, arbitrary keyboard/DEMO, gameplay or Win16 parity; UNKNOWN44 cached-change only; entry/exit hardware interrupt frames exact, both interrupted canonical0BDE:00C6 in this run; explicit paused WORX window proves SS/privateSP/control words, not an IRQ nested on that stack"
     },
     {
-      "path": "outputs\\dosbox_main_menu_runtime_v2\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_main_menu_runtime_v2\\independent_verification.json",
       "sha256": "d40b2672f88b2aa3c2b33f031cef0253582fc39d909c65068394d6a895975922",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "original packedDOS2 plus explicit CDasset; supported three-key AUTOTYPE progresses all intro waits to main menu initial draw, six actual IRQ make/break reads, three BIOS dequeue events, fixed relocated414B descriptor tables and selectedfirst item; VGA planes/DAC are paused readback with read-map restore after endpoint, no host screenshot/pixel golden/gameplay/save-load/Win16 parity; UNKNOWN44 cached-change only"
     },
     {
-      "path": "outputs\\dosbox_xms_request_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_xms_request_runtime\\independent_verification.json",
       "sha256": "4ceb5a9327198f042d69b388ead97bd48e0dc745a9d64bad91dcf79cd2f5dccf",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "original packed DOS2 with explicit CD asset; menu input reaches first XMS move return before map-load completion; cached byte-change events do not identify writer PCs or reads; final snapshot covers all baseline NONCODE bytes but does not prove all their uses; no full gameplay, error path, Win16 or physical hardware parity"
     },
     {
-      "path": "outputs\\dosbox_newgame_map_runtime_v3\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_newgame_map_runtime_v3\\independent_verification.json",
       "sha256": "150db22f18ba2b6b8061126383d28069e949777ada7cb31418b6a84d92d758ab",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "original packed DOS2 plus explicit CDasset, natural New game/episode1/difficulty1 input; map init returns and reaches pre-music-selection CALL; exact8192B MAP1 level0 buffer, XMS sound offsets474B reconstructed with inferred initial742KiB and endpoint1074KiB/counters; UNKNOWN28 cached-change only, no reads/same-value-write proof; no first gameplay frame, full game-loop, sound output or Win16 parity"
     },
     {
-      "path": "outputs\\dosbox_scheduler_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_scheduler_runtime\\independent_verification.json",
       "sha256": "96ae7f3fd0304c60172680a85eac64ef37954da91358380d31683c1c08bf2c2d",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "original packed DOS2 plus explicit CDasset; first scheduler call from0D29:16E5 after map init returns to16EA; native due buckets, world-call group return, counter1to2, synchronized flip, deadlines and FAR stack checked; paused planes/DAC are derived snapshot, not host scanout or independent pixel golden; breakpoints perturb timing, no long-run cadence, AI/projectile/audio/DEMO/SAVE/Win16 closure; UNKNOWN28 cached-change only"
     },
     {
-      "path": "outputs\\dosbox_palette_writer_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_writer_runtime\\independent_verification.json",
       "sha256": "5374065ce52c5b095204453317e2094ff21794ad3c313f0b1e2d58fa48d2efea",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "original packed DOS2 plus explicit CDasset; native reset caller0D29:16CA argument1 writes DAC235 then scene227 black through original four OUT opcodes; before/after DAC exact and RAM palette unchanged; first tick argument0 only decrements80to79 with no colour call; first scheduler call from0D29:16E5 after map init returns to16EA; native due buckets, world-call group return, counter1to2, synchronized flip, deadlines and FAR stack checked; paused planes/DAC are derived snapshot, not host scanout or independent pixel golden; breakpoints perturb timing, no long-run cadence, AI/projectile/audio/DEMO/SAVE/Win16 closure; UNKNOWN28 cached-change only"
     },
     {
-      "path": "outputs\\dosbox_palette_cycle_runtime_v2\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\independent_verification.json",
       "sha256": "2febbb473371404a5356c535065f91f89a714f4db7acdfc7672eee4c3b3f3ccd",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "original packedDOS2 plus explicitCDasset, natural reset and first white-to-dark cycle through original single-colour OUT helpers, actual6bit DAC black/white/black, original RNG state/return transition and nativeEA0 follow-up return; no per-tick call count/time/audio-output/wholeAI/Win16 closure; unknown28 cached-change only"
     },
     {
-      "path": "outputs\\dosbox_map_writers_runtime\\independent_verification.json",
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_map_writers_runtime\\independent_verification.json",
       "sha256": "eb853337035cd2c0cfa5d3016e8a05a7697d29619956a5f103aa86d55dc6e785",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "original packedDOS2 plus explicitCDasset; exact code-breakpoint before/after98MOVbyte ES:[BX+1],AL writes on four map targets, one-byte8192map delta each;49underlay restores044C and49token writes06A9, guard24/actor168/A5 andguard25/actor174/A4 from matched26/28record/frame evidence; final endpoint06AD is mid-function, not whole GUARD update return; eleven selected direct writer candidates are not an exhaustive alias/index/string/DMA write proof; unknown28 cached-change only"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_validator_branches_runtime\\independent_verification.json",
+      "sha256": "e633251b08887c99a2698bd3973323429111c7e15b84848aaaf7a921ba959bae",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "Sparse original0254 allowed/blocked decision-to-return tails and caller frames verified; blocked snapshot contains door7 state2, not a pre/post interaction transition; no complete validator entry-to-return blocked capture; no full gameplay or Win16 parity"
     }
   ],
-  "runtime_bss_table_bytes_outside_file": 4054,
+  "partial_native_validator_allowed_calls_not_additional_scenarios": 128,
+  "runtime_bss_table_bytes_outside_file": 4566,
   "runtime_buffer_refinement_records": 16,
   "runtime_buffer_refinement_bytes_already_in_pass1": 4122,
-  "record_field_refinements": 26,
+  "record_field_refinements": 41,
   "win110_palette_supplement": {
     "functions": 4,
     "instructions": 229,
