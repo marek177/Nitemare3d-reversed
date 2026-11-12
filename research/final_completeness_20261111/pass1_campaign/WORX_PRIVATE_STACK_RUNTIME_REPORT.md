@@ -144,7 +144,7 @@ UNKNOWN44B v oboch scenároch nemalo cached-value udalosti a FAR candidate hook4
 - `verify_keyboard_stack_capture.py IMAGE RELOCS MAP OUT WORK`: nezávisle overuje relokácie,23 nezmenených vstupov, command whitelist, oba hardvérové framy, private kontext, BIOS queue a fonty. Starší verifier a17. runtime proof ostávajú nezmenené.
 - `independent_decode_and_catalog.py` importuje iba30B priamych polí, nie512B kandidáta; centrálne byte_intervals.csv/json obsahujú nový presný partition stav.
 
-Predchádzajúca overená GitHub snímka má17 runtime scenárov. Táto dávka zostáva lokálna, kým nie je zapísané nové potvrdenie publikácie.
+Táto dávka je publikovaná a blob po blobe overená v analytickom commite 596db1ae2293ee6c17d280dfae6d9cbea42eb30c. Strojové potvrdenie: CAMPAIGN_WORX_STACK_PUBLICATION_RECEIPT_20261112.json; metadata follow-up môže mať novší branch head.
 
 ## Aktualizácia 13 oblastí
 
