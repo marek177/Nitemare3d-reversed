@@ -77,7 +77,7 @@ Centrálny katalóg má teraz3542B pomenovaných runtime BSS tabuliek mimo EXE, 
 - `audit_intro_flip_font0_fields.py IMAGE UIF GAMEPAL CD FLIP_OUT FLIP_WORK FONT_OUT FONT_WORK OUT`:127 záznamov,128 pointerov,256 paletových položiek, dva stage riadky, intervalová mapa, BSS katalóg a rekonštrukcie PNG. Matching-release zdrojový súbor je iba lokálna referencia; jeho URL/hash sú v manifeste.
 - `independent_decode_and_catalog.py DECODER OUTPUTS` a `render_campaign_status.py OUTPUTS`: aktuálne súčty, bez zvýšenia počtu funkcií alebo replay prípadov.
 
-Predchádzajúca overená GitHub snímka má14 runtime scenárov. Táto nová dvojica a jej typové refinements sú lokálne, kým nie je zaznamenané samostatné potvrdenie publikácie.
+Táto dávka je publikovaná a blob po blobe overená v analytickom commite 4737dee8b9cb62bd6e242633f8371e0251df51c2. Strojové potvrdenie: CAMPAIGN_INTRO_FONT0_PUBLICATION_RECEIPT_20261112.json. Metadata follow-up môže mať novší branch head.
 
 ## Aktualizácia 13 oblastí
 
