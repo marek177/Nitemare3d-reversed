@@ -2842,6 +2842,13 @@ descending_memory_probe,64565,4026,149,83c404,"add sp,4",new independent decode;
 descending_memory_probe,64568,4026,152,8b46fc,"mov ax,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
 descending_memory_probe,64571,4026,155,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
 descending_memory_probe,64572,4026,156,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+crt_DOS_free_far,84202,4590,10762,55,push bp,new independent decode; no historical text imported,0,,PARTIAL
+crt_DOS_free_far,84203,4590,10763,8bec,"mov bp,sp",new independent decode; no historical text imported,0,,PARTIAL
+crt_DOS_free_far,84205,4590,10765,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+crt_DOS_free_far,84208,4590,10768,b449,"mov ah,49h",new independent decode; no historical text imported,0,,PARTIAL
+crt_DOS_free_far,84210,4590,10770,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
+crt_DOS_free_far,84212,4590,10772,5d,pop bp,new independent decode; no historical text imported,0,,PARTIAL
+crt_DOS_free_far,84213,4590,10773,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
 normalize_es_di,107040,5567,17968,50,push ax,push ax,0,,PARTIAL
 normalize_es_di,107041,5567,17969,52,push dx,push dx,0,,PARTIAL
 normalize_es_di,107042,5567,17970,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL

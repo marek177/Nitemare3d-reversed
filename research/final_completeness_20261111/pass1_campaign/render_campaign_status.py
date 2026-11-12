@@ -4,11 +4,13 @@ import csv,json,sys
 
 from pathlib import Path
 
-root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'CACHE_INITIALIZATION_NATIVE_REPORT.md'
+root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'CRT_LARGE_ALLOCATION_NATIVE_REPORT.md'
 
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
 
-receipt_path=root/'CAMPAIGN_CACHEINIT_PUBLICATION_RECEIPT_20261112.json'
+receipt_path=root/'CAMPAIGN_CRTLARGE_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_CRTLARGE_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_CACHEINIT_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_XMSADAPTER_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_CACHECLEANUP_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_OBJECTDRAW_PUBLICATION_RECEIPT_20261112.json'

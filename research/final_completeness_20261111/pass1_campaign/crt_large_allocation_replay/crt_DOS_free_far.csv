@@ -1,0 +1,8 @@
+cs,ip,image_offset,bytes,instruction
+4590,10762,84202,55,push bp
+4590,10763,84203,8bec,"mov bp,sp"
+4590,10765,84205,8e4608,"mov es,[bp+8]"
+4590,10768,84208,b449,"mov ah,49h"
+4590,10770,84210,cd21,int 21h
+4590,10772,84212,5d,pop bp
+4590,10773,84213,cb,ret far
