@@ -34,6 +34,8 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
+    for folder in ('episode_selector_replay','xms_request_replay'):
+        for f in readjson(root/folder/'summary.json')['functions']:sources.append((f['name'],root/folder/(f['name']+'.csv')))
     sources += [(f['name'],root/'worx_leafs'/(f['name']+'.csv')) for f in leaf['functions']]
     sources += [(f['name'],root/'worx_dataflow'/(f['name']+'.csv')) for f in dataflow['functions']]
     int63 = readjson(root/'int63/int63_evidence.json') if (root/'int63/int63_evidence.json').exists() else None
@@ -397,6 +399,7 @@ def main():
     current_pass1_sources.append('pass1_startup_segments')
     current_pass1_sources.append('pass1_fcb_prefix')
     current_pass1_sources.append('pass1_near_heap_flags')
+    current_pass1_sources.append('xms_request_replay')
     damage_summary=root/'damage_effect_replay/summary.json'
     if damage_summary.exists():
         d=readjson(damage_summary);a=d['dispatch_table_start'];e=d['dispatch_table_end_exclusive']
@@ -518,6 +521,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
+    replay_folders.extend(['episode_selector_replay','xms_request_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -529,7 +533,7 @@ def main():
         if prefix['failures']!=0:raise ValueError('failed direction prefix replay')
         result['direction_index_prefix_replay_cases']=prefix['cases']
         result['direction_index_prefix_replay_scope']=prefix['scope']
-    latest_map=root/'pass1_near_heap_flags/noncode_intervals.csv'
+    latest_map=root/'pass1_xms_move_request/noncode_intervals.csv'
     latest_partial=set()
     for row in readcsv(latest_map):
         if row['status']=='PARTIAL':latest_partial.update(range(int(row['start']),int(row['end_exclusive'])))
@@ -546,7 +550,7 @@ def main():
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
     runtime_evidence=[];runtime_sessions=set()
-    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2'):
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime'):
         runtime_path=root/runtime_folder/'independent_verification.json'
         if not runtime_path.exists():continue
         runtime=readjson(runtime_path)
@@ -560,7 +564,7 @@ def main():
         runtime_evidence.append(dict(path=str(runtime_path),sha256=sha(runtime_path.read_bytes()),runtime_image_sha256=runtime['runtime_image_sha256'],scope=runtime['scope']))
     if runtime_evidence:
         result['runtime_tests']=len(runtime_evidence)
-        result['runtime_tests_scope']='retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; no host/physical/gameplay/save-load/Win16 parity; prefixes overlap'
+        result['runtime_tests_scope']='retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer return after episode1/difficulty1 selection and 57295B NONCODE endpoint snapshot; no full map-load/host/physical/gameplay/save-load/Win16 parity; prefixes overlap'
         result['runtime_evidence']=runtime_evidence
     bss_tables=[]
     for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv'):

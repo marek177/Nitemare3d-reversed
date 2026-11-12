@@ -1,0 +1,6 @@
+name,start,end_exclusive,length,type,status,range_sha256,writers,consumer,alias
+xms_move_request_length_bytes,114800,114804,4,"DWORD unsigned, KiB-rounded count",PARTIAL,df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119,0768:02E4;0768:02E8,"0768:07FE, XMS AH=0B via DS:SI","[DS:2560]:0200, canonical segment 1BE7"
+xms_move_request_source_handle,114804,114806,2,WORD constant zero: conventional source,PARTIAL,96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7,0768:02ED,"0768:07FE, XMS AH=0B via DS:SI","[DS:2560]:0200, canonical segment 1BE7"
+xms_move_request_source_far,114806,114810,4,DWORD FAR16 segment:offset when source handle zero,PARTIAL,df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119,0768:02F8,"0768:07FE, XMS AH=0B via DS:SI","[DS:2560]:0200, canonical segment 1BE7"
+xms_move_request_destination_handle,114810,114812,2,WORD XMS handle from DS:3506,PARTIAL,96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7,0768:0300,"0768:07FE, XMS AH=0B via DS:SI","[DS:2560]:0200, canonical segment 1BE7"
+xms_move_request_destination_offset,114812,114816,4,DWORD sign-extended used KiB shifted left 10,PARTIAL,df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119,0768:031E;0768:0322,"0768:07FE, XMS AH=0B via DS:SI","[DS:2560]:0200, canonical segment 1BE7"
