@@ -1,0 +1,58 @@
+{
+  "functions": [
+    {
+      "name": "crt_ftime_timeb10",
+      "start": 84426,
+      "end_exclusive": 84691,
+      "instructions": 98,
+      "instruction_bytes": 264
+    },
+    {
+      "name": "crt_DOS_date5",
+      "start": 88298,
+      "end_exclusive": 88323,
+      "instructions": 12,
+      "instruction_bytes": 25
+    },
+    {
+      "name": "crt_DOS_time4",
+      "start": 88324,
+      "end_exclusive": 88349,
+      "instructions": 12,
+      "instruction_bytes": 25
+    }
+  ],
+  "cases": 288,
+  "failures": 0,
+  "executed_instruction_starts": 122,
+  "unexecuted_starts": {
+    "crt_ftime_timeb10": [],
+    "crt_DOS_date5": [],
+    "crt_DOS_time4": []
+  },
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "scope": "Original game sample/cached,ftime,date/time wrappers,timezone parser/getenv/string/number/compiler helpers/calendar/DST execute. Only INT21 date/time responses are fixtures. All57392B DGROUP,10B output plus4 untouched tailB,frames/registers and OS call counts checked. No real OS/native/calendar-law/Win16 parity by this matrix.",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\relocations.csv",
+      "sha256": "5faab828945fa774c340ce1b612a0cd6379f7507cfddcdcccd395d37a58b3256"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_crt_calendar.py",
+      "sha256": "2dc44d4145ae6402a76f42094207c8f39efc9571eec0fd177dcfbf1ed9b2b509"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_crt_ftime.py",
+      "sha256": "3492cc5b1116bed27e2c58aa90a890f8d0a4323e367522b650a38fbb6f0bdaa0"
+    }
+  ]
+}

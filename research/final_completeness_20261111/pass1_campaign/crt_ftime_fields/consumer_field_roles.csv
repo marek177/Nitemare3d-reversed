@@ -1,0 +1,14 @@
+record,offset,width,role,consumer
+timeb10,0,4,"DWORD calendar seconds,32-bit wrap",original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+timeb10,4,2,WORD milliseconds=10*DOS hundredths,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+timeb10,6,2,"signed WORD timezone minutes,truncate seconds/60 then lowWORD",original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+timeb10,8,2,"WORD DST predicate flag0/1,gated by daylight enable",original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+DOS_date5,0,1,day BYTE from DL,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+DOS_date5,1,1,month BYTE from DH,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+DOS_date5,2,2,year WORD from CX,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+DOS_date5,4,1,weekday BYTE from AL,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+DOS_time4,0,1,hour BYTE from CH,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+DOS_time4,1,1,minute BYTE from CL,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+DOS_time4,2,1,second BYTE from DH,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+DOS_time4,3,1,hundredths BYTE from DL,original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
+game_clock_scratch14,10,4,"outside10B ftime output;native stale tail preserved,not a defined timeb member",original11EE2AEA/3A0A/3A24 and0BDE0018;PARTIAL
