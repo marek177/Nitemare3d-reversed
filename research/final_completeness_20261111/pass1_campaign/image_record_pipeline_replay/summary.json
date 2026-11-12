@@ -1,0 +1,62 @@
+{
+  "functions": [
+    {
+      "name": "image_record_raw_pixels_load",
+      "start": 11066,
+      "end_exclusive": 11212,
+      "instructions": 51,
+      "instruction_bytes": 146
+    },
+    {
+      "name": "image_record_index_or_cache",
+      "start": 11212,
+      "end_exclusive": 11508,
+      "instructions": 112,
+      "instruction_bytes": 294
+    },
+    {
+      "name": "image_record_tag_XMS_offset",
+      "start": 31310,
+      "end_exclusive": 31362,
+      "instructions": 25,
+      "instruction_bytes": 52
+    }
+  ],
+  "cases": 728,
+  "failures": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "executed_instruction_starts": 182,
+  "unexecuted_starts": {
+    "image_record_raw_pixels_load": [
+      11100,
+      11169,
+      11206
+    ],
+    "image_record_index_or_cache": [
+      11334,
+      11431,
+      11501
+    ],
+    "image_record_tag_XMS_offset": []
+  },
+  "scope": "whole original3newfunctions plus originalXMSappend/wrapper; external DOS/heap/XMSmanager fixtures; fullDGROUP/counters/records/requests checked; diagnostics stop atentry; unsignedpixel area but signedskip/sizecheck preserved; managerAX0 BL<80 still permits append bookkeeping; no native fullpixel/render/XMS implementation parity",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\relocations.csv",
+      "sha256": "5faab828945fa774c340ce1b612a0cd6379f7507cfddcdcccd395d37a58b3256"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_image_record_pipeline.py",
+      "sha256": "8cda776d351f144b15f41e56c2b822dfb5e949ac14e6d7fb7d99ca444383bc5a"
+    }
+  ]
+}
