@@ -141,4 +141,7 @@ table=table.replace('DOS DAC readback = runtime buffer = asset SHR2','nový CD b
 table=table.replace('nové asset intervaly CSV/JSON s hashmi; fixný320B row buffer','ABI10WORD polí; source stride, signed key a y lowBYTE; staršie asset intervaly zachované').replace('úplná PCX hlavička a chyby čítania','neuzavreté caller domény a globálne invarianty').replace('CRT fread a renderer kontrakty','callery a rozsahy zdrojových dát')
 table=table.replace('prirodzený CD asset decode','prirodzená paleta a page flip').replace('2884 úplných replay;6 prefixov oddelene','2884 úplných replay;6 prefixov;8DOS CFG zhôd')
 text=text.replace('## Aktualizácia 13 oblastí\n\nTABLE_PLACEHOLDER\n\n',table)
+receipt=r/'CAMPAIGN_VGA_PUBLICATION_RECEIPT_20261112.json'
+if receipt.exists():
+ published=json.loads(receipt.read_text());text=text.replace('Nová dávka je lokálna; GitHub potvrdenie staršej snímky ju automaticky nezahŕňa.','Táto analytická dávka bola publikovaná a blob po blobe overená v commite '+published['commit']+'. Podrobnosti obsahuje CAMPAIGN_VGA_PUBLICATION_REPORT.md; následná metadata aktualizácia môže mať novší branch head.')
 (r/'VGA_BLOCK_BLIT_RUNTIME_REPORT.md').write_text(text,encoding='utf-8');print(json.dumps(dict(report='VGA_BLOCK_BLIT_RUNTIME_REPORT.md',complete_replays=s['cases'],runtime_vga_bytes=64000,cross_version_labels=8)))

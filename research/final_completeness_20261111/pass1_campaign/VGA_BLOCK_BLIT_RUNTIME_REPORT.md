@@ -113,7 +113,7 @@ Pri tomto fixture sa Unicorn2.1.4 s globálnym MEM_READ hookom vrátil cez RETF 
 - `runtime_watch_intro_loaded.py DOSBOX_EXE GAME_DIR IMAGE RELOCS OUT WORK startup CD_ASSET`: pôvodný EXE, izolované kópie,26 raw captures, dočasné read-map porty.
 - `verify_unknown_watch_capture.py IMAGE RELOCS MAP OUT WORK`: nezávislé overenie runtime dôkazov. Autoritatívna úspešná dávka je `dosbox_intro_loaded_runtime_v3`.
 
-Nový argumentový katalóg je `vga_column_block_blit/argument_fields.csv`. Neprekresľuje file-backed NON-CODE partition. Nová dávka je lokálna; GitHub potvrdenie staršej snímky ju automaticky nezahŕňa.
+Nový argumentový katalóg je `vga_column_block_blit/argument_fields.csv`. Neprekresľuje file-backed NON-CODE partition. Táto analytická dávka bola publikovaná a blob po blobe overená v commite 338a23e550909f2fb57acd21439bb4407fcdbb69. Podrobnosti obsahuje CAMPAIGN_VGA_PUBLICATION_REPORT.md; následná metadata aktualizácia môže mať novší branch head.
 
 ## Aktualizácia 13 oblastí
 

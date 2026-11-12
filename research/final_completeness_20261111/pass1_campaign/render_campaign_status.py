@@ -3,7 +3,8 @@ import csv,json,sys
 from pathlib import Path
 root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_near_heap_flags';report=sys.argv[3] if len(sys.argv)>3 else 'VGA_BLOCK_BLIT_RUNTIME_REPORT.md'
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
-receipt_path=root/'CAMPAIGN_RUNTIME_PUBLICATION_RECEIPT_20261112.json'
+receipt_path=root/'CAMPAIGN_VGA_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_RUNTIME_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_PUBLICATION_RECEIPT.json'
 publication=json.loads(receipt_path.read_text())
