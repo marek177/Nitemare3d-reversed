@@ -1,0 +1,59 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "keyboard_irq9",
+      "start": 27392,
+      "end_exclusive": 27700,
+      "instructions": 114,
+      "instruction_bytes": 301,
+      "starts_missing_from_historical_inventory": 114
+    },
+    {
+      "name": "keyboard_bios_poll",
+      "start": 27856,
+      "end_exclusive": 27874,
+      "instructions": 7,
+      "instruction_bytes": 18,
+      "starts_missing_from_historical_inventory": 0
+    },
+    {
+      "name": "keyboard_bios_drain",
+      "start": 27874,
+      "end_exclusive": 27907,
+      "instructions": 13,
+      "instruction_bytes": 33,
+      "starts_missing_from_historical_inventory": 0
+    },
+    {
+      "name": "crt_bioskey_word",
+      "start": 88208,
+      "end_exclusive": 88244,
+      "instructions": 18,
+      "instruction_bytes": 36,
+      "starts_missing_from_historical_inventory": 0
+    }
+  ],
+  "cases": 14336,
+  "irq_cases": 12288,
+  "bios_wrapper_cases": 2048,
+  "failures": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "scope": "whole original IRQ with port60 input, old BIOS ISR and conditional drain helper mocked; native PUSHAD/IRET/register+flag restoration verified; separate complete CRT BIOS wrapper with INT16 device results mocked; poll/drain helpers byte/CFG decoded but not independently replayed here",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_keyboard_irq.py",
+      "sha256": "8e044ff1ef99c758613b55c04f867f773907af4cd6ab6cf5ac4f15d5c603309a"
+    }
+  ]
+}

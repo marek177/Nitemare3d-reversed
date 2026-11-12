@@ -8,21 +8,21 @@
       "sha256": "e4c77ac69a936c859d1ca4b4d573b7ef35da4aafd443b2466792f4320c425ab5"
     }
   ],
-  "functions": 130,
-  "independent_instruction_count": 4993,
-  "independent_instruction_bytes": 12456,
+  "functions": 134,
+  "independent_instruction_count": 5145,
+  "independent_instruction_bytes": 12844,
   "data_bytes_with_local_evidence": 57988,
   "primary_type_bytes": {
-    "UNKNOWN_CONTENT": 100916,
-    "EXECUTABLE_CODE": 12456,
+    "UNKNOWN_CONTENT": 100528,
+    "EXECUTABLE_CODE": 12844,
     "DATA": 57988
   },
-  "interval_count": 682,
+  "interval_count": 701,
   "original_pass320_ledger_imported": true,
   "new_deep_verified_bytes": 0,
-  "runtime_tests": 16,
+  "runtime_tests": 17,
   "scope": "Current campaign partition only; PARTIAL does not mean closed semantics; UNKNOWN is not historical reclassification",
-  "controlled_instruction_replay_cases": 974287,
+  "controlled_instruction_replay_cases": 988623,
   "original_noncode_bytes": 57295,
   "original_noncode_intersection_code_bytes": 0,
   "original_noncode_intersection_data_bytes": 57100,
@@ -30,7 +30,7 @@
   "direction_index_prefix_replay_scope": "seeded prefix only; stop before 0099; no trig callee or natural callers",
   "latest_pass1_map_sha256": "3021969d4e4348715816361fa387631e7d6cfd9fc9dcc136e26073f0f9984d1b",
   "pass1_partial_bytes_without_typed_data": 2,
-  "runtime_tests_scope": "retained original packed DOS2 EXE under DOSBox-X built-in DOS with debugger stops: startup/main/defaults, BSF/audio/VGA, slots/resources, keyboard/auxiliary, episode names, palette/DAC, sound directory/trace, UIF font2; optional intro missing branch and explicit CD asset back-buffer/flip/font0 scenarios with four-plane read-map intervention/restoration; native programmed4000h then latched4000h and usedRGB6 state checked; no host-surface/physical-monitor/gameplay/Win16 parity; repeated prefixes overlap",
+  "runtime_tests_scope": "retained original packed DOS2 under DOSBox-X built-in DOS with debugger stops: startup/main/defaults, BSF/audio/VGA, slots/resources, keyboard/auxiliary, episode names, palette/DAC, sound directory/trace, UIF fonts0/1/2; optional missing intro and explicit CD asset back-buffer/flip/font0 with paused read-map intervention; programmed/latched4000h and usedRGB6 checked; AUTOTYPE space actual IRQ make/break, BIOS3920 queue/consumption and native wait exit to font1; no host-surface/physical-monitor/gameplay/Win16 parity; repeated prefixes overlap",
   "runtime_evidence": [
     {
       "path": "outputs\\dosbox_startup_runtime\\independent_verification.json",
@@ -127,11 +127,17 @@
       "sha256": "61bdc0b5cbb8cb248fe08a6b4d6c3d0b7b821fdd5af7bc30203b866de3c20e82",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07C1; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07C1; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07C1, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only; original DOS2 EXE with explicit added CD asset: native decoded page selected by programmed display start four planes equal64000asset pixels; paused OUTP read-map intervention only after endpoint, original GC/index restored, no RUN after intervention; A000 page plane0 iszero; VGA read latches not restored or verified; not host-surface/physical-monitor/gameplay parity; native page flip programs4000h plane offset; actual latched real-start=4000h; AC enabled, actualDAC768 components equal GAME.PALtail>>2 and all used CD colors quantized6bit; unused index255 differs; paused device-state evidence, no host screenshot or full scanout trace; font0 transformed900B plus300B observed tail and128FAR pointers exact at UI07C1 before wait0424; selected group0, cache flags0/2 set; no font1 or keyboard event proof"
+    },
+    {
+      "path": "outputs\\dosbox_keyboard_font1_runtime\\independent_verification.json",
+      "sha256": "2003fac20e5244efe4fa52dc48c6abb171dcb09ff7711b453801277a47789c37",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original packed DOS2 with added CD asset and supported AUTOTYPE space; actual IRQ1 make/break port reads, game bit0200, BIOS3920 queue/consumption and natural wait return; original font1 transformed1145B/128FAR plus font0/2 exact; breakpoints pause CPU and can affect timing; no host scanout, arbitrary keyboard/DEMO, gameplay or Win16 parity; UNKNOWN44 cached-change only"
     }
   ],
-  "runtime_bss_table_bytes_outside_file": 3542,
-  "runtime_buffer_refinement_records": 6,
-  "runtime_buffer_refinement_bytes_already_in_pass1": 2400,
+  "runtime_bss_table_bytes_outside_file": 4054,
+  "runtime_buffer_refinement_records": 9,
+  "runtime_buffer_refinement_bytes_already_in_pass1": 3600,
   "record_field_refinements": 14,
   "win110_palette_supplement": {
     "functions": 4,

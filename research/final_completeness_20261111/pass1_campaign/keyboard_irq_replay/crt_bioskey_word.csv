@@ -1,0 +1,19 @@
+cs,ip,image_offset,bytes,instruction,historical_start_present
+4590,14768,88208,55,push bp,True
+4590,14769,88209,8bec,"mov bp,sp",True
+4590,14771,88211,8a6606,"mov ah,[bp+6]",True
+4590,14774,88214,8ad4,"mov dl,ah",True
+4590,14776,88216,80e20f,"and dl,0Fh",True
+4590,14779,88219,cd16,int 16h,True
+4590,14781,88221,7509,jne short 39C8h,True
+4590,14783,88223,80fa01,"cmp dl,1",True
+4590,14786,88226,7504,jne short 39C8h,True
+4590,14788,88228,33c0,"xor ax,ax",True
+4590,14790,88230,eb0a,jmp short 39D2h,True
+4590,14792,88232,80fa02,"cmp dl,2",True
+4590,14795,88235,7405,je short 39D2h,True
+4590,14797,88237,0bc0,"or ax,ax",True
+4590,14799,88239,7501,jne short 39D2h,True
+4590,14801,88241,48,dec ax,True
+4590,14802,88242,5d,pop bp,True
+4590,14803,88243,cb,ret far,True

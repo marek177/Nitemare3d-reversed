@@ -1,0 +1,14 @@
+cs,ip,image_offset,bytes,instruction,historical_start_present
+1712,482,27874,0e,push cs,True
+1712,483,27875,e8eaff,call 01D0h,True
+1712,486,27878,0ac0,"or al,al",True
+1712,488,27880,7412,je short 01FCh,True
+1712,490,27882,6a10,push 10h,True
+1712,492,27884,9ab039ee11,"call far 39B0h,11EEh",True
+1712,497,27889,83c402,"add sp,2",True
+1712,500,27892,0e,push cs,True
+1712,501,27893,e8d8ff,call 01D0h,True
+1712,504,27896,0ac0,"or al,al",True
+1712,506,27898,75ee,jne short 01EAh,True
+1712,508,27900,c706503f0000,"mov word ptr [3F50h],0",True
+1712,514,27906,cb,ret far,True

@@ -1,0 +1,115 @@
+cs,ip,image_offset,bytes,instruction,historical_start_present
+1712,0,27392,6660,pushad,False
+1712,2,27394,1e,push ds,False
+1712,3,27395,06,push es,False
+1712,4,27396,8bec,"mov bp,sp",False
+1712,6,27398,83ec02,"sub sp,2",False
+1712,9,27401,1e,push ds,False
+1712,10,27402,b87127,"mov ax,2771h",False
+1712,13,27405,8ed8,"mov ds,ax",False
+1712,15,27407,fc,cld,False
+1712,16,27408,e460,"in al,60h",False
+1712,18,27410,8846fe,"mov [bp-2],al",False
+1712,21,27413,2480,"and al,80h",False
+1712,23,27415,3c01,"cmp al,1",False
+1712,25,27417,1ac0,"sbb al,al",False
+1712,27,27419,f6d8,neg al,False
+1712,29,27421,8846ff,"mov [bp-1],al",False
+1712,32,27424,8a46fe,"mov al,[bp-2]",False
+1712,35,27427,257f00,"and ax,7Fh",False
+1712,38,27430,3d5000,"cmp ax,50h",False
+1712,41,27433,0f84cd00,je 00FAh,False
+1712,45,27437,0f87d900,ja 010Ah,False
+1712,49,27441,3c38,"cmp al,38h",False
+1712,51,27443,747d,je short 00B2h,False
+1712,53,27445,7f13,jg short 004Ah,False
+1712,55,27447,fec8,dec al,False
+1712,57,27449,7427,je short 0062h,False
+1712,59,27451,2c1c,"sub al,1Ch",False
+1712,61,27453,742f,je short 006Eh,False
+1712,63,27455,2c0d,"sub al,0Dh",False
+1712,65,27457,7443,je short 0086h,False
+1712,67,27459,2c0c,"sub al,0Ch",False
+1712,69,27461,7455,je short 009Ch,False
+1712,71,27463,e9c000,jmp 010Ah,False
+1712,74,27466,2c39,"sub al,39h",False
+1712,76,27468,7474,je short 00C2h,False
+1712,78,27470,2c0f,"sub al,0Fh",False
+1712,80,27472,747e,je short 00D0h,False
+1712,82,27474,2c03,"sub al,3",False
+1712,84,27476,0f848600,je 00DEh,False
+1712,88,27480,2c02,"sub al,2",False
+1712,90,27482,0f848e00,je 00ECh,False
+1712,94,27486,e9a900,jmp 010Ah,False
+1712,98,27490,8a46ff,"mov al,[bp-1]",False
+1712,101,27493,3206503f,"xor al,[3F50h]",False
+1712,105,27497,2401,"and al,1",False
+1712,107,27499,e99800,jmp 0106h,False
+1712,110,27502,8a46ff,"mov al,[bp-1]",False
+1712,113,27505,c0e007,"shl al,7",False
+1712,116,27508,8bc8,"mov cx,ax",False
+1712,118,27510,3206503f,"xor al,[3F50h]",False
+1712,122,27514,247f,"and al,7Fh",False
+1712,124,27516,32c8,"xor cl,al",False
+1712,126,27518,880e503f,"mov [3F50h],cl",False
+1712,130,27522,e98500,jmp 010Ah,False
+1712,134,27526,803eba34e0,"cmp byte ptr [34BAh],0E0h",False
+1712,139,27531,747d,je short 010Ah,False
+1712,141,27533,8a46ff,"mov al,[bp-1]",False
+1712,144,27536,c0e006,"shl al,6",False
+1712,147,27539,3206503f,"xor al,[3F50h]",False
+1712,151,27543,2440,"and al,40h",False
+1712,153,27545,eb6b,jmp short 0106h,False
+1712,156,27548,803eba34e0,"cmp byte ptr [34BAh],0E0h",False
+1712,161,27553,7467,je short 010Ah,False
+1712,163,27555,8a46ff,"mov al,[bp-1]",False
+1712,166,27558,c0e005,"shl al,5",False
+1712,169,27561,3206503f,"xor al,[3F50h]",False
+1712,173,27565,2420,"and al,20h",False
+1712,175,27567,eb55,jmp short 0106h,False
+1712,178,27570,8a46ff,"mov al,[bp-1]",False
+1712,181,27573,3206513f,"xor al,[3F51h]",False
+1712,185,27577,2401,"and al,1",False
+1712,187,27579,3006513f,"xor [3F51h],al",False
+1712,191,27583,eb49,jmp short 010Ah,False
+1712,194,27586,8a46ff,"mov al,[bp-1]",False
+1712,197,27589,02c0,"add al,al",False
+1712,199,27591,3206513f,"xor al,[3F51h]",False
+1712,203,27595,2402,"and al,2",False
+1712,205,27597,ebec,jmp short 00BBh,False
+1712,208,27600,8a46ff,"mov al,[bp-1]",False
+1712,211,27603,02c0,"add al,al",False
+1712,213,27605,3206503f,"xor al,[3F50h]",False
+1712,217,27609,2402,"and al,2",False
+1712,219,27611,eb29,jmp short 0106h,False
+1712,222,27614,8a46ff,"mov al,[bp-1]",False
+1712,225,27617,c0e003,"shl al,3",False
+1712,228,27620,3206503f,"xor al,[3F50h]",False
+1712,232,27624,2408,"and al,8",False
+1712,234,27626,eb1a,jmp short 0106h,False
+1712,236,27628,8a46ff,"mov al,[bp-1]",False
+1712,239,27631,c0e004,"shl al,4",False
+1712,242,27634,3206503f,"xor al,[3F50h]",False
+1712,246,27638,2410,"and al,10h",False
+1712,248,27640,eb0c,jmp short 0106h,False
+1712,250,27642,8a46ff,"mov al,[bp-1]",False
+1712,253,27645,c0e002,"shl al,2",False
+1712,256,27648,3206503f,"xor al,[3F50h]",False
+1712,260,27652,2404,"and al,4",False
+1712,262,27654,3006503f,"xor [3F50h],al",False
+1712,266,27658,8a46fe,"mov al,[bp-2]",False
+1712,269,27661,a2ba34,"mov [34BAh],al",False
+1712,272,27664,9c,pushf,False
+1712,273,27665,ff1e523f,call far dword ptr [3F52h],False
+1712,277,27669,803ed13c00,"cmp byte ptr [3CD1h],0",False
+1712,282,27674,7404,je short 0120h,False
+1712,284,27676,0e,push cs,False
+1712,285,27677,e8c200,call 01E2h,False
+1712,288,27680,833ed63c04,"cmp word ptr [3CD6h],4",False
+1712,293,27685,7506,jne short 012Dh,False
+1712,295,27687,c706d43c0000,"mov word ptr [3CD4h],0",False
+1712,301,27693,8be5,"mov sp,bp",False
+1712,303,27695,07,pop es,False
+1712,304,27696,1f,pop ds,False
+1712,305,27697,6661,popad,False
+1712,307,27699,cf,iret,False
