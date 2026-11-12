@@ -1,0 +1,66 @@
+{
+  "functions": [
+    {
+      "name": "crt_DST_style_predicate",
+      "start": 84960,
+      "end_exclusive": 85151,
+      "instructions": 76,
+      "instruction_bytes": 189
+    },
+    {
+      "name": "crt_calendar_to_epoch32",
+      "start": 85152,
+      "end_exclusive": 85395,
+      "instructions": 106,
+      "instruction_bytes": 243
+    },
+    {
+      "name": "compiler_signed_remainder32",
+      "start": 88554,
+      "end_exclusive": 88714,
+      "instructions": 72,
+      "instruction_bytes": 160
+    }
+  ],
+  "reused_functions": [
+    {
+      "name": "compiler_mul32_low",
+      "start": 88504,
+      "end_exclusive": 88554,
+      "instructions": 23,
+      "instruction_bytes": 50
+    }
+  ],
+  "cases": 13062,
+  "calendar_cases": 12192,
+  "helper_cases": 870,
+  "failures": 0,
+  "executed_instruction_starts": 277,
+  "unexecuted_starts": {
+    "crt_DST_style_predicate": [],
+    "crt_calendar_to_epoch32": [],
+    "compiler_mul32_low": [],
+    "compiler_signed_remainder32": []
+  },
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "scope": "Whole original converter and DST predicate plus original mul32/remainder32; timezone refresh only external fixture preserving preseeded fields. Valid month1..12; year edges1966/1967/2100 synthetic. Separate signed arithmetic helper matrix excludes zero divisors. FullDGROUP/frame/register/lookup targets compared for calendar cases. No native or Win16 parity by replay alone.",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\relocations.csv",
+      "sha256": "5faab828945fa774c340ce1b612a0cd6379f7507cfddcdcccd395d37a58b3256"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_crt_calendar.py",
+      "sha256": "2dc44d4145ae6402a76f42094207c8f39efc9571eec0fd177dcfbf1ed9b2b509"
+    }
+  ]
+}

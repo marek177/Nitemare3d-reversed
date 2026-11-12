@@ -1,0 +1,5 @@
+record,offset,width,role,consumer
+calendar_tm_like_partial,4,2,hour WORD;used for boundary-hour comparison,"11EE:2D00;PARTIAL,not full struct tm"
+calendar_tm_like_partial,8,2,month WORD zero-based;3/9 boundaries,"11EE:2D00;PARTIAL,not full struct tm"
+calendar_tm_like_partial,10,2,"year WORD relative1900;gate67,rule branch86","11EE:2D00;PARTIAL,not full struct tm"
+calendar_tm_like_partial,14,2,day-of-year WORD;compared to computed boundary,"11EE:2D00;PARTIAL,not full struct tm"
