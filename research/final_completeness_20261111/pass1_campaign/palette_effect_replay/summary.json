@@ -1,0 +1,42 @@
+{
+  "functions": [
+    {
+      "name": "vga_set_colour_lowbytes",
+      "start": 5808,
+      "end_exclusive": 5837,
+      "instructions": 15,
+      "instruction_bytes": 29
+    },
+    {
+      "name": "palette_periodic_flash",
+      "start": 41164,
+      "end_exclusive": 41369,
+      "instructions": 62,
+      "instruction_bytes": 204
+    }
+  ],
+  "cases": 2288,
+  "gate_cases": 1680,
+  "state_edge_cases": 180,
+  "chained_cycle_invocations": 344,
+  "port_cases": 72,
+  "original_rng_chain_cases": 12,
+  "failures": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "scope": "original palette state machine plus actual original VGA helper OUT instructions; RNG stubbed in matrix/edge/cycle probes, actual original wrapper/CRT/multiply chain in12seed cases; follow-upEA0 stubbed; ports observed only, no DAC hardware simulation; normal DS=SS; explicit signed-RNG boundary probes do not establish natural RNG output domain; cycles count individual86-invocation sequences",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_palette_effect.py",
+      "sha256": "bdff2b95514cd75351c3f690dce96975e0d3d07d963f5c93b5c4a1a080bcb169"
+    }
+  ]
+}

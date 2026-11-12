@@ -1,0 +1,2499 @@
+{
+  "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+  "verified": true,
+  "summary_sha256": "6e1fab13bbc863c9fd0993e5bce52bb3c6787105908f543118e735e3eb017f78",
+  "runtime_tests": 1,
+  "new_deep_verified_bytes": 0,
+  "palette_cycle_verified": true,
+  "cycle_stages": [
+    "reset_black",
+    "flash_white",
+    "dark_black_followup_return"
+  ],
+  "palette_indices": [
+    235,
+    227
+  ],
+  "native_single_colour_calls": 6,
+  "native_OUT_instructions": 24,
+  "native_rng_seed_before": 1,
+  "native_rng_seed_after": 2745024,
+  "native_rng_AX": 41,
+  "next_dark_countdown": 201,
+  "followup_return": [
+    2109,
+    7572
+  ],
+  "map_endpoint_difference_bytes": 4,
+  "unknown_watch_bytes": 28,
+  "value_change_events": 0,
+  "all_noncode_endpoint_bytes": 57295,
+  "endpoint_different_from_relocated_initial": 10988,
+  "scope": "original packedDOS2 plus explicitCDasset, natural reset and first white-to-dark cycle through original single-colour OUT helpers, actual6bit DAC black/white/black, original RNG state/return transition and nativeEA0 follow-up return; no per-tick call count/time/audio-output/wholeAI/Win16 closure; unknown28 cached-change only",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\unpacked_runtime.bin",
+      "sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\initial_1bda2.bin",
+      "sha256": "e7ecebbc590bc88b3761fa6cd03d749f87463dabb67021a5c6768c25ec68b3f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\initial_1d0ec.bin",
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\initial_20b88.bin",
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\initial_2770e.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\initial_29a66.bin",
+      "sha256": "cc23aa0b10618142ffbf5d7e0be83ab9bed1fc117f94c748a803d194b3c81653"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_00_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_00_previous_scan.bin",
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_00_bios_queue.bin",
+      "sha256": "00afcad5c5e836d7229c1f25135aed76f2bdc5cc2c9aa48b8ebf1869a5818c3a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_00_wait_return.bin",
+      "sha256": "662543de416f3da8a39205443e6494c088cf84f959344a9888c69f568f057b6b"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_01_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_01_previous_scan.bin",
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_01_bios_queue.bin",
+      "sha256": "00afcad5c5e836d7229c1f25135aed76f2bdc5cc2c9aa48b8ebf1869a5818c3a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_02_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_02_previous_scan.bin",
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_02_bios_queue.bin",
+      "sha256": "00afcad5c5e836d7229c1f25135aed76f2bdc5cc2c9aa48b8ebf1869a5818c3a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_03_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_03_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_03_bios_queue.bin",
+      "sha256": "e0cb2600ff02a94be698317358b9367815e905e92b9dad911af9985733a4e3c7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_04_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_04_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_04_bios_queue.bin",
+      "sha256": "e0cb2600ff02a94be698317358b9367815e905e92b9dad911af9985733a4e3c7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_05_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_05_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_05_bios_queue.bin",
+      "sha256": "e0cb2600ff02a94be698317358b9367815e905e92b9dad911af9985733a4e3c7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_06_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_06_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_06_bios_queue.bin",
+      "sha256": "e0cb2600ff02a94be698317358b9367815e905e92b9dad911af9985733a4e3c7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_07_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_07_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_07_bios_queue.bin",
+      "sha256": "7583443de11379f379103a7fb0765db69603eb6c0aed5bcf304893593550d8b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_08_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_08_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_08_bios_queue.bin",
+      "sha256": "7583443de11379f379103a7fb0765db69603eb6c0aed5bcf304893593550d8b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_08_wait_return.bin",
+      "sha256": "5953c6adec1790111be8d206a3e317142539f2e93f05accd8f35bda9228b6948"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_09_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_09_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_09_bios_queue.bin",
+      "sha256": "7583443de11379f379103a7fb0765db69603eb6c0aed5bcf304893593550d8b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_10_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_10_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_10_bios_queue.bin",
+      "sha256": "7583443de11379f379103a7fb0765db69603eb6c0aed5bcf304893593550d8b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_11_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_11_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_11_bios_queue.bin",
+      "sha256": "f52613106c1183a36f67c101f1e002c2fc6085eb622293a58e2f5aabd6d21c14"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_12_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_12_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_12_bios_queue.bin",
+      "sha256": "f52613106c1183a36f67c101f1e002c2fc6085eb622293a58e2f5aabd6d21c14"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_13_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_13_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_13_bios_queue.bin",
+      "sha256": "f52613106c1183a36f67c101f1e002c2fc6085eb622293a58e2f5aabd6d21c14"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_14_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_14_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_14_bios_queue.bin",
+      "sha256": "f52613106c1183a36f67c101f1e002c2fc6085eb622293a58e2f5aabd6d21c14"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_15_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_15_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_15_bios_queue.bin",
+      "sha256": "38c26c4aff84fb7710e2082e435e4aae91b602f537c1e883126d7da7f07c0644"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_16_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_16_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_16_bios_queue.bin",
+      "sha256": "38c26c4aff84fb7710e2082e435e4aae91b602f537c1e883126d7da7f07c0644"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_16_wait_return.bin",
+      "sha256": "aee3e69e80ec1970a10ea6a1e5412dfebe2c8e70a68875dc17e781813f3a8319"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_17_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_17_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_17_bios_queue.bin",
+      "sha256": "38c26c4aff84fb7710e2082e435e4aae91b602f537c1e883126d7da7f07c0644"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_18_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_18_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_18_bios_queue.bin",
+      "sha256": "38c26c4aff84fb7710e2082e435e4aae91b602f537c1e883126d7da7f07c0644"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_19_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_19_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_19_bios_queue.bin",
+      "sha256": "06821efaf9ebc41d7354ab4a2469adcc93b9f7595ac1937ddce37fd8f184cb7e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_20_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_20_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_20_bios_queue.bin",
+      "sha256": "06821efaf9ebc41d7354ab4a2469adcc93b9f7595ac1937ddce37fd8f184cb7e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_21_game_key_flags.bin",
+      "sha256": "fcf0a6c700dd13e274b6fba8deea8dd9b26e4eedde3495717cac8408c9c5177f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_21_previous_scan.bin",
+      "sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_21_bios_queue.bin",
+      "sha256": "06821efaf9ebc41d7354ab4a2469adcc93b9f7595ac1937ddce37fd8f184cb7e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_22_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_22_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_22_bios_queue.bin",
+      "sha256": "06821efaf9ebc41d7354ab4a2469adcc93b9f7595ac1937ddce37fd8f184cb7e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_23_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_23_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_23_bios_queue.bin",
+      "sha256": "7cfb1f18d828bd12fa282f386b60319a033d2e299971de99661d33c96150d85d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_24_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_24_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_24_bios_queue.bin",
+      "sha256": "7cfb1f18d828bd12fa282f386b60319a033d2e299971de99661d33c96150d85d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_24_menu_tables.bin",
+      "sha256": "d9512787a48cc6e8060598260c8a02f62c225a0a6e6b51d29d73601d7f4ca032"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_24_menu_frame.bin",
+      "sha256": "908825494e8d7def2a14a787d9afb0b5f209a56d2d0a6cd73e9b1095650afb2f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_25_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_25_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_25_bios_queue.bin",
+      "sha256": "7cfb1f18d828bd12fa282f386b60319a033d2e299971de99661d33c96150d85d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_25_menu_tables.bin",
+      "sha256": "d9512787a48cc6e8060598260c8a02f62c225a0a6e6b51d29d73601d7f4ca032"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_25_menu_frame.bin",
+      "sha256": "d24c8287ec9f35ce95eb5e00c990c7c302329b9d686e6434fc8dd5a8efc88507"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_26_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_26_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_26_bios_queue.bin",
+      "sha256": "7cfb1f18d828bd12fa282f386b60319a033d2e299971de99661d33c96150d85d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_27_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_27_previous_scan.bin",
+      "sha256": "04d6c0c946716aac894fc1653383543a91faab601302cf011607c82f06304651"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_27_bios_queue.bin",
+      "sha256": "7cfb1f18d828bd12fa282f386b60319a033d2e299971de99661d33c96150d85d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_28_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_28_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_28_bios_queue.bin",
+      "sha256": "f6539d86bd6ff38afebd1c76c2266749d953ba324432e9f6c19654cefef7afd9"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_29_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_29_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_29_bios_queue.bin",
+      "sha256": "e389ac5b26a2f902383d55152cabdc78d8f66281bb0fbecf90b517bd398f9bb6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_30_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_30_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_30_bios_queue.bin",
+      "sha256": "e389ac5b26a2f902383d55152cabdc78d8f66281bb0fbecf90b517bd398f9bb6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_31_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_31_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_31_bios_queue.bin",
+      "sha256": "e389ac5b26a2f902383d55152cabdc78d8f66281bb0fbecf90b517bd398f9bb6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_32_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_32_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_32_bios_queue.bin",
+      "sha256": "e389ac5b26a2f902383d55152cabdc78d8f66281bb0fbecf90b517bd398f9bb6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_33_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_33_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_33_bios_queue.bin",
+      "sha256": "e389ac5b26a2f902383d55152cabdc78d8f66281bb0fbecf90b517bd398f9bb6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_33_menu_tables.bin",
+      "sha256": "04ddb22489ee9c46d1407b1caf778b776ab797ccf5f54b2f8f4ab77ecc5fb720"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_33_menu_frame.bin",
+      "sha256": "7802059d6d192a180d14ead8faa7f6051402d3eb81400ecb4803ec989dc8b4f9"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_34_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_34_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_34_bios_queue.bin",
+      "sha256": "e389ac5b26a2f902383d55152cabdc78d8f66281bb0fbecf90b517bd398f9bb6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_35_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_35_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_35_bios_queue.bin",
+      "sha256": "e389ac5b26a2f902383d55152cabdc78d8f66281bb0fbecf90b517bd398f9bb6"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_36_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_36_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_36_bios_queue.bin",
+      "sha256": "84f754c9cd36a0f1b7437d0d5ec1d79824b977371835394d9da4175d6896cec4"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_37_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_37_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_37_bios_queue.bin",
+      "sha256": "9fc8827d0337f9f33dddbf3fe97b0c59de9d695bd9b7efd1397b247e03366d86"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_38_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_38_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_38_bios_queue.bin",
+      "sha256": "9fc8827d0337f9f33dddbf3fe97b0c59de9d695bd9b7efd1397b247e03366d86"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_39_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_39_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_39_bios_queue.bin",
+      "sha256": "9fc8827d0337f9f33dddbf3fe97b0c59de9d695bd9b7efd1397b247e03366d86"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_40_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_40_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_40_bios_queue.bin",
+      "sha256": "9fc8827d0337f9f33dddbf3fe97b0c59de9d695bd9b7efd1397b247e03366d86"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_41_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_41_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_41_bios_queue.bin",
+      "sha256": "9fc8827d0337f9f33dddbf3fe97b0c59de9d695bd9b7efd1397b247e03366d86"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_42_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_42_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_42_bios_queue.bin",
+      "sha256": "9fc8827d0337f9f33dddbf3fe97b0c59de9d695bd9b7efd1397b247e03366d86"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_42_menu_tables.bin",
+      "sha256": "04ddb22489ee9c46d1407b1caf778b776ab797ccf5f54b2f8f4ab77ecc5fb720"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_42_menu_frame.bin",
+      "sha256": "19d9bc32ea7903b233fbab5645f76740ace4748cf59aff8ebe0e7fbea619e7c5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_43_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_43_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_43_bios_queue.bin",
+      "sha256": "9fc8827d0337f9f33dddbf3fe97b0c59de9d695bd9b7efd1397b247e03366d86"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_44_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_44_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_44_bios_queue.bin",
+      "sha256": "9fc8827d0337f9f33dddbf3fe97b0c59de9d695bd9b7efd1397b247e03366d86"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_45_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_45_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_45_bios_queue.bin",
+      "sha256": "d8859bad21a8175820d068a72a84b5e119cc3a414127457b02a23d04742a0d6c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_46_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_46_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_46_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_47_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_47_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_47_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_48_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_48_previous_scan.bin",
+      "sha256": "bd4fc42a21f1f860a1030e6eba23d53ecab71bd19297ab6c074381d4ecee0018"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_48_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_49_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_49_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_49_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_50_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_50_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_50_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_50_game_call_frame.bin",
+      "sha256": "367b1ab0baf0ea9ee5453258ee81d2295c089b2086ed0ea6f3ae9b805768c7ec"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_50_difficulty.bin",
+      "sha256": "47dc540c94ceb704a23875c11273e16bb0b8a87aed84de911f2133568115f254"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_50_episode_level_counts.bin",
+      "sha256": "36c159d76b52e03e496363607c5940227f62f4e048df344b050159bc97bba3d7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_51_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_51_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_51_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_51_game_call_frame.bin",
+      "sha256": "ed3684d98dda82fd28eab478da9a61d87faa6fa5bd218c1fa6f590169185c90c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_51_difficulty.bin",
+      "sha256": "47dc540c94ceb704a23875c11273e16bb0b8a87aed84de911f2133568115f254"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_51_episode_level_counts.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_52_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_52_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_52_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_52_game_call_frame.bin",
+      "sha256": "ed3684d98dda82fd28eab478da9a61d87faa6fa5bd218c1fa6f590169185c90c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_52_difficulty.bin",
+      "sha256": "47dc540c94ceb704a23875c11273e16bb0b8a87aed84de911f2133568115f254"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_52_episode_level_counts.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_palette_effect_state.bin",
+      "sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_palette_stack.bin",
+      "sha256": "fe6bfb223db1aeeca38585403b58e535e31bb82aebaecb24acc111f3ef5da381"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_53_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_palette_stack.bin",
+      "sha256": "5084e2bc35d5c93e38479d5bcc1099b43b8ff7eac0f3ad45feb2e5138d1d3d27"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_54_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_palette_stack.bin",
+      "sha256": "394cc5a62d1faf4708f4b8a5e6fee0db075f119b5ad9c57b1fc8d3f9367d5e4a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_55_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_palette_stack.bin",
+      "sha256": "394cc5a62d1faf4708f4b8a5e6fee0db075f119b5ad9c57b1fc8d3f9367d5e4a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_56_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_palette_stack.bin",
+      "sha256": "394cc5a62d1faf4708f4b8a5e6fee0db075f119b5ad9c57b1fc8d3f9367d5e4a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_57_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_palette_stack.bin",
+      "sha256": "394cc5a62d1faf4708f4b8a5e6fee0db075f119b5ad9c57b1fc8d3f9367d5e4a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_58_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_palette_stack.bin",
+      "sha256": "394cc5a62d1faf4708f4b8a5e6fee0db075f119b5ad9c57b1fc8d3f9367d5e4a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_59_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_palette_stack.bin",
+      "sha256": "4d992bc985cf4bff3a10a28b916604a6bc3d4c17f543fc912db1b4eb9dd5b7e4"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_60_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_palette_stack.bin",
+      "sha256": "5a0a0679fa533aea13f7d439d230a2294eee4e165b3bfc1e77625d7f6d729400"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_61_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_palette_stack.bin",
+      "sha256": "5a0a0679fa533aea13f7d439d230a2294eee4e165b3bfc1e77625d7f6d729400"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_62_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_palette_stack.bin",
+      "sha256": "5a0a0679fa533aea13f7d439d230a2294eee4e165b3bfc1e77625d7f6d729400"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_63_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_palette_stack.bin",
+      "sha256": "5a0a0679fa533aea13f7d439d230a2294eee4e165b3bfc1e77625d7f6d729400"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_64_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_palette_effect_state.bin",
+      "sha256": "48f684fb5b6022b5c83a9f68ee78e1598d2a512ce7fd6be8c4b9500c37222fd2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_palette_stack.bin",
+      "sha256": "5a0a0679fa533aea13f7d439d230a2294eee4e165b3bfc1e77625d7f6d729400"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_65_world_counter.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_palette_effect_state.bin",
+      "sha256": "074d99c983072816cbc8d980c4a2fd441f6036aca06f83ee14e05cab5afbed85"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_palette_stack.bin",
+      "sha256": "2271c549ec79805480dbedbc09bfefcb99beae3b373be64723ba040531baffde"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_66_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_palette_stack.bin",
+      "sha256": "e64a9ba5a2bf843b13abd5b6f964aa6f26c82c6aa862e67df00b621e4a0753a2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_67_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_palette_stack.bin",
+      "sha256": "38a5438bcc5e484e8d9b207ff6c322d68bad8a6c4027226aeda1c552a6702d3b"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_68_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_palette_stack.bin",
+      "sha256": "38a5438bcc5e484e8d9b207ff6c322d68bad8a6c4027226aeda1c552a6702d3b"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_69_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_palette_stack.bin",
+      "sha256": "38a5438bcc5e484e8d9b207ff6c322d68bad8a6c4027226aeda1c552a6702d3b"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_70_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_palette_stack.bin",
+      "sha256": "38a5438bcc5e484e8d9b207ff6c322d68bad8a6c4027226aeda1c552a6702d3b"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_71_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_palette_stack.bin",
+      "sha256": "38a5438bcc5e484e8d9b207ff6c322d68bad8a6c4027226aeda1c552a6702d3b"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_72_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_palette_stack.bin",
+      "sha256": "6fb5f7dc051bd5f5f6a0ea05e28bef228e3339792a58d2e47d747c937154da2a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_73_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_palette_stack.bin",
+      "sha256": "2992030b489ccde2b38ae0f9980dc902f4723343c955aa925a97984af2d1ab5d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_74_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_palette_stack.bin",
+      "sha256": "2992030b489ccde2b38ae0f9980dc902f4723343c955aa925a97984af2d1ab5d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_75_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_palette_stack.bin",
+      "sha256": "2992030b489ccde2b38ae0f9980dc902f4723343c955aa925a97984af2d1ab5d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_76_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_palette_stack.bin",
+      "sha256": "2992030b489ccde2b38ae0f9980dc902f4723343c955aa925a97984af2d1ab5d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_77_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_palette_effect_state.bin",
+      "sha256": "0f868d5011ab91a7f352a06a03be083abca12213ca27ab79cd4792a6a8ea0518"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_palette_stack.bin",
+      "sha256": "2992030b489ccde2b38ae0f9980dc902f4723343c955aa925a97984af2d1ab5d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_78_world_counter.bin",
+      "sha256": "f2babbb43659871bdcd83367a2982b28fa4463117507462fc7a2672910f8488e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_palette_effect_state.bin",
+      "sha256": "42f0862649c6f51d8aaa31d810d9c2e4455917b61b0b17f13fbd66007cb6d75e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_palette_stack.bin",
+      "sha256": "2271c549ec79805480dbedbc09bfefcb99beae3b373be64723ba040531baffde"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_rng_state.bin",
+      "sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_79_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_palette_effect_state.bin",
+      "sha256": "074d99c983072816cbc8d980c4a2fd441f6036aca06f83ee14e05cab5afbed85"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_palette_stack.bin",
+      "sha256": "2271c549ec79805480dbedbc09bfefcb99beae3b373be64723ba040531baffde"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_80_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_palette_stack.bin",
+      "sha256": "a8c52048ce90fb1beb432db232648f77ea823fabbdda836c4ac27c97bff1f76e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_81_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_palette_stack.bin",
+      "sha256": "57d1e20d5b888ec4c32f1b298e3b932f4aae88a4e8f0fbc829e955f36b7d499a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_82_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_palette_stack.bin",
+      "sha256": "57d1e20d5b888ec4c32f1b298e3b932f4aae88a4e8f0fbc829e955f36b7d499a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_83_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_palette_stack.bin",
+      "sha256": "57d1e20d5b888ec4c32f1b298e3b932f4aae88a4e8f0fbc829e955f36b7d499a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_84_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_palette_stack.bin",
+      "sha256": "57d1e20d5b888ec4c32f1b298e3b932f4aae88a4e8f0fbc829e955f36b7d499a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_85_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_palette_stack.bin",
+      "sha256": "57d1e20d5b888ec4c32f1b298e3b932f4aae88a4e8f0fbc829e955f36b7d499a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_86_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_palette_stack.bin",
+      "sha256": "30d80c57b57023b06fa79fb558f28c35bf870f2dc190ad764bbf00581e0875ff"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_87_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_palette_stack.bin",
+      "sha256": "1a7e662201b1fa40c6397ad4ce4f394c7df467a78e2b5c5cad5a5e3d11ed04e2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_88_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_palette_stack.bin",
+      "sha256": "1a7e662201b1fa40c6397ad4ce4f394c7df467a78e2b5c5cad5a5e3d11ed04e2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_89_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_palette_stack.bin",
+      "sha256": "1a7e662201b1fa40c6397ad4ce4f394c7df467a78e2b5c5cad5a5e3d11ed04e2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_90_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_palette_stack.bin",
+      "sha256": "1a7e662201b1fa40c6397ad4ce4f394c7df467a78e2b5c5cad5a5e3d11ed04e2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_91_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_palette_stack.bin",
+      "sha256": "1a7e662201b1fa40c6397ad4ce4f394c7df467a78e2b5c5cad5a5e3d11ed04e2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_92_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_game_key_flags.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_previous_scan.bin",
+      "sha256": "6e3faf1e27d45fca70234ae8f6f0a734622cff8a6ea824b7f60d3ffafa2a4654"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_bios_queue.bin",
+      "sha256": "1434f7ed384d9c9d544e263a1d77520a8bfdfb2fe6df5f7117a2a76bb2820fbc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_palette_effect_state.bin",
+      "sha256": "36b23d9286e1a1e46c3d64ec29c1c4884ddceb0e922a4e41f51403ed501f5338"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_palette_scene_index.bin",
+      "sha256": "457e4854863e7efaa03266ad781822ecce69df31a511786118c10771a87e69f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_palette_context.bin",
+      "sha256": "c0648867161c651c43cbc68e0feb6086b68612430bd2bf699144b88026dc3ad5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_palette_stack.bin",
+      "sha256": "2271c549ec79805480dbedbc09bfefcb99beae3b373be64723ba040531baffde"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_rng_state.bin",
+      "sha256": "a9162d7460350409d739ebf4c9187318a4f4cba4ed3a72aaee98d90cf4338652"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\stop_93_world_counter.bin",
+      "sha256": "91eb93d1d22fcaa0f504a52c0cd8595e4430642d25d0a85405d9f98cc5bc26fa"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\final_1bda2.bin",
+      "sha256": "e7ecebbc590bc88b3761fa6cd03d749f87463dabb67021a5c6768c25ec68b3f2"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\final_1d0ec.bin",
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\final_20b88.bin",
+      "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\final_2770e.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\final_29a66.bin",
+      "sha256": "cc23aa0b10618142ffbf5d7e0be83ab9bed1fc117f94c748a803d194b3c81653"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\sound_directory_runtime.bin",
+      "sha256": "95492da850ba3b2ba87a2bdae85b22cd7469241090dec962a1a7172858a9b935"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\uif_directory_runtime.bin",
+      "sha256": "a4d3c783485579dd5cd1d1090a0451656d67a66e285fd34e7cba4d7348a91f32"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\font2_block_runtime.bin",
+      "sha256": "555999152793d9837a07e208225e606af090ecf9cd02f77a354cbb0033e2abd1"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\font2_pointers_runtime.bin",
+      "sha256": "df241f63b69f0763e213c8b067834109c6dd91c51f767ee78fdc41537cfea1b1"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\font_flags_runtime.bin",
+      "sha256": "75c8fd04ad916aec3e3d5cb76a452b116b3d4d0912a0a485e9fb8e3d240e210c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\font_selected_runtime.bin",
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\font0_block_runtime.bin",
+      "sha256": "a53515fb6c239c1f43fdf8830f25192d9c0d3920338fb2df78dc6ced6be8f735"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\font0_pointers_runtime.bin",
+      "sha256": "1133543165aa73e12d7b577201ae4fff9195e371cfbc6f3f72d48d5847acef12"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\font1_block_runtime.bin",
+      "sha256": "f4dc3f532c719a33e0e1bba6c80d4685e4584f87dc4fb683cd9a75ff8d01a802"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\font1_pointers_runtime.bin",
+      "sha256": "bcacfb1f889ea1a020bac7f6969c8c7b875b25a5e0398f41e713643956da838c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\vga_page_words.bin",
+      "sha256": "20029fc48f1e7a86026b3d01b7b01f0dca4c51b76b1ccb583341ec6fa7e87a7c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\palette_buffer_runtime.bin",
+      "sha256": "52768cc8fc70a3242e82214ed3dbf7136fe146670ad773916ab03132ee2fd1ce"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\menu_page_a000_plane_0.bin",
+      "sha256": "b2e5ee940d192901698b9e5414a2ec3d9a08cdc123109333305a03dc41b8ab96"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\menu_page_a400_plane_0.bin",
+      "sha256": "2f3a5a8b14192a31c22ddfa20a84ffa5a10da20296adc875a4e8c87da2befc94"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\menu_page_a000_plane_1.bin",
+      "sha256": "d4816065e7a37ad3a1ebcebb3f9bcdae219de95bbdcf843800ddac862b56b0ee"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\menu_page_a400_plane_1.bin",
+      "sha256": "eb408a23f83dd4e4c9901ac3132873df8b1b0562e917ce027946dc81c2197eac"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\menu_page_a000_plane_2.bin",
+      "sha256": "f242e668dc57d251c2b49c97530fa4d091620fc2e7d9dd6626745518c1af2dce"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\menu_page_a400_plane_2.bin",
+      "sha256": "8e26896b296b47d951d95d136e76696d94656dc5f5bbff5d25cbf1d9c845b377"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\menu_page_a000_plane_3.bin",
+      "sha256": "ebe4c986868a14bcb3eb791b60b6feb527e68d92fad81f0546d0ac39337cd34f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\menu_page_a400_plane_3.bin",
+      "sha256": "0aad3f218e180cd6699d078afa0f729dc8c4f7433f3327bffa2672a76227064d"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\noncode_gap_final.bin",
+      "sha256": "0a88111852095cae045340ea1f0b279944b2a756a213d9b50107d7489771e159"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\noncode_tail_final.bin",
+      "sha256": "b67c74d7bdc4bd00213c454e1290e453dd29352b41f643b65870a39f76b70894"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_palette_cycle_runtime_v2\\dgroup_final.bin",
+      "sha256": "5d80ee3dd83f6a96e1eef1409e9320211ae63865d7ea10df0285acaf44e92628"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\input_stops.json",
+      "sha256": "bb284db59d4748b7ef5dae4c7287a81d1e4a3ecf939aac6d440ea9e412f0b088"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\launch_arguments.json",
+      "sha256": "25cc9a6a9740d1624c5cc4ae58e8b5032f9717ef81dfc1197c17f51a8e66d841"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\menu_dac_readback.json",
+      "sha256": "6379f63433ee76f50629771b395cf9e22d9450132e8406ce77263ef97dae9abe"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\snapshots.json",
+      "sha256": "8cc5ea140ebd1fa74008da1b16a522f149bb900ceb828885a77430bf23762eab"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_53_dac.json",
+      "sha256": "ab06b068eeb3daaf08de0633cb5bc240796c32d00c6c0787e56be1f6d8240649"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_54_dac.json",
+      "sha256": "aa4a3aee4970d857c8334bcd14866f72613e6a730c7b556890e8719a975207b5"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_59_dac.json",
+      "sha256": "565a341f502ab10182d77637755c217fb680b743de599ed502140d4f86230100"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_60_dac.json",
+      "sha256": "08e37953ace0c7ec995a293ca0b472bcab25f77acca7079adae1d7dba17db434"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_65_dac.json",
+      "sha256": "be873e538d06bfd42b584b3632cddd20d4c231edc3a560e78e68e967dee8ea4f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_66_dac.json",
+      "sha256": "1fa1bc40a77fcc0ced8b9ed38016d661b0f2d9b416da9248b59b51cd5b104943"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_67_dac.json",
+      "sha256": "3be9b3314399f3d745c0b90d24acd31408ea235daeb5f2ca45b7c16828a87fca"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_72_dac.json",
+      "sha256": "9f3d593b35d4c1391dd6df8467aee6fc03cd49b73ae49d0de6f20c5c2e6bb501"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_73_dac.json",
+      "sha256": "3b2d34e0c5852e2285d79d77726270b73ca8c2b3f5ec59b389c9164c67c5e8e0"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_78_dac.json",
+      "sha256": "3ee2bcb7854aa93b7fd206f3a1b510194e5cedbf1cd84c82a609e42824e12b83"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_79_dac.json",
+      "sha256": "439d100b665f2d25dd5196ed4597ba42acdbc97af4ea7db1ce5a82ca06aa7891"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_80_dac.json",
+      "sha256": "3bb3ed7a6b240a9e066aa5613aab0ac7222d7d64f6f34e00e025b8acf03c3e89"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_81_dac.json",
+      "sha256": "5eecebdc288beea2855f24890c362a32b7310400c3b8a38c3741640791a522d8"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_86_dac.json",
+      "sha256": "e0673c46e946b9538d9fb1c7f218d84195e7703cf38b4ee03630c10f0f3dd554"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_87_dac.json",
+      "sha256": "3722ff1613e61c9aeb27543c830f0186063bca7769e16e800fdf681792401250"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_92_dac.json",
+      "sha256": "8c5d7734b5ca8e6257b7caf56bc500722736b2e03285d05a2c60519ba8c508e9"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\stop_93_dac.json",
+      "sha256": "82f2d0a6e4b5e9e88b5abdba5de52b32095f471c45cac5118ebee1936295da06"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\summary.json",
+      "sha256": "6e1fab13bbc863c9fd0993e5bce52bb3c6787105908f543118e735e3eb017f78"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\transcript.json",
+      "sha256": "3fccc735eb75e18ac17302d80781a2007d169c443174dd197c3b5fb9191f230c"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\vga_state.json",
+      "sha256": "9468f2001786d3466fbac90aa02c36eed46c3fd0b0923c6b4100b7009e33208e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\vga_state_restored.json",
+      "sha256": "be42c5bc7adea5d8bd70b25327d713c2564477b23c610419c2864cc4ed47e383"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\watch_events.json",
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\inputs.csv",
+      "sha256": "31a6eebdf4f85e782c588b5a8f8d3ae7864968ae51aa58472eb7e60563ec731f"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_palette_cycle_runtime_v2\\runtime.conf",
+      "sha256": "58914ff6d8ee09dea4fba8dd8b9cbd32e860bad028587d39b2c054d61d6a72fc"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_watch_support_newgame_v1.py",
+      "sha256": "64675a5c918b22eb1d80e1d522efc1d459342a9ee04abf768a04b6a2e043fc89"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\runtime_watch_palette_cycle_v2.py",
+      "sha256": "2a16aba61bcef259af53bc24bb91a23529292db864dd3fd378d71e2779850741"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\verify_palette_cycle_capture.py",
+      "sha256": "09dbcdd2eb5956d76ef152f8ee13e8a9a1d0981e230e5a1e88f0befbe197138e"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\relocations.csv",
+      "sha256": "5faab828945fa774c340ce1b612a0cd6379f7507cfddcdcccd395d37a58b3256"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\pass1_xms_move_request\\noncode_intervals.csv",
+      "sha256": "497d10a11959dbae3d17f495e803569e229c13434658ec94c231d29784f47efe"
+    }
+  ]
+}
