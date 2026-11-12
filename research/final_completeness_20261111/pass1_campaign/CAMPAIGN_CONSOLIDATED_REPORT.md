@@ -29,7 +29,7 @@ Rozdiel PARTIAL oproti typovanym NON-CODE datam je 2 B: relokacny WORD DS:2358 v
 
 `campaign_catalog/current_pass1_data_types.csv` ma 661 poli z 96 zdrojov. `functions.csv`, `independent_instructions.csv`, `byte_intervals.csv/json`, `summary.json` a `untyped_partial_relocation_check.json` obsahuju hranice, typy a dokazy. Aktualna opravena dvojbajtova mapa je `[2570E,2770E)`; stary posunuty rozsah sa neimportuje.
 
-Reprodukcia: analyticky skript uvedeny v aktualnom reporte, `promote_pass1_fields.py`, `verify_pass1_partition.py`, `independent_decode_and_catalog.py`, potom `render_campaign_status.py OUTPUTS_DIR pass1_fcb_prefix CRT_ENTRY_GAP_VERSIONS_REPORT.md`. Presne vstupy a obmedzenia su v reportoch jednotlivych davok. Posledna overena publikacia je commit 52924ebf849dd79d15af9d7c164b8304f50cae87, pozri `CAMPAIGN_PUBLICATION_RECEIPT.json`. Novsia lokalna analyticka davka sa tym automaticky nepovazuje za publikovanu.
+Reprodukcia: analyticky skript uvedeny v aktualnom reporte, `promote_pass1_fields.py`, `verify_pass1_partition.py`, `independent_decode_and_catalog.py`, potom `render_campaign_status.py OUTPUTS_DIR pass1_fcb_prefix CRT_ENTRY_GAP_VERSIONS_REPORT.md`. Presne vstupy a obmedzenia su v reportoch jednotlivych davok. Overena publikovana analyticka snimka je commit ba27379dd28c9a689d15233b0fd7017867f50114, pozri `CAMPAIGN_PUBLICATION_RECEIPT_20261112.json`. Hash aktualnej mapy sa zhoduje s publikovanou analytickou snimkou. Historicke poznamky v davkovych reportoch uvadzaju stav v case ich vzniku.
 
 ## Aktualizácia 13 oblastí
 
