@@ -13,11 +13,11 @@ assert post['DS']==post['SS']==post['ES']==dg and post['SP']==((0x800+0xe02e)&0x
 state=(work/'state_runtime.bin').read_bytes();word=lambda off:struct.unpack_from('<H',state,off-0x20dc)[0]
 assert word(0x20dc)==post['SP'] and word(0x20e2)==dg and word(0x211e)==load-0x10
 assert word(0x2120)==((word(0x2122)&255)<<8)|(word(0x2122)>>8)
-transcript=json.loads((out/'transcript.json').read_text());mode=s.get('mode','startup');expected_dumps=68 if mode=='input_init' else 56 if mode=='post_vga' else 37 if mode=='initialization' else 21 if mode=='game_entry' else 9
+transcript=json.loads((out/'transcript.json').read_text());mode=s.get('mode','startup');expected_dumps={'startup':9,'game_entry':21,'initialization':37,'post_vga':56,'input_init':68,'episode_init':74,'palette_init':78}[mode]
 assert any(x['command']=='EXEC RUN' for x in transcript) and sum('MEMDUMPBIN' in x['command'] for x in transcript)==expected_dumps
 assert all(x['command']=='PING' or x['command'].startswith(('EXEC EV ','EXEC BP ','EXEC BPDEL ','EXEC RUN','EXEC MEMDUMPBIN ')) for x in transcript)
 game_checks=False
-if mode in ('game_entry','initialization','post_vga','input_init'):
+if mode in ('game_entry','initialization','post_vga','input_init','episode_init','palette_init'):
     main=stages['game_main_entry']['registers'];after=stages['after_defaults_and_windir']['registers']
     assert main['CS']==after['CS']==load+0x476 and main['IP']==0x326 and after['IP']==0x35c
     assert main['DS']==main['SS']==dg and after['DS']==after['ES']==after['SS']==dg
@@ -32,7 +32,7 @@ if mode in ('game_entry','initialization','post_vga','input_init'):
     config=(work/'config_state.bin').read_bytes();assert struct.unpack_from('<H',config,6)[0]==25 and config[19]==1 and after['AX']==0
     game_checks=True
 init_checks=False
-if mode in ('initialization','post_vga','input_init'):
+if mode in ('initialization','post_vga','input_init','episode_init','palette_init'):
     main_cs=load+0x476;bsf_cs=load+0x83d
     assert struct.unpack('<3H',(work/'bsf_entry_stack.bin').read_bytes())==(0xdf,main_cs,0)
     assert struct.unpack('<5H',(work/'bsf_xor_stack.bin').read_bytes())==(0x2a3a,bsf_cs,0x3638,dg,54)
@@ -52,7 +52,7 @@ files=[work/'unpacked_runtime.bin',work/'bss_runtime.bin',work/'state_runtime.bi
 if game_checks:files += [work/(name+'.bin') for name in ['main_data','main_stack','argv_table','argv0','program_name','ivt_before','saved_ivt','ivt_after','optional_init','default_flag_before','default_flag_after','config_state']]
 if init_checks:files += [work/(name+'.bin') for name in ['bsf_entry_stack','bsf_xor_stack','bsf_encoded_runtime','bsf_decoded_runtime','bsf_checksum_stack','bsf_checksum_filename','bsf_final_runtime','audio_entry_stack','audio_active_before','audio_options','audio_active_after','vga_entry_stack','video_bda_before','video_bda_after','video_page_segments','vga_reciprocal_runtime']]
 post_checks=False
-if mode in ('post_vga','input_init'):
+if mode in ('post_vga','input_init','episode_init','palette_init'):
     main_cs=load+0x476
     assert struct.unpack('<HH',(work/'slot_init_stack.bin').read_bytes())==(0x12d,main_cs)
     before=(work/'slots_before_init.bin').read_bytes();after=(work/'slots_after_init.bin').read_bytes();assert len(before)==len(after)==1800
@@ -70,7 +70,7 @@ if mode in ('post_vga','input_init'):
     assert len(set(addresses))==14
     files += [work/(name+'.bin') for name in ['slot_init_stack','slots_before_init','slots_after_init','resource_init_stack','resource_pointers']];post_checks=True
 input_checks=False
-if mode=='input_init':
+if mode in ('input_init','episode_init','palette_init'):
     main_cs=load+0x476;input_cs=load+0x6b0
     assert struct.unpack('<HHH',(work/'keyboard_entry_stack.bin').read_bytes())==(0x148,main_cs,0)
     assert (work/'input_flags_before.bin').read_bytes()==b'\0\0' and (work/'input_flags_after_keyboard.bin').read_bytes()==b'\1\0'
@@ -82,5 +82,33 @@ if mode=='input_init':
     for name,cs,ip in [('keyboard_mode0_entry',input_cs,0x134),('after_keyboard_mode0',main_cs,0x148),('aux_mode0_entry',input_cs,0x18c),('after_aux_probe',input_cs,0x1a8),('after_aux_mode0',main_cs,0x15c)]:
         reg=stages[name]['registers'];assert reg['CS']==cs and reg['IP']==ip and reg['DS']==reg['SS']==dg
     files += [work/(name+'.bin') for name in ['keyboard_entry_stack','ivt9_before','input_flags_before','ivt9_after','saved_ivt9','input_flags_after_keyboard','aux_entry_stack','aux_regs_before','aux_available_before','aux_regs_after_probe','input_flags_after_aux','aux_available_after']];input_checks=True
-result=dict(verified=True,summary_sha256=sha(summary_path.read_bytes()),game_exe_sha256=s['game_source_sha256'],dosbox_exe_sha256=s['exe_sha256'],load_segment=load,relocations=len(rows),runtime_image_bytes=len(actual),runtime_image_sha256=sha(actual),bss_zero_bytes=len(bss),register_checks_passed=True,game_entry_checks_passed=game_checks,initialization_checks_passed=init_checks,post_vga_checks_passed=post_checks,input_initialization_checks_passed=input_checks,runtime_tests=1,new_deep_verified_bytes=0,files=[dict(path=str(p),sha256=sha(p.read_bytes())) for p in files],scope='one actual DOSBox-X built-in-DOS original EXE '+('keyboard/auxiliary initialization' if input_checks else 'post-VGA slot/resource initialization' if post_checks else 'BSF/audio/VGA initialization' if init_checks else 'game-entry/CRT/defaults' if game_checks else 'startup')+' capture, not full gameplay, audio-output, rendered-frame or original hardware parity')
+episode_checks=False
+if mode in ('episode_init','palette_init'):
+    main_cs=load+0x476;ui_cs=load+0xd29
+    assert struct.unpack('<HH',(work/'episode_probe_stack.bin').read_bytes())==(0x16e,main_cs)
+    filename_offset=(stages['episode_probe_entry']['registers']['SP']-18)&65535
+    assert (work/'episode_filename.bin').read_bytes().split(b'\0',1)[0]==b'map.1'
+    assert struct.unpack('<HHHH',(work/'episode_access_stack.bin').read_bytes())==(0x26bc,ui_cs,filename_offset,4)
+    assert stages['episode_access_return']['registers']['AX']==0
+    probe=stages['episode_bsf_mode1_return']['registers'];assert (probe['AX'],probe['DX'])==(0x363b,dg)
+    assert stages['episode_probe_return']['registers']['AX']==1
+    assert struct.unpack('<HHH',(work/'episode_prepare_stack.bin').read_bytes())==(0x174,main_cs,1)
+    assert (work/'episode_global.bin').read_bytes()==b'\1\0'
+    names=(work/'episode_asset_names.bin').read_bytes();assert [names[n:n+16].split(b'\0',1)[0] for n in (0,16,32)]==[b'map.1',b'img.1',b'demo.1']
+    for name,cs,ip in [('episode_probe_entry',ui_cs,0x2696),('episode_filename_formatted',ui_cs,0x26ae),('episode_access_entry',load+0x11ee,0x3990),('episode_access_return',ui_cs,0x26bc),('episode_bsf_mode1_return',ui_cs,0x26ca),('episode_probe_return',main_cs,0x16e),('episode_prepare_entry',load+0x277,0x336),('episode_prepare_return',main_cs,0x174)]:
+        reg=stages[name]['registers'];assert reg['CS']==cs and reg['IP']==ip and reg['DS']==reg['SS']==dg
+    files += [work/(name+'.bin') for name in ['episode_probe_stack','episode_filename','episode_access_stack','episode_prepare_stack','episode_global','episode_asset_names']];episode_checks=True
+palette_checks=False
+if mode=='palette_init':
+    main_cs=load+0x476;data_cs=load+0x277
+    assert struct.unpack('<HH',(work/'palette_loader_stack.bin').read_bytes())==(0x17c,main_cs)
+    retip,retcs,handle,lo,hi,origin=struct.unpack('<6H',(work/'palette_seek_stack.bin').read_bytes());assert (retip,retcs,lo,hi,origin)==(0x2dd,data_cs,0xfd00,0xffff,2)
+    source=next(x for x in csv.DictReader((out/'inputs.csv').open()) if Path(x['source']).name.upper()=='GAME.PAL');asset=Path(source['source']).read_bytes();assert sha(asset)==source['sha256']=='efd52442cbee3327d8cec045b31559049e8767b298c25674a557eb6e096a759f'
+    reg=stages['palette_seek_return']['registers'];assert (reg['DX']<<16)|reg['AX']==len(asset)-768==1156
+    assert struct.unpack('<3H',(work/'palette_dac_stack.bin').read_bytes())==(0x31d,data_cs,0x4a64)
+    assert (work/'palette_converted_runtime.bin').read_bytes()==bytes(n>>2 for n in asset[-768:])
+    for name,cs,ip in [('palette_loader_entry',data_cs,0x2a6),('palette_seek_entry',load+0x11ee,0x1bd6),('palette_seek_return',data_cs,0x2dd),('palette_dac_entry',load+0x156,0x12a),('palette_loader_return',main_cs,0x17c)]:
+        reg=stages[name]['registers'];assert reg['CS']==cs and reg['IP']==ip and reg['DS']==reg['SS']==dg
+    files += [work/(name+'.bin') for name in ['palette_loader_stack','palette_seek_stack','palette_dac_stack','palette_converted_runtime']];palette_checks=True
+result=dict(verified=True,summary_sha256=sha(summary_path.read_bytes()),game_exe_sha256=s['game_source_sha256'],dosbox_exe_sha256=s['exe_sha256'],load_segment=load,relocations=len(rows),runtime_image_bytes=len(actual),runtime_image_sha256=sha(actual),bss_zero_bytes=len(bss),register_checks_passed=True,game_entry_checks_passed=game_checks,initialization_checks_passed=init_checks,post_vga_checks_passed=post_checks,input_initialization_checks_passed=input_checks,episode_checks_passed=episode_checks,palette_checks_passed=palette_checks,runtime_tests=1,new_deep_verified_bytes=0,files=[dict(path=str(p),sha256=sha(p.read_bytes())) for p in files],scope='one actual DOSBox-X built-in-DOS original EXE '+('palette tail seek/conversion and DAC routine return' if palette_checks else 'episode selection/access/BSFmode1 and asset-name preparation' if episode_checks else 'keyboard/auxiliary initialization' if input_checks else 'post-VGA slot/resource initialization' if post_checks else 'BSF/audio/VGA initialization' if init_checks else 'game-entry/CRT/defaults' if game_checks else 'startup')+' capture, not full gameplay, audio-output, rendered-frame or original hardware parity')
 (out/'independent_verification.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items() if k!='files'},indent=2))

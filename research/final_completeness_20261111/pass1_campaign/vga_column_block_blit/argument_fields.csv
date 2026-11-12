@@ -1,0 +1,11 @@
+bp_offset,type,role,status,evidence
+6,WORD,source FAR offset,PARTIAL,all78original instructions plus native replay of specified domains
+8,WORD,source FAR segment,PARTIAL,all78original instructions plus native replay of specified domains
+10,WORD,x; unsigned SHR2 and low2 plane bits,PARTIAL,all78original instructions plus native replay of specified domains
+12,WORD,y; only AL participates in MUL80,PARTIAL,all78original instructions plus native replay of specified domains
+14,WORD_unused_locally,not read by this bounded function,PARTIAL,all78original instructions plus native replay of specified domains
+16,WORD,source column-start stride bytes,PARTIAL,all78original instructions plus native replay of specified domains
+18,WORD,columns; LOOP zero wraps to65536,PARTIAL,all78original instructions plus native replay of specified domains
+20,WORD,rows; LOOP zero wraps to65536,PARTIAL,all78original instructions plus native replay of specified domains
+22,WORD,page selector zero/nonzero,PARTIAL,all78original instructions plus native replay of specified domains
+24,WORD,signed negative disables key; else lowBYTE compared,PARTIAL,all78original instructions plus native replay of specified domains

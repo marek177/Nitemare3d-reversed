@@ -164,6 +164,24 @@ def main():
     slot_flush_summary=root/'slot_pending_flush/summary.json'
     sprite_clip_summary=root/'sprite_clip_prefix/summary.json'
     input_wrapper_summary=root/'input_runtime_wrappers/summary.json'
+    episode_probe_summary=root/'episode_available_probe/summary.json'
+    palette_load_summary=root/'palette_load_replay/summary.json'
+    sound_directory_summary=root/'sound_directory_producer/summary.json'
+    font2_summary=root/'font2_runtime_fields/summary.json'
+    intro_pcx_summary=root/'intro_pcx_replay/summary.json'
+    block_blit_summary=root/'vga_column_block_blit/summary.json'
+    if block_blit_summary.exists():
+        for f in readjson(block_blit_summary)['functions']:sources.append((f['name'],root/'vga_column_block_blit'/(f['name']+'.csv')))
+    if intro_pcx_summary.exists():
+        for f in readjson(intro_pcx_summary)['functions']:sources.append((f['name'],root/'intro_pcx_replay'/(f['name']+'.csv')))
+    if font2_summary.exists():
+        for f in readjson(font2_summary)['functions']:sources.append((f['name'],root/'font2_runtime_fields'/(f['name']+'.csv')))
+    if sound_directory_summary.exists():
+        for f in readjson(sound_directory_summary)['functions']:sources.append((f['name'],root/'sound_directory_producer'/(f['name']+'.csv')))
+    if palette_load_summary.exists():
+        for f in readjson(palette_load_summary)['functions']:sources.append((f['name'],root/'palette_load_replay'/(f['name']+'.csv')))
+    if episode_probe_summary.exists():
+        for f in readjson(episode_probe_summary)['functions']:sources.append((f['name'],root/'episode_available_probe'/(f['name']+'.csv')))
     if input_wrapper_summary.exists():
         for f in readjson(input_wrapper_summary)['functions']:sources.append((f['name'],root/'input_runtime_wrappers'/(f['name']+'.csv')))
     if sprite_clip_summary.exists():
@@ -476,6 +494,10 @@ def main():
     replay_folders.append('slot_pending_flush')
     replay_folders.append('sprite_clip_prefix')
     replay_folders.append('sprite_pixel_replay')
+    replay_folders.append('episode_available_probe')
+    replay_folders.append('palette_load_replay')
+    if (root/'intro_pcx_replay/summary.json').exists():replay_folders.append('intro_pcx_replay')
+    if (root/'vga_column_block_blit/summary.json').exists():replay_folders.append('vga_column_block_blit')
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -504,7 +526,7 @@ def main():
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
     runtime_evidence=[];runtime_sessions=set()
-    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime'):
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3'):
         runtime_path=root/runtime_folder/'independent_verification.json'
         if not runtime_path.exists():continue
         runtime=readjson(runtime_path)
@@ -518,11 +540,12 @@ def main():
         runtime_evidence.append(dict(path=str(runtime_path),sha256=sha(runtime_path.read_bytes()),runtime_image_sha256=runtime['runtime_image_sha256'],scope=runtime['scope']))
     if runtime_evidence:
         result['runtime_tests']=len(runtime_evidence)
-        result['runtime_tests_scope']='retained original packed DOS2 EXE scenarios under DOSBox-X built-in DOS with debugger stops: startup/B3, main/defaults35C, BSF/audio/VGA initialization and when present post-VGA slot/resource initialization; no gameplay/audio-output/rendered-frame/Win16 runtime parity; repeated prefix checks overlap'
+        result['runtime_tests_scope']='retained original packed DOS2 EXE scenarios under DOSBox-X built-in DOS with debugger stops: startup/B3, main/defaults35C, BSF/audio/VGA, post-VGA slot/resource, keyboard/auxiliary, episode/asset names, palette/DAC readback, sound directory/CPU trace, UIF font2, optional intro missing-file return and explicit added CD asset back-buffer four-plane readback with paused read-map intervention/restoration; only independently retained proofs counted; no gameplay/audio-output/visible-frame/Win16 runtime parity; repeated prefixes overlap'
         result['runtime_evidence']=runtime_evidence
-    runtime_bss=root/'runtime_reciprocal_init/external_bss_tables.csv'
-    if runtime_bss.exists():
-        bss_tables=readcsv(runtime_bss)
+    bss_tables=[]
+    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv'):
+        if runtime_bss.exists():bss_tables.extend(readcsv(runtime_bss))
+    if bss_tables:
         csvout(dest/'runtime_bss_tables.csv',bss_tables)
         result['runtime_bss_table_bytes_outside_file']=sum(int(row['length']) for row in bss_tables)
     refinement_paths=[root/'action_dispatch_replay/record_field_roles.csv',root/'damage_effect_replay/consumer_field_roles.csv']
@@ -535,6 +558,17 @@ def main():
     if records:
         csvout(dest/'record_field_refinements.csv',records)
         result['record_field_refinements']=len(records)
+    win_palette_path=root/'win110_palette_consumer/summary.json'
+    if win_palette_path.exists():
+        win_palette=readjson(win_palette_path)
+        if win_palette['failures']!=0 or win_palette['runtime_tests']!=0:raise ValueError('unexpected Win palette replay result')
+        for item in win_palette['source_inputs']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('Win palette source mismatch')
+        if sha((root/'win110_palette_consumer/cases.csv').read_bytes())!=win_palette['cases_sha256']:raise ValueError('Win palette cases mismatch')
+        win_functions=readcsv(root/'win110_palette_consumer/functions.csv')
+        if len(win_functions)!=win_palette['functions']:raise ValueError('Win function count mismatch')
+        csvout(dest/'win110_palette_functions.csv',win_functions)
+        result['win110_palette_supplement']=dict(functions=win_palette['functions'],instructions=win_palette['instructions'],instruction_bytes=win_palette['instruction_bytes'],replay_cases_separate=win_palette['cases'],runtime_tests=0,scope=win_palette['scope'])
     (dest/'summary.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,indent=2))
 

@@ -8,21 +8,21 @@
       "sha256": "e4c77ac69a936c859d1ca4b4d573b7ef35da4aafd443b2466792f4320c425ab5"
     }
   ],
-  "functions": 122,
-  "independent_instruction_count": 4563,
-  "independent_instruction_bytes": 11304,
+  "functions": 130,
+  "independent_instruction_count": 4993,
+  "independent_instruction_bytes": 12456,
   "data_bytes_with_local_evidence": 57988,
   "primary_type_bytes": {
-    "UNKNOWN_CONTENT": 102068,
-    "EXECUTABLE_CODE": 11304,
+    "UNKNOWN_CONTENT": 100916,
+    "EXECUTABLE_CODE": 12456,
     "DATA": 57988
   },
-  "interval_count": 665,
+  "interval_count": 682,
   "original_pass320_ledger_imported": true,
   "new_deep_verified_bytes": 0,
-  "runtime_tests": 5,
+  "runtime_tests": 14,
   "scope": "Current campaign partition only; PARTIAL does not mean closed semantics; UNKNOWN is not historical reclassification",
-  "controlled_instruction_replay_cases": 971101,
+  "controlled_instruction_replay_cases": 974287,
   "original_noncode_bytes": 57295,
   "original_noncode_intersection_code_bytes": 0,
   "original_noncode_intersection_data_bytes": 57100,
@@ -30,7 +30,7 @@
   "direction_index_prefix_replay_scope": "seeded prefix only; stop before 0099; no trig callee or natural callers",
   "latest_pass1_map_sha256": "3021969d4e4348715816361fa387631e7d6cfd9fc9dcc136e26073f0f9984d1b",
   "pass1_partial_bytes_without_typed_data": 2,
-  "runtime_tests_scope": "retained original packed DOS2 EXE scenarios under DOSBox-X built-in DOS with debugger stops: startup/B3, main/defaults35C, BSF/audio/VGA initialization and when present post-VGA slot/resource initialization; no gameplay/audio-output/rendered-frame/Win16 runtime parity; repeated prefix checks overlap",
+  "runtime_tests_scope": "retained original packed DOS2 EXE scenarios under DOSBox-X built-in DOS with debugger stops: startup/B3, main/defaults35C, BSF/audio/VGA, post-VGA slot/resource, keyboard/auxiliary, episode/asset names, palette/DAC readback, sound directory/CPU trace, UIF font2, optional intro missing-file return and explicit added CD asset back-buffer four-plane readback with paused read-map intervention/restoration; only independently retained proofs counted; no gameplay/audio-output/visible-frame/Win16 runtime parity; repeated prefixes overlap",
   "runtime_evidence": [
     {
       "path": "outputs\\dosbox_startup_runtime\\independent_verification.json",
@@ -61,8 +61,70 @@
       "sha256": "07905c5d36d2472992f1c81f73e2fe85f024760cd4140b1fc06e4b849c9f6dfb",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one actual DOSBox-X built-in-DOS original EXE keyboard/auxiliary initialization capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
+    },
+    {
+      "path": "outputs\\dosbox_episode_init_runtime\\independent_verification.json",
+      "sha256": "19f9e204adf2fb77f8f521f19d45a4917d9dc541a3539068986b9efebc00a720",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one actual DOSBox-X built-in-DOS original EXE episode selection/access/BSFmode1 and asset-name preparation capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
+    },
+    {
+      "path": "outputs\\dosbox_palette_init_runtime\\independent_verification.json",
+      "sha256": "7893e5d95af4e656d5522ce5286a02e2237b1dd3438c2ef3c8bb310245038a45",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one actual DOSBox-X built-in-DOS original EXE palette tail seek/conversion and DAC routine return capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
+    },
+    {
+      "path": "outputs\\dosbox_unknown_watch_runtime_v3\\independent_verification.json",
+      "sha256": "0f641bd5bbc42f3a0f868adc00d74f2defaa085536ec8ed51075b4c70816eba8",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to main017C, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
+    },
+    {
+      "path": "outputs\\dosbox_dac_readback_runtime\\independent_verification.json",
+      "sha256": "9af71da31cc3048a6ab114c54bc4ddbea4a287f352af626f736dae70f6740ae6",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original DOS2 DOSBox-X session: read-only emulated DAC768component state equals actual palette buffer and GAME.PAL tail>>2; not physical hardware or rendered-frame parity; 44UNKNOWN BYTE cached-value breakpoints from CRT0018 to main017C, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
+    },
+    {
+      "path": "outputs\\dosbox_sound_directory_runtime\\independent_verification.json",
+      "sha256": "e6f45cdfc56bb91e65bfc8f6f23aba6722cce98cecdbdbf0cfb547b304bae61b",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at main0190; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to main0190, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
+    },
+    {
+      "path": "outputs\\dosbox_sound_trace_runtime\\independent_verification.json",
+      "sha256": "195695b418de7d200ba90ce21ec8fc3f439a67dac9a8d094bc4dbea8b89bcb24",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "bounded original CPU pre-instruction trace main017C..0190 (terminal record not executed); one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at main0190; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to main0190, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
+    },
+    {
+      "path": "outputs\\dosbox_font2_runtime\\independent_verification.json",
+      "sha256": "665010b028ec0f450181a5c9deaaf8f03c4f503aa3a4847ebfe11f43f23a36ea",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07D9; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07D9; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07D9, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only"
+    },
+    {
+      "path": "outputs\\dosbox_optional_intro_runtime\\independent_verification.json",
+      "sha256": "644a107f226c004a1304dd0d6871ec7061fac7c2eaf4258616ab06e2addc07ae",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07DD; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07DD; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07DD, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only; optional intro returns AL0 with DSTOPEN.IMG absent in retained isolated drive; no successful intro decode or VGA frame proof"
+    },
+    {
+      "path": "outputs\\dosbox_intro_loaded_runtime_v3\\independent_verification.json",
+      "sha256": "5c9c04ecd7afb34c39621f669841b28ef24fb802e87a1566db0de4c035d65d56",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original DOS2 DOSBox-X session: UIF192B directory and font2 transformed907B/pointer128 exact at UI07A2; one original DOS2 DOSBox-X session: sound directory474B equals SND.DAT[192:666] at UI07A2; one original DOS2 DOSBox-X session:44UNKNOWN BYTE cached-value breakpoints from CRT0018 to UI07A2, no events; no read/same-value-write/host-callback internal write proof, hook4B endpoint dumps only; original DOS2 EXE with explicit added CD asset: native decoded back-page four planes equal64000asset pixels; paused OUTP read-map intervention only after endpoint, original GC/index restored, no RUN after intervention; front-page plane0 iszero; VGA read latches not restored or verified; not visible-frame/RGB/gameplay parity"
     }
   ],
-  "runtime_bss_table_bytes_outside_file": 2044,
-  "record_field_refinements": 14
+  "runtime_bss_table_bytes_outside_file": 3030,
+  "record_field_refinements": 14,
+  "win110_palette_supplement": {
+    "functions": 4,
+    "instructions": 229,
+    "instruction_bytes": 641,
+    "replay_cases_separate": 22,
+    "runtime_tests": 0,
+    "scope": "Win110 bounded static code and synthetic-selector instruction replay; file/API dependencies mocked; GDI only prefix through creation call; no actual Win16 runtime or full palette parity"
+  }
 }

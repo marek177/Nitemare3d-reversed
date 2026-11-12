@@ -1,0 +1,22 @@
+cs,ip,image_offset,bytes,instruction
+342,298,5770,55,push bp
+342,299,5771,8bec,"mov bp,sp"
+342,301,5773,56,push si
+342,302,5774,33c0,"xor ax,ax"
+342,304,5776,bac803,"mov dx,3C8h"
+342,307,5779,ee,"out dx,al"
+342,308,5780,b90003,"mov cx,300h"
+342,311,5783,8b7606,"mov si,[bp+6]"
+342,314,5786,eb09,jmp short 0145h
+342,316,5788,8a04,"mov al,[si]"
+342,318,5790,2ae4,"sub ah,ah"
+342,320,5792,bac903,"mov dx,3C9h"
+342,323,5795,ee,"out dx,al"
+342,324,5796,46,inc si
+342,325,5797,8bc1,"mov ax,cx"
+342,327,5799,49,dec cx
+342,328,5800,0bc0,"or ax,ax"
+342,330,5802,75f0,jne short 013Ch
+342,332,5804,5e,pop si
+342,333,5805,c9,leave
+342,334,5806,cb,ret far

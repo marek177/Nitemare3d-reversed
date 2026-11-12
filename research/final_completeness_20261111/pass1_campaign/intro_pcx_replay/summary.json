@@ -1,0 +1,52 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "asset_path": "L:\\nite3d\\dos\\n3dcd\\DSTOPEN.IMG",
+  "asset_sha256": "af574568089f1998ca50ceeba310ff068c728279ff470cd39f47a8919228b95a",
+  "asset_bytes": 20678,
+  "asset_decoded_bytes": 64000,
+  "asset_stream_end": 19909,
+  "asset_trailing_bytes": 769,
+  "asset_pixels_sha256": "0a0e3ad03b3ac664d2d874c26491636a4347380765a75f6ee8353f19cb0bcec1",
+  "asset_tokens": 13408,
+  "asset_cross_row_tokens": 0,
+  "functions": [
+    {
+      "name": "intro_pcx_stream_load",
+      "start": 15728,
+      "end_exclusive": 16085,
+      "instruction_bytes": 356,
+      "instructions": 119
+    },
+    {
+      "name": "intro_optional_image",
+      "start": 55850,
+      "end_exclusive": 55894,
+      "instruction_bytes": 44,
+      "instructions": 16
+    }
+  ],
+  "cases": 26,
+  "failures": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "scope": "original bounded DOS2 loader instructions; file APIs/fatal and row renderer mocked; real CD asset plus synthetic input cases at two loads; truncated input uses zeroed synthetic stack, no natural DOS or VGA/runtime parity",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "L:\\nite3d\\dos\\n3dcd\\DSTOPEN.IMG",
+      "sha256": "af574568089f1998ca50ceeba310ff068c728279ff470cd39f47a8919228b95a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_intro_pcx.py",
+      "sha256": "70a0d7350b5fbf15819d865fda5dc9175217f44e4b2080c079cb262aa4c3c244"
+    }
+  ]
+}

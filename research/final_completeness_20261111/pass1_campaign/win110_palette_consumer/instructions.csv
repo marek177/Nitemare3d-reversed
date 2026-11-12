@@ -1,0 +1,230 @@
+function,segment,offset,file_offset,bytes,instruction
+win_palette_load_tail,3,18692,108740,57,push di
+win_palette_load_tail,3,18693,108741,56,push si
+win_palette_load_tail,3,18694,108742,680080,push 8000h
+win_palette_load_tail,3,18697,108745,68ae0e,push 0EAEh
+win_palette_load_tail,3,18700,108748,9ad4543549,"call far 54D4h,4935h"
+win_palette_load_tail,3,18705,108753,83c404,"add sp,4"
+win_palette_load_tail,3,18708,108756,8bf8,"mov di,ax"
+win_palette_load_tail,3,18710,108758,0bf8,"or di,ax"
+win_palette_load_tail,3,18712,108760,7d0e,jge short 4928h
+win_palette_load_tail,3,18714,108762,68ae0e,push 0EAEh
+win_palette_load_tail,3,18717,108765,68540e,push 0E54h
+win_palette_load_tail,3,18720,108768,9a18314749,"call far 3118h,4947h"
+win_palette_load_tail,3,18725,108773,83c404,"add sp,4"
+win_palette_load_tail,3,18728,108776,6668ffff0200,data32 push 2FFFFh
+win_palette_load_tail,3,18734,108782,6800fd,push 0FD00h
+win_palette_load_tail,3,18737,108785,57,push di
+win_palette_load_tail,3,18738,108786,9ae8535a49,"call far 53E8h,495Ah"
+win_palette_load_tail,3,18743,108791,83c408,"add sp,8"
+win_palette_load_tail,3,18746,108794,0bd2,"or dx,dx"
+win_palette_load_tail,3,18748,108796,7d0e,jge short 494Ch
+win_palette_load_tail,3,18750,108798,68ae0e,push 0EAEh
+win_palette_load_tail,3,18753,108801,68980e,push 0E98h
+win_palette_load_tail,3,18756,108804,9a18318748,"call far 3118h,4887h"
+win_palette_load_tail,3,18761,108809,83c404,"add sp,4"
+win_palette_load_tail,3,18764,108812,33f6,"xor si,si"
+win_palette_load_tail,3,18766,108814,6a01,push 1
+win_palette_load_tail,3,18768,108816,8bc6,"mov ax,si"
+win_palette_load_tail,3,18770,108818,057e5b,"add ax,5B7Eh"
+win_palette_load_tail,3,18773,108821,50,push ax
+win_palette_load_tail,3,18774,108822,57,push di
+win_palette_load_tail,3,18775,108823,9a98578149,"call far 5798h,4981h"
+win_palette_load_tail,3,18780,108828,83c406,"add sp,6"
+win_palette_load_tail,3,18783,108831,46,inc si
+win_palette_load_tail,3,18784,108832,81fe0003,"cmp si,300h"
+win_palette_load_tail,3,18788,108836,7ce8,jl short 494Eh
+win_palette_load_tail,3,18790,108838,6a00,push 0
+win_palette_load_tail,3,18792,108840,687e5b,push 5B7Eh
+win_palette_load_tail,3,18795,108843,9af43a7849,"call far 3AF4h,4978h"
+win_palette_load_tail,3,18800,108848,83c404,"add sp,4"
+win_palette_load_tail,3,18803,108851,6a00,push 0
+win_palette_load_tail,3,18805,108853,9aac2a7246,"call far 2AACh,4672h"
+win_palette_load_tail,3,18810,108858,83c402,"add sp,2"
+win_palette_load_tail,3,18813,108861,57,push di
+win_palette_load_tail,3,18814,108862,9ab0537248,"call far 53B0h,4872h"
+win_palette_load_tail,3,18819,108867,83c402,"add sp,2"
+win_palette_load_tail,3,18822,108870,5e,pop si
+win_palette_load_tail,3,18823,108871,5f,pop di
+win_palette_load_tail,3,18824,108872,cb,ret far
+win_palette_dispatch,3,15092,105140,55,push bp
+win_palette_dispatch,3,15093,105141,8bec,"mov bp,sp"
+win_palette_dispatch,3,15095,105143,803eb04600,"cmp byte ptr [46B0h],0"
+win_palette_dispatch,3,15100,105148,740c,je short 3B0Ah
+win_palette_dispatch,3,15102,105150,66ff7606,push dword ptr [bp+6]
+win_palette_dispatch,3,15106,105154,9acc3a113b,"call far 3ACCh,3B11h"
+win_palette_dispatch,3,15111,105159,c9,leave
+win_palette_dispatch,3,15112,105160,cb,ret far
+win_palette_dispatch,3,15114,105162,66ff7606,push dword ptr [bp+6]
+win_palette_dispatch,3,15118,105166,9aaa31be3a,"call far 31AAh,3ABEh"
+win_palette_dispatch,3,15123,105171,c9,leave
+win_palette_dispatch,3,15124,105172,cb,ret far
+win_palette_vga_upload,3,15052,105100,55,push bp
+win_palette_vga_upload,3,15053,105101,8bec,"mov bp,sp"
+win_palette_vga_upload,3,15055,105103,56,push si
+win_palette_vga_upload,3,15056,105104,33c0,"xor ax,ax"
+win_palette_vga_upload,3,15058,105106,bac803,"mov dx,3C8h"
+win_palette_vga_upload,3,15061,105109,ee,"out dx,al"
+win_palette_vga_upload,3,15062,105110,b90003,"mov cx,300h"
+win_palette_vga_upload,3,15065,105113,8b7606,"mov si,[bp+6]"
+win_palette_vga_upload,3,15068,105116,eb0c,jmp short 3AEAh
+win_palette_vga_upload,3,15070,105118,8a04,"mov al,[si]"
+win_palette_vga_upload,3,15072,105120,c0e802,"shr al,2"
+win_palette_vga_upload,3,15075,105123,2ae4,"sub ah,ah"
+win_palette_vga_upload,3,15077,105125,bac903,"mov dx,3C9h"
+win_palette_vga_upload,3,15080,105128,ee,"out dx,al"
+win_palette_vga_upload,3,15081,105129,46,inc si
+win_palette_vga_upload,3,15082,105130,8bc1,"mov ax,cx"
+win_palette_vga_upload,3,15084,105132,49,dec cx
+win_palette_vga_upload,3,15085,105133,0bc0,"or ax,ax"
+win_palette_vga_upload,3,15087,105135,75ed,jne short 3ADEh
+win_palette_vga_upload,3,15089,105137,5e,pop si
+win_palette_vga_upload,3,15090,105138,c9,leave
+win_palette_vga_upload,3,15091,105139,cb,ret far
+win_palette_gdi,3,12714,102762,c80e0400,"enter 40Eh,0"
+win_palette_gdi,3,12718,102766,57,push di
+win_palette_gdi,3,12719,102767,56,push si
+win_palette_gdi,3,12720,102768,ff36b600,push word ptr [0B6h]
+win_palette_gdi,3,12724,102772,9a6a310000,"call far 316Ah,0"
+win_palette_gdi,3,12729,102777,8946f6,"mov [bp-0Ah],ax"
+win_palette_gdi,3,12732,102780,66c786f2fb00030001,"mov dword ptr [bp-40Eh],1000300h"
+win_palette_gdi,3,12741,102789,6633c0,"xor eax,eax"
+win_palette_gdi,3,12744,102792,66b900010000,"mov ecx,100h"
+win_palette_gdi,3,12750,102798,8dbef6fb,"lea di,[bp-40Ah]"
+win_palette_gdi,3,12754,102802,16,push ss
+win_palette_gdi,3,12755,102803,07,pop es
+win_palette_gdi,3,12756,102804,f366ab,rep stosd [di]
+win_palette_gdi,3,12759,102807,8b4608,"mov ax,[bp+8]"
+win_palette_gdi,3,12762,102810,0bc0,"or ax,ax"
+win_palette_gdi,3,12764,102812,740a,je short 31E8h
+win_palette_gdi,3,12766,102814,48,dec ax
+win_palette_gdi,3,12767,102815,48,dec ax
+win_palette_gdi,3,12768,102816,0f842001,je 3304h
+win_palette_gdi,3,12772,102820,e96801,jmp 334Fh
+win_palette_gdi,3,12776,102824,ff76f6,push word ptr [bp-0Ah]
+win_palette_gdi,3,12779,102827,6a01,push 1
+win_palette_gdi,3,12781,102829,9affff0000,"call far 0FFFFh,0"
+win_palette_gdi,3,12786,102834,ff76f6,push word ptr [bp-0Ah]
+win_palette_gdi,3,12789,102837,666800010000,data32 push 100h
+win_palette_gdi,3,12795,102843,8d86f6fb,"lea ax,[bp-40Ah]"
+win_palette_gdi,3,12799,102847,16,push ss
+win_palette_gdi,3,12800,102848,50,push ax
+win_palette_gdi,3,12801,102849,9affff0000,"call far 0FFFFh,0"
+win_palette_gdi,3,12806,102854,8dbef9fb,"lea di,[bp-407h]"
+win_palette_gdi,3,12810,102858,897efe,"mov [bp-2],di"
+win_palette_gdi,3,12813,102861,8bf7,"mov si,di"
+win_palette_gdi,3,12815,102863,c60400,"mov byte ptr [si],0"
+win_palette_gdi,3,12818,102866,83c604,"add si,4"
+win_palette_gdi,3,12821,102869,8d46f9,"lea ax,[bp-7]"
+win_palette_gdi,3,12824,102872,3bf0,"cmp si,ax"
+win_palette_gdi,3,12826,102874,72f3,jb short 320Fh
+win_palette_gdi,3,12828,102876,803eaf4601,"cmp byte ptr [46AFh],1"
+win_palette_gdi,3,12833,102881,f5,cmc
+win_palette_gdi,3,12834,102882,1bc9,"sbb cx,cx"
+win_palette_gdi,3,12836,102884,83e10a,"and cx,0Ah"
+win_palette_gdi,3,12839,102887,8b7606,"mov si,[bp+6]"
+win_palette_gdi,3,12842,102890,8bc1,"mov ax,cx"
+win_palette_gdi,3,12844,102892,03c1,"add ax,cx"
+win_palette_gdi,3,12846,102894,03c1,"add ax,cx"
+win_palette_gdi,3,12848,102896,03f0,"add si,ax"
+win_palette_gdi,3,12850,102898,b80001,"mov ax,100h"
+win_palette_gdi,3,12853,102901,2bc1,"sub ax,cx"
+win_palette_gdi,3,12855,102903,3bc1,"cmp ax,cx"
+win_palette_gdi,3,12857,102905,7e37,jle short 3272h
+win_palette_gdi,3,12859,102907,8bd1,"mov dx,cx"
+win_palette_gdi,3,12861,102909,c1e202,"shl dx,2"
+win_palette_gdi,3,12864,102912,8d86f6fb,"lea ax,[bp-40Ah]"
+win_palette_gdi,3,12868,102916,03d0,"add dx,ax"
+win_palette_gdi,3,12870,102918,b80001,"mov ax,100h"
+win_palette_gdi,3,12873,102921,2bc1,"sub ax,cx"
+win_palette_gdi,3,12875,102923,2bc1,"sub ax,cx"
+win_palette_gdi,3,12877,102925,8946fc,"mov [bp-4],ax"
+win_palette_gdi,3,12880,102928,8956fe,"mov [bp-2],dx"
+win_palette_gdi,3,12883,102931,894ef8,"mov [bp-8],cx"
+win_palette_gdi,3,12886,102934,894efa,"mov [bp-6],cx"
+win_palette_gdi,3,12889,102937,8bfa,"mov di,dx"
+win_palette_gdi,3,12891,102939,8bd0,"mov dx,ax"
+win_palette_gdi,3,12893,102941,ac,lodsb [si]
+win_palette_gdi,3,12894,102942,8805,"mov [di],al"
+win_palette_gdi,3,12896,102944,ac,lodsb [si]
+win_palette_gdi,3,12897,102945,884501,"mov [di+1],al"
+win_palette_gdi,3,12900,102948,ac,lodsb [si]
+win_palette_gdi,3,12901,102949,884502,"mov [di+2],al"
+win_palette_gdi,3,12904,102952,c6450301,"mov byte ptr [di+3],1"
+win_palette_gdi,3,12908,102956,83c704,"add di,4"
+win_palette_gdi,3,12911,102959,4a,dec dx
+win_palette_gdi,3,12912,102960,75eb,jne short 325Dh
+win_palette_gdi,3,12914,102962,9ac62c4d33,"call far 2CC6h,334Dh"
+win_palette_gdi,3,12919,102967,8d86f2fb,"lea ax,[bp-40Eh]"
+win_palette_gdi,3,12923,102971,16,push ss
+win_palette_gdi,3,12924,102972,50,push ax
+win_palette_gdi,3,12925,102973,9a202d0000,"call far 2D20h,0"
+win_palette_gdi,3,12930,102978,a3be00,"mov [0BEh],ax"
+win_palette_gdi,3,12933,102981,0bc0,"or ax,ax"
+win_palette_gdi,3,12935,102983,750b,jne short 3294h
+win_palette_gdi,3,12937,102985,68480e,push 0E48h
+win_palette_gdi,3,12940,102988,9a18315f2f,"call far 3118h,2F5Fh"
+win_palette_gdi,3,12945,102993,83c402,"add sp,2"
+win_palette_gdi,3,12948,102996,ff76f6,push word ptr [bp-0Ah]
+win_palette_gdi,3,12951,102999,ff36be00,push word ptr [0BEh]
+win_palette_gdi,3,12955,103003,6a00,push 0
+win_palette_gdi,3,12957,103005,9a78310000,"call far 3178h,0"
+win_palette_gdi,3,12962,103010,ff76f6,push word ptr [bp-0Ah]
+win_palette_gdi,3,12965,103013,9a7e310000,"call far 317Eh,0"
+win_palette_gdi,3,12970,103018,33ff,"xor di,di"
+win_palette_gdi,3,12972,103020,897efe,"mov [bp-2],di"
+win_palette_gdi,3,12975,103023,8bf7,"mov si,di"
+win_palette_gdi,3,12977,103025,8a82f6fb,"mov al,[bp+si-40Ah]"
+win_palette_gdi,3,12981,103029,88849c4d,"mov [si+4D9Ch],al"
+win_palette_gdi,3,12985,103033,8a82f7fb,"mov al,[bp+si-409h]"
+win_palette_gdi,3,12989,103037,88849b4d,"mov [si+4D9Bh],al"
+win_palette_gdi,3,12993,103041,8a82f8fb,"mov al,[bp+si-408h]"
+win_palette_gdi,3,12997,103045,88849a4d,"mov [si+4D9Ah],al"
+win_palette_gdi,3,13001,103049,c6849d4d00,"mov byte ptr [si+4D9Dh],0"
+win_palette_gdi,3,13006,103054,83c604,"add si,4"
+win_palette_gdi,3,13009,103057,81fe0004,"cmp si,400h"
+win_palette_gdi,3,13013,103061,7cda,jl short 32B1h
+win_palette_gdi,3,13015,103063,ff36d24b,push word ptr [4BD2h]
+win_palette_gdi,3,13019,103067,666800010000,data32 push 100h
+win_palette_gdi,3,13025,103073,1e,push ds
+win_palette_gdi,3,13026,103074,689a4d,push 4D9Ah
+win_palette_gdi,3,13029,103077,9a5a2c0000,"call far 2C5Ah,0"
+win_palette_gdi,3,13034,103082,ff76f6,push word ptr [bp-0Ah]
+win_palette_gdi,3,13037,103085,666a00,data32 push 0
+win_palette_gdi,3,13040,103088,666801000100,data32 push 10001h
+win_palette_gdi,3,13046,103094,ff36d24b,push word ptr [4BD2h]
+win_palette_gdi,3,13050,103098,666a00,data32 push 0
+win_palette_gdi,3,13053,103101,9ac2300000,"call far 30C2h,0"
+win_palette_gdi,3,13058,103106,eb4b,jmp short 334Fh
+win_palette_gdi,3,13060,103108,8b7606,"mov si,[bp+6]"
+win_palette_gdi,3,13063,103111,83c61e,"add si,1Eh"
+win_palette_gdi,3,13066,103114,8dbe1efc,"lea di,[bp-3E2h]"
+win_palette_gdi,3,13070,103118,ac,lodsb [si]
+win_palette_gdi,3,13071,103119,8805,"mov [di],al"
+win_palette_gdi,3,13073,103121,ac,lodsb [si]
+win_palette_gdi,3,13074,103122,884501,"mov [di+1],al"
+win_palette_gdi,3,13077,103125,ac,lodsb [si]
+win_palette_gdi,3,13078,103126,884502,"mov [di+2],al"
+win_palette_gdi,3,13081,103129,c6450301,"mov byte ptr [di+3],1"
+win_palette_gdi,3,13085,103133,83c704,"add di,4"
+win_palette_gdi,3,13088,103136,8d46ce,"lea ax,[bp-32h]"
+win_palette_gdi,3,13091,103139,3bf8,"cmp di,ax"
+win_palette_gdi,3,13093,103141,72e7,jb short 330Eh
+win_palette_gdi,3,13095,103143,833ebe0000,"cmp word ptr [0BEh],0"
+win_palette_gdi,3,13100,103148,7415,je short 3343h
+win_palette_gdi,3,13102,103150,ff36be00,push word ptr [0BEh]
+win_palette_gdi,3,13106,103154,6668ec000a00,data32 push 0A00ECh
+win_palette_gdi,3,13112,103160,8d861efc,"lea ax,[bp-3E2h]"
+win_palette_gdi,3,13116,103164,16,push ss
+win_palette_gdi,3,13117,103165,50,push ax
+win_palette_gdi,3,13118,103166,9affff0000,"call far 0FFFFh,0"
+win_palette_gdi,3,13123,103171,803eaf4600,"cmp byte ptr [46AFh],0"
+win_palette_gdi,3,13128,103176,7505,jne short 334Fh
+win_palette_gdi,3,13130,103178,9a00319131,"call far 3100h,3191h"
+win_palette_gdi,3,13135,103183,ff36b600,push word ptr [0B6h]
+win_palette_gdi,3,13139,103187,ff76f6,push word ptr [bp-0Ah]
+win_palette_gdi,3,13142,103190,9a8a310000,"call far 318Ah,0"
+win_palette_gdi,3,13147,103195,5e,pop si
+win_palette_gdi,3,13148,103196,5f,pop di
+win_palette_gdi,3,13149,103197,c9,leave
+win_palette_gdi,3,13150,103198,cb,ret far

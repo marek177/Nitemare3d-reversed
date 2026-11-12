@@ -1,7 +1,7 @@
 """python render_campaign_status.py OUTPUTS_DIR; current snapshot from authoritative JSON/CSV."""
 import csv,json,sys
 from pathlib import Path
-root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_near_heap_flags';report=sys.argv[3] if len(sys.argv)>3 else 'HOOK_FAMILY_CROSS_VERSION_REPORT.md'
+root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_near_heap_flags';report=sys.argv[3] if len(sys.argv)>3 else 'VGA_BLOCK_BLIT_RUNTIME_REPORT.md'
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
 receipt_path=root/'CAMPAIGN_RUNTIME_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_PUBLICATION_RECEIPT_20261112.json'
@@ -13,6 +13,7 @@ assert s['latest_pass1_map_sha256']==p['map_sha256']
 assert sum(s['primary_type_bytes'].values())==s['image_bytes']
 assert s['pass1_partial_bytes_without_typed_data']==p['status_bytes']['PARTIAL']-s['original_noncode_intersection_data_bytes']
 latest=(root/report).read_text(encoding='utf-8');table=latest[latest.index('## Aktualizácia 13 oblastí'):latest.index('## Runtime testy na vykonanie')]
+win=s.get('win110_palette_supplement');win_note=('Samostatny Win110 paletovy doplnok: '+str(win['functions'])+' rozsahy, '+str(win['instructions'])+' instrukcii / '+str(win['instruction_bytes'])+' B, '+str(win['replay_cases_separate'])+' seeded pripadov. Nie je zahrnuty v DOS adresnej partition ani v DOS replay sucte; skutocny Win16 runtime 0.\n\n') if win else ''
 text=f'''# Nitemare 3D: aktualny dokazovy katalog
 
 Kampan ani PASS1 nie su dokoncene. DOS 2.0 obraz ma {s['image_bytes']} B, SHA-256 `{s['image_sha256']}`. Tato snimka je generovana z aktualnych strojovych vystupov; starsie analyticke reporty zostavaju historickymi davkami.
@@ -47,7 +48,7 @@ Rozdiel PARTIAL oproti typovanym NON-CODE datam je {s['pass1_partial_bytes_witho
 
 Reprodukcia: analyticky skript uvedeny v aktualnom reporte, `promote_pass1_fields.py`, `verify_pass1_partition.py`, `independent_decode_and_catalog.py`, potom `render_campaign_status.py OUTPUTS_DIR {folder} {report}`. Presne vstupy a obmedzenia su v reportoch jednotlivych davok. Overena publikovana analyticka snimka je commit {publication['commit']}, pozri `{receipt_path.name}`. {publication_state} Historicke poznamky v davkovych reportoch uvadzaju stav v case ich vzniku.
 
-'''+table
+'''+win_note+table
 for name in ['CAMPAIGN_CONSOLIDATED_REPORT.md','CAMPAIGN_CATALOG_REPORT.md']:
     target=root/name;history=root/(target.stem+'_BEFORE_DEBUG_LOGGER.md')
     if target.exists() and not history.exists():history.write_bytes(target.read_bytes())
