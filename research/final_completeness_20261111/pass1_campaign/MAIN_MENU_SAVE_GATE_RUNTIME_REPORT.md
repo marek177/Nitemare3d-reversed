@@ -145,7 +145,7 @@ Native reader body zostáva pôvodný, ale filename/path, open/seek/read/close a
 - `audit_replay_menu_save_gate.py IMAGE INVENTORY DECODER EMULATOR OUT`:2 ASM/CFG funkcie,600+180 prípadov,49B SAVE prefix schéma s UNKNOWN payloadom a9 record kandidátov CSV/JSON.
 - Centrálny katalóg obsahuje138 funkcií a runtime refinements4014B/12 intervalov, z toho3600B fontových bufferov a414B menu tabuliek. Je to evidencia nad už klasifikovanými bajtmi, nie nový semantický percentuálny denominator.
 
-Predchádzajúca overená GitHub snímka má19 runtime scenárov. Táto dávka zostáva lokálna, kým nie je uložené nové potvrdenie publikácie.
+Táto dávka je publikovaná a blob po blobe overená v analytickom commite d571a31282b1a15914fa6c1559fb44a4d204d054. Strojové potvrdenie: CAMPAIGN_MAIN_MENU_PUBLICATION_RECEIPT_20261112.json. Metadata follow-up môže mať novší branch head.
 
 ## Aktualizácia 13 oblastí
 
