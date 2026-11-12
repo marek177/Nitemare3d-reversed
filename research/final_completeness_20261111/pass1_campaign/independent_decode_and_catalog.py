@@ -34,7 +34,7 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
-    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay'):
+    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay'):
         for f in readjson(root/folder/'summary.json')['functions']:sources.append((f['name'],root/folder/(f['name']+'.csv')))
     sources += [(f['name'],root/'worx_leafs'/(f['name']+'.csv')) for f in leaf['functions']]
     sources += [(f['name'],root/'worx_dataflow'/(f['name']+'.csv')) for f in dataflow['functions']]
@@ -521,7 +521,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -567,6 +567,26 @@ def main():
         result['runtime_tests_scope']='retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; exact98 before/after MOV mapBYTE1 stores bind GUARD24/actor168/A5 andGUARD25/actor174/A4, restore-underlay044C andoccupy06A9; map-writer endpoint06AD is mid-function; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap'
         result['runtime_evidence']=runtime_evidence
         result['runtime_tests_scope'] += '; original0254 allowed/blocked sparse decision-to-return tails, with blocked door7 state2 snapshot, no demonstrated entry-state transition'
+    door_runtime=root/'dosbox_door_interaction_runtime/independent_verification.json'
+    if door_runtime.exists():
+        proof=readjson(door_runtime)
+        if not proof['verified'] or proof['runtime_tests']!=1:raise ValueError('door runtime proof')
+        for item in proof['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('door capture hash')
+        source=readjson(door_runtime.parent/'summary.json')
+        if not source['success'] or not source['source_files_unchanged']:raise ValueError('door source/capture')
+        if proof['summary_sha256'] in runtime_sessions:raise ValueError('duplicate door session')
+        result['runtime_tests']+=1
+        result['runtime_evidence'].append(dict(path=str(door_runtime),sha256=sha(door_runtime.read_bytes()),runtime_image_sha256=proof['runtime_image_sha256'],scope=proof['scope']))
+        result['runtime_tests_scope']+='; subsequent separate whole native0598 source door7 and neighbor6 state1to2 proved with exact2BYTE world delta/DGROUP57392B unchanged and original-code replay; earlier sparse capture alone remains weaker evidence'
+    version_proof=root/'door_interaction_dos_versions/state4_cross_version_summary.json'
+    if version_proof.exists():
+        v=readjson(version_proof)
+        if v['failures'] or v['runtime_tests']:raise ValueError('version replay scope')
+        for item in v['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('version replay input')
+        result['door_cross_version_controlled_cases_separate']=v['cases']
+        result['door_cross_version_controlled_scope']=v['scope']
     partial_path=root/'guard_validator_partial/partial_verification.json'
     if partial_path.exists():
         partial=readjson(partial_path)
@@ -602,6 +622,7 @@ def main():
     refinement_paths.append(root/'pass1_guard_diagnostics/consumer_field_roles.csv')
     refinement_paths.append(root/'guard_map_writer_fields/consumer_field_roles.csv')
     refinement_paths.append(root/'guard_collision_fields/consumer_field_roles.csv')
+    refinement_paths.append(root/'door_interaction_fields/consumer_field_roles.csv')
     records=[]
     for refinements in refinement_paths:
         if not refinements.exists():continue
