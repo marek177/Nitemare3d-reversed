@@ -2849,6 +2849,16 @@ crt_DOS_free_far,84208,4590,10768,b449,"mov ah,49h",new independent decode; no h
 crt_DOS_free_far,84210,4590,10770,cd21,int 21h,new independent decode; no historical text imported,7,,PARTIAL
 crt_DOS_free_far,84212,4590,10772,5d,pop bp,new independent decode; no historical text imported,0,,PARTIAL
 crt_DOS_free_far,84213,4590,10773,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+crt_far_free_mark,81714,4590,8274,55,push bp,new independent decode; no historical text imported,0,,PARTIAL
+crt_far_free_mark,81715,4590,8275,8bec,"mov bp,sp",new independent decode; no historical text imported,0,,PARTIAL
+crt_far_free_mark,81717,4590,8277,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+crt_far_free_mark,81718,4590,8278,c47606,"les si,[bp+6]",new independent decode; no historical text imported,0,,PARTIAL
+crt_far_free_mark,81721,4590,8281,8cc1,"mov cx,es",new independent decode; no historical text imported,0,,PARTIAL
+crt_far_free_mark,81723,4590,8283,e305,jcxz 2062h,new independent decode; no historical text imported,3,81730,PARTIAL
+crt_far_free_mark,81725,4590,8285,26804cfe01,"or byte ptr es:[si-2],1",new independent decode; no historical text imported,0,,PARTIAL
+crt_far_free_mark,81730,4590,8290,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+crt_far_free_mark,81731,4590,8291,5d,pop bp,new independent decode; no historical text imported,0,,PARTIAL
+crt_far_free_mark,81732,4590,8292,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
 normalize_es_di,107040,5567,17968,50,push ax,push ax,0,,PARTIAL
 normalize_es_di,107041,5567,17969,52,push dx,push dx,0,,PARTIAL
 normalize_es_di,107042,5567,17970,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL

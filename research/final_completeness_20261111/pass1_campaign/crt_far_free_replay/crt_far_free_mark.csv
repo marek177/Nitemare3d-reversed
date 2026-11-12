@@ -1,0 +1,11 @@
+cs,ip,image_offset,bytes,instruction
+4590,8274,81714,55,push bp
+4590,8275,81715,8bec,"mov bp,sp"
+4590,8277,81717,56,push si
+4590,8278,81718,c47606,"les si,[bp+6]"
+4590,8281,81721,8cc1,"mov cx,es"
+4590,8283,81723,e305,jcxz 2062h
+4590,8285,81725,26804cfe01,"or byte ptr es:[si-2],1"
+4590,8290,81730,5e,pop si
+4590,8291,81731,5d,pop bp
+4590,8292,81732,cb,ret far
