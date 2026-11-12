@@ -34,7 +34,7 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
-    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay'):
+    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay'):
         for f in readjson(root/folder/'summary.json')['functions']:sources.append((f['name'],root/folder/(f['name']+'.csv')))
     sources += [(f['name'],root/'worx_leafs'/(f['name']+'.csv')) for f in leaf['functions']]
     sources += [(f['name'],root/'worx_dataflow'/(f['name']+'.csv')) for f in dataflow['functions']]
@@ -521,7 +521,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -576,6 +576,7 @@ def main():
         source=readjson(door_runtime.parent/'summary.json')
         if not source['success'] or not source['source_files_unchanged']:raise ValueError('door source/capture')
         if proof['summary_sha256'] in runtime_sessions:raise ValueError('duplicate door session')
+        runtime_sessions.add(proof['summary_sha256'])
         result['runtime_tests']+=1
         result['runtime_evidence'].append(dict(path=str(door_runtime),sha256=sha(door_runtime.read_bytes()),runtime_image_sha256=proof['runtime_image_sha256'],scope=proof['scope']))
         result['runtime_tests_scope']+='; subsequent separate whole native0598 source door7 and neighbor6 state1to2 proved with exact2BYTE world delta/DGROUP57392B unchanged and original-code replay; earlier sparse capture alone remains weaker evidence'
@@ -587,6 +588,19 @@ def main():
             if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('version replay input')
         result['door_cross_version_controlled_cases_separate']=v['cases']
         result['door_cross_version_controlled_scope']=v['scope']
+    producer_path=root/'dosbox_classification_producers_runtime/independent_verification.json'
+    if producer_path.exists():
+        proof=readjson(producer_path)
+        if not proof['verified'] or proof['runtime_tests']!=1:raise ValueError('producer runtime proof')
+        for item in proof['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('producer capture hash')
+        source=readjson(producer_path.parent/'summary.json')
+        if not source['success'] or not source['source_files_unchanged']:raise ValueError('producer source/capture')
+        if proof['summary_sha256'] in runtime_sessions:raise ValueError('duplicate producer session')
+        runtime_sessions.add(proof['summary_sha256'])
+        result['runtime_tests']+=1
+        result['runtime_evidence'].append(dict(path=str(producer_path),sha256=sha(producer_path.read_bytes()),runtime_image_sha256=proof['runtime_image_sha256'],scope=proof['scope']))
+        result['runtime_tests_scope']+='; separate whole native classification producers mapheader514B identity,512output entries/seeds0and7; secondcall DGROUP includes observed clockDWORD+1, identified RTC INC but native writerPC not captured; pureproducer replay compared with explicit clockdelta allowance'
     partial_path=root/'guard_validator_partial/partial_verification.json'
     if partial_path.exists():
         partial=readjson(partial_path)
@@ -595,7 +609,7 @@ def main():
             if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('partial capture hash mismatch')
         result['partial_native_validator_allowed_calls_not_additional_scenarios']=partial['successful_native_allowed_calls']
     bss_tables=[]
-    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv',root/'guard_validator_partial/external_bss_tables.csv'):
+    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv',root/'guard_validator_partial/external_bss_tables.csv',root/'classification_producer_fields/external_bss_tables.csv'):
         if runtime_bss.exists():bss_tables.extend(readcsv(runtime_bss))
     if bss_tables:
         bss_union=set()

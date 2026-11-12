@@ -1,0 +1,32 @@
+{
+  "functions": [
+    {
+      "name": "rtc_irq8_increment_cached_clock",
+      "start": 48322,
+      "end_exclusive": 48359,
+      "instructions": 20,
+      "instruction_bytes": 37
+    }
+  ],
+  "cases": 100,
+  "failures": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "original_inventory_missing_starts": 20,
+  "executed_instruction_starts": 20,
+  "scope": "whole original registeredRTC vector70handler0002, true interrupt frame/IRET; controlled RTC IN result and recorded OUTs; increments canonicalDS081E modulo2^32, saves32bit general registers andDS/ES; no natural IRQ writerPC captured in producer run, no physicalRTC correctness proof",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_rtc_irq.py",
+      "sha256": "7f5d776e2362f37bab752751d089abd13dfdf7ca32d10d90023ce080e2d2d237"
+    }
+  ]
+}

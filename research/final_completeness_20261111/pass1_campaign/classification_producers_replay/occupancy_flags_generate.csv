@@ -1,0 +1,61 @@
+cs,ip,image_offset,bytes,instruction
+247,592,4544,c8020000,"enter 2,0"
+247,596,4548,56,push si
+247,597,4549,33f6,"xor si,si"
+247,599,4551,8a940ed4,"mov dl,[si-2BF2h]"
+247,603,4555,2af6,"sub dh,dh"
+247,605,4557,83fa06,"cmp dx,6"
+247,608,4560,7c0c,jl short 026Eh
+247,610,4562,83fa3d,"cmp dx,3Dh"
+247,613,4565,7f07,jg short 026Eh
+247,615,4567,804eff01,"or byte ptr [bp-1],1"
+247,619,4571,eb05,jmp short 0272h
+247,622,4574,8066fffe,"and byte ptr [bp-1],0FEh"
+247,626,4578,83fa08,"cmp dx,8"
+247,629,4581,7c0b,jl short 0282h
+247,631,4583,83fa2d,"cmp dx,2Dh"
+247,634,4586,7f06,jg short 0282h
+247,636,4588,804eff02,"or byte ptr [bp-1],2"
+247,640,4592,eb04,jmp short 0286h
+247,642,4594,8066fffd,"and byte ptr [bp-1],0FDh"
+247,646,4598,83fa2f,"cmp dx,2Fh"
+247,649,4601,7c0b,jl short 0296h
+247,651,4603,83fa3d,"cmp dx,3Dh"
+247,654,4606,7f06,jg short 0296h
+247,656,4608,804eff04,"or byte ptr [bp-1],4"
+247,660,4612,eb04,jmp short 029Ah
+247,662,4614,8066fffb,"and byte ptr [bp-1],0FBh"
+247,666,4618,83fa08,"cmp dx,8"
+247,669,4621,7c0b,jl short 02AAh
+247,671,4623,83fa25,"cmp dx,25h"
+247,674,4626,7f06,jg short 02AAh
+247,676,4628,804eff08,"or byte ptr [bp-1],8"
+247,680,4632,eb04,jmp short 02AEh
+247,682,4634,8066fff7,"and byte ptr [bp-1],0F7h"
+247,686,4638,83fa2a,"cmp dx,2Ah"
+247,689,4641,7505,jne short 02B8h
+247,691,4643,b001,"mov al,1"
+247,693,4645,eb03,jmp short 02BAh
+247,696,4648,32c0,"xor al,al"
+247,698,4650,c0e005,"shl al,5"
+247,701,4653,8066ffef,"and byte ptr [bp-1],0EFh"
+247,705,4657,3246ff,"xor al,[bp-1]"
+247,708,4660,2420,"and al,20h"
+247,710,4662,3046ff,"xor [bp-1],al"
+247,713,4665,83fa04,"cmp dx,4"
+247,716,4668,7504,jne short 02D2h
+247,718,4670,b001,"mov al,1"
+247,720,4672,eb02,jmp short 02D4h
+247,722,4674,32c0,"xor al,al"
+247,724,4676,c0e006,"shl al,6"
+247,727,4679,3246ff,"xor al,[bp-1]"
+247,730,4682,2440,"and al,40h"
+247,732,4684,3046ff,"xor [bp-1],al"
+247,735,4687,8a46ff,"mov al,[bp-1]"
+247,738,4690,88840cd1,"mov [si-2EF4h],al"
+247,742,4694,46,inc si
+247,743,4695,81fe0001,"cmp si,100h"
+247,747,4699,0f8c68ff,jl 0257h
+247,751,4703,5e,pop si
+247,752,4704,c9,leave
+247,753,4705,cb,ret far

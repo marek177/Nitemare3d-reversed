@@ -1,0 +1,55 @@
+cs,ip,image_offset,bytes,instruction
+247,438,4390,c8020000,"enter 2,0"
+247,442,4394,56,push si
+247,443,4395,33f6,"xor si,si"
+247,445,4397,8a940ed3,"mov dl,[si-2CF2h]"
+247,449,4401,2af6,"sub dh,dh"
+247,451,4403,83fa01,"cmp dx,1"
+247,454,4406,7c0c,jl short 01D4h
+247,456,4408,83fa30,"cmp dx,30h"
+247,459,4411,7f07,jg short 01D4h
+247,461,4413,804eff04,"or byte ptr [bp-1],4"
+247,465,4417,eb05,jmp short 01D8h
+247,468,4420,8066fffb,"and byte ptr [bp-1],0FBh"
+247,472,4424,83fa2e,"cmp dx,2Eh"
+247,475,4427,7c0b,jl short 01E8h
+247,477,4429,83fa2f,"cmp dx,2Fh"
+247,480,4432,7f06,jg short 01E8h
+247,482,4434,804eff10,"or byte ptr [bp-1],10h"
+247,486,4438,eb04,jmp short 01ECh
+247,488,4440,8066ffef,"and byte ptr [bp-1],0EFh"
+247,492,4444,83fa31,"cmp dx,31h"
+247,495,4447,7c0b,jl short 01FCh
+247,497,4449,83fa40,"cmp dx,40h"
+247,500,4452,7f06,jg short 01FCh
+247,502,4454,804eff08,"or byte ptr [bp-1],8"
+247,506,4458,eb04,jmp short 0200h
+247,508,4460,8066fff7,"and byte ptr [bp-1],0F7h"
+247,512,4464,8066ffdf,"and byte ptr [bp-1],0DFh"
+247,516,4468,f646ff0c,"test byte ptr [bp-1],0Ch"
+247,520,4472,7506,jne short 0210h
+247,522,4474,8066fffe,"and byte ptr [bp-1],0FEh"
+247,526,4478,eb04,jmp short 0214h
+247,528,4480,804eff01,"or byte ptr [bp-1],1"
+247,532,4484,83fa01,"cmp dx,1"
+247,535,4487,7c0b,jl short 0224h
+247,537,4489,83fa40,"cmp dx,40h"
+247,540,4492,7f06,jg short 0224h
+247,542,4494,804eff02,"or byte ptr [bp-1],2"
+247,546,4498,eb04,jmp short 0228h
+247,548,4500,8066fffd,"and byte ptr [bp-1],0FDh"
+247,552,4504,83fa47,"cmp dx,47h"
+247,555,4507,7c0b,jl short 0238h
+247,557,4509,83fa48,"cmp dx,48h"
+247,560,4512,7f06,jg short 0238h
+247,562,4514,804eff40,"or byte ptr [bp-1],40h"
+247,566,4518,eb04,jmp short 023Ch
+247,568,4520,8066ffbf,"and byte ptr [bp-1],0BFh"
+247,572,4524,8a46ff,"mov al,[bp-1]"
+247,575,4527,88840cd0,"mov [si-2FF4h],al"
+247,579,4531,46,inc si
+247,580,4532,81fe0001,"cmp si,100h"
+247,584,4536,0f8c71ff,jl 01BDh
+247,588,4540,5e,pop si
+247,589,4541,c9,leave
+247,590,4542,cb,ret far
