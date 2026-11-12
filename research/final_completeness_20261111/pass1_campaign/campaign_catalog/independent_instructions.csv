@@ -2859,6 +2859,38 @@ crt_far_free_mark,81725,4590,8285,26804cfe01,"or byte ptr es:[si-2],1",new indep
 crt_far_free_mark,81730,4590,8290,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
 crt_far_free_mark,81731,4590,8291,5d,pop bp,new independent decode; no historical text imported,0,,PARTIAL
 crt_far_free_mark,81732,4590,8292,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+music_snd_reader,10234,631,138,55,push bp,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10235,631,139,8bec,"mov bp,sp",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10237,631,141,833eac0100,"cmp word ptr [1ACh],0",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10242,631,146,7522,jne short 00B6h,new independent decode; no historical text imported,3,10278,PARTIAL
+music_snd_reader,10244,631,148,680080,push 8000h,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10247,631,151,68ae01,push 1AEh,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10250,631,154,9a721cee11,"call far 1C72h,11EEh",new independent decode; no historical text imported,5,10096,PARTIAL
+music_snd_reader,10255,631,159,8be5,"mov sp,bp",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10257,631,161,a3ac01,"mov [1ACh],ax",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10260,631,164,3dffff,"cmp ax,0FFFFh",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10263,631,167,750d,jne short 00B6h,new independent decode; no historical text imported,3,10278,PARTIAL
+music_snd_reader,10265,631,169,68b601,push 1B6h,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10268,631,172,68be01,push 1BEh,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10271,631,175,9a0c00ba0f,"call far 000Ch,0FBAh",new independent decode; no historical text imported,5,10096,PARTIAL
+music_snd_reader,10276,631,180,8be5,"mov sp,bp",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10278,631,182,6a00,push 0,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10280,631,184,66ff760a,push dword ptr [bp+0Ah],new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10284,631,188,ff36ac01,push word ptr [1ACh],new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10288,631,192,9ad61bee11,"call far 1BD6h,11EEh",new independent decode; no historical text imported,5,10096,PARTIAL
+music_snd_reader,10293,631,197,8be5,"mov sp,bp",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10295,631,199,ff760e,push word ptr [bp+0Eh],new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10298,631,202,66ff7606,push dword ptr [bp+6],new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10302,631,206,ff36ac01,push word ptr [1ACh],new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10306,631,210,9a9e00ba0f,"call far 009Eh,0FBAh",new independent decode; no historical text imported,5,10096,PARTIAL
+music_snd_reader,10311,631,215,8be5,"mov sp,bp",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10313,631,217,3b460e,"cmp ax,[bp+0Eh]",new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10316,631,220,740b,je short 00E9h,new independent decode; no historical text imported,3,10329,PARTIAL
+music_snd_reader,10318,631,222,68d401,push 1D4h,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10321,631,225,68dc01,push 1DCh,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10324,631,228,9a0c00ba0f,"call far 000Ch,0FBAh",new independent decode; no historical text imported,5,10096,PARTIAL
+music_snd_reader,10329,631,233,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+music_snd_reader,10330,631,234,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
 normalize_es_di,107040,5567,17968,50,push ax,push ax,0,,PARTIAL
 normalize_es_di,107041,5567,17969,52,push dx,push dx,0,,PARTIAL
 normalize_es_di,107042,5567,17970,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL

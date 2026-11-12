@@ -17,7 +17,7 @@ def csvout(p,rows):
         w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
 
 def main():
-    decoder_dir,root=map(Path,sys.argv[1:]);sys.path.insert(0,str(decoder_dir))
+    decoder_dir,root=map(Path,sys.argv[1:3]);prepare_only=len(sys.argv)>3 and sys.argv[3]=="--prepare-instructions";sys.path.insert(0,str(decoder_dir))
     from iced_x86 import Decoder, Formatter, FormatterSyntax, FlowControl
     image=(root/'unpack/reproduced_image.bin').read_bytes()
     if sha(image)!='e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297':raise ValueError('wrong image')
@@ -34,7 +34,7 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
-    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay','xms_lifecycle_wrappers_replay','cache_memory_probe_replay','crt_large_allocation_replay','crt_far_free_replay'):
+    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay','xms_lifecycle_wrappers_replay','cache_memory_probe_replay','crt_large_allocation_replay','crt_far_free_replay','music_snd_reader_replay'):
         for f in readjson(root/folder/'summary.json')['functions']:
             if folder=='worx_register_bank_replay' and f['name'] in ('worx_port_callback_set','worx_port_write_delayed'):continue # already owned by prior independent functions
             sources.append((f['name'],root/folder/(f['name']+'.csv')))
@@ -459,6 +459,8 @@ def main():
             addresses={p for r in decoded if r['function']==f['name'] for p in range(r['image_offset'],r['image_offset']+len(bytes.fromhex(r['bytes'])))}
             f['pass320_membership']='NO_INSTRUCTION_BYTES_IN_NONCODE' if not addresses&noncode else 'INSTRUCTION_BYTE_OVERLAP'
     csvout(dest/'independent_instructions.csv',decoded)
+    if prepare_only:
+        print(json.dumps(dict(prepared_instruction_count=len(decoded))));return
     csvout(dest/'functions.csv',functions)
     csvout(dest/'byte_intervals.csv',ranges)
     (dest/'byte_intervals.json').write_text(json.dumps(ranges,indent=2)+'\n',encoding='utf-8')
@@ -531,7 +533,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay','crt_large_allocation_replay','probe_original_crt_replay','crt_far_malloc_replay','crt_far_free_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay','crt_large_allocation_replay','probe_original_crt_replay','crt_far_malloc_replay','crt_far_free_replay','music_snd_reader_replay','worx_bank_original_resolver_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -560,7 +562,7 @@ def main():
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
     runtime_evidence=[];runtime_sessions=set()
-    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime','dosbox_newgame_map_runtime_v3','dosbox_scheduler_runtime','dosbox_palette_writer_runtime','dosbox_palette_cycle_runtime_v2','dosbox_map_writers_runtime','dosbox_validator_branches_runtime','dosbox_guard_orientation_runtime_v2','dosbox_class_descriptor_copy_runtime','dosbox_image_record_runtime','dosbox_image_retrieval_runtime','dosbox_calendar_runtime','dosbox_ftime_runtime_v2','dosbox_object_cache_draw_runtime','dosbox_cache_initialization_runtime','dosbox_crt_large_allocation_runtime','dosbox_crt_far_malloc_runtime_v2','dosbox_crt_far_free_runtime'):
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime','dosbox_newgame_map_runtime_v3','dosbox_scheduler_runtime','dosbox_palette_writer_runtime','dosbox_palette_cycle_runtime_v2','dosbox_map_writers_runtime','dosbox_validator_branches_runtime','dosbox_guard_orientation_runtime_v2','dosbox_class_descriptor_copy_runtime','dosbox_image_record_runtime','dosbox_image_retrieval_runtime','dosbox_calendar_runtime','dosbox_ftime_runtime_v2','dosbox_object_cache_draw_runtime','dosbox_cache_initialization_runtime','dosbox_crt_large_allocation_runtime','dosbox_crt_far_malloc_runtime_v2','dosbox_crt_far_free_runtime','dosbox_music_resource_pair_runtime_v2'):
         runtime_path=root/runtime_folder/'independent_verification.json'
         if not runtime_path.exists():continue
         runtime=readjson(runtime_path)

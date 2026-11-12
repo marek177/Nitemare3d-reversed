@@ -1,0 +1,33 @@
+cs,ip,image_offset,bytes,instruction
+631,138,10234,55,push bp
+631,139,10235,8bec,"mov bp,sp"
+631,141,10237,833eac0100,"cmp word ptr [1ACh],0"
+631,146,10242,7522,jne short 00B6h
+631,148,10244,680080,push 8000h
+631,151,10247,68ae01,push 1AEh
+631,154,10250,9a721cee11,"call far 1C72h,11EEh"
+631,159,10255,8be5,"mov sp,bp"
+631,161,10257,a3ac01,"mov [1ACh],ax"
+631,164,10260,3dffff,"cmp ax,0FFFFh"
+631,167,10263,750d,jne short 00B6h
+631,169,10265,68b601,push 1B6h
+631,172,10268,68be01,push 1BEh
+631,175,10271,9a0c00ba0f,"call far 000Ch,0FBAh"
+631,180,10276,8be5,"mov sp,bp"
+631,182,10278,6a00,push 0
+631,184,10280,66ff760a,push dword ptr [bp+0Ah]
+631,188,10284,ff36ac01,push word ptr [1ACh]
+631,192,10288,9ad61bee11,"call far 1BD6h,11EEh"
+631,197,10293,8be5,"mov sp,bp"
+631,199,10295,ff760e,push word ptr [bp+0Eh]
+631,202,10298,66ff7606,push dword ptr [bp+6]
+631,206,10302,ff36ac01,push word ptr [1ACh]
+631,210,10306,9a9e00ba0f,"call far 009Eh,0FBAh"
+631,215,10311,8be5,"mov sp,bp"
+631,217,10313,3b460e,"cmp ax,[bp+0Eh]"
+631,220,10316,740b,je short 00E9h
+631,222,10318,68d401,push 1D4h
+631,225,10321,68dc01,push 1DCh
+631,228,10324,9a0c00ba0f,"call far 000Ch,0FBAh"
+631,233,10329,c9,leave
+631,234,10330,cb,ret far
