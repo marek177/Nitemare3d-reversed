@@ -1,0 +1,9 @@
+record,offset,width,role,consumer
+record26,0,2,selected frame WORD copied from class descriptor directional row,"04C7:00B0/012A and0AEA:0C0A;PARTIAL, native mode7 initialization plus controlled other modes"
+record26,15,1,view helper flag:zero compares abs components;nonzero uses doubled-abs unsigned thresholds,"04C7:00B0/012A and0AEA:0C0A;PARTIAL, native mode7 initialization plus controlled other modes"
+record26,17,1,facing code0..7 set by signed dx/dy; zero vector preserves,"04C7:00B0/012A and0AEA:0C0A;PARTIAL, native mode7 initialization plus controlled other modes"
+record26,18,1,cached relative octant; equal plus lowforceBYTE0 skips frame update,"04C7:00B0/012A and0AEA:0C0A;PARTIAL, native mode7 initialization plus controlled other modes"
+record26,10,1,strategy2 selects mode6 row04h rather than24h in DOS11+,"04C7:00B0/012A and0AEA:0C0A;PARTIAL, native mode7 initialization plus controlled other modes"
+record28,3,1,lowBYTE of selected frame WORD,"04C7:00B0/012A and0AEA:0C0A;PARTIAL, native mode7 initialization plus controlled other modes"
+record28,4,1,class index:nearDS pointer is WORD[3D22h+8*BYTE],"04C7:00B0/012A and0AEA:0C0A;PARTIAL, native mode7 initialization plus controlled other modes"
+nearDS_class_descriptor,4,48,three eight-WORD directional rows at+04h/+14h/+24h; header4B and producer open,"04C7:00B0/012A and0AEA:0C0A;PARTIAL, native mode7 initialization plus controlled other modes"
