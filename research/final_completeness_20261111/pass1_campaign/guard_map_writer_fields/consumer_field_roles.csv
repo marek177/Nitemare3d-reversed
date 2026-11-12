@@ -1,0 +1,13 @@
+record,offset,width,role,consumer
+record26,0,1,"BYTE animation base, read at064C",04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record26,1,1,BYTE animation span added to base at063C,04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record26,11,1,BYTE mode:8 suppresses positional move if either axis blocked;6 reverses one velocity if both blocked,04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record26,13,1,"BYTE saved underlying cell BYTE1, restored044C and recaptured069C",04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record26,14,1,"BYTE low lookup result, preserved only for AXFFFF",04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record26,19,1,signed BYTE coordinate0 velocity; NEG may leave BYTE80 while localWORD is0080,04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record26,20,1,signed BYTE coordinate1 velocity,04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record28,0,1,BYTE written as occupancy token by06A9; native records useA5/A4,04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record28,3,1,"BYTE animation phase, increment wraps8bits and may reset to record26 base",04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record28,12,4,"FAR16 current map cell pointer, byte1 accessed, new pointer assigned068A/068E",04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record28,16,2,"WORD coordinate0, wrapped add and signedSAR-derived map column term",04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay
+record28,18,2,"WORD coordinate1, wrapped add and FFC0-derived map row term",04C7:0422..06D1 PARTIAL caller-specific role; callees mocked in replay

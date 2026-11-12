@@ -511,6 +511,255 @@ palette_periodic_flash,41361,2109,7617,50,push ax,new independent decode; no his
 palette_periodic_flash,41362,2109,7618,9a50015601,"call far 0150h,0156h",new independent decode; no historical text imported,5,33744,PARTIAL
 palette_periodic_flash,41367,2109,7623,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
 palette_periodic_flash,41368,2109,7624,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+guard_axis_move_and_map_rebind,20626,1223,1058,c80a0000,"enter 0Ah,0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20630,1223,1062,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20631,1223,1063,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20632,1223,1064,8b7e0a,"mov di,[bp+0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20635,1223,1067,8b7606,"mov si,[bp+6]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20638,1223,1070,ff760c,push word ptr [bp+0Ch],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20641,1223,1073,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20642,1223,1074,ff7608,push word ptr [bp+8],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20645,1223,1077,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20646,1223,1078,9ae4193d08,"call far 19E4h,083Dh",new independent decode; no historical text imported,5,19568,PARTIAL
+guard_axis_move_and_map_rebind,20651,1223,1083,83c408,"add sp,8",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20654,1223,1086,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20657,1223,1089,268a440d,"mov al,es:[si+0Dh]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20661,1223,1093,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20664,1223,1096,26c45d0c,"les bx,es:[di+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20668,1223,1100,26884701,"mov es:[bx+1],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20672,1223,1104,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20675,1223,1107,26807c1300,"cmp byte ptr es:[si+13h],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20680,1223,1112,7e06,jle short 0460h,new independent decode; no historical text imported,3,20688,PARTIAL
+guard_axis_move_and_map_rebind,20682,1223,1114,c646fd10,"mov byte ptr [bp-3],10h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20686,1223,1118,eb11,jmp short 0471h,new independent decode; no historical text imported,1,20705,PARTIAL
+guard_axis_move_and_map_rebind,20688,1223,1120,26807c1300,"cmp byte ptr es:[si+13h],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20693,1223,1125,7c05,jl short 046Ch,new independent decode; no historical text imported,3,20700,PARTIAL
+guard_axis_move_and_map_rebind,20695,1223,1127,32c0,"xor al,al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20697,1223,1129,eb03,jmp short 046Eh,new independent decode; no historical text imported,1,20702,PARTIAL
+guard_axis_move_and_map_rebind,20700,1223,1132,b0f0,"mov al,0F0h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20702,1223,1134,8846fd,"mov [bp-3],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20705,1223,1137,26807c1400,"cmp byte ptr es:[si+14h],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20710,1223,1142,7e06,jle short 047Eh,new independent decode; no historical text imported,3,20718,PARTIAL
+guard_axis_move_and_map_rebind,20712,1223,1144,c646fc10,"mov byte ptr [bp-4],10h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20716,1223,1148,eb11,jmp short 048Fh,new independent decode; no historical text imported,1,20735,PARTIAL
+guard_axis_move_and_map_rebind,20718,1223,1150,26807c1400,"cmp byte ptr es:[si+14h],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20723,1223,1155,7c05,jl short 048Ah,new independent decode; no historical text imported,3,20730,PARTIAL
+guard_axis_move_and_map_rebind,20725,1223,1157,32c0,"xor al,al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20727,1223,1159,eb03,jmp short 048Ch,new independent decode; no historical text imported,1,20732,PARTIAL
+guard_axis_move_and_map_rebind,20730,1223,1162,b0f0,"mov al,0F0h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20732,1223,1164,8846fc,"mov [bp-4],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20735,1223,1167,268a4413,"mov al,es:[si+13h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20739,1223,1171,8bc8,"mov cx,ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20741,1223,1173,98,cbw,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20742,1223,1174,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20745,1223,1177,26034510,"add ax,es:[di+10h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20749,1223,1181,8bd0,"mov dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20751,1223,1183,8a46fd,"mov al,[bp-3]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20754,1223,1186,98,cbw,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20755,1223,1187,03d0,"add dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20757,1223,1189,8956fe,"mov [bp-2],dx",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20760,1223,1192,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20763,1223,1195,268a4414,"mov al,es:[si+14h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20767,1223,1199,98,cbw,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20768,1223,1200,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20771,1223,1203,26034512,"add ax,es:[di+12h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20775,1223,1207,8bd0,"mov dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20777,1223,1209,8a46fc,"mov al,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20780,1223,1212,98,cbw,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20781,1223,1213,03d0,"add dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20783,1223,1215,8956fa,"mov [bp-6],dx",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20786,1223,1218,0ac9,"or cl,cl",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20788,1223,1220,7442,je short 0508h,new independent decode; no historical text imported,3,20856,PARTIAL
+guard_axis_move_and_map_rebind,20790,1223,1222,268b4512,"mov ax,es:[di+12h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20794,1223,1226,2d1000,"sub ax,10h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20797,1223,1229,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20798,1223,1230,ff76fe,push word ptr [bp-2],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20801,1223,1233,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20802,1223,1234,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20803,1223,1235,ff7608,push word ptr [bp+8],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20806,1223,1238,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20807,1223,1239,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20808,1223,1240,e879fd,call 0254h,new independent decode; no historical text imported,5,20164,PARTIAL
+guard_axis_move_and_map_rebind,20811,1223,1243,83c40c,"add sp,0Ch",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20814,1223,1246,0ac0,"or al,al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20816,1223,1248,751f,jne short 0501h,new independent decode; no historical text imported,3,20849,PARTIAL
+guard_axis_move_and_map_rebind,20818,1223,1250,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20821,1223,1253,268b4512,"mov ax,es:[di+12h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20825,1223,1257,051000,"add ax,10h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20828,1223,1260,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20829,1223,1261,ff76fe,push word ptr [bp-2],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20832,1223,1264,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20833,1223,1265,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20834,1223,1266,ff7608,push word ptr [bp+8],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20837,1223,1269,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20838,1223,1270,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20839,1223,1271,e85afd,call 0254h,new independent decode; no historical text imported,5,20164,PARTIAL
+guard_axis_move_and_map_rebind,20842,1223,1274,83c40c,"add sp,0Ch",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20845,1223,1277,0ac0,"or al,al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20847,1223,1279,7407,je short 0508h,new independent decode; no historical text imported,3,20856,PARTIAL
+guard_axis_move_and_map_rebind,20849,1223,1281,c646fe01,"mov byte ptr [bp-2],1",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20853,1223,1285,eb05,jmp short 050Ch,new independent decode; no historical text imported,1,20860,PARTIAL
+guard_axis_move_and_map_rebind,20856,1223,1288,c646fe00,"mov byte ptr [bp-2],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20860,1223,1292,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20863,1223,1295,26807c1400,"cmp byte ptr es:[si+14h],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20868,1223,1300,7444,je short 055Ah,new independent decode; no historical text imported,3,20938,PARTIAL
+guard_axis_move_and_map_rebind,20870,1223,1302,ff76fa,push word ptr [bp-6],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20873,1223,1305,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20876,1223,1308,268b4510,"mov ax,es:[di+10h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20880,1223,1312,2d1000,"sub ax,10h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20883,1223,1315,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20884,1223,1316,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20885,1223,1317,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20886,1223,1318,ff7608,push word ptr [bp+8],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20889,1223,1321,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20890,1223,1322,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20891,1223,1323,e826fd,call 0254h,new independent decode; no historical text imported,5,20164,PARTIAL
+guard_axis_move_and_map_rebind,20894,1223,1326,83c40c,"add sp,0Ch",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20897,1223,1329,0ac0,"or al,al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20899,1223,1331,751f,jne short 0554h,new independent decode; no historical text imported,3,20932,PARTIAL
+guard_axis_move_and_map_rebind,20901,1223,1333,ff76fa,push word ptr [bp-6],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20904,1223,1336,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20907,1223,1339,268b4510,"mov ax,es:[di+10h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20911,1223,1343,051000,"add ax,10h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20914,1223,1346,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20915,1223,1347,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20916,1223,1348,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20917,1223,1349,ff7608,push word ptr [bp+8],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20920,1223,1352,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20921,1223,1353,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20922,1223,1354,e807fd,call 0254h,new independent decode; no historical text imported,5,20164,PARTIAL
+guard_axis_move_and_map_rebind,20925,1223,1357,83c40c,"add sp,0Ch",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20928,1223,1360,0ac0,"or al,al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20930,1223,1362,7406,je short 055Ah,new independent decode; no historical text imported,3,20938,PARTIAL
+guard_axis_move_and_map_rebind,20932,1223,1364,c646ff01,"mov byte ptr [bp-1],1",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20936,1223,1368,eb04,jmp short 055Eh,new independent decode; no historical text imported,1,20942,PARTIAL
+guard_axis_move_and_map_rebind,20938,1223,1370,c646ff00,"mov byte ptr [bp-1],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20942,1223,1374,807efe00,"cmp byte ptr [bp-2],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20946,1223,1378,7408,je short 056Ch,new independent decode; no historical text imported,3,20956,PARTIAL
+guard_axis_move_and_map_rebind,20948,1223,1380,c746f60000,"mov word ptr [bp-0Ah],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20953,1223,1385,eb0c,jmp short 0577h,new independent decode; no historical text imported,1,20967,PARTIAL
+guard_axis_move_and_map_rebind,20956,1223,1388,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20959,1223,1391,268a4413,"mov al,es:[si+13h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20963,1223,1395,98,cbw,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20964,1223,1396,8946f6,"mov [bp-0Ah],ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20967,1223,1399,807eff00,"cmp byte ptr [bp-1],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20971,1223,1403,7407,je short 0584h,new independent decode; no historical text imported,3,20980,PARTIAL
+guard_axis_move_and_map_rebind,20973,1223,1405,c746fa0000,"mov word ptr [bp-6],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20978,1223,1410,eb0b,jmp short 058Fh,new independent decode; no historical text imported,1,20991,PARTIAL
+guard_axis_move_and_map_rebind,20980,1223,1412,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20983,1223,1415,268a4414,"mov al,es:[si+14h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20987,1223,1419,98,cbw,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20988,1223,1420,8946fa,"mov [bp-6],ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20991,1223,1423,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20994,1223,1426,26807c0b08,"cmp byte ptr es:[si+0Bh],8",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,20999,1223,1431,750c,jne short 05A5h,new independent decode; no historical text imported,3,21013,PARTIAL
+guard_axis_move_and_map_rebind,21001,1223,1433,807efe00,"cmp byte ptr [bp-2],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21005,1223,1437,7539,jne short 05D8h,new independent decode; no historical text imported,3,21064,PARTIAL
+guard_axis_move_and_map_rebind,21007,1223,1439,807eff00,"cmp byte ptr [bp-1],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21011,1223,1443,7533,jne short 05D8h,new independent decode; no historical text imported,3,21064,PARTIAL
+guard_axis_move_and_map_rebind,21013,1223,1445,ff76fa,push word ptr [bp-6],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21016,1223,1448,ff76f6,push word ptr [bp-0Ah],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21019,1223,1451,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21022,1223,1454,6626ff7510,push dword ptr es:[di+10h],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21027,1223,1459,9ab4043706,"call far 04B4h,0637h",new independent decode; no historical text imported,5,19568,PARTIAL
+guard_axis_move_and_map_rebind,21032,1223,1464,83c408,"add sp,8",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21035,1223,1467,8b46f6,"mov ax,[bp-0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21038,1223,1470,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21041,1223,1473,26014510,"add es:[di+10h],ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21045,1223,1477,8b4efa,"mov cx,[bp-6]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21048,1223,1480,26014d12,"add es:[di+12h],cx",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21052,1223,1484,51,push cx,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21053,1223,1485,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21054,1223,1486,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21055,1223,1487,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21056,1223,1488,9a5e01ea0a,"call far 015Eh,0AEAh",new independent decode; no historical text imported,5,19568,PARTIAL
+guard_axis_move_and_map_rebind,21061,1223,1493,83c408,"add sp,8",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21064,1223,1496,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21067,1223,1499,26807c0b06,"cmp byte ptr es:[si+0Bh],6",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21072,1223,1504,7539,jne short 061Bh,new independent decode; no historical text imported,3,21131,PARTIAL
+guard_axis_move_and_map_rebind,21074,1223,1506,807efe00,"cmp byte ptr [bp-2],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21078,1223,1510,7433,je short 061Bh,new independent decode; no historical text imported,3,21131,PARTIAL
+guard_axis_move_and_map_rebind,21080,1223,1512,807eff00,"cmp byte ptr [bp-1],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21084,1223,1516,742d,je short 061Bh,new independent decode; no historical text imported,3,21131,PARTIAL
+guard_axis_move_and_map_rebind,21086,1223,1518,9aa001ba0f,"call far 01A0h,0FBAh",new independent decode; no historical text imported,5,19568,PARTIAL
+guard_axis_move_and_map_rebind,21091,1223,1523,a801,"test al,1",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21093,1223,1525,7413,je short 060Ah,new independent decode; no historical text imported,3,21114,PARTIAL
+guard_axis_move_and_map_rebind,21095,1223,1527,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21098,1223,1530,268a4413,"mov al,es:[si+13h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21102,1223,1534,98,cbw,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21103,1223,1535,f7d8,neg ax,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21105,1223,1537,8946f6,"mov [bp-0Ah],ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21108,1223,1540,26884413,"mov es:[si+13h],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21112,1223,1544,eb11,jmp short 061Bh,new independent decode; no historical text imported,1,21131,PARTIAL
+guard_axis_move_and_map_rebind,21114,1223,1546,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21117,1223,1549,268a4414,"mov al,es:[si+14h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21121,1223,1553,98,cbw,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21122,1223,1554,f7d8,neg ax,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21124,1223,1556,8946fa,"mov [bp-6],ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21127,1223,1559,26884414,"mov es:[si+14h],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21131,1223,1563,837ef600,"cmp word ptr [bp-0Ah],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21135,1223,1567,7506,jne short 0627h,new independent decode; no historical text imported,3,21143,PARTIAL
+guard_axis_move_and_map_rebind,21137,1223,1569,837efa00,"cmp word ptr [bp-6],0",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21141,1223,1573,742f,je short 0656h,new independent decode; no historical text imported,3,21190,PARTIAL
+guard_axis_move_and_map_rebind,21143,1223,1575,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21146,1223,1578,26fe4503,inc byte ptr es:[di+3],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21150,1223,1582,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21153,1223,1585,268a4401,"mov al,es:[si+1]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21157,1223,1589,2ae4,"sub ah,ah",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21159,1223,1591,268a0c,"mov cl,es:[si]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21162,1223,1594,2aed,"sub ch,ch",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21164,1223,1596,03c1,"add ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21166,1223,1598,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21169,1223,1601,268a4d03,"mov cl,es:[di+3]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21173,1223,1605,3bc1,"cmp ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21175,1223,1607,7f0d,jg short 0656h,new independent decode; no historical text imported,3,21190,PARTIAL
+guard_axis_move_and_map_rebind,21177,1223,1609,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21180,1223,1612,268a04,"mov al,es:[si]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21183,1223,1615,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21186,1223,1618,26884503,"mov es:[di+3],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21190,1223,1622,ff76fa,push word ptr [bp-6],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21193,1223,1625,ff76f6,push word ptr [bp-0Ah],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21196,1223,1628,ff7608,push word ptr [bp+8],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21199,1223,1631,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21200,1223,1632,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21201,1223,1633,e84cfa,call 00B0h,new independent decode; no historical text imported,5,19744,PARTIAL
+guard_axis_move_and_map_rebind,21204,1223,1636,83c408,"add sp,8",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21207,1223,1639,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21210,1223,1642,268b4512,"mov ax,es:[di+12h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21214,1223,1646,24c0,"and al,0C0h",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21216,1223,1648,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21218,1223,1650,268b4d10,"mov cx,es:[di+10h]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21222,1223,1654,80e1df,"and cl,0DFh",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21225,1223,1657,c1f905,"sar cx,5",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21228,1223,1660,03c1,"add ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21230,1223,1662,053e37,"add ax,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21233,1223,1665,b9fd21,"mov cx,21FDh",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21236,1223,1668,8946fc,"mov [bp-4],ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21239,1223,1671,894efe,"mov [bp-2],cx",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21242,1223,1674,2689450c,"mov es:[di+0Ch],ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21246,1223,1678,26894d0e,"mov es:[di+0Eh],cx",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21250,1223,1682,c45efc,"les bx,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21253,1223,1685,268a4701,"mov al,es:[bx+1]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21257,1223,1689,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21260,1223,1692,2688440d,"mov es:[si+0Dh],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21264,1223,1696,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21267,1223,1699,268a05,"mov al,es:[di]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21270,1223,1702,c45efc,"les bx,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21273,1223,1705,26884701,"mov es:[bx+1],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21277,1223,1709,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21280,1223,1712,6626ff750c,push dword ptr es:[di+0Ch],new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21285,1223,1717,9a7601f700,"call far 0176h,00F7h",new independent decode; no historical text imported,5,19568,PARTIAL
+guard_axis_move_and_map_rebind,21290,1223,1722,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21293,1223,1725,8946f8,"mov [bp-8],ax",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21296,1223,1728,40,inc ax,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21297,1223,1729,740a,je short 06CDh,new independent decode; no historical text imported,3,21309,PARTIAL
+guard_axis_move_and_map_rebind,21299,1223,1731,8a46f8,"mov al,[bp-8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21302,1223,1734,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21305,1223,1737,2688440e,"mov es:[si+0Eh],al",new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21309,1223,1741,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21310,1223,1742,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21311,1223,1743,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+guard_axis_move_and_map_rebind,21312,1223,1744,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
 normalize_es_di,107040,5567,17968,50,push ax,push ax,0,,PARTIAL
 normalize_es_di,107041,5567,17969,52,push dx,push dx,0,,PARTIAL
 normalize_es_di,107042,5567,17970,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL

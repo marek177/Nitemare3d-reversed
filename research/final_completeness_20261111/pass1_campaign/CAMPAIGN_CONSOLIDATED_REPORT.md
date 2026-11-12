@@ -6,7 +6,7 @@ Kampan ani PASS1 nie su dokoncene. DOS 2.0 obraz ma 171360 B, SHA-256 `e2efde70a
 
 
 
-Najnovsi report: [aktualna analyticka davka](PALETTE_EFFECT_NATIVE_REPORT.md). Predosle dokazy: [DSP status wrapper](PASS1_DSP_STATUS_REPORT.md), [debug logger](PASS1_DEBUG_LOGGER_REPORT.md), [CRT unloaded hooks](CRT_UNLOADED_HOOKS_REPORT.md), [Win110 trig calleri](WIN110_TRIG_CALLERS_REPORT.md). [Povodny Linux runtime balik](RUNTIME_BUNDLE_PROBE_REPORT.md) zostava samostatnym auditom. Aktualne original-runtime testy: 25; presny rozsah: retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap.
+Najnovsi report: [aktualna analyticka davka](GUARD_MAP_WRITER_REPORT.md). Predosle dokazy: [DSP status wrapper](PASS1_DSP_STATUS_REPORT.md), [debug logger](PASS1_DEBUG_LOGGER_REPORT.md), [CRT unloaded hooks](CRT_UNLOADED_HOOKS_REPORT.md), [Win110 trig calleri](WIN110_TRIG_CALLERS_REPORT.md). [Povodny Linux runtime balik](RUNTIME_BUNDLE_PROBE_REPORT.md) zostava samostatnym auditom. Aktualne original-runtime testy: 26; presny rozsah: retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; exact98 before/after MOV mapBYTE1 stores bind GUARD24/actor168/A5 andGUARD25/actor174/A4, restore-underlay044C andoccupy06A9; map-writer endpoint06AD is mid-function; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap.
 
 
 
@@ -22,31 +22,31 @@ Mapa `pass1_xms_move_request/noncode_intervals.csv/json`: **57118 B PARTIAL, 149
 
 |---|---:|
 
-| Funkcne rozsahy | 145 |
+| Funkcne rozsahy | 146 |
 
-| Nezavisle dekodovane instrukcie | 5785 |
+| Nezavisle dekodovane instrukcie | 6034 |
 
-| Instrukcne bajty | 14577 |
+| Instrukcne bajty | 15260 |
 
 | Unia typovanych dat celeho obrazu | 58034 B |
 
-| Ostatne katalogom neposudene bajty | 98749 B |
+| Ostatne katalogom neposudene bajty | 98066 B |
 
-| Intervaly celeho obrazu | 735 |
+| Intervaly celeho obrazu | 745 |
 
 | Typovane data v povodnom NON-CODE | 57116 B |
 
 | Kod v povodnom NON-CODE | 0 B |
 
-| Seeded replay pripady | 996305 |
+| Seeded replay pripady | 1003217 |
 
 | Oddelene prefixove replay pripady | 65548 |
 
-| Original-EXE runtime scenare s definovanymi zasahmi | 25 |
+| Original-EXE runtime scenare s definovanymi zasahmi | 26 |
 
 | Runtime BSS tabulky mimo file image (nezvysuju PASS1) | 4054 B |
 
-| Runtime buffer refinements, uz zahrnute v PASS1 | 4014 B /12 intervalov |
+| Runtime buffer refinements, uz zahrnute v PASS1 | 4122 B /16 intervalov |
 
 | Nove DEEP VERIFIED | 0 B |
 
@@ -64,7 +64,7 @@ Rozdiel PARTIAL oproti typovanym NON-CODE datam je 2 B: relokacny WORD DS:2358 v
 
 
 
-Reprodukcia: analyticky skript uvedeny v aktualnom reporte, `promote_pass1_fields.py`, `verify_pass1_partition.py`, `independent_decode_and_catalog.py`, potom `render_campaign_status.py OUTPUTS_DIR pass1_xms_move_request PALETTE_EFFECT_NATIVE_REPORT.md`. Presne vstupy a obmedzenia su v reportoch jednotlivych davok. Overena publikovana analyticka snimka je commit 8dc64e98da7d78c427e21c3c49d3b8e4f7509117, pozri `CAMPAIGN_PALETTE_EFFECT_PUBLICATION_RECEIPT_20261112.json`. Hash aktualnej mapy sa zhoduje s publikovanou analytickou snimkou. Historicke poznamky v davkovych reportoch uvadzaju stav v case ich vzniku.
+Reprodukcia: analyticky skript uvedeny v aktualnom reporte, `promote_pass1_fields.py`, `verify_pass1_partition.py`, `independent_decode_and_catalog.py`, potom `render_campaign_status.py OUTPUTS_DIR pass1_xms_move_request GUARD_MAP_WRITER_REPORT.md`. Presne vstupy a obmedzenia su v reportoch jednotlivych davok. Overena publikovana analyticka snimka je commit 8dc64e98da7d78c427e21c3c49d3b8e4f7509117, pozri `CAMPAIGN_PALETTE_EFFECT_PUBLICATION_RECEIPT_20261112.json`. Hash aktualnej mapy sa zhoduje s publikovanou analytickou snimkou. Aktualny katalog alebo runtime scenare sa odvtedy zmenili; samotna zhoda mapy neznamena publikovanie novej davky. Historicke poznamky v davkovych reportoch uvadzaju stav v case ich vzniku.
 
 
 
@@ -72,21 +72,21 @@ Samostatny Win110 paletovy doplnok: 4 rozsahy, 229 instrukcii / 641 B, 22 seeded
 
 ## Aktualizácia 13 oblastí
 
-Pre každú oblasť nové sémantické percento = uzavreté jednotky/úplný inventár. Menovatele stále chýbajú, preto N/A; staré orientačné odhady sa neprezentujú ako meranie. Nové funkcie/runtime dôkazy sú PARTIAL. UNKNOWN28B a CLASSIFIED ONLY149B ostávajú, DEEP VERIFIED0B.
+Nové sémantické percento = uzavreté jednotky/úplný inventár oblasti. Úplné menovatele stále chýbajú, preto N/A. Historické orientačné odhady sa nenahrádzajú odhadnutým číslom. Nové výsledky sú PARTIAL; UNKNOWN28B, CLASSIFIED ONLY149B a DEEP VERIFIED0 sa nemenia.
 
-|Oblasť|Predošlý odhad|Nové % / metodika|Nový dôkaz|Zostávajúce neznáme|Blokujúci problém|Najbližší krok|
+|Oblasť|Predošlý odhad|Nové % / metodika|Nový potvrdený dôkaz|Zostávajúce neznáme|Blokujúci problém|Najbližší krok|
 |---|---:|---|---|---|---|---|
-|Mapy a formáty|99 %|N/A,closure/inventár|4konkrétne BYTE1 endpoint zmeny po dlhšom behu|writer,A4/A5,world axes|iba endpointy|presný writer breakpoint pre4adresy|
-|Dátové typy a konštanty|95 %|N/A,closure/inventár|countdownWORD/phaseBYTE/sceneDACBYTE,4B BSS refinement|všetci alias writeri,lifecycle|nie celý BSS inventár|state a scene-index callery|
-|Tabuľky a ukazovatele|93 %|N/A,closure/inventár|DAC235+scene227, RAM/DAC divergence vysvetlená|iné scene-index hodnoty a alias227=235|iba jeden native sceneindex|ďalšie map header domény|
-|Funkcie / ASM / CFG|90 %|N/A,closure/inventár|2telá233B/77instructions,2288replay|EA0 downstream a neuzavreté callees|runtime path nie celá hra|audio/cache a map-writer telá|
-|RNG|97 %|N/A,closure/inventár|prirodzený palette seed1→2745024/AX41;12native-CRT modelchains|globálne poradie,seedy,DEMO,SAVE|iba palette RNG event|RNG call trace počas world/DEMO|
-|Scheduler|96 %|N/A,closure/inventár|palette reset a tick80→79, prirodzený flash cyklus|presné intervaly,skip/catchup a iné vetvy|nepočítaný každýtick/debug timing|riedky multi-tick trace|
-|DEMO a vstupy|96 %|N/A,closure/inventár|dlhší bez-input gameplay do palette cycle end|DEMO a pohyb/výstrel|iba startup menu keys|riadené gameplay vstupy a DEMO|
-|Renderer / VGA|94 %|N/A,closure/inventár|24nativeOUT aDACblack/white/black,index-helper8DOS rawmatch|pixelgolden,clipping a scanout|headless paused readback|nezávislý renderer golden a clippingcases|
-|GUARD / bossovia|93 %|N/A,closure/inventár|mapBYTE1 tokeny sa zmenili,writer nepriradený|AIobjekty/boss stavy|endpoint nie actor trace|breakpointy A4/A5 map writerov|
-|Zbrane / projektily|92 %|N/A,closure/inventár|žiadny nový damage dôkaz|damage/collision domény|bez výstrelu|controlled firing a projectile trace|
-|Sprity / HUD / paleta|92 %|N/A,closure/inventár|DAC227/235writer uzavretý pretestedcestu;gates/counter/RNGcycle|ďalšie epizódy,inépalety/callee role|jedna natívna mapa|gatedep2/ep3/sceneindex runtime|
-|SAVE / LOAD|92 %|N/A,closure/inventár|žiadny nový SAVE dôkaz|payload54709B,rollback,RNGserialization|prefix nie celý formát|SAVE/LOAD schema a izolovaný runtime|
-|Windows Win16|92 %|N/A,closure/inventár|DOS8label helper/CFG compare,žiadny novýWin dôkaz|Win paletteAPI/flash ekvivalent|žiadnyWin16runtime|fixup-backed Win effect mapping|
+|Mapy a formáty|99 %|N/A,closure/inventár|všetky4targety majú presné BYTE1 writery;98zápisov|iné mapové cesty a alias writery|selected direct store formy nie exhaustive|šíriť trace cez ďalšie object/map operácie|
+|Dátové typy a konštanty|95 %|N/A,closure/inventár|12caller-specific rolí,108B native rawrecord refinement|iné polia100/350records|iba2native GUARD sloty|zostávajúce record fields a consumers|
+|Tabuľky a ukazovatele|93 %|N/A,closure/inventár|GUARD24→actor168 a25→174;FARcell pointer zcoord0/1|iné linky,lifecycle a invalidácia|2páry nie celá tabuľka|GUARD allocation/destruction/link callery|
+|Funkcie / ASM / CFG|90 %|N/A,closure/inventár|0422whole controlbody683B/249instructions/6912replay|7mockcallee a4CFG gapB|callee effects neuzavreté|04C7:0254 a nadradená0D80|
+|RNG|97 %|N/A,closure/inventár|mode6bothblocked parity branch staticky/replay|prirodzený mode6 RNG a global order|native bolmode8|native mode6 situácia a randtrace|
+|Scheduler|96 %|N/A,closure/inventár|worldupdate vedie doGUARD callerFBA a98stores|cadence,inéstrategy/timer interactions|hustédebugstops|riedky multi-tick/strategy trace|
+|DEMO a vstupy|96 %|N/A,closure/inventár|bez nového gameplay key input prebeholGUARDmove|DEMO a riadený pohyb/výstrel|iba no-input scéna|gameplay input a DEMOtrace|
+|Renderer / VGA|94 %|N/A,closure/inventár|žiadny nový pixel parity dôkaz|renderer golden/clipping/scanout|storetrace nie pixel golden|object movement verzus spritedraw|
+|GUARD / bossovia|93 %|N/A,closure/inventár|underlay restore/rebind,mode8 gate,mode6bounce model|0254collision,0D80AI,boss stratégia|2native mode8sloty a7stuby|0254validator a0D80strategy CFG|
+|Zbrane / projektily|92 %|N/A,closure/inventár|žiadny nový damage dôkaz|projectile/collision/effects|bezvýstrelu|controlled projectile trace|
+|Sprity / HUD / paleta|92 %|N/A,closure/inventár|actor phaseBYTEanimation base/span kontrakt|spriteID/phase timing a draw caller|framecounter nie celýrender|animation consumer a sprite selection|
+|SAVE / LOAD|92 %|N/A,closure/inventár|4mapBYTE1writes označené dynamickéstate|serializácia actor/map underlay a rollback|metadata prefix nie celéSAVE|payload fields preactor/guard/map|
+|Windows Win16|92 %|N/A,closure/inventár|8DOS normalized wholecallerCFG,žiadnyWin dôkaz|Winactor/collision equivalent|žiadnyWin16runtime|fixup-backed actor move mapping|
 
