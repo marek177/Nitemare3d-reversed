@@ -34,7 +34,7 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
-    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay'):
+    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay'):
         for f in readjson(root/folder/'summary.json')['functions']:
             if folder=='worx_register_bank_replay' and f['name'] in ('worx_port_callback_set','worx_port_write_delayed'):continue # already owned by prior independent functions
             sources.append((f['name'],root/folder/(f['name']+'.csv')))
@@ -531,7 +531,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -683,6 +683,29 @@ def main():
         result['object_asset_capacity_records_separate']=v['object_records_checked']
         result['object_asset_max_logical_bytes_separate']=v['max_logical_bytes']
         result['object_asset_max_XMS_rounded_bytes_separate']=v['max_rounded_bytes']
+    cleanup_seed=root/'dosbox_cache_reset_seed_runtime/independent_verification.json'
+    if cleanup_seed.exists():
+        proof=readjson(cleanup_seed)
+        if not proof['verified'] or proof['runtime_tests']!=0 or not proof['data_only_native_capture']:raise ValueError('cleanup seed native miscount')
+        for item in proof['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('cleanup seed capture hash')
+        result['cache_cleanup_native_RAM_seed_bytes_separate']=proof['RAM_bytes']
+        result['cache_cleanup_native_RAM_seed_scope']='Data-only repeated firstsprite prefix,zeroaddednativecases;mode2/cleanup only controlled replays,not natural reset'
+    cleanup_replay=root/'cache_reset_RAM_replay/summary.json'
+    if cleanup_replay.exists():
+        proof=readjson(cleanup_replay)
+        if proof['cases']!=2 or proof['failures'] or proof['runtime_tests']:raise ValueError('RAM cleanup replay scope')
+        for item in proof['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('RAM cleanup replay input hash')
+        result['cache_cleanup_controlled_RAM_replay_cases']=2
+        result['cache_cleanup_controlled_RAM_replay_scope']='Original mode2 andwholecleanup seeded by640KiB nativeRAM;655288Bchecked/72Bsyntheticstackexcluded,exactorderedstoresincluding81initiallysamevaluewrites,5residentrefs invalidated,1074KiBusedcursor0/index1retained,305152Bconventionalpayloadunchanged;cleanup66near-markcalls/4bankptrs cleared;restrictedreadpasses matchbaseline andread248Bactivevector/0remaining177events for these paths only'
+    cleanup_versions=root/'cache_cleanup_versions/summary.json'
+    if cleanup_versions.exists():
+        v=readjson(cleanup_versions)
+        if v['failures'] or v['runtime_tests']:raise ValueError('cleanup versions scope')
+        for item in v['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('cleanup versions sourcehash')
+        result['cache_cleanup_cross_version_cases_separate']=v['cases']
     partial_path=root/'guard_validator_partial/partial_verification.json'
     if partial_path.exists():
         partial=readjson(partial_path)
@@ -691,7 +714,7 @@ def main():
             if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('partial capture hash mismatch')
         result['partial_native_validator_allowed_calls_not_additional_scenarios']=partial['successful_native_allowed_calls']
     bss_tables=[]
-    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv',root/'guard_validator_partial/external_bss_tables.csv',root/'classification_producer_fields/external_bss_tables.csv',root/'image_group_fields/external_bss_tables.csv',root/'image_record_fields/external_bss_tables.csv',root/'image_retrieval_fields/external_bss_tables.csv',root/'crt_ftime_fields/external_bss_tables.csv',root/'object_cache_fields/external_bss_tables.csv'):
+    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv',root/'guard_validator_partial/external_bss_tables.csv',root/'classification_producer_fields/external_bss_tables.csv',root/'image_group_fields/external_bss_tables.csv',root/'image_record_fields/external_bss_tables.csv',root/'image_retrieval_fields/external_bss_tables.csv',root/'crt_ftime_fields/external_bss_tables.csv',root/'object_cache_fields/external_bss_tables.csv',root/'cache_cleanup_fields/external_bss_tables.csv'):
         if runtime_bss.exists():bss_tables.extend(readcsv(runtime_bss))
     if bss_tables:
         bss_union=set()
@@ -726,6 +749,7 @@ def main():
     refinement_paths.append(root/'crt_calendar_fields/consumer_field_roles.csv')
     refinement_paths.append(root/'crt_ftime_fields/consumer_field_roles.csv')
     refinement_paths.append(root/'object_cache_fields/consumer_field_roles.csv')
+    refinement_paths.append(root/'cache_cleanup_fields/consumer_field_roles.csv')
     records=[]
     for refinements in refinement_paths:
         if not refinements.exists():continue

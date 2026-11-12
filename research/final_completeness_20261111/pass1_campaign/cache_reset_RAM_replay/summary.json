@@ -1,0 +1,86 @@
+{
+  "functions": [],
+  "cases": 2,
+  "failures": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "results": [
+    {
+      "kind": "cache_reset",
+      "slot_count": 62,
+      "cursor_before": 1,
+      "cursor_after": 1,
+      "XMS_used_before": 1074,
+      "XMS_used_after": 0,
+      "whole_RAM_bytes_checked": 655288,
+      "synthetic_stack_bytes_excluded": 72,
+      "original_instruction_events": 745,
+      "unique_original_starts": 58,
+      "nonstack_write_events": 96,
+      "initially_same_value_write_events": 81,
+      "changed_byte_positions": 36,
+      "owner_refs_invalidated": 5,
+      "mark_helper_calls": 0,
+      "conventional_payload_bytes_unchanged": 305152,
+      "vector_read_byte_union": 248,
+      "remaining177_read_events": 0,
+      "restricted_read_hooks_flow_equal": true,
+      "native_cleanup_executed": false,
+      "status": "PASS"
+    },
+    {
+      "kind": "level_cleanup",
+      "slot_count": 62,
+      "cursor_before": 1,
+      "cursor_after": 1,
+      "XMS_used_before": 1074,
+      "XMS_used_after": 0,
+      "whole_RAM_bytes_checked": 655288,
+      "synthetic_stack_bytes_excluded": 72,
+      "original_instruction_events": 5175,
+      "unique_original_starts": 131,
+      "nonstack_write_events": 166,
+      "initially_same_value_write_events": 81,
+      "changed_byte_positions": 109,
+      "owner_refs_invalidated": 5,
+      "mark_helper_calls": 66,
+      "conventional_payload_bytes_unchanged": 305152,
+      "vector_read_byte_union": 248,
+      "remaining177_read_events": 0,
+      "restricted_read_hooks_flow_equal": true,
+      "native_cleanup_executed": false,
+      "status": "PASS"
+    }
+  ],
+  "scope": "Two controlled original-code replays seeded by paused native640KiB RAM. No stubs/OS. EntireRAM minus72B synthetic control stack and exact same-value/nonstack write order checked;305152B conventional cache payloads unchanged. Restricted read hooks reproduce exact baseline flow,read248B active vector and0remaining177events in these paths only. Not natural reset/cleanup execution,SAVELOAD/full lifecycle or global absence proof.",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\relocations.csv",
+      "sha256": "5faab828945fa774c340ce1b612a0cd6379f7507cfddcdcccd395d37a58b3256"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\pass1_xms_move_request\\noncode_intervals.csv",
+      "sha256": "497d10a11959dbae3d17f495e803569e229c13434658ec94c231d29784f47efe"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_cache_reset_seed_runtime\\object_cache_00_cache_reset_RAM_seed.bin",
+      "sha256": "63ab87c0fb891383f6da15007380cc94a04dbf05ce8bec1c8332f86453b08616"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_cache_reset_seed_runtime\\independent_verification.json",
+      "sha256": "354a974e450939bc09921a248916b5a934bf807622dfb2b1e2f8f40c598519a1"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\cache_reset_model.py",
+      "sha256": "d776a86f628a4d8a93d645e2aa0aee54dfe1ea1ea8cabfd5e7e276575a6abfcb"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\verify_cache_reset_seed_replay.py",
+      "sha256": "8128645bb1346099331b1f8eb8b81237d55374fb27cda2cfecadd8fa7c5d27ec"
+    }
+  ]
+}

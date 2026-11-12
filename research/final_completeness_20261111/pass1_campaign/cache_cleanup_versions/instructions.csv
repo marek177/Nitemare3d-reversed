@@ -1,0 +1,2140 @@
+version,function,cs,ip,image_offset,bytes,instruction
+10,cache_lifecycle_dispatch_012,1849,40,29624,c8040000,"enter 4,0"
+10,cache_lifecycle_dispatch_012,1849,44,29628,56,push si
+10,cache_lifecycle_dispatch_012,1849,45,29629,8b4606,"mov ax,[bp+6]"
+10,cache_lifecycle_dispatch_012,1849,48,29632,0bc0,"or ax,ax"
+10,cache_lifecycle_dispatch_012,1849,50,29634,740e,je short 0042h
+10,cache_lifecycle_dispatch_012,1849,52,29636,48,dec ax
+10,cache_lifecycle_dispatch_012,1849,53,29637,0f841301,je 014Ch
+10,cache_lifecycle_dispatch_012,1849,57,29641,48,dec ax
+10,cache_lifecycle_dispatch_012,1849,58,29642,0f842e01,je 016Ch
+10,cache_lifecycle_dispatch_012,1849,62,29646,5e,pop si
+10,cache_lifecycle_dispatch_012,1849,63,29647,c9,leave
+10,cache_lifecycle_dispatch_012,1849,64,29648,cb,ret far
+10,cache_lifecycle_dispatch_012,1849,66,29650,be7233,"mov si,3372h"
+10,cache_lifecycle_dispatch_012,1849,69,29653,680620,push 2006h
+10,cache_lifecycle_dispatch_012,1849,72,29656,9a61219b11,"call far 2161h,119Bh"
+10,cache_lifecycle_dispatch_012,1849,77,29661,83c402,"add sp,2"
+10,cache_lifecycle_dispatch_012,1849,80,29664,8904,"mov [si],ax"
+10,cache_lifecycle_dispatch_012,1849,82,29666,895402,"mov [si+2],dx"
+10,cache_lifecycle_dispatch_012,1849,85,29669,8bc2,"mov ax,dx"
+10,cache_lifecycle_dispatch_012,1849,87,29671,0b04,"or ax,[si]"
+10,cache_lifecycle_dispatch_012,1849,89,29673,750e,jne short 0069h
+10,cache_lifecycle_dispatch_012,1849,91,29675,68080b,push 0B08h
+10,cache_lifecycle_dispatch_012,1849,94,29678,68130b,push 0B13h
+10,cache_lifecycle_dispatch_012,1849,97,29681,9a0a00670f,"call far 000Ah,0F67h"
+10,cache_lifecycle_dispatch_012,1849,102,29686,83c404,"add sp,4"
+10,cache_lifecycle_dispatch_012,1849,105,29689,c41c,"les bx,[si]"
+10,cache_lifecycle_dispatch_012,1849,107,29691,26c747040000,"mov word ptr es:[bx+4],0"
+10,cache_lifecycle_dispatch_012,1849,113,29697,c41c,"les bx,[si]"
+10,cache_lifecycle_dispatch_012,1849,115,29699,6626c70700000000,"mov dword ptr es:[bx],0"
+10,cache_lifecycle_dispatch_012,1849,123,29707,83c604,"add si,4"
+10,cache_lifecycle_dispatch_012,1849,126,29710,81fe9a33,"cmp si,339Ah"
+10,cache_lifecycle_dispatch_012,1849,130,29714,72c1,jb short 0045h
+10,cache_lifecycle_dispatch_012,1849,132,29716,be9a33,"mov si,339Ah"
+10,cache_lifecycle_dispatch_012,1849,135,29719,680620,push 2006h
+10,cache_lifecycle_dispatch_012,1849,138,29722,9a61219b11,"call far 2161h,119Bh"
+10,cache_lifecycle_dispatch_012,1849,143,29727,83c402,"add sp,2"
+10,cache_lifecycle_dispatch_012,1849,146,29730,8904,"mov [si],ax"
+10,cache_lifecycle_dispatch_012,1849,148,29732,895402,"mov [si+2],dx"
+10,cache_lifecycle_dispatch_012,1849,151,29735,8bc2,"mov ax,dx"
+10,cache_lifecycle_dispatch_012,1849,153,29737,0b04,"or ax,[si]"
+10,cache_lifecycle_dispatch_012,1849,155,29739,750e,jne short 00ABh
+10,cache_lifecycle_dispatch_012,1849,157,29741,68360b,push 0B36h
+10,cache_lifecycle_dispatch_012,1849,160,29744,68410b,push 0B41h
+10,cache_lifecycle_dispatch_012,1849,163,29747,9a0a00670f,"call far 000Ah,0F67h"
+10,cache_lifecycle_dispatch_012,1849,168,29752,83c404,"add sp,4"
+10,cache_lifecycle_dispatch_012,1849,171,29755,c41c,"les bx,[si]"
+10,cache_lifecycle_dispatch_012,1849,173,29757,26c747040000,"mov word ptr es:[bx+4],0"
+10,cache_lifecycle_dispatch_012,1849,179,29763,c41c,"les bx,[si]"
+10,cache_lifecycle_dispatch_012,1849,181,29765,6626c70700000000,"mov dword ptr es:[bx],0"
+10,cache_lifecycle_dispatch_012,1849,189,29773,83c604,"add si,4"
+10,cache_lifecycle_dispatch_012,1849,192,29776,81feaa33,"cmp si,33AAh"
+10,cache_lifecycle_dispatch_012,1849,196,29780,72c1,jb short 0087h
+10,cache_lifecycle_dispatch_012,1849,198,29782,9a5600670f,"call far 0056h,0F67h"
+10,cache_lifecycle_dispatch_012,1849,203,29787,a3543b,"mov [3B54h],ax"
+10,cache_lifecycle_dispatch_012,1849,206,29790,9a542a9b11,"call far 2A54h,119Bh"
+10,cache_lifecycle_dispatch_012,1849,211,29795,a3503b,"mov [3B50h],ax"
+10,cache_lifecycle_dispatch_012,1849,214,29798,803e683b00,"cmp byte ptr [3B68h],0"
+10,cache_lifecycle_dispatch_012,1849,219,29803,742d,je short 010Ah
+10,cache_lifecycle_dispatch_012,1849,221,29805,0e,push cs
+10,cache_lifecycle_dispatch_012,1849,222,29806,e80f05,call 05F0h
+10,cache_lifecycle_dispatch_012,1849,225,29809,0bc0,"or ax,ax"
+10,cache_lifecycle_dispatch_012,1849,227,29811,7420,je short 0105h
+10,cache_lifecycle_dispatch_012,1849,229,29813,0e,push cs
+10,cache_lifecycle_dispatch_012,1849,230,29814,e82d05,call 0616h
+10,cache_lifecycle_dispatch_012,1849,233,29817,a3ac33,"mov [33ACh],ax"
+10,cache_lifecycle_dispatch_012,1849,236,29820,a3583b,"mov [3B58h],ax"
+10,cache_lifecycle_dispatch_012,1849,239,29823,c706ae330000,"mov word ptr [33AEh],0"
+10,cache_lifecycle_dispatch_012,1849,245,29829,3d0008,"cmp ax,800h"
+10,cache_lifecycle_dispatch_012,1849,248,29832,7e03,jle short 00FDh
+10,cache_lifecycle_dispatch_012,1849,250,29834,b80008,"mov ax,800h"
+10,cache_lifecycle_dispatch_012,1849,253,29837,a3ac33,"mov [33ACh],ax"
+10,cache_lifecycle_dispatch_012,1849,256,29840,3d4000,"cmp ax,40h"
+10,cache_lifecycle_dispatch_012,1849,259,29843,7d0f,jge short 0114h
+10,cache_lifecycle_dispatch_012,1849,261,29845,c606683b00,"mov byte ptr [3B68h],0"
+10,cache_lifecycle_dispatch_012,1849,266,29850,a0683b,"mov al,[3B68h]"
+10,cache_lifecycle_dispatch_012,1849,269,29853,a2b033,"mov [33B0h],al"
+10,cache_lifecycle_dispatch_012,1849,272,29856,5e,pop si
+10,cache_lifecycle_dispatch_012,1849,273,29857,c9,leave
+10,cache_lifecycle_dispatch_012,1849,274,29858,cb,ret far
+10,cache_lifecycle_dispatch_012,1849,276,29860,50,push ax
+10,cache_lifecycle_dispatch_012,1849,277,29861,0e,push cs
+10,cache_lifecycle_dispatch_012,1849,278,29862,e81505,call 062Eh
+10,cache_lifecycle_dispatch_012,1849,281,29865,83c402,"add sp,2"
+10,cache_lifecycle_dispatch_012,1849,284,29868,0bd2,"or dx,dx"
+10,cache_lifecycle_dispatch_012,1849,286,29870,7ce5,jl short 0105h
+10,cache_lifecycle_dispatch_012,1849,288,29872,a3aa33,"mov [33AAh],ax"
+10,cache_lifecycle_dispatch_012,1849,291,29875,50,push ax
+10,cache_lifecycle_dispatch_012,1849,292,29876,0e,push cs
+10,cache_lifecycle_dispatch_012,1849,293,29877,e86a05,call 0692h
+10,cache_lifecycle_dispatch_012,1849,296,29880,83c402,"add sp,2"
+10,cache_lifecycle_dispatch_012,1849,299,29883,0bd2,"or dx,dx"
+10,cache_lifecycle_dispatch_012,1849,301,29885,7ddb,jge short 010Ah
+10,cache_lifecycle_dispatch_012,1849,303,29887,ff36aa33,push word ptr [33AAh]
+10,cache_lifecycle_dispatch_012,1849,307,29891,0e,push cs
+10,cache_lifecycle_dispatch_012,1849,308,29892,e81905,call 0650h
+10,cache_lifecycle_dispatch_012,1849,311,29895,83c402,"add sp,2"
+10,cache_lifecycle_dispatch_012,1849,314,29898,c606683b00,"mov byte ptr [3B68h],0"
+10,cache_lifecycle_dispatch_012,1849,319,29903,68640b,push 0B64h
+10,cache_lifecycle_dispatch_012,1849,322,29906,9a6e004e04,"call far 006Eh,044Eh"
+10,cache_lifecycle_dispatch_012,1849,327,29911,83c402,"add sp,2"
+10,cache_lifecycle_dispatch_012,1849,330,29914,ebbe,jmp short 010Ah
+10,cache_lifecycle_dispatch_012,1849,332,29916,803eb03300,"cmp byte ptr [33B0h],0"
+10,cache_lifecycle_dispatch_012,1849,337,29921,7454,je short 01A7h
+10,cache_lifecycle_dispatch_012,1849,339,29923,ff36aa33,push word ptr [33AAh]
+10,cache_lifecycle_dispatch_012,1849,343,29927,0e,push cs
+10,cache_lifecycle_dispatch_012,1849,344,29928,e85505,call 06B0h
+10,cache_lifecycle_dispatch_012,1849,347,29931,83c402,"add sp,2"
+10,cache_lifecycle_dispatch_012,1849,350,29934,ff36aa33,push word ptr [33AAh]
+10,cache_lifecycle_dispatch_012,1849,354,29938,0e,push cs
+10,cache_lifecycle_dispatch_012,1849,355,29939,e8ea04,call 0650h
+10,cache_lifecycle_dispatch_012,1849,358,29942,83c402,"add sp,2"
+10,cache_lifecycle_dispatch_012,1849,361,29945,5e,pop si
+10,cache_lifecycle_dispatch_012,1849,362,29946,c9,leave
+10,cache_lifecycle_dispatch_012,1849,363,29947,cb,ret far
+10,cache_lifecycle_dispatch_012,1849,364,29948,bb7233,"mov bx,3372h"
+10,cache_lifecycle_dispatch_012,1849,367,29951,c437,"les si,[bx]"
+10,cache_lifecycle_dispatch_012,1849,369,29953,26c744040000,"mov word ptr es:[si+4],0"
+10,cache_lifecycle_dispatch_012,1849,375,29959,c437,"les si,[bx]"
+10,cache_lifecycle_dispatch_012,1849,377,29961,662bc0,"sub eax,eax"
+10,cache_lifecycle_dispatch_012,1849,380,29964,66268904,"mov es:[si],eax"
+10,cache_lifecycle_dispatch_012,1849,384,29968,83c304,"add bx,4"
+10,cache_lifecycle_dispatch_012,1849,387,29971,81fb9a33,"cmp bx,339Ah"
+10,cache_lifecycle_dispatch_012,1849,391,29975,72e6,jb short 016Fh
+10,cache_lifecycle_dispatch_012,1849,393,29977,bb9a33,"mov bx,339Ah"
+10,cache_lifecycle_dispatch_012,1849,396,29980,c437,"les si,[bx]"
+10,cache_lifecycle_dispatch_012,1849,398,29982,26894404,"mov es:[si+4],ax"
+10,cache_lifecycle_dispatch_012,1849,402,29986,c437,"les si,[bx]"
+10,cache_lifecycle_dispatch_012,1849,404,29988,26894402,"mov es:[si+2],ax"
+10,cache_lifecycle_dispatch_012,1849,408,29992,268904,"mov es:[si],ax"
+10,cache_lifecycle_dispatch_012,1849,411,29995,83c304,"add bx,4"
+10,cache_lifecycle_dispatch_012,1849,414,29998,81fbaa33,"cmp bx,33AAh"
+10,cache_lifecycle_dispatch_012,1849,418,30002,72e8,jb short 018Ch
+10,cache_lifecycle_dispatch_012,1849,420,30004,a3ae33,"mov [33AEh],ax"
+10,cache_lifecycle_dispatch_012,1849,423,30007,5e,pop si
+10,cache_lifecycle_dispatch_012,1849,424,30008,c9,leave
+10,cache_lifecycle_dispatch_012,1849,425,30009,cb,ret far
+10,level_resource_cleanup,3292,2014,54686,c80c0000,"enter 0Ch,0"
+10,level_resource_cleanup,3292,2018,54690,57,push di
+10,level_resource_cleanup,3292,2019,54691,56,push si
+10,level_resource_cleanup,3292,2020,54692,6a02,push 2
+10,level_resource_cleanup,3292,2022,54694,9a28003907,"call far 0028h,0739h"
+10,level_resource_cleanup,3292,2027,54699,83c402,"add sp,2"
+10,level_resource_cleanup,3292,2030,54702,33ff,"xor di,di"
+10,level_resource_cleanup,3292,2032,54704,393ec860,"cmp [60C8h],di"
+10,level_resource_cleanup,3292,2036,54708,7e17,jle short 080Dh
+10,level_resource_cleanup,3292,2038,54710,be6c41,"mov si,416Ch"
+10,level_resource_cleanup,3292,2041,54713,ff34,push word ptr [si]
+10,level_resource_cleanup,3292,2043,54715,9a723d9b11,"call far 3D72h,119Bh"
+10,level_resource_cleanup,3292,2048,54720,83c402,"add sp,2"
+10,level_resource_cleanup,3292,2051,54723,83c608,"add si,8"
+10,level_resource_cleanup,3292,2054,54726,47,inc di
+10,level_resource_cleanup,3292,2055,54727,3b3ec860,"cmp di,[60C8h]"
+10,level_resource_cleanup,3292,2059,54731,7cec,jl short 07F9h
+10,level_resource_cleanup,3292,2061,54733,c746fa0000,"mov word ptr [bp-6],0"
+10,level_resource_cleanup,3292,2066,54738,833eca6000,"cmp word ptr [60CAh],0"
+10,level_resource_cleanup,3292,2071,54743,7e44,jle short 085Dh
+10,level_resource_cleanup,3292,2073,54745,bf763b,"mov di,3B76h"
+10,level_resource_cleanup,3292,2076,54748,c746fe0000,"mov word ptr [bp-2],0"
+10,level_resource_cleanup,3292,2081,54753,833d00,"cmp word ptr [di],0"
+10,level_resource_cleanup,3292,2084,54756,7e1e,jle short 0844h
+10,level_resource_cleanup,3292,2086,54758,33f6,"xor si,si"
+10,level_resource_cleanup,3292,2088,54760,8b5d06,"mov bx,[di+6]"
+10,level_resource_cleanup,3292,2091,54763,66ff7006,push dword ptr [bx+si+6]
+10,level_resource_cleanup,3292,2095,54767,9a4e219b11,"call far 214Eh,119Bh"
+10,level_resource_cleanup,3292,2100,54772,83c404,"add sp,4"
+10,level_resource_cleanup,3292,2103,54775,83c60a,"add si,0Ah"
+10,level_resource_cleanup,3292,2106,54778,8b05,"mov ax,[di]"
+10,level_resource_cleanup,3292,2108,54780,ff46fe,inc word ptr [bp-2]
+10,level_resource_cleanup,3292,2111,54783,3946fe,"cmp [bp-2],ax"
+10,level_resource_cleanup,3292,2114,54786,7ce4,jl short 0828h
+10,level_resource_cleanup,3292,2116,54788,ff7506,push word ptr [di+6]
+10,level_resource_cleanup,3292,2119,54791,9a723d9b11,"call far 3D72h,119Bh"
+10,level_resource_cleanup,3292,2124,54796,83c402,"add sp,2"
+10,level_resource_cleanup,3292,2127,54799,83c708,"add di,8"
+10,level_resource_cleanup,3292,2130,54802,a1ca60,"mov ax,[60CAh]"
+10,level_resource_cleanup,3292,2133,54805,ff46fa,inc word ptr [bp-6]
+10,level_resource_cleanup,3292,2136,54808,3946fa,"cmp [bp-6],ax"
+10,level_resource_cleanup,3292,2139,54811,7cbf,jl short 081Ch
+10,level_resource_cleanup,3292,2141,54813,33ff,"xor di,di"
+10,level_resource_cleanup,3292,2143,54815,393ec660,"cmp [60C6h],di"
+10,level_resource_cleanup,3292,2147,54819,7e41,jle short 08A6h
+10,level_resource_cleanup,3292,2149,54821,be0a00,"mov si,0Ah"
+10,level_resource_cleanup,3292,2152,54824,8e066624,"mov es,[2466h]"
+10,level_resource_cleanup,3292,2156,54828,8976f4,"mov [bp-0Ch],si"
+10,level_resource_cleanup,3292,2159,54831,8c46f6,"mov [bp-0Ah],es"
+10,level_resource_cleanup,3292,2162,54834,268a1c,"mov bl,es:[si]"
+10,level_resource_cleanup,3292,2165,54837,2aff,"sub bh,bh"
+10,level_resource_cleanup,3292,2167,54839,c1e303,"shl bx,3"
+10,level_resource_cleanup,3292,2170,54842,8b877a3b,"mov ax,[bx+3B7Ah]"
+10,level_resource_cleanup,3292,2174,54846,0bc0,"or ax,ax"
+10,level_resource_cleanup,3292,2176,54848,741a,je short 089Ch
+10,level_resource_cleanup,3292,2178,54850,50,push ax
+10,level_resource_cleanup,3292,2179,54851,9a723d9b11,"call far 3D72h,119Bh"
+10,level_resource_cleanup,3292,2184,54856,83c402,"add sp,2"
+10,level_resource_cleanup,3292,2187,54859,c45ef4,"les bx,[bp-0Ch]"
+10,level_resource_cleanup,3292,2190,54862,268a1f,"mov bl,es:[bx]"
+10,level_resource_cleanup,3292,2193,54865,2aff,"sub bh,bh"
+10,level_resource_cleanup,3292,2195,54867,c1e303,"shl bx,3"
+10,level_resource_cleanup,3292,2198,54870,c7877a3b0000,"mov word ptr [bx+3B7Ah],0"
+10,level_resource_cleanup,3292,2204,54876,83c61c,"add si,1Ch"
+10,level_resource_cleanup,3292,2207,54879,47,inc di
+10,level_resource_cleanup,3292,2208,54880,3b3ec660,"cmp di,[60C6h]"
+10,level_resource_cleanup,3292,2212,54884,7cc2,jl short 0868h
+10,level_resource_cleanup,3292,2214,54886,5e,pop si
+10,level_resource_cleanup,3292,2215,54887,5f,pop di
+10,level_resource_cleanup,3292,2216,54888,c9,leave
+10,level_resource_cleanup,3292,2217,54889,cb,ret far
+11,cache_lifecycle_dispatch_012,1858,32,29760,c8060000,"enter 6,0"
+11,cache_lifecycle_dispatch_012,1858,36,29764,57,push di
+11,cache_lifecycle_dispatch_012,1858,37,29765,56,push si
+11,cache_lifecycle_dispatch_012,1858,38,29766,8b4606,"mov ax,[bp+6]"
+11,cache_lifecycle_dispatch_012,1858,41,29769,0bc0,"or ax,ax"
+11,cache_lifecycle_dispatch_012,1858,43,29771,740f,je short 003Ch
+11,cache_lifecycle_dispatch_012,1858,45,29773,48,dec ax
+11,cache_lifecycle_dispatch_012,1858,46,29774,0f84ac01,je 01DEh
+11,cache_lifecycle_dispatch_012,1858,50,29778,48,dec ax
+11,cache_lifecycle_dispatch_012,1858,51,29779,0f84cb01,je 0202h
+11,cache_lifecycle_dispatch_012,1858,55,29783,5e,pop si
+11,cache_lifecycle_dispatch_012,1858,56,29784,5f,pop di
+11,cache_lifecycle_dispatch_012,1858,57,29785,c9,leave
+11,cache_lifecycle_dispatch_012,1858,58,29786,cb,ret far
+11,cache_lifecycle_dispatch_012,1858,60,29788,be6a34,"mov si,346Ah"
+11,cache_lifecycle_dispatch_012,1858,63,29791,680620,push 2006h
+11,cache_lifecycle_dispatch_012,1858,66,29794,9a6520bc11,"call far 2065h,11BCh"
+11,cache_lifecycle_dispatch_012,1858,71,29799,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,74,29802,8904,"mov [si],ax"
+11,cache_lifecycle_dispatch_012,1858,76,29804,895402,"mov [si+2],dx"
+11,cache_lifecycle_dispatch_012,1858,79,29807,8bc2,"mov ax,dx"
+11,cache_lifecycle_dispatch_012,1858,81,29809,0b04,"or ax,[si]"
+11,cache_lifecycle_dispatch_012,1858,83,29811,750b,jne short 0060h
+11,cache_lifecycle_dispatch_012,1858,85,29813,68600b,push 0B60h
+11,cache_lifecycle_dispatch_012,1858,88,29816,9a0200890f,"call far 2,0F89h"
+11,cache_lifecycle_dispatch_012,1858,93,29821,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,96,29824,c41c,"les bx,[si]"
+11,cache_lifecycle_dispatch_012,1858,98,29826,26c747040000,"mov word ptr es:[bx+4],0"
+11,cache_lifecycle_dispatch_012,1858,104,29832,c41c,"les bx,[si]"
+11,cache_lifecycle_dispatch_012,1858,106,29834,6626c70700000000,"mov dword ptr es:[bx],0"
+11,cache_lifecycle_dispatch_012,1858,114,29842,83c604,"add si,4"
+11,cache_lifecycle_dispatch_012,1858,117,29845,81fe9234,"cmp si,3492h"
+11,cache_lifecycle_dispatch_012,1858,121,29849,72c4,jb short 003Fh
+11,cache_lifecycle_dispatch_012,1858,123,29851,be9234,"mov si,3492h"
+11,cache_lifecycle_dispatch_012,1858,126,29854,680620,push 2006h
+11,cache_lifecycle_dispatch_012,1858,129,29857,9a6520bc11,"call far 2065h,11BCh"
+11,cache_lifecycle_dispatch_012,1858,134,29862,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,137,29865,8904,"mov [si],ax"
+11,cache_lifecycle_dispatch_012,1858,139,29867,895402,"mov [si+2],dx"
+11,cache_lifecycle_dispatch_012,1858,142,29870,8bc2,"mov ax,dx"
+11,cache_lifecycle_dispatch_012,1858,144,29872,0b04,"or ax,[si]"
+11,cache_lifecycle_dispatch_012,1858,146,29874,750b,jne short 009Fh
+11,cache_lifecycle_dispatch_012,1858,148,29876,68940b,push 0B94h
+11,cache_lifecycle_dispatch_012,1858,151,29879,9a0200890f,"call far 2,0F89h"
+11,cache_lifecycle_dispatch_012,1858,156,29884,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,159,29887,c41c,"les bx,[si]"
+11,cache_lifecycle_dispatch_012,1858,161,29889,26c747040000,"mov word ptr es:[bx+4],0"
+11,cache_lifecycle_dispatch_012,1858,167,29895,c41c,"les bx,[si]"
+11,cache_lifecycle_dispatch_012,1858,169,29897,6626c70700000000,"mov dword ptr es:[bx],0"
+11,cache_lifecycle_dispatch_012,1858,177,29905,83c604,"add si,4"
+11,cache_lifecycle_dispatch_012,1858,180,29908,81fea234,"cmp si,34A2h"
+11,cache_lifecycle_dispatch_012,1858,184,29912,72c4,jb short 007Eh
+11,cache_lifecycle_dispatch_012,1858,186,29914,9a4e00890f,"call far 004Eh,0F89h"
+11,cache_lifecycle_dispatch_012,1858,191,29919,a3543c,"mov [3C54h],ax"
+11,cache_lifecycle_dispatch_012,1858,194,29922,9a9029bc11,"call far 2990h,11BCh"
+11,cache_lifecycle_dispatch_012,1858,199,29927,a3503c,"mov [3C50h],ax"
+11,cache_lifecycle_dispatch_012,1858,202,29930,6668020c0000,data32 push 0C02h
+11,cache_lifecycle_dispatch_012,1858,208,29936,a1543c,"mov ax,[3C54h]"
+11,cache_lifecycle_dispatch_012,1858,211,29939,2bd2,"sub dx,dx"
+11,cache_lifecycle_dispatch_012,1858,213,29941,2d4600,"sub ax,46h"
+11,cache_lifecycle_dispatch_012,1858,216,29944,1bd2,"sbb dx,dx"
+11,cache_lifecycle_dispatch_012,1858,218,29946,8af2,"mov dh,dl"
+11,cache_lifecycle_dispatch_012,1858,220,29948,8ad4,"mov dl,ah"
+11,cache_lifecycle_dispatch_012,1858,222,29950,8ae0,"mov ah,al"
+11,cache_lifecycle_dispatch_012,1858,224,29952,2ac0,"sub al,al"
+11,cache_lifecycle_dispatch_012,1858,226,29954,03c0,"add ax,ax"
+11,cache_lifecycle_dispatch_012,1858,228,29956,13d2,"adc dx,dx"
+11,cache_lifecycle_dispatch_012,1858,230,29958,03c0,"add ax,ax"
+11,cache_lifecycle_dispatch_012,1858,232,29960,13d2,"adc dx,dx"
+11,cache_lifecycle_dispatch_012,1858,234,29962,52,push dx
+11,cache_lifecycle_dispatch_012,1858,235,29963,50,push ax
+11,cache_lifecycle_dispatch_012,1858,236,29964,6658,pop eax
+11,cache_lifecycle_dispatch_012,1858,238,29966,6659,pop ecx
+11,cache_lifecycle_dispatch_012,1858,240,29968,6699,cdq
+11,cache_lifecycle_dispatch_012,1858,242,29970,66f7f9,idiv ecx
+11,cache_lifecycle_dispatch_012,1858,245,29973,668bd0,"mov edx,eax"
+11,cache_lifecycle_dispatch_012,1858,248,29976,66c1ea10,"shr edx,10h"
+11,cache_lifecycle_dispatch_012,1858,252,29980,a3a234,"mov [34A2h],ax"
+11,cache_lifecycle_dispatch_012,1858,255,29983,3d8000,"cmp ax,80h"
+11,cache_lifecycle_dispatch_012,1858,258,29986,7e03,jle short 0107h
+11,cache_lifecycle_dispatch_012,1858,260,29988,b88000,"mov ax,80h"
+11,cache_lifecycle_dispatch_012,1858,263,29991,a3a234,"mov [34A2h],ax"
+11,cache_lifecycle_dispatch_012,1858,266,29994,3d0100,"cmp ax,1"
+11,cache_lifecycle_dispatch_012,1858,269,29997,7d0b,jge short 011Ah
+11,cache_lifecycle_dispatch_012,1858,271,29999,68c80b,push 0BC8h
+11,cache_lifecycle_dispatch_012,1858,274,30002,9a0200890f,"call far 2,0F89h"
+11,cache_lifecycle_dispatch_012,1858,279,30007,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,282,30010,33ff,"xor di,di"
+11,cache_lifecycle_dispatch_012,1858,284,30012,393ea234,"cmp [34A2h],di"
+11,cache_lifecycle_dispatch_012,1858,288,30016,7e41,jle short 0163h
+11,cache_lifecycle_dispatch_012,1858,290,30018,be0000,"mov si,0"
+11,cache_lifecycle_dispatch_012,1858,293,30021,68020c,push 0C02h
+11,cache_lifecycle_dispatch_012,1858,296,30024,9a6520bc11,"call far 2065h,11BCh"
+11,cache_lifecycle_dispatch_012,1858,301,30029,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,304,30032,8e065225,"mov es,[2552h]"
+11,cache_lifecycle_dispatch_012,1858,308,30036,268904,"mov es:[si],ax"
+11,cache_lifecycle_dispatch_012,1858,311,30039,26895402,"mov es:[si+2],dx"
+11,cache_lifecycle_dispatch_012,1858,315,30043,8bc2,"mov ax,dx"
+11,cache_lifecycle_dispatch_012,1858,317,30045,260b04,"or ax,es:[si]"
+11,cache_lifecycle_dispatch_012,1858,320,30048,750b,jne short 014Dh
+11,cache_lifecycle_dispatch_012,1858,322,30050,68fc0b,push 0BFCh
+11,cache_lifecycle_dispatch_012,1858,325,30053,9a0200890f,"call far 2,0F89h"
+11,cache_lifecycle_dispatch_012,1858,330,30058,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,333,30061,8e065225,"mov es,[2552h]"
+11,cache_lifecycle_dispatch_012,1858,337,30065,26c41c,"les bx,es:[si]"
+11,cache_lifecycle_dispatch_012,1858,340,30068,83c604,"add si,4"
+11,cache_lifecycle_dispatch_012,1858,343,30071,26c7070000,"mov word ptr es:[bx],0"
+11,cache_lifecycle_dispatch_012,1858,348,30076,47,inc di
+11,cache_lifecycle_dispatch_012,1858,349,30077,3b3ea234,"cmp di,[34A2h]"
+11,cache_lifecycle_dispatch_012,1858,353,30081,7cc2,jl short 0125h
+11,cache_lifecycle_dispatch_012,1858,355,30083,803e6e3c00,"cmp byte ptr [3C6Eh],0"
+11,cache_lifecycle_dispatch_012,1858,360,30088,742d,je short 0197h
+11,cache_lifecycle_dispatch_012,1858,362,30090,0e,push cs
+11,cache_lifecycle_dispatch_012,1858,363,30091,e81206,call 0780h
+11,cache_lifecycle_dispatch_012,1858,366,30094,0bc0,"or ax,ax"
+11,cache_lifecycle_dispatch_012,1858,368,30096,7420,je short 0192h
+11,cache_lifecycle_dispatch_012,1858,370,30098,0e,push cs
+11,cache_lifecycle_dispatch_012,1858,371,30099,e83006,call 07A6h
+11,cache_lifecycle_dispatch_012,1858,374,30102,a3a634,"mov [34A6h],ax"
+11,cache_lifecycle_dispatch_012,1858,377,30105,a3583c,"mov [3C58h],ax"
+11,cache_lifecycle_dispatch_012,1858,380,30108,c706a8340000,"mov word ptr [34A8h],0"
+11,cache_lifecycle_dispatch_012,1858,386,30114,3d0008,"cmp ax,800h"
+11,cache_lifecycle_dispatch_012,1858,389,30117,7e03,jle short 018Ah
+11,cache_lifecycle_dispatch_012,1858,391,30119,b80008,"mov ax,800h"
+11,cache_lifecycle_dispatch_012,1858,394,30122,a3a634,"mov [34A6h],ax"
+11,cache_lifecycle_dispatch_012,1858,397,30125,3d4000,"cmp ax,40h"
+11,cache_lifecycle_dispatch_012,1858,400,30128,7d10,jge short 01A2h
+11,cache_lifecycle_dispatch_012,1858,402,30130,c6066e3c00,"mov byte ptr [3C6Eh],0"
+11,cache_lifecycle_dispatch_012,1858,407,30135,a06e3c,"mov al,[3C6Eh]"
+11,cache_lifecycle_dispatch_012,1858,410,30138,a2aa34,"mov [34AAh],al"
+11,cache_lifecycle_dispatch_012,1858,413,30141,5e,pop si
+11,cache_lifecycle_dispatch_012,1858,414,30142,5f,pop di
+11,cache_lifecycle_dispatch_012,1858,415,30143,c9,leave
+11,cache_lifecycle_dispatch_012,1858,416,30144,cb,ret far
+11,cache_lifecycle_dispatch_012,1858,418,30146,50,push ax
+11,cache_lifecycle_dispatch_012,1858,419,30147,0e,push cs
+11,cache_lifecycle_dispatch_012,1858,420,30148,e81706,call 07BEh
+11,cache_lifecycle_dispatch_012,1858,423,30151,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,426,30154,8956fe,"mov [bp-2],dx"
+11,cache_lifecycle_dispatch_012,1858,429,30157,0bd2,"or dx,dx"
+11,cache_lifecycle_dispatch_012,1858,431,30159,7ce1,jl short 0192h
+11,cache_lifecycle_dispatch_012,1858,433,30161,a3a434,"mov [34A4h],ax"
+11,cache_lifecycle_dispatch_012,1858,436,30164,50,push ax
+11,cache_lifecycle_dispatch_012,1858,437,30165,0e,push cs
+11,cache_lifecycle_dispatch_012,1858,438,30166,e86906,call 0822h
+11,cache_lifecycle_dispatch_012,1858,441,30169,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,444,30172,0bd2,"or dx,dx"
+11,cache_lifecycle_dispatch_012,1858,446,30174,7dd7,jge short 0197h
+11,cache_lifecycle_dispatch_012,1858,448,30176,ff36a434,push word ptr [34A4h]
+11,cache_lifecycle_dispatch_012,1858,452,30180,0e,push cs
+11,cache_lifecycle_dispatch_012,1858,453,30181,e81806,call 07E0h
+11,cache_lifecycle_dispatch_012,1858,456,30184,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,459,30187,c6066e3c00,"mov byte ptr [3C6Eh],0"
+11,cache_lifecycle_dispatch_012,1858,464,30192,68300c,push 0C30h
+11,cache_lifecycle_dispatch_012,1858,467,30195,9a80005204,"call far 0080h,0452h"
+11,cache_lifecycle_dispatch_012,1858,472,30200,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,475,30203,ebba,jmp short 0197h
+11,cache_lifecycle_dispatch_012,1858,478,30206,803eaa3400,"cmp byte ptr [34AAh],0"
+11,cache_lifecycle_dispatch_012,1858,483,30211,0f84a400,je 028Bh
+11,cache_lifecycle_dispatch_012,1858,487,30215,ff36a434,push word ptr [34A4h]
+11,cache_lifecycle_dispatch_012,1858,491,30219,0e,push cs
+11,cache_lifecycle_dispatch_012,1858,492,30220,e85106,call 0840h
+11,cache_lifecycle_dispatch_012,1858,495,30223,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,498,30226,ff36a434,push word ptr [34A4h]
+11,cache_lifecycle_dispatch_012,1858,502,30230,0e,push cs
+11,cache_lifecycle_dispatch_012,1858,503,30231,e8e605,call 07E0h
+11,cache_lifecycle_dispatch_012,1858,506,30234,83c402,"add sp,2"
+11,cache_lifecycle_dispatch_012,1858,509,30237,5e,pop si
+11,cache_lifecycle_dispatch_012,1858,510,30238,5f,pop di
+11,cache_lifecycle_dispatch_012,1858,511,30239,c9,leave
+11,cache_lifecycle_dispatch_012,1858,512,30240,cb,ret far
+11,cache_lifecycle_dispatch_012,1858,514,30242,bb6a34,"mov bx,346Ah"
+11,cache_lifecycle_dispatch_012,1858,517,30245,c437,"les si,[bx]"
+11,cache_lifecycle_dispatch_012,1858,519,30247,268b4404,"mov ax,es:[si+4]"
+11,cache_lifecycle_dispatch_012,1858,523,30251,0bc0,"or ax,ax"
+11,cache_lifecycle_dispatch_012,1858,525,30253,740a,je short 0219h
+11,cache_lifecycle_dispatch_012,1858,527,30255,8bf0,"mov si,ax"
+11,cache_lifecycle_dispatch_012,1858,529,30257,66c7440600000000,"mov dword ptr [si+6],0"
+11,cache_lifecycle_dispatch_012,1858,537,30265,c437,"les si,[bx]"
+11,cache_lifecycle_dispatch_012,1858,539,30267,26c744040000,"mov word ptr es:[si+4],0"
+11,cache_lifecycle_dispatch_012,1858,545,30273,c437,"les si,[bx]"
+11,cache_lifecycle_dispatch_012,1858,547,30275,662bc0,"sub eax,eax"
+11,cache_lifecycle_dispatch_012,1858,550,30278,66268904,"mov es:[si],eax"
+11,cache_lifecycle_dispatch_012,1858,554,30282,83c304,"add bx,4"
+11,cache_lifecycle_dispatch_012,1858,557,30285,81fb9234,"cmp bx,3492h"
+11,cache_lifecycle_dispatch_012,1858,561,30289,72d2,jb short 0205h
+11,cache_lifecycle_dispatch_012,1858,563,30291,33c9,"xor cx,cx"
+11,cache_lifecycle_dispatch_012,1858,565,30293,3906a234,"cmp [34A2h],ax"
+11,cache_lifecycle_dispatch_012,1858,569,30297,7e30,jle short 026Bh
+11,cache_lifecycle_dispatch_012,1858,571,30299,bb0000,"mov bx,0"
+11,cache_lifecycle_dispatch_012,1858,574,30302,b8b51b,"mov ax,1BB5h"
+11,cache_lifecycle_dispatch_012,1858,577,30305,8ed8,"mov ds,ax"
+11,cache_lifecycle_dispatch_012,1858,579,30307,c437,"les si,[bx]"
+11,cache_lifecycle_dispatch_012,1858,581,30309,26833c00,"cmp word ptr es:[si],0"
+11,cache_lifecycle_dispatch_012,1858,585,30313,740c,je short 0257h
+11,cache_lifecycle_dispatch_012,1858,587,30315,268b34,"mov si,es:[si]"
+11,cache_lifecycle_dispatch_012,1858,590,30318,6636c7440600000000,"mov dword ptr ss:[si+6],0"
+11,cache_lifecycle_dispatch_012,1858,599,30327,c437,"les si,[bx]"
+11,cache_lifecycle_dispatch_012,1858,601,30329,83c304,"add bx,4"
+11,cache_lifecycle_dispatch_012,1858,604,30332,26c7040000,"mov word ptr es:[si],0"
+11,cache_lifecycle_dispatch_012,1858,609,30337,41,inc cx
+11,cache_lifecycle_dispatch_012,1858,610,30338,36390ea234,"cmp ss:[34A2h],cx"
+11,cache_lifecycle_dispatch_012,1858,615,30343,7fda,jg short 0243h
+11,cache_lifecycle_dispatch_012,1858,617,30345,16,push ss
+11,cache_lifecycle_dispatch_012,1858,618,30346,1f,pop ds
+11,cache_lifecycle_dispatch_012,1858,619,30347,bb9234,"mov bx,3492h"
+11,cache_lifecycle_dispatch_012,1858,622,30350,c437,"les si,[bx]"
+11,cache_lifecycle_dispatch_012,1858,624,30352,26c744040000,"mov word ptr es:[si+4],0"
+11,cache_lifecycle_dispatch_012,1858,630,30358,c437,"les si,[bx]"
+11,cache_lifecycle_dispatch_012,1858,632,30360,662bc0,"sub eax,eax"
+11,cache_lifecycle_dispatch_012,1858,635,30363,66268904,"mov es:[si],eax"
+11,cache_lifecycle_dispatch_012,1858,639,30367,83c304,"add bx,4"
+11,cache_lifecycle_dispatch_012,1858,642,30370,81fba234,"cmp bx,34A2h"
+11,cache_lifecycle_dispatch_012,1858,646,30374,72e6,jb short 026Eh
+11,cache_lifecycle_dispatch_012,1858,648,30376,a3a834,"mov [34A8h],ax"
+11,cache_lifecycle_dispatch_012,1858,651,30379,5e,pop si
+11,cache_lifecycle_dispatch_012,1858,652,30380,5f,pop di
+11,cache_lifecycle_dispatch_012,1858,653,30381,c9,leave
+11,cache_lifecycle_dispatch_012,1858,654,30382,cb,ret far
+11,level_resource_cleanup,3328,2018,55266,c8060000,"enter 6,0"
+11,level_resource_cleanup,3328,2022,55270,57,push di
+11,level_resource_cleanup,3328,2023,55271,56,push si
+11,level_resource_cleanup,3328,2024,55272,6a02,push 2
+11,level_resource_cleanup,3328,2026,55274,9a20004207,"call far 0020h,0742h"
+11,level_resource_cleanup,3328,2031,55279,83c402,"add sp,2"
+11,level_resource_cleanup,3328,2034,55282,33ff,"xor di,di"
+11,level_resource_cleanup,3328,2036,55284,393ece61,"cmp [61CEh],di"
+11,level_resource_cleanup,3328,2040,55288,7e17,jle short 0811h
+11,level_resource_cleanup,3328,2042,55290,be7242,"mov si,4272h"
+11,level_resource_cleanup,3328,2045,55293,ff34,push word ptr [si]
+11,level_resource_cleanup,3328,2047,55295,9aae3cbc11,"call far 3CAEh,11BCh"
+11,level_resource_cleanup,3328,2052,55300,83c402,"add sp,2"
+11,level_resource_cleanup,3328,2055,55303,83c608,"add si,8"
+11,level_resource_cleanup,3328,2058,55306,47,inc di
+11,level_resource_cleanup,3328,2059,55307,3b3ece61,"cmp di,[61CEh]"
+11,level_resource_cleanup,3328,2063,55311,7cec,jl short 07FDh
+11,level_resource_cleanup,3328,2065,55313,33ff,"xor di,di"
+11,level_resource_cleanup,3328,2067,55315,393ed061,"cmp [61D0h],di"
+11,level_resource_cleanup,3328,2071,55319,7e17,jle short 0830h
+11,level_resource_cleanup,3328,2073,55321,be823c,"mov si,3C82h"
+11,level_resource_cleanup,3328,2076,55324,ff34,push word ptr [si]
+11,level_resource_cleanup,3328,2078,55326,9aae3cbc11,"call far 3CAEh,11BCh"
+11,level_resource_cleanup,3328,2083,55331,83c402,"add sp,2"
+11,level_resource_cleanup,3328,2086,55334,83c608,"add si,8"
+11,level_resource_cleanup,3328,2089,55337,47,inc di
+11,level_resource_cleanup,3328,2090,55338,3b3ed061,"cmp di,[61D0h]"
+11,level_resource_cleanup,3328,2094,55342,7cec,jl short 081Ch
+11,level_resource_cleanup,3328,2096,55344,33ff,"xor di,di"
+11,level_resource_cleanup,3328,2098,55346,393ecc61,"cmp [61CCh],di"
+11,level_resource_cleanup,3328,2102,55350,7e41,jle short 0879h
+11,level_resource_cleanup,3328,2104,55352,be0a00,"mov si,0Ah"
+11,level_resource_cleanup,3328,2107,55355,8e065e25,"mov es,[255Eh]"
+11,level_resource_cleanup,3328,2111,55359,8976fa,"mov [bp-6],si"
+11,level_resource_cleanup,3328,2114,55362,8c46fc,"mov [bp-4],es"
+11,level_resource_cleanup,3328,2117,55365,268a1c,"mov bl,es:[si]"
+11,level_resource_cleanup,3328,2120,55368,2aff,"sub bh,bh"
+11,level_resource_cleanup,3328,2122,55370,c1e303,"shl bx,3"
+11,level_resource_cleanup,3328,2125,55373,8b87803c,"mov ax,[bx+3C80h]"
+11,level_resource_cleanup,3328,2129,55377,0bc0,"or ax,ax"
+11,level_resource_cleanup,3328,2131,55379,741a,je short 086Fh
+11,level_resource_cleanup,3328,2133,55381,50,push ax
+11,level_resource_cleanup,3328,2134,55382,9aae3cbc11,"call far 3CAEh,11BCh"
+11,level_resource_cleanup,3328,2139,55387,83c402,"add sp,2"
+11,level_resource_cleanup,3328,2142,55390,c45efa,"les bx,[bp-6]"
+11,level_resource_cleanup,3328,2145,55393,268a1f,"mov bl,es:[bx]"
+11,level_resource_cleanup,3328,2148,55396,2aff,"sub bh,bh"
+11,level_resource_cleanup,3328,2150,55398,c1e303,"shl bx,3"
+11,level_resource_cleanup,3328,2153,55401,c787803c0000,"mov word ptr [bx+3C80h],0"
+11,level_resource_cleanup,3328,2159,55407,83c61c,"add si,1Ch"
+11,level_resource_cleanup,3328,2162,55410,47,inc di
+11,level_resource_cleanup,3328,2163,55411,3b3ecc61,"cmp di,[61CCh]"
+11,level_resource_cleanup,3328,2167,55415,7cc2,jl short 083Bh
+11,level_resource_cleanup,3328,2169,55417,5e,pop si
+11,level_resource_cleanup,3328,2170,55418,5f,pop di
+11,level_resource_cleanup,3328,2171,55419,c9,leave
+11,level_resource_cleanup,3328,2172,55420,cb,ret far
+12,cache_lifecycle_dispatch_012,1858,44,29772,c8060000,"enter 6,0"
+12,cache_lifecycle_dispatch_012,1858,48,29776,57,push di
+12,cache_lifecycle_dispatch_012,1858,49,29777,56,push si
+12,cache_lifecycle_dispatch_012,1858,50,29778,8b4606,"mov ax,[bp+6]"
+12,cache_lifecycle_dispatch_012,1858,53,29781,0bc0,"or ax,ax"
+12,cache_lifecycle_dispatch_012,1858,55,29783,740f,je short 0048h
+12,cache_lifecycle_dispatch_012,1858,57,29785,48,dec ax
+12,cache_lifecycle_dispatch_012,1858,58,29786,0f84ac01,je 01EAh
+12,cache_lifecycle_dispatch_012,1858,62,29790,48,dec ax
+12,cache_lifecycle_dispatch_012,1858,63,29791,0f84cb01,je 020Eh
+12,cache_lifecycle_dispatch_012,1858,67,29795,5e,pop si
+12,cache_lifecycle_dispatch_012,1858,68,29796,5f,pop di
+12,cache_lifecycle_dispatch_012,1858,69,29797,c9,leave
+12,cache_lifecycle_dispatch_012,1858,70,29798,cb,ret far
+12,cache_lifecycle_dispatch_012,1858,72,29800,be6634,"mov si,3466h"
+12,cache_lifecycle_dispatch_012,1858,75,29803,680620,push 2006h
+12,cache_lifecycle_dispatch_012,1858,78,29806,9a6520c211,"call far 2065h,11C2h"
+12,cache_lifecycle_dispatch_012,1858,83,29811,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,86,29814,8904,"mov [si],ax"
+12,cache_lifecycle_dispatch_012,1858,88,29816,895402,"mov [si+2],dx"
+12,cache_lifecycle_dispatch_012,1858,91,29819,8bc2,"mov ax,dx"
+12,cache_lifecycle_dispatch_012,1858,93,29821,0b04,"or ax,[si]"
+12,cache_lifecycle_dispatch_012,1858,95,29823,750b,jne short 006Ch
+12,cache_lifecycle_dispatch_012,1858,97,29825,68500b,push 0B50h
+12,cache_lifecycle_dispatch_012,1858,100,29828,9a02008f0f,"call far 2,0F8Fh"
+12,cache_lifecycle_dispatch_012,1858,105,29833,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,108,29836,c41c,"les bx,[si]"
+12,cache_lifecycle_dispatch_012,1858,110,29838,26c747040000,"mov word ptr es:[bx+4],0"
+12,cache_lifecycle_dispatch_012,1858,116,29844,c41c,"les bx,[si]"
+12,cache_lifecycle_dispatch_012,1858,118,29846,6626c70700000000,"mov dword ptr es:[bx],0"
+12,cache_lifecycle_dispatch_012,1858,126,29854,83c604,"add si,4"
+12,cache_lifecycle_dispatch_012,1858,129,29857,81fe8e34,"cmp si,348Eh"
+12,cache_lifecycle_dispatch_012,1858,133,29861,72c4,jb short 004Bh
+12,cache_lifecycle_dispatch_012,1858,135,29863,be8e34,"mov si,348Eh"
+12,cache_lifecycle_dispatch_012,1858,138,29866,680620,push 2006h
+12,cache_lifecycle_dispatch_012,1858,141,29869,9a6520c211,"call far 2065h,11C2h"
+12,cache_lifecycle_dispatch_012,1858,146,29874,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,149,29877,8904,"mov [si],ax"
+12,cache_lifecycle_dispatch_012,1858,151,29879,895402,"mov [si+2],dx"
+12,cache_lifecycle_dispatch_012,1858,154,29882,8bc2,"mov ax,dx"
+12,cache_lifecycle_dispatch_012,1858,156,29884,0b04,"or ax,[si]"
+12,cache_lifecycle_dispatch_012,1858,158,29886,750b,jne short 00ABh
+12,cache_lifecycle_dispatch_012,1858,160,29888,68840b,push 0B84h
+12,cache_lifecycle_dispatch_012,1858,163,29891,9a02008f0f,"call far 2,0F8Fh"
+12,cache_lifecycle_dispatch_012,1858,168,29896,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,171,29899,c41c,"les bx,[si]"
+12,cache_lifecycle_dispatch_012,1858,173,29901,26c747040000,"mov word ptr es:[bx+4],0"
+12,cache_lifecycle_dispatch_012,1858,179,29907,c41c,"les bx,[si]"
+12,cache_lifecycle_dispatch_012,1858,181,29909,6626c70700000000,"mov dword ptr es:[bx],0"
+12,cache_lifecycle_dispatch_012,1858,189,29917,83c604,"add si,4"
+12,cache_lifecycle_dispatch_012,1858,192,29920,81fe9e34,"cmp si,349Eh"
+12,cache_lifecycle_dispatch_012,1858,196,29924,72c4,jb short 008Ah
+12,cache_lifecycle_dispatch_012,1858,198,29926,9a4e008f0f,"call far 004Eh,0F8Fh"
+12,cache_lifecycle_dispatch_012,1858,203,29931,a3543c,"mov [3C54h],ax"
+12,cache_lifecycle_dispatch_012,1858,206,29934,9a9029c211,"call far 2990h,11C2h"
+12,cache_lifecycle_dispatch_012,1858,211,29939,a3503c,"mov [3C50h],ax"
+12,cache_lifecycle_dispatch_012,1858,214,29942,6668020c0000,data32 push 0C02h
+12,cache_lifecycle_dispatch_012,1858,220,29948,a1543c,"mov ax,[3C54h]"
+12,cache_lifecycle_dispatch_012,1858,223,29951,2bd2,"sub dx,dx"
+12,cache_lifecycle_dispatch_012,1858,225,29953,2d4600,"sub ax,46h"
+12,cache_lifecycle_dispatch_012,1858,228,29956,1bd2,"sbb dx,dx"
+12,cache_lifecycle_dispatch_012,1858,230,29958,8af2,"mov dh,dl"
+12,cache_lifecycle_dispatch_012,1858,232,29960,8ad4,"mov dl,ah"
+12,cache_lifecycle_dispatch_012,1858,234,29962,8ae0,"mov ah,al"
+12,cache_lifecycle_dispatch_012,1858,236,29964,2ac0,"sub al,al"
+12,cache_lifecycle_dispatch_012,1858,238,29966,03c0,"add ax,ax"
+12,cache_lifecycle_dispatch_012,1858,240,29968,13d2,"adc dx,dx"
+12,cache_lifecycle_dispatch_012,1858,242,29970,03c0,"add ax,ax"
+12,cache_lifecycle_dispatch_012,1858,244,29972,13d2,"adc dx,dx"
+12,cache_lifecycle_dispatch_012,1858,246,29974,52,push dx
+12,cache_lifecycle_dispatch_012,1858,247,29975,50,push ax
+12,cache_lifecycle_dispatch_012,1858,248,29976,6658,pop eax
+12,cache_lifecycle_dispatch_012,1858,250,29978,6659,pop ecx
+12,cache_lifecycle_dispatch_012,1858,252,29980,6699,cdq
+12,cache_lifecycle_dispatch_012,1858,254,29982,66f7f9,idiv ecx
+12,cache_lifecycle_dispatch_012,1858,257,29985,668bd0,"mov edx,eax"
+12,cache_lifecycle_dispatch_012,1858,260,29988,66c1ea10,"shr edx,10h"
+12,cache_lifecycle_dispatch_012,1858,264,29992,a39e34,"mov [349Eh],ax"
+12,cache_lifecycle_dispatch_012,1858,267,29995,3d8000,"cmp ax,80h"
+12,cache_lifecycle_dispatch_012,1858,270,29998,7e03,jle short 0113h
+12,cache_lifecycle_dispatch_012,1858,272,30000,b88000,"mov ax,80h"
+12,cache_lifecycle_dispatch_012,1858,275,30003,a39e34,"mov [349Eh],ax"
+12,cache_lifecycle_dispatch_012,1858,278,30006,3d0100,"cmp ax,1"
+12,cache_lifecycle_dispatch_012,1858,281,30009,7d0b,jge short 0126h
+12,cache_lifecycle_dispatch_012,1858,283,30011,68b80b,push 0BB8h
+12,cache_lifecycle_dispatch_012,1858,286,30014,9a02008f0f,"call far 2,0F8Fh"
+12,cache_lifecycle_dispatch_012,1858,291,30019,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,294,30022,33ff,"xor di,di"
+12,cache_lifecycle_dispatch_012,1858,296,30024,393e9e34,"cmp [349Eh],di"
+12,cache_lifecycle_dispatch_012,1858,300,30028,7e41,jle short 016Fh
+12,cache_lifecycle_dispatch_012,1858,302,30030,be0000,"mov si,0"
+12,cache_lifecycle_dispatch_012,1858,305,30033,68020c,push 0C02h
+12,cache_lifecycle_dispatch_012,1858,308,30036,9a6520c211,"call far 2065h,11C2h"
+12,cache_lifecycle_dispatch_012,1858,313,30041,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,316,30044,8e064e25,"mov es,[254Eh]"
+12,cache_lifecycle_dispatch_012,1858,320,30048,268904,"mov es:[si],ax"
+12,cache_lifecycle_dispatch_012,1858,323,30051,26895402,"mov es:[si+2],dx"
+12,cache_lifecycle_dispatch_012,1858,327,30055,8bc2,"mov ax,dx"
+12,cache_lifecycle_dispatch_012,1858,329,30057,260b04,"or ax,es:[si]"
+12,cache_lifecycle_dispatch_012,1858,332,30060,750b,jne short 0159h
+12,cache_lifecycle_dispatch_012,1858,334,30062,68ec0b,push 0BECh
+12,cache_lifecycle_dispatch_012,1858,337,30065,9a02008f0f,"call far 2,0F8Fh"
+12,cache_lifecycle_dispatch_012,1858,342,30070,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,345,30073,8e064e25,"mov es,[254Eh]"
+12,cache_lifecycle_dispatch_012,1858,349,30077,26c41c,"les bx,es:[si]"
+12,cache_lifecycle_dispatch_012,1858,352,30080,83c604,"add si,4"
+12,cache_lifecycle_dispatch_012,1858,355,30083,26c7070000,"mov word ptr es:[bx],0"
+12,cache_lifecycle_dispatch_012,1858,360,30088,47,inc di
+12,cache_lifecycle_dispatch_012,1858,361,30089,3b3e9e34,"cmp di,[349Eh]"
+12,cache_lifecycle_dispatch_012,1858,365,30093,7cc2,jl short 0131h
+12,cache_lifecycle_dispatch_012,1858,367,30095,803e6e3c00,"cmp byte ptr [3C6Eh],0"
+12,cache_lifecycle_dispatch_012,1858,372,30100,742d,je short 01A3h
+12,cache_lifecycle_dispatch_012,1858,374,30102,0e,push cs
+12,cache_lifecycle_dispatch_012,1858,375,30103,e81206,call 078Ch
+12,cache_lifecycle_dispatch_012,1858,378,30106,0bc0,"or ax,ax"
+12,cache_lifecycle_dispatch_012,1858,380,30108,7420,je short 019Eh
+12,cache_lifecycle_dispatch_012,1858,382,30110,0e,push cs
+12,cache_lifecycle_dispatch_012,1858,383,30111,e83006,call 07B2h
+12,cache_lifecycle_dispatch_012,1858,386,30114,a3a234,"mov [34A2h],ax"
+12,cache_lifecycle_dispatch_012,1858,389,30117,a3583c,"mov [3C58h],ax"
+12,cache_lifecycle_dispatch_012,1858,392,30120,c706a4340000,"mov word ptr [34A4h],0"
+12,cache_lifecycle_dispatch_012,1858,398,30126,3d0008,"cmp ax,800h"
+12,cache_lifecycle_dispatch_012,1858,401,30129,7e03,jle short 0196h
+12,cache_lifecycle_dispatch_012,1858,403,30131,b80008,"mov ax,800h"
+12,cache_lifecycle_dispatch_012,1858,406,30134,a3a234,"mov [34A2h],ax"
+12,cache_lifecycle_dispatch_012,1858,409,30137,3d4000,"cmp ax,40h"
+12,cache_lifecycle_dispatch_012,1858,412,30140,7d10,jge short 01AEh
+12,cache_lifecycle_dispatch_012,1858,414,30142,c6066e3c00,"mov byte ptr [3C6Eh],0"
+12,cache_lifecycle_dispatch_012,1858,419,30147,a06e3c,"mov al,[3C6Eh]"
+12,cache_lifecycle_dispatch_012,1858,422,30150,a2a634,"mov [34A6h],al"
+12,cache_lifecycle_dispatch_012,1858,425,30153,5e,pop si
+12,cache_lifecycle_dispatch_012,1858,426,30154,5f,pop di
+12,cache_lifecycle_dispatch_012,1858,427,30155,c9,leave
+12,cache_lifecycle_dispatch_012,1858,428,30156,cb,ret far
+12,cache_lifecycle_dispatch_012,1858,430,30158,50,push ax
+12,cache_lifecycle_dispatch_012,1858,431,30159,0e,push cs
+12,cache_lifecycle_dispatch_012,1858,432,30160,e81706,call 07CAh
+12,cache_lifecycle_dispatch_012,1858,435,30163,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,438,30166,8956fe,"mov [bp-2],dx"
+12,cache_lifecycle_dispatch_012,1858,441,30169,0bd2,"or dx,dx"
+12,cache_lifecycle_dispatch_012,1858,443,30171,7ce1,jl short 019Eh
+12,cache_lifecycle_dispatch_012,1858,445,30173,a3a034,"mov [34A0h],ax"
+12,cache_lifecycle_dispatch_012,1858,448,30176,50,push ax
+12,cache_lifecycle_dispatch_012,1858,449,30177,0e,push cs
+12,cache_lifecycle_dispatch_012,1858,450,30178,e86906,call 082Eh
+12,cache_lifecycle_dispatch_012,1858,453,30181,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,456,30184,0bd2,"or dx,dx"
+12,cache_lifecycle_dispatch_012,1858,458,30186,7dd7,jge short 01A3h
+12,cache_lifecycle_dispatch_012,1858,460,30188,ff36a034,push word ptr [34A0h]
+12,cache_lifecycle_dispatch_012,1858,464,30192,0e,push cs
+12,cache_lifecycle_dispatch_012,1858,465,30193,e81806,call 07ECh
+12,cache_lifecycle_dispatch_012,1858,468,30196,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,471,30199,c6066e3c00,"mov byte ptr [3C6Eh],0"
+12,cache_lifecycle_dispatch_012,1858,476,30204,68200c,push 0C20h
+12,cache_lifecycle_dispatch_012,1858,479,30207,9a82005304,"call far 0082h,0453h"
+12,cache_lifecycle_dispatch_012,1858,484,30212,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,487,30215,ebba,jmp short 01A3h
+12,cache_lifecycle_dispatch_012,1858,490,30218,803ea63400,"cmp byte ptr [34A6h],0"
+12,cache_lifecycle_dispatch_012,1858,495,30223,0f84a400,je 0297h
+12,cache_lifecycle_dispatch_012,1858,499,30227,ff36a034,push word ptr [34A0h]
+12,cache_lifecycle_dispatch_012,1858,503,30231,0e,push cs
+12,cache_lifecycle_dispatch_012,1858,504,30232,e85106,call 084Ch
+12,cache_lifecycle_dispatch_012,1858,507,30235,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,510,30238,ff36a034,push word ptr [34A0h]
+12,cache_lifecycle_dispatch_012,1858,514,30242,0e,push cs
+12,cache_lifecycle_dispatch_012,1858,515,30243,e8e605,call 07ECh
+12,cache_lifecycle_dispatch_012,1858,518,30246,83c402,"add sp,2"
+12,cache_lifecycle_dispatch_012,1858,521,30249,5e,pop si
+12,cache_lifecycle_dispatch_012,1858,522,30250,5f,pop di
+12,cache_lifecycle_dispatch_012,1858,523,30251,c9,leave
+12,cache_lifecycle_dispatch_012,1858,524,30252,cb,ret far
+12,cache_lifecycle_dispatch_012,1858,526,30254,bb6634,"mov bx,3466h"
+12,cache_lifecycle_dispatch_012,1858,529,30257,c437,"les si,[bx]"
+12,cache_lifecycle_dispatch_012,1858,531,30259,268b4404,"mov ax,es:[si+4]"
+12,cache_lifecycle_dispatch_012,1858,535,30263,0bc0,"or ax,ax"
+12,cache_lifecycle_dispatch_012,1858,537,30265,740a,je short 0225h
+12,cache_lifecycle_dispatch_012,1858,539,30267,8bf0,"mov si,ax"
+12,cache_lifecycle_dispatch_012,1858,541,30269,66c7440600000000,"mov dword ptr [si+6],0"
+12,cache_lifecycle_dispatch_012,1858,549,30277,c437,"les si,[bx]"
+12,cache_lifecycle_dispatch_012,1858,551,30279,26c744040000,"mov word ptr es:[si+4],0"
+12,cache_lifecycle_dispatch_012,1858,557,30285,c437,"les si,[bx]"
+12,cache_lifecycle_dispatch_012,1858,559,30287,662bc0,"sub eax,eax"
+12,cache_lifecycle_dispatch_012,1858,562,30290,66268904,"mov es:[si],eax"
+12,cache_lifecycle_dispatch_012,1858,566,30294,83c304,"add bx,4"
+12,cache_lifecycle_dispatch_012,1858,569,30297,81fb8e34,"cmp bx,348Eh"
+12,cache_lifecycle_dispatch_012,1858,573,30301,72d2,jb short 0211h
+12,cache_lifecycle_dispatch_012,1858,575,30303,33c9,"xor cx,cx"
+12,cache_lifecycle_dispatch_012,1858,577,30305,39069e34,"cmp [349Eh],ax"
+12,cache_lifecycle_dispatch_012,1858,581,30309,7e30,jle short 0277h
+12,cache_lifecycle_dispatch_012,1858,583,30311,bb0000,"mov bx,0"
+12,cache_lifecycle_dispatch_012,1858,586,30314,b8bb1b,"mov ax,1BBBh"
+12,cache_lifecycle_dispatch_012,1858,589,30317,8ed8,"mov ds,ax"
+12,cache_lifecycle_dispatch_012,1858,591,30319,c437,"les si,[bx]"
+12,cache_lifecycle_dispatch_012,1858,593,30321,26833c00,"cmp word ptr es:[si],0"
+12,cache_lifecycle_dispatch_012,1858,597,30325,740c,je short 0263h
+12,cache_lifecycle_dispatch_012,1858,599,30327,268b34,"mov si,es:[si]"
+12,cache_lifecycle_dispatch_012,1858,602,30330,6636c7440600000000,"mov dword ptr ss:[si+6],0"
+12,cache_lifecycle_dispatch_012,1858,611,30339,c437,"les si,[bx]"
+12,cache_lifecycle_dispatch_012,1858,613,30341,83c304,"add bx,4"
+12,cache_lifecycle_dispatch_012,1858,616,30344,26c7040000,"mov word ptr es:[si],0"
+12,cache_lifecycle_dispatch_012,1858,621,30349,41,inc cx
+12,cache_lifecycle_dispatch_012,1858,622,30350,36390e9e34,"cmp ss:[349Eh],cx"
+12,cache_lifecycle_dispatch_012,1858,627,30355,7fda,jg short 024Fh
+12,cache_lifecycle_dispatch_012,1858,629,30357,16,push ss
+12,cache_lifecycle_dispatch_012,1858,630,30358,1f,pop ds
+12,cache_lifecycle_dispatch_012,1858,631,30359,bb8e34,"mov bx,348Eh"
+12,cache_lifecycle_dispatch_012,1858,634,30362,c437,"les si,[bx]"
+12,cache_lifecycle_dispatch_012,1858,636,30364,26c744040000,"mov word ptr es:[si+4],0"
+12,cache_lifecycle_dispatch_012,1858,642,30370,c437,"les si,[bx]"
+12,cache_lifecycle_dispatch_012,1858,644,30372,662bc0,"sub eax,eax"
+12,cache_lifecycle_dispatch_012,1858,647,30375,66268904,"mov es:[si],eax"
+12,cache_lifecycle_dispatch_012,1858,651,30379,83c304,"add bx,4"
+12,cache_lifecycle_dispatch_012,1858,654,30382,81fb9e34,"cmp bx,349Eh"
+12,cache_lifecycle_dispatch_012,1858,658,30386,72e6,jb short 027Ah
+12,cache_lifecycle_dispatch_012,1858,660,30388,a3a434,"mov [34A4h],ax"
+12,cache_lifecycle_dispatch_012,1858,663,30391,5e,pop si
+12,cache_lifecycle_dispatch_012,1858,664,30392,5f,pop di
+12,cache_lifecycle_dispatch_012,1858,665,30393,c9,leave
+12,cache_lifecycle_dispatch_012,1858,666,30394,cb,ret far
+12,level_resource_cleanup,3328,2020,55268,c8060000,"enter 6,0"
+12,level_resource_cleanup,3328,2024,55272,57,push di
+12,level_resource_cleanup,3328,2025,55273,56,push si
+12,level_resource_cleanup,3328,2026,55274,6a02,push 2
+12,level_resource_cleanup,3328,2028,55276,9a2c004207,"call far 002Ch,0742h"
+12,level_resource_cleanup,3328,2033,55281,83c402,"add sp,2"
+12,level_resource_cleanup,3328,2036,55284,33ff,"xor di,di"
+12,level_resource_cleanup,3328,2038,55286,393ece61,"cmp [61CEh],di"
+12,level_resource_cleanup,3328,2042,55290,7e17,jle short 0813h
+12,level_resource_cleanup,3328,2044,55292,be7242,"mov si,4272h"
+12,level_resource_cleanup,3328,2047,55295,ff34,push word ptr [si]
+12,level_resource_cleanup,3328,2049,55297,9aae3cc211,"call far 3CAEh,11C2h"
+12,level_resource_cleanup,3328,2054,55302,83c402,"add sp,2"
+12,level_resource_cleanup,3328,2057,55305,83c608,"add si,8"
+12,level_resource_cleanup,3328,2060,55308,47,inc di
+12,level_resource_cleanup,3328,2061,55309,3b3ece61,"cmp di,[61CEh]"
+12,level_resource_cleanup,3328,2065,55313,7cec,jl short 07FFh
+12,level_resource_cleanup,3328,2067,55315,33ff,"xor di,di"
+12,level_resource_cleanup,3328,2069,55317,393ed061,"cmp [61D0h],di"
+12,level_resource_cleanup,3328,2073,55321,7e17,jle short 0832h
+12,level_resource_cleanup,3328,2075,55323,be823c,"mov si,3C82h"
+12,level_resource_cleanup,3328,2078,55326,ff34,push word ptr [si]
+12,level_resource_cleanup,3328,2080,55328,9aae3cc211,"call far 3CAEh,11C2h"
+12,level_resource_cleanup,3328,2085,55333,83c402,"add sp,2"
+12,level_resource_cleanup,3328,2088,55336,83c608,"add si,8"
+12,level_resource_cleanup,3328,2091,55339,47,inc di
+12,level_resource_cleanup,3328,2092,55340,3b3ed061,"cmp di,[61D0h]"
+12,level_resource_cleanup,3328,2096,55344,7cec,jl short 081Eh
+12,level_resource_cleanup,3328,2098,55346,33ff,"xor di,di"
+12,level_resource_cleanup,3328,2100,55348,393ecc61,"cmp [61CCh],di"
+12,level_resource_cleanup,3328,2104,55352,7e41,jle short 087Bh
+12,level_resource_cleanup,3328,2106,55354,be0a00,"mov si,0Ah"
+12,level_resource_cleanup,3328,2109,55357,8e065a25,"mov es,[255Ah]"
+12,level_resource_cleanup,3328,2113,55361,8976fa,"mov [bp-6],si"
+12,level_resource_cleanup,3328,2116,55364,8c46fc,"mov [bp-4],es"
+12,level_resource_cleanup,3328,2119,55367,268a1c,"mov bl,es:[si]"
+12,level_resource_cleanup,3328,2122,55370,2aff,"sub bh,bh"
+12,level_resource_cleanup,3328,2124,55372,c1e303,"shl bx,3"
+12,level_resource_cleanup,3328,2127,55375,8b87803c,"mov ax,[bx+3C80h]"
+12,level_resource_cleanup,3328,2131,55379,0bc0,"or ax,ax"
+12,level_resource_cleanup,3328,2133,55381,741a,je short 0871h
+12,level_resource_cleanup,3328,2135,55383,50,push ax
+12,level_resource_cleanup,3328,2136,55384,9aae3cc211,"call far 3CAEh,11C2h"
+12,level_resource_cleanup,3328,2141,55389,83c402,"add sp,2"
+12,level_resource_cleanup,3328,2144,55392,c45efa,"les bx,[bp-6]"
+12,level_resource_cleanup,3328,2147,55395,268a1f,"mov bl,es:[bx]"
+12,level_resource_cleanup,3328,2150,55398,2aff,"sub bh,bh"
+12,level_resource_cleanup,3328,2152,55400,c1e303,"shl bx,3"
+12,level_resource_cleanup,3328,2155,55403,c787803c0000,"mov word ptr [bx+3C80h],0"
+12,level_resource_cleanup,3328,2161,55409,83c61c,"add si,1Ch"
+12,level_resource_cleanup,3328,2164,55412,47,inc di
+12,level_resource_cleanup,3328,2165,55413,3b3ecc61,"cmp di,[61CCh]"
+12,level_resource_cleanup,3328,2169,55417,7cc2,jl short 083Dh
+12,level_resource_cleanup,3328,2171,55419,5e,pop si
+12,level_resource_cleanup,3328,2172,55420,5f,pop di
+12,level_resource_cleanup,3328,2173,55421,c9,leave
+12,level_resource_cleanup,3328,2174,55422,cb,ret far
+15,cache_lifecycle_dispatch_012,1863,42,29850,c8060000,"enter 6,0"
+15,cache_lifecycle_dispatch_012,1863,46,29854,57,push di
+15,cache_lifecycle_dispatch_012,1863,47,29855,56,push si
+15,cache_lifecycle_dispatch_012,1863,48,29856,8b4606,"mov ax,[bp+6]"
+15,cache_lifecycle_dispatch_012,1863,51,29859,0bc0,"or ax,ax"
+15,cache_lifecycle_dispatch_012,1863,53,29861,740f,je short 0046h
+15,cache_lifecycle_dispatch_012,1863,55,29863,48,dec ax
+15,cache_lifecycle_dispatch_012,1863,56,29864,0f84ac01,je 01E8h
+15,cache_lifecycle_dispatch_012,1863,60,29868,48,dec ax
+15,cache_lifecycle_dispatch_012,1863,61,29869,0f84cb01,je 020Ch
+15,cache_lifecycle_dispatch_012,1863,65,29873,5e,pop si
+15,cache_lifecycle_dispatch_012,1863,66,29874,5f,pop di
+15,cache_lifecycle_dispatch_012,1863,67,29875,c9,leave
+15,cache_lifecycle_dispatch_012,1863,68,29876,cb,ret far
+15,cache_lifecycle_dispatch_012,1863,70,29878,be3a34,"mov si,343Ah"
+15,cache_lifecycle_dispatch_012,1863,73,29881,680620,push 2006h
+15,cache_lifecycle_dispatch_012,1863,76,29884,9a6920c711,"call far 2069h,11C7h"
+15,cache_lifecycle_dispatch_012,1863,81,29889,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,84,29892,8904,"mov [si],ax"
+15,cache_lifecycle_dispatch_012,1863,86,29894,895402,"mov [si+2],dx"
+15,cache_lifecycle_dispatch_012,1863,89,29897,8bc2,"mov ax,dx"
+15,cache_lifecycle_dispatch_012,1863,91,29899,0b04,"or ax,[si]"
+15,cache_lifecycle_dispatch_012,1863,93,29901,750b,jne short 006Ah
+15,cache_lifecycle_dispatch_012,1863,95,29903,68540b,push 0B54h
+15,cache_lifecycle_dispatch_012,1863,98,29906,9a0000940f,"call far 0,0F94h"
+15,cache_lifecycle_dispatch_012,1863,103,29911,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,106,29914,c41c,"les bx,[si]"
+15,cache_lifecycle_dispatch_012,1863,108,29916,26c747040000,"mov word ptr es:[bx+4],0"
+15,cache_lifecycle_dispatch_012,1863,114,29922,c41c,"les bx,[si]"
+15,cache_lifecycle_dispatch_012,1863,116,29924,6626c70700000000,"mov dword ptr es:[bx],0"
+15,cache_lifecycle_dispatch_012,1863,124,29932,83c604,"add si,4"
+15,cache_lifecycle_dispatch_012,1863,127,29935,81fe6234,"cmp si,3462h"
+15,cache_lifecycle_dispatch_012,1863,131,29939,72c4,jb short 0049h
+15,cache_lifecycle_dispatch_012,1863,133,29941,be6234,"mov si,3462h"
+15,cache_lifecycle_dispatch_012,1863,136,29944,680620,push 2006h
+15,cache_lifecycle_dispatch_012,1863,139,29947,9a6920c711,"call far 2069h,11C7h"
+15,cache_lifecycle_dispatch_012,1863,144,29952,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,147,29955,8904,"mov [si],ax"
+15,cache_lifecycle_dispatch_012,1863,149,29957,895402,"mov [si+2],dx"
+15,cache_lifecycle_dispatch_012,1863,152,29960,8bc2,"mov ax,dx"
+15,cache_lifecycle_dispatch_012,1863,154,29962,0b04,"or ax,[si]"
+15,cache_lifecycle_dispatch_012,1863,156,29964,750b,jne short 00A9h
+15,cache_lifecycle_dispatch_012,1863,158,29966,68880b,push 0B88h
+15,cache_lifecycle_dispatch_012,1863,161,29969,9a0000940f,"call far 0,0F94h"
+15,cache_lifecycle_dispatch_012,1863,166,29974,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,169,29977,c41c,"les bx,[si]"
+15,cache_lifecycle_dispatch_012,1863,171,29979,26c747040000,"mov word ptr es:[bx+4],0"
+15,cache_lifecycle_dispatch_012,1863,177,29985,c41c,"les bx,[si]"
+15,cache_lifecycle_dispatch_012,1863,179,29987,6626c70700000000,"mov dword ptr es:[bx],0"
+15,cache_lifecycle_dispatch_012,1863,187,29995,83c604,"add si,4"
+15,cache_lifecycle_dispatch_012,1863,190,29998,81fe7234,"cmp si,3472h"
+15,cache_lifecycle_dispatch_012,1863,194,30002,72c4,jb short 0088h
+15,cache_lifecycle_dispatch_012,1863,196,30004,9a4c00940f,"call far 004Ch,0F94h"
+15,cache_lifecycle_dispatch_012,1863,201,30009,a3243c,"mov [3C24h],ax"
+15,cache_lifecycle_dispatch_012,1863,204,30012,9a9429c711,"call far 2994h,11C7h"
+15,cache_lifecycle_dispatch_012,1863,209,30017,a3203c,"mov [3C20h],ax"
+15,cache_lifecycle_dispatch_012,1863,212,30020,6668020c0000,data32 push 0C02h
+15,cache_lifecycle_dispatch_012,1863,218,30026,a1243c,"mov ax,[3C24h]"
+15,cache_lifecycle_dispatch_012,1863,221,30029,2bd2,"sub dx,dx"
+15,cache_lifecycle_dispatch_012,1863,223,30031,2d4600,"sub ax,46h"
+15,cache_lifecycle_dispatch_012,1863,226,30034,1bd2,"sbb dx,dx"
+15,cache_lifecycle_dispatch_012,1863,228,30036,8af2,"mov dh,dl"
+15,cache_lifecycle_dispatch_012,1863,230,30038,8ad4,"mov dl,ah"
+15,cache_lifecycle_dispatch_012,1863,232,30040,8ae0,"mov ah,al"
+15,cache_lifecycle_dispatch_012,1863,234,30042,2ac0,"sub al,al"
+15,cache_lifecycle_dispatch_012,1863,236,30044,03c0,"add ax,ax"
+15,cache_lifecycle_dispatch_012,1863,238,30046,13d2,"adc dx,dx"
+15,cache_lifecycle_dispatch_012,1863,240,30048,03c0,"add ax,ax"
+15,cache_lifecycle_dispatch_012,1863,242,30050,13d2,"adc dx,dx"
+15,cache_lifecycle_dispatch_012,1863,244,30052,52,push dx
+15,cache_lifecycle_dispatch_012,1863,245,30053,50,push ax
+15,cache_lifecycle_dispatch_012,1863,246,30054,6658,pop eax
+15,cache_lifecycle_dispatch_012,1863,248,30056,6659,pop ecx
+15,cache_lifecycle_dispatch_012,1863,250,30058,6699,cdq
+15,cache_lifecycle_dispatch_012,1863,252,30060,66f7f9,idiv ecx
+15,cache_lifecycle_dispatch_012,1863,255,30063,668bd0,"mov edx,eax"
+15,cache_lifecycle_dispatch_012,1863,258,30066,66c1ea10,"shr edx,10h"
+15,cache_lifecycle_dispatch_012,1863,262,30070,a37234,"mov [3472h],ax"
+15,cache_lifecycle_dispatch_012,1863,265,30073,3d8000,"cmp ax,80h"
+15,cache_lifecycle_dispatch_012,1863,268,30076,7e03,jle short 0111h
+15,cache_lifecycle_dispatch_012,1863,270,30078,b88000,"mov ax,80h"
+15,cache_lifecycle_dispatch_012,1863,273,30081,a37234,"mov [3472h],ax"
+15,cache_lifecycle_dispatch_012,1863,276,30084,3d0100,"cmp ax,1"
+15,cache_lifecycle_dispatch_012,1863,279,30087,7d0b,jge short 0124h
+15,cache_lifecycle_dispatch_012,1863,281,30089,68bc0b,push 0BBCh
+15,cache_lifecycle_dispatch_012,1863,284,30092,9a0000940f,"call far 0,0F94h"
+15,cache_lifecycle_dispatch_012,1863,289,30097,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,292,30100,33ff,"xor di,di"
+15,cache_lifecycle_dispatch_012,1863,294,30102,393e7234,"cmp [3472h],di"
+15,cache_lifecycle_dispatch_012,1863,298,30106,7e41,jle short 016Dh
+15,cache_lifecycle_dispatch_012,1863,300,30108,be0000,"mov si,0"
+15,cache_lifecycle_dispatch_012,1863,303,30111,68020c,push 0C02h
+15,cache_lifecycle_dispatch_012,1863,306,30114,9a6920c711,"call far 2069h,11C7h"
+15,cache_lifecycle_dispatch_012,1863,311,30119,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,314,30122,8e062025,"mov es,[2520h]"
+15,cache_lifecycle_dispatch_012,1863,318,30126,268904,"mov es:[si],ax"
+15,cache_lifecycle_dispatch_012,1863,321,30129,26895402,"mov es:[si+2],dx"
+15,cache_lifecycle_dispatch_012,1863,325,30133,8bc2,"mov ax,dx"
+15,cache_lifecycle_dispatch_012,1863,327,30135,260b04,"or ax,es:[si]"
+15,cache_lifecycle_dispatch_012,1863,330,30138,750b,jne short 0157h
+15,cache_lifecycle_dispatch_012,1863,332,30140,68f00b,push 0BF0h
+15,cache_lifecycle_dispatch_012,1863,335,30143,9a0000940f,"call far 0,0F94h"
+15,cache_lifecycle_dispatch_012,1863,340,30148,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,343,30151,8e062025,"mov es,[2520h]"
+15,cache_lifecycle_dispatch_012,1863,347,30155,26c41c,"les bx,es:[si]"
+15,cache_lifecycle_dispatch_012,1863,350,30158,83c604,"add si,4"
+15,cache_lifecycle_dispatch_012,1863,353,30161,26c7070000,"mov word ptr es:[bx],0"
+15,cache_lifecycle_dispatch_012,1863,358,30166,47,inc di
+15,cache_lifecycle_dispatch_012,1863,359,30167,3b3e7234,"cmp di,[3472h]"
+15,cache_lifecycle_dispatch_012,1863,363,30171,7cc2,jl short 012Fh
+15,cache_lifecycle_dispatch_012,1863,365,30173,803e3e3c00,"cmp byte ptr [3C3Eh],0"
+15,cache_lifecycle_dispatch_012,1863,370,30178,742d,je short 01A1h
+15,cache_lifecycle_dispatch_012,1863,372,30180,0e,push cs
+15,cache_lifecycle_dispatch_012,1863,373,30181,e81206,call 078Ah
+15,cache_lifecycle_dispatch_012,1863,376,30184,0bc0,"or ax,ax"
+15,cache_lifecycle_dispatch_012,1863,378,30186,7420,je short 019Ch
+15,cache_lifecycle_dispatch_012,1863,380,30188,0e,push cs
+15,cache_lifecycle_dispatch_012,1863,381,30189,e83006,call 07B0h
+15,cache_lifecycle_dispatch_012,1863,384,30192,a37634,"mov [3476h],ax"
+15,cache_lifecycle_dispatch_012,1863,387,30195,a3283c,"mov [3C28h],ax"
+15,cache_lifecycle_dispatch_012,1863,390,30198,c70678340000,"mov word ptr [3478h],0"
+15,cache_lifecycle_dispatch_012,1863,396,30204,3d0008,"cmp ax,800h"
+15,cache_lifecycle_dispatch_012,1863,399,30207,7e03,jle short 0194h
+15,cache_lifecycle_dispatch_012,1863,401,30209,b80008,"mov ax,800h"
+15,cache_lifecycle_dispatch_012,1863,404,30212,a37634,"mov [3476h],ax"
+15,cache_lifecycle_dispatch_012,1863,407,30215,3d4000,"cmp ax,40h"
+15,cache_lifecycle_dispatch_012,1863,410,30218,7d10,jge short 01ACh
+15,cache_lifecycle_dispatch_012,1863,412,30220,c6063e3c00,"mov byte ptr [3C3Eh],0"
+15,cache_lifecycle_dispatch_012,1863,417,30225,a03e3c,"mov al,[3C3Eh]"
+15,cache_lifecycle_dispatch_012,1863,420,30228,a27a34,"mov [347Ah],al"
+15,cache_lifecycle_dispatch_012,1863,423,30231,5e,pop si
+15,cache_lifecycle_dispatch_012,1863,424,30232,5f,pop di
+15,cache_lifecycle_dispatch_012,1863,425,30233,c9,leave
+15,cache_lifecycle_dispatch_012,1863,426,30234,cb,ret far
+15,cache_lifecycle_dispatch_012,1863,428,30236,50,push ax
+15,cache_lifecycle_dispatch_012,1863,429,30237,0e,push cs
+15,cache_lifecycle_dispatch_012,1863,430,30238,e81706,call 07C8h
+15,cache_lifecycle_dispatch_012,1863,433,30241,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,436,30244,8956fe,"mov [bp-2],dx"
+15,cache_lifecycle_dispatch_012,1863,439,30247,0bd2,"or dx,dx"
+15,cache_lifecycle_dispatch_012,1863,441,30249,7ce1,jl short 019Ch
+15,cache_lifecycle_dispatch_012,1863,443,30251,a37434,"mov [3474h],ax"
+15,cache_lifecycle_dispatch_012,1863,446,30254,50,push ax
+15,cache_lifecycle_dispatch_012,1863,447,30255,0e,push cs
+15,cache_lifecycle_dispatch_012,1863,448,30256,e86906,call 082Ch
+15,cache_lifecycle_dispatch_012,1863,451,30259,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,454,30262,0bd2,"or dx,dx"
+15,cache_lifecycle_dispatch_012,1863,456,30264,7dd7,jge short 01A1h
+15,cache_lifecycle_dispatch_012,1863,458,30266,ff367434,push word ptr [3474h]
+15,cache_lifecycle_dispatch_012,1863,462,30270,0e,push cs
+15,cache_lifecycle_dispatch_012,1863,463,30271,e81806,call 07EAh
+15,cache_lifecycle_dispatch_012,1863,466,30274,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,469,30277,c6063e3c00,"mov byte ptr [3C3Eh],0"
+15,cache_lifecycle_dispatch_012,1863,474,30282,68240c,push 0C24h
+15,cache_lifecycle_dispatch_012,1863,477,30285,9a7a005804,"call far 007Ah,0458h"
+15,cache_lifecycle_dispatch_012,1863,482,30290,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,485,30293,ebba,jmp short 01A1h
+15,cache_lifecycle_dispatch_012,1863,488,30296,803e7a3400,"cmp byte ptr [347Ah],0"
+15,cache_lifecycle_dispatch_012,1863,493,30301,0f84a400,je 0295h
+15,cache_lifecycle_dispatch_012,1863,497,30305,ff367434,push word ptr [3474h]
+15,cache_lifecycle_dispatch_012,1863,501,30309,0e,push cs
+15,cache_lifecycle_dispatch_012,1863,502,30310,e85106,call 084Ah
+15,cache_lifecycle_dispatch_012,1863,505,30313,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,508,30316,ff367434,push word ptr [3474h]
+15,cache_lifecycle_dispatch_012,1863,512,30320,0e,push cs
+15,cache_lifecycle_dispatch_012,1863,513,30321,e8e605,call 07EAh
+15,cache_lifecycle_dispatch_012,1863,516,30324,83c402,"add sp,2"
+15,cache_lifecycle_dispatch_012,1863,519,30327,5e,pop si
+15,cache_lifecycle_dispatch_012,1863,520,30328,5f,pop di
+15,cache_lifecycle_dispatch_012,1863,521,30329,c9,leave
+15,cache_lifecycle_dispatch_012,1863,522,30330,cb,ret far
+15,cache_lifecycle_dispatch_012,1863,524,30332,bb3a34,"mov bx,343Ah"
+15,cache_lifecycle_dispatch_012,1863,527,30335,c437,"les si,[bx]"
+15,cache_lifecycle_dispatch_012,1863,529,30337,268b4404,"mov ax,es:[si+4]"
+15,cache_lifecycle_dispatch_012,1863,533,30341,0bc0,"or ax,ax"
+15,cache_lifecycle_dispatch_012,1863,535,30343,740a,je short 0223h
+15,cache_lifecycle_dispatch_012,1863,537,30345,8bf0,"mov si,ax"
+15,cache_lifecycle_dispatch_012,1863,539,30347,66c7440600000000,"mov dword ptr [si+6],0"
+15,cache_lifecycle_dispatch_012,1863,547,30355,c437,"les si,[bx]"
+15,cache_lifecycle_dispatch_012,1863,549,30357,26c744040000,"mov word ptr es:[si+4],0"
+15,cache_lifecycle_dispatch_012,1863,555,30363,c437,"les si,[bx]"
+15,cache_lifecycle_dispatch_012,1863,557,30365,662bc0,"sub eax,eax"
+15,cache_lifecycle_dispatch_012,1863,560,30368,66268904,"mov es:[si],eax"
+15,cache_lifecycle_dispatch_012,1863,564,30372,83c304,"add bx,4"
+15,cache_lifecycle_dispatch_012,1863,567,30375,81fb6234,"cmp bx,3462h"
+15,cache_lifecycle_dispatch_012,1863,571,30379,72d2,jb short 020Fh
+15,cache_lifecycle_dispatch_012,1863,573,30381,33c9,"xor cx,cx"
+15,cache_lifecycle_dispatch_012,1863,575,30383,39067234,"cmp [3472h],ax"
+15,cache_lifecycle_dispatch_012,1863,579,30387,7e30,jle short 0275h
+15,cache_lifecycle_dispatch_012,1863,581,30389,bb0000,"mov bx,0"
+15,cache_lifecycle_dispatch_012,1863,584,30392,b8c01b,"mov ax,1BC0h"
+15,cache_lifecycle_dispatch_012,1863,587,30395,8ed8,"mov ds,ax"
+15,cache_lifecycle_dispatch_012,1863,589,30397,c437,"les si,[bx]"
+15,cache_lifecycle_dispatch_012,1863,591,30399,26833c00,"cmp word ptr es:[si],0"
+15,cache_lifecycle_dispatch_012,1863,595,30403,740c,je short 0261h
+15,cache_lifecycle_dispatch_012,1863,597,30405,268b34,"mov si,es:[si]"
+15,cache_lifecycle_dispatch_012,1863,600,30408,6636c7440600000000,"mov dword ptr ss:[si+6],0"
+15,cache_lifecycle_dispatch_012,1863,609,30417,c437,"les si,[bx]"
+15,cache_lifecycle_dispatch_012,1863,611,30419,83c304,"add bx,4"
+15,cache_lifecycle_dispatch_012,1863,614,30422,26c7040000,"mov word ptr es:[si],0"
+15,cache_lifecycle_dispatch_012,1863,619,30427,41,inc cx
+15,cache_lifecycle_dispatch_012,1863,620,30428,36390e7234,"cmp ss:[3472h],cx"
+15,cache_lifecycle_dispatch_012,1863,625,30433,7fda,jg short 024Dh
+15,cache_lifecycle_dispatch_012,1863,627,30435,16,push ss
+15,cache_lifecycle_dispatch_012,1863,628,30436,1f,pop ds
+15,cache_lifecycle_dispatch_012,1863,629,30437,bb6234,"mov bx,3462h"
+15,cache_lifecycle_dispatch_012,1863,632,30440,c437,"les si,[bx]"
+15,cache_lifecycle_dispatch_012,1863,634,30442,26c744040000,"mov word ptr es:[si+4],0"
+15,cache_lifecycle_dispatch_012,1863,640,30448,c437,"les si,[bx]"
+15,cache_lifecycle_dispatch_012,1863,642,30450,662bc0,"sub eax,eax"
+15,cache_lifecycle_dispatch_012,1863,645,30453,66268904,"mov es:[si],eax"
+15,cache_lifecycle_dispatch_012,1863,649,30457,83c304,"add bx,4"
+15,cache_lifecycle_dispatch_012,1863,652,30460,81fb7234,"cmp bx,3472h"
+15,cache_lifecycle_dispatch_012,1863,656,30464,72e6,jb short 0278h
+15,cache_lifecycle_dispatch_012,1863,658,30466,a37834,"mov [3478h],ax"
+15,cache_lifecycle_dispatch_012,1863,661,30469,5e,pop si
+15,cache_lifecycle_dispatch_012,1863,662,30470,5f,pop di
+15,cache_lifecycle_dispatch_012,1863,663,30471,c9,leave
+15,cache_lifecycle_dispatch_012,1863,664,30472,cb,ret far
+15,level_resource_cleanup,3333,2018,55346,c8060000,"enter 6,0"
+15,level_resource_cleanup,3333,2022,55350,57,push di
+15,level_resource_cleanup,3333,2023,55351,56,push si
+15,level_resource_cleanup,3333,2024,55352,6a02,push 2
+15,level_resource_cleanup,3333,2026,55354,9a2a004707,"call far 002Ah,0747h"
+15,level_resource_cleanup,3333,2031,55359,83c402,"add sp,2"
+15,level_resource_cleanup,3333,2034,55362,33ff,"xor di,di"
+15,level_resource_cleanup,3333,2036,55364,393e9e61,"cmp [619Eh],di"
+15,level_resource_cleanup,3333,2040,55368,7e17,jle short 0811h
+15,level_resource_cleanup,3333,2042,55370,be4242,"mov si,4242h"
+15,level_resource_cleanup,3333,2045,55373,ff34,push word ptr [si]
+15,level_resource_cleanup,3333,2047,55375,9ab23cc711,"call far 3CB2h,11C7h"
+15,level_resource_cleanup,3333,2052,55380,83c402,"add sp,2"
+15,level_resource_cleanup,3333,2055,55383,83c608,"add si,8"
+15,level_resource_cleanup,3333,2058,55386,47,inc di
+15,level_resource_cleanup,3333,2059,55387,3b3e9e61,"cmp di,[619Eh]"
+15,level_resource_cleanup,3333,2063,55391,7cec,jl short 07FDh
+15,level_resource_cleanup,3333,2065,55393,33ff,"xor di,di"
+15,level_resource_cleanup,3333,2067,55395,393ea061,"cmp [61A0h],di"
+15,level_resource_cleanup,3333,2071,55399,7e17,jle short 0830h
+15,level_resource_cleanup,3333,2073,55401,be523c,"mov si,3C52h"
+15,level_resource_cleanup,3333,2076,55404,ff34,push word ptr [si]
+15,level_resource_cleanup,3333,2078,55406,9ab23cc711,"call far 3CB2h,11C7h"
+15,level_resource_cleanup,3333,2083,55411,83c402,"add sp,2"
+15,level_resource_cleanup,3333,2086,55414,83c608,"add si,8"
+15,level_resource_cleanup,3333,2089,55417,47,inc di
+15,level_resource_cleanup,3333,2090,55418,3b3ea061,"cmp di,[61A0h]"
+15,level_resource_cleanup,3333,2094,55422,7cec,jl short 081Ch
+15,level_resource_cleanup,3333,2096,55424,33ff,"xor di,di"
+15,level_resource_cleanup,3333,2098,55426,393e9c61,"cmp [619Ch],di"
+15,level_resource_cleanup,3333,2102,55430,7e41,jle short 0879h
+15,level_resource_cleanup,3333,2104,55432,be0a00,"mov si,0Ah"
+15,level_resource_cleanup,3333,2107,55435,8e062c25,"mov es,[252Ch]"
+15,level_resource_cleanup,3333,2111,55439,8976fa,"mov [bp-6],si"
+15,level_resource_cleanup,3333,2114,55442,8c46fc,"mov [bp-4],es"
+15,level_resource_cleanup,3333,2117,55445,268a1c,"mov bl,es:[si]"
+15,level_resource_cleanup,3333,2120,55448,2aff,"sub bh,bh"
+15,level_resource_cleanup,3333,2122,55450,c1e303,"shl bx,3"
+15,level_resource_cleanup,3333,2125,55453,8b87503c,"mov ax,[bx+3C50h]"
+15,level_resource_cleanup,3333,2129,55457,0bc0,"or ax,ax"
+15,level_resource_cleanup,3333,2131,55459,741a,je short 086Fh
+15,level_resource_cleanup,3333,2133,55461,50,push ax
+15,level_resource_cleanup,3333,2134,55462,9ab23cc711,"call far 3CB2h,11C7h"
+15,level_resource_cleanup,3333,2139,55467,83c402,"add sp,2"
+15,level_resource_cleanup,3333,2142,55470,c45efa,"les bx,[bp-6]"
+15,level_resource_cleanup,3333,2145,55473,268a1f,"mov bl,es:[bx]"
+15,level_resource_cleanup,3333,2148,55476,2aff,"sub bh,bh"
+15,level_resource_cleanup,3333,2150,55478,c1e303,"shl bx,3"
+15,level_resource_cleanup,3333,2153,55481,c787503c0000,"mov word ptr [bx+3C50h],0"
+15,level_resource_cleanup,3333,2159,55487,83c61c,"add si,1Ch"
+15,level_resource_cleanup,3333,2162,55490,47,inc di
+15,level_resource_cleanup,3333,2163,55491,3b3e9c61,"cmp di,[619Ch]"
+15,level_resource_cleanup,3333,2167,55495,7cc2,jl short 083Bh
+15,level_resource_cleanup,3333,2169,55497,5e,pop si
+15,level_resource_cleanup,3333,2170,55498,5f,pop di
+15,level_resource_cleanup,3333,2171,55499,c9,leave
+15,level_resource_cleanup,3333,2172,55500,cb,ret far
+17,cache_lifecycle_dispatch_012,1873,38,30006,c8060000,"enter 6,0"
+17,cache_lifecycle_dispatch_012,1873,42,30010,57,push di
+17,cache_lifecycle_dispatch_012,1873,43,30011,56,push si
+17,cache_lifecycle_dispatch_012,1873,44,30012,8b4606,"mov ax,[bp+6]"
+17,cache_lifecycle_dispatch_012,1873,47,30015,0bc0,"or ax,ax"
+17,cache_lifecycle_dispatch_012,1873,49,30017,740f,je short 0042h
+17,cache_lifecycle_dispatch_012,1873,51,30019,48,dec ax
+17,cache_lifecycle_dispatch_012,1873,52,30020,0f84ac01,je 01E4h
+17,cache_lifecycle_dispatch_012,1873,56,30024,48,dec ax
+17,cache_lifecycle_dispatch_012,1873,57,30025,0f84cb01,je 0208h
+17,cache_lifecycle_dispatch_012,1873,61,30029,5e,pop si
+17,cache_lifecycle_dispatch_012,1873,62,30030,5f,pop di
+17,cache_lifecycle_dispatch_012,1873,63,30031,c9,leave
+17,cache_lifecycle_dispatch_012,1873,64,30032,cb,ret far
+17,cache_lifecycle_dispatch_012,1873,66,30034,be3e34,"mov si,343Eh"
+17,cache_lifecycle_dispatch_012,1873,69,30037,680620,push 2006h
+17,cache_lifecycle_dispatch_012,1873,72,30040,9a6520d111,"call far 2065h,11D1h"
+17,cache_lifecycle_dispatch_012,1873,77,30045,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,80,30048,8904,"mov [si],ax"
+17,cache_lifecycle_dispatch_012,1873,82,30050,895402,"mov [si+2],dx"
+17,cache_lifecycle_dispatch_012,1873,85,30053,8bc2,"mov ax,dx"
+17,cache_lifecycle_dispatch_012,1873,87,30055,0b04,"or ax,[si]"
+17,cache_lifecycle_dispatch_012,1873,89,30057,750b,jne short 0066h
+17,cache_lifecycle_dispatch_012,1873,91,30059,68580b,push 0B58h
+17,cache_lifecycle_dispatch_012,1873,94,30062,9a0c009d0f,"call far 000Ch,0F9Dh"
+17,cache_lifecycle_dispatch_012,1873,99,30067,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,102,30070,c41c,"les bx,[si]"
+17,cache_lifecycle_dispatch_012,1873,104,30072,26c747040000,"mov word ptr es:[bx+4],0"
+17,cache_lifecycle_dispatch_012,1873,110,30078,c41c,"les bx,[si]"
+17,cache_lifecycle_dispatch_012,1873,112,30080,6626c70700000000,"mov dword ptr es:[bx],0"
+17,cache_lifecycle_dispatch_012,1873,120,30088,83c604,"add si,4"
+17,cache_lifecycle_dispatch_012,1873,123,30091,81fe6634,"cmp si,3466h"
+17,cache_lifecycle_dispatch_012,1873,127,30095,72c4,jb short 0045h
+17,cache_lifecycle_dispatch_012,1873,129,30097,be6634,"mov si,3466h"
+17,cache_lifecycle_dispatch_012,1873,132,30100,680620,push 2006h
+17,cache_lifecycle_dispatch_012,1873,135,30103,9a6520d111,"call far 2065h,11D1h"
+17,cache_lifecycle_dispatch_012,1873,140,30108,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,143,30111,8904,"mov [si],ax"
+17,cache_lifecycle_dispatch_012,1873,145,30113,895402,"mov [si+2],dx"
+17,cache_lifecycle_dispatch_012,1873,148,30116,8bc2,"mov ax,dx"
+17,cache_lifecycle_dispatch_012,1873,150,30118,0b04,"or ax,[si]"
+17,cache_lifecycle_dispatch_012,1873,152,30120,750b,jne short 00A5h
+17,cache_lifecycle_dispatch_012,1873,154,30122,688c0b,push 0B8Ch
+17,cache_lifecycle_dispatch_012,1873,157,30125,9a0c009d0f,"call far 000Ch,0F9Dh"
+17,cache_lifecycle_dispatch_012,1873,162,30130,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,165,30133,c41c,"les bx,[si]"
+17,cache_lifecycle_dispatch_012,1873,167,30135,26c747040000,"mov word ptr es:[bx+4],0"
+17,cache_lifecycle_dispatch_012,1873,173,30141,c41c,"les bx,[si]"
+17,cache_lifecycle_dispatch_012,1873,175,30143,6626c70700000000,"mov dword ptr es:[bx],0"
+17,cache_lifecycle_dispatch_012,1873,183,30151,83c604,"add si,4"
+17,cache_lifecycle_dispatch_012,1873,186,30154,81fe7634,"cmp si,3476h"
+17,cache_lifecycle_dispatch_012,1873,190,30158,72c4,jb short 0084h
+17,cache_lifecycle_dispatch_012,1873,192,30160,9a58009d0f,"call far 0058h,0F9Dh"
+17,cache_lifecycle_dispatch_012,1873,197,30165,a3243c,"mov [3C24h],ax"
+17,cache_lifecycle_dispatch_012,1873,200,30168,9a9029d111,"call far 2990h,11D1h"
+17,cache_lifecycle_dispatch_012,1873,205,30173,a3203c,"mov [3C20h],ax"
+17,cache_lifecycle_dispatch_012,1873,208,30176,6668020c0000,data32 push 0C02h
+17,cache_lifecycle_dispatch_012,1873,214,30182,a1243c,"mov ax,[3C24h]"
+17,cache_lifecycle_dispatch_012,1873,217,30185,2bd2,"sub dx,dx"
+17,cache_lifecycle_dispatch_012,1873,219,30187,2d4600,"sub ax,46h"
+17,cache_lifecycle_dispatch_012,1873,222,30190,1bd2,"sbb dx,dx"
+17,cache_lifecycle_dispatch_012,1873,224,30192,8af2,"mov dh,dl"
+17,cache_lifecycle_dispatch_012,1873,226,30194,8ad4,"mov dl,ah"
+17,cache_lifecycle_dispatch_012,1873,228,30196,8ae0,"mov ah,al"
+17,cache_lifecycle_dispatch_012,1873,230,30198,2ac0,"sub al,al"
+17,cache_lifecycle_dispatch_012,1873,232,30200,03c0,"add ax,ax"
+17,cache_lifecycle_dispatch_012,1873,234,30202,13d2,"adc dx,dx"
+17,cache_lifecycle_dispatch_012,1873,236,30204,03c0,"add ax,ax"
+17,cache_lifecycle_dispatch_012,1873,238,30206,13d2,"adc dx,dx"
+17,cache_lifecycle_dispatch_012,1873,240,30208,52,push dx
+17,cache_lifecycle_dispatch_012,1873,241,30209,50,push ax
+17,cache_lifecycle_dispatch_012,1873,242,30210,6658,pop eax
+17,cache_lifecycle_dispatch_012,1873,244,30212,6659,pop ecx
+17,cache_lifecycle_dispatch_012,1873,246,30214,6699,cdq
+17,cache_lifecycle_dispatch_012,1873,248,30216,66f7f9,idiv ecx
+17,cache_lifecycle_dispatch_012,1873,251,30219,668bd0,"mov edx,eax"
+17,cache_lifecycle_dispatch_012,1873,254,30222,66c1ea10,"shr edx,10h"
+17,cache_lifecycle_dispatch_012,1873,258,30226,a37634,"mov [3476h],ax"
+17,cache_lifecycle_dispatch_012,1873,261,30229,3d8000,"cmp ax,80h"
+17,cache_lifecycle_dispatch_012,1873,264,30232,7e03,jle short 010Dh
+17,cache_lifecycle_dispatch_012,1873,266,30234,b88000,"mov ax,80h"
+17,cache_lifecycle_dispatch_012,1873,269,30237,a37634,"mov [3476h],ax"
+17,cache_lifecycle_dispatch_012,1873,272,30240,3d0100,"cmp ax,1"
+17,cache_lifecycle_dispatch_012,1873,275,30243,7d0b,jge short 0120h
+17,cache_lifecycle_dispatch_012,1873,277,30245,68c00b,push 0BC0h
+17,cache_lifecycle_dispatch_012,1873,280,30248,9a0c009d0f,"call far 000Ch,0F9Dh"
+17,cache_lifecycle_dispatch_012,1873,285,30253,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,288,30256,33ff,"xor di,di"
+17,cache_lifecycle_dispatch_012,1873,290,30258,393e7634,"cmp [3476h],di"
+17,cache_lifecycle_dispatch_012,1873,294,30262,7e41,jle short 0169h
+17,cache_lifecycle_dispatch_012,1873,296,30264,be0000,"mov si,0"
+17,cache_lifecycle_dispatch_012,1873,299,30267,68020c,push 0C02h
+17,cache_lifecycle_dispatch_012,1873,302,30270,9a6520d111,"call far 2065h,11D1h"
+17,cache_lifecycle_dispatch_012,1873,307,30275,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,310,30278,8e062425,"mov es,[2524h]"
+17,cache_lifecycle_dispatch_012,1873,314,30282,268904,"mov es:[si],ax"
+17,cache_lifecycle_dispatch_012,1873,317,30285,26895402,"mov es:[si+2],dx"
+17,cache_lifecycle_dispatch_012,1873,321,30289,8bc2,"mov ax,dx"
+17,cache_lifecycle_dispatch_012,1873,323,30291,260b04,"or ax,es:[si]"
+17,cache_lifecycle_dispatch_012,1873,326,30294,750b,jne short 0153h
+17,cache_lifecycle_dispatch_012,1873,328,30296,68f40b,push 0BF4h
+17,cache_lifecycle_dispatch_012,1873,331,30299,9a0c009d0f,"call far 000Ch,0F9Dh"
+17,cache_lifecycle_dispatch_012,1873,336,30304,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,339,30307,8e062425,"mov es,[2524h]"
+17,cache_lifecycle_dispatch_012,1873,343,30311,26c41c,"les bx,es:[si]"
+17,cache_lifecycle_dispatch_012,1873,346,30314,83c604,"add si,4"
+17,cache_lifecycle_dispatch_012,1873,349,30317,26c7070000,"mov word ptr es:[bx],0"
+17,cache_lifecycle_dispatch_012,1873,354,30322,47,inc di
+17,cache_lifecycle_dispatch_012,1873,355,30323,3b3e7634,"cmp di,[3476h]"
+17,cache_lifecycle_dispatch_012,1873,359,30327,7cc2,jl short 012Bh
+17,cache_lifecycle_dispatch_012,1873,361,30329,803e3e3c00,"cmp byte ptr [3C3Eh],0"
+17,cache_lifecycle_dispatch_012,1873,366,30334,742d,je short 019Dh
+17,cache_lifecycle_dispatch_012,1873,368,30336,0e,push cs
+17,cache_lifecycle_dispatch_012,1873,369,30337,e81206,call 0786h
+17,cache_lifecycle_dispatch_012,1873,372,30340,0bc0,"or ax,ax"
+17,cache_lifecycle_dispatch_012,1873,374,30342,7420,je short 0198h
+17,cache_lifecycle_dispatch_012,1873,376,30344,0e,push cs
+17,cache_lifecycle_dispatch_012,1873,377,30345,e83006,call 07ACh
+17,cache_lifecycle_dispatch_012,1873,380,30348,a37a34,"mov [347Ah],ax"
+17,cache_lifecycle_dispatch_012,1873,383,30351,a3283c,"mov [3C28h],ax"
+17,cache_lifecycle_dispatch_012,1873,386,30354,c7067c340000,"mov word ptr [347Ch],0"
+17,cache_lifecycle_dispatch_012,1873,392,30360,3d0008,"cmp ax,800h"
+17,cache_lifecycle_dispatch_012,1873,395,30363,7e03,jle short 0190h
+17,cache_lifecycle_dispatch_012,1873,397,30365,b80008,"mov ax,800h"
+17,cache_lifecycle_dispatch_012,1873,400,30368,a37a34,"mov [347Ah],ax"
+17,cache_lifecycle_dispatch_012,1873,403,30371,3d4000,"cmp ax,40h"
+17,cache_lifecycle_dispatch_012,1873,406,30374,7d10,jge short 01A8h
+17,cache_lifecycle_dispatch_012,1873,408,30376,c6063e3c00,"mov byte ptr [3C3Eh],0"
+17,cache_lifecycle_dispatch_012,1873,413,30381,a03e3c,"mov al,[3C3Eh]"
+17,cache_lifecycle_dispatch_012,1873,416,30384,a27e34,"mov [347Eh],al"
+17,cache_lifecycle_dispatch_012,1873,419,30387,5e,pop si
+17,cache_lifecycle_dispatch_012,1873,420,30388,5f,pop di
+17,cache_lifecycle_dispatch_012,1873,421,30389,c9,leave
+17,cache_lifecycle_dispatch_012,1873,422,30390,cb,ret far
+17,cache_lifecycle_dispatch_012,1873,424,30392,50,push ax
+17,cache_lifecycle_dispatch_012,1873,425,30393,0e,push cs
+17,cache_lifecycle_dispatch_012,1873,426,30394,e81706,call 07C4h
+17,cache_lifecycle_dispatch_012,1873,429,30397,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,432,30400,8956fe,"mov [bp-2],dx"
+17,cache_lifecycle_dispatch_012,1873,435,30403,0bd2,"or dx,dx"
+17,cache_lifecycle_dispatch_012,1873,437,30405,7ce1,jl short 0198h
+17,cache_lifecycle_dispatch_012,1873,439,30407,a37834,"mov [3478h],ax"
+17,cache_lifecycle_dispatch_012,1873,442,30410,50,push ax
+17,cache_lifecycle_dispatch_012,1873,443,30411,0e,push cs
+17,cache_lifecycle_dispatch_012,1873,444,30412,e86906,call 0828h
+17,cache_lifecycle_dispatch_012,1873,447,30415,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,450,30418,0bd2,"or dx,dx"
+17,cache_lifecycle_dispatch_012,1873,452,30420,7dd7,jge short 019Dh
+17,cache_lifecycle_dispatch_012,1873,454,30422,ff367834,push word ptr [3478h]
+17,cache_lifecycle_dispatch_012,1873,458,30426,0e,push cs
+17,cache_lifecycle_dispatch_012,1873,459,30427,e81806,call 07E6h
+17,cache_lifecycle_dispatch_012,1873,462,30430,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,465,30433,c6063e3c00,"mov byte ptr [3C3Eh],0"
+17,cache_lifecycle_dispatch_012,1873,470,30438,68280c,push 0C28h
+17,cache_lifecycle_dispatch_012,1873,473,30441,9a84005f04,"call far 0084h,045Fh"
+17,cache_lifecycle_dispatch_012,1873,478,30446,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,481,30449,ebba,jmp short 019Dh
+17,cache_lifecycle_dispatch_012,1873,484,30452,803e7e3400,"cmp byte ptr [347Eh],0"
+17,cache_lifecycle_dispatch_012,1873,489,30457,0f84a400,je 0291h
+17,cache_lifecycle_dispatch_012,1873,493,30461,ff367834,push word ptr [3478h]
+17,cache_lifecycle_dispatch_012,1873,497,30465,0e,push cs
+17,cache_lifecycle_dispatch_012,1873,498,30466,e85106,call 0846h
+17,cache_lifecycle_dispatch_012,1873,501,30469,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,504,30472,ff367834,push word ptr [3478h]
+17,cache_lifecycle_dispatch_012,1873,508,30476,0e,push cs
+17,cache_lifecycle_dispatch_012,1873,509,30477,e8e605,call 07E6h
+17,cache_lifecycle_dispatch_012,1873,512,30480,83c402,"add sp,2"
+17,cache_lifecycle_dispatch_012,1873,515,30483,5e,pop si
+17,cache_lifecycle_dispatch_012,1873,516,30484,5f,pop di
+17,cache_lifecycle_dispatch_012,1873,517,30485,c9,leave
+17,cache_lifecycle_dispatch_012,1873,518,30486,cb,ret far
+17,cache_lifecycle_dispatch_012,1873,520,30488,bb3e34,"mov bx,343Eh"
+17,cache_lifecycle_dispatch_012,1873,523,30491,c437,"les si,[bx]"
+17,cache_lifecycle_dispatch_012,1873,525,30493,268b4404,"mov ax,es:[si+4]"
+17,cache_lifecycle_dispatch_012,1873,529,30497,0bc0,"or ax,ax"
+17,cache_lifecycle_dispatch_012,1873,531,30499,740a,je short 021Fh
+17,cache_lifecycle_dispatch_012,1873,533,30501,8bf0,"mov si,ax"
+17,cache_lifecycle_dispatch_012,1873,535,30503,66c7440600000000,"mov dword ptr [si+6],0"
+17,cache_lifecycle_dispatch_012,1873,543,30511,c437,"les si,[bx]"
+17,cache_lifecycle_dispatch_012,1873,545,30513,26c744040000,"mov word ptr es:[si+4],0"
+17,cache_lifecycle_dispatch_012,1873,551,30519,c437,"les si,[bx]"
+17,cache_lifecycle_dispatch_012,1873,553,30521,662bc0,"sub eax,eax"
+17,cache_lifecycle_dispatch_012,1873,556,30524,66268904,"mov es:[si],eax"
+17,cache_lifecycle_dispatch_012,1873,560,30528,83c304,"add bx,4"
+17,cache_lifecycle_dispatch_012,1873,563,30531,81fb6634,"cmp bx,3466h"
+17,cache_lifecycle_dispatch_012,1873,567,30535,72d2,jb short 020Bh
+17,cache_lifecycle_dispatch_012,1873,569,30537,33c9,"xor cx,cx"
+17,cache_lifecycle_dispatch_012,1873,571,30539,39067634,"cmp [3476h],ax"
+17,cache_lifecycle_dispatch_012,1873,575,30543,7e30,jle short 0271h
+17,cache_lifecycle_dispatch_012,1873,577,30545,bb0000,"mov bx,0"
+17,cache_lifecycle_dispatch_012,1873,580,30548,b8ca1b,"mov ax,1BCAh"
+17,cache_lifecycle_dispatch_012,1873,583,30551,8ed8,"mov ds,ax"
+17,cache_lifecycle_dispatch_012,1873,585,30553,c437,"les si,[bx]"
+17,cache_lifecycle_dispatch_012,1873,587,30555,26833c00,"cmp word ptr es:[si],0"
+17,cache_lifecycle_dispatch_012,1873,591,30559,740c,je short 025Dh
+17,cache_lifecycle_dispatch_012,1873,593,30561,268b34,"mov si,es:[si]"
+17,cache_lifecycle_dispatch_012,1873,596,30564,6636c7440600000000,"mov dword ptr ss:[si+6],0"
+17,cache_lifecycle_dispatch_012,1873,605,30573,c437,"les si,[bx]"
+17,cache_lifecycle_dispatch_012,1873,607,30575,83c304,"add bx,4"
+17,cache_lifecycle_dispatch_012,1873,610,30578,26c7040000,"mov word ptr es:[si],0"
+17,cache_lifecycle_dispatch_012,1873,615,30583,41,inc cx
+17,cache_lifecycle_dispatch_012,1873,616,30584,36390e7634,"cmp ss:[3476h],cx"
+17,cache_lifecycle_dispatch_012,1873,621,30589,7fda,jg short 0249h
+17,cache_lifecycle_dispatch_012,1873,623,30591,16,push ss
+17,cache_lifecycle_dispatch_012,1873,624,30592,1f,pop ds
+17,cache_lifecycle_dispatch_012,1873,625,30593,bb6634,"mov bx,3466h"
+17,cache_lifecycle_dispatch_012,1873,628,30596,c437,"les si,[bx]"
+17,cache_lifecycle_dispatch_012,1873,630,30598,26c744040000,"mov word ptr es:[si+4],0"
+17,cache_lifecycle_dispatch_012,1873,636,30604,c437,"les si,[bx]"
+17,cache_lifecycle_dispatch_012,1873,638,30606,662bc0,"sub eax,eax"
+17,cache_lifecycle_dispatch_012,1873,641,30609,66268904,"mov es:[si],eax"
+17,cache_lifecycle_dispatch_012,1873,645,30613,83c304,"add bx,4"
+17,cache_lifecycle_dispatch_012,1873,648,30616,81fb7634,"cmp bx,3476h"
+17,cache_lifecycle_dispatch_012,1873,652,30620,72e6,jb short 0274h
+17,cache_lifecycle_dispatch_012,1873,654,30622,a37c34,"mov [347Ch],ax"
+17,cache_lifecycle_dispatch_012,1873,657,30625,5e,pop si
+17,cache_lifecycle_dispatch_012,1873,658,30626,5f,pop di
+17,cache_lifecycle_dispatch_012,1873,659,30627,c9,leave
+17,cache_lifecycle_dispatch_012,1873,660,30628,cb,ret far
+17,level_resource_cleanup,3343,2014,55502,c8060000,"enter 6,0"
+17,level_resource_cleanup,3343,2018,55506,57,push di
+17,level_resource_cleanup,3343,2019,55507,56,push si
+17,level_resource_cleanup,3343,2020,55508,6a02,push 2
+17,level_resource_cleanup,3343,2022,55510,9a26005107,"call far 0026h,0751h"
+17,level_resource_cleanup,3343,2027,55515,83c402,"add sp,2"
+17,level_resource_cleanup,3343,2030,55518,33ff,"xor di,di"
+17,level_resource_cleanup,3343,2032,55520,393ee061,"cmp [61E0h],di"
+17,level_resource_cleanup,3343,2036,55524,7e17,jle short 080Dh
+17,level_resource_cleanup,3343,2038,55526,be8442,"mov si,4284h"
+17,level_resource_cleanup,3343,2041,55529,ff34,push word ptr [si]
+17,level_resource_cleanup,3343,2043,55531,9aae3cd111,"call far 3CAEh,11D1h"
+17,level_resource_cleanup,3343,2048,55536,83c402,"add sp,2"
+17,level_resource_cleanup,3343,2051,55539,83c608,"add si,8"
+17,level_resource_cleanup,3343,2054,55542,47,inc di
+17,level_resource_cleanup,3343,2055,55543,3b3ee061,"cmp di,[61E0h]"
+17,level_resource_cleanup,3343,2059,55547,7cec,jl short 07F9h
+17,level_resource_cleanup,3343,2061,55549,33ff,"xor di,di"
+17,level_resource_cleanup,3343,2063,55551,393ee261,"cmp [61E2h],di"
+17,level_resource_cleanup,3343,2067,55555,7e17,jle short 082Ch
+17,level_resource_cleanup,3343,2069,55557,be943c,"mov si,3C94h"
+17,level_resource_cleanup,3343,2072,55560,ff34,push word ptr [si]
+17,level_resource_cleanup,3343,2074,55562,9aae3cd111,"call far 3CAEh,11D1h"
+17,level_resource_cleanup,3343,2079,55567,83c402,"add sp,2"
+17,level_resource_cleanup,3343,2082,55570,83c608,"add si,8"
+17,level_resource_cleanup,3343,2085,55573,47,inc di
+17,level_resource_cleanup,3343,2086,55574,3b3ee261,"cmp di,[61E2h]"
+17,level_resource_cleanup,3343,2090,55578,7cec,jl short 0818h
+17,level_resource_cleanup,3343,2092,55580,33ff,"xor di,di"
+17,level_resource_cleanup,3343,2094,55582,393ede61,"cmp [61DEh],di"
+17,level_resource_cleanup,3343,2098,55586,7e41,jle short 0875h
+17,level_resource_cleanup,3343,2100,55588,be0a00,"mov si,0Ah"
+17,level_resource_cleanup,3343,2103,55591,8e063025,"mov es,[2530h]"
+17,level_resource_cleanup,3343,2107,55595,8976fa,"mov [bp-6],si"
+17,level_resource_cleanup,3343,2110,55598,8c46fc,"mov [bp-4],es"
+17,level_resource_cleanup,3343,2113,55601,268a1c,"mov bl,es:[si]"
+17,level_resource_cleanup,3343,2116,55604,2aff,"sub bh,bh"
+17,level_resource_cleanup,3343,2118,55606,c1e303,"shl bx,3"
+17,level_resource_cleanup,3343,2121,55609,8b87923c,"mov ax,[bx+3C92h]"
+17,level_resource_cleanup,3343,2125,55613,0bc0,"or ax,ax"
+17,level_resource_cleanup,3343,2127,55615,741a,je short 086Bh
+17,level_resource_cleanup,3343,2129,55617,50,push ax
+17,level_resource_cleanup,3343,2130,55618,9aae3cd111,"call far 3CAEh,11D1h"
+17,level_resource_cleanup,3343,2135,55623,83c402,"add sp,2"
+17,level_resource_cleanup,3343,2138,55626,c45efa,"les bx,[bp-6]"
+17,level_resource_cleanup,3343,2141,55629,268a1f,"mov bl,es:[bx]"
+17,level_resource_cleanup,3343,2144,55632,2aff,"sub bh,bh"
+17,level_resource_cleanup,3343,2146,55634,c1e303,"shl bx,3"
+17,level_resource_cleanup,3343,2149,55637,c787923c0000,"mov word ptr [bx+3C92h],0"
+17,level_resource_cleanup,3343,2155,55643,83c61c,"add si,1Ch"
+17,level_resource_cleanup,3343,2158,55646,47,inc di
+17,level_resource_cleanup,3343,2159,55647,3b3ede61,"cmp di,[61DEh]"
+17,level_resource_cleanup,3343,2163,55651,7cc2,jl short 0837h
+17,level_resource_cleanup,3343,2165,55653,5e,pop si
+17,level_resource_cleanup,3343,2166,55654,5f,pop di
+17,level_resource_cleanup,3343,2167,55655,c9,leave
+17,level_resource_cleanup,3343,2168,55656,cb,ret far
+18,cache_lifecycle_dispatch_012,1895,42,30362,c8060000,"enter 6,0"
+18,cache_lifecycle_dispatch_012,1895,46,30366,57,push di
+18,cache_lifecycle_dispatch_012,1895,47,30367,56,push si
+18,cache_lifecycle_dispatch_012,1895,48,30368,8b4606,"mov ax,[bp+6]"
+18,cache_lifecycle_dispatch_012,1895,51,30371,0bc0,"or ax,ax"
+18,cache_lifecycle_dispatch_012,1895,53,30373,740f,je short 0046h
+18,cache_lifecycle_dispatch_012,1895,55,30375,48,dec ax
+18,cache_lifecycle_dispatch_012,1895,56,30376,0f84ac01,je 01E8h
+18,cache_lifecycle_dispatch_012,1895,60,30380,48,dec ax
+18,cache_lifecycle_dispatch_012,1895,61,30381,0f84cb01,je 020Ch
+18,cache_lifecycle_dispatch_012,1895,65,30385,5e,pop si
+18,cache_lifecycle_dispatch_012,1895,66,30386,5f,pop di
+18,cache_lifecycle_dispatch_012,1895,67,30387,c9,leave
+18,cache_lifecycle_dispatch_012,1895,68,30388,cb,ret far
+18,cache_lifecycle_dispatch_012,1895,70,30390,beca34,"mov si,34CAh"
+18,cache_lifecycle_dispatch_012,1895,73,30393,680620,push 2006h
+18,cache_lifecycle_dispatch_012,1895,76,30396,9a6920ea11,"call far 2069h,11EAh"
+18,cache_lifecycle_dispatch_012,1895,81,30401,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,84,30404,8904,"mov [si],ax"
+18,cache_lifecycle_dispatch_012,1895,86,30406,895402,"mov [si+2],dx"
+18,cache_lifecycle_dispatch_012,1895,89,30409,8bc2,"mov ax,dx"
+18,cache_lifecycle_dispatch_012,1895,91,30411,0b04,"or ax,[si]"
+18,cache_lifecycle_dispatch_012,1895,93,30413,750b,jne short 006Ah
+18,cache_lifecycle_dispatch_012,1895,95,30415,68860b,push 0B86h
+18,cache_lifecycle_dispatch_012,1895,98,30418,9a0000b70f,"call far 0,0FB7h"
+18,cache_lifecycle_dispatch_012,1895,103,30423,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,106,30426,c41c,"les bx,[si]"
+18,cache_lifecycle_dispatch_012,1895,108,30428,26c747040000,"mov word ptr es:[bx+4],0"
+18,cache_lifecycle_dispatch_012,1895,114,30434,c41c,"les bx,[si]"
+18,cache_lifecycle_dispatch_012,1895,116,30436,6626c70700000000,"mov dword ptr es:[bx],0"
+18,cache_lifecycle_dispatch_012,1895,124,30444,83c604,"add si,4"
+18,cache_lifecycle_dispatch_012,1895,127,30447,81fef234,"cmp si,34F2h"
+18,cache_lifecycle_dispatch_012,1895,131,30451,72c4,jb short 0049h
+18,cache_lifecycle_dispatch_012,1895,133,30453,bef234,"mov si,34F2h"
+18,cache_lifecycle_dispatch_012,1895,136,30456,680620,push 2006h
+18,cache_lifecycle_dispatch_012,1895,139,30459,9a6920ea11,"call far 2069h,11EAh"
+18,cache_lifecycle_dispatch_012,1895,144,30464,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,147,30467,8904,"mov [si],ax"
+18,cache_lifecycle_dispatch_012,1895,149,30469,895402,"mov [si+2],dx"
+18,cache_lifecycle_dispatch_012,1895,152,30472,8bc2,"mov ax,dx"
+18,cache_lifecycle_dispatch_012,1895,154,30474,0b04,"or ax,[si]"
+18,cache_lifecycle_dispatch_012,1895,156,30476,750b,jne short 00A9h
+18,cache_lifecycle_dispatch_012,1895,158,30478,68ba0b,push 0BBAh
+18,cache_lifecycle_dispatch_012,1895,161,30481,9a0000b70f,"call far 0,0FB7h"
+18,cache_lifecycle_dispatch_012,1895,166,30486,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,169,30489,c41c,"les bx,[si]"
+18,cache_lifecycle_dispatch_012,1895,171,30491,26c747040000,"mov word ptr es:[bx+4],0"
+18,cache_lifecycle_dispatch_012,1895,177,30497,c41c,"les bx,[si]"
+18,cache_lifecycle_dispatch_012,1895,179,30499,6626c70700000000,"mov dword ptr es:[bx],0"
+18,cache_lifecycle_dispatch_012,1895,187,30507,83c604,"add si,4"
+18,cache_lifecycle_dispatch_012,1895,190,30510,81fe0235,"cmp si,3502h"
+18,cache_lifecycle_dispatch_012,1895,194,30514,72c4,jb short 0088h
+18,cache_lifecycle_dispatch_012,1895,196,30516,9a4c00b70f,"call far 004Ch,0FB7h"
+18,cache_lifecycle_dispatch_012,1895,201,30521,a3b43c,"mov [3CB4h],ax"
+18,cache_lifecycle_dispatch_012,1895,204,30524,9a9429ea11,"call far 2994h,11EAh"
+18,cache_lifecycle_dispatch_012,1895,209,30529,a3b03c,"mov [3CB0h],ax"
+18,cache_lifecycle_dispatch_012,1895,212,30532,6668020c0000,data32 push 0C02h
+18,cache_lifecycle_dispatch_012,1895,218,30538,a1b43c,"mov ax,[3CB4h]"
+18,cache_lifecycle_dispatch_012,1895,221,30541,2bd2,"sub dx,dx"
+18,cache_lifecycle_dispatch_012,1895,223,30543,2d4600,"sub ax,46h"
+18,cache_lifecycle_dispatch_012,1895,226,30546,1bd2,"sbb dx,dx"
+18,cache_lifecycle_dispatch_012,1895,228,30548,8af2,"mov dh,dl"
+18,cache_lifecycle_dispatch_012,1895,230,30550,8ad4,"mov dl,ah"
+18,cache_lifecycle_dispatch_012,1895,232,30552,8ae0,"mov ah,al"
+18,cache_lifecycle_dispatch_012,1895,234,30554,2ac0,"sub al,al"
+18,cache_lifecycle_dispatch_012,1895,236,30556,03c0,"add ax,ax"
+18,cache_lifecycle_dispatch_012,1895,238,30558,13d2,"adc dx,dx"
+18,cache_lifecycle_dispatch_012,1895,240,30560,03c0,"add ax,ax"
+18,cache_lifecycle_dispatch_012,1895,242,30562,13d2,"adc dx,dx"
+18,cache_lifecycle_dispatch_012,1895,244,30564,52,push dx
+18,cache_lifecycle_dispatch_012,1895,245,30565,50,push ax
+18,cache_lifecycle_dispatch_012,1895,246,30566,6658,pop eax
+18,cache_lifecycle_dispatch_012,1895,248,30568,6659,pop ecx
+18,cache_lifecycle_dispatch_012,1895,250,30570,6699,cdq
+18,cache_lifecycle_dispatch_012,1895,252,30572,66f7f9,idiv ecx
+18,cache_lifecycle_dispatch_012,1895,255,30575,668bd0,"mov edx,eax"
+18,cache_lifecycle_dispatch_012,1895,258,30578,66c1ea10,"shr edx,10h"
+18,cache_lifecycle_dispatch_012,1895,262,30582,a30235,"mov [3502h],ax"
+18,cache_lifecycle_dispatch_012,1895,265,30585,3d8000,"cmp ax,80h"
+18,cache_lifecycle_dispatch_012,1895,268,30588,7e03,jle short 0111h
+18,cache_lifecycle_dispatch_012,1895,270,30590,b88000,"mov ax,80h"
+18,cache_lifecycle_dispatch_012,1895,273,30593,a30235,"mov [3502h],ax"
+18,cache_lifecycle_dispatch_012,1895,276,30596,3d0100,"cmp ax,1"
+18,cache_lifecycle_dispatch_012,1895,279,30599,7d0b,jge short 0124h
+18,cache_lifecycle_dispatch_012,1895,281,30601,68ee0b,push 0BEEh
+18,cache_lifecycle_dispatch_012,1895,284,30604,9a0000b70f,"call far 0,0FB7h"
+18,cache_lifecycle_dispatch_012,1895,289,30609,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,292,30612,33ff,"xor di,di"
+18,cache_lifecycle_dispatch_012,1895,294,30614,393e0235,"cmp [3502h],di"
+18,cache_lifecycle_dispatch_012,1895,298,30618,7e41,jle short 016Dh
+18,cache_lifecycle_dispatch_012,1895,300,30620,be0000,"mov si,0"
+18,cache_lifecycle_dispatch_012,1895,303,30623,68020c,push 0C02h
+18,cache_lifecycle_dispatch_012,1895,306,30626,9a6920ea11,"call far 2069h,11EAh"
+18,cache_lifecycle_dispatch_012,1895,311,30631,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,314,30634,8e065e25,"mov es,[255Eh]"
+18,cache_lifecycle_dispatch_012,1895,318,30638,268904,"mov es:[si],ax"
+18,cache_lifecycle_dispatch_012,1895,321,30641,26895402,"mov es:[si+2],dx"
+18,cache_lifecycle_dispatch_012,1895,325,30645,8bc2,"mov ax,dx"
+18,cache_lifecycle_dispatch_012,1895,327,30647,260b04,"or ax,es:[si]"
+18,cache_lifecycle_dispatch_012,1895,330,30650,750b,jne short 0157h
+18,cache_lifecycle_dispatch_012,1895,332,30652,68220c,push 0C22h
+18,cache_lifecycle_dispatch_012,1895,335,30655,9a0000b70f,"call far 0,0FB7h"
+18,cache_lifecycle_dispatch_012,1895,340,30660,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,343,30663,8e065e25,"mov es,[255Eh]"
+18,cache_lifecycle_dispatch_012,1895,347,30667,26c41c,"les bx,es:[si]"
+18,cache_lifecycle_dispatch_012,1895,350,30670,83c604,"add si,4"
+18,cache_lifecycle_dispatch_012,1895,353,30673,26c7070000,"mov word ptr es:[bx],0"
+18,cache_lifecycle_dispatch_012,1895,358,30678,47,inc di
+18,cache_lifecycle_dispatch_012,1895,359,30679,3b3e0235,"cmp di,[3502h]"
+18,cache_lifecycle_dispatch_012,1895,363,30683,7cc2,jl short 012Fh
+18,cache_lifecycle_dispatch_012,1895,365,30685,803ece3c00,"cmp byte ptr [3CCEh],0"
+18,cache_lifecycle_dispatch_012,1895,370,30690,742d,je short 01A1h
+18,cache_lifecycle_dispatch_012,1895,372,30692,0e,push cs
+18,cache_lifecycle_dispatch_012,1895,373,30693,e81206,call 078Ah
+18,cache_lifecycle_dispatch_012,1895,376,30696,0bc0,"or ax,ax"
+18,cache_lifecycle_dispatch_012,1895,378,30698,7420,je short 019Ch
+18,cache_lifecycle_dispatch_012,1895,380,30700,0e,push cs
+18,cache_lifecycle_dispatch_012,1895,381,30701,e83006,call 07B0h
+18,cache_lifecycle_dispatch_012,1895,384,30704,a30635,"mov [3506h],ax"
+18,cache_lifecycle_dispatch_012,1895,387,30707,a3b83c,"mov [3CB8h],ax"
+18,cache_lifecycle_dispatch_012,1895,390,30710,c70608350000,"mov word ptr [3508h],0"
+18,cache_lifecycle_dispatch_012,1895,396,30716,3d0008,"cmp ax,800h"
+18,cache_lifecycle_dispatch_012,1895,399,30719,7e03,jle short 0194h
+18,cache_lifecycle_dispatch_012,1895,401,30721,b80008,"mov ax,800h"
+18,cache_lifecycle_dispatch_012,1895,404,30724,a30635,"mov [3506h],ax"
+18,cache_lifecycle_dispatch_012,1895,407,30727,3d4000,"cmp ax,40h"
+18,cache_lifecycle_dispatch_012,1895,410,30730,7d10,jge short 01ACh
+18,cache_lifecycle_dispatch_012,1895,412,30732,c606ce3c00,"mov byte ptr [3CCEh],0"
+18,cache_lifecycle_dispatch_012,1895,417,30737,a0ce3c,"mov al,[3CCEh]"
+18,cache_lifecycle_dispatch_012,1895,420,30740,a20a35,"mov [350Ah],al"
+18,cache_lifecycle_dispatch_012,1895,423,30743,5e,pop si
+18,cache_lifecycle_dispatch_012,1895,424,30744,5f,pop di
+18,cache_lifecycle_dispatch_012,1895,425,30745,c9,leave
+18,cache_lifecycle_dispatch_012,1895,426,30746,cb,ret far
+18,cache_lifecycle_dispatch_012,1895,428,30748,50,push ax
+18,cache_lifecycle_dispatch_012,1895,429,30749,0e,push cs
+18,cache_lifecycle_dispatch_012,1895,430,30750,e81706,call 07C8h
+18,cache_lifecycle_dispatch_012,1895,433,30753,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,436,30756,8956fe,"mov [bp-2],dx"
+18,cache_lifecycle_dispatch_012,1895,439,30759,0bd2,"or dx,dx"
+18,cache_lifecycle_dispatch_012,1895,441,30761,7ce1,jl short 019Ch
+18,cache_lifecycle_dispatch_012,1895,443,30763,a30435,"mov [3504h],ax"
+18,cache_lifecycle_dispatch_012,1895,446,30766,50,push ax
+18,cache_lifecycle_dispatch_012,1895,447,30767,0e,push cs
+18,cache_lifecycle_dispatch_012,1895,448,30768,e86906,call 082Ch
+18,cache_lifecycle_dispatch_012,1895,451,30771,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,454,30774,0bd2,"or dx,dx"
+18,cache_lifecycle_dispatch_012,1895,456,30776,7dd7,jge short 01A1h
+18,cache_lifecycle_dispatch_012,1895,458,30778,ff360435,push word ptr [3504h]
+18,cache_lifecycle_dispatch_012,1895,462,30782,0e,push cs
+18,cache_lifecycle_dispatch_012,1895,463,30783,e81806,call 07EAh
+18,cache_lifecycle_dispatch_012,1895,466,30786,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,469,30789,c606ce3c00,"mov byte ptr [3CCEh],0"
+18,cache_lifecycle_dispatch_012,1895,474,30794,68560c,push 0C56h
+18,cache_lifecycle_dispatch_012,1895,477,30797,9a78007604,"call far 0078h,0476h"
+18,cache_lifecycle_dispatch_012,1895,482,30802,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,485,30805,ebba,jmp short 01A1h
+18,cache_lifecycle_dispatch_012,1895,488,30808,803e0a3500,"cmp byte ptr [350Ah],0"
+18,cache_lifecycle_dispatch_012,1895,493,30813,0f84a400,je 0295h
+18,cache_lifecycle_dispatch_012,1895,497,30817,ff360435,push word ptr [3504h]
+18,cache_lifecycle_dispatch_012,1895,501,30821,0e,push cs
+18,cache_lifecycle_dispatch_012,1895,502,30822,e85106,call 084Ah
+18,cache_lifecycle_dispatch_012,1895,505,30825,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,508,30828,ff360435,push word ptr [3504h]
+18,cache_lifecycle_dispatch_012,1895,512,30832,0e,push cs
+18,cache_lifecycle_dispatch_012,1895,513,30833,e8e605,call 07EAh
+18,cache_lifecycle_dispatch_012,1895,516,30836,83c402,"add sp,2"
+18,cache_lifecycle_dispatch_012,1895,519,30839,5e,pop si
+18,cache_lifecycle_dispatch_012,1895,520,30840,5f,pop di
+18,cache_lifecycle_dispatch_012,1895,521,30841,c9,leave
+18,cache_lifecycle_dispatch_012,1895,522,30842,cb,ret far
+18,cache_lifecycle_dispatch_012,1895,524,30844,bbca34,"mov bx,34CAh"
+18,cache_lifecycle_dispatch_012,1895,527,30847,c437,"les si,[bx]"
+18,cache_lifecycle_dispatch_012,1895,529,30849,268b4404,"mov ax,es:[si+4]"
+18,cache_lifecycle_dispatch_012,1895,533,30853,0bc0,"or ax,ax"
+18,cache_lifecycle_dispatch_012,1895,535,30855,740a,je short 0223h
+18,cache_lifecycle_dispatch_012,1895,537,30857,8bf0,"mov si,ax"
+18,cache_lifecycle_dispatch_012,1895,539,30859,66c7440600000000,"mov dword ptr [si+6],0"
+18,cache_lifecycle_dispatch_012,1895,547,30867,c437,"les si,[bx]"
+18,cache_lifecycle_dispatch_012,1895,549,30869,26c744040000,"mov word ptr es:[si+4],0"
+18,cache_lifecycle_dispatch_012,1895,555,30875,c437,"les si,[bx]"
+18,cache_lifecycle_dispatch_012,1895,557,30877,662bc0,"sub eax,eax"
+18,cache_lifecycle_dispatch_012,1895,560,30880,66268904,"mov es:[si],eax"
+18,cache_lifecycle_dispatch_012,1895,564,30884,83c304,"add bx,4"
+18,cache_lifecycle_dispatch_012,1895,567,30887,81fbf234,"cmp bx,34F2h"
+18,cache_lifecycle_dispatch_012,1895,571,30891,72d2,jb short 020Fh
+18,cache_lifecycle_dispatch_012,1895,573,30893,33c9,"xor cx,cx"
+18,cache_lifecycle_dispatch_012,1895,575,30895,39060235,"cmp [3502h],ax"
+18,cache_lifecycle_dispatch_012,1895,579,30899,7e30,jle short 0275h
+18,cache_lifecycle_dispatch_012,1895,581,30901,bb0000,"mov bx,0"
+18,cache_lifecycle_dispatch_012,1895,584,30904,b8e31b,"mov ax,1BE3h"
+18,cache_lifecycle_dispatch_012,1895,587,30907,8ed8,"mov ds,ax"
+18,cache_lifecycle_dispatch_012,1895,589,30909,c437,"les si,[bx]"
+18,cache_lifecycle_dispatch_012,1895,591,30911,26833c00,"cmp word ptr es:[si],0"
+18,cache_lifecycle_dispatch_012,1895,595,30915,740c,je short 0261h
+18,cache_lifecycle_dispatch_012,1895,597,30917,268b34,"mov si,es:[si]"
+18,cache_lifecycle_dispatch_012,1895,600,30920,6636c7440600000000,"mov dword ptr ss:[si+6],0"
+18,cache_lifecycle_dispatch_012,1895,609,30929,c437,"les si,[bx]"
+18,cache_lifecycle_dispatch_012,1895,611,30931,83c304,"add bx,4"
+18,cache_lifecycle_dispatch_012,1895,614,30934,26c7040000,"mov word ptr es:[si],0"
+18,cache_lifecycle_dispatch_012,1895,619,30939,41,inc cx
+18,cache_lifecycle_dispatch_012,1895,620,30940,36390e0235,"cmp ss:[3502h],cx"
+18,cache_lifecycle_dispatch_012,1895,625,30945,7fda,jg short 024Dh
+18,cache_lifecycle_dispatch_012,1895,627,30947,16,push ss
+18,cache_lifecycle_dispatch_012,1895,628,30948,1f,pop ds
+18,cache_lifecycle_dispatch_012,1895,629,30949,bbf234,"mov bx,34F2h"
+18,cache_lifecycle_dispatch_012,1895,632,30952,c437,"les si,[bx]"
+18,cache_lifecycle_dispatch_012,1895,634,30954,26c744040000,"mov word ptr es:[si+4],0"
+18,cache_lifecycle_dispatch_012,1895,640,30960,c437,"les si,[bx]"
+18,cache_lifecycle_dispatch_012,1895,642,30962,662bc0,"sub eax,eax"
+18,cache_lifecycle_dispatch_012,1895,645,30965,66268904,"mov es:[si],eax"
+18,cache_lifecycle_dispatch_012,1895,649,30969,83c304,"add bx,4"
+18,cache_lifecycle_dispatch_012,1895,652,30972,81fb0235,"cmp bx,3502h"
+18,cache_lifecycle_dispatch_012,1895,656,30976,72e6,jb short 0278h
+18,cache_lifecycle_dispatch_012,1895,658,30978,a30835,"mov [3508h],ax"
+18,cache_lifecycle_dispatch_012,1895,661,30981,5e,pop si
+18,cache_lifecycle_dispatch_012,1895,662,30982,5f,pop di
+18,cache_lifecycle_dispatch_012,1895,663,30983,c9,leave
+18,cache_lifecycle_dispatch_012,1895,664,30984,cb,ret far
+18,level_resource_cleanup,3365,2066,55906,c8060000,"enter 6,0"
+18,level_resource_cleanup,3365,2070,55910,57,push di
+18,level_resource_cleanup,3365,2071,55911,56,push si
+18,level_resource_cleanup,3365,2072,55912,6a02,push 2
+18,level_resource_cleanup,3365,2074,55914,9a2a006707,"call far 002Ah,0767h"
+18,level_resource_cleanup,3365,2079,55919,83c402,"add sp,2"
+18,level_resource_cleanup,3365,2082,55922,33ff,"xor di,di"
+18,level_resource_cleanup,3365,2084,55924,393e7062,"cmp [6270h],di"
+18,level_resource_cleanup,3365,2088,55928,7e17,jle short 0841h
+18,level_resource_cleanup,3365,2090,55930,be1443,"mov si,4314h"
+18,level_resource_cleanup,3365,2093,55933,ff34,push word ptr [si]
+18,level_resource_cleanup,3365,2095,55935,9ab23cea11,"call far 3CB2h,11EAh"
+18,level_resource_cleanup,3365,2100,55940,83c402,"add sp,2"
+18,level_resource_cleanup,3365,2103,55943,83c608,"add si,8"
+18,level_resource_cleanup,3365,2106,55946,47,inc di
+18,level_resource_cleanup,3365,2107,55947,3b3e7062,"cmp di,[6270h]"
+18,level_resource_cleanup,3365,2111,55951,7cec,jl short 082Dh
+18,level_resource_cleanup,3365,2113,55953,33ff,"xor di,di"
+18,level_resource_cleanup,3365,2115,55955,393e7262,"cmp [6272h],di"
+18,level_resource_cleanup,3365,2119,55959,7e17,jle short 0860h
+18,level_resource_cleanup,3365,2121,55961,be243d,"mov si,3D24h"
+18,level_resource_cleanup,3365,2124,55964,ff34,push word ptr [si]
+18,level_resource_cleanup,3365,2126,55966,9ab23cea11,"call far 3CB2h,11EAh"
+18,level_resource_cleanup,3365,2131,55971,83c402,"add sp,2"
+18,level_resource_cleanup,3365,2134,55974,83c608,"add si,8"
+18,level_resource_cleanup,3365,2137,55977,47,inc di
+18,level_resource_cleanup,3365,2138,55978,3b3e7262,"cmp di,[6272h]"
+18,level_resource_cleanup,3365,2142,55982,7cec,jl short 084Ch
+18,level_resource_cleanup,3365,2144,55984,33ff,"xor di,di"
+18,level_resource_cleanup,3365,2146,55986,393e6e62,"cmp [626Eh],di"
+18,level_resource_cleanup,3365,2150,55990,7e41,jle short 08A9h
+18,level_resource_cleanup,3365,2152,55992,be0a00,"mov si,0Ah"
+18,level_resource_cleanup,3365,2155,55995,8e066a25,"mov es,[256Ah]"
+18,level_resource_cleanup,3365,2159,55999,8976fa,"mov [bp-6],si"
+18,level_resource_cleanup,3365,2162,56002,8c46fc,"mov [bp-4],es"
+18,level_resource_cleanup,3365,2165,56005,268a1c,"mov bl,es:[si]"
+18,level_resource_cleanup,3365,2168,56008,2aff,"sub bh,bh"
+18,level_resource_cleanup,3365,2170,56010,c1e303,"shl bx,3"
+18,level_resource_cleanup,3365,2173,56013,8b87223d,"mov ax,[bx+3D22h]"
+18,level_resource_cleanup,3365,2177,56017,0bc0,"or ax,ax"
+18,level_resource_cleanup,3365,2179,56019,741a,je short 089Fh
+18,level_resource_cleanup,3365,2181,56021,50,push ax
+18,level_resource_cleanup,3365,2182,56022,9ab23cea11,"call far 3CB2h,11EAh"
+18,level_resource_cleanup,3365,2187,56027,83c402,"add sp,2"
+18,level_resource_cleanup,3365,2190,56030,c45efa,"les bx,[bp-6]"
+18,level_resource_cleanup,3365,2193,56033,268a1f,"mov bl,es:[bx]"
+18,level_resource_cleanup,3365,2196,56036,2aff,"sub bh,bh"
+18,level_resource_cleanup,3365,2198,56038,c1e303,"shl bx,3"
+18,level_resource_cleanup,3365,2201,56041,c787223d0000,"mov word ptr [bx+3D22h],0"
+18,level_resource_cleanup,3365,2207,56047,83c61c,"add si,1Ch"
+18,level_resource_cleanup,3365,2210,56050,47,inc di
+18,level_resource_cleanup,3365,2211,56051,3b3e6e62,"cmp di,[626Eh]"
+18,level_resource_cleanup,3365,2215,56055,7cc2,jl short 086Bh
+18,level_resource_cleanup,3365,2217,56057,5e,pop si
+18,level_resource_cleanup,3365,2218,56058,5f,pop di
+18,level_resource_cleanup,3365,2219,56059,c9,leave
+18,level_resource_cleanup,3365,2220,56060,cb,ret far
+19,cache_lifecycle_dispatch_012,1895,42,30362,c8060000,"enter 6,0"
+19,cache_lifecycle_dispatch_012,1895,46,30366,57,push di
+19,cache_lifecycle_dispatch_012,1895,47,30367,56,push si
+19,cache_lifecycle_dispatch_012,1895,48,30368,8b4606,"mov ax,[bp+6]"
+19,cache_lifecycle_dispatch_012,1895,51,30371,0bc0,"or ax,ax"
+19,cache_lifecycle_dispatch_012,1895,53,30373,740f,je short 0046h
+19,cache_lifecycle_dispatch_012,1895,55,30375,48,dec ax
+19,cache_lifecycle_dispatch_012,1895,56,30376,0f84ac01,je 01E8h
+19,cache_lifecycle_dispatch_012,1895,60,30380,48,dec ax
+19,cache_lifecycle_dispatch_012,1895,61,30381,0f84cb01,je 020Ch
+19,cache_lifecycle_dispatch_012,1895,65,30385,5e,pop si
+19,cache_lifecycle_dispatch_012,1895,66,30386,5f,pop di
+19,cache_lifecycle_dispatch_012,1895,67,30387,c9,leave
+19,cache_lifecycle_dispatch_012,1895,68,30388,cb,ret far
+19,cache_lifecycle_dispatch_012,1895,70,30390,beca34,"mov si,34CAh"
+19,cache_lifecycle_dispatch_012,1895,73,30393,680620,push 2006h
+19,cache_lifecycle_dispatch_012,1895,76,30396,9a6920ea11,"call far 2069h,11EAh"
+19,cache_lifecycle_dispatch_012,1895,81,30401,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,84,30404,8904,"mov [si],ax"
+19,cache_lifecycle_dispatch_012,1895,86,30406,895402,"mov [si+2],dx"
+19,cache_lifecycle_dispatch_012,1895,89,30409,8bc2,"mov ax,dx"
+19,cache_lifecycle_dispatch_012,1895,91,30411,0b04,"or ax,[si]"
+19,cache_lifecycle_dispatch_012,1895,93,30413,750b,jne short 006Ah
+19,cache_lifecycle_dispatch_012,1895,95,30415,68860b,push 0B86h
+19,cache_lifecycle_dispatch_012,1895,98,30418,9a0000b70f,"call far 0,0FB7h"
+19,cache_lifecycle_dispatch_012,1895,103,30423,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,106,30426,c41c,"les bx,[si]"
+19,cache_lifecycle_dispatch_012,1895,108,30428,26c747040000,"mov word ptr es:[bx+4],0"
+19,cache_lifecycle_dispatch_012,1895,114,30434,c41c,"les bx,[si]"
+19,cache_lifecycle_dispatch_012,1895,116,30436,6626c70700000000,"mov dword ptr es:[bx],0"
+19,cache_lifecycle_dispatch_012,1895,124,30444,83c604,"add si,4"
+19,cache_lifecycle_dispatch_012,1895,127,30447,81fef234,"cmp si,34F2h"
+19,cache_lifecycle_dispatch_012,1895,131,30451,72c4,jb short 0049h
+19,cache_lifecycle_dispatch_012,1895,133,30453,bef234,"mov si,34F2h"
+19,cache_lifecycle_dispatch_012,1895,136,30456,680620,push 2006h
+19,cache_lifecycle_dispatch_012,1895,139,30459,9a6920ea11,"call far 2069h,11EAh"
+19,cache_lifecycle_dispatch_012,1895,144,30464,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,147,30467,8904,"mov [si],ax"
+19,cache_lifecycle_dispatch_012,1895,149,30469,895402,"mov [si+2],dx"
+19,cache_lifecycle_dispatch_012,1895,152,30472,8bc2,"mov ax,dx"
+19,cache_lifecycle_dispatch_012,1895,154,30474,0b04,"or ax,[si]"
+19,cache_lifecycle_dispatch_012,1895,156,30476,750b,jne short 00A9h
+19,cache_lifecycle_dispatch_012,1895,158,30478,68ba0b,push 0BBAh
+19,cache_lifecycle_dispatch_012,1895,161,30481,9a0000b70f,"call far 0,0FB7h"
+19,cache_lifecycle_dispatch_012,1895,166,30486,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,169,30489,c41c,"les bx,[si]"
+19,cache_lifecycle_dispatch_012,1895,171,30491,26c747040000,"mov word ptr es:[bx+4],0"
+19,cache_lifecycle_dispatch_012,1895,177,30497,c41c,"les bx,[si]"
+19,cache_lifecycle_dispatch_012,1895,179,30499,6626c70700000000,"mov dword ptr es:[bx],0"
+19,cache_lifecycle_dispatch_012,1895,187,30507,83c604,"add si,4"
+19,cache_lifecycle_dispatch_012,1895,190,30510,81fe0235,"cmp si,3502h"
+19,cache_lifecycle_dispatch_012,1895,194,30514,72c4,jb short 0088h
+19,cache_lifecycle_dispatch_012,1895,196,30516,9a4c00b70f,"call far 004Ch,0FB7h"
+19,cache_lifecycle_dispatch_012,1895,201,30521,a3b43c,"mov [3CB4h],ax"
+19,cache_lifecycle_dispatch_012,1895,204,30524,9a9429ea11,"call far 2994h,11EAh"
+19,cache_lifecycle_dispatch_012,1895,209,30529,a3b03c,"mov [3CB0h],ax"
+19,cache_lifecycle_dispatch_012,1895,212,30532,6668020c0000,data32 push 0C02h
+19,cache_lifecycle_dispatch_012,1895,218,30538,a1b43c,"mov ax,[3CB4h]"
+19,cache_lifecycle_dispatch_012,1895,221,30541,2bd2,"sub dx,dx"
+19,cache_lifecycle_dispatch_012,1895,223,30543,2d4600,"sub ax,46h"
+19,cache_lifecycle_dispatch_012,1895,226,30546,1bd2,"sbb dx,dx"
+19,cache_lifecycle_dispatch_012,1895,228,30548,8af2,"mov dh,dl"
+19,cache_lifecycle_dispatch_012,1895,230,30550,8ad4,"mov dl,ah"
+19,cache_lifecycle_dispatch_012,1895,232,30552,8ae0,"mov ah,al"
+19,cache_lifecycle_dispatch_012,1895,234,30554,2ac0,"sub al,al"
+19,cache_lifecycle_dispatch_012,1895,236,30556,03c0,"add ax,ax"
+19,cache_lifecycle_dispatch_012,1895,238,30558,13d2,"adc dx,dx"
+19,cache_lifecycle_dispatch_012,1895,240,30560,03c0,"add ax,ax"
+19,cache_lifecycle_dispatch_012,1895,242,30562,13d2,"adc dx,dx"
+19,cache_lifecycle_dispatch_012,1895,244,30564,52,push dx
+19,cache_lifecycle_dispatch_012,1895,245,30565,50,push ax
+19,cache_lifecycle_dispatch_012,1895,246,30566,6658,pop eax
+19,cache_lifecycle_dispatch_012,1895,248,30568,6659,pop ecx
+19,cache_lifecycle_dispatch_012,1895,250,30570,6699,cdq
+19,cache_lifecycle_dispatch_012,1895,252,30572,66f7f9,idiv ecx
+19,cache_lifecycle_dispatch_012,1895,255,30575,668bd0,"mov edx,eax"
+19,cache_lifecycle_dispatch_012,1895,258,30578,66c1ea10,"shr edx,10h"
+19,cache_lifecycle_dispatch_012,1895,262,30582,a30235,"mov [3502h],ax"
+19,cache_lifecycle_dispatch_012,1895,265,30585,3d8000,"cmp ax,80h"
+19,cache_lifecycle_dispatch_012,1895,268,30588,7e03,jle short 0111h
+19,cache_lifecycle_dispatch_012,1895,270,30590,b88000,"mov ax,80h"
+19,cache_lifecycle_dispatch_012,1895,273,30593,a30235,"mov [3502h],ax"
+19,cache_lifecycle_dispatch_012,1895,276,30596,3d0100,"cmp ax,1"
+19,cache_lifecycle_dispatch_012,1895,279,30599,7d0b,jge short 0124h
+19,cache_lifecycle_dispatch_012,1895,281,30601,68ee0b,push 0BEEh
+19,cache_lifecycle_dispatch_012,1895,284,30604,9a0000b70f,"call far 0,0FB7h"
+19,cache_lifecycle_dispatch_012,1895,289,30609,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,292,30612,33ff,"xor di,di"
+19,cache_lifecycle_dispatch_012,1895,294,30614,393e0235,"cmp [3502h],di"
+19,cache_lifecycle_dispatch_012,1895,298,30618,7e41,jle short 016Dh
+19,cache_lifecycle_dispatch_012,1895,300,30620,be0000,"mov si,0"
+19,cache_lifecycle_dispatch_012,1895,303,30623,68020c,push 0C02h
+19,cache_lifecycle_dispatch_012,1895,306,30626,9a6920ea11,"call far 2069h,11EAh"
+19,cache_lifecycle_dispatch_012,1895,311,30631,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,314,30634,8e065e25,"mov es,[255Eh]"
+19,cache_lifecycle_dispatch_012,1895,318,30638,268904,"mov es:[si],ax"
+19,cache_lifecycle_dispatch_012,1895,321,30641,26895402,"mov es:[si+2],dx"
+19,cache_lifecycle_dispatch_012,1895,325,30645,8bc2,"mov ax,dx"
+19,cache_lifecycle_dispatch_012,1895,327,30647,260b04,"or ax,es:[si]"
+19,cache_lifecycle_dispatch_012,1895,330,30650,750b,jne short 0157h
+19,cache_lifecycle_dispatch_012,1895,332,30652,68220c,push 0C22h
+19,cache_lifecycle_dispatch_012,1895,335,30655,9a0000b70f,"call far 0,0FB7h"
+19,cache_lifecycle_dispatch_012,1895,340,30660,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,343,30663,8e065e25,"mov es,[255Eh]"
+19,cache_lifecycle_dispatch_012,1895,347,30667,26c41c,"les bx,es:[si]"
+19,cache_lifecycle_dispatch_012,1895,350,30670,83c604,"add si,4"
+19,cache_lifecycle_dispatch_012,1895,353,30673,26c7070000,"mov word ptr es:[bx],0"
+19,cache_lifecycle_dispatch_012,1895,358,30678,47,inc di
+19,cache_lifecycle_dispatch_012,1895,359,30679,3b3e0235,"cmp di,[3502h]"
+19,cache_lifecycle_dispatch_012,1895,363,30683,7cc2,jl short 012Fh
+19,cache_lifecycle_dispatch_012,1895,365,30685,803ece3c00,"cmp byte ptr [3CCEh],0"
+19,cache_lifecycle_dispatch_012,1895,370,30690,742d,je short 01A1h
+19,cache_lifecycle_dispatch_012,1895,372,30692,0e,push cs
+19,cache_lifecycle_dispatch_012,1895,373,30693,e81206,call 078Ah
+19,cache_lifecycle_dispatch_012,1895,376,30696,0bc0,"or ax,ax"
+19,cache_lifecycle_dispatch_012,1895,378,30698,7420,je short 019Ch
+19,cache_lifecycle_dispatch_012,1895,380,30700,0e,push cs
+19,cache_lifecycle_dispatch_012,1895,381,30701,e83006,call 07B0h
+19,cache_lifecycle_dispatch_012,1895,384,30704,a30635,"mov [3506h],ax"
+19,cache_lifecycle_dispatch_012,1895,387,30707,a3b83c,"mov [3CB8h],ax"
+19,cache_lifecycle_dispatch_012,1895,390,30710,c70608350000,"mov word ptr [3508h],0"
+19,cache_lifecycle_dispatch_012,1895,396,30716,3d0008,"cmp ax,800h"
+19,cache_lifecycle_dispatch_012,1895,399,30719,7e03,jle short 0194h
+19,cache_lifecycle_dispatch_012,1895,401,30721,b80008,"mov ax,800h"
+19,cache_lifecycle_dispatch_012,1895,404,30724,a30635,"mov [3506h],ax"
+19,cache_lifecycle_dispatch_012,1895,407,30727,3d4000,"cmp ax,40h"
+19,cache_lifecycle_dispatch_012,1895,410,30730,7d10,jge short 01ACh
+19,cache_lifecycle_dispatch_012,1895,412,30732,c606ce3c00,"mov byte ptr [3CCEh],0"
+19,cache_lifecycle_dispatch_012,1895,417,30737,a0ce3c,"mov al,[3CCEh]"
+19,cache_lifecycle_dispatch_012,1895,420,30740,a20a35,"mov [350Ah],al"
+19,cache_lifecycle_dispatch_012,1895,423,30743,5e,pop si
+19,cache_lifecycle_dispatch_012,1895,424,30744,5f,pop di
+19,cache_lifecycle_dispatch_012,1895,425,30745,c9,leave
+19,cache_lifecycle_dispatch_012,1895,426,30746,cb,ret far
+19,cache_lifecycle_dispatch_012,1895,428,30748,50,push ax
+19,cache_lifecycle_dispatch_012,1895,429,30749,0e,push cs
+19,cache_lifecycle_dispatch_012,1895,430,30750,e81706,call 07C8h
+19,cache_lifecycle_dispatch_012,1895,433,30753,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,436,30756,8956fe,"mov [bp-2],dx"
+19,cache_lifecycle_dispatch_012,1895,439,30759,0bd2,"or dx,dx"
+19,cache_lifecycle_dispatch_012,1895,441,30761,7ce1,jl short 019Ch
+19,cache_lifecycle_dispatch_012,1895,443,30763,a30435,"mov [3504h],ax"
+19,cache_lifecycle_dispatch_012,1895,446,30766,50,push ax
+19,cache_lifecycle_dispatch_012,1895,447,30767,0e,push cs
+19,cache_lifecycle_dispatch_012,1895,448,30768,e86906,call 082Ch
+19,cache_lifecycle_dispatch_012,1895,451,30771,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,454,30774,0bd2,"or dx,dx"
+19,cache_lifecycle_dispatch_012,1895,456,30776,7dd7,jge short 01A1h
+19,cache_lifecycle_dispatch_012,1895,458,30778,ff360435,push word ptr [3504h]
+19,cache_lifecycle_dispatch_012,1895,462,30782,0e,push cs
+19,cache_lifecycle_dispatch_012,1895,463,30783,e81806,call 07EAh
+19,cache_lifecycle_dispatch_012,1895,466,30786,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,469,30789,c606ce3c00,"mov byte ptr [3CCEh],0"
+19,cache_lifecycle_dispatch_012,1895,474,30794,68560c,push 0C56h
+19,cache_lifecycle_dispatch_012,1895,477,30797,9a78007604,"call far 0078h,0476h"
+19,cache_lifecycle_dispatch_012,1895,482,30802,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,485,30805,ebba,jmp short 01A1h
+19,cache_lifecycle_dispatch_012,1895,488,30808,803e0a3500,"cmp byte ptr [350Ah],0"
+19,cache_lifecycle_dispatch_012,1895,493,30813,0f84a400,je 0295h
+19,cache_lifecycle_dispatch_012,1895,497,30817,ff360435,push word ptr [3504h]
+19,cache_lifecycle_dispatch_012,1895,501,30821,0e,push cs
+19,cache_lifecycle_dispatch_012,1895,502,30822,e85106,call 084Ah
+19,cache_lifecycle_dispatch_012,1895,505,30825,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,508,30828,ff360435,push word ptr [3504h]
+19,cache_lifecycle_dispatch_012,1895,512,30832,0e,push cs
+19,cache_lifecycle_dispatch_012,1895,513,30833,e8e605,call 07EAh
+19,cache_lifecycle_dispatch_012,1895,516,30836,83c402,"add sp,2"
+19,cache_lifecycle_dispatch_012,1895,519,30839,5e,pop si
+19,cache_lifecycle_dispatch_012,1895,520,30840,5f,pop di
+19,cache_lifecycle_dispatch_012,1895,521,30841,c9,leave
+19,cache_lifecycle_dispatch_012,1895,522,30842,cb,ret far
+19,cache_lifecycle_dispatch_012,1895,524,30844,bbca34,"mov bx,34CAh"
+19,cache_lifecycle_dispatch_012,1895,527,30847,c437,"les si,[bx]"
+19,cache_lifecycle_dispatch_012,1895,529,30849,268b4404,"mov ax,es:[si+4]"
+19,cache_lifecycle_dispatch_012,1895,533,30853,0bc0,"or ax,ax"
+19,cache_lifecycle_dispatch_012,1895,535,30855,740a,je short 0223h
+19,cache_lifecycle_dispatch_012,1895,537,30857,8bf0,"mov si,ax"
+19,cache_lifecycle_dispatch_012,1895,539,30859,66c7440600000000,"mov dword ptr [si+6],0"
+19,cache_lifecycle_dispatch_012,1895,547,30867,c437,"les si,[bx]"
+19,cache_lifecycle_dispatch_012,1895,549,30869,26c744040000,"mov word ptr es:[si+4],0"
+19,cache_lifecycle_dispatch_012,1895,555,30875,c437,"les si,[bx]"
+19,cache_lifecycle_dispatch_012,1895,557,30877,662bc0,"sub eax,eax"
+19,cache_lifecycle_dispatch_012,1895,560,30880,66268904,"mov es:[si],eax"
+19,cache_lifecycle_dispatch_012,1895,564,30884,83c304,"add bx,4"
+19,cache_lifecycle_dispatch_012,1895,567,30887,81fbf234,"cmp bx,34F2h"
+19,cache_lifecycle_dispatch_012,1895,571,30891,72d2,jb short 020Fh
+19,cache_lifecycle_dispatch_012,1895,573,30893,33c9,"xor cx,cx"
+19,cache_lifecycle_dispatch_012,1895,575,30895,39060235,"cmp [3502h],ax"
+19,cache_lifecycle_dispatch_012,1895,579,30899,7e30,jle short 0275h
+19,cache_lifecycle_dispatch_012,1895,581,30901,bb0000,"mov bx,0"
+19,cache_lifecycle_dispatch_012,1895,584,30904,b8e31b,"mov ax,1BE3h"
+19,cache_lifecycle_dispatch_012,1895,587,30907,8ed8,"mov ds,ax"
+19,cache_lifecycle_dispatch_012,1895,589,30909,c437,"les si,[bx]"
+19,cache_lifecycle_dispatch_012,1895,591,30911,26833c00,"cmp word ptr es:[si],0"
+19,cache_lifecycle_dispatch_012,1895,595,30915,740c,je short 0261h
+19,cache_lifecycle_dispatch_012,1895,597,30917,268b34,"mov si,es:[si]"
+19,cache_lifecycle_dispatch_012,1895,600,30920,6636c7440600000000,"mov dword ptr ss:[si+6],0"
+19,cache_lifecycle_dispatch_012,1895,609,30929,c437,"les si,[bx]"
+19,cache_lifecycle_dispatch_012,1895,611,30931,83c304,"add bx,4"
+19,cache_lifecycle_dispatch_012,1895,614,30934,26c7040000,"mov word ptr es:[si],0"
+19,cache_lifecycle_dispatch_012,1895,619,30939,41,inc cx
+19,cache_lifecycle_dispatch_012,1895,620,30940,36390e0235,"cmp ss:[3502h],cx"
+19,cache_lifecycle_dispatch_012,1895,625,30945,7fda,jg short 024Dh
+19,cache_lifecycle_dispatch_012,1895,627,30947,16,push ss
+19,cache_lifecycle_dispatch_012,1895,628,30948,1f,pop ds
+19,cache_lifecycle_dispatch_012,1895,629,30949,bbf234,"mov bx,34F2h"
+19,cache_lifecycle_dispatch_012,1895,632,30952,c437,"les si,[bx]"
+19,cache_lifecycle_dispatch_012,1895,634,30954,26c744040000,"mov word ptr es:[si+4],0"
+19,cache_lifecycle_dispatch_012,1895,640,30960,c437,"les si,[bx]"
+19,cache_lifecycle_dispatch_012,1895,642,30962,662bc0,"sub eax,eax"
+19,cache_lifecycle_dispatch_012,1895,645,30965,66268904,"mov es:[si],eax"
+19,cache_lifecycle_dispatch_012,1895,649,30969,83c304,"add bx,4"
+19,cache_lifecycle_dispatch_012,1895,652,30972,81fb0235,"cmp bx,3502h"
+19,cache_lifecycle_dispatch_012,1895,656,30976,72e6,jb short 0278h
+19,cache_lifecycle_dispatch_012,1895,658,30978,a30835,"mov [3508h],ax"
+19,cache_lifecycle_dispatch_012,1895,661,30981,5e,pop si
+19,cache_lifecycle_dispatch_012,1895,662,30982,5f,pop di
+19,cache_lifecycle_dispatch_012,1895,663,30983,c9,leave
+19,cache_lifecycle_dispatch_012,1895,664,30984,cb,ret far
+19,level_resource_cleanup,3365,2066,55906,c8060000,"enter 6,0"
+19,level_resource_cleanup,3365,2070,55910,57,push di
+19,level_resource_cleanup,3365,2071,55911,56,push si
+19,level_resource_cleanup,3365,2072,55912,6a02,push 2
+19,level_resource_cleanup,3365,2074,55914,9a2a006707,"call far 002Ah,0767h"
+19,level_resource_cleanup,3365,2079,55919,83c402,"add sp,2"
+19,level_resource_cleanup,3365,2082,55922,33ff,"xor di,di"
+19,level_resource_cleanup,3365,2084,55924,393e7062,"cmp [6270h],di"
+19,level_resource_cleanup,3365,2088,55928,7e17,jle short 0841h
+19,level_resource_cleanup,3365,2090,55930,be1443,"mov si,4314h"
+19,level_resource_cleanup,3365,2093,55933,ff34,push word ptr [si]
+19,level_resource_cleanup,3365,2095,55935,9ab23cea11,"call far 3CB2h,11EAh"
+19,level_resource_cleanup,3365,2100,55940,83c402,"add sp,2"
+19,level_resource_cleanup,3365,2103,55943,83c608,"add si,8"
+19,level_resource_cleanup,3365,2106,55946,47,inc di
+19,level_resource_cleanup,3365,2107,55947,3b3e7062,"cmp di,[6270h]"
+19,level_resource_cleanup,3365,2111,55951,7cec,jl short 082Dh
+19,level_resource_cleanup,3365,2113,55953,33ff,"xor di,di"
+19,level_resource_cleanup,3365,2115,55955,393e7262,"cmp [6272h],di"
+19,level_resource_cleanup,3365,2119,55959,7e17,jle short 0860h
+19,level_resource_cleanup,3365,2121,55961,be243d,"mov si,3D24h"
+19,level_resource_cleanup,3365,2124,55964,ff34,push word ptr [si]
+19,level_resource_cleanup,3365,2126,55966,9ab23cea11,"call far 3CB2h,11EAh"
+19,level_resource_cleanup,3365,2131,55971,83c402,"add sp,2"
+19,level_resource_cleanup,3365,2134,55974,83c608,"add si,8"
+19,level_resource_cleanup,3365,2137,55977,47,inc di
+19,level_resource_cleanup,3365,2138,55978,3b3e7262,"cmp di,[6272h]"
+19,level_resource_cleanup,3365,2142,55982,7cec,jl short 084Ch
+19,level_resource_cleanup,3365,2144,55984,33ff,"xor di,di"
+19,level_resource_cleanup,3365,2146,55986,393e6e62,"cmp [626Eh],di"
+19,level_resource_cleanup,3365,2150,55990,7e41,jle short 08A9h
+19,level_resource_cleanup,3365,2152,55992,be0a00,"mov si,0Ah"
+19,level_resource_cleanup,3365,2155,55995,8e066a25,"mov es,[256Ah]"
+19,level_resource_cleanup,3365,2159,55999,8976fa,"mov [bp-6],si"
+19,level_resource_cleanup,3365,2162,56002,8c46fc,"mov [bp-4],es"
+19,level_resource_cleanup,3365,2165,56005,268a1c,"mov bl,es:[si]"
+19,level_resource_cleanup,3365,2168,56008,2aff,"sub bh,bh"
+19,level_resource_cleanup,3365,2170,56010,c1e303,"shl bx,3"
+19,level_resource_cleanup,3365,2173,56013,8b87223d,"mov ax,[bx+3D22h]"
+19,level_resource_cleanup,3365,2177,56017,0bc0,"or ax,ax"
+19,level_resource_cleanup,3365,2179,56019,741a,je short 089Fh
+19,level_resource_cleanup,3365,2181,56021,50,push ax
+19,level_resource_cleanup,3365,2182,56022,9ab23cea11,"call far 3CB2h,11EAh"
+19,level_resource_cleanup,3365,2187,56027,83c402,"add sp,2"
+19,level_resource_cleanup,3365,2190,56030,c45efa,"les bx,[bp-6]"
+19,level_resource_cleanup,3365,2193,56033,268a1f,"mov bl,es:[bx]"
+19,level_resource_cleanup,3365,2196,56036,2aff,"sub bh,bh"
+19,level_resource_cleanup,3365,2198,56038,c1e303,"shl bx,3"
+19,level_resource_cleanup,3365,2201,56041,c787223d0000,"mov word ptr [bx+3D22h],0"
+19,level_resource_cleanup,3365,2207,56047,83c61c,"add si,1Ch"
+19,level_resource_cleanup,3365,2210,56050,47,inc di
+19,level_resource_cleanup,3365,2211,56051,3b3e6e62,"cmp di,[626Eh]"
+19,level_resource_cleanup,3365,2215,56055,7cc2,jl short 086Bh
+19,level_resource_cleanup,3365,2217,56057,5e,pop si
+19,level_resource_cleanup,3365,2218,56058,5f,pop di
+19,level_resource_cleanup,3365,2219,56059,c9,leave
+19,level_resource_cleanup,3365,2220,56060,cb,ret far
+20,cache_lifecycle_dispatch_012,1896,36,30372,c8060000,"enter 6,0"
+20,cache_lifecycle_dispatch_012,1896,40,30376,57,push di
+20,cache_lifecycle_dispatch_012,1896,41,30377,56,push si
+20,cache_lifecycle_dispatch_012,1896,42,30378,8b4606,"mov ax,[bp+6]"
+20,cache_lifecycle_dispatch_012,1896,45,30381,0bc0,"or ax,ax"
+20,cache_lifecycle_dispatch_012,1896,47,30383,740f,je short 0040h
+20,cache_lifecycle_dispatch_012,1896,49,30385,48,dec ax
+20,cache_lifecycle_dispatch_012,1896,50,30386,0f84ac01,je 01E2h
+20,cache_lifecycle_dispatch_012,1896,54,30390,48,dec ax
+20,cache_lifecycle_dispatch_012,1896,55,30391,0f84cb01,je 0206h
+20,cache_lifecycle_dispatch_012,1896,59,30395,5e,pop si
+20,cache_lifecycle_dispatch_012,1896,60,30396,5f,pop di
+20,cache_lifecycle_dispatch_012,1896,61,30397,c9,leave
+20,cache_lifecycle_dispatch_012,1896,62,30398,cb,ret far
+20,cache_lifecycle_dispatch_012,1896,64,30400,becc34,"mov si,34CCh"
+20,cache_lifecycle_dispatch_012,1896,67,30403,680620,push 2006h
+20,cache_lifecycle_dispatch_012,1896,70,30406,9a6520ee11,"call far 2065h,11EEh"
+20,cache_lifecycle_dispatch_012,1896,75,30411,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,78,30414,8904,"mov [si],ax"
+20,cache_lifecycle_dispatch_012,1896,80,30416,895402,"mov [si+2],dx"
+20,cache_lifecycle_dispatch_012,1896,83,30419,8bc2,"mov ax,dx"
+20,cache_lifecycle_dispatch_012,1896,85,30421,0b04,"or ax,[si]"
+20,cache_lifecycle_dispatch_012,1896,87,30423,750b,jne short 0064h
+20,cache_lifecycle_dispatch_012,1896,89,30425,68860b,push 0B86h
+20,cache_lifecycle_dispatch_012,1896,92,30428,9a0c00ba0f,"call far 000Ch,0FBAh"
+20,cache_lifecycle_dispatch_012,1896,97,30433,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,100,30436,c41c,"les bx,[si]"
+20,cache_lifecycle_dispatch_012,1896,102,30438,26c747040000,"mov word ptr es:[bx+4],0"
+20,cache_lifecycle_dispatch_012,1896,108,30444,c41c,"les bx,[si]"
+20,cache_lifecycle_dispatch_012,1896,110,30446,6626c70700000000,"mov dword ptr es:[bx],0"
+20,cache_lifecycle_dispatch_012,1896,118,30454,83c604,"add si,4"
+20,cache_lifecycle_dispatch_012,1896,121,30457,81fef434,"cmp si,34F4h"
+20,cache_lifecycle_dispatch_012,1896,125,30461,72c4,jb short 0043h
+20,cache_lifecycle_dispatch_012,1896,127,30463,bef434,"mov si,34F4h"
+20,cache_lifecycle_dispatch_012,1896,130,30466,680620,push 2006h
+20,cache_lifecycle_dispatch_012,1896,133,30469,9a6520ee11,"call far 2065h,11EEh"
+20,cache_lifecycle_dispatch_012,1896,138,30474,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,141,30477,8904,"mov [si],ax"
+20,cache_lifecycle_dispatch_012,1896,143,30479,895402,"mov [si+2],dx"
+20,cache_lifecycle_dispatch_012,1896,146,30482,8bc2,"mov ax,dx"
+20,cache_lifecycle_dispatch_012,1896,148,30484,0b04,"or ax,[si]"
+20,cache_lifecycle_dispatch_012,1896,150,30486,750b,jne short 00A3h
+20,cache_lifecycle_dispatch_012,1896,152,30488,68ba0b,push 0BBAh
+20,cache_lifecycle_dispatch_012,1896,155,30491,9a0c00ba0f,"call far 000Ch,0FBAh"
+20,cache_lifecycle_dispatch_012,1896,160,30496,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,163,30499,c41c,"les bx,[si]"
+20,cache_lifecycle_dispatch_012,1896,165,30501,26c747040000,"mov word ptr es:[bx+4],0"
+20,cache_lifecycle_dispatch_012,1896,171,30507,c41c,"les bx,[si]"
+20,cache_lifecycle_dispatch_012,1896,173,30509,6626c70700000000,"mov dword ptr es:[bx],0"
+20,cache_lifecycle_dispatch_012,1896,181,30517,83c604,"add si,4"
+20,cache_lifecycle_dispatch_012,1896,184,30520,81fe0435,"cmp si,3504h"
+20,cache_lifecycle_dispatch_012,1896,188,30524,72c4,jb short 0082h
+20,cache_lifecycle_dispatch_012,1896,190,30526,9a5800ba0f,"call far 0058h,0FBAh"
+20,cache_lifecycle_dispatch_012,1896,195,30531,a3b43c,"mov [3CB4h],ax"
+20,cache_lifecycle_dispatch_012,1896,198,30534,9a9029ee11,"call far 2990h,11EEh"
+20,cache_lifecycle_dispatch_012,1896,203,30539,a3b03c,"mov [3CB0h],ax"
+20,cache_lifecycle_dispatch_012,1896,206,30542,6668020c0000,data32 push 0C02h
+20,cache_lifecycle_dispatch_012,1896,212,30548,a1b43c,"mov ax,[3CB4h]"
+20,cache_lifecycle_dispatch_012,1896,215,30551,2bd2,"sub dx,dx"
+20,cache_lifecycle_dispatch_012,1896,217,30553,2d4600,"sub ax,46h"
+20,cache_lifecycle_dispatch_012,1896,220,30556,1bd2,"sbb dx,dx"
+20,cache_lifecycle_dispatch_012,1896,222,30558,8af2,"mov dh,dl"
+20,cache_lifecycle_dispatch_012,1896,224,30560,8ad4,"mov dl,ah"
+20,cache_lifecycle_dispatch_012,1896,226,30562,8ae0,"mov ah,al"
+20,cache_lifecycle_dispatch_012,1896,228,30564,2ac0,"sub al,al"
+20,cache_lifecycle_dispatch_012,1896,230,30566,03c0,"add ax,ax"
+20,cache_lifecycle_dispatch_012,1896,232,30568,13d2,"adc dx,dx"
+20,cache_lifecycle_dispatch_012,1896,234,30570,03c0,"add ax,ax"
+20,cache_lifecycle_dispatch_012,1896,236,30572,13d2,"adc dx,dx"
+20,cache_lifecycle_dispatch_012,1896,238,30574,52,push dx
+20,cache_lifecycle_dispatch_012,1896,239,30575,50,push ax
+20,cache_lifecycle_dispatch_012,1896,240,30576,6658,pop eax
+20,cache_lifecycle_dispatch_012,1896,242,30578,6659,pop ecx
+20,cache_lifecycle_dispatch_012,1896,244,30580,6699,cdq
+20,cache_lifecycle_dispatch_012,1896,246,30582,66f7f9,idiv ecx
+20,cache_lifecycle_dispatch_012,1896,249,30585,668bd0,"mov edx,eax"
+20,cache_lifecycle_dispatch_012,1896,252,30588,66c1ea10,"shr edx,10h"
+20,cache_lifecycle_dispatch_012,1896,256,30592,a30435,"mov [3504h],ax"
+20,cache_lifecycle_dispatch_012,1896,259,30595,3d8000,"cmp ax,80h"
+20,cache_lifecycle_dispatch_012,1896,262,30598,7e03,jle short 010Bh
+20,cache_lifecycle_dispatch_012,1896,264,30600,b88000,"mov ax,80h"
+20,cache_lifecycle_dispatch_012,1896,267,30603,a30435,"mov [3504h],ax"
+20,cache_lifecycle_dispatch_012,1896,270,30606,3d0100,"cmp ax,1"
+20,cache_lifecycle_dispatch_012,1896,273,30609,7d0b,jge short 011Eh
+20,cache_lifecycle_dispatch_012,1896,275,30611,68ee0b,push 0BEEh
+20,cache_lifecycle_dispatch_012,1896,278,30614,9a0c00ba0f,"call far 000Ch,0FBAh"
+20,cache_lifecycle_dispatch_012,1896,283,30619,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,286,30622,33ff,"xor di,di"
+20,cache_lifecycle_dispatch_012,1896,288,30624,393e0435,"cmp [3504h],di"
+20,cache_lifecycle_dispatch_012,1896,292,30628,7e41,jle short 0167h
+20,cache_lifecycle_dispatch_012,1896,294,30630,be0000,"mov si,0"
+20,cache_lifecycle_dispatch_012,1896,297,30633,68020c,push 0C02h
+20,cache_lifecycle_dispatch_012,1896,300,30636,9a6520ee11,"call far 2065h,11EEh"
+20,cache_lifecycle_dispatch_012,1896,305,30641,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,308,30644,8e066025,"mov es,[2560h]"
+20,cache_lifecycle_dispatch_012,1896,312,30648,268904,"mov es:[si],ax"
+20,cache_lifecycle_dispatch_012,1896,315,30651,26895402,"mov es:[si+2],dx"
+20,cache_lifecycle_dispatch_012,1896,319,30655,8bc2,"mov ax,dx"
+20,cache_lifecycle_dispatch_012,1896,321,30657,260b04,"or ax,es:[si]"
+20,cache_lifecycle_dispatch_012,1896,324,30660,750b,jne short 0151h
+20,cache_lifecycle_dispatch_012,1896,326,30662,68220c,push 0C22h
+20,cache_lifecycle_dispatch_012,1896,329,30665,9a0c00ba0f,"call far 000Ch,0FBAh"
+20,cache_lifecycle_dispatch_012,1896,334,30670,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,337,30673,8e066025,"mov es,[2560h]"
+20,cache_lifecycle_dispatch_012,1896,341,30677,26c41c,"les bx,es:[si]"
+20,cache_lifecycle_dispatch_012,1896,344,30680,83c604,"add si,4"
+20,cache_lifecycle_dispatch_012,1896,347,30683,26c7070000,"mov word ptr es:[bx],0"
+20,cache_lifecycle_dispatch_012,1896,352,30688,47,inc di
+20,cache_lifecycle_dispatch_012,1896,353,30689,3b3e0435,"cmp di,[3504h]"
+20,cache_lifecycle_dispatch_012,1896,357,30693,7cc2,jl short 0129h
+20,cache_lifecycle_dispatch_012,1896,359,30695,803ece3c00,"cmp byte ptr [3CCEh],0"
+20,cache_lifecycle_dispatch_012,1896,364,30700,742d,je short 019Bh
+20,cache_lifecycle_dispatch_012,1896,366,30702,0e,push cs
+20,cache_lifecycle_dispatch_012,1896,367,30703,e81206,call 0784h
+20,cache_lifecycle_dispatch_012,1896,370,30706,0bc0,"or ax,ax"
+20,cache_lifecycle_dispatch_012,1896,372,30708,7420,je short 0196h
+20,cache_lifecycle_dispatch_012,1896,374,30710,0e,push cs
+20,cache_lifecycle_dispatch_012,1896,375,30711,e83006,call 07AAh
+20,cache_lifecycle_dispatch_012,1896,378,30714,a30835,"mov [3508h],ax"
+20,cache_lifecycle_dispatch_012,1896,381,30717,a3b83c,"mov [3CB8h],ax"
+20,cache_lifecycle_dispatch_012,1896,384,30720,c7060a350000,"mov word ptr [350Ah],0"
+20,cache_lifecycle_dispatch_012,1896,390,30726,3d0008,"cmp ax,800h"
+20,cache_lifecycle_dispatch_012,1896,393,30729,7e03,jle short 018Eh
+20,cache_lifecycle_dispatch_012,1896,395,30731,b80008,"mov ax,800h"
+20,cache_lifecycle_dispatch_012,1896,398,30734,a30835,"mov [3508h],ax"
+20,cache_lifecycle_dispatch_012,1896,401,30737,3d4000,"cmp ax,40h"
+20,cache_lifecycle_dispatch_012,1896,404,30740,7d10,jge short 01A6h
+20,cache_lifecycle_dispatch_012,1896,406,30742,c606ce3c00,"mov byte ptr [3CCEh],0"
+20,cache_lifecycle_dispatch_012,1896,411,30747,a0ce3c,"mov al,[3CCEh]"
+20,cache_lifecycle_dispatch_012,1896,414,30750,a20c35,"mov [350Ch],al"
+20,cache_lifecycle_dispatch_012,1896,417,30753,5e,pop si
+20,cache_lifecycle_dispatch_012,1896,418,30754,5f,pop di
+20,cache_lifecycle_dispatch_012,1896,419,30755,c9,leave
+20,cache_lifecycle_dispatch_012,1896,420,30756,cb,ret far
+20,cache_lifecycle_dispatch_012,1896,422,30758,50,push ax
+20,cache_lifecycle_dispatch_012,1896,423,30759,0e,push cs
+20,cache_lifecycle_dispatch_012,1896,424,30760,e81706,call 07C2h
+20,cache_lifecycle_dispatch_012,1896,427,30763,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,430,30766,8956fe,"mov [bp-2],dx"
+20,cache_lifecycle_dispatch_012,1896,433,30769,0bd2,"or dx,dx"
+20,cache_lifecycle_dispatch_012,1896,435,30771,7ce1,jl short 0196h
+20,cache_lifecycle_dispatch_012,1896,437,30773,a30635,"mov [3506h],ax"
+20,cache_lifecycle_dispatch_012,1896,440,30776,50,push ax
+20,cache_lifecycle_dispatch_012,1896,441,30777,0e,push cs
+20,cache_lifecycle_dispatch_012,1896,442,30778,e86906,call 0826h
+20,cache_lifecycle_dispatch_012,1896,445,30781,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,448,30784,0bd2,"or dx,dx"
+20,cache_lifecycle_dispatch_012,1896,450,30786,7dd7,jge short 019Bh
+20,cache_lifecycle_dispatch_012,1896,452,30788,ff360635,push word ptr [3506h]
+20,cache_lifecycle_dispatch_012,1896,456,30792,0e,push cs
+20,cache_lifecycle_dispatch_012,1896,457,30793,e81806,call 07E4h
+20,cache_lifecycle_dispatch_012,1896,460,30796,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,463,30799,c606ce3c00,"mov byte ptr [3CCEh],0"
+20,cache_lifecycle_dispatch_012,1896,468,30804,68560c,push 0C56h
+20,cache_lifecycle_dispatch_012,1896,471,30807,9a78007604,"call far 0078h,0476h"
+20,cache_lifecycle_dispatch_012,1896,476,30812,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,479,30815,ebba,jmp short 019Bh
+20,cache_lifecycle_dispatch_012,1896,482,30818,803e0c3500,"cmp byte ptr [350Ch],0"
+20,cache_lifecycle_dispatch_012,1896,487,30823,0f84a400,je 028Fh
+20,cache_lifecycle_dispatch_012,1896,491,30827,ff360635,push word ptr [3506h]
+20,cache_lifecycle_dispatch_012,1896,495,30831,0e,push cs
+20,cache_lifecycle_dispatch_012,1896,496,30832,e85106,call 0844h
+20,cache_lifecycle_dispatch_012,1896,499,30835,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,502,30838,ff360635,push word ptr [3506h]
+20,cache_lifecycle_dispatch_012,1896,506,30842,0e,push cs
+20,cache_lifecycle_dispatch_012,1896,507,30843,e8e605,call 07E4h
+20,cache_lifecycle_dispatch_012,1896,510,30846,83c402,"add sp,2"
+20,cache_lifecycle_dispatch_012,1896,513,30849,5e,pop si
+20,cache_lifecycle_dispatch_012,1896,514,30850,5f,pop di
+20,cache_lifecycle_dispatch_012,1896,515,30851,c9,leave
+20,cache_lifecycle_dispatch_012,1896,516,30852,cb,ret far
+20,cache_lifecycle_dispatch_012,1896,518,30854,bbcc34,"mov bx,34CCh"
+20,cache_lifecycle_dispatch_012,1896,521,30857,c437,"les si,[bx]"
+20,cache_lifecycle_dispatch_012,1896,523,30859,268b4404,"mov ax,es:[si+4]"
+20,cache_lifecycle_dispatch_012,1896,527,30863,0bc0,"or ax,ax"
+20,cache_lifecycle_dispatch_012,1896,529,30865,740a,je short 021Dh
+20,cache_lifecycle_dispatch_012,1896,531,30867,8bf0,"mov si,ax"
+20,cache_lifecycle_dispatch_012,1896,533,30869,66c7440600000000,"mov dword ptr [si+6],0"
+20,cache_lifecycle_dispatch_012,1896,541,30877,c437,"les si,[bx]"
+20,cache_lifecycle_dispatch_012,1896,543,30879,26c744040000,"mov word ptr es:[si+4],0"
+20,cache_lifecycle_dispatch_012,1896,549,30885,c437,"les si,[bx]"
+20,cache_lifecycle_dispatch_012,1896,551,30887,662bc0,"sub eax,eax"
+20,cache_lifecycle_dispatch_012,1896,554,30890,66268904,"mov es:[si],eax"
+20,cache_lifecycle_dispatch_012,1896,558,30894,83c304,"add bx,4"
+20,cache_lifecycle_dispatch_012,1896,561,30897,81fbf434,"cmp bx,34F4h"
+20,cache_lifecycle_dispatch_012,1896,565,30901,72d2,jb short 0209h
+20,cache_lifecycle_dispatch_012,1896,567,30903,33c9,"xor cx,cx"
+20,cache_lifecycle_dispatch_012,1896,569,30905,39060435,"cmp [3504h],ax"
+20,cache_lifecycle_dispatch_012,1896,573,30909,7e30,jle short 026Fh
+20,cache_lifecycle_dispatch_012,1896,575,30911,bb0000,"mov bx,0"
+20,cache_lifecycle_dispatch_012,1896,578,30914,b8e71b,"mov ax,1BE7h"
+20,cache_lifecycle_dispatch_012,1896,581,30917,8ed8,"mov ds,ax"
+20,cache_lifecycle_dispatch_012,1896,583,30919,c437,"les si,[bx]"
+20,cache_lifecycle_dispatch_012,1896,585,30921,26833c00,"cmp word ptr es:[si],0"
+20,cache_lifecycle_dispatch_012,1896,589,30925,740c,je short 025Bh
+20,cache_lifecycle_dispatch_012,1896,591,30927,268b34,"mov si,es:[si]"
+20,cache_lifecycle_dispatch_012,1896,594,30930,6636c7440600000000,"mov dword ptr ss:[si+6],0"
+20,cache_lifecycle_dispatch_012,1896,603,30939,c437,"les si,[bx]"
+20,cache_lifecycle_dispatch_012,1896,605,30941,83c304,"add bx,4"
+20,cache_lifecycle_dispatch_012,1896,608,30944,26c7040000,"mov word ptr es:[si],0"
+20,cache_lifecycle_dispatch_012,1896,613,30949,41,inc cx
+20,cache_lifecycle_dispatch_012,1896,614,30950,36390e0435,"cmp ss:[3504h],cx"
+20,cache_lifecycle_dispatch_012,1896,619,30955,7fda,jg short 0247h
+20,cache_lifecycle_dispatch_012,1896,621,30957,16,push ss
+20,cache_lifecycle_dispatch_012,1896,622,30958,1f,pop ds
+20,cache_lifecycle_dispatch_012,1896,623,30959,bbf434,"mov bx,34F4h"
+20,cache_lifecycle_dispatch_012,1896,626,30962,c437,"les si,[bx]"
+20,cache_lifecycle_dispatch_012,1896,628,30964,26c744040000,"mov word ptr es:[si+4],0"
+20,cache_lifecycle_dispatch_012,1896,634,30970,c437,"les si,[bx]"
+20,cache_lifecycle_dispatch_012,1896,636,30972,662bc0,"sub eax,eax"
+20,cache_lifecycle_dispatch_012,1896,639,30975,66268904,"mov es:[si],eax"
+20,cache_lifecycle_dispatch_012,1896,643,30979,83c304,"add bx,4"
+20,cache_lifecycle_dispatch_012,1896,646,30982,81fb0435,"cmp bx,3504h"
+20,cache_lifecycle_dispatch_012,1896,650,30986,72e6,jb short 0272h
+20,cache_lifecycle_dispatch_012,1896,652,30988,a30a35,"mov [350Ah],ax"
+20,cache_lifecycle_dispatch_012,1896,655,30991,5e,pop si
+20,cache_lifecycle_dispatch_012,1896,656,30992,5f,pop di
+20,cache_lifecycle_dispatch_012,1896,657,30993,c9,leave
+20,cache_lifecycle_dispatch_012,1896,658,30994,cb,ret far
+20,level_resource_cleanup,3369,2062,55966,c8060000,"enter 6,0"
+20,level_resource_cleanup,3369,2066,55970,57,push di
+20,level_resource_cleanup,3369,2067,55971,56,push si
+20,level_resource_cleanup,3369,2068,55972,6a02,push 2
+20,level_resource_cleanup,3369,2070,55974,9a24006807,"call far 0024h,0768h"
+20,level_resource_cleanup,3369,2075,55979,83c402,"add sp,2"
+20,level_resource_cleanup,3369,2078,55982,33ff,"xor di,di"
+20,level_resource_cleanup,3369,2080,55984,393e7262,"cmp [6272h],di"
+20,level_resource_cleanup,3369,2084,55988,7e17,jle short 083Dh
+20,level_resource_cleanup,3369,2086,55990,be1643,"mov si,4316h"
+20,level_resource_cleanup,3369,2089,55993,ff34,push word ptr [si]
+20,level_resource_cleanup,3369,2091,55995,9aae3cee11,"call far 3CAEh,11EEh"
+20,level_resource_cleanup,3369,2096,56000,83c402,"add sp,2"
+20,level_resource_cleanup,3369,2099,56003,83c608,"add si,8"
+20,level_resource_cleanup,3369,2102,56006,47,inc di
+20,level_resource_cleanup,3369,2103,56007,3b3e7262,"cmp di,[6272h]"
+20,level_resource_cleanup,3369,2107,56011,7cec,jl short 0829h
+20,level_resource_cleanup,3369,2109,56013,33ff,"xor di,di"
+20,level_resource_cleanup,3369,2111,56015,393e7462,"cmp [6274h],di"
+20,level_resource_cleanup,3369,2115,56019,7e17,jle short 085Ch
+20,level_resource_cleanup,3369,2117,56021,be243d,"mov si,3D24h"
+20,level_resource_cleanup,3369,2120,56024,ff34,push word ptr [si]
+20,level_resource_cleanup,3369,2122,56026,9aae3cee11,"call far 3CAEh,11EEh"
+20,level_resource_cleanup,3369,2127,56031,83c402,"add sp,2"
+20,level_resource_cleanup,3369,2130,56034,83c608,"add si,8"
+20,level_resource_cleanup,3369,2133,56037,47,inc di
+20,level_resource_cleanup,3369,2134,56038,3b3e7462,"cmp di,[6274h]"
+20,level_resource_cleanup,3369,2138,56042,7cec,jl short 0848h
+20,level_resource_cleanup,3369,2140,56044,33ff,"xor di,di"
+20,level_resource_cleanup,3369,2142,56046,393e7062,"cmp [6270h],di"
+20,level_resource_cleanup,3369,2146,56050,7e41,jle short 08A5h
+20,level_resource_cleanup,3369,2148,56052,be0a00,"mov si,0Ah"
+20,level_resource_cleanup,3369,2151,56055,8e066c25,"mov es,[256Ch]"
+20,level_resource_cleanup,3369,2155,56059,8976fa,"mov [bp-6],si"
+20,level_resource_cleanup,3369,2158,56062,8c46fc,"mov [bp-4],es"
+20,level_resource_cleanup,3369,2161,56065,268a1c,"mov bl,es:[si]"
+20,level_resource_cleanup,3369,2164,56068,2aff,"sub bh,bh"
+20,level_resource_cleanup,3369,2166,56070,c1e303,"shl bx,3"
+20,level_resource_cleanup,3369,2169,56073,8b87223d,"mov ax,[bx+3D22h]"
+20,level_resource_cleanup,3369,2173,56077,0bc0,"or ax,ax"
+20,level_resource_cleanup,3369,2175,56079,741a,je short 089Bh
+20,level_resource_cleanup,3369,2177,56081,50,push ax
+20,level_resource_cleanup,3369,2178,56082,9aae3cee11,"call far 3CAEh,11EEh"
+20,level_resource_cleanup,3369,2183,56087,83c402,"add sp,2"
+20,level_resource_cleanup,3369,2186,56090,c45efa,"les bx,[bp-6]"
+20,level_resource_cleanup,3369,2189,56093,268a1f,"mov bl,es:[bx]"
+20,level_resource_cleanup,3369,2192,56096,2aff,"sub bh,bh"
+20,level_resource_cleanup,3369,2194,56098,c1e303,"shl bx,3"
+20,level_resource_cleanup,3369,2197,56101,c787223d0000,"mov word ptr [bx+3D22h],0"
+20,level_resource_cleanup,3369,2203,56107,83c61c,"add si,1Ch"
+20,level_resource_cleanup,3369,2206,56110,47,inc di
+20,level_resource_cleanup,3369,2207,56111,3b3e7062,"cmp di,[6270h]"
+20,level_resource_cleanup,3369,2211,56115,7cc2,jl short 0867h
+20,level_resource_cleanup,3369,2213,56117,5e,pop si
+20,level_resource_cleanup,3369,2214,56118,5f,pop di
+20,level_resource_cleanup,3369,2215,56119,c9,leave
+20,level_resource_cleanup,3369,2216,56120,cb,ret far

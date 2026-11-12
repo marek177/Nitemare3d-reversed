@@ -4,11 +4,12 @@ import csv,json,sys
 
 from pathlib import Path
 
-root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'OBJECT_CACHE_NATIVE_SPRITE_REPORT.md'
+root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'CACHE_RESET_METADATA_CLEANUP_REPORT.md'
 
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
 
-receipt_path=root/'CAMPAIGN_OBJECTDRAW_PUBLICATION_RECEIPT_20261112.json'
+receipt_path=root/'CAMPAIGN_CACHECLEANUP_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_OBJECTDRAW_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_FTIME_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_CALENDAR_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_IMAGE_RETRIEVAL_PUBLICATION_RECEIPT_20261112.json'
