@@ -1,0 +1,72 @@
+cs,ip,image_offset,bytes,instruction
+631,3390,13486,c80a0000,"enter 0Ah,0"
+631,3394,13490,c746fcffff,"mov word ptr [bp-4],0FFFFh"
+631,3399,13495,680080,push 8000h
+631,3402,13498,ff7608,push word ptr [bp+8]
+631,3405,13501,0e,push cs
+631,3406,13502,e8cffe,call 0C20h
+631,3409,13505,83c402,"add sp,2"
+631,3412,13508,50,push ax
+631,3413,13509,9a721cee11,"call far 1C72h,11EEh"
+631,3418,13514,83c404,"add sp,4"
+631,3421,13517,8946fe,"mov [bp-2],ax"
+631,3424,13520,0bc0,"or ax,ax"
+631,3426,13522,0f8eb100,jle 0E17h
+631,3430,13526,666a00,data32 push 0
+631,3433,13529,68e6d5,push 0D5E6h
+631,3436,13532,660fbf4606,"movsx eax,word ptr [bp+6]"
+631,3441,13537,6659,pop ecx
+631,3443,13539,66f7e9,imul ecx
+631,3446,13542,6650,push eax
+631,3448,13544,ff76fe,push word ptr [bp-2]
+631,3451,13547,9ad61bee11,"call far 1BD6h,11EEh"
+631,3456,13552,83c408,"add sp,8"
+631,3459,13555,6a04,push 4
+631,3461,13557,8d46f6,"lea ax,[bp-0Ah]"
+631,3464,13560,50,push ax
+631,3465,13561,ff76fe,push word ptr [bp-2]
+631,3468,13564,9a141eee11,"call far 1E14h,11EEh"
+631,3473,13569,83c406,"add sp,6"
+631,3476,13572,66837e0a00,"cmp dword ptr [bp+0Ah],0"
+631,3481,13577,7411,je short 0DACh
+631,3483,13579,6a29,push 29h
+631,3485,13581,66ff760a,push dword ptr [bp+0Ah]
+631,3489,13585,ff76fe,push word ptr [bp-2]
+631,3492,13588,9a9e00ba0f,"call far 009Eh,0FBAh"
+631,3497,13593,eb11,jmp short 0DBCh
+631,3500,13596,666800000100,data32 push 10000h
+631,3506,13602,6a29,push 29h
+631,3508,13604,ff76fe,push word ptr [bp-2]
+631,3511,13607,9ad61bee11,"call far 1BD6h,11EEh"
+631,3516,13612,83c408,"add sp,8"
+631,3519,13615,6a02,push 2
+631,3521,13617,8d46fa,"lea ax,[bp-6]"
+631,3524,13620,50,push ax
+631,3525,13621,ff76fe,push word ptr [bp-2]
+631,3528,13624,9a141eee11,"call far 1E14h,11EEh"
+631,3533,13629,83c406,"add sp,6"
+631,3536,13632,6a02,push 2
+631,3538,13634,8d46fc,"lea ax,[bp-4]"
+631,3541,13637,50,push ax
+631,3542,13638,ff76fe,push word ptr [bp-2]
+631,3545,13641,9a141eee11,"call far 1E14h,11EEh"
+631,3550,13646,83c406,"add sp,6"
+631,3553,13649,66817ef6e6d50000,"cmp dword ptr [bp-0Ah],0D5E6h"
+631,3561,13657,751f,jne short 0E0Ah
+631,3563,13659,6a01,push 1
+631,3565,13661,9aca293d08,"call far 29CAh,083Dh"
+631,3570,13666,83c402,"add sp,2"
+631,3573,13669,0bd0,"or dx,ax"
+631,3575,13671,7506,jne short 0DFFh
+631,3577,13673,837efa01,"cmp word ptr [bp-6],1"
+631,3581,13677,7f0b,jg short 0E0Ah
+631,3583,13679,8a66fa,"mov ah,[bp-6]"
+631,3586,13682,2ac0,"sub al,al"
+631,3588,13684,0946fc,"or [bp-4],ax"
+631,3591,13687,eb06,jmp short 0E0Fh
+631,3594,13690,c746fcffff,"mov word ptr [bp-4],0FFFFh"
+631,3599,13695,ff76fe,push word ptr [bp-2]
+631,3602,13698,9ab61bee11,"call far 1BB6h,11EEh"
+631,3607,13703,8b46fc,"mov ax,[bp-4]"
+631,3610,13706,c9,leave
+631,3611,13707,cb,ret far

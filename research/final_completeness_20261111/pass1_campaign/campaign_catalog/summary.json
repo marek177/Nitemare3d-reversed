@@ -8,21 +8,21 @@
       "sha256": "e4c77ac69a936c859d1ca4b4d573b7ef35da4aafd443b2466792f4320c425ab5"
     }
   ],
-  "functions": 136,
-  "independent_instruction_count": 5232,
-  "independent_instruction_bytes": 13047,
+  "functions": 138,
+  "independent_instruction_count": 5389,
+  "independent_instruction_bytes": 13486,
   "data_bytes_with_local_evidence": 58018,
   "primary_type_bytes": {
-    "UNKNOWN_CONTENT": 100295,
-    "EXECUTABLE_CODE": 13047,
+    "UNKNOWN_CONTENT": 99856,
+    "EXECUTABLE_CODE": 13486,
     "DATA": 58018
   },
-  "interval_count": 711,
+  "interval_count": 721,
   "original_pass320_ledger_imported": true,
   "new_deep_verified_bytes": 0,
-  "runtime_tests": 19,
+  "runtime_tests": 20,
   "scope": "Current campaign partition only; PARTIAL does not mean closed semantics; UNKNOWN is not historical reclassification",
-  "controlled_instruction_replay_cases": 989775,
+  "controlled_instruction_replay_cases": 990555,
   "original_noncode_bytes": 57295,
   "original_noncode_intersection_code_bytes": 0,
   "original_noncode_intersection_data_bytes": 57100,
@@ -30,7 +30,7 @@
   "direction_index_prefix_replay_scope": "seeded prefix only; stop before 0099; no trig callee or natural callers",
   "latest_pass1_map_sha256": "3021969d4e4348715816361fa387631e7d6cfd9fc9dcc136e26073f0f9984d1b",
   "pass1_partial_bytes_without_typed_data": 2,
-  "runtime_tests_scope": "retained original packed DOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace, UIF fonts0/1/2; explicit CD back-buffer/flip and read-map intervention; AUTOTYPE IRQ make/break, BIOS3920, wait exit; hardware frames identify0BDE:00C6, explicit paused WORX stack-switch window verifies privateSS/SP but does not capture nested keyIRQ on that stack; no host/physical/gameplay/Win16 parity; prefixes overlap",
+  "runtime_tests_scope": "retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; no host/physical/gameplay/save-load/Win16 parity; prefixes overlap",
   "runtime_evidence": [
     {
       "path": "outputs\\dosbox_startup_runtime\\independent_verification.json",
@@ -145,11 +145,17 @@
       "sha256": "390cdfd47c447f59cdc22c51dc4a188fb6fc25cb30fa9084b7c1a432ac05365c",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original packed DOS2 with added CD asset and supported AUTOTYPE space; actual IRQ1 make/break port reads, game bit0200, BIOS3920 queue/consumption and natural wait return; original font1 transformed1145B/128FAR plus font0/2 exact; breakpoints pause CPU and can affect timing; no host scanout, arbitrary keyboard/DEMO, gameplay or Win16 parity; UNKNOWN44 cached-change only; entry/exit hardware interrupt frames exact, both interrupted canonical0BDE:00C6 in this run; explicit paused WORX window proves SS/privateSP/control words, not an IRQ nested on that stack"
+    },
+    {
+      "path": "outputs\\dosbox_main_menu_runtime_v2\\independent_verification.json",
+      "sha256": "d40b2672f88b2aa3c2b33f031cef0253582fc39d909c65068394d6a895975922",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "original packedDOS2 plus explicit CDasset; supported three-key AUTOTYPE progresses all intro waits to main menu initial draw, six actual IRQ make/break reads, three BIOS dequeue events, fixed relocated414B descriptor tables and selectedfirst item; VGA planes/DAC are paused readback with read-map restore after endpoint, no host screenshot/pixel golden/gameplay/save-load/Win16 parity; UNKNOWN44 cached-change only"
     }
   ],
   "runtime_bss_table_bytes_outside_file": 4054,
-  "runtime_buffer_refinement_records": 9,
-  "runtime_buffer_refinement_bytes_already_in_pass1": 3600,
+  "runtime_buffer_refinement_records": 12,
+  "runtime_buffer_refinement_bytes_already_in_pass1": 4014,
   "record_field_refinements": 14,
   "win110_palette_supplement": {
     "functions": 4,

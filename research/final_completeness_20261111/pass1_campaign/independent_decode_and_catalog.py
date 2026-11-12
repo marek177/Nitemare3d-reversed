@@ -172,6 +172,9 @@ def main():
     block_blit_summary=root/'vga_column_block_blit/summary.json'
     keyboard_irq_summary=root/'keyboard_irq_replay/summary.json'
     private_stack_summary=root/'worx_private_stack_replay/summary.json'
+    menu_gate_summary=root/'menu_save_gate_replay/summary.json'
+    if menu_gate_summary.exists():
+        for f in readjson(menu_gate_summary)['functions']:sources.append((f['name'],root/'menu_save_gate_replay'/(f['name']+'.csv')))
     if private_stack_summary.exists():
         for f in readjson(private_stack_summary)['functions']:sources.append((f['name'],root/'worx_private_stack_replay'/(f['name']+'.csv')))
     if keyboard_irq_summary.exists():
@@ -514,6 +517,7 @@ def main():
     if (root/'vga_column_block_blit/summary.json').exists():replay_folders.append('vga_column_block_blit')
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
+    if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -542,7 +546,7 @@ def main():
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
     runtime_evidence=[];runtime_sessions=set()
-    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime'):
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2'):
         runtime_path=root/runtime_folder/'independent_verification.json'
         if not runtime_path.exists():continue
         runtime=readjson(runtime_path)
@@ -556,7 +560,7 @@ def main():
         runtime_evidence.append(dict(path=str(runtime_path),sha256=sha(runtime_path.read_bytes()),runtime_image_sha256=runtime['runtime_image_sha256'],scope=runtime['scope']))
     if runtime_evidence:
         result['runtime_tests']=len(runtime_evidence)
-        result['runtime_tests_scope']='retained original packed DOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace, UIF fonts0/1/2; explicit CD back-buffer/flip and read-map intervention; AUTOTYPE IRQ make/break, BIOS3920, wait exit; hardware frames identify0BDE:00C6, explicit paused WORX stack-switch window verifies privateSS/SP but does not capture nested keyIRQ on that stack; no host/physical/gameplay/Win16 parity; prefixes overlap'
+        result['runtime_tests_scope']='retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; no host/physical/gameplay/save-load/Win16 parity; prefixes overlap'
         result['runtime_evidence']=runtime_evidence
     bss_tables=[]
     for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv'):
@@ -565,7 +569,7 @@ def main():
         csvout(dest/'runtime_bss_tables.csv',bss_tables)
         result['runtime_bss_table_bytes_outside_file']=sum(int(row['length']) for row in bss_tables)
     runtime_buffers=[];runtime_buffer_bytes=set()
-    for path in (root/'font2_runtime_fields/runtime_field_intervals.csv',root/'intro_flip_font0_fields/runtime_field_intervals.csv',root/'font1_keyboard_fields/runtime_field_intervals.csv'):
+    for path in (root/'font2_runtime_fields/runtime_field_intervals.csv',root/'intro_flip_font0_fields/runtime_field_intervals.csv',root/'font1_keyboard_fields/runtime_field_intervals.csv',root/'main_menu_runtime_fields/runtime_field_intervals.csv'):
         if not path.exists():continue
         for row in readcsv(path):
             a,z=int(row['start']),int(row['end_exclusive'])
