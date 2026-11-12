@@ -1,0 +1,33 @@
+cs,ip,image_offset,bytes,instruction
+247,4,3956,55,push bp
+247,5,3957,8bec,"mov bp,sp"
+247,7,3959,2aff,"sub bh,bh"
+247,9,3961,8a5e08,"mov bl,[bp+8]"
+247,12,3964,81fb0001,"cmp bx,100h"
+247,16,3968,7d14,jge short 0026h
+247,18,3970,8b4e06,"mov cx,[bp+6]"
+247,21,3973,8a870ed3,"mov al,[bx-2CF2h]"
+247,25,3977,2ae4,"sub ah,ah"
+247,27,3979,3bc1,"cmp ax,cx"
+247,29,3981,741f,je short 003Eh
+247,31,3983,43,inc bx
+247,32,3984,81fb0001,"cmp bx,100h"
+247,36,3988,7cef,jl short 0015h
+247,38,3990,33db,"xor bx,bx"
+247,40,3992,8b4e06,"mov cx,[bp+6]"
+247,43,3995,8a870ed3,"mov al,[bx-2CF2h]"
+247,47,3999,2ae4,"sub ah,ah"
+247,49,4001,3bc1,"cmp ax,cx"
+247,51,4003,7409,je short 003Eh
+247,53,4005,43,inc bx
+247,54,4006,81fb0001,"cmp bx,100h"
+247,58,4010,7cef,jl short 002Bh
+247,60,4012,eb04,jmp short 0042h
+247,62,4014,8bc3,"mov ax,bx"
+247,64,4016,c9,leave
+247,65,4017,cb,ret far
+247,66,4018,51,push cx
+247,67,4019,68da00,push 0DAh
+247,70,4022,9a0c00ba0f,"call far 000Ch,0FBAh"
+247,75,4027,c9,leave
+247,76,4028,cb,ret far

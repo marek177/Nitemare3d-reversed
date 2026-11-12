@@ -1,0 +1,27 @@
+cs,ip,image_offset,bytes,instruction
+4590,9062,82502,55,push bp
+4590,9063,82503,8bec,"mov bp,sp"
+4590,9065,82505,8bd7,"mov dx,di"
+4590,9067,82507,8bde,"mov bx,si"
+4590,9069,82509,8b7608,"mov si,[bp+8]"
+4590,9072,82512,8bfe,"mov di,si"
+4590,9074,82514,8cd8,"mov ax,ds"
+4590,9076,82516,8ec0,"mov es,ax"
+4590,9078,82518,33c0,"xor ax,ax"
+4590,9080,82520,b9ffff,"mov cx,0FFFFh"
+4590,9083,82523,f2ae,repne scasb [di]
+4590,9085,82525,f7d1,not cx
+4590,9087,82527,8b7e06,"mov di,[bp+6]"
+4590,9090,82530,8bc7,"mov ax,di"
+4590,9092,82532,a801,"test al,1"
+4590,9094,82534,7402,je short 238Ah
+4590,9096,82536,a4,"movsb [di],[si]"
+4590,9097,82537,49,dec cx
+4590,9098,82538,d1e9,"shr cx,1"
+4590,9100,82540,f3a5,"rep movsw [di],[si]"
+4590,9102,82542,13c9,"adc cx,cx"
+4590,9104,82544,f3a4,"rep movsb [di],[si]"
+4590,9106,82546,8bf3,"mov si,bx"
+4590,9108,82548,8bfa,"mov di,dx"
+4590,9110,82550,5d,pop bp
+4590,9111,82551,cb,ret far

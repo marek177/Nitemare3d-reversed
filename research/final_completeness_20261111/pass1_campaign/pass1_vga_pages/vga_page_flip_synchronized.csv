@@ -1,0 +1,24 @@
+cs,ip,image_offset,bytes,instruction
+342,168,5640,55,push bp
+342,169,5641,8bec,"mov bp,sp"
+342,171,5643,8b1e2c01,"mov bx,[12Ch]"
+342,175,5647,871e2e01,"xchg [12Eh],bx"
+342,179,5651,891e2c01,"mov [12Ch],bx"
+342,183,5655,bada03,"mov dx,3DAh"
+342,186,5658,ec,"in al,dx"
+342,187,5659,a801,"test al,1"
+342,189,5661,75fb,jne short 00BAh
+342,191,5663,fa,cli
+342,192,5664,b00c,"mov al,0Ch"
+342,194,5666,8ae7,"mov ah,bh"
+342,196,5668,b104,"mov cl,4"
+342,198,5670,d2e4,"shl ah,cl"
+342,200,5672,bad403,"mov dx,3D4h"
+342,203,5675,ef,"out dx,ax"
+342,204,5676,fb,sti
+342,205,5677,bada03,"mov dx,3DAh"
+342,208,5680,ec,"in al,dx"
+342,209,5681,a808,"test al,8"
+342,211,5683,74fb,je short 00D0h
+342,213,5685,c9,leave
+342,214,5686,cb,ret far

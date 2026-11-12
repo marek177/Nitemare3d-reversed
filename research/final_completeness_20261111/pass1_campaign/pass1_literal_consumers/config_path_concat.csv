@@ -1,0 +1,40 @@
+cs,ip,image_offset,bytes,instruction
+631,3104,13200,55,push bp
+631,3105,13201,8bec,"mov bp,sp"
+631,3107,13203,57,push di
+631,3108,13204,56,push si
+631,3109,13205,bfdc3c,"mov di,3CDCh"
+631,3112,13208,be6634,"mov si,3466h"
+631,3115,13211,8cd9,"mov cx,ds"
+631,3117,13213,8ec1,"mov es,cx"
+631,3119,13215,b9ffff,"mov cx,0FFFFh"
+631,3122,13218,33c0,"xor ax,ax"
+631,3124,13220,f2ae,repne scasb [di]
+631,3126,13222,f7d1,not cx
+631,3128,13224,2bf9,"sub di,cx"
+631,3130,13226,87fe,"xchg si,di"
+631,3132,13228,d1e9,"shr cx,1"
+631,3134,13230,f3a5,"rep movsw [di],[si]"
+631,3136,13232,13c9,"adc cx,cx"
+631,3138,13234,f3a4,"rep movsb [di],[si]"
+631,3140,13236,be6634,"mov si,3466h"
+631,3143,13239,8b7e06,"mov di,[bp+6]"
+631,3146,13242,b9ffff,"mov cx,0FFFFh"
+631,3149,13245,f2ae,repne scasb [di]
+631,3151,13247,f7d1,not cx
+631,3153,13249,2bf9,"sub di,cx"
+631,3155,13251,8bd9,"mov bx,cx"
+631,3157,13253,87fe,"xchg si,di"
+631,3159,13255,b9ffff,"mov cx,0FFFFh"
+631,3162,13258,f2ae,repne scasb [di]
+631,3164,13260,4f,dec di
+631,3165,13261,8bcb,"mov cx,bx"
+631,3167,13263,d1e9,"shr cx,1"
+631,3169,13265,f3a5,"rep movsw [di],[si]"
+631,3171,13267,13c9,"adc cx,cx"
+631,3173,13269,f3a4,"rep movsb [di],[si]"
+631,3175,13271,b86634,"mov ax,3466h"
+631,3178,13274,5e,pop si
+631,3179,13275,5f,pop di
+631,3180,13276,c9,leave
+631,3181,13277,cb,ret far

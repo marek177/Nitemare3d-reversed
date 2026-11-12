@@ -80,6 +80,110 @@ def main():
     dos_wrappers=root/'dos_io_wrappers_replay/summary.json'
     if dos_wrappers.exists():
         for f in readjson(dos_wrappers)['functions']:sources.append((f['name'],root/'dos_io_wrappers_replay'/(f['name']+'.csv')))
+    null_helpers=root/'pass1_crt_null_text/summary.json'
+    if null_helpers.exists():
+        for f in readjson(null_helpers)['functions']:sources.append((f['name'],root/'pass1_crt_null_text'/(f['name']+'.csv')))
+    scanner_memset=root/'pass1_crt_scan_templates/memset_instructions.csv'
+    if scanner_memset.exists():sources.append(('crt_memset_near_buffer',scanner_memset))
+    title_path=root/'pass1_title_texts/instructions.csv'
+    if title_path.exists():sources.append(('title_screen_wrapper',title_path))
+    position_path=root/'pass1_sprite_positions/instructions.csv'
+    if position_path.exists():sources.append(('sprite_position_animation_wrapper',position_path))
+    action_gate_path=root/'pass1_action_gate/instructions.csv'
+    if action_gate_path.exists():sources.append(('saturating_action_gate',action_gate_path))
+    action_dispatch_path=root/'action_dispatch_replay/instructions.csv'
+    if action_dispatch_path.exists():sources.append(('action_record_dispatcher',action_dispatch_path))
+    rng_helpers=root/'pass1_rng/summary.json'
+    if rng_helpers.exists():
+        for f in readjson(rng_helpers)['functions']:sources.append((f['name'],root/'pass1_rng'/(f['name']+'.csv')))
+    damage_effect_path=root/'damage_effect_replay/instructions.csv'
+    if damage_effect_path.exists():sources.append(('typed_random_effect',damage_effect_path))
+    allocator_path=root/'pass1_crt_allocator_state/allocator_instructions.csv'
+    if allocator_path.exists():sources.append(('crt_heap_allocator',allocator_path))
+    heap_root_summary=root/'pass1_heap_root/summary.json'
+    if heap_root_summary.exists():
+        for f in readjson(heap_root_summary)['functions']:sources.append((f['name'],root/'pass1_heap_root'/(f['name']+'.csv')))
+    halloc_summary=root/'pass1_halloc/summary.json'
+    if halloc_summary.exists():
+        for f in readjson(halloc_summary)['functions']:sources.append((f['name'],root/'pass1_halloc'/(f['name']+'.csv')))
+    xor_key_summary=root/'pass1_xor_key/summary.json'
+    if xor_key_summary.exists():
+        for f in readjson(xor_key_summary)['functions']:sources.append((f['name'],root/'pass1_xor_key'/(f['name']+'.csv')))
+    mask_summary=root/'pass1_crt_segment_mask/summary.json'
+    if mask_summary.exists():
+        for f in readjson(mask_summary)['functions']:sources.append((f['name'],root/'pass1_crt_segment_mask'/(f['name']+'.csv')))
+    image_cache_summary=root/'pass1_image_handle_cache/summary.json'
+    if image_cache_summary.exists():
+        for f in readjson(image_cache_summary)['functions']:sources.append((f['name'],root/'pass1_image_handle_cache'/(f['name']+'.csv')))
+    lifecycle_summary=root/'pass1_input_lifecycle/summary.json'
+    if lifecycle_summary.exists():
+        for f in readjson(lifecycle_summary)['functions']:sources.append((f['name'],root/'pass1_input_lifecycle'/(f['name']+'.csv')))
+    null_guard_summary=root/'pass1_null_guard/summary.json'
+    if null_guard_summary.exists():
+        for f in readjson(null_guard_summary)['functions']:sources.append((f['name'],root/'pass1_null_guard'/(f['name']+'.csv')))
+    stats_summary=root/'pass1_statistics_formats/summary.json'
+    if stats_summary.exists():
+        for f in readjson(stats_summary)['functions']:sources.append((f['name'],root/'pass1_statistics_formats'/(f['name']+'.csv')))
+    getenv_summary=root/'pass1_getenv/summary.json'
+    if getenv_summary.exists():
+        for f in readjson(getenv_summary)['functions']:sources.append((f['name'],root/'pass1_getenv'/(f['name']+'.csv')))
+    progress_summary=root/'pass1_progress_ui/summary.json'
+    if progress_summary.exists():
+        for f in readjson(progress_summary)['functions']:sources.append((f['name'],root/'pass1_progress_ui'/(f['name']+'.csv')))
+    error_output_summary=root/'pass1_crt_error_output/summary.json'
+    if error_output_summary.exists():
+        for f in readjson(error_output_summary)['functions']:sources.append((f['name'],root/'pass1_crt_error_output'/(f['name']+'.csv')))
+    stack_summary=root/'pass1_stack_reserve/summary.json'
+    if stack_summary.exists():
+        for f in readjson(stack_summary)['functions']:sources.append((f['name'],root/'pass1_stack_reserve'/(f['name']+'.csv')))
+    scheduler_summary=root/'pass1_scheduler/summary.json'
+    if scheduler_summary.exists():
+        for f in readjson(scheduler_summary)['functions']:sources.append((f['name'],root/'pass1_scheduler'/(f['name']+'.csv')))
+    class44_summary=root/'pass1_class44_cache/summary.json'
+    if class44_summary.exists():
+        for f in readjson(class44_summary)['functions']:sources.append((f['name'],root/'pass1_class44_cache'/(f['name']+'.csv')))
+    vga_pages_summary=root/'pass1_vga_pages/summary.json'
+    if vga_pages_summary.exists():
+        for f in readjson(vga_pages_summary)['functions']:sources.append((f['name'],root/'pass1_vga_pages'/(f['name']+'.csv')))
+    audio_state_summary=root/'pass1_audio_state/summary.json'
+    sound_priority_summary=root/'sound_priority_replay/summary.json'
+    literal_consumer_summary=root/'pass1_literal_consumers/summary.json'
+    direction_vector_summary=root/'pass1_direction_vectors/summary.json'
+    secondary_class_summary=root/'secondary_class_search/summary.json'
+    stream_cache_summary=root/'pass1_stream_cache/summary.json'
+    backslash_summary=root/'pass1_backslash_strings/summary.json'
+    near_heap_summary=root/'pass1_near_heap_state/summary.json'
+    bsf_summary=root/'pass1_bsf_dispatch/summary.json'
+    bsf_check_summary=root/'bsf_file_check/summary.json'
+    if bsf_check_summary.exists():
+        for f in readjson(bsf_check_summary)['functions']:sources.append((f['name'],root/'bsf_file_check'/(f['name']+'.csv')))
+    if bsf_summary.exists():
+        for f in readjson(bsf_summary)['functions']:sources.append((f['name'],root/'pass1_bsf_dispatch'/(f['name']+'.csv')))
+    if near_heap_summary.exists():
+        for f in readjson(near_heap_summary)['functions']:sources.append((f['name'],root/'pass1_near_heap_state'/(f['name']+'.csv')))
+    if backslash_summary.exists():
+        for f in readjson(backslash_summary)['functions']:sources.append((f['name'],root/'pass1_backslash_strings'/(f['name']+'.csv')))
+    if stream_cache_summary.exists():
+        for f in readjson(stream_cache_summary)['functions']:sources.append((f['name'],root/'pass1_stream_cache'/(f['name']+'.csv')))
+    if secondary_class_summary.exists():
+        for f in readjson(secondary_class_summary)['functions']:sources.append((f['name'],root/'secondary_class_search'/(f['name']+'.csv')))
+    if direction_vector_summary.exists():
+        for f in readjson(direction_vector_summary)['functions']:sources.append((f['name'],root/'pass1_direction_vectors'/(f['name']+'.csv')))
+    if literal_consumer_summary.exists():
+        for f in readjson(literal_consumer_summary)['functions']:sources.append((f['name'],root/'pass1_literal_consumers'/(f['name']+'.csv')))
+    if sound_priority_summary.exists():
+        for f in readjson(sound_priority_summary)['functions']:sources.append((f['name'],root/'sound_priority_replay'/(f['name']+'.csv')))
+    if audio_state_summary.exists():
+        for f in readjson(audio_state_summary)['functions']:sources.append((f['name'],root/'pass1_audio_state'/(f['name']+'.csv')))
+    bucket_summary=root/'pass1_tick_buckets/summary.json'
+    if bucket_summary.exists():
+        for f in readjson(bucket_summary)['functions']:sources.append((f['name'],root/'pass1_tick_buckets'/(f['name']+'.csv')))
+    clock_summary=root/'pass1_clock/summary.json'
+    if clock_summary.exists():
+        for f in readjson(clock_summary)['functions']:sources.append((f['name'],root/'pass1_clock'/(f['name']+'.csv')))
+    timezone_summary=root/'pass1_timezone/summary.json'
+    if timezone_summary.exists():
+        for f in readjson(timezone_summary)['functions']:sources.append((f['name'],root/'pass1_timezone'/(f['name']+'.csv')))
     fmt=Formatter(FormatterSyntax.INTEL); decoded=[]; code_owners={}; functions=[]
     for name,path in sources:
         rows=readcsv(path); byte_count=0
@@ -183,6 +287,58 @@ def main():
     current_pass1_sources.append('pass1_music_resource')
     current_pass1_sources.append('pass1_audio_toggles')
     current_pass1_sources.append('pass1_episode_files')
+    current_pass1_sources.append('pass1_crt_format_table')
+    current_pass1_sources.append('pass1_crt_null_text')
+    current_pass1_sources.append('pass1_crt_scan_templates')
+    current_pass1_sources.append('pass1_title_texts')
+    current_pass1_sources.append('pass1_sprite_positions')
+    current_pass1_sources.append('pass1_action_gate')
+    current_pass1_sources.append('pass1_rng')
+    current_pass1_sources.append('pass1_crt_allocator_state')
+    current_pass1_sources.append('pass1_heap_root')
+    current_pass1_sources.append('pass1_timezone')
+    current_pass1_sources.append('pass1_clock')
+    current_pass1_sources.append('pass1_neighbor_offsets')
+    current_pass1_sources.append('pass1_tick_buckets')
+    current_pass1_sources.append('pass1_audio_state')
+    current_pass1_sources.append('pass1_vga_pages')
+    current_pass1_sources.append('pass1_class44_cache')
+    current_pass1_sources.append('pass1_menu_latches')
+    current_pass1_sources.append('pass1_game_input_history')
+    current_pass1_sources.append('pass1_scheduler')
+    current_pass1_sources.append('pass1_stack_reserve')
+    current_pass1_sources.append('pass1_crt_error_output')
+    current_pass1_sources.append('pass1_crt_spawn_data')
+    current_pass1_sources.append('pass1_progress_ui')
+    current_pass1_sources.append('pass1_getenv')
+    current_pass1_sources.append('pass1_statistics_formats')
+    current_pass1_sources.append('pass1_save_ui_texts')
+    current_pass1_sources.append('pass1_status_data')
+    current_pass1_sources.append('pass1_guard_diagnostics')
+    current_pass1_sources.append('pass1_remaining_literals')
+    current_pass1_sources.append('pass1_null_guard')
+    current_pass1_sources.append('pass1_input_lifecycle')
+    current_pass1_sources.append('pass1_image_handle_cache')
+    current_pass1_sources.append('pass1_crt_segment_mask')
+    current_pass1_sources.append('pass1_xor_key')
+    current_pass1_sources.append('pass1_halloc')
+    current_pass1_sources.append('pass1_crt_handoff')
+    current_pass1_sources.append('pass1_crt_optional_hooks')
+    current_pass1_sources.append('pass1_file_info')
+    current_pass1_sources.append('pass1_small_state')
+    current_pass1_sources.append('pass1_literal_consumers')
+    current_pass1_sources.append('pass1_direction_vectors')
+    current_pass1_sources.append('pass1_stream_cache')
+    current_pass1_sources.append('pass1_backslash_strings')
+    current_pass1_sources.append('pass1_near_heap_state')
+    current_pass1_sources.append('pass1_bsf_dispatch')
+    current_pass1_sources.append('pass1_startup_segments')
+    current_pass1_sources.append('pass1_fcb_prefix')
+    damage_summary=root/'damage_effect_replay/summary.json'
+    if damage_summary.exists():
+        d=readjson(damage_summary);a=d['dispatch_table_start'];e=d['dispatch_table_end_exclusive']
+        if sha(image[a:e])!=d['dispatch_table_sha256']:raise ValueError('damage dispatch table hash conflict')
+        data_sources.append(('damage_dispatch_table',[dict(start=a,end_exclusive=e)]))
     typed_catalog=[]
     for evidence in current_pass1_sources:
         path=root/evidence/'data_fields.csv'
@@ -247,7 +403,45 @@ def main():
     if key_replay_path.exists():result['controlled_instruction_replay_cases'] += readjson(key_replay_path)['controlled_replay_cases']
     key_caller_replay_path=root/'pass1_key_caller_replay/evidence.json'
     if key_caller_replay_path.exists():result['controlled_instruction_replay_cases'] += readjson(key_caller_replay_path)['controlled_replay_cases']
-    for replay_folder in ['crt_error_replay','bitmap_bit_reverse_replay','crt_string_compare_replay','runtime_message_lookup_replay','pass1_trig','pass1_tangent','angle_lookup','pass1_music_selector','pass1_audio_toggles','map_level_loader_replay','dos_io_wrappers_replay']:
+    replay_folders=['crt_error_replay','bitmap_bit_reverse_replay','crt_string_compare_replay','runtime_message_lookup_replay','pass1_trig','pass1_tangent','angle_lookup','pass1_music_selector','pass1_audio_toggles','map_level_loader_replay','dos_io_wrappers_replay','pass1_crt_format_table','pass1_crt_null_text','pass1_crt_scan_templates','pass1_title_texts','pass1_sprite_positions','pass1_action_gate','action_dispatch_replay','pass1_rng','damage_effect_replay']
+    replay_folders.append('pass1_crt_allocator_state')
+    replay_folders.append('pass1_heap_root')
+    replay_folders.append('pass1_timezone')
+    replay_folders.append('pass1_clock')
+    replay_folders.append('pass1_neighbor_offsets')
+    replay_folders.append('pass1_tick_buckets')
+    replay_folders.append('pass1_audio_state')
+    replay_folders.append('pass1_vga_pages')
+    replay_folders.append('pass1_class44_cache')
+    replay_folders.append('pass1_menu_latches')
+    replay_folders.append('pass1_game_input_history')
+    replay_folders.append('pass1_scheduler')
+    replay_folders.append('pass1_stack_reserve')
+    replay_folders.append('pass1_crt_error_output')
+    replay_folders.append('pass1_progress_ui')
+    replay_folders.append('pass1_getenv')
+    replay_folders.append('pass1_status_data')
+    replay_folders.append('pass1_null_guard')
+    replay_folders.append('pass1_input_lifecycle')
+    replay_folders.append('pass1_image_handle_cache')
+    replay_folders.append('pass1_crt_segment_mask')
+    replay_folders.append('pass1_xor_key')
+    replay_folders.append('pass1_halloc')
+    replay_folders.append('pass1_crt_handoff')
+    replay_folders.append('pass1_file_info')
+    replay_folders.append('sound_priority_replay')
+    replay_folders.append('pass1_literal_consumers')
+    replay_folders.append('pass1_direction_vectors')
+    replay_folders.append('secondary_class_search')
+    replay_folders.append('pass1_stream_cache')
+    replay_folders.append('pass1_backslash_strings')
+    replay_folders.append('pass1_near_heap_state')
+    replay_folders.append('bsf_assets_native_codec')
+    replay_folders.append('bsf_file_check')
+    replay_folders.append('pass1_startup_segments')
+    replay_folders.append('pass1_fcb_prefix')
+    if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
+    for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
         if replay_summary['failures']!=0:raise ValueError('failed replay batch')
         result['controlled_instruction_replay_cases']+=replay_summary['cases']
@@ -257,7 +451,7 @@ def main():
         if prefix['failures']!=0:raise ValueError('failed direction prefix replay')
         result['direction_index_prefix_replay_cases']=prefix['cases']
         result['direction_index_prefix_replay_scope']=prefix['scope']
-    latest_map=root/'pass1_episode_files/noncode_intervals.csv'
+    latest_map=root/'pass1_fcb_prefix/noncode_intervals.csv'
     latest_partial=set()
     for row in readcsv(latest_map):
         if row['status']=='PARTIAL':latest_partial.update(range(int(row['start']),int(row['end_exclusive'])))
@@ -273,6 +467,16 @@ def main():
     (dest/'untyped_partial_relocation_check.json').write_text(json.dumps(dict(
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
+    refinement_paths=[root/'action_dispatch_replay/record_field_roles.csv',root/'damage_effect_replay/consumer_field_roles.csv']
+    refinement_paths.append(root/'pass1_guard_diagnostics/consumer_field_roles.csv')
+    records=[]
+    for refinements in refinement_paths:
+        if not refinements.exists():continue
+        for row in readcsv(refinements):
+            row['evidence_source']=str(refinements);row['evidence_sha256']=sha(refinements.read_bytes());records.append(row)
+    if records:
+        csvout(dest/'record_field_refinements.csv',records)
+        result['record_field_refinements']=len(records)
     (dest/'summary.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,indent=2))
 

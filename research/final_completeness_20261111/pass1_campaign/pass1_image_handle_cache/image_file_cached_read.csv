@@ -1,0 +1,44 @@
+cs,ip,image_offset,bytes,instruction
+631,2,10098,55,push bp
+631,3,10099,8bec,"mov bp,sp"
+631,5,10101,a16a62,"mov ax,[626Ah]"
+631,8,10104,39067e01,"cmp [17Eh],ax"
+631,12,10108,7418,je short 0026h
+631,14,10110,833e7c0100,"cmp word ptr [17Ch],0"
+631,19,10115,7411,je short 0026h
+631,21,10117,ff367c01,push word ptr [17Ch]
+631,25,10121,9ab61bee11,"call far 1BB6h,11EEh"
+631,30,10126,8be5,"mov sp,bp"
+631,32,10128,c7067c010000,"mov word ptr [17Ch],0"
+631,38,10134,a16a62,"mov ax,[626Ah]"
+631,41,10137,a37e01,"mov [17Eh],ax"
+631,44,10140,833e7c0100,"cmp word ptr [17Ch],0"
+631,49,10145,7522,jne short 0055h
+631,51,10147,680080,push 8000h
+631,54,10150,688c62,push 628Ch
+631,57,10153,9a721cee11,"call far 1C72h,11EEh"
+631,62,10158,8be5,"mov sp,bp"
+631,64,10160,a37c01,"mov [17Ch],ax"
+631,67,10163,3dffff,"cmp ax,0FFFFh"
+631,70,10166,750d,jne short 0055h
+631,72,10168,688c62,push 628Ch
+631,75,10171,688001,push 180h
+631,78,10174,9a0c00ba0f,"call far 000Ch,0FBAh"
+631,83,10179,8be5,"mov sp,bp"
+631,85,10181,6a00,push 0
+631,87,10183,66ff760a,push dword ptr [bp+0Ah]
+631,91,10187,ff367c01,push word ptr [17Ch]
+631,95,10191,9ad61bee11,"call far 1BD6h,11EEh"
+631,100,10196,8be5,"mov sp,bp"
+631,102,10198,ff760e,push word ptr [bp+0Eh]
+631,105,10201,66ff7606,push dword ptr [bp+6]
+631,109,10205,ff367c01,push word ptr [17Ch]
+631,113,10209,9a9e00ba0f,"call far 009Eh,0FBAh"
+631,118,10214,8be5,"mov sp,bp"
+631,120,10216,3b460e,"cmp ax,[bp+0Eh]"
+631,123,10219,740b,je short 0088h
+631,125,10221,688c62,push 628Ch
+631,128,10224,689601,push 196h
+631,131,10227,9a0c00ba0f,"call far 000Ch,0FBAh"
+631,136,10232,c9,leave
+631,137,10233,cb,ret far

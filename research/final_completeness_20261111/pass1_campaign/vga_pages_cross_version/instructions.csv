@@ -1,0 +1,281 @@
+label,function,relative_ip,image_offset,bytes,instruction
+10,immediate,0,5600,55,push bp
+10,immediate,1,5601,8bec,"mov bp,sp"
+10,immediate,3,5603,a12a01,"mov ax,[12Ah]"
+10,immediate,6,5606,87062c01,"xchg [12Ch],ax"
+10,immediate,10,5610,a32a01,"mov [12Ah],ax"
+10,immediate,13,5613,b104,"mov cl,4"
+10,immediate,15,5615,d2e4,"shl ah,cl"
+10,immediate,17,5617,b00c,"mov al,0Ch"
+10,immediate,19,5619,bad403,"mov dx,3D4h"
+10,immediate,22,5622,ef,"out dx,ax"
+10,immediate,23,5623,c9,leave
+10,immediate,24,5624,cb,ret far
+10,synchronized,0,5626,55,push bp
+10,synchronized,1,5627,8bec,"mov bp,sp"
+10,synchronized,3,5629,8b1e2a01,"mov bx,[12Ah]"
+10,synchronized,7,5633,871e2c01,"xchg [12Ch],bx"
+10,synchronized,11,5637,891e2a01,"mov [12Ah],bx"
+10,synchronized,15,5641,bada03,"mov dx,3DAh"
+10,synchronized,18,5644,ec,"in al,dx"
+10,synchronized,19,5645,a801,"test al,1"
+10,synchronized,21,5647,75fb,jne short 0012h
+10,synchronized,23,5649,fa,cli
+10,synchronized,24,5650,b00c,"mov al,0Ch"
+10,synchronized,26,5652,8ae7,"mov ah,bh"
+10,synchronized,28,5654,b104,"mov cl,4"
+10,synchronized,30,5656,d2e4,"shl ah,cl"
+10,synchronized,32,5658,bad403,"mov dx,3D4h"
+10,synchronized,35,5661,ef,"out dx,ax"
+10,synchronized,36,5662,fb,sti
+10,synchronized,37,5663,bada03,"mov dx,3DAh"
+10,synchronized,40,5666,ec,"in al,dx"
+10,synchronized,41,5667,a808,"test al,8"
+10,synchronized,43,5669,74fb,je short 0028h
+10,synchronized,45,5671,c9,leave
+10,synchronized,46,5672,cb,ret far
+11,immediate,0,5600,55,push bp
+11,immediate,1,5601,8bec,"mov bp,sp"
+11,immediate,3,5603,a12a01,"mov ax,[12Ah]"
+11,immediate,6,5606,87062c01,"xchg [12Ch],ax"
+11,immediate,10,5610,a32a01,"mov [12Ah],ax"
+11,immediate,13,5613,b104,"mov cl,4"
+11,immediate,15,5615,d2e4,"shl ah,cl"
+11,immediate,17,5617,b00c,"mov al,0Ch"
+11,immediate,19,5619,bad403,"mov dx,3D4h"
+11,immediate,22,5622,ef,"out dx,ax"
+11,immediate,23,5623,c9,leave
+11,immediate,24,5624,cb,ret far
+11,synchronized,0,5626,55,push bp
+11,synchronized,1,5627,8bec,"mov bp,sp"
+11,synchronized,3,5629,8b1e2a01,"mov bx,[12Ah]"
+11,synchronized,7,5633,871e2c01,"xchg [12Ch],bx"
+11,synchronized,11,5637,891e2a01,"mov [12Ah],bx"
+11,synchronized,15,5641,bada03,"mov dx,3DAh"
+11,synchronized,18,5644,ec,"in al,dx"
+11,synchronized,19,5645,a801,"test al,1"
+11,synchronized,21,5647,75fb,jne short 0012h
+11,synchronized,23,5649,fa,cli
+11,synchronized,24,5650,b00c,"mov al,0Ch"
+11,synchronized,26,5652,8ae7,"mov ah,bh"
+11,synchronized,28,5654,b104,"mov cl,4"
+11,synchronized,30,5656,d2e4,"shl ah,cl"
+11,synchronized,32,5658,bad403,"mov dx,3D4h"
+11,synchronized,35,5661,ef,"out dx,ax"
+11,synchronized,36,5662,fb,sti
+11,synchronized,37,5663,bada03,"mov dx,3DAh"
+11,synchronized,40,5666,ec,"in al,dx"
+11,synchronized,41,5667,a808,"test al,8"
+11,synchronized,43,5669,74fb,je short 0028h
+11,synchronized,45,5671,c9,leave
+11,synchronized,46,5672,cb,ret far
+12,immediate,0,5600,55,push bp
+12,immediate,1,5601,8bec,"mov bp,sp"
+12,immediate,3,5603,a12a01,"mov ax,[12Ah]"
+12,immediate,6,5606,87062c01,"xchg [12Ch],ax"
+12,immediate,10,5610,a32a01,"mov [12Ah],ax"
+12,immediate,13,5613,b104,"mov cl,4"
+12,immediate,15,5615,d2e4,"shl ah,cl"
+12,immediate,17,5617,b00c,"mov al,0Ch"
+12,immediate,19,5619,bad403,"mov dx,3D4h"
+12,immediate,22,5622,ef,"out dx,ax"
+12,immediate,23,5623,c9,leave
+12,immediate,24,5624,cb,ret far
+12,synchronized,0,5626,55,push bp
+12,synchronized,1,5627,8bec,"mov bp,sp"
+12,synchronized,3,5629,8b1e2a01,"mov bx,[12Ah]"
+12,synchronized,7,5633,871e2c01,"xchg [12Ch],bx"
+12,synchronized,11,5637,891e2a01,"mov [12Ah],bx"
+12,synchronized,15,5641,bada03,"mov dx,3DAh"
+12,synchronized,18,5644,ec,"in al,dx"
+12,synchronized,19,5645,a801,"test al,1"
+12,synchronized,21,5647,75fb,jne short 0012h
+12,synchronized,23,5649,fa,cli
+12,synchronized,24,5650,b00c,"mov al,0Ch"
+12,synchronized,26,5652,8ae7,"mov ah,bh"
+12,synchronized,28,5654,b104,"mov cl,4"
+12,synchronized,30,5656,d2e4,"shl ah,cl"
+12,synchronized,32,5658,bad403,"mov dx,3D4h"
+12,synchronized,35,5661,ef,"out dx,ax"
+12,synchronized,36,5662,fb,sti
+12,synchronized,37,5663,bada03,"mov dx,3DAh"
+12,synchronized,40,5666,ec,"in al,dx"
+12,synchronized,41,5667,a808,"test al,8"
+12,synchronized,43,5669,74fb,je short 0028h
+12,synchronized,45,5671,c9,leave
+12,synchronized,46,5672,cb,ret far
+15,immediate,0,5614,55,push bp
+15,immediate,1,5615,8bec,"mov bp,sp"
+15,immediate,3,5617,a12c01,"mov ax,[12Ch]"
+15,immediate,6,5620,87062e01,"xchg [12Eh],ax"
+15,immediate,10,5624,a32c01,"mov [12Ch],ax"
+15,immediate,13,5627,b104,"mov cl,4"
+15,immediate,15,5629,d2e4,"shl ah,cl"
+15,immediate,17,5631,b00c,"mov al,0Ch"
+15,immediate,19,5633,bad403,"mov dx,3D4h"
+15,immediate,22,5636,ef,"out dx,ax"
+15,immediate,23,5637,c9,leave
+15,immediate,24,5638,cb,ret far
+15,synchronized,0,5640,55,push bp
+15,synchronized,1,5641,8bec,"mov bp,sp"
+15,synchronized,3,5643,8b1e2c01,"mov bx,[12Ch]"
+15,synchronized,7,5647,871e2e01,"xchg [12Eh],bx"
+15,synchronized,11,5651,891e2c01,"mov [12Ch],bx"
+15,synchronized,15,5655,bada03,"mov dx,3DAh"
+15,synchronized,18,5658,ec,"in al,dx"
+15,synchronized,19,5659,a801,"test al,1"
+15,synchronized,21,5661,75fb,jne short 0012h
+15,synchronized,23,5663,fa,cli
+15,synchronized,24,5664,b00c,"mov al,0Ch"
+15,synchronized,26,5666,8ae7,"mov ah,bh"
+15,synchronized,28,5668,b104,"mov cl,4"
+15,synchronized,30,5670,d2e4,"shl ah,cl"
+15,synchronized,32,5672,bad403,"mov dx,3D4h"
+15,synchronized,35,5675,ef,"out dx,ax"
+15,synchronized,36,5676,fb,sti
+15,synchronized,37,5677,bada03,"mov dx,3DAh"
+15,synchronized,40,5680,ec,"in al,dx"
+15,synchronized,41,5681,a808,"test al,8"
+15,synchronized,43,5683,74fb,je short 0028h
+15,synchronized,45,5685,c9,leave
+15,synchronized,46,5686,cb,ret far
+17,immediate,0,5614,55,push bp
+17,immediate,1,5615,8bec,"mov bp,sp"
+17,immediate,3,5617,a12c01,"mov ax,[12Ch]"
+17,immediate,6,5620,87062e01,"xchg [12Eh],ax"
+17,immediate,10,5624,a32c01,"mov [12Ch],ax"
+17,immediate,13,5627,b104,"mov cl,4"
+17,immediate,15,5629,d2e4,"shl ah,cl"
+17,immediate,17,5631,b00c,"mov al,0Ch"
+17,immediate,19,5633,bad403,"mov dx,3D4h"
+17,immediate,22,5636,ef,"out dx,ax"
+17,immediate,23,5637,c9,leave
+17,immediate,24,5638,cb,ret far
+17,synchronized,0,5640,55,push bp
+17,synchronized,1,5641,8bec,"mov bp,sp"
+17,synchronized,3,5643,8b1e2c01,"mov bx,[12Ch]"
+17,synchronized,7,5647,871e2e01,"xchg [12Eh],bx"
+17,synchronized,11,5651,891e2c01,"mov [12Ch],bx"
+17,synchronized,15,5655,bada03,"mov dx,3DAh"
+17,synchronized,18,5658,ec,"in al,dx"
+17,synchronized,19,5659,a801,"test al,1"
+17,synchronized,21,5661,75fb,jne short 0012h
+17,synchronized,23,5663,fa,cli
+17,synchronized,24,5664,b00c,"mov al,0Ch"
+17,synchronized,26,5666,8ae7,"mov ah,bh"
+17,synchronized,28,5668,b104,"mov cl,4"
+17,synchronized,30,5670,d2e4,"shl ah,cl"
+17,synchronized,32,5672,bad403,"mov dx,3D4h"
+17,synchronized,35,5675,ef,"out dx,ax"
+17,synchronized,36,5676,fb,sti
+17,synchronized,37,5677,bada03,"mov dx,3DAh"
+17,synchronized,40,5680,ec,"in al,dx"
+17,synchronized,41,5681,a808,"test al,8"
+17,synchronized,43,5683,74fb,je short 0028h
+17,synchronized,45,5685,c9,leave
+17,synchronized,46,5686,cb,ret far
+18,immediate,0,5614,55,push bp
+18,immediate,1,5615,8bec,"mov bp,sp"
+18,immediate,3,5617,a12c01,"mov ax,[12Ch]"
+18,immediate,6,5620,87062e01,"xchg [12Eh],ax"
+18,immediate,10,5624,a32c01,"mov [12Ch],ax"
+18,immediate,13,5627,b104,"mov cl,4"
+18,immediate,15,5629,d2e4,"shl ah,cl"
+18,immediate,17,5631,b00c,"mov al,0Ch"
+18,immediate,19,5633,bad403,"mov dx,3D4h"
+18,immediate,22,5636,ef,"out dx,ax"
+18,immediate,23,5637,c9,leave
+18,immediate,24,5638,cb,ret far
+18,synchronized,0,5640,55,push bp
+18,synchronized,1,5641,8bec,"mov bp,sp"
+18,synchronized,3,5643,8b1e2c01,"mov bx,[12Ch]"
+18,synchronized,7,5647,871e2e01,"xchg [12Eh],bx"
+18,synchronized,11,5651,891e2c01,"mov [12Ch],bx"
+18,synchronized,15,5655,bada03,"mov dx,3DAh"
+18,synchronized,18,5658,ec,"in al,dx"
+18,synchronized,19,5659,a801,"test al,1"
+18,synchronized,21,5661,75fb,jne short 0012h
+18,synchronized,23,5663,fa,cli
+18,synchronized,24,5664,b00c,"mov al,0Ch"
+18,synchronized,26,5666,8ae7,"mov ah,bh"
+18,synchronized,28,5668,b104,"mov cl,4"
+18,synchronized,30,5670,d2e4,"shl ah,cl"
+18,synchronized,32,5672,bad403,"mov dx,3D4h"
+18,synchronized,35,5675,ef,"out dx,ax"
+18,synchronized,36,5676,fb,sti
+18,synchronized,37,5677,bada03,"mov dx,3DAh"
+18,synchronized,40,5680,ec,"in al,dx"
+18,synchronized,41,5681,a808,"test al,8"
+18,synchronized,43,5683,74fb,je short 0028h
+18,synchronized,45,5685,c9,leave
+18,synchronized,46,5686,cb,ret far
+19,immediate,0,5614,55,push bp
+19,immediate,1,5615,8bec,"mov bp,sp"
+19,immediate,3,5617,a12c01,"mov ax,[12Ch]"
+19,immediate,6,5620,87062e01,"xchg [12Eh],ax"
+19,immediate,10,5624,a32c01,"mov [12Ch],ax"
+19,immediate,13,5627,b104,"mov cl,4"
+19,immediate,15,5629,d2e4,"shl ah,cl"
+19,immediate,17,5631,b00c,"mov al,0Ch"
+19,immediate,19,5633,bad403,"mov dx,3D4h"
+19,immediate,22,5636,ef,"out dx,ax"
+19,immediate,23,5637,c9,leave
+19,immediate,24,5638,cb,ret far
+19,synchronized,0,5640,55,push bp
+19,synchronized,1,5641,8bec,"mov bp,sp"
+19,synchronized,3,5643,8b1e2c01,"mov bx,[12Ch]"
+19,synchronized,7,5647,871e2e01,"xchg [12Eh],bx"
+19,synchronized,11,5651,891e2c01,"mov [12Ch],bx"
+19,synchronized,15,5655,bada03,"mov dx,3DAh"
+19,synchronized,18,5658,ec,"in al,dx"
+19,synchronized,19,5659,a801,"test al,1"
+19,synchronized,21,5661,75fb,jne short 0012h
+19,synchronized,23,5663,fa,cli
+19,synchronized,24,5664,b00c,"mov al,0Ch"
+19,synchronized,26,5666,8ae7,"mov ah,bh"
+19,synchronized,28,5668,b104,"mov cl,4"
+19,synchronized,30,5670,d2e4,"shl ah,cl"
+19,synchronized,32,5672,bad403,"mov dx,3D4h"
+19,synchronized,35,5675,ef,"out dx,ax"
+19,synchronized,36,5676,fb,sti
+19,synchronized,37,5677,bada03,"mov dx,3DAh"
+19,synchronized,40,5680,ec,"in al,dx"
+19,synchronized,41,5681,a808,"test al,8"
+19,synchronized,43,5683,74fb,je short 0028h
+19,synchronized,45,5685,c9,leave
+19,synchronized,46,5686,cb,ret far
+20,immediate,0,5614,55,push bp
+20,immediate,1,5615,8bec,"mov bp,sp"
+20,immediate,3,5617,a12c01,"mov ax,[12Ch]"
+20,immediate,6,5620,87062e01,"xchg [12Eh],ax"
+20,immediate,10,5624,a32c01,"mov [12Ch],ax"
+20,immediate,13,5627,b104,"mov cl,4"
+20,immediate,15,5629,d2e4,"shl ah,cl"
+20,immediate,17,5631,b00c,"mov al,0Ch"
+20,immediate,19,5633,bad403,"mov dx,3D4h"
+20,immediate,22,5636,ef,"out dx,ax"
+20,immediate,23,5637,c9,leave
+20,immediate,24,5638,cb,ret far
+20,synchronized,0,5640,55,push bp
+20,synchronized,1,5641,8bec,"mov bp,sp"
+20,synchronized,3,5643,8b1e2c01,"mov bx,[12Ch]"
+20,synchronized,7,5647,871e2e01,"xchg [12Eh],bx"
+20,synchronized,11,5651,891e2c01,"mov [12Ch],bx"
+20,synchronized,15,5655,bada03,"mov dx,3DAh"
+20,synchronized,18,5658,ec,"in al,dx"
+20,synchronized,19,5659,a801,"test al,1"
+20,synchronized,21,5661,75fb,jne short 0012h
+20,synchronized,23,5663,fa,cli
+20,synchronized,24,5664,b00c,"mov al,0Ch"
+20,synchronized,26,5666,8ae7,"mov ah,bh"
+20,synchronized,28,5668,b104,"mov cl,4"
+20,synchronized,30,5670,d2e4,"shl ah,cl"
+20,synchronized,32,5672,bad403,"mov dx,3D4h"
+20,synchronized,35,5675,ef,"out dx,ax"
+20,synchronized,36,5676,fb,sti
+20,synchronized,37,5677,bada03,"mov dx,3DAh"
+20,synchronized,40,5680,ec,"in al,dx"
+20,synchronized,41,5681,a808,"test al,8"
+20,synchronized,43,5683,74fb,je short 0028h
+20,synchronized,45,5685,c9,leave
+20,synchronized,46,5686,cb,ret far

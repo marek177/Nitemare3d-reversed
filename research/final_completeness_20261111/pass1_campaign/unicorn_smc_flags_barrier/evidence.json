@@ -1,0 +1,1034 @@
+{
+  "mode": "flags_barrier",
+  "experiment": "synthetic CMP/JAE, ADD lazy-flags, ADC future-operand write",
+  "unicorn_version": "2.1.4",
+  "native_libraries": [
+    {
+      "name": "unicorn.dll",
+      "sha256": "010d85dce84b8f6ffaec3d5420f1b5f7768f859eb831be574c7da23e656ee8f1"
+    }
+  ],
+  "cases": [
+    {
+      "target_kind": "future_operand",
+      "target_offset": 283,
+      "before_cf": 1,
+      "incoming_cf": 0,
+      "expected_word": 513,
+      "actual_word": 513,
+      "model_match": true,
+      "synthetic_code_sha256": "4140583f521a804c822a4ff087538e8e4200d2932a5c225a59a2810744ee02cb",
+      "synthetic_code_hex": "39d873002e8106000300009c9d2e81161b010100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 513
+        }
+      ]
+    },
+    {
+      "target_kind": "future_operand",
+      "target_offset": 283,
+      "before_cf": 0,
+      "incoming_cf": 1,
+      "expected_word": 514,
+      "actual_word": 514,
+      "model_match": true,
+      "synthetic_code_sha256": "33b2ae1e4455a5c17a5261ab255932b0e75e60c5b38a4179cc3bd879794be613",
+      "synthetic_code_hex": "39d873002e8106000301009c9d2e81161b010100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 514
+        }
+      ]
+    },
+    {
+      "target_kind": "future_operand",
+      "target_offset": 283,
+      "before_cf": 0,
+      "incoming_cf": 0,
+      "expected_word": 513,
+      "actual_word": 513,
+      "model_match": true,
+      "synthetic_code_sha256": "4140583f521a804c822a4ff087538e8e4200d2932a5c225a59a2810744ee02cb",
+      "synthetic_code_hex": "39d873002e8106000300009c9d2e81161b010100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 513
+        }
+      ]
+    },
+    {
+      "target_kind": "future_operand",
+      "target_offset": 283,
+      "before_cf": 1,
+      "incoming_cf": 1,
+      "expected_word": 514,
+      "actual_word": 514,
+      "model_match": true,
+      "synthetic_code_sha256": "33b2ae1e4455a5c17a5261ab255932b0e75e60c5b38a4179cc3bd879794be613",
+      "synthetic_code_hex": "39d873002e8106000301009c9d2e81161b010100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 514
+        }
+      ]
+    },
+    {
+      "target_kind": "same_code_page_data",
+      "target_offset": 2048,
+      "before_cf": 1,
+      "incoming_cf": 0,
+      "expected_word": 513,
+      "actual_word": 513,
+      "model_match": true,
+      "synthetic_code_sha256": "4b90cf29baa2e5f029b345a6b7591ae87568909f73818ef25630752a4ca4410a",
+      "synthetic_code_hex": "39d873002e8106000300009c9d2e811600080100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 513
+        }
+      ]
+    },
+    {
+      "target_kind": "same_code_page_data",
+      "target_offset": 2048,
+      "before_cf": 0,
+      "incoming_cf": 1,
+      "expected_word": 514,
+      "actual_word": 514,
+      "model_match": true,
+      "synthetic_code_sha256": "2713f45d8e612a57dcabb371a952fdeda2a083b506e14c55bb3ebeebff61bd63",
+      "synthetic_code_hex": "39d873002e8106000301009c9d2e811600080100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 514
+        }
+      ]
+    },
+    {
+      "target_kind": "same_code_page_data",
+      "target_offset": 2048,
+      "before_cf": 0,
+      "incoming_cf": 0,
+      "expected_word": 513,
+      "actual_word": 513,
+      "model_match": true,
+      "synthetic_code_sha256": "4b90cf29baa2e5f029b345a6b7591ae87568909f73818ef25630752a4ca4410a",
+      "synthetic_code_hex": "39d873002e8106000300009c9d2e811600080100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 513
+        }
+      ]
+    },
+    {
+      "target_kind": "same_code_page_data",
+      "target_offset": 2048,
+      "before_cf": 1,
+      "incoming_cf": 1,
+      "expected_word": 514,
+      "actual_word": 514,
+      "model_match": true,
+      "synthetic_code_sha256": "2713f45d8e612a57dcabb371a952fdeda2a083b506e14c55bb3ebeebff61bd63",
+      "synthetic_code_hex": "39d873002e8106000301009c9d2e811600080100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 514
+        }
+      ]
+    },
+    {
+      "target_kind": "other_page_data",
+      "target_offset": 6144,
+      "before_cf": 1,
+      "incoming_cf": 0,
+      "expected_word": 513,
+      "actual_word": 513,
+      "model_match": true,
+      "synthetic_code_sha256": "b8c4a4e47b410d33ce6717146788e3c1b54284d312bec96b74e72a6b4da85ba7",
+      "synthetic_code_hex": "39d873002e8106000300009c9d2e811600180100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 513
+        }
+      ]
+    },
+    {
+      "target_kind": "other_page_data",
+      "target_offset": 6144,
+      "before_cf": 0,
+      "incoming_cf": 1,
+      "expected_word": 514,
+      "actual_word": 514,
+      "model_match": true,
+      "synthetic_code_sha256": "a4dc0367c3fc218ecb792e76a13d947401e9532ca3a2f4e8f0fd2948551ef64a",
+      "synthetic_code_hex": "39d873002e8106000301009c9d2e811600180100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 514
+        }
+      ]
+    },
+    {
+      "target_kind": "other_page_data",
+      "target_offset": 6144,
+      "before_cf": 0,
+      "incoming_cf": 0,
+      "expected_word": 513,
+      "actual_word": 513,
+      "model_match": true,
+      "synthetic_code_sha256": "b8c4a4e47b410d33ce6717146788e3c1b54284d312bec96b74e72a6b4da85ba7",
+      "synthetic_code_hex": "39d873002e8106000300009c9d2e811600180100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 513
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 513
+        }
+      ]
+    },
+    {
+      "target_kind": "other_page_data",
+      "target_offset": 6144,
+      "before_cf": 1,
+      "incoming_cf": 1,
+      "expected_word": 514,
+      "actual_word": 514,
+      "model_match": true,
+      "synthetic_code_sha256": "a4dc0367c3fc218ecb792e76a13d947401e9532ca3a2f4e8f0fd2948551ef64a",
+      "synthetic_code_hex": "39d873002e8106000301009c9d2e811600180100909090909090a00002f4",
+      "trace": [
+        {
+          "offset": 256,
+          "cf": 0,
+          "target_word": 512
+        },
+        {
+          "offset": 258,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 260,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 267,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 268,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 269,
+          "cf": 1,
+          "target_word": 512
+        },
+        {
+          "offset": 276,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 277,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 278,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 279,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 280,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 281,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 282,
+          "cf": 0,
+          "target_word": 514
+        },
+        {
+          "offset": 285,
+          "cf": 0,
+          "target_word": 514
+        }
+      ]
+    }
+  ],
+  "attempted_cases": 12,
+  "mismatches": 0,
+  "original_game_replay_cases": 0,
+  "runtime_tests": 0,
+  "scope": "synthetic minimization; cannot certify original CPU/prefetch behavior"
+}

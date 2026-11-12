@@ -1,0 +1,16 @@
+cs,ip,image_offset,bytes,instruction
+4590,6759,80199,f646fc20,"test byte ptr [bp-4],20h"
+4590,6763,80203,7408,je short 1A75h
+4590,6765,80205,e8ebff,call 1A5Bh
+4590,6768,80208,8ec2,"mov es,dx"
+4590,6770,80210,8bf8,"mov di,ax"
+4590,6772,80212,c3,ret
+4590,6773,80213,e8dbff,call 1A53h
+4590,6776,80216,8bf8,"mov di,ax"
+4590,6778,80218,0bc0,"or ax,ax"
+4590,6780,80220,7503,jne short 1A81h
+4590,6782,80222,8ec0,"mov es,ax"
+4590,6784,80224,c3,ret
+4590,6785,80225,1e,push ds
+4590,6786,80226,07,pop es
+4590,6787,80227,c3,ret

@@ -1,0 +1,13 @@
+name,start,end_exclusive,length,type,status,initial_hex,range_sha256,evidence,reference_count
+cached_handle_word_0x1ac,161980,161982,2,cached_handle_WORD,PARTIAL,0000,96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7,0277:008D tests zero; 00A1 writes AX; 00BC/00CE pass handle,4
+one_time_init_byte_0x244,162132,162133,1,one_time_init_BYTE,PARTIAL,01,4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a,0277:018E tests; 0199 clears DL,2
+one_time_gate_byte_0x678,163208,163209,1,one_time_gate_BYTE,PARTIAL,01,4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a,0277:176A tests; 1771 clears,2
+episode_cache_key_word_0xad2,164322,164324,2,episode_cache_key_WORD,PARTIAL,ffff,ca2fd00fa001190744c15c317643ab092e7048ce086a243e2be9437c898de1bb,04C7:0B7D compares episode; 0B83 stores; following class 41/42 lookup,2
+cyclic_selector_word_0xc9c,164780,164782,2,cyclic_selector_WORD,PARTIAL,0000,96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7,0768:04E2 indexes FAR pointer table; 04FB increments; 04FF signed bound; 0505 resets,4
+toggle_byte_0x1507,166935,166936,1,toggle_BYTE,PARTIAL,01,4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a,083D:1504 tests; 152E XOR 1,2
+lifecycle_latch_byte_0x16f0,167424,167425,1,lifecycle_latch_BYTE,PARTIAL,00,6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d,0BCC:0084/00EC tests; 00E5 sets; 011B clears,4
+sound_priority_byte_unsigned_0x17e6,167670,167671,1,sound_priority_BYTE_unsigned,PARTIAL,00,6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d,0C2B:040B/0426 unsigned compare; 0436 writes incoming priority AL,3
+startup_near_code_pointer_0x20de,169966,169968,2,startup_NEAR_code_pointer,PARTIAL,f201,f8bfc0acc4ff3ec30a6959a5917c1df34026d4e37f90ca26e93c68b11cfdbf3a,11EE:00EE assigns 01EB; 011C indirect near CALL; initial 01F2,2
+startup_mode_word_low_byte_consumed_0x2122,170034,170036,2,startup_mode_WORD_low_BYTE_consumed,PARTIAL,0000,96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7,11EE:0316 loads WORD; AL compared with 2; high-byte role unresolved,1
+crt_counter_word_0x2178,170120,170122,2,CRT_counter_WORD,PARTIAL,0000,96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7,11EE:0B0B increments; higher-level purpose unresolved,1
+optional_initializer_near_pointer_0x2532,171074,171076,2,optional_initializer_NEAR_pointer,PARTIAL,0000,96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7,11EE:00B3 loads CX; JCXZ skips; 00B9 CALL CX,1

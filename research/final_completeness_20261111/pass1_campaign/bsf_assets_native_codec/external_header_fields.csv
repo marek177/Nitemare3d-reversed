@@ -1,0 +1,12 @@
+offset,length,type,status,evidence
+0,1,BYTE,UNKNOWN,whole encoded header XOR=0 does not identify sole checksum byte
+1,1,BYTE,PARTIAL,mode0 passes AL to n3d.exe verification helper; full semantic role open
+2,1,BYTE,PARTIAL,mode0 passes AL to map.1 helper when byte3 zero; full role open
+3,1,BYTE_nonzero_flag,PARTIAL,mode1 returns pointer iff nonzero; mode0 gates second check
+4,32,BYTE_name_region_candidate,PARTIAL,mode2 returns DS:363C; trailing bytes after NUL not padding proof
+36,4,little_endian_DWORD_file_offset,PARTIAL,mode4 loader argument plus all40 exact external partitions
+40,4,little_endian_DWORD_file_offset,PARTIAL,mode3 loader argument plus all40 exact external partitions
+44,4,little_endian_DWORD_file_offset,PARTIAL,mode5 loader argument plus all40 exact external partitions
+48,2,little_endian_WORD_block_length,PARTIAL,mode4 loader count plus all40 exact external partitions
+50,2,little_endian_WORD_block_length,PARTIAL,mode3 loader count plus all40 exact external partitions
+52,2,little_endian_WORD_block_length,PARTIAL,mode5 loader count plus all40 exact external partitions

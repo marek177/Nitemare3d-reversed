@@ -1,0 +1,16 @@
+cs,ip,image_offset,bytes,instruction
+4590,9112,82552,55,push bp
+4590,9113,82553,8bec,"mov bp,sp"
+4590,9115,82555,8bd7,"mov dx,di"
+4590,9117,82557,8cd8,"mov ax,ds"
+4590,9119,82559,8ec0,"mov es,ax"
+4590,9121,82561,8b7e06,"mov di,[bp+6]"
+4590,9124,82564,33c0,"xor ax,ax"
+4590,9126,82566,b9ffff,"mov cx,0FFFFh"
+4590,9129,82569,f2ae,repne scasb [di]
+4590,9131,82571,f7d1,not cx
+4590,9133,82573,49,dec cx
+4590,9134,82574,91,"xchg cx,ax"
+4590,9135,82575,8bfa,"mov di,dx"
+4590,9137,82577,5d,pop bp
+4590,9138,82578,cb,ret far

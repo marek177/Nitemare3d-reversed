@@ -1,0 +1,30 @@
+cs,ip,image_offset,bytes,instruction,in_old_inventory
+4026,434,64850,c8020000,"enter 2,0",True
+4026,438,64854,57,push di,True
+4026,439,64855,56,push si,True
+4026,440,64856,33ff,"xor di,di",True
+4026,442,64858,c646ff00,"mov byte ptr [bp-1],0",True
+4026,446,64862,397e0a,"cmp [bp+0Ah],di",True
+4026,449,64865,7426,je short 01E9h,True
+4026,451,64867,8b7606,"mov si,[bp+6]",True
+4026,454,64870,8e5e08,"mov ds,[bp+8]",True
+4026,457,64873,8a04,"mov al,[si]",True
+4026,459,64875,3046ff,"xor [bp-1],al",True
+4026,462,64878,8bc7,"mov ax,di",True
+4026,464,64880,b93400,"mov cx,34h",True
+4026,467,64883,2bd2,"sub dx,dx",True
+4026,469,64885,f7f1,div cx,True
+4026,471,64887,8bda,"mov bx,dx",True
+4026,473,64889,368a874520,"mov al,ss:[bx+2045h]",True
+4026,478,64894,3004,"xor [si],al",True
+4026,480,64896,46,inc si,True
+4026,481,64897,47,inc di,True
+4026,482,64898,3b7e0a,"cmp di,[bp+0Ah]",True
+4026,485,64901,72e2,jb short 01C9h,True
+4026,487,64903,16,push ss,True
+4026,488,64904,1f,pop ds,True
+4026,489,64905,8a46ff,"mov al,[bp-1]",True
+4026,492,64908,5e,pop si,True
+4026,493,64909,5f,pop di,True
+4026,494,64910,c9,leave,True
+4026,495,64911,cb,ret far,True

@@ -1,0 +1,17 @@
+cs,ip,image_offset,bytes,instruction
+4590,670,74110,55,push bp
+4590,671,74111,8bec,"mov bp,sp"
+4590,673,74113,b8fc00,"mov ax,0FCh"
+4590,676,74116,50,push ax
+4590,677,74117,0e,push cs
+4590,678,74118,e89c02,call 0545h
+4590,681,74121,833e542100,"cmp word ptr [2154h],0"
+4590,686,74126,7404,je short 02B4h
+4590,688,74128,ff1e5221,call far dword ptr [2152h]
+4590,692,74132,b8ff00,"mov ax,0FFh"
+4590,695,74135,50,push ax
+4590,696,74136,0e,push cs
+4590,697,74137,e88902,call 0545h
+4590,700,74140,8be5,"mov sp,bp"
+4590,702,74142,5d,pop bp
+4590,703,74143,cb,ret far

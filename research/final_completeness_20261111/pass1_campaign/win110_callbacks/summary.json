@@ -1,0 +1,23 @@
+{
+  "exe_sha256": "12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481",
+  "ne_automatic_data_segment": 10,
+  "ne_initial_stack_segment": 10,
+  "ne_initial_sp": 0,
+  "data_segment_index": 10,
+  "data_start": 8400,
+  "data_end_exclusive": 8412,
+  "data_file_offset": 188688,
+  "initial_bytes": "000000000000000000000000",
+  "initial_bytes_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+  "loader_fixup_overlap": 0,
+  "checked_instruction_sites": 9,
+  "indirect_control_sites": 13,
+  "callback_pointer_candidate": "DS:20D0 offset WORD + DS:20D2 selector WORD",
+  "first_guard": "2:3835 JCXZ 3860 skips both callback sites when loaded selector word is zero",
+  "cleanup_guard": "2:396F JCXZ 3978 skips callback when incoming DS:20D2 is zero",
+  "global_writes_excluded": false,
+  "callback_abi_closed": false,
+  "closed_indirect_targets": 0,
+  "new_deep_verified_bytes": 0,
+  "runtime_tests": 0
+}

@@ -1,0 +1,43 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "crt_timezone_cached_init",
+      "start": 84692,
+      "end_exclusive": 84709,
+      "instruction_bytes": 17,
+      "instructions": 5
+    },
+    {
+      "name": "crt_timezone_parse",
+      "start": 84710,
+      "end_exclusive": 84960,
+      "instruction_bytes": 248,
+      "instructions": 102
+    },
+    {
+      "name": "crt_strncpy_near",
+      "start": 82580,
+      "end_exclusive": 82620,
+      "instruction_bytes": 40,
+      "instructions": 24
+    },
+    {
+      "name": "crt_atol_near",
+      "start": 82678,
+      "end_exclusive": 82766,
+      "instruction_bytes": 87,
+      "instructions": 48
+    }
+  ],
+  "typed_bytes": 21,
+  "cases": 250,
+  "failures": 0,
+  "scope": "original TZ parser, strncpy, atol and multiply; only getenv result mocked; DF=0; seeded cache",
+  "original_environment_lookup_closed": false,
+  "malformed_input_domain_closed": false,
+  "full_calendar_closed": false,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0
+}

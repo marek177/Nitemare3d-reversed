@@ -1,0 +1,55 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "crt_srand_word",
+      "start": 86214,
+      "end_exclusive": 86231,
+      "instruction_bytes": 17,
+      "instructions": 7
+    },
+    {
+      "name": "crt_rand_lcg",
+      "start": 86232,
+      "end_exclusive": 86272,
+      "instruction_bytes": 40,
+      "instructions": 14
+    },
+    {
+      "name": "compiler_mul32_low",
+      "start": 88504,
+      "end_exclusive": 88554,
+      "instruction_bytes": 50,
+      "instructions": 23
+    },
+    {
+      "name": "game_rand_wrapper",
+      "start": 64832,
+      "end_exclusive": 64838,
+      "instruction_bytes": 6,
+      "instructions": 2
+    },
+    {
+      "name": "game_fixed_seed_wrapper",
+      "start": 64838,
+      "end_exclusive": 64849,
+      "instruction_bytes": 11,
+      "instructions": 4
+    }
+  ],
+  "typed_bytes": 4,
+  "cases": 135332,
+  "rand_calls_verified": 135168,
+  "multiply_cases": 162,
+  "full_word_seed_domain": 65536,
+  "arbitrary_state_sequences": 16,
+  "sequence_steps": 128,
+  "failures": 0,
+  "cases_sha256": "dfda84ff2f3dfc97bd50345e3c2598fcb268786d145a7c9d12854c72d24a2c40",
+  "scope": "original srand, rand, multiplication and wrappers; no mocked callees; seeded DS and states; no natural game scheduling",
+  "natural_seed_sources_closed": false,
+  "full_damage_algorithm_closed": false,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0
+}

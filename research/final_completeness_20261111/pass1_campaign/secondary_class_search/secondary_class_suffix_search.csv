@@ -1,0 +1,24 @@
+cs,ip,image_offset,bytes,instruction
+247,78,4030,55,push bp
+247,79,4031,8bec,"mov bp,sp"
+247,81,4033,2aff,"sub bh,bh"
+247,83,4035,8a5e08,"mov bl,[bp+8]"
+247,86,4038,81fb0001,"cmp bx,100h"
+247,90,4042,7d1a,jge short 0076h
+247,92,4044,8b5606,"mov dx,[bp+6]"
+247,95,4047,8a870ed4,"mov al,[bx-2BF2h]"
+247,99,4051,2ae4,"sub ah,ah"
+247,101,4053,3bc2,"cmp ax,dx"
+247,103,4055,7409,je short 0072h
+247,105,4057,43,inc bx
+247,106,4058,81fb0001,"cmp bx,100h"
+247,110,4062,7cef,jl short 005Fh
+247,112,4064,eb04,jmp short 0076h
+247,114,4066,8bc3,"mov ax,bx"
+247,116,4068,c9,leave
+247,117,4069,cb,ret far
+247,118,4070,ff7606,push word ptr [bp+6]
+247,121,4073,68f200,push 0F2h
+247,124,4076,9a0c00ba0f,"call far 000Ch,0FBAh"
+247,129,4081,c9,leave
+247,130,4082,cb,ret far

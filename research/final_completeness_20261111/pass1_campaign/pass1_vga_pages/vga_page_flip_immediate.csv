@@ -1,0 +1,13 @@
+cs,ip,image_offset,bytes,instruction
+342,142,5614,55,push bp
+342,143,5615,8bec,"mov bp,sp"
+342,145,5617,a12c01,"mov ax,[12Ch]"
+342,148,5620,87062e01,"xchg [12Eh],ax"
+342,152,5624,a32c01,"mov [12Ch],ax"
+342,155,5627,b104,"mov cl,4"
+342,157,5629,d2e4,"shl ah,cl"
+342,159,5631,b00c,"mov al,0Ch"
+342,161,5633,bad403,"mov dx,3D4h"
+342,164,5636,ef,"out dx,ax"
+342,165,5637,c9,leave
+342,166,5638,cb,ret far

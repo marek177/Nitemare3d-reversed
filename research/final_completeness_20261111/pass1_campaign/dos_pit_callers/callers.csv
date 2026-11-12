@@ -1,0 +1,9 @@
+image_offset,bytes,input_formula,scope,status
+101110,e86117,constant AX=0952h,local provenance only; no global range proof,PARTIAL
+102778,e8dd10,AX=(1191180 / CS:34B9) low8 after DIV16; upstream DIV may fault,local provenance only; no global range proof,PARTIAL
+102964,e82310,same low8 quotient formula as1917A,local provenance only; no global range proof,PARTIAL
+103065,e8be0f,AX=CS:2C49,local provenance only; no global range proof,PARTIAL
+103142,e8710f,AX=CS:2C49,local provenance only; no global range proof,PARTIAL
+105051,e8fc07,constant AX=FFFFh; followed by gate=1,local provenance only; no global range proof,PARTIAL
+106466,e87502,AX=1193180 / WORD ES:DI; upstream DIV may fault,local provenance only; no global range proof,PARTIAL
+106865,e8e600,AX=low16(10 * high16(7795 * quotient)); quotient from external numerator / CS:2C5A,local provenance only; no global range proof,PARTIAL

@@ -1,0 +1,142 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "unicorn_version": "2.1.4",
+  "native_libraries": [
+    {
+      "name": "unicorn.dll",
+      "sha256": "010d85dce84b8f6ffaec3d5420f1b5f7768f859eb831be574c7da23e656ee8f1"
+    }
+  ],
+  "cases": [
+    {
+      "initial_sample_offset": 256,
+      "end_offset": 512,
+      "fractional_accumulator": 0,
+      "fractional_step": 0,
+      "integer_step": 1,
+      "initial_countdown": 100,
+      "expected_next_sample_offset": 257,
+      "actual_next_sample_offset": 258,
+      "actual_accumulator": 0,
+      "actual_lookup": 13241,
+      "checks": {
+        "offset": false,
+        "accumulator": true,
+        "lookup": false,
+        "ports": false,
+        "countdown": true,
+        "borrow_counter": true
+      },
+      "read_offset_beyond_declared_end": false,
+      "ports": [
+        {
+          "port": 66,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "port": 66,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "port": 32,
+          "size": 1,
+          "value": 32
+        }
+      ],
+      "final_countdown": 36,
+      "borrow_counter": 0,
+      "returned_by_iret": true
+    },
+    {
+      "initial_sample_offset": 256,
+      "end_offset": 512,
+      "fractional_accumulator": 1,
+      "fractional_step": 65535,
+      "integer_step": 0,
+      "initial_countdown": 63,
+      "expected_next_sample_offset": 257,
+      "actual_next_sample_offset": 257,
+      "actual_accumulator": 0,
+      "actual_lookup": 13283,
+      "checks": {
+        "offset": true,
+        "accumulator": true,
+        "lookup": true,
+        "ports": true,
+        "countdown": true,
+        "borrow_counter": true
+      },
+      "read_offset_beyond_declared_end": false,
+      "ports": [
+        {
+          "port": 66,
+          "size": 1,
+          "value": 3
+        },
+        {
+          "port": 66,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "port": 32,
+          "size": 1,
+          "value": 32
+        }
+      ],
+      "final_countdown": 4294967295,
+      "borrow_counter": 1,
+      "returned_by_iret": true
+    },
+    {
+      "initial_sample_offset": 256,
+      "end_offset": 257,
+      "fractional_accumulator": 0,
+      "fractional_step": 0,
+      "integer_step": 2,
+      "initial_countdown": 100,
+      "expected_next_sample_offset": 258,
+      "actual_next_sample_offset": 259,
+      "actual_accumulator": 0,
+      "actual_lookup": 13241,
+      "checks": {
+        "offset": false,
+        "accumulator": true,
+        "lookup": false,
+        "ports": false,
+        "countdown": true,
+        "borrow_counter": true
+      },
+      "read_offset_beyond_declared_end": true,
+      "ports": [
+        {
+          "port": 66,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "port": 66,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "port": 32,
+          "size": 1,
+          "value": 32
+        }
+      ],
+      "final_countdown": 36,
+      "borrow_counter": 0,
+      "returned_by_iret": true
+    }
+  ],
+  "attempted_replay_cases": 3,
+  "controlled_replay_cases": 0,
+  "semantic_replay_accepted": false,
+  "all_checks_match": false,
+  "runtime_tests": 0,
+  "natural_reachability_proven": false,
+  "scope": "prepared operands and memory; normal IRQ output path only; no PIT/PIC or original runtime"
+}

@@ -1,0 +1,40 @@
+cs,ip,image_offset,bytes,instruction
+1712,1066,28458,f646fa01,"test byte ptr [bp-6],1"
+1712,1070,28462,750b,jne short 043Bh
+1712,1072,28464,803e5a0b00,"cmp byte ptr [0B5Ah],0"
+1712,1077,28469,7404,je short 043Bh
+1712,1079,28471,c646fc0d,"mov byte ptr [bp-4],0Dh"
+1712,1083,28475,f646fa02,"test byte ptr [bp-6],2"
+1712,1087,28479,740b,je short 044Ch
+1712,1089,28481,803e5b0b00,"cmp byte ptr [0B5Bh],0"
+1712,1094,28486,7504,jne short 044Ch
+1712,1096,28488,c646fc1b,"mov byte ptr [bp-4],1Bh"
+1712,1100,28492,8a46fa,"mov al,[bp-6]"
+1712,1103,28495,2401,"and al,1"
+1712,1105,28497,a25a0b,"mov [0B5Ah],al"
+1712,1108,28500,f646fa02,"test byte ptr [bp-6],2"
+1712,1112,28504,750e,jne short 0468h
+1712,1114,28506,807efc0d,"cmp byte ptr [bp-4],0Dh"
+1712,1118,28510,7408,je short 0468h
+1712,1120,28512,c6065b0b00,"mov byte ptr [0B5Bh],0"
+1712,1125,28517,eb06,jmp short 046Dh
+1712,1128,28520,c6065b0b01,"mov byte ptr [0B5Bh],1"
+1712,1201,28593,837eee00,"cmp word ptr [bp-12h],0"
+1712,1205,28597,750b,jne short 04C2h
+1712,1207,28599,803e580b00,"cmp byte ptr [0B58h],0"
+1712,1212,28604,7404,je short 04C2h
+1712,1214,28606,c646fc0d,"mov byte ptr [bp-4],0Dh"
+1712,1218,28610,837ef000,"cmp word ptr [bp-10h],0"
+1712,1222,28614,740b,je short 04D3h
+1712,1224,28616,803e590b00,"cmp byte ptr [0B59h],0"
+1712,1229,28621,7504,jne short 04D3h
+1712,1231,28623,c646fc1b,"mov byte ptr [bp-4],1Bh"
+1712,1235,28627,8a46ee,"mov al,[bp-12h]"
+1712,1238,28630,a2580b,"mov [0B58h],al"
+1712,1241,28633,837ef000,"cmp word ptr [bp-10h],0"
+1712,1245,28637,750d,jne short 04ECh
+1712,1247,28639,807efc0d,"cmp byte ptr [bp-4],0Dh"
+1712,1251,28643,7407,je short 04ECh
+1712,1253,28645,c606590b00,"mov byte ptr [0B59h],0"
+1712,1258,28650,eb05,jmp short 04F1h
+1712,1260,28652,c606590b01,"mov byte ptr [0B59h],1"

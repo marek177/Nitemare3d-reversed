@@ -1,0 +1,105 @@
+cs,ip,image_offset,bytes,instruction
+4590,3795,77235,c78674fec822,"mov word ptr [bp-18Ch],22C8h"
+4590,3801,77241,eb1f,jmp short 0EFAh
+4590,3804,77244,c78674fec222,"mov word ptr [bp-18Ch],22C2h"
+4590,3810,77250,eb16,jmp short 0EFAh
+4590,3812,77252,ff4608,inc word ptr [bp+8]
+4590,3815,77255,8b4608,"mov ax,[bp+8]"
+4590,3818,77258,898674fe,"mov [bp-18Ch],ax"
+4590,3822,77262,8bd8,"mov bx,ax"
+4590,3824,77264,803f5e,"cmp byte ptr [bx],5Eh"
+4590,3827,77267,7509,jne short 0EFEh
+4590,3829,77269,40,inc ax
+4590,3830,77270,898674fe,"mov [bp-18Ch],ax"
+4590,3834,77274,fe8e58fe,dec byte ptr [bp-1A8h]
+4590,3838,77278,b82000,"mov ax,20h"
+4590,3841,77281,50,push ax
+4590,3842,77282,33c0,"xor ax,ax"
+4590,3844,77284,50,push ax
+4590,3845,77285,8d46e0,"lea ax,[bp-20h]"
+4590,3848,77288,50,push ax
+4590,3849,77289,9ab02fee11,"call far 2FB0h,11EEh"
+4590,3854,77294,83c406,"add sp,6"
+4590,3857,77297,83ff7b,"cmp di,7Bh"
+4590,3860,77300,7403,je short 0F19h
+4590,3862,77302,e9d200,jmp 0FEBh
+4590,3865,77305,8b9e74fe,"mov bx,[bp-18Ch]"
+4590,3869,77309,803f5d,"cmp byte ptr [bx],5Dh"
+4590,3872,77312,7403,je short 0F25h
+4590,3874,77314,e9c600,jmp 0FEBh
+4590,3877,77317,c6865afe5d,"mov byte ptr [bp-1A6h],5Dh"
+4590,3882,77322,ff8674fe,inc word ptr [bp-18Ch]
+4590,3886,77326,c646eb20,"mov byte ptr [bp-15h],20h"
+4590,3890,77330,e9b600,jmp 0FEBh
+4590,3894,77334,8a07,"mov al,[bx]"
+4590,3896,77336,888664fe,"mov [bp-19Ch],al"
+4590,3900,77340,ff8674fe,inc word ptr [bp-18Ch]
+4590,3904,77344,3c2d,"cmp al,2Dh"
+4590,3906,77346,7510,jne short 0F54h
+4590,3908,77348,80be5afe00,"cmp byte ptr [bp-1A6h],0"
+4590,3913,77353,7409,je short 0F54h
+4590,3915,77355,8b9e74fe,"mov bx,[bp-18Ch]"
+4590,3919,77359,803f5d,"cmp byte ptr [bx],5Dh"
+4590,3922,77362,753c,jne short 0F90h
+4590,3924,77364,8a9e64fe,"mov bl,[bp-19Ch]"
+4590,3928,77368,889e5afe,"mov [bp-1A6h],bl"
+4590,3932,77372,b103,"mov cl,3"
+4590,3934,77374,8bd1,"mov dx,cx"
+4590,3936,77376,8acb,"mov cl,bl"
+4590,3938,77378,80e107,"and cl,7"
+4590,3941,77381,8bd9,"mov bx,cx"
+4590,3943,77383,8aca,"mov cl,dl"
+4590,3945,77385,898e52fe,"mov [bp-1AEh],cx"
+4590,3949,77389,8acb,"mov cl,bl"
+4590,3951,77391,b301,"mov bl,1"
+4590,3953,77393,d2e3,"shl bl,cl"
+4590,3955,77395,8a8e52fe,"mov cl,[bp-1AEh]"
+4590,3959,77399,899e50fe,"mov [bp-1B0h],bx"
+4590,3963,77403,8a9e64fe,"mov bl,[bp-19Ch]"
+4590,3967,77407,d2eb,"shr bl,cl"
+4590,3969,77409,2aff,"sub bh,bh"
+4590,3971,77411,8d46e0,"lea ax,[bp-20h]"
+4590,3974,77414,03d8,"add bx,ax"
+4590,3976,77416,8a8650fe,"mov al,[bp-1B0h]"
+4590,3980,77420,0807,"or [bx],al"
+4590,3982,77422,eb5b,jmp short 0FEBh
+4590,3984,77424,ff8674fe,inc word ptr [bp-18Ch]
+4590,3988,77428,8a07,"mov al,[bx]"
+4590,3990,77430,888664fe,"mov [bp-19Ch],al"
+4590,3994,77434,3a865afe,"cmp al,[bp-1A6h]"
+4590,3998,77438,7606,jbe short 0FA6h
+4590,4000,77440,888660fe,"mov [bp-1A0h],al"
+4590,4004,77444,eb10,jmp short 0FB6h
+4590,4006,77446,8a865afe,"mov al,[bp-1A6h]"
+4590,4010,77450,888660fe,"mov [bp-1A0h],al"
+4590,4014,77454,8a8664fe,"mov al,[bp-19Ch]"
+4590,4018,77458,88865afe,"mov [bp-1A6h],al"
+4590,4022,77462,8a865afe,"mov al,[bp-1A6h]"
+4590,4026,77466,888664fe,"mov [bp-19Ch],al"
+4590,4030,77470,eb1c,jmp short 0FDCh
+4590,4032,77472,8ad8,"mov bl,al"
+4590,4034,77474,b103,"mov cl,3"
+4590,4036,77476,d2eb,"shr bl,cl"
+4590,4038,77478,2aff,"sub bh,bh"
+4590,4040,77480,8d4ee0,"lea cx,[bp-20h]"
+4590,4043,77483,03d9,"add bx,cx"
+4590,4045,77485,8ac8,"mov cl,al"
+4590,4047,77487,80e107,"and cl,7"
+4590,4050,77490,b001,"mov al,1"
+4590,4052,77492,d2e0,"shl al,cl"
+4590,4054,77494,0807,"or [bx],al"
+4590,4056,77496,fe8664fe,inc byte ptr [bp-19Ch]
+4590,4060,77500,8a8664fe,"mov al,[bp-19Ch]"
+4590,4064,77504,388660fe,"cmp [bp-1A0h],al"
+4590,4068,77508,73da,jae short 0FC0h
+4590,4070,77510,c6865afe00,"mov byte ptr [bp-1A6h],0"
+4590,4075,77515,8b9e74fe,"mov bx,[bp-18Ch]"
+4590,4079,77519,803f5d,"cmp byte ptr [bx],5Dh"
+4590,4082,77522,7403,je short 0FF7h
+4590,4084,77524,e93fff,jmp 0F36h
+4590,4087,77527,803f00,"cmp byte ptr [bx],0"
+4590,4090,77530,7503,jne short 0FFFh
+4590,4092,77532,e98f05,jmp 158Eh
+4590,4095,77535,83ff7b,"cmp di,7Bh"
+4590,4098,77538,7503,jne short 1007h
+4590,4100,77540,895e08,"mov [bp+8],bx"

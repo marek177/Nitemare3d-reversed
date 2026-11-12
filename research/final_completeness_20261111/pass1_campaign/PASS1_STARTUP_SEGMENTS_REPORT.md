@@ -1,54 +1,76 @@
-# PASS1 — startup DS/SS a skutočné hranice súborových dát
+# PASS1: startup segmenty, BSS a DOS verzia
 
-11. 11. 2026. Prvá dávka priamo nad obnovenými57295 B PASS320 NON-CODE. **CLASSIFIED ONLY** znamená v tejto dávke nové štrukturálne fakty, nie uzavreté jednotlivé dátové typy. DEEP VERIFIED0 B, runtime testy0.
+Šesť bajtov v troch WORD poliach má nový dôkaz. Skutočný čistý posun v mape je **2 B CLASSIFIED ONLY → PARTIAL**, ostatné 4 B boli už PARTIAL. Typované polia a predchádzajúce zdroje sa môžu prekrývať; report nepočíta 6 B ako novú byte coverage. Žiadny DEEP VERIFIED.
 
-## Segmentový dôkaz
+| Image interval (koniec exkluzívny) | Offset v DGROUP | Nový dôkaz |
+|---|---|---|
+|[297EC,297EE)|20DC|SS WORD snapshot SP po dvoch sentinel PUSH|
+|[29830,29832)|2120|verzia DOS po XCHG AL,AH: major v hornom BYTE|
+|[29832,29834)|2122|pôvodný AX z DOS version vetvy: major v dolnom BYTE|
 
-Na image11F05 je `MOV DI,2771h`. Jeho immediate WORD na11F06 patrí medzi1670 overených EXEPACK relocation miest; pôvodné slovo2771h sedí s kanonickými bajtmi aj relocation CSV. Preto pri relokačnom load segmenteL ide o hodnotuL+2771h, nie o absolútny fyzický segment2771h za všetkých okolností.
+Výklad 2122 ako startup_mode v staršej malej dávke sa týmto spresňuje: lokálna hodnota vzniká z DOS version výsledku. Neskoršie porovnanie AL s 2 sa preto nemá samo interpretovať ako herný režim. Staršie zdrojové záznamy sú historické; aktuálne spresnenie je pass1_startup_segments/data_fields.csv. Úplný zmysel všetkých neskorších použití tým nie je uzavretý.
 
-Na normálnej startup ceste sa na11F18 vykoná `MOV SS,DI`. Neskôr `PUSH SS/POP ES` na11F82..11F83 a po nulovaní `PUSH SS/POP DS` na11F91..11F92. V nerelokovaných image súradniciach je teda predvolená dátová báza **27710h**. Tento dôkaz nie je globálnym tvrdením, že každá funkcia vždy zachováva DS; externé volania a alternatívne/error vetvy zostávajú samostatným kontraktom.
+## Statický kontext a vykonaný úsek
 
-Pred zmenou SS jeCLI, SP sa upraví oE02Eh a nasledujeSTI. Carry z tejto stack úpravy riadi error vetvu. Táto dávka nezatvára celý memory-allocation/stack kontrakt; pre dátové rozdelenie používa explicitne normálnu vetvu pokračujúcu k nulovaniu.
-
-## CRT nulovanie je mimo pôvodného NON-CODE menovateľa
-
-Kód nastaví ES=SS, CLD, DI=2650h, CX=E030h-DI, AX=0 a vykoná REP STOSB. Presný nulovaný interval:
+11EE:0018 nastaví AH=30h, INT21 a skontroluje AL>=2. Replay začína až v 0025 s poskytnutým AX a PSP kontextom a končí pred 00B3. Celý packed EXE entry, DOS version interrupt, chybný prechod a voliteľný callback sa nevykonávajú. Export startup_prefix_context.csv overuje pôvodné bajty aj nezávislý disassembly rozsahu 0018..00B3. Nie je to nový celý funkčný rozsah v bounded katalógu.
 
 ```text
-ES:2650h .. ES:E030h     end-exclusive
-image-equivalent 29D60h .. 35740h
-length B9E0h = 47584 B
+DI = relocated DGROUP segment
+SI = min((PSP.word[2] - DI) mod 65536, 1000h)
+CLI; SS = DI; SP += E02Eh; STI
+ak ADD SP pretieklo: error cesta (v tejto dávke nereplayovaná)
+SS:2122 = incoming AX; swap AL/AH; SS:2120 = AX
+SS:20E0 = low16(SI << 4) - 1
+SS:20E2 = SS
+SP &= FFFEh; SS:20E6 = SP
+push FFFEh; SS:20EC = SP
+push 0001h; SS:20E8 = SS:20EA = SS:20DC = SP
+PSP.word[2] = SI + DI
+INT21/AH4A s ES=PSP a BX=(nový top - PSP)
+SS:211E = DS // stále PSP v tomto bode
+ES = SS; CLD
+zero ES:[2650h,E030h)
+DS = SS // 00B1 PUSH SS,00B2 POP DS
 ```
 
-Začiatok29D60h je **presne koniec171360 B kanonického súborového obrazu**. Tieto runtime nula-inicializované bajty preto nie sú súčasťou57 295 auditovaných file-backed NON-CODE bajtov. Nie je prípustné nimi odôvodniť označenie celého historického DGROUP intervalu akoBSS ani pripočítať ich do súborového menovateľa.
+Pred voliteľným inicializátorom v 00B3 je preto v tejto ceste **DS=ES=SS=DGROUP** a DF=0, IF=1. Rovnosť sa nesmie preniesť cez ľubovoľné neskoršie callee bez vlastného dôkazu. Startup zápisy cez SS do 20E2 a okolitého near-heap stavu majú v tomto okne doloženú väzbu na následný DS. Pred 00B2 pritom DS ostáva PSP; automatické mapovanie všetkých skorých DS operandov na DGROUP by bolo chybné.
 
-Použitá súradnica je po odčítaní spoločného load základu; pri runtime treba dosadiťL a overiť reálny adresný model. Nulovanie sa v tejto dávke nevykonávalo v DOSBox-X.
+BSS je [2650,E030) v DGROUP, presne 47 584 B, image-relative [29D60,35740). Začína na konci rozbaleného file image a nepatrí medzi 57 295 auditovaných file bajtov. Rovnosť rozsahu tu potvrdzuje pôvodná REP STOSB a guard kontrola, nie nulový vzhľad dát. DOS resize interrupt je modelovaný ako úspešný a zachovávajúci registre; prirodzené failure správanie sa neuzatvára.
 
-## Nová úplná štrukturálna partition PASS1
+## Kontrolovaná emulácia a limity
 
-| Image end-exclusive | Bajty | Nový stav | Doložená vlastnosť |
-|---|---:|---|---|
-| 11EE7h..11EF8h | 17 | CLASSIFIED ONLY | všetky bajty0; pred CRT vstupom; padding stále nepotvrdený |
-| 1BDA2h..27710h | 47470 | UNKNOWN | súborová oblasť pred doloženou default DS bázou; konkrétne objekty neznáme |
-| 27710h..29D60h | 9808 | CLASSIFIED ONLY | súborom podložený default-DS prefix, offsety0000h..2650h |
+720 prípadov = 2 nenulové load bázy (1000h,2000h) × 6 vstupných SP × 6 dostupných paragraph rozdielov × 5 version AX × 2 počiatočné IF. SP 0010,0011,0100,1000,1FD0,1FD1; paragraph rozdiely 1,10,FFF,1000,1001,FFFF. Verzie AX 0002,0003,0106,070A,FFFF sú seedované testové hodnoty, nie zoznam skutočných DOS vydaní. Počiatočný DF je vždy nastavený; pôvodné CLD ho odstráni. Relokácie pochádzajú zo skutočného EXEPACK obrazu.
 
-Súčet57295 B. Historický ownerDGROUP bol príliš hrubý na automatické použitie ako segmentová báza. Tento názov sa zachováva ako pôvodná evidencia, nová mapa ho nenahrádza domnienkou, že všetkých57278 B používa rovnaký default DS offsetový priestor.
+Overené všetky uvedené stavové WORD, celý BSS rozsah a dva guard BYTE, PSP top, resize argumenty, výsledné segmenty, SP a IF/DF. Nulové odchýlky. Testované SP nepretiekli pri ADD E02Eh a sentinel sa nachádza za nulovaným BSS. Nízke/pretékajúce SP, iné DOS verzie/failure výsledky a prirodzený EXE loader zostávajú otvorené. Prirodzený DOSBox-X runtime0.
 
-Ani CLASSIFIED ONLY rozsah ešte neznamená správne rozlíšenie reťazcov, WORD/DWORD polí, pointerov, paddingu, tabuliek či možných kódových fragmentov. **Sémanticky uzavreté typové bajty sú zatiaľ0.** Sedemnásť núl nemá dôkaz nepoužívania a nedostáva status padding ani DEEP VERIFIED.
+Reprodukcia: audit_replay_pass1_startup_segments.py IMAGE INVENTORY DECODER EMULATOR OUT; promote_pass1_fields.py s mapou pass1_bsf_dispatch; verify_pass1_partition.py. Kanonický image SHA-256 e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297. Iced-x861.21.0, Unicorn2.1.4. cases.csv a summary.json uchovávajú parametre a hash dôkazu.
 
-## Reprodukovateľné artefakty
+## Meranie
 
-`audit_pass1_startup_segments.py IMAGE RELOCATIONS_CSV NONCODE_BASELINE_CSV ABSOLUTE_DECODER_DIRECTORY OUT_DIR`:
+**57 069 B PARTIAL, 182 B CLASSIFIED ONLY, 44 B UNKNOWN, 0 B DEEP VERIFIED**, spolu 57 295 B. Nezávislá kontrola 878 intervalov overila presné členstvo, všetky SHA a nulové diery/prekryvy. Integrita partition nie je úplná sémantická verifikácia. Nové lokálne dôkazy zatiaľ nie sú v poslednej publikovanej GitHub snímke.
 
-1. Overí identitu171360 B obrazu a oba pôvodné NON-CODE range SHA.
-2. Kontroluje kritické startup bajty a konkrétnu relocation položku.
-3. Nezávisle dekóduje startup okno11EF8h..11FC5h s presnými CS:IP adresami.
-4. Vytvorí celú trojintervalovú PASS1 partition s range SHA, počtami núl a oddeleným sémantickým stavom.
+SHA mapy `203059eac906ab43d113be290ceb44a689cb8935637c94430b04f2c4d6496f64`; SHA cases `24b5bee4c69cf95aea54b102a9dbddcf9791e0e27be69285cdcebbe8e3ec8b77`.
 
-`pass1_startup_segments/noncode_structural_map.csv` a `.json`, `startup_instructions.csv` a `summary.json` zachovávajú všetky hranice a hashe vstupov. Centrálny doterajší PARTIAL code/data katalóg sa touto štrukturálnou vrstvou nenafukuje; jeho prienik s NON-CODE zostáva0 B. Nové fakty sa vykazujú osobitne.
+## Aktualizácia 13 oblastí
 
-## Pokrytie a ďalší krok
+Nové % = uzavreté jednotky / úplný inventár oblasti. Menovatele chýbajú, preto N/A; staré orientačné hodnoty sa neprepočítavajú z úspešných prípadov alebo integrity mapy.
 
-Nová PASS1 štrukturálna evidencia: CLASSIFIED ONLY9825 B, UNKNOWN47470 B, PARTIAL0 B, DEEP VERIFIED0 B. Tento pomer nie je percentom sémantickej úplnosti. Štrukturálne známu polohu nemožno zameniť za uzavretý dátový objekt.
+| Oblasť | Predošlý odhad | Nové % | Nové potvrdenie | Zostávajúce neznáme / blokátor | Najbližší konkrétny krok |
+|---|---:|---|---|---|---|
+| Mapy a formáty |99 %|N/A|BSS mimo file baseline|prirodzený loader|EXEPACK entry trace|
+| Dátové typy a konštanty |95 %|N/A|2 B nové, 4 B spresnené|182 B iba klasifikované|zvyšné alias odkazy|
+| Tabuľky a ukazovatele |93 %|N/A|startup SS/DS väzba|neskoršie zmeny segmentov|callee segment kontrakty|
+| Funkcie / ASM / CFG |90 %|N/A|startup prefix720 prípadov|chybná a voliteľná vetva|init hook closure|
+| RNG |97 %|N/A|bez nového dôkazu|prirodzené poradie|DEMO trace|
+| Scheduler |96 %|N/A|bez nového dôkazu|prirodzené callery|call graph|
+| DEMO a vstupy |96 %|N/A|bez nového dôkazu|driver ABI|input closure|
+| Renderer / VGA |94 %|N/A|bez nového dôkazu|setup|VGA init CFG|
+| GUARD / bossovia |93 %|N/A|bez nového dôkazu|selector doména|descriptor flag8|
+| Zbrane / projektily |92 %|N/A|bez nového dôkazu|damage callery|effect producer|
+| Sprity / HUD / paleta |92 %|N/A|bez nového dôkazu|resource identity|resource parser|
+| SAVE / LOAD |92 %|N/A|CRT segment kontext oddelený|prirodzené I/O|stream trace|
+| Windows Win16 |92 %|N/A|bez nového Win dôkazu|startup odlišnosti|NE autodata init|
 
-Nasleduje presný inventár initialized default-DS polí/reťazcov a validácia DS kontextu ich callerov. Pre47470 B prefix treba sledovať FAR segmentové pointery a relokácie; neprekladať jeho offsety voči defaultDS tak, ako keby boli nezáporné near premenné. Pre17 B interval preveriť všetky adresné referencie vrátane vypočítaných a susedné segmentové hranice. Percentá13 oblastí zostávajú N/A; blokátor ledgeru už neplatí.
+## Runtime testy na vykonanie
+
+V DOSBox-X zaznamenať prirodzený post-EXEPACK CS:IP, AX version, PSP, vstupné SP a registre pri 0025/00B3. Overiť skutočný resize výsledok a DS=ES=SS pred callbackom a po ňom. BSS zeroing sledovať samostatne od file coverage. Win16 startup má vlastný segmentový model; DOS invariant sa naň neprenáša. PE32 sa nevytvára.

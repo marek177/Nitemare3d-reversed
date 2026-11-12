@@ -1,0 +1,13 @@
+cs,ip,image_offset,bytes,instruction,in_old_inventory
+4026,54,64470,c80a0000,"enter 0Ah,0",False
+4026,58,64474,8d46f6,"lea ax,[bp-0Ah]",False
+4026,61,64477,50,push ax,False
+4026,62,64478,9ab42eee11,"call far 2EB4h,11EEh",False
+4026,67,64483,83c402,"add sp,2",False
+4026,70,64486,ff7606,push word ptr [bp+6],False
+4026,73,64489,8d46f6,"lea ax,[bp-0Ah]",False
+4026,76,64492,50,push ax,False
+4026,77,64493,683d20,push 203Dh,False
+4026,80,64496,9ae007ee11,"call far 07E0h,11EEh",False
+4026,85,64501,c9,leave,False
+4026,86,64502,cb,ret far,False

@@ -1,0 +1,21 @@
+cs,ip,image_offset,bytes,instruction
+4590,404,73844,06,push es
+4590,405,73845,1e,push ds
+4590,406,73846,07,pop es
+4590,407,73847,1f,pop ds
+4590,408,73848,8bf7,"mov si,di"
+4590,410,73850,bf2a21,"mov di,212Ah"
+4590,413,73853,b104,"mov cl,4"
+4590,415,73855,ac,lodsb [si]
+4590,416,73856,2c41,"sub al,41h"
+4590,418,73858,720d,jb short 01B1h
+4590,420,73860,d2e0,"shl al,cl"
+4590,422,73862,92,"xchg dx,ax"
+4590,423,73863,ac,lodsb [si]
+4590,424,73864,2c41,"sub al,41h"
+4590,426,73866,7205,jb short 01B1h
+4590,428,73868,0ac2,"or al,dl"
+4590,430,73870,aa,stosb [di]
+4590,431,73871,ebee,jmp short 019Fh
+4590,433,73873,16,push ss
+4590,434,73874,1f,pop ds

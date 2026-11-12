@@ -1,0 +1,26 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "bsf_file_checksum_check",
+      "start": 44222,
+      "end_exclusive": 44441,
+      "instruction_bytes": 218,
+      "instructions": 77
+    },
+    {
+      "name": "crt_fread_for_checksum",
+      "start": 75228,
+      "end_exclusive": 75455,
+      "instruction_bytes": 227,
+      "instructions": 111
+    }
+  ],
+  "cases": 112,
+  "failures": 0,
+  "scope": "native checksum helper and native fread with buffer-size1 stream; open/close/error and lower read modeled; actual main EXE/MAP bytes plus EOF/stale-byte fixtures; only this fread path replayed, not all its branches",
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "cases_sha256": "8beaac50ae4dd2f5f4ec2cb601e4ce1d5b6b251e4dd254800a8e437cc6a5c953"
+}

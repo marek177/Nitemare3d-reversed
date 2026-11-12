@@ -1,0 +1,36 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "game_clock_sample",
+      "start": 48632,
+      "end_exclusive": 48756,
+      "instruction_bytes": 123,
+      "instructions": 37
+    },
+    {
+      "name": "game_clock_cached",
+      "start": 48756,
+      "end_exclusive": 48782,
+      "instruction_bytes": 26,
+      "instructions": 9
+    },
+    {
+      "name": "game_option_defaults",
+      "start": 18272,
+      "end_exclusive": 18366,
+      "instruction_bytes": 94,
+      "instructions": 24
+    }
+  ],
+  "typed_bytes": 9,
+  "cases": 1376,
+  "failures": 0,
+  "scope": "original option defaults and clock sampling/cache instructions; BIOS memory seeded; CRT ftime dependency mocked writing SS local output; hardware timing not tested",
+  "natural_scheduler_closed": false,
+  "bios_tick_rollover_closed": false,
+  "original_crt_time_closed": false,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0
+}

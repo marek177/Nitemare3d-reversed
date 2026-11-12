@@ -1,0 +1,29 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "input_irq9_lifecycle",
+      "start": 27700,
+      "end_exclusive": 27788,
+      "instruction_bytes": 86,
+      "instructions": 32
+    },
+    {
+      "name": "input_aux_lifecycle",
+      "start": 27788,
+      "end_exclusive": 27856,
+      "instruction_bytes": 66,
+      "instructions": 27
+    }
+  ],
+  "typed_bytes": 4,
+  "cases": 8192,
+  "failures": 0,
+  "scope": "original two lifecycle control bodies; get/set vector and aux init/close mocked; key WORD consumer static only; no real interrupt installation or device",
+  "original_isr_closed": false,
+  "natural_input_lifecycle_closed": false,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "cases_sha256": "d1c6ed86d265d4cdcb37c438edbd2eda3572eecae1efe90994ee1e8dab8c3f28"
+}

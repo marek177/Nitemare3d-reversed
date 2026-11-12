@@ -1,0 +1,37 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "crt_strlen_near",
+      "start": 82552,
+      "end_exclusive": 82579,
+      "instruction_bytes": 27,
+      "instructions": 15
+    },
+    {
+      "name": "crt_strncmp_near",
+      "start": 82620,
+      "end_exclusive": 82678,
+      "instruction_bytes": 58,
+      "instructions": 32
+    },
+    {
+      "name": "crt_getenv_near",
+      "start": 82794,
+      "end_exclusive": 82890,
+      "instruction_bytes": 95,
+      "instructions": 42
+    }
+  ],
+  "typed_bytes": 6,
+  "cases": 320,
+  "failures": 0,
+  "scope": "original getenv, strlen, strncmp and six TZ integration scenarios; no mocks; synthetic DS near vector, DF=0; no DOS environment construction",
+  "original_startup_environment_closed": false,
+  "full_strncmp_domain_closed": false,
+  "natural_environment_closed": false,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "cases_sha256": "a5e3ab1a3a37bc082820ab9510106fc2eb9a2db1fc36a80da0d2bba166b9fd0a"
+}
