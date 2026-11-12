@@ -8,28 +8,61 @@
       "sha256": "e4c77ac69a936c859d1ca4b4d573b7ef35da4aafd443b2466792f4320c425ab5"
     }
   ],
-  "functions": 109,
-  "independent_instruction_count": 4068,
-  "independent_instruction_bytes": 10156,
-  "data_bytes_with_local_evidence": 57987,
+  "functions": 122,
+  "independent_instruction_count": 4563,
+  "independent_instruction_bytes": 11304,
+  "data_bytes_with_local_evidence": 57988,
   "primary_type_bytes": {
-    "UNKNOWN_CONTENT": 103217,
-    "EXECUTABLE_CODE": 10156,
-    "DATA": 57987
+    "UNKNOWN_CONTENT": 102068,
+    "EXECUTABLE_CODE": 11304,
+    "DATA": 57988
   },
-  "interval_count": 639,
+  "interval_count": 665,
   "original_pass320_ledger_imported": true,
   "new_deep_verified_bytes": 0,
-  "runtime_tests": 0,
+  "runtime_tests": 5,
   "scope": "Current campaign partition only; PARTIAL does not mean closed semantics; UNKNOWN is not historical reclassification",
-  "controlled_instruction_replay_cases": 915637,
+  "controlled_instruction_replay_cases": 971101,
   "original_noncode_bytes": 57295,
   "original_noncode_intersection_code_bytes": 0,
-  "original_noncode_intersection_data_bytes": 57099,
+  "original_noncode_intersection_data_bytes": 57100,
   "direction_index_prefix_replay_cases": 65548,
   "direction_index_prefix_replay_scope": "seeded prefix only; stop before 0099; no trig callee or natural callers",
-  "latest_pass1_map_sha256": "899ba518a5b8b64b24837e4f40f14e0c918e0bbb2777d2e13ae0803bb42482ed",
+  "latest_pass1_map_sha256": "3021969d4e4348715816361fa387631e7d6cfd9fc9dcc136e26073f0f9984d1b",
   "pass1_partial_bytes_without_typed_data": 2,
-  "runtime_tests_scope": "DOSBox-X/original-runtime tests only; controlled instruction replay counted separately",
+  "runtime_tests_scope": "retained original packed DOS2 EXE scenarios under DOSBox-X built-in DOS with debugger stops: startup/B3, main/defaults35C, BSF/audio/VGA initialization and when present post-VGA slot/resource initialization; no gameplay/audio-output/rendered-frame/Win16 runtime parity; repeated prefix checks overlap",
+  "runtime_evidence": [
+    {
+      "path": "outputs\\dosbox_startup_runtime\\independent_verification.json",
+      "sha256": "174550c099f59c8d37e517b7d64b6b2e99e2b8b0ebc44792fdb29fc00c111073",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one actual DOSBox-X built-in-DOS original EXE startup capture, not full game or original hardware parity"
+    },
+    {
+      "path": "outputs\\dosbox_game_entry_runtime\\independent_verification.json",
+      "sha256": "641dc7067a85405abf5bdf90adeda055b134c08cda15c526d20f2063e36c5aad",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one actual DOSBox-X built-in-DOS original EXE game-entry/CRT/defaults capture, not full gameplay or original hardware parity"
+    },
+    {
+      "path": "outputs\\dosbox_initialization_runtime\\independent_verification.json",
+      "sha256": "42a2012e6f19222a215a1ae742357b102cbe475fde4d80db76b91e5ad406ae87",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one actual DOSBox-X built-in-DOS original EXE BSF/audio/VGA initialization capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
+    },
+    {
+      "path": "outputs\\dosbox_post_vga_runtime\\independent_verification.json",
+      "sha256": "292ba6c5ffa5b29a5a0813b21e2c1c820e572172979163b0b1e628510a6e0f9c",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one actual DOSBox-X built-in-DOS original EXE post-VGA slot/resource initialization capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
+    },
+    {
+      "path": "outputs\\dosbox_input_init_runtime\\independent_verification.json",
+      "sha256": "07905c5d36d2472992f1c81f73e2fe85f024760cd4140b1fc06e4b849c9f6dfb",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one actual DOSBox-X built-in-DOS original EXE keyboard/auxiliary initialization capture, not full gameplay, audio-output, rendered-frame or original hardware parity"
+    }
+  ],
+  "runtime_bss_table_bytes_outside_file": 2044,
   "record_field_refinements": 14
 }

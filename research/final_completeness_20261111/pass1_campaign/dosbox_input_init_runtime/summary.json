@@ -1,0 +1,538 @@
+{
+  "success": true,
+  "error": null,
+  "mode": "input_init",
+  "harness_sha256": "9149923bebee9e0381c7615a353c2984aad2469dc0288666a836c747320e5cb7",
+  "exe_sha256": "a82adcfa7af2784566cfeff74c077cefed08505396db2948b7e6aa7d4cee0832",
+  "game_source_sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301",
+  "config_sha256": "fe3a22f483a0196510395e6ffc343d11bc25e25dac54ccc37fae747f287221e5",
+  "args": [
+    "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx-win64-20261001\\dosbox-x.exe",
+    "-defaultconf",
+    "-conf",
+    "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_input_init_runtime\\runtime.conf",
+    "-nogui",
+    "-console",
+    "-fastlaunch",
+    "-log-con",
+    "-log-fileio",
+    "-time-limit",
+    "30",
+    "-c",
+    "mount c \"C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_input_init_runtime\\drive_c\"",
+    "-c",
+    "c:",
+    "-c",
+    "debugbox N3D20.EXE",
+    "-c",
+    "exit"
+  ],
+  "snapshots": [
+    {
+      "stage": "packed_entry",
+      "registers": {
+        "CS": 9110,
+        "IP": 16,
+        "DS": 2068,
+        "ES": 2068,
+        "SS": 13024,
+        "SP": 128,
+        "AX": 0,
+        "BX": 0,
+        "CX": 255,
+        "DX": 2068
+      },
+      "load_segment": 2084
+    },
+    {
+      "stage": "crt_entry",
+      "registers": {
+        "CS": 6674,
+        "IP": 24,
+        "DS": 2068,
+        "ES": 2068,
+        "SS": 15768,
+        "SP": 2048,
+        "AX": 0,
+        "BX": 0,
+        "CX": 0,
+        "DX": 61440
+      }
+    },
+    {
+      "stage": "post_crt_prefix",
+      "registers": {
+        "CS": 6674,
+        "IP": 179,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59434,
+        "AX": 0,
+        "BX": 14209,
+        "CX": 0,
+        "DX": 61440
+      }
+    },
+    {
+      "stage": "game_main_entry",
+      "registers": {
+        "CS": 3226,
+        "IP": 806,
+        "DS": 12181,
+        "ES": 1994,
+        "SS": 12181,
+        "SP": 59406,
+        "AX": 32979,
+        "BX": 65535,
+        "CX": 32738,
+        "DX": 32979
+      }
+    },
+    {
+      "stage": "after_defaults_and_windir",
+      "registers": {
+        "CS": 3226,
+        "IP": 860,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59392,
+        "AX": 0,
+        "BX": 59545,
+        "CX": 0,
+        "DX": 6
+      }
+    },
+    {
+      "stage": "bsf_mode0_entry",
+      "registers": {
+        "CS": 4193,
+        "IP": 10698,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59382,
+        "AX": 0,
+        "BX": 59545,
+        "CX": 0,
+        "DX": 6
+      }
+    },
+    {
+      "stage": "bsf_header_xor_entry",
+      "registers": {
+        "CS": 6110,
+        "IP": 434,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59364,
+        "AX": 0,
+        "BX": 5,
+        "CX": 59590,
+        "DX": 9
+      }
+    },
+    {
+      "stage": "bsf_after_xor",
+      "registers": {
+        "CS": 4193,
+        "IP": 10813,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59374,
+        "AX": 0,
+        "BX": 1,
+        "CX": 52,
+        "DX": 1
+      }
+    },
+    {
+      "stage": "bsf_exe_checksum_entry",
+      "registers": {
+        "CS": 4193,
+        "IP": 10478,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59362,
+        "AX": 236,
+        "BX": 1,
+        "CX": 52,
+        "DX": 1
+      }
+    },
+    {
+      "stage": "after_bsf_mode0",
+      "registers": {
+        "CS": 3226,
+        "IP": 223,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59386,
+        "AX": 6674,
+        "BX": 5,
+        "CX": 59590,
+        "DX": 59545
+      }
+    },
+    {
+      "stage": "audio_mode0_entry",
+      "registers": {
+        "CS": 5199,
+        "IP": 220,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59382,
+        "AX": 6674,
+        "BX": 5,
+        "CX": 59590,
+        "DX": 59545
+      }
+    },
+    {
+      "stage": "after_audio_mode0",
+      "registers": {
+        "CS": 3226,
+        "IP": 243,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59386,
+        "AX": 32527,
+        "BX": 1919,
+        "CX": 549,
+        "DX": 0
+      }
+    },
+    {
+      "stage": "vga_mode0_entry",
+      "registers": {
+        "CS": 2426,
+        "IP": 216,
+        "DS": 12181,
+        "ES": 61440,
+        "SS": 12181,
+        "SP": 59382,
+        "AX": 44,
+        "BX": 52256,
+        "CX": 549,
+        "DX": 2
+      }
+    },
+    {
+      "stage": "after_vga_mode0",
+      "registers": {
+        "CS": 3226,
+        "IP": 283,
+        "DS": 12181,
+        "ES": 41984,
+        "SS": 12181,
+        "SP": 59386,
+        "AX": 8208,
+        "BX": 32,
+        "CX": 0,
+        "DX": 16
+      }
+    },
+    {
+      "stage": "slot_initializer_entry",
+      "registers": {
+        "CS": 2597,
+        "IP": 10,
+        "DS": 12181,
+        "ES": 41984,
+        "SS": 12181,
+        "SP": 59384,
+        "AX": 8208,
+        "BX": 32,
+        "CX": 0,
+        "DX": 16
+      }
+    },
+    {
+      "stage": "after_slot_initializer",
+      "registers": {
+        "CS": 3226,
+        "IP": 301,
+        "DS": 12181,
+        "ES": 41984,
+        "SS": 12181,
+        "SP": 59388,
+        "AX": 8208,
+        "BX": 22522,
+        "CX": 0,
+        "DX": 16
+      }
+    },
+    {
+      "stage": "resource_mode0_entry",
+      "registers": {
+        "CS": 3980,
+        "IP": 36,
+        "DS": 12181,
+        "ES": 41984,
+        "SS": 12181,
+        "SP": 59382,
+        "AX": 8208,
+        "BX": 22522,
+        "CX": 0,
+        "DX": 16
+      }
+    },
+    {
+      "stage": "after_resource_mode0",
+      "registers": {
+        "CS": 3226,
+        "IP": 308,
+        "DS": 12181,
+        "ES": 50175,
+        "SS": 12181,
+        "SP": 59386,
+        "AX": 1,
+        "BX": 0,
+        "CX": 3074,
+        "DX": 23
+      }
+    },
+    {
+      "stage": "keyboard_mode0_entry",
+      "registers": {
+        "CS": 3796,
+        "IP": 308,
+        "DS": 12181,
+        "ES": 50175,
+        "SS": 12181,
+        "SP": 59382,
+        "AX": 1,
+        "BX": 0,
+        "CX": 3074,
+        "DX": 23
+      }
+    },
+    {
+      "stage": "after_keyboard_mode0",
+      "registers": {
+        "CS": 3226,
+        "IP": 328,
+        "DS": 12181,
+        "ES": 61440,
+        "SS": 12181,
+        "SP": 59386,
+        "AX": 0,
+        "BX": 59783,
+        "CX": 3074,
+        "DX": 0
+      }
+    },
+    {
+      "stage": "aux_mode0_entry",
+      "registers": {
+        "CS": 3796,
+        "IP": 396,
+        "DS": 12181,
+        "ES": 61440,
+        "SS": 12181,
+        "SP": 59382,
+        "AX": 0,
+        "BX": 59783,
+        "CX": 3074,
+        "DX": 0
+      }
+    },
+    {
+      "stage": "after_aux_probe",
+      "registers": {
+        "CS": 3796,
+        "IP": 424,
+        "DS": 12181,
+        "ES": 61440,
+        "SS": 12181,
+        "SP": 59380,
+        "AX": 65535,
+        "BX": 3,
+        "CX": 0,
+        "DX": 0
+      }
+    },
+    {
+      "stage": "after_aux_mode0",
+      "registers": {
+        "CS": 3226,
+        "IP": 348,
+        "DS": 12181,
+        "ES": 61440,
+        "SS": 12181,
+        "SP": 59386,
+        "AX": 65281,
+        "BX": 3,
+        "CX": 0,
+        "DX": 0
+      }
+    }
+  ],
+  "checks": {
+    "unpacked_image_exact_after_relocations": true,
+    "runtime_unpacked_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+    "segment_equality_at_B3": true,
+    "bss_zero_bytes": 47584,
+    "bss_sha256": "f276a06e67d8c241888a8bffb6a02be77408b46d6ef4c1df548d62e066981669",
+    "stack_snapshot": 59434,
+    "saved_psp": 2068,
+    "dos_version_ax": 5,
+    "dos_version_swapped": 1280,
+    "game_main_arguments_match_globals": true,
+    "argc": 1,
+    "argv": 59416,
+    "envp": 59578,
+    "argv0": "C:\\N3D20.EXE",
+    "program_name": "C:\\N3D20.EXE",
+    "optional_init_pointer_zero": true,
+    "int0_saved_and_replaced": true,
+    "int0_old_hex": "60ca00f0",
+    "int0_new_hex": "e500121a",
+    "default_flag_before": 1,
+    "default_flag_after": 0,
+    "default_rate": 25,
+    "windir_getenv_result": 0,
+    "mode": "input_init",
+    "bsf_encoded_header_sha256": "bddc90db9e7311b3ffa080eafd680ec202d328834ede12b0ce244718e6a183ba",
+    "bsf_decoded_header_sha256": "d7bc04ccd049ce5ad8f1e38d7dacfa134bea9e8b0cb9e66dbedd70486a182644",
+    "bsf_header_xor_result": 0,
+    "bsf_registered_flag": 1,
+    "bsf_exe_checksum_expected": 236,
+    "bsf_checksum_file": "n3d.exe",
+    "bsf_mode0_returned": true,
+    "audio_active_before": [
+      0,
+      0,
+      0
+    ],
+    "audio_active_after": [
+      1,
+      1,
+      1
+    ],
+    "audio_options_hex": "3c46010101000000",
+    "video_mode_before": 3,
+    "video_mode_after": 19,
+    "video_page_segments": [
+      40960,
+      41984
+    ],
+    "vga_reciprocal_entries": 511,
+    "vga_reciprocal_bytes": 2044,
+    "vga_reciprocal_sha256": "cc4e78569da6c6a347d728bdb4d416465118fa39f2b7d02edad26eca1b1aed9d",
+    "slot_initializer_exact": true,
+    "slot_initializer_slots": 100,
+    "slot_bytes_changed": 100,
+    "slot_before_sha256": "09cec5a5bd8afffbb758753810a20c55ccb06a46d7bf54eda69ecd2ad645ef11",
+    "slot_after_sha256": "6e084c7e6555355d5947d30ce1c799837bdf3a991f6ef0fee24f4b78438a80fe",
+    "resource_mode0_returned": true,
+    "resource_pointers": [
+      {
+        "index": 0,
+        "offset": 3228,
+        "segment": 16278,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 1,
+        "offset": 11428,
+        "segment": 16278,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 2,
+        "offset": 19628,
+        "segment": 16278,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 3,
+        "offset": 27828,
+        "segment": 16278,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 4,
+        "offset": 36028,
+        "segment": 16278,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 5,
+        "offset": 44228,
+        "segment": 16278,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 6,
+        "offset": 52428,
+        "segment": 16278,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 7,
+        "offset": 22,
+        "segment": 20375,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 8,
+        "offset": 8222,
+        "segment": 20375,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 9,
+        "offset": 16422,
+        "segment": 20375,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 10,
+        "offset": 24622,
+        "segment": 20375,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 11,
+        "offset": 32822,
+        "segment": 20375,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 12,
+        "offset": 41022,
+        "segment": 20375,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      },
+      {
+        "index": 13,
+        "offset": 49222,
+        "segment": 20375,
+        "header_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44"
+      }
+    ],
+    "keyboard_ivt9_saved_and_installed": true,
+    "ivt9_old_hex": "87e900f0",
+    "ivt9_new_hex": "0000d40e",
+    "input_flags_after_aux": [
+      1,
+      1
+    ],
+    "aux_probe_ax": 65535,
+    "aux_available_before": 1,
+    "aux_available_after": 1
+  },
+  "source_files_unchanged": true,
+  "terminated_by_harness": true,
+  "process_returncode": 1,
+  "runtime_tests": 1,
+  "scope": "original packed DOS2 EXE under actual DOSBox-X built-in DOS; debugger stops through keyboard IRQ9 installation and auxiliary probe/mode0 return; no seeded game registers, mocked game functions, or patched file; not gameplay/renderer/audio-output/Win16 parity"
+}

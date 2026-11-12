@@ -1,0 +1,41 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "crt_get_interrupt_vector",
+      "start": 88258,
+      "end_exclusive": 88276,
+      "instruction_bytes": 18,
+      "instructions": 10,
+      "role": "DOS API wrapper, compiler-runtime location; exact compiler/library provenance open"
+    },
+    {
+      "name": "crt_set_interrupt_vector",
+      "start": 88276,
+      "end_exclusive": 88297,
+      "instruction_bytes": 21,
+      "instructions": 12,
+      "role": "DOS API wrapper, compiler-runtime location; exact compiler/library provenance open"
+    },
+    {
+      "name": "aux_int33_probe",
+      "start": 33566,
+      "end_exclusive": 33592,
+      "instruction_bytes": 26,
+      "instructions": 8,
+      "role": "game-side INT33 register-block wrapper, external INT86 dependency"
+    },
+    {
+      "name": "aux_int33_reset_close",
+      "start": 33592,
+      "end_exclusive": 33615,
+      "instruction_bytes": 23,
+      "instructions": 7,
+      "role": "game-side INT33 register-block wrapper, external INT86 dependency"
+    }
+  ],
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "scope": "four straight-line static wrappers; runtime session counted separately; INT86 body and close-mode runtime unclosed"
+}

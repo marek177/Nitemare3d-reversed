@@ -1,0 +1,18 @@
+cs,ip,image_offset,bytes,instruction
+4590,8897,82337,57,push di
+4590,8898,82338,8b7708,"mov si,[bx+8]"
+4590,8901,82341,3b770a,"cmp si,[bx+0Ah]"
+4590,8904,82344,7503,jne short 22CDh
+4590,8906,82346,8b7706,"mov si,[bx+6]"
+4590,8909,82349,ad,lodsw [si]
+4590,8910,82350,83f8fe,"cmp ax,0FFFEh"
+4590,8913,82353,7408,je short 22DBh
+4590,8915,82355,8bfe,"mov di,si"
+4590,8917,82357,24fe,"and al,0FEh"
+4590,8919,82359,03f0,"add si,ax"
+4590,8921,82361,ebf2,jmp short 22CDh
+4590,8923,82363,4f,dec di
+4590,8924,82364,4f,dec di
+4590,8925,82365,8bf7,"mov si,di"
+4590,8927,82367,5f,pop di
+4590,8928,82368,c3,ret

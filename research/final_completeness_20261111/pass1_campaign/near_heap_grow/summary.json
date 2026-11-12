@@ -1,0 +1,26 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "near_heap_grow",
+      "start": 82116,
+      "end_exclusive": 82256,
+      "instruction_bytes": 140,
+      "instructions": 68
+    },
+    {
+      "name": "near_heap_last_block",
+      "start": 82337,
+      "end_exclusive": 82369,
+      "instruction_bytes": 32,
+      "instructions": 17
+    }
+  ],
+  "cases": 21504,
+  "failures": 0,
+  "scope": "native grow+last-block finder+existing resize helper, single seeded block chain, SS quantum deliberately different from DS, only DOS AH4A modeled; no full malloc or natural heap proof",
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "cases_sha256": "6d6b2a312173d5e67f9524040bf32d995c61cc509d220d75830af3b2967ecdd4"
+}

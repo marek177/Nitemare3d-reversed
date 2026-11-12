@@ -1,0 +1,92 @@
+{
+  "success": true,
+  "error": null,
+  "exe_sha256": "a82adcfa7af2784566cfeff74c077cefed08505396db2948b7e6aa7d4cee0832",
+  "game_source_sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301",
+  "config_sha256": "010fad58e09fcd988285064862472d89d71b0720a9e5350f88f368496eb56c3b",
+  "args": [
+    "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx-win64-20261001\\dosbox-x.exe",
+    "-defaultconf",
+    "-conf",
+    "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_startup_runtime\\runtime.conf",
+    "-nogui",
+    "-console",
+    "-fastlaunch",
+    "-log-con",
+    "-log-fileio",
+    "-time-limit",
+    "30",
+    "-c",
+    "mount c \"C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\drive_c\"",
+    "-c",
+    "c:",
+    "-c",
+    "debugbox N3D20.EXE",
+    "-c",
+    "exit"
+  ],
+  "snapshots": [
+    {
+      "stage": "packed_entry",
+      "registers": {
+        "CS": 9110,
+        "IP": 16,
+        "DS": 2068,
+        "ES": 2068,
+        "SS": 13024,
+        "SP": 128,
+        "AX": 0,
+        "BX": 0,
+        "CX": 255,
+        "DX": 2068
+      },
+      "load_segment": 2084
+    },
+    {
+      "stage": "crt_entry",
+      "registers": {
+        "CS": 6674,
+        "IP": 24,
+        "DS": 2068,
+        "ES": 2068,
+        "SS": 15768,
+        "SP": 2048,
+        "AX": 0,
+        "BX": 0,
+        "CX": 0,
+        "DX": 61440
+      }
+    },
+    {
+      "stage": "post_crt_prefix",
+      "registers": {
+        "CS": 6674,
+        "IP": 179,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59434,
+        "AX": 0,
+        "BX": 14209,
+        "CX": 0,
+        "DX": 61440
+      }
+    }
+  ],
+  "checks": {
+    "unpacked_image_exact_after_relocations": true,
+    "runtime_unpacked_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+    "segment_equality_at_B3": true,
+    "bss_zero_bytes": 47584,
+    "bss_sha256": "f276a06e67d8c241888a8bffb6a02be77408b46d6ef4c1df548d62e066981669",
+    "stack_snapshot": 59434,
+    "saved_psp": 2068,
+    "dos_version_ax": 5,
+    "dos_version_swapped": 1280
+  },
+  "source_files_unchanged": true,
+  "terminated_by_harness": true,
+  "process_returncode": 1,
+  "runtime_tests": 1,
+  "scope": "original packed DOS2 EXE under actual DOSBox-X built-in DOS; debugger stops at packed entry, unpacked CRT entry and B3; no seeded game registers, mocked game functions, or patched file; not gameplay/renderer/audio/Win16 parity"
+}

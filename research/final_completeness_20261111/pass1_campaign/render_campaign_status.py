@@ -1,7 +1,7 @@
 """python render_campaign_status.py OUTPUTS_DIR; current snapshot from authoritative JSON/CSV."""
 import csv,json,sys
 from pathlib import Path
-root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_fcb_prefix';report=sys.argv[3] if len(sys.argv)>3 else 'CRT_ENTRY_GAP_VERSIONS_REPORT.md'
+root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_near_heap_flags';report=sys.argv[3] if len(sys.argv)>3 else 'HOOK_FAMILY_CROSS_VERSION_REPORT.md'
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
 receipt_path=root/'CAMPAIGN_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_PUBLICATION_RECEIPT.json'
@@ -16,7 +16,7 @@ text=f'''# Nitemare 3D: aktualny dokazovy katalog
 
 Kampan ani PASS1 nie su dokoncene. DOS 2.0 obraz ma {s['image_bytes']} B, SHA-256 `{s['image_sha256']}`. Tato snimka je generovana z aktualnych strojovych vystupov; starsie analyticke reporty zostavaju historickymi davkami.
 
-Najnovsi report: [aktualna analyticka davka]({report}). Predosle dokazy: [DSP status wrapper](PASS1_DSP_STATUS_REPORT.md), [debug logger](PASS1_DEBUG_LOGGER_REPORT.md), [CRT unloaded hooks](CRT_UNLOADED_HOOKS_REPORT.md), [Win110 trig calleri](WIN110_TRIG_CALLERS_REPORT.md). [Runtime balik](RUNTIME_BUNDLE_PROBE_REPORT.md) je citatelny, ale dostupna Linux distribucia pre prilozeny ELF nebola zistena. Prirodzene runtime testy zostavaju 0.
+Najnovsi report: [aktualna analyticka davka]({report}). Predosle dokazy: [DSP status wrapper](PASS1_DSP_STATUS_REPORT.md), [debug logger](PASS1_DEBUG_LOGGER_REPORT.md), [CRT unloaded hooks](CRT_UNLOADED_HOOKS_REPORT.md), [Win110 trig calleri](WIN110_TRIG_CALLERS_REPORT.md). [Povodny Linux runtime balik](RUNTIME_BUNDLE_PROBE_REPORT.md) zostava samostatnym auditom. Aktualne original-runtime testy: {s['runtime_tests']}; presny rozsah: {s['runtime_tests_scope']}.
 
 ## Aktualne meranie PASS1
 
@@ -35,6 +35,7 @@ Mapa `{folder}/noncode_intervals.csv/json`: **{p['status_bytes']['PARTIAL']} B P
 | Seeded replay pripady | {s['controlled_instruction_replay_cases']} |
 | Oddelene prefixove replay pripady | {s.get('direction_index_prefix_replay_cases',0)} |
 | Prirodzene runtime testy | {s['runtime_tests']} |
+| Runtime BSS tabulky mimo file image (nezvysuju PASS1) | {s.get('runtime_bss_table_bytes_outside_file',0)} B |
 | Nove DEEP VERIFIED | {s['new_deep_verified_bytes']} B |
 
 Rozdiel PARTIAL oproti typovanym NON-CODE datam je {s['pass1_partial_bytes_without_typed_data']} B: relokacny WORD DS:2358 v slote DS:2356 s neuzavretou typovou rolou. Centralne neposudene bajty neprepisuju historicke klasifikacie inych auditov. Katalog poloh kodu je ohraniceny touto kampanou, nie uplny inventar vsetkych funkcii hry.

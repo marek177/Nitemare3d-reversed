@@ -155,6 +155,33 @@ def main():
     near_heap_summary=root/'pass1_near_heap_state/summary.json'
     bsf_summary=root/'pass1_bsf_dispatch/summary.json'
     bsf_check_summary=root/'bsf_file_check/summary.json'
+    near_heap_flags_summary=root/'pass1_near_heap_flags/summary.json'
+    near_heap_grow_summary=root/'near_heap_grow/summary.json'
+    near_heap_scan_summary=root/'near_heap_scan/summary.json'
+    near_malloc_summary=root/'near_malloc_retry/summary.json'
+    reciprocal_init_summary=root/'runtime_reciprocal_init/summary.json'
+    slot_init_summary=root/'renderer_slot_initializer/summary.json'
+    slot_flush_summary=root/'slot_pending_flush/summary.json'
+    sprite_clip_summary=root/'sprite_clip_prefix/summary.json'
+    input_wrapper_summary=root/'input_runtime_wrappers/summary.json'
+    if input_wrapper_summary.exists():
+        for f in readjson(input_wrapper_summary)['functions']:sources.append((f['name'],root/'input_runtime_wrappers'/(f['name']+'.csv')))
+    if sprite_clip_summary.exists():
+        for f in readjson(sprite_clip_summary)['functions']:sources.append((f['name'],root/'sprite_clip_prefix'/(f['name']+'.csv')))
+    if slot_flush_summary.exists():
+        for f in readjson(slot_flush_summary)['functions']:sources.append((f['name'],root/'slot_pending_flush'/(f['name']+'.csv')))
+    if slot_init_summary.exists():
+        for f in readjson(slot_init_summary)['functions']:sources.append((f['name'],root/'renderer_slot_initializer'/(f['name']+'.csv')))
+    if reciprocal_init_summary.exists():
+        for f in readjson(reciprocal_init_summary)['functions']:sources.append((f['name'],root/'runtime_reciprocal_init'/(f['name']+'.csv')))
+    if near_malloc_summary.exists():
+        for f in readjson(near_malloc_summary)['functions']:sources.append((f['name'],root/'near_malloc_retry'/(f['name']+'.csv')))
+    if near_heap_scan_summary.exists():
+        for f in readjson(near_heap_scan_summary)['functions']:sources.append((f['name'],root/'near_heap_scan'/(f['name']+'.csv')))
+    if near_heap_grow_summary.exists():
+        for f in readjson(near_heap_grow_summary)['functions']:sources.append((f['name'],root/'near_heap_grow'/(f['name']+'.csv')))
+    if near_heap_flags_summary.exists():
+        for f in readjson(near_heap_flags_summary)['functions']:sources.append((f['name'],root/'pass1_near_heap_flags'/(f['name']+'.csv')))
     if bsf_check_summary.exists():
         for f in readjson(bsf_check_summary)['functions']:sources.append((f['name'],root/'bsf_file_check'/(f['name']+'.csv')))
     if bsf_summary.exists():
@@ -334,6 +361,7 @@ def main():
     current_pass1_sources.append('pass1_bsf_dispatch')
     current_pass1_sources.append('pass1_startup_segments')
     current_pass1_sources.append('pass1_fcb_prefix')
+    current_pass1_sources.append('pass1_near_heap_flags')
     damage_summary=root/'damage_effect_replay/summary.json'
     if damage_summary.exists():
         d=readjson(damage_summary);a=d['dispatch_table_start'];e=d['dispatch_table_end_exclusive']
@@ -440,6 +468,14 @@ def main():
     replay_folders.append('bsf_file_check')
     replay_folders.append('pass1_startup_segments')
     replay_folders.append('pass1_fcb_prefix')
+    replay_folders.append('pass1_near_heap_flags')
+    replay_folders.append('near_heap_grow')
+    replay_folders.append('near_heap_scan')
+    replay_folders.append('near_malloc_retry')
+    replay_folders.append('renderer_slot_initializer')
+    replay_folders.append('slot_pending_flush')
+    replay_folders.append('sprite_clip_prefix')
+    replay_folders.append('sprite_pixel_replay')
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -451,7 +487,7 @@ def main():
         if prefix['failures']!=0:raise ValueError('failed direction prefix replay')
         result['direction_index_prefix_replay_cases']=prefix['cases']
         result['direction_index_prefix_replay_scope']=prefix['scope']
-    latest_map=root/'pass1_fcb_prefix/noncode_intervals.csv'
+    latest_map=root/'pass1_near_heap_flags/noncode_intervals.csv'
     latest_partial=set()
     for row in readcsv(latest_map):
         if row['status']=='PARTIAL':latest_partial.update(range(int(row['start']),int(row['end_exclusive'])))
@@ -467,6 +503,28 @@ def main():
     (dest/'untyped_partial_relocation_check.json').write_text(json.dumps(dict(
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
+    runtime_evidence=[];runtime_sessions=set()
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime'):
+        runtime_path=root/runtime_folder/'independent_verification.json'
+        if not runtime_path.exists():continue
+        runtime=readjson(runtime_path)
+        if not runtime['verified'] or runtime['runtime_tests']!=1:raise ValueError('unverified original runtime')
+        for item in runtime['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('runtime capture hash mismatch')
+        original_runtime=readjson(root/runtime_folder/'summary.json')
+        if not original_runtime['success'] or not original_runtime['source_files_unchanged']:raise ValueError('runtime source/capture conflict')
+        if runtime['summary_sha256'] in runtime_sessions:raise ValueError('duplicate runtime session')
+        runtime_sessions.add(runtime['summary_sha256'])
+        runtime_evidence.append(dict(path=str(runtime_path),sha256=sha(runtime_path.read_bytes()),runtime_image_sha256=runtime['runtime_image_sha256'],scope=runtime['scope']))
+    if runtime_evidence:
+        result['runtime_tests']=len(runtime_evidence)
+        result['runtime_tests_scope']='retained original packed DOS2 EXE scenarios under DOSBox-X built-in DOS with debugger stops: startup/B3, main/defaults35C, BSF/audio/VGA initialization and when present post-VGA slot/resource initialization; no gameplay/audio-output/rendered-frame/Win16 runtime parity; repeated prefix checks overlap'
+        result['runtime_evidence']=runtime_evidence
+    runtime_bss=root/'runtime_reciprocal_init/external_bss_tables.csv'
+    if runtime_bss.exists():
+        bss_tables=readcsv(runtime_bss)
+        csvout(dest/'runtime_bss_tables.csv',bss_tables)
+        result['runtime_bss_table_bytes_outside_file']=sum(int(row['length']) for row in bss_tables)
     refinement_paths=[root/'action_dispatch_replay/record_field_roles.csv',root/'damage_effect_replay/consumer_field_roles.csv']
     refinement_paths.append(root/'pass1_guard_diagnostics/consumer_field_roles.csv')
     records=[]

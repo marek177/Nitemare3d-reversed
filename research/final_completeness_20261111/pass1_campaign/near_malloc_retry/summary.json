@@ -1,0 +1,22 @@
+{
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "functions": [
+    {
+      "name": "near_malloc_retry",
+      "start": 89007,
+      "end_exclusive": 89066,
+      "instruction_bytes": 59,
+      "instructions": 27
+    }
+  ],
+  "cases": 640,
+  "failures": 0,
+  "successful_allocations": 222,
+  "callback_cases": 360,
+  "native_free_calls": 162,
+  "scope": "native malloc+scan+grow+last-block+resize plus original free in synthetic retry callback; single initial block, DOS AH4A and callback policy modeled; no natural runtime or full lifetime closure",
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "cases_sha256": "9734a2955ce7ac7a1c3657afb761a8b060e50211385d0930eb3cd7de95b1964a"
+}

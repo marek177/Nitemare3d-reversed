@@ -1,0 +1,139 @@
+{
+  "success": true,
+  "error": null,
+  "mode": "game_entry",
+  "harness_sha256": "1facf9273ecd7091bf5959180cff57672c62a9d869b0fd76e484374a5cc5a6cd",
+  "exe_sha256": "a82adcfa7af2784566cfeff74c077cefed08505396db2948b7e6aa7d4cee0832",
+  "game_source_sha256": "552d250ef773014a7f56ecdd7939559005fa990ebc7a6e435e6a7a49d372f301",
+  "config_sha256": "c9b0c0353e6816edf2cf1bdeab644e967e1ac45b713dc51ddb627e7fe4385e2d",
+  "args": [
+    "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx-win64-20261001\\dosbox-x.exe",
+    "-defaultconf",
+    "-conf",
+    "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\dosbox_game_entry_runtime\\runtime.conf",
+    "-nogui",
+    "-console",
+    "-fastlaunch",
+    "-log-con",
+    "-log-fileio",
+    "-time-limit",
+    "30",
+    "-c",
+    "mount c \"C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_game_entry_runtime\\drive_c\"",
+    "-c",
+    "c:",
+    "-c",
+    "debugbox N3D20.EXE",
+    "-c",
+    "exit"
+  ],
+  "snapshots": [
+    {
+      "stage": "packed_entry",
+      "registers": {
+        "CS": 9110,
+        "IP": 16,
+        "DS": 2068,
+        "ES": 2068,
+        "SS": 13024,
+        "SP": 128,
+        "AX": 0,
+        "BX": 0,
+        "CX": 255,
+        "DX": 2068
+      },
+      "load_segment": 2084
+    },
+    {
+      "stage": "crt_entry",
+      "registers": {
+        "CS": 6674,
+        "IP": 24,
+        "DS": 2068,
+        "ES": 2068,
+        "SS": 15768,
+        "SP": 2048,
+        "AX": 0,
+        "BX": 0,
+        "CX": 0,
+        "DX": 61440
+      }
+    },
+    {
+      "stage": "post_crt_prefix",
+      "registers": {
+        "CS": 6674,
+        "IP": 179,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59434,
+        "AX": 0,
+        "BX": 14209,
+        "CX": 0,
+        "DX": 61440
+      }
+    },
+    {
+      "stage": "game_main_entry",
+      "registers": {
+        "CS": 3226,
+        "IP": 806,
+        "DS": 12181,
+        "ES": 1994,
+        "SS": 12181,
+        "SP": 59406,
+        "AX": 32979,
+        "BX": 65535,
+        "CX": 32738,
+        "DX": 32979
+      }
+    },
+    {
+      "stage": "after_defaults_and_windir",
+      "registers": {
+        "CS": 3226,
+        "IP": 860,
+        "DS": 12181,
+        "ES": 12181,
+        "SS": 12181,
+        "SP": 59392,
+        "AX": 0,
+        "BX": 59545,
+        "CX": 0,
+        "DX": 6
+      }
+    }
+  ],
+  "checks": {
+    "unpacked_image_exact_after_relocations": true,
+    "runtime_unpacked_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+    "segment_equality_at_B3": true,
+    "bss_zero_bytes": 47584,
+    "bss_sha256": "f276a06e67d8c241888a8bffb6a02be77408b46d6ef4c1df548d62e066981669",
+    "stack_snapshot": 59434,
+    "saved_psp": 2068,
+    "dos_version_ax": 5,
+    "dos_version_swapped": 1280,
+    "game_main_arguments_match_globals": true,
+    "argc": 1,
+    "argv": 59416,
+    "envp": 59578,
+    "argv0": "C:\\N3D20.EXE",
+    "program_name": "C:\\N3D20.EXE",
+    "optional_init_pointer_zero": true,
+    "int0_saved_and_replaced": true,
+    "int0_old_hex": "60ca00f0",
+    "int0_new_hex": "e500121a",
+    "default_flag_before": 1,
+    "default_flag_after": 0,
+    "default_rate": 25,
+    "windir_getenv_result": 0,
+    "mode": "game_entry"
+  },
+  "source_files_unchanged": true,
+  "terminated_by_harness": true,
+  "process_returncode": 1,
+  "runtime_tests": 1,
+  "scope": "original packed DOS2 EXE under actual DOSBox-X built-in DOS; debugger stops through game main entry and first defaults/getenv; no seeded game registers, mocked game functions, or patched file; not gameplay/renderer/audio/Win16 parity"
+}

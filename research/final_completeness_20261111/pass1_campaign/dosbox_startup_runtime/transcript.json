@@ -1,0 +1,187 @@
+[
+  {
+    "id": "1",
+    "command": "PING",
+    "response": [
+      "BEGIN 1 OK",
+      "PONG",
+      "END 1"
+    ]
+  },
+  {
+    "id": "2",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 2 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "2396 10 814 814 32e0 80 0 0 ff 814",
+      "END 2"
+    ]
+  },
+  {
+    "id": "3",
+    "command": "EXEC BP 1A12:18",
+    "response": [
+      "BEGIN 3 OK",
+      "DEBUG: Set breakpoint at 1A12:0018",
+      "END 3"
+    ]
+  },
+  {
+    "id": "4",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 4 OK",
+      "OK",
+      "END 4"
+    ]
+  },
+  {
+    "id": "5",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 5 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "2396 12 814 814 32e0 80 0 0 ff 814",
+      "END 5"
+    ]
+  },
+  {
+    "id": "6",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 6 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 18 814 814 3d98 800 0 0 0 f000",
+      "END 6"
+    ]
+  },
+  {
+    "id": "7",
+    "command": "EXEC MEMDUMPBIN 824:0 8000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\unpacked_runtime.bin.part0",
+    "response": [
+      "BEGIN 7 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 7"
+    ]
+  },
+  {
+    "id": "8",
+    "command": "EXEC MEMDUMPBIN 1024:0 8000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\unpacked_runtime.bin.part32768",
+    "response": [
+      "BEGIN 8 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 8"
+    ]
+  },
+  {
+    "id": "9",
+    "command": "EXEC MEMDUMPBIN 1824:0 8000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\unpacked_runtime.bin.part65536",
+    "response": [
+      "BEGIN 9 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 9"
+    ]
+  },
+  {
+    "id": "10",
+    "command": "EXEC MEMDUMPBIN 2024:0 8000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\unpacked_runtime.bin.part98304",
+    "response": [
+      "BEGIN 10 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 10"
+    ]
+  },
+  {
+    "id": "11",
+    "command": "EXEC MEMDUMPBIN 2824:0 8000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\unpacked_runtime.bin.part131072",
+    "response": [
+      "BEGIN 11 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 11"
+    ]
+  },
+  {
+    "id": "12",
+    "command": "EXEC MEMDUMPBIN 3024:0 1D60 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\unpacked_runtime.bin.part163840",
+    "response": [
+      "BEGIN 12 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 12"
+    ]
+  },
+  {
+    "id": "13",
+    "command": "EXEC BPDEL *",
+    "response": [
+      "BEGIN 13 OK",
+      "DEBUG: Breakpoints deleted.",
+      "END 13"
+    ]
+  },
+  {
+    "id": "14",
+    "command": "EXEC BP 1A12:B3",
+    "response": [
+      "BEGIN 14 OK",
+      "DEBUG: Set breakpoint at 1A12:00B3",
+      "END 14"
+    ]
+  },
+  {
+    "id": "15",
+    "command": "EXEC RUN",
+    "response": [
+      "BEGIN 15 OK",
+      "OK",
+      "END 15"
+    ]
+  },
+  {
+    "id": "16",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 16 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 1a 814 814 3d98 800 3000 0 0 f000",
+      "END 16"
+    ]
+  },
+  {
+    "id": "17",
+    "command": "EXEC EV CS EIP DS ES SS SP AX BX CX DX",
+    "response": [
+      "BEGIN 17 OK",
+      "EV of 'CS EIP DS ES SS SP AX BX CX DX' is:",
+      "1a12 b3 2f95 2f95 2f95 e82a 0 3781 0 f000",
+      "END 17"
+    ]
+  },
+  {
+    "id": "18",
+    "command": "EXEC MEMDUMPBIN 31FA:0 8000 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\bss_runtime.bin.part0",
+    "response": [
+      "BEGIN 18 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 18"
+    ]
+  },
+  {
+    "id": "19",
+    "command": "EXEC MEMDUMPBIN 39FA:0 39E0 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\bss_runtime.bin.part32768",
+    "response": [
+      "BEGIN 19 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 19"
+    ]
+  },
+  {
+    "id": "20",
+    "command": "EXEC MEMDUMPBIN 31A2:C 48 C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_startup_runtime\\state_runtime.bin.part0",
+    "response": [
+      "BEGIN 20 OK",
+      "DEBUG: Memory dump binary success.",
+      "END 20"
+    ]
+  }
+]

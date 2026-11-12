@@ -1,0 +1,36 @@
+{
+  "exe": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx-win64-20261001\\dosbox-x.exe",
+  "exe_sha256": "a82adcfa7af2784566cfeff74c077cefed08505396db2948b7e6aa7d4cee0832",
+  "args": [
+    "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx-win64-20261001\\dosbox-x.exe",
+    "-defaultconf",
+    "-conf",
+    "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\windows_runtime_probe\\smoke.conf",
+    "-nogui",
+    "-noconsole",
+    "-fastlaunch",
+    "-log-con",
+    "-time-limit",
+    "8",
+    "-c",
+    "mount c \"C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\work\\dosboxx_runtime_smoke\\drive_c\"",
+    "-c",
+    "c:",
+    "-c",
+    "echo N3D_RUNTIME_SMOKE_OK>SMOKE.TXT",
+    "-c",
+    "exit"
+  ],
+  "environment_overrides": {
+    "SDL_VIDEODRIVER": "dummy",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software"
+  },
+  "returncode": 0,
+  "timed_out": false,
+  "elapsed_seconds": 0.9219999999986612,
+  "marker_exists": true,
+  "marker_text": "N3D_RUNTIME_SMOKE_OK\n",
+  "game_runtime_tests": 0,
+  "scope": "DOSBox-X host/command smoke only; original game not launched"
+}

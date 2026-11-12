@@ -1,0 +1,16 @@
+cs,ip,image_offset,bytes,instruction
+342,0,5472,c8040000,"enter 4,0"
+342,4,5476,56,push si
+342,5,5477,66c746fc01000000,"mov dword ptr [bp-4],1"
+342,13,5485,be5626,"mov si,2656h"
+342,16,5488,66b800004000,"mov eax,400000h"
+342,22,5494,6699,cdq
+342,24,5496,66f77efc,idiv dword ptr [bp-4]
+342,28,5500,668904,"mov [si],eax"
+342,31,5503,83c604,"add si,4"
+342,34,5506,66ff46fc,inc dword ptr [bp-4]
+342,38,5510,81fe522e,"cmp si,2E52h"
+342,42,5514,72e4,jb short 0010h
+342,44,5516,5e,pop si
+342,45,5517,c9,leave
+342,46,5518,cb,ret far
