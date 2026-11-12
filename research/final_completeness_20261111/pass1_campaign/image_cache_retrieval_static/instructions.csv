@@ -1,0 +1,123 @@
+function,cs,ip,image_offset,bytes,mnemonic,operands
+xms_read_to_conventional,0768,0350,31184,c8040000,enter,"4, 0"
+xms_read_to_conventional,0768,0354,31188,666800040000,push,0x400
+xms_read_to_conventional,0768,035A,31194,8b460e,mov,"ax, word ptr [bp + 0xe]"
+xms_read_to_conventional,0768,035D,31197,2bd2,sub,"dx, dx"
+xms_read_to_conventional,0768,035F,31199,05ff03,add,"ax, 0x3ff"
+xms_read_to_conventional,0768,0362,31202,13d2,adc,"dx, dx"
+xms_read_to_conventional,0768,0364,31204,52,push,dx
+xms_read_to_conventional,0768,0365,31205,50,push,ax
+xms_read_to_conventional,0768,0366,31206,6658,pop,eax
+xms_read_to_conventional,0768,0368,31208,6659,pop,ecx
+xms_read_to_conventional,0768,036A,31210,6699,cdq,
+xms_read_to_conventional,0768,036C,31212,66f7f9,idiv,ecx
+xms_read_to_conventional,0768,036F,31215,668bd0,mov,"edx, eax"
+xms_read_to_conventional,0768,0372,31218,66c1ea10,shr,"edx, 0x10"
+xms_read_to_conventional,0768,0376,31222,2bd2,sub,"dx, dx"
+xms_read_to_conventional,0768,0378,31224,8ad4,mov,"dl, ah"
+xms_read_to_conventional,0768,037A,31226,8ae0,mov,"ah, al"
+xms_read_to_conventional,0768,037C,31228,2ac0,sub,"al, al"
+xms_read_to_conventional,0768,037E,31230,03c0,add,"ax, ax"
+xms_read_to_conventional,0768,0380,31232,13d2,adc,"dx, dx"
+xms_read_to_conventional,0768,0382,31234,03c0,add,"ax, ax"
+xms_read_to_conventional,0768,0384,31236,13d2,adc,"dx, dx"
+xms_read_to_conventional,0768,0386,31238,8e066025,mov,"es, word ptr [0x2560]"
+xms_read_to_conventional,0768,038A,31242,26a30002,mov,"word ptr es:[0x200], ax"
+xms_read_to_conventional,0768,038E,31246,2689160202,mov,"word ptr es:[0x202], dx"
+xms_read_to_conventional,0768,0393,31251,a10635,mov,"ax, word ptr [0x3506]"
+xms_read_to_conventional,0768,0396,31254,26a30402,mov,"word ptr es:[0x204], ax"
+xms_read_to_conventional,0768,039A,31258,668b460a,mov,"eax, dword ptr [bp + 0xa]"
+xms_read_to_conventional,0768,039E,31262,6626a30602,mov,"dword ptr es:[0x206], eax"
+xms_read_to_conventional,0768,03A3,31267,26c7060a020000,mov,"word ptr es:[0x20a], 0"
+xms_read_to_conventional,0768,03AA,31274,668b4606,mov,"eax, dword ptr [bp + 6]"
+xms_read_to_conventional,0768,03AE,31278,6626a30c02,mov,"dword ptr es:[0x20c], eax"
+xms_read_to_conventional,0768,03B3,31283,06,push,es
+xms_read_to_conventional,0768,03B4,31284,680002,push,0x200
+xms_read_to_conventional,0768,03B7,31287,0e,push,cs
+xms_read_to_conventional,0768,03B8,31288,e84304,call,0x7fe
+xms_read_to_conventional,0768,03BB,31291,83c404,add,"sp, 4"
+xms_read_to_conventional,0768,03BE,31294,0bd2,or,"dx, dx"
+xms_read_to_conventional,0768,03C0,31296,7d0a,jge,0x3cc
+xms_read_to_conventional,0768,03C2,31298,52,push,dx
+xms_read_to_conventional,0768,03C3,31299,50,push,ax
+xms_read_to_conventional,0768,03C4,31300,68830c,push,0xc83
+xms_read_to_conventional,0768,03C7,31303,9a0c00ba0f,lcall,"0xfba, 0xc"
+xms_read_to_conventional,0768,03CC,31308,c9,leave,
+xms_read_to_conventional,0768,03CD,31309,cb,retf,
+image_cache_slot_fill,0768,0402,31362,c80a0000,enter,"0xa, 0"
+image_cache_slot_fill,0768,0406,31366,57,push,di
+image_cache_slot_fill,0768,0407,31367,56,push,si
+image_cache_slot_fill,0768,0408,31368,33c0,xor,"ax, ax"
+image_cache_slot_fill,0768,040A,31370,99,cwd,
+image_cache_slot_fill,0768,040B,31371,8bf8,mov,"di, ax"
+image_cache_slot_fill,0768,040D,31373,8956f8,mov,"word ptr [bp - 8], dx"
+image_cache_slot_fill,0768,0410,31376,66a14045,mov,"eax, dword ptr [0x4540]"
+image_cache_slot_fill,0768,0414,31380,668946fc,mov,"dword ptr [bp - 4], eax"
+image_cache_slot_fill,0768,0418,31384,bbcc34,mov,"bx, 0x34cc"
+image_cache_slot_fill,0768,041B,31387,668b46fc,mov,"eax, dword ptr [bp - 4]"
+image_cache_slot_fill,0768,041F,31391,c437,les,"si, ptr [bx]"
+image_cache_slot_fill,0768,0421,31393,66263904,cmp,"dword ptr es:[si], eax"
+image_cache_slot_fill,0768,0425,31397,730d,jae,0x434
+image_cache_slot_fill,0768,0427,31399,8bfe,mov,"di, si"
+image_cache_slot_fill,0768,0429,31401,8c46f8,mov,"word ptr [bp - 8], es"
+image_cache_slot_fill,0768,042C,31404,66268b04,mov,"eax, dword ptr es:[si]"
+image_cache_slot_fill,0768,0430,31408,668946fc,mov,"dword ptr [bp - 4], eax"
+image_cache_slot_fill,0768,0434,31412,83c304,add,"bx, 4"
+image_cache_slot_fill,0768,0437,31415,81fbf434,cmp,"bx, 0x34f4"
+image_cache_slot_fill,0768,043B,31419,72de,jb,0x41b
+image_cache_slot_fill,0768,043D,31421,8b46f8,mov,"ax, word ptr [bp - 8]"
+image_cache_slot_fill,0768,0440,31424,0bc7,or,"ax, di"
+image_cache_slot_fill,0768,0442,31426,7511,jne,0x455
+image_cache_slot_fill,0768,0444,31428,a1cc34,mov,"ax, word ptr [0x34cc]"
+image_cache_slot_fill,0768,0447,31431,8b16ce34,mov,"dx, word ptr [0x34ce]"
+image_cache_slot_fill,0768,044B,31435,8bf8,mov,"di, ax"
+image_cache_slot_fill,0768,044D,31437,8956f8,mov,"word ptr [bp - 8], dx"
+image_cache_slot_fill,0768,0450,31440,66ff060ae0,inc,dword ptr [0xe00a]
+image_cache_slot_fill,0768,0455,31445,8e46f8,mov,"es, word ptr [bp - 8]"
+image_cache_slot_fill,0768,0458,31448,26837d0400,cmp,"word ptr es:[di + 4], 0"
+image_cache_slot_fill,0768,045D,31453,7414,je,0x473
+image_cache_slot_fill,0768,045F,31455,268b5d04,mov,"bx, word ptr es:[di + 4]"
+image_cache_slot_fill,0768,0463,31459,662bc0,sub,"eax, eax"
+image_cache_slot_fill,0768,0466,31462,66894706,mov,"dword ptr [bx + 6], eax"
+image_cache_slot_fill,0768,046A,31466,830606e001,add,"word ptr [0xe006], 1"
+image_cache_slot_fill,0768,046F,31471,110608e0,adc,"word ptr [0xe008], ax"
+image_cache_slot_fill,0768,0473,31475,8b7606,mov,"si, word ptr [bp + 6]"
+image_cache_slot_fill,0768,0476,31478,66837c0200,cmp,"dword ptr [si + 2], 0"
+image_cache_slot_fill,0768,047B,31483,7e19,jle,0x496
+image_cache_slot_fill,0768,047D,31485,680020,push,0x2000
+image_cache_slot_fill,0768,0480,31488,66ff7402,push,dword ptr [si + 2]
+image_cache_slot_fill,0768,0484,31492,8bc7,mov,"ax, di"
+image_cache_slot_fill,0768,0486,31494,8b56f8,mov,"dx, word ptr [bp - 8]"
+image_cache_slot_fill,0768,0489,31497,050600,add,"ax, 6"
+image_cache_slot_fill,0768,048C,31500,52,push,dx
+image_cache_slot_fill,0768,048D,31501,50,push,ax
+image_cache_slot_fill,0768,048E,31502,9a02007702,lcall,"0x277, 2"
+image_cache_slot_fill,0768,0493,31507,eb21,jmp,0x4b6
+image_cache_slot_fill,0768,0496,31510,680020,push,0x2000
+image_cache_slot_fill,0768,0499,31513,8b4402,mov,"ax, word ptr [si + 2]"
+image_cache_slot_fill,0768,049C,31516,8b5404,mov,"dx, word ptr [si + 4]"
+image_cache_slot_fill,0768,049F,31519,f7d8,neg,ax
+image_cache_slot_fill,0768,04A1,31521,83d200,adc,"dx, 0"
+image_cache_slot_fill,0768,04A4,31524,f7da,neg,dx
+image_cache_slot_fill,0768,04A6,31526,52,push,dx
+image_cache_slot_fill,0768,04A7,31527,50,push,ax
+image_cache_slot_fill,0768,04A8,31528,8bc7,mov,"ax, di"
+image_cache_slot_fill,0768,04AA,31530,8b56f8,mov,"dx, word ptr [bp - 8]"
+image_cache_slot_fill,0768,04AD,31533,050600,add,"ax, 6"
+image_cache_slot_fill,0768,04B0,31536,52,push,dx
+image_cache_slot_fill,0768,04B1,31537,50,push,ax
+image_cache_slot_fill,0768,04B2,31538,0e,push,cs
+image_cache_slot_fill,0768,04B3,31539,e89afe,call,0x350
+image_cache_slot_fill,0768,04B6,31542,83c40a,add,"sp, 0xa"
+image_cache_slot_fill,0768,04B9,31545,8e46f8,mov,"es, word ptr [bp - 8]"
+image_cache_slot_fill,0768,04BC,31548,26897504,mov,"word ptr es:[di + 4], si"
+image_cache_slot_fill,0768,04C0,31552,66a14045,mov,"eax, dword ptr [0x4540]"
+image_cache_slot_fill,0768,04C4,31556,66268905,mov,"dword ptr es:[di], eax"
+image_cache_slot_fill,0768,04C8,31560,8d4506,lea,"ax, [di + 6]"
+image_cache_slot_fill,0768,04CB,31563,894406,mov,"word ptr [si + 6], ax"
+image_cache_slot_fill,0768,04CE,31566,8c4408,mov,"word ptr [si + 8], es"
+image_cache_slot_fill,0768,04D1,31569,8cc2,mov,"dx, es"
+image_cache_slot_fill,0768,04D3,31571,5e,pop,si
+image_cache_slot_fill,0768,04D4,31572,5f,pop,di
+image_cache_slot_fill,0768,04D5,31573,c9,leave,
+image_cache_slot_fill,0768,04D6,31574,cb,retf,

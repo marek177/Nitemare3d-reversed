@@ -1,0 +1,34 @@
+{
+  "status": "PARTIAL",
+  "method": "Inventory bytes checked against canonical image; no independent decoding or runtime replay in this batch",
+  "image_sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297",
+  "inventory_sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a",
+  "instructions": 122,
+  "instruction_bytes": 338,
+  "gaps": [
+    {
+      "start": 31509,
+      "end_exclusive": 31510,
+      "bytes": "90",
+      "status": "Uncovered by retained inventory; not proven padding"
+    }
+  ],
+  "native_scenarios_added": 0,
+  "deep_verified_bytes_added": 0,
+  "intervals": [
+    {
+      "start": 31184,
+      "end_exclusive": 31310
+    },
+    {
+      "start": 31362,
+      "end_exclusive": 31575
+    }
+  ],
+  "unresolved": [
+    "Independent decoder and original-instruction replay",
+    "XMS destination readback",
+    "Slot allocation sizes and renderer consumers",
+    "Native zero/negative marker retrieval"
+  ]
+}
