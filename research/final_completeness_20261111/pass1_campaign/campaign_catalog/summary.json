@@ -8,21 +8,21 @@
       "sha256": "e4c77ac69a936c859d1ca4b4d573b7ef35da4aafd443b2466792f4320c425ab5"
     }
   ],
-  "functions": 134,
-  "independent_instruction_count": 5145,
-  "independent_instruction_bytes": 12844,
-  "data_bytes_with_local_evidence": 57988,
+  "functions": 136,
+  "independent_instruction_count": 5232,
+  "independent_instruction_bytes": 13047,
+  "data_bytes_with_local_evidence": 58018,
   "primary_type_bytes": {
-    "UNKNOWN_CONTENT": 100528,
-    "EXECUTABLE_CODE": 12844,
-    "DATA": 57988
+    "UNKNOWN_CONTENT": 100295,
+    "EXECUTABLE_CODE": 13047,
+    "DATA": 58018
   },
-  "interval_count": 701,
+  "interval_count": 711,
   "original_pass320_ledger_imported": true,
   "new_deep_verified_bytes": 0,
-  "runtime_tests": 17,
+  "runtime_tests": 19,
   "scope": "Current campaign partition only; PARTIAL does not mean closed semantics; UNKNOWN is not historical reclassification",
-  "controlled_instruction_replay_cases": 988623,
+  "controlled_instruction_replay_cases": 989775,
   "original_noncode_bytes": 57295,
   "original_noncode_intersection_code_bytes": 0,
   "original_noncode_intersection_data_bytes": 57100,
@@ -30,7 +30,7 @@
   "direction_index_prefix_replay_scope": "seeded prefix only; stop before 0099; no trig callee or natural callers",
   "latest_pass1_map_sha256": "3021969d4e4348715816361fa387631e7d6cfd9fc9dcc136e26073f0f9984d1b",
   "pass1_partial_bytes_without_typed_data": 2,
-  "runtime_tests_scope": "retained original packed DOS2 under DOSBox-X built-in DOS with debugger stops: startup/main/defaults, BSF/audio/VGA, slots/resources, keyboard/auxiliary, episode names, palette/DAC, sound directory/trace, UIF fonts0/1/2; optional missing intro and explicit CD asset back-buffer/flip/font0 with paused read-map intervention; programmed/latched4000h and usedRGB6 checked; AUTOTYPE space actual IRQ make/break, BIOS3920 queue/consumption and native wait exit to font1; no host-surface/physical-monitor/gameplay/Win16 parity; repeated prefixes overlap",
+  "runtime_tests_scope": "retained original packed DOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace, UIF fonts0/1/2; explicit CD back-buffer/flip and read-map intervention; AUTOTYPE IRQ make/break, BIOS3920, wait exit; hardware frames identify0BDE:00C6, explicit paused WORX stack-switch window verifies privateSS/SP but does not capture nested keyIRQ on that stack; no host/physical/gameplay/Win16 parity; prefixes overlap",
   "runtime_evidence": [
     {
       "path": "outputs\\dosbox_startup_runtime\\independent_verification.json",
@@ -133,6 +133,18 @@
       "sha256": "2003fac20e5244efe4fa52dc48c6abb171dcb09ff7711b453801277a47789c37",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "one original packed DOS2 with added CD asset and supported AUTOTYPE space; actual IRQ1 make/break port reads, game bit0200, BIOS3920 queue/consumption and natural wait return; original font1 transformed1145B/128FAR plus font0/2 exact; breakpoints pause CPU and can affect timing; no host scanout, arbitrary keyboard/DEMO, gameplay or Win16 parity; UNKNOWN44 cached-change only"
+    },
+    {
+      "path": "outputs\\dosbox_keyboard_stack_runtime\\independent_verification.json",
+      "sha256": "ad8f722408a769e750d55b6a6359d5b570fd60ad09f11108ca4586db2e4a8103",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original packed DOS2 with added CD asset and supported AUTOTYPE space; actual IRQ1 make/break port reads, game bit0200, BIOS3920 queue/consumption and natural wait return; original font1 transformed1145B/128FAR plus font0/2 exact; breakpoints pause CPU and can affect timing; no host scanout, arbitrary keyboard/DEMO, gameplay or Win16 parity; UNKNOWN44 cached-change only; entry/exit hardware interrupt frames exact, both interrupted canonical0BDE:00C6 in this run; no alternate IRQ stack observed in this run"
+    },
+    {
+      "path": "outputs\\dosbox_worx_stack_window_runtime\\independent_verification.json",
+      "sha256": "390cdfd47c447f59cdc22c51dc4a188fb6fc25cb30fa9084b7c1a432ac05365c",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "one original packed DOS2 with added CD asset and supported AUTOTYPE space; actual IRQ1 make/break port reads, game bit0200, BIOS3920 queue/consumption and natural wait return; original font1 transformed1145B/128FAR plus font0/2 exact; breakpoints pause CPU and can affect timing; no host scanout, arbitrary keyboard/DEMO, gameplay or Win16 parity; UNKNOWN44 cached-change only; entry/exit hardware interrupt frames exact, both interrupted canonical0BDE:00C6 in this run; explicit paused WORX window proves SS/privateSP/control words, not an IRQ nested on that stack"
     }
   ],
   "runtime_bss_table_bytes_outside_file": 4054,

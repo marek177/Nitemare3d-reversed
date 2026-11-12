@@ -1,9 +1,10 @@
 """python render_campaign_status.py OUTPUTS_DIR; current snapshot from authoritative JSON/CSV."""
 import csv,json,sys
 from pathlib import Path
-root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_near_heap_flags';report=sys.argv[3] if len(sys.argv)>3 else 'KEYBOARD_IRQ_FONT1_RUNTIME_REPORT.md'
+root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_near_heap_flags';report=sys.argv[3] if len(sys.argv)>3 else 'WORX_PRIVATE_STACK_RUNTIME_REPORT.md'
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
-receipt_path=root/'CAMPAIGN_KEYBOARD_FONT1_PUBLICATION_RECEIPT_20261112.json'
+receipt_path=root/'CAMPAIGN_WORX_STACK_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_KEYBOARD_FONT1_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_INTRO_FONT0_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_VGA_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_RUNTIME_PUBLICATION_RECEIPT_20261112.json'
@@ -40,7 +41,7 @@ Mapa `{folder}/noncode_intervals.csv/json`: **{p['status_bytes']['PARTIAL']} B P
 | Kod v povodnom NON-CODE | {s['original_noncode_intersection_code_bytes']} B |
 | Seeded replay pripady | {s['controlled_instruction_replay_cases']} |
 | Oddelene prefixove replay pripady | {s.get('direction_index_prefix_replay_cases',0)} |
-| Prirodzene runtime testy | {s['runtime_tests']} |
+| Original-EXE runtime scenare s definovanymi zasahmi | {s['runtime_tests']} |
 | Runtime BSS tabulky mimo file image (nezvysuju PASS1) | {s.get('runtime_bss_table_bytes_outside_file',0)} B |
 | Runtime buffer refinements, uz zahrnute v PASS1 | {s.get('runtime_buffer_refinement_bytes_already_in_pass1',0)} B /{s.get('runtime_buffer_refinement_records',0)} intervalov |
 | Nove DEEP VERIFIED | {s['new_deep_verified_bytes']} B |

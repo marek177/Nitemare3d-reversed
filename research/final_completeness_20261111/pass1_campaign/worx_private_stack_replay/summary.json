@@ -1,0 +1,41 @@
+{
+  "functions": [
+    {
+      "name": "worx_private_stack_tick",
+      "start": 105687,
+      "end_exclusive": 105792,
+      "instructions": 42,
+      "instruction_bytes": 105
+    },
+    {
+      "name": "worx_timer_irq_dispatch",
+      "start": 105792,
+      "end_exclusive": 105891,
+      "instructions": 45,
+      "instruction_bytes": 98
+    }
+  ],
+  "cases": 1152,
+  "private_callback_cases": 576,
+  "timer_irq_cases": 576,
+  "typed_data_bytes": 30,
+  "capacity_candidate_bytes_not_added_to_typed_union": 512,
+  "failures": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "scope": "whole original private-stack callback plus timer IRQ with callback kept native; mixer/music/digital bodies and old timer handler mocked, OUT observed; IF/DF and stack/register return checked; no proof of full private stack capacity, arbitrary nested IRQ, audio output or physical timing",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_worx_private_stack.py",
+      "sha256": "e3a9bbc525ff1d0503c50f8274c2f2dcc432f78688bf18b75a22dc7ff395f9f2"
+    }
+  ]
+}
