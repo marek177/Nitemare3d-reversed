@@ -8,21 +8,21 @@
       "sha256": "e4c77ac69a936c859d1ca4b4d573b7ef35da4aafd443b2466792f4320c425ab5"
     }
   ],
-  "functions": 172,
-  "independent_instruction_count": 7678,
-  "independent_instruction_bytes": 19365,
+  "functions": 173,
+  "independent_instruction_count": 7740,
+  "independent_instruction_bytes": 19532,
   "data_bytes_with_local_evidence": 59469,
   "primary_type_bytes": {
-    "EXECUTABLE_CODE": 19365,
-    "UNKNOWN_CONTENT": 92526,
+    "EXECUTABLE_CODE": 19532,
+    "UNKNOWN_CONTENT": 92359,
     "DATA": 59469
   },
-  "interval_count": 845,
+  "interval_count": 848,
   "original_pass320_ledger_imported": true,
   "new_deep_verified_bytes": 0,
-  "runtime_tests": 35,
+  "runtime_tests": 36,
   "scope": "Current campaign partition only; PARTIAL does not mean closed semantics; UNKNOWN is not historical reclassification",
-  "controlled_instruction_replay_cases": 1058401,
+  "controlled_instruction_replay_cases": 1061849,
   "original_noncode_bytes": 57295,
   "original_noncode_intersection_code_bytes": 0,
   "original_noncode_intersection_data_bytes": 57116,
@@ -30,7 +30,7 @@
   "direction_index_prefix_replay_scope": "seeded prefix only; stop before 0099; no trig callee or natural callers",
   "latest_pass1_map_sha256": "497d10a11959dbae3d17f495e803569e229c13434658ec94c231d29784f47efe",
   "pass1_partial_bytes_without_typed_data": 2,
-  "runtime_tests_scope": "retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; exact98 before/after MOV mapBYTE1 stores bind GUARD24/actor168/A5 andGUARD25/actor174/A4, restore-underlay044C andoccupy06A9; map-writer endpoint06AD is mid-function; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap; original0254 allowed/blocked sparse decision-to-return tails, with blocked door7 state2 snapshot, no demonstrated entry-state transition; subsequent separate whole native0598 source door7 and neighbor6 state1to2 proved with exact2BYTE world delta/DGROUP57392B unchanged and original-code replay; earlier sparse capture alone remains weaker evidence; separate whole native classification producers mapheader514B identity,512output entries/seeds0and7; secondcall DGROUP includes observed clockDWORD+1, identified RTC INC but native writerPC not captured; pureproducer replay compared with explicit clockdelta allowance; separate whole original012A+C0A native mode7 GUARD0/actor20 orientation update, relative2/frame0400h, exact2BYTE world delta and unchangedDGROUP57392B/nearDSF200bank52B; original no-stub replay matches final registers; separate original0277:09C1..09D7 class8 copy block transfers90B IMG1 object81h header fromfile8F5Ah toDSF200h, objectoffsettable400h+4*81h gives159B32h; native classrecord4WORDs and prior52Bprefix bind source to orientation consumer; not whole map-loader/file IO execution trace; separate original045C wholecall raw8192B equals IMG1wall1[BC0Ah,DC0Ah) and XMS source,request offset0/used0to8/finaltag0/cachedwall+1/pointercleared; currentmanagerreturn not directly trapped,prior same-request AX1 verified; no XMSreadback/render parity; separate original0402 wholecall/0350 XMS readback for wall16 tagFFFCC000,manager AX1,8192 destination bytes equal IMG1[3CD04h,3ED04h),ten slot headers/record/stats/frame checked; native zero-tag,eviction,fullDGROUP and renderer open; separate original11EE2DC0 whole native calendar call2026-11-12/month11,timezone+28800,DST0,DXAX6AF65F2F,common-table249C; original no-stub replay172instructions/all captured registers/frame/fullDGROUP57392B unchanged; no native DST transition/leap-table consumer/Win16 parity; separate whole original0BDE0018 CRTclock sample/ftime with coldTZcache0to1,originalgetenv absentTZ,actualDOSdate/time,10Btimeb+4preservedtail,seconds6AF66351/ms120/zone480/DST0/clockD273F4E0;643instruction original replay has only2OSresponse fixtures and noCRTstubs; native/replay allcapturedregisters/frame/DGROUP57392B match with exact1BYTE cache delta;restricted177B read/write hooks calibrated3TZreads/10outputB and zeroevents for this replay path only",
+  "runtime_tests_scope": "retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; exact98 before/after MOV mapBYTE1 stores bind GUARD24/actor168/A5 andGUARD25/actor174/A4, restore-underlay044C andoccupy06A9; map-writer endpoint06AD is mid-function; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap; original0254 allowed/blocked sparse decision-to-return tails, with blocked door7 state2 snapshot, no demonstrated entry-state transition; subsequent separate whole native0598 source door7 and neighbor6 state1to2 proved with exact2BYTE world delta/DGROUP57392B unchanged and original-code replay; earlier sparse capture alone remains weaker evidence; separate whole native classification producers mapheader514B identity,512output entries/seeds0and7; secondcall DGROUP includes observed clockDWORD+1, identified RTC INC but native writerPC not captured; pureproducer replay compared with explicit clockdelta allowance; separate whole original012A+C0A native mode7 GUARD0/actor20 orientation update, relative2/frame0400h, exact2BYTE world delta and unchangedDGROUP57392B/nearDSF200bank52B; original no-stub replay matches final registers; separate original0277:09C1..09D7 class8 copy block transfers90B IMG1 object81h header fromfile8F5Ah toDSF200h, objectoffsettable400h+4*81h gives159B32h; native classrecord4WORDs and prior52Bprefix bind source to orientation consumer; not whole map-loader/file IO execution trace; separate original045C wholecall raw8192B equals IMG1wall1[BC0Ah,DC0Ah) and XMS source,request offset0/used0to8/finaltag0/cachedwall+1/pointercleared; currentmanagerreturn not directly trapped,prior same-request AX1 verified; no XMSreadback/render parity; separate original0402 wholecall/0350 XMS readback for wall16 tagFFFCC000,manager AX1,8192 destination bytes equal IMG1[3CD04h,3ED04h),ten slot headers/record/stats/frame checked; native zero-tag,eviction,fullDGROUP and renderer open; separate original11EE2DC0 whole native calendar call2026-11-12/month11,timezone+28800,DST0,DXAX6AF65F2F,common-table249C; original no-stub replay172instructions/all captured registers/frame/fullDGROUP57392B unchanged; no native DST transition/leap-table consumer/Win16 parity; separate whole original0BDE0018 CRTclock sample/ftime with coldTZcache0to1,originalgetenv absentTZ,actualDOSdate/time,10Btimeb+4preservedtail,seconds6AF66351/ms120/zone480/DST0/clockD273F4E0;643instruction original replay has only2OSresponse fixtures and noCRTstubs; native/replay allcapturedregisters/frame/DGROUP57392B match with exact1BYTE cache delta;restricted177B read/write hooks calibrated3TZreads/10outputB and zeroevents for this replay path only; separate native04D8 cyclicobjectcache62of128pointers/index0to1/600Bsource/1024BXMSreadbackAX1 then original015605DE draws30x20 source at82..96/86..95;67CPUstores/4plane changed20,15,16,16 andall262144VGAbytes match originalreplay plus independentunclipped/depth/transparency math;captured write-mode0/maskFF/no-setreset;not fullframe/fullclipping/lifecycle/Win16 parity;helperreturnsDX0,storedrecordFAR4F97E050 isactualsource",
   "runtime_evidence": [
     {
       "path": "outputs\\dosbox_startup_runtime\\independent_verification.json",
@@ -231,6 +231,12 @@
       "scope": "Original whole gameclock sample->ftime->cold timezone/getenv->DOS date/time wrappers->calendar/DST. Native DOS responses retained; only those2INT21 responses supplied to original-instruction replay.10B output+4unchanged tail,all captured final andftime-return registers,frame/full57392B DGROUP match; only cache3CA8 BYTE0to1 changes. FullDS64 used for environment/scratch input,not claimed entirely matching after DOS kernel scratch. Restricted data-range hooks calibrated3TZreads/10outputwriteB,exact baseline flow,zero remaining177 events in this replay path only. Broad read hooks perturb RETF (separate probe),not used for nonuse claims."
     },
     {
+      "path": "outputs\\dosbox_object_cache_draw_runtime\\independent_verification.json",
+      "sha256": "c6d2176225fd0f79d8931063beb2f2f10ba8e6f83df2d7ac4e9219917a86d8a8",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "One whole original04D8 XMS cache fill->first0156:05DE scaled sprite,actual600B source equals IMG1object25h (same600B exists other episodes),1024B nativeXMS readback/AX1.62of128FAR vector entries nonnull,cyclicindex0to1,no native eviction. Whole draw matches original replay plus independent unclipped/depth/transparency math and all4*65536B nativeVGA planes under captured simple write-mode0/maskFF/no-setreset. All captured cache/draw registers,frames andDGROUP agree; no complete frame/presentation/full clipping/Win16/lifecycle parity. Native OUT sequence not directly trapped; replay/mathematical sequence and nativefinal mask match."
+    },
+    {
       "path": "outputs\\dosbox_door_interaction_runtime\\independent_verification.json",
       "sha256": "0f6a8406aaa969a2272c4d1a60957b1d69e8afcd02a73f99229c43f54260274b",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
@@ -258,11 +264,16 @@
   "PASS320_endpoint_profile_bytes_separate": 57295,
   "PASS320_endpoint_profile_changed_union_separate": 11000,
   "PASS320_endpoint_profile_scope": "52 address-reassembled snapshots/14 already-counted native sessions,30550 interval comparisons;all57295B sampled,11000B changed positions,remaining177B unchanged;endpoint facts not read tracking/closure/status promotion",
+  "first_native_sprite_plane_bytes_compared_separate": 262144,
+  "object_cache_flush_cross_version_cases_separate": 32,
+  "object_asset_capacity_records_separate": 1383,
+  "object_asset_max_logical_bytes_separate": 2961,
+  "object_asset_max_XMS_rounded_bytes_separate": 3072,
   "partial_native_validator_allowed_calls_not_additional_scenarios": 128,
-  "runtime_bss_table_bytes_outside_file": 5150,
-  "runtime_buffer_refinement_records": 16,
-  "runtime_buffer_refinement_bytes_already_in_pass1": 4122,
-  "record_field_refinements": 86,
+  "runtime_bss_table_bytes_outside_file": 5158,
+  "runtime_buffer_refinement_records": 18,
+  "runtime_buffer_refinement_bytes_already_in_pass1": 4636,
+  "record_field_refinements": 94,
   "win110_palette_supplement": {
     "functions": 4,
     "instructions": 229,

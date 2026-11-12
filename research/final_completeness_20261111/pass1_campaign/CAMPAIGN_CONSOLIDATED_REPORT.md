@@ -6,7 +6,7 @@ Kampan ani PASS1 nie su dokoncene. DOS 2.0 obraz ma 171360 B, SHA-256 `e2efde70a
 
 
 
-Najnovsi report: [aktualna analyticka davka](PASS1_NATIVE_PROFILES_FTIME_REPORT.md). Predosle dokazy: [DSP status wrapper](PASS1_DSP_STATUS_REPORT.md), [debug logger](PASS1_DEBUG_LOGGER_REPORT.md), [CRT unloaded hooks](CRT_UNLOADED_HOOKS_REPORT.md), [Win110 trig calleri](WIN110_TRIG_CALLERS_REPORT.md). [Povodny Linux runtime balik](RUNTIME_BUNDLE_PROBE_REPORT.md) zostava samostatnym auditom. Aktualne original-runtime testy: 35; presny rozsah: retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; exact98 before/after MOV mapBYTE1 stores bind GUARD24/actor168/A5 andGUARD25/actor174/A4, restore-underlay044C andoccupy06A9; map-writer endpoint06AD is mid-function; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap; original0254 allowed/blocked sparse decision-to-return tails, with blocked door7 state2 snapshot, no demonstrated entry-state transition; subsequent separate whole native0598 source door7 and neighbor6 state1to2 proved with exact2BYTE world delta/DGROUP57392B unchanged and original-code replay; earlier sparse capture alone remains weaker evidence; separate whole native classification producers mapheader514B identity,512output entries/seeds0and7; secondcall DGROUP includes observed clockDWORD+1, identified RTC INC but native writerPC not captured; pureproducer replay compared with explicit clockdelta allowance; separate whole original012A+C0A native mode7 GUARD0/actor20 orientation update, relative2/frame0400h, exact2BYTE world delta and unchangedDGROUP57392B/nearDSF200bank52B; original no-stub replay matches final registers; separate original0277:09C1..09D7 class8 copy block transfers90B IMG1 object81h header fromfile8F5Ah toDSF200h, objectoffsettable400h+4*81h gives159B32h; native classrecord4WORDs and prior52Bprefix bind source to orientation consumer; not whole map-loader/file IO execution trace; separate original045C wholecall raw8192B equals IMG1wall1[BC0Ah,DC0Ah) and XMS source,request offset0/used0to8/finaltag0/cachedwall+1/pointercleared; currentmanagerreturn not directly trapped,prior same-request AX1 verified; no XMSreadback/render parity; separate original0402 wholecall/0350 XMS readback for wall16 tagFFFCC000,manager AX1,8192 destination bytes equal IMG1[3CD04h,3ED04h),ten slot headers/record/stats/frame checked; native zero-tag,eviction,fullDGROUP and renderer open; separate original11EE2DC0 whole native calendar call2026-11-12/month11,timezone+28800,DST0,DXAX6AF65F2F,common-table249C; original no-stub replay172instructions/all captured registers/frame/fullDGROUP57392B unchanged; no native DST transition/leap-table consumer/Win16 parity; separate whole original0BDE0018 CRTclock sample/ftime with coldTZcache0to1,originalgetenv absentTZ,actualDOSdate/time,10Btimeb+4preservedtail,seconds6AF66351/ms120/zone480/DST0/clockD273F4E0;643instruction original replay has only2OSresponse fixtures and noCRTstubs; native/replay allcapturedregisters/frame/DGROUP57392B match with exact1BYTE cache delta;restricted177B read/write hooks calibrated3TZreads/10outputB and zeroevents for this replay path only.
+Najnovsi report: [aktualna analyticka davka](OBJECT_CACHE_NATIVE_SPRITE_REPORT.md). Predosle dokazy: [DSP status wrapper](PASS1_DSP_STATUS_REPORT.md), [debug logger](PASS1_DEBUG_LOGGER_REPORT.md), [CRT unloaded hooks](CRT_UNLOADED_HOOKS_REPORT.md), [Win110 trig calleri](WIN110_TRIG_CALLERS_REPORT.md). [Povodny Linux runtime balik](RUNTIME_BUNDLE_PROBE_REPORT.md) zostava samostatnym auditom. Aktualne original-runtime testy: 36; presny rozsah: retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; first post-map scheduler return, due buckets/world counter1to2/synchronized VGA flip, reconstructed world+HUD planes with actual DAC; native reset caller0D29:16CA writes DAC235/scene227 black through original OUT opcodes, first palette tick decrements80to79; complete native palette black/white/black cycle and RNG1to2745024/AX41/countdown201, followupEA0 returned; exact98 before/after MOV mapBYTE1 stores bind GUARD24/actor168/A5 andGUARD25/actor174/A4, restore-underlay044C andoccupy06A9; map-writer endpoint06AD is mid-function; no host/physical/independent-pixel/full-gameplay/save-load/Win16 parity; prefixes overlap; original0254 allowed/blocked sparse decision-to-return tails, with blocked door7 state2 snapshot, no demonstrated entry-state transition; subsequent separate whole native0598 source door7 and neighbor6 state1to2 proved with exact2BYTE world delta/DGROUP57392B unchanged and original-code replay; earlier sparse capture alone remains weaker evidence; separate whole native classification producers mapheader514B identity,512output entries/seeds0and7; secondcall DGROUP includes observed clockDWORD+1, identified RTC INC but native writerPC not captured; pureproducer replay compared with explicit clockdelta allowance; separate whole original012A+C0A native mode7 GUARD0/actor20 orientation update, relative2/frame0400h, exact2BYTE world delta and unchangedDGROUP57392B/nearDSF200bank52B; original no-stub replay matches final registers; separate original0277:09C1..09D7 class8 copy block transfers90B IMG1 object81h header fromfile8F5Ah toDSF200h, objectoffsettable400h+4*81h gives159B32h; native classrecord4WORDs and prior52Bprefix bind source to orientation consumer; not whole map-loader/file IO execution trace; separate original045C wholecall raw8192B equals IMG1wall1[BC0Ah,DC0Ah) and XMS source,request offset0/used0to8/finaltag0/cachedwall+1/pointercleared; currentmanagerreturn not directly trapped,prior same-request AX1 verified; no XMSreadback/render parity; separate original0402 wholecall/0350 XMS readback for wall16 tagFFFCC000,manager AX1,8192 destination bytes equal IMG1[3CD04h,3ED04h),ten slot headers/record/stats/frame checked; native zero-tag,eviction,fullDGROUP and renderer open; separate original11EE2DC0 whole native calendar call2026-11-12/month11,timezone+28800,DST0,DXAX6AF65F2F,common-table249C; original no-stub replay172instructions/all captured registers/frame/fullDGROUP57392B unchanged; no native DST transition/leap-table consumer/Win16 parity; separate whole original0BDE0018 CRTclock sample/ftime with coldTZcache0to1,originalgetenv absentTZ,actualDOSdate/time,10Btimeb+4preservedtail,seconds6AF66351/ms120/zone480/DST0/clockD273F4E0;643instruction original replay has only2OSresponse fixtures and noCRTstubs; native/replay allcapturedregisters/frame/DGROUP57392B match with exact1BYTE cache delta;restricted177B read/write hooks calibrated3TZreads/10outputB and zeroevents for this replay path only; separate native04D8 cyclicobjectcache62of128pointers/index0to1/600Bsource/1024BXMSreadbackAX1 then original015605DE draws30x20 source at82..96/86..95;67CPUstores/4plane changed20,15,16,16 andall262144VGAbytes match originalreplay plus independentunclipped/depth/transparency math;captured write-mode0/maskFF/no-setreset;not fullframe/fullclipping/lifecycle/Win16 parity;helperreturnsDX0,storedrecordFAR4F97E050 isactualsource.
 
 
 
@@ -22,31 +22,31 @@ Mapa `pass1_xms_move_request/noncode_intervals.csv/json`: **57118 B PARTIAL, 149
 
 |---|---:|
 
-| Funkcne rozsahy | 172 |
+| Funkcne rozsahy | 173 |
 
-| Nezavisle dekodovane instrukcie | 7678 |
+| Nezavisle dekodovane instrukcie | 7740 |
 
-| Instrukcne bajty | 19365 |
+| Instrukcne bajty | 19532 |
 
 | Unia typovanych dat celeho obrazu | 59469 B |
 
-| Ostatne katalogom neposudene bajty | 92526 B |
+| Ostatne katalogom neposudene bajty | 92359 B |
 
-| Intervaly celeho obrazu | 845 |
+| Intervaly celeho obrazu | 848 |
 
 | Typovane data v povodnom NON-CODE | 57116 B |
 
 | Kod v povodnom NON-CODE | 0 B |
 
-| Seeded replay pripady | 1058401 |
+| Seeded replay pripady | 1061849 |
 
 | Oddelene prefixove replay pripady | 65548 |
 
-| Original-EXE runtime scenare s definovanymi zasahmi | 35 |
+| Original-EXE runtime scenare s definovanymi zasahmi | 36 |
 
-| Runtime BSS tabulky mimo file image (nezvysuju PASS1) | 5150 B |
+| Runtime BSS tabulky mimo file image (nezvysuju PASS1) | 5158 B |
 
-| Runtime buffer refinements, uz zahrnute v PASS1 | 4122 B /16 intervalov |
+| Runtime buffer refinements, uz zahrnute v PASS1 | 4636 B /18 intervalov |
 
 | Nove DEEP VERIFIED | 0 B |
 
@@ -64,7 +64,7 @@ Rozdiel PARTIAL oproti typovanym NON-CODE datam je 2 B: relokacny WORD DS:2358 v
 
 
 
-Reprodukcia: analyticky skript uvedeny v aktualnom reporte, `promote_pass1_fields.py`, `verify_pass1_partition.py`, `independent_decode_and_catalog.py`, potom `render_campaign_status.py OUTPUTS_DIR pass1_xms_move_request PASS1_NATIVE_PROFILES_FTIME_REPORT.md`. Presne vstupy a obmedzenia su v reportoch jednotlivych davok. Overena publikovana analyticka snimka je commit c9e7fd9ef6cbf3a63907b0407a945097040ecb21, pozri `CAMPAIGN_FTIME_PUBLICATION_RECEIPT_20261112.json`. Aktualna mapa bola od publikovanej snimky zmenena; nova lokalna davka tym nie je automaticky publikovana. Aktualny katalog alebo runtime scenare sa odvtedy zmenili; samotna zhoda mapy neznamena publikovanie novej davky. Historicke poznamky v davkovych reportoch uvadzaju stav v case ich vzniku.
+Reprodukcia: analyticky skript uvedeny v aktualnom reporte, `promote_pass1_fields.py`, `verify_pass1_partition.py`, `independent_decode_and_catalog.py`, potom `render_campaign_status.py OUTPUTS_DIR pass1_xms_move_request OBJECT_CACHE_NATIVE_SPRITE_REPORT.md`. Presne vstupy a obmedzenia su v reportoch jednotlivych davok. Overena publikovana analyticka snimka je commit c9e7fd9ef6cbf3a63907b0407a945097040ecb21, pozri `CAMPAIGN_FTIME_PUBLICATION_RECEIPT_20261112.json`. Aktualna mapa bola od publikovanej snimky zmenena; nova lokalna davka tym nie je automaticky publikovana. Aktualny katalog alebo runtime scenare sa odvtedy zmenili; samotna zhoda mapy neznamena publikovanie novej davky. Historicke poznamky v davkovych reportoch uvadzaju stav v case ich vzniku.
 
 
 
@@ -72,23 +72,23 @@ Samostatny Win110 paletovy doplnok: 4 rozsahy, 229 instrukcii / 641 B, 22 seeded
 
 ## Coverage update: 13 areas
 
-Current bounded catalog:172functions,7678independent starts,19365codeB,59469typed file-dataB,UNKNOWN_CONTENT92526(not historical reclassification). Controlled DOS2cases1058401;accepted native sessions35(overlapping prefixes). BSS5150B;field-role rows86. New PASS320 endpoint profiles are separate evidence,not added to byte totals or native scenario count. Original map remains57118PARTIAL/149CLASSIFIED ONLY/28UNKNOWN/0DEEP. New semantic percentages require complete area denominators;all remainN/A.
+Central bounded catalog173functions,7740starts,19532unique codeB,59469typed file-dataB,UNKNOWN_CONTENT92359(not historical reclassification). DOS2controlled calls1061849,native accepted sessions36(overlapping prefixes). New renderer is an already cataloged function,not counted again. BSS5158B,field-role rows94;runtime refinements18records/4636already typed NONCODE bytes. Original NONCODE map/status/DEEP unchanged;new semantic percentages remainN/A without complete denominators.
 
 |Area|Historical orientation|New % / exact method|New confirmed evidence|Remaining / blocker|Next concrete step|
 |---|---:|---|---|---|---|
-|Maps and formats|99%|N/A,semantic denominator absent|No new map format|Prior unknown fields remain|Uncovered map consumers|
-|Data types and constants|95%|N/A;892interval profiles/57295B|Per-interval endpoint changes and timeb layout|177B still unresolved/only classified|Target a distinct read path/module provenance|
-|Tables and pointers|93%|N/A;13newfield roles|Native near environment feeds cold lookup|Full startup/environment domain open|Caller/vector construction closure|
-|Functions/ASM/CFG|90%|N/A;122newstarts/314B|Three whole original routines,all starts exercised|Other CRT/game functions remain open|Uncovered consumers/callers|
-|RNG|97%|N/A,semantic denominator absent|Clock dependency closed for sampled path|No seed linkage proved|Trace actual seed writer|
-|Scheduler|96%|N/A;one whole native clock call|Seconds/fraction to modulo32millisecond result|RTC/BIOS/cached mode timing still separate|Bind caller03DA and actual clock stores|
-|DEMO/input|96%|N/A,semantic denominator absent|No new DEMO fact|Playback timing open|Trace DEMO timestamp consumer|
-|Renderer/VGA|94%|N/A,semantic denominator absent|No new renderer fact|XMS buffer-to-pixels still open|Trace original pixel consumer|
-|GUARD/bosses|93%|N/A,semantic denominator absent|Clock base distinguished from deadlines|AI/boss behavior gaps remain|Uncovered scheduler/AI branches|
-|Weapons/projectiles|92%|N/A,semantic denominator absent|No new damage fact|Prior effect gaps remain|Uncovered projectile transitions|
-|Sprites/HUD/palette|92%|N/A,semantic denominator absent|No new sprite/palette fact|Cache/sprite consumer gaps remain|Original04D8/render dispatch|
-|SAVE/LOAD|92%|N/A,semantic denominator absent|CRT time structure is not a save structure|Serialization/time use unproved|Find exact saved-field writer/readers|
-|Windows Win16|92%|N/A,semantic denominator absent|No new Win16 fact|Windows clock counterpart still unbound|Map actual Win16 time API consumer|
+|Maps and formats|99%|N/A,semantic denominator absent|Actual1383object header/pixel records fit payload|Other formats/lifecycle gaps|Uncovered map/asset consumers|
+|Data types and constants|95%|N/A;514already typedB refined|Vector/cursor native roles and8separateBSSB|149classified/28unknown unchanged|Target new remaining-byte paths|
+|Tables and pointers|93%|N/A;128capacity/62nonnull prefix|Source slot/record pointer chain,notDXAXreturn|All targets/lifetime/free path open|Native eviction and reset/LOAD|
+|Functions/ASM/CFG|90%|N/A;62newstarts/167B|Whole04D8,all starts exercised|Whole0024allocator modes not closed|Close initialization/free/reset CFG|
+|RNG|97%|N/A,semantic denominator absent|No RNG fact added|Seed/DEMO linkage open|Actual RNG writer trace|
+|Scheduler|96%|N/A;one linked cache/draw call|Pending flush caller order confirmed|Whole loop/timing remains broader|Trace repeated frames and flags|
+|DEMO/input|96%|N/A,semantic denominator absent|No DEMO fact added|Deterministic inputs/playback open|Original DEMO branches|
+|Renderer/VGA|94%|N/A;262144nativeB/one draw|Original/model/math planes agree,67stores|Clipped/multiple draws/presentation open|Native clipped/depth/bypass variants|
+|GUARD/bosses|93%|N/A,semantic denominator absent|No AI behavior inferred from sprite|Boss/state gaps remain|Uncovered AI branches|
+|Weapons/projectiles|92%|N/A,semantic denominator absent|No damage behavior inferred|Projectile/collision gaps remain|Uncovered projectile transitions|
+|Sprites/HUD/palette|92%|N/A;one actual30x20 source|IMG->XMS->record->native planar pixels|Other sprites/HUD/palette domains open|Additional natural source/scale cases|
+|SAVE/LOAD|92%|N/A,semantic denominator absent|Cache pointers distinguished from persistence|Restore/invalidation not exercised|Actual save/load cache lifecycle|
+|Windows Win16|92%|N/A,semantic denominator absent|No new Win16 proof|Windows renderer/backend differs|Map exact Win16 sprite consumer|
 
-All13areas remainPARTIAL. CLASSIFIED ONLY/UNKNOWN classifications are preserved. Full goal completion is not established.
+All13areas remainPARTIAL. 7DOShelper mappings and32caller cases are bounded evidence,not global parity. Campaign remains active.
 

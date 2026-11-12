@@ -34,7 +34,7 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
-    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay'):
+    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay'):
         for f in readjson(root/folder/'summary.json')['functions']:
             if folder=='worx_register_bank_replay' and f['name'] in ('worx_port_callback_set','worx_port_write_delayed'):continue # already owned by prior independent functions
             sources.append((f['name'],root/folder/(f['name']+'.csv')))
@@ -531,7 +531,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -560,7 +560,7 @@ def main():
         bytes=len(untyped),all_at_verified_relocation_sites=True,image_offsets=sorted(untyped)),indent=2)+'\n')
     result['runtime_tests_scope'] = 'DOSBox-X/original-runtime tests only; controlled instruction replay counted separately'
     runtime_evidence=[];runtime_sessions=set()
-    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime','dosbox_newgame_map_runtime_v3','dosbox_scheduler_runtime','dosbox_palette_writer_runtime','dosbox_palette_cycle_runtime_v2','dosbox_map_writers_runtime','dosbox_validator_branches_runtime','dosbox_guard_orientation_runtime_v2','dosbox_class_descriptor_copy_runtime','dosbox_image_record_runtime','dosbox_image_retrieval_runtime','dosbox_calendar_runtime','dosbox_ftime_runtime_v2'):
+    for runtime_folder in ('dosbox_startup_runtime','dosbox_game_entry_runtime','dosbox_initialization_runtime','dosbox_post_vga_runtime','dosbox_input_init_runtime','dosbox_episode_init_runtime','dosbox_palette_init_runtime','dosbox_unknown_watch_runtime_v3','dosbox_dac_readback_runtime','dosbox_sound_directory_runtime','dosbox_sound_trace_runtime','dosbox_font2_runtime','dosbox_optional_intro_runtime','dosbox_intro_loaded_runtime_v3','dosbox_intro_flip_runtime','dosbox_intro_font0_runtime','dosbox_keyboard_font1_runtime','dosbox_keyboard_stack_runtime','dosbox_worx_stack_window_runtime','dosbox_main_menu_runtime_v2','dosbox_xms_request_runtime','dosbox_newgame_map_runtime_v3','dosbox_scheduler_runtime','dosbox_palette_writer_runtime','dosbox_palette_cycle_runtime_v2','dosbox_map_writers_runtime','dosbox_validator_branches_runtime','dosbox_guard_orientation_runtime_v2','dosbox_class_descriptor_copy_runtime','dosbox_image_record_runtime','dosbox_image_retrieval_runtime','dosbox_calendar_runtime','dosbox_ftime_runtime_v2','dosbox_object_cache_draw_runtime'):
         runtime_path=root/runtime_folder/'independent_verification.json'
         if not runtime_path.exists():continue
         runtime=readjson(runtime_path)
@@ -664,6 +664,25 @@ def main():
         result['PASS320_endpoint_profile_bytes_separate']=v['baseline_byte_union_with_full_interval_samples']
         result['PASS320_endpoint_profile_changed_union_separate']=v['baseline_changed_byte_position_union']
         result['PASS320_endpoint_profile_scope']='52 address-reassembled snapshots/14 already-counted native sessions,30550 interval comparisons;all57295B sampled,11000B changed positions,remaining177B unchanged;endpoint facts not read tracking/closure/status promotion'
+    if (root/'dosbox_object_cache_draw_runtime/independent_verification.json').exists():
+        result['runtime_tests_scope']+='; separate native04D8 cyclicobjectcache62of128pointers/index0to1/600Bsource/1024BXMSreadbackAX1 then original015605DE draws30x20 source at82..96/86..95;67CPUstores/4plane changed20,15,16,16 andall262144VGAbytes match originalreplay plus independentunclipped/depth/transparency math;captured write-mode0/maskFF/no-setreset;not fullframe/fullclipping/lifecycle/Win16 parity;helperreturnsDX0,storedrecordFAR4F97E050 isactualsource'
+        result['first_native_sprite_plane_bytes_compared_separate']=262144
+    object_versions=root/'object_cache_versions/flush_cross_version_summary.json'
+    if object_versions.exists():
+        v=readjson(object_versions)
+        if v['failures'] or v['runtime_tests']:raise ValueError('object flush version scope')
+        for item in v['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('object flush version source hash')
+        result['object_cache_flush_cross_version_cases_separate']=v['cases']
+    capacity_path=root/'object_cache_asset_capacity/summary.json'
+    if capacity_path.exists():
+        v=readjson(capacity_path)
+        for item in v['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('object capacity source hash')
+        if not v['all_supplied_catalog_object_records_fit3072']:raise ValueError('object capacity domain mismatch')
+        result['object_asset_capacity_records_separate']=v['object_records_checked']
+        result['object_asset_max_logical_bytes_separate']=v['max_logical_bytes']
+        result['object_asset_max_XMS_rounded_bytes_separate']=v['max_rounded_bytes']
     partial_path=root/'guard_validator_partial/partial_verification.json'
     if partial_path.exists():
         partial=readjson(partial_path)
@@ -672,7 +691,7 @@ def main():
             if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('partial capture hash mismatch')
         result['partial_native_validator_allowed_calls_not_additional_scenarios']=partial['successful_native_allowed_calls']
     bss_tables=[]
-    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv',root/'guard_validator_partial/external_bss_tables.csv',root/'classification_producer_fields/external_bss_tables.csv',root/'image_group_fields/external_bss_tables.csv',root/'image_record_fields/external_bss_tables.csv',root/'image_retrieval_fields/external_bss_tables.csv',root/'crt_ftime_fields/external_bss_tables.csv'):
+    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv',root/'guard_validator_partial/external_bss_tables.csv',root/'classification_producer_fields/external_bss_tables.csv',root/'image_group_fields/external_bss_tables.csv',root/'image_record_fields/external_bss_tables.csv',root/'image_retrieval_fields/external_bss_tables.csv',root/'crt_ftime_fields/external_bss_tables.csv',root/'object_cache_fields/external_bss_tables.csv'):
         if runtime_bss.exists():bss_tables.extend(readcsv(runtime_bss))
     if bss_tables:
         bss_union=set()
@@ -685,7 +704,7 @@ def main():
         csvout(dest/'runtime_bss_tables.csv',bss_tables)
         result['runtime_bss_table_bytes_outside_file']=len(bss_union)
     runtime_buffers=[];runtime_buffer_bytes=set()
-    for path in (root/'font2_runtime_fields/runtime_field_intervals.csv',root/'intro_flip_font0_fields/runtime_field_intervals.csv',root/'font1_keyboard_fields/runtime_field_intervals.csv',root/'main_menu_runtime_fields/runtime_field_intervals.csv',root/'guard_map_writer_fields/runtime_field_intervals.csv'):
+    for path in (root/'font2_runtime_fields/runtime_field_intervals.csv',root/'intro_flip_font0_fields/runtime_field_intervals.csv',root/'font1_keyboard_fields/runtime_field_intervals.csv',root/'main_menu_runtime_fields/runtime_field_intervals.csv',root/'guard_map_writer_fields/runtime_field_intervals.csv',root/'object_cache_fields/runtime_field_intervals.csv'):
         if not path.exists():continue
         for row in readcsv(path):
             a,z=int(row['start']),int(row['end_exclusive'])
@@ -706,6 +725,7 @@ def main():
     refinement_paths.append(root/'image_retrieval_fields/consumer_field_roles.csv')
     refinement_paths.append(root/'crt_calendar_fields/consumer_field_roles.csv')
     refinement_paths.append(root/'crt_ftime_fields/consumer_field_roles.csv')
+    refinement_paths.append(root/'object_cache_fields/consumer_field_roles.csv')
     records=[]
     for refinements in refinement_paths:
         if not refinements.exists():continue
