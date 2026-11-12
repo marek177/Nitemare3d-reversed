@@ -1,0 +1,15 @@
+cs,ip,image_offset,bytes,instruction
+1896,2086,32422,55,push bp
+1896,2087,32423,8bec,"mov bp,sp"
+1896,2089,32425,b40c,"mov ah,0Ch"
+1896,2091,32427,8b5606,"mov dx,[bp+6]"
+1896,2094,32430,ff1e0e35,call far dword ptr [350Eh]
+1896,2098,32434,0bc0,"or ax,ax"
+1896,2100,32436,750a,jne short 0840h
+1896,2102,32438,b200,"mov dl,0"
+1896,2104,32440,8af3,"mov dh,bl"
+1896,2106,32442,b80000,"mov ax,0"
+1896,2109,32445,e90200,jmp 0842h
+1896,2112,32448,8bc3,"mov ax,bx"
+1896,2114,32450,c9,leave
+1896,2115,32451,cb,ret far
