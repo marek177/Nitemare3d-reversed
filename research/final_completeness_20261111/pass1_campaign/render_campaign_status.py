@@ -1,9 +1,10 @@
 """python render_campaign_status.py OUTPUTS_DIR; current snapshot from authoritative JSON/CSV."""
 import csv,json,sys
 from pathlib import Path
-root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'XMS_REQUEST_RUNTIME_REPORT.md'
+root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'NEWGAME_MAP_XMS_CACHE_REPORT.md'
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
-receipt_path=root/'CAMPAIGN_XMS_PUBLICATION_RECEIPT_20261112.json'
+receipt_path=root/'CAMPAIGN_NEWGAME_PUBLICATION_RECEIPT_20261112.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_XMS_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_MAIN_MENU_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_WORX_STACK_PUBLICATION_RECEIPT_20261112.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_KEYBOARD_FONT1_PUBLICATION_RECEIPT_20261112.json'

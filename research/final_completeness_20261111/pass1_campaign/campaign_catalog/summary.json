@@ -8,21 +8,21 @@
       "sha256": "e4c77ac69a936c859d1ca4b4d573b7ef35da4aafd443b2466792f4320c425ab5"
     }
   ],
-  "functions": 141,
-  "independent_instruction_count": 5541,
-  "independent_instruction_bytes": 13854,
+  "functions": 143,
+  "independent_instruction_count": 5708,
+  "independent_instruction_bytes": 14344,
   "data_bytes_with_local_evidence": 58034,
   "primary_type_bytes": {
-    "UNKNOWN_CONTENT": 99472,
-    "EXECUTABLE_CODE": 13854,
+    "UNKNOWN_CONTENT": 98982,
+    "EXECUTABLE_CODE": 14344,
     "DATA": 58034
   },
-  "interval_count": 725,
+  "interval_count": 729,
   "original_pass320_ledger_imported": true,
   "new_deep_verified_bytes": 0,
-  "runtime_tests": 21,
+  "runtime_tests": 22,
   "scope": "Current campaign partition only; PARTIAL does not mean closed semantics; UNKNOWN is not historical reclassification",
-  "controlled_instruction_replay_cases": 993211,
+  "controlled_instruction_replay_cases": 994017,
   "original_noncode_bytes": 57295,
   "original_noncode_intersection_code_bytes": 0,
   "original_noncode_intersection_data_bytes": 57116,
@@ -30,7 +30,7 @@
   "direction_index_prefix_replay_scope": "seeded prefix only; stop before 0099; no trig callee or natural callers",
   "latest_pass1_map_sha256": "497d10a11959dbae3d17f495e803569e229c13434658ec94c231d29784f47efe",
   "pass1_partial_bytes_without_typed_data": 2,
-  "runtime_tests_scope": "retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer return after episode1/difficulty1 selection and 57295B NONCODE endpoint snapshot; no full map-load/host/physical/gameplay/save-load/Win16 parity; prefixes overlap",
+  "runtime_tests_scope": "retained original packedDOS2 under DOSBox-X with debugger stops: startup/main, BSF/audio/VGA, resources/input, episodes, palettes/DAC, sound metadata/trace and fonts0/1/2; explicit CD intro/flip/read-map captures; AUTOTYPE IRQ/BDA/wait paths through main menu initial draw with414B descriptors and both VGA pages; foreground IRQ frames and explicit paused WORX SS/SP window, no captured private-stack keyIRQ; first XMS transfer and map-init return after episode1/difficulty1 selection, exact8192B MAP1 level0, sound474B negative-XMS-offset directory reconstruction, 57295B NONCODE endpoint snapshot; endpoint0D29:0A31 is pre-music-selection CALL, not game-loop entry; no first gameplay frame/host/physical/full-gameplay/save-load/Win16 parity; prefixes overlap",
   "runtime_evidence": [
     {
       "path": "outputs\\dosbox_startup_runtime\\independent_verification.json",
@@ -157,6 +157,12 @@
       "sha256": "4ceb5a9327198f042d69b388ead97bd48e0dc745a9d64bad91dcf79cd2f5dccf",
       "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
       "scope": "original packed DOS2 with explicit CD asset; menu input reaches first XMS move return before map-load completion; cached byte-change events do not identify writer PCs or reads; final snapshot covers all baseline NONCODE bytes but does not prove all their uses; no full gameplay, error path, Win16 or physical hardware parity"
+    },
+    {
+      "path": "outputs\\dosbox_newgame_map_runtime_v3\\independent_verification.json",
+      "sha256": "150db22f18ba2b6b8061126383d28069e949777ada7cb31418b6a84d92d758ab",
+      "runtime_image_sha256": "6ff79b07a98de8873f60bf2da6d93f55bbc0d3320a1d8adbd90e02e7fde569b6",
+      "scope": "original packed DOS2 plus explicit CDasset, natural New game/episode1/difficulty1 input; map init returns and reaches pre-music-selection CALL; exact8192B MAP1 level0 buffer, XMS sound offsets474B reconstructed with inferred initial742KiB and endpoint1074KiB/counters; UNKNOWN28 cached-change only, no reads/same-value-write proof; no first gameplay frame, full game-loop, sound output or Win16 parity"
     }
   ],
   "runtime_bss_table_bytes_outside_file": 4054,
