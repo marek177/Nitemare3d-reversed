@@ -1,0 +1,8 @@
+record,offset,width,role,consumer
+record26,17,1,facingBYTE builds prior/next wrapped bits andcenter masked386 SHL bit;gate bypassed by forceWORD!=0,04C7:0734..0795
+record26,23,1,"caller stores visibilityAL,not wholeAX,after original gate returnsDS=SS",04C7:14C1..14C4
+record28,16,2,signed fixed-world X SAR6 gives source tileX,04C7:06DB..06E1
+record28,18,2,signed fixed-world Y SAR6 gives source tileY,04C7:06E4..06EA
+map_cell_2,0,1,terraintype -> DS:D00Cflags;bit2+4blocks;bit2+8checksdoor,0AEA:0DAC..0DE2
+map_cell_2,1,1,objecttype -> DS:D10Cflags;bit2 withoutbit20blocks onlywhen modeLowBYTE!=0,0AEA:0DE4..0E04
+door_record18,8,2,door state0or4 admits ray;otherWORDstates reject,0000:01E6..01F8

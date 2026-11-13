@@ -1,0 +1,73 @@
+# Original visibility and conditional reads of UNKNOWN map-tail bytes
+
+## Primary NONCODE result: two bytes remain UNKNOWN
+
+Original map array image[2570E,2770E) contains64x64x2B. The next bytes[2770E,2770F) and[2770F,27710) are still UNKNOWN in PASS320,initial00/00,immediately before canonical DS base27710. Original visibility ray has no x/y clipping. With source tile(63,63),delta(2,0),limit2,it first steps to(64,63). That intermediate cell is read before the next step reaches endpoint(65,63). Address arithmetic is recordSegment21FDh*16+373Eh+2*(63*64+64)=2770Eh;objectBYTE+1 is2770Fh.
+
+80 controlled instruction-load observations bind these exact bytes:64terrain and16object. Both original zero values and explicitly seeded nonzero values(terrain17,object34) reach BL. These are synthetic one-past-grid executions,including calls through the higher gate with source world(4032,4032),player tile(65,63),force1. They do not establish that natural gameplay can place the player outside the map,that these bytes are intended map storage,or that they are padding. **No status,typed-byte or DEEP VERIFIED promotion.** Other26 UNKNOWN bytes and149 CLASSIFIED ONLY bytes receive no new consumer proof here.
+
+Original executed load PCs:0AEA:0DAC imageBC4C,bytes268A1F,MOV BL,ES:[BX];0AEA:0DED imageBC8D,bytes268A5F01,MOV BL,ES:[BX+1]. Pre-load ES:BX andmemory values are captured; following PCs0DAF/0DF1 verify loadedBL. BX is573Eh,ES=load+21FDh;subtracting relocation load yields exact original2770E/F. No broad or restricted UC_HOOK_MEM_READ is used. Full original execution/model comparisons accompany these observations. They are CPU instruction replays,not native DOSBox memory traces.
+
+Artifacts: visibility_gate_ray_replay/UNKNOWN_gap_load_witnesses.csv plus cases/summary; pass1_map_tail_visibility_refs/conditional_fields.csv and.json,independent_verification.json; verify_unknown_map_tail_reads.py independently decodes raw MOV operands,recomputes ES/BX/linear addresses,checks post-loadBL,case arguments,sentinel variants and unchanged UNKNOWN interval membership. Reproduction uses original image and local replay inputs; unmodified source image SHA256e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297 remains pinned. Sentinel mutations are explicit controlled RAM setup,not original file data or natural runtime.
+
+## New exact functions and ABI
+
+source_player_visibility_gate04C7:06D2..07D2,image[5342,5442),253codeB/111starts in256B span; grid_visibility_ray0AEA:0CC0..0E22,image[BB60,BCC2),348codeB/135starts in354B span. Total601codeB/246starts. Nine span bytes outside the discovered CFG are not promoted to code or universally proven padding. Both new bodies are outside original NONCODE. Existing original door_record_for_cell0000:0000 anddoor_state_zero_or_four0000:01E0 are reused without duplicate function count.
+
+Gate FAR arguments: Aoff/Aseg atBP+6/+8,Boff/Bseg atBP+A/+C,modeWORD atBP+E,forceWORD atBP+10h. It LDS-loads B,reads signed fine coordinates WORD10h/12h and SAR6 to obtain tile coordinates. Player tile comes explicitly from **SS:**415E/4160. Wrapped16 differences are player−source. Signed16 absolute values are compared with8; either>8 rejects. For pathological−32768,the16bit absolute remains8000h and signedJG does not reject. An extreme controlled case retains this behavior; it is not generalized as a valid natural coordinate.
+
+With forceWORD!=0,the facing mask is skipped. Otherwise A.BYTE11h provides facing. Previous/next bits wrap to0..7;the center BYTE SHL uses the386 count mask. Candidate bits are intersected with66h versus99h according to |dx|>=|dy|,with3Ch/C3h by sign(dy),and0Fh/F0h by sign(dx). Zero intersection returns AL0. Natural facing-domain limits remain open;raw8/31/32/255 cases are distinguished from valid0..7.
+
+All gate exits set **DS=SS**,including distance/mask rejection. On acceptance it calls the original ray with six WORDs(sourceTileX,sourceTileY,deltaX,deltaY,8,flag). Flag's lowBYTE is1 only when modeWORD==1,otherwise0;AH can retain earlier arithmetic bits. The ray reads only flag lowBYTE. Return contract is AL0/1;wholeAX is not asserted as a Boolean. FAR caller cleanup,SP+4 and BP/SI/DI/SS postconditions are checked;ES/flags/highAX remain volatile.
+
+## Original ray algorithm, map flags and doors
+
+Ray arguments are six WORDs(x,y,dx,dy,signed limit,modeWORD). It computes endpoint=x+dx/y+dy and signed step directions(+1 forpositive,−1 otherwise),uses wrapped16 absolute deltas and a Bresenham-style major/minor error recurrence. Each iteration advances first,then tests endpoint **before reading the cell**. Start and endpoint cells are omitted from obstruction tests. A zero displacement on a clear map does not immediately succeed:it walks diagonally away and returns0 after the limit. Limit<=0 also returns0.
+
+For each intermediate cell,the near offset is(373Eh+2*((y<<6)+x))mod65536 in segment DS:2568. Terrain BYTE0 indexes DS:D00C. Only when flagbit2 is set does bit4 reject immediately,or bit8 invoke original door lookup/state test. Door states0/4 admit passage;other states reject. The lookup scans original18B records,changes DS to the fixedrecord segment then restoresDS=SS. If no record matches,it enters original fatal0FBA:000C with argument42h;tests stop at that entry and never force a return. Consequently direct ray calls with entryDS!=SS can returnDS=SS after a door lookup,while no-door paths preserve entryDS.
+
+When lowBYTE(mode)!=0,object BYTE1 indexes currentDS:D10C. Bit2 blocks unless bit20h is also set. ModeWORD0100h therefore behaves as lowBYTE0. Bit4 alone in terrain flags does not reject without bit2. Original code does not write these tables,map cells or door state. Exact read order,zero original nonstack stores and whole memory comparisons verify this bounded behavior;intended map/object semantics beyond the consumed bits remain open.
+
+Pseudocode: gate computes tile deltas,range/facing tests,DS=SS;return lowBYTE(ray(source,delta,8,mode==1)). Ray repeats at most signedlimit:advanceBresenham();if endpoint:return1;readterrain();if flag2&&flag4:return0;if flag2&&flag8:lookupdoor();if state not0/4:return0;if modeLow:readobject();if objectFlag2&&!objectFlag20:return0;afterlimit return0. Missing door stops through fatal handler,whose body is outside this proof.
+
+## Verification and original-chain effects
+
+8612 isolated cases pass:8528returns and84explicit fatal-entry stops. They execute all246 new starts with original gate,ray and door helpers and no response fixtures. Matrix covers signed octants/deltas−8..8,zero/negative/short limits,source/endpoint omissions,wall/bit-only profiles,door0/1/2/4/missing,object masks,mode lowBYTE behavior,facing/force gates,signed overflow and64controlled OOB-tail cases. Two relocation loads0824/1000 and shared/split DS/SS execute. All2MiB RAM outside184 control-stack bytes,unchanged argument frames,ordered cell loads and register postconditions match independent models. The functions make zero nonstack writes under these nonaliasing setups.
+
+4532 expanded damage-chain returns execute original visibility instead of the previous special AX response. On a clear model grid/player tile0,748 actual visibility calls returnAL1:272 andAL0:476. The original caller stores this AL to A.BYTE17h. Gate DS=SS means the subsequent frame lookup uses the SS bank,which differs from the entryDS bank in split-context cases. This is verified by actual frameWORD andderived state writes,not assumed preserved DS.
+
+Joined branches are500death,368default DS=SS,228zero,2688other nonlethal and748special DS=SS. All182 caller starts execute;793of1007available original starts across the expanded chain execute;214remain unexecuted in this joined matrix. Original door bodies are available but not reached in the joined clear-grid matrix;their branches are covered in isolated cases. Complete2MiB RAM outside144 control-stack bytes and exact original writes match. Special return is checked at original RETF as AL,not fullAX. Only late HUD-like083D:05D2 AX response and sound/text preserving return fixtures remain. No natural gameplay/audio/IRQ evidence is inferred.
+
+## Cross-version, fields and reproduction
+
+Sixteen actual caller-bound bodies across DOS10/11/12/15/17/18/19/20 match normalized code/CFG. Calls,global/classification displacements andmap-grid near-base immediate are retained as explicit bindings. This is bounded structure/algorithm evidence,not full data-layout,natural OOB reachability,external fatal behavior or Win16 parity.
+
+Reproduce audit_replay_visibility_gate_ray.py IMAGE INVENTORY DECODER EMULATOR OUT; audit_replay_damage_visibility_chain.py with same arguments; audit_visibility_gate_ray_versions.py VERSION_ROOT CALLER_CSV DECODER OUT; verify_unknown_map_tail_reads.py OUTPUTS DECODER; summarize_visibility_chain.py; prepare_visibility_gate_fields.py. Per-function ASM/CFG,case/read traces,conditional byte CSV/JSON,field roles and pinned summaries are included. Output directories sit under campaign outputs to reuse pinned prior instruction catalogs. Seven new consumer-role rows refine existing records/map cells/door state;new OOB conditional rows deliberately do not enter typed-data ownership.
+
+## Coverage update: 13 areas
+
+Previous197functions/8763starts/22162codeB/59653typeddataB/1092751controlled cases/41native. New199functions/9009starts/22763codeB/59653typeddataB/1105895controlled cases/41native. Add601codeB/246starts and13144cases=8612isolated+4532joined:13060returns+84fatal stops. Reused door/helpers and16structural version comparisons add no duplicate cases. Record-role rows133to140;BSS5164Bunchanged. Campaign UNKNOWN_CONTENT89545to88944. Central catalog records2original UNKNOWN bytes with controlledOOBload witnesses **without typing/status promotion**. Reference census35813 remains unchanged,new central/dependent hashes regenerated.
+
+Original PASS320 map still892intervals/57295B=57118PARTIAL+149CLASSIFIED ONLY+28UNKNOWN+0DEEP VERIFIED. MapSHA256497d10a11959dbae3d17f495e803569e229c13434658ec94c231d29784f47efe. Only2of28UNKNOWN bytes receive new conditional-consumer evidence;their intended type/natural lifetime remains unknown. Full-area semantic percentages remainN/A without complete denominators;historical orientation estimates retained.
+
+|Area|Previous orientation|New % / method|New confirmed findings|Unknowns / blockers|Next step|
+|---|---:|---|---|---|---|
+|Maps and formats|99%|N/A; complete semantic denominator absent|Original Bresenham cell walk,endpoint omission,terrain/object/door rules|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Uncovered map replacement consumers|
+|Data types and constants|95%|N/A; complete semantic denominator absent|80 conditional OOB reads of two UNKNOWN map-tail bytes;no promotion|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Resolve remaining 149 classified-only and 28 unknown bytes through actual consumers|
+|Tables and pointers|93%|N/A; complete semantic denominator absent|DS/SS map/classification contexts andoriginaldoor records;7role refinements|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Trace driver MIDI event consumers and buffer lifetime|
+|Functions/ASM/CFG|90%|N/A; complete semantic denominator absent|Two601B/246-start bodies;8612isolated+4532joined cases|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Open fatal/callback bodies and remaining unknown functions|
+|RNG|97%|N/A; complete semantic denominator absent|No new behavior proved in this batch|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Capture RNG/DEMO ordering|
+|Scheduler|96%|N/A; complete semantic denominator absent|No new behavior proved in this batch|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Capture natural resource replacement timing|
+|DEMO/input|96%|N/A; complete semantic denominator absent|No new behavior proved in this batch|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Capture actual DEMO playback|
+|Renderer/VGA|94%|N/A; complete semantic denominator absent|No new behavior proved in this batch|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Exercise clipped draws|
+|GUARD/bosses|93%|N/A; complete semantic denominator absent|Original source-to-player visibility gate;broader AI/state logic open|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Uncovered boss/attack transitions|
+|Weapons/projectiles|92%|N/A; complete semantic denominator absent|Actual AL visibility stored in A.BYTE17h;postgate DS=SS changes frame bank|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Original impact/damage lifecycle|
+|Sprites/HUD/palette|92%|N/A; complete semantic denominator absent|No new behavior proved in this batch|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Native populated cleanup/refill|
+|SAVE/LOAD|92%|N/A; complete semantic denominator absent|No new behavior proved in this batch|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Actual LOAD/reset ordering|
+|Windows Win16|92%|N/A; complete semantic denominator absent|16caller-bound DOS normalizedcode/CFG matches;Win16/naturalOOB open|PARTIAL; natural bounds,runtime/remaining implementations and full semantic denominator incomplete|Locate Win16 resource-reader and driver counterparts|
+
+All13areas remain PARTIAL. Synthetic OOB loads are evidence against an unqualified no-access assertion,not proof that the bytes are intended extra map cells or naturally reached.
+
+## Required next runtime tests
+
+Capture original gate/ray with player/source bounds,classification tables,map pointer anddoor lookup/return in DOSBox-X. Determine whether movement,level loaders andborder flags guarantee0..63before treating2770E/F as intended alignment/padding. Capture actual pre/post loads ifnaturalboundary cases exist. Observe natural AL return/DS=SS/frame-bank consequences anddoor state transitions. Reconstruct late HUD-like dependency andactualsound/text effects;map Win16 equivalents. Continue other26UNKNOWN+149CLASSIFIED ONLY bytes,projectiles/bosses,renderer/RNG/DEMO/SAVELOAD. No PE32 port.

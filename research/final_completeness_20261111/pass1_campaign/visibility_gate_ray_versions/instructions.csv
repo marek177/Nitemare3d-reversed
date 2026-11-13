@@ -1,0 +1,1969 @@
+version,function,cs,ip,image_offset,bytes,instruction
+20,source_player_visibility_gate,1223,1746,21314,c8140000,"enter 14h,0"
+20,source_player_visibility_gate,1223,1750,21318,57,push di
+20,source_player_visibility_gate,1223,1751,21319,56,push si
+20,source_player_visibility_gate,1223,1752,21320,c55e0a,"lds bx,[bp+0Ah]"
+20,source_player_visibility_gate,1223,1755,21323,8b4710,"mov ax,[bx+10h]"
+20,source_player_visibility_gate,1223,1758,21326,c1f806,"sar ax,6"
+20,source_player_visibility_gate,1223,1761,21329,8946f8,"mov [bp-8],ax"
+20,source_player_visibility_gate,1223,1764,21332,8b4f12,"mov cx,[bx+12h]"
+20,source_player_visibility_gate,1223,1767,21335,c1f906,"sar cx,6"
+20,source_player_visibility_gate,1223,1770,21338,894ef6,"mov [bp-0Ah],cx"
+20,source_player_visibility_gate,1223,1773,21341,362b065e41,"sub ax,ss:[415Eh]"
+20,source_player_visibility_gate,1223,1778,21346,f7d8,neg ax
+20,source_player_visibility_gate,1223,1780,21348,8946fc,"mov [bp-4],ax"
+20,source_player_visibility_gate,1223,1783,21351,362b0e6041,"sub cx,ss:[4160h]"
+20,source_player_visibility_gate,1223,1788,21356,f7d9,neg cx
+20,source_player_visibility_gate,1223,1790,21358,894efa,"mov [bp-6],cx"
+20,source_player_visibility_gate,1223,1793,21361,99,cwd
+20,source_player_visibility_gate,1223,1794,21362,33c2,"xor ax,dx"
+20,source_player_visibility_gate,1223,1796,21364,2bc2,"sub ax,dx"
+20,source_player_visibility_gate,1223,1798,21366,8bd0,"mov dx,ax"
+20,source_player_visibility_gate,1223,1800,21368,8bc1,"mov ax,cx"
+20,source_player_visibility_gate,1223,1802,21370,8bca,"mov cx,dx"
+20,source_player_visibility_gate,1223,1804,21372,99,cwd
+20,source_player_visibility_gate,1223,1805,21373,33c2,"xor ax,dx"
+20,source_player_visibility_gate,1223,1807,21375,2bc2,"sub ax,dx"
+20,source_player_visibility_gate,1223,1809,21377,8bf0,"mov si,ax"
+20,source_player_visibility_gate,1223,1811,21379,83f908,"cmp cx,8"
+20,source_player_visibility_gate,1223,1814,21382,0f8fb000,jg 07CAh
+20,source_player_visibility_gate,1223,1818,21386,83fe08,"cmp si,8"
+20,source_player_visibility_gate,1223,1821,21389,0f8fa900,jg 07CAh
+20,source_player_visibility_gate,1223,1825,21393,837e1000,"cmp word ptr [bp+10h],0"
+20,source_player_visibility_gate,1223,1829,21397,7579,jne short 07A0h
+20,source_player_visibility_gate,1223,1831,21399,c47e06,"les di,[bp+6]"
+20,source_player_visibility_gate,1223,1834,21402,3bc8,"cmp cx,ax"
+20,source_player_visibility_gate,1223,1836,21404,7c04,jl short 0732h
+20,source_player_visibility_gate,1223,1838,21406,b066,"mov al,66h"
+20,source_player_visibility_gate,1223,1840,21408,eb02,jmp short 0734h
+20,source_player_visibility_gate,1223,1842,21410,b099,"mov al,99h"
+20,source_player_visibility_gate,1223,1844,21412,268a4d11,"mov cl,es:[di+11h]"
+20,source_player_visibility_gate,1223,1848,21416,8bd1,"mov dx,cx"
+20,source_player_visibility_gate,1223,1850,21418,fec9,dec cl
+20,source_player_visibility_gate,1223,1852,21420,80e107,"and cl,7"
+20,source_player_visibility_gate,1223,1855,21423,b301,"mov bl,1"
+20,source_player_visibility_gate,1223,1857,21425,8bd9,"mov bx,cx"
+20,source_player_visibility_gate,1223,1859,21427,8acb,"mov cl,bl"
+20,source_player_visibility_gate,1223,1861,21429,b301,"mov bl,1"
+20,source_player_visibility_gate,1223,1863,21431,894ef4,"mov [bp-0Ch],cx"
+20,source_player_visibility_gate,1223,1866,21434,8aca,"mov cl,dl"
+20,source_player_visibility_gate,1223,1868,21436,02cb,"add cl,bl"
+20,source_player_visibility_gate,1223,1870,21438,894ef2,"mov [bp-0Eh],cx"
+20,source_player_visibility_gate,1223,1873,21441,8a4ef4,"mov cl,[bp-0Ch]"
+20,source_player_visibility_gate,1223,1876,21444,d2e3,"shl bl,cl"
+20,source_player_visibility_gate,1223,1878,21446,8a4ef2,"mov cl,[bp-0Eh]"
+20,source_player_visibility_gate,1223,1881,21449,80e107,"and cl,7"
+20,source_player_visibility_gate,1223,1884,21452,8946f0,"mov [bp-10h],ax"
+20,source_player_visibility_gate,1223,1887,21455,b001,"mov al,1"
+20,source_player_visibility_gate,1223,1889,21457,d2e0,"shl al,cl"
+20,source_player_visibility_gate,1223,1891,21459,0ad8,"or bl,al"
+20,source_player_visibility_gate,1223,1893,21461,8aca,"mov cl,dl"
+20,source_player_visibility_gate,1223,1895,21463,b001,"mov al,1"
+20,source_player_visibility_gate,1223,1897,21465,d2e0,"shl al,cl"
+20,source_player_visibility_gate,1223,1899,21467,0ad8,"or bl,al"
+20,source_player_visibility_gate,1223,1901,21469,225ef0,"and bl,[bp-10h]"
+20,source_player_visibility_gate,1223,1904,21472,895eee,"mov [bp-12h],bx"
+20,source_player_visibility_gate,1223,1907,21475,837efa00,"cmp word ptr [bp-6],0"
+20,source_player_visibility_gate,1223,1911,21479,7c05,jl short 077Eh
+20,source_player_visibility_gate,1223,1913,21481,b03c,"mov al,3Ch"
+20,source_player_visibility_gate,1223,1915,21483,eb03,jmp short 0780h
+20,source_player_visibility_gate,1223,1918,21486,b0c3,"mov al,0C3h"
+20,source_player_visibility_gate,1223,1920,21488,2246ee,"and al,[bp-12h]"
+20,source_player_visibility_gate,1223,1923,21491,8946ec,"mov [bp-14h],ax"
+20,source_player_visibility_gate,1223,1926,21494,837efc00,"cmp word ptr [bp-4],0"
+20,source_player_visibility_gate,1223,1930,21498,7c04,jl short 0790h
+20,source_player_visibility_gate,1223,1932,21500,b00f,"mov al,0Fh"
+20,source_player_visibility_gate,1223,1934,21502,eb02,jmp short 0792h
+20,source_player_visibility_gate,1223,1936,21504,b0f0,"mov al,0F0h"
+20,source_player_visibility_gate,1223,1938,21506,8446ec,"test [bp-14h],al"
+20,source_player_visibility_gate,1223,1941,21509,7509,jne short 07A0h
+20,source_player_visibility_gate,1223,1943,21511,32c0,"xor al,al"
+20,source_player_visibility_gate,1223,1945,21513,16,push ss
+20,source_player_visibility_gate,1223,1946,21514,1f,pop ds
+20,source_player_visibility_gate,1223,1947,21515,5e,pop si
+20,source_player_visibility_gate,1223,1948,21516,5f,pop di
+20,source_player_visibility_gate,1223,1949,21517,c9,leave
+20,source_player_visibility_gate,1223,1950,21518,cb,ret far
+20,source_player_visibility_gate,1223,1952,21520,16,push ss
+20,source_player_visibility_gate,1223,1953,21521,1f,pop ds
+20,source_player_visibility_gate,1223,1954,21522,837e0e01,"cmp word ptr [bp+0Eh],1"
+20,source_player_visibility_gate,1223,1958,21526,7504,jne short 07ACh
+20,source_player_visibility_gate,1223,1960,21528,b001,"mov al,1"
+20,source_player_visibility_gate,1223,1962,21530,eb02,jmp short 07AEh
+20,source_player_visibility_gate,1223,1964,21532,32c0,"xor al,al"
+20,source_player_visibility_gate,1223,1966,21534,50,push ax
+20,source_player_visibility_gate,1223,1967,21535,6a08,push 8
+20,source_player_visibility_gate,1223,1969,21537,ff76fa,push word ptr [bp-6]
+20,source_player_visibility_gate,1223,1972,21540,ff76fc,push word ptr [bp-4]
+20,source_player_visibility_gate,1223,1975,21543,ff76f6,push word ptr [bp-0Ah]
+20,source_player_visibility_gate,1223,1978,21546,ff76f8,push word ptr [bp-8]
+20,source_player_visibility_gate,1223,1981,21549,9ac00cea0a,"call far 0CC0h,0AEAh"
+20,source_player_visibility_gate,1223,1986,21554,83c40c,"add sp,0Ch"
+20,source_player_visibility_gate,1223,1989,21557,5e,pop si
+20,source_player_visibility_gate,1223,1990,21558,5f,pop di
+20,source_player_visibility_gate,1223,1991,21559,c9,leave
+20,source_player_visibility_gate,1223,1992,21560,cb,ret far
+20,source_player_visibility_gate,1223,1994,21562,16,push ss
+20,source_player_visibility_gate,1223,1995,21563,1f,pop ds
+20,source_player_visibility_gate,1223,1996,21564,32c0,"xor al,al"
+20,source_player_visibility_gate,1223,1998,21566,5e,pop si
+20,source_player_visibility_gate,1223,1999,21567,5f,pop di
+20,source_player_visibility_gate,1223,2000,21568,c9,leave
+20,source_player_visibility_gate,1223,2001,21569,cb,ret far
+20,grid_visibility_ray,2794,3264,47968,c8180000,"enter 18h,0"
+20,grid_visibility_ray,2794,3268,47972,57,push di
+20,grid_visibility_ray,2794,3269,47973,56,push si
+20,grid_visibility_ray,2794,3270,47974,8b4e0a,"mov cx,[bp+0Ah]"
+20,grid_visibility_ray,2794,3273,47977,8b5e0c,"mov bx,[bp+0Ch]"
+20,grid_visibility_ray,2794,3276,47980,83fb00,"cmp bx,0"
+20,grid_visibility_ray,2794,3279,47983,7e05,jle short 0CD6h
+20,grid_visibility_ray,2794,3281,47985,b80100,"mov ax,1"
+20,grid_visibility_ray,2794,3284,47988,eb03,jmp short 0CD9h
+20,grid_visibility_ray,2794,3286,47990,b8ffff,"mov ax,0FFFFh"
+20,grid_visibility_ray,2794,3289,47993,8946f8,"mov [bp-8],ax"
+20,grid_visibility_ray,2794,3292,47996,0bc9,"or cx,cx"
+20,grid_visibility_ray,2794,3294,47998,7e06,jle short 0CE6h
+20,grid_visibility_ray,2794,3296,48000,b80100,"mov ax,1"
+20,grid_visibility_ray,2794,3299,48003,eb04,jmp short 0CE9h
+20,grid_visibility_ray,2794,3302,48006,b8ffff,"mov ax,0FFFFh"
+20,grid_visibility_ray,2794,3305,48009,8946f6,"mov [bp-0Ah],ax"
+20,grid_visibility_ray,2794,3308,48012,8b4606,"mov ax,[bp+6]"
+20,grid_visibility_ray,2794,3311,48015,03c1,"add ax,cx"
+20,grid_visibility_ray,2794,3313,48017,8946f2,"mov [bp-0Eh],ax"
+20,grid_visibility_ray,2794,3316,48020,8b4608,"mov ax,[bp+8]"
+20,grid_visibility_ray,2794,3319,48023,03c3,"add ax,bx"
+20,grid_visibility_ray,2794,3321,48025,8946f0,"mov [bp-10h],ax"
+20,grid_visibility_ray,2794,3324,48028,8bc1,"mov ax,cx"
+20,grid_visibility_ray,2794,3326,48030,99,cwd
+20,grid_visibility_ray,2794,3327,48031,33c2,"xor ax,dx"
+20,grid_visibility_ray,2794,3329,48033,2bc2,"sub ax,dx"
+20,grid_visibility_ray,2794,3331,48035,8bc8,"mov cx,ax"
+20,grid_visibility_ray,2794,3333,48037,8bc3,"mov ax,bx"
+20,grid_visibility_ray,2794,3335,48039,99,cwd
+20,grid_visibility_ray,2794,3336,48040,33c2,"xor ax,dx"
+20,grid_visibility_ray,2794,3338,48042,2bc2,"sub ax,dx"
+20,grid_visibility_ray,2794,3340,48044,8bd8,"mov bx,ax"
+20,grid_visibility_ray,2794,3342,48046,3bd9,"cmp bx,cx"
+20,grid_visibility_ray,2794,3344,48048,7d16,jge short 0D28h
+20,grid_visibility_ray,2794,3346,48050,c646fb01,"mov byte ptr [bp-5],1"
+20,grid_visibility_ray,2794,3350,48054,8bd0,"mov dx,ax"
+20,grid_visibility_ray,2794,3352,48056,03d0,"add dx,ax"
+20,grid_visibility_ray,2794,3354,48058,8bc2,"mov ax,dx"
+20,grid_visibility_ray,2794,3356,48060,2bd1,"sub dx,cx"
+20,grid_visibility_ray,2794,3358,48062,8946ee,"mov [bp-12h],ax"
+20,grid_visibility_ray,2794,3361,48065,8bc3,"mov ax,bx"
+20,grid_visibility_ray,2794,3363,48067,2bc1,"sub ax,cx"
+20,grid_visibility_ray,2794,3365,48069,eb14,jmp short 0D3Bh
+20,grid_visibility_ray,2794,3368,48072,c646fb00,"mov byte ptr [bp-5],0"
+20,grid_visibility_ray,2794,3372,48076,8bd1,"mov dx,cx"
+20,grid_visibility_ray,2794,3374,48078,03d1,"add dx,cx"
+20,grid_visibility_ray,2794,3376,48080,8bc2,"mov ax,dx"
+20,grid_visibility_ray,2794,3378,48082,2bd3,"sub dx,bx"
+20,grid_visibility_ray,2794,3380,48084,8946ee,"mov [bp-12h],ax"
+20,grid_visibility_ray,2794,3383,48087,8bc1,"mov ax,cx"
+20,grid_visibility_ray,2794,3385,48089,2bc3,"sub ax,bx"
+20,grid_visibility_ray,2794,3387,48091,03c0,"add ax,ax"
+20,grid_visibility_ray,2794,3389,48093,8946ec,"mov [bp-14h],ax"
+20,grid_visibility_ray,2794,3392,48096,c746f40000,"mov word ptr [bp-0Ch],0"
+20,grid_visibility_ray,2794,3397,48101,837e0e00,"cmp word ptr [bp+0Eh],0"
+20,grid_visibility_ray,2794,3401,48105,0f8ecf00,jle 0E1Ch
+20,grid_visibility_ray,2794,3405,48109,8956e8,"mov [bp-18h],dx"
+20,grid_visibility_ray,2794,3408,48112,8b7606,"mov si,[bp+6]"
+20,grid_visibility_ray,2794,3411,48115,8b7e08,"mov di,[bp+8]"
+20,grid_visibility_ray,2794,3414,48118,807efb00,"cmp byte ptr [bp-5],0"
+20,grid_visibility_ray,2794,3418,48122,7406,je short 0D62h
+20,grid_visibility_ray,2794,3420,48124,0376f6,"add si,[bp-0Ah]"
+20,grid_visibility_ray,2794,3423,48127,eb04,jmp short 0D65h
+20,grid_visibility_ray,2794,3426,48130,037ef8,"add di,[bp-8]"
+20,grid_visibility_ray,2794,3429,48133,837ee800,"cmp word ptr [bp-18h],0"
+20,grid_visibility_ray,2794,3433,48137,7d09,jge short 0D74h
+20,grid_visibility_ray,2794,3435,48139,8b46ee,"mov ax,[bp-12h]"
+20,grid_visibility_ray,2794,3438,48142,0146e8,"add [bp-18h],ax"
+20,grid_visibility_ray,2794,3441,48145,eb16,jmp short 0D89h
+20,grid_visibility_ray,2794,3444,48148,8b46ec,"mov ax,[bp-14h]"
+20,grid_visibility_ray,2794,3447,48151,0146e8,"add [bp-18h],ax"
+20,grid_visibility_ray,2794,3450,48154,807efb00,"cmp byte ptr [bp-5],0"
+20,grid_visibility_ray,2794,3454,48158,7406,je short 0D86h
+20,grid_visibility_ray,2794,3456,48160,037ef8,"add di,[bp-8]"
+20,grid_visibility_ray,2794,3459,48163,eb04,jmp short 0D89h
+20,grid_visibility_ray,2794,3462,48166,0376f6,"add si,[bp-0Ah]"
+20,grid_visibility_ray,2794,3465,48169,3976f2,"cmp [bp-0Eh],si"
+20,grid_visibility_ray,2794,3468,48172,7507,jne short 0D95h
+20,grid_visibility_ray,2794,3470,48174,397ef0,"cmp [bp-10h],di"
+20,grid_visibility_ray,2794,3473,48177,0f848100,je 0E16h
+20,grid_visibility_ray,2794,3477,48181,8bdf,"mov bx,di"
+20,grid_visibility_ray,2794,3479,48183,c1e306,"shl bx,6"
+20,grid_visibility_ray,2794,3482,48186,03de,"add bx,si"
+20,grid_visibility_ray,2794,3484,48188,03db,"add bx,bx"
+20,grid_visibility_ray,2794,3486,48190,81c33e37,"add bx,373Eh"
+20,grid_visibility_ray,2794,3490,48194,8e066825,"mov es,[2568h]"
+20,grid_visibility_ray,2794,3494,48198,895efc,"mov [bp-4],bx"
+20,grid_visibility_ray,2794,3497,48201,8c46fe,"mov [bp-2],es"
+20,grid_visibility_ray,2794,3500,48204,268a1f,"mov bl,es:[bx]"
+20,grid_visibility_ray,2794,3503,48207,2aff,"sub bh,bh"
+20,grid_visibility_ray,2794,3505,48209,8a870cd0,"mov al,[bx-2FF4h]"
+20,grid_visibility_ray,2794,3509,48213,8846fa,"mov [bp-6],al"
+20,grid_visibility_ray,2794,3512,48216,f646fa02,"test byte ptr [bp-6],2"
+20,grid_visibility_ray,2794,3516,48220,7426,je short 0DE4h
+20,grid_visibility_ray,2794,3518,48222,f646fa04,"test byte ptr [bp-6],4"
+20,grid_visibility_ray,2794,3522,48226,7558,jne short 0E1Ch
+20,grid_visibility_ray,2794,3524,48228,f646fa08,"test byte ptr [bp-6],8"
+20,grid_visibility_ray,2794,3528,48232,741a,je short 0DE4h
+20,grid_visibility_ray,2794,3530,48234,06,push es
+20,grid_visibility_ray,2794,3531,48235,ff76fc,push word ptr [bp-4]
+20,grid_visibility_ray,2794,3534,48238,9a00000000,"call far 0,0"
+20,grid_visibility_ray,2794,3539,48243,83c404,"add sp,4"
+20,grid_visibility_ray,2794,3542,48246,52,push dx
+20,grid_visibility_ray,2794,3543,48247,50,push ax
+20,grid_visibility_ray,2794,3544,48248,9ae0010000,"call far 01E0h,0"
+20,grid_visibility_ray,2794,3549,48253,83c404,"add sp,4"
+20,grid_visibility_ray,2794,3552,48256,0ac0,"or al,al"
+20,grid_visibility_ray,2794,3554,48258,7438,je short 0E1Ch
+20,grid_visibility_ray,2794,3556,48260,807e1000,"cmp byte ptr [bp+10h],0"
+20,grid_visibility_ray,2794,3560,48264,741c,je short 0E06h
+20,grid_visibility_ray,2794,3562,48266,c45efc,"les bx,[bp-4]"
+20,grid_visibility_ray,2794,3565,48269,268a5f01,"mov bl,es:[bx+1]"
+20,grid_visibility_ray,2794,3569,48273,2aff,"sub bh,bh"
+20,grid_visibility_ray,2794,3571,48275,8a870cd1,"mov al,[bx-2EF4h]"
+20,grid_visibility_ray,2794,3575,48279,8846eb,"mov [bp-15h],al"
+20,grid_visibility_ray,2794,3578,48282,f646eb02,"test byte ptr [bp-15h],2"
+20,grid_visibility_ray,2794,3582,48286,7406,je short 0E06h
+20,grid_visibility_ray,2794,3584,48288,f646eb20,"test byte ptr [bp-15h],20h"
+20,grid_visibility_ray,2794,3588,48292,7416,je short 0E1Ch
+20,grid_visibility_ray,2794,3590,48294,8b460e,"mov ax,[bp+0Eh]"
+20,grid_visibility_ray,2794,3593,48297,ff46f4,inc word ptr [bp-0Ch]
+20,grid_visibility_ray,2794,3596,48300,3946f4,"cmp [bp-0Ch],ax"
+20,grid_visibility_ray,2794,3599,48303,0f8c43ff,jl 0D56h
+20,grid_visibility_ray,2794,3603,48307,eb07,jmp short 0E1Ch
+20,grid_visibility_ray,2794,3606,48310,b001,"mov al,1"
+20,grid_visibility_ray,2794,3608,48312,5e,pop si
+20,grid_visibility_ray,2794,3609,48313,5f,pop di
+20,grid_visibility_ray,2794,3610,48314,c9,leave
+20,grid_visibility_ray,2794,3611,48315,cb,ret far
+20,grid_visibility_ray,2794,3612,48316,32c0,"xor al,al"
+20,grid_visibility_ray,2794,3614,48318,5e,pop si
+20,grid_visibility_ray,2794,3615,48319,5f,pop di
+20,grid_visibility_ray,2794,3616,48320,c9,leave
+20,grid_visibility_ray,2794,3617,48321,cb,ret far
+10,source_player_visibility_gate,1177,1730,20562,c8140000,"enter 14h,0"
+10,source_player_visibility_gate,1177,1734,20566,57,push di
+10,source_player_visibility_gate,1177,1735,20567,56,push si
+10,source_player_visibility_gate,1177,1736,20568,c55e0a,"lds bx,[bp+0Ah]"
+10,source_player_visibility_gate,1177,1739,20571,8b4710,"mov ax,[bx+10h]"
+10,source_player_visibility_gate,1177,1742,20574,c1f806,"sar ax,6"
+10,source_player_visibility_gate,1177,1745,20577,8946f8,"mov [bp-8],ax"
+10,source_player_visibility_gate,1177,1748,20580,8b4f12,"mov cx,[bx+12h]"
+10,source_player_visibility_gate,1177,1751,20583,c1f906,"sar cx,6"
+10,source_player_visibility_gate,1177,1754,20586,894ef6,"mov [bp-0Ah],cx"
+10,source_player_visibility_gate,1177,1757,20589,362b06b63f,"sub ax,ss:[3FB6h]"
+10,source_player_visibility_gate,1177,1762,20594,f7d8,neg ax
+10,source_player_visibility_gate,1177,1764,20596,8946fc,"mov [bp-4],ax"
+10,source_player_visibility_gate,1177,1767,20599,362b0eb83f,"sub cx,ss:[3FB8h]"
+10,source_player_visibility_gate,1177,1772,20604,f7d9,neg cx
+10,source_player_visibility_gate,1177,1774,20606,894efa,"mov [bp-6],cx"
+10,source_player_visibility_gate,1177,1777,20609,99,cwd
+10,source_player_visibility_gate,1177,1778,20610,33c2,"xor ax,dx"
+10,source_player_visibility_gate,1177,1780,20612,2bc2,"sub ax,dx"
+10,source_player_visibility_gate,1177,1782,20614,8bd0,"mov dx,ax"
+10,source_player_visibility_gate,1177,1784,20616,8bc1,"mov ax,cx"
+10,source_player_visibility_gate,1177,1786,20618,8bca,"mov cx,dx"
+10,source_player_visibility_gate,1177,1788,20620,99,cwd
+10,source_player_visibility_gate,1177,1789,20621,33c2,"xor ax,dx"
+10,source_player_visibility_gate,1177,1791,20623,2bc2,"sub ax,dx"
+10,source_player_visibility_gate,1177,1793,20625,8bf0,"mov si,ax"
+10,source_player_visibility_gate,1177,1795,20627,83f908,"cmp cx,8"
+10,source_player_visibility_gate,1177,1798,20630,0f8fb000,jg 07BAh
+10,source_player_visibility_gate,1177,1802,20634,83fe08,"cmp si,8"
+10,source_player_visibility_gate,1177,1805,20637,0f8fa900,jg 07BAh
+10,source_player_visibility_gate,1177,1809,20641,837e1000,"cmp word ptr [bp+10h],0"
+10,source_player_visibility_gate,1177,1813,20645,7579,jne short 0790h
+10,source_player_visibility_gate,1177,1815,20647,c47e06,"les di,[bp+6]"
+10,source_player_visibility_gate,1177,1818,20650,3bc8,"cmp cx,ax"
+10,source_player_visibility_gate,1177,1820,20652,7c04,jl short 0722h
+10,source_player_visibility_gate,1177,1822,20654,b066,"mov al,66h"
+10,source_player_visibility_gate,1177,1824,20656,eb02,jmp short 0724h
+10,source_player_visibility_gate,1177,1826,20658,b099,"mov al,99h"
+10,source_player_visibility_gate,1177,1828,20660,268a4d11,"mov cl,es:[di+11h]"
+10,source_player_visibility_gate,1177,1832,20664,8bd1,"mov dx,cx"
+10,source_player_visibility_gate,1177,1834,20666,fec9,dec cl
+10,source_player_visibility_gate,1177,1836,20668,80e107,"and cl,7"
+10,source_player_visibility_gate,1177,1839,20671,b301,"mov bl,1"
+10,source_player_visibility_gate,1177,1841,20673,8bd9,"mov bx,cx"
+10,source_player_visibility_gate,1177,1843,20675,8acb,"mov cl,bl"
+10,source_player_visibility_gate,1177,1845,20677,b301,"mov bl,1"
+10,source_player_visibility_gate,1177,1847,20679,894ef4,"mov [bp-0Ch],cx"
+10,source_player_visibility_gate,1177,1850,20682,8aca,"mov cl,dl"
+10,source_player_visibility_gate,1177,1852,20684,02cb,"add cl,bl"
+10,source_player_visibility_gate,1177,1854,20686,894ef2,"mov [bp-0Eh],cx"
+10,source_player_visibility_gate,1177,1857,20689,8a4ef4,"mov cl,[bp-0Ch]"
+10,source_player_visibility_gate,1177,1860,20692,d2e3,"shl bl,cl"
+10,source_player_visibility_gate,1177,1862,20694,8a4ef2,"mov cl,[bp-0Eh]"
+10,source_player_visibility_gate,1177,1865,20697,80e107,"and cl,7"
+10,source_player_visibility_gate,1177,1868,20700,8946f0,"mov [bp-10h],ax"
+10,source_player_visibility_gate,1177,1871,20703,b001,"mov al,1"
+10,source_player_visibility_gate,1177,1873,20705,d2e0,"shl al,cl"
+10,source_player_visibility_gate,1177,1875,20707,0ad8,"or bl,al"
+10,source_player_visibility_gate,1177,1877,20709,8aca,"mov cl,dl"
+10,source_player_visibility_gate,1177,1879,20711,b001,"mov al,1"
+10,source_player_visibility_gate,1177,1881,20713,d2e0,"shl al,cl"
+10,source_player_visibility_gate,1177,1883,20715,0ad8,"or bl,al"
+10,source_player_visibility_gate,1177,1885,20717,225ef0,"and bl,[bp-10h]"
+10,source_player_visibility_gate,1177,1888,20720,895eee,"mov [bp-12h],bx"
+10,source_player_visibility_gate,1177,1891,20723,837efa00,"cmp word ptr [bp-6],0"
+10,source_player_visibility_gate,1177,1895,20727,7c05,jl short 076Eh
+10,source_player_visibility_gate,1177,1897,20729,b03c,"mov al,3Ch"
+10,source_player_visibility_gate,1177,1899,20731,eb03,jmp short 0770h
+10,source_player_visibility_gate,1177,1902,20734,b0c3,"mov al,0C3h"
+10,source_player_visibility_gate,1177,1904,20736,2246ee,"and al,[bp-12h]"
+10,source_player_visibility_gate,1177,1907,20739,8946ec,"mov [bp-14h],ax"
+10,source_player_visibility_gate,1177,1910,20742,837efc00,"cmp word ptr [bp-4],0"
+10,source_player_visibility_gate,1177,1914,20746,7c04,jl short 0780h
+10,source_player_visibility_gate,1177,1916,20748,b00f,"mov al,0Fh"
+10,source_player_visibility_gate,1177,1918,20750,eb02,jmp short 0782h
+10,source_player_visibility_gate,1177,1920,20752,b0f0,"mov al,0F0h"
+10,source_player_visibility_gate,1177,1922,20754,8446ec,"test [bp-14h],al"
+10,source_player_visibility_gate,1177,1925,20757,7509,jne short 0790h
+10,source_player_visibility_gate,1177,1927,20759,32c0,"xor al,al"
+10,source_player_visibility_gate,1177,1929,20761,16,push ss
+10,source_player_visibility_gate,1177,1930,20762,1f,pop ds
+10,source_player_visibility_gate,1177,1931,20763,5e,pop si
+10,source_player_visibility_gate,1177,1932,20764,5f,pop di
+10,source_player_visibility_gate,1177,1933,20765,c9,leave
+10,source_player_visibility_gate,1177,1934,20766,cb,ret far
+10,source_player_visibility_gate,1177,1936,20768,16,push ss
+10,source_player_visibility_gate,1177,1937,20769,1f,pop ds
+10,source_player_visibility_gate,1177,1938,20770,837e0e01,"cmp word ptr [bp+0Eh],1"
+10,source_player_visibility_gate,1177,1942,20774,7504,jne short 079Ch
+10,source_player_visibility_gate,1177,1944,20776,b001,"mov al,1"
+10,source_player_visibility_gate,1177,1946,20778,eb02,jmp short 079Eh
+10,source_player_visibility_gate,1177,1948,20780,32c0,"xor al,al"
+10,source_player_visibility_gate,1177,1950,20782,50,push ax
+10,source_player_visibility_gate,1177,1951,20783,6a08,push 8
+10,source_player_visibility_gate,1177,1953,20785,ff76fa,push word ptr [bp-6]
+10,source_player_visibility_gate,1177,1956,20788,ff76fc,push word ptr [bp-4]
+10,source_player_visibility_gate,1177,1959,20791,ff76f6,push word ptr [bp-0Ah]
+10,source_player_visibility_gate,1177,1962,20794,ff76f8,push word ptr [bp-8]
+10,source_player_visibility_gate,1177,1965,20797,9ab40c9e0a,"call far 0CB4h,0A9Eh"
+10,source_player_visibility_gate,1177,1970,20802,83c40c,"add sp,0Ch"
+10,source_player_visibility_gate,1177,1973,20805,5e,pop si
+10,source_player_visibility_gate,1177,1974,20806,5f,pop di
+10,source_player_visibility_gate,1177,1975,20807,c9,leave
+10,source_player_visibility_gate,1177,1976,20808,cb,ret far
+10,source_player_visibility_gate,1177,1978,20810,16,push ss
+10,source_player_visibility_gate,1177,1979,20811,1f,pop ds
+10,source_player_visibility_gate,1177,1980,20812,32c0,"xor al,al"
+10,source_player_visibility_gate,1177,1982,20814,5e,pop si
+10,source_player_visibility_gate,1177,1983,20815,5f,pop di
+10,source_player_visibility_gate,1177,1984,20816,c9,leave
+10,source_player_visibility_gate,1177,1985,20817,cb,ret far
+10,grid_visibility_ray,2718,3252,46740,c8180000,"enter 18h,0"
+10,grid_visibility_ray,2718,3256,46744,57,push di
+10,grid_visibility_ray,2718,3257,46745,56,push si
+10,grid_visibility_ray,2718,3258,46746,8b4e0a,"mov cx,[bp+0Ah]"
+10,grid_visibility_ray,2718,3261,46749,8b5e0c,"mov bx,[bp+0Ch]"
+10,grid_visibility_ray,2718,3264,46752,83fb00,"cmp bx,0"
+10,grid_visibility_ray,2718,3267,46755,7e05,jle short 0CCAh
+10,grid_visibility_ray,2718,3269,46757,b80100,"mov ax,1"
+10,grid_visibility_ray,2718,3272,46760,eb03,jmp short 0CCDh
+10,grid_visibility_ray,2718,3274,46762,b8ffff,"mov ax,0FFFFh"
+10,grid_visibility_ray,2718,3277,46765,8946f8,"mov [bp-8],ax"
+10,grid_visibility_ray,2718,3280,46768,0bc9,"or cx,cx"
+10,grid_visibility_ray,2718,3282,46770,7e06,jle short 0CDAh
+10,grid_visibility_ray,2718,3284,46772,b80100,"mov ax,1"
+10,grid_visibility_ray,2718,3287,46775,eb04,jmp short 0CDDh
+10,grid_visibility_ray,2718,3290,46778,b8ffff,"mov ax,0FFFFh"
+10,grid_visibility_ray,2718,3293,46781,8946f6,"mov [bp-0Ah],ax"
+10,grid_visibility_ray,2718,3296,46784,8b4606,"mov ax,[bp+6]"
+10,grid_visibility_ray,2718,3299,46787,03c1,"add ax,cx"
+10,grid_visibility_ray,2718,3301,46789,8946f2,"mov [bp-0Eh],ax"
+10,grid_visibility_ray,2718,3304,46792,8b4608,"mov ax,[bp+8]"
+10,grid_visibility_ray,2718,3307,46795,03c3,"add ax,bx"
+10,grid_visibility_ray,2718,3309,46797,8946f0,"mov [bp-10h],ax"
+10,grid_visibility_ray,2718,3312,46800,8bc1,"mov ax,cx"
+10,grid_visibility_ray,2718,3314,46802,99,cwd
+10,grid_visibility_ray,2718,3315,46803,33c2,"xor ax,dx"
+10,grid_visibility_ray,2718,3317,46805,2bc2,"sub ax,dx"
+10,grid_visibility_ray,2718,3319,46807,8bc8,"mov cx,ax"
+10,grid_visibility_ray,2718,3321,46809,8bc3,"mov ax,bx"
+10,grid_visibility_ray,2718,3323,46811,99,cwd
+10,grid_visibility_ray,2718,3324,46812,33c2,"xor ax,dx"
+10,grid_visibility_ray,2718,3326,46814,2bc2,"sub ax,dx"
+10,grid_visibility_ray,2718,3328,46816,8bd8,"mov bx,ax"
+10,grid_visibility_ray,2718,3330,46818,3bd9,"cmp bx,cx"
+10,grid_visibility_ray,2718,3332,46820,7d16,jge short 0D1Ch
+10,grid_visibility_ray,2718,3334,46822,c646fb01,"mov byte ptr [bp-5],1"
+10,grid_visibility_ray,2718,3338,46826,8bd0,"mov dx,ax"
+10,grid_visibility_ray,2718,3340,46828,03d0,"add dx,ax"
+10,grid_visibility_ray,2718,3342,46830,8bc2,"mov ax,dx"
+10,grid_visibility_ray,2718,3344,46832,2bd1,"sub dx,cx"
+10,grid_visibility_ray,2718,3346,46834,8946ee,"mov [bp-12h],ax"
+10,grid_visibility_ray,2718,3349,46837,8bc3,"mov ax,bx"
+10,grid_visibility_ray,2718,3351,46839,2bc1,"sub ax,cx"
+10,grid_visibility_ray,2718,3353,46841,eb14,jmp short 0D2Fh
+10,grid_visibility_ray,2718,3356,46844,c646fb00,"mov byte ptr [bp-5],0"
+10,grid_visibility_ray,2718,3360,46848,8bd1,"mov dx,cx"
+10,grid_visibility_ray,2718,3362,46850,03d1,"add dx,cx"
+10,grid_visibility_ray,2718,3364,46852,8bc2,"mov ax,dx"
+10,grid_visibility_ray,2718,3366,46854,2bd3,"sub dx,bx"
+10,grid_visibility_ray,2718,3368,46856,8946ee,"mov [bp-12h],ax"
+10,grid_visibility_ray,2718,3371,46859,8bc1,"mov ax,cx"
+10,grid_visibility_ray,2718,3373,46861,2bc3,"sub ax,bx"
+10,grid_visibility_ray,2718,3375,46863,03c0,"add ax,ax"
+10,grid_visibility_ray,2718,3377,46865,8946ec,"mov [bp-14h],ax"
+10,grid_visibility_ray,2718,3380,46868,c746f40000,"mov word ptr [bp-0Ch],0"
+10,grid_visibility_ray,2718,3385,46873,837e0e00,"cmp word ptr [bp+0Eh],0"
+10,grid_visibility_ray,2718,3389,46877,0f8ecf00,jle 0E10h
+10,grid_visibility_ray,2718,3393,46881,8956e8,"mov [bp-18h],dx"
+10,grid_visibility_ray,2718,3396,46884,8b7606,"mov si,[bp+6]"
+10,grid_visibility_ray,2718,3399,46887,8b7e08,"mov di,[bp+8]"
+10,grid_visibility_ray,2718,3402,46890,807efb00,"cmp byte ptr [bp-5],0"
+10,grid_visibility_ray,2718,3406,46894,7406,je short 0D56h
+10,grid_visibility_ray,2718,3408,46896,0376f6,"add si,[bp-0Ah]"
+10,grid_visibility_ray,2718,3411,46899,eb04,jmp short 0D59h
+10,grid_visibility_ray,2718,3414,46902,037ef8,"add di,[bp-8]"
+10,grid_visibility_ray,2718,3417,46905,837ee800,"cmp word ptr [bp-18h],0"
+10,grid_visibility_ray,2718,3421,46909,7d09,jge short 0D68h
+10,grid_visibility_ray,2718,3423,46911,8b46ee,"mov ax,[bp-12h]"
+10,grid_visibility_ray,2718,3426,46914,0146e8,"add [bp-18h],ax"
+10,grid_visibility_ray,2718,3429,46917,eb16,jmp short 0D7Dh
+10,grid_visibility_ray,2718,3432,46920,8b46ec,"mov ax,[bp-14h]"
+10,grid_visibility_ray,2718,3435,46923,0146e8,"add [bp-18h],ax"
+10,grid_visibility_ray,2718,3438,46926,807efb00,"cmp byte ptr [bp-5],0"
+10,grid_visibility_ray,2718,3442,46930,7406,je short 0D7Ah
+10,grid_visibility_ray,2718,3444,46932,037ef8,"add di,[bp-8]"
+10,grid_visibility_ray,2718,3447,46935,eb04,jmp short 0D7Dh
+10,grid_visibility_ray,2718,3450,46938,0376f6,"add si,[bp-0Ah]"
+10,grid_visibility_ray,2718,3453,46941,3976f2,"cmp [bp-0Eh],si"
+10,grid_visibility_ray,2718,3456,46944,7507,jne short 0D89h
+10,grid_visibility_ray,2718,3458,46946,397ef0,"cmp [bp-10h],di"
+10,grid_visibility_ray,2718,3461,46949,0f848100,je 0E0Ah
+10,grid_visibility_ray,2718,3465,46953,8bdf,"mov bx,di"
+10,grid_visibility_ray,2718,3467,46955,c1e306,"shl bx,6"
+10,grid_visibility_ray,2718,3470,46958,03de,"add bx,si"
+10,grid_visibility_ray,2718,3472,46960,03db,"add bx,bx"
+10,grid_visibility_ray,2718,3474,46962,81c33e37,"add bx,373Eh"
+10,grid_visibility_ray,2718,3478,46966,8e066224,"mov es,[2462h]"
+10,grid_visibility_ray,2718,3482,46970,895efc,"mov [bp-4],bx"
+10,grid_visibility_ray,2718,3485,46973,8c46fe,"mov [bp-2],es"
+10,grid_visibility_ray,2718,3488,46976,268a1f,"mov bl,es:[bx]"
+10,grid_visibility_ray,2718,3491,46979,2aff,"sub bh,bh"
+10,grid_visibility_ray,2718,3493,46981,8a8752ce,"mov al,[bx-31AEh]"
+10,grid_visibility_ray,2718,3497,46985,8846fa,"mov [bp-6],al"
+10,grid_visibility_ray,2718,3500,46988,f646fa02,"test byte ptr [bp-6],2"
+10,grid_visibility_ray,2718,3504,46992,7426,je short 0DD8h
+10,grid_visibility_ray,2718,3506,46994,f646fa04,"test byte ptr [bp-6],4"
+10,grid_visibility_ray,2718,3510,46998,7558,jne short 0E10h
+10,grid_visibility_ray,2718,3512,47000,f646fa08,"test byte ptr [bp-6],8"
+10,grid_visibility_ray,2718,3516,47004,741a,je short 0DD8h
+10,grid_visibility_ray,2718,3518,47006,06,push es
+10,grid_visibility_ray,2718,3519,47007,ff76fc,push word ptr [bp-4]
+10,grid_visibility_ray,2718,3522,47010,9a00000000,"call far 0,0"
+10,grid_visibility_ray,2718,3527,47015,83c404,"add sp,4"
+10,grid_visibility_ray,2718,3530,47018,52,push dx
+10,grid_visibility_ray,2718,3531,47019,50,push ax
+10,grid_visibility_ray,2718,3532,47020,9ae0010000,"call far 01E0h,0"
+10,grid_visibility_ray,2718,3537,47025,83c404,"add sp,4"
+10,grid_visibility_ray,2718,3540,47028,0ac0,"or al,al"
+10,grid_visibility_ray,2718,3542,47030,7438,je short 0E10h
+10,grid_visibility_ray,2718,3544,47032,807e1000,"cmp byte ptr [bp+10h],0"
+10,grid_visibility_ray,2718,3548,47036,741c,je short 0DFAh
+10,grid_visibility_ray,2718,3550,47038,c45efc,"les bx,[bp-4]"
+10,grid_visibility_ray,2718,3553,47041,268a5f01,"mov bl,es:[bx+1]"
+10,grid_visibility_ray,2718,3557,47045,2aff,"sub bh,bh"
+10,grid_visibility_ray,2718,3559,47047,8a8752cf,"mov al,[bx-30AEh]"
+10,grid_visibility_ray,2718,3563,47051,8846eb,"mov [bp-15h],al"
+10,grid_visibility_ray,2718,3566,47054,f646eb02,"test byte ptr [bp-15h],2"
+10,grid_visibility_ray,2718,3570,47058,7406,je short 0DFAh
+10,grid_visibility_ray,2718,3572,47060,f646eb20,"test byte ptr [bp-15h],20h"
+10,grid_visibility_ray,2718,3576,47064,7416,je short 0E10h
+10,grid_visibility_ray,2718,3578,47066,8b460e,"mov ax,[bp+0Eh]"
+10,grid_visibility_ray,2718,3581,47069,ff46f4,inc word ptr [bp-0Ch]
+10,grid_visibility_ray,2718,3584,47072,3946f4,"cmp [bp-0Ch],ax"
+10,grid_visibility_ray,2718,3587,47075,0f8c43ff,jl 0D4Ah
+10,grid_visibility_ray,2718,3591,47079,eb07,jmp short 0E10h
+10,grid_visibility_ray,2718,3594,47082,b001,"mov al,1"
+10,grid_visibility_ray,2718,3596,47084,5e,pop si
+10,grid_visibility_ray,2718,3597,47085,5f,pop di
+10,grid_visibility_ray,2718,3598,47086,c9,leave
+10,grid_visibility_ray,2718,3599,47087,cb,ret far
+10,grid_visibility_ray,2718,3600,47088,32c0,"xor al,al"
+10,grid_visibility_ray,2718,3602,47090,5e,pop si
+10,grid_visibility_ray,2718,3603,47091,5f,pop di
+10,grid_visibility_ray,2718,3604,47092,c9,leave
+10,grid_visibility_ray,2718,3605,47093,cb,ret far
+11,source_player_visibility_gate,1186,1742,20718,c8140000,"enter 14h,0"
+11,source_player_visibility_gate,1186,1746,20722,57,push di
+11,source_player_visibility_gate,1186,1747,20723,56,push si
+11,source_player_visibility_gate,1186,1748,20724,c55e0a,"lds bx,[bp+0Ah]"
+11,source_player_visibility_gate,1186,1751,20727,8b4710,"mov ax,[bx+10h]"
+11,source_player_visibility_gate,1186,1754,20730,c1f806,"sar ax,6"
+11,source_player_visibility_gate,1186,1757,20733,8946f8,"mov [bp-8],ax"
+11,source_player_visibility_gate,1186,1760,20736,8b4f12,"mov cx,[bx+12h]"
+11,source_player_visibility_gate,1186,1763,20739,c1f906,"sar cx,6"
+11,source_player_visibility_gate,1186,1766,20742,894ef6,"mov [bp-0Ah],cx"
+11,source_player_visibility_gate,1186,1769,20745,362b06bc40,"sub ax,ss:[40BCh]"
+11,source_player_visibility_gate,1186,1774,20750,f7d8,neg ax
+11,source_player_visibility_gate,1186,1776,20752,8946fc,"mov [bp-4],ax"
+11,source_player_visibility_gate,1186,1779,20755,362b0ebe40,"sub cx,ss:[40BEh]"
+11,source_player_visibility_gate,1186,1784,20760,f7d9,neg cx
+11,source_player_visibility_gate,1186,1786,20762,894efa,"mov [bp-6],cx"
+11,source_player_visibility_gate,1186,1789,20765,99,cwd
+11,source_player_visibility_gate,1186,1790,20766,33c2,"xor ax,dx"
+11,source_player_visibility_gate,1186,1792,20768,2bc2,"sub ax,dx"
+11,source_player_visibility_gate,1186,1794,20770,8bd0,"mov dx,ax"
+11,source_player_visibility_gate,1186,1796,20772,8bc1,"mov ax,cx"
+11,source_player_visibility_gate,1186,1798,20774,8bca,"mov cx,dx"
+11,source_player_visibility_gate,1186,1800,20776,99,cwd
+11,source_player_visibility_gate,1186,1801,20777,33c2,"xor ax,dx"
+11,source_player_visibility_gate,1186,1803,20779,2bc2,"sub ax,dx"
+11,source_player_visibility_gate,1186,1805,20781,8bf0,"mov si,ax"
+11,source_player_visibility_gate,1186,1807,20783,83f908,"cmp cx,8"
+11,source_player_visibility_gate,1186,1810,20786,0f8fb000,jg 07C6h
+11,source_player_visibility_gate,1186,1814,20790,83fe08,"cmp si,8"
+11,source_player_visibility_gate,1186,1817,20793,0f8fa900,jg 07C6h
+11,source_player_visibility_gate,1186,1821,20797,837e1000,"cmp word ptr [bp+10h],0"
+11,source_player_visibility_gate,1186,1825,20801,7579,jne short 079Ch
+11,source_player_visibility_gate,1186,1827,20803,c47e06,"les di,[bp+6]"
+11,source_player_visibility_gate,1186,1830,20806,3bc8,"cmp cx,ax"
+11,source_player_visibility_gate,1186,1832,20808,7c04,jl short 072Eh
+11,source_player_visibility_gate,1186,1834,20810,b066,"mov al,66h"
+11,source_player_visibility_gate,1186,1836,20812,eb02,jmp short 0730h
+11,source_player_visibility_gate,1186,1838,20814,b099,"mov al,99h"
+11,source_player_visibility_gate,1186,1840,20816,268a4d11,"mov cl,es:[di+11h]"
+11,source_player_visibility_gate,1186,1844,20820,8bd1,"mov dx,cx"
+11,source_player_visibility_gate,1186,1846,20822,fec9,dec cl
+11,source_player_visibility_gate,1186,1848,20824,80e107,"and cl,7"
+11,source_player_visibility_gate,1186,1851,20827,b301,"mov bl,1"
+11,source_player_visibility_gate,1186,1853,20829,8bd9,"mov bx,cx"
+11,source_player_visibility_gate,1186,1855,20831,8acb,"mov cl,bl"
+11,source_player_visibility_gate,1186,1857,20833,b301,"mov bl,1"
+11,source_player_visibility_gate,1186,1859,20835,894ef4,"mov [bp-0Ch],cx"
+11,source_player_visibility_gate,1186,1862,20838,8aca,"mov cl,dl"
+11,source_player_visibility_gate,1186,1864,20840,02cb,"add cl,bl"
+11,source_player_visibility_gate,1186,1866,20842,894ef2,"mov [bp-0Eh],cx"
+11,source_player_visibility_gate,1186,1869,20845,8a4ef4,"mov cl,[bp-0Ch]"
+11,source_player_visibility_gate,1186,1872,20848,d2e3,"shl bl,cl"
+11,source_player_visibility_gate,1186,1874,20850,8a4ef2,"mov cl,[bp-0Eh]"
+11,source_player_visibility_gate,1186,1877,20853,80e107,"and cl,7"
+11,source_player_visibility_gate,1186,1880,20856,8946f0,"mov [bp-10h],ax"
+11,source_player_visibility_gate,1186,1883,20859,b001,"mov al,1"
+11,source_player_visibility_gate,1186,1885,20861,d2e0,"shl al,cl"
+11,source_player_visibility_gate,1186,1887,20863,0ad8,"or bl,al"
+11,source_player_visibility_gate,1186,1889,20865,8aca,"mov cl,dl"
+11,source_player_visibility_gate,1186,1891,20867,b001,"mov al,1"
+11,source_player_visibility_gate,1186,1893,20869,d2e0,"shl al,cl"
+11,source_player_visibility_gate,1186,1895,20871,0ad8,"or bl,al"
+11,source_player_visibility_gate,1186,1897,20873,225ef0,"and bl,[bp-10h]"
+11,source_player_visibility_gate,1186,1900,20876,895eee,"mov [bp-12h],bx"
+11,source_player_visibility_gate,1186,1903,20879,837efa00,"cmp word ptr [bp-6],0"
+11,source_player_visibility_gate,1186,1907,20883,7c05,jl short 077Ah
+11,source_player_visibility_gate,1186,1909,20885,b03c,"mov al,3Ch"
+11,source_player_visibility_gate,1186,1911,20887,eb03,jmp short 077Ch
+11,source_player_visibility_gate,1186,1914,20890,b0c3,"mov al,0C3h"
+11,source_player_visibility_gate,1186,1916,20892,2246ee,"and al,[bp-12h]"
+11,source_player_visibility_gate,1186,1919,20895,8946ec,"mov [bp-14h],ax"
+11,source_player_visibility_gate,1186,1922,20898,837efc00,"cmp word ptr [bp-4],0"
+11,source_player_visibility_gate,1186,1926,20902,7c04,jl short 078Ch
+11,source_player_visibility_gate,1186,1928,20904,b00f,"mov al,0Fh"
+11,source_player_visibility_gate,1186,1930,20906,eb02,jmp short 078Eh
+11,source_player_visibility_gate,1186,1932,20908,b0f0,"mov al,0F0h"
+11,source_player_visibility_gate,1186,1934,20910,8446ec,"test [bp-14h],al"
+11,source_player_visibility_gate,1186,1937,20913,7509,jne short 079Ch
+11,source_player_visibility_gate,1186,1939,20915,32c0,"xor al,al"
+11,source_player_visibility_gate,1186,1941,20917,16,push ss
+11,source_player_visibility_gate,1186,1942,20918,1f,pop ds
+11,source_player_visibility_gate,1186,1943,20919,5e,pop si
+11,source_player_visibility_gate,1186,1944,20920,5f,pop di
+11,source_player_visibility_gate,1186,1945,20921,c9,leave
+11,source_player_visibility_gate,1186,1946,20922,cb,ret far
+11,source_player_visibility_gate,1186,1948,20924,16,push ss
+11,source_player_visibility_gate,1186,1949,20925,1f,pop ds
+11,source_player_visibility_gate,1186,1950,20926,837e0e01,"cmp word ptr [bp+0Eh],1"
+11,source_player_visibility_gate,1186,1954,20930,7504,jne short 07A8h
+11,source_player_visibility_gate,1186,1956,20932,b001,"mov al,1"
+11,source_player_visibility_gate,1186,1958,20934,eb02,jmp short 07AAh
+11,source_player_visibility_gate,1186,1960,20936,32c0,"xor al,al"
+11,source_player_visibility_gate,1186,1962,20938,50,push ax
+11,source_player_visibility_gate,1186,1963,20939,6a08,push 8
+11,source_player_visibility_gate,1186,1965,20941,ff76fa,push word ptr [bp-6]
+11,source_player_visibility_gate,1186,1968,20944,ff76fc,push word ptr [bp-4]
+11,source_player_visibility_gate,1186,1971,20947,ff76f6,push word ptr [bp-0Ah]
+11,source_player_visibility_gate,1186,1974,20950,ff76f8,push word ptr [bp-8]
+11,source_player_visibility_gate,1186,1977,20953,9abc0cbe0a,"call far 0CBCh,0ABEh"
+11,source_player_visibility_gate,1186,1982,20958,83c40c,"add sp,0Ch"
+11,source_player_visibility_gate,1186,1985,20961,5e,pop si
+11,source_player_visibility_gate,1186,1986,20962,5f,pop di
+11,source_player_visibility_gate,1186,1987,20963,c9,leave
+11,source_player_visibility_gate,1186,1988,20964,cb,ret far
+11,source_player_visibility_gate,1186,1990,20966,16,push ss
+11,source_player_visibility_gate,1186,1991,20967,1f,pop ds
+11,source_player_visibility_gate,1186,1992,20968,32c0,"xor al,al"
+11,source_player_visibility_gate,1186,1994,20970,5e,pop si
+11,source_player_visibility_gate,1186,1995,20971,5f,pop di
+11,source_player_visibility_gate,1186,1996,20972,c9,leave
+11,source_player_visibility_gate,1186,1997,20973,cb,ret far
+11,grid_visibility_ray,2750,3260,47260,c8180000,"enter 18h,0"
+11,grid_visibility_ray,2750,3264,47264,57,push di
+11,grid_visibility_ray,2750,3265,47265,56,push si
+11,grid_visibility_ray,2750,3266,47266,8b4e0a,"mov cx,[bp+0Ah]"
+11,grid_visibility_ray,2750,3269,47269,8b5e0c,"mov bx,[bp+0Ch]"
+11,grid_visibility_ray,2750,3272,47272,83fb00,"cmp bx,0"
+11,grid_visibility_ray,2750,3275,47275,7e05,jle short 0CD2h
+11,grid_visibility_ray,2750,3277,47277,b80100,"mov ax,1"
+11,grid_visibility_ray,2750,3280,47280,eb03,jmp short 0CD5h
+11,grid_visibility_ray,2750,3282,47282,b8ffff,"mov ax,0FFFFh"
+11,grid_visibility_ray,2750,3285,47285,8946f8,"mov [bp-8],ax"
+11,grid_visibility_ray,2750,3288,47288,0bc9,"or cx,cx"
+11,grid_visibility_ray,2750,3290,47290,7e06,jle short 0CE2h
+11,grid_visibility_ray,2750,3292,47292,b80100,"mov ax,1"
+11,grid_visibility_ray,2750,3295,47295,eb04,jmp short 0CE5h
+11,grid_visibility_ray,2750,3298,47298,b8ffff,"mov ax,0FFFFh"
+11,grid_visibility_ray,2750,3301,47301,8946f6,"mov [bp-0Ah],ax"
+11,grid_visibility_ray,2750,3304,47304,8b4606,"mov ax,[bp+6]"
+11,grid_visibility_ray,2750,3307,47307,03c1,"add ax,cx"
+11,grid_visibility_ray,2750,3309,47309,8946f2,"mov [bp-0Eh],ax"
+11,grid_visibility_ray,2750,3312,47312,8b4608,"mov ax,[bp+8]"
+11,grid_visibility_ray,2750,3315,47315,03c3,"add ax,bx"
+11,grid_visibility_ray,2750,3317,47317,8946f0,"mov [bp-10h],ax"
+11,grid_visibility_ray,2750,3320,47320,8bc1,"mov ax,cx"
+11,grid_visibility_ray,2750,3322,47322,99,cwd
+11,grid_visibility_ray,2750,3323,47323,33c2,"xor ax,dx"
+11,grid_visibility_ray,2750,3325,47325,2bc2,"sub ax,dx"
+11,grid_visibility_ray,2750,3327,47327,8bc8,"mov cx,ax"
+11,grid_visibility_ray,2750,3329,47329,8bc3,"mov ax,bx"
+11,grid_visibility_ray,2750,3331,47331,99,cwd
+11,grid_visibility_ray,2750,3332,47332,33c2,"xor ax,dx"
+11,grid_visibility_ray,2750,3334,47334,2bc2,"sub ax,dx"
+11,grid_visibility_ray,2750,3336,47336,8bd8,"mov bx,ax"
+11,grid_visibility_ray,2750,3338,47338,3bd9,"cmp bx,cx"
+11,grid_visibility_ray,2750,3340,47340,7d16,jge short 0D24h
+11,grid_visibility_ray,2750,3342,47342,c646fb01,"mov byte ptr [bp-5],1"
+11,grid_visibility_ray,2750,3346,47346,8bd0,"mov dx,ax"
+11,grid_visibility_ray,2750,3348,47348,03d0,"add dx,ax"
+11,grid_visibility_ray,2750,3350,47350,8bc2,"mov ax,dx"
+11,grid_visibility_ray,2750,3352,47352,2bd1,"sub dx,cx"
+11,grid_visibility_ray,2750,3354,47354,8946ee,"mov [bp-12h],ax"
+11,grid_visibility_ray,2750,3357,47357,8bc3,"mov ax,bx"
+11,grid_visibility_ray,2750,3359,47359,2bc1,"sub ax,cx"
+11,grid_visibility_ray,2750,3361,47361,eb14,jmp short 0D37h
+11,grid_visibility_ray,2750,3364,47364,c646fb00,"mov byte ptr [bp-5],0"
+11,grid_visibility_ray,2750,3368,47368,8bd1,"mov dx,cx"
+11,grid_visibility_ray,2750,3370,47370,03d1,"add dx,cx"
+11,grid_visibility_ray,2750,3372,47372,8bc2,"mov ax,dx"
+11,grid_visibility_ray,2750,3374,47374,2bd3,"sub dx,bx"
+11,grid_visibility_ray,2750,3376,47376,8946ee,"mov [bp-12h],ax"
+11,grid_visibility_ray,2750,3379,47379,8bc1,"mov ax,cx"
+11,grid_visibility_ray,2750,3381,47381,2bc3,"sub ax,bx"
+11,grid_visibility_ray,2750,3383,47383,03c0,"add ax,ax"
+11,grid_visibility_ray,2750,3385,47385,8946ec,"mov [bp-14h],ax"
+11,grid_visibility_ray,2750,3388,47388,c746f40000,"mov word ptr [bp-0Ch],0"
+11,grid_visibility_ray,2750,3393,47393,837e0e00,"cmp word ptr [bp+0Eh],0"
+11,grid_visibility_ray,2750,3397,47397,0f8ecf00,jle 0E18h
+11,grid_visibility_ray,2750,3401,47401,8956e8,"mov [bp-18h],dx"
+11,grid_visibility_ray,2750,3404,47404,8b7606,"mov si,[bp+6]"
+11,grid_visibility_ray,2750,3407,47407,8b7e08,"mov di,[bp+8]"
+11,grid_visibility_ray,2750,3410,47410,807efb00,"cmp byte ptr [bp-5],0"
+11,grid_visibility_ray,2750,3414,47414,7406,je short 0D5Eh
+11,grid_visibility_ray,2750,3416,47416,0376f6,"add si,[bp-0Ah]"
+11,grid_visibility_ray,2750,3419,47419,eb04,jmp short 0D61h
+11,grid_visibility_ray,2750,3422,47422,037ef8,"add di,[bp-8]"
+11,grid_visibility_ray,2750,3425,47425,837ee800,"cmp word ptr [bp-18h],0"
+11,grid_visibility_ray,2750,3429,47429,7d09,jge short 0D70h
+11,grid_visibility_ray,2750,3431,47431,8b46ee,"mov ax,[bp-12h]"
+11,grid_visibility_ray,2750,3434,47434,0146e8,"add [bp-18h],ax"
+11,grid_visibility_ray,2750,3437,47437,eb16,jmp short 0D85h
+11,grid_visibility_ray,2750,3440,47440,8b46ec,"mov ax,[bp-14h]"
+11,grid_visibility_ray,2750,3443,47443,0146e8,"add [bp-18h],ax"
+11,grid_visibility_ray,2750,3446,47446,807efb00,"cmp byte ptr [bp-5],0"
+11,grid_visibility_ray,2750,3450,47450,7406,je short 0D82h
+11,grid_visibility_ray,2750,3452,47452,037ef8,"add di,[bp-8]"
+11,grid_visibility_ray,2750,3455,47455,eb04,jmp short 0D85h
+11,grid_visibility_ray,2750,3458,47458,0376f6,"add si,[bp-0Ah]"
+11,grid_visibility_ray,2750,3461,47461,3976f2,"cmp [bp-0Eh],si"
+11,grid_visibility_ray,2750,3464,47464,7507,jne short 0D91h
+11,grid_visibility_ray,2750,3466,47466,397ef0,"cmp [bp-10h],di"
+11,grid_visibility_ray,2750,3469,47469,0f848100,je 0E12h
+11,grid_visibility_ray,2750,3473,47473,8bdf,"mov bx,di"
+11,grid_visibility_ray,2750,3475,47475,c1e306,"shl bx,6"
+11,grid_visibility_ray,2750,3478,47478,03de,"add bx,si"
+11,grid_visibility_ray,2750,3480,47480,03db,"add bx,bx"
+11,grid_visibility_ray,2750,3482,47482,81c33e37,"add bx,373Eh"
+11,grid_visibility_ray,2750,3486,47486,8e065a25,"mov es,[255Ah]"
+11,grid_visibility_ray,2750,3490,47490,895efc,"mov [bp-4],bx"
+11,grid_visibility_ray,2750,3493,47493,8c46fe,"mov [bp-2],es"
+11,grid_visibility_ray,2750,3496,47496,268a1f,"mov bl,es:[bx]"
+11,grid_visibility_ray,2750,3499,47499,2aff,"sub bh,bh"
+11,grid_visibility_ray,2750,3501,47501,8a8758cf,"mov al,[bx-30A8h]"
+11,grid_visibility_ray,2750,3505,47505,8846fa,"mov [bp-6],al"
+11,grid_visibility_ray,2750,3508,47508,f646fa02,"test byte ptr [bp-6],2"
+11,grid_visibility_ray,2750,3512,47512,7426,je short 0DE0h
+11,grid_visibility_ray,2750,3514,47514,f646fa04,"test byte ptr [bp-6],4"
+11,grid_visibility_ray,2750,3518,47518,7558,jne short 0E18h
+11,grid_visibility_ray,2750,3520,47520,f646fa08,"test byte ptr [bp-6],8"
+11,grid_visibility_ray,2750,3524,47524,741a,je short 0DE0h
+11,grid_visibility_ray,2750,3526,47526,06,push es
+11,grid_visibility_ray,2750,3527,47527,ff76fc,push word ptr [bp-4]
+11,grid_visibility_ray,2750,3530,47530,9a00000000,"call far 0,0"
+11,grid_visibility_ray,2750,3535,47535,83c404,"add sp,4"
+11,grid_visibility_ray,2750,3538,47538,52,push dx
+11,grid_visibility_ray,2750,3539,47539,50,push ax
+11,grid_visibility_ray,2750,3540,47540,9ae0010000,"call far 01E0h,0"
+11,grid_visibility_ray,2750,3545,47545,83c404,"add sp,4"
+11,grid_visibility_ray,2750,3548,47548,0ac0,"or al,al"
+11,grid_visibility_ray,2750,3550,47550,7438,je short 0E18h
+11,grid_visibility_ray,2750,3552,47552,807e1000,"cmp byte ptr [bp+10h],0"
+11,grid_visibility_ray,2750,3556,47556,741c,je short 0E02h
+11,grid_visibility_ray,2750,3558,47558,c45efc,"les bx,[bp-4]"
+11,grid_visibility_ray,2750,3561,47561,268a5f01,"mov bl,es:[bx+1]"
+11,grid_visibility_ray,2750,3565,47565,2aff,"sub bh,bh"
+11,grid_visibility_ray,2750,3567,47567,8a8758d0,"mov al,[bx-2FA8h]"
+11,grid_visibility_ray,2750,3571,47571,8846eb,"mov [bp-15h],al"
+11,grid_visibility_ray,2750,3574,47574,f646eb02,"test byte ptr [bp-15h],2"
+11,grid_visibility_ray,2750,3578,47578,7406,je short 0E02h
+11,grid_visibility_ray,2750,3580,47580,f646eb20,"test byte ptr [bp-15h],20h"
+11,grid_visibility_ray,2750,3584,47584,7416,je short 0E18h
+11,grid_visibility_ray,2750,3586,47586,8b460e,"mov ax,[bp+0Eh]"
+11,grid_visibility_ray,2750,3589,47589,ff46f4,inc word ptr [bp-0Ch]
+11,grid_visibility_ray,2750,3592,47592,3946f4,"cmp [bp-0Ch],ax"
+11,grid_visibility_ray,2750,3595,47595,0f8c43ff,jl 0D52h
+11,grid_visibility_ray,2750,3599,47599,eb07,jmp short 0E18h
+11,grid_visibility_ray,2750,3602,47602,b001,"mov al,1"
+11,grid_visibility_ray,2750,3604,47604,5e,pop si
+11,grid_visibility_ray,2750,3605,47605,5f,pop di
+11,grid_visibility_ray,2750,3606,47606,c9,leave
+11,grid_visibility_ray,2750,3607,47607,cb,ret far
+11,grid_visibility_ray,2750,3608,47608,32c0,"xor al,al"
+11,grid_visibility_ray,2750,3610,47610,5e,pop si
+11,grid_visibility_ray,2750,3611,47611,5f,pop di
+11,grid_visibility_ray,2750,3612,47612,c9,leave
+11,grid_visibility_ray,2750,3613,47613,cb,ret far
+12,source_player_visibility_gate,1186,1754,20730,c8140000,"enter 14h,0"
+12,source_player_visibility_gate,1186,1758,20734,57,push di
+12,source_player_visibility_gate,1186,1759,20735,56,push si
+12,source_player_visibility_gate,1186,1760,20736,c55e0a,"lds bx,[bp+0Ah]"
+12,source_player_visibility_gate,1186,1763,20739,8b4710,"mov ax,[bx+10h]"
+12,source_player_visibility_gate,1186,1766,20742,c1f806,"sar ax,6"
+12,source_player_visibility_gate,1186,1769,20745,8946f8,"mov [bp-8],ax"
+12,source_player_visibility_gate,1186,1772,20748,8b4f12,"mov cx,[bx+12h]"
+12,source_player_visibility_gate,1186,1775,20751,c1f906,"sar cx,6"
+12,source_player_visibility_gate,1186,1778,20754,894ef6,"mov [bp-0Ah],cx"
+12,source_player_visibility_gate,1186,1781,20757,362b06bc40,"sub ax,ss:[40BCh]"
+12,source_player_visibility_gate,1186,1786,20762,f7d8,neg ax
+12,source_player_visibility_gate,1186,1788,20764,8946fc,"mov [bp-4],ax"
+12,source_player_visibility_gate,1186,1791,20767,362b0ebe40,"sub cx,ss:[40BEh]"
+12,source_player_visibility_gate,1186,1796,20772,f7d9,neg cx
+12,source_player_visibility_gate,1186,1798,20774,894efa,"mov [bp-6],cx"
+12,source_player_visibility_gate,1186,1801,20777,99,cwd
+12,source_player_visibility_gate,1186,1802,20778,33c2,"xor ax,dx"
+12,source_player_visibility_gate,1186,1804,20780,2bc2,"sub ax,dx"
+12,source_player_visibility_gate,1186,1806,20782,8bd0,"mov dx,ax"
+12,source_player_visibility_gate,1186,1808,20784,8bc1,"mov ax,cx"
+12,source_player_visibility_gate,1186,1810,20786,8bca,"mov cx,dx"
+12,source_player_visibility_gate,1186,1812,20788,99,cwd
+12,source_player_visibility_gate,1186,1813,20789,33c2,"xor ax,dx"
+12,source_player_visibility_gate,1186,1815,20791,2bc2,"sub ax,dx"
+12,source_player_visibility_gate,1186,1817,20793,8bf0,"mov si,ax"
+12,source_player_visibility_gate,1186,1819,20795,83f908,"cmp cx,8"
+12,source_player_visibility_gate,1186,1822,20798,0f8fb000,jg 07D2h
+12,source_player_visibility_gate,1186,1826,20802,83fe08,"cmp si,8"
+12,source_player_visibility_gate,1186,1829,20805,0f8fa900,jg 07D2h
+12,source_player_visibility_gate,1186,1833,20809,837e1000,"cmp word ptr [bp+10h],0"
+12,source_player_visibility_gate,1186,1837,20813,7579,jne short 07A8h
+12,source_player_visibility_gate,1186,1839,20815,c47e06,"les di,[bp+6]"
+12,source_player_visibility_gate,1186,1842,20818,3bc8,"cmp cx,ax"
+12,source_player_visibility_gate,1186,1844,20820,7c04,jl short 073Ah
+12,source_player_visibility_gate,1186,1846,20822,b066,"mov al,66h"
+12,source_player_visibility_gate,1186,1848,20824,eb02,jmp short 073Ch
+12,source_player_visibility_gate,1186,1850,20826,b099,"mov al,99h"
+12,source_player_visibility_gate,1186,1852,20828,268a4d11,"mov cl,es:[di+11h]"
+12,source_player_visibility_gate,1186,1856,20832,8bd1,"mov dx,cx"
+12,source_player_visibility_gate,1186,1858,20834,fec9,dec cl
+12,source_player_visibility_gate,1186,1860,20836,80e107,"and cl,7"
+12,source_player_visibility_gate,1186,1863,20839,b301,"mov bl,1"
+12,source_player_visibility_gate,1186,1865,20841,8bd9,"mov bx,cx"
+12,source_player_visibility_gate,1186,1867,20843,8acb,"mov cl,bl"
+12,source_player_visibility_gate,1186,1869,20845,b301,"mov bl,1"
+12,source_player_visibility_gate,1186,1871,20847,894ef4,"mov [bp-0Ch],cx"
+12,source_player_visibility_gate,1186,1874,20850,8aca,"mov cl,dl"
+12,source_player_visibility_gate,1186,1876,20852,02cb,"add cl,bl"
+12,source_player_visibility_gate,1186,1878,20854,894ef2,"mov [bp-0Eh],cx"
+12,source_player_visibility_gate,1186,1881,20857,8a4ef4,"mov cl,[bp-0Ch]"
+12,source_player_visibility_gate,1186,1884,20860,d2e3,"shl bl,cl"
+12,source_player_visibility_gate,1186,1886,20862,8a4ef2,"mov cl,[bp-0Eh]"
+12,source_player_visibility_gate,1186,1889,20865,80e107,"and cl,7"
+12,source_player_visibility_gate,1186,1892,20868,8946f0,"mov [bp-10h],ax"
+12,source_player_visibility_gate,1186,1895,20871,b001,"mov al,1"
+12,source_player_visibility_gate,1186,1897,20873,d2e0,"shl al,cl"
+12,source_player_visibility_gate,1186,1899,20875,0ad8,"or bl,al"
+12,source_player_visibility_gate,1186,1901,20877,8aca,"mov cl,dl"
+12,source_player_visibility_gate,1186,1903,20879,b001,"mov al,1"
+12,source_player_visibility_gate,1186,1905,20881,d2e0,"shl al,cl"
+12,source_player_visibility_gate,1186,1907,20883,0ad8,"or bl,al"
+12,source_player_visibility_gate,1186,1909,20885,225ef0,"and bl,[bp-10h]"
+12,source_player_visibility_gate,1186,1912,20888,895eee,"mov [bp-12h],bx"
+12,source_player_visibility_gate,1186,1915,20891,837efa00,"cmp word ptr [bp-6],0"
+12,source_player_visibility_gate,1186,1919,20895,7c05,jl short 0786h
+12,source_player_visibility_gate,1186,1921,20897,b03c,"mov al,3Ch"
+12,source_player_visibility_gate,1186,1923,20899,eb03,jmp short 0788h
+12,source_player_visibility_gate,1186,1926,20902,b0c3,"mov al,0C3h"
+12,source_player_visibility_gate,1186,1928,20904,2246ee,"and al,[bp-12h]"
+12,source_player_visibility_gate,1186,1931,20907,8946ec,"mov [bp-14h],ax"
+12,source_player_visibility_gate,1186,1934,20910,837efc00,"cmp word ptr [bp-4],0"
+12,source_player_visibility_gate,1186,1938,20914,7c04,jl short 0798h
+12,source_player_visibility_gate,1186,1940,20916,b00f,"mov al,0Fh"
+12,source_player_visibility_gate,1186,1942,20918,eb02,jmp short 079Ah
+12,source_player_visibility_gate,1186,1944,20920,b0f0,"mov al,0F0h"
+12,source_player_visibility_gate,1186,1946,20922,8446ec,"test [bp-14h],al"
+12,source_player_visibility_gate,1186,1949,20925,7509,jne short 07A8h
+12,source_player_visibility_gate,1186,1951,20927,32c0,"xor al,al"
+12,source_player_visibility_gate,1186,1953,20929,16,push ss
+12,source_player_visibility_gate,1186,1954,20930,1f,pop ds
+12,source_player_visibility_gate,1186,1955,20931,5e,pop si
+12,source_player_visibility_gate,1186,1956,20932,5f,pop di
+12,source_player_visibility_gate,1186,1957,20933,c9,leave
+12,source_player_visibility_gate,1186,1958,20934,cb,ret far
+12,source_player_visibility_gate,1186,1960,20936,16,push ss
+12,source_player_visibility_gate,1186,1961,20937,1f,pop ds
+12,source_player_visibility_gate,1186,1962,20938,837e0e01,"cmp word ptr [bp+0Eh],1"
+12,source_player_visibility_gate,1186,1966,20942,7504,jne short 07B4h
+12,source_player_visibility_gate,1186,1968,20944,b001,"mov al,1"
+12,source_player_visibility_gate,1186,1970,20946,eb02,jmp short 07B6h
+12,source_player_visibility_gate,1186,1972,20948,32c0,"xor al,al"
+12,source_player_visibility_gate,1186,1974,20950,50,push ax
+12,source_player_visibility_gate,1186,1975,20951,6a08,push 8
+12,source_player_visibility_gate,1186,1977,20953,ff76fa,push word ptr [bp-6]
+12,source_player_visibility_gate,1186,1980,20956,ff76fc,push word ptr [bp-4]
+12,source_player_visibility_gate,1186,1983,20959,ff76f6,push word ptr [bp-0Ah]
+12,source_player_visibility_gate,1186,1986,20962,ff76f8,push word ptr [bp-8]
+12,source_player_visibility_gate,1186,1989,20965,9abe0cbe0a,"call far 0CBEh,0ABEh"
+12,source_player_visibility_gate,1186,1994,20970,83c40c,"add sp,0Ch"
+12,source_player_visibility_gate,1186,1997,20973,5e,pop si
+12,source_player_visibility_gate,1186,1998,20974,5f,pop di
+12,source_player_visibility_gate,1186,1999,20975,c9,leave
+12,source_player_visibility_gate,1186,2000,20976,cb,ret far
+12,source_player_visibility_gate,1186,2002,20978,16,push ss
+12,source_player_visibility_gate,1186,2003,20979,1f,pop ds
+12,source_player_visibility_gate,1186,2004,20980,32c0,"xor al,al"
+12,source_player_visibility_gate,1186,2006,20982,5e,pop si
+12,source_player_visibility_gate,1186,2007,20983,5f,pop di
+12,source_player_visibility_gate,1186,2008,20984,c9,leave
+12,source_player_visibility_gate,1186,2009,20985,cb,ret far
+12,grid_visibility_ray,2750,3262,47262,c8180000,"enter 18h,0"
+12,grid_visibility_ray,2750,3266,47266,57,push di
+12,grid_visibility_ray,2750,3267,47267,56,push si
+12,grid_visibility_ray,2750,3268,47268,8b4e0a,"mov cx,[bp+0Ah]"
+12,grid_visibility_ray,2750,3271,47271,8b5e0c,"mov bx,[bp+0Ch]"
+12,grid_visibility_ray,2750,3274,47274,83fb00,"cmp bx,0"
+12,grid_visibility_ray,2750,3277,47277,7e05,jle short 0CD4h
+12,grid_visibility_ray,2750,3279,47279,b80100,"mov ax,1"
+12,grid_visibility_ray,2750,3282,47282,eb03,jmp short 0CD7h
+12,grid_visibility_ray,2750,3284,47284,b8ffff,"mov ax,0FFFFh"
+12,grid_visibility_ray,2750,3287,47287,8946f8,"mov [bp-8],ax"
+12,grid_visibility_ray,2750,3290,47290,0bc9,"or cx,cx"
+12,grid_visibility_ray,2750,3292,47292,7e06,jle short 0CE4h
+12,grid_visibility_ray,2750,3294,47294,b80100,"mov ax,1"
+12,grid_visibility_ray,2750,3297,47297,eb04,jmp short 0CE7h
+12,grid_visibility_ray,2750,3300,47300,b8ffff,"mov ax,0FFFFh"
+12,grid_visibility_ray,2750,3303,47303,8946f6,"mov [bp-0Ah],ax"
+12,grid_visibility_ray,2750,3306,47306,8b4606,"mov ax,[bp+6]"
+12,grid_visibility_ray,2750,3309,47309,03c1,"add ax,cx"
+12,grid_visibility_ray,2750,3311,47311,8946f2,"mov [bp-0Eh],ax"
+12,grid_visibility_ray,2750,3314,47314,8b4608,"mov ax,[bp+8]"
+12,grid_visibility_ray,2750,3317,47317,03c3,"add ax,bx"
+12,grid_visibility_ray,2750,3319,47319,8946f0,"mov [bp-10h],ax"
+12,grid_visibility_ray,2750,3322,47322,8bc1,"mov ax,cx"
+12,grid_visibility_ray,2750,3324,47324,99,cwd
+12,grid_visibility_ray,2750,3325,47325,33c2,"xor ax,dx"
+12,grid_visibility_ray,2750,3327,47327,2bc2,"sub ax,dx"
+12,grid_visibility_ray,2750,3329,47329,8bc8,"mov cx,ax"
+12,grid_visibility_ray,2750,3331,47331,8bc3,"mov ax,bx"
+12,grid_visibility_ray,2750,3333,47333,99,cwd
+12,grid_visibility_ray,2750,3334,47334,33c2,"xor ax,dx"
+12,grid_visibility_ray,2750,3336,47336,2bc2,"sub ax,dx"
+12,grid_visibility_ray,2750,3338,47338,8bd8,"mov bx,ax"
+12,grid_visibility_ray,2750,3340,47340,3bd9,"cmp bx,cx"
+12,grid_visibility_ray,2750,3342,47342,7d16,jge short 0D26h
+12,grid_visibility_ray,2750,3344,47344,c646fb01,"mov byte ptr [bp-5],1"
+12,grid_visibility_ray,2750,3348,47348,8bd0,"mov dx,ax"
+12,grid_visibility_ray,2750,3350,47350,03d0,"add dx,ax"
+12,grid_visibility_ray,2750,3352,47352,8bc2,"mov ax,dx"
+12,grid_visibility_ray,2750,3354,47354,2bd1,"sub dx,cx"
+12,grid_visibility_ray,2750,3356,47356,8946ee,"mov [bp-12h],ax"
+12,grid_visibility_ray,2750,3359,47359,8bc3,"mov ax,bx"
+12,grid_visibility_ray,2750,3361,47361,2bc1,"sub ax,cx"
+12,grid_visibility_ray,2750,3363,47363,eb14,jmp short 0D39h
+12,grid_visibility_ray,2750,3366,47366,c646fb00,"mov byte ptr [bp-5],0"
+12,grid_visibility_ray,2750,3370,47370,8bd1,"mov dx,cx"
+12,grid_visibility_ray,2750,3372,47372,03d1,"add dx,cx"
+12,grid_visibility_ray,2750,3374,47374,8bc2,"mov ax,dx"
+12,grid_visibility_ray,2750,3376,47376,2bd3,"sub dx,bx"
+12,grid_visibility_ray,2750,3378,47378,8946ee,"mov [bp-12h],ax"
+12,grid_visibility_ray,2750,3381,47381,8bc1,"mov ax,cx"
+12,grid_visibility_ray,2750,3383,47383,2bc3,"sub ax,bx"
+12,grid_visibility_ray,2750,3385,47385,03c0,"add ax,ax"
+12,grid_visibility_ray,2750,3387,47387,8946ec,"mov [bp-14h],ax"
+12,grid_visibility_ray,2750,3390,47390,c746f40000,"mov word ptr [bp-0Ch],0"
+12,grid_visibility_ray,2750,3395,47395,837e0e00,"cmp word ptr [bp+0Eh],0"
+12,grid_visibility_ray,2750,3399,47399,0f8ecf00,jle 0E1Ah
+12,grid_visibility_ray,2750,3403,47403,8956e8,"mov [bp-18h],dx"
+12,grid_visibility_ray,2750,3406,47406,8b7606,"mov si,[bp+6]"
+12,grid_visibility_ray,2750,3409,47409,8b7e08,"mov di,[bp+8]"
+12,grid_visibility_ray,2750,3412,47412,807efb00,"cmp byte ptr [bp-5],0"
+12,grid_visibility_ray,2750,3416,47416,7406,je short 0D60h
+12,grid_visibility_ray,2750,3418,47418,0376f6,"add si,[bp-0Ah]"
+12,grid_visibility_ray,2750,3421,47421,eb04,jmp short 0D63h
+12,grid_visibility_ray,2750,3424,47424,037ef8,"add di,[bp-8]"
+12,grid_visibility_ray,2750,3427,47427,837ee800,"cmp word ptr [bp-18h],0"
+12,grid_visibility_ray,2750,3431,47431,7d09,jge short 0D72h
+12,grid_visibility_ray,2750,3433,47433,8b46ee,"mov ax,[bp-12h]"
+12,grid_visibility_ray,2750,3436,47436,0146e8,"add [bp-18h],ax"
+12,grid_visibility_ray,2750,3439,47439,eb16,jmp short 0D87h
+12,grid_visibility_ray,2750,3442,47442,8b46ec,"mov ax,[bp-14h]"
+12,grid_visibility_ray,2750,3445,47445,0146e8,"add [bp-18h],ax"
+12,grid_visibility_ray,2750,3448,47448,807efb00,"cmp byte ptr [bp-5],0"
+12,grid_visibility_ray,2750,3452,47452,7406,je short 0D84h
+12,grid_visibility_ray,2750,3454,47454,037ef8,"add di,[bp-8]"
+12,grid_visibility_ray,2750,3457,47457,eb04,jmp short 0D87h
+12,grid_visibility_ray,2750,3460,47460,0376f6,"add si,[bp-0Ah]"
+12,grid_visibility_ray,2750,3463,47463,3976f2,"cmp [bp-0Eh],si"
+12,grid_visibility_ray,2750,3466,47466,7507,jne short 0D93h
+12,grid_visibility_ray,2750,3468,47468,397ef0,"cmp [bp-10h],di"
+12,grid_visibility_ray,2750,3471,47471,0f848100,je 0E14h
+12,grid_visibility_ray,2750,3475,47475,8bdf,"mov bx,di"
+12,grid_visibility_ray,2750,3477,47477,c1e306,"shl bx,6"
+12,grid_visibility_ray,2750,3480,47480,03de,"add bx,si"
+12,grid_visibility_ray,2750,3482,47482,03db,"add bx,bx"
+12,grid_visibility_ray,2750,3484,47484,81c33e37,"add bx,373Eh"
+12,grid_visibility_ray,2750,3488,47488,8e065625,"mov es,[2556h]"
+12,grid_visibility_ray,2750,3492,47492,895efc,"mov [bp-4],bx"
+12,grid_visibility_ray,2750,3495,47495,8c46fe,"mov [bp-2],es"
+12,grid_visibility_ray,2750,3498,47498,268a1f,"mov bl,es:[bx]"
+12,grid_visibility_ray,2750,3501,47501,2aff,"sub bh,bh"
+12,grid_visibility_ray,2750,3503,47503,8a8768cf,"mov al,[bx-3098h]"
+12,grid_visibility_ray,2750,3507,47507,8846fa,"mov [bp-6],al"
+12,grid_visibility_ray,2750,3510,47510,f646fa02,"test byte ptr [bp-6],2"
+12,grid_visibility_ray,2750,3514,47514,7426,je short 0DE2h
+12,grid_visibility_ray,2750,3516,47516,f646fa04,"test byte ptr [bp-6],4"
+12,grid_visibility_ray,2750,3520,47520,7558,jne short 0E1Ah
+12,grid_visibility_ray,2750,3522,47522,f646fa08,"test byte ptr [bp-6],8"
+12,grid_visibility_ray,2750,3526,47526,741a,je short 0DE2h
+12,grid_visibility_ray,2750,3528,47528,06,push es
+12,grid_visibility_ray,2750,3529,47529,ff76fc,push word ptr [bp-4]
+12,grid_visibility_ray,2750,3532,47532,9a00000000,"call far 0,0"
+12,grid_visibility_ray,2750,3537,47537,83c404,"add sp,4"
+12,grid_visibility_ray,2750,3540,47540,52,push dx
+12,grid_visibility_ray,2750,3541,47541,50,push ax
+12,grid_visibility_ray,2750,3542,47542,9ae0010000,"call far 01E0h,0"
+12,grid_visibility_ray,2750,3547,47547,83c404,"add sp,4"
+12,grid_visibility_ray,2750,3550,47550,0ac0,"or al,al"
+12,grid_visibility_ray,2750,3552,47552,7438,je short 0E1Ah
+12,grid_visibility_ray,2750,3554,47554,807e1000,"cmp byte ptr [bp+10h],0"
+12,grid_visibility_ray,2750,3558,47558,741c,je short 0E04h
+12,grid_visibility_ray,2750,3560,47560,c45efc,"les bx,[bp-4]"
+12,grid_visibility_ray,2750,3563,47563,268a5f01,"mov bl,es:[bx+1]"
+12,grid_visibility_ray,2750,3567,47567,2aff,"sub bh,bh"
+12,grid_visibility_ray,2750,3569,47569,8a8768d0,"mov al,[bx-2F98h]"
+12,grid_visibility_ray,2750,3573,47573,8846eb,"mov [bp-15h],al"
+12,grid_visibility_ray,2750,3576,47576,f646eb02,"test byte ptr [bp-15h],2"
+12,grid_visibility_ray,2750,3580,47580,7406,je short 0E04h
+12,grid_visibility_ray,2750,3582,47582,f646eb20,"test byte ptr [bp-15h],20h"
+12,grid_visibility_ray,2750,3586,47586,7416,je short 0E1Ah
+12,grid_visibility_ray,2750,3588,47588,8b460e,"mov ax,[bp+0Eh]"
+12,grid_visibility_ray,2750,3591,47591,ff46f4,inc word ptr [bp-0Ch]
+12,grid_visibility_ray,2750,3594,47594,3946f4,"cmp [bp-0Ch],ax"
+12,grid_visibility_ray,2750,3597,47597,0f8c43ff,jl 0D54h
+12,grid_visibility_ray,2750,3601,47601,eb07,jmp short 0E1Ah
+12,grid_visibility_ray,2750,3604,47604,b001,"mov al,1"
+12,grid_visibility_ray,2750,3606,47606,5e,pop si
+12,grid_visibility_ray,2750,3607,47607,5f,pop di
+12,grid_visibility_ray,2750,3608,47608,c9,leave
+12,grid_visibility_ray,2750,3609,47609,cb,ret far
+12,grid_visibility_ray,2750,3610,47610,32c0,"xor al,al"
+12,grid_visibility_ray,2750,3612,47612,5e,pop si
+12,grid_visibility_ray,2750,3613,47613,5f,pop di
+12,grid_visibility_ray,2750,3614,47614,c9,leave
+12,grid_visibility_ray,2750,3615,47615,cb,ret far
+15,source_player_visibility_gate,1191,1746,20802,c8140000,"enter 14h,0"
+15,source_player_visibility_gate,1191,1750,20806,57,push di
+15,source_player_visibility_gate,1191,1751,20807,56,push si
+15,source_player_visibility_gate,1191,1752,20808,c55e0a,"lds bx,[bp+0Ah]"
+15,source_player_visibility_gate,1191,1755,20811,8b4710,"mov ax,[bx+10h]"
+15,source_player_visibility_gate,1191,1758,20814,c1f806,"sar ax,6"
+15,source_player_visibility_gate,1191,1761,20817,8946f8,"mov [bp-8],ax"
+15,source_player_visibility_gate,1191,1764,20820,8b4f12,"mov cx,[bx+12h]"
+15,source_player_visibility_gate,1191,1767,20823,c1f906,"sar cx,6"
+15,source_player_visibility_gate,1191,1770,20826,894ef6,"mov [bp-0Ah],cx"
+15,source_player_visibility_gate,1191,1773,20829,362b068c40,"sub ax,ss:[408Ch]"
+15,source_player_visibility_gate,1191,1778,20834,f7d8,neg ax
+15,source_player_visibility_gate,1191,1780,20836,8946fc,"mov [bp-4],ax"
+15,source_player_visibility_gate,1191,1783,20839,362b0e8e40,"sub cx,ss:[408Eh]"
+15,source_player_visibility_gate,1191,1788,20844,f7d9,neg cx
+15,source_player_visibility_gate,1191,1790,20846,894efa,"mov [bp-6],cx"
+15,source_player_visibility_gate,1191,1793,20849,99,cwd
+15,source_player_visibility_gate,1191,1794,20850,33c2,"xor ax,dx"
+15,source_player_visibility_gate,1191,1796,20852,2bc2,"sub ax,dx"
+15,source_player_visibility_gate,1191,1798,20854,8bd0,"mov dx,ax"
+15,source_player_visibility_gate,1191,1800,20856,8bc1,"mov ax,cx"
+15,source_player_visibility_gate,1191,1802,20858,8bca,"mov cx,dx"
+15,source_player_visibility_gate,1191,1804,20860,99,cwd
+15,source_player_visibility_gate,1191,1805,20861,33c2,"xor ax,dx"
+15,source_player_visibility_gate,1191,1807,20863,2bc2,"sub ax,dx"
+15,source_player_visibility_gate,1191,1809,20865,8bf0,"mov si,ax"
+15,source_player_visibility_gate,1191,1811,20867,83f908,"cmp cx,8"
+15,source_player_visibility_gate,1191,1814,20870,0f8fb000,jg 07CAh
+15,source_player_visibility_gate,1191,1818,20874,83fe08,"cmp si,8"
+15,source_player_visibility_gate,1191,1821,20877,0f8fa900,jg 07CAh
+15,source_player_visibility_gate,1191,1825,20881,837e1000,"cmp word ptr [bp+10h],0"
+15,source_player_visibility_gate,1191,1829,20885,7579,jne short 07A0h
+15,source_player_visibility_gate,1191,1831,20887,c47e06,"les di,[bp+6]"
+15,source_player_visibility_gate,1191,1834,20890,3bc8,"cmp cx,ax"
+15,source_player_visibility_gate,1191,1836,20892,7c04,jl short 0732h
+15,source_player_visibility_gate,1191,1838,20894,b066,"mov al,66h"
+15,source_player_visibility_gate,1191,1840,20896,eb02,jmp short 0734h
+15,source_player_visibility_gate,1191,1842,20898,b099,"mov al,99h"
+15,source_player_visibility_gate,1191,1844,20900,268a4d11,"mov cl,es:[di+11h]"
+15,source_player_visibility_gate,1191,1848,20904,8bd1,"mov dx,cx"
+15,source_player_visibility_gate,1191,1850,20906,fec9,dec cl
+15,source_player_visibility_gate,1191,1852,20908,80e107,"and cl,7"
+15,source_player_visibility_gate,1191,1855,20911,b301,"mov bl,1"
+15,source_player_visibility_gate,1191,1857,20913,8bd9,"mov bx,cx"
+15,source_player_visibility_gate,1191,1859,20915,8acb,"mov cl,bl"
+15,source_player_visibility_gate,1191,1861,20917,b301,"mov bl,1"
+15,source_player_visibility_gate,1191,1863,20919,894ef4,"mov [bp-0Ch],cx"
+15,source_player_visibility_gate,1191,1866,20922,8aca,"mov cl,dl"
+15,source_player_visibility_gate,1191,1868,20924,02cb,"add cl,bl"
+15,source_player_visibility_gate,1191,1870,20926,894ef2,"mov [bp-0Eh],cx"
+15,source_player_visibility_gate,1191,1873,20929,8a4ef4,"mov cl,[bp-0Ch]"
+15,source_player_visibility_gate,1191,1876,20932,d2e3,"shl bl,cl"
+15,source_player_visibility_gate,1191,1878,20934,8a4ef2,"mov cl,[bp-0Eh]"
+15,source_player_visibility_gate,1191,1881,20937,80e107,"and cl,7"
+15,source_player_visibility_gate,1191,1884,20940,8946f0,"mov [bp-10h],ax"
+15,source_player_visibility_gate,1191,1887,20943,b001,"mov al,1"
+15,source_player_visibility_gate,1191,1889,20945,d2e0,"shl al,cl"
+15,source_player_visibility_gate,1191,1891,20947,0ad8,"or bl,al"
+15,source_player_visibility_gate,1191,1893,20949,8aca,"mov cl,dl"
+15,source_player_visibility_gate,1191,1895,20951,b001,"mov al,1"
+15,source_player_visibility_gate,1191,1897,20953,d2e0,"shl al,cl"
+15,source_player_visibility_gate,1191,1899,20955,0ad8,"or bl,al"
+15,source_player_visibility_gate,1191,1901,20957,225ef0,"and bl,[bp-10h]"
+15,source_player_visibility_gate,1191,1904,20960,895eee,"mov [bp-12h],bx"
+15,source_player_visibility_gate,1191,1907,20963,837efa00,"cmp word ptr [bp-6],0"
+15,source_player_visibility_gate,1191,1911,20967,7c05,jl short 077Eh
+15,source_player_visibility_gate,1191,1913,20969,b03c,"mov al,3Ch"
+15,source_player_visibility_gate,1191,1915,20971,eb03,jmp short 0780h
+15,source_player_visibility_gate,1191,1918,20974,b0c3,"mov al,0C3h"
+15,source_player_visibility_gate,1191,1920,20976,2246ee,"and al,[bp-12h]"
+15,source_player_visibility_gate,1191,1923,20979,8946ec,"mov [bp-14h],ax"
+15,source_player_visibility_gate,1191,1926,20982,837efc00,"cmp word ptr [bp-4],0"
+15,source_player_visibility_gate,1191,1930,20986,7c04,jl short 0790h
+15,source_player_visibility_gate,1191,1932,20988,b00f,"mov al,0Fh"
+15,source_player_visibility_gate,1191,1934,20990,eb02,jmp short 0792h
+15,source_player_visibility_gate,1191,1936,20992,b0f0,"mov al,0F0h"
+15,source_player_visibility_gate,1191,1938,20994,8446ec,"test [bp-14h],al"
+15,source_player_visibility_gate,1191,1941,20997,7509,jne short 07A0h
+15,source_player_visibility_gate,1191,1943,20999,32c0,"xor al,al"
+15,source_player_visibility_gate,1191,1945,21001,16,push ss
+15,source_player_visibility_gate,1191,1946,21002,1f,pop ds
+15,source_player_visibility_gate,1191,1947,21003,5e,pop si
+15,source_player_visibility_gate,1191,1948,21004,5f,pop di
+15,source_player_visibility_gate,1191,1949,21005,c9,leave
+15,source_player_visibility_gate,1191,1950,21006,cb,ret far
+15,source_player_visibility_gate,1191,1952,21008,16,push ss
+15,source_player_visibility_gate,1191,1953,21009,1f,pop ds
+15,source_player_visibility_gate,1191,1954,21010,837e0e01,"cmp word ptr [bp+0Eh],1"
+15,source_player_visibility_gate,1191,1958,21014,7504,jne short 07ACh
+15,source_player_visibility_gate,1191,1960,21016,b001,"mov al,1"
+15,source_player_visibility_gate,1191,1962,21018,eb02,jmp short 07AEh
+15,source_player_visibility_gate,1191,1964,21020,32c0,"xor al,al"
+15,source_player_visibility_gate,1191,1966,21022,50,push ax
+15,source_player_visibility_gate,1191,1967,21023,6a08,push 8
+15,source_player_visibility_gate,1191,1969,21025,ff76fa,push word ptr [bp-6]
+15,source_player_visibility_gate,1191,1972,21028,ff76fc,push word ptr [bp-4]
+15,source_player_visibility_gate,1191,1975,21031,ff76f6,push word ptr [bp-0Ah]
+15,source_player_visibility_gate,1191,1978,21034,ff76f8,push word ptr [bp-8]
+15,source_player_visibility_gate,1191,1981,21037,9ab40cc70a,"call far 0CB4h,0AC7h"
+15,source_player_visibility_gate,1191,1986,21042,83c40c,"add sp,0Ch"
+15,source_player_visibility_gate,1191,1989,21045,5e,pop si
+15,source_player_visibility_gate,1191,1990,21046,5f,pop di
+15,source_player_visibility_gate,1191,1991,21047,c9,leave
+15,source_player_visibility_gate,1191,1992,21048,cb,ret far
+15,source_player_visibility_gate,1191,1994,21050,16,push ss
+15,source_player_visibility_gate,1191,1995,21051,1f,pop ds
+15,source_player_visibility_gate,1191,1996,21052,32c0,"xor al,al"
+15,source_player_visibility_gate,1191,1998,21054,5e,pop si
+15,source_player_visibility_gate,1191,1999,21055,5f,pop di
+15,source_player_visibility_gate,1191,2000,21056,c9,leave
+15,source_player_visibility_gate,1191,2001,21057,cb,ret far
+15,grid_visibility_ray,2759,3252,47396,c8180000,"enter 18h,0"
+15,grid_visibility_ray,2759,3256,47400,57,push di
+15,grid_visibility_ray,2759,3257,47401,56,push si
+15,grid_visibility_ray,2759,3258,47402,8b4e0a,"mov cx,[bp+0Ah]"
+15,grid_visibility_ray,2759,3261,47405,8b5e0c,"mov bx,[bp+0Ch]"
+15,grid_visibility_ray,2759,3264,47408,83fb00,"cmp bx,0"
+15,grid_visibility_ray,2759,3267,47411,7e05,jle short 0CCAh
+15,grid_visibility_ray,2759,3269,47413,b80100,"mov ax,1"
+15,grid_visibility_ray,2759,3272,47416,eb03,jmp short 0CCDh
+15,grid_visibility_ray,2759,3274,47418,b8ffff,"mov ax,0FFFFh"
+15,grid_visibility_ray,2759,3277,47421,8946f8,"mov [bp-8],ax"
+15,grid_visibility_ray,2759,3280,47424,0bc9,"or cx,cx"
+15,grid_visibility_ray,2759,3282,47426,7e06,jle short 0CDAh
+15,grid_visibility_ray,2759,3284,47428,b80100,"mov ax,1"
+15,grid_visibility_ray,2759,3287,47431,eb04,jmp short 0CDDh
+15,grid_visibility_ray,2759,3290,47434,b8ffff,"mov ax,0FFFFh"
+15,grid_visibility_ray,2759,3293,47437,8946f6,"mov [bp-0Ah],ax"
+15,grid_visibility_ray,2759,3296,47440,8b4606,"mov ax,[bp+6]"
+15,grid_visibility_ray,2759,3299,47443,03c1,"add ax,cx"
+15,grid_visibility_ray,2759,3301,47445,8946f2,"mov [bp-0Eh],ax"
+15,grid_visibility_ray,2759,3304,47448,8b4608,"mov ax,[bp+8]"
+15,grid_visibility_ray,2759,3307,47451,03c3,"add ax,bx"
+15,grid_visibility_ray,2759,3309,47453,8946f0,"mov [bp-10h],ax"
+15,grid_visibility_ray,2759,3312,47456,8bc1,"mov ax,cx"
+15,grid_visibility_ray,2759,3314,47458,99,cwd
+15,grid_visibility_ray,2759,3315,47459,33c2,"xor ax,dx"
+15,grid_visibility_ray,2759,3317,47461,2bc2,"sub ax,dx"
+15,grid_visibility_ray,2759,3319,47463,8bc8,"mov cx,ax"
+15,grid_visibility_ray,2759,3321,47465,8bc3,"mov ax,bx"
+15,grid_visibility_ray,2759,3323,47467,99,cwd
+15,grid_visibility_ray,2759,3324,47468,33c2,"xor ax,dx"
+15,grid_visibility_ray,2759,3326,47470,2bc2,"sub ax,dx"
+15,grid_visibility_ray,2759,3328,47472,8bd8,"mov bx,ax"
+15,grid_visibility_ray,2759,3330,47474,3bd9,"cmp bx,cx"
+15,grid_visibility_ray,2759,3332,47476,7d16,jge short 0D1Ch
+15,grid_visibility_ray,2759,3334,47478,c646fb01,"mov byte ptr [bp-5],1"
+15,grid_visibility_ray,2759,3338,47482,8bd0,"mov dx,ax"
+15,grid_visibility_ray,2759,3340,47484,03d0,"add dx,ax"
+15,grid_visibility_ray,2759,3342,47486,8bc2,"mov ax,dx"
+15,grid_visibility_ray,2759,3344,47488,2bd1,"sub dx,cx"
+15,grid_visibility_ray,2759,3346,47490,8946ee,"mov [bp-12h],ax"
+15,grid_visibility_ray,2759,3349,47493,8bc3,"mov ax,bx"
+15,grid_visibility_ray,2759,3351,47495,2bc1,"sub ax,cx"
+15,grid_visibility_ray,2759,3353,47497,eb14,jmp short 0D2Fh
+15,grid_visibility_ray,2759,3356,47500,c646fb00,"mov byte ptr [bp-5],0"
+15,grid_visibility_ray,2759,3360,47504,8bd1,"mov dx,cx"
+15,grid_visibility_ray,2759,3362,47506,03d1,"add dx,cx"
+15,grid_visibility_ray,2759,3364,47508,8bc2,"mov ax,dx"
+15,grid_visibility_ray,2759,3366,47510,2bd3,"sub dx,bx"
+15,grid_visibility_ray,2759,3368,47512,8946ee,"mov [bp-12h],ax"
+15,grid_visibility_ray,2759,3371,47515,8bc1,"mov ax,cx"
+15,grid_visibility_ray,2759,3373,47517,2bc3,"sub ax,bx"
+15,grid_visibility_ray,2759,3375,47519,03c0,"add ax,ax"
+15,grid_visibility_ray,2759,3377,47521,8946ec,"mov [bp-14h],ax"
+15,grid_visibility_ray,2759,3380,47524,c746f40000,"mov word ptr [bp-0Ch],0"
+15,grid_visibility_ray,2759,3385,47529,837e0e00,"cmp word ptr [bp+0Eh],0"
+15,grid_visibility_ray,2759,3389,47533,0f8ecf00,jle 0E10h
+15,grid_visibility_ray,2759,3393,47537,8956e8,"mov [bp-18h],dx"
+15,grid_visibility_ray,2759,3396,47540,8b7606,"mov si,[bp+6]"
+15,grid_visibility_ray,2759,3399,47543,8b7e08,"mov di,[bp+8]"
+15,grid_visibility_ray,2759,3402,47546,807efb00,"cmp byte ptr [bp-5],0"
+15,grid_visibility_ray,2759,3406,47550,7406,je short 0D56h
+15,grid_visibility_ray,2759,3408,47552,0376f6,"add si,[bp-0Ah]"
+15,grid_visibility_ray,2759,3411,47555,eb04,jmp short 0D59h
+15,grid_visibility_ray,2759,3414,47558,037ef8,"add di,[bp-8]"
+15,grid_visibility_ray,2759,3417,47561,837ee800,"cmp word ptr [bp-18h],0"
+15,grid_visibility_ray,2759,3421,47565,7d09,jge short 0D68h
+15,grid_visibility_ray,2759,3423,47567,8b46ee,"mov ax,[bp-12h]"
+15,grid_visibility_ray,2759,3426,47570,0146e8,"add [bp-18h],ax"
+15,grid_visibility_ray,2759,3429,47573,eb16,jmp short 0D7Dh
+15,grid_visibility_ray,2759,3432,47576,8b46ec,"mov ax,[bp-14h]"
+15,grid_visibility_ray,2759,3435,47579,0146e8,"add [bp-18h],ax"
+15,grid_visibility_ray,2759,3438,47582,807efb00,"cmp byte ptr [bp-5],0"
+15,grid_visibility_ray,2759,3442,47586,7406,je short 0D7Ah
+15,grid_visibility_ray,2759,3444,47588,037ef8,"add di,[bp-8]"
+15,grid_visibility_ray,2759,3447,47591,eb04,jmp short 0D7Dh
+15,grid_visibility_ray,2759,3450,47594,0376f6,"add si,[bp-0Ah]"
+15,grid_visibility_ray,2759,3453,47597,3976f2,"cmp [bp-0Eh],si"
+15,grid_visibility_ray,2759,3456,47600,7507,jne short 0D89h
+15,grid_visibility_ray,2759,3458,47602,397ef0,"cmp [bp-10h],di"
+15,grid_visibility_ray,2759,3461,47605,0f848100,je 0E0Ah
+15,grid_visibility_ray,2759,3465,47609,8bdf,"mov bx,di"
+15,grid_visibility_ray,2759,3467,47611,c1e306,"shl bx,6"
+15,grid_visibility_ray,2759,3470,47614,03de,"add bx,si"
+15,grid_visibility_ray,2759,3472,47616,03db,"add bx,bx"
+15,grid_visibility_ray,2759,3474,47618,81c33e37,"add bx,373Eh"
+15,grid_visibility_ray,2759,3478,47622,8e062825,"mov es,[2528h]"
+15,grid_visibility_ray,2759,3482,47626,895efc,"mov [bp-4],bx"
+15,grid_visibility_ray,2759,3485,47629,8c46fe,"mov [bp-2],es"
+15,grid_visibility_ray,2759,3488,47632,268a1f,"mov bl,es:[bx]"
+15,grid_visibility_ray,2759,3491,47635,2aff,"sub bh,bh"
+15,grid_visibility_ray,2759,3493,47637,8a8738cf,"mov al,[bx-30C8h]"
+15,grid_visibility_ray,2759,3497,47641,8846fa,"mov [bp-6],al"
+15,grid_visibility_ray,2759,3500,47644,f646fa02,"test byte ptr [bp-6],2"
+15,grid_visibility_ray,2759,3504,47648,7426,je short 0DD8h
+15,grid_visibility_ray,2759,3506,47650,f646fa04,"test byte ptr [bp-6],4"
+15,grid_visibility_ray,2759,3510,47654,7558,jne short 0E10h
+15,grid_visibility_ray,2759,3512,47656,f646fa08,"test byte ptr [bp-6],8"
+15,grid_visibility_ray,2759,3516,47660,741a,je short 0DD8h
+15,grid_visibility_ray,2759,3518,47662,06,push es
+15,grid_visibility_ray,2759,3519,47663,ff76fc,push word ptr [bp-4]
+15,grid_visibility_ray,2759,3522,47666,9a00000000,"call far 0,0"
+15,grid_visibility_ray,2759,3527,47671,83c404,"add sp,4"
+15,grid_visibility_ray,2759,3530,47674,52,push dx
+15,grid_visibility_ray,2759,3531,47675,50,push ax
+15,grid_visibility_ray,2759,3532,47676,9ae0010000,"call far 01E0h,0"
+15,grid_visibility_ray,2759,3537,47681,83c404,"add sp,4"
+15,grid_visibility_ray,2759,3540,47684,0ac0,"or al,al"
+15,grid_visibility_ray,2759,3542,47686,7438,je short 0E10h
+15,grid_visibility_ray,2759,3544,47688,807e1000,"cmp byte ptr [bp+10h],0"
+15,grid_visibility_ray,2759,3548,47692,741c,je short 0DFAh
+15,grid_visibility_ray,2759,3550,47694,c45efc,"les bx,[bp-4]"
+15,grid_visibility_ray,2759,3553,47697,268a5f01,"mov bl,es:[bx+1]"
+15,grid_visibility_ray,2759,3557,47701,2aff,"sub bh,bh"
+15,grid_visibility_ray,2759,3559,47703,8a8738d0,"mov al,[bx-2FC8h]"
+15,grid_visibility_ray,2759,3563,47707,8846eb,"mov [bp-15h],al"
+15,grid_visibility_ray,2759,3566,47710,f646eb02,"test byte ptr [bp-15h],2"
+15,grid_visibility_ray,2759,3570,47714,7406,je short 0DFAh
+15,grid_visibility_ray,2759,3572,47716,f646eb20,"test byte ptr [bp-15h],20h"
+15,grid_visibility_ray,2759,3576,47720,7416,je short 0E10h
+15,grid_visibility_ray,2759,3578,47722,8b460e,"mov ax,[bp+0Eh]"
+15,grid_visibility_ray,2759,3581,47725,ff46f4,inc word ptr [bp-0Ch]
+15,grid_visibility_ray,2759,3584,47728,3946f4,"cmp [bp-0Ch],ax"
+15,grid_visibility_ray,2759,3587,47731,0f8c43ff,jl 0D4Ah
+15,grid_visibility_ray,2759,3591,47735,eb07,jmp short 0E10h
+15,grid_visibility_ray,2759,3594,47738,b001,"mov al,1"
+15,grid_visibility_ray,2759,3596,47740,5e,pop si
+15,grid_visibility_ray,2759,3597,47741,5f,pop di
+15,grid_visibility_ray,2759,3598,47742,c9,leave
+15,grid_visibility_ray,2759,3599,47743,cb,ret far
+15,grid_visibility_ray,2759,3600,47744,32c0,"xor al,al"
+15,grid_visibility_ray,2759,3602,47746,5e,pop si
+15,grid_visibility_ray,2759,3603,47747,5f,pop di
+15,grid_visibility_ray,2759,3604,47748,c9,leave
+15,grid_visibility_ray,2759,3605,47749,cb,ret far
+17,source_player_visibility_gate,1201,1742,20958,c8140000,"enter 14h,0"
+17,source_player_visibility_gate,1201,1746,20962,57,push di
+17,source_player_visibility_gate,1201,1747,20963,56,push si
+17,source_player_visibility_gate,1201,1748,20964,c55e0a,"lds bx,[bp+0Ah]"
+17,source_player_visibility_gate,1201,1751,20967,8b4710,"mov ax,[bx+10h]"
+17,source_player_visibility_gate,1201,1754,20970,c1f806,"sar ax,6"
+17,source_player_visibility_gate,1201,1757,20973,8946f8,"mov [bp-8],ax"
+17,source_player_visibility_gate,1201,1760,20976,8b4f12,"mov cx,[bx+12h]"
+17,source_player_visibility_gate,1201,1763,20979,c1f906,"sar cx,6"
+17,source_player_visibility_gate,1201,1766,20982,894ef6,"mov [bp-0Ah],cx"
+17,source_player_visibility_gate,1201,1769,20985,362b06ce40,"sub ax,ss:[40CEh]"
+17,source_player_visibility_gate,1201,1774,20990,f7d8,neg ax
+17,source_player_visibility_gate,1201,1776,20992,8946fc,"mov [bp-4],ax"
+17,source_player_visibility_gate,1201,1779,20995,362b0ed040,"sub cx,ss:[40D0h]"
+17,source_player_visibility_gate,1201,1784,21000,f7d9,neg cx
+17,source_player_visibility_gate,1201,1786,21002,894efa,"mov [bp-6],cx"
+17,source_player_visibility_gate,1201,1789,21005,99,cwd
+17,source_player_visibility_gate,1201,1790,21006,33c2,"xor ax,dx"
+17,source_player_visibility_gate,1201,1792,21008,2bc2,"sub ax,dx"
+17,source_player_visibility_gate,1201,1794,21010,8bd0,"mov dx,ax"
+17,source_player_visibility_gate,1201,1796,21012,8bc1,"mov ax,cx"
+17,source_player_visibility_gate,1201,1798,21014,8bca,"mov cx,dx"
+17,source_player_visibility_gate,1201,1800,21016,99,cwd
+17,source_player_visibility_gate,1201,1801,21017,33c2,"xor ax,dx"
+17,source_player_visibility_gate,1201,1803,21019,2bc2,"sub ax,dx"
+17,source_player_visibility_gate,1201,1805,21021,8bf0,"mov si,ax"
+17,source_player_visibility_gate,1201,1807,21023,83f908,"cmp cx,8"
+17,source_player_visibility_gate,1201,1810,21026,0f8fb000,jg 07C6h
+17,source_player_visibility_gate,1201,1814,21030,83fe08,"cmp si,8"
+17,source_player_visibility_gate,1201,1817,21033,0f8fa900,jg 07C6h
+17,source_player_visibility_gate,1201,1821,21037,837e1000,"cmp word ptr [bp+10h],0"
+17,source_player_visibility_gate,1201,1825,21041,7579,jne short 079Ch
+17,source_player_visibility_gate,1201,1827,21043,c47e06,"les di,[bp+6]"
+17,source_player_visibility_gate,1201,1830,21046,3bc8,"cmp cx,ax"
+17,source_player_visibility_gate,1201,1832,21048,7c04,jl short 072Eh
+17,source_player_visibility_gate,1201,1834,21050,b066,"mov al,66h"
+17,source_player_visibility_gate,1201,1836,21052,eb02,jmp short 0730h
+17,source_player_visibility_gate,1201,1838,21054,b099,"mov al,99h"
+17,source_player_visibility_gate,1201,1840,21056,268a4d11,"mov cl,es:[di+11h]"
+17,source_player_visibility_gate,1201,1844,21060,8bd1,"mov dx,cx"
+17,source_player_visibility_gate,1201,1846,21062,fec9,dec cl
+17,source_player_visibility_gate,1201,1848,21064,80e107,"and cl,7"
+17,source_player_visibility_gate,1201,1851,21067,b301,"mov bl,1"
+17,source_player_visibility_gate,1201,1853,21069,8bd9,"mov bx,cx"
+17,source_player_visibility_gate,1201,1855,21071,8acb,"mov cl,bl"
+17,source_player_visibility_gate,1201,1857,21073,b301,"mov bl,1"
+17,source_player_visibility_gate,1201,1859,21075,894ef4,"mov [bp-0Ch],cx"
+17,source_player_visibility_gate,1201,1862,21078,8aca,"mov cl,dl"
+17,source_player_visibility_gate,1201,1864,21080,02cb,"add cl,bl"
+17,source_player_visibility_gate,1201,1866,21082,894ef2,"mov [bp-0Eh],cx"
+17,source_player_visibility_gate,1201,1869,21085,8a4ef4,"mov cl,[bp-0Ch]"
+17,source_player_visibility_gate,1201,1872,21088,d2e3,"shl bl,cl"
+17,source_player_visibility_gate,1201,1874,21090,8a4ef2,"mov cl,[bp-0Eh]"
+17,source_player_visibility_gate,1201,1877,21093,80e107,"and cl,7"
+17,source_player_visibility_gate,1201,1880,21096,8946f0,"mov [bp-10h],ax"
+17,source_player_visibility_gate,1201,1883,21099,b001,"mov al,1"
+17,source_player_visibility_gate,1201,1885,21101,d2e0,"shl al,cl"
+17,source_player_visibility_gate,1201,1887,21103,0ad8,"or bl,al"
+17,source_player_visibility_gate,1201,1889,21105,8aca,"mov cl,dl"
+17,source_player_visibility_gate,1201,1891,21107,b001,"mov al,1"
+17,source_player_visibility_gate,1201,1893,21109,d2e0,"shl al,cl"
+17,source_player_visibility_gate,1201,1895,21111,0ad8,"or bl,al"
+17,source_player_visibility_gate,1201,1897,21113,225ef0,"and bl,[bp-10h]"
+17,source_player_visibility_gate,1201,1900,21116,895eee,"mov [bp-12h],bx"
+17,source_player_visibility_gate,1201,1903,21119,837efa00,"cmp word ptr [bp-6],0"
+17,source_player_visibility_gate,1201,1907,21123,7c05,jl short 077Ah
+17,source_player_visibility_gate,1201,1909,21125,b03c,"mov al,3Ch"
+17,source_player_visibility_gate,1201,1911,21127,eb03,jmp short 077Ch
+17,source_player_visibility_gate,1201,1914,21130,b0c3,"mov al,0C3h"
+17,source_player_visibility_gate,1201,1916,21132,2246ee,"and al,[bp-12h]"
+17,source_player_visibility_gate,1201,1919,21135,8946ec,"mov [bp-14h],ax"
+17,source_player_visibility_gate,1201,1922,21138,837efc00,"cmp word ptr [bp-4],0"
+17,source_player_visibility_gate,1201,1926,21142,7c04,jl short 078Ch
+17,source_player_visibility_gate,1201,1928,21144,b00f,"mov al,0Fh"
+17,source_player_visibility_gate,1201,1930,21146,eb02,jmp short 078Eh
+17,source_player_visibility_gate,1201,1932,21148,b0f0,"mov al,0F0h"
+17,source_player_visibility_gate,1201,1934,21150,8446ec,"test [bp-14h],al"
+17,source_player_visibility_gate,1201,1937,21153,7509,jne short 079Ch
+17,source_player_visibility_gate,1201,1939,21155,32c0,"xor al,al"
+17,source_player_visibility_gate,1201,1941,21157,16,push ss
+17,source_player_visibility_gate,1201,1942,21158,1f,pop ds
+17,source_player_visibility_gate,1201,1943,21159,5e,pop si
+17,source_player_visibility_gate,1201,1944,21160,5f,pop di
+17,source_player_visibility_gate,1201,1945,21161,c9,leave
+17,source_player_visibility_gate,1201,1946,21162,cb,ret far
+17,source_player_visibility_gate,1201,1948,21164,16,push ss
+17,source_player_visibility_gate,1201,1949,21165,1f,pop ds
+17,source_player_visibility_gate,1201,1950,21166,837e0e01,"cmp word ptr [bp+0Eh],1"
+17,source_player_visibility_gate,1201,1954,21170,7504,jne short 07A8h
+17,source_player_visibility_gate,1201,1956,21172,b001,"mov al,1"
+17,source_player_visibility_gate,1201,1958,21174,eb02,jmp short 07AAh
+17,source_player_visibility_gate,1201,1960,21176,32c0,"xor al,al"
+17,source_player_visibility_gate,1201,1962,21178,50,push ax
+17,source_player_visibility_gate,1201,1963,21179,6a08,push 8
+17,source_player_visibility_gate,1201,1965,21181,ff76fa,push word ptr [bp-6]
+17,source_player_visibility_gate,1201,1968,21184,ff76fc,push word ptr [bp-4]
+17,source_player_visibility_gate,1201,1971,21187,ff76f6,push word ptr [bp-0Ah]
+17,source_player_visibility_gate,1201,1974,21190,ff76f8,push word ptr [bp-8]
+17,source_player_visibility_gate,1201,1977,21193,9ac00cd00a,"call far 0CC0h,0AD0h"
+17,source_player_visibility_gate,1201,1982,21198,83c40c,"add sp,0Ch"
+17,source_player_visibility_gate,1201,1985,21201,5e,pop si
+17,source_player_visibility_gate,1201,1986,21202,5f,pop di
+17,source_player_visibility_gate,1201,1987,21203,c9,leave
+17,source_player_visibility_gate,1201,1988,21204,cb,ret far
+17,source_player_visibility_gate,1201,1990,21206,16,push ss
+17,source_player_visibility_gate,1201,1991,21207,1f,pop ds
+17,source_player_visibility_gate,1201,1992,21208,32c0,"xor al,al"
+17,source_player_visibility_gate,1201,1994,21210,5e,pop si
+17,source_player_visibility_gate,1201,1995,21211,5f,pop di
+17,source_player_visibility_gate,1201,1996,21212,c9,leave
+17,source_player_visibility_gate,1201,1997,21213,cb,ret far
+17,grid_visibility_ray,2768,3264,47552,c8180000,"enter 18h,0"
+17,grid_visibility_ray,2768,3268,47556,57,push di
+17,grid_visibility_ray,2768,3269,47557,56,push si
+17,grid_visibility_ray,2768,3270,47558,8b4e0a,"mov cx,[bp+0Ah]"
+17,grid_visibility_ray,2768,3273,47561,8b5e0c,"mov bx,[bp+0Ch]"
+17,grid_visibility_ray,2768,3276,47564,83fb00,"cmp bx,0"
+17,grid_visibility_ray,2768,3279,47567,7e05,jle short 0CD6h
+17,grid_visibility_ray,2768,3281,47569,b80100,"mov ax,1"
+17,grid_visibility_ray,2768,3284,47572,eb03,jmp short 0CD9h
+17,grid_visibility_ray,2768,3286,47574,b8ffff,"mov ax,0FFFFh"
+17,grid_visibility_ray,2768,3289,47577,8946f8,"mov [bp-8],ax"
+17,grid_visibility_ray,2768,3292,47580,0bc9,"or cx,cx"
+17,grid_visibility_ray,2768,3294,47582,7e06,jle short 0CE6h
+17,grid_visibility_ray,2768,3296,47584,b80100,"mov ax,1"
+17,grid_visibility_ray,2768,3299,47587,eb04,jmp short 0CE9h
+17,grid_visibility_ray,2768,3302,47590,b8ffff,"mov ax,0FFFFh"
+17,grid_visibility_ray,2768,3305,47593,8946f6,"mov [bp-0Ah],ax"
+17,grid_visibility_ray,2768,3308,47596,8b4606,"mov ax,[bp+6]"
+17,grid_visibility_ray,2768,3311,47599,03c1,"add ax,cx"
+17,grid_visibility_ray,2768,3313,47601,8946f2,"mov [bp-0Eh],ax"
+17,grid_visibility_ray,2768,3316,47604,8b4608,"mov ax,[bp+8]"
+17,grid_visibility_ray,2768,3319,47607,03c3,"add ax,bx"
+17,grid_visibility_ray,2768,3321,47609,8946f0,"mov [bp-10h],ax"
+17,grid_visibility_ray,2768,3324,47612,8bc1,"mov ax,cx"
+17,grid_visibility_ray,2768,3326,47614,99,cwd
+17,grid_visibility_ray,2768,3327,47615,33c2,"xor ax,dx"
+17,grid_visibility_ray,2768,3329,47617,2bc2,"sub ax,dx"
+17,grid_visibility_ray,2768,3331,47619,8bc8,"mov cx,ax"
+17,grid_visibility_ray,2768,3333,47621,8bc3,"mov ax,bx"
+17,grid_visibility_ray,2768,3335,47623,99,cwd
+17,grid_visibility_ray,2768,3336,47624,33c2,"xor ax,dx"
+17,grid_visibility_ray,2768,3338,47626,2bc2,"sub ax,dx"
+17,grid_visibility_ray,2768,3340,47628,8bd8,"mov bx,ax"
+17,grid_visibility_ray,2768,3342,47630,3bd9,"cmp bx,cx"
+17,grid_visibility_ray,2768,3344,47632,7d16,jge short 0D28h
+17,grid_visibility_ray,2768,3346,47634,c646fb01,"mov byte ptr [bp-5],1"
+17,grid_visibility_ray,2768,3350,47638,8bd0,"mov dx,ax"
+17,grid_visibility_ray,2768,3352,47640,03d0,"add dx,ax"
+17,grid_visibility_ray,2768,3354,47642,8bc2,"mov ax,dx"
+17,grid_visibility_ray,2768,3356,47644,2bd1,"sub dx,cx"
+17,grid_visibility_ray,2768,3358,47646,8946ee,"mov [bp-12h],ax"
+17,grid_visibility_ray,2768,3361,47649,8bc3,"mov ax,bx"
+17,grid_visibility_ray,2768,3363,47651,2bc1,"sub ax,cx"
+17,grid_visibility_ray,2768,3365,47653,eb14,jmp short 0D3Bh
+17,grid_visibility_ray,2768,3368,47656,c646fb00,"mov byte ptr [bp-5],0"
+17,grid_visibility_ray,2768,3372,47660,8bd1,"mov dx,cx"
+17,grid_visibility_ray,2768,3374,47662,03d1,"add dx,cx"
+17,grid_visibility_ray,2768,3376,47664,8bc2,"mov ax,dx"
+17,grid_visibility_ray,2768,3378,47666,2bd3,"sub dx,bx"
+17,grid_visibility_ray,2768,3380,47668,8946ee,"mov [bp-12h],ax"
+17,grid_visibility_ray,2768,3383,47671,8bc1,"mov ax,cx"
+17,grid_visibility_ray,2768,3385,47673,2bc3,"sub ax,bx"
+17,grid_visibility_ray,2768,3387,47675,03c0,"add ax,ax"
+17,grid_visibility_ray,2768,3389,47677,8946ec,"mov [bp-14h],ax"
+17,grid_visibility_ray,2768,3392,47680,c746f40000,"mov word ptr [bp-0Ch],0"
+17,grid_visibility_ray,2768,3397,47685,837e0e00,"cmp word ptr [bp+0Eh],0"
+17,grid_visibility_ray,2768,3401,47689,0f8ecf00,jle 0E1Ch
+17,grid_visibility_ray,2768,3405,47693,8956e8,"mov [bp-18h],dx"
+17,grid_visibility_ray,2768,3408,47696,8b7606,"mov si,[bp+6]"
+17,grid_visibility_ray,2768,3411,47699,8b7e08,"mov di,[bp+8]"
+17,grid_visibility_ray,2768,3414,47702,807efb00,"cmp byte ptr [bp-5],0"
+17,grid_visibility_ray,2768,3418,47706,7406,je short 0D62h
+17,grid_visibility_ray,2768,3420,47708,0376f6,"add si,[bp-0Ah]"
+17,grid_visibility_ray,2768,3423,47711,eb04,jmp short 0D65h
+17,grid_visibility_ray,2768,3426,47714,037ef8,"add di,[bp-8]"
+17,grid_visibility_ray,2768,3429,47717,837ee800,"cmp word ptr [bp-18h],0"
+17,grid_visibility_ray,2768,3433,47721,7d09,jge short 0D74h
+17,grid_visibility_ray,2768,3435,47723,8b46ee,"mov ax,[bp-12h]"
+17,grid_visibility_ray,2768,3438,47726,0146e8,"add [bp-18h],ax"
+17,grid_visibility_ray,2768,3441,47729,eb16,jmp short 0D89h
+17,grid_visibility_ray,2768,3444,47732,8b46ec,"mov ax,[bp-14h]"
+17,grid_visibility_ray,2768,3447,47735,0146e8,"add [bp-18h],ax"
+17,grid_visibility_ray,2768,3450,47738,807efb00,"cmp byte ptr [bp-5],0"
+17,grid_visibility_ray,2768,3454,47742,7406,je short 0D86h
+17,grid_visibility_ray,2768,3456,47744,037ef8,"add di,[bp-8]"
+17,grid_visibility_ray,2768,3459,47747,eb04,jmp short 0D89h
+17,grid_visibility_ray,2768,3462,47750,0376f6,"add si,[bp-0Ah]"
+17,grid_visibility_ray,2768,3465,47753,3976f2,"cmp [bp-0Eh],si"
+17,grid_visibility_ray,2768,3468,47756,7507,jne short 0D95h
+17,grid_visibility_ray,2768,3470,47758,397ef0,"cmp [bp-10h],di"
+17,grid_visibility_ray,2768,3473,47761,0f848100,je 0E16h
+17,grid_visibility_ray,2768,3477,47765,8bdf,"mov bx,di"
+17,grid_visibility_ray,2768,3479,47767,c1e306,"shl bx,6"
+17,grid_visibility_ray,2768,3482,47770,03de,"add bx,si"
+17,grid_visibility_ray,2768,3484,47772,03db,"add bx,bx"
+17,grid_visibility_ray,2768,3486,47774,81c33e37,"add bx,373Eh"
+17,grid_visibility_ray,2768,3490,47778,8e062c25,"mov es,[252Ch]"
+17,grid_visibility_ray,2768,3494,47782,895efc,"mov [bp-4],bx"
+17,grid_visibility_ray,2768,3497,47785,8c46fe,"mov [bp-2],es"
+17,grid_visibility_ray,2768,3500,47788,268a1f,"mov bl,es:[bx]"
+17,grid_visibility_ray,2768,3503,47791,2aff,"sub bh,bh"
+17,grid_visibility_ray,2768,3505,47793,8a877acf,"mov al,[bx-3086h]"
+17,grid_visibility_ray,2768,3509,47797,8846fa,"mov [bp-6],al"
+17,grid_visibility_ray,2768,3512,47800,f646fa02,"test byte ptr [bp-6],2"
+17,grid_visibility_ray,2768,3516,47804,7426,je short 0DE4h
+17,grid_visibility_ray,2768,3518,47806,f646fa04,"test byte ptr [bp-6],4"
+17,grid_visibility_ray,2768,3522,47810,7558,jne short 0E1Ch
+17,grid_visibility_ray,2768,3524,47812,f646fa08,"test byte ptr [bp-6],8"
+17,grid_visibility_ray,2768,3528,47816,741a,je short 0DE4h
+17,grid_visibility_ray,2768,3530,47818,06,push es
+17,grid_visibility_ray,2768,3531,47819,ff76fc,push word ptr [bp-4]
+17,grid_visibility_ray,2768,3534,47822,9a00000000,"call far 0,0"
+17,grid_visibility_ray,2768,3539,47827,83c404,"add sp,4"
+17,grid_visibility_ray,2768,3542,47830,52,push dx
+17,grid_visibility_ray,2768,3543,47831,50,push ax
+17,grid_visibility_ray,2768,3544,47832,9ae0010000,"call far 01E0h,0"
+17,grid_visibility_ray,2768,3549,47837,83c404,"add sp,4"
+17,grid_visibility_ray,2768,3552,47840,0ac0,"or al,al"
+17,grid_visibility_ray,2768,3554,47842,7438,je short 0E1Ch
+17,grid_visibility_ray,2768,3556,47844,807e1000,"cmp byte ptr [bp+10h],0"
+17,grid_visibility_ray,2768,3560,47848,741c,je short 0E06h
+17,grid_visibility_ray,2768,3562,47850,c45efc,"les bx,[bp-4]"
+17,grid_visibility_ray,2768,3565,47853,268a5f01,"mov bl,es:[bx+1]"
+17,grid_visibility_ray,2768,3569,47857,2aff,"sub bh,bh"
+17,grid_visibility_ray,2768,3571,47859,8a877ad0,"mov al,[bx-2F86h]"
+17,grid_visibility_ray,2768,3575,47863,8846eb,"mov [bp-15h],al"
+17,grid_visibility_ray,2768,3578,47866,f646eb02,"test byte ptr [bp-15h],2"
+17,grid_visibility_ray,2768,3582,47870,7406,je short 0E06h
+17,grid_visibility_ray,2768,3584,47872,f646eb20,"test byte ptr [bp-15h],20h"
+17,grid_visibility_ray,2768,3588,47876,7416,je short 0E1Ch
+17,grid_visibility_ray,2768,3590,47878,8b460e,"mov ax,[bp+0Eh]"
+17,grid_visibility_ray,2768,3593,47881,ff46f4,inc word ptr [bp-0Ch]
+17,grid_visibility_ray,2768,3596,47884,3946f4,"cmp [bp-0Ch],ax"
+17,grid_visibility_ray,2768,3599,47887,0f8c43ff,jl 0D56h
+17,grid_visibility_ray,2768,3603,47891,eb07,jmp short 0E1Ch
+17,grid_visibility_ray,2768,3606,47894,b001,"mov al,1"
+17,grid_visibility_ray,2768,3608,47896,5e,pop si
+17,grid_visibility_ray,2768,3609,47897,5f,pop di
+17,grid_visibility_ray,2768,3610,47898,c9,leave
+17,grid_visibility_ray,2768,3611,47899,cb,ret far
+17,grid_visibility_ray,2768,3612,47900,32c0,"xor al,al"
+17,grid_visibility_ray,2768,3614,47902,5e,pop si
+17,grid_visibility_ray,2768,3615,47903,5f,pop di
+17,grid_visibility_ray,2768,3616,47904,c9,leave
+17,grid_visibility_ray,2768,3617,47905,cb,ret far
+18,source_player_visibility_gate,1223,1746,21314,c8140000,"enter 14h,0"
+18,source_player_visibility_gate,1223,1750,21318,57,push di
+18,source_player_visibility_gate,1223,1751,21319,56,push si
+18,source_player_visibility_gate,1223,1752,21320,c55e0a,"lds bx,[bp+0Ah]"
+18,source_player_visibility_gate,1223,1755,21323,8b4710,"mov ax,[bx+10h]"
+18,source_player_visibility_gate,1223,1758,21326,c1f806,"sar ax,6"
+18,source_player_visibility_gate,1223,1761,21329,8946f8,"mov [bp-8],ax"
+18,source_player_visibility_gate,1223,1764,21332,8b4f12,"mov cx,[bx+12h]"
+18,source_player_visibility_gate,1223,1767,21335,c1f906,"sar cx,6"
+18,source_player_visibility_gate,1223,1770,21338,894ef6,"mov [bp-0Ah],cx"
+18,source_player_visibility_gate,1223,1773,21341,362b065e41,"sub ax,ss:[415Eh]"
+18,source_player_visibility_gate,1223,1778,21346,f7d8,neg ax
+18,source_player_visibility_gate,1223,1780,21348,8946fc,"mov [bp-4],ax"
+18,source_player_visibility_gate,1223,1783,21351,362b0e6041,"sub cx,ss:[4160h]"
+18,source_player_visibility_gate,1223,1788,21356,f7d9,neg cx
+18,source_player_visibility_gate,1223,1790,21358,894efa,"mov [bp-6],cx"
+18,source_player_visibility_gate,1223,1793,21361,99,cwd
+18,source_player_visibility_gate,1223,1794,21362,33c2,"xor ax,dx"
+18,source_player_visibility_gate,1223,1796,21364,2bc2,"sub ax,dx"
+18,source_player_visibility_gate,1223,1798,21366,8bd0,"mov dx,ax"
+18,source_player_visibility_gate,1223,1800,21368,8bc1,"mov ax,cx"
+18,source_player_visibility_gate,1223,1802,21370,8bca,"mov cx,dx"
+18,source_player_visibility_gate,1223,1804,21372,99,cwd
+18,source_player_visibility_gate,1223,1805,21373,33c2,"xor ax,dx"
+18,source_player_visibility_gate,1223,1807,21375,2bc2,"sub ax,dx"
+18,source_player_visibility_gate,1223,1809,21377,8bf0,"mov si,ax"
+18,source_player_visibility_gate,1223,1811,21379,83f908,"cmp cx,8"
+18,source_player_visibility_gate,1223,1814,21382,0f8fb000,jg 07CAh
+18,source_player_visibility_gate,1223,1818,21386,83fe08,"cmp si,8"
+18,source_player_visibility_gate,1223,1821,21389,0f8fa900,jg 07CAh
+18,source_player_visibility_gate,1223,1825,21393,837e1000,"cmp word ptr [bp+10h],0"
+18,source_player_visibility_gate,1223,1829,21397,7579,jne short 07A0h
+18,source_player_visibility_gate,1223,1831,21399,c47e06,"les di,[bp+6]"
+18,source_player_visibility_gate,1223,1834,21402,3bc8,"cmp cx,ax"
+18,source_player_visibility_gate,1223,1836,21404,7c04,jl short 0732h
+18,source_player_visibility_gate,1223,1838,21406,b066,"mov al,66h"
+18,source_player_visibility_gate,1223,1840,21408,eb02,jmp short 0734h
+18,source_player_visibility_gate,1223,1842,21410,b099,"mov al,99h"
+18,source_player_visibility_gate,1223,1844,21412,268a4d11,"mov cl,es:[di+11h]"
+18,source_player_visibility_gate,1223,1848,21416,8bd1,"mov dx,cx"
+18,source_player_visibility_gate,1223,1850,21418,fec9,dec cl
+18,source_player_visibility_gate,1223,1852,21420,80e107,"and cl,7"
+18,source_player_visibility_gate,1223,1855,21423,b301,"mov bl,1"
+18,source_player_visibility_gate,1223,1857,21425,8bd9,"mov bx,cx"
+18,source_player_visibility_gate,1223,1859,21427,8acb,"mov cl,bl"
+18,source_player_visibility_gate,1223,1861,21429,b301,"mov bl,1"
+18,source_player_visibility_gate,1223,1863,21431,894ef4,"mov [bp-0Ch],cx"
+18,source_player_visibility_gate,1223,1866,21434,8aca,"mov cl,dl"
+18,source_player_visibility_gate,1223,1868,21436,02cb,"add cl,bl"
+18,source_player_visibility_gate,1223,1870,21438,894ef2,"mov [bp-0Eh],cx"
+18,source_player_visibility_gate,1223,1873,21441,8a4ef4,"mov cl,[bp-0Ch]"
+18,source_player_visibility_gate,1223,1876,21444,d2e3,"shl bl,cl"
+18,source_player_visibility_gate,1223,1878,21446,8a4ef2,"mov cl,[bp-0Eh]"
+18,source_player_visibility_gate,1223,1881,21449,80e107,"and cl,7"
+18,source_player_visibility_gate,1223,1884,21452,8946f0,"mov [bp-10h],ax"
+18,source_player_visibility_gate,1223,1887,21455,b001,"mov al,1"
+18,source_player_visibility_gate,1223,1889,21457,d2e0,"shl al,cl"
+18,source_player_visibility_gate,1223,1891,21459,0ad8,"or bl,al"
+18,source_player_visibility_gate,1223,1893,21461,8aca,"mov cl,dl"
+18,source_player_visibility_gate,1223,1895,21463,b001,"mov al,1"
+18,source_player_visibility_gate,1223,1897,21465,d2e0,"shl al,cl"
+18,source_player_visibility_gate,1223,1899,21467,0ad8,"or bl,al"
+18,source_player_visibility_gate,1223,1901,21469,225ef0,"and bl,[bp-10h]"
+18,source_player_visibility_gate,1223,1904,21472,895eee,"mov [bp-12h],bx"
+18,source_player_visibility_gate,1223,1907,21475,837efa00,"cmp word ptr [bp-6],0"
+18,source_player_visibility_gate,1223,1911,21479,7c05,jl short 077Eh
+18,source_player_visibility_gate,1223,1913,21481,b03c,"mov al,3Ch"
+18,source_player_visibility_gate,1223,1915,21483,eb03,jmp short 0780h
+18,source_player_visibility_gate,1223,1918,21486,b0c3,"mov al,0C3h"
+18,source_player_visibility_gate,1223,1920,21488,2246ee,"and al,[bp-12h]"
+18,source_player_visibility_gate,1223,1923,21491,8946ec,"mov [bp-14h],ax"
+18,source_player_visibility_gate,1223,1926,21494,837efc00,"cmp word ptr [bp-4],0"
+18,source_player_visibility_gate,1223,1930,21498,7c04,jl short 0790h
+18,source_player_visibility_gate,1223,1932,21500,b00f,"mov al,0Fh"
+18,source_player_visibility_gate,1223,1934,21502,eb02,jmp short 0792h
+18,source_player_visibility_gate,1223,1936,21504,b0f0,"mov al,0F0h"
+18,source_player_visibility_gate,1223,1938,21506,8446ec,"test [bp-14h],al"
+18,source_player_visibility_gate,1223,1941,21509,7509,jne short 07A0h
+18,source_player_visibility_gate,1223,1943,21511,32c0,"xor al,al"
+18,source_player_visibility_gate,1223,1945,21513,16,push ss
+18,source_player_visibility_gate,1223,1946,21514,1f,pop ds
+18,source_player_visibility_gate,1223,1947,21515,5e,pop si
+18,source_player_visibility_gate,1223,1948,21516,5f,pop di
+18,source_player_visibility_gate,1223,1949,21517,c9,leave
+18,source_player_visibility_gate,1223,1950,21518,cb,ret far
+18,source_player_visibility_gate,1223,1952,21520,16,push ss
+18,source_player_visibility_gate,1223,1953,21521,1f,pop ds
+18,source_player_visibility_gate,1223,1954,21522,837e0e01,"cmp word ptr [bp+0Eh],1"
+18,source_player_visibility_gate,1223,1958,21526,7504,jne short 07ACh
+18,source_player_visibility_gate,1223,1960,21528,b001,"mov al,1"
+18,source_player_visibility_gate,1223,1962,21530,eb02,jmp short 07AEh
+18,source_player_visibility_gate,1223,1964,21532,32c0,"xor al,al"
+18,source_player_visibility_gate,1223,1966,21534,50,push ax
+18,source_player_visibility_gate,1223,1967,21535,6a08,push 8
+18,source_player_visibility_gate,1223,1969,21537,ff76fa,push word ptr [bp-6]
+18,source_player_visibility_gate,1223,1972,21540,ff76fc,push word ptr [bp-4]
+18,source_player_visibility_gate,1223,1975,21543,ff76f6,push word ptr [bp-0Ah]
+18,source_player_visibility_gate,1223,1978,21546,ff76f8,push word ptr [bp-8]
+18,source_player_visibility_gate,1223,1981,21549,9ab40ce70a,"call far 0CB4h,0AE7h"
+18,source_player_visibility_gate,1223,1986,21554,83c40c,"add sp,0Ch"
+18,source_player_visibility_gate,1223,1989,21557,5e,pop si
+18,source_player_visibility_gate,1223,1990,21558,5f,pop di
+18,source_player_visibility_gate,1223,1991,21559,c9,leave
+18,source_player_visibility_gate,1223,1992,21560,cb,ret far
+18,source_player_visibility_gate,1223,1994,21562,16,push ss
+18,source_player_visibility_gate,1223,1995,21563,1f,pop ds
+18,source_player_visibility_gate,1223,1996,21564,32c0,"xor al,al"
+18,source_player_visibility_gate,1223,1998,21566,5e,pop si
+18,source_player_visibility_gate,1223,1999,21567,5f,pop di
+18,source_player_visibility_gate,1223,2000,21568,c9,leave
+18,source_player_visibility_gate,1223,2001,21569,cb,ret far
+18,grid_visibility_ray,2791,3252,47908,c8180000,"enter 18h,0"
+18,grid_visibility_ray,2791,3256,47912,57,push di
+18,grid_visibility_ray,2791,3257,47913,56,push si
+18,grid_visibility_ray,2791,3258,47914,8b4e0a,"mov cx,[bp+0Ah]"
+18,grid_visibility_ray,2791,3261,47917,8b5e0c,"mov bx,[bp+0Ch]"
+18,grid_visibility_ray,2791,3264,47920,83fb00,"cmp bx,0"
+18,grid_visibility_ray,2791,3267,47923,7e05,jle short 0CCAh
+18,grid_visibility_ray,2791,3269,47925,b80100,"mov ax,1"
+18,grid_visibility_ray,2791,3272,47928,eb03,jmp short 0CCDh
+18,grid_visibility_ray,2791,3274,47930,b8ffff,"mov ax,0FFFFh"
+18,grid_visibility_ray,2791,3277,47933,8946f8,"mov [bp-8],ax"
+18,grid_visibility_ray,2791,3280,47936,0bc9,"or cx,cx"
+18,grid_visibility_ray,2791,3282,47938,7e06,jle short 0CDAh
+18,grid_visibility_ray,2791,3284,47940,b80100,"mov ax,1"
+18,grid_visibility_ray,2791,3287,47943,eb04,jmp short 0CDDh
+18,grid_visibility_ray,2791,3290,47946,b8ffff,"mov ax,0FFFFh"
+18,grid_visibility_ray,2791,3293,47949,8946f6,"mov [bp-0Ah],ax"
+18,grid_visibility_ray,2791,3296,47952,8b4606,"mov ax,[bp+6]"
+18,grid_visibility_ray,2791,3299,47955,03c1,"add ax,cx"
+18,grid_visibility_ray,2791,3301,47957,8946f2,"mov [bp-0Eh],ax"
+18,grid_visibility_ray,2791,3304,47960,8b4608,"mov ax,[bp+8]"
+18,grid_visibility_ray,2791,3307,47963,03c3,"add ax,bx"
+18,grid_visibility_ray,2791,3309,47965,8946f0,"mov [bp-10h],ax"
+18,grid_visibility_ray,2791,3312,47968,8bc1,"mov ax,cx"
+18,grid_visibility_ray,2791,3314,47970,99,cwd
+18,grid_visibility_ray,2791,3315,47971,33c2,"xor ax,dx"
+18,grid_visibility_ray,2791,3317,47973,2bc2,"sub ax,dx"
+18,grid_visibility_ray,2791,3319,47975,8bc8,"mov cx,ax"
+18,grid_visibility_ray,2791,3321,47977,8bc3,"mov ax,bx"
+18,grid_visibility_ray,2791,3323,47979,99,cwd
+18,grid_visibility_ray,2791,3324,47980,33c2,"xor ax,dx"
+18,grid_visibility_ray,2791,3326,47982,2bc2,"sub ax,dx"
+18,grid_visibility_ray,2791,3328,47984,8bd8,"mov bx,ax"
+18,grid_visibility_ray,2791,3330,47986,3bd9,"cmp bx,cx"
+18,grid_visibility_ray,2791,3332,47988,7d16,jge short 0D1Ch
+18,grid_visibility_ray,2791,3334,47990,c646fb01,"mov byte ptr [bp-5],1"
+18,grid_visibility_ray,2791,3338,47994,8bd0,"mov dx,ax"
+18,grid_visibility_ray,2791,3340,47996,03d0,"add dx,ax"
+18,grid_visibility_ray,2791,3342,47998,8bc2,"mov ax,dx"
+18,grid_visibility_ray,2791,3344,48000,2bd1,"sub dx,cx"
+18,grid_visibility_ray,2791,3346,48002,8946ee,"mov [bp-12h],ax"
+18,grid_visibility_ray,2791,3349,48005,8bc3,"mov ax,bx"
+18,grid_visibility_ray,2791,3351,48007,2bc1,"sub ax,cx"
+18,grid_visibility_ray,2791,3353,48009,eb14,jmp short 0D2Fh
+18,grid_visibility_ray,2791,3356,48012,c646fb00,"mov byte ptr [bp-5],0"
+18,grid_visibility_ray,2791,3360,48016,8bd1,"mov dx,cx"
+18,grid_visibility_ray,2791,3362,48018,03d1,"add dx,cx"
+18,grid_visibility_ray,2791,3364,48020,8bc2,"mov ax,dx"
+18,grid_visibility_ray,2791,3366,48022,2bd3,"sub dx,bx"
+18,grid_visibility_ray,2791,3368,48024,8946ee,"mov [bp-12h],ax"
+18,grid_visibility_ray,2791,3371,48027,8bc1,"mov ax,cx"
+18,grid_visibility_ray,2791,3373,48029,2bc3,"sub ax,bx"
+18,grid_visibility_ray,2791,3375,48031,03c0,"add ax,ax"
+18,grid_visibility_ray,2791,3377,48033,8946ec,"mov [bp-14h],ax"
+18,grid_visibility_ray,2791,3380,48036,c746f40000,"mov word ptr [bp-0Ch],0"
+18,grid_visibility_ray,2791,3385,48041,837e0e00,"cmp word ptr [bp+0Eh],0"
+18,grid_visibility_ray,2791,3389,48045,0f8ecf00,jle 0E10h
+18,grid_visibility_ray,2791,3393,48049,8956e8,"mov [bp-18h],dx"
+18,grid_visibility_ray,2791,3396,48052,8b7606,"mov si,[bp+6]"
+18,grid_visibility_ray,2791,3399,48055,8b7e08,"mov di,[bp+8]"
+18,grid_visibility_ray,2791,3402,48058,807efb00,"cmp byte ptr [bp-5],0"
+18,grid_visibility_ray,2791,3406,48062,7406,je short 0D56h
+18,grid_visibility_ray,2791,3408,48064,0376f6,"add si,[bp-0Ah]"
+18,grid_visibility_ray,2791,3411,48067,eb04,jmp short 0D59h
+18,grid_visibility_ray,2791,3414,48070,037ef8,"add di,[bp-8]"
+18,grid_visibility_ray,2791,3417,48073,837ee800,"cmp word ptr [bp-18h],0"
+18,grid_visibility_ray,2791,3421,48077,7d09,jge short 0D68h
+18,grid_visibility_ray,2791,3423,48079,8b46ee,"mov ax,[bp-12h]"
+18,grid_visibility_ray,2791,3426,48082,0146e8,"add [bp-18h],ax"
+18,grid_visibility_ray,2791,3429,48085,eb16,jmp short 0D7Dh
+18,grid_visibility_ray,2791,3432,48088,8b46ec,"mov ax,[bp-14h]"
+18,grid_visibility_ray,2791,3435,48091,0146e8,"add [bp-18h],ax"
+18,grid_visibility_ray,2791,3438,48094,807efb00,"cmp byte ptr [bp-5],0"
+18,grid_visibility_ray,2791,3442,48098,7406,je short 0D7Ah
+18,grid_visibility_ray,2791,3444,48100,037ef8,"add di,[bp-8]"
+18,grid_visibility_ray,2791,3447,48103,eb04,jmp short 0D7Dh
+18,grid_visibility_ray,2791,3450,48106,0376f6,"add si,[bp-0Ah]"
+18,grid_visibility_ray,2791,3453,48109,3976f2,"cmp [bp-0Eh],si"
+18,grid_visibility_ray,2791,3456,48112,7507,jne short 0D89h
+18,grid_visibility_ray,2791,3458,48114,397ef0,"cmp [bp-10h],di"
+18,grid_visibility_ray,2791,3461,48117,0f848100,je 0E0Ah
+18,grid_visibility_ray,2791,3465,48121,8bdf,"mov bx,di"
+18,grid_visibility_ray,2791,3467,48123,c1e306,"shl bx,6"
+18,grid_visibility_ray,2791,3470,48126,03de,"add bx,si"
+18,grid_visibility_ray,2791,3472,48128,03db,"add bx,bx"
+18,grid_visibility_ray,2791,3474,48130,81c33e37,"add bx,373Eh"
+18,grid_visibility_ray,2791,3478,48134,8e066625,"mov es,[2566h]"
+18,grid_visibility_ray,2791,3482,48138,895efc,"mov [bp-4],bx"
+18,grid_visibility_ray,2791,3485,48141,8c46fe,"mov [bp-2],es"
+18,grid_visibility_ray,2791,3488,48144,268a1f,"mov bl,es:[bx]"
+18,grid_visibility_ray,2791,3491,48147,2aff,"sub bh,bh"
+18,grid_visibility_ray,2791,3493,48149,8a870ad0,"mov al,[bx-2FF6h]"
+18,grid_visibility_ray,2791,3497,48153,8846fa,"mov [bp-6],al"
+18,grid_visibility_ray,2791,3500,48156,f646fa02,"test byte ptr [bp-6],2"
+18,grid_visibility_ray,2791,3504,48160,7426,je short 0DD8h
+18,grid_visibility_ray,2791,3506,48162,f646fa04,"test byte ptr [bp-6],4"
+18,grid_visibility_ray,2791,3510,48166,7558,jne short 0E10h
+18,grid_visibility_ray,2791,3512,48168,f646fa08,"test byte ptr [bp-6],8"
+18,grid_visibility_ray,2791,3516,48172,741a,je short 0DD8h
+18,grid_visibility_ray,2791,3518,48174,06,push es
+18,grid_visibility_ray,2791,3519,48175,ff76fc,push word ptr [bp-4]
+18,grid_visibility_ray,2791,3522,48178,9a00000000,"call far 0,0"
+18,grid_visibility_ray,2791,3527,48183,83c404,"add sp,4"
+18,grid_visibility_ray,2791,3530,48186,52,push dx
+18,grid_visibility_ray,2791,3531,48187,50,push ax
+18,grid_visibility_ray,2791,3532,48188,9ae0010000,"call far 01E0h,0"
+18,grid_visibility_ray,2791,3537,48193,83c404,"add sp,4"
+18,grid_visibility_ray,2791,3540,48196,0ac0,"or al,al"
+18,grid_visibility_ray,2791,3542,48198,7438,je short 0E10h
+18,grid_visibility_ray,2791,3544,48200,807e1000,"cmp byte ptr [bp+10h],0"
+18,grid_visibility_ray,2791,3548,48204,741c,je short 0DFAh
+18,grid_visibility_ray,2791,3550,48206,c45efc,"les bx,[bp-4]"
+18,grid_visibility_ray,2791,3553,48209,268a5f01,"mov bl,es:[bx+1]"
+18,grid_visibility_ray,2791,3557,48213,2aff,"sub bh,bh"
+18,grid_visibility_ray,2791,3559,48215,8a870ad1,"mov al,[bx-2EF6h]"
+18,grid_visibility_ray,2791,3563,48219,8846eb,"mov [bp-15h],al"
+18,grid_visibility_ray,2791,3566,48222,f646eb02,"test byte ptr [bp-15h],2"
+18,grid_visibility_ray,2791,3570,48226,7406,je short 0DFAh
+18,grid_visibility_ray,2791,3572,48228,f646eb20,"test byte ptr [bp-15h],20h"
+18,grid_visibility_ray,2791,3576,48232,7416,je short 0E10h
+18,grid_visibility_ray,2791,3578,48234,8b460e,"mov ax,[bp+0Eh]"
+18,grid_visibility_ray,2791,3581,48237,ff46f4,inc word ptr [bp-0Ch]
+18,grid_visibility_ray,2791,3584,48240,3946f4,"cmp [bp-0Ch],ax"
+18,grid_visibility_ray,2791,3587,48243,0f8c43ff,jl 0D4Ah
+18,grid_visibility_ray,2791,3591,48247,eb07,jmp short 0E10h
+18,grid_visibility_ray,2791,3594,48250,b001,"mov al,1"
+18,grid_visibility_ray,2791,3596,48252,5e,pop si
+18,grid_visibility_ray,2791,3597,48253,5f,pop di
+18,grid_visibility_ray,2791,3598,48254,c9,leave
+18,grid_visibility_ray,2791,3599,48255,cb,ret far
+18,grid_visibility_ray,2791,3600,48256,32c0,"xor al,al"
+18,grid_visibility_ray,2791,3602,48258,5e,pop si
+18,grid_visibility_ray,2791,3603,48259,5f,pop di
+18,grid_visibility_ray,2791,3604,48260,c9,leave
+18,grid_visibility_ray,2791,3605,48261,cb,ret far
+19,source_player_visibility_gate,1223,1746,21314,c8140000,"enter 14h,0"
+19,source_player_visibility_gate,1223,1750,21318,57,push di
+19,source_player_visibility_gate,1223,1751,21319,56,push si
+19,source_player_visibility_gate,1223,1752,21320,c55e0a,"lds bx,[bp+0Ah]"
+19,source_player_visibility_gate,1223,1755,21323,8b4710,"mov ax,[bx+10h]"
+19,source_player_visibility_gate,1223,1758,21326,c1f806,"sar ax,6"
+19,source_player_visibility_gate,1223,1761,21329,8946f8,"mov [bp-8],ax"
+19,source_player_visibility_gate,1223,1764,21332,8b4f12,"mov cx,[bx+12h]"
+19,source_player_visibility_gate,1223,1767,21335,c1f906,"sar cx,6"
+19,source_player_visibility_gate,1223,1770,21338,894ef6,"mov [bp-0Ah],cx"
+19,source_player_visibility_gate,1223,1773,21341,362b065e41,"sub ax,ss:[415Eh]"
+19,source_player_visibility_gate,1223,1778,21346,f7d8,neg ax
+19,source_player_visibility_gate,1223,1780,21348,8946fc,"mov [bp-4],ax"
+19,source_player_visibility_gate,1223,1783,21351,362b0e6041,"sub cx,ss:[4160h]"
+19,source_player_visibility_gate,1223,1788,21356,f7d9,neg cx
+19,source_player_visibility_gate,1223,1790,21358,894efa,"mov [bp-6],cx"
+19,source_player_visibility_gate,1223,1793,21361,99,cwd
+19,source_player_visibility_gate,1223,1794,21362,33c2,"xor ax,dx"
+19,source_player_visibility_gate,1223,1796,21364,2bc2,"sub ax,dx"
+19,source_player_visibility_gate,1223,1798,21366,8bd0,"mov dx,ax"
+19,source_player_visibility_gate,1223,1800,21368,8bc1,"mov ax,cx"
+19,source_player_visibility_gate,1223,1802,21370,8bca,"mov cx,dx"
+19,source_player_visibility_gate,1223,1804,21372,99,cwd
+19,source_player_visibility_gate,1223,1805,21373,33c2,"xor ax,dx"
+19,source_player_visibility_gate,1223,1807,21375,2bc2,"sub ax,dx"
+19,source_player_visibility_gate,1223,1809,21377,8bf0,"mov si,ax"
+19,source_player_visibility_gate,1223,1811,21379,83f908,"cmp cx,8"
+19,source_player_visibility_gate,1223,1814,21382,0f8fb000,jg 07CAh
+19,source_player_visibility_gate,1223,1818,21386,83fe08,"cmp si,8"
+19,source_player_visibility_gate,1223,1821,21389,0f8fa900,jg 07CAh
+19,source_player_visibility_gate,1223,1825,21393,837e1000,"cmp word ptr [bp+10h],0"
+19,source_player_visibility_gate,1223,1829,21397,7579,jne short 07A0h
+19,source_player_visibility_gate,1223,1831,21399,c47e06,"les di,[bp+6]"
+19,source_player_visibility_gate,1223,1834,21402,3bc8,"cmp cx,ax"
+19,source_player_visibility_gate,1223,1836,21404,7c04,jl short 0732h
+19,source_player_visibility_gate,1223,1838,21406,b066,"mov al,66h"
+19,source_player_visibility_gate,1223,1840,21408,eb02,jmp short 0734h
+19,source_player_visibility_gate,1223,1842,21410,b099,"mov al,99h"
+19,source_player_visibility_gate,1223,1844,21412,268a4d11,"mov cl,es:[di+11h]"
+19,source_player_visibility_gate,1223,1848,21416,8bd1,"mov dx,cx"
+19,source_player_visibility_gate,1223,1850,21418,fec9,dec cl
+19,source_player_visibility_gate,1223,1852,21420,80e107,"and cl,7"
+19,source_player_visibility_gate,1223,1855,21423,b301,"mov bl,1"
+19,source_player_visibility_gate,1223,1857,21425,8bd9,"mov bx,cx"
+19,source_player_visibility_gate,1223,1859,21427,8acb,"mov cl,bl"
+19,source_player_visibility_gate,1223,1861,21429,b301,"mov bl,1"
+19,source_player_visibility_gate,1223,1863,21431,894ef4,"mov [bp-0Ch],cx"
+19,source_player_visibility_gate,1223,1866,21434,8aca,"mov cl,dl"
+19,source_player_visibility_gate,1223,1868,21436,02cb,"add cl,bl"
+19,source_player_visibility_gate,1223,1870,21438,894ef2,"mov [bp-0Eh],cx"
+19,source_player_visibility_gate,1223,1873,21441,8a4ef4,"mov cl,[bp-0Ch]"
+19,source_player_visibility_gate,1223,1876,21444,d2e3,"shl bl,cl"
+19,source_player_visibility_gate,1223,1878,21446,8a4ef2,"mov cl,[bp-0Eh]"
+19,source_player_visibility_gate,1223,1881,21449,80e107,"and cl,7"
+19,source_player_visibility_gate,1223,1884,21452,8946f0,"mov [bp-10h],ax"
+19,source_player_visibility_gate,1223,1887,21455,b001,"mov al,1"
+19,source_player_visibility_gate,1223,1889,21457,d2e0,"shl al,cl"
+19,source_player_visibility_gate,1223,1891,21459,0ad8,"or bl,al"
+19,source_player_visibility_gate,1223,1893,21461,8aca,"mov cl,dl"
+19,source_player_visibility_gate,1223,1895,21463,b001,"mov al,1"
+19,source_player_visibility_gate,1223,1897,21465,d2e0,"shl al,cl"
+19,source_player_visibility_gate,1223,1899,21467,0ad8,"or bl,al"
+19,source_player_visibility_gate,1223,1901,21469,225ef0,"and bl,[bp-10h]"
+19,source_player_visibility_gate,1223,1904,21472,895eee,"mov [bp-12h],bx"
+19,source_player_visibility_gate,1223,1907,21475,837efa00,"cmp word ptr [bp-6],0"
+19,source_player_visibility_gate,1223,1911,21479,7c05,jl short 077Eh
+19,source_player_visibility_gate,1223,1913,21481,b03c,"mov al,3Ch"
+19,source_player_visibility_gate,1223,1915,21483,eb03,jmp short 0780h
+19,source_player_visibility_gate,1223,1918,21486,b0c3,"mov al,0C3h"
+19,source_player_visibility_gate,1223,1920,21488,2246ee,"and al,[bp-12h]"
+19,source_player_visibility_gate,1223,1923,21491,8946ec,"mov [bp-14h],ax"
+19,source_player_visibility_gate,1223,1926,21494,837efc00,"cmp word ptr [bp-4],0"
+19,source_player_visibility_gate,1223,1930,21498,7c04,jl short 0790h
+19,source_player_visibility_gate,1223,1932,21500,b00f,"mov al,0Fh"
+19,source_player_visibility_gate,1223,1934,21502,eb02,jmp short 0792h
+19,source_player_visibility_gate,1223,1936,21504,b0f0,"mov al,0F0h"
+19,source_player_visibility_gate,1223,1938,21506,8446ec,"test [bp-14h],al"
+19,source_player_visibility_gate,1223,1941,21509,7509,jne short 07A0h
+19,source_player_visibility_gate,1223,1943,21511,32c0,"xor al,al"
+19,source_player_visibility_gate,1223,1945,21513,16,push ss
+19,source_player_visibility_gate,1223,1946,21514,1f,pop ds
+19,source_player_visibility_gate,1223,1947,21515,5e,pop si
+19,source_player_visibility_gate,1223,1948,21516,5f,pop di
+19,source_player_visibility_gate,1223,1949,21517,c9,leave
+19,source_player_visibility_gate,1223,1950,21518,cb,ret far
+19,source_player_visibility_gate,1223,1952,21520,16,push ss
+19,source_player_visibility_gate,1223,1953,21521,1f,pop ds
+19,source_player_visibility_gate,1223,1954,21522,837e0e01,"cmp word ptr [bp+0Eh],1"
+19,source_player_visibility_gate,1223,1958,21526,7504,jne short 07ACh
+19,source_player_visibility_gate,1223,1960,21528,b001,"mov al,1"
+19,source_player_visibility_gate,1223,1962,21530,eb02,jmp short 07AEh
+19,source_player_visibility_gate,1223,1964,21532,32c0,"xor al,al"
+19,source_player_visibility_gate,1223,1966,21534,50,push ax
+19,source_player_visibility_gate,1223,1967,21535,6a08,push 8
+19,source_player_visibility_gate,1223,1969,21537,ff76fa,push word ptr [bp-6]
+19,source_player_visibility_gate,1223,1972,21540,ff76fc,push word ptr [bp-4]
+19,source_player_visibility_gate,1223,1975,21543,ff76f6,push word ptr [bp-0Ah]
+19,source_player_visibility_gate,1223,1978,21546,ff76f8,push word ptr [bp-8]
+19,source_player_visibility_gate,1223,1981,21549,9ab40ce70a,"call far 0CB4h,0AE7h"
+19,source_player_visibility_gate,1223,1986,21554,83c40c,"add sp,0Ch"
+19,source_player_visibility_gate,1223,1989,21557,5e,pop si
+19,source_player_visibility_gate,1223,1990,21558,5f,pop di
+19,source_player_visibility_gate,1223,1991,21559,c9,leave
+19,source_player_visibility_gate,1223,1992,21560,cb,ret far
+19,source_player_visibility_gate,1223,1994,21562,16,push ss
+19,source_player_visibility_gate,1223,1995,21563,1f,pop ds
+19,source_player_visibility_gate,1223,1996,21564,32c0,"xor al,al"
+19,source_player_visibility_gate,1223,1998,21566,5e,pop si
+19,source_player_visibility_gate,1223,1999,21567,5f,pop di
+19,source_player_visibility_gate,1223,2000,21568,c9,leave
+19,source_player_visibility_gate,1223,2001,21569,cb,ret far
+19,grid_visibility_ray,2791,3252,47908,c8180000,"enter 18h,0"
+19,grid_visibility_ray,2791,3256,47912,57,push di
+19,grid_visibility_ray,2791,3257,47913,56,push si
+19,grid_visibility_ray,2791,3258,47914,8b4e0a,"mov cx,[bp+0Ah]"
+19,grid_visibility_ray,2791,3261,47917,8b5e0c,"mov bx,[bp+0Ch]"
+19,grid_visibility_ray,2791,3264,47920,83fb00,"cmp bx,0"
+19,grid_visibility_ray,2791,3267,47923,7e05,jle short 0CCAh
+19,grid_visibility_ray,2791,3269,47925,b80100,"mov ax,1"
+19,grid_visibility_ray,2791,3272,47928,eb03,jmp short 0CCDh
+19,grid_visibility_ray,2791,3274,47930,b8ffff,"mov ax,0FFFFh"
+19,grid_visibility_ray,2791,3277,47933,8946f8,"mov [bp-8],ax"
+19,grid_visibility_ray,2791,3280,47936,0bc9,"or cx,cx"
+19,grid_visibility_ray,2791,3282,47938,7e06,jle short 0CDAh
+19,grid_visibility_ray,2791,3284,47940,b80100,"mov ax,1"
+19,grid_visibility_ray,2791,3287,47943,eb04,jmp short 0CDDh
+19,grid_visibility_ray,2791,3290,47946,b8ffff,"mov ax,0FFFFh"
+19,grid_visibility_ray,2791,3293,47949,8946f6,"mov [bp-0Ah],ax"
+19,grid_visibility_ray,2791,3296,47952,8b4606,"mov ax,[bp+6]"
+19,grid_visibility_ray,2791,3299,47955,03c1,"add ax,cx"
+19,grid_visibility_ray,2791,3301,47957,8946f2,"mov [bp-0Eh],ax"
+19,grid_visibility_ray,2791,3304,47960,8b4608,"mov ax,[bp+8]"
+19,grid_visibility_ray,2791,3307,47963,03c3,"add ax,bx"
+19,grid_visibility_ray,2791,3309,47965,8946f0,"mov [bp-10h],ax"
+19,grid_visibility_ray,2791,3312,47968,8bc1,"mov ax,cx"
+19,grid_visibility_ray,2791,3314,47970,99,cwd
+19,grid_visibility_ray,2791,3315,47971,33c2,"xor ax,dx"
+19,grid_visibility_ray,2791,3317,47973,2bc2,"sub ax,dx"
+19,grid_visibility_ray,2791,3319,47975,8bc8,"mov cx,ax"
+19,grid_visibility_ray,2791,3321,47977,8bc3,"mov ax,bx"
+19,grid_visibility_ray,2791,3323,47979,99,cwd
+19,grid_visibility_ray,2791,3324,47980,33c2,"xor ax,dx"
+19,grid_visibility_ray,2791,3326,47982,2bc2,"sub ax,dx"
+19,grid_visibility_ray,2791,3328,47984,8bd8,"mov bx,ax"
+19,grid_visibility_ray,2791,3330,47986,3bd9,"cmp bx,cx"
+19,grid_visibility_ray,2791,3332,47988,7d16,jge short 0D1Ch
+19,grid_visibility_ray,2791,3334,47990,c646fb01,"mov byte ptr [bp-5],1"
+19,grid_visibility_ray,2791,3338,47994,8bd0,"mov dx,ax"
+19,grid_visibility_ray,2791,3340,47996,03d0,"add dx,ax"
+19,grid_visibility_ray,2791,3342,47998,8bc2,"mov ax,dx"
+19,grid_visibility_ray,2791,3344,48000,2bd1,"sub dx,cx"
+19,grid_visibility_ray,2791,3346,48002,8946ee,"mov [bp-12h],ax"
+19,grid_visibility_ray,2791,3349,48005,8bc3,"mov ax,bx"
+19,grid_visibility_ray,2791,3351,48007,2bc1,"sub ax,cx"
+19,grid_visibility_ray,2791,3353,48009,eb14,jmp short 0D2Fh
+19,grid_visibility_ray,2791,3356,48012,c646fb00,"mov byte ptr [bp-5],0"
+19,grid_visibility_ray,2791,3360,48016,8bd1,"mov dx,cx"
+19,grid_visibility_ray,2791,3362,48018,03d1,"add dx,cx"
+19,grid_visibility_ray,2791,3364,48020,8bc2,"mov ax,dx"
+19,grid_visibility_ray,2791,3366,48022,2bd3,"sub dx,bx"
+19,grid_visibility_ray,2791,3368,48024,8946ee,"mov [bp-12h],ax"
+19,grid_visibility_ray,2791,3371,48027,8bc1,"mov ax,cx"
+19,grid_visibility_ray,2791,3373,48029,2bc3,"sub ax,bx"
+19,grid_visibility_ray,2791,3375,48031,03c0,"add ax,ax"
+19,grid_visibility_ray,2791,3377,48033,8946ec,"mov [bp-14h],ax"
+19,grid_visibility_ray,2791,3380,48036,c746f40000,"mov word ptr [bp-0Ch],0"
+19,grid_visibility_ray,2791,3385,48041,837e0e00,"cmp word ptr [bp+0Eh],0"
+19,grid_visibility_ray,2791,3389,48045,0f8ecf00,jle 0E10h
+19,grid_visibility_ray,2791,3393,48049,8956e8,"mov [bp-18h],dx"
+19,grid_visibility_ray,2791,3396,48052,8b7606,"mov si,[bp+6]"
+19,grid_visibility_ray,2791,3399,48055,8b7e08,"mov di,[bp+8]"
+19,grid_visibility_ray,2791,3402,48058,807efb00,"cmp byte ptr [bp-5],0"
+19,grid_visibility_ray,2791,3406,48062,7406,je short 0D56h
+19,grid_visibility_ray,2791,3408,48064,0376f6,"add si,[bp-0Ah]"
+19,grid_visibility_ray,2791,3411,48067,eb04,jmp short 0D59h
+19,grid_visibility_ray,2791,3414,48070,037ef8,"add di,[bp-8]"
+19,grid_visibility_ray,2791,3417,48073,837ee800,"cmp word ptr [bp-18h],0"
+19,grid_visibility_ray,2791,3421,48077,7d09,jge short 0D68h
+19,grid_visibility_ray,2791,3423,48079,8b46ee,"mov ax,[bp-12h]"
+19,grid_visibility_ray,2791,3426,48082,0146e8,"add [bp-18h],ax"
+19,grid_visibility_ray,2791,3429,48085,eb16,jmp short 0D7Dh
+19,grid_visibility_ray,2791,3432,48088,8b46ec,"mov ax,[bp-14h]"
+19,grid_visibility_ray,2791,3435,48091,0146e8,"add [bp-18h],ax"
+19,grid_visibility_ray,2791,3438,48094,807efb00,"cmp byte ptr [bp-5],0"
+19,grid_visibility_ray,2791,3442,48098,7406,je short 0D7Ah
+19,grid_visibility_ray,2791,3444,48100,037ef8,"add di,[bp-8]"
+19,grid_visibility_ray,2791,3447,48103,eb04,jmp short 0D7Dh
+19,grid_visibility_ray,2791,3450,48106,0376f6,"add si,[bp-0Ah]"
+19,grid_visibility_ray,2791,3453,48109,3976f2,"cmp [bp-0Eh],si"
+19,grid_visibility_ray,2791,3456,48112,7507,jne short 0D89h
+19,grid_visibility_ray,2791,3458,48114,397ef0,"cmp [bp-10h],di"
+19,grid_visibility_ray,2791,3461,48117,0f848100,je 0E0Ah
+19,grid_visibility_ray,2791,3465,48121,8bdf,"mov bx,di"
+19,grid_visibility_ray,2791,3467,48123,c1e306,"shl bx,6"
+19,grid_visibility_ray,2791,3470,48126,03de,"add bx,si"
+19,grid_visibility_ray,2791,3472,48128,03db,"add bx,bx"
+19,grid_visibility_ray,2791,3474,48130,81c33e37,"add bx,373Eh"
+19,grid_visibility_ray,2791,3478,48134,8e066625,"mov es,[2566h]"
+19,grid_visibility_ray,2791,3482,48138,895efc,"mov [bp-4],bx"
+19,grid_visibility_ray,2791,3485,48141,8c46fe,"mov [bp-2],es"
+19,grid_visibility_ray,2791,3488,48144,268a1f,"mov bl,es:[bx]"
+19,grid_visibility_ray,2791,3491,48147,2aff,"sub bh,bh"
+19,grid_visibility_ray,2791,3493,48149,8a870ad0,"mov al,[bx-2FF6h]"
+19,grid_visibility_ray,2791,3497,48153,8846fa,"mov [bp-6],al"
+19,grid_visibility_ray,2791,3500,48156,f646fa02,"test byte ptr [bp-6],2"
+19,grid_visibility_ray,2791,3504,48160,7426,je short 0DD8h
+19,grid_visibility_ray,2791,3506,48162,f646fa04,"test byte ptr [bp-6],4"
+19,grid_visibility_ray,2791,3510,48166,7558,jne short 0E10h
+19,grid_visibility_ray,2791,3512,48168,f646fa08,"test byte ptr [bp-6],8"
+19,grid_visibility_ray,2791,3516,48172,741a,je short 0DD8h
+19,grid_visibility_ray,2791,3518,48174,06,push es
+19,grid_visibility_ray,2791,3519,48175,ff76fc,push word ptr [bp-4]
+19,grid_visibility_ray,2791,3522,48178,9a00000000,"call far 0,0"
+19,grid_visibility_ray,2791,3527,48183,83c404,"add sp,4"
+19,grid_visibility_ray,2791,3530,48186,52,push dx
+19,grid_visibility_ray,2791,3531,48187,50,push ax
+19,grid_visibility_ray,2791,3532,48188,9ae0010000,"call far 01E0h,0"
+19,grid_visibility_ray,2791,3537,48193,83c404,"add sp,4"
+19,grid_visibility_ray,2791,3540,48196,0ac0,"or al,al"
+19,grid_visibility_ray,2791,3542,48198,7438,je short 0E10h
+19,grid_visibility_ray,2791,3544,48200,807e1000,"cmp byte ptr [bp+10h],0"
+19,grid_visibility_ray,2791,3548,48204,741c,je short 0DFAh
+19,grid_visibility_ray,2791,3550,48206,c45efc,"les bx,[bp-4]"
+19,grid_visibility_ray,2791,3553,48209,268a5f01,"mov bl,es:[bx+1]"
+19,grid_visibility_ray,2791,3557,48213,2aff,"sub bh,bh"
+19,grid_visibility_ray,2791,3559,48215,8a870ad1,"mov al,[bx-2EF6h]"
+19,grid_visibility_ray,2791,3563,48219,8846eb,"mov [bp-15h],al"
+19,grid_visibility_ray,2791,3566,48222,f646eb02,"test byte ptr [bp-15h],2"
+19,grid_visibility_ray,2791,3570,48226,7406,je short 0DFAh
+19,grid_visibility_ray,2791,3572,48228,f646eb20,"test byte ptr [bp-15h],20h"
+19,grid_visibility_ray,2791,3576,48232,7416,je short 0E10h
+19,grid_visibility_ray,2791,3578,48234,8b460e,"mov ax,[bp+0Eh]"
+19,grid_visibility_ray,2791,3581,48237,ff46f4,inc word ptr [bp-0Ch]
+19,grid_visibility_ray,2791,3584,48240,3946f4,"cmp [bp-0Ch],ax"
+19,grid_visibility_ray,2791,3587,48243,0f8c43ff,jl 0D4Ah
+19,grid_visibility_ray,2791,3591,48247,eb07,jmp short 0E10h
+19,grid_visibility_ray,2791,3594,48250,b001,"mov al,1"
+19,grid_visibility_ray,2791,3596,48252,5e,pop si
+19,grid_visibility_ray,2791,3597,48253,5f,pop di
+19,grid_visibility_ray,2791,3598,48254,c9,leave
+19,grid_visibility_ray,2791,3599,48255,cb,ret far
+19,grid_visibility_ray,2791,3600,48256,32c0,"xor al,al"
+19,grid_visibility_ray,2791,3602,48258,5e,pop si
+19,grid_visibility_ray,2791,3603,48259,5f,pop di
+19,grid_visibility_ray,2791,3604,48260,c9,leave
+19,grid_visibility_ray,2791,3605,48261,cb,ret far

@@ -1,0 +1,817 @@
+version,function,index,kind,raw,asm
+20,source_player_visibility_gate,6,global_or_classification_base,8946f8,"mov [bp-8],ax"
+20,source_player_visibility_gate,9,global_or_classification_base,894ef6,"mov [bp-0Ah],cx"
+20,source_player_visibility_gate,10,global_or_classification_base,362b065e41,"sub ax,ss:[415Eh]"
+20,source_player_visibility_gate,12,global_or_classification_base,8946fc,"mov [bp-4],ax"
+20,source_player_visibility_gate,13,global_or_classification_base,362b0e6041,"sub cx,ss:[4160h]"
+20,source_player_visibility_gate,15,global_or_classification_base,894efa,"mov [bp-6],cx"
+20,source_player_visibility_gate,27,call_or_branch,0f8fb000,jg 07CAh
+20,source_player_visibility_gate,29,call_or_branch,0f8fa900,jg 07CAh
+20,source_player_visibility_gate,31,call_or_branch,7579,jne short 07A0h
+20,source_player_visibility_gate,34,call_or_branch,7c04,jl short 0732h
+20,source_player_visibility_gate,36,call_or_branch,eb02,jmp short 0734h
+20,source_player_visibility_gate,46,global_or_classification_base,894ef4,"mov [bp-0Ch],cx"
+20,source_player_visibility_gate,49,global_or_classification_base,894ef2,"mov [bp-0Eh],cx"
+20,source_player_visibility_gate,50,global_or_classification_base,8a4ef4,"mov cl,[bp-0Ch]"
+20,source_player_visibility_gate,52,global_or_classification_base,8a4ef2,"mov cl,[bp-0Eh]"
+20,source_player_visibility_gate,54,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+20,source_player_visibility_gate,62,global_or_classification_base,225ef0,"and bl,[bp-10h]"
+20,source_player_visibility_gate,63,global_or_classification_base,895eee,"mov [bp-12h],bx"
+20,source_player_visibility_gate,64,global_or_classification_base,837efa00,"cmp word ptr [bp-6],0"
+20,source_player_visibility_gate,65,call_or_branch,7c05,jl short 077Eh
+20,source_player_visibility_gate,67,call_or_branch,eb03,jmp short 0780h
+20,source_player_visibility_gate,69,global_or_classification_base,2246ee,"and al,[bp-12h]"
+20,source_player_visibility_gate,70,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+20,source_player_visibility_gate,71,global_or_classification_base,837efc00,"cmp word ptr [bp-4],0"
+20,source_player_visibility_gate,72,call_or_branch,7c04,jl short 0790h
+20,source_player_visibility_gate,74,call_or_branch,eb02,jmp short 0792h
+20,source_player_visibility_gate,76,global_or_classification_base,8446ec,"test [bp-14h],al"
+20,source_player_visibility_gate,77,call_or_branch,7509,jne short 07A0h
+20,source_player_visibility_gate,88,call_or_branch,7504,jne short 07ACh
+20,source_player_visibility_gate,90,call_or_branch,eb02,jmp short 07AEh
+20,source_player_visibility_gate,94,global_or_classification_base,ff76fa,push word ptr [bp-6]
+20,source_player_visibility_gate,95,global_or_classification_base,ff76fc,push word ptr [bp-4]
+20,source_player_visibility_gate,96,global_or_classification_base,ff76f6,push word ptr [bp-0Ah]
+20,source_player_visibility_gate,97,global_or_classification_base,ff76f8,push word ptr [bp-8]
+20,source_player_visibility_gate,98,call_or_branch,9ac00cea0a,"call far 0CC0h,0AEAh"
+20,grid_visibility_ray,6,call_or_branch,7e05,jle short 0CD6h
+20,grid_visibility_ray,8,call_or_branch,eb03,jmp short 0CD9h
+20,grid_visibility_ray,10,global_or_classification_base,8946f8,"mov [bp-8],ax"
+20,grid_visibility_ray,12,call_or_branch,7e06,jle short 0CE6h
+20,grid_visibility_ray,14,call_or_branch,eb04,jmp short 0CE9h
+20,grid_visibility_ray,16,global_or_classification_base,8946f6,"mov [bp-0Ah],ax"
+20,grid_visibility_ray,19,global_or_classification_base,8946f2,"mov [bp-0Eh],ax"
+20,grid_visibility_ray,22,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+20,grid_visibility_ray,34,call_or_branch,7d16,jge short 0D28h
+20,grid_visibility_ray,35,global_or_classification_base,c646fb01,"mov byte ptr [bp-5],1"
+20,grid_visibility_ray,40,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+20,grid_visibility_ray,43,call_or_branch,eb14,jmp short 0D3Bh
+20,grid_visibility_ray,44,global_or_classification_base,c646fb00,"mov byte ptr [bp-5],0"
+20,grid_visibility_ray,49,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+20,grid_visibility_ray,53,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+20,grid_visibility_ray,54,global_or_classification_base,c746f40000,"mov word ptr [bp-0Ch],0"
+20,grid_visibility_ray,56,call_or_branch,0f8ecf00,jle 0E1Ch
+20,grid_visibility_ray,57,global_or_classification_base,8956e8,"mov [bp-18h],dx"
+20,grid_visibility_ray,60,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+20,grid_visibility_ray,61,call_or_branch,7406,je short 0D62h
+20,grid_visibility_ray,62,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+20,grid_visibility_ray,63,call_or_branch,eb04,jmp short 0D65h
+20,grid_visibility_ray,64,global_or_classification_base,037ef8,"add di,[bp-8]"
+20,grid_visibility_ray,65,global_or_classification_base,837ee800,"cmp word ptr [bp-18h],0"
+20,grid_visibility_ray,66,call_or_branch,7d09,jge short 0D74h
+20,grid_visibility_ray,67,global_or_classification_base,8b46ee,"mov ax,[bp-12h]"
+20,grid_visibility_ray,68,global_or_classification_base,0146e8,"add [bp-18h],ax"
+20,grid_visibility_ray,69,call_or_branch,eb16,jmp short 0D89h
+20,grid_visibility_ray,70,global_or_classification_base,8b46ec,"mov ax,[bp-14h]"
+20,grid_visibility_ray,71,global_or_classification_base,0146e8,"add [bp-18h],ax"
+20,grid_visibility_ray,72,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+20,grid_visibility_ray,73,call_or_branch,7406,je short 0D86h
+20,grid_visibility_ray,74,global_or_classification_base,037ef8,"add di,[bp-8]"
+20,grid_visibility_ray,75,call_or_branch,eb04,jmp short 0D89h
+20,grid_visibility_ray,76,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+20,grid_visibility_ray,77,global_or_classification_base,3976f2,"cmp [bp-0Eh],si"
+20,grid_visibility_ray,78,call_or_branch,7507,jne short 0D95h
+20,grid_visibility_ray,79,global_or_classification_base,397ef0,"cmp [bp-10h],di"
+20,grid_visibility_ray,80,call_or_branch,0f848100,je 0E16h
+20,grid_visibility_ray,85,map_grid_near_base,81c33e37,"add bx,373Eh"
+20,grid_visibility_ray,86,global_or_classification_base,8e066825,"mov es,[2568h]"
+20,grid_visibility_ray,87,global_or_classification_base,895efc,"mov [bp-4],bx"
+20,grid_visibility_ray,88,global_or_classification_base,8c46fe,"mov [bp-2],es"
+20,grid_visibility_ray,91,global_or_classification_base,8a870cd0,"mov al,[bx-2FF4h]"
+20,grid_visibility_ray,92,global_or_classification_base,8846fa,"mov [bp-6],al"
+20,grid_visibility_ray,93,global_or_classification_base,f646fa02,"test byte ptr [bp-6],2"
+20,grid_visibility_ray,94,call_or_branch,7426,je short 0DE4h
+20,grid_visibility_ray,95,global_or_classification_base,f646fa04,"test byte ptr [bp-6],4"
+20,grid_visibility_ray,96,call_or_branch,7558,jne short 0E1Ch
+20,grid_visibility_ray,97,global_or_classification_base,f646fa08,"test byte ptr [bp-6],8"
+20,grid_visibility_ray,98,call_or_branch,741a,je short 0DE4h
+20,grid_visibility_ray,100,global_or_classification_base,ff76fc,push word ptr [bp-4]
+20,grid_visibility_ray,101,call_or_branch,9a00000000,"call far 0,0"
+20,grid_visibility_ray,105,call_or_branch,9ae0010000,"call far 01E0h,0"
+20,grid_visibility_ray,108,call_or_branch,7438,je short 0E1Ch
+20,grid_visibility_ray,110,call_or_branch,741c,je short 0E06h
+20,grid_visibility_ray,111,global_or_classification_base,c45efc,"les bx,[bp-4]"
+20,grid_visibility_ray,114,global_or_classification_base,8a870cd1,"mov al,[bx-2EF4h]"
+20,grid_visibility_ray,115,global_or_classification_base,8846eb,"mov [bp-15h],al"
+20,grid_visibility_ray,116,global_or_classification_base,f646eb02,"test byte ptr [bp-15h],2"
+20,grid_visibility_ray,117,call_or_branch,7406,je short 0E06h
+20,grid_visibility_ray,118,global_or_classification_base,f646eb20,"test byte ptr [bp-15h],20h"
+20,grid_visibility_ray,119,call_or_branch,7416,je short 0E1Ch
+20,grid_visibility_ray,121,global_or_classification_base,ff46f4,inc word ptr [bp-0Ch]
+20,grid_visibility_ray,122,global_or_classification_base,3946f4,"cmp [bp-0Ch],ax"
+20,grid_visibility_ray,123,call_or_branch,0f8c43ff,jl 0D56h
+20,grid_visibility_ray,124,call_or_branch,eb07,jmp short 0E1Ch
+10,source_player_visibility_gate,6,global_or_classification_base,8946f8,"mov [bp-8],ax"
+10,source_player_visibility_gate,9,global_or_classification_base,894ef6,"mov [bp-0Ah],cx"
+10,source_player_visibility_gate,10,global_or_classification_base,362b06b63f,"sub ax,ss:[3FB6h]"
+10,source_player_visibility_gate,12,global_or_classification_base,8946fc,"mov [bp-4],ax"
+10,source_player_visibility_gate,13,global_or_classification_base,362b0eb83f,"sub cx,ss:[3FB8h]"
+10,source_player_visibility_gate,15,global_or_classification_base,894efa,"mov [bp-6],cx"
+10,source_player_visibility_gate,27,call_or_branch,0f8fb000,jg 07BAh
+10,source_player_visibility_gate,29,call_or_branch,0f8fa900,jg 07BAh
+10,source_player_visibility_gate,31,call_or_branch,7579,jne short 0790h
+10,source_player_visibility_gate,34,call_or_branch,7c04,jl short 0722h
+10,source_player_visibility_gate,36,call_or_branch,eb02,jmp short 0724h
+10,source_player_visibility_gate,46,global_or_classification_base,894ef4,"mov [bp-0Ch],cx"
+10,source_player_visibility_gate,49,global_or_classification_base,894ef2,"mov [bp-0Eh],cx"
+10,source_player_visibility_gate,50,global_or_classification_base,8a4ef4,"mov cl,[bp-0Ch]"
+10,source_player_visibility_gate,52,global_or_classification_base,8a4ef2,"mov cl,[bp-0Eh]"
+10,source_player_visibility_gate,54,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+10,source_player_visibility_gate,62,global_or_classification_base,225ef0,"and bl,[bp-10h]"
+10,source_player_visibility_gate,63,global_or_classification_base,895eee,"mov [bp-12h],bx"
+10,source_player_visibility_gate,64,global_or_classification_base,837efa00,"cmp word ptr [bp-6],0"
+10,source_player_visibility_gate,65,call_or_branch,7c05,jl short 076Eh
+10,source_player_visibility_gate,67,call_or_branch,eb03,jmp short 0770h
+10,source_player_visibility_gate,69,global_or_classification_base,2246ee,"and al,[bp-12h]"
+10,source_player_visibility_gate,70,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+10,source_player_visibility_gate,71,global_or_classification_base,837efc00,"cmp word ptr [bp-4],0"
+10,source_player_visibility_gate,72,call_or_branch,7c04,jl short 0780h
+10,source_player_visibility_gate,74,call_or_branch,eb02,jmp short 0782h
+10,source_player_visibility_gate,76,global_or_classification_base,8446ec,"test [bp-14h],al"
+10,source_player_visibility_gate,77,call_or_branch,7509,jne short 0790h
+10,source_player_visibility_gate,88,call_or_branch,7504,jne short 079Ch
+10,source_player_visibility_gate,90,call_or_branch,eb02,jmp short 079Eh
+10,source_player_visibility_gate,94,global_or_classification_base,ff76fa,push word ptr [bp-6]
+10,source_player_visibility_gate,95,global_or_classification_base,ff76fc,push word ptr [bp-4]
+10,source_player_visibility_gate,96,global_or_classification_base,ff76f6,push word ptr [bp-0Ah]
+10,source_player_visibility_gate,97,global_or_classification_base,ff76f8,push word ptr [bp-8]
+10,source_player_visibility_gate,98,call_or_branch,9ab40c9e0a,"call far 0CB4h,0A9Eh"
+10,grid_visibility_ray,6,call_or_branch,7e05,jle short 0CCAh
+10,grid_visibility_ray,8,call_or_branch,eb03,jmp short 0CCDh
+10,grid_visibility_ray,10,global_or_classification_base,8946f8,"mov [bp-8],ax"
+10,grid_visibility_ray,12,call_or_branch,7e06,jle short 0CDAh
+10,grid_visibility_ray,14,call_or_branch,eb04,jmp short 0CDDh
+10,grid_visibility_ray,16,global_or_classification_base,8946f6,"mov [bp-0Ah],ax"
+10,grid_visibility_ray,19,global_or_classification_base,8946f2,"mov [bp-0Eh],ax"
+10,grid_visibility_ray,22,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+10,grid_visibility_ray,34,call_or_branch,7d16,jge short 0D1Ch
+10,grid_visibility_ray,35,global_or_classification_base,c646fb01,"mov byte ptr [bp-5],1"
+10,grid_visibility_ray,40,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+10,grid_visibility_ray,43,call_or_branch,eb14,jmp short 0D2Fh
+10,grid_visibility_ray,44,global_or_classification_base,c646fb00,"mov byte ptr [bp-5],0"
+10,grid_visibility_ray,49,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+10,grid_visibility_ray,53,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+10,grid_visibility_ray,54,global_or_classification_base,c746f40000,"mov word ptr [bp-0Ch],0"
+10,grid_visibility_ray,56,call_or_branch,0f8ecf00,jle 0E10h
+10,grid_visibility_ray,57,global_or_classification_base,8956e8,"mov [bp-18h],dx"
+10,grid_visibility_ray,60,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+10,grid_visibility_ray,61,call_or_branch,7406,je short 0D56h
+10,grid_visibility_ray,62,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+10,grid_visibility_ray,63,call_or_branch,eb04,jmp short 0D59h
+10,grid_visibility_ray,64,global_or_classification_base,037ef8,"add di,[bp-8]"
+10,grid_visibility_ray,65,global_or_classification_base,837ee800,"cmp word ptr [bp-18h],0"
+10,grid_visibility_ray,66,call_or_branch,7d09,jge short 0D68h
+10,grid_visibility_ray,67,global_or_classification_base,8b46ee,"mov ax,[bp-12h]"
+10,grid_visibility_ray,68,global_or_classification_base,0146e8,"add [bp-18h],ax"
+10,grid_visibility_ray,69,call_or_branch,eb16,jmp short 0D7Dh
+10,grid_visibility_ray,70,global_or_classification_base,8b46ec,"mov ax,[bp-14h]"
+10,grid_visibility_ray,71,global_or_classification_base,0146e8,"add [bp-18h],ax"
+10,grid_visibility_ray,72,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+10,grid_visibility_ray,73,call_or_branch,7406,je short 0D7Ah
+10,grid_visibility_ray,74,global_or_classification_base,037ef8,"add di,[bp-8]"
+10,grid_visibility_ray,75,call_or_branch,eb04,jmp short 0D7Dh
+10,grid_visibility_ray,76,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+10,grid_visibility_ray,77,global_or_classification_base,3976f2,"cmp [bp-0Eh],si"
+10,grid_visibility_ray,78,call_or_branch,7507,jne short 0D89h
+10,grid_visibility_ray,79,global_or_classification_base,397ef0,"cmp [bp-10h],di"
+10,grid_visibility_ray,80,call_or_branch,0f848100,je 0E0Ah
+10,grid_visibility_ray,85,map_grid_near_base,81c33e37,"add bx,373Eh"
+10,grid_visibility_ray,86,global_or_classification_base,8e066224,"mov es,[2462h]"
+10,grid_visibility_ray,87,global_or_classification_base,895efc,"mov [bp-4],bx"
+10,grid_visibility_ray,88,global_or_classification_base,8c46fe,"mov [bp-2],es"
+10,grid_visibility_ray,91,global_or_classification_base,8a8752ce,"mov al,[bx-31AEh]"
+10,grid_visibility_ray,92,global_or_classification_base,8846fa,"mov [bp-6],al"
+10,grid_visibility_ray,93,global_or_classification_base,f646fa02,"test byte ptr [bp-6],2"
+10,grid_visibility_ray,94,call_or_branch,7426,je short 0DD8h
+10,grid_visibility_ray,95,global_or_classification_base,f646fa04,"test byte ptr [bp-6],4"
+10,grid_visibility_ray,96,call_or_branch,7558,jne short 0E10h
+10,grid_visibility_ray,97,global_or_classification_base,f646fa08,"test byte ptr [bp-6],8"
+10,grid_visibility_ray,98,call_or_branch,741a,je short 0DD8h
+10,grid_visibility_ray,100,global_or_classification_base,ff76fc,push word ptr [bp-4]
+10,grid_visibility_ray,101,call_or_branch,9a00000000,"call far 0,0"
+10,grid_visibility_ray,105,call_or_branch,9ae0010000,"call far 01E0h,0"
+10,grid_visibility_ray,108,call_or_branch,7438,je short 0E10h
+10,grid_visibility_ray,110,call_or_branch,741c,je short 0DFAh
+10,grid_visibility_ray,111,global_or_classification_base,c45efc,"les bx,[bp-4]"
+10,grid_visibility_ray,114,global_or_classification_base,8a8752cf,"mov al,[bx-30AEh]"
+10,grid_visibility_ray,115,global_or_classification_base,8846eb,"mov [bp-15h],al"
+10,grid_visibility_ray,116,global_or_classification_base,f646eb02,"test byte ptr [bp-15h],2"
+10,grid_visibility_ray,117,call_or_branch,7406,je short 0DFAh
+10,grid_visibility_ray,118,global_or_classification_base,f646eb20,"test byte ptr [bp-15h],20h"
+10,grid_visibility_ray,119,call_or_branch,7416,je short 0E10h
+10,grid_visibility_ray,121,global_or_classification_base,ff46f4,inc word ptr [bp-0Ch]
+10,grid_visibility_ray,122,global_or_classification_base,3946f4,"cmp [bp-0Ch],ax"
+10,grid_visibility_ray,123,call_or_branch,0f8c43ff,jl 0D4Ah
+10,grid_visibility_ray,124,call_or_branch,eb07,jmp short 0E10h
+11,source_player_visibility_gate,6,global_or_classification_base,8946f8,"mov [bp-8],ax"
+11,source_player_visibility_gate,9,global_or_classification_base,894ef6,"mov [bp-0Ah],cx"
+11,source_player_visibility_gate,10,global_or_classification_base,362b06bc40,"sub ax,ss:[40BCh]"
+11,source_player_visibility_gate,12,global_or_classification_base,8946fc,"mov [bp-4],ax"
+11,source_player_visibility_gate,13,global_or_classification_base,362b0ebe40,"sub cx,ss:[40BEh]"
+11,source_player_visibility_gate,15,global_or_classification_base,894efa,"mov [bp-6],cx"
+11,source_player_visibility_gate,27,call_or_branch,0f8fb000,jg 07C6h
+11,source_player_visibility_gate,29,call_or_branch,0f8fa900,jg 07C6h
+11,source_player_visibility_gate,31,call_or_branch,7579,jne short 079Ch
+11,source_player_visibility_gate,34,call_or_branch,7c04,jl short 072Eh
+11,source_player_visibility_gate,36,call_or_branch,eb02,jmp short 0730h
+11,source_player_visibility_gate,46,global_or_classification_base,894ef4,"mov [bp-0Ch],cx"
+11,source_player_visibility_gate,49,global_or_classification_base,894ef2,"mov [bp-0Eh],cx"
+11,source_player_visibility_gate,50,global_or_classification_base,8a4ef4,"mov cl,[bp-0Ch]"
+11,source_player_visibility_gate,52,global_or_classification_base,8a4ef2,"mov cl,[bp-0Eh]"
+11,source_player_visibility_gate,54,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+11,source_player_visibility_gate,62,global_or_classification_base,225ef0,"and bl,[bp-10h]"
+11,source_player_visibility_gate,63,global_or_classification_base,895eee,"mov [bp-12h],bx"
+11,source_player_visibility_gate,64,global_or_classification_base,837efa00,"cmp word ptr [bp-6],0"
+11,source_player_visibility_gate,65,call_or_branch,7c05,jl short 077Ah
+11,source_player_visibility_gate,67,call_or_branch,eb03,jmp short 077Ch
+11,source_player_visibility_gate,69,global_or_classification_base,2246ee,"and al,[bp-12h]"
+11,source_player_visibility_gate,70,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+11,source_player_visibility_gate,71,global_or_classification_base,837efc00,"cmp word ptr [bp-4],0"
+11,source_player_visibility_gate,72,call_or_branch,7c04,jl short 078Ch
+11,source_player_visibility_gate,74,call_or_branch,eb02,jmp short 078Eh
+11,source_player_visibility_gate,76,global_or_classification_base,8446ec,"test [bp-14h],al"
+11,source_player_visibility_gate,77,call_or_branch,7509,jne short 079Ch
+11,source_player_visibility_gate,88,call_or_branch,7504,jne short 07A8h
+11,source_player_visibility_gate,90,call_or_branch,eb02,jmp short 07AAh
+11,source_player_visibility_gate,94,global_or_classification_base,ff76fa,push word ptr [bp-6]
+11,source_player_visibility_gate,95,global_or_classification_base,ff76fc,push word ptr [bp-4]
+11,source_player_visibility_gate,96,global_or_classification_base,ff76f6,push word ptr [bp-0Ah]
+11,source_player_visibility_gate,97,global_or_classification_base,ff76f8,push word ptr [bp-8]
+11,source_player_visibility_gate,98,call_or_branch,9abc0cbe0a,"call far 0CBCh,0ABEh"
+11,grid_visibility_ray,6,call_or_branch,7e05,jle short 0CD2h
+11,grid_visibility_ray,8,call_or_branch,eb03,jmp short 0CD5h
+11,grid_visibility_ray,10,global_or_classification_base,8946f8,"mov [bp-8],ax"
+11,grid_visibility_ray,12,call_or_branch,7e06,jle short 0CE2h
+11,grid_visibility_ray,14,call_or_branch,eb04,jmp short 0CE5h
+11,grid_visibility_ray,16,global_or_classification_base,8946f6,"mov [bp-0Ah],ax"
+11,grid_visibility_ray,19,global_or_classification_base,8946f2,"mov [bp-0Eh],ax"
+11,grid_visibility_ray,22,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+11,grid_visibility_ray,34,call_or_branch,7d16,jge short 0D24h
+11,grid_visibility_ray,35,global_or_classification_base,c646fb01,"mov byte ptr [bp-5],1"
+11,grid_visibility_ray,40,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+11,grid_visibility_ray,43,call_or_branch,eb14,jmp short 0D37h
+11,grid_visibility_ray,44,global_or_classification_base,c646fb00,"mov byte ptr [bp-5],0"
+11,grid_visibility_ray,49,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+11,grid_visibility_ray,53,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+11,grid_visibility_ray,54,global_or_classification_base,c746f40000,"mov word ptr [bp-0Ch],0"
+11,grid_visibility_ray,56,call_or_branch,0f8ecf00,jle 0E18h
+11,grid_visibility_ray,57,global_or_classification_base,8956e8,"mov [bp-18h],dx"
+11,grid_visibility_ray,60,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+11,grid_visibility_ray,61,call_or_branch,7406,je short 0D5Eh
+11,grid_visibility_ray,62,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+11,grid_visibility_ray,63,call_or_branch,eb04,jmp short 0D61h
+11,grid_visibility_ray,64,global_or_classification_base,037ef8,"add di,[bp-8]"
+11,grid_visibility_ray,65,global_or_classification_base,837ee800,"cmp word ptr [bp-18h],0"
+11,grid_visibility_ray,66,call_or_branch,7d09,jge short 0D70h
+11,grid_visibility_ray,67,global_or_classification_base,8b46ee,"mov ax,[bp-12h]"
+11,grid_visibility_ray,68,global_or_classification_base,0146e8,"add [bp-18h],ax"
+11,grid_visibility_ray,69,call_or_branch,eb16,jmp short 0D85h
+11,grid_visibility_ray,70,global_or_classification_base,8b46ec,"mov ax,[bp-14h]"
+11,grid_visibility_ray,71,global_or_classification_base,0146e8,"add [bp-18h],ax"
+11,grid_visibility_ray,72,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+11,grid_visibility_ray,73,call_or_branch,7406,je short 0D82h
+11,grid_visibility_ray,74,global_or_classification_base,037ef8,"add di,[bp-8]"
+11,grid_visibility_ray,75,call_or_branch,eb04,jmp short 0D85h
+11,grid_visibility_ray,76,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+11,grid_visibility_ray,77,global_or_classification_base,3976f2,"cmp [bp-0Eh],si"
+11,grid_visibility_ray,78,call_or_branch,7507,jne short 0D91h
+11,grid_visibility_ray,79,global_or_classification_base,397ef0,"cmp [bp-10h],di"
+11,grid_visibility_ray,80,call_or_branch,0f848100,je 0E12h
+11,grid_visibility_ray,85,map_grid_near_base,81c33e37,"add bx,373Eh"
+11,grid_visibility_ray,86,global_or_classification_base,8e065a25,"mov es,[255Ah]"
+11,grid_visibility_ray,87,global_or_classification_base,895efc,"mov [bp-4],bx"
+11,grid_visibility_ray,88,global_or_classification_base,8c46fe,"mov [bp-2],es"
+11,grid_visibility_ray,91,global_or_classification_base,8a8758cf,"mov al,[bx-30A8h]"
+11,grid_visibility_ray,92,global_or_classification_base,8846fa,"mov [bp-6],al"
+11,grid_visibility_ray,93,global_or_classification_base,f646fa02,"test byte ptr [bp-6],2"
+11,grid_visibility_ray,94,call_or_branch,7426,je short 0DE0h
+11,grid_visibility_ray,95,global_or_classification_base,f646fa04,"test byte ptr [bp-6],4"
+11,grid_visibility_ray,96,call_or_branch,7558,jne short 0E18h
+11,grid_visibility_ray,97,global_or_classification_base,f646fa08,"test byte ptr [bp-6],8"
+11,grid_visibility_ray,98,call_or_branch,741a,je short 0DE0h
+11,grid_visibility_ray,100,global_or_classification_base,ff76fc,push word ptr [bp-4]
+11,grid_visibility_ray,101,call_or_branch,9a00000000,"call far 0,0"
+11,grid_visibility_ray,105,call_or_branch,9ae0010000,"call far 01E0h,0"
+11,grid_visibility_ray,108,call_or_branch,7438,je short 0E18h
+11,grid_visibility_ray,110,call_or_branch,741c,je short 0E02h
+11,grid_visibility_ray,111,global_or_classification_base,c45efc,"les bx,[bp-4]"
+11,grid_visibility_ray,114,global_or_classification_base,8a8758d0,"mov al,[bx-2FA8h]"
+11,grid_visibility_ray,115,global_or_classification_base,8846eb,"mov [bp-15h],al"
+11,grid_visibility_ray,116,global_or_classification_base,f646eb02,"test byte ptr [bp-15h],2"
+11,grid_visibility_ray,117,call_or_branch,7406,je short 0E02h
+11,grid_visibility_ray,118,global_or_classification_base,f646eb20,"test byte ptr [bp-15h],20h"
+11,grid_visibility_ray,119,call_or_branch,7416,je short 0E18h
+11,grid_visibility_ray,121,global_or_classification_base,ff46f4,inc word ptr [bp-0Ch]
+11,grid_visibility_ray,122,global_or_classification_base,3946f4,"cmp [bp-0Ch],ax"
+11,grid_visibility_ray,123,call_or_branch,0f8c43ff,jl 0D52h
+11,grid_visibility_ray,124,call_or_branch,eb07,jmp short 0E18h
+12,source_player_visibility_gate,6,global_or_classification_base,8946f8,"mov [bp-8],ax"
+12,source_player_visibility_gate,9,global_or_classification_base,894ef6,"mov [bp-0Ah],cx"
+12,source_player_visibility_gate,10,global_or_classification_base,362b06bc40,"sub ax,ss:[40BCh]"
+12,source_player_visibility_gate,12,global_or_classification_base,8946fc,"mov [bp-4],ax"
+12,source_player_visibility_gate,13,global_or_classification_base,362b0ebe40,"sub cx,ss:[40BEh]"
+12,source_player_visibility_gate,15,global_or_classification_base,894efa,"mov [bp-6],cx"
+12,source_player_visibility_gate,27,call_or_branch,0f8fb000,jg 07D2h
+12,source_player_visibility_gate,29,call_or_branch,0f8fa900,jg 07D2h
+12,source_player_visibility_gate,31,call_or_branch,7579,jne short 07A8h
+12,source_player_visibility_gate,34,call_or_branch,7c04,jl short 073Ah
+12,source_player_visibility_gate,36,call_or_branch,eb02,jmp short 073Ch
+12,source_player_visibility_gate,46,global_or_classification_base,894ef4,"mov [bp-0Ch],cx"
+12,source_player_visibility_gate,49,global_or_classification_base,894ef2,"mov [bp-0Eh],cx"
+12,source_player_visibility_gate,50,global_or_classification_base,8a4ef4,"mov cl,[bp-0Ch]"
+12,source_player_visibility_gate,52,global_or_classification_base,8a4ef2,"mov cl,[bp-0Eh]"
+12,source_player_visibility_gate,54,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+12,source_player_visibility_gate,62,global_or_classification_base,225ef0,"and bl,[bp-10h]"
+12,source_player_visibility_gate,63,global_or_classification_base,895eee,"mov [bp-12h],bx"
+12,source_player_visibility_gate,64,global_or_classification_base,837efa00,"cmp word ptr [bp-6],0"
+12,source_player_visibility_gate,65,call_or_branch,7c05,jl short 0786h
+12,source_player_visibility_gate,67,call_or_branch,eb03,jmp short 0788h
+12,source_player_visibility_gate,69,global_or_classification_base,2246ee,"and al,[bp-12h]"
+12,source_player_visibility_gate,70,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+12,source_player_visibility_gate,71,global_or_classification_base,837efc00,"cmp word ptr [bp-4],0"
+12,source_player_visibility_gate,72,call_or_branch,7c04,jl short 0798h
+12,source_player_visibility_gate,74,call_or_branch,eb02,jmp short 079Ah
+12,source_player_visibility_gate,76,global_or_classification_base,8446ec,"test [bp-14h],al"
+12,source_player_visibility_gate,77,call_or_branch,7509,jne short 07A8h
+12,source_player_visibility_gate,88,call_or_branch,7504,jne short 07B4h
+12,source_player_visibility_gate,90,call_or_branch,eb02,jmp short 07B6h
+12,source_player_visibility_gate,94,global_or_classification_base,ff76fa,push word ptr [bp-6]
+12,source_player_visibility_gate,95,global_or_classification_base,ff76fc,push word ptr [bp-4]
+12,source_player_visibility_gate,96,global_or_classification_base,ff76f6,push word ptr [bp-0Ah]
+12,source_player_visibility_gate,97,global_or_classification_base,ff76f8,push word ptr [bp-8]
+12,source_player_visibility_gate,98,call_or_branch,9abe0cbe0a,"call far 0CBEh,0ABEh"
+12,grid_visibility_ray,6,call_or_branch,7e05,jle short 0CD4h
+12,grid_visibility_ray,8,call_or_branch,eb03,jmp short 0CD7h
+12,grid_visibility_ray,10,global_or_classification_base,8946f8,"mov [bp-8],ax"
+12,grid_visibility_ray,12,call_or_branch,7e06,jle short 0CE4h
+12,grid_visibility_ray,14,call_or_branch,eb04,jmp short 0CE7h
+12,grid_visibility_ray,16,global_or_classification_base,8946f6,"mov [bp-0Ah],ax"
+12,grid_visibility_ray,19,global_or_classification_base,8946f2,"mov [bp-0Eh],ax"
+12,grid_visibility_ray,22,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+12,grid_visibility_ray,34,call_or_branch,7d16,jge short 0D26h
+12,grid_visibility_ray,35,global_or_classification_base,c646fb01,"mov byte ptr [bp-5],1"
+12,grid_visibility_ray,40,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+12,grid_visibility_ray,43,call_or_branch,eb14,jmp short 0D39h
+12,grid_visibility_ray,44,global_or_classification_base,c646fb00,"mov byte ptr [bp-5],0"
+12,grid_visibility_ray,49,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+12,grid_visibility_ray,53,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+12,grid_visibility_ray,54,global_or_classification_base,c746f40000,"mov word ptr [bp-0Ch],0"
+12,grid_visibility_ray,56,call_or_branch,0f8ecf00,jle 0E1Ah
+12,grid_visibility_ray,57,global_or_classification_base,8956e8,"mov [bp-18h],dx"
+12,grid_visibility_ray,60,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+12,grid_visibility_ray,61,call_or_branch,7406,je short 0D60h
+12,grid_visibility_ray,62,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+12,grid_visibility_ray,63,call_or_branch,eb04,jmp short 0D63h
+12,grid_visibility_ray,64,global_or_classification_base,037ef8,"add di,[bp-8]"
+12,grid_visibility_ray,65,global_or_classification_base,837ee800,"cmp word ptr [bp-18h],0"
+12,grid_visibility_ray,66,call_or_branch,7d09,jge short 0D72h
+12,grid_visibility_ray,67,global_or_classification_base,8b46ee,"mov ax,[bp-12h]"
+12,grid_visibility_ray,68,global_or_classification_base,0146e8,"add [bp-18h],ax"
+12,grid_visibility_ray,69,call_or_branch,eb16,jmp short 0D87h
+12,grid_visibility_ray,70,global_or_classification_base,8b46ec,"mov ax,[bp-14h]"
+12,grid_visibility_ray,71,global_or_classification_base,0146e8,"add [bp-18h],ax"
+12,grid_visibility_ray,72,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+12,grid_visibility_ray,73,call_or_branch,7406,je short 0D84h
+12,grid_visibility_ray,74,global_or_classification_base,037ef8,"add di,[bp-8]"
+12,grid_visibility_ray,75,call_or_branch,eb04,jmp short 0D87h
+12,grid_visibility_ray,76,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+12,grid_visibility_ray,77,global_or_classification_base,3976f2,"cmp [bp-0Eh],si"
+12,grid_visibility_ray,78,call_or_branch,7507,jne short 0D93h
+12,grid_visibility_ray,79,global_or_classification_base,397ef0,"cmp [bp-10h],di"
+12,grid_visibility_ray,80,call_or_branch,0f848100,je 0E14h
+12,grid_visibility_ray,85,map_grid_near_base,81c33e37,"add bx,373Eh"
+12,grid_visibility_ray,86,global_or_classification_base,8e065625,"mov es,[2556h]"
+12,grid_visibility_ray,87,global_or_classification_base,895efc,"mov [bp-4],bx"
+12,grid_visibility_ray,88,global_or_classification_base,8c46fe,"mov [bp-2],es"
+12,grid_visibility_ray,91,global_or_classification_base,8a8768cf,"mov al,[bx-3098h]"
+12,grid_visibility_ray,92,global_or_classification_base,8846fa,"mov [bp-6],al"
+12,grid_visibility_ray,93,global_or_classification_base,f646fa02,"test byte ptr [bp-6],2"
+12,grid_visibility_ray,94,call_or_branch,7426,je short 0DE2h
+12,grid_visibility_ray,95,global_or_classification_base,f646fa04,"test byte ptr [bp-6],4"
+12,grid_visibility_ray,96,call_or_branch,7558,jne short 0E1Ah
+12,grid_visibility_ray,97,global_or_classification_base,f646fa08,"test byte ptr [bp-6],8"
+12,grid_visibility_ray,98,call_or_branch,741a,je short 0DE2h
+12,grid_visibility_ray,100,global_or_classification_base,ff76fc,push word ptr [bp-4]
+12,grid_visibility_ray,101,call_or_branch,9a00000000,"call far 0,0"
+12,grid_visibility_ray,105,call_or_branch,9ae0010000,"call far 01E0h,0"
+12,grid_visibility_ray,108,call_or_branch,7438,je short 0E1Ah
+12,grid_visibility_ray,110,call_or_branch,741c,je short 0E04h
+12,grid_visibility_ray,111,global_or_classification_base,c45efc,"les bx,[bp-4]"
+12,grid_visibility_ray,114,global_or_classification_base,8a8768d0,"mov al,[bx-2F98h]"
+12,grid_visibility_ray,115,global_or_classification_base,8846eb,"mov [bp-15h],al"
+12,grid_visibility_ray,116,global_or_classification_base,f646eb02,"test byte ptr [bp-15h],2"
+12,grid_visibility_ray,117,call_or_branch,7406,je short 0E04h
+12,grid_visibility_ray,118,global_or_classification_base,f646eb20,"test byte ptr [bp-15h],20h"
+12,grid_visibility_ray,119,call_or_branch,7416,je short 0E1Ah
+12,grid_visibility_ray,121,global_or_classification_base,ff46f4,inc word ptr [bp-0Ch]
+12,grid_visibility_ray,122,global_or_classification_base,3946f4,"cmp [bp-0Ch],ax"
+12,grid_visibility_ray,123,call_or_branch,0f8c43ff,jl 0D54h
+12,grid_visibility_ray,124,call_or_branch,eb07,jmp short 0E1Ah
+15,source_player_visibility_gate,6,global_or_classification_base,8946f8,"mov [bp-8],ax"
+15,source_player_visibility_gate,9,global_or_classification_base,894ef6,"mov [bp-0Ah],cx"
+15,source_player_visibility_gate,10,global_or_classification_base,362b068c40,"sub ax,ss:[408Ch]"
+15,source_player_visibility_gate,12,global_or_classification_base,8946fc,"mov [bp-4],ax"
+15,source_player_visibility_gate,13,global_or_classification_base,362b0e8e40,"sub cx,ss:[408Eh]"
+15,source_player_visibility_gate,15,global_or_classification_base,894efa,"mov [bp-6],cx"
+15,source_player_visibility_gate,27,call_or_branch,0f8fb000,jg 07CAh
+15,source_player_visibility_gate,29,call_or_branch,0f8fa900,jg 07CAh
+15,source_player_visibility_gate,31,call_or_branch,7579,jne short 07A0h
+15,source_player_visibility_gate,34,call_or_branch,7c04,jl short 0732h
+15,source_player_visibility_gate,36,call_or_branch,eb02,jmp short 0734h
+15,source_player_visibility_gate,46,global_or_classification_base,894ef4,"mov [bp-0Ch],cx"
+15,source_player_visibility_gate,49,global_or_classification_base,894ef2,"mov [bp-0Eh],cx"
+15,source_player_visibility_gate,50,global_or_classification_base,8a4ef4,"mov cl,[bp-0Ch]"
+15,source_player_visibility_gate,52,global_or_classification_base,8a4ef2,"mov cl,[bp-0Eh]"
+15,source_player_visibility_gate,54,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+15,source_player_visibility_gate,62,global_or_classification_base,225ef0,"and bl,[bp-10h]"
+15,source_player_visibility_gate,63,global_or_classification_base,895eee,"mov [bp-12h],bx"
+15,source_player_visibility_gate,64,global_or_classification_base,837efa00,"cmp word ptr [bp-6],0"
+15,source_player_visibility_gate,65,call_or_branch,7c05,jl short 077Eh
+15,source_player_visibility_gate,67,call_or_branch,eb03,jmp short 0780h
+15,source_player_visibility_gate,69,global_or_classification_base,2246ee,"and al,[bp-12h]"
+15,source_player_visibility_gate,70,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+15,source_player_visibility_gate,71,global_or_classification_base,837efc00,"cmp word ptr [bp-4],0"
+15,source_player_visibility_gate,72,call_or_branch,7c04,jl short 0790h
+15,source_player_visibility_gate,74,call_or_branch,eb02,jmp short 0792h
+15,source_player_visibility_gate,76,global_or_classification_base,8446ec,"test [bp-14h],al"
+15,source_player_visibility_gate,77,call_or_branch,7509,jne short 07A0h
+15,source_player_visibility_gate,88,call_or_branch,7504,jne short 07ACh
+15,source_player_visibility_gate,90,call_or_branch,eb02,jmp short 07AEh
+15,source_player_visibility_gate,94,global_or_classification_base,ff76fa,push word ptr [bp-6]
+15,source_player_visibility_gate,95,global_or_classification_base,ff76fc,push word ptr [bp-4]
+15,source_player_visibility_gate,96,global_or_classification_base,ff76f6,push word ptr [bp-0Ah]
+15,source_player_visibility_gate,97,global_or_classification_base,ff76f8,push word ptr [bp-8]
+15,source_player_visibility_gate,98,call_or_branch,9ab40cc70a,"call far 0CB4h,0AC7h"
+15,grid_visibility_ray,6,call_or_branch,7e05,jle short 0CCAh
+15,grid_visibility_ray,8,call_or_branch,eb03,jmp short 0CCDh
+15,grid_visibility_ray,10,global_or_classification_base,8946f8,"mov [bp-8],ax"
+15,grid_visibility_ray,12,call_or_branch,7e06,jle short 0CDAh
+15,grid_visibility_ray,14,call_or_branch,eb04,jmp short 0CDDh
+15,grid_visibility_ray,16,global_or_classification_base,8946f6,"mov [bp-0Ah],ax"
+15,grid_visibility_ray,19,global_or_classification_base,8946f2,"mov [bp-0Eh],ax"
+15,grid_visibility_ray,22,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+15,grid_visibility_ray,34,call_or_branch,7d16,jge short 0D1Ch
+15,grid_visibility_ray,35,global_or_classification_base,c646fb01,"mov byte ptr [bp-5],1"
+15,grid_visibility_ray,40,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+15,grid_visibility_ray,43,call_or_branch,eb14,jmp short 0D2Fh
+15,grid_visibility_ray,44,global_or_classification_base,c646fb00,"mov byte ptr [bp-5],0"
+15,grid_visibility_ray,49,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+15,grid_visibility_ray,53,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+15,grid_visibility_ray,54,global_or_classification_base,c746f40000,"mov word ptr [bp-0Ch],0"
+15,grid_visibility_ray,56,call_or_branch,0f8ecf00,jle 0E10h
+15,grid_visibility_ray,57,global_or_classification_base,8956e8,"mov [bp-18h],dx"
+15,grid_visibility_ray,60,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+15,grid_visibility_ray,61,call_or_branch,7406,je short 0D56h
+15,grid_visibility_ray,62,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+15,grid_visibility_ray,63,call_or_branch,eb04,jmp short 0D59h
+15,grid_visibility_ray,64,global_or_classification_base,037ef8,"add di,[bp-8]"
+15,grid_visibility_ray,65,global_or_classification_base,837ee800,"cmp word ptr [bp-18h],0"
+15,grid_visibility_ray,66,call_or_branch,7d09,jge short 0D68h
+15,grid_visibility_ray,67,global_or_classification_base,8b46ee,"mov ax,[bp-12h]"
+15,grid_visibility_ray,68,global_or_classification_base,0146e8,"add [bp-18h],ax"
+15,grid_visibility_ray,69,call_or_branch,eb16,jmp short 0D7Dh
+15,grid_visibility_ray,70,global_or_classification_base,8b46ec,"mov ax,[bp-14h]"
+15,grid_visibility_ray,71,global_or_classification_base,0146e8,"add [bp-18h],ax"
+15,grid_visibility_ray,72,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+15,grid_visibility_ray,73,call_or_branch,7406,je short 0D7Ah
+15,grid_visibility_ray,74,global_or_classification_base,037ef8,"add di,[bp-8]"
+15,grid_visibility_ray,75,call_or_branch,eb04,jmp short 0D7Dh
+15,grid_visibility_ray,76,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+15,grid_visibility_ray,77,global_or_classification_base,3976f2,"cmp [bp-0Eh],si"
+15,grid_visibility_ray,78,call_or_branch,7507,jne short 0D89h
+15,grid_visibility_ray,79,global_or_classification_base,397ef0,"cmp [bp-10h],di"
+15,grid_visibility_ray,80,call_or_branch,0f848100,je 0E0Ah
+15,grid_visibility_ray,85,map_grid_near_base,81c33e37,"add bx,373Eh"
+15,grid_visibility_ray,86,global_or_classification_base,8e062825,"mov es,[2528h]"
+15,grid_visibility_ray,87,global_or_classification_base,895efc,"mov [bp-4],bx"
+15,grid_visibility_ray,88,global_or_classification_base,8c46fe,"mov [bp-2],es"
+15,grid_visibility_ray,91,global_or_classification_base,8a8738cf,"mov al,[bx-30C8h]"
+15,grid_visibility_ray,92,global_or_classification_base,8846fa,"mov [bp-6],al"
+15,grid_visibility_ray,93,global_or_classification_base,f646fa02,"test byte ptr [bp-6],2"
+15,grid_visibility_ray,94,call_or_branch,7426,je short 0DD8h
+15,grid_visibility_ray,95,global_or_classification_base,f646fa04,"test byte ptr [bp-6],4"
+15,grid_visibility_ray,96,call_or_branch,7558,jne short 0E10h
+15,grid_visibility_ray,97,global_or_classification_base,f646fa08,"test byte ptr [bp-6],8"
+15,grid_visibility_ray,98,call_or_branch,741a,je short 0DD8h
+15,grid_visibility_ray,100,global_or_classification_base,ff76fc,push word ptr [bp-4]
+15,grid_visibility_ray,101,call_or_branch,9a00000000,"call far 0,0"
+15,grid_visibility_ray,105,call_or_branch,9ae0010000,"call far 01E0h,0"
+15,grid_visibility_ray,108,call_or_branch,7438,je short 0E10h
+15,grid_visibility_ray,110,call_or_branch,741c,je short 0DFAh
+15,grid_visibility_ray,111,global_or_classification_base,c45efc,"les bx,[bp-4]"
+15,grid_visibility_ray,114,global_or_classification_base,8a8738d0,"mov al,[bx-2FC8h]"
+15,grid_visibility_ray,115,global_or_classification_base,8846eb,"mov [bp-15h],al"
+15,grid_visibility_ray,116,global_or_classification_base,f646eb02,"test byte ptr [bp-15h],2"
+15,grid_visibility_ray,117,call_or_branch,7406,je short 0DFAh
+15,grid_visibility_ray,118,global_or_classification_base,f646eb20,"test byte ptr [bp-15h],20h"
+15,grid_visibility_ray,119,call_or_branch,7416,je short 0E10h
+15,grid_visibility_ray,121,global_or_classification_base,ff46f4,inc word ptr [bp-0Ch]
+15,grid_visibility_ray,122,global_or_classification_base,3946f4,"cmp [bp-0Ch],ax"
+15,grid_visibility_ray,123,call_or_branch,0f8c43ff,jl 0D4Ah
+15,grid_visibility_ray,124,call_or_branch,eb07,jmp short 0E10h
+17,source_player_visibility_gate,6,global_or_classification_base,8946f8,"mov [bp-8],ax"
+17,source_player_visibility_gate,9,global_or_classification_base,894ef6,"mov [bp-0Ah],cx"
+17,source_player_visibility_gate,10,global_or_classification_base,362b06ce40,"sub ax,ss:[40CEh]"
+17,source_player_visibility_gate,12,global_or_classification_base,8946fc,"mov [bp-4],ax"
+17,source_player_visibility_gate,13,global_or_classification_base,362b0ed040,"sub cx,ss:[40D0h]"
+17,source_player_visibility_gate,15,global_or_classification_base,894efa,"mov [bp-6],cx"
+17,source_player_visibility_gate,27,call_or_branch,0f8fb000,jg 07C6h
+17,source_player_visibility_gate,29,call_or_branch,0f8fa900,jg 07C6h
+17,source_player_visibility_gate,31,call_or_branch,7579,jne short 079Ch
+17,source_player_visibility_gate,34,call_or_branch,7c04,jl short 072Eh
+17,source_player_visibility_gate,36,call_or_branch,eb02,jmp short 0730h
+17,source_player_visibility_gate,46,global_or_classification_base,894ef4,"mov [bp-0Ch],cx"
+17,source_player_visibility_gate,49,global_or_classification_base,894ef2,"mov [bp-0Eh],cx"
+17,source_player_visibility_gate,50,global_or_classification_base,8a4ef4,"mov cl,[bp-0Ch]"
+17,source_player_visibility_gate,52,global_or_classification_base,8a4ef2,"mov cl,[bp-0Eh]"
+17,source_player_visibility_gate,54,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+17,source_player_visibility_gate,62,global_or_classification_base,225ef0,"and bl,[bp-10h]"
+17,source_player_visibility_gate,63,global_or_classification_base,895eee,"mov [bp-12h],bx"
+17,source_player_visibility_gate,64,global_or_classification_base,837efa00,"cmp word ptr [bp-6],0"
+17,source_player_visibility_gate,65,call_or_branch,7c05,jl short 077Ah
+17,source_player_visibility_gate,67,call_or_branch,eb03,jmp short 077Ch
+17,source_player_visibility_gate,69,global_or_classification_base,2246ee,"and al,[bp-12h]"
+17,source_player_visibility_gate,70,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+17,source_player_visibility_gate,71,global_or_classification_base,837efc00,"cmp word ptr [bp-4],0"
+17,source_player_visibility_gate,72,call_or_branch,7c04,jl short 078Ch
+17,source_player_visibility_gate,74,call_or_branch,eb02,jmp short 078Eh
+17,source_player_visibility_gate,76,global_or_classification_base,8446ec,"test [bp-14h],al"
+17,source_player_visibility_gate,77,call_or_branch,7509,jne short 079Ch
+17,source_player_visibility_gate,88,call_or_branch,7504,jne short 07A8h
+17,source_player_visibility_gate,90,call_or_branch,eb02,jmp short 07AAh
+17,source_player_visibility_gate,94,global_or_classification_base,ff76fa,push word ptr [bp-6]
+17,source_player_visibility_gate,95,global_or_classification_base,ff76fc,push word ptr [bp-4]
+17,source_player_visibility_gate,96,global_or_classification_base,ff76f6,push word ptr [bp-0Ah]
+17,source_player_visibility_gate,97,global_or_classification_base,ff76f8,push word ptr [bp-8]
+17,source_player_visibility_gate,98,call_or_branch,9ac00cd00a,"call far 0CC0h,0AD0h"
+17,grid_visibility_ray,6,call_or_branch,7e05,jle short 0CD6h
+17,grid_visibility_ray,8,call_or_branch,eb03,jmp short 0CD9h
+17,grid_visibility_ray,10,global_or_classification_base,8946f8,"mov [bp-8],ax"
+17,grid_visibility_ray,12,call_or_branch,7e06,jle short 0CE6h
+17,grid_visibility_ray,14,call_or_branch,eb04,jmp short 0CE9h
+17,grid_visibility_ray,16,global_or_classification_base,8946f6,"mov [bp-0Ah],ax"
+17,grid_visibility_ray,19,global_or_classification_base,8946f2,"mov [bp-0Eh],ax"
+17,grid_visibility_ray,22,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+17,grid_visibility_ray,34,call_or_branch,7d16,jge short 0D28h
+17,grid_visibility_ray,35,global_or_classification_base,c646fb01,"mov byte ptr [bp-5],1"
+17,grid_visibility_ray,40,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+17,grid_visibility_ray,43,call_or_branch,eb14,jmp short 0D3Bh
+17,grid_visibility_ray,44,global_or_classification_base,c646fb00,"mov byte ptr [bp-5],0"
+17,grid_visibility_ray,49,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+17,grid_visibility_ray,53,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+17,grid_visibility_ray,54,global_or_classification_base,c746f40000,"mov word ptr [bp-0Ch],0"
+17,grid_visibility_ray,56,call_or_branch,0f8ecf00,jle 0E1Ch
+17,grid_visibility_ray,57,global_or_classification_base,8956e8,"mov [bp-18h],dx"
+17,grid_visibility_ray,60,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+17,grid_visibility_ray,61,call_or_branch,7406,je short 0D62h
+17,grid_visibility_ray,62,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+17,grid_visibility_ray,63,call_or_branch,eb04,jmp short 0D65h
+17,grid_visibility_ray,64,global_or_classification_base,037ef8,"add di,[bp-8]"
+17,grid_visibility_ray,65,global_or_classification_base,837ee800,"cmp word ptr [bp-18h],0"
+17,grid_visibility_ray,66,call_or_branch,7d09,jge short 0D74h
+17,grid_visibility_ray,67,global_or_classification_base,8b46ee,"mov ax,[bp-12h]"
+17,grid_visibility_ray,68,global_or_classification_base,0146e8,"add [bp-18h],ax"
+17,grid_visibility_ray,69,call_or_branch,eb16,jmp short 0D89h
+17,grid_visibility_ray,70,global_or_classification_base,8b46ec,"mov ax,[bp-14h]"
+17,grid_visibility_ray,71,global_or_classification_base,0146e8,"add [bp-18h],ax"
+17,grid_visibility_ray,72,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+17,grid_visibility_ray,73,call_or_branch,7406,je short 0D86h
+17,grid_visibility_ray,74,global_or_classification_base,037ef8,"add di,[bp-8]"
+17,grid_visibility_ray,75,call_or_branch,eb04,jmp short 0D89h
+17,grid_visibility_ray,76,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+17,grid_visibility_ray,77,global_or_classification_base,3976f2,"cmp [bp-0Eh],si"
+17,grid_visibility_ray,78,call_or_branch,7507,jne short 0D95h
+17,grid_visibility_ray,79,global_or_classification_base,397ef0,"cmp [bp-10h],di"
+17,grid_visibility_ray,80,call_or_branch,0f848100,je 0E16h
+17,grid_visibility_ray,85,map_grid_near_base,81c33e37,"add bx,373Eh"
+17,grid_visibility_ray,86,global_or_classification_base,8e062c25,"mov es,[252Ch]"
+17,grid_visibility_ray,87,global_or_classification_base,895efc,"mov [bp-4],bx"
+17,grid_visibility_ray,88,global_or_classification_base,8c46fe,"mov [bp-2],es"
+17,grid_visibility_ray,91,global_or_classification_base,8a877acf,"mov al,[bx-3086h]"
+17,grid_visibility_ray,92,global_or_classification_base,8846fa,"mov [bp-6],al"
+17,grid_visibility_ray,93,global_or_classification_base,f646fa02,"test byte ptr [bp-6],2"
+17,grid_visibility_ray,94,call_or_branch,7426,je short 0DE4h
+17,grid_visibility_ray,95,global_or_classification_base,f646fa04,"test byte ptr [bp-6],4"
+17,grid_visibility_ray,96,call_or_branch,7558,jne short 0E1Ch
+17,grid_visibility_ray,97,global_or_classification_base,f646fa08,"test byte ptr [bp-6],8"
+17,grid_visibility_ray,98,call_or_branch,741a,je short 0DE4h
+17,grid_visibility_ray,100,global_or_classification_base,ff76fc,push word ptr [bp-4]
+17,grid_visibility_ray,101,call_or_branch,9a00000000,"call far 0,0"
+17,grid_visibility_ray,105,call_or_branch,9ae0010000,"call far 01E0h,0"
+17,grid_visibility_ray,108,call_or_branch,7438,je short 0E1Ch
+17,grid_visibility_ray,110,call_or_branch,741c,je short 0E06h
+17,grid_visibility_ray,111,global_or_classification_base,c45efc,"les bx,[bp-4]"
+17,grid_visibility_ray,114,global_or_classification_base,8a877ad0,"mov al,[bx-2F86h]"
+17,grid_visibility_ray,115,global_or_classification_base,8846eb,"mov [bp-15h],al"
+17,grid_visibility_ray,116,global_or_classification_base,f646eb02,"test byte ptr [bp-15h],2"
+17,grid_visibility_ray,117,call_or_branch,7406,je short 0E06h
+17,grid_visibility_ray,118,global_or_classification_base,f646eb20,"test byte ptr [bp-15h],20h"
+17,grid_visibility_ray,119,call_or_branch,7416,je short 0E1Ch
+17,grid_visibility_ray,121,global_or_classification_base,ff46f4,inc word ptr [bp-0Ch]
+17,grid_visibility_ray,122,global_or_classification_base,3946f4,"cmp [bp-0Ch],ax"
+17,grid_visibility_ray,123,call_or_branch,0f8c43ff,jl 0D56h
+17,grid_visibility_ray,124,call_or_branch,eb07,jmp short 0E1Ch
+18,source_player_visibility_gate,6,global_or_classification_base,8946f8,"mov [bp-8],ax"
+18,source_player_visibility_gate,9,global_or_classification_base,894ef6,"mov [bp-0Ah],cx"
+18,source_player_visibility_gate,10,global_or_classification_base,362b065e41,"sub ax,ss:[415Eh]"
+18,source_player_visibility_gate,12,global_or_classification_base,8946fc,"mov [bp-4],ax"
+18,source_player_visibility_gate,13,global_or_classification_base,362b0e6041,"sub cx,ss:[4160h]"
+18,source_player_visibility_gate,15,global_or_classification_base,894efa,"mov [bp-6],cx"
+18,source_player_visibility_gate,27,call_or_branch,0f8fb000,jg 07CAh
+18,source_player_visibility_gate,29,call_or_branch,0f8fa900,jg 07CAh
+18,source_player_visibility_gate,31,call_or_branch,7579,jne short 07A0h
+18,source_player_visibility_gate,34,call_or_branch,7c04,jl short 0732h
+18,source_player_visibility_gate,36,call_or_branch,eb02,jmp short 0734h
+18,source_player_visibility_gate,46,global_or_classification_base,894ef4,"mov [bp-0Ch],cx"
+18,source_player_visibility_gate,49,global_or_classification_base,894ef2,"mov [bp-0Eh],cx"
+18,source_player_visibility_gate,50,global_or_classification_base,8a4ef4,"mov cl,[bp-0Ch]"
+18,source_player_visibility_gate,52,global_or_classification_base,8a4ef2,"mov cl,[bp-0Eh]"
+18,source_player_visibility_gate,54,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+18,source_player_visibility_gate,62,global_or_classification_base,225ef0,"and bl,[bp-10h]"
+18,source_player_visibility_gate,63,global_or_classification_base,895eee,"mov [bp-12h],bx"
+18,source_player_visibility_gate,64,global_or_classification_base,837efa00,"cmp word ptr [bp-6],0"
+18,source_player_visibility_gate,65,call_or_branch,7c05,jl short 077Eh
+18,source_player_visibility_gate,67,call_or_branch,eb03,jmp short 0780h
+18,source_player_visibility_gate,69,global_or_classification_base,2246ee,"and al,[bp-12h]"
+18,source_player_visibility_gate,70,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+18,source_player_visibility_gate,71,global_or_classification_base,837efc00,"cmp word ptr [bp-4],0"
+18,source_player_visibility_gate,72,call_or_branch,7c04,jl short 0790h
+18,source_player_visibility_gate,74,call_or_branch,eb02,jmp short 0792h
+18,source_player_visibility_gate,76,global_or_classification_base,8446ec,"test [bp-14h],al"
+18,source_player_visibility_gate,77,call_or_branch,7509,jne short 07A0h
+18,source_player_visibility_gate,88,call_or_branch,7504,jne short 07ACh
+18,source_player_visibility_gate,90,call_or_branch,eb02,jmp short 07AEh
+18,source_player_visibility_gate,94,global_or_classification_base,ff76fa,push word ptr [bp-6]
+18,source_player_visibility_gate,95,global_or_classification_base,ff76fc,push word ptr [bp-4]
+18,source_player_visibility_gate,96,global_or_classification_base,ff76f6,push word ptr [bp-0Ah]
+18,source_player_visibility_gate,97,global_or_classification_base,ff76f8,push word ptr [bp-8]
+18,source_player_visibility_gate,98,call_or_branch,9ab40ce70a,"call far 0CB4h,0AE7h"
+18,grid_visibility_ray,6,call_or_branch,7e05,jle short 0CCAh
+18,grid_visibility_ray,8,call_or_branch,eb03,jmp short 0CCDh
+18,grid_visibility_ray,10,global_or_classification_base,8946f8,"mov [bp-8],ax"
+18,grid_visibility_ray,12,call_or_branch,7e06,jle short 0CDAh
+18,grid_visibility_ray,14,call_or_branch,eb04,jmp short 0CDDh
+18,grid_visibility_ray,16,global_or_classification_base,8946f6,"mov [bp-0Ah],ax"
+18,grid_visibility_ray,19,global_or_classification_base,8946f2,"mov [bp-0Eh],ax"
+18,grid_visibility_ray,22,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+18,grid_visibility_ray,34,call_or_branch,7d16,jge short 0D1Ch
+18,grid_visibility_ray,35,global_or_classification_base,c646fb01,"mov byte ptr [bp-5],1"
+18,grid_visibility_ray,40,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+18,grid_visibility_ray,43,call_or_branch,eb14,jmp short 0D2Fh
+18,grid_visibility_ray,44,global_or_classification_base,c646fb00,"mov byte ptr [bp-5],0"
+18,grid_visibility_ray,49,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+18,grid_visibility_ray,53,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+18,grid_visibility_ray,54,global_or_classification_base,c746f40000,"mov word ptr [bp-0Ch],0"
+18,grid_visibility_ray,56,call_or_branch,0f8ecf00,jle 0E10h
+18,grid_visibility_ray,57,global_or_classification_base,8956e8,"mov [bp-18h],dx"
+18,grid_visibility_ray,60,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+18,grid_visibility_ray,61,call_or_branch,7406,je short 0D56h
+18,grid_visibility_ray,62,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+18,grid_visibility_ray,63,call_or_branch,eb04,jmp short 0D59h
+18,grid_visibility_ray,64,global_or_classification_base,037ef8,"add di,[bp-8]"
+18,grid_visibility_ray,65,global_or_classification_base,837ee800,"cmp word ptr [bp-18h],0"
+18,grid_visibility_ray,66,call_or_branch,7d09,jge short 0D68h
+18,grid_visibility_ray,67,global_or_classification_base,8b46ee,"mov ax,[bp-12h]"
+18,grid_visibility_ray,68,global_or_classification_base,0146e8,"add [bp-18h],ax"
+18,grid_visibility_ray,69,call_or_branch,eb16,jmp short 0D7Dh
+18,grid_visibility_ray,70,global_or_classification_base,8b46ec,"mov ax,[bp-14h]"
+18,grid_visibility_ray,71,global_or_classification_base,0146e8,"add [bp-18h],ax"
+18,grid_visibility_ray,72,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+18,grid_visibility_ray,73,call_or_branch,7406,je short 0D7Ah
+18,grid_visibility_ray,74,global_or_classification_base,037ef8,"add di,[bp-8]"
+18,grid_visibility_ray,75,call_or_branch,eb04,jmp short 0D7Dh
+18,grid_visibility_ray,76,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+18,grid_visibility_ray,77,global_or_classification_base,3976f2,"cmp [bp-0Eh],si"
+18,grid_visibility_ray,78,call_or_branch,7507,jne short 0D89h
+18,grid_visibility_ray,79,global_or_classification_base,397ef0,"cmp [bp-10h],di"
+18,grid_visibility_ray,80,call_or_branch,0f848100,je 0E0Ah
+18,grid_visibility_ray,85,map_grid_near_base,81c33e37,"add bx,373Eh"
+18,grid_visibility_ray,86,global_or_classification_base,8e066625,"mov es,[2566h]"
+18,grid_visibility_ray,87,global_or_classification_base,895efc,"mov [bp-4],bx"
+18,grid_visibility_ray,88,global_or_classification_base,8c46fe,"mov [bp-2],es"
+18,grid_visibility_ray,91,global_or_classification_base,8a870ad0,"mov al,[bx-2FF6h]"
+18,grid_visibility_ray,92,global_or_classification_base,8846fa,"mov [bp-6],al"
+18,grid_visibility_ray,93,global_or_classification_base,f646fa02,"test byte ptr [bp-6],2"
+18,grid_visibility_ray,94,call_or_branch,7426,je short 0DD8h
+18,grid_visibility_ray,95,global_or_classification_base,f646fa04,"test byte ptr [bp-6],4"
+18,grid_visibility_ray,96,call_or_branch,7558,jne short 0E10h
+18,grid_visibility_ray,97,global_or_classification_base,f646fa08,"test byte ptr [bp-6],8"
+18,grid_visibility_ray,98,call_or_branch,741a,je short 0DD8h
+18,grid_visibility_ray,100,global_or_classification_base,ff76fc,push word ptr [bp-4]
+18,grid_visibility_ray,101,call_or_branch,9a00000000,"call far 0,0"
+18,grid_visibility_ray,105,call_or_branch,9ae0010000,"call far 01E0h,0"
+18,grid_visibility_ray,108,call_or_branch,7438,je short 0E10h
+18,grid_visibility_ray,110,call_or_branch,741c,je short 0DFAh
+18,grid_visibility_ray,111,global_or_classification_base,c45efc,"les bx,[bp-4]"
+18,grid_visibility_ray,114,global_or_classification_base,8a870ad1,"mov al,[bx-2EF6h]"
+18,grid_visibility_ray,115,global_or_classification_base,8846eb,"mov [bp-15h],al"
+18,grid_visibility_ray,116,global_or_classification_base,f646eb02,"test byte ptr [bp-15h],2"
+18,grid_visibility_ray,117,call_or_branch,7406,je short 0DFAh
+18,grid_visibility_ray,118,global_or_classification_base,f646eb20,"test byte ptr [bp-15h],20h"
+18,grid_visibility_ray,119,call_or_branch,7416,je short 0E10h
+18,grid_visibility_ray,121,global_or_classification_base,ff46f4,inc word ptr [bp-0Ch]
+18,grid_visibility_ray,122,global_or_classification_base,3946f4,"cmp [bp-0Ch],ax"
+18,grid_visibility_ray,123,call_or_branch,0f8c43ff,jl 0D4Ah
+18,grid_visibility_ray,124,call_or_branch,eb07,jmp short 0E10h
+19,source_player_visibility_gate,6,global_or_classification_base,8946f8,"mov [bp-8],ax"
+19,source_player_visibility_gate,9,global_or_classification_base,894ef6,"mov [bp-0Ah],cx"
+19,source_player_visibility_gate,10,global_or_classification_base,362b065e41,"sub ax,ss:[415Eh]"
+19,source_player_visibility_gate,12,global_or_classification_base,8946fc,"mov [bp-4],ax"
+19,source_player_visibility_gate,13,global_or_classification_base,362b0e6041,"sub cx,ss:[4160h]"
+19,source_player_visibility_gate,15,global_or_classification_base,894efa,"mov [bp-6],cx"
+19,source_player_visibility_gate,27,call_or_branch,0f8fb000,jg 07CAh
+19,source_player_visibility_gate,29,call_or_branch,0f8fa900,jg 07CAh
+19,source_player_visibility_gate,31,call_or_branch,7579,jne short 07A0h
+19,source_player_visibility_gate,34,call_or_branch,7c04,jl short 0732h
+19,source_player_visibility_gate,36,call_or_branch,eb02,jmp short 0734h
+19,source_player_visibility_gate,46,global_or_classification_base,894ef4,"mov [bp-0Ch],cx"
+19,source_player_visibility_gate,49,global_or_classification_base,894ef2,"mov [bp-0Eh],cx"
+19,source_player_visibility_gate,50,global_or_classification_base,8a4ef4,"mov cl,[bp-0Ch]"
+19,source_player_visibility_gate,52,global_or_classification_base,8a4ef2,"mov cl,[bp-0Eh]"
+19,source_player_visibility_gate,54,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+19,source_player_visibility_gate,62,global_or_classification_base,225ef0,"and bl,[bp-10h]"
+19,source_player_visibility_gate,63,global_or_classification_base,895eee,"mov [bp-12h],bx"
+19,source_player_visibility_gate,64,global_or_classification_base,837efa00,"cmp word ptr [bp-6],0"
+19,source_player_visibility_gate,65,call_or_branch,7c05,jl short 077Eh
+19,source_player_visibility_gate,67,call_or_branch,eb03,jmp short 0780h
+19,source_player_visibility_gate,69,global_or_classification_base,2246ee,"and al,[bp-12h]"
+19,source_player_visibility_gate,70,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+19,source_player_visibility_gate,71,global_or_classification_base,837efc00,"cmp word ptr [bp-4],0"
+19,source_player_visibility_gate,72,call_or_branch,7c04,jl short 0790h
+19,source_player_visibility_gate,74,call_or_branch,eb02,jmp short 0792h
+19,source_player_visibility_gate,76,global_or_classification_base,8446ec,"test [bp-14h],al"
+19,source_player_visibility_gate,77,call_or_branch,7509,jne short 07A0h
+19,source_player_visibility_gate,88,call_or_branch,7504,jne short 07ACh
+19,source_player_visibility_gate,90,call_or_branch,eb02,jmp short 07AEh
+19,source_player_visibility_gate,94,global_or_classification_base,ff76fa,push word ptr [bp-6]
+19,source_player_visibility_gate,95,global_or_classification_base,ff76fc,push word ptr [bp-4]
+19,source_player_visibility_gate,96,global_or_classification_base,ff76f6,push word ptr [bp-0Ah]
+19,source_player_visibility_gate,97,global_or_classification_base,ff76f8,push word ptr [bp-8]
+19,source_player_visibility_gate,98,call_or_branch,9ab40ce70a,"call far 0CB4h,0AE7h"
+19,grid_visibility_ray,6,call_or_branch,7e05,jle short 0CCAh
+19,grid_visibility_ray,8,call_or_branch,eb03,jmp short 0CCDh
+19,grid_visibility_ray,10,global_or_classification_base,8946f8,"mov [bp-8],ax"
+19,grid_visibility_ray,12,call_or_branch,7e06,jle short 0CDAh
+19,grid_visibility_ray,14,call_or_branch,eb04,jmp short 0CDDh
+19,grid_visibility_ray,16,global_or_classification_base,8946f6,"mov [bp-0Ah],ax"
+19,grid_visibility_ray,19,global_or_classification_base,8946f2,"mov [bp-0Eh],ax"
+19,grid_visibility_ray,22,global_or_classification_base,8946f0,"mov [bp-10h],ax"
+19,grid_visibility_ray,34,call_or_branch,7d16,jge short 0D1Ch
+19,grid_visibility_ray,35,global_or_classification_base,c646fb01,"mov byte ptr [bp-5],1"
+19,grid_visibility_ray,40,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+19,grid_visibility_ray,43,call_or_branch,eb14,jmp short 0D2Fh
+19,grid_visibility_ray,44,global_or_classification_base,c646fb00,"mov byte ptr [bp-5],0"
+19,grid_visibility_ray,49,global_or_classification_base,8946ee,"mov [bp-12h],ax"
+19,grid_visibility_ray,53,global_or_classification_base,8946ec,"mov [bp-14h],ax"
+19,grid_visibility_ray,54,global_or_classification_base,c746f40000,"mov word ptr [bp-0Ch],0"
+19,grid_visibility_ray,56,call_or_branch,0f8ecf00,jle 0E10h
+19,grid_visibility_ray,57,global_or_classification_base,8956e8,"mov [bp-18h],dx"
+19,grid_visibility_ray,60,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+19,grid_visibility_ray,61,call_or_branch,7406,je short 0D56h
+19,grid_visibility_ray,62,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+19,grid_visibility_ray,63,call_or_branch,eb04,jmp short 0D59h
+19,grid_visibility_ray,64,global_or_classification_base,037ef8,"add di,[bp-8]"
+19,grid_visibility_ray,65,global_or_classification_base,837ee800,"cmp word ptr [bp-18h],0"
+19,grid_visibility_ray,66,call_or_branch,7d09,jge short 0D68h
+19,grid_visibility_ray,67,global_or_classification_base,8b46ee,"mov ax,[bp-12h]"
+19,grid_visibility_ray,68,global_or_classification_base,0146e8,"add [bp-18h],ax"
+19,grid_visibility_ray,69,call_or_branch,eb16,jmp short 0D7Dh
+19,grid_visibility_ray,70,global_or_classification_base,8b46ec,"mov ax,[bp-14h]"
+19,grid_visibility_ray,71,global_or_classification_base,0146e8,"add [bp-18h],ax"
+19,grid_visibility_ray,72,global_or_classification_base,807efb00,"cmp byte ptr [bp-5],0"
+19,grid_visibility_ray,73,call_or_branch,7406,je short 0D7Ah
+19,grid_visibility_ray,74,global_or_classification_base,037ef8,"add di,[bp-8]"
+19,grid_visibility_ray,75,call_or_branch,eb04,jmp short 0D7Dh
+19,grid_visibility_ray,76,global_or_classification_base,0376f6,"add si,[bp-0Ah]"
+19,grid_visibility_ray,77,global_or_classification_base,3976f2,"cmp [bp-0Eh],si"
+19,grid_visibility_ray,78,call_or_branch,7507,jne short 0D89h
+19,grid_visibility_ray,79,global_or_classification_base,397ef0,"cmp [bp-10h],di"
+19,grid_visibility_ray,80,call_or_branch,0f848100,je 0E0Ah
+19,grid_visibility_ray,85,map_grid_near_base,81c33e37,"add bx,373Eh"
+19,grid_visibility_ray,86,global_or_classification_base,8e066625,"mov es,[2566h]"
+19,grid_visibility_ray,87,global_or_classification_base,895efc,"mov [bp-4],bx"
+19,grid_visibility_ray,88,global_or_classification_base,8c46fe,"mov [bp-2],es"
+19,grid_visibility_ray,91,global_or_classification_base,8a870ad0,"mov al,[bx-2FF6h]"
+19,grid_visibility_ray,92,global_or_classification_base,8846fa,"mov [bp-6],al"
+19,grid_visibility_ray,93,global_or_classification_base,f646fa02,"test byte ptr [bp-6],2"
+19,grid_visibility_ray,94,call_or_branch,7426,je short 0DD8h
+19,grid_visibility_ray,95,global_or_classification_base,f646fa04,"test byte ptr [bp-6],4"
+19,grid_visibility_ray,96,call_or_branch,7558,jne short 0E10h
+19,grid_visibility_ray,97,global_or_classification_base,f646fa08,"test byte ptr [bp-6],8"
+19,grid_visibility_ray,98,call_or_branch,741a,je short 0DD8h
+19,grid_visibility_ray,100,global_or_classification_base,ff76fc,push word ptr [bp-4]
+19,grid_visibility_ray,101,call_or_branch,9a00000000,"call far 0,0"
+19,grid_visibility_ray,105,call_or_branch,9ae0010000,"call far 01E0h,0"
+19,grid_visibility_ray,108,call_or_branch,7438,je short 0E10h
+19,grid_visibility_ray,110,call_or_branch,741c,je short 0DFAh
+19,grid_visibility_ray,111,global_or_classification_base,c45efc,"les bx,[bp-4]"
+19,grid_visibility_ray,114,global_or_classification_base,8a870ad1,"mov al,[bx-2EF6h]"
+19,grid_visibility_ray,115,global_or_classification_base,8846eb,"mov [bp-15h],al"
+19,grid_visibility_ray,116,global_or_classification_base,f646eb02,"test byte ptr [bp-15h],2"
+19,grid_visibility_ray,117,call_or_branch,7406,je short 0DFAh
+19,grid_visibility_ray,118,global_or_classification_base,f646eb20,"test byte ptr [bp-15h],20h"
+19,grid_visibility_ray,119,call_or_branch,7416,je short 0E10h
+19,grid_visibility_ray,121,global_or_classification_base,ff46f4,inc word ptr [bp-0Ch]
+19,grid_visibility_ray,122,global_or_classification_base,3946f4,"cmp [bp-0Ch],ax"
+19,grid_visibility_ray,123,call_or_branch,0f8c43ff,jl 0D4Ah
+19,grid_visibility_ray,124,call_or_branch,eb07,jmp short 0E10h

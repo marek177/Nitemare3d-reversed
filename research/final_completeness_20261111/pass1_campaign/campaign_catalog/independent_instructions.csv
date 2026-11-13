@@ -3489,6 +3489,252 @@ apply_frame_state,21769,1223,2201,2688440b,"mov es:[si+0Bh],al",new independent 
 apply_frame_state,21773,1223,2205,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
 apply_frame_state,21774,1223,2206,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
 apply_frame_state,21775,1223,2207,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+source_player_visibility_gate,21314,1223,1746,c8140000,"enter 14h,0",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21318,1223,1750,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21319,1223,1751,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21320,1223,1752,c55e0a,"lds bx,[bp+0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21323,1223,1755,8b4710,"mov ax,[bx+10h]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21326,1223,1758,c1f806,"sar ax,6",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21329,1223,1761,8946f8,"mov [bp-8],ax",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21332,1223,1764,8b4f12,"mov cx,[bx+12h]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21335,1223,1767,c1f906,"sar cx,6",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21338,1223,1770,894ef6,"mov [bp-0Ah],cx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21341,1223,1773,362b065e41,"sub ax,ss:[415Eh]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21346,1223,1778,f7d8,neg ax,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21348,1223,1780,8946fc,"mov [bp-4],ax",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21351,1223,1783,362b0e6041,"sub cx,ss:[4160h]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21356,1223,1788,f7d9,neg cx,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21358,1223,1790,894efa,"mov [bp-6],cx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21361,1223,1793,99,cwd,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21362,1223,1794,33c2,"xor ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21364,1223,1796,2bc2,"sub ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21366,1223,1798,8bd0,"mov dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21368,1223,1800,8bc1,"mov ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21370,1223,1802,8bca,"mov cx,dx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21372,1223,1804,99,cwd,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21373,1223,1805,33c2,"xor ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21375,1223,1807,2bc2,"sub ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21377,1223,1809,8bf0,"mov si,ax",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21379,1223,1811,83f908,"cmp cx,8",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21382,1223,1814,0f8fb000,jg 07CAh,new independent decode; no historical text imported,3,21562,PARTIAL
+source_player_visibility_gate,21386,1223,1818,83fe08,"cmp si,8",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21389,1223,1821,0f8fa900,jg 07CAh,new independent decode; no historical text imported,3,21562,PARTIAL
+source_player_visibility_gate,21393,1223,1825,837e1000,"cmp word ptr [bp+10h],0",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21397,1223,1829,7579,jne short 07A0h,new independent decode; no historical text imported,3,21520,PARTIAL
+source_player_visibility_gate,21399,1223,1831,c47e06,"les di,[bp+6]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21402,1223,1834,3bc8,"cmp cx,ax",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21404,1223,1836,7c04,jl short 0732h,new independent decode; no historical text imported,3,21410,PARTIAL
+source_player_visibility_gate,21406,1223,1838,b066,"mov al,66h",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21408,1223,1840,eb02,jmp short 0734h,new independent decode; no historical text imported,1,21412,PARTIAL
+source_player_visibility_gate,21410,1223,1842,b099,"mov al,99h",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21412,1223,1844,268a4d11,"mov cl,es:[di+11h]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21416,1223,1848,8bd1,"mov dx,cx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21418,1223,1850,fec9,dec cl,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21420,1223,1852,80e107,"and cl,7",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21423,1223,1855,b301,"mov bl,1",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21425,1223,1857,8bd9,"mov bx,cx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21427,1223,1859,8acb,"mov cl,bl",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21429,1223,1861,b301,"mov bl,1",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21431,1223,1863,894ef4,"mov [bp-0Ch],cx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21434,1223,1866,8aca,"mov cl,dl",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21436,1223,1868,02cb,"add cl,bl",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21438,1223,1870,894ef2,"mov [bp-0Eh],cx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21441,1223,1873,8a4ef4,"mov cl,[bp-0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21444,1223,1876,d2e3,"shl bl,cl",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21446,1223,1878,8a4ef2,"mov cl,[bp-0Eh]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21449,1223,1881,80e107,"and cl,7",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21452,1223,1884,8946f0,"mov [bp-10h],ax",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21455,1223,1887,b001,"mov al,1",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21457,1223,1889,d2e0,"shl al,cl",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21459,1223,1891,0ad8,"or bl,al",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21461,1223,1893,8aca,"mov cl,dl",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21463,1223,1895,b001,"mov al,1",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21465,1223,1897,d2e0,"shl al,cl",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21467,1223,1899,0ad8,"or bl,al",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21469,1223,1901,225ef0,"and bl,[bp-10h]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21472,1223,1904,895eee,"mov [bp-12h],bx",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21475,1223,1907,837efa00,"cmp word ptr [bp-6],0",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21479,1223,1911,7c05,jl short 077Eh,new independent decode; no historical text imported,3,21486,PARTIAL
+source_player_visibility_gate,21481,1223,1913,b03c,"mov al,3Ch",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21483,1223,1915,eb03,jmp short 0780h,new independent decode; no historical text imported,1,21488,PARTIAL
+source_player_visibility_gate,21486,1223,1918,b0c3,"mov al,0C3h",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21488,1223,1920,2246ee,"and al,[bp-12h]",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21491,1223,1923,8946ec,"mov [bp-14h],ax",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21494,1223,1926,837efc00,"cmp word ptr [bp-4],0",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21498,1223,1930,7c04,jl short 0790h,new independent decode; no historical text imported,3,21504,PARTIAL
+source_player_visibility_gate,21500,1223,1932,b00f,"mov al,0Fh",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21502,1223,1934,eb02,jmp short 0792h,new independent decode; no historical text imported,1,21506,PARTIAL
+source_player_visibility_gate,21504,1223,1936,b0f0,"mov al,0F0h",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21506,1223,1938,8446ec,"test [bp-14h],al",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21509,1223,1941,7509,jne short 07A0h,new independent decode; no historical text imported,3,21520,PARTIAL
+source_player_visibility_gate,21511,1223,1943,32c0,"xor al,al",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21513,1223,1945,16,push ss,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21514,1223,1946,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21515,1223,1947,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21516,1223,1948,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21517,1223,1949,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21518,1223,1950,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+source_player_visibility_gate,21520,1223,1952,16,push ss,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21521,1223,1953,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21522,1223,1954,837e0e01,"cmp word ptr [bp+0Eh],1",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21526,1223,1958,7504,jne short 07ACh,new independent decode; no historical text imported,3,21532,PARTIAL
+source_player_visibility_gate,21528,1223,1960,b001,"mov al,1",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21530,1223,1962,eb02,jmp short 07AEh,new independent decode; no historical text imported,1,21534,PARTIAL
+source_player_visibility_gate,21532,1223,1964,32c0,"xor al,al",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21534,1223,1966,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21535,1223,1967,6a08,push 8,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21537,1223,1969,ff76fa,push word ptr [bp-6],new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21540,1223,1972,ff76fc,push word ptr [bp-4],new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21543,1223,1975,ff76f6,push word ptr [bp-0Ah],new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21546,1223,1978,ff76f8,push word ptr [bp-8],new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21549,1223,1981,9ac00cea0a,"call far 0CC0h,0AEAh",new independent decode; no historical text imported,5,19568,PARTIAL
+source_player_visibility_gate,21554,1223,1986,83c40c,"add sp,0Ch",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21557,1223,1989,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21558,1223,1990,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21559,1223,1991,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21560,1223,1992,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+source_player_visibility_gate,21562,1223,1994,16,push ss,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21563,1223,1995,1f,pop ds,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21564,1223,1996,32c0,"xor al,al",new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21566,1223,1998,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21567,1223,1999,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21568,1223,2000,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+source_player_visibility_gate,21569,1223,2001,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+grid_visibility_ray,47968,2794,3264,c8180000,"enter 18h,0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47972,2794,3268,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47973,2794,3269,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47974,2794,3270,8b4e0a,"mov cx,[bp+0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47977,2794,3273,8b5e0c,"mov bx,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47980,2794,3276,83fb00,"cmp bx,0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47983,2794,3279,7e05,jle short 0CD6h,new independent decode; no historical text imported,3,47990,PARTIAL
+grid_visibility_ray,47985,2794,3281,b80100,"mov ax,1",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47988,2794,3284,eb03,jmp short 0CD9h,new independent decode; no historical text imported,1,47993,PARTIAL
+grid_visibility_ray,47990,2794,3286,b8ffff,"mov ax,0FFFFh",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47993,2794,3289,8946f8,"mov [bp-8],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47996,2794,3292,0bc9,"or cx,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,47998,2794,3294,7e06,jle short 0CE6h,new independent decode; no historical text imported,3,48006,PARTIAL
+grid_visibility_ray,48000,2794,3296,b80100,"mov ax,1",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48003,2794,3299,eb04,jmp short 0CE9h,new independent decode; no historical text imported,1,48009,PARTIAL
+grid_visibility_ray,48006,2794,3302,b8ffff,"mov ax,0FFFFh",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48009,2794,3305,8946f6,"mov [bp-0Ah],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48012,2794,3308,8b4606,"mov ax,[bp+6]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48015,2794,3311,03c1,"add ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48017,2794,3313,8946f2,"mov [bp-0Eh],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48020,2794,3316,8b4608,"mov ax,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48023,2794,3319,03c3,"add ax,bx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48025,2794,3321,8946f0,"mov [bp-10h],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48028,2794,3324,8bc1,"mov ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48030,2794,3326,99,cwd,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48031,2794,3327,33c2,"xor ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48033,2794,3329,2bc2,"sub ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48035,2794,3331,8bc8,"mov cx,ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48037,2794,3333,8bc3,"mov ax,bx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48039,2794,3335,99,cwd,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48040,2794,3336,33c2,"xor ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48042,2794,3338,2bc2,"sub ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48044,2794,3340,8bd8,"mov bx,ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48046,2794,3342,3bd9,"cmp bx,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48048,2794,3344,7d16,jge short 0D28h,new independent decode; no historical text imported,3,48072,PARTIAL
+grid_visibility_ray,48050,2794,3346,c646fb01,"mov byte ptr [bp-5],1",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48054,2794,3350,8bd0,"mov dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48056,2794,3352,03d0,"add dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48058,2794,3354,8bc2,"mov ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48060,2794,3356,2bd1,"sub dx,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48062,2794,3358,8946ee,"mov [bp-12h],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48065,2794,3361,8bc3,"mov ax,bx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48067,2794,3363,2bc1,"sub ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48069,2794,3365,eb14,jmp short 0D3Bh,new independent decode; no historical text imported,1,48091,PARTIAL
+grid_visibility_ray,48072,2794,3368,c646fb00,"mov byte ptr [bp-5],0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48076,2794,3372,8bd1,"mov dx,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48078,2794,3374,03d1,"add dx,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48080,2794,3376,8bc2,"mov ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48082,2794,3378,2bd3,"sub dx,bx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48084,2794,3380,8946ee,"mov [bp-12h],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48087,2794,3383,8bc1,"mov ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48089,2794,3385,2bc3,"sub ax,bx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48091,2794,3387,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48093,2794,3389,8946ec,"mov [bp-14h],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48096,2794,3392,c746f40000,"mov word ptr [bp-0Ch],0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48101,2794,3397,837e0e00,"cmp word ptr [bp+0Eh],0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48105,2794,3401,0f8ecf00,jle 0E1Ch,new independent decode; no historical text imported,3,48316,PARTIAL
+grid_visibility_ray,48109,2794,3405,8956e8,"mov [bp-18h],dx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48112,2794,3408,8b7606,"mov si,[bp+6]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48115,2794,3411,8b7e08,"mov di,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48118,2794,3414,807efb00,"cmp byte ptr [bp-5],0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48122,2794,3418,7406,je short 0D62h,new independent decode; no historical text imported,3,48130,PARTIAL
+grid_visibility_ray,48124,2794,3420,0376f6,"add si,[bp-0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48127,2794,3423,eb04,jmp short 0D65h,new independent decode; no historical text imported,1,48133,PARTIAL
+grid_visibility_ray,48130,2794,3426,037ef8,"add di,[bp-8]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48133,2794,3429,837ee800,"cmp word ptr [bp-18h],0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48137,2794,3433,7d09,jge short 0D74h,new independent decode; no historical text imported,3,48148,PARTIAL
+grid_visibility_ray,48139,2794,3435,8b46ee,"mov ax,[bp-12h]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48142,2794,3438,0146e8,"add [bp-18h],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48145,2794,3441,eb16,jmp short 0D89h,new independent decode; no historical text imported,1,48169,PARTIAL
+grid_visibility_ray,48148,2794,3444,8b46ec,"mov ax,[bp-14h]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48151,2794,3447,0146e8,"add [bp-18h],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48154,2794,3450,807efb00,"cmp byte ptr [bp-5],0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48158,2794,3454,7406,je short 0D86h,new independent decode; no historical text imported,3,48166,PARTIAL
+grid_visibility_ray,48160,2794,3456,037ef8,"add di,[bp-8]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48163,2794,3459,eb04,jmp short 0D89h,new independent decode; no historical text imported,1,48169,PARTIAL
+grid_visibility_ray,48166,2794,3462,0376f6,"add si,[bp-0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48169,2794,3465,3976f2,"cmp [bp-0Eh],si",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48172,2794,3468,7507,jne short 0D95h,new independent decode; no historical text imported,3,48181,PARTIAL
+grid_visibility_ray,48174,2794,3470,397ef0,"cmp [bp-10h],di",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48177,2794,3473,0f848100,je 0E16h,new independent decode; no historical text imported,3,48310,PARTIAL
+grid_visibility_ray,48181,2794,3477,8bdf,"mov bx,di",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48183,2794,3479,c1e306,"shl bx,6",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48186,2794,3482,03de,"add bx,si",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48188,2794,3484,03db,"add bx,bx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48190,2794,3486,81c33e37,"add bx,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48194,2794,3490,8e066825,"mov es,[2568h]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48198,2794,3494,895efc,"mov [bp-4],bx",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48201,2794,3497,8c46fe,"mov [bp-2],es",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48204,2794,3500,268a1f,"mov bl,es:[bx]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48207,2794,3503,2aff,"sub bh,bh",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48209,2794,3505,8a870cd0,"mov al,[bx-2FF4h]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48213,2794,3509,8846fa,"mov [bp-6],al",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48216,2794,3512,f646fa02,"test byte ptr [bp-6],2",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48220,2794,3516,7426,je short 0DE4h,new independent decode; no historical text imported,3,48260,PARTIAL
+grid_visibility_ray,48222,2794,3518,f646fa04,"test byte ptr [bp-6],4",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48226,2794,3522,7558,jne short 0E1Ch,new independent decode; no historical text imported,3,48316,PARTIAL
+grid_visibility_ray,48228,2794,3524,f646fa08,"test byte ptr [bp-6],8",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48232,2794,3528,741a,je short 0DE4h,new independent decode; no historical text imported,3,48260,PARTIAL
+grid_visibility_ray,48234,2794,3530,06,push es,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48235,2794,3531,ff76fc,push word ptr [bp-4],new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48238,2794,3534,9a00000000,"call far 0,0",new independent decode; no historical text imported,5,44704,PARTIAL
+grid_visibility_ray,48243,2794,3539,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48246,2794,3542,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48247,2794,3543,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48248,2794,3544,9ae0010000,"call far 01E0h,0",new independent decode; no historical text imported,5,44704,PARTIAL
+grid_visibility_ray,48253,2794,3549,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48256,2794,3552,0ac0,"or al,al",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48258,2794,3554,7438,je short 0E1Ch,new independent decode; no historical text imported,3,48316,PARTIAL
+grid_visibility_ray,48260,2794,3556,807e1000,"cmp byte ptr [bp+10h],0",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48264,2794,3560,741c,je short 0E06h,new independent decode; no historical text imported,3,48294,PARTIAL
+grid_visibility_ray,48266,2794,3562,c45efc,"les bx,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48269,2794,3565,268a5f01,"mov bl,es:[bx+1]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48273,2794,3569,2aff,"sub bh,bh",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48275,2794,3571,8a870cd1,"mov al,[bx-2EF4h]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48279,2794,3575,8846eb,"mov [bp-15h],al",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48282,2794,3578,f646eb02,"test byte ptr [bp-15h],2",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48286,2794,3582,7406,je short 0E06h,new independent decode; no historical text imported,3,48294,PARTIAL
+grid_visibility_ray,48288,2794,3584,f646eb20,"test byte ptr [bp-15h],20h",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48292,2794,3588,7416,je short 0E1Ch,new independent decode; no historical text imported,3,48316,PARTIAL
+grid_visibility_ray,48294,2794,3590,8b460e,"mov ax,[bp+0Eh]",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48297,2794,3593,ff46f4,inc word ptr [bp-0Ch],new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48300,2794,3596,3946f4,"cmp [bp-0Ch],ax",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48303,2794,3599,0f8c43ff,jl 0D56h,new independent decode; no historical text imported,3,48118,PARTIAL
+grid_visibility_ray,48307,2794,3603,eb07,jmp short 0E1Ch,new independent decode; no historical text imported,1,48316,PARTIAL
+grid_visibility_ray,48310,2794,3606,b001,"mov al,1",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48312,2794,3608,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48313,2794,3609,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48314,2794,3610,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48315,2794,3611,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+grid_visibility_ray,48316,2794,3612,32c0,"xor al,al",new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48318,2794,3614,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48319,2794,3615,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48320,2794,3616,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+grid_visibility_ray,48321,2794,3617,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
 normalize_es_di,107040,5567,17968,50,push ax,push ax,0,,PARTIAL
 normalize_es_di,107041,5567,17969,52,push dx,push dx,0,,PARTIAL
 normalize_es_di,107042,5567,17970,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL
