@@ -8,7 +8,8 @@ root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_mov
 
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
 
-receipt_path=root/'CAMPAIGN_REACTIONCHAIN_PUBLICATION_RECEIPT_20261113.json'
+receipt_path=root/'CAMPAIGN_SOUNDFRAME_PUBLICATION_RECEIPT_20261113.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_REACTIONCHAIN_PUBLICATION_RECEIPT_20261113.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_DAMAGECONSUMER_PUBLICATION_RECEIPT_20261113.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_CRTSEEK_PUBLICATION_RECEIPT_20261113.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_MUSICPAIR_PUBLICATION_RECEIPT_20261112.json'
