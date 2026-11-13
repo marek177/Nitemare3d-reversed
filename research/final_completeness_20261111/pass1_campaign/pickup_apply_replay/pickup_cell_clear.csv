@@ -1,0 +1,9 @@
+cs,ip,image_offset,bytes,instruction
+2794,1794,46498,55,push bp
+2794,1795,46499,8bec,"mov bp,sp"
+2794,1797,46501,c45e06,"les bx,[bp+6]"
+2794,1800,46504,26c6470100,"mov byte ptr es:[bx+1],0"
+2794,1805,46509,c45e0a,"les bx,[bp+0Ah]"
+2794,1808,46512,26806705fe,"and byte ptr es:[bx+5],0FEh"
+2794,1813,46517,c9,leave
+2794,1814,46518,cb,ret far

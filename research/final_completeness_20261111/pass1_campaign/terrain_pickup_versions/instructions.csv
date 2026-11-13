@@ -1,0 +1,3305 @@
+version,function,cs,ip,image_offset,bytes,instruction
+20,special_terrain_dispatch,2109,8784,42528,55,push bp
+20,special_terrain_dispatch,2109,8785,42529,8bec,"mov bp,sp"
+20,special_terrain_dispatch,2109,8787,42531,8b0e6c62,"mov cx,[626Ch]"
+20,special_terrain_dispatch,2109,8791,42535,41,inc cx
+20,special_terrain_dispatch,2109,8792,42536,8a5e06,"mov bl,[bp+6]"
+20,special_terrain_dispatch,2109,8795,42539,2aff,"sub bh,bh"
+20,special_terrain_dispatch,2109,8797,42541,8a970ed3,"mov dl,[bx-2CF2h]"
+20,special_terrain_dispatch,2109,8801,42545,2af6,"sub dh,dh"
+20,special_terrain_dispatch,2109,8803,42547,a16a62,"mov ax,[626Ah]"
+20,special_terrain_dispatch,2109,8806,42550,48,dec ax
+20,special_terrain_dispatch,2109,8807,42551,740b,je short 2274h
+20,special_terrain_dispatch,2109,8809,42553,48,dec ax
+20,special_terrain_dispatch,2109,8810,42554,7476,je short 22E2h
+20,special_terrain_dispatch,2109,8812,42556,48,dec ax
+20,special_terrain_dispatch,2109,8813,42557,0f848100,je 22F2h
+20,special_terrain_dispatch,2109,8817,42561,e99c00,jmp 2310h
+20,special_terrain_dispatch,2109,8820,42564,8bc1,"mov ax,cx"
+20,special_terrain_dispatch,2109,8822,42566,2d0700,"sub ax,7"
+20,special_terrain_dispatch,2109,8825,42569,740b,je short 2286h
+20,special_terrain_dispatch,2109,8827,42571,48,dec ax
+20,special_terrain_dispatch,2109,8828,42572,48,dec ax
+20,special_terrain_dispatch,2109,8829,42573,7415,je short 2294h
+20,special_terrain_dispatch,2109,8831,42575,48,dec ax
+20,special_terrain_dispatch,2109,8832,42576,7448,je short 22CAh
+20,special_terrain_dispatch,2109,8834,42578,e98b00,jmp 2310h
+20,special_terrain_dispatch,2109,8838,42582,83fa47,"cmp dx,47h"
+20,special_terrain_dispatch,2109,8841,42585,0f858300,jne 2310h
+20,special_terrain_dispatch,2109,8845,42589,0e,push cs
+20,special_terrain_dispatch,2109,8846,42590,e8ddfe,call 216Eh
+20,special_terrain_dispatch,2109,8849,42593,eb7d,jmp short 2310h
+20,special_terrain_dispatch,2109,8852,42596,83fa47,"cmp dx,47h"
+20,special_terrain_dispatch,2109,8855,42599,751d,jne short 22B6h
+20,special_terrain_dispatch,2109,8857,42601,803e984100,"cmp byte ptr [4198h],0"
+20,special_terrain_dispatch,2109,8862,42606,7516,jne short 22B6h
+20,special_terrain_dispatch,2109,8864,42608,c606984101,"mov byte ptr [4198h],1"
+20,special_terrain_dispatch,2109,8869,42613,666800000200,data32 push 20000h
+20,special_terrain_dispatch,2109,8875,42619,6a44,push 44h
+20,special_terrain_dispatch,2109,8877,42621,9ad6032b0c,"call far 03D6h,0C2Bh"
+20,special_terrain_dispatch,2109,8882,42626,8be5,"mov sp,bp"
+20,special_terrain_dispatch,2109,8884,42628,c9,leave
+20,special_terrain_dispatch,2109,8885,42629,cb,ret far
+20,special_terrain_dispatch,2109,8886,42630,83fa48,"cmp dx,48h"
+20,special_terrain_dispatch,2109,8889,42633,7555,jne short 2310h
+20,special_terrain_dispatch,2109,8891,42635,803e984100,"cmp byte ptr [4198h],0"
+20,special_terrain_dispatch,2109,8896,42640,744e,je short 2310h
+20,special_terrain_dispatch,2109,8898,42642,c606984100,"mov byte ptr [4198h],0"
+20,special_terrain_dispatch,2109,8903,42647,ebdc,jmp short 22A5h
+20,special_terrain_dispatch,2109,8906,42650,83fa47,"cmp dx,47h"
+20,special_terrain_dispatch,2109,8909,42653,7507,jne short 22D6h
+20,special_terrain_dispatch,2109,8911,42655,0e,push cs
+20,special_terrain_dispatch,2109,8912,42656,e8c5fe,call 2198h
+20,special_terrain_dispatch,2109,8915,42659,c9,leave
+20,special_terrain_dispatch,2109,8916,42660,cb,ret far
+20,special_terrain_dispatch,2109,8918,42662,83fa48,"cmp dx,48h"
+20,special_terrain_dispatch,2109,8921,42665,7535,jne short 2310h
+20,special_terrain_dispatch,2109,8923,42667,0e,push cs
+20,special_terrain_dispatch,2109,8924,42668,e809ff,call 21E8h
+20,special_terrain_dispatch,2109,8927,42671,c9,leave
+20,special_terrain_dispatch,2109,8928,42672,cb,ret far
+20,special_terrain_dispatch,2109,8930,42674,83f90a,"cmp cx,0Ah"
+20,special_terrain_dispatch,2109,8933,42677,7529,jne short 2310h
+20,special_terrain_dispatch,2109,8935,42679,83fa47,"cmp dx,47h"
+20,special_terrain_dispatch,2109,8938,42682,7524,jne short 2310h
+20,special_terrain_dispatch,2109,8940,42684,0e,push cs
+20,special_terrain_dispatch,2109,8941,42685,e82cff,call 221Ch
+20,special_terrain_dispatch,2109,8944,42688,c9,leave
+20,special_terrain_dispatch,2109,8945,42689,cb,ret far
+20,special_terrain_dispatch,2109,8946,42690,83f901,"cmp cx,1"
+20,special_terrain_dispatch,2109,8949,42693,750b,jne short 2302h
+20,special_terrain_dispatch,2109,8951,42695,83fa47,"cmp dx,47h"
+20,special_terrain_dispatch,2109,8954,42698,7506,jne short 2302h
+20,special_terrain_dispatch,2109,8956,42700,0e,push cs
+20,special_terrain_dispatch,2109,8957,42701,e836ff,call 2236h
+20,special_terrain_dispatch,2109,8960,42704,c9,leave
+20,special_terrain_dispatch,2109,8961,42705,cb,ret far
+20,special_terrain_dispatch,2109,8962,42706,83f90a,"cmp cx,0Ah"
+20,special_terrain_dispatch,2109,8965,42709,7509,jne short 2310h
+20,special_terrain_dispatch,2109,8967,42711,83fa47,"cmp dx,47h"
+20,special_terrain_dispatch,2109,8970,42714,7504,jne short 2310h
+20,special_terrain_dispatch,2109,8972,42716,0e,push cs
+20,special_terrain_dispatch,2109,8973,42717,e8f2fe,call 2202h
+20,special_terrain_dispatch,2109,8976,42720,c9,leave
+20,special_terrain_dispatch,2109,8977,42721,cb,ret far
+20,terrain_ep1_level7,2109,8558,42302,803e0a4300,"cmp byte ptr [430Ah],0"
+20,terrain_ep1_level7,2109,8563,42307,7522,jne short 2197h
+20,terrain_ep1_level7,2109,8565,42309,0e,push cs
+20,terrain_ep1_level7,2109,8566,42310,e827ed,call 0EA0h
+20,terrain_ep1_level7,2109,8569,42313,b001,"mov al,1"
+20,terrain_ep1_level7,2109,8571,42315,a20a43,"mov [430Ah],al"
+20,terrain_ep1_level7,2109,8574,42318,a20e43,"mov [430Eh],al"
+20,terrain_ep1_level7,2109,8577,42321,0e,push cs
+20,terrain_ep1_level7,2109,8578,42322,e8ab06,call 2830h
+20,terrain_ep1_level7,2109,8581,42325,9a8a01de0b,"call far 018Ah,0BDEh"
+20,terrain_ep1_level7,2109,8586,42330,66ff36620e,push dword ptr [0E62h]
+20,terrain_ep1_level7,2109,8591,42335,9a5007290d,"call far 0750h,0D29h"
+20,terrain_ep1_level7,2109,8596,42340,83c404,"add sp,4"
+20,terrain_ep1_level7,2109,8599,42343,cb,ret far
+20,terrain_ep1_level10_A,2109,8600,42344,803e0a4300,"cmp byte ptr [430Ah],0"
+20,terrain_ep1_level10_A,2109,8605,42349,7547,jne short 21E6h
+20,terrain_ep1_level10_A,2109,8607,42351,666800000200,data32 push 20000h
+20,terrain_ep1_level10_A,2109,8613,42357,6a12,push 12h
+20,terrain_ep1_level10_A,2109,8615,42359,9ad6032b0c,"call far 03D6h,0C2Bh"
+20,terrain_ep1_level10_A,2109,8620,42364,83c406,"add sp,6"
+20,terrain_ep1_level10_A,2109,8623,42367,b001,"mov al,1"
+20,terrain_ep1_level10_A,2109,8625,42369,a20a43,"mov [430Ah],al"
+20,terrain_ep1_level10_A,2109,8628,42372,a20c43,"mov [430Ch],al"
+20,terrain_ep1_level10_A,2109,8631,42375,a25441,"mov [4154h],al"
+20,terrain_ep1_level10_A,2109,8634,42378,c606514100,"mov byte ptr [4151h],0"
+20,terrain_ep1_level10_A,2109,8639,42383,66ff36740f,push dword ptr [0F74h]
+20,terrain_ep1_level10_A,2109,8644,42388,9a5007290d,"call far 0750h,0D29h"
+20,terrain_ep1_level10_A,2109,8649,42393,83c404,"add sp,4"
+20,terrain_ep1_level10_A,2109,8652,42396,66ff36c80f,push dword ptr [0FC8h]
+20,terrain_ep1_level10_A,2109,8657,42401,9a5007290d,"call far 0750h,0D29h"
+20,terrain_ep1_level10_A,2109,8662,42406,83c404,"add sp,4"
+20,terrain_ep1_level10_A,2109,8665,42409,66ff36fa0f,push dword ptr [0FFAh]
+20,terrain_ep1_level10_A,2109,8670,42414,9a5007290d,"call far 0750h,0D29h"
+20,terrain_ep1_level10_A,2109,8675,42419,83c404,"add sp,4"
+20,terrain_ep1_level10_A,2109,8678,42422,cb,ret far
+20,terrain_ep1_level10_B,2109,8680,42424,803e0b4300,"cmp byte ptr [430Bh],0"
+20,terrain_ep1_level10_B,2109,8685,42429,7512,jne short 2201h
+20,terrain_ep1_level10_B,2109,8687,42431,c6060b4301,"mov byte ptr [430Bh],1"
+20,terrain_ep1_level10_B,2109,8692,42436,66ff363c10,push dword ptr [103Ch]
+20,terrain_ep1_level10_B,2109,8697,42441,9a5007290d,"call far 0750h,0D29h"
+20,terrain_ep1_level10_B,2109,8702,42446,83c404,"add sp,4"
+20,terrain_ep1_level10_B,2109,8705,42449,cb,ret far
+20,terrain_ep2_level10,2109,8732,42476,803e0a4300,"cmp byte ptr [430Ah],0"
+20,terrain_ep2_level10,2109,8737,42481,7512,jne short 2235h
+20,terrain_ep2_level10,2109,8739,42483,c6060a4301,"mov byte ptr [430Ah],1"
+20,terrain_ep2_level10,2109,8744,42488,66ff36a211,push dword ptr [11A2h]
+20,terrain_ep2_level10,2109,8749,42493,9a5007290d,"call far 0750h,0D29h"
+20,terrain_ep2_level10,2109,8754,42498,83c404,"add sp,4"
+20,terrain_ep2_level10,2109,8757,42501,cb,ret far
+20,terrain_ep3_level1,2109,8758,42502,803e0a4300,"cmp byte ptr [430Ah],0"
+20,terrain_ep3_level1,2109,8763,42507,7512,jne short 224Fh
+20,terrain_ep3_level1,2109,8765,42509,c6060a4301,"mov byte ptr [430Ah],1"
+20,terrain_ep3_level1,2109,8770,42514,66ff365a13,push dword ptr [135Ah]
+20,terrain_ep3_level1,2109,8775,42519,9a5007290d,"call far 0750h,0D29h"
+20,terrain_ep3_level1,2109,8780,42524,83c404,"add sp,4"
+20,terrain_ep3_level1,2109,8783,42527,cb,ret far
+20,terrain_ep3_level10,2109,8706,42450,803e0a4300,"cmp byte ptr [430Ah],0"
+20,terrain_ep3_level10,2109,8711,42455,7512,jne short 221Bh
+20,terrain_ep3_level10,2109,8713,42457,c6060a4301,"mov byte ptr [430Ah],1"
+20,terrain_ep3_level10,2109,8718,42462,66ff36b810,push dword ptr [10B8h]
+20,terrain_ep3_level10,2109,8723,42467,9a5007290d,"call far 0750h,0D29h"
+20,terrain_ep3_level10,2109,8728,42472,83c404,"add sp,4"
+20,terrain_ep3_level10,2109,8731,42475,cb,ret far
+20,sound_event42,2109,3744,37488,666800000200,data32 push 20000h
+20,sound_event42,2109,3750,37494,6a42,push 42h
+20,sound_event42,2109,3752,37496,9ad6032b0c,"call far 03D6h,0C2Bh"
+20,sound_event42,2109,3757,37501,83c406,"add sp,6"
+20,sound_event42,2109,3760,37504,cb,ret far
+20,sound_bank_selection,2109,10288,44032,803e0e4300,"cmp byte ptr [430Eh],0"
+20,sound_bank_selection,2109,10293,44037,7411,je short 2848h
+20,sound_bank_selection,2109,10295,44039,c70678620600,"mov word ptr [6278h],6"
+20,sound_bank_selection,2109,10301,44045,32c0,"xor al,al"
+20,sound_bank_selection,2109,10303,44047,a27a62,"mov [627Ah],al"
+20,sound_bank_selection,2109,10306,44050,a27b62,"mov [627Bh],al"
+20,sound_bank_selection,2109,10309,44053,eb3e,jmp short 2885h
+20,sound_bank_selection,2109,10312,44056,833ebc3c00,"cmp word ptr [3CBCh],0"
+20,sound_bank_selection,2109,10317,44061,7c09,jl short 2858h
+20,sound_bank_selection,2109,10319,44063,a1bc3c,"mov ax,[3CBCh]"
+20,sound_bank_selection,2109,10322,44066,a37862,"mov [6278h],ax"
+20,sound_bank_selection,2109,10325,44069,eb07,jmp short 285Eh
+20,sound_bank_selection,2109,10328,44072,c70678620200,"mov word ptr [6278h],2"
+20,sound_bank_selection,2109,10334,44078,833ebe3c00,"cmp word ptr [3CBEh],0"
+20,sound_bank_selection,2109,10339,44083,7c09,jl short 286Eh
+20,sound_bank_selection,2109,10341,44085,a0be3c,"mov al,[3CBEh]"
+20,sound_bank_selection,2109,10344,44088,a27a62,"mov [627Ah],al"
+20,sound_bank_selection,2109,10347,44091,eb06,jmp short 2873h
+20,sound_bank_selection,2109,10350,44094,c6067a6202,"mov byte ptr [627Ah],2"
+20,sound_bank_selection,2109,10355,44099,833ec03c00,"cmp word ptr [3CC0h],0"
+20,sound_bank_selection,2109,10360,44104,7c06,jl short 2880h
+20,sound_bank_selection,2109,10362,44106,a0c03c,"mov al,[3CC0h]"
+20,sound_bank_selection,2109,10365,44109,ebc3,jmp short 2842h
+20,sound_bank_selection,2109,10368,44112,c6067b6207,"mov byte ptr [627Bh],7"
+20,sound_bank_selection,2109,10373,44117,9a6e015601,"call far 016Eh,0156h"
+20,sound_bank_selection,2109,10378,44122,cb,ret far
+20,pickup_apply,2794,1816,46520,c8060000,"enter 6,0"
+20,pickup_apply,2794,1820,46524,57,push di
+20,pickup_apply,2794,1821,46525,56,push si
+20,pickup_apply,2794,1822,46526,8b7e06,"mov di,[bp+6]"
+20,pickup_apply,2794,1825,46529,c646ff01,"mov byte ptr [bp-1],1"
+20,pickup_apply,2794,1829,46533,ff7608,push word ptr [bp+8]
+20,pickup_apply,2794,1832,46536,57,push di
+20,pickup_apply,2794,1833,46537,0e,push cs
+20,pickup_apply,2794,1834,46538,e87bff,call 06A8h
+20,pickup_apply,2794,1837,46541,83c404,"add sp,4"
+20,pickup_apply,2794,1840,46544,8bf0,"mov si,ax"
+20,pickup_apply,2794,1842,46546,8956fc,"mov [bp-4],dx"
+20,pickup_apply,2794,1845,46549,0bd0,"or dx,ax"
+20,pickup_apply,2794,1847,46551,0f841902,je 0954h
+20,pickup_apply,2794,1851,46555,8e46fc,"mov es,[bp-4]"
+20,pickup_apply,2794,1854,46558,268a4406,"mov al,es:[si+6]"
+20,pickup_apply,2794,1858,46562,2ae4,"sub ah,ah"
+20,pickup_apply,2794,1860,46564,2d2f00,"sub ax,2Fh"
+20,pickup_apply,2794,1863,46567,3d0e00,"cmp ax,0Eh"
+20,pickup_apply,2794,1866,46570,0f87df01,ja 092Dh
+20,pickup_apply,2794,1870,46574,03c0,"add ax,ax"
+20,pickup_apply,2794,1872,46576,93,"xchg bx,ax"
+20,pickup_apply,2794,1873,46577,2effa75607,jmp word ptr cs:[bx+756h]
+20,pickup_apply,2794,1908,46612,268a4c01,"mov cl,es:[si+1]"
+20,pickup_apply,2794,1912,46616,b001,"mov al,1"
+20,pickup_apply,2794,1914,46618,d2e0,"shl al,cl"
+20,pickup_apply,2794,1916,46620,08069241,"or [4192h],al"
+20,pickup_apply,2794,1920,46624,6a0d,push 0Dh
+20,pickup_apply,2794,1922,46626,e98301,jmp 0908h
+20,pickup_apply,2794,1926,46630,268a4c01,"mov cl,es:[si+1]"
+20,pickup_apply,2794,1930,46634,b001,"mov al,1"
+20,pickup_apply,2794,1932,46636,d2e0,"shl al,cl"
+20,pickup_apply,2794,1934,46638,08069341,"or [4193h],al"
+20,pickup_apply,2794,1938,46642,6a0e,push 0Eh
+20,pickup_apply,2794,1940,46644,e97101,jmp 0908h
+20,pickup_apply,2794,1944,46648,6681068241c8000000,"add dword ptr [4182h],0C8h"
+20,pickup_apply,2794,1953,46657,6a04,push 4
+20,pickup_apply,2794,1955,46659,e96201,jmp 0908h
+20,pickup_apply,2794,1958,46662,803e8e4163,"cmp byte ptr [418Eh],63h"
+20,pickup_apply,2794,1963,46667,7d05,jge short 07B2h
+20,pickup_apply,2794,1965,46669,b001,"mov al,1"
+20,pickup_apply,2794,1967,46671,eb03,jmp short 07B4h
+20,pickup_apply,2794,1970,46674,32c0,"xor al,al"
+20,pickup_apply,2794,1972,46676,8846ff,"mov [bp-1],al"
+20,pickup_apply,2794,1975,46679,0ac0,"or al,al"
+20,pickup_apply,2794,1977,46681,0f847001,je 092Dh
+20,pickup_apply,2794,1981,46685,268a4c01,"mov cl,es:[si+1]"
+20,pickup_apply,2794,1985,46689,b001,"mov al,1"
+20,pickup_apply,2794,1987,46691,d2e0,"shl al,cl"
+20,pickup_apply,2794,1989,46693,00068e41,"add [418Eh],al"
+20,pickup_apply,2794,1993,46697,6a0b,push 0Bh
+20,pickup_apply,2794,1995,46699,e93a01,jmp 0908h
+20,pickup_apply,2794,1998,46702,803e894164,"cmp byte ptr [4189h],64h"
+20,pickup_apply,2794,2003,46707,7305,jae short 07DAh
+20,pickup_apply,2794,2005,46709,b001,"mov al,1"
+20,pickup_apply,2794,2007,46711,eb03,jmp short 07DCh
+20,pickup_apply,2794,2010,46714,32c0,"xor al,al"
+20,pickup_apply,2794,2012,46716,8846ff,"mov [bp-1],al"
+20,pickup_apply,2794,2015,46719,0ac0,"or al,al"
+20,pickup_apply,2794,2017,46721,0f844801,je 092Dh
+20,pickup_apply,2794,2021,46725,268a4c01,"mov cl,es:[si+1]"
+20,pickup_apply,2794,2025,46729,b81400,"mov ax,14h"
+20,pickup_apply,2794,2028,46732,d3f8,"sar ax,cl"
+20,pickup_apply,2794,2030,46734,00068941,"add [4189h],al"
+20,pickup_apply,2794,2034,46738,6a05,push 5
+20,pickup_apply,2794,2036,46740,9ad2053d08,"call far 05D2h,083Dh"
+20,pickup_apply,2794,2041,46745,83c402,"add sp,2"
+20,pickup_apply,2794,2044,46748,eba3,jmp short 07A1h
+20,pickup_apply,2794,2046,46750,803e894164,"cmp byte ptr [4189h],64h"
+20,pickup_apply,2794,2051,46755,7305,jae short 080Ah
+20,pickup_apply,2794,2053,46757,b001,"mov al,1"
+20,pickup_apply,2794,2055,46759,eb03,jmp short 080Ch
+20,pickup_apply,2794,2058,46762,32c0,"xor al,al"
+20,pickup_apply,2794,2060,46764,8846ff,"mov [bp-1],al"
+20,pickup_apply,2794,2063,46767,0ac0,"or al,al"
+20,pickup_apply,2794,2065,46769,0f841801,je 092Dh
+20,pickup_apply,2794,2069,46773,800689411e,"add byte ptr [4189h],1Eh"
+20,pickup_apply,2794,2074,46778,6681068241fa000000,"add dword ptr [4182h],0FAh"
+20,pickup_apply,2794,2083,46787,ebcd,jmp short 07F2h
+20,pickup_apply,2794,2086,46790,c606894164,"mov byte ptr [4189h],64h"
+20,pickup_apply,2794,2091,46795,c6068c4164,"mov byte ptr [418Ch],64h"
+20,pickup_apply,2794,2096,46800,6681068241f4010000,"add dword ptr [4182h],1F4h"
+20,pickup_apply,2794,2105,46809,fe068a41,inc byte ptr [418Ah]
+20,pickup_apply,2794,2109,46813,6a05,push 5
+20,pickup_apply,2794,2111,46815,9ad2053d08,"call far 05D2h,083Dh"
+20,pickup_apply,2794,2116,46820,83c402,"add sp,2"
+20,pickup_apply,2794,2119,46823,6a08,push 8
+20,pickup_apply,2794,2121,46825,9ad2053d08,"call far 05D2h,083Dh"
+20,pickup_apply,2794,2126,46830,83c402,"add sp,2"
+20,pickup_apply,2794,2129,46833,6a06,push 6
+20,pickup_apply,2794,2131,46835,eb9f,jmp short 07F4h
+20,pickup_apply,2794,2134,46838,268a4c01,"mov cl,es:[si+1]"
+20,pickup_apply,2794,2138,46842,b001,"mov al,1"
+20,pickup_apply,2794,2140,46844,d2e0,"shl al,cl"
+20,pickup_apply,2794,2142,46846,08069441,"or [4194h],al"
+20,pickup_apply,2794,2146,46850,268a4401,"mov al,es:[si+1]"
+20,pickup_apply,2794,2150,46854,2ae4,"sub ah,ah"
+20,pickup_apply,2794,2152,46856,50,push ax
+20,pickup_apply,2794,2153,46857,9aac0c3d08,"call far 0CACh,083Dh"
+20,pickup_apply,2794,2158,46862,83c402,"add sp,2"
+20,pickup_apply,2794,2161,46865,6a01,push 1
+20,pickup_apply,2794,2163,46867,8e46fc,"mov es,[bp-4]"
+20,pickup_apply,2794,2166,46870,268a4401,"mov al,es:[si+1]"
+20,pickup_apply,2794,2170,46874,2ae4,"sub ah,ah"
+20,pickup_apply,2794,2172,46876,50,push ax
+20,pickup_apply,2794,2173,46877,9aa60b3d08,"call far 0BA6h,083Dh"
+20,pickup_apply,2794,2178,46882,83c404,"add sp,4"
+20,pickup_apply,2794,2181,46885,6a0c,push 0Ch
+20,pickup_apply,2794,2183,46887,eb7f,jmp short 0908h
+20,pickup_apply,2794,2186,46890,268a4c01,"mov cl,es:[si+1]"
+20,pickup_apply,2794,2190,46894,b001,"mov al,1"
+20,pickup_apply,2794,2192,46896,d2e0,"shl al,cl"
+20,pickup_apply,2794,2194,46898,08069541,"or [4195h],al"
+20,pickup_apply,2794,2198,46902,6a0f,push 0Fh
+20,pickup_apply,2794,2200,46904,eb6e,jmp short 0908h
+20,pickup_apply,2794,2202,46906,803e8d4164,"cmp byte ptr [418Dh],64h"
+20,pickup_apply,2794,2207,46911,7d05,jge short 08A6h
+20,pickup_apply,2794,2209,46913,b001,"mov al,1"
+20,pickup_apply,2794,2211,46915,eb03,jmp short 08A8h
+20,pickup_apply,2794,2214,46918,32c0,"xor al,al"
+20,pickup_apply,2794,2216,46920,8846ff,"mov [bp-1],al"
+20,pickup_apply,2794,2219,46923,0ac0,"or al,al"
+20,pickup_apply,2794,2221,46925,747e,je short 092Dh
+20,pickup_apply,2794,2223,46927,80068d4114,"add byte ptr [418Dh],14h"
+20,pickup_apply,2794,2228,46932,6a0a,push 0Ah
+20,pickup_apply,2794,2230,46934,eb50,jmp short 0908h
+20,pickup_apply,2794,2232,46936,6a00,push 0
+20,pickup_apply,2794,2234,46938,268a4401,"mov al,es:[si+1]"
+20,pickup_apply,2794,2238,46942,2ae4,"sub ah,ah"
+20,pickup_apply,2794,2240,46944,50,push ax
+20,pickup_apply,2794,2241,46945,9aa60b3d08,"call far 0BA6h,083Dh"
+20,pickup_apply,2794,2246,46950,83c404,"add sp,4"
+20,pickup_apply,2794,2249,46953,8846ff,"mov [bp-1],al"
+20,pickup_apply,2794,2252,46956,eb5f,jmp short 092Dh
+20,pickup_apply,2794,2254,46958,803eae4164,"cmp byte ptr [41AEh],64h"
+20,pickup_apply,2794,2259,46963,7305,jae short 08DAh
+20,pickup_apply,2794,2261,46965,b001,"mov al,1"
+20,pickup_apply,2794,2263,46967,eb03,jmp short 08DCh
+20,pickup_apply,2794,2266,46970,32c0,"xor al,al"
+20,pickup_apply,2794,2268,46972,8846ff,"mov [bp-1],al"
+20,pickup_apply,2794,2271,46975,0ac0,"or al,al"
+20,pickup_apply,2794,2273,46977,744a,je short 092Dh
+20,pickup_apply,2794,2275,46979,8006ae4114,"add byte ptr [41AEh],14h"
+20,pickup_apply,2794,2280,46984,6a13,push 13h
+20,pickup_apply,2794,2282,46986,eb1c,jmp short 0908h
+20,pickup_apply,2794,2284,46988,803eaf4164,"cmp byte ptr [41AFh],64h"
+20,pickup_apply,2794,2289,46993,7305,jae short 08F8h
+20,pickup_apply,2794,2291,46995,b001,"mov al,1"
+20,pickup_apply,2794,2293,46997,eb03,jmp short 08FAh
+20,pickup_apply,2794,2296,47000,32c0,"xor al,al"
+20,pickup_apply,2794,2298,47002,8846ff,"mov [bp-1],al"
+20,pickup_apply,2794,2301,47005,0ac0,"or al,al"
+20,pickup_apply,2794,2303,47007,742c,je short 092Dh
+20,pickup_apply,2794,2305,47009,8006af4114,"add byte ptr [41AFh],14h"
+20,pickup_apply,2794,2310,47014,6a14,push 14h
+20,pickup_apply,2794,2312,47016,9ad2053d08,"call far 05D2h,083Dh"
+20,pickup_apply,2794,2317,47021,eb1b,jmp short 092Ah
+20,pickup_apply,2794,2320,47024,268a4c01,"mov cl,es:[si+1]"
+20,pickup_apply,2794,2324,47028,b001,"mov al,1"
+20,pickup_apply,2794,2326,47030,d2e0,"shl al,cl"
+20,pickup_apply,2794,2328,47032,0806b141,"or [41B1h],al"
+20,pickup_apply,2794,2332,47036,eb0f,jmp short 092Dh
+20,pickup_apply,2794,2334,47038,268a4401,"mov al,es:[si+1]"
+20,pickup_apply,2794,2338,47042,2ae4,"sub ah,ah"
+20,pickup_apply,2794,2340,47044,50,push ax
+20,pickup_apply,2794,2341,47045,9a04283d08,"call far 2804h,083Dh"
+20,pickup_apply,2794,2346,47050,83c402,"add sp,2"
+20,pickup_apply,2794,2349,47053,807eff00,"cmp byte ptr [bp-1],0"
+20,pickup_apply,2794,2353,47057,7421,je short 0954h
+20,pickup_apply,2794,2355,47059,ff76fc,push word ptr [bp-4]
+20,pickup_apply,2794,2358,47062,56,push si
+20,pickup_apply,2794,2359,47063,ff7608,push word ptr [bp+8]
+20,pickup_apply,2794,2362,47066,57,push di
+20,pickup_apply,2794,2363,47067,0e,push cs
+20,pickup_apply,2794,2364,47068,e8c3fd,call 0702h
+20,pickup_apply,2794,2367,47071,83c408,"add sp,8"
+20,pickup_apply,2794,2370,47074,8e46fc,"mov es,[bp-4]"
+20,pickup_apply,2794,2373,47077,268a4406,"mov al,es:[si+6]"
+20,pickup_apply,2794,2377,47081,2ae4,"sub ah,ah"
+20,pickup_apply,2794,2379,47083,50,push ax
+20,pickup_apply,2794,2380,47084,9a7e1a3d08,"call far 1A7Eh,083Dh"
+20,pickup_apply,2794,2385,47089,83c402,"add sp,2"
+20,pickup_apply,2794,2388,47092,5e,pop si
+20,pickup_apply,2794,2389,47093,5f,pop di
+20,pickup_apply,2794,2390,47094,c9,leave
+20,pickup_apply,2794,2391,47095,cb,ret far
+20,pickup_record_find,2794,1704,46408,c8040000,"enter 4,0"
+20,pickup_record_find,2794,1708,46412,57,push di
+20,pickup_record_find,2794,1709,46413,56,push si
+20,pickup_record_find,2794,1710,46414,33c9,"xor cx,cx"
+20,pickup_record_find,2794,1712,46416,b80600,"mov ax,6"
+20,pickup_record_find,2794,1715,46419,bafd21,"mov dx,21FDh"
+20,pickup_record_find,2794,1718,46422,8bf0,"mov si,ax"
+20,pickup_record_find,2794,1720,46424,8956fe,"mov [bp-2],dx"
+20,pickup_record_find,2794,1723,46427,390e7062,"cmp [6270h],cx"
+20,pickup_record_find,2794,1727,46431,7e39,jle short 06FAh
+20,pickup_record_find,2794,1729,46433,8b7e06,"mov di,[bp+6]"
+20,pickup_record_find,2794,1732,46436,8eda,"mov ds,dx"
+20,pickup_record_find,2794,1734,46438,8b4608,"mov ax,[bp+8]"
+20,pickup_record_find,2794,1737,46441,397c0c,"cmp [si+0Ch],di"
+20,pickup_record_find,2794,1740,46444,7510,jne short 06DEh
+20,pickup_record_find,2794,1742,46446,39440e,"cmp [si+0Eh],ax"
+20,pickup_record_find,2794,1745,46449,750b,jne short 06DEh
+20,pickup_record_find,2794,1747,46451,8a04,"mov al,[si]"
+20,pickup_record_find,2794,1749,46453,8e4608,"mov es,[bp+8]"
+20,pickup_record_find,2794,1752,46456,26384501,"cmp es:[di+1],al"
+20,pickup_record_find,2794,1756,46460,7410,je short 06EEh
+20,pickup_record_find,2794,1758,46462,83c61c,"add si,1Ch"
+20,pickup_record_find,2794,1761,46465,41,inc cx
+20,pickup_record_find,2794,1762,46466,36390e7062,"cmp ss:[6270h],cx"
+20,pickup_record_find,2794,1767,46471,7fdd,jg short 06C6h
+20,pickup_record_find,2794,1769,46473,16,push ss
+20,pickup_record_find,2794,1770,46474,1f,pop ds
+20,pickup_record_find,2794,1771,46475,eb0d,jmp short 06FAh
+20,pickup_record_find,2794,1774,46478,16,push ss
+20,pickup_record_find,2794,1775,46479,1f,pop ds
+20,pickup_record_find,2794,1776,46480,8bc6,"mov ax,si"
+20,pickup_record_find,2794,1778,46482,8b56fe,"mov dx,[bp-2]"
+20,pickup_record_find,2794,1781,46485,5e,pop si
+20,pickup_record_find,2794,1782,46486,5f,pop di
+20,pickup_record_find,2794,1783,46487,c9,leave
+20,pickup_record_find,2794,1784,46488,cb,ret far
+20,pickup_record_find,2794,1786,46490,33c0,"xor ax,ax"
+20,pickup_record_find,2794,1788,46492,99,cwd
+20,pickup_record_find,2794,1789,46493,5e,pop si
+20,pickup_record_find,2794,1790,46494,5f,pop di
+20,pickup_record_find,2794,1791,46495,c9,leave
+20,pickup_record_find,2794,1792,46496,cb,ret far
+20,pickup_cell_clear,2794,1794,46498,55,push bp
+20,pickup_cell_clear,2794,1795,46499,8bec,"mov bp,sp"
+20,pickup_cell_clear,2794,1797,46501,c45e06,"les bx,[bp+6]"
+20,pickup_cell_clear,2794,1800,46504,26c6470100,"mov byte ptr es:[bx+1],0"
+20,pickup_cell_clear,2794,1805,46509,c45e0a,"les bx,[bp+0Ah]"
+20,pickup_cell_clear,2794,1808,46512,26806705fe,"and byte ptr es:[bx+5],0FEh"
+20,pickup_cell_clear,2794,1813,46517,c9,leave
+20,pickup_cell_clear,2794,1814,46518,cb,ret far
+10,special_terrain_dispatch,2037,8684,41276,55,push bp
+10,special_terrain_dispatch,2037,8685,41277,8bec,"mov bp,sp"
+10,special_terrain_dispatch,2037,8687,41279,8b0ec260,"mov cx,[60C2h]"
+10,special_terrain_dispatch,2037,8691,41283,41,inc cx
+10,special_terrain_dispatch,2037,8692,41284,8a5e06,"mov bl,[bp+6]"
+10,special_terrain_dispatch,2037,8695,41287,2aff,"sub bh,bh"
+10,special_terrain_dispatch,2037,8697,41289,8a9754d1,"mov dl,[bx-2EACh]"
+10,special_terrain_dispatch,2037,8701,41293,2af6,"sub dh,dh"
+10,special_terrain_dispatch,2037,8703,41295,a1c060,"mov ax,[60C0h]"
+10,special_terrain_dispatch,2037,8706,41298,48,dec ax
+10,special_terrain_dispatch,2037,8707,41299,740b,je short 2210h
+10,special_terrain_dispatch,2037,8709,41301,48,dec ax
+10,special_terrain_dispatch,2037,8710,41302,7476,je short 227Eh
+10,special_terrain_dispatch,2037,8712,41304,48,dec ax
+10,special_terrain_dispatch,2037,8713,41305,0f848100,je 228Eh
+10,special_terrain_dispatch,2037,8717,41309,e99c00,jmp 22ACh
+10,special_terrain_dispatch,2037,8720,41312,8bc1,"mov ax,cx"
+10,special_terrain_dispatch,2037,8722,41314,2d0700,"sub ax,7"
+10,special_terrain_dispatch,2037,8725,41317,740b,je short 2222h
+10,special_terrain_dispatch,2037,8727,41319,48,dec ax
+10,special_terrain_dispatch,2037,8728,41320,48,dec ax
+10,special_terrain_dispatch,2037,8729,41321,7415,je short 2230h
+10,special_terrain_dispatch,2037,8731,41323,48,dec ax
+10,special_terrain_dispatch,2037,8732,41324,7448,je short 2266h
+10,special_terrain_dispatch,2037,8734,41326,e98b00,jmp 22ACh
+10,special_terrain_dispatch,2037,8738,41330,83fa47,"cmp dx,47h"
+10,special_terrain_dispatch,2037,8741,41333,0f858300,jne 22ACh
+10,special_terrain_dispatch,2037,8745,41337,0e,push cs
+10,special_terrain_dispatch,2037,8746,41338,e8ddfe,call 210Ah
+10,special_terrain_dispatch,2037,8749,41341,eb7d,jmp short 22ACh
+10,special_terrain_dispatch,2037,8752,41344,83fa47,"cmp dx,47h"
+10,special_terrain_dispatch,2037,8755,41347,751d,jne short 2252h
+10,special_terrain_dispatch,2037,8757,41349,803eee3f00,"cmp byte ptr [3FEEh],0"
+10,special_terrain_dispatch,2037,8762,41354,7516,jne short 2252h
+10,special_terrain_dispatch,2037,8764,41356,c606ee3f01,"mov byte ptr [3FEEh],1"
+10,special_terrain_dispatch,2037,8769,41361,666800000200,data32 push 20000h
+10,special_terrain_dispatch,2037,8775,41367,6a44,push 44h
+10,special_terrain_dispatch,2037,8777,41369,9ae603dd0b,"call far 03E6h,0BDDh"
+10,special_terrain_dispatch,2037,8782,41374,8be5,"mov sp,bp"
+10,special_terrain_dispatch,2037,8784,41376,c9,leave
+10,special_terrain_dispatch,2037,8785,41377,cb,ret far
+10,special_terrain_dispatch,2037,8786,41378,83fa48,"cmp dx,48h"
+10,special_terrain_dispatch,2037,8789,41381,7555,jne short 22ACh
+10,special_terrain_dispatch,2037,8791,41383,803eee3f00,"cmp byte ptr [3FEEh],0"
+10,special_terrain_dispatch,2037,8796,41388,744e,je short 22ACh
+10,special_terrain_dispatch,2037,8798,41390,c606ee3f00,"mov byte ptr [3FEEh],0"
+10,special_terrain_dispatch,2037,8803,41395,ebdc,jmp short 2241h
+10,special_terrain_dispatch,2037,8806,41398,83fa47,"cmp dx,47h"
+10,special_terrain_dispatch,2037,8809,41401,7507,jne short 2272h
+10,special_terrain_dispatch,2037,8811,41403,0e,push cs
+10,special_terrain_dispatch,2037,8812,41404,e8c5fe,call 2134h
+10,special_terrain_dispatch,2037,8815,41407,c9,leave
+10,special_terrain_dispatch,2037,8816,41408,cb,ret far
+10,special_terrain_dispatch,2037,8818,41410,83fa48,"cmp dx,48h"
+10,special_terrain_dispatch,2037,8821,41413,7535,jne short 22ACh
+10,special_terrain_dispatch,2037,8823,41415,0e,push cs
+10,special_terrain_dispatch,2037,8824,41416,e809ff,call 2184h
+10,special_terrain_dispatch,2037,8827,41419,c9,leave
+10,special_terrain_dispatch,2037,8828,41420,cb,ret far
+10,special_terrain_dispatch,2037,8830,41422,83f90a,"cmp cx,0Ah"
+10,special_terrain_dispatch,2037,8833,41425,7529,jne short 22ACh
+10,special_terrain_dispatch,2037,8835,41427,83fa47,"cmp dx,47h"
+10,special_terrain_dispatch,2037,8838,41430,7524,jne short 22ACh
+10,special_terrain_dispatch,2037,8840,41432,0e,push cs
+10,special_terrain_dispatch,2037,8841,41433,e82cff,call 21B8h
+10,special_terrain_dispatch,2037,8844,41436,c9,leave
+10,special_terrain_dispatch,2037,8845,41437,cb,ret far
+10,special_terrain_dispatch,2037,8846,41438,83f901,"cmp cx,1"
+10,special_terrain_dispatch,2037,8849,41441,750b,jne short 229Eh
+10,special_terrain_dispatch,2037,8851,41443,83fa47,"cmp dx,47h"
+10,special_terrain_dispatch,2037,8854,41446,7506,jne short 229Eh
+10,special_terrain_dispatch,2037,8856,41448,0e,push cs
+10,special_terrain_dispatch,2037,8857,41449,e836ff,call 21D2h
+10,special_terrain_dispatch,2037,8860,41452,c9,leave
+10,special_terrain_dispatch,2037,8861,41453,cb,ret far
+10,special_terrain_dispatch,2037,8862,41454,83f90a,"cmp cx,0Ah"
+10,special_terrain_dispatch,2037,8865,41457,7509,jne short 22ACh
+10,special_terrain_dispatch,2037,8867,41459,83fa47,"cmp dx,47h"
+10,special_terrain_dispatch,2037,8870,41462,7504,jne short 22ACh
+10,special_terrain_dispatch,2037,8872,41464,0e,push cs
+10,special_terrain_dispatch,2037,8873,41465,e8f2fe,call 219Eh
+10,special_terrain_dispatch,2037,8876,41468,c9,leave
+10,special_terrain_dispatch,2037,8877,41469,cb,ret far
+10,terrain_ep1_level7,2037,8458,41050,803e604100,"cmp byte ptr [4160h],0"
+10,terrain_ep1_level7,2037,8463,41055,7522,jne short 2133h
+10,terrain_ep1_level7,2037,8465,41057,0e,push cs
+10,terrain_ep1_level7,2037,8466,41058,e88ded,call 0EA2h
+10,terrain_ep1_level7,2037,8469,41061,b001,"mov al,1"
+10,terrain_ep1_level7,2037,8471,41063,a26041,"mov [4160h],al"
+10,terrain_ep1_level7,2037,8474,41066,a26441,"mov [4164h],al"
+10,terrain_ep1_level7,2037,8477,41069,0e,push cs
+10,terrain_ep1_level7,2037,8478,41070,e8ab06,call 27CCh
+10,terrain_ep1_level7,2037,8481,41073,9a8e01910b,"call far 018Eh,0B91h"
+10,terrain_ep1_level7,2037,8486,41078,66ff366c0d,push dword ptr [0D6Ch]
+10,terrain_ep1_level7,2037,8491,41083,9a5007dc0c,"call far 0750h,0CDCh"
+10,terrain_ep1_level7,2037,8496,41088,83c404,"add sp,4"
+10,terrain_ep1_level7,2037,8499,41091,cb,ret far
+10,terrain_ep1_level10_A,2037,8500,41092,803e604100,"cmp byte ptr [4160h],0"
+10,terrain_ep1_level10_A,2037,8505,41097,7547,jne short 2182h
+10,terrain_ep1_level10_A,2037,8507,41099,666800000200,data32 push 20000h
+10,terrain_ep1_level10_A,2037,8513,41105,6a12,push 12h
+10,terrain_ep1_level10_A,2037,8515,41107,9ae603dd0b,"call far 03E6h,0BDDh"
+10,terrain_ep1_level10_A,2037,8520,41112,83c406,"add sp,6"
+10,terrain_ep1_level10_A,2037,8523,41115,b001,"mov al,1"
+10,terrain_ep1_level10_A,2037,8525,41117,a26041,"mov [4160h],al"
+10,terrain_ep1_level10_A,2037,8528,41120,a26241,"mov [4162h],al"
+10,terrain_ep1_level10_A,2037,8531,41123,a2ac3f,"mov [3FACh],al"
+10,terrain_ep1_level10_A,2037,8534,41126,c606a93f00,"mov byte ptr [3FA9h],0"
+10,terrain_ep1_level10_A,2037,8539,41131,66ff367e0e,push dword ptr [0E7Eh]
+10,terrain_ep1_level10_A,2037,8544,41136,9a5007dc0c,"call far 0750h,0CDCh"
+10,terrain_ep1_level10_A,2037,8549,41141,83c404,"add sp,4"
+10,terrain_ep1_level10_A,2037,8552,41144,66ff36d20e,push dword ptr [0ED2h]
+10,terrain_ep1_level10_A,2037,8557,41149,9a5007dc0c,"call far 0750h,0CDCh"
+10,terrain_ep1_level10_A,2037,8562,41154,83c404,"add sp,4"
+10,terrain_ep1_level10_A,2037,8565,41157,66ff36040f,push dword ptr [0F04h]
+10,terrain_ep1_level10_A,2037,8570,41162,9a5007dc0c,"call far 0750h,0CDCh"
+10,terrain_ep1_level10_A,2037,8575,41167,83c404,"add sp,4"
+10,terrain_ep1_level10_A,2037,8578,41170,cb,ret far
+10,terrain_ep1_level10_B,2037,8580,41172,803e614100,"cmp byte ptr [4161h],0"
+10,terrain_ep1_level10_B,2037,8585,41177,7512,jne short 219Dh
+10,terrain_ep1_level10_B,2037,8587,41179,c606614101,"mov byte ptr [4161h],1"
+10,terrain_ep1_level10_B,2037,8592,41184,66ff36460f,push dword ptr [0F46h]
+10,terrain_ep1_level10_B,2037,8597,41189,9a5007dc0c,"call far 0750h,0CDCh"
+10,terrain_ep1_level10_B,2037,8602,41194,83c404,"add sp,4"
+10,terrain_ep1_level10_B,2037,8605,41197,cb,ret far
+10,terrain_ep2_level10,2037,8632,41224,803e604100,"cmp byte ptr [4160h],0"
+10,terrain_ep2_level10,2037,8637,41229,7512,jne short 21D1h
+10,terrain_ep2_level10,2037,8639,41231,c606604101,"mov byte ptr [4160h],1"
+10,terrain_ep2_level10,2037,8644,41236,66ff36ac10,push dword ptr [10ACh]
+10,terrain_ep2_level10,2037,8649,41241,9a5007dc0c,"call far 0750h,0CDCh"
+10,terrain_ep2_level10,2037,8654,41246,83c404,"add sp,4"
+10,terrain_ep2_level10,2037,8657,41249,cb,ret far
+10,terrain_ep3_level1,2037,8658,41250,803e604100,"cmp byte ptr [4160h],0"
+10,terrain_ep3_level1,2037,8663,41255,7512,jne short 21EBh
+10,terrain_ep3_level1,2037,8665,41257,c606604101,"mov byte ptr [4160h],1"
+10,terrain_ep3_level1,2037,8670,41262,66ff366412,push dword ptr [1264h]
+10,terrain_ep3_level1,2037,8675,41267,9a5007dc0c,"call far 0750h,0CDCh"
+10,terrain_ep3_level1,2037,8680,41272,83c404,"add sp,4"
+10,terrain_ep3_level1,2037,8683,41275,cb,ret far
+10,terrain_ep3_level10,2037,8606,41198,803e604100,"cmp byte ptr [4160h],0"
+10,terrain_ep3_level10,2037,8611,41203,7512,jne short 21B7h
+10,terrain_ep3_level10,2037,8613,41205,c606604101,"mov byte ptr [4160h],1"
+10,terrain_ep3_level10,2037,8618,41210,66ff36c20f,push dword ptr [0FC2h]
+10,terrain_ep3_level10,2037,8623,41215,9a5007dc0c,"call far 0750h,0CDCh"
+10,terrain_ep3_level10,2037,8628,41220,83c404,"add sp,4"
+10,terrain_ep3_level10,2037,8631,41223,cb,ret far
+10,sound_event42,2037,3746,36338,666800000200,data32 push 20000h
+10,sound_event42,2037,3752,36344,6a42,push 42h
+10,sound_event42,2037,3754,36346,9ae603dd0b,"call far 03E6h,0BDDh"
+10,sound_event42,2037,3759,36351,83c406,"add sp,6"
+10,sound_event42,2037,3762,36354,cb,ret far
+10,sound_bank_selection,2037,10188,42780,803e644100,"cmp byte ptr [4164h],0"
+10,sound_bank_selection,2037,10193,42785,7411,je short 27E4h
+10,sound_bank_selection,2037,10195,42787,c706ce600600,"mov word ptr [60CEh],6"
+10,sound_bank_selection,2037,10201,42793,32c0,"xor al,al"
+10,sound_bank_selection,2037,10203,42795,a2d060,"mov [60D0h],al"
+10,sound_bank_selection,2037,10206,42798,a2d160,"mov [60D1h],al"
+10,sound_bank_selection,2037,10209,42801,eb3e,jmp short 2821h
+10,sound_bank_selection,2037,10212,42804,833e5c3b00,"cmp word ptr [3B5Ch],0"
+10,sound_bank_selection,2037,10217,42809,7c09,jl short 27F4h
+10,sound_bank_selection,2037,10219,42811,a15c3b,"mov ax,[3B5Ch]"
+10,sound_bank_selection,2037,10222,42814,a3ce60,"mov [60CEh],ax"
+10,sound_bank_selection,2037,10225,42817,eb07,jmp short 27FAh
+10,sound_bank_selection,2037,10228,42820,c706ce600200,"mov word ptr [60CEh],2"
+10,sound_bank_selection,2037,10234,42826,833e5e3b00,"cmp word ptr [3B5Eh],0"
+10,sound_bank_selection,2037,10239,42831,7c09,jl short 280Ah
+10,sound_bank_selection,2037,10241,42833,a05e3b,"mov al,[3B5Eh]"
+10,sound_bank_selection,2037,10244,42836,a2d060,"mov [60D0h],al"
+10,sound_bank_selection,2037,10247,42839,eb06,jmp short 280Fh
+10,sound_bank_selection,2037,10250,42842,c606d06002,"mov byte ptr [60D0h],2"
+10,sound_bank_selection,2037,10255,42847,833e603b00,"cmp word ptr [3B60h],0"
+10,sound_bank_selection,2037,10260,42852,7c06,jl short 281Ch
+10,sound_bank_selection,2037,10262,42854,a0603b,"mov al,[3B60h]"
+10,sound_bank_selection,2037,10265,42857,ebc3,jmp short 27DEh
+10,sound_bank_selection,2037,10268,42860,c606d16007,"mov byte ptr [60D1h],7"
+10,sound_bank_selection,2037,10273,42865,9a70015501,"call far 0170h,0155h"
+10,sound_bank_selection,2037,10278,42870,cb,ret far
+10,pickup_apply,2718,1804,45292,c8060000,"enter 6,0"
+10,pickup_apply,2718,1808,45296,57,push di
+10,pickup_apply,2718,1809,45297,56,push si
+10,pickup_apply,2718,1810,45298,8b7e06,"mov di,[bp+6]"
+10,pickup_apply,2718,1813,45301,c646ff01,"mov byte ptr [bp-1],1"
+10,pickup_apply,2718,1817,45305,ff7608,push word ptr [bp+8]
+10,pickup_apply,2718,1820,45308,57,push di
+10,pickup_apply,2718,1821,45309,0e,push cs
+10,pickup_apply,2718,1822,45310,e87bff,call 069Ch
+10,pickup_apply,2718,1825,45313,83c404,"add sp,4"
+10,pickup_apply,2718,1828,45316,8bf0,"mov si,ax"
+10,pickup_apply,2718,1830,45318,8956fc,"mov [bp-4],dx"
+10,pickup_apply,2718,1833,45321,0bd0,"or dx,ax"
+10,pickup_apply,2718,1835,45323,0f841902,je 0948h
+10,pickup_apply,2718,1839,45327,8e46fc,"mov es,[bp-4]"
+10,pickup_apply,2718,1842,45330,268a4406,"mov al,es:[si+6]"
+10,pickup_apply,2718,1846,45334,2ae4,"sub ah,ah"
+10,pickup_apply,2718,1848,45336,2d2f00,"sub ax,2Fh"
+10,pickup_apply,2718,1851,45339,3d0e00,"cmp ax,0Eh"
+10,pickup_apply,2718,1854,45342,0f87df01,ja 0921h
+10,pickup_apply,2718,1858,45346,03c0,"add ax,ax"
+10,pickup_apply,2718,1860,45348,93,"xchg bx,ax"
+10,pickup_apply,2718,1861,45349,2effa74a07,jmp word ptr cs:[bx+74Ah]
+10,pickup_apply,2718,1896,45384,268a4c01,"mov cl,es:[si+1]"
+10,pickup_apply,2718,1900,45388,b001,"mov al,1"
+10,pickup_apply,2718,1902,45390,d2e0,"shl al,cl"
+10,pickup_apply,2718,1904,45392,0806e83f,"or [3FE8h],al"
+10,pickup_apply,2718,1908,45396,6a0e,push 0Eh
+10,pickup_apply,2718,1910,45398,e98301,jmp 08FCh
+10,pickup_apply,2718,1914,45402,268a4c01,"mov cl,es:[si+1]"
+10,pickup_apply,2718,1918,45406,b001,"mov al,1"
+10,pickup_apply,2718,1920,45408,d2e0,"shl al,cl"
+10,pickup_apply,2718,1922,45410,0806e93f,"or [3FE9h],al"
+10,pickup_apply,2718,1926,45414,6a0f,push 0Fh
+10,pickup_apply,2718,1928,45416,e97101,jmp 08FCh
+10,pickup_apply,2718,1932,45420,668106d83fc8000000,"add dword ptr [3FD8h],0C8h"
+10,pickup_apply,2718,1941,45429,6a05,push 5
+10,pickup_apply,2718,1943,45431,e96201,jmp 08FCh
+10,pickup_apply,2718,1946,45434,803ee43f63,"cmp byte ptr [3FE4h],63h"
+10,pickup_apply,2718,1951,45439,7d05,jge short 07A6h
+10,pickup_apply,2718,1953,45441,b001,"mov al,1"
+10,pickup_apply,2718,1955,45443,eb03,jmp short 07A8h
+10,pickup_apply,2718,1958,45446,32c0,"xor al,al"
+10,pickup_apply,2718,1960,45448,8846ff,"mov [bp-1],al"
+10,pickup_apply,2718,1963,45451,0ac0,"or al,al"
+10,pickup_apply,2718,1965,45453,0f847001,je 0921h
+10,pickup_apply,2718,1969,45457,268a4c01,"mov cl,es:[si+1]"
+10,pickup_apply,2718,1973,45461,b001,"mov al,1"
+10,pickup_apply,2718,1975,45463,d2e0,"shl al,cl"
+10,pickup_apply,2718,1977,45465,0006e43f,"add [3FE4h],al"
+10,pickup_apply,2718,1981,45469,6a0c,push 0Ch
+10,pickup_apply,2718,1983,45471,e93a01,jmp 08FCh
+10,pickup_apply,2718,1986,45474,803edf3f64,"cmp byte ptr [3FDFh],64h"
+10,pickup_apply,2718,1991,45479,7305,jae short 07CEh
+10,pickup_apply,2718,1993,45481,b001,"mov al,1"
+10,pickup_apply,2718,1995,45483,eb03,jmp short 07D0h
+10,pickup_apply,2718,1998,45486,32c0,"xor al,al"
+10,pickup_apply,2718,2000,45488,8846ff,"mov [bp-1],al"
+10,pickup_apply,2718,2003,45491,0ac0,"or al,al"
+10,pickup_apply,2718,2005,45493,0f844801,je 0921h
+10,pickup_apply,2718,2009,45497,268a4c01,"mov cl,es:[si+1]"
+10,pickup_apply,2718,2013,45501,b81400,"mov ax,14h"
+10,pickup_apply,2718,2016,45504,d3f8,"sar ax,cl"
+10,pickup_apply,2718,2018,45506,0006df3f,"add [3FDFh],al"
+10,pickup_apply,2718,2022,45510,6a06,push 6
+10,pickup_apply,2718,2024,45512,9aca05f507,"call far 05CAh,07F5h"
+10,pickup_apply,2718,2029,45517,83c402,"add sp,2"
+10,pickup_apply,2718,2032,45520,eba3,jmp short 0795h
+10,pickup_apply,2718,2034,45522,803edf3f64,"cmp byte ptr [3FDFh],64h"
+10,pickup_apply,2718,2039,45527,7305,jae short 07FEh
+10,pickup_apply,2718,2041,45529,b001,"mov al,1"
+10,pickup_apply,2718,2043,45531,eb03,jmp short 0800h
+10,pickup_apply,2718,2046,45534,32c0,"xor al,al"
+10,pickup_apply,2718,2048,45536,8846ff,"mov [bp-1],al"
+10,pickup_apply,2718,2051,45539,0ac0,"or al,al"
+10,pickup_apply,2718,2053,45541,0f841801,je 0921h
+10,pickup_apply,2718,2057,45545,8006df3f1e,"add byte ptr [3FDFh],1Eh"
+10,pickup_apply,2718,2062,45550,668106d83ffa000000,"add dword ptr [3FD8h],0FAh"
+10,pickup_apply,2718,2071,45559,ebcd,jmp short 07E6h
+10,pickup_apply,2718,2074,45562,c606df3f64,"mov byte ptr [3FDFh],64h"
+10,pickup_apply,2718,2079,45567,c606e23f64,"mov byte ptr [3FE2h],64h"
+10,pickup_apply,2718,2084,45572,668106d83ff4010000,"add dword ptr [3FD8h],1F4h"
+10,pickup_apply,2718,2093,45581,fe06e03f,inc byte ptr [3FE0h]
+10,pickup_apply,2718,2097,45585,6a06,push 6
+10,pickup_apply,2718,2099,45587,9aca05f507,"call far 05CAh,07F5h"
+10,pickup_apply,2718,2104,45592,83c402,"add sp,2"
+10,pickup_apply,2718,2107,45595,6a09,push 9
+10,pickup_apply,2718,2109,45597,9aca05f507,"call far 05CAh,07F5h"
+10,pickup_apply,2718,2114,45602,83c402,"add sp,2"
+10,pickup_apply,2718,2117,45605,6a07,push 7
+10,pickup_apply,2718,2119,45607,eb9f,jmp short 07E8h
+10,pickup_apply,2718,2122,45610,268a4c01,"mov cl,es:[si+1]"
+10,pickup_apply,2718,2126,45614,b001,"mov al,1"
+10,pickup_apply,2718,2128,45616,d2e0,"shl al,cl"
+10,pickup_apply,2718,2130,45618,0806ea3f,"or [3FEAh],al"
+10,pickup_apply,2718,2134,45622,268a4401,"mov al,es:[si+1]"
+10,pickup_apply,2718,2138,45626,2ae4,"sub ah,ah"
+10,pickup_apply,2718,2140,45628,50,push ax
+10,pickup_apply,2718,2141,45629,9aae0cf507,"call far 0CAEh,07F5h"
+10,pickup_apply,2718,2146,45634,83c402,"add sp,2"
+10,pickup_apply,2718,2149,45637,6a01,push 1
+10,pickup_apply,2718,2151,45639,8e46fc,"mov es,[bp-4]"
+10,pickup_apply,2718,2154,45642,268a4401,"mov al,es:[si+1]"
+10,pickup_apply,2718,2158,45646,2ae4,"sub ah,ah"
+10,pickup_apply,2718,2160,45648,50,push ax
+10,pickup_apply,2718,2161,45649,9aa80bf507,"call far 0BA8h,07F5h"
+10,pickup_apply,2718,2166,45654,83c404,"add sp,4"
+10,pickup_apply,2718,2169,45657,6a0d,push 0Dh
+10,pickup_apply,2718,2171,45659,eb7f,jmp short 08FCh
+10,pickup_apply,2718,2174,45662,268a4c01,"mov cl,es:[si+1]"
+10,pickup_apply,2718,2178,45666,b001,"mov al,1"
+10,pickup_apply,2718,2180,45668,d2e0,"shl al,cl"
+10,pickup_apply,2718,2182,45670,0806eb3f,"or [3FEBh],al"
+10,pickup_apply,2718,2186,45674,6a10,push 10h
+10,pickup_apply,2718,2188,45676,eb6e,jmp short 08FCh
+10,pickup_apply,2718,2190,45678,803ee33f64,"cmp byte ptr [3FE3h],64h"
+10,pickup_apply,2718,2195,45683,7d05,jge short 089Ah
+10,pickup_apply,2718,2197,45685,b001,"mov al,1"
+10,pickup_apply,2718,2199,45687,eb03,jmp short 089Ch
+10,pickup_apply,2718,2202,45690,32c0,"xor al,al"
+10,pickup_apply,2718,2204,45692,8846ff,"mov [bp-1],al"
+10,pickup_apply,2718,2207,45695,0ac0,"or al,al"
+10,pickup_apply,2718,2209,45697,747e,je short 0921h
+10,pickup_apply,2718,2211,45699,8006e33f14,"add byte ptr [3FE3h],14h"
+10,pickup_apply,2718,2216,45704,6a0b,push 0Bh
+10,pickup_apply,2718,2218,45706,eb50,jmp short 08FCh
+10,pickup_apply,2718,2220,45708,6a00,push 0
+10,pickup_apply,2718,2222,45710,268a4401,"mov al,es:[si+1]"
+10,pickup_apply,2718,2226,45714,2ae4,"sub ah,ah"
+10,pickup_apply,2718,2228,45716,50,push ax
+10,pickup_apply,2718,2229,45717,9aa80bf507,"call far 0BA8h,07F5h"
+10,pickup_apply,2718,2234,45722,83c404,"add sp,4"
+10,pickup_apply,2718,2237,45725,8846ff,"mov [bp-1],al"
+10,pickup_apply,2718,2240,45728,eb5f,jmp short 0921h
+10,pickup_apply,2718,2242,45730,803e044064,"cmp byte ptr [4004h],64h"
+10,pickup_apply,2718,2247,45735,7305,jae short 08CEh
+10,pickup_apply,2718,2249,45737,b001,"mov al,1"
+10,pickup_apply,2718,2251,45739,eb03,jmp short 08D0h
+10,pickup_apply,2718,2254,45742,32c0,"xor al,al"
+10,pickup_apply,2718,2256,45744,8846ff,"mov [bp-1],al"
+10,pickup_apply,2718,2259,45747,0ac0,"or al,al"
+10,pickup_apply,2718,2261,45749,744a,je short 0921h
+10,pickup_apply,2718,2263,45751,8006044014,"add byte ptr [4004h],14h"
+10,pickup_apply,2718,2268,45756,6a14,push 14h
+10,pickup_apply,2718,2270,45758,eb1c,jmp short 08FCh
+10,pickup_apply,2718,2272,45760,803e054064,"cmp byte ptr [4005h],64h"
+10,pickup_apply,2718,2277,45765,7305,jae short 08ECh
+10,pickup_apply,2718,2279,45767,b001,"mov al,1"
+10,pickup_apply,2718,2281,45769,eb03,jmp short 08EEh
+10,pickup_apply,2718,2284,45772,32c0,"xor al,al"
+10,pickup_apply,2718,2286,45774,8846ff,"mov [bp-1],al"
+10,pickup_apply,2718,2289,45777,0ac0,"or al,al"
+10,pickup_apply,2718,2291,45779,742c,je short 0921h
+10,pickup_apply,2718,2293,45781,8006054014,"add byte ptr [4005h],14h"
+10,pickup_apply,2718,2298,45786,6a15,push 15h
+10,pickup_apply,2718,2300,45788,9aca05f507,"call far 05CAh,07F5h"
+10,pickup_apply,2718,2305,45793,eb1b,jmp short 091Eh
+10,pickup_apply,2718,2308,45796,268a4c01,"mov cl,es:[si+1]"
+10,pickup_apply,2718,2312,45800,b001,"mov al,1"
+10,pickup_apply,2718,2314,45802,d2e0,"shl al,cl"
+10,pickup_apply,2718,2316,45804,08060740,"or [4007h],al"
+10,pickup_apply,2718,2320,45808,eb0f,jmp short 0921h
+10,pickup_apply,2718,2322,45810,268a4401,"mov al,es:[si+1]"
+10,pickup_apply,2718,2326,45814,2ae4,"sub ah,ah"
+10,pickup_apply,2718,2328,45816,50,push ax
+10,pickup_apply,2718,2329,45817,9aa027f507,"call far 27A0h,07F5h"
+10,pickup_apply,2718,2334,45822,83c402,"add sp,2"
+10,pickup_apply,2718,2337,45825,807eff00,"cmp byte ptr [bp-1],0"
+10,pickup_apply,2718,2341,45829,7421,je short 0948h
+10,pickup_apply,2718,2343,45831,ff76fc,push word ptr [bp-4]
+10,pickup_apply,2718,2346,45834,56,push si
+10,pickup_apply,2718,2347,45835,ff7608,push word ptr [bp+8]
+10,pickup_apply,2718,2350,45838,57,push di
+10,pickup_apply,2718,2351,45839,0e,push cs
+10,pickup_apply,2718,2352,45840,e8c3fd,call 06F6h
+10,pickup_apply,2718,2355,45843,83c408,"add sp,8"
+10,pickup_apply,2718,2358,45846,8e46fc,"mov es,[bp-4]"
+10,pickup_apply,2718,2361,45849,268a4406,"mov al,es:[si+6]"
+10,pickup_apply,2718,2365,45853,2ae4,"sub ah,ah"
+10,pickup_apply,2718,2367,45855,50,push ax
+10,pickup_apply,2718,2368,45856,9a421af507,"call far 1A42h,07F5h"
+10,pickup_apply,2718,2373,45861,83c402,"add sp,2"
+10,pickup_apply,2718,2376,45864,5e,pop si
+10,pickup_apply,2718,2377,45865,5f,pop di
+10,pickup_apply,2718,2378,45866,c9,leave
+10,pickup_apply,2718,2379,45867,cb,ret far
+10,pickup_record_find,2718,1692,45180,c8040000,"enter 4,0"
+10,pickup_record_find,2718,1696,45184,57,push di
+10,pickup_record_find,2718,1697,45185,56,push si
+10,pickup_record_find,2718,1698,45186,33c9,"xor cx,cx"
+10,pickup_record_find,2718,1700,45188,b80600,"mov ax,6"
+10,pickup_record_find,2718,1703,45191,baec1d,"mov dx,1DECh"
+10,pickup_record_find,2718,1706,45194,8bf0,"mov si,ax"
+10,pickup_record_find,2718,1708,45196,8956fe,"mov [bp-2],dx"
+10,pickup_record_find,2718,1711,45199,390ec660,"cmp [60C6h],cx"
+10,pickup_record_find,2718,1715,45203,7e39,jle short 06EEh
+10,pickup_record_find,2718,1717,45205,8b7e06,"mov di,[bp+6]"
+10,pickup_record_find,2718,1720,45208,8eda,"mov ds,dx"
+10,pickup_record_find,2718,1722,45210,8b4608,"mov ax,[bp+8]"
+10,pickup_record_find,2718,1725,45213,397c0c,"cmp [si+0Ch],di"
+10,pickup_record_find,2718,1728,45216,7510,jne short 06D2h
+10,pickup_record_find,2718,1730,45218,39440e,"cmp [si+0Eh],ax"
+10,pickup_record_find,2718,1733,45221,750b,jne short 06D2h
+10,pickup_record_find,2718,1735,45223,8a04,"mov al,[si]"
+10,pickup_record_find,2718,1737,45225,8e4608,"mov es,[bp+8]"
+10,pickup_record_find,2718,1740,45228,26384501,"cmp es:[di+1],al"
+10,pickup_record_find,2718,1744,45232,7410,je short 06E2h
+10,pickup_record_find,2718,1746,45234,83c61c,"add si,1Ch"
+10,pickup_record_find,2718,1749,45237,41,inc cx
+10,pickup_record_find,2718,1750,45238,36390ec660,"cmp ss:[60C6h],cx"
+10,pickup_record_find,2718,1755,45243,7fdd,jg short 06BAh
+10,pickup_record_find,2718,1757,45245,16,push ss
+10,pickup_record_find,2718,1758,45246,1f,pop ds
+10,pickup_record_find,2718,1759,45247,eb0d,jmp short 06EEh
+10,pickup_record_find,2718,1762,45250,16,push ss
+10,pickup_record_find,2718,1763,45251,1f,pop ds
+10,pickup_record_find,2718,1764,45252,8bc6,"mov ax,si"
+10,pickup_record_find,2718,1766,45254,8b56fe,"mov dx,[bp-2]"
+10,pickup_record_find,2718,1769,45257,5e,pop si
+10,pickup_record_find,2718,1770,45258,5f,pop di
+10,pickup_record_find,2718,1771,45259,c9,leave
+10,pickup_record_find,2718,1772,45260,cb,ret far
+10,pickup_record_find,2718,1774,45262,33c0,"xor ax,ax"
+10,pickup_record_find,2718,1776,45264,99,cwd
+10,pickup_record_find,2718,1777,45265,5e,pop si
+10,pickup_record_find,2718,1778,45266,5f,pop di
+10,pickup_record_find,2718,1779,45267,c9,leave
+10,pickup_record_find,2718,1780,45268,cb,ret far
+10,pickup_cell_clear,2718,1782,45270,55,push bp
+10,pickup_cell_clear,2718,1783,45271,8bec,"mov bp,sp"
+10,pickup_cell_clear,2718,1785,45273,c45e06,"les bx,[bp+6]"
+10,pickup_cell_clear,2718,1788,45276,26c6470100,"mov byte ptr es:[bx+1],0"
+10,pickup_cell_clear,2718,1793,45281,c45e0a,"les bx,[bp+0Ah]"
+10,pickup_cell_clear,2718,1796,45284,26806705fe,"and byte ptr es:[bx+5],0FEh"
+10,pickup_cell_clear,2718,1801,45289,c9,leave
+10,pickup_cell_clear,2718,1802,45290,cb,ret far
+11,special_terrain_dispatch,2071,8684,41820,55,push bp
+11,special_terrain_dispatch,2071,8685,41821,8bec,"mov bp,sp"
+11,special_terrain_dispatch,2071,8687,41823,8b0ec861,"mov cx,[61C8h]"
+11,special_terrain_dispatch,2071,8691,41827,41,inc cx
+11,special_terrain_dispatch,2071,8692,41828,8a5e06,"mov bl,[bp+6]"
+11,special_terrain_dispatch,2071,8695,41831,2aff,"sub bh,bh"
+11,special_terrain_dispatch,2071,8697,41833,8a975ad2,"mov dl,[bx-2DA6h]"
+11,special_terrain_dispatch,2071,8701,41837,2af6,"sub dh,dh"
+11,special_terrain_dispatch,2071,8703,41839,a1c661,"mov ax,[61C6h]"
+11,special_terrain_dispatch,2071,8706,41842,48,dec ax
+11,special_terrain_dispatch,2071,8707,41843,740b,je short 2210h
+11,special_terrain_dispatch,2071,8709,41845,48,dec ax
+11,special_terrain_dispatch,2071,8710,41846,7476,je short 227Eh
+11,special_terrain_dispatch,2071,8712,41848,48,dec ax
+11,special_terrain_dispatch,2071,8713,41849,0f848100,je 228Eh
+11,special_terrain_dispatch,2071,8717,41853,e99c00,jmp 22ACh
+11,special_terrain_dispatch,2071,8720,41856,8bc1,"mov ax,cx"
+11,special_terrain_dispatch,2071,8722,41858,2d0700,"sub ax,7"
+11,special_terrain_dispatch,2071,8725,41861,740b,je short 2222h
+11,special_terrain_dispatch,2071,8727,41863,48,dec ax
+11,special_terrain_dispatch,2071,8728,41864,48,dec ax
+11,special_terrain_dispatch,2071,8729,41865,7415,je short 2230h
+11,special_terrain_dispatch,2071,8731,41867,48,dec ax
+11,special_terrain_dispatch,2071,8732,41868,7448,je short 2266h
+11,special_terrain_dispatch,2071,8734,41870,e98b00,jmp 22ACh
+11,special_terrain_dispatch,2071,8738,41874,83fa47,"cmp dx,47h"
+11,special_terrain_dispatch,2071,8741,41877,0f858300,jne 22ACh
+11,special_terrain_dispatch,2071,8745,41881,0e,push cs
+11,special_terrain_dispatch,2071,8746,41882,e8ddfe,call 210Ah
+11,special_terrain_dispatch,2071,8749,41885,eb7d,jmp short 22ACh
+11,special_terrain_dispatch,2071,8752,41888,83fa47,"cmp dx,47h"
+11,special_terrain_dispatch,2071,8755,41891,751d,jne short 2252h
+11,special_terrain_dispatch,2071,8757,41893,803ef44000,"cmp byte ptr [40F4h],0"
+11,special_terrain_dispatch,2071,8762,41898,7516,jne short 2252h
+11,special_terrain_dispatch,2071,8764,41900,c606f44001,"mov byte ptr [40F4h],1"
+11,special_terrain_dispatch,2071,8769,41905,666800000200,data32 push 20000h
+11,special_terrain_dispatch,2071,8775,41911,6a44,push 44h
+11,special_terrain_dispatch,2071,8777,41913,9a0a04ff0b,"call far 040Ah,0BFFh"
+11,special_terrain_dispatch,2071,8782,41918,8be5,"mov sp,bp"
+11,special_terrain_dispatch,2071,8784,41920,c9,leave
+11,special_terrain_dispatch,2071,8785,41921,cb,ret far
+11,special_terrain_dispatch,2071,8786,41922,83fa48,"cmp dx,48h"
+11,special_terrain_dispatch,2071,8789,41925,7555,jne short 22ACh
+11,special_terrain_dispatch,2071,8791,41927,803ef44000,"cmp byte ptr [40F4h],0"
+11,special_terrain_dispatch,2071,8796,41932,744e,je short 22ACh
+11,special_terrain_dispatch,2071,8798,41934,c606f44000,"mov byte ptr [40F4h],0"
+11,special_terrain_dispatch,2071,8803,41939,ebdc,jmp short 2241h
+11,special_terrain_dispatch,2071,8806,41942,83fa47,"cmp dx,47h"
+11,special_terrain_dispatch,2071,8809,41945,7507,jne short 2272h
+11,special_terrain_dispatch,2071,8811,41947,0e,push cs
+11,special_terrain_dispatch,2071,8812,41948,e8c5fe,call 2134h
+11,special_terrain_dispatch,2071,8815,41951,c9,leave
+11,special_terrain_dispatch,2071,8816,41952,cb,ret far
+11,special_terrain_dispatch,2071,8818,41954,83fa48,"cmp dx,48h"
+11,special_terrain_dispatch,2071,8821,41957,7535,jne short 22ACh
+11,special_terrain_dispatch,2071,8823,41959,0e,push cs
+11,special_terrain_dispatch,2071,8824,41960,e809ff,call 2184h
+11,special_terrain_dispatch,2071,8827,41963,c9,leave
+11,special_terrain_dispatch,2071,8828,41964,cb,ret far
+11,special_terrain_dispatch,2071,8830,41966,83f90a,"cmp cx,0Ah"
+11,special_terrain_dispatch,2071,8833,41969,7529,jne short 22ACh
+11,special_terrain_dispatch,2071,8835,41971,83fa47,"cmp dx,47h"
+11,special_terrain_dispatch,2071,8838,41974,7524,jne short 22ACh
+11,special_terrain_dispatch,2071,8840,41976,0e,push cs
+11,special_terrain_dispatch,2071,8841,41977,e82cff,call 21B8h
+11,special_terrain_dispatch,2071,8844,41980,c9,leave
+11,special_terrain_dispatch,2071,8845,41981,cb,ret far
+11,special_terrain_dispatch,2071,8846,41982,83f901,"cmp cx,1"
+11,special_terrain_dispatch,2071,8849,41985,750b,jne short 229Eh
+11,special_terrain_dispatch,2071,8851,41987,83fa47,"cmp dx,47h"
+11,special_terrain_dispatch,2071,8854,41990,7506,jne short 229Eh
+11,special_terrain_dispatch,2071,8856,41992,0e,push cs
+11,special_terrain_dispatch,2071,8857,41993,e836ff,call 21D2h
+11,special_terrain_dispatch,2071,8860,41996,c9,leave
+11,special_terrain_dispatch,2071,8861,41997,cb,ret far
+11,special_terrain_dispatch,2071,8862,41998,83f90a,"cmp cx,0Ah"
+11,special_terrain_dispatch,2071,8865,42001,7509,jne short 22ACh
+11,special_terrain_dispatch,2071,8867,42003,83fa47,"cmp dx,47h"
+11,special_terrain_dispatch,2071,8870,42006,7504,jne short 22ACh
+11,special_terrain_dispatch,2071,8872,42008,0e,push cs
+11,special_terrain_dispatch,2071,8873,42009,e8f2fe,call 219Eh
+11,special_terrain_dispatch,2071,8876,42012,c9,leave
+11,special_terrain_dispatch,2071,8877,42013,cb,ret far
+11,terrain_ep1_level7,2071,8458,41594,803e664200,"cmp byte ptr [4266h],0"
+11,terrain_ep1_level7,2071,8463,41599,7522,jne short 2133h
+11,terrain_ep1_level7,2071,8465,41601,0e,push cs
+11,terrain_ep1_level7,2071,8466,41602,e88ded,call 0EA2h
+11,terrain_ep1_level7,2071,8469,41605,b001,"mov al,1"
+11,terrain_ep1_level7,2071,8471,41607,a26642,"mov [4266h],al"
+11,terrain_ep1_level7,2071,8474,41610,a26a42,"mov [426Ah],al"
+11,terrain_ep1_level7,2071,8477,41613,0e,push cs
+11,terrain_ep1_level7,2071,8478,41614,e8ab06,call 27CCh
+11,terrain_ep1_level7,2071,8481,41617,9a8601b20b,"call far 0186h,0BB2h"
+11,terrain_ep1_level7,2071,8486,41622,66ff363a0e,push dword ptr [0E3Ah]
+11,terrain_ep1_level7,2071,8491,41627,9a5407000d,"call far 0754h,0D00h"
+11,terrain_ep1_level7,2071,8496,41632,83c404,"add sp,4"
+11,terrain_ep1_level7,2071,8499,41635,cb,ret far
+11,terrain_ep1_level10_A,2071,8500,41636,803e664200,"cmp byte ptr [4266h],0"
+11,terrain_ep1_level10_A,2071,8505,41641,7547,jne short 2182h
+11,terrain_ep1_level10_A,2071,8507,41643,666800000200,data32 push 20000h
+11,terrain_ep1_level10_A,2071,8513,41649,6a12,push 12h
+11,terrain_ep1_level10_A,2071,8515,41651,9a0a04ff0b,"call far 040Ah,0BFFh"
+11,terrain_ep1_level10_A,2071,8520,41656,83c406,"add sp,6"
+11,terrain_ep1_level10_A,2071,8523,41659,b001,"mov al,1"
+11,terrain_ep1_level10_A,2071,8525,41661,a26642,"mov [4266h],al"
+11,terrain_ep1_level10_A,2071,8528,41664,a26842,"mov [4268h],al"
+11,terrain_ep1_level10_A,2071,8531,41667,a2b240,"mov [40B2h],al"
+11,terrain_ep1_level10_A,2071,8534,41670,c606af4000,"mov byte ptr [40AFh],0"
+11,terrain_ep1_level10_A,2071,8539,41675,66ff364c0f,push dword ptr [0F4Ch]
+11,terrain_ep1_level10_A,2071,8544,41680,9a5407000d,"call far 0754h,0D00h"
+11,terrain_ep1_level10_A,2071,8549,41685,83c404,"add sp,4"
+11,terrain_ep1_level10_A,2071,8552,41688,66ff36a00f,push dword ptr [0FA0h]
+11,terrain_ep1_level10_A,2071,8557,41693,9a5407000d,"call far 0754h,0D00h"
+11,terrain_ep1_level10_A,2071,8562,41698,83c404,"add sp,4"
+11,terrain_ep1_level10_A,2071,8565,41701,66ff36d20f,push dword ptr [0FD2h]
+11,terrain_ep1_level10_A,2071,8570,41706,9a5407000d,"call far 0754h,0D00h"
+11,terrain_ep1_level10_A,2071,8575,41711,83c404,"add sp,4"
+11,terrain_ep1_level10_A,2071,8578,41714,cb,ret far
+11,terrain_ep1_level10_B,2071,8580,41716,803e674200,"cmp byte ptr [4267h],0"
+11,terrain_ep1_level10_B,2071,8585,41721,7512,jne short 219Dh
+11,terrain_ep1_level10_B,2071,8587,41723,c606674201,"mov byte ptr [4267h],1"
+11,terrain_ep1_level10_B,2071,8592,41728,66ff361410,push dword ptr [1014h]
+11,terrain_ep1_level10_B,2071,8597,41733,9a5407000d,"call far 0754h,0D00h"
+11,terrain_ep1_level10_B,2071,8602,41738,83c404,"add sp,4"
+11,terrain_ep1_level10_B,2071,8605,41741,cb,ret far
+11,terrain_ep2_level10,2071,8632,41768,803e664200,"cmp byte ptr [4266h],0"
+11,terrain_ep2_level10,2071,8637,41773,7512,jne short 21D1h
+11,terrain_ep2_level10,2071,8639,41775,c606664201,"mov byte ptr [4266h],1"
+11,terrain_ep2_level10,2071,8644,41780,66ff367a11,push dword ptr [117Ah]
+11,terrain_ep2_level10,2071,8649,41785,9a5407000d,"call far 0754h,0D00h"
+11,terrain_ep2_level10,2071,8654,41790,83c404,"add sp,4"
+11,terrain_ep2_level10,2071,8657,41793,cb,ret far
+11,terrain_ep3_level1,2071,8658,41794,803e664200,"cmp byte ptr [4266h],0"
+11,terrain_ep3_level1,2071,8663,41799,7512,jne short 21EBh
+11,terrain_ep3_level1,2071,8665,41801,c606664201,"mov byte ptr [4266h],1"
+11,terrain_ep3_level1,2071,8670,41806,66ff363213,push dword ptr [1332h]
+11,terrain_ep3_level1,2071,8675,41811,9a5407000d,"call far 0754h,0D00h"
+11,terrain_ep3_level1,2071,8680,41816,83c404,"add sp,4"
+11,terrain_ep3_level1,2071,8683,41819,cb,ret far
+11,terrain_ep3_level10,2071,8606,41742,803e664200,"cmp byte ptr [4266h],0"
+11,terrain_ep3_level10,2071,8611,41747,7512,jne short 21B7h
+11,terrain_ep3_level10,2071,8613,41749,c606664201,"mov byte ptr [4266h],1"
+11,terrain_ep3_level10,2071,8618,41754,66ff369010,push dword ptr [1090h]
+11,terrain_ep3_level10,2071,8623,41759,9a5407000d,"call far 0754h,0D00h"
+11,terrain_ep3_level10,2071,8628,41764,83c404,"add sp,4"
+11,terrain_ep3_level10,2071,8631,41767,cb,ret far
+11,sound_event42,2071,3746,36882,666800000200,data32 push 20000h
+11,sound_event42,2071,3752,36888,6a42,push 42h
+11,sound_event42,2071,3754,36890,9a0a04ff0b,"call far 040Ah,0BFFh"
+11,sound_event42,2071,3759,36895,83c406,"add sp,6"
+11,sound_event42,2071,3762,36898,cb,ret far
+11,sound_bank_selection,2071,10188,43324,803e6a4200,"cmp byte ptr [426Ah],0"
+11,sound_bank_selection,2071,10193,43329,7411,je short 27E4h
+11,sound_bank_selection,2071,10195,43331,c706d4610600,"mov word ptr [61D4h],6"
+11,sound_bank_selection,2071,10201,43337,32c0,"xor al,al"
+11,sound_bank_selection,2071,10203,43339,a2d661,"mov [61D6h],al"
+11,sound_bank_selection,2071,10206,43342,a2d761,"mov [61D7h],al"
+11,sound_bank_selection,2071,10209,43345,eb3e,jmp short 2821h
+11,sound_bank_selection,2071,10212,43348,833e5c3c00,"cmp word ptr [3C5Ch],0"
+11,sound_bank_selection,2071,10217,43353,7c09,jl short 27F4h
+11,sound_bank_selection,2071,10219,43355,a15c3c,"mov ax,[3C5Ch]"
+11,sound_bank_selection,2071,10222,43358,a3d461,"mov [61D4h],ax"
+11,sound_bank_selection,2071,10225,43361,eb07,jmp short 27FAh
+11,sound_bank_selection,2071,10228,43364,c706d4610200,"mov word ptr [61D4h],2"
+11,sound_bank_selection,2071,10234,43370,833e5e3c00,"cmp word ptr [3C5Eh],0"
+11,sound_bank_selection,2071,10239,43375,7c09,jl short 280Ah
+11,sound_bank_selection,2071,10241,43377,a05e3c,"mov al,[3C5Eh]"
+11,sound_bank_selection,2071,10244,43380,a2d661,"mov [61D6h],al"
+11,sound_bank_selection,2071,10247,43383,eb06,jmp short 280Fh
+11,sound_bank_selection,2071,10250,43386,c606d66102,"mov byte ptr [61D6h],2"
+11,sound_bank_selection,2071,10255,43391,833e603c00,"cmp word ptr [3C60h],0"
+11,sound_bank_selection,2071,10260,43396,7c06,jl short 281Ch
+11,sound_bank_selection,2071,10262,43398,a0603c,"mov al,[3C60h]"
+11,sound_bank_selection,2071,10265,43401,ebc3,jmp short 27DEh
+11,sound_bank_selection,2071,10268,43404,c606d76107,"mov byte ptr [61D7h],7"
+11,sound_bank_selection,2071,10273,43409,9a70015501,"call far 0170h,0155h"
+11,sound_bank_selection,2071,10278,43414,cb,ret far
+11,pickup_apply,2750,1812,45812,c8060000,"enter 6,0"
+11,pickup_apply,2750,1816,45816,57,push di
+11,pickup_apply,2750,1817,45817,56,push si
+11,pickup_apply,2750,1818,45818,8b7e06,"mov di,[bp+6]"
+11,pickup_apply,2750,1821,45821,c646ff01,"mov byte ptr [bp-1],1"
+11,pickup_apply,2750,1825,45825,ff7608,push word ptr [bp+8]
+11,pickup_apply,2750,1828,45828,57,push di
+11,pickup_apply,2750,1829,45829,0e,push cs
+11,pickup_apply,2750,1830,45830,e87bff,call 06A4h
+11,pickup_apply,2750,1833,45833,83c404,"add sp,4"
+11,pickup_apply,2750,1836,45836,8bf0,"mov si,ax"
+11,pickup_apply,2750,1838,45838,8956fc,"mov [bp-4],dx"
+11,pickup_apply,2750,1841,45841,0bd0,"or dx,ax"
+11,pickup_apply,2750,1843,45843,0f841902,je 0950h
+11,pickup_apply,2750,1847,45847,8e46fc,"mov es,[bp-4]"
+11,pickup_apply,2750,1850,45850,268a4406,"mov al,es:[si+6]"
+11,pickup_apply,2750,1854,45854,2ae4,"sub ah,ah"
+11,pickup_apply,2750,1856,45856,2d2f00,"sub ax,2Fh"
+11,pickup_apply,2750,1859,45859,3d0e00,"cmp ax,0Eh"
+11,pickup_apply,2750,1862,45862,0f87df01,ja 0929h
+11,pickup_apply,2750,1866,45866,03c0,"add ax,ax"
+11,pickup_apply,2750,1868,45868,93,"xchg bx,ax"
+11,pickup_apply,2750,1869,45869,2effa75207,jmp word ptr cs:[bx+752h]
+11,pickup_apply,2750,1904,45904,268a4c01,"mov cl,es:[si+1]"
+11,pickup_apply,2750,1908,45908,b001,"mov al,1"
+11,pickup_apply,2750,1910,45910,d2e0,"shl al,cl"
+11,pickup_apply,2750,1912,45912,0806ee40,"or [40EEh],al"
+11,pickup_apply,2750,1916,45916,6a0e,push 0Eh
+11,pickup_apply,2750,1918,45918,e98301,jmp 0904h
+11,pickup_apply,2750,1922,45922,268a4c01,"mov cl,es:[si+1]"
+11,pickup_apply,2750,1926,45926,b001,"mov al,1"
+11,pickup_apply,2750,1928,45928,d2e0,"shl al,cl"
+11,pickup_apply,2750,1930,45930,0806ef40,"or [40EFh],al"
+11,pickup_apply,2750,1934,45934,6a0f,push 0Fh
+11,pickup_apply,2750,1936,45936,e97101,jmp 0904h
+11,pickup_apply,2750,1940,45940,668106de40c8000000,"add dword ptr [40DEh],0C8h"
+11,pickup_apply,2750,1949,45949,6a05,push 5
+11,pickup_apply,2750,1951,45951,e96201,jmp 0904h
+11,pickup_apply,2750,1954,45954,803eea4063,"cmp byte ptr [40EAh],63h"
+11,pickup_apply,2750,1959,45959,7d05,jge short 07AEh
+11,pickup_apply,2750,1961,45961,b001,"mov al,1"
+11,pickup_apply,2750,1963,45963,eb03,jmp short 07B0h
+11,pickup_apply,2750,1966,45966,32c0,"xor al,al"
+11,pickup_apply,2750,1968,45968,8846ff,"mov [bp-1],al"
+11,pickup_apply,2750,1971,45971,0ac0,"or al,al"
+11,pickup_apply,2750,1973,45973,0f847001,je 0929h
+11,pickup_apply,2750,1977,45977,268a4c01,"mov cl,es:[si+1]"
+11,pickup_apply,2750,1981,45981,b001,"mov al,1"
+11,pickup_apply,2750,1983,45983,d2e0,"shl al,cl"
+11,pickup_apply,2750,1985,45985,0006ea40,"add [40EAh],al"
+11,pickup_apply,2750,1989,45989,6a0c,push 0Ch
+11,pickup_apply,2750,1991,45991,e93a01,jmp 0904h
+11,pickup_apply,2750,1994,45994,803ee54064,"cmp byte ptr [40E5h],64h"
+11,pickup_apply,2750,1999,45999,7305,jae short 07D6h
+11,pickup_apply,2750,2001,46001,b001,"mov al,1"
+11,pickup_apply,2750,2003,46003,eb03,jmp short 07D8h
+11,pickup_apply,2750,2006,46006,32c0,"xor al,al"
+11,pickup_apply,2750,2008,46008,8846ff,"mov [bp-1],al"
+11,pickup_apply,2750,2011,46011,0ac0,"or al,al"
+11,pickup_apply,2750,2013,46013,0f844801,je 0929h
+11,pickup_apply,2750,2017,46017,268a4c01,"mov cl,es:[si+1]"
+11,pickup_apply,2750,2021,46021,b81400,"mov ax,14h"
+11,pickup_apply,2750,2024,46024,d3f8,"sar ax,cl"
+11,pickup_apply,2750,2026,46026,0006e540,"add [40E5h],al"
+11,pickup_apply,2750,2030,46030,6a06,push 6
+11,pickup_apply,2750,2032,46032,9aca051708,"call far 05CAh,0817h"
+11,pickup_apply,2750,2037,46037,83c402,"add sp,2"
+11,pickup_apply,2750,2040,46040,eba3,jmp short 079Dh
+11,pickup_apply,2750,2042,46042,803ee54064,"cmp byte ptr [40E5h],64h"
+11,pickup_apply,2750,2047,46047,7305,jae short 0806h
+11,pickup_apply,2750,2049,46049,b001,"mov al,1"
+11,pickup_apply,2750,2051,46051,eb03,jmp short 0808h
+11,pickup_apply,2750,2054,46054,32c0,"xor al,al"
+11,pickup_apply,2750,2056,46056,8846ff,"mov [bp-1],al"
+11,pickup_apply,2750,2059,46059,0ac0,"or al,al"
+11,pickup_apply,2750,2061,46061,0f841801,je 0929h
+11,pickup_apply,2750,2065,46065,8006e5401e,"add byte ptr [40E5h],1Eh"
+11,pickup_apply,2750,2070,46070,668106de40fa000000,"add dword ptr [40DEh],0FAh"
+11,pickup_apply,2750,2079,46079,ebcd,jmp short 07EEh
+11,pickup_apply,2750,2082,46082,c606e54064,"mov byte ptr [40E5h],64h"
+11,pickup_apply,2750,2087,46087,c606e84064,"mov byte ptr [40E8h],64h"
+11,pickup_apply,2750,2092,46092,668106de40f4010000,"add dword ptr [40DEh],1F4h"
+11,pickup_apply,2750,2101,46101,fe06e640,inc byte ptr [40E6h]
+11,pickup_apply,2750,2105,46105,6a06,push 6
+11,pickup_apply,2750,2107,46107,9aca051708,"call far 05CAh,0817h"
+11,pickup_apply,2750,2112,46112,83c402,"add sp,2"
+11,pickup_apply,2750,2115,46115,6a09,push 9
+11,pickup_apply,2750,2117,46117,9aca051708,"call far 05CAh,0817h"
+11,pickup_apply,2750,2122,46122,83c402,"add sp,2"
+11,pickup_apply,2750,2125,46125,6a07,push 7
+11,pickup_apply,2750,2127,46127,eb9f,jmp short 07F0h
+11,pickup_apply,2750,2130,46130,268a4c01,"mov cl,es:[si+1]"
+11,pickup_apply,2750,2134,46134,b001,"mov al,1"
+11,pickup_apply,2750,2136,46136,d2e0,"shl al,cl"
+11,pickup_apply,2750,2138,46138,0806f040,"or [40F0h],al"
+11,pickup_apply,2750,2142,46142,268a4401,"mov al,es:[si+1]"
+11,pickup_apply,2750,2146,46146,2ae4,"sub ah,ah"
+11,pickup_apply,2750,2148,46148,50,push ax
+11,pickup_apply,2750,2149,46149,9aae0c1708,"call far 0CAEh,0817h"
+11,pickup_apply,2750,2154,46154,83c402,"add sp,2"
+11,pickup_apply,2750,2157,46157,6a01,push 1
+11,pickup_apply,2750,2159,46159,8e46fc,"mov es,[bp-4]"
+11,pickup_apply,2750,2162,46162,268a4401,"mov al,es:[si+1]"
+11,pickup_apply,2750,2166,46166,2ae4,"sub ah,ah"
+11,pickup_apply,2750,2168,46168,50,push ax
+11,pickup_apply,2750,2169,46169,9aa80b1708,"call far 0BA8h,0817h"
+11,pickup_apply,2750,2174,46174,83c404,"add sp,4"
+11,pickup_apply,2750,2177,46177,6a0d,push 0Dh
+11,pickup_apply,2750,2179,46179,eb7f,jmp short 0904h
+11,pickup_apply,2750,2182,46182,268a4c01,"mov cl,es:[si+1]"
+11,pickup_apply,2750,2186,46186,b001,"mov al,1"
+11,pickup_apply,2750,2188,46188,d2e0,"shl al,cl"
+11,pickup_apply,2750,2190,46190,0806f140,"or [40F1h],al"
+11,pickup_apply,2750,2194,46194,6a10,push 10h
+11,pickup_apply,2750,2196,46196,eb6e,jmp short 0904h
+11,pickup_apply,2750,2198,46198,803ee94064,"cmp byte ptr [40E9h],64h"
+11,pickup_apply,2750,2203,46203,7d05,jge short 08A2h
+11,pickup_apply,2750,2205,46205,b001,"mov al,1"
+11,pickup_apply,2750,2207,46207,eb03,jmp short 08A4h
+11,pickup_apply,2750,2210,46210,32c0,"xor al,al"
+11,pickup_apply,2750,2212,46212,8846ff,"mov [bp-1],al"
+11,pickup_apply,2750,2215,46215,0ac0,"or al,al"
+11,pickup_apply,2750,2217,46217,747e,je short 0929h
+11,pickup_apply,2750,2219,46219,8006e94014,"add byte ptr [40E9h],14h"
+11,pickup_apply,2750,2224,46224,6a0b,push 0Bh
+11,pickup_apply,2750,2226,46226,eb50,jmp short 0904h
+11,pickup_apply,2750,2228,46228,6a00,push 0
+11,pickup_apply,2750,2230,46230,268a4401,"mov al,es:[si+1]"
+11,pickup_apply,2750,2234,46234,2ae4,"sub ah,ah"
+11,pickup_apply,2750,2236,46236,50,push ax
+11,pickup_apply,2750,2237,46237,9aa80b1708,"call far 0BA8h,0817h"
+11,pickup_apply,2750,2242,46242,83c404,"add sp,4"
+11,pickup_apply,2750,2245,46245,8846ff,"mov [bp-1],al"
+11,pickup_apply,2750,2248,46248,eb5f,jmp short 0929h
+11,pickup_apply,2750,2250,46250,803e0a4164,"cmp byte ptr [410Ah],64h"
+11,pickup_apply,2750,2255,46255,7305,jae short 08D6h
+11,pickup_apply,2750,2257,46257,b001,"mov al,1"
+11,pickup_apply,2750,2259,46259,eb03,jmp short 08D8h
+11,pickup_apply,2750,2262,46262,32c0,"xor al,al"
+11,pickup_apply,2750,2264,46264,8846ff,"mov [bp-1],al"
+11,pickup_apply,2750,2267,46267,0ac0,"or al,al"
+11,pickup_apply,2750,2269,46269,744a,je short 0929h
+11,pickup_apply,2750,2271,46271,80060a4114,"add byte ptr [410Ah],14h"
+11,pickup_apply,2750,2276,46276,6a14,push 14h
+11,pickup_apply,2750,2278,46278,eb1c,jmp short 0904h
+11,pickup_apply,2750,2280,46280,803e0b4164,"cmp byte ptr [410Bh],64h"
+11,pickup_apply,2750,2285,46285,7305,jae short 08F4h
+11,pickup_apply,2750,2287,46287,b001,"mov al,1"
+11,pickup_apply,2750,2289,46289,eb03,jmp short 08F6h
+11,pickup_apply,2750,2292,46292,32c0,"xor al,al"
+11,pickup_apply,2750,2294,46294,8846ff,"mov [bp-1],al"
+11,pickup_apply,2750,2297,46297,0ac0,"or al,al"
+11,pickup_apply,2750,2299,46299,742c,je short 0929h
+11,pickup_apply,2750,2301,46301,80060b4114,"add byte ptr [410Bh],14h"
+11,pickup_apply,2750,2306,46306,6a15,push 15h
+11,pickup_apply,2750,2308,46308,9aca051708,"call far 05CAh,0817h"
+11,pickup_apply,2750,2313,46313,eb1b,jmp short 0926h
+11,pickup_apply,2750,2316,46316,268a4c01,"mov cl,es:[si+1]"
+11,pickup_apply,2750,2320,46320,b001,"mov al,1"
+11,pickup_apply,2750,2322,46322,d2e0,"shl al,cl"
+11,pickup_apply,2750,2324,46324,08060d41,"or [410Dh],al"
+11,pickup_apply,2750,2328,46328,eb0f,jmp short 0929h
+11,pickup_apply,2750,2330,46330,268a4401,"mov al,es:[si+1]"
+11,pickup_apply,2750,2334,46334,2ae4,"sub ah,ah"
+11,pickup_apply,2750,2336,46336,50,push ax
+11,pickup_apply,2750,2337,46337,9aa0271708,"call far 27A0h,0817h"
+11,pickup_apply,2750,2342,46342,83c402,"add sp,2"
+11,pickup_apply,2750,2345,46345,807eff00,"cmp byte ptr [bp-1],0"
+11,pickup_apply,2750,2349,46349,7421,je short 0950h
+11,pickup_apply,2750,2351,46351,ff76fc,push word ptr [bp-4]
+11,pickup_apply,2750,2354,46354,56,push si
+11,pickup_apply,2750,2355,46355,ff7608,push word ptr [bp+8]
+11,pickup_apply,2750,2358,46358,57,push di
+11,pickup_apply,2750,2359,46359,0e,push cs
+11,pickup_apply,2750,2360,46360,e8c3fd,call 06FEh
+11,pickup_apply,2750,2363,46363,83c408,"add sp,8"
+11,pickup_apply,2750,2366,46366,8e46fc,"mov es,[bp-4]"
+11,pickup_apply,2750,2369,46369,268a4406,"mov al,es:[si+6]"
+11,pickup_apply,2750,2373,46373,2ae4,"sub ah,ah"
+11,pickup_apply,2750,2375,46375,50,push ax
+11,pickup_apply,2750,2376,46376,9a421a1708,"call far 1A42h,0817h"
+11,pickup_apply,2750,2381,46381,83c402,"add sp,2"
+11,pickup_apply,2750,2384,46384,5e,pop si
+11,pickup_apply,2750,2385,46385,5f,pop di
+11,pickup_apply,2750,2386,46386,c9,leave
+11,pickup_apply,2750,2387,46387,cb,ret far
+11,pickup_record_find,2750,1700,45700,c8040000,"enter 4,0"
+11,pickup_record_find,2750,1704,45704,57,push di
+11,pickup_record_find,2750,1705,45705,56,push si
+11,pickup_record_find,2750,1706,45706,33c9,"xor cx,cx"
+11,pickup_record_find,2750,1708,45708,b80600,"mov ax,6"
+11,pickup_record_find,2750,1711,45711,ba211e,"mov dx,1E21h"
+11,pickup_record_find,2750,1714,45714,8bf0,"mov si,ax"
+11,pickup_record_find,2750,1716,45716,8956fe,"mov [bp-2],dx"
+11,pickup_record_find,2750,1719,45719,390ecc61,"cmp [61CCh],cx"
+11,pickup_record_find,2750,1723,45723,7e39,jle short 06F6h
+11,pickup_record_find,2750,1725,45725,8b7e06,"mov di,[bp+6]"
+11,pickup_record_find,2750,1728,45728,8eda,"mov ds,dx"
+11,pickup_record_find,2750,1730,45730,8b4608,"mov ax,[bp+8]"
+11,pickup_record_find,2750,1733,45733,397c0c,"cmp [si+0Ch],di"
+11,pickup_record_find,2750,1736,45736,7510,jne short 06DAh
+11,pickup_record_find,2750,1738,45738,39440e,"cmp [si+0Eh],ax"
+11,pickup_record_find,2750,1741,45741,750b,jne short 06DAh
+11,pickup_record_find,2750,1743,45743,8a04,"mov al,[si]"
+11,pickup_record_find,2750,1745,45745,8e4608,"mov es,[bp+8]"
+11,pickup_record_find,2750,1748,45748,26384501,"cmp es:[di+1],al"
+11,pickup_record_find,2750,1752,45752,7410,je short 06EAh
+11,pickup_record_find,2750,1754,45754,83c61c,"add si,1Ch"
+11,pickup_record_find,2750,1757,45757,41,inc cx
+11,pickup_record_find,2750,1758,45758,36390ecc61,"cmp ss:[61CCh],cx"
+11,pickup_record_find,2750,1763,45763,7fdd,jg short 06C2h
+11,pickup_record_find,2750,1765,45765,16,push ss
+11,pickup_record_find,2750,1766,45766,1f,pop ds
+11,pickup_record_find,2750,1767,45767,eb0d,jmp short 06F6h
+11,pickup_record_find,2750,1770,45770,16,push ss
+11,pickup_record_find,2750,1771,45771,1f,pop ds
+11,pickup_record_find,2750,1772,45772,8bc6,"mov ax,si"
+11,pickup_record_find,2750,1774,45774,8b56fe,"mov dx,[bp-2]"
+11,pickup_record_find,2750,1777,45777,5e,pop si
+11,pickup_record_find,2750,1778,45778,5f,pop di
+11,pickup_record_find,2750,1779,45779,c9,leave
+11,pickup_record_find,2750,1780,45780,cb,ret far
+11,pickup_record_find,2750,1782,45782,33c0,"xor ax,ax"
+11,pickup_record_find,2750,1784,45784,99,cwd
+11,pickup_record_find,2750,1785,45785,5e,pop si
+11,pickup_record_find,2750,1786,45786,5f,pop di
+11,pickup_record_find,2750,1787,45787,c9,leave
+11,pickup_record_find,2750,1788,45788,cb,ret far
+11,pickup_cell_clear,2750,1790,45790,55,push bp
+11,pickup_cell_clear,2750,1791,45791,8bec,"mov bp,sp"
+11,pickup_cell_clear,2750,1793,45793,c45e06,"les bx,[bp+6]"
+11,pickup_cell_clear,2750,1796,45796,26c6470100,"mov byte ptr es:[bx+1],0"
+11,pickup_cell_clear,2750,1801,45801,c45e0a,"les bx,[bp+0Ah]"
+11,pickup_cell_clear,2750,1804,45804,26806705fe,"and byte ptr es:[bx+5],0FEh"
+11,pickup_cell_clear,2750,1809,45809,c9,leave
+11,pickup_cell_clear,2750,1810,45810,cb,ret far
+12,special_terrain_dispatch,2072,8670,41822,55,push bp
+12,special_terrain_dispatch,2072,8671,41823,8bec,"mov bp,sp"
+12,special_terrain_dispatch,2072,8673,41825,8b0ec861,"mov cx,[61C8h]"
+12,special_terrain_dispatch,2072,8677,41829,41,inc cx
+12,special_terrain_dispatch,2072,8678,41830,8a5e06,"mov bl,[bp+6]"
+12,special_terrain_dispatch,2072,8681,41833,2aff,"sub bh,bh"
+12,special_terrain_dispatch,2072,8683,41835,8a976ad2,"mov dl,[bx-2D96h]"
+12,special_terrain_dispatch,2072,8687,41839,2af6,"sub dh,dh"
+12,special_terrain_dispatch,2072,8689,41841,a1c661,"mov ax,[61C6h]"
+12,special_terrain_dispatch,2072,8692,41844,48,dec ax
+12,special_terrain_dispatch,2072,8693,41845,740b,je short 2202h
+12,special_terrain_dispatch,2072,8695,41847,48,dec ax
+12,special_terrain_dispatch,2072,8696,41848,7476,je short 2270h
+12,special_terrain_dispatch,2072,8698,41850,48,dec ax
+12,special_terrain_dispatch,2072,8699,41851,0f848100,je 2280h
+12,special_terrain_dispatch,2072,8703,41855,e99c00,jmp 229Eh
+12,special_terrain_dispatch,2072,8706,41858,8bc1,"mov ax,cx"
+12,special_terrain_dispatch,2072,8708,41860,2d0700,"sub ax,7"
+12,special_terrain_dispatch,2072,8711,41863,740b,je short 2214h
+12,special_terrain_dispatch,2072,8713,41865,48,dec ax
+12,special_terrain_dispatch,2072,8714,41866,48,dec ax
+12,special_terrain_dispatch,2072,8715,41867,7415,je short 2222h
+12,special_terrain_dispatch,2072,8717,41869,48,dec ax
+12,special_terrain_dispatch,2072,8718,41870,7448,je short 2258h
+12,special_terrain_dispatch,2072,8720,41872,e98b00,jmp 229Eh
+12,special_terrain_dispatch,2072,8724,41876,83fa47,"cmp dx,47h"
+12,special_terrain_dispatch,2072,8727,41879,0f858300,jne 229Eh
+12,special_terrain_dispatch,2072,8731,41883,0e,push cs
+12,special_terrain_dispatch,2072,8732,41884,e8ddfe,call 20FCh
+12,special_terrain_dispatch,2072,8735,41887,eb7d,jmp short 229Eh
+12,special_terrain_dispatch,2072,8738,41890,83fa47,"cmp dx,47h"
+12,special_terrain_dispatch,2072,8741,41893,751d,jne short 2244h
+12,special_terrain_dispatch,2072,8743,41895,803ef44000,"cmp byte ptr [40F4h],0"
+12,special_terrain_dispatch,2072,8748,41900,7516,jne short 2244h
+12,special_terrain_dispatch,2072,8750,41902,c606f44001,"mov byte ptr [40F4h],1"
+12,special_terrain_dispatch,2072,8755,41907,666800000200,data32 push 20000h
+12,special_terrain_dispatch,2072,8761,41913,6a44,push 44h
+12,special_terrain_dispatch,2072,8763,41915,9a0c04ff0b,"call far 040Ch,0BFFh"
+12,special_terrain_dispatch,2072,8768,41920,8be5,"mov sp,bp"
+12,special_terrain_dispatch,2072,8770,41922,c9,leave
+12,special_terrain_dispatch,2072,8771,41923,cb,ret far
+12,special_terrain_dispatch,2072,8772,41924,83fa48,"cmp dx,48h"
+12,special_terrain_dispatch,2072,8775,41927,7555,jne short 229Eh
+12,special_terrain_dispatch,2072,8777,41929,803ef44000,"cmp byte ptr [40F4h],0"
+12,special_terrain_dispatch,2072,8782,41934,744e,je short 229Eh
+12,special_terrain_dispatch,2072,8784,41936,c606f44000,"mov byte ptr [40F4h],0"
+12,special_terrain_dispatch,2072,8789,41941,ebdc,jmp short 2233h
+12,special_terrain_dispatch,2072,8792,41944,83fa47,"cmp dx,47h"
+12,special_terrain_dispatch,2072,8795,41947,7507,jne short 2264h
+12,special_terrain_dispatch,2072,8797,41949,0e,push cs
+12,special_terrain_dispatch,2072,8798,41950,e8c5fe,call 2126h
+12,special_terrain_dispatch,2072,8801,41953,c9,leave
+12,special_terrain_dispatch,2072,8802,41954,cb,ret far
+12,special_terrain_dispatch,2072,8804,41956,83fa48,"cmp dx,48h"
+12,special_terrain_dispatch,2072,8807,41959,7535,jne short 229Eh
+12,special_terrain_dispatch,2072,8809,41961,0e,push cs
+12,special_terrain_dispatch,2072,8810,41962,e809ff,call 2176h
+12,special_terrain_dispatch,2072,8813,41965,c9,leave
+12,special_terrain_dispatch,2072,8814,41966,cb,ret far
+12,special_terrain_dispatch,2072,8816,41968,83f90a,"cmp cx,0Ah"
+12,special_terrain_dispatch,2072,8819,41971,7529,jne short 229Eh
+12,special_terrain_dispatch,2072,8821,41973,83fa47,"cmp dx,47h"
+12,special_terrain_dispatch,2072,8824,41976,7524,jne short 229Eh
+12,special_terrain_dispatch,2072,8826,41978,0e,push cs
+12,special_terrain_dispatch,2072,8827,41979,e82cff,call 21AAh
+12,special_terrain_dispatch,2072,8830,41982,c9,leave
+12,special_terrain_dispatch,2072,8831,41983,cb,ret far
+12,special_terrain_dispatch,2072,8832,41984,83f901,"cmp cx,1"
+12,special_terrain_dispatch,2072,8835,41987,750b,jne short 2290h
+12,special_terrain_dispatch,2072,8837,41989,83fa47,"cmp dx,47h"
+12,special_terrain_dispatch,2072,8840,41992,7506,jne short 2290h
+12,special_terrain_dispatch,2072,8842,41994,0e,push cs
+12,special_terrain_dispatch,2072,8843,41995,e836ff,call 21C4h
+12,special_terrain_dispatch,2072,8846,41998,c9,leave
+12,special_terrain_dispatch,2072,8847,41999,cb,ret far
+12,special_terrain_dispatch,2072,8848,42000,83f90a,"cmp cx,0Ah"
+12,special_terrain_dispatch,2072,8851,42003,7509,jne short 229Eh
+12,special_terrain_dispatch,2072,8853,42005,83fa47,"cmp dx,47h"
+12,special_terrain_dispatch,2072,8856,42008,7504,jne short 229Eh
+12,special_terrain_dispatch,2072,8858,42010,0e,push cs
+12,special_terrain_dispatch,2072,8859,42011,e8f2fe,call 2190h
+12,special_terrain_dispatch,2072,8862,42014,c9,leave
+12,special_terrain_dispatch,2072,8863,42015,cb,ret far
+12,terrain_ep1_level7,2072,8444,41596,803e664200,"cmp byte ptr [4266h],0"
+12,terrain_ep1_level7,2072,8449,41601,7522,jne short 2125h
+12,terrain_ep1_level7,2072,8451,41603,0e,push cs
+12,terrain_ep1_level7,2072,8452,41604,e88ded,call 0E94h
+12,terrain_ep1_level7,2072,8455,41607,b001,"mov al,1"
+12,terrain_ep1_level7,2072,8457,41609,a26642,"mov [4266h],al"
+12,terrain_ep1_level7,2072,8460,41612,a26a42,"mov [426Ah],al"
+12,terrain_ep1_level7,2072,8463,41615,0e,push cs
+12,terrain_ep1_level7,2072,8464,41616,e8ab06,call 27BEh
+12,terrain_ep1_level7,2072,8467,41619,9a8801b20b,"call far 0188h,0BB2h"
+12,terrain_ep1_level7,2072,8472,41624,66ff362a0e,push dword ptr [0E2Ah]
+12,terrain_ep1_level7,2072,8477,41629,9a5607000d,"call far 0756h,0D00h"
+12,terrain_ep1_level7,2072,8482,41634,83c404,"add sp,4"
+12,terrain_ep1_level7,2072,8485,41637,cb,ret far
+12,terrain_ep1_level10_A,2072,8486,41638,803e664200,"cmp byte ptr [4266h],0"
+12,terrain_ep1_level10_A,2072,8491,41643,7547,jne short 2174h
+12,terrain_ep1_level10_A,2072,8493,41645,666800000200,data32 push 20000h
+12,terrain_ep1_level10_A,2072,8499,41651,6a12,push 12h
+12,terrain_ep1_level10_A,2072,8501,41653,9a0c04ff0b,"call far 040Ch,0BFFh"
+12,terrain_ep1_level10_A,2072,8506,41658,83c406,"add sp,6"
+12,terrain_ep1_level10_A,2072,8509,41661,b001,"mov al,1"
+12,terrain_ep1_level10_A,2072,8511,41663,a26642,"mov [4266h],al"
+12,terrain_ep1_level10_A,2072,8514,41666,a26842,"mov [4268h],al"
+12,terrain_ep1_level10_A,2072,8517,41669,a2b240,"mov [40B2h],al"
+12,terrain_ep1_level10_A,2072,8520,41672,c606af4000,"mov byte ptr [40AFh],0"
+12,terrain_ep1_level10_A,2072,8525,41677,66ff363c0f,push dword ptr [0F3Ch]
+12,terrain_ep1_level10_A,2072,8530,41682,9a5607000d,"call far 0756h,0D00h"
+12,terrain_ep1_level10_A,2072,8535,41687,83c404,"add sp,4"
+12,terrain_ep1_level10_A,2072,8538,41690,66ff36900f,push dword ptr [0F90h]
+12,terrain_ep1_level10_A,2072,8543,41695,9a5607000d,"call far 0756h,0D00h"
+12,terrain_ep1_level10_A,2072,8548,41700,83c404,"add sp,4"
+12,terrain_ep1_level10_A,2072,8551,41703,66ff36c20f,push dword ptr [0FC2h]
+12,terrain_ep1_level10_A,2072,8556,41708,9a5607000d,"call far 0756h,0D00h"
+12,terrain_ep1_level10_A,2072,8561,41713,83c404,"add sp,4"
+12,terrain_ep1_level10_A,2072,8564,41716,cb,ret far
+12,terrain_ep1_level10_B,2072,8566,41718,803e674200,"cmp byte ptr [4267h],0"
+12,terrain_ep1_level10_B,2072,8571,41723,7512,jne short 218Fh
+12,terrain_ep1_level10_B,2072,8573,41725,c606674201,"mov byte ptr [4267h],1"
+12,terrain_ep1_level10_B,2072,8578,41730,66ff360410,push dword ptr [1004h]
+12,terrain_ep1_level10_B,2072,8583,41735,9a5607000d,"call far 0756h,0D00h"
+12,terrain_ep1_level10_B,2072,8588,41740,83c404,"add sp,4"
+12,terrain_ep1_level10_B,2072,8591,41743,cb,ret far
+12,terrain_ep2_level10,2072,8618,41770,803e664200,"cmp byte ptr [4266h],0"
+12,terrain_ep2_level10,2072,8623,41775,7512,jne short 21C3h
+12,terrain_ep2_level10,2072,8625,41777,c606664201,"mov byte ptr [4266h],1"
+12,terrain_ep2_level10,2072,8630,41782,66ff366a11,push dword ptr [116Ah]
+12,terrain_ep2_level10,2072,8635,41787,9a5607000d,"call far 0756h,0D00h"
+12,terrain_ep2_level10,2072,8640,41792,83c404,"add sp,4"
+12,terrain_ep2_level10,2072,8643,41795,cb,ret far
+12,terrain_ep3_level1,2072,8644,41796,803e664200,"cmp byte ptr [4266h],0"
+12,terrain_ep3_level1,2072,8649,41801,7512,jne short 21DDh
+12,terrain_ep3_level1,2072,8651,41803,c606664201,"mov byte ptr [4266h],1"
+12,terrain_ep3_level1,2072,8656,41808,66ff362213,push dword ptr [1322h]
+12,terrain_ep3_level1,2072,8661,41813,9a5607000d,"call far 0756h,0D00h"
+12,terrain_ep3_level1,2072,8666,41818,83c404,"add sp,4"
+12,terrain_ep3_level1,2072,8669,41821,cb,ret far
+12,terrain_ep3_level10,2072,8592,41744,803e664200,"cmp byte ptr [4266h],0"
+12,terrain_ep3_level10,2072,8597,41749,7512,jne short 21A9h
+12,terrain_ep3_level10,2072,8599,41751,c606664201,"mov byte ptr [4266h],1"
+12,terrain_ep3_level10,2072,8604,41756,66ff368010,push dword ptr [1080h]
+12,terrain_ep3_level10,2072,8609,41761,9a5607000d,"call far 0756h,0D00h"
+12,terrain_ep3_level10,2072,8614,41766,83c404,"add sp,4"
+12,terrain_ep3_level10,2072,8617,41769,cb,ret far
+12,sound_event42,2072,3732,36884,666800000200,data32 push 20000h
+12,sound_event42,2072,3738,36890,6a42,push 42h
+12,sound_event42,2072,3740,36892,9a0c04ff0b,"call far 040Ch,0BFFh"
+12,sound_event42,2072,3745,36897,83c406,"add sp,6"
+12,sound_event42,2072,3748,36900,cb,ret far
+12,sound_bank_selection,2072,10174,43326,803e6a4200,"cmp byte ptr [426Ah],0"
+12,sound_bank_selection,2072,10179,43331,7411,je short 27D6h
+12,sound_bank_selection,2072,10181,43333,c706d4610600,"mov word ptr [61D4h],6"
+12,sound_bank_selection,2072,10187,43339,32c0,"xor al,al"
+12,sound_bank_selection,2072,10189,43341,a2d661,"mov [61D6h],al"
+12,sound_bank_selection,2072,10192,43344,a2d761,"mov [61D7h],al"
+12,sound_bank_selection,2072,10195,43347,eb3e,jmp short 2813h
+12,sound_bank_selection,2072,10198,43350,833e5c3c00,"cmp word ptr [3C5Ch],0"
+12,sound_bank_selection,2072,10203,43355,7c09,jl short 27E6h
+12,sound_bank_selection,2072,10205,43357,a15c3c,"mov ax,[3C5Ch]"
+12,sound_bank_selection,2072,10208,43360,a3d461,"mov [61D4h],ax"
+12,sound_bank_selection,2072,10211,43363,eb07,jmp short 27ECh
+12,sound_bank_selection,2072,10214,43366,c706d4610200,"mov word ptr [61D4h],2"
+12,sound_bank_selection,2072,10220,43372,833e5e3c00,"cmp word ptr [3C5Eh],0"
+12,sound_bank_selection,2072,10225,43377,7c09,jl short 27FCh
+12,sound_bank_selection,2072,10227,43379,a05e3c,"mov al,[3C5Eh]"
+12,sound_bank_selection,2072,10230,43382,a2d661,"mov [61D6h],al"
+12,sound_bank_selection,2072,10233,43385,eb06,jmp short 2801h
+12,sound_bank_selection,2072,10236,43388,c606d66102,"mov byte ptr [61D6h],2"
+12,sound_bank_selection,2072,10241,43393,833e603c00,"cmp word ptr [3C60h],0"
+12,sound_bank_selection,2072,10246,43398,7c06,jl short 280Eh
+12,sound_bank_selection,2072,10248,43400,a0603c,"mov al,[3C60h]"
+12,sound_bank_selection,2072,10251,43403,ebc3,jmp short 27D0h
+12,sound_bank_selection,2072,10254,43406,c606d76107,"mov byte ptr [61D7h],7"
+12,sound_bank_selection,2072,10259,43411,9a70015501,"call far 0170h,0155h"
+12,sound_bank_selection,2072,10264,43416,cb,ret far
+12,pickup_apply,2750,1814,45814,c8060000,"enter 6,0"
+12,pickup_apply,2750,1818,45818,57,push di
+12,pickup_apply,2750,1819,45819,56,push si
+12,pickup_apply,2750,1820,45820,8b7e06,"mov di,[bp+6]"
+12,pickup_apply,2750,1823,45823,c646ff01,"mov byte ptr [bp-1],1"
+12,pickup_apply,2750,1827,45827,ff7608,push word ptr [bp+8]
+12,pickup_apply,2750,1830,45830,57,push di
+12,pickup_apply,2750,1831,45831,0e,push cs
+12,pickup_apply,2750,1832,45832,e87bff,call 06A6h
+12,pickup_apply,2750,1835,45835,83c404,"add sp,4"
+12,pickup_apply,2750,1838,45838,8bf0,"mov si,ax"
+12,pickup_apply,2750,1840,45840,8956fc,"mov [bp-4],dx"
+12,pickup_apply,2750,1843,45843,0bd0,"or dx,ax"
+12,pickup_apply,2750,1845,45845,0f841902,je 0952h
+12,pickup_apply,2750,1849,45849,8e46fc,"mov es,[bp-4]"
+12,pickup_apply,2750,1852,45852,268a4406,"mov al,es:[si+6]"
+12,pickup_apply,2750,1856,45856,2ae4,"sub ah,ah"
+12,pickup_apply,2750,1858,45858,2d2f00,"sub ax,2Fh"
+12,pickup_apply,2750,1861,45861,3d0e00,"cmp ax,0Eh"
+12,pickup_apply,2750,1864,45864,0f87df01,ja 092Bh
+12,pickup_apply,2750,1868,45868,03c0,"add ax,ax"
+12,pickup_apply,2750,1870,45870,93,"xchg bx,ax"
+12,pickup_apply,2750,1871,45871,2effa75407,jmp word ptr cs:[bx+754h]
+12,pickup_apply,2750,1906,45906,268a4c01,"mov cl,es:[si+1]"
+12,pickup_apply,2750,1910,45910,b001,"mov al,1"
+12,pickup_apply,2750,1912,45912,d2e0,"shl al,cl"
+12,pickup_apply,2750,1914,45914,0806ee40,"or [40EEh],al"
+12,pickup_apply,2750,1918,45918,6a0d,push 0Dh
+12,pickup_apply,2750,1920,45920,e98301,jmp 0906h
+12,pickup_apply,2750,1924,45924,268a4c01,"mov cl,es:[si+1]"
+12,pickup_apply,2750,1928,45928,b001,"mov al,1"
+12,pickup_apply,2750,1930,45930,d2e0,"shl al,cl"
+12,pickup_apply,2750,1932,45932,0806ef40,"or [40EFh],al"
+12,pickup_apply,2750,1936,45936,6a0e,push 0Eh
+12,pickup_apply,2750,1938,45938,e97101,jmp 0906h
+12,pickup_apply,2750,1942,45942,668106de40c8000000,"add dword ptr [40DEh],0C8h"
+12,pickup_apply,2750,1951,45951,6a04,push 4
+12,pickup_apply,2750,1953,45953,e96201,jmp 0906h
+12,pickup_apply,2750,1956,45956,803eea4063,"cmp byte ptr [40EAh],63h"
+12,pickup_apply,2750,1961,45961,7d05,jge short 07B0h
+12,pickup_apply,2750,1963,45963,b001,"mov al,1"
+12,pickup_apply,2750,1965,45965,eb03,jmp short 07B2h
+12,pickup_apply,2750,1968,45968,32c0,"xor al,al"
+12,pickup_apply,2750,1970,45970,8846ff,"mov [bp-1],al"
+12,pickup_apply,2750,1973,45973,0ac0,"or al,al"
+12,pickup_apply,2750,1975,45975,0f847001,je 092Bh
+12,pickup_apply,2750,1979,45979,268a4c01,"mov cl,es:[si+1]"
+12,pickup_apply,2750,1983,45983,b001,"mov al,1"
+12,pickup_apply,2750,1985,45985,d2e0,"shl al,cl"
+12,pickup_apply,2750,1987,45987,0006ea40,"add [40EAh],al"
+12,pickup_apply,2750,1991,45991,6a0b,push 0Bh
+12,pickup_apply,2750,1993,45993,e93a01,jmp 0906h
+12,pickup_apply,2750,1996,45996,803ee54064,"cmp byte ptr [40E5h],64h"
+12,pickup_apply,2750,2001,46001,7305,jae short 07D8h
+12,pickup_apply,2750,2003,46003,b001,"mov al,1"
+12,pickup_apply,2750,2005,46005,eb03,jmp short 07DAh
+12,pickup_apply,2750,2008,46008,32c0,"xor al,al"
+12,pickup_apply,2750,2010,46010,8846ff,"mov [bp-1],al"
+12,pickup_apply,2750,2013,46013,0ac0,"or al,al"
+12,pickup_apply,2750,2015,46015,0f844801,je 092Bh
+12,pickup_apply,2750,2019,46019,268a4c01,"mov cl,es:[si+1]"
+12,pickup_apply,2750,2023,46023,b81400,"mov ax,14h"
+12,pickup_apply,2750,2026,46026,d3f8,"sar ax,cl"
+12,pickup_apply,2750,2028,46028,0006e540,"add [40E5h],al"
+12,pickup_apply,2750,2032,46032,6a05,push 5
+12,pickup_apply,2750,2034,46034,9ac6051808,"call far 05C6h,0818h"
+12,pickup_apply,2750,2039,46039,83c402,"add sp,2"
+12,pickup_apply,2750,2042,46042,eba3,jmp short 079Fh
+12,pickup_apply,2750,2044,46044,803ee54064,"cmp byte ptr [40E5h],64h"
+12,pickup_apply,2750,2049,46049,7305,jae short 0808h
+12,pickup_apply,2750,2051,46051,b001,"mov al,1"
+12,pickup_apply,2750,2053,46053,eb03,jmp short 080Ah
+12,pickup_apply,2750,2056,46056,32c0,"xor al,al"
+12,pickup_apply,2750,2058,46058,8846ff,"mov [bp-1],al"
+12,pickup_apply,2750,2061,46061,0ac0,"or al,al"
+12,pickup_apply,2750,2063,46063,0f841801,je 092Bh
+12,pickup_apply,2750,2067,46067,8006e5401e,"add byte ptr [40E5h],1Eh"
+12,pickup_apply,2750,2072,46072,668106de40fa000000,"add dword ptr [40DEh],0FAh"
+12,pickup_apply,2750,2081,46081,ebcd,jmp short 07F0h
+12,pickup_apply,2750,2084,46084,c606e54064,"mov byte ptr [40E5h],64h"
+12,pickup_apply,2750,2089,46089,c606e84064,"mov byte ptr [40E8h],64h"
+12,pickup_apply,2750,2094,46094,668106de40f4010000,"add dword ptr [40DEh],1F4h"
+12,pickup_apply,2750,2103,46103,fe06e640,inc byte ptr [40E6h]
+12,pickup_apply,2750,2107,46107,6a05,push 5
+12,pickup_apply,2750,2109,46109,9ac6051808,"call far 05C6h,0818h"
+12,pickup_apply,2750,2114,46114,83c402,"add sp,2"
+12,pickup_apply,2750,2117,46117,6a08,push 8
+12,pickup_apply,2750,2119,46119,9ac6051808,"call far 05C6h,0818h"
+12,pickup_apply,2750,2124,46124,83c402,"add sp,2"
+12,pickup_apply,2750,2127,46127,6a06,push 6
+12,pickup_apply,2750,2129,46129,eb9f,jmp short 07F2h
+12,pickup_apply,2750,2132,46132,268a4c01,"mov cl,es:[si+1]"
+12,pickup_apply,2750,2136,46136,b001,"mov al,1"
+12,pickup_apply,2750,2138,46138,d2e0,"shl al,cl"
+12,pickup_apply,2750,2140,46140,0806f040,"or [40F0h],al"
+12,pickup_apply,2750,2144,46144,268a4401,"mov al,es:[si+1]"
+12,pickup_apply,2750,2148,46148,2ae4,"sub ah,ah"
+12,pickup_apply,2750,2150,46150,50,push ax
+12,pickup_apply,2750,2151,46151,9aa00c1808,"call far 0CA0h,0818h"
+12,pickup_apply,2750,2156,46156,83c402,"add sp,2"
+12,pickup_apply,2750,2159,46159,6a01,push 1
+12,pickup_apply,2750,2161,46161,8e46fc,"mov es,[bp-4]"
+12,pickup_apply,2750,2164,46164,268a4401,"mov al,es:[si+1]"
+12,pickup_apply,2750,2168,46168,2ae4,"sub ah,ah"
+12,pickup_apply,2750,2170,46170,50,push ax
+12,pickup_apply,2750,2171,46171,9a9a0b1808,"call far 0B9Ah,0818h"
+12,pickup_apply,2750,2176,46176,83c404,"add sp,4"
+12,pickup_apply,2750,2179,46179,6a0c,push 0Ch
+12,pickup_apply,2750,2181,46181,eb7f,jmp short 0906h
+12,pickup_apply,2750,2184,46184,268a4c01,"mov cl,es:[si+1]"
+12,pickup_apply,2750,2188,46188,b001,"mov al,1"
+12,pickup_apply,2750,2190,46190,d2e0,"shl al,cl"
+12,pickup_apply,2750,2192,46192,0806f140,"or [40F1h],al"
+12,pickup_apply,2750,2196,46196,6a0f,push 0Fh
+12,pickup_apply,2750,2198,46198,eb6e,jmp short 0906h
+12,pickup_apply,2750,2200,46200,803ee94064,"cmp byte ptr [40E9h],64h"
+12,pickup_apply,2750,2205,46205,7d05,jge short 08A4h
+12,pickup_apply,2750,2207,46207,b001,"mov al,1"
+12,pickup_apply,2750,2209,46209,eb03,jmp short 08A6h
+12,pickup_apply,2750,2212,46212,32c0,"xor al,al"
+12,pickup_apply,2750,2214,46214,8846ff,"mov [bp-1],al"
+12,pickup_apply,2750,2217,46217,0ac0,"or al,al"
+12,pickup_apply,2750,2219,46219,747e,je short 092Bh
+12,pickup_apply,2750,2221,46221,8006e94014,"add byte ptr [40E9h],14h"
+12,pickup_apply,2750,2226,46226,6a0a,push 0Ah
+12,pickup_apply,2750,2228,46228,eb50,jmp short 0906h
+12,pickup_apply,2750,2230,46230,6a00,push 0
+12,pickup_apply,2750,2232,46232,268a4401,"mov al,es:[si+1]"
+12,pickup_apply,2750,2236,46236,2ae4,"sub ah,ah"
+12,pickup_apply,2750,2238,46238,50,push ax
+12,pickup_apply,2750,2239,46239,9a9a0b1808,"call far 0B9Ah,0818h"
+12,pickup_apply,2750,2244,46244,83c404,"add sp,4"
+12,pickup_apply,2750,2247,46247,8846ff,"mov [bp-1],al"
+12,pickup_apply,2750,2250,46250,eb5f,jmp short 092Bh
+12,pickup_apply,2750,2252,46252,803e0a4164,"cmp byte ptr [410Ah],64h"
+12,pickup_apply,2750,2257,46257,7305,jae short 08D8h
+12,pickup_apply,2750,2259,46259,b001,"mov al,1"
+12,pickup_apply,2750,2261,46261,eb03,jmp short 08DAh
+12,pickup_apply,2750,2264,46264,32c0,"xor al,al"
+12,pickup_apply,2750,2266,46266,8846ff,"mov [bp-1],al"
+12,pickup_apply,2750,2269,46269,0ac0,"or al,al"
+12,pickup_apply,2750,2271,46271,744a,je short 092Bh
+12,pickup_apply,2750,2273,46273,80060a4114,"add byte ptr [410Ah],14h"
+12,pickup_apply,2750,2278,46278,6a13,push 13h
+12,pickup_apply,2750,2280,46280,eb1c,jmp short 0906h
+12,pickup_apply,2750,2282,46282,803e0b4164,"cmp byte ptr [410Bh],64h"
+12,pickup_apply,2750,2287,46287,7305,jae short 08F6h
+12,pickup_apply,2750,2289,46289,b001,"mov al,1"
+12,pickup_apply,2750,2291,46291,eb03,jmp short 08F8h
+12,pickup_apply,2750,2294,46294,32c0,"xor al,al"
+12,pickup_apply,2750,2296,46296,8846ff,"mov [bp-1],al"
+12,pickup_apply,2750,2299,46299,0ac0,"or al,al"
+12,pickup_apply,2750,2301,46301,742c,je short 092Bh
+12,pickup_apply,2750,2303,46303,80060b4114,"add byte ptr [410Bh],14h"
+12,pickup_apply,2750,2308,46308,6a14,push 14h
+12,pickup_apply,2750,2310,46310,9ac6051808,"call far 05C6h,0818h"
+12,pickup_apply,2750,2315,46315,eb1b,jmp short 0928h
+12,pickup_apply,2750,2318,46318,268a4c01,"mov cl,es:[si+1]"
+12,pickup_apply,2750,2322,46322,b001,"mov al,1"
+12,pickup_apply,2750,2324,46324,d2e0,"shl al,cl"
+12,pickup_apply,2750,2326,46326,08060d41,"or [410Dh],al"
+12,pickup_apply,2750,2330,46330,eb0f,jmp short 092Bh
+12,pickup_apply,2750,2332,46332,268a4401,"mov al,es:[si+1]"
+12,pickup_apply,2750,2336,46336,2ae4,"sub ah,ah"
+12,pickup_apply,2750,2338,46338,50,push ax
+12,pickup_apply,2750,2339,46339,9a92271808,"call far 2792h,0818h"
+12,pickup_apply,2750,2344,46344,83c402,"add sp,2"
+12,pickup_apply,2750,2347,46347,807eff00,"cmp byte ptr [bp-1],0"
+12,pickup_apply,2750,2351,46351,7421,je short 0952h
+12,pickup_apply,2750,2353,46353,ff76fc,push word ptr [bp-4]
+12,pickup_apply,2750,2356,46356,56,push si
+12,pickup_apply,2750,2357,46357,ff7608,push word ptr [bp+8]
+12,pickup_apply,2750,2360,46360,57,push di
+12,pickup_apply,2750,2361,46361,0e,push cs
+12,pickup_apply,2750,2362,46362,e8c3fd,call 0700h
+12,pickup_apply,2750,2365,46365,83c408,"add sp,8"
+12,pickup_apply,2750,2368,46368,8e46fc,"mov es,[bp-4]"
+12,pickup_apply,2750,2371,46371,268a4406,"mov al,es:[si+6]"
+12,pickup_apply,2750,2375,46375,2ae4,"sub ah,ah"
+12,pickup_apply,2750,2377,46377,50,push ax
+12,pickup_apply,2750,2378,46378,9a341a1808,"call far 1A34h,0818h"
+12,pickup_apply,2750,2383,46383,83c402,"add sp,2"
+12,pickup_apply,2750,2386,46386,5e,pop si
+12,pickup_apply,2750,2387,46387,5f,pop di
+12,pickup_apply,2750,2388,46388,c9,leave
+12,pickup_apply,2750,2389,46389,cb,ret far
+12,pickup_record_find,2750,1702,45702,c8040000,"enter 4,0"
+12,pickup_record_find,2750,1706,45706,57,push di
+12,pickup_record_find,2750,1707,45707,56,push si
+12,pickup_record_find,2750,1708,45708,33c9,"xor cx,cx"
+12,pickup_record_find,2750,1710,45710,b80600,"mov ax,6"
+12,pickup_record_find,2750,1713,45713,ba271e,"mov dx,1E27h"
+12,pickup_record_find,2750,1716,45716,8bf0,"mov si,ax"
+12,pickup_record_find,2750,1718,45718,8956fe,"mov [bp-2],dx"
+12,pickup_record_find,2750,1721,45721,390ecc61,"cmp [61CCh],cx"
+12,pickup_record_find,2750,1725,45725,7e39,jle short 06F8h
+12,pickup_record_find,2750,1727,45727,8b7e06,"mov di,[bp+6]"
+12,pickup_record_find,2750,1730,45730,8eda,"mov ds,dx"
+12,pickup_record_find,2750,1732,45732,8b4608,"mov ax,[bp+8]"
+12,pickup_record_find,2750,1735,45735,397c0c,"cmp [si+0Ch],di"
+12,pickup_record_find,2750,1738,45738,7510,jne short 06DCh
+12,pickup_record_find,2750,1740,45740,39440e,"cmp [si+0Eh],ax"
+12,pickup_record_find,2750,1743,45743,750b,jne short 06DCh
+12,pickup_record_find,2750,1745,45745,8a04,"mov al,[si]"
+12,pickup_record_find,2750,1747,45747,8e4608,"mov es,[bp+8]"
+12,pickup_record_find,2750,1750,45750,26384501,"cmp es:[di+1],al"
+12,pickup_record_find,2750,1754,45754,7410,je short 06ECh
+12,pickup_record_find,2750,1756,45756,83c61c,"add si,1Ch"
+12,pickup_record_find,2750,1759,45759,41,inc cx
+12,pickup_record_find,2750,1760,45760,36390ecc61,"cmp ss:[61CCh],cx"
+12,pickup_record_find,2750,1765,45765,7fdd,jg short 06C4h
+12,pickup_record_find,2750,1767,45767,16,push ss
+12,pickup_record_find,2750,1768,45768,1f,pop ds
+12,pickup_record_find,2750,1769,45769,eb0d,jmp short 06F8h
+12,pickup_record_find,2750,1772,45772,16,push ss
+12,pickup_record_find,2750,1773,45773,1f,pop ds
+12,pickup_record_find,2750,1774,45774,8bc6,"mov ax,si"
+12,pickup_record_find,2750,1776,45776,8b56fe,"mov dx,[bp-2]"
+12,pickup_record_find,2750,1779,45779,5e,pop si
+12,pickup_record_find,2750,1780,45780,5f,pop di
+12,pickup_record_find,2750,1781,45781,c9,leave
+12,pickup_record_find,2750,1782,45782,cb,ret far
+12,pickup_record_find,2750,1784,45784,33c0,"xor ax,ax"
+12,pickup_record_find,2750,1786,45786,99,cwd
+12,pickup_record_find,2750,1787,45787,5e,pop si
+12,pickup_record_find,2750,1788,45788,5f,pop di
+12,pickup_record_find,2750,1789,45789,c9,leave
+12,pickup_record_find,2750,1790,45790,cb,ret far
+12,pickup_cell_clear,2750,1792,45792,55,push bp
+12,pickup_cell_clear,2750,1793,45793,8bec,"mov bp,sp"
+12,pickup_cell_clear,2750,1795,45795,c45e06,"les bx,[bp+6]"
+12,pickup_cell_clear,2750,1798,45798,26c6470100,"mov byte ptr es:[bx+1],0"
+12,pickup_cell_clear,2750,1803,45803,c45e0a,"les bx,[bp+0Ah]"
+12,pickup_cell_clear,2750,1806,45806,26806705fe,"and byte ptr es:[bx+5],0FEh"
+12,pickup_cell_clear,2750,1811,45811,c9,leave
+12,pickup_cell_clear,2750,1812,45812,cb,ret far
+15,special_terrain_dispatch,2076,8740,41956,55,push bp
+15,special_terrain_dispatch,2076,8741,41957,8bec,"mov bp,sp"
+15,special_terrain_dispatch,2076,8743,41959,8b0e9861,"mov cx,[6198h]"
+15,special_terrain_dispatch,2076,8747,41963,41,inc cx
+15,special_terrain_dispatch,2076,8748,41964,8a5e06,"mov bl,[bp+6]"
+15,special_terrain_dispatch,2076,8751,41967,2aff,"sub bh,bh"
+15,special_terrain_dispatch,2076,8753,41969,8a973ad2,"mov dl,[bx-2DC6h]"
+15,special_terrain_dispatch,2076,8757,41973,2af6,"sub dh,dh"
+15,special_terrain_dispatch,2076,8759,41975,a19661,"mov ax,[6196h]"
+15,special_terrain_dispatch,2076,8762,41978,48,dec ax
+15,special_terrain_dispatch,2076,8763,41979,740b,je short 2248h
+15,special_terrain_dispatch,2076,8765,41981,48,dec ax
+15,special_terrain_dispatch,2076,8766,41982,7476,je short 22B6h
+15,special_terrain_dispatch,2076,8768,41984,48,dec ax
+15,special_terrain_dispatch,2076,8769,41985,0f848100,je 22C6h
+15,special_terrain_dispatch,2076,8773,41989,e99c00,jmp 22E4h
+15,special_terrain_dispatch,2076,8776,41992,8bc1,"mov ax,cx"
+15,special_terrain_dispatch,2076,8778,41994,2d0700,"sub ax,7"
+15,special_terrain_dispatch,2076,8781,41997,740b,je short 225Ah
+15,special_terrain_dispatch,2076,8783,41999,48,dec ax
+15,special_terrain_dispatch,2076,8784,42000,48,dec ax
+15,special_terrain_dispatch,2076,8785,42001,7415,je short 2268h
+15,special_terrain_dispatch,2076,8787,42003,48,dec ax
+15,special_terrain_dispatch,2076,8788,42004,7448,je short 229Eh
+15,special_terrain_dispatch,2076,8790,42006,e98b00,jmp 22E4h
+15,special_terrain_dispatch,2076,8794,42010,83fa47,"cmp dx,47h"
+15,special_terrain_dispatch,2076,8797,42013,0f858300,jne 22E4h
+15,special_terrain_dispatch,2076,8801,42017,0e,push cs
+15,special_terrain_dispatch,2076,8802,42018,e8ddfe,call 2142h
+15,special_terrain_dispatch,2076,8805,42021,eb7d,jmp short 22E4h
+15,special_terrain_dispatch,2076,8808,42024,83fa47,"cmp dx,47h"
+15,special_terrain_dispatch,2076,8811,42027,751d,jne short 228Ah
+15,special_terrain_dispatch,2076,8813,42029,803ec44000,"cmp byte ptr [40C4h],0"
+15,special_terrain_dispatch,2076,8818,42034,7516,jne short 228Ah
+15,special_terrain_dispatch,2076,8820,42036,c606c44001,"mov byte ptr [40C4h],1"
+15,special_terrain_dispatch,2076,8825,42041,666800000200,data32 push 20000h
+15,special_terrain_dispatch,2076,8831,42047,6a44,push 44h
+15,special_terrain_dispatch,2076,8833,42049,9ada03070c,"call far 03DAh,0C07h"
+15,special_terrain_dispatch,2076,8838,42054,8be5,"mov sp,bp"
+15,special_terrain_dispatch,2076,8840,42056,c9,leave
+15,special_terrain_dispatch,2076,8841,42057,cb,ret far
+15,special_terrain_dispatch,2076,8842,42058,83fa48,"cmp dx,48h"
+15,special_terrain_dispatch,2076,8845,42061,7555,jne short 22E4h
+15,special_terrain_dispatch,2076,8847,42063,803ec44000,"cmp byte ptr [40C4h],0"
+15,special_terrain_dispatch,2076,8852,42068,744e,je short 22E4h
+15,special_terrain_dispatch,2076,8854,42070,c606c44000,"mov byte ptr [40C4h],0"
+15,special_terrain_dispatch,2076,8859,42075,ebdc,jmp short 2279h
+15,special_terrain_dispatch,2076,8862,42078,83fa47,"cmp dx,47h"
+15,special_terrain_dispatch,2076,8865,42081,7507,jne short 22AAh
+15,special_terrain_dispatch,2076,8867,42083,0e,push cs
+15,special_terrain_dispatch,2076,8868,42084,e8c5fe,call 216Ch
+15,special_terrain_dispatch,2076,8871,42087,c9,leave
+15,special_terrain_dispatch,2076,8872,42088,cb,ret far
+15,special_terrain_dispatch,2076,8874,42090,83fa48,"cmp dx,48h"
+15,special_terrain_dispatch,2076,8877,42093,7535,jne short 22E4h
+15,special_terrain_dispatch,2076,8879,42095,0e,push cs
+15,special_terrain_dispatch,2076,8880,42096,e809ff,call 21BCh
+15,special_terrain_dispatch,2076,8883,42099,c9,leave
+15,special_terrain_dispatch,2076,8884,42100,cb,ret far
+15,special_terrain_dispatch,2076,8886,42102,83f90a,"cmp cx,0Ah"
+15,special_terrain_dispatch,2076,8889,42105,7529,jne short 22E4h
+15,special_terrain_dispatch,2076,8891,42107,83fa47,"cmp dx,47h"
+15,special_terrain_dispatch,2076,8894,42110,7524,jne short 22E4h
+15,special_terrain_dispatch,2076,8896,42112,0e,push cs
+15,special_terrain_dispatch,2076,8897,42113,e82cff,call 21F0h
+15,special_terrain_dispatch,2076,8900,42116,c9,leave
+15,special_terrain_dispatch,2076,8901,42117,cb,ret far
+15,special_terrain_dispatch,2076,8902,42118,83f901,"cmp cx,1"
+15,special_terrain_dispatch,2076,8905,42121,750b,jne short 22D6h
+15,special_terrain_dispatch,2076,8907,42123,83fa47,"cmp dx,47h"
+15,special_terrain_dispatch,2076,8910,42126,7506,jne short 22D6h
+15,special_terrain_dispatch,2076,8912,42128,0e,push cs
+15,special_terrain_dispatch,2076,8913,42129,e836ff,call 220Ah
+15,special_terrain_dispatch,2076,8916,42132,c9,leave
+15,special_terrain_dispatch,2076,8917,42133,cb,ret far
+15,special_terrain_dispatch,2076,8918,42134,83f90a,"cmp cx,0Ah"
+15,special_terrain_dispatch,2076,8921,42137,7509,jne short 22E4h
+15,special_terrain_dispatch,2076,8923,42139,83fa47,"cmp dx,47h"
+15,special_terrain_dispatch,2076,8926,42142,7504,jne short 22E4h
+15,special_terrain_dispatch,2076,8928,42144,0e,push cs
+15,special_terrain_dispatch,2076,8929,42145,e8f2fe,call 21D6h
+15,special_terrain_dispatch,2076,8932,42148,c9,leave
+15,special_terrain_dispatch,2076,8933,42149,cb,ret far
+15,terrain_ep1_level7,2076,8514,41730,803e364200,"cmp byte ptr [4236h],0"
+15,terrain_ep1_level7,2076,8519,41735,7522,jne short 216Bh
+15,terrain_ep1_level7,2076,8521,41737,0e,push cs
+15,terrain_ep1_level7,2076,8522,41738,e859ed,call 0EA6h
+15,terrain_ep1_level7,2076,8525,41741,b001,"mov al,1"
+15,terrain_ep1_level7,2076,8527,41743,a23642,"mov [4236h],al"
+15,terrain_ep1_level7,2076,8530,41746,a23a42,"mov [423Ah],al"
+15,terrain_ep1_level7,2076,8533,41749,0e,push cs
+15,terrain_ep1_level7,2076,8534,41750,e8ab06,call 2804h
+15,terrain_ep1_level7,2076,8537,41753,9a8e01ba0b,"call far 018Eh,0BBAh"
+15,terrain_ep1_level7,2076,8542,41758,66ff36300e,push dword ptr [0E30h]
+15,terrain_ep1_level7,2076,8547,41763,9a5407050d,"call far 0754h,0D05h"
+15,terrain_ep1_level7,2076,8552,41768,83c404,"add sp,4"
+15,terrain_ep1_level7,2076,8555,41771,cb,ret far
+15,terrain_ep1_level10_A,2076,8556,41772,803e364200,"cmp byte ptr [4236h],0"
+15,terrain_ep1_level10_A,2076,8561,41777,7547,jne short 21BAh
+15,terrain_ep1_level10_A,2076,8563,41779,666800000200,data32 push 20000h
+15,terrain_ep1_level10_A,2076,8569,41785,6a12,push 12h
+15,terrain_ep1_level10_A,2076,8571,41787,9ada03070c,"call far 03DAh,0C07h"
+15,terrain_ep1_level10_A,2076,8576,41792,83c406,"add sp,6"
+15,terrain_ep1_level10_A,2076,8579,41795,b001,"mov al,1"
+15,terrain_ep1_level10_A,2076,8581,41797,a23642,"mov [4236h],al"
+15,terrain_ep1_level10_A,2076,8584,41800,a23842,"mov [4238h],al"
+15,terrain_ep1_level10_A,2076,8587,41803,a28240,"mov [4082h],al"
+15,terrain_ep1_level10_A,2076,8590,41806,c6067f4000,"mov byte ptr [407Fh],0"
+15,terrain_ep1_level10_A,2076,8595,41811,66ff36420f,push dword ptr [0F42h]
+15,terrain_ep1_level10_A,2076,8600,41816,9a5407050d,"call far 0754h,0D05h"
+15,terrain_ep1_level10_A,2076,8605,41821,83c404,"add sp,4"
+15,terrain_ep1_level10_A,2076,8608,41824,66ff36960f,push dword ptr [0F96h]
+15,terrain_ep1_level10_A,2076,8613,41829,9a5407050d,"call far 0754h,0D05h"
+15,terrain_ep1_level10_A,2076,8618,41834,83c404,"add sp,4"
+15,terrain_ep1_level10_A,2076,8621,41837,66ff36c80f,push dword ptr [0FC8h]
+15,terrain_ep1_level10_A,2076,8626,41842,9a5407050d,"call far 0754h,0D05h"
+15,terrain_ep1_level10_A,2076,8631,41847,83c404,"add sp,4"
+15,terrain_ep1_level10_A,2076,8634,41850,cb,ret far
+15,terrain_ep1_level10_B,2076,8636,41852,803e374200,"cmp byte ptr [4237h],0"
+15,terrain_ep1_level10_B,2076,8641,41857,7512,jne short 21D5h
+15,terrain_ep1_level10_B,2076,8643,41859,c606374201,"mov byte ptr [4237h],1"
+15,terrain_ep1_level10_B,2076,8648,41864,66ff360a10,push dword ptr [100Ah]
+15,terrain_ep1_level10_B,2076,8653,41869,9a5407050d,"call far 0754h,0D05h"
+15,terrain_ep1_level10_B,2076,8658,41874,83c404,"add sp,4"
+15,terrain_ep1_level10_B,2076,8661,41877,cb,ret far
+15,terrain_ep2_level10,2076,8688,41904,803e364200,"cmp byte ptr [4236h],0"
+15,terrain_ep2_level10,2076,8693,41909,7512,jne short 2209h
+15,terrain_ep2_level10,2076,8695,41911,c606364201,"mov byte ptr [4236h],1"
+15,terrain_ep2_level10,2076,8700,41916,66ff367011,push dword ptr [1170h]
+15,terrain_ep2_level10,2076,8705,41921,9a5407050d,"call far 0754h,0D05h"
+15,terrain_ep2_level10,2076,8710,41926,83c404,"add sp,4"
+15,terrain_ep2_level10,2076,8713,41929,cb,ret far
+15,terrain_ep3_level1,2076,8714,41930,803e364200,"cmp byte ptr [4236h],0"
+15,terrain_ep3_level1,2076,8719,41935,7512,jne short 2223h
+15,terrain_ep3_level1,2076,8721,41937,c606364201,"mov byte ptr [4236h],1"
+15,terrain_ep3_level1,2076,8726,41942,66ff362813,push dword ptr [1328h]
+15,terrain_ep3_level1,2076,8731,41947,9a5407050d,"call far 0754h,0D05h"
+15,terrain_ep3_level1,2076,8736,41952,83c404,"add sp,4"
+15,terrain_ep3_level1,2076,8739,41955,cb,ret far
+15,terrain_ep3_level10,2076,8662,41878,803e364200,"cmp byte ptr [4236h],0"
+15,terrain_ep3_level10,2076,8667,41883,7512,jne short 21EFh
+15,terrain_ep3_level10,2076,8669,41885,c606364201,"mov byte ptr [4236h],1"
+15,terrain_ep3_level10,2076,8674,41890,66ff368610,push dword ptr [1086h]
+15,terrain_ep3_level10,2076,8679,41895,9a5407050d,"call far 0754h,0D05h"
+15,terrain_ep3_level10,2076,8684,41900,83c404,"add sp,4"
+15,terrain_ep3_level10,2076,8687,41903,cb,ret far
+15,sound_event42,2076,3750,36966,666800000200,data32 push 20000h
+15,sound_event42,2076,3756,36972,6a42,push 42h
+15,sound_event42,2076,3758,36974,9ada03070c,"call far 03DAh,0C07h"
+15,sound_event42,2076,3763,36979,83c406,"add sp,6"
+15,sound_event42,2076,3766,36982,cb,ret far
+15,sound_bank_selection,2076,10244,43460,803e3a4200,"cmp byte ptr [423Ah],0"
+15,sound_bank_selection,2076,10249,43465,7411,je short 281Ch
+15,sound_bank_selection,2076,10251,43467,c706a4610600,"mov word ptr [61A4h],6"
+15,sound_bank_selection,2076,10257,43473,32c0,"xor al,al"
+15,sound_bank_selection,2076,10259,43475,a2a661,"mov [61A6h],al"
+15,sound_bank_selection,2076,10262,43478,a2a761,"mov [61A7h],al"
+15,sound_bank_selection,2076,10265,43481,eb3e,jmp short 2859h
+15,sound_bank_selection,2076,10268,43484,833e2c3c00,"cmp word ptr [3C2Ch],0"
+15,sound_bank_selection,2076,10273,43489,7c09,jl short 282Ch
+15,sound_bank_selection,2076,10275,43491,a12c3c,"mov ax,[3C2Ch]"
+15,sound_bank_selection,2076,10278,43494,a3a461,"mov [61A4h],ax"
+15,sound_bank_selection,2076,10281,43497,eb07,jmp short 2832h
+15,sound_bank_selection,2076,10284,43500,c706a4610200,"mov word ptr [61A4h],2"
+15,sound_bank_selection,2076,10290,43506,833e2e3c00,"cmp word ptr [3C2Eh],0"
+15,sound_bank_selection,2076,10295,43511,7c09,jl short 2842h
+15,sound_bank_selection,2076,10297,43513,a02e3c,"mov al,[3C2Eh]"
+15,sound_bank_selection,2076,10300,43516,a2a661,"mov [61A6h],al"
+15,sound_bank_selection,2076,10303,43519,eb06,jmp short 2847h
+15,sound_bank_selection,2076,10306,43522,c606a66102,"mov byte ptr [61A6h],2"
+15,sound_bank_selection,2076,10311,43527,833e303c00,"cmp word ptr [3C30h],0"
+15,sound_bank_selection,2076,10316,43532,7c06,jl short 2854h
+15,sound_bank_selection,2076,10318,43534,a0303c,"mov al,[3C30h]"
+15,sound_bank_selection,2076,10321,43537,ebc3,jmp short 2816h
+15,sound_bank_selection,2076,10324,43540,c606a76107,"mov byte ptr [61A7h],7"
+15,sound_bank_selection,2076,10329,43545,9a6e015601,"call far 016Eh,0156h"
+15,sound_bank_selection,2076,10334,43550,cb,ret far
+15,pickup_apply,2759,1804,45948,c8060000,"enter 6,0"
+15,pickup_apply,2759,1808,45952,57,push di
+15,pickup_apply,2759,1809,45953,56,push si
+15,pickup_apply,2759,1810,45954,8b7e06,"mov di,[bp+6]"
+15,pickup_apply,2759,1813,45957,c646ff01,"mov byte ptr [bp-1],1"
+15,pickup_apply,2759,1817,45961,ff7608,push word ptr [bp+8]
+15,pickup_apply,2759,1820,45964,57,push di
+15,pickup_apply,2759,1821,45965,0e,push cs
+15,pickup_apply,2759,1822,45966,e87bff,call 069Ch
+15,pickup_apply,2759,1825,45969,83c404,"add sp,4"
+15,pickup_apply,2759,1828,45972,8bf0,"mov si,ax"
+15,pickup_apply,2759,1830,45974,8956fc,"mov [bp-4],dx"
+15,pickup_apply,2759,1833,45977,0bd0,"or dx,ax"
+15,pickup_apply,2759,1835,45979,0f841902,je 0948h
+15,pickup_apply,2759,1839,45983,8e46fc,"mov es,[bp-4]"
+15,pickup_apply,2759,1842,45986,268a4406,"mov al,es:[si+6]"
+15,pickup_apply,2759,1846,45990,2ae4,"sub ah,ah"
+15,pickup_apply,2759,1848,45992,2d2f00,"sub ax,2Fh"
+15,pickup_apply,2759,1851,45995,3d0e00,"cmp ax,0Eh"
+15,pickup_apply,2759,1854,45998,0f87df01,ja 0921h
+15,pickup_apply,2759,1858,46002,03c0,"add ax,ax"
+15,pickup_apply,2759,1860,46004,93,"xchg bx,ax"
+15,pickup_apply,2759,1861,46005,2effa74a07,jmp word ptr cs:[bx+74Ah]
+15,pickup_apply,2759,1896,46040,268a4c01,"mov cl,es:[si+1]"
+15,pickup_apply,2759,1900,46044,b001,"mov al,1"
+15,pickup_apply,2759,1902,46046,d2e0,"shl al,cl"
+15,pickup_apply,2759,1904,46048,0806be40,"or [40BEh],al"
+15,pickup_apply,2759,1908,46052,6a0d,push 0Dh
+15,pickup_apply,2759,1910,46054,e98301,jmp 08FCh
+15,pickup_apply,2759,1914,46058,268a4c01,"mov cl,es:[si+1]"
+15,pickup_apply,2759,1918,46062,b001,"mov al,1"
+15,pickup_apply,2759,1920,46064,d2e0,"shl al,cl"
+15,pickup_apply,2759,1922,46066,0806bf40,"or [40BFh],al"
+15,pickup_apply,2759,1926,46070,6a0e,push 0Eh
+15,pickup_apply,2759,1928,46072,e97101,jmp 08FCh
+15,pickup_apply,2759,1932,46076,668106ae40c8000000,"add dword ptr [40AEh],0C8h"
+15,pickup_apply,2759,1941,46085,6a04,push 4
+15,pickup_apply,2759,1943,46087,e96201,jmp 08FCh
+15,pickup_apply,2759,1946,46090,803eba4063,"cmp byte ptr [40BAh],63h"
+15,pickup_apply,2759,1951,46095,7d05,jge short 07A6h
+15,pickup_apply,2759,1953,46097,b001,"mov al,1"
+15,pickup_apply,2759,1955,46099,eb03,jmp short 07A8h
+15,pickup_apply,2759,1958,46102,32c0,"xor al,al"
+15,pickup_apply,2759,1960,46104,8846ff,"mov [bp-1],al"
+15,pickup_apply,2759,1963,46107,0ac0,"or al,al"
+15,pickup_apply,2759,1965,46109,0f847001,je 0921h
+15,pickup_apply,2759,1969,46113,268a4c01,"mov cl,es:[si+1]"
+15,pickup_apply,2759,1973,46117,b001,"mov al,1"
+15,pickup_apply,2759,1975,46119,d2e0,"shl al,cl"
+15,pickup_apply,2759,1977,46121,0006ba40,"add [40BAh],al"
+15,pickup_apply,2759,1981,46125,6a0b,push 0Bh
+15,pickup_apply,2759,1983,46127,e93a01,jmp 08FCh
+15,pickup_apply,2759,1986,46130,803eb54064,"cmp byte ptr [40B5h],64h"
+15,pickup_apply,2759,1991,46135,7305,jae short 07CEh
+15,pickup_apply,2759,1993,46137,b001,"mov al,1"
+15,pickup_apply,2759,1995,46139,eb03,jmp short 07D0h
+15,pickup_apply,2759,1998,46142,32c0,"xor al,al"
+15,pickup_apply,2759,2000,46144,8846ff,"mov [bp-1],al"
+15,pickup_apply,2759,2003,46147,0ac0,"or al,al"
+15,pickup_apply,2759,2005,46149,0f844801,je 0921h
+15,pickup_apply,2759,2009,46153,268a4c01,"mov cl,es:[si+1]"
+15,pickup_apply,2759,2013,46157,b81400,"mov ax,14h"
+15,pickup_apply,2759,2016,46160,d3f8,"sar ax,cl"
+15,pickup_apply,2759,2018,46162,0006b540,"add [40B5h],al"
+15,pickup_apply,2759,2022,46166,6a05,push 5
+15,pickup_apply,2759,2024,46168,9ad8051c08,"call far 05D8h,081Ch"
+15,pickup_apply,2759,2029,46173,83c402,"add sp,2"
+15,pickup_apply,2759,2032,46176,eba3,jmp short 0795h
+15,pickup_apply,2759,2034,46178,803eb54064,"cmp byte ptr [40B5h],64h"
+15,pickup_apply,2759,2039,46183,7305,jae short 07FEh
+15,pickup_apply,2759,2041,46185,b001,"mov al,1"
+15,pickup_apply,2759,2043,46187,eb03,jmp short 0800h
+15,pickup_apply,2759,2046,46190,32c0,"xor al,al"
+15,pickup_apply,2759,2048,46192,8846ff,"mov [bp-1],al"
+15,pickup_apply,2759,2051,46195,0ac0,"or al,al"
+15,pickup_apply,2759,2053,46197,0f841801,je 0921h
+15,pickup_apply,2759,2057,46201,8006b5401e,"add byte ptr [40B5h],1Eh"
+15,pickup_apply,2759,2062,46206,668106ae40fa000000,"add dword ptr [40AEh],0FAh"
+15,pickup_apply,2759,2071,46215,ebcd,jmp short 07E6h
+15,pickup_apply,2759,2074,46218,c606b54064,"mov byte ptr [40B5h],64h"
+15,pickup_apply,2759,2079,46223,c606b84064,"mov byte ptr [40B8h],64h"
+15,pickup_apply,2759,2084,46228,668106ae40f4010000,"add dword ptr [40AEh],1F4h"
+15,pickup_apply,2759,2093,46237,fe06b640,inc byte ptr [40B6h]
+15,pickup_apply,2759,2097,46241,6a05,push 5
+15,pickup_apply,2759,2099,46243,9ad8051c08,"call far 05D8h,081Ch"
+15,pickup_apply,2759,2104,46248,83c402,"add sp,2"
+15,pickup_apply,2759,2107,46251,6a08,push 8
+15,pickup_apply,2759,2109,46253,9ad8051c08,"call far 05D8h,081Ch"
+15,pickup_apply,2759,2114,46258,83c402,"add sp,2"
+15,pickup_apply,2759,2117,46261,6a06,push 6
+15,pickup_apply,2759,2119,46263,eb9f,jmp short 07E8h
+15,pickup_apply,2759,2122,46266,268a4c01,"mov cl,es:[si+1]"
+15,pickup_apply,2759,2126,46270,b001,"mov al,1"
+15,pickup_apply,2759,2128,46272,d2e0,"shl al,cl"
+15,pickup_apply,2759,2130,46274,0806c040,"or [40C0h],al"
+15,pickup_apply,2759,2134,46278,268a4401,"mov al,es:[si+1]"
+15,pickup_apply,2759,2138,46282,2ae4,"sub ah,ah"
+15,pickup_apply,2759,2140,46284,50,push ax
+15,pickup_apply,2759,2141,46285,9ab20c1c08,"call far 0CB2h,081Ch"
+15,pickup_apply,2759,2146,46290,83c402,"add sp,2"
+15,pickup_apply,2759,2149,46293,6a01,push 1
+15,pickup_apply,2759,2151,46295,8e46fc,"mov es,[bp-4]"
+15,pickup_apply,2759,2154,46298,268a4401,"mov al,es:[si+1]"
+15,pickup_apply,2759,2158,46302,2ae4,"sub ah,ah"
+15,pickup_apply,2759,2160,46304,50,push ax
+15,pickup_apply,2759,2161,46305,9aac0b1c08,"call far 0BACh,081Ch"
+15,pickup_apply,2759,2166,46310,83c404,"add sp,4"
+15,pickup_apply,2759,2169,46313,6a0c,push 0Ch
+15,pickup_apply,2759,2171,46315,eb7f,jmp short 08FCh
+15,pickup_apply,2759,2174,46318,268a4c01,"mov cl,es:[si+1]"
+15,pickup_apply,2759,2178,46322,b001,"mov al,1"
+15,pickup_apply,2759,2180,46324,d2e0,"shl al,cl"
+15,pickup_apply,2759,2182,46326,0806c140,"or [40C1h],al"
+15,pickup_apply,2759,2186,46330,6a0f,push 0Fh
+15,pickup_apply,2759,2188,46332,eb6e,jmp short 08FCh
+15,pickup_apply,2759,2190,46334,803eb94064,"cmp byte ptr [40B9h],64h"
+15,pickup_apply,2759,2195,46339,7d05,jge short 089Ah
+15,pickup_apply,2759,2197,46341,b001,"mov al,1"
+15,pickup_apply,2759,2199,46343,eb03,jmp short 089Ch
+15,pickup_apply,2759,2202,46346,32c0,"xor al,al"
+15,pickup_apply,2759,2204,46348,8846ff,"mov [bp-1],al"
+15,pickup_apply,2759,2207,46351,0ac0,"or al,al"
+15,pickup_apply,2759,2209,46353,747e,je short 0921h
+15,pickup_apply,2759,2211,46355,8006b94014,"add byte ptr [40B9h],14h"
+15,pickup_apply,2759,2216,46360,6a0a,push 0Ah
+15,pickup_apply,2759,2218,46362,eb50,jmp short 08FCh
+15,pickup_apply,2759,2220,46364,6a00,push 0
+15,pickup_apply,2759,2222,46366,268a4401,"mov al,es:[si+1]"
+15,pickup_apply,2759,2226,46370,2ae4,"sub ah,ah"
+15,pickup_apply,2759,2228,46372,50,push ax
+15,pickup_apply,2759,2229,46373,9aac0b1c08,"call far 0BACh,081Ch"
+15,pickup_apply,2759,2234,46378,83c404,"add sp,4"
+15,pickup_apply,2759,2237,46381,8846ff,"mov [bp-1],al"
+15,pickup_apply,2759,2240,46384,eb5f,jmp short 0921h
+15,pickup_apply,2759,2242,46386,803eda4064,"cmp byte ptr [40DAh],64h"
+15,pickup_apply,2759,2247,46391,7305,jae short 08CEh
+15,pickup_apply,2759,2249,46393,b001,"mov al,1"
+15,pickup_apply,2759,2251,46395,eb03,jmp short 08D0h
+15,pickup_apply,2759,2254,46398,32c0,"xor al,al"
+15,pickup_apply,2759,2256,46400,8846ff,"mov [bp-1],al"
+15,pickup_apply,2759,2259,46403,0ac0,"or al,al"
+15,pickup_apply,2759,2261,46405,744a,je short 0921h
+15,pickup_apply,2759,2263,46407,8006da4014,"add byte ptr [40DAh],14h"
+15,pickup_apply,2759,2268,46412,6a13,push 13h
+15,pickup_apply,2759,2270,46414,eb1c,jmp short 08FCh
+15,pickup_apply,2759,2272,46416,803edb4064,"cmp byte ptr [40DBh],64h"
+15,pickup_apply,2759,2277,46421,7305,jae short 08ECh
+15,pickup_apply,2759,2279,46423,b001,"mov al,1"
+15,pickup_apply,2759,2281,46425,eb03,jmp short 08EEh
+15,pickup_apply,2759,2284,46428,32c0,"xor al,al"
+15,pickup_apply,2759,2286,46430,8846ff,"mov [bp-1],al"
+15,pickup_apply,2759,2289,46433,0ac0,"or al,al"
+15,pickup_apply,2759,2291,46435,742c,je short 0921h
+15,pickup_apply,2759,2293,46437,8006db4014,"add byte ptr [40DBh],14h"
+15,pickup_apply,2759,2298,46442,6a14,push 14h
+15,pickup_apply,2759,2300,46444,9ad8051c08,"call far 05D8h,081Ch"
+15,pickup_apply,2759,2305,46449,eb1b,jmp short 091Eh
+15,pickup_apply,2759,2308,46452,268a4c01,"mov cl,es:[si+1]"
+15,pickup_apply,2759,2312,46456,b001,"mov al,1"
+15,pickup_apply,2759,2314,46458,d2e0,"shl al,cl"
+15,pickup_apply,2759,2316,46460,0806dd40,"or [40DDh],al"
+15,pickup_apply,2759,2320,46464,eb0f,jmp short 0921h
+15,pickup_apply,2759,2322,46466,268a4401,"mov al,es:[si+1]"
+15,pickup_apply,2759,2326,46470,2ae4,"sub ah,ah"
+15,pickup_apply,2759,2328,46472,50,push ax
+15,pickup_apply,2759,2329,46473,9ad8271c08,"call far 27D8h,081Ch"
+15,pickup_apply,2759,2334,46478,83c402,"add sp,2"
+15,pickup_apply,2759,2337,46481,807eff00,"cmp byte ptr [bp-1],0"
+15,pickup_apply,2759,2341,46485,7421,je short 0948h
+15,pickup_apply,2759,2343,46487,ff76fc,push word ptr [bp-4]
+15,pickup_apply,2759,2346,46490,56,push si
+15,pickup_apply,2759,2347,46491,ff7608,push word ptr [bp+8]
+15,pickup_apply,2759,2350,46494,57,push di
+15,pickup_apply,2759,2351,46495,0e,push cs
+15,pickup_apply,2759,2352,46496,e8c3fd,call 06F6h
+15,pickup_apply,2759,2355,46499,83c408,"add sp,8"
+15,pickup_apply,2759,2358,46502,8e46fc,"mov es,[bp-4]"
+15,pickup_apply,2759,2361,46505,268a4406,"mov al,es:[si+6]"
+15,pickup_apply,2759,2365,46509,2ae4,"sub ah,ah"
+15,pickup_apply,2759,2367,46511,50,push ax
+15,pickup_apply,2759,2368,46512,9a721a1c08,"call far 1A72h,081Ch"
+15,pickup_apply,2759,2373,46517,83c402,"add sp,2"
+15,pickup_apply,2759,2376,46520,5e,pop si
+15,pickup_apply,2759,2377,46521,5f,pop di
+15,pickup_apply,2759,2378,46522,c9,leave
+15,pickup_apply,2759,2379,46523,cb,ret far
+15,pickup_record_find,2759,1692,45836,c8040000,"enter 4,0"
+15,pickup_record_find,2759,1696,45840,57,push di
+15,pickup_record_find,2759,1697,45841,56,push si
+15,pickup_record_find,2759,1698,45842,33c9,"xor cx,cx"
+15,pickup_record_find,2759,1700,45844,b80600,"mov ax,6"
+15,pickup_record_find,2759,1703,45847,bad621,"mov dx,21D6h"
+15,pickup_record_find,2759,1706,45850,8bf0,"mov si,ax"
+15,pickup_record_find,2759,1708,45852,8956fe,"mov [bp-2],dx"
+15,pickup_record_find,2759,1711,45855,390e9c61,"cmp [619Ch],cx"
+15,pickup_record_find,2759,1715,45859,7e39,jle short 06EEh
+15,pickup_record_find,2759,1717,45861,8b7e06,"mov di,[bp+6]"
+15,pickup_record_find,2759,1720,45864,8eda,"mov ds,dx"
+15,pickup_record_find,2759,1722,45866,8b4608,"mov ax,[bp+8]"
+15,pickup_record_find,2759,1725,45869,397c0c,"cmp [si+0Ch],di"
+15,pickup_record_find,2759,1728,45872,7510,jne short 06D2h
+15,pickup_record_find,2759,1730,45874,39440e,"cmp [si+0Eh],ax"
+15,pickup_record_find,2759,1733,45877,750b,jne short 06D2h
+15,pickup_record_find,2759,1735,45879,8a04,"mov al,[si]"
+15,pickup_record_find,2759,1737,45881,8e4608,"mov es,[bp+8]"
+15,pickup_record_find,2759,1740,45884,26384501,"cmp es:[di+1],al"
+15,pickup_record_find,2759,1744,45888,7410,je short 06E2h
+15,pickup_record_find,2759,1746,45890,83c61c,"add si,1Ch"
+15,pickup_record_find,2759,1749,45893,41,inc cx
+15,pickup_record_find,2759,1750,45894,36390e9c61,"cmp ss:[619Ch],cx"
+15,pickup_record_find,2759,1755,45899,7fdd,jg short 06BAh
+15,pickup_record_find,2759,1757,45901,16,push ss
+15,pickup_record_find,2759,1758,45902,1f,pop ds
+15,pickup_record_find,2759,1759,45903,eb0d,jmp short 06EEh
+15,pickup_record_find,2759,1762,45906,16,push ss
+15,pickup_record_find,2759,1763,45907,1f,pop ds
+15,pickup_record_find,2759,1764,45908,8bc6,"mov ax,si"
+15,pickup_record_find,2759,1766,45910,8b56fe,"mov dx,[bp-2]"
+15,pickup_record_find,2759,1769,45913,5e,pop si
+15,pickup_record_find,2759,1770,45914,5f,pop di
+15,pickup_record_find,2759,1771,45915,c9,leave
+15,pickup_record_find,2759,1772,45916,cb,ret far
+15,pickup_record_find,2759,1774,45918,33c0,"xor ax,ax"
+15,pickup_record_find,2759,1776,45920,99,cwd
+15,pickup_record_find,2759,1777,45921,5e,pop si
+15,pickup_record_find,2759,1778,45922,5f,pop di
+15,pickup_record_find,2759,1779,45923,c9,leave
+15,pickup_record_find,2759,1780,45924,cb,ret far
+15,pickup_cell_clear,2759,1782,45926,55,push bp
+15,pickup_cell_clear,2759,1783,45927,8bec,"mov bp,sp"
+15,pickup_cell_clear,2759,1785,45929,c45e06,"les bx,[bp+6]"
+15,pickup_cell_clear,2759,1788,45932,26c6470100,"mov byte ptr es:[bx+1],0"
+15,pickup_cell_clear,2759,1793,45937,c45e0a,"les bx,[bp+0Ah]"
+15,pickup_cell_clear,2759,1796,45940,26806705fe,"and byte ptr es:[bx+5],0FEh"
+15,pickup_cell_clear,2759,1801,45945,c9,leave
+15,pickup_cell_clear,2759,1802,45946,cb,ret far
+17,special_terrain_dispatch,2086,8736,42112,55,push bp
+17,special_terrain_dispatch,2086,8737,42113,8bec,"mov bp,sp"
+17,special_terrain_dispatch,2086,8739,42115,8b0eda61,"mov cx,[61DAh]"
+17,special_terrain_dispatch,2086,8743,42119,41,inc cx
+17,special_terrain_dispatch,2086,8744,42120,8a5e06,"mov bl,[bp+6]"
+17,special_terrain_dispatch,2086,8747,42123,2aff,"sub bh,bh"
+17,special_terrain_dispatch,2086,8749,42125,8a977cd2,"mov dl,[bx-2D84h]"
+17,special_terrain_dispatch,2086,8753,42129,2af6,"sub dh,dh"
+17,special_terrain_dispatch,2086,8755,42131,a1d861,"mov ax,[61D8h]"
+17,special_terrain_dispatch,2086,8758,42134,48,dec ax
+17,special_terrain_dispatch,2086,8759,42135,740b,je short 2244h
+17,special_terrain_dispatch,2086,8761,42137,48,dec ax
+17,special_terrain_dispatch,2086,8762,42138,7476,je short 22B2h
+17,special_terrain_dispatch,2086,8764,42140,48,dec ax
+17,special_terrain_dispatch,2086,8765,42141,0f848100,je 22C2h
+17,special_terrain_dispatch,2086,8769,42145,e99c00,jmp 22E0h
+17,special_terrain_dispatch,2086,8772,42148,8bc1,"mov ax,cx"
+17,special_terrain_dispatch,2086,8774,42150,2d0700,"sub ax,7"
+17,special_terrain_dispatch,2086,8777,42153,740b,je short 2256h
+17,special_terrain_dispatch,2086,8779,42155,48,dec ax
+17,special_terrain_dispatch,2086,8780,42156,48,dec ax
+17,special_terrain_dispatch,2086,8781,42157,7415,je short 2264h
+17,special_terrain_dispatch,2086,8783,42159,48,dec ax
+17,special_terrain_dispatch,2086,8784,42160,7448,je short 229Ah
+17,special_terrain_dispatch,2086,8786,42162,e98b00,jmp 22E0h
+17,special_terrain_dispatch,2086,8790,42166,83fa47,"cmp dx,47h"
+17,special_terrain_dispatch,2086,8793,42169,0f858300,jne 22E0h
+17,special_terrain_dispatch,2086,8797,42173,0e,push cs
+17,special_terrain_dispatch,2086,8798,42174,e8ddfe,call 213Eh
+17,special_terrain_dispatch,2086,8801,42177,eb7d,jmp short 22E0h
+17,special_terrain_dispatch,2086,8804,42180,83fa47,"cmp dx,47h"
+17,special_terrain_dispatch,2086,8807,42183,751d,jne short 2286h
+17,special_terrain_dispatch,2086,8809,42185,803e064100,"cmp byte ptr [4106h],0"
+17,special_terrain_dispatch,2086,8814,42190,7516,jne short 2286h
+17,special_terrain_dispatch,2086,8816,42192,c606064101,"mov byte ptr [4106h],1"
+17,special_terrain_dispatch,2086,8821,42197,666800000200,data32 push 20000h
+17,special_terrain_dispatch,2086,8827,42203,6a44,push 44h
+17,special_terrain_dispatch,2086,8829,42205,9ad603110c,"call far 03D6h,0C11h"
+17,special_terrain_dispatch,2086,8834,42210,8be5,"mov sp,bp"
+17,special_terrain_dispatch,2086,8836,42212,c9,leave
+17,special_terrain_dispatch,2086,8837,42213,cb,ret far
+17,special_terrain_dispatch,2086,8838,42214,83fa48,"cmp dx,48h"
+17,special_terrain_dispatch,2086,8841,42217,7555,jne short 22E0h
+17,special_terrain_dispatch,2086,8843,42219,803e064100,"cmp byte ptr [4106h],0"
+17,special_terrain_dispatch,2086,8848,42224,744e,je short 22E0h
+17,special_terrain_dispatch,2086,8850,42226,c606064100,"mov byte ptr [4106h],0"
+17,special_terrain_dispatch,2086,8855,42231,ebdc,jmp short 2275h
+17,special_terrain_dispatch,2086,8858,42234,83fa47,"cmp dx,47h"
+17,special_terrain_dispatch,2086,8861,42237,7507,jne short 22A6h
+17,special_terrain_dispatch,2086,8863,42239,0e,push cs
+17,special_terrain_dispatch,2086,8864,42240,e8c5fe,call 2168h
+17,special_terrain_dispatch,2086,8867,42243,c9,leave
+17,special_terrain_dispatch,2086,8868,42244,cb,ret far
+17,special_terrain_dispatch,2086,8870,42246,83fa48,"cmp dx,48h"
+17,special_terrain_dispatch,2086,8873,42249,7535,jne short 22E0h
+17,special_terrain_dispatch,2086,8875,42251,0e,push cs
+17,special_terrain_dispatch,2086,8876,42252,e809ff,call 21B8h
+17,special_terrain_dispatch,2086,8879,42255,c9,leave
+17,special_terrain_dispatch,2086,8880,42256,cb,ret far
+17,special_terrain_dispatch,2086,8882,42258,83f90a,"cmp cx,0Ah"
+17,special_terrain_dispatch,2086,8885,42261,7529,jne short 22E0h
+17,special_terrain_dispatch,2086,8887,42263,83fa47,"cmp dx,47h"
+17,special_terrain_dispatch,2086,8890,42266,7524,jne short 22E0h
+17,special_terrain_dispatch,2086,8892,42268,0e,push cs
+17,special_terrain_dispatch,2086,8893,42269,e82cff,call 21ECh
+17,special_terrain_dispatch,2086,8896,42272,c9,leave
+17,special_terrain_dispatch,2086,8897,42273,cb,ret far
+17,special_terrain_dispatch,2086,8898,42274,83f901,"cmp cx,1"
+17,special_terrain_dispatch,2086,8901,42277,750b,jne short 22D2h
+17,special_terrain_dispatch,2086,8903,42279,83fa47,"cmp dx,47h"
+17,special_terrain_dispatch,2086,8906,42282,7506,jne short 22D2h
+17,special_terrain_dispatch,2086,8908,42284,0e,push cs
+17,special_terrain_dispatch,2086,8909,42285,e836ff,call 2206h
+17,special_terrain_dispatch,2086,8912,42288,c9,leave
+17,special_terrain_dispatch,2086,8913,42289,cb,ret far
+17,special_terrain_dispatch,2086,8914,42290,83f90a,"cmp cx,0Ah"
+17,special_terrain_dispatch,2086,8917,42293,7509,jne short 22E0h
+17,special_terrain_dispatch,2086,8919,42295,83fa47,"cmp dx,47h"
+17,special_terrain_dispatch,2086,8922,42298,7504,jne short 22E0h
+17,special_terrain_dispatch,2086,8924,42300,0e,push cs
+17,special_terrain_dispatch,2086,8925,42301,e8f2fe,call 21D2h
+17,special_terrain_dispatch,2086,8928,42304,c9,leave
+17,special_terrain_dispatch,2086,8929,42305,cb,ret far
+17,terrain_ep1_level7,2086,8510,41886,803e784200,"cmp byte ptr [4278h],0"
+17,terrain_ep1_level7,2086,8515,41891,7522,jne short 2167h
+17,terrain_ep1_level7,2086,8517,41893,0e,push cs
+17,terrain_ep1_level7,2086,8518,41894,e859ed,call 0EA2h
+17,terrain_ep1_level7,2086,8521,41897,b001,"mov al,1"
+17,terrain_ep1_level7,2086,8523,41899,a27842,"mov [4278h],al"
+17,terrain_ep1_level7,2086,8526,41902,a27c42,"mov [427Ch],al"
+17,terrain_ep1_level7,2086,8529,41905,0e,push cs
+17,terrain_ep1_level7,2086,8530,41906,e8ab06,call 2800h
+17,terrain_ep1_level7,2086,8533,41909,9a8a01c40b,"call far 018Ah,0BC4h"
+17,terrain_ep1_level7,2086,8538,41914,66ff36340e,push dword ptr [0E34h]
+17,terrain_ep1_level7,2086,8543,41919,9a50070f0d,"call far 0750h,0D0Fh"
+17,terrain_ep1_level7,2086,8548,41924,83c404,"add sp,4"
+17,terrain_ep1_level7,2086,8551,41927,cb,ret far
+17,terrain_ep1_level10_A,2086,8552,41928,803e784200,"cmp byte ptr [4278h],0"
+17,terrain_ep1_level10_A,2086,8557,41933,7547,jne short 21B6h
+17,terrain_ep1_level10_A,2086,8559,41935,666800000200,data32 push 20000h
+17,terrain_ep1_level10_A,2086,8565,41941,6a12,push 12h
+17,terrain_ep1_level10_A,2086,8567,41943,9ad603110c,"call far 03D6h,0C11h"
+17,terrain_ep1_level10_A,2086,8572,41948,83c406,"add sp,6"
+17,terrain_ep1_level10_A,2086,8575,41951,b001,"mov al,1"
+17,terrain_ep1_level10_A,2086,8577,41953,a27842,"mov [4278h],al"
+17,terrain_ep1_level10_A,2086,8580,41956,a27a42,"mov [427Ah],al"
+17,terrain_ep1_level10_A,2086,8583,41959,a2c440,"mov [40C4h],al"
+17,terrain_ep1_level10_A,2086,8586,41962,c606c14000,"mov byte ptr [40C1h],0"
+17,terrain_ep1_level10_A,2086,8591,41967,66ff36460f,push dword ptr [0F46h]
+17,terrain_ep1_level10_A,2086,8596,41972,9a50070f0d,"call far 0750h,0D0Fh"
+17,terrain_ep1_level10_A,2086,8601,41977,83c404,"add sp,4"
+17,terrain_ep1_level10_A,2086,8604,41980,66ff369a0f,push dword ptr [0F9Ah]
+17,terrain_ep1_level10_A,2086,8609,41985,9a50070f0d,"call far 0750h,0D0Fh"
+17,terrain_ep1_level10_A,2086,8614,41990,83c404,"add sp,4"
+17,terrain_ep1_level10_A,2086,8617,41993,66ff36cc0f,push dword ptr [0FCCh]
+17,terrain_ep1_level10_A,2086,8622,41998,9a50070f0d,"call far 0750h,0D0Fh"
+17,terrain_ep1_level10_A,2086,8627,42003,83c404,"add sp,4"
+17,terrain_ep1_level10_A,2086,8630,42006,cb,ret far
+17,terrain_ep1_level10_B,2086,8632,42008,803e794200,"cmp byte ptr [4279h],0"
+17,terrain_ep1_level10_B,2086,8637,42013,7512,jne short 21D1h
+17,terrain_ep1_level10_B,2086,8639,42015,c606794201,"mov byte ptr [4279h],1"
+17,terrain_ep1_level10_B,2086,8644,42020,66ff360e10,push dword ptr [100Eh]
+17,terrain_ep1_level10_B,2086,8649,42025,9a50070f0d,"call far 0750h,0D0Fh"
+17,terrain_ep1_level10_B,2086,8654,42030,83c404,"add sp,4"
+17,terrain_ep1_level10_B,2086,8657,42033,cb,ret far
+17,terrain_ep2_level10,2086,8684,42060,803e784200,"cmp byte ptr [4278h],0"
+17,terrain_ep2_level10,2086,8689,42065,7512,jne short 2205h
+17,terrain_ep2_level10,2086,8691,42067,c606784201,"mov byte ptr [4278h],1"
+17,terrain_ep2_level10,2086,8696,42072,66ff367411,push dword ptr [1174h]
+17,terrain_ep2_level10,2086,8701,42077,9a50070f0d,"call far 0750h,0D0Fh"
+17,terrain_ep2_level10,2086,8706,42082,83c404,"add sp,4"
+17,terrain_ep2_level10,2086,8709,42085,cb,ret far
+17,terrain_ep3_level1,2086,8710,42086,803e784200,"cmp byte ptr [4278h],0"
+17,terrain_ep3_level1,2086,8715,42091,7512,jne short 221Fh
+17,terrain_ep3_level1,2086,8717,42093,c606784201,"mov byte ptr [4278h],1"
+17,terrain_ep3_level1,2086,8722,42098,66ff362c13,push dword ptr [132Ch]
+17,terrain_ep3_level1,2086,8727,42103,9a50070f0d,"call far 0750h,0D0Fh"
+17,terrain_ep3_level1,2086,8732,42108,83c404,"add sp,4"
+17,terrain_ep3_level1,2086,8735,42111,cb,ret far
+17,terrain_ep3_level10,2086,8658,42034,803e784200,"cmp byte ptr [4278h],0"
+17,terrain_ep3_level10,2086,8663,42039,7512,jne short 21EBh
+17,terrain_ep3_level10,2086,8665,42041,c606784201,"mov byte ptr [4278h],1"
+17,terrain_ep3_level10,2086,8670,42046,66ff368a10,push dword ptr [108Ah]
+17,terrain_ep3_level10,2086,8675,42051,9a50070f0d,"call far 0750h,0D0Fh"
+17,terrain_ep3_level10,2086,8680,42056,83c404,"add sp,4"
+17,terrain_ep3_level10,2086,8683,42059,cb,ret far
+17,sound_event42,2086,3746,37122,666800000200,data32 push 20000h
+17,sound_event42,2086,3752,37128,6a42,push 42h
+17,sound_event42,2086,3754,37130,9ad603110c,"call far 03D6h,0C11h"
+17,sound_event42,2086,3759,37135,83c406,"add sp,6"
+17,sound_event42,2086,3762,37138,cb,ret far
+17,sound_bank_selection,2086,10240,43616,803e7c4200,"cmp byte ptr [427Ch],0"
+17,sound_bank_selection,2086,10245,43621,7411,je short 2818h
+17,sound_bank_selection,2086,10247,43623,c706e6610600,"mov word ptr [61E6h],6"
+17,sound_bank_selection,2086,10253,43629,32c0,"xor al,al"
+17,sound_bank_selection,2086,10255,43631,a2e861,"mov [61E8h],al"
+17,sound_bank_selection,2086,10258,43634,a2e961,"mov [61E9h],al"
+17,sound_bank_selection,2086,10261,43637,eb3e,jmp short 2855h
+17,sound_bank_selection,2086,10264,43640,833e2c3c00,"cmp word ptr [3C2Ch],0"
+17,sound_bank_selection,2086,10269,43645,7c09,jl short 2828h
+17,sound_bank_selection,2086,10271,43647,a12c3c,"mov ax,[3C2Ch]"
+17,sound_bank_selection,2086,10274,43650,a3e661,"mov [61E6h],ax"
+17,sound_bank_selection,2086,10277,43653,eb07,jmp short 282Eh
+17,sound_bank_selection,2086,10280,43656,c706e6610200,"mov word ptr [61E6h],2"
+17,sound_bank_selection,2086,10286,43662,833e2e3c00,"cmp word ptr [3C2Eh],0"
+17,sound_bank_selection,2086,10291,43667,7c09,jl short 283Eh
+17,sound_bank_selection,2086,10293,43669,a02e3c,"mov al,[3C2Eh]"
+17,sound_bank_selection,2086,10296,43672,a2e861,"mov [61E8h],al"
+17,sound_bank_selection,2086,10299,43675,eb06,jmp short 2843h
+17,sound_bank_selection,2086,10302,43678,c606e86102,"mov byte ptr [61E8h],2"
+17,sound_bank_selection,2086,10307,43683,833e303c00,"cmp word ptr [3C30h],0"
+17,sound_bank_selection,2086,10312,43688,7c06,jl short 2850h
+17,sound_bank_selection,2086,10314,43690,a0303c,"mov al,[3C30h]"
+17,sound_bank_selection,2086,10317,43693,ebc3,jmp short 2812h
+17,sound_bank_selection,2086,10320,43696,c606e96107,"mov byte ptr [61E9h],7"
+17,sound_bank_selection,2086,10325,43701,9a6e015601,"call far 016Eh,0156h"
+17,sound_bank_selection,2086,10330,43706,cb,ret far
+17,pickup_apply,2768,1816,46104,c8060000,"enter 6,0"
+17,pickup_apply,2768,1820,46108,57,push di
+17,pickup_apply,2768,1821,46109,56,push si
+17,pickup_apply,2768,1822,46110,8b7e06,"mov di,[bp+6]"
+17,pickup_apply,2768,1825,46113,c646ff01,"mov byte ptr [bp-1],1"
+17,pickup_apply,2768,1829,46117,ff7608,push word ptr [bp+8]
+17,pickup_apply,2768,1832,46120,57,push di
+17,pickup_apply,2768,1833,46121,0e,push cs
+17,pickup_apply,2768,1834,46122,e87bff,call 06A8h
+17,pickup_apply,2768,1837,46125,83c404,"add sp,4"
+17,pickup_apply,2768,1840,46128,8bf0,"mov si,ax"
+17,pickup_apply,2768,1842,46130,8956fc,"mov [bp-4],dx"
+17,pickup_apply,2768,1845,46133,0bd0,"or dx,ax"
+17,pickup_apply,2768,1847,46135,0f841902,je 0954h
+17,pickup_apply,2768,1851,46139,8e46fc,"mov es,[bp-4]"
+17,pickup_apply,2768,1854,46142,268a4406,"mov al,es:[si+6]"
+17,pickup_apply,2768,1858,46146,2ae4,"sub ah,ah"
+17,pickup_apply,2768,1860,46148,2d2f00,"sub ax,2Fh"
+17,pickup_apply,2768,1863,46151,3d0e00,"cmp ax,0Eh"
+17,pickup_apply,2768,1866,46154,0f87df01,ja 092Dh
+17,pickup_apply,2768,1870,46158,03c0,"add ax,ax"
+17,pickup_apply,2768,1872,46160,93,"xchg bx,ax"
+17,pickup_apply,2768,1873,46161,2effa75607,jmp word ptr cs:[bx+756h]
+17,pickup_apply,2768,1908,46196,268a4c01,"mov cl,es:[si+1]"
+17,pickup_apply,2768,1912,46200,b001,"mov al,1"
+17,pickup_apply,2768,1914,46202,d2e0,"shl al,cl"
+17,pickup_apply,2768,1916,46204,08060041,"or [4100h],al"
+17,pickup_apply,2768,1920,46208,6a0d,push 0Dh
+17,pickup_apply,2768,1922,46210,e98301,jmp 0908h
+17,pickup_apply,2768,1926,46214,268a4c01,"mov cl,es:[si+1]"
+17,pickup_apply,2768,1930,46218,b001,"mov al,1"
+17,pickup_apply,2768,1932,46220,d2e0,"shl al,cl"
+17,pickup_apply,2768,1934,46222,08060141,"or [4101h],al"
+17,pickup_apply,2768,1938,46226,6a0e,push 0Eh
+17,pickup_apply,2768,1940,46228,e97101,jmp 0908h
+17,pickup_apply,2768,1944,46232,668106f040c8000000,"add dword ptr [40F0h],0C8h"
+17,pickup_apply,2768,1953,46241,6a04,push 4
+17,pickup_apply,2768,1955,46243,e96201,jmp 0908h
+17,pickup_apply,2768,1958,46246,803efc4063,"cmp byte ptr [40FCh],63h"
+17,pickup_apply,2768,1963,46251,7d05,jge short 07B2h
+17,pickup_apply,2768,1965,46253,b001,"mov al,1"
+17,pickup_apply,2768,1967,46255,eb03,jmp short 07B4h
+17,pickup_apply,2768,1970,46258,32c0,"xor al,al"
+17,pickup_apply,2768,1972,46260,8846ff,"mov [bp-1],al"
+17,pickup_apply,2768,1975,46263,0ac0,"or al,al"
+17,pickup_apply,2768,1977,46265,0f847001,je 092Dh
+17,pickup_apply,2768,1981,46269,268a4c01,"mov cl,es:[si+1]"
+17,pickup_apply,2768,1985,46273,b001,"mov al,1"
+17,pickup_apply,2768,1987,46275,d2e0,"shl al,cl"
+17,pickup_apply,2768,1989,46277,0006fc40,"add [40FCh],al"
+17,pickup_apply,2768,1993,46281,6a0b,push 0Bh
+17,pickup_apply,2768,1995,46283,e93a01,jmp 0908h
+17,pickup_apply,2768,1998,46286,803ef74064,"cmp byte ptr [40F7h],64h"
+17,pickup_apply,2768,2003,46291,7305,jae short 07DAh
+17,pickup_apply,2768,2005,46293,b001,"mov al,1"
+17,pickup_apply,2768,2007,46295,eb03,jmp short 07DCh
+17,pickup_apply,2768,2010,46298,32c0,"xor al,al"
+17,pickup_apply,2768,2012,46300,8846ff,"mov [bp-1],al"
+17,pickup_apply,2768,2015,46303,0ac0,"or al,al"
+17,pickup_apply,2768,2017,46305,0f844801,je 092Dh
+17,pickup_apply,2768,2021,46309,268a4c01,"mov cl,es:[si+1]"
+17,pickup_apply,2768,2025,46313,b81400,"mov ax,14h"
+17,pickup_apply,2768,2028,46316,d3f8,"sar ax,cl"
+17,pickup_apply,2768,2030,46318,0006f740,"add [40F7h],al"
+17,pickup_apply,2768,2034,46322,6a05,push 5
+17,pickup_apply,2768,2036,46324,9ad4052608,"call far 05D4h,0826h"
+17,pickup_apply,2768,2041,46329,83c402,"add sp,2"
+17,pickup_apply,2768,2044,46332,eba3,jmp short 07A1h
+17,pickup_apply,2768,2046,46334,803ef74064,"cmp byte ptr [40F7h],64h"
+17,pickup_apply,2768,2051,46339,7305,jae short 080Ah
+17,pickup_apply,2768,2053,46341,b001,"mov al,1"
+17,pickup_apply,2768,2055,46343,eb03,jmp short 080Ch
+17,pickup_apply,2768,2058,46346,32c0,"xor al,al"
+17,pickup_apply,2768,2060,46348,8846ff,"mov [bp-1],al"
+17,pickup_apply,2768,2063,46351,0ac0,"or al,al"
+17,pickup_apply,2768,2065,46353,0f841801,je 092Dh
+17,pickup_apply,2768,2069,46357,8006f7401e,"add byte ptr [40F7h],1Eh"
+17,pickup_apply,2768,2074,46362,668106f040fa000000,"add dword ptr [40F0h],0FAh"
+17,pickup_apply,2768,2083,46371,ebcd,jmp short 07F2h
+17,pickup_apply,2768,2086,46374,c606f74064,"mov byte ptr [40F7h],64h"
+17,pickup_apply,2768,2091,46379,c606fa4064,"mov byte ptr [40FAh],64h"
+17,pickup_apply,2768,2096,46384,668106f040f4010000,"add dword ptr [40F0h],1F4h"
+17,pickup_apply,2768,2105,46393,fe06f840,inc byte ptr [40F8h]
+17,pickup_apply,2768,2109,46397,6a05,push 5
+17,pickup_apply,2768,2111,46399,9ad4052608,"call far 05D4h,0826h"
+17,pickup_apply,2768,2116,46404,83c402,"add sp,2"
+17,pickup_apply,2768,2119,46407,6a08,push 8
+17,pickup_apply,2768,2121,46409,9ad4052608,"call far 05D4h,0826h"
+17,pickup_apply,2768,2126,46414,83c402,"add sp,2"
+17,pickup_apply,2768,2129,46417,6a06,push 6
+17,pickup_apply,2768,2131,46419,eb9f,jmp short 07F4h
+17,pickup_apply,2768,2134,46422,268a4c01,"mov cl,es:[si+1]"
+17,pickup_apply,2768,2138,46426,b001,"mov al,1"
+17,pickup_apply,2768,2140,46428,d2e0,"shl al,cl"
+17,pickup_apply,2768,2142,46430,08060241,"or [4102h],al"
+17,pickup_apply,2768,2146,46434,268a4401,"mov al,es:[si+1]"
+17,pickup_apply,2768,2150,46438,2ae4,"sub ah,ah"
+17,pickup_apply,2768,2152,46440,50,push ax
+17,pickup_apply,2768,2153,46441,9aae0c2608,"call far 0CAEh,0826h"
+17,pickup_apply,2768,2158,46446,83c402,"add sp,2"
+17,pickup_apply,2768,2161,46449,6a01,push 1
+17,pickup_apply,2768,2163,46451,8e46fc,"mov es,[bp-4]"
+17,pickup_apply,2768,2166,46454,268a4401,"mov al,es:[si+1]"
+17,pickup_apply,2768,2170,46458,2ae4,"sub ah,ah"
+17,pickup_apply,2768,2172,46460,50,push ax
+17,pickup_apply,2768,2173,46461,9aa80b2608,"call far 0BA8h,0826h"
+17,pickup_apply,2768,2178,46466,83c404,"add sp,4"
+17,pickup_apply,2768,2181,46469,6a0c,push 0Ch
+17,pickup_apply,2768,2183,46471,eb7f,jmp short 0908h
+17,pickup_apply,2768,2186,46474,268a4c01,"mov cl,es:[si+1]"
+17,pickup_apply,2768,2190,46478,b001,"mov al,1"
+17,pickup_apply,2768,2192,46480,d2e0,"shl al,cl"
+17,pickup_apply,2768,2194,46482,08060341,"or [4103h],al"
+17,pickup_apply,2768,2198,46486,6a0f,push 0Fh
+17,pickup_apply,2768,2200,46488,eb6e,jmp short 0908h
+17,pickup_apply,2768,2202,46490,803efb4064,"cmp byte ptr [40FBh],64h"
+17,pickup_apply,2768,2207,46495,7d05,jge short 08A6h
+17,pickup_apply,2768,2209,46497,b001,"mov al,1"
+17,pickup_apply,2768,2211,46499,eb03,jmp short 08A8h
+17,pickup_apply,2768,2214,46502,32c0,"xor al,al"
+17,pickup_apply,2768,2216,46504,8846ff,"mov [bp-1],al"
+17,pickup_apply,2768,2219,46507,0ac0,"or al,al"
+17,pickup_apply,2768,2221,46509,747e,je short 092Dh
+17,pickup_apply,2768,2223,46511,8006fb4014,"add byte ptr [40FBh],14h"
+17,pickup_apply,2768,2228,46516,6a0a,push 0Ah
+17,pickup_apply,2768,2230,46518,eb50,jmp short 0908h
+17,pickup_apply,2768,2232,46520,6a00,push 0
+17,pickup_apply,2768,2234,46522,268a4401,"mov al,es:[si+1]"
+17,pickup_apply,2768,2238,46526,2ae4,"sub ah,ah"
+17,pickup_apply,2768,2240,46528,50,push ax
+17,pickup_apply,2768,2241,46529,9aa80b2608,"call far 0BA8h,0826h"
+17,pickup_apply,2768,2246,46534,83c404,"add sp,4"
+17,pickup_apply,2768,2249,46537,8846ff,"mov [bp-1],al"
+17,pickup_apply,2768,2252,46540,eb5f,jmp short 092Dh
+17,pickup_apply,2768,2254,46542,803e1c4164,"cmp byte ptr [411Ch],64h"
+17,pickup_apply,2768,2259,46547,7305,jae short 08DAh
+17,pickup_apply,2768,2261,46549,b001,"mov al,1"
+17,pickup_apply,2768,2263,46551,eb03,jmp short 08DCh
+17,pickup_apply,2768,2266,46554,32c0,"xor al,al"
+17,pickup_apply,2768,2268,46556,8846ff,"mov [bp-1],al"
+17,pickup_apply,2768,2271,46559,0ac0,"or al,al"
+17,pickup_apply,2768,2273,46561,744a,je short 092Dh
+17,pickup_apply,2768,2275,46563,80061c4114,"add byte ptr [411Ch],14h"
+17,pickup_apply,2768,2280,46568,6a13,push 13h
+17,pickup_apply,2768,2282,46570,eb1c,jmp short 0908h
+17,pickup_apply,2768,2284,46572,803e1d4164,"cmp byte ptr [411Dh],64h"
+17,pickup_apply,2768,2289,46577,7305,jae short 08F8h
+17,pickup_apply,2768,2291,46579,b001,"mov al,1"
+17,pickup_apply,2768,2293,46581,eb03,jmp short 08FAh
+17,pickup_apply,2768,2296,46584,32c0,"xor al,al"
+17,pickup_apply,2768,2298,46586,8846ff,"mov [bp-1],al"
+17,pickup_apply,2768,2301,46589,0ac0,"or al,al"
+17,pickup_apply,2768,2303,46591,742c,je short 092Dh
+17,pickup_apply,2768,2305,46593,80061d4114,"add byte ptr [411Dh],14h"
+17,pickup_apply,2768,2310,46598,6a14,push 14h
+17,pickup_apply,2768,2312,46600,9ad4052608,"call far 05D4h,0826h"
+17,pickup_apply,2768,2317,46605,eb1b,jmp short 092Ah
+17,pickup_apply,2768,2320,46608,268a4c01,"mov cl,es:[si+1]"
+17,pickup_apply,2768,2324,46612,b001,"mov al,1"
+17,pickup_apply,2768,2326,46614,d2e0,"shl al,cl"
+17,pickup_apply,2768,2328,46616,08061f41,"or [411Fh],al"
+17,pickup_apply,2768,2332,46620,eb0f,jmp short 092Dh
+17,pickup_apply,2768,2334,46622,268a4401,"mov al,es:[si+1]"
+17,pickup_apply,2768,2338,46626,2ae4,"sub ah,ah"
+17,pickup_apply,2768,2340,46628,50,push ax
+17,pickup_apply,2768,2341,46629,9ad4272608,"call far 27D4h,0826h"
+17,pickup_apply,2768,2346,46634,83c402,"add sp,2"
+17,pickup_apply,2768,2349,46637,807eff00,"cmp byte ptr [bp-1],0"
+17,pickup_apply,2768,2353,46641,7421,je short 0954h
+17,pickup_apply,2768,2355,46643,ff76fc,push word ptr [bp-4]
+17,pickup_apply,2768,2358,46646,56,push si
+17,pickup_apply,2768,2359,46647,ff7608,push word ptr [bp+8]
+17,pickup_apply,2768,2362,46650,57,push di
+17,pickup_apply,2768,2363,46651,0e,push cs
+17,pickup_apply,2768,2364,46652,e8c3fd,call 0702h
+17,pickup_apply,2768,2367,46655,83c408,"add sp,8"
+17,pickup_apply,2768,2370,46658,8e46fc,"mov es,[bp-4]"
+17,pickup_apply,2768,2373,46661,268a4406,"mov al,es:[si+6]"
+17,pickup_apply,2768,2377,46665,2ae4,"sub ah,ah"
+17,pickup_apply,2768,2379,46667,50,push ax
+17,pickup_apply,2768,2380,46668,9a6e1a2608,"call far 1A6Eh,0826h"
+17,pickup_apply,2768,2385,46673,83c402,"add sp,2"
+17,pickup_apply,2768,2388,46676,5e,pop si
+17,pickup_apply,2768,2389,46677,5f,pop di
+17,pickup_apply,2768,2390,46678,c9,leave
+17,pickup_apply,2768,2391,46679,cb,ret far
+17,pickup_record_find,2768,1704,45992,c8040000,"enter 4,0"
+17,pickup_record_find,2768,1708,45996,57,push di
+17,pickup_record_find,2768,1709,45997,56,push si
+17,pickup_record_find,2768,1710,45998,33c9,"xor cx,cx"
+17,pickup_record_find,2768,1712,46000,b80600,"mov ax,6"
+17,pickup_record_find,2768,1715,46003,bae021,"mov dx,21E0h"
+17,pickup_record_find,2768,1718,46006,8bf0,"mov si,ax"
+17,pickup_record_find,2768,1720,46008,8956fe,"mov [bp-2],dx"
+17,pickup_record_find,2768,1723,46011,390ede61,"cmp [61DEh],cx"
+17,pickup_record_find,2768,1727,46015,7e39,jle short 06FAh
+17,pickup_record_find,2768,1729,46017,8b7e06,"mov di,[bp+6]"
+17,pickup_record_find,2768,1732,46020,8eda,"mov ds,dx"
+17,pickup_record_find,2768,1734,46022,8b4608,"mov ax,[bp+8]"
+17,pickup_record_find,2768,1737,46025,397c0c,"cmp [si+0Ch],di"
+17,pickup_record_find,2768,1740,46028,7510,jne short 06DEh
+17,pickup_record_find,2768,1742,46030,39440e,"cmp [si+0Eh],ax"
+17,pickup_record_find,2768,1745,46033,750b,jne short 06DEh
+17,pickup_record_find,2768,1747,46035,8a04,"mov al,[si]"
+17,pickup_record_find,2768,1749,46037,8e4608,"mov es,[bp+8]"
+17,pickup_record_find,2768,1752,46040,26384501,"cmp es:[di+1],al"
+17,pickup_record_find,2768,1756,46044,7410,je short 06EEh
+17,pickup_record_find,2768,1758,46046,83c61c,"add si,1Ch"
+17,pickup_record_find,2768,1761,46049,41,inc cx
+17,pickup_record_find,2768,1762,46050,36390ede61,"cmp ss:[61DEh],cx"
+17,pickup_record_find,2768,1767,46055,7fdd,jg short 06C6h
+17,pickup_record_find,2768,1769,46057,16,push ss
+17,pickup_record_find,2768,1770,46058,1f,pop ds
+17,pickup_record_find,2768,1771,46059,eb0d,jmp short 06FAh
+17,pickup_record_find,2768,1774,46062,16,push ss
+17,pickup_record_find,2768,1775,46063,1f,pop ds
+17,pickup_record_find,2768,1776,46064,8bc6,"mov ax,si"
+17,pickup_record_find,2768,1778,46066,8b56fe,"mov dx,[bp-2]"
+17,pickup_record_find,2768,1781,46069,5e,pop si
+17,pickup_record_find,2768,1782,46070,5f,pop di
+17,pickup_record_find,2768,1783,46071,c9,leave
+17,pickup_record_find,2768,1784,46072,cb,ret far
+17,pickup_record_find,2768,1786,46074,33c0,"xor ax,ax"
+17,pickup_record_find,2768,1788,46076,99,cwd
+17,pickup_record_find,2768,1789,46077,5e,pop si
+17,pickup_record_find,2768,1790,46078,5f,pop di
+17,pickup_record_find,2768,1791,46079,c9,leave
+17,pickup_record_find,2768,1792,46080,cb,ret far
+17,pickup_cell_clear,2768,1794,46082,55,push bp
+17,pickup_cell_clear,2768,1795,46083,8bec,"mov bp,sp"
+17,pickup_cell_clear,2768,1797,46085,c45e06,"les bx,[bp+6]"
+17,pickup_cell_clear,2768,1800,46088,26c6470100,"mov byte ptr es:[bx+1],0"
+17,pickup_cell_clear,2768,1805,46093,c45e0a,"les bx,[bp+0Ah]"
+17,pickup_cell_clear,2768,1808,46096,26806705fe,"and byte ptr es:[bx+5],0FEh"
+17,pickup_cell_clear,2768,1813,46101,c9,leave
+17,pickup_cell_clear,2768,1814,46102,cb,ret far
+18,special_terrain_dispatch,2108,8740,42468,55,push bp
+18,special_terrain_dispatch,2108,8741,42469,8bec,"mov bp,sp"
+18,special_terrain_dispatch,2108,8743,42471,8b0e6a62,"mov cx,[626Ah]"
+18,special_terrain_dispatch,2108,8747,42475,41,inc cx
+18,special_terrain_dispatch,2108,8748,42476,8a5e06,"mov bl,[bp+6]"
+18,special_terrain_dispatch,2108,8751,42479,2aff,"sub bh,bh"
+18,special_terrain_dispatch,2108,8753,42481,8a970cd3,"mov dl,[bx-2CF4h]"
+18,special_terrain_dispatch,2108,8757,42485,2af6,"sub dh,dh"
+18,special_terrain_dispatch,2108,8759,42487,a16862,"mov ax,[6268h]"
+18,special_terrain_dispatch,2108,8762,42490,48,dec ax
+18,special_terrain_dispatch,2108,8763,42491,740b,je short 2248h
+18,special_terrain_dispatch,2108,8765,42493,48,dec ax
+18,special_terrain_dispatch,2108,8766,42494,7476,je short 22B6h
+18,special_terrain_dispatch,2108,8768,42496,48,dec ax
+18,special_terrain_dispatch,2108,8769,42497,0f848100,je 22C6h
+18,special_terrain_dispatch,2108,8773,42501,e99c00,jmp 22E4h
+18,special_terrain_dispatch,2108,8776,42504,8bc1,"mov ax,cx"
+18,special_terrain_dispatch,2108,8778,42506,2d0700,"sub ax,7"
+18,special_terrain_dispatch,2108,8781,42509,740b,je short 225Ah
+18,special_terrain_dispatch,2108,8783,42511,48,dec ax
+18,special_terrain_dispatch,2108,8784,42512,48,dec ax
+18,special_terrain_dispatch,2108,8785,42513,7415,je short 2268h
+18,special_terrain_dispatch,2108,8787,42515,48,dec ax
+18,special_terrain_dispatch,2108,8788,42516,7448,je short 229Eh
+18,special_terrain_dispatch,2108,8790,42518,e98b00,jmp 22E4h
+18,special_terrain_dispatch,2108,8794,42522,83fa47,"cmp dx,47h"
+18,special_terrain_dispatch,2108,8797,42525,0f858300,jne 22E4h
+18,special_terrain_dispatch,2108,8801,42529,0e,push cs
+18,special_terrain_dispatch,2108,8802,42530,e8ddfe,call 2142h
+18,special_terrain_dispatch,2108,8805,42533,eb7d,jmp short 22E4h
+18,special_terrain_dispatch,2108,8808,42536,83fa47,"cmp dx,47h"
+18,special_terrain_dispatch,2108,8811,42539,751d,jne short 228Ah
+18,special_terrain_dispatch,2108,8813,42541,803e964100,"cmp byte ptr [4196h],0"
+18,special_terrain_dispatch,2108,8818,42546,7516,jne short 228Ah
+18,special_terrain_dispatch,2108,8820,42548,c606964101,"mov byte ptr [4196h],1"
+18,special_terrain_dispatch,2108,8825,42553,666800000200,data32 push 20000h
+18,special_terrain_dispatch,2108,8831,42559,6a44,push 44h
+18,special_terrain_dispatch,2108,8833,42561,9ada03270c,"call far 03DAh,0C27h"
+18,special_terrain_dispatch,2108,8838,42566,8be5,"mov sp,bp"
+18,special_terrain_dispatch,2108,8840,42568,c9,leave
+18,special_terrain_dispatch,2108,8841,42569,cb,ret far
+18,special_terrain_dispatch,2108,8842,42570,83fa48,"cmp dx,48h"
+18,special_terrain_dispatch,2108,8845,42573,7555,jne short 22E4h
+18,special_terrain_dispatch,2108,8847,42575,803e964100,"cmp byte ptr [4196h],0"
+18,special_terrain_dispatch,2108,8852,42580,744e,je short 22E4h
+18,special_terrain_dispatch,2108,8854,42582,c606964100,"mov byte ptr [4196h],0"
+18,special_terrain_dispatch,2108,8859,42587,ebdc,jmp short 2279h
+18,special_terrain_dispatch,2108,8862,42590,83fa47,"cmp dx,47h"
+18,special_terrain_dispatch,2108,8865,42593,7507,jne short 22AAh
+18,special_terrain_dispatch,2108,8867,42595,0e,push cs
+18,special_terrain_dispatch,2108,8868,42596,e8c5fe,call 216Ch
+18,special_terrain_dispatch,2108,8871,42599,c9,leave
+18,special_terrain_dispatch,2108,8872,42600,cb,ret far
+18,special_terrain_dispatch,2108,8874,42602,83fa48,"cmp dx,48h"
+18,special_terrain_dispatch,2108,8877,42605,7535,jne short 22E4h
+18,special_terrain_dispatch,2108,8879,42607,0e,push cs
+18,special_terrain_dispatch,2108,8880,42608,e809ff,call 21BCh
+18,special_terrain_dispatch,2108,8883,42611,c9,leave
+18,special_terrain_dispatch,2108,8884,42612,cb,ret far
+18,special_terrain_dispatch,2108,8886,42614,83f90a,"cmp cx,0Ah"
+18,special_terrain_dispatch,2108,8889,42617,7529,jne short 22E4h
+18,special_terrain_dispatch,2108,8891,42619,83fa47,"cmp dx,47h"
+18,special_terrain_dispatch,2108,8894,42622,7524,jne short 22E4h
+18,special_terrain_dispatch,2108,8896,42624,0e,push cs
+18,special_terrain_dispatch,2108,8897,42625,e82cff,call 21F0h
+18,special_terrain_dispatch,2108,8900,42628,c9,leave
+18,special_terrain_dispatch,2108,8901,42629,cb,ret far
+18,special_terrain_dispatch,2108,8902,42630,83f901,"cmp cx,1"
+18,special_terrain_dispatch,2108,8905,42633,750b,jne short 22D6h
+18,special_terrain_dispatch,2108,8907,42635,83fa47,"cmp dx,47h"
+18,special_terrain_dispatch,2108,8910,42638,7506,jne short 22D6h
+18,special_terrain_dispatch,2108,8912,42640,0e,push cs
+18,special_terrain_dispatch,2108,8913,42641,e836ff,call 220Ah
+18,special_terrain_dispatch,2108,8916,42644,c9,leave
+18,special_terrain_dispatch,2108,8917,42645,cb,ret far
+18,special_terrain_dispatch,2108,8918,42646,83f90a,"cmp cx,0Ah"
+18,special_terrain_dispatch,2108,8921,42649,7509,jne short 22E4h
+18,special_terrain_dispatch,2108,8923,42651,83fa47,"cmp dx,47h"
+18,special_terrain_dispatch,2108,8926,42654,7504,jne short 22E4h
+18,special_terrain_dispatch,2108,8928,42656,0e,push cs
+18,special_terrain_dispatch,2108,8929,42657,e8f2fe,call 21D6h
+18,special_terrain_dispatch,2108,8932,42660,c9,leave
+18,special_terrain_dispatch,2108,8933,42661,cb,ret far
+18,terrain_ep1_level7,2108,8514,42242,803e084300,"cmp byte ptr [4308h],0"
+18,terrain_ep1_level7,2108,8519,42247,7522,jne short 216Bh
+18,terrain_ep1_level7,2108,8521,42249,0e,push cs
+18,terrain_ep1_level7,2108,8522,42250,e859ed,call 0EA6h
+18,terrain_ep1_level7,2108,8525,42253,b001,"mov al,1"
+18,terrain_ep1_level7,2108,8527,42255,a20843,"mov [4308h],al"
+18,terrain_ep1_level7,2108,8530,42258,a20c43,"mov [430Ch],al"
+18,terrain_ep1_level7,2108,8533,42261,0e,push cs
+18,terrain_ep1_level7,2108,8534,42262,e8ab06,call 2804h
+18,terrain_ep1_level7,2108,8537,42265,9a8e01da0b,"call far 018Eh,0BDAh"
+18,terrain_ep1_level7,2108,8542,42270,66ff36620e,push dword ptr [0E62h]
+18,terrain_ep1_level7,2108,8547,42275,9a5407250d,"call far 0754h,0D25h"
+18,terrain_ep1_level7,2108,8552,42280,83c404,"add sp,4"
+18,terrain_ep1_level7,2108,8555,42283,cb,ret far
+18,terrain_ep1_level10_A,2108,8556,42284,803e084300,"cmp byte ptr [4308h],0"
+18,terrain_ep1_level10_A,2108,8561,42289,7547,jne short 21BAh
+18,terrain_ep1_level10_A,2108,8563,42291,666800000200,data32 push 20000h
+18,terrain_ep1_level10_A,2108,8569,42297,6a12,push 12h
+18,terrain_ep1_level10_A,2108,8571,42299,9ada03270c,"call far 03DAh,0C27h"
+18,terrain_ep1_level10_A,2108,8576,42304,83c406,"add sp,6"
+18,terrain_ep1_level10_A,2108,8579,42307,b001,"mov al,1"
+18,terrain_ep1_level10_A,2108,8581,42309,a20843,"mov [4308h],al"
+18,terrain_ep1_level10_A,2108,8584,42312,a20a43,"mov [430Ah],al"
+18,terrain_ep1_level10_A,2108,8587,42315,a25441,"mov [4154h],al"
+18,terrain_ep1_level10_A,2108,8590,42318,c606514100,"mov byte ptr [4151h],0"
+18,terrain_ep1_level10_A,2108,8595,42323,66ff36740f,push dword ptr [0F74h]
+18,terrain_ep1_level10_A,2108,8600,42328,9a5407250d,"call far 0754h,0D25h"
+18,terrain_ep1_level10_A,2108,8605,42333,83c404,"add sp,4"
+18,terrain_ep1_level10_A,2108,8608,42336,66ff36c80f,push dword ptr [0FC8h]
+18,terrain_ep1_level10_A,2108,8613,42341,9a5407250d,"call far 0754h,0D25h"
+18,terrain_ep1_level10_A,2108,8618,42346,83c404,"add sp,4"
+18,terrain_ep1_level10_A,2108,8621,42349,66ff36fa0f,push dword ptr [0FFAh]
+18,terrain_ep1_level10_A,2108,8626,42354,9a5407250d,"call far 0754h,0D25h"
+18,terrain_ep1_level10_A,2108,8631,42359,83c404,"add sp,4"
+18,terrain_ep1_level10_A,2108,8634,42362,cb,ret far
+18,terrain_ep1_level10_B,2108,8636,42364,803e094300,"cmp byte ptr [4309h],0"
+18,terrain_ep1_level10_B,2108,8641,42369,7512,jne short 21D5h
+18,terrain_ep1_level10_B,2108,8643,42371,c606094301,"mov byte ptr [4309h],1"
+18,terrain_ep1_level10_B,2108,8648,42376,66ff363c10,push dword ptr [103Ch]
+18,terrain_ep1_level10_B,2108,8653,42381,9a5407250d,"call far 0754h,0D25h"
+18,terrain_ep1_level10_B,2108,8658,42386,83c404,"add sp,4"
+18,terrain_ep1_level10_B,2108,8661,42389,cb,ret far
+18,terrain_ep2_level10,2108,8688,42416,803e084300,"cmp byte ptr [4308h],0"
+18,terrain_ep2_level10,2108,8693,42421,7512,jne short 2209h
+18,terrain_ep2_level10,2108,8695,42423,c606084301,"mov byte ptr [4308h],1"
+18,terrain_ep2_level10,2108,8700,42428,66ff36a211,push dword ptr [11A2h]
+18,terrain_ep2_level10,2108,8705,42433,9a5407250d,"call far 0754h,0D25h"
+18,terrain_ep2_level10,2108,8710,42438,83c404,"add sp,4"
+18,terrain_ep2_level10,2108,8713,42441,cb,ret far
+18,terrain_ep3_level1,2108,8714,42442,803e084300,"cmp byte ptr [4308h],0"
+18,terrain_ep3_level1,2108,8719,42447,7512,jne short 2223h
+18,terrain_ep3_level1,2108,8721,42449,c606084301,"mov byte ptr [4308h],1"
+18,terrain_ep3_level1,2108,8726,42454,66ff365a13,push dword ptr [135Ah]
+18,terrain_ep3_level1,2108,8731,42459,9a5407250d,"call far 0754h,0D25h"
+18,terrain_ep3_level1,2108,8736,42464,83c404,"add sp,4"
+18,terrain_ep3_level1,2108,8739,42467,cb,ret far
+18,terrain_ep3_level10,2108,8662,42390,803e084300,"cmp byte ptr [4308h],0"
+18,terrain_ep3_level10,2108,8667,42395,7512,jne short 21EFh
+18,terrain_ep3_level10,2108,8669,42397,c606084301,"mov byte ptr [4308h],1"
+18,terrain_ep3_level10,2108,8674,42402,66ff36b810,push dword ptr [10B8h]
+18,terrain_ep3_level10,2108,8679,42407,9a5407250d,"call far 0754h,0D25h"
+18,terrain_ep3_level10,2108,8684,42412,83c404,"add sp,4"
+18,terrain_ep3_level10,2108,8687,42415,cb,ret far
+18,sound_event42,2108,3750,37478,666800000200,data32 push 20000h
+18,sound_event42,2108,3756,37484,6a42,push 42h
+18,sound_event42,2108,3758,37486,9ada03270c,"call far 03DAh,0C27h"
+18,sound_event42,2108,3763,37491,83c406,"add sp,6"
+18,sound_event42,2108,3766,37494,cb,ret far
+18,sound_bank_selection,2108,10244,43972,803e0c4300,"cmp byte ptr [430Ch],0"
+18,sound_bank_selection,2108,10249,43977,7411,je short 281Ch
+18,sound_bank_selection,2108,10251,43979,c70676620600,"mov word ptr [6276h],6"
+18,sound_bank_selection,2108,10257,43985,32c0,"xor al,al"
+18,sound_bank_selection,2108,10259,43987,a27862,"mov [6278h],al"
+18,sound_bank_selection,2108,10262,43990,a27962,"mov [6279h],al"
+18,sound_bank_selection,2108,10265,43993,eb3e,jmp short 2859h
+18,sound_bank_selection,2108,10268,43996,833ebc3c00,"cmp word ptr [3CBCh],0"
+18,sound_bank_selection,2108,10273,44001,7c09,jl short 282Ch
+18,sound_bank_selection,2108,10275,44003,a1bc3c,"mov ax,[3CBCh]"
+18,sound_bank_selection,2108,10278,44006,a37662,"mov [6276h],ax"
+18,sound_bank_selection,2108,10281,44009,eb07,jmp short 2832h
+18,sound_bank_selection,2108,10284,44012,c70676620200,"mov word ptr [6276h],2"
+18,sound_bank_selection,2108,10290,44018,833ebe3c00,"cmp word ptr [3CBEh],0"
+18,sound_bank_selection,2108,10295,44023,7c09,jl short 2842h
+18,sound_bank_selection,2108,10297,44025,a0be3c,"mov al,[3CBEh]"
+18,sound_bank_selection,2108,10300,44028,a27862,"mov [6278h],al"
+18,sound_bank_selection,2108,10303,44031,eb06,jmp short 2847h
+18,sound_bank_selection,2108,10306,44034,c606786202,"mov byte ptr [6278h],2"
+18,sound_bank_selection,2108,10311,44039,833ec03c00,"cmp word ptr [3CC0h],0"
+18,sound_bank_selection,2108,10316,44044,7c06,jl short 2854h
+18,sound_bank_selection,2108,10318,44046,a0c03c,"mov al,[3CC0h]"
+18,sound_bank_selection,2108,10321,44049,ebc3,jmp short 2816h
+18,sound_bank_selection,2108,10324,44052,c606796207,"mov byte ptr [6279h],7"
+18,sound_bank_selection,2108,10329,44057,9a6e015601,"call far 016Eh,0156h"
+18,sound_bank_selection,2108,10334,44062,cb,ret far
+18,pickup_apply,2791,1804,46460,c8060000,"enter 6,0"
+18,pickup_apply,2791,1808,46464,57,push di
+18,pickup_apply,2791,1809,46465,56,push si
+18,pickup_apply,2791,1810,46466,8b7e06,"mov di,[bp+6]"
+18,pickup_apply,2791,1813,46469,c646ff01,"mov byte ptr [bp-1],1"
+18,pickup_apply,2791,1817,46473,ff7608,push word ptr [bp+8]
+18,pickup_apply,2791,1820,46476,57,push di
+18,pickup_apply,2791,1821,46477,0e,push cs
+18,pickup_apply,2791,1822,46478,e87bff,call 069Ch
+18,pickup_apply,2791,1825,46481,83c404,"add sp,4"
+18,pickup_apply,2791,1828,46484,8bf0,"mov si,ax"
+18,pickup_apply,2791,1830,46486,8956fc,"mov [bp-4],dx"
+18,pickup_apply,2791,1833,46489,0bd0,"or dx,ax"
+18,pickup_apply,2791,1835,46491,0f841902,je 0948h
+18,pickup_apply,2791,1839,46495,8e46fc,"mov es,[bp-4]"
+18,pickup_apply,2791,1842,46498,268a4406,"mov al,es:[si+6]"
+18,pickup_apply,2791,1846,46502,2ae4,"sub ah,ah"
+18,pickup_apply,2791,1848,46504,2d2f00,"sub ax,2Fh"
+18,pickup_apply,2791,1851,46507,3d0e00,"cmp ax,0Eh"
+18,pickup_apply,2791,1854,46510,0f87df01,ja 0921h
+18,pickup_apply,2791,1858,46514,03c0,"add ax,ax"
+18,pickup_apply,2791,1860,46516,93,"xchg bx,ax"
+18,pickup_apply,2791,1861,46517,2effa74a07,jmp word ptr cs:[bx+74Ah]
+18,pickup_apply,2791,1896,46552,268a4c01,"mov cl,es:[si+1]"
+18,pickup_apply,2791,1900,46556,b001,"mov al,1"
+18,pickup_apply,2791,1902,46558,d2e0,"shl al,cl"
+18,pickup_apply,2791,1904,46560,08069041,"or [4190h],al"
+18,pickup_apply,2791,1908,46564,6a0d,push 0Dh
+18,pickup_apply,2791,1910,46566,e98301,jmp 08FCh
+18,pickup_apply,2791,1914,46570,268a4c01,"mov cl,es:[si+1]"
+18,pickup_apply,2791,1918,46574,b001,"mov al,1"
+18,pickup_apply,2791,1920,46576,d2e0,"shl al,cl"
+18,pickup_apply,2791,1922,46578,08069141,"or [4191h],al"
+18,pickup_apply,2791,1926,46582,6a0e,push 0Eh
+18,pickup_apply,2791,1928,46584,e97101,jmp 08FCh
+18,pickup_apply,2791,1932,46588,6681068041c8000000,"add dword ptr [4180h],0C8h"
+18,pickup_apply,2791,1941,46597,6a04,push 4
+18,pickup_apply,2791,1943,46599,e96201,jmp 08FCh
+18,pickup_apply,2791,1946,46602,803e8c4163,"cmp byte ptr [418Ch],63h"
+18,pickup_apply,2791,1951,46607,7d05,jge short 07A6h
+18,pickup_apply,2791,1953,46609,b001,"mov al,1"
+18,pickup_apply,2791,1955,46611,eb03,jmp short 07A8h
+18,pickup_apply,2791,1958,46614,32c0,"xor al,al"
+18,pickup_apply,2791,1960,46616,8846ff,"mov [bp-1],al"
+18,pickup_apply,2791,1963,46619,0ac0,"or al,al"
+18,pickup_apply,2791,1965,46621,0f847001,je 0921h
+18,pickup_apply,2791,1969,46625,268a4c01,"mov cl,es:[si+1]"
+18,pickup_apply,2791,1973,46629,b001,"mov al,1"
+18,pickup_apply,2791,1975,46631,d2e0,"shl al,cl"
+18,pickup_apply,2791,1977,46633,00068c41,"add [418Ch],al"
+18,pickup_apply,2791,1981,46637,6a0b,push 0Bh
+18,pickup_apply,2791,1983,46639,e93a01,jmp 08FCh
+18,pickup_apply,2791,1986,46642,803e874164,"cmp byte ptr [4187h],64h"
+18,pickup_apply,2791,1991,46647,7305,jae short 07CEh
+18,pickup_apply,2791,1993,46649,b001,"mov al,1"
+18,pickup_apply,2791,1995,46651,eb03,jmp short 07D0h
+18,pickup_apply,2791,1998,46654,32c0,"xor al,al"
+18,pickup_apply,2791,2000,46656,8846ff,"mov [bp-1],al"
+18,pickup_apply,2791,2003,46659,0ac0,"or al,al"
+18,pickup_apply,2791,2005,46661,0f844801,je 0921h
+18,pickup_apply,2791,2009,46665,268a4c01,"mov cl,es:[si+1]"
+18,pickup_apply,2791,2013,46669,b81400,"mov ax,14h"
+18,pickup_apply,2791,2016,46672,d3f8,"sar ax,cl"
+18,pickup_apply,2791,2018,46674,00068741,"add [4187h],al"
+18,pickup_apply,2791,2022,46678,6a05,push 5
+18,pickup_apply,2791,2024,46680,9ad8053c08,"call far 05D8h,083Ch"
+18,pickup_apply,2791,2029,46685,83c402,"add sp,2"
+18,pickup_apply,2791,2032,46688,eba3,jmp short 0795h
+18,pickup_apply,2791,2034,46690,803e874164,"cmp byte ptr [4187h],64h"
+18,pickup_apply,2791,2039,46695,7305,jae short 07FEh
+18,pickup_apply,2791,2041,46697,b001,"mov al,1"
+18,pickup_apply,2791,2043,46699,eb03,jmp short 0800h
+18,pickup_apply,2791,2046,46702,32c0,"xor al,al"
+18,pickup_apply,2791,2048,46704,8846ff,"mov [bp-1],al"
+18,pickup_apply,2791,2051,46707,0ac0,"or al,al"
+18,pickup_apply,2791,2053,46709,0f841801,je 0921h
+18,pickup_apply,2791,2057,46713,800687411e,"add byte ptr [4187h],1Eh"
+18,pickup_apply,2791,2062,46718,6681068041fa000000,"add dword ptr [4180h],0FAh"
+18,pickup_apply,2791,2071,46727,ebcd,jmp short 07E6h
+18,pickup_apply,2791,2074,46730,c606874164,"mov byte ptr [4187h],64h"
+18,pickup_apply,2791,2079,46735,c6068a4164,"mov byte ptr [418Ah],64h"
+18,pickup_apply,2791,2084,46740,6681068041f4010000,"add dword ptr [4180h],1F4h"
+18,pickup_apply,2791,2093,46749,fe068841,inc byte ptr [4188h]
+18,pickup_apply,2791,2097,46753,6a05,push 5
+18,pickup_apply,2791,2099,46755,9ad8053c08,"call far 05D8h,083Ch"
+18,pickup_apply,2791,2104,46760,83c402,"add sp,2"
+18,pickup_apply,2791,2107,46763,6a08,push 8
+18,pickup_apply,2791,2109,46765,9ad8053c08,"call far 05D8h,083Ch"
+18,pickup_apply,2791,2114,46770,83c402,"add sp,2"
+18,pickup_apply,2791,2117,46773,6a06,push 6
+18,pickup_apply,2791,2119,46775,eb9f,jmp short 07E8h
+18,pickup_apply,2791,2122,46778,268a4c01,"mov cl,es:[si+1]"
+18,pickup_apply,2791,2126,46782,b001,"mov al,1"
+18,pickup_apply,2791,2128,46784,d2e0,"shl al,cl"
+18,pickup_apply,2791,2130,46786,08069241,"or [4192h],al"
+18,pickup_apply,2791,2134,46790,268a4401,"mov al,es:[si+1]"
+18,pickup_apply,2791,2138,46794,2ae4,"sub ah,ah"
+18,pickup_apply,2791,2140,46796,50,push ax
+18,pickup_apply,2791,2141,46797,9ab20c3c08,"call far 0CB2h,083Ch"
+18,pickup_apply,2791,2146,46802,83c402,"add sp,2"
+18,pickup_apply,2791,2149,46805,6a01,push 1
+18,pickup_apply,2791,2151,46807,8e46fc,"mov es,[bp-4]"
+18,pickup_apply,2791,2154,46810,268a4401,"mov al,es:[si+1]"
+18,pickup_apply,2791,2158,46814,2ae4,"sub ah,ah"
+18,pickup_apply,2791,2160,46816,50,push ax
+18,pickup_apply,2791,2161,46817,9aac0b3c08,"call far 0BACh,083Ch"
+18,pickup_apply,2791,2166,46822,83c404,"add sp,4"
+18,pickup_apply,2791,2169,46825,6a0c,push 0Ch
+18,pickup_apply,2791,2171,46827,eb7f,jmp short 08FCh
+18,pickup_apply,2791,2174,46830,268a4c01,"mov cl,es:[si+1]"
+18,pickup_apply,2791,2178,46834,b001,"mov al,1"
+18,pickup_apply,2791,2180,46836,d2e0,"shl al,cl"
+18,pickup_apply,2791,2182,46838,08069341,"or [4193h],al"
+18,pickup_apply,2791,2186,46842,6a0f,push 0Fh
+18,pickup_apply,2791,2188,46844,eb6e,jmp short 08FCh
+18,pickup_apply,2791,2190,46846,803e8b4164,"cmp byte ptr [418Bh],64h"
+18,pickup_apply,2791,2195,46851,7d05,jge short 089Ah
+18,pickup_apply,2791,2197,46853,b001,"mov al,1"
+18,pickup_apply,2791,2199,46855,eb03,jmp short 089Ch
+18,pickup_apply,2791,2202,46858,32c0,"xor al,al"
+18,pickup_apply,2791,2204,46860,8846ff,"mov [bp-1],al"
+18,pickup_apply,2791,2207,46863,0ac0,"or al,al"
+18,pickup_apply,2791,2209,46865,747e,je short 0921h
+18,pickup_apply,2791,2211,46867,80068b4114,"add byte ptr [418Bh],14h"
+18,pickup_apply,2791,2216,46872,6a0a,push 0Ah
+18,pickup_apply,2791,2218,46874,eb50,jmp short 08FCh
+18,pickup_apply,2791,2220,46876,6a00,push 0
+18,pickup_apply,2791,2222,46878,268a4401,"mov al,es:[si+1]"
+18,pickup_apply,2791,2226,46882,2ae4,"sub ah,ah"
+18,pickup_apply,2791,2228,46884,50,push ax
+18,pickup_apply,2791,2229,46885,9aac0b3c08,"call far 0BACh,083Ch"
+18,pickup_apply,2791,2234,46890,83c404,"add sp,4"
+18,pickup_apply,2791,2237,46893,8846ff,"mov [bp-1],al"
+18,pickup_apply,2791,2240,46896,eb5f,jmp short 0921h
+18,pickup_apply,2791,2242,46898,803eac4164,"cmp byte ptr [41ACh],64h"
+18,pickup_apply,2791,2247,46903,7305,jae short 08CEh
+18,pickup_apply,2791,2249,46905,b001,"mov al,1"
+18,pickup_apply,2791,2251,46907,eb03,jmp short 08D0h
+18,pickup_apply,2791,2254,46910,32c0,"xor al,al"
+18,pickup_apply,2791,2256,46912,8846ff,"mov [bp-1],al"
+18,pickup_apply,2791,2259,46915,0ac0,"or al,al"
+18,pickup_apply,2791,2261,46917,744a,je short 0921h
+18,pickup_apply,2791,2263,46919,8006ac4114,"add byte ptr [41ACh],14h"
+18,pickup_apply,2791,2268,46924,6a13,push 13h
+18,pickup_apply,2791,2270,46926,eb1c,jmp short 08FCh
+18,pickup_apply,2791,2272,46928,803ead4164,"cmp byte ptr [41ADh],64h"
+18,pickup_apply,2791,2277,46933,7305,jae short 08ECh
+18,pickup_apply,2791,2279,46935,b001,"mov al,1"
+18,pickup_apply,2791,2281,46937,eb03,jmp short 08EEh
+18,pickup_apply,2791,2284,46940,32c0,"xor al,al"
+18,pickup_apply,2791,2286,46942,8846ff,"mov [bp-1],al"
+18,pickup_apply,2791,2289,46945,0ac0,"or al,al"
+18,pickup_apply,2791,2291,46947,742c,je short 0921h
+18,pickup_apply,2791,2293,46949,8006ad4114,"add byte ptr [41ADh],14h"
+18,pickup_apply,2791,2298,46954,6a14,push 14h
+18,pickup_apply,2791,2300,46956,9ad8053c08,"call far 05D8h,083Ch"
+18,pickup_apply,2791,2305,46961,eb1b,jmp short 091Eh
+18,pickup_apply,2791,2308,46964,268a4c01,"mov cl,es:[si+1]"
+18,pickup_apply,2791,2312,46968,b001,"mov al,1"
+18,pickup_apply,2791,2314,46970,d2e0,"shl al,cl"
+18,pickup_apply,2791,2316,46972,0806af41,"or [41AFh],al"
+18,pickup_apply,2791,2320,46976,eb0f,jmp short 0921h
+18,pickup_apply,2791,2322,46978,268a4401,"mov al,es:[si+1]"
+18,pickup_apply,2791,2326,46982,2ae4,"sub ah,ah"
+18,pickup_apply,2791,2328,46984,50,push ax
+18,pickup_apply,2791,2329,46985,9ad8273c08,"call far 27D8h,083Ch"
+18,pickup_apply,2791,2334,46990,83c402,"add sp,2"
+18,pickup_apply,2791,2337,46993,807eff00,"cmp byte ptr [bp-1],0"
+18,pickup_apply,2791,2341,46997,7421,je short 0948h
+18,pickup_apply,2791,2343,46999,ff76fc,push word ptr [bp-4]
+18,pickup_apply,2791,2346,47002,56,push si
+18,pickup_apply,2791,2347,47003,ff7608,push word ptr [bp+8]
+18,pickup_apply,2791,2350,47006,57,push di
+18,pickup_apply,2791,2351,47007,0e,push cs
+18,pickup_apply,2791,2352,47008,e8c3fd,call 06F6h
+18,pickup_apply,2791,2355,47011,83c408,"add sp,8"
+18,pickup_apply,2791,2358,47014,8e46fc,"mov es,[bp-4]"
+18,pickup_apply,2791,2361,47017,268a4406,"mov al,es:[si+6]"
+18,pickup_apply,2791,2365,47021,2ae4,"sub ah,ah"
+18,pickup_apply,2791,2367,47023,50,push ax
+18,pickup_apply,2791,2368,47024,9a721a3c08,"call far 1A72h,083Ch"
+18,pickup_apply,2791,2373,47029,83c402,"add sp,2"
+18,pickup_apply,2791,2376,47032,5e,pop si
+18,pickup_apply,2791,2377,47033,5f,pop di
+18,pickup_apply,2791,2378,47034,c9,leave
+18,pickup_apply,2791,2379,47035,cb,ret far
+18,pickup_record_find,2791,1692,46348,c8040000,"enter 4,0"
+18,pickup_record_find,2791,1696,46352,57,push di
+18,pickup_record_find,2791,1697,46353,56,push si
+18,pickup_record_find,2791,1698,46354,33c9,"xor cx,cx"
+18,pickup_record_find,2791,1700,46356,b80600,"mov ax,6"
+18,pickup_record_find,2791,1703,46359,baf921,"mov dx,21F9h"
+18,pickup_record_find,2791,1706,46362,8bf0,"mov si,ax"
+18,pickup_record_find,2791,1708,46364,8956fe,"mov [bp-2],dx"
+18,pickup_record_find,2791,1711,46367,390e6e62,"cmp [626Eh],cx"
+18,pickup_record_find,2791,1715,46371,7e39,jle short 06EEh
+18,pickup_record_find,2791,1717,46373,8b7e06,"mov di,[bp+6]"
+18,pickup_record_find,2791,1720,46376,8eda,"mov ds,dx"
+18,pickup_record_find,2791,1722,46378,8b4608,"mov ax,[bp+8]"
+18,pickup_record_find,2791,1725,46381,397c0c,"cmp [si+0Ch],di"
+18,pickup_record_find,2791,1728,46384,7510,jne short 06D2h
+18,pickup_record_find,2791,1730,46386,39440e,"cmp [si+0Eh],ax"
+18,pickup_record_find,2791,1733,46389,750b,jne short 06D2h
+18,pickup_record_find,2791,1735,46391,8a04,"mov al,[si]"
+18,pickup_record_find,2791,1737,46393,8e4608,"mov es,[bp+8]"
+18,pickup_record_find,2791,1740,46396,26384501,"cmp es:[di+1],al"
+18,pickup_record_find,2791,1744,46400,7410,je short 06E2h
+18,pickup_record_find,2791,1746,46402,83c61c,"add si,1Ch"
+18,pickup_record_find,2791,1749,46405,41,inc cx
+18,pickup_record_find,2791,1750,46406,36390e6e62,"cmp ss:[626Eh],cx"
+18,pickup_record_find,2791,1755,46411,7fdd,jg short 06BAh
+18,pickup_record_find,2791,1757,46413,16,push ss
+18,pickup_record_find,2791,1758,46414,1f,pop ds
+18,pickup_record_find,2791,1759,46415,eb0d,jmp short 06EEh
+18,pickup_record_find,2791,1762,46418,16,push ss
+18,pickup_record_find,2791,1763,46419,1f,pop ds
+18,pickup_record_find,2791,1764,46420,8bc6,"mov ax,si"
+18,pickup_record_find,2791,1766,46422,8b56fe,"mov dx,[bp-2]"
+18,pickup_record_find,2791,1769,46425,5e,pop si
+18,pickup_record_find,2791,1770,46426,5f,pop di
+18,pickup_record_find,2791,1771,46427,c9,leave
+18,pickup_record_find,2791,1772,46428,cb,ret far
+18,pickup_record_find,2791,1774,46430,33c0,"xor ax,ax"
+18,pickup_record_find,2791,1776,46432,99,cwd
+18,pickup_record_find,2791,1777,46433,5e,pop si
+18,pickup_record_find,2791,1778,46434,5f,pop di
+18,pickup_record_find,2791,1779,46435,c9,leave
+18,pickup_record_find,2791,1780,46436,cb,ret far
+18,pickup_cell_clear,2791,1782,46438,55,push bp
+18,pickup_cell_clear,2791,1783,46439,8bec,"mov bp,sp"
+18,pickup_cell_clear,2791,1785,46441,c45e06,"les bx,[bp+6]"
+18,pickup_cell_clear,2791,1788,46444,26c6470100,"mov byte ptr es:[bx+1],0"
+18,pickup_cell_clear,2791,1793,46449,c45e0a,"les bx,[bp+0Ah]"
+18,pickup_cell_clear,2791,1796,46452,26806705fe,"and byte ptr es:[bx+5],0FEh"
+18,pickup_cell_clear,2791,1801,46457,c9,leave
+18,pickup_cell_clear,2791,1802,46458,cb,ret far
+19,special_terrain_dispatch,2108,8740,42468,55,push bp
+19,special_terrain_dispatch,2108,8741,42469,8bec,"mov bp,sp"
+19,special_terrain_dispatch,2108,8743,42471,8b0e6a62,"mov cx,[626Ah]"
+19,special_terrain_dispatch,2108,8747,42475,41,inc cx
+19,special_terrain_dispatch,2108,8748,42476,8a5e06,"mov bl,[bp+6]"
+19,special_terrain_dispatch,2108,8751,42479,2aff,"sub bh,bh"
+19,special_terrain_dispatch,2108,8753,42481,8a970cd3,"mov dl,[bx-2CF4h]"
+19,special_terrain_dispatch,2108,8757,42485,2af6,"sub dh,dh"
+19,special_terrain_dispatch,2108,8759,42487,a16862,"mov ax,[6268h]"
+19,special_terrain_dispatch,2108,8762,42490,48,dec ax
+19,special_terrain_dispatch,2108,8763,42491,740b,je short 2248h
+19,special_terrain_dispatch,2108,8765,42493,48,dec ax
+19,special_terrain_dispatch,2108,8766,42494,7476,je short 22B6h
+19,special_terrain_dispatch,2108,8768,42496,48,dec ax
+19,special_terrain_dispatch,2108,8769,42497,0f848100,je 22C6h
+19,special_terrain_dispatch,2108,8773,42501,e99c00,jmp 22E4h
+19,special_terrain_dispatch,2108,8776,42504,8bc1,"mov ax,cx"
+19,special_terrain_dispatch,2108,8778,42506,2d0700,"sub ax,7"
+19,special_terrain_dispatch,2108,8781,42509,740b,je short 225Ah
+19,special_terrain_dispatch,2108,8783,42511,48,dec ax
+19,special_terrain_dispatch,2108,8784,42512,48,dec ax
+19,special_terrain_dispatch,2108,8785,42513,7415,je short 2268h
+19,special_terrain_dispatch,2108,8787,42515,48,dec ax
+19,special_terrain_dispatch,2108,8788,42516,7448,je short 229Eh
+19,special_terrain_dispatch,2108,8790,42518,e98b00,jmp 22E4h
+19,special_terrain_dispatch,2108,8794,42522,83fa47,"cmp dx,47h"
+19,special_terrain_dispatch,2108,8797,42525,0f858300,jne 22E4h
+19,special_terrain_dispatch,2108,8801,42529,0e,push cs
+19,special_terrain_dispatch,2108,8802,42530,e8ddfe,call 2142h
+19,special_terrain_dispatch,2108,8805,42533,eb7d,jmp short 22E4h
+19,special_terrain_dispatch,2108,8808,42536,83fa47,"cmp dx,47h"
+19,special_terrain_dispatch,2108,8811,42539,751d,jne short 228Ah
+19,special_terrain_dispatch,2108,8813,42541,803e964100,"cmp byte ptr [4196h],0"
+19,special_terrain_dispatch,2108,8818,42546,7516,jne short 228Ah
+19,special_terrain_dispatch,2108,8820,42548,c606964101,"mov byte ptr [4196h],1"
+19,special_terrain_dispatch,2108,8825,42553,666800000200,data32 push 20000h
+19,special_terrain_dispatch,2108,8831,42559,6a44,push 44h
+19,special_terrain_dispatch,2108,8833,42561,9ada03270c,"call far 03DAh,0C27h"
+19,special_terrain_dispatch,2108,8838,42566,8be5,"mov sp,bp"
+19,special_terrain_dispatch,2108,8840,42568,c9,leave
+19,special_terrain_dispatch,2108,8841,42569,cb,ret far
+19,special_terrain_dispatch,2108,8842,42570,83fa48,"cmp dx,48h"
+19,special_terrain_dispatch,2108,8845,42573,7555,jne short 22E4h
+19,special_terrain_dispatch,2108,8847,42575,803e964100,"cmp byte ptr [4196h],0"
+19,special_terrain_dispatch,2108,8852,42580,744e,je short 22E4h
+19,special_terrain_dispatch,2108,8854,42582,c606964100,"mov byte ptr [4196h],0"
+19,special_terrain_dispatch,2108,8859,42587,ebdc,jmp short 2279h
+19,special_terrain_dispatch,2108,8862,42590,83fa47,"cmp dx,47h"
+19,special_terrain_dispatch,2108,8865,42593,7507,jne short 22AAh
+19,special_terrain_dispatch,2108,8867,42595,0e,push cs
+19,special_terrain_dispatch,2108,8868,42596,e8c5fe,call 216Ch
+19,special_terrain_dispatch,2108,8871,42599,c9,leave
+19,special_terrain_dispatch,2108,8872,42600,cb,ret far
+19,special_terrain_dispatch,2108,8874,42602,83fa48,"cmp dx,48h"
+19,special_terrain_dispatch,2108,8877,42605,7535,jne short 22E4h
+19,special_terrain_dispatch,2108,8879,42607,0e,push cs
+19,special_terrain_dispatch,2108,8880,42608,e809ff,call 21BCh
+19,special_terrain_dispatch,2108,8883,42611,c9,leave
+19,special_terrain_dispatch,2108,8884,42612,cb,ret far
+19,special_terrain_dispatch,2108,8886,42614,83f90a,"cmp cx,0Ah"
+19,special_terrain_dispatch,2108,8889,42617,7529,jne short 22E4h
+19,special_terrain_dispatch,2108,8891,42619,83fa47,"cmp dx,47h"
+19,special_terrain_dispatch,2108,8894,42622,7524,jne short 22E4h
+19,special_terrain_dispatch,2108,8896,42624,0e,push cs
+19,special_terrain_dispatch,2108,8897,42625,e82cff,call 21F0h
+19,special_terrain_dispatch,2108,8900,42628,c9,leave
+19,special_terrain_dispatch,2108,8901,42629,cb,ret far
+19,special_terrain_dispatch,2108,8902,42630,83f901,"cmp cx,1"
+19,special_terrain_dispatch,2108,8905,42633,750b,jne short 22D6h
+19,special_terrain_dispatch,2108,8907,42635,83fa47,"cmp dx,47h"
+19,special_terrain_dispatch,2108,8910,42638,7506,jne short 22D6h
+19,special_terrain_dispatch,2108,8912,42640,0e,push cs
+19,special_terrain_dispatch,2108,8913,42641,e836ff,call 220Ah
+19,special_terrain_dispatch,2108,8916,42644,c9,leave
+19,special_terrain_dispatch,2108,8917,42645,cb,ret far
+19,special_terrain_dispatch,2108,8918,42646,83f90a,"cmp cx,0Ah"
+19,special_terrain_dispatch,2108,8921,42649,7509,jne short 22E4h
+19,special_terrain_dispatch,2108,8923,42651,83fa47,"cmp dx,47h"
+19,special_terrain_dispatch,2108,8926,42654,7504,jne short 22E4h
+19,special_terrain_dispatch,2108,8928,42656,0e,push cs
+19,special_terrain_dispatch,2108,8929,42657,e8f2fe,call 21D6h
+19,special_terrain_dispatch,2108,8932,42660,c9,leave
+19,special_terrain_dispatch,2108,8933,42661,cb,ret far
+19,terrain_ep1_level7,2108,8514,42242,803e084300,"cmp byte ptr [4308h],0"
+19,terrain_ep1_level7,2108,8519,42247,7522,jne short 216Bh
+19,terrain_ep1_level7,2108,8521,42249,0e,push cs
+19,terrain_ep1_level7,2108,8522,42250,e859ed,call 0EA6h
+19,terrain_ep1_level7,2108,8525,42253,b001,"mov al,1"
+19,terrain_ep1_level7,2108,8527,42255,a20843,"mov [4308h],al"
+19,terrain_ep1_level7,2108,8530,42258,a20c43,"mov [430Ch],al"
+19,terrain_ep1_level7,2108,8533,42261,0e,push cs
+19,terrain_ep1_level7,2108,8534,42262,e8ab06,call 2804h
+19,terrain_ep1_level7,2108,8537,42265,9a8e01da0b,"call far 018Eh,0BDAh"
+19,terrain_ep1_level7,2108,8542,42270,66ff36620e,push dword ptr [0E62h]
+19,terrain_ep1_level7,2108,8547,42275,9a5407250d,"call far 0754h,0D25h"
+19,terrain_ep1_level7,2108,8552,42280,83c404,"add sp,4"
+19,terrain_ep1_level7,2108,8555,42283,cb,ret far
+19,terrain_ep1_level10_A,2108,8556,42284,803e084300,"cmp byte ptr [4308h],0"
+19,terrain_ep1_level10_A,2108,8561,42289,7547,jne short 21BAh
+19,terrain_ep1_level10_A,2108,8563,42291,666800000200,data32 push 20000h
+19,terrain_ep1_level10_A,2108,8569,42297,6a12,push 12h
+19,terrain_ep1_level10_A,2108,8571,42299,9ada03270c,"call far 03DAh,0C27h"
+19,terrain_ep1_level10_A,2108,8576,42304,83c406,"add sp,6"
+19,terrain_ep1_level10_A,2108,8579,42307,b001,"mov al,1"
+19,terrain_ep1_level10_A,2108,8581,42309,a20843,"mov [4308h],al"
+19,terrain_ep1_level10_A,2108,8584,42312,a20a43,"mov [430Ah],al"
+19,terrain_ep1_level10_A,2108,8587,42315,a25441,"mov [4154h],al"
+19,terrain_ep1_level10_A,2108,8590,42318,c606514100,"mov byte ptr [4151h],0"
+19,terrain_ep1_level10_A,2108,8595,42323,66ff36740f,push dword ptr [0F74h]
+19,terrain_ep1_level10_A,2108,8600,42328,9a5407250d,"call far 0754h,0D25h"
+19,terrain_ep1_level10_A,2108,8605,42333,83c404,"add sp,4"
+19,terrain_ep1_level10_A,2108,8608,42336,66ff36c80f,push dword ptr [0FC8h]
+19,terrain_ep1_level10_A,2108,8613,42341,9a5407250d,"call far 0754h,0D25h"
+19,terrain_ep1_level10_A,2108,8618,42346,83c404,"add sp,4"
+19,terrain_ep1_level10_A,2108,8621,42349,66ff36fa0f,push dword ptr [0FFAh]
+19,terrain_ep1_level10_A,2108,8626,42354,9a5407250d,"call far 0754h,0D25h"
+19,terrain_ep1_level10_A,2108,8631,42359,83c404,"add sp,4"
+19,terrain_ep1_level10_A,2108,8634,42362,cb,ret far
+19,terrain_ep1_level10_B,2108,8636,42364,803e094300,"cmp byte ptr [4309h],0"
+19,terrain_ep1_level10_B,2108,8641,42369,7512,jne short 21D5h
+19,terrain_ep1_level10_B,2108,8643,42371,c606094301,"mov byte ptr [4309h],1"
+19,terrain_ep1_level10_B,2108,8648,42376,66ff363c10,push dword ptr [103Ch]
+19,terrain_ep1_level10_B,2108,8653,42381,9a5407250d,"call far 0754h,0D25h"
+19,terrain_ep1_level10_B,2108,8658,42386,83c404,"add sp,4"
+19,terrain_ep1_level10_B,2108,8661,42389,cb,ret far
+19,terrain_ep2_level10,2108,8688,42416,803e084300,"cmp byte ptr [4308h],0"
+19,terrain_ep2_level10,2108,8693,42421,7512,jne short 2209h
+19,terrain_ep2_level10,2108,8695,42423,c606084301,"mov byte ptr [4308h],1"
+19,terrain_ep2_level10,2108,8700,42428,66ff36a211,push dword ptr [11A2h]
+19,terrain_ep2_level10,2108,8705,42433,9a5407250d,"call far 0754h,0D25h"
+19,terrain_ep2_level10,2108,8710,42438,83c404,"add sp,4"
+19,terrain_ep2_level10,2108,8713,42441,cb,ret far
+19,terrain_ep3_level1,2108,8714,42442,803e084300,"cmp byte ptr [4308h],0"
+19,terrain_ep3_level1,2108,8719,42447,7512,jne short 2223h
+19,terrain_ep3_level1,2108,8721,42449,c606084301,"mov byte ptr [4308h],1"
+19,terrain_ep3_level1,2108,8726,42454,66ff365a13,push dword ptr [135Ah]
+19,terrain_ep3_level1,2108,8731,42459,9a5407250d,"call far 0754h,0D25h"
+19,terrain_ep3_level1,2108,8736,42464,83c404,"add sp,4"
+19,terrain_ep3_level1,2108,8739,42467,cb,ret far
+19,terrain_ep3_level10,2108,8662,42390,803e084300,"cmp byte ptr [4308h],0"
+19,terrain_ep3_level10,2108,8667,42395,7512,jne short 21EFh
+19,terrain_ep3_level10,2108,8669,42397,c606084301,"mov byte ptr [4308h],1"
+19,terrain_ep3_level10,2108,8674,42402,66ff36b810,push dword ptr [10B8h]
+19,terrain_ep3_level10,2108,8679,42407,9a5407250d,"call far 0754h,0D25h"
+19,terrain_ep3_level10,2108,8684,42412,83c404,"add sp,4"
+19,terrain_ep3_level10,2108,8687,42415,cb,ret far
+19,sound_event42,2108,3750,37478,666800000200,data32 push 20000h
+19,sound_event42,2108,3756,37484,6a42,push 42h
+19,sound_event42,2108,3758,37486,9ada03270c,"call far 03DAh,0C27h"
+19,sound_event42,2108,3763,37491,83c406,"add sp,6"
+19,sound_event42,2108,3766,37494,cb,ret far
+19,sound_bank_selection,2108,10244,43972,803e0c4300,"cmp byte ptr [430Ch],0"
+19,sound_bank_selection,2108,10249,43977,7411,je short 281Ch
+19,sound_bank_selection,2108,10251,43979,c70676620600,"mov word ptr [6276h],6"
+19,sound_bank_selection,2108,10257,43985,32c0,"xor al,al"
+19,sound_bank_selection,2108,10259,43987,a27862,"mov [6278h],al"
+19,sound_bank_selection,2108,10262,43990,a27962,"mov [6279h],al"
+19,sound_bank_selection,2108,10265,43993,eb3e,jmp short 2859h
+19,sound_bank_selection,2108,10268,43996,833ebc3c00,"cmp word ptr [3CBCh],0"
+19,sound_bank_selection,2108,10273,44001,7c09,jl short 282Ch
+19,sound_bank_selection,2108,10275,44003,a1bc3c,"mov ax,[3CBCh]"
+19,sound_bank_selection,2108,10278,44006,a37662,"mov [6276h],ax"
+19,sound_bank_selection,2108,10281,44009,eb07,jmp short 2832h
+19,sound_bank_selection,2108,10284,44012,c70676620200,"mov word ptr [6276h],2"
+19,sound_bank_selection,2108,10290,44018,833ebe3c00,"cmp word ptr [3CBEh],0"
+19,sound_bank_selection,2108,10295,44023,7c09,jl short 2842h
+19,sound_bank_selection,2108,10297,44025,a0be3c,"mov al,[3CBEh]"
+19,sound_bank_selection,2108,10300,44028,a27862,"mov [6278h],al"
+19,sound_bank_selection,2108,10303,44031,eb06,jmp short 2847h
+19,sound_bank_selection,2108,10306,44034,c606786202,"mov byte ptr [6278h],2"
+19,sound_bank_selection,2108,10311,44039,833ec03c00,"cmp word ptr [3CC0h],0"
+19,sound_bank_selection,2108,10316,44044,7c06,jl short 2854h
+19,sound_bank_selection,2108,10318,44046,a0c03c,"mov al,[3CC0h]"
+19,sound_bank_selection,2108,10321,44049,ebc3,jmp short 2816h
+19,sound_bank_selection,2108,10324,44052,c606796207,"mov byte ptr [6279h],7"
+19,sound_bank_selection,2108,10329,44057,9a6e015601,"call far 016Eh,0156h"
+19,sound_bank_selection,2108,10334,44062,cb,ret far
+19,pickup_apply,2791,1804,46460,c8060000,"enter 6,0"
+19,pickup_apply,2791,1808,46464,57,push di
+19,pickup_apply,2791,1809,46465,56,push si
+19,pickup_apply,2791,1810,46466,8b7e06,"mov di,[bp+6]"
+19,pickup_apply,2791,1813,46469,c646ff01,"mov byte ptr [bp-1],1"
+19,pickup_apply,2791,1817,46473,ff7608,push word ptr [bp+8]
+19,pickup_apply,2791,1820,46476,57,push di
+19,pickup_apply,2791,1821,46477,0e,push cs
+19,pickup_apply,2791,1822,46478,e87bff,call 069Ch
+19,pickup_apply,2791,1825,46481,83c404,"add sp,4"
+19,pickup_apply,2791,1828,46484,8bf0,"mov si,ax"
+19,pickup_apply,2791,1830,46486,8956fc,"mov [bp-4],dx"
+19,pickup_apply,2791,1833,46489,0bd0,"or dx,ax"
+19,pickup_apply,2791,1835,46491,0f841902,je 0948h
+19,pickup_apply,2791,1839,46495,8e46fc,"mov es,[bp-4]"
+19,pickup_apply,2791,1842,46498,268a4406,"mov al,es:[si+6]"
+19,pickup_apply,2791,1846,46502,2ae4,"sub ah,ah"
+19,pickup_apply,2791,1848,46504,2d2f00,"sub ax,2Fh"
+19,pickup_apply,2791,1851,46507,3d0e00,"cmp ax,0Eh"
+19,pickup_apply,2791,1854,46510,0f87df01,ja 0921h
+19,pickup_apply,2791,1858,46514,03c0,"add ax,ax"
+19,pickup_apply,2791,1860,46516,93,"xchg bx,ax"
+19,pickup_apply,2791,1861,46517,2effa74a07,jmp word ptr cs:[bx+74Ah]
+19,pickup_apply,2791,1896,46552,268a4c01,"mov cl,es:[si+1]"
+19,pickup_apply,2791,1900,46556,b001,"mov al,1"
+19,pickup_apply,2791,1902,46558,d2e0,"shl al,cl"
+19,pickup_apply,2791,1904,46560,08069041,"or [4190h],al"
+19,pickup_apply,2791,1908,46564,6a0d,push 0Dh
+19,pickup_apply,2791,1910,46566,e98301,jmp 08FCh
+19,pickup_apply,2791,1914,46570,268a4c01,"mov cl,es:[si+1]"
+19,pickup_apply,2791,1918,46574,b001,"mov al,1"
+19,pickup_apply,2791,1920,46576,d2e0,"shl al,cl"
+19,pickup_apply,2791,1922,46578,08069141,"or [4191h],al"
+19,pickup_apply,2791,1926,46582,6a0e,push 0Eh
+19,pickup_apply,2791,1928,46584,e97101,jmp 08FCh
+19,pickup_apply,2791,1932,46588,6681068041c8000000,"add dword ptr [4180h],0C8h"
+19,pickup_apply,2791,1941,46597,6a04,push 4
+19,pickup_apply,2791,1943,46599,e96201,jmp 08FCh
+19,pickup_apply,2791,1946,46602,803e8c4163,"cmp byte ptr [418Ch],63h"
+19,pickup_apply,2791,1951,46607,7d05,jge short 07A6h
+19,pickup_apply,2791,1953,46609,b001,"mov al,1"
+19,pickup_apply,2791,1955,46611,eb03,jmp short 07A8h
+19,pickup_apply,2791,1958,46614,32c0,"xor al,al"
+19,pickup_apply,2791,1960,46616,8846ff,"mov [bp-1],al"
+19,pickup_apply,2791,1963,46619,0ac0,"or al,al"
+19,pickup_apply,2791,1965,46621,0f847001,je 0921h
+19,pickup_apply,2791,1969,46625,268a4c01,"mov cl,es:[si+1]"
+19,pickup_apply,2791,1973,46629,b001,"mov al,1"
+19,pickup_apply,2791,1975,46631,d2e0,"shl al,cl"
+19,pickup_apply,2791,1977,46633,00068c41,"add [418Ch],al"
+19,pickup_apply,2791,1981,46637,6a0b,push 0Bh
+19,pickup_apply,2791,1983,46639,e93a01,jmp 08FCh
+19,pickup_apply,2791,1986,46642,803e874164,"cmp byte ptr [4187h],64h"
+19,pickup_apply,2791,1991,46647,7305,jae short 07CEh
+19,pickup_apply,2791,1993,46649,b001,"mov al,1"
+19,pickup_apply,2791,1995,46651,eb03,jmp short 07D0h
+19,pickup_apply,2791,1998,46654,32c0,"xor al,al"
+19,pickup_apply,2791,2000,46656,8846ff,"mov [bp-1],al"
+19,pickup_apply,2791,2003,46659,0ac0,"or al,al"
+19,pickup_apply,2791,2005,46661,0f844801,je 0921h
+19,pickup_apply,2791,2009,46665,268a4c01,"mov cl,es:[si+1]"
+19,pickup_apply,2791,2013,46669,b81400,"mov ax,14h"
+19,pickup_apply,2791,2016,46672,d3f8,"sar ax,cl"
+19,pickup_apply,2791,2018,46674,00068741,"add [4187h],al"
+19,pickup_apply,2791,2022,46678,6a05,push 5
+19,pickup_apply,2791,2024,46680,9ad8053c08,"call far 05D8h,083Ch"
+19,pickup_apply,2791,2029,46685,83c402,"add sp,2"
+19,pickup_apply,2791,2032,46688,eba3,jmp short 0795h
+19,pickup_apply,2791,2034,46690,803e874164,"cmp byte ptr [4187h],64h"
+19,pickup_apply,2791,2039,46695,7305,jae short 07FEh
+19,pickup_apply,2791,2041,46697,b001,"mov al,1"
+19,pickup_apply,2791,2043,46699,eb03,jmp short 0800h
+19,pickup_apply,2791,2046,46702,32c0,"xor al,al"
+19,pickup_apply,2791,2048,46704,8846ff,"mov [bp-1],al"
+19,pickup_apply,2791,2051,46707,0ac0,"or al,al"
+19,pickup_apply,2791,2053,46709,0f841801,je 0921h
+19,pickup_apply,2791,2057,46713,800687411e,"add byte ptr [4187h],1Eh"
+19,pickup_apply,2791,2062,46718,6681068041fa000000,"add dword ptr [4180h],0FAh"
+19,pickup_apply,2791,2071,46727,ebcd,jmp short 07E6h
+19,pickup_apply,2791,2074,46730,c606874164,"mov byte ptr [4187h],64h"
+19,pickup_apply,2791,2079,46735,c6068a4164,"mov byte ptr [418Ah],64h"
+19,pickup_apply,2791,2084,46740,6681068041f4010000,"add dword ptr [4180h],1F4h"
+19,pickup_apply,2791,2093,46749,fe068841,inc byte ptr [4188h]
+19,pickup_apply,2791,2097,46753,6a05,push 5
+19,pickup_apply,2791,2099,46755,9ad8053c08,"call far 05D8h,083Ch"
+19,pickup_apply,2791,2104,46760,83c402,"add sp,2"
+19,pickup_apply,2791,2107,46763,6a08,push 8
+19,pickup_apply,2791,2109,46765,9ad8053c08,"call far 05D8h,083Ch"
+19,pickup_apply,2791,2114,46770,83c402,"add sp,2"
+19,pickup_apply,2791,2117,46773,6a06,push 6
+19,pickup_apply,2791,2119,46775,eb9f,jmp short 07E8h
+19,pickup_apply,2791,2122,46778,268a4c01,"mov cl,es:[si+1]"
+19,pickup_apply,2791,2126,46782,b001,"mov al,1"
+19,pickup_apply,2791,2128,46784,d2e0,"shl al,cl"
+19,pickup_apply,2791,2130,46786,08069241,"or [4192h],al"
+19,pickup_apply,2791,2134,46790,268a4401,"mov al,es:[si+1]"
+19,pickup_apply,2791,2138,46794,2ae4,"sub ah,ah"
+19,pickup_apply,2791,2140,46796,50,push ax
+19,pickup_apply,2791,2141,46797,9ab20c3c08,"call far 0CB2h,083Ch"
+19,pickup_apply,2791,2146,46802,83c402,"add sp,2"
+19,pickup_apply,2791,2149,46805,6a01,push 1
+19,pickup_apply,2791,2151,46807,8e46fc,"mov es,[bp-4]"
+19,pickup_apply,2791,2154,46810,268a4401,"mov al,es:[si+1]"
+19,pickup_apply,2791,2158,46814,2ae4,"sub ah,ah"
+19,pickup_apply,2791,2160,46816,50,push ax
+19,pickup_apply,2791,2161,46817,9aac0b3c08,"call far 0BACh,083Ch"
+19,pickup_apply,2791,2166,46822,83c404,"add sp,4"
+19,pickup_apply,2791,2169,46825,6a0c,push 0Ch
+19,pickup_apply,2791,2171,46827,eb7f,jmp short 08FCh
+19,pickup_apply,2791,2174,46830,268a4c01,"mov cl,es:[si+1]"
+19,pickup_apply,2791,2178,46834,b001,"mov al,1"
+19,pickup_apply,2791,2180,46836,d2e0,"shl al,cl"
+19,pickup_apply,2791,2182,46838,08069341,"or [4193h],al"
+19,pickup_apply,2791,2186,46842,6a0f,push 0Fh
+19,pickup_apply,2791,2188,46844,eb6e,jmp short 08FCh
+19,pickup_apply,2791,2190,46846,803e8b4164,"cmp byte ptr [418Bh],64h"
+19,pickup_apply,2791,2195,46851,7d05,jge short 089Ah
+19,pickup_apply,2791,2197,46853,b001,"mov al,1"
+19,pickup_apply,2791,2199,46855,eb03,jmp short 089Ch
+19,pickup_apply,2791,2202,46858,32c0,"xor al,al"
+19,pickup_apply,2791,2204,46860,8846ff,"mov [bp-1],al"
+19,pickup_apply,2791,2207,46863,0ac0,"or al,al"
+19,pickup_apply,2791,2209,46865,747e,je short 0921h
+19,pickup_apply,2791,2211,46867,80068b4114,"add byte ptr [418Bh],14h"
+19,pickup_apply,2791,2216,46872,6a0a,push 0Ah
+19,pickup_apply,2791,2218,46874,eb50,jmp short 08FCh
+19,pickup_apply,2791,2220,46876,6a00,push 0
+19,pickup_apply,2791,2222,46878,268a4401,"mov al,es:[si+1]"
+19,pickup_apply,2791,2226,46882,2ae4,"sub ah,ah"
+19,pickup_apply,2791,2228,46884,50,push ax
+19,pickup_apply,2791,2229,46885,9aac0b3c08,"call far 0BACh,083Ch"
+19,pickup_apply,2791,2234,46890,83c404,"add sp,4"
+19,pickup_apply,2791,2237,46893,8846ff,"mov [bp-1],al"
+19,pickup_apply,2791,2240,46896,eb5f,jmp short 0921h
+19,pickup_apply,2791,2242,46898,803eac4164,"cmp byte ptr [41ACh],64h"
+19,pickup_apply,2791,2247,46903,7305,jae short 08CEh
+19,pickup_apply,2791,2249,46905,b001,"mov al,1"
+19,pickup_apply,2791,2251,46907,eb03,jmp short 08D0h
+19,pickup_apply,2791,2254,46910,32c0,"xor al,al"
+19,pickup_apply,2791,2256,46912,8846ff,"mov [bp-1],al"
+19,pickup_apply,2791,2259,46915,0ac0,"or al,al"
+19,pickup_apply,2791,2261,46917,744a,je short 0921h
+19,pickup_apply,2791,2263,46919,8006ac4114,"add byte ptr [41ACh],14h"
+19,pickup_apply,2791,2268,46924,6a13,push 13h
+19,pickup_apply,2791,2270,46926,eb1c,jmp short 08FCh
+19,pickup_apply,2791,2272,46928,803ead4164,"cmp byte ptr [41ADh],64h"
+19,pickup_apply,2791,2277,46933,7305,jae short 08ECh
+19,pickup_apply,2791,2279,46935,b001,"mov al,1"
+19,pickup_apply,2791,2281,46937,eb03,jmp short 08EEh
+19,pickup_apply,2791,2284,46940,32c0,"xor al,al"
+19,pickup_apply,2791,2286,46942,8846ff,"mov [bp-1],al"
+19,pickup_apply,2791,2289,46945,0ac0,"or al,al"
+19,pickup_apply,2791,2291,46947,742c,je short 0921h
+19,pickup_apply,2791,2293,46949,8006ad4114,"add byte ptr [41ADh],14h"
+19,pickup_apply,2791,2298,46954,6a14,push 14h
+19,pickup_apply,2791,2300,46956,9ad8053c08,"call far 05D8h,083Ch"
+19,pickup_apply,2791,2305,46961,eb1b,jmp short 091Eh
+19,pickup_apply,2791,2308,46964,268a4c01,"mov cl,es:[si+1]"
+19,pickup_apply,2791,2312,46968,b001,"mov al,1"
+19,pickup_apply,2791,2314,46970,d2e0,"shl al,cl"
+19,pickup_apply,2791,2316,46972,0806af41,"or [41AFh],al"
+19,pickup_apply,2791,2320,46976,eb0f,jmp short 0921h
+19,pickup_apply,2791,2322,46978,268a4401,"mov al,es:[si+1]"
+19,pickup_apply,2791,2326,46982,2ae4,"sub ah,ah"
+19,pickup_apply,2791,2328,46984,50,push ax
+19,pickup_apply,2791,2329,46985,9ad8273c08,"call far 27D8h,083Ch"
+19,pickup_apply,2791,2334,46990,83c402,"add sp,2"
+19,pickup_apply,2791,2337,46993,807eff00,"cmp byte ptr [bp-1],0"
+19,pickup_apply,2791,2341,46997,7421,je short 0948h
+19,pickup_apply,2791,2343,46999,ff76fc,push word ptr [bp-4]
+19,pickup_apply,2791,2346,47002,56,push si
+19,pickup_apply,2791,2347,47003,ff7608,push word ptr [bp+8]
+19,pickup_apply,2791,2350,47006,57,push di
+19,pickup_apply,2791,2351,47007,0e,push cs
+19,pickup_apply,2791,2352,47008,e8c3fd,call 06F6h
+19,pickup_apply,2791,2355,47011,83c408,"add sp,8"
+19,pickup_apply,2791,2358,47014,8e46fc,"mov es,[bp-4]"
+19,pickup_apply,2791,2361,47017,268a4406,"mov al,es:[si+6]"
+19,pickup_apply,2791,2365,47021,2ae4,"sub ah,ah"
+19,pickup_apply,2791,2367,47023,50,push ax
+19,pickup_apply,2791,2368,47024,9a721a3c08,"call far 1A72h,083Ch"
+19,pickup_apply,2791,2373,47029,83c402,"add sp,2"
+19,pickup_apply,2791,2376,47032,5e,pop si
+19,pickup_apply,2791,2377,47033,5f,pop di
+19,pickup_apply,2791,2378,47034,c9,leave
+19,pickup_apply,2791,2379,47035,cb,ret far
+19,pickup_record_find,2791,1692,46348,c8040000,"enter 4,0"
+19,pickup_record_find,2791,1696,46352,57,push di
+19,pickup_record_find,2791,1697,46353,56,push si
+19,pickup_record_find,2791,1698,46354,33c9,"xor cx,cx"
+19,pickup_record_find,2791,1700,46356,b80600,"mov ax,6"
+19,pickup_record_find,2791,1703,46359,baf921,"mov dx,21F9h"
+19,pickup_record_find,2791,1706,46362,8bf0,"mov si,ax"
+19,pickup_record_find,2791,1708,46364,8956fe,"mov [bp-2],dx"
+19,pickup_record_find,2791,1711,46367,390e6e62,"cmp [626Eh],cx"
+19,pickup_record_find,2791,1715,46371,7e39,jle short 06EEh
+19,pickup_record_find,2791,1717,46373,8b7e06,"mov di,[bp+6]"
+19,pickup_record_find,2791,1720,46376,8eda,"mov ds,dx"
+19,pickup_record_find,2791,1722,46378,8b4608,"mov ax,[bp+8]"
+19,pickup_record_find,2791,1725,46381,397c0c,"cmp [si+0Ch],di"
+19,pickup_record_find,2791,1728,46384,7510,jne short 06D2h
+19,pickup_record_find,2791,1730,46386,39440e,"cmp [si+0Eh],ax"
+19,pickup_record_find,2791,1733,46389,750b,jne short 06D2h
+19,pickup_record_find,2791,1735,46391,8a04,"mov al,[si]"
+19,pickup_record_find,2791,1737,46393,8e4608,"mov es,[bp+8]"
+19,pickup_record_find,2791,1740,46396,26384501,"cmp es:[di+1],al"
+19,pickup_record_find,2791,1744,46400,7410,je short 06E2h
+19,pickup_record_find,2791,1746,46402,83c61c,"add si,1Ch"
+19,pickup_record_find,2791,1749,46405,41,inc cx
+19,pickup_record_find,2791,1750,46406,36390e6e62,"cmp ss:[626Eh],cx"
+19,pickup_record_find,2791,1755,46411,7fdd,jg short 06BAh
+19,pickup_record_find,2791,1757,46413,16,push ss
+19,pickup_record_find,2791,1758,46414,1f,pop ds
+19,pickup_record_find,2791,1759,46415,eb0d,jmp short 06EEh
+19,pickup_record_find,2791,1762,46418,16,push ss
+19,pickup_record_find,2791,1763,46419,1f,pop ds
+19,pickup_record_find,2791,1764,46420,8bc6,"mov ax,si"
+19,pickup_record_find,2791,1766,46422,8b56fe,"mov dx,[bp-2]"
+19,pickup_record_find,2791,1769,46425,5e,pop si
+19,pickup_record_find,2791,1770,46426,5f,pop di
+19,pickup_record_find,2791,1771,46427,c9,leave
+19,pickup_record_find,2791,1772,46428,cb,ret far
+19,pickup_record_find,2791,1774,46430,33c0,"xor ax,ax"
+19,pickup_record_find,2791,1776,46432,99,cwd
+19,pickup_record_find,2791,1777,46433,5e,pop si
+19,pickup_record_find,2791,1778,46434,5f,pop di
+19,pickup_record_find,2791,1779,46435,c9,leave
+19,pickup_record_find,2791,1780,46436,cb,ret far
+19,pickup_cell_clear,2791,1782,46438,55,push bp
+19,pickup_cell_clear,2791,1783,46439,8bec,"mov bp,sp"
+19,pickup_cell_clear,2791,1785,46441,c45e06,"les bx,[bp+6]"
+19,pickup_cell_clear,2791,1788,46444,26c6470100,"mov byte ptr es:[bx+1],0"
+19,pickup_cell_clear,2791,1793,46449,c45e0a,"les bx,[bp+0Ah]"
+19,pickup_cell_clear,2791,1796,46452,26806705fe,"and byte ptr es:[bx+5],0FEh"
+19,pickup_cell_clear,2791,1801,46457,c9,leave
+19,pickup_cell_clear,2791,1802,46458,cb,ret far

@@ -4,11 +4,12 @@ import csv,json,sys
 
 from pathlib import Path
 
-root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'PLAYER_MOVEMENT_COLLISION_REPORT.md'
+root=Path(sys.argv[1]);folder=sys.argv[2] if len(sys.argv)>2 else 'pass1_xms_move_request';report=sys.argv[3] if len(sys.argv)>3 else 'SPECIAL_TERRAIN_PICKUP_REPORT.md'
 
 s=json.loads((root/'campaign_catalog/summary.json').read_text());p=json.loads((root/folder/'independent_partition_check.json').read_text())
 
-receipt_path=root/'CAMPAIGN_MOVEMENT_PUBLICATION_RECEIPT_20261113.json'
+receipt_path=root/'CAMPAIGN_TERRAINPICKUP_PUBLICATION_RECEIPT_20261113.json'
+if not receipt_path.exists():receipt_path=root/'CAMPAIGN_MOVEMENT_PUBLICATION_RECEIPT_20261113.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_POSITIONBOUNDS_PUBLICATION_RECEIPT_20261113.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_VISIBILITY_PUBLICATION_RECEIPT_20261113.json'
 if not receipt_path.exists():receipt_path=root/'CAMPAIGN_SOUNDFRAME_PUBLICATION_RECEIPT_20261113.json'
