@@ -1,0 +1,86 @@
+[
+  {
+    "name": "handle_limit",
+    "ds_offset": 8488,
+    "start": 170040,
+    "end_exclusive": 170042,
+    "length": 2,
+    "type": "unsigned WORD,initial20",
+    "initial_hex": "1400",
+    "status": "PARTIAL",
+    "consumer": "11EE:1BDF unsigned handle bound",
+    "new_typed_bytes": 0
+  },
+  {
+    "name": "negative_seek_gate",
+    "ds_offset": 9008,
+    "start": 170560,
+    "end_exclusive": 170562,
+    "length": 2,
+    "type": "WORD boolean gate,initial0",
+    "initial_hex": "0000",
+    "status": "PARTIAL",
+    "consumer": "11EE:1BEA nonzero enables negative-offset prechecks",
+    "new_typed_bytes": 0
+  },
+  {
+    "name": "handle_flags_initial_window",
+    "ds_offset": 8490,
+    "start": 170042,
+    "end_exclusive": 170062,
+    "length": 20,
+    "type": "BYTE flags indexed by handle;initial-limit20B window only",
+    "initial_hex": "8181810101000000000000000000000000000000",
+    "status": "PARTIAL",
+    "consumer": "11EE:1C4F clears bit1 after final DOS success; full allocated capacity unclosed",
+    "new_typed_bytes": 0
+  },
+  {
+    "name": "errno",
+    "ds_offset": 8472,
+    "start": 170024,
+    "end_exclusive": 170026,
+    "length": 2,
+    "type": "signed WORD",
+    "initial_hex": "0000",
+    "status": "PARTIAL",
+    "consumer": "11EE:05EF translated errno write",
+    "new_typed_bytes": 0
+  },
+  {
+    "name": "native_error_low",
+    "ds_offset": 8486,
+    "start": 170038,
+    "end_exclusive": 170039,
+    "length": 1,
+    "type": "BYTE",
+    "initial_hex": "00",
+    "status": "PARTIAL",
+    "consumer": "11EE:05CA stores incoming AL; synthetic AH errors store low0",
+    "new_typed_bytes": 0
+  },
+  {
+    "name": "DOS_major",
+    "ds_offset": 8481,
+    "start": 170033,
+    "end_exclusive": 170034,
+    "length": 1,
+    "type": "BYTE",
+    "initial_hex": "00",
+    "status": "PARTIAL",
+    "consumer": "11EE:05D1 major>=3 remaps errors32/33",
+    "new_typed_bytes": 0
+  },
+  {
+    "name": "error_translation",
+    "ds_offset": 8544,
+    "start": 170096,
+    "end_exclusive": 170116,
+    "length": 20,
+    "type": "20 signed BYTE entries",
+    "initial_hex": "00160202180d090c0c0c07081616ff020d1202ff",
+    "status": "PARTIAL",
+    "consumer": "11EE:05EA near base + XLAT; index bounded0..19",
+    "new_typed_bytes": 0
+  }
+]

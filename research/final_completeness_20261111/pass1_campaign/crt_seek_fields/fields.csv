@@ -1,0 +1,8 @@
+name,ds_offset,start,end_exclusive,length,type,initial_hex,status,consumer,new_typed_bytes
+handle_limit,8488,170040,170042,2,"unsigned WORD,initial20",1400,PARTIAL,11EE:1BDF unsigned handle bound,0
+negative_seek_gate,9008,170560,170562,2,"WORD boolean gate,initial0",0000,PARTIAL,11EE:1BEA nonzero enables negative-offset prechecks,0
+handle_flags_initial_window,8490,170042,170062,20,BYTE flags indexed by handle;initial-limit20B window only,8181810101000000000000000000000000000000,PARTIAL,11EE:1C4F clears bit1 after final DOS success; full allocated capacity unclosed,0
+errno,8472,170024,170026,2,signed WORD,0000,PARTIAL,11EE:05EF translated errno write,0
+native_error_low,8486,170038,170039,1,BYTE,00,PARTIAL,11EE:05CA stores incoming AL; synthetic AH errors store low0,0
+DOS_major,8481,170033,170034,1,BYTE,00,PARTIAL,11EE:05D1 major>=3 remaps errors32/33,0
+error_translation,8544,170096,170116,20,20 signed BYTE entries,00160202180d090c0c0c07081616ff020d1202ff,PARTIAL,11EE:05EA near base + XLAT; index bounded0..19,0

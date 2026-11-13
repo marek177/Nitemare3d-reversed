@@ -1,0 +1,49 @@
+{
+  "functions": [
+    {
+      "name": "crt_seek",
+      "start": 80566,
+      "end_exclusive": 80695,
+      "instructions": 48,
+      "instruction_bytes": 129
+    },
+    {
+      "name": "crt_seek_shared_return",
+      "start": 74903,
+      "end_exclusive": 74916,
+      "instructions": 7,
+      "instruction_bytes": 13
+    },
+    {
+      "name": "crt_dos_error_translate",
+      "start": 74922,
+      "end_exclusive": 74967,
+      "instructions": 21,
+      "instruction_bytes": 45
+    }
+  ],
+  "cases": 1592,
+  "failures": 0,
+  "runtime_tests": 0,
+  "new_deep_verified_bytes": 0,
+  "unexecuted_starts": [],
+  "scope": "Original seek,shared FAR return and errno translation; only DOS42 response fixtures. Full2MiB outside84 control-stack bytes and exact original nonstack writes/frame preserved. Fixture DOS semantics not proven; no new native scenario.",
+  "files": [
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\reproduced_image.bin",
+      "sha256": "e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-10-25\\goal-x20-5\\outputs\\N3D-20\\instructions.json",
+      "sha256": "a38777df45fc271149d6c8e45ce35ee1d254822007af7fdc1d56f109fa5b979a"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\unpack\\relocations.csv",
+      "sha256": "5faab828945fa774c340ce1b612a0cd6379f7507cfddcdcccd395d37a58b3256"
+    },
+    {
+      "path": "C:\\Users\\Marek-Medved\\Documents\\Codex\\2026-11-11\\goal-nitemare-3d-final-reverse-engineering-3\\outputs\\audit_replay_crt_seek.py",
+      "sha256": "fe76cf58cb49aa2470a9ed5c3a1e7c5f33559dce7821a1d5f7a4cc87e678c4c5"
+    }
+  ]
+}
