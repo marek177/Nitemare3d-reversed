@@ -1,0 +1,9 @@
+record,offset,width,role,consumer
+record26,0,2,frame WORD copied fromargument; HIGHBYTE controls derived WORD+6,04C7:086F..0875
+record28,3,1,frame low BYTE copied to context state/sprite token,04C7:0878..087E
+record26,6,2,"zero-extended frame HIGHBYTE minus1,wrapFFFF for high0",04C7:0882..088B
+record26,12,1,low BYTE of high-mode WORD at BP+12h,04C7:088F..0892
+record26,11,1,low BYTE of low-mode WORD at BP+10h,04C7:0896..0899
+record28,16,2,sourceX WORD minus DS4162 modulo16bits feeds integer bearing,04C7:0059..0061
+record28,18,2,sourceY WORD minus DS4164 modulo16bits feeds integer bearing,04C7:0050..0058
+record28,6,1,unsigned type8..31 selects sound-event near table;outside mapsID0,"083D:192D..193E,1AEF..1B00"
