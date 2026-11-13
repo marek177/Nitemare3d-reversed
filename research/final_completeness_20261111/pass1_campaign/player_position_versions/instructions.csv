@@ -1,0 +1,2315 @@
+version,function,cs,ip,image_offset,bytes,instruction
+20,player_near_geometry_cursors,1591,710,26166,55,push bp
+20,player_near_geometry_cursors,1591,711,26167,8bec,"mov bp,sp"
+20,player_near_geometry_cursors,1591,713,26169,8b5606,"mov dx,[bp+6]"
+20,player_near_geometry_cursors,1591,716,26172,39166241,"cmp [4162h],dx"
+20,player_near_geometry_cursors,1591,720,26176,7c48,jl short 031Ah
+20,player_near_geometry_cursors,1591,722,26178,0f8e8800,jle 035Eh
+20,player_near_geometry_cursors,1591,726,26182,833e6a4100,"cmp word ptr [416Ah],0"
+20,player_near_geometry_cursors,1591,731,26187,7e1a,jle short 02F7h
+20,player_near_geometry_cursors,1591,733,26189,8b1e6a41,"mov bx,[416Ah]"
+20,player_near_geometry_cursors,1591,737,26193,03db,"add bx,bx"
+20,player_near_geometry_cursors,1591,739,26195,8b9f345d,"mov bx,[bx+5D34h]"
+20,player_near_geometry_cursors,1591,743,26199,39570c,"cmp [bx+0Ch],dx"
+20,player_near_geometry_cursors,1591,746,26202,7e0b,jle short 02F7h
+20,player_near_geometry_cursors,1591,748,26204,ff0e6a41,dec word ptr [416Ah]
+20,player_near_geometry_cursors,1591,752,26208,833e6a4100,"cmp word ptr [416Ah],0"
+20,player_near_geometry_cursors,1591,757,26213,7fe6,jg short 02DDh
+20,player_near_geometry_cursors,1591,759,26215,833e6c4100,"cmp word ptr [416Ch],0"
+20,player_near_geometry_cursors,1591,764,26220,7e60,jle short 035Eh
+20,player_near_geometry_cursors,1591,766,26222,8b1e6c41,"mov bx,[416Ch]"
+20,player_near_geometry_cursors,1591,770,26226,03db,"add bx,bx"
+20,player_near_geometry_cursors,1591,772,26228,8b9fce5f,"mov bx,[bx+5FCEh]"
+20,player_near_geometry_cursors,1591,776,26232,39570c,"cmp [bx+0Ch],dx"
+20,player_near_geometry_cursors,1591,779,26235,7e51,jle short 035Eh
+20,player_near_geometry_cursors,1591,781,26237,ff0e6c41,dec word ptr [416Ch]
+20,player_near_geometry_cursors,1591,785,26241,833e6c4100,"cmp word ptr [416Ch],0"
+20,player_near_geometry_cursors,1591,790,26246,7fe6,jg short 02FEh
+20,player_near_geometry_cursors,1591,792,26248,eb44,jmp short 035Eh
+20,player_near_geometry_cursors,1591,794,26250,a1fe57,"mov ax,[57FEh]"
+20,player_near_geometry_cursors,1591,797,26253,39066a41,"cmp [416Ah],ax"
+20,player_near_geometry_cursors,1591,801,26257,7d19,jge short 033Ch
+20,player_near_geometry_cursors,1591,803,26259,8b1e6a41,"mov bx,[416Ah]"
+20,player_near_geometry_cursors,1591,807,26263,03db,"add bx,bx"
+20,player_near_geometry_cursors,1591,809,26265,8b9f365d,"mov bx,[bx+5D36h]"
+20,player_near_geometry_cursors,1591,813,26269,39570c,"cmp [bx+0Ch],dx"
+20,player_near_geometry_cursors,1591,816,26272,7d0a,jge short 033Ch
+20,player_near_geometry_cursors,1591,818,26274,ff066a41,inc word ptr [416Ah]
+20,player_near_geometry_cursors,1591,822,26278,39066a41,"cmp [416Ah],ax"
+20,player_near_geometry_cursors,1591,826,26282,7ce7,jl short 0323h
+20,player_near_geometry_cursors,1591,828,26284,a10058,"mov ax,[5800h]"
+20,player_near_geometry_cursors,1591,831,26287,39066c41,"cmp [416Ch],ax"
+20,player_near_geometry_cursors,1591,835,26291,7d19,jge short 035Eh
+20,player_near_geometry_cursors,1591,837,26293,8b1e6c41,"mov bx,[416Ch]"
+20,player_near_geometry_cursors,1591,841,26297,03db,"add bx,bx"
+20,player_near_geometry_cursors,1591,843,26299,8b9fd05f,"mov bx,[bx+5FD0h]"
+20,player_near_geometry_cursors,1591,847,26303,39570c,"cmp [bx+0Ch],dx"
+20,player_near_geometry_cursors,1591,850,26306,7d0a,jge short 035Eh
+20,player_near_geometry_cursors,1591,852,26308,ff066c41,inc word ptr [416Ch]
+20,player_near_geometry_cursors,1591,856,26312,39066c41,"cmp [416Ch],ax"
+20,player_near_geometry_cursors,1591,860,26316,7ce7,jl short 0345h
+20,player_near_geometry_cursors,1591,862,26318,a16441,"mov ax,[4164h]"
+20,player_near_geometry_cursors,1591,865,26321,394608,"cmp [bp+8],ax"
+20,player_near_geometry_cursors,1591,868,26324,7f4e,jg short 03B4h
+20,player_near_geometry_cursors,1591,870,26326,0f8d9100,jge 03FBh
+20,player_near_geometry_cursors,1591,874,26330,833e664100,"cmp word ptr [4166h],0"
+20,player_near_geometry_cursors,1591,879,26335,7e1d,jle short 038Eh
+20,player_near_geometry_cursors,1591,881,26337,8b5608,"mov dx,[bp+8]"
+20,player_near_geometry_cursors,1591,884,26340,8b1e6641,"mov bx,[4166h]"
+20,player_near_geometry_cursors,1591,888,26344,03db,"add bx,bx"
+20,player_near_geometry_cursors,1591,890,26346,8b9f0058,"mov bx,[bx+5800h]"
+20,player_near_geometry_cursors,1591,894,26350,39570e,"cmp [bx+0Eh],dx"
+20,player_near_geometry_cursors,1591,897,26353,7e0b,jle short 038Eh
+20,player_near_geometry_cursors,1591,899,26355,ff0e6641,dec word ptr [4166h]
+20,player_near_geometry_cursors,1591,903,26359,833e664100,"cmp word ptr [4166h],0"
+20,player_near_geometry_cursors,1591,908,26364,7fe6,jg short 0374h
+20,player_near_geometry_cursors,1591,910,26366,833e684100,"cmp word ptr [4168h],0"
+20,player_near_geometry_cursors,1591,915,26371,7e66,jle short 03FBh
+20,player_near_geometry_cursors,1591,917,26373,8b5608,"mov dx,[bp+8]"
+20,player_near_geometry_cursors,1591,920,26376,8b1e6841,"mov bx,[4168h]"
+20,player_near_geometry_cursors,1591,924,26380,03db,"add bx,bx"
+20,player_near_geometry_cursors,1591,926,26382,8b9f9a5a,"mov bx,[bx+5A9Ah]"
+20,player_near_geometry_cursors,1591,930,26386,39570e,"cmp [bx+0Eh],dx"
+20,player_near_geometry_cursors,1591,933,26389,7e54,jle short 03FBh
+20,player_near_geometry_cursors,1591,935,26391,ff0e6841,dec word ptr [4168h]
+20,player_near_geometry_cursors,1591,939,26395,833e684100,"cmp word ptr [4168h],0"
+20,player_near_geometry_cursors,1591,944,26400,7fe6,jg short 0398h
+20,player_near_geometry_cursors,1591,946,26402,c9,leave
+20,player_near_geometry_cursors,1591,947,26403,cb,ret far
+20,player_near_geometry_cursors,1591,948,26404,8b5608,"mov dx,[bp+8]"
+20,player_near_geometry_cursors,1591,951,26407,a1fa57,"mov ax,[57FAh]"
+20,player_near_geometry_cursors,1591,954,26410,39066641,"cmp [4166h],ax"
+20,player_near_geometry_cursors,1591,958,26414,7d19,jge short 03D9h
+20,player_near_geometry_cursors,1591,960,26416,8b1e6641,"mov bx,[4166h]"
+20,player_near_geometry_cursors,1591,964,26420,03db,"add bx,bx"
+20,player_near_geometry_cursors,1591,966,26422,8b9f0258,"mov bx,[bx+5802h]"
+20,player_near_geometry_cursors,1591,970,26426,39570e,"cmp [bx+0Eh],dx"
+20,player_near_geometry_cursors,1591,973,26429,7d0a,jge short 03D9h
+20,player_near_geometry_cursors,1591,975,26431,ff066641,inc word ptr [4166h]
+20,player_near_geometry_cursors,1591,979,26435,39066641,"cmp [4166h],ax"
+20,player_near_geometry_cursors,1591,983,26439,7ce7,jl short 03C0h
+20,player_near_geometry_cursors,1591,985,26441,a1fc57,"mov ax,[57FCh]"
+20,player_near_geometry_cursors,1591,988,26444,39066841,"cmp [4168h],ax"
+20,player_near_geometry_cursors,1591,992,26448,7d19,jge short 03FBh
+20,player_near_geometry_cursors,1591,994,26450,8b1e6841,"mov bx,[4168h]"
+20,player_near_geometry_cursors,1591,998,26454,03db,"add bx,bx"
+20,player_near_geometry_cursors,1591,1000,26456,8b9f9c5a,"mov bx,[bx+5A9Ch]"
+20,player_near_geometry_cursors,1591,1004,26460,39570e,"cmp [bx+0Eh],dx"
+20,player_near_geometry_cursors,1591,1007,26463,7d0a,jge short 03FBh
+20,player_near_geometry_cursors,1591,1009,26465,ff066841,inc word ptr [4168h]
+20,player_near_geometry_cursors,1591,1013,26469,39066841,"cmp [4168h],ax"
+20,player_near_geometry_cursors,1591,1017,26473,7ce7,jl short 03E2h
+20,player_near_geometry_cursors,1591,1019,26475,c9,leave
+20,player_near_geometry_cursors,1591,1020,26476,cb,ret far
+20,player_far_actor_cursors,1591,1022,26478,55,push bp
+20,player_far_actor_cursors,1591,1023,26479,8bec,"mov bp,sp"
+20,player_far_actor_cursors,1591,1025,26481,56,push si
+20,player_far_actor_cursors,1591,1026,26482,8b5e06,"mov bx,[bp+6]"
+20,player_far_actor_cursors,1591,1029,26485,391e6241,"cmp [4162h],bx"
+20,player_far_actor_cursors,1591,1033,26489,7c27,jl short 0432h
+20,player_far_actor_cursors,1591,1035,26491,7e49,jle short 0456h
+20,player_far_actor_cursors,1591,1037,26493,833e6e4100,"cmp word ptr [416Eh],0"
+20,player_far_actor_cursors,1591,1042,26498,7e42,jle short 0456h
+20,player_far_actor_cursors,1591,1044,26500,8b366e41,"mov si,[416Eh]"
+20,player_far_actor_cursors,1591,1048,26504,c1e602,"shl si,2"
+20,player_far_actor_cursors,1591,1051,26507,c4b412d5,"les si,[si-2AEEh]"
+20,player_far_actor_cursors,1591,1055,26511,26395c10,"cmp es:[si+10h],bx"
+20,player_far_actor_cursors,1591,1059,26515,7e31,jle short 0456h
+20,player_far_actor_cursors,1591,1061,26517,ff0e6e41,dec word ptr [416Eh]
+20,player_far_actor_cursors,1591,1065,26521,833e6e4100,"cmp word ptr [416Eh],0"
+20,player_far_actor_cursors,1591,1070,26526,7fe4,jg short 0414h
+20,player_far_actor_cursors,1591,1072,26528,eb24,jmp short 0456h
+20,player_far_actor_cursors,1591,1074,26530,a114d5,"mov ax,[0D514h]"
+20,player_far_actor_cursors,1591,1077,26533,39066e41,"cmp [416Eh],ax"
+20,player_far_actor_cursors,1591,1081,26537,7d1b,jge short 0456h
+20,player_far_actor_cursors,1591,1083,26539,8b366e41,"mov si,[416Eh]"
+20,player_far_actor_cursors,1591,1087,26543,c1e602,"shl si,2"
+20,player_far_actor_cursors,1591,1090,26546,c4b416d5,"les si,[si-2AEAh]"
+20,player_far_actor_cursors,1591,1094,26550,26395c10,"cmp es:[si+10h],bx"
+20,player_far_actor_cursors,1591,1098,26554,7d0a,jge short 0456h
+20,player_far_actor_cursors,1591,1100,26556,ff066e41,inc word ptr [416Eh]
+20,player_far_actor_cursors,1591,1104,26560,39066e41,"cmp [416Eh],ax"
+20,player_far_actor_cursors,1591,1108,26564,7ce5,jl short 043Bh
+20,player_far_actor_cursors,1591,1110,26566,a16441,"mov ax,[4164h]"
+20,player_far_actor_cursors,1591,1113,26569,394608,"cmp [bp+8],ax"
+20,player_far_actor_cursors,1591,1116,26572,7f2c,jg short 048Ah
+20,player_far_actor_cursors,1591,1118,26574,7d51,jge short 04B1h
+20,player_far_actor_cursors,1591,1120,26576,833e704100,"cmp word ptr [4170h],0"
+20,player_far_actor_cursors,1591,1125,26581,7e4a,jle short 04B1h
+20,player_far_actor_cursors,1591,1127,26583,8b5e08,"mov bx,[bp+8]"
+20,player_far_actor_cursors,1591,1130,26586,8b367041,"mov si,[4170h]"
+20,player_far_actor_cursors,1591,1134,26590,c1e602,"shl si,2"
+20,player_far_actor_cursors,1591,1137,26593,c4b48ada,"les si,[si-2576h]"
+20,player_far_actor_cursors,1591,1141,26597,26395c12,"cmp es:[si+12h],bx"
+20,player_far_actor_cursors,1591,1145,26601,7e36,jle short 04B1h
+20,player_far_actor_cursors,1591,1147,26603,ff0e7041,dec word ptr [4170h]
+20,player_far_actor_cursors,1591,1151,26607,833e704100,"cmp word ptr [4170h],0"
+20,player_far_actor_cursors,1591,1156,26612,7fe4,jg short 046Ah
+20,player_far_actor_cursors,1591,1158,26614,5e,pop si
+20,player_far_actor_cursors,1591,1159,26615,c9,leave
+20,player_far_actor_cursors,1591,1160,26616,cb,ret far
+20,player_far_actor_cursors,1591,1162,26618,a114d5,"mov ax,[0D514h]"
+20,player_far_actor_cursors,1591,1165,26621,39067041,"cmp [4170h],ax"
+20,player_far_actor_cursors,1591,1169,26625,7d1e,jge short 04B1h
+20,player_far_actor_cursors,1591,1171,26627,8b5e08,"mov bx,[bp+8]"
+20,player_far_actor_cursors,1591,1174,26630,8b367041,"mov si,[4170h]"
+20,player_far_actor_cursors,1591,1178,26634,c1e602,"shl si,2"
+20,player_far_actor_cursors,1591,1181,26637,c4b48eda,"les si,[si-2572h]"
+20,player_far_actor_cursors,1591,1185,26641,26395c12,"cmp es:[si+12h],bx"
+20,player_far_actor_cursors,1591,1189,26645,7d0a,jge short 04B1h
+20,player_far_actor_cursors,1591,1191,26647,ff067041,inc word ptr [4170h]
+20,player_far_actor_cursors,1591,1195,26651,39067041,"cmp [4170h],ax"
+20,player_far_actor_cursors,1591,1199,26655,7ce5,jl short 0496h
+20,player_far_actor_cursors,1591,1201,26657,5e,pop si
+20,player_far_actor_cursors,1591,1202,26658,c9,leave
+20,player_far_actor_cursors,1591,1203,26659,cb,ret far
+20,player_position_commit,1591,1308,26764,c8040000,"enter 4,0"
+20,player_position_commit,1591,1312,26768,57,push di
+20,player_position_commit,1591,1313,26769,56,push si
+20,player_position_commit,1591,1314,26770,8b7e06,"mov di,[bp+6]"
+20,player_position_commit,1591,1317,26773,8b7608,"mov si,[bp+8]"
+20,player_position_commit,1591,1320,26776,666a08,data32 push 8
+20,player_position_commit,1591,1323,26779,9a3c143d08,"call far 143Ch,083Dh"
+20,player_position_commit,1591,1328,26784,83c404,"add sp,4"
+20,player_position_commit,1591,1331,26787,56,push si
+20,player_position_commit,1591,1332,26788,57,push di
+20,player_position_commit,1591,1333,26789,0e,push cs
+20,player_position_commit,1591,1334,26790,e88dfd,call 02C6h
+20,player_position_commit,1591,1337,26793,83c404,"add sp,4"
+20,player_position_commit,1591,1340,26796,56,push si
+20,player_position_commit,1591,1341,26797,57,push di
+20,player_position_commit,1591,1342,26798,0e,push cs
+20,player_position_commit,1591,1343,26799,e8bcfe,call 03FEh
+20,player_position_commit,1591,1346,26802,83c404,"add sp,4"
+20,player_position_commit,1591,1349,26805,893e6241,"mov [4162h],di"
+20,player_position_commit,1591,1353,26809,89366441,"mov [4164h],si"
+20,player_position_commit,1591,1357,26813,c1ff06,"sar di,6"
+20,player_position_commit,1591,1360,26816,c1fe06,"sar si,6"
+20,player_position_commit,1591,1363,26819,3b3e5e41,"cmp di,[415Eh]"
+20,player_position_commit,1591,1367,26823,7507,jne short 0560h
+20,player_position_commit,1591,1369,26825,a16041,"mov ax,[4160h]"
+20,player_position_commit,1591,1372,26828,3bf0,"cmp si,ax"
+20,player_position_commit,1591,1374,26830,7412,je short 0572h
+20,player_position_commit,1591,1376,26832,893e5e41,"mov [415Eh],di"
+20,player_position_commit,1591,1380,26836,89366041,"mov [4160h],si"
+20,player_position_commit,1591,1384,26840,6a16,push 16h
+20,player_position_commit,1591,1386,26842,9ad2053d08,"call far 05D2h,083Dh"
+20,player_position_commit,1591,1391,26847,83c402,"add sp,2"
+20,player_position_commit,1591,1394,26850,a16041,"mov ax,[4160h]"
+20,player_position_commit,1591,1397,26853,c1e006,"shl ax,6"
+20,player_position_commit,1591,1400,26856,03065e41,"add ax,[415Eh]"
+20,player_position_commit,1591,1404,26860,03c0,"add ax,ax"
+20,player_position_commit,1591,1406,26862,053e37,"add ax,373Eh"
+20,player_position_commit,1591,1409,26865,b9fd21,"mov cx,21FDh"
+20,player_position_commit,1591,1412,26868,a37c41,"mov [417Ch],ax"
+20,player_position_commit,1591,1415,26871,890e7e41,"mov [417Eh],cx"
+20,player_position_commit,1591,1419,26875,51,push cx
+20,player_position_commit,1591,1420,26876,50,push ax
+20,player_position_commit,1591,1421,26877,9a7601f700,"call far 0176h,00F7h"
+20,player_position_commit,1591,1426,26882,83c404,"add sp,4"
+20,player_position_commit,1591,1429,26885,8bf0,"mov si,ax"
+20,player_position_commit,1591,1431,26887,83feff,"cmp si,0FFFFh"
+20,player_position_commit,1591,1434,26890,7403,je short 059Fh
+20,player_position_commit,1591,1436,26892,a28841,"mov [4188h],al"
+20,player_position_commit,1591,1439,26895,5e,pop si
+20,player_position_commit,1591,1440,26896,5f,pop di
+20,player_position_commit,1591,1441,26897,c9,leave
+20,player_position_commit,1591,1442,26898,cb,ret far
+20,player_position_reindex,1591,1490,26946,57,push di
+20,player_position_reindex,1591,1491,26947,56,push si
+20,player_position_reindex,1591,1492,26948,8b3e6241,"mov di,[4162h]"
+20,player_position_reindex,1591,1496,26952,8b366441,"mov si,[4164h]"
+20,player_position_reindex,1591,1500,26956,6633c0,"xor eax,eax"
+20,player_position_reindex,1591,1503,26959,66a36241,"mov [4162h],eax"
+20,player_position_reindex,1591,1507,26963,66a36a41,"mov [416Ah],eax"
+20,player_position_reindex,1591,1511,26967,66a36641,"mov [4166h],eax"
+20,player_position_reindex,1591,1515,26971,66a36e41,"mov [416Eh],eax"
+20,player_position_reindex,1591,1519,26975,56,push si
+20,player_position_reindex,1591,1520,26976,57,push di
+20,player_position_reindex,1591,1521,26977,0e,push cs
+20,player_position_reindex,1591,1522,26978,e827ff,call 051Ch
+20,player_position_reindex,1591,1525,26981,83c404,"add sp,4"
+20,player_position_reindex,1591,1528,26984,5e,pop si
+20,player_position_reindex,1591,1529,26985,5f,pop di
+20,player_position_reindex,1591,1530,26986,cb,ret far
+20,terrain_kind_search,247,4,3956,55,push bp
+20,terrain_kind_search,247,5,3957,8bec,"mov bp,sp"
+20,terrain_kind_search,247,7,3959,2aff,"sub bh,bh"
+20,terrain_kind_search,247,9,3961,8a5e08,"mov bl,[bp+8]"
+20,terrain_kind_search,247,12,3964,81fb0001,"cmp bx,100h"
+20,terrain_kind_search,247,16,3968,7d14,jge short 0026h
+20,terrain_kind_search,247,18,3970,8b4e06,"mov cx,[bp+6]"
+20,terrain_kind_search,247,21,3973,8a870ed3,"mov al,[bx-2CF2h]"
+20,terrain_kind_search,247,25,3977,2ae4,"sub ah,ah"
+20,terrain_kind_search,247,27,3979,3bc1,"cmp ax,cx"
+20,terrain_kind_search,247,29,3981,741f,je short 003Eh
+20,terrain_kind_search,247,31,3983,43,inc bx
+20,terrain_kind_search,247,32,3984,81fb0001,"cmp bx,100h"
+20,terrain_kind_search,247,36,3988,7cef,jl short 0015h
+20,terrain_kind_search,247,38,3990,33db,"xor bx,bx"
+20,terrain_kind_search,247,40,3992,8b4e06,"mov cx,[bp+6]"
+20,terrain_kind_search,247,43,3995,8a870ed3,"mov al,[bx-2CF2h]"
+20,terrain_kind_search,247,47,3999,2ae4,"sub ah,ah"
+20,terrain_kind_search,247,49,4001,3bc1,"cmp ax,cx"
+20,terrain_kind_search,247,51,4003,7409,je short 003Eh
+20,terrain_kind_search,247,53,4005,43,inc bx
+20,terrain_kind_search,247,54,4006,81fb0001,"cmp bx,100h"
+20,terrain_kind_search,247,58,4010,7cef,jl short 002Bh
+20,terrain_kind_search,247,60,4012,eb04,jmp short 0042h
+20,terrain_kind_search,247,62,4014,8bc3,"mov ax,bx"
+20,terrain_kind_search,247,64,4016,c9,leave
+20,terrain_kind_search,247,65,4017,cb,ret far
+20,terrain_kind_search,247,66,4018,51,push cx
+20,terrain_kind_search,247,67,4019,68da00,push 0DAh
+20,terrain_kind_search,247,70,4022,9a0c00ba0f,"call far 000Ch,0FBAh"
+20,terrain_kind_search,247,75,4027,c9,leave
+20,terrain_kind_search,247,76,4028,cb,ret far
+20,terrain_kind44_variant,247,374,4326,c8020000,"enter 2,0"
+20,terrain_kind44_variant,247,378,4330,a16a62,"mov ax,[626Ah]"
+20,terrain_kind44_variant,247,381,4333,39062a01,"cmp [12Ah],ax"
+20,terrain_kind44_variant,247,385,4337,7410,je short 0193h
+20,terrain_kind44_variant,247,387,4339,a32a01,"mov [12Ah],ax"
+20,terrain_kind44_variant,247,390,4342,666a44,data32 push 44h
+20,terrain_kind44_variant,247,393,4345,0e,push cs
+20,terrain_kind44_variant,247,394,4346,e877fe,call 4
+20,terrain_kind44_variant,247,397,4349,83c404,"add sp,4"
+20,terrain_kind44_variant,247,400,4352,a25026,"mov [2650h],al"
+20,terrain_kind44_variant,247,403,4355,c45e06,"les bx,[bp+6]"
+20,terrain_kind44_variant,247,406,4358,268a1f,"mov bl,es:[bx]"
+20,terrain_kind44_variant,247,409,4361,2aff,"sub bh,bh"
+20,terrain_kind44_variant,247,411,4363,80bf0ed344,"cmp byte ptr [bx-2CF2h],44h"
+20,terrain_kind44_variant,247,416,4368,750e,jne short 01B0h
+20,terrain_kind44_variant,247,418,4370,8ac3,"mov al,bl"
+20,terrain_kind44_variant,247,420,4372,2ae4,"sub ah,ah"
+20,terrain_kind44_variant,247,422,4374,8a0e5026,"mov cl,[2650h]"
+20,terrain_kind44_variant,247,426,4378,2aed,"sub ch,ch"
+20,terrain_kind44_variant,247,428,4380,2bc1,"sub ax,cx"
+20,terrain_kind44_variant,247,430,4382,c9,leave
+20,terrain_kind44_variant,247,431,4383,cb,ret far
+20,terrain_kind44_variant,247,432,4384,b8ffff,"mov ax,0FFFFh"
+20,terrain_kind44_variant,247,435,4387,c9,leave
+20,terrain_kind44_variant,247,436,4388,cb,ret far
+10,player_near_geometry_cursors,1545,712,25432,55,push bp
+10,player_near_geometry_cursors,1545,713,25433,8bec,"mov bp,sp"
+10,player_near_geometry_cursors,1545,715,25435,8b5606,"mov dx,[bp+6]"
+10,player_near_geometry_cursors,1545,718,25438,3916ba3f,"cmp [3FBAh],dx"
+10,player_near_geometry_cursors,1545,722,25442,7c48,jl short 031Ch
+10,player_near_geometry_cursors,1545,724,25444,0f8e8800,jle 0360h
+10,player_near_geometry_cursors,1545,728,25448,833ec23f00,"cmp word ptr [3FC2h],0"
+10,player_near_geometry_cursors,1545,733,25453,7e1a,jle short 02F9h
+10,player_near_geometry_cursors,1545,735,25455,8b1ec23f,"mov bx,[3FC2h]"
+10,player_near_geometry_cursors,1545,739,25459,03db,"add bx,bx"
+10,player_near_geometry_cursors,1545,741,25461,8b9f8a5b,"mov bx,[bx+5B8Ah]"
+10,player_near_geometry_cursors,1545,745,25465,39570c,"cmp [bx+0Ch],dx"
+10,player_near_geometry_cursors,1545,748,25468,7e0b,jle short 02F9h
+10,player_near_geometry_cursors,1545,750,25470,ff0ec23f,dec word ptr [3FC2h]
+10,player_near_geometry_cursors,1545,754,25474,833ec23f00,"cmp word ptr [3FC2h],0"
+10,player_near_geometry_cursors,1545,759,25479,7fe6,jg short 02DFh
+10,player_near_geometry_cursors,1545,761,25481,833ec43f00,"cmp word ptr [3FC4h],0"
+10,player_near_geometry_cursors,1545,766,25486,7e60,jle short 0360h
+10,player_near_geometry_cursors,1545,768,25488,8b1ec43f,"mov bx,[3FC4h]"
+10,player_near_geometry_cursors,1545,772,25492,03db,"add bx,bx"
+10,player_near_geometry_cursors,1545,774,25494,8b9f245e,"mov bx,[bx+5E24h]"
+10,player_near_geometry_cursors,1545,778,25498,39570c,"cmp [bx+0Ch],dx"
+10,player_near_geometry_cursors,1545,781,25501,7e51,jle short 0360h
+10,player_near_geometry_cursors,1545,783,25503,ff0ec43f,dec word ptr [3FC4h]
+10,player_near_geometry_cursors,1545,787,25507,833ec43f00,"cmp word ptr [3FC4h],0"
+10,player_near_geometry_cursors,1545,792,25512,7fe6,jg short 0300h
+10,player_near_geometry_cursors,1545,794,25514,eb44,jmp short 0360h
+10,player_near_geometry_cursors,1545,796,25516,a15456,"mov ax,[5654h]"
+10,player_near_geometry_cursors,1545,799,25519,3906c23f,"cmp [3FC2h],ax"
+10,player_near_geometry_cursors,1545,803,25523,7d19,jge short 033Eh
+10,player_near_geometry_cursors,1545,805,25525,8b1ec23f,"mov bx,[3FC2h]"
+10,player_near_geometry_cursors,1545,809,25529,03db,"add bx,bx"
+10,player_near_geometry_cursors,1545,811,25531,8b9f8c5b,"mov bx,[bx+5B8Ch]"
+10,player_near_geometry_cursors,1545,815,25535,39570c,"cmp [bx+0Ch],dx"
+10,player_near_geometry_cursors,1545,818,25538,7d0a,jge short 033Eh
+10,player_near_geometry_cursors,1545,820,25540,ff06c23f,inc word ptr [3FC2h]
+10,player_near_geometry_cursors,1545,824,25544,3906c23f,"cmp [3FC2h],ax"
+10,player_near_geometry_cursors,1545,828,25548,7ce7,jl short 0325h
+10,player_near_geometry_cursors,1545,830,25550,a15656,"mov ax,[5656h]"
+10,player_near_geometry_cursors,1545,833,25553,3906c43f,"cmp [3FC4h],ax"
+10,player_near_geometry_cursors,1545,837,25557,7d19,jge short 0360h
+10,player_near_geometry_cursors,1545,839,25559,8b1ec43f,"mov bx,[3FC4h]"
+10,player_near_geometry_cursors,1545,843,25563,03db,"add bx,bx"
+10,player_near_geometry_cursors,1545,845,25565,8b9f265e,"mov bx,[bx+5E26h]"
+10,player_near_geometry_cursors,1545,849,25569,39570c,"cmp [bx+0Ch],dx"
+10,player_near_geometry_cursors,1545,852,25572,7d0a,jge short 0360h
+10,player_near_geometry_cursors,1545,854,25574,ff06c43f,inc word ptr [3FC4h]
+10,player_near_geometry_cursors,1545,858,25578,3906c43f,"cmp [3FC4h],ax"
+10,player_near_geometry_cursors,1545,862,25582,7ce7,jl short 0347h
+10,player_near_geometry_cursors,1545,864,25584,a1bc3f,"mov ax,[3FBCh]"
+10,player_near_geometry_cursors,1545,867,25587,394608,"cmp [bp+8],ax"
+10,player_near_geometry_cursors,1545,870,25590,7f4e,jg short 03B6h
+10,player_near_geometry_cursors,1545,872,25592,0f8d9100,jge 03FDh
+10,player_near_geometry_cursors,1545,876,25596,833ebe3f00,"cmp word ptr [3FBEh],0"
+10,player_near_geometry_cursors,1545,881,25601,7e1d,jle short 0390h
+10,player_near_geometry_cursors,1545,883,25603,8b5608,"mov dx,[bp+8]"
+10,player_near_geometry_cursors,1545,886,25606,8b1ebe3f,"mov bx,[3FBEh]"
+10,player_near_geometry_cursors,1545,890,25610,03db,"add bx,bx"
+10,player_near_geometry_cursors,1545,892,25612,8b9f5656,"mov bx,[bx+5656h]"
+10,player_near_geometry_cursors,1545,896,25616,39570e,"cmp [bx+0Eh],dx"
+10,player_near_geometry_cursors,1545,899,25619,7e0b,jle short 0390h
+10,player_near_geometry_cursors,1545,901,25621,ff0ebe3f,dec word ptr [3FBEh]
+10,player_near_geometry_cursors,1545,905,25625,833ebe3f00,"cmp word ptr [3FBEh],0"
+10,player_near_geometry_cursors,1545,910,25630,7fe6,jg short 0376h
+10,player_near_geometry_cursors,1545,912,25632,833ec03f00,"cmp word ptr [3FC0h],0"
+10,player_near_geometry_cursors,1545,917,25637,7e66,jle short 03FDh
+10,player_near_geometry_cursors,1545,919,25639,8b5608,"mov dx,[bp+8]"
+10,player_near_geometry_cursors,1545,922,25642,8b1ec03f,"mov bx,[3FC0h]"
+10,player_near_geometry_cursors,1545,926,25646,03db,"add bx,bx"
+10,player_near_geometry_cursors,1545,928,25648,8b9ff058,"mov bx,[bx+58F0h]"
+10,player_near_geometry_cursors,1545,932,25652,39570e,"cmp [bx+0Eh],dx"
+10,player_near_geometry_cursors,1545,935,25655,7e54,jle short 03FDh
+10,player_near_geometry_cursors,1545,937,25657,ff0ec03f,dec word ptr [3FC0h]
+10,player_near_geometry_cursors,1545,941,25661,833ec03f00,"cmp word ptr [3FC0h],0"
+10,player_near_geometry_cursors,1545,946,25666,7fe6,jg short 039Ah
+10,player_near_geometry_cursors,1545,948,25668,c9,leave
+10,player_near_geometry_cursors,1545,949,25669,cb,ret far
+10,player_near_geometry_cursors,1545,950,25670,8b5608,"mov dx,[bp+8]"
+10,player_near_geometry_cursors,1545,953,25673,a15056,"mov ax,[5650h]"
+10,player_near_geometry_cursors,1545,956,25676,3906be3f,"cmp [3FBEh],ax"
+10,player_near_geometry_cursors,1545,960,25680,7d19,jge short 03DBh
+10,player_near_geometry_cursors,1545,962,25682,8b1ebe3f,"mov bx,[3FBEh]"
+10,player_near_geometry_cursors,1545,966,25686,03db,"add bx,bx"
+10,player_near_geometry_cursors,1545,968,25688,8b9f5856,"mov bx,[bx+5658h]"
+10,player_near_geometry_cursors,1545,972,25692,39570e,"cmp [bx+0Eh],dx"
+10,player_near_geometry_cursors,1545,975,25695,7d0a,jge short 03DBh
+10,player_near_geometry_cursors,1545,977,25697,ff06be3f,inc word ptr [3FBEh]
+10,player_near_geometry_cursors,1545,981,25701,3906be3f,"cmp [3FBEh],ax"
+10,player_near_geometry_cursors,1545,985,25705,7ce7,jl short 03C2h
+10,player_near_geometry_cursors,1545,987,25707,a15256,"mov ax,[5652h]"
+10,player_near_geometry_cursors,1545,990,25710,3906c03f,"cmp [3FC0h],ax"
+10,player_near_geometry_cursors,1545,994,25714,7d19,jge short 03FDh
+10,player_near_geometry_cursors,1545,996,25716,8b1ec03f,"mov bx,[3FC0h]"
+10,player_near_geometry_cursors,1545,1000,25720,03db,"add bx,bx"
+10,player_near_geometry_cursors,1545,1002,25722,8b9ff258,"mov bx,[bx+58F2h]"
+10,player_near_geometry_cursors,1545,1006,25726,39570e,"cmp [bx+0Eh],dx"
+10,player_near_geometry_cursors,1545,1009,25729,7d0a,jge short 03FDh
+10,player_near_geometry_cursors,1545,1011,25731,ff06c03f,inc word ptr [3FC0h]
+10,player_near_geometry_cursors,1545,1015,25735,3906c03f,"cmp [3FC0h],ax"
+10,player_near_geometry_cursors,1545,1019,25739,7ce7,jl short 03E4h
+10,player_near_geometry_cursors,1545,1021,25741,c9,leave
+10,player_near_geometry_cursors,1545,1022,25742,cb,ret far
+10,player_far_actor_cursors,1545,1024,25744,55,push bp
+10,player_far_actor_cursors,1545,1025,25745,8bec,"mov bp,sp"
+10,player_far_actor_cursors,1545,1027,25747,56,push si
+10,player_far_actor_cursors,1545,1028,25748,8b5e06,"mov bx,[bp+6]"
+10,player_far_actor_cursors,1545,1031,25751,391eba3f,"cmp [3FBAh],bx"
+10,player_far_actor_cursors,1545,1035,25755,7c27,jl short 0434h
+10,player_far_actor_cursors,1545,1037,25757,7e49,jle short 0458h
+10,player_far_actor_cursors,1545,1039,25759,833ec63f00,"cmp word ptr [3FC6h],0"
+10,player_far_actor_cursors,1545,1044,25764,7e42,jle short 0458h
+10,player_far_actor_cursors,1545,1046,25766,8b36c63f,"mov si,[3FC6h]"
+10,player_far_actor_cursors,1545,1050,25770,c1e602,"shl si,2"
+10,player_far_actor_cursors,1545,1053,25773,c4b458d3,"les si,[si-2CA8h]"
+10,player_far_actor_cursors,1545,1057,25777,26395c10,"cmp es:[si+10h],bx"
+10,player_far_actor_cursors,1545,1061,25781,7e31,jle short 0458h
+10,player_far_actor_cursors,1545,1063,25783,ff0ec63f,dec word ptr [3FC6h]
+10,player_far_actor_cursors,1545,1067,25787,833ec63f00,"cmp word ptr [3FC6h],0"
+10,player_far_actor_cursors,1545,1072,25792,7fe4,jg short 0416h
+10,player_far_actor_cursors,1545,1074,25794,eb24,jmp short 0458h
+10,player_far_actor_cursors,1545,1076,25796,a15ad3,"mov ax,[0D35Ah]"
+10,player_far_actor_cursors,1545,1079,25799,3906c63f,"cmp [3FC6h],ax"
+10,player_far_actor_cursors,1545,1083,25803,7d1b,jge short 0458h
+10,player_far_actor_cursors,1545,1085,25805,8b36c63f,"mov si,[3FC6h]"
+10,player_far_actor_cursors,1545,1089,25809,c1e602,"shl si,2"
+10,player_far_actor_cursors,1545,1092,25812,c4b45cd3,"les si,[si-2CA4h]"
+10,player_far_actor_cursors,1545,1096,25816,26395c10,"cmp es:[si+10h],bx"
+10,player_far_actor_cursors,1545,1100,25820,7d0a,jge short 0458h
+10,player_far_actor_cursors,1545,1102,25822,ff06c63f,inc word ptr [3FC6h]
+10,player_far_actor_cursors,1545,1106,25826,3906c63f,"cmp [3FC6h],ax"
+10,player_far_actor_cursors,1545,1110,25830,7ce5,jl short 043Dh
+10,player_far_actor_cursors,1545,1112,25832,a1bc3f,"mov ax,[3FBCh]"
+10,player_far_actor_cursors,1545,1115,25835,394608,"cmp [bp+8],ax"
+10,player_far_actor_cursors,1545,1118,25838,7f2c,jg short 048Ch
+10,player_far_actor_cursors,1545,1120,25840,7d51,jge short 04B3h
+10,player_far_actor_cursors,1545,1122,25842,833ec83f00,"cmp word ptr [3FC8h],0"
+10,player_far_actor_cursors,1545,1127,25847,7e4a,jle short 04B3h
+10,player_far_actor_cursors,1545,1129,25849,8b5e08,"mov bx,[bp+8]"
+10,player_far_actor_cursors,1545,1132,25852,8b36c83f,"mov si,[3FC8h]"
+10,player_far_actor_cursors,1545,1136,25856,c1e602,"shl si,2"
+10,player_far_actor_cursors,1545,1139,25859,c4b4d0d8,"les si,[si-2730h]"
+10,player_far_actor_cursors,1545,1143,25863,26395c12,"cmp es:[si+12h],bx"
+10,player_far_actor_cursors,1545,1147,25867,7e36,jle short 04B3h
+10,player_far_actor_cursors,1545,1149,25869,ff0ec83f,dec word ptr [3FC8h]
+10,player_far_actor_cursors,1545,1153,25873,833ec83f00,"cmp word ptr [3FC8h],0"
+10,player_far_actor_cursors,1545,1158,25878,7fe4,jg short 046Ch
+10,player_far_actor_cursors,1545,1160,25880,5e,pop si
+10,player_far_actor_cursors,1545,1161,25881,c9,leave
+10,player_far_actor_cursors,1545,1162,25882,cb,ret far
+10,player_far_actor_cursors,1545,1164,25884,a15ad3,"mov ax,[0D35Ah]"
+10,player_far_actor_cursors,1545,1167,25887,3906c83f,"cmp [3FC8h],ax"
+10,player_far_actor_cursors,1545,1171,25891,7d1e,jge short 04B3h
+10,player_far_actor_cursors,1545,1173,25893,8b5e08,"mov bx,[bp+8]"
+10,player_far_actor_cursors,1545,1176,25896,8b36c83f,"mov si,[3FC8h]"
+10,player_far_actor_cursors,1545,1180,25900,c1e602,"shl si,2"
+10,player_far_actor_cursors,1545,1183,25903,c4b4d4d8,"les si,[si-272Ch]"
+10,player_far_actor_cursors,1545,1187,25907,26395c12,"cmp es:[si+12h],bx"
+10,player_far_actor_cursors,1545,1191,25911,7d0a,jge short 04B3h
+10,player_far_actor_cursors,1545,1193,25913,ff06c83f,inc word ptr [3FC8h]
+10,player_far_actor_cursors,1545,1197,25917,3906c83f,"cmp [3FC8h],ax"
+10,player_far_actor_cursors,1545,1201,25921,7ce5,jl short 0498h
+10,player_far_actor_cursors,1545,1203,25923,5e,pop si
+10,player_far_actor_cursors,1545,1204,25924,c9,leave
+10,player_far_actor_cursors,1545,1205,25925,cb,ret far
+10,player_position_commit,1545,1310,26030,c8040000,"enter 4,0"
+10,player_position_commit,1545,1314,26034,57,push di
+10,player_position_commit,1545,1315,26035,56,push si
+10,player_position_commit,1545,1316,26036,8b7e06,"mov di,[bp+6]"
+10,player_position_commit,1545,1319,26039,8b7608,"mov si,[bp+8]"
+10,player_position_commit,1545,1322,26042,666a07,data32 push 7
+10,player_position_commit,1545,1325,26045,9a1214f507,"call far 1412h,07F5h"
+10,player_position_commit,1545,1330,26050,83c404,"add sp,4"
+10,player_position_commit,1545,1333,26053,56,push si
+10,player_position_commit,1545,1334,26054,57,push di
+10,player_position_commit,1545,1335,26055,0e,push cs
+10,player_position_commit,1545,1336,26056,e88dfd,call 02C8h
+10,player_position_commit,1545,1339,26059,83c404,"add sp,4"
+10,player_position_commit,1545,1342,26062,56,push si
+10,player_position_commit,1545,1343,26063,57,push di
+10,player_position_commit,1545,1344,26064,0e,push cs
+10,player_position_commit,1545,1345,26065,e8bcfe,call 0400h
+10,player_position_commit,1545,1348,26068,83c404,"add sp,4"
+10,player_position_commit,1545,1351,26071,893eba3f,"mov [3FBAh],di"
+10,player_position_commit,1545,1355,26075,8936bc3f,"mov [3FBCh],si"
+10,player_position_commit,1545,1359,26079,c1ff06,"sar di,6"
+10,player_position_commit,1545,1362,26082,c1fe06,"sar si,6"
+10,player_position_commit,1545,1365,26085,3b3eb63f,"cmp di,[3FB6h]"
+10,player_position_commit,1545,1369,26089,7507,jne short 0562h
+10,player_position_commit,1545,1371,26091,a1b83f,"mov ax,[3FB8h]"
+10,player_position_commit,1545,1374,26094,3bf0,"cmp si,ax"
+10,player_position_commit,1545,1376,26096,7412,je short 0574h
+10,player_position_commit,1545,1378,26098,893eb63f,"mov [3FB6h],di"
+10,player_position_commit,1545,1382,26102,8936b83f,"mov [3FB8h],si"
+10,player_position_commit,1545,1386,26106,6a17,push 17h
+10,player_position_commit,1545,1388,26108,9aca05f507,"call far 05CAh,07F5h"
+10,player_position_commit,1545,1393,26113,83c402,"add sp,2"
+10,player_position_commit,1545,1396,26116,a1b83f,"mov ax,[3FB8h]"
+10,player_position_commit,1545,1399,26119,c1e006,"shl ax,6"
+10,player_position_commit,1545,1402,26122,0306b63f,"add ax,[3FB6h]"
+10,player_position_commit,1545,1406,26126,03c0,"add ax,ax"
+10,player_position_commit,1545,1408,26128,053e37,"add ax,373Eh"
+10,player_position_commit,1545,1411,26131,b9ec1d,"mov cx,1DECh"
+10,player_position_commit,1545,1414,26134,a3d23f,"mov [3FD2h],ax"
+10,player_position_commit,1545,1417,26137,890ed43f,"mov [3FD4h],cx"
+10,player_position_commit,1545,1421,26141,51,push cx
+10,player_position_commit,1545,1422,26142,50,push ax
+10,player_position_commit,1545,1423,26143,9a7c01f600,"call far 017Ch,00F6h"
+10,player_position_commit,1545,1428,26148,83c404,"add sp,4"
+10,player_position_commit,1545,1431,26151,8bf0,"mov si,ax"
+10,player_position_commit,1545,1433,26153,83feff,"cmp si,0FFFFh"
+10,player_position_commit,1545,1436,26156,7403,je short 05A1h
+10,player_position_commit,1545,1438,26158,a2de3f,"mov [3FDEh],al"
+10,player_position_commit,1545,1441,26161,5e,pop si
+10,player_position_commit,1545,1442,26162,5f,pop di
+10,player_position_commit,1545,1443,26163,c9,leave
+10,player_position_commit,1545,1444,26164,cb,ret far
+10,player_position_reindex,1545,1492,26212,57,push di
+10,player_position_reindex,1545,1493,26213,56,push si
+10,player_position_reindex,1545,1494,26214,8b3eba3f,"mov di,[3FBAh]"
+10,player_position_reindex,1545,1498,26218,8b36bc3f,"mov si,[3FBCh]"
+10,player_position_reindex,1545,1502,26222,6633c0,"xor eax,eax"
+10,player_position_reindex,1545,1505,26225,66a3ba3f,"mov [3FBAh],eax"
+10,player_position_reindex,1545,1509,26229,66a3c23f,"mov [3FC2h],eax"
+10,player_position_reindex,1545,1513,26233,66a3be3f,"mov [3FBEh],eax"
+10,player_position_reindex,1545,1517,26237,66a3c63f,"mov [3FC6h],eax"
+10,player_position_reindex,1545,1521,26241,56,push si
+10,player_position_reindex,1545,1522,26242,57,push di
+10,player_position_reindex,1545,1523,26243,0e,push cs
+10,player_position_reindex,1545,1524,26244,e827ff,call 051Eh
+10,player_position_reindex,1545,1527,26247,83c404,"add sp,4"
+10,player_position_reindex,1545,1530,26250,5e,pop si
+10,player_position_reindex,1545,1531,26251,5f,pop di
+10,player_position_reindex,1545,1532,26252,cb,ret far
+10,terrain_kind_search,246,10,3946,55,push bp
+10,terrain_kind_search,246,11,3947,8bec,"mov bp,sp"
+10,terrain_kind_search,246,13,3949,2aff,"sub bh,bh"
+10,terrain_kind_search,246,15,3951,8a5e08,"mov bl,[bp+8]"
+10,terrain_kind_search,246,18,3954,81fb0001,"cmp bx,100h"
+10,terrain_kind_search,246,22,3958,7d14,jge short 002Ch
+10,terrain_kind_search,246,24,3960,8b4e06,"mov cx,[bp+6]"
+10,terrain_kind_search,246,27,3963,8a8754d1,"mov al,[bx-2EACh]"
+10,terrain_kind_search,246,31,3967,2ae4,"sub ah,ah"
+10,terrain_kind_search,246,33,3969,3bc1,"cmp ax,cx"
+10,terrain_kind_search,246,35,3971,741f,je short 0044h
+10,terrain_kind_search,246,37,3973,43,inc bx
+10,terrain_kind_search,246,38,3974,81fb0001,"cmp bx,100h"
+10,terrain_kind_search,246,42,3978,7cef,jl short 001Bh
+10,terrain_kind_search,246,44,3980,33db,"xor bx,bx"
+10,terrain_kind_search,246,46,3982,8b4e06,"mov cx,[bp+6]"
+10,terrain_kind_search,246,49,3985,8a8754d1,"mov al,[bx-2EACh]"
+10,terrain_kind_search,246,53,3989,2ae4,"sub ah,ah"
+10,terrain_kind_search,246,55,3991,3bc1,"cmp ax,cx"
+10,terrain_kind_search,246,57,3993,7409,je short 0044h
+10,terrain_kind_search,246,59,3995,43,inc bx
+10,terrain_kind_search,246,60,3996,81fb0001,"cmp bx,100h"
+10,terrain_kind_search,246,64,4000,7cef,jl short 0031h
+10,terrain_kind_search,246,66,4002,eb04,jmp short 0048h
+10,terrain_kind_search,246,68,4004,8bc3,"mov ax,bx"
+10,terrain_kind_search,246,70,4006,c9,leave
+10,terrain_kind_search,246,71,4007,cb,ret far
+10,terrain_kind_search,246,72,4008,51,push cx
+10,terrain_kind_search,246,73,4009,68da00,push 0DAh
+10,terrain_kind_search,246,76,4012,9a0a00670f,"call far 000Ah,0F67h"
+10,terrain_kind_search,246,81,4017,c9,leave
+10,terrain_kind_search,246,82,4018,cb,ret far
+10,terrain_kind44_variant,246,380,4316,c8020000,"enter 2,0"
+10,terrain_kind44_variant,246,384,4320,803e4a2500,"cmp byte ptr [254Ah],0"
+10,terrain_kind44_variant,246,389,4325,750d,jne short 0194h
+10,terrain_kind44_variant,246,391,4327,666a44,data32 push 44h
+10,terrain_kind44_variant,246,394,4330,0e,push cs
+10,terrain_kind44_variant,246,395,4331,e87cfe,call 000Ah
+10,terrain_kind44_variant,246,398,4334,83c404,"add sp,4"
+10,terrain_kind44_variant,246,401,4337,a24a25,"mov [254Ah],al"
+10,terrain_kind44_variant,246,404,4340,c45e06,"les bx,[bp+6]"
+10,terrain_kind44_variant,246,407,4343,268a1f,"mov bl,es:[bx]"
+10,terrain_kind44_variant,246,410,4346,2aff,"sub bh,bh"
+10,terrain_kind44_variant,246,412,4348,80bf54d144,"cmp byte ptr [bx-2EACh],44h"
+10,terrain_kind44_variant,246,417,4353,750f,jne short 01B2h
+10,terrain_kind44_variant,246,419,4355,8ac3,"mov al,bl"
+10,terrain_kind44_variant,246,421,4357,2ae4,"sub ah,ah"
+10,terrain_kind44_variant,246,423,4359,8a0e4a25,"mov cl,[254Ah]"
+10,terrain_kind44_variant,246,427,4363,2aed,"sub ch,ch"
+10,terrain_kind44_variant,246,429,4365,2bc1,"sub ax,cx"
+10,terrain_kind44_variant,246,431,4367,c9,leave
+10,terrain_kind44_variant,246,432,4368,cb,ret far
+10,terrain_kind44_variant,246,434,4370,b8ffff,"mov ax,0FFFFh"
+10,terrain_kind44_variant,246,437,4373,c9,leave
+10,terrain_kind44_variant,246,438,4374,cb,ret far
+11,player_near_geometry_cursors,1553,716,25564,55,push bp
+11,player_near_geometry_cursors,1553,717,25565,8bec,"mov bp,sp"
+11,player_near_geometry_cursors,1553,719,25567,8b5606,"mov dx,[bp+6]"
+11,player_near_geometry_cursors,1553,722,25570,3916c040,"cmp [40C0h],dx"
+11,player_near_geometry_cursors,1553,726,25574,7c48,jl short 0320h
+11,player_near_geometry_cursors,1553,728,25576,0f8e8800,jle 0364h
+11,player_near_geometry_cursors,1553,732,25580,833ec84000,"cmp word ptr [40C8h],0"
+11,player_near_geometry_cursors,1553,737,25585,7e1a,jle short 02FDh
+11,player_near_geometry_cursors,1553,739,25587,8b1ec840,"mov bx,[40C8h]"
+11,player_near_geometry_cursors,1553,743,25591,03db,"add bx,bx"
+11,player_near_geometry_cursors,1553,745,25593,8b9f905c,"mov bx,[bx+5C90h]"
+11,player_near_geometry_cursors,1553,749,25597,39570c,"cmp [bx+0Ch],dx"
+11,player_near_geometry_cursors,1553,752,25600,7e0b,jle short 02FDh
+11,player_near_geometry_cursors,1553,754,25602,ff0ec840,dec word ptr [40C8h]
+11,player_near_geometry_cursors,1553,758,25606,833ec84000,"cmp word ptr [40C8h],0"
+11,player_near_geometry_cursors,1553,763,25611,7fe6,jg short 02E3h
+11,player_near_geometry_cursors,1553,765,25613,833eca4000,"cmp word ptr [40CAh],0"
+11,player_near_geometry_cursors,1553,770,25618,7e60,jle short 0364h
+11,player_near_geometry_cursors,1553,772,25620,8b1eca40,"mov bx,[40CAh]"
+11,player_near_geometry_cursors,1553,776,25624,03db,"add bx,bx"
+11,player_near_geometry_cursors,1553,778,25626,8b9f2a5f,"mov bx,[bx+5F2Ah]"
+11,player_near_geometry_cursors,1553,782,25630,39570c,"cmp [bx+0Ch],dx"
+11,player_near_geometry_cursors,1553,785,25633,7e51,jle short 0364h
+11,player_near_geometry_cursors,1553,787,25635,ff0eca40,dec word ptr [40CAh]
+11,player_near_geometry_cursors,1553,791,25639,833eca4000,"cmp word ptr [40CAh],0"
+11,player_near_geometry_cursors,1553,796,25644,7fe6,jg short 0304h
+11,player_near_geometry_cursors,1553,798,25646,eb44,jmp short 0364h
+11,player_near_geometry_cursors,1553,800,25648,a15a57,"mov ax,[575Ah]"
+11,player_near_geometry_cursors,1553,803,25651,3906c840,"cmp [40C8h],ax"
+11,player_near_geometry_cursors,1553,807,25655,7d19,jge short 0342h
+11,player_near_geometry_cursors,1553,809,25657,8b1ec840,"mov bx,[40C8h]"
+11,player_near_geometry_cursors,1553,813,25661,03db,"add bx,bx"
+11,player_near_geometry_cursors,1553,815,25663,8b9f925c,"mov bx,[bx+5C92h]"
+11,player_near_geometry_cursors,1553,819,25667,39570c,"cmp [bx+0Ch],dx"
+11,player_near_geometry_cursors,1553,822,25670,7d0a,jge short 0342h
+11,player_near_geometry_cursors,1553,824,25672,ff06c840,inc word ptr [40C8h]
+11,player_near_geometry_cursors,1553,828,25676,3906c840,"cmp [40C8h],ax"
+11,player_near_geometry_cursors,1553,832,25680,7ce7,jl short 0329h
+11,player_near_geometry_cursors,1553,834,25682,a15c57,"mov ax,[575Ch]"
+11,player_near_geometry_cursors,1553,837,25685,3906ca40,"cmp [40CAh],ax"
+11,player_near_geometry_cursors,1553,841,25689,7d19,jge short 0364h
+11,player_near_geometry_cursors,1553,843,25691,8b1eca40,"mov bx,[40CAh]"
+11,player_near_geometry_cursors,1553,847,25695,03db,"add bx,bx"
+11,player_near_geometry_cursors,1553,849,25697,8b9f2c5f,"mov bx,[bx+5F2Ch]"
+11,player_near_geometry_cursors,1553,853,25701,39570c,"cmp [bx+0Ch],dx"
+11,player_near_geometry_cursors,1553,856,25704,7d0a,jge short 0364h
+11,player_near_geometry_cursors,1553,858,25706,ff06ca40,inc word ptr [40CAh]
+11,player_near_geometry_cursors,1553,862,25710,3906ca40,"cmp [40CAh],ax"
+11,player_near_geometry_cursors,1553,866,25714,7ce7,jl short 034Bh
+11,player_near_geometry_cursors,1553,868,25716,a1c240,"mov ax,[40C2h]"
+11,player_near_geometry_cursors,1553,871,25719,394608,"cmp [bp+8],ax"
+11,player_near_geometry_cursors,1553,874,25722,7f4e,jg short 03BAh
+11,player_near_geometry_cursors,1553,876,25724,0f8d9100,jge 0401h
+11,player_near_geometry_cursors,1553,880,25728,833ec44000,"cmp word ptr [40C4h],0"
+11,player_near_geometry_cursors,1553,885,25733,7e1d,jle short 0394h
+11,player_near_geometry_cursors,1553,887,25735,8b5608,"mov dx,[bp+8]"
+11,player_near_geometry_cursors,1553,890,25738,8b1ec440,"mov bx,[40C4h]"
+11,player_near_geometry_cursors,1553,894,25742,03db,"add bx,bx"
+11,player_near_geometry_cursors,1553,896,25744,8b9f5c57,"mov bx,[bx+575Ch]"
+11,player_near_geometry_cursors,1553,900,25748,39570e,"cmp [bx+0Eh],dx"
+11,player_near_geometry_cursors,1553,903,25751,7e0b,jle short 0394h
+11,player_near_geometry_cursors,1553,905,25753,ff0ec440,dec word ptr [40C4h]
+11,player_near_geometry_cursors,1553,909,25757,833ec44000,"cmp word ptr [40C4h],0"
+11,player_near_geometry_cursors,1553,914,25762,7fe6,jg short 037Ah
+11,player_near_geometry_cursors,1553,916,25764,833ec64000,"cmp word ptr [40C6h],0"
+11,player_near_geometry_cursors,1553,921,25769,7e66,jle short 0401h
+11,player_near_geometry_cursors,1553,923,25771,8b5608,"mov dx,[bp+8]"
+11,player_near_geometry_cursors,1553,926,25774,8b1ec640,"mov bx,[40C6h]"
+11,player_near_geometry_cursors,1553,930,25778,03db,"add bx,bx"
+11,player_near_geometry_cursors,1553,932,25780,8b9ff659,"mov bx,[bx+59F6h]"
+11,player_near_geometry_cursors,1553,936,25784,39570e,"cmp [bx+0Eh],dx"
+11,player_near_geometry_cursors,1553,939,25787,7e54,jle short 0401h
+11,player_near_geometry_cursors,1553,941,25789,ff0ec640,dec word ptr [40C6h]
+11,player_near_geometry_cursors,1553,945,25793,833ec64000,"cmp word ptr [40C6h],0"
+11,player_near_geometry_cursors,1553,950,25798,7fe6,jg short 039Eh
+11,player_near_geometry_cursors,1553,952,25800,c9,leave
+11,player_near_geometry_cursors,1553,953,25801,cb,ret far
+11,player_near_geometry_cursors,1553,954,25802,8b5608,"mov dx,[bp+8]"
+11,player_near_geometry_cursors,1553,957,25805,a15657,"mov ax,[5756h]"
+11,player_near_geometry_cursors,1553,960,25808,3906c440,"cmp [40C4h],ax"
+11,player_near_geometry_cursors,1553,964,25812,7d19,jge short 03DFh
+11,player_near_geometry_cursors,1553,966,25814,8b1ec440,"mov bx,[40C4h]"
+11,player_near_geometry_cursors,1553,970,25818,03db,"add bx,bx"
+11,player_near_geometry_cursors,1553,972,25820,8b9f5e57,"mov bx,[bx+575Eh]"
+11,player_near_geometry_cursors,1553,976,25824,39570e,"cmp [bx+0Eh],dx"
+11,player_near_geometry_cursors,1553,979,25827,7d0a,jge short 03DFh
+11,player_near_geometry_cursors,1553,981,25829,ff06c440,inc word ptr [40C4h]
+11,player_near_geometry_cursors,1553,985,25833,3906c440,"cmp [40C4h],ax"
+11,player_near_geometry_cursors,1553,989,25837,7ce7,jl short 03C6h
+11,player_near_geometry_cursors,1553,991,25839,a15857,"mov ax,[5758h]"
+11,player_near_geometry_cursors,1553,994,25842,3906c640,"cmp [40C6h],ax"
+11,player_near_geometry_cursors,1553,998,25846,7d19,jge short 0401h
+11,player_near_geometry_cursors,1553,1000,25848,8b1ec640,"mov bx,[40C6h]"
+11,player_near_geometry_cursors,1553,1004,25852,03db,"add bx,bx"
+11,player_near_geometry_cursors,1553,1006,25854,8b9ff859,"mov bx,[bx+59F8h]"
+11,player_near_geometry_cursors,1553,1010,25858,39570e,"cmp [bx+0Eh],dx"
+11,player_near_geometry_cursors,1553,1013,25861,7d0a,jge short 0401h
+11,player_near_geometry_cursors,1553,1015,25863,ff06c640,inc word ptr [40C6h]
+11,player_near_geometry_cursors,1553,1019,25867,3906c640,"cmp [40C6h],ax"
+11,player_near_geometry_cursors,1553,1023,25871,7ce7,jl short 03E8h
+11,player_near_geometry_cursors,1553,1025,25873,c9,leave
+11,player_near_geometry_cursors,1553,1026,25874,cb,ret far
+11,player_far_actor_cursors,1553,1028,25876,55,push bp
+11,player_far_actor_cursors,1553,1029,25877,8bec,"mov bp,sp"
+11,player_far_actor_cursors,1553,1031,25879,56,push si
+11,player_far_actor_cursors,1553,1032,25880,8b5e06,"mov bx,[bp+6]"
+11,player_far_actor_cursors,1553,1035,25883,391ec040,"cmp [40C0h],bx"
+11,player_far_actor_cursors,1553,1039,25887,7c27,jl short 0438h
+11,player_far_actor_cursors,1553,1041,25889,7e49,jle short 045Ch
+11,player_far_actor_cursors,1553,1043,25891,833ecc4000,"cmp word ptr [40CCh],0"
+11,player_far_actor_cursors,1553,1048,25896,7e42,jle short 045Ch
+11,player_far_actor_cursors,1553,1050,25898,8b36cc40,"mov si,[40CCh]"
+11,player_far_actor_cursors,1553,1054,25902,c1e602,"shl si,2"
+11,player_far_actor_cursors,1553,1057,25905,c4b45ed4,"les si,[si-2BA2h]"
+11,player_far_actor_cursors,1553,1061,25909,26395c10,"cmp es:[si+10h],bx"
+11,player_far_actor_cursors,1553,1065,25913,7e31,jle short 045Ch
+11,player_far_actor_cursors,1553,1067,25915,ff0ecc40,dec word ptr [40CCh]
+11,player_far_actor_cursors,1553,1071,25919,833ecc4000,"cmp word ptr [40CCh],0"
+11,player_far_actor_cursors,1553,1076,25924,7fe4,jg short 041Ah
+11,player_far_actor_cursors,1553,1078,25926,eb24,jmp short 045Ch
+11,player_far_actor_cursors,1553,1080,25928,a160d4,"mov ax,[0D460h]"
+11,player_far_actor_cursors,1553,1083,25931,3906cc40,"cmp [40CCh],ax"
+11,player_far_actor_cursors,1553,1087,25935,7d1b,jge short 045Ch
+11,player_far_actor_cursors,1553,1089,25937,8b36cc40,"mov si,[40CCh]"
+11,player_far_actor_cursors,1553,1093,25941,c1e602,"shl si,2"
+11,player_far_actor_cursors,1553,1096,25944,c4b462d4,"les si,[si-2B9Eh]"
+11,player_far_actor_cursors,1553,1100,25948,26395c10,"cmp es:[si+10h],bx"
+11,player_far_actor_cursors,1553,1104,25952,7d0a,jge short 045Ch
+11,player_far_actor_cursors,1553,1106,25954,ff06cc40,inc word ptr [40CCh]
+11,player_far_actor_cursors,1553,1110,25958,3906cc40,"cmp [40CCh],ax"
+11,player_far_actor_cursors,1553,1114,25962,7ce5,jl short 0441h
+11,player_far_actor_cursors,1553,1116,25964,a1c240,"mov ax,[40C2h]"
+11,player_far_actor_cursors,1553,1119,25967,394608,"cmp [bp+8],ax"
+11,player_far_actor_cursors,1553,1122,25970,7f2c,jg short 0490h
+11,player_far_actor_cursors,1553,1124,25972,7d51,jge short 04B7h
+11,player_far_actor_cursors,1553,1126,25974,833ece4000,"cmp word ptr [40CEh],0"
+11,player_far_actor_cursors,1553,1131,25979,7e4a,jle short 04B7h
+11,player_far_actor_cursors,1553,1133,25981,8b5e08,"mov bx,[bp+8]"
+11,player_far_actor_cursors,1553,1136,25984,8b36ce40,"mov si,[40CEh]"
+11,player_far_actor_cursors,1553,1140,25988,c1e602,"shl si,2"
+11,player_far_actor_cursors,1553,1143,25991,c4b4d6d9,"les si,[si-262Ah]"
+11,player_far_actor_cursors,1553,1147,25995,26395c12,"cmp es:[si+12h],bx"
+11,player_far_actor_cursors,1553,1151,25999,7e36,jle short 04B7h
+11,player_far_actor_cursors,1553,1153,26001,ff0ece40,dec word ptr [40CEh]
+11,player_far_actor_cursors,1553,1157,26005,833ece4000,"cmp word ptr [40CEh],0"
+11,player_far_actor_cursors,1553,1162,26010,7fe4,jg short 0470h
+11,player_far_actor_cursors,1553,1164,26012,5e,pop si
+11,player_far_actor_cursors,1553,1165,26013,c9,leave
+11,player_far_actor_cursors,1553,1166,26014,cb,ret far
+11,player_far_actor_cursors,1553,1168,26016,a160d4,"mov ax,[0D460h]"
+11,player_far_actor_cursors,1553,1171,26019,3906ce40,"cmp [40CEh],ax"
+11,player_far_actor_cursors,1553,1175,26023,7d1e,jge short 04B7h
+11,player_far_actor_cursors,1553,1177,26025,8b5e08,"mov bx,[bp+8]"
+11,player_far_actor_cursors,1553,1180,26028,8b36ce40,"mov si,[40CEh]"
+11,player_far_actor_cursors,1553,1184,26032,c1e602,"shl si,2"
+11,player_far_actor_cursors,1553,1187,26035,c4b4dad9,"les si,[si-2626h]"
+11,player_far_actor_cursors,1553,1191,26039,26395c12,"cmp es:[si+12h],bx"
+11,player_far_actor_cursors,1553,1195,26043,7d0a,jge short 04B7h
+11,player_far_actor_cursors,1553,1197,26045,ff06ce40,inc word ptr [40CEh]
+11,player_far_actor_cursors,1553,1201,26049,3906ce40,"cmp [40CEh],ax"
+11,player_far_actor_cursors,1553,1205,26053,7ce5,jl short 049Ch
+11,player_far_actor_cursors,1553,1207,26055,5e,pop si
+11,player_far_actor_cursors,1553,1208,26056,c9,leave
+11,player_far_actor_cursors,1553,1209,26057,cb,ret far
+11,player_position_commit,1553,1314,26162,c8040000,"enter 4,0"
+11,player_position_commit,1553,1318,26166,57,push di
+11,player_position_commit,1553,1319,26167,56,push si
+11,player_position_commit,1553,1320,26168,8b7e06,"mov di,[bp+6]"
+11,player_position_commit,1553,1323,26171,8b7608,"mov si,[bp+8]"
+11,player_position_commit,1553,1326,26174,666a07,data32 push 7
+11,player_position_commit,1553,1329,26177,9a12141708,"call far 1412h,0817h"
+11,player_position_commit,1553,1334,26182,83c404,"add sp,4"
+11,player_position_commit,1553,1337,26185,56,push si
+11,player_position_commit,1553,1338,26186,57,push di
+11,player_position_commit,1553,1339,26187,0e,push cs
+11,player_position_commit,1553,1340,26188,e88dfd,call 02CCh
+11,player_position_commit,1553,1343,26191,83c404,"add sp,4"
+11,player_position_commit,1553,1346,26194,56,push si
+11,player_position_commit,1553,1347,26195,57,push di
+11,player_position_commit,1553,1348,26196,0e,push cs
+11,player_position_commit,1553,1349,26197,e8bcfe,call 0404h
+11,player_position_commit,1553,1352,26200,83c404,"add sp,4"
+11,player_position_commit,1553,1355,26203,893ec040,"mov [40C0h],di"
+11,player_position_commit,1553,1359,26207,8936c240,"mov [40C2h],si"
+11,player_position_commit,1553,1363,26211,c1ff06,"sar di,6"
+11,player_position_commit,1553,1366,26214,c1fe06,"sar si,6"
+11,player_position_commit,1553,1369,26217,3b3ebc40,"cmp di,[40BCh]"
+11,player_position_commit,1553,1373,26221,7507,jne short 0566h
+11,player_position_commit,1553,1375,26223,a1be40,"mov ax,[40BEh]"
+11,player_position_commit,1553,1378,26226,3bf0,"cmp si,ax"
+11,player_position_commit,1553,1380,26228,7412,je short 0578h
+11,player_position_commit,1553,1382,26230,893ebc40,"mov [40BCh],di"
+11,player_position_commit,1553,1386,26234,8936be40,"mov [40BEh],si"
+11,player_position_commit,1553,1390,26238,6a17,push 17h
+11,player_position_commit,1553,1392,26240,9aca051708,"call far 05CAh,0817h"
+11,player_position_commit,1553,1397,26245,83c402,"add sp,2"
+11,player_position_commit,1553,1400,26248,a1be40,"mov ax,[40BEh]"
+11,player_position_commit,1553,1403,26251,c1e006,"shl ax,6"
+11,player_position_commit,1553,1406,26254,0306bc40,"add ax,[40BCh]"
+11,player_position_commit,1553,1410,26258,03c0,"add ax,ax"
+11,player_position_commit,1553,1412,26260,053e37,"add ax,373Eh"
+11,player_position_commit,1553,1415,26263,b9211e,"mov cx,1E21h"
+11,player_position_commit,1553,1418,26266,a3d840,"mov [40D8h],ax"
+11,player_position_commit,1553,1421,26269,890eda40,"mov [40DAh],cx"
+11,player_position_commit,1553,1425,26273,51,push cx
+11,player_position_commit,1553,1426,26274,50,push ax
+11,player_position_commit,1553,1427,26275,9a7c01f600,"call far 017Ch,00F6h"
+11,player_position_commit,1553,1432,26280,83c404,"add sp,4"
+11,player_position_commit,1553,1435,26283,8bf0,"mov si,ax"
+11,player_position_commit,1553,1437,26285,83feff,"cmp si,0FFFFh"
+11,player_position_commit,1553,1440,26288,7403,je short 05A5h
+11,player_position_commit,1553,1442,26290,a2e440,"mov [40E4h],al"
+11,player_position_commit,1553,1445,26293,5e,pop si
+11,player_position_commit,1553,1446,26294,5f,pop di
+11,player_position_commit,1553,1447,26295,c9,leave
+11,player_position_commit,1553,1448,26296,cb,ret far
+11,player_position_reindex,1553,1496,26344,57,push di
+11,player_position_reindex,1553,1497,26345,56,push si
+11,player_position_reindex,1553,1498,26346,8b3ec040,"mov di,[40C0h]"
+11,player_position_reindex,1553,1502,26350,8b36c240,"mov si,[40C2h]"
+11,player_position_reindex,1553,1506,26354,6633c0,"xor eax,eax"
+11,player_position_reindex,1553,1509,26357,66a3c040,"mov [40C0h],eax"
+11,player_position_reindex,1553,1513,26361,66a3c840,"mov [40C8h],eax"
+11,player_position_reindex,1553,1517,26365,66a3c440,"mov [40C4h],eax"
+11,player_position_reindex,1553,1521,26369,66a3cc40,"mov [40CCh],eax"
+11,player_position_reindex,1553,1525,26373,56,push si
+11,player_position_reindex,1553,1526,26374,57,push di
+11,player_position_reindex,1553,1527,26375,0e,push cs
+11,player_position_reindex,1553,1528,26376,e827ff,call 0522h
+11,player_position_reindex,1553,1531,26379,83c404,"add sp,4"
+11,player_position_reindex,1553,1534,26382,5e,pop si
+11,player_position_reindex,1553,1535,26383,5f,pop di
+11,player_position_reindex,1553,1536,26384,cb,ret far
+11,terrain_kind_search,246,10,3946,55,push bp
+11,terrain_kind_search,246,11,3947,8bec,"mov bp,sp"
+11,terrain_kind_search,246,13,3949,2aff,"sub bh,bh"
+11,terrain_kind_search,246,15,3951,8a5e08,"mov bl,[bp+8]"
+11,terrain_kind_search,246,18,3954,81fb0001,"cmp bx,100h"
+11,terrain_kind_search,246,22,3958,7d14,jge short 002Ch
+11,terrain_kind_search,246,24,3960,8b4e06,"mov cx,[bp+6]"
+11,terrain_kind_search,246,27,3963,8a875ad2,"mov al,[bx-2DA6h]"
+11,terrain_kind_search,246,31,3967,2ae4,"sub ah,ah"
+11,terrain_kind_search,246,33,3969,3bc1,"cmp ax,cx"
+11,terrain_kind_search,246,35,3971,741f,je short 0044h
+11,terrain_kind_search,246,37,3973,43,inc bx
+11,terrain_kind_search,246,38,3974,81fb0001,"cmp bx,100h"
+11,terrain_kind_search,246,42,3978,7cef,jl short 001Bh
+11,terrain_kind_search,246,44,3980,33db,"xor bx,bx"
+11,terrain_kind_search,246,46,3982,8b4e06,"mov cx,[bp+6]"
+11,terrain_kind_search,246,49,3985,8a875ad2,"mov al,[bx-2DA6h]"
+11,terrain_kind_search,246,53,3989,2ae4,"sub ah,ah"
+11,terrain_kind_search,246,55,3991,3bc1,"cmp ax,cx"
+11,terrain_kind_search,246,57,3993,7409,je short 0044h
+11,terrain_kind_search,246,59,3995,43,inc bx
+11,terrain_kind_search,246,60,3996,81fb0001,"cmp bx,100h"
+11,terrain_kind_search,246,64,4000,7cef,jl short 0031h
+11,terrain_kind_search,246,66,4002,eb04,jmp short 0048h
+11,terrain_kind_search,246,68,4004,8bc3,"mov ax,bx"
+11,terrain_kind_search,246,70,4006,c9,leave
+11,terrain_kind_search,246,71,4007,cb,ret far
+11,terrain_kind_search,246,72,4008,51,push cx
+11,terrain_kind_search,246,73,4009,68da00,push 0DAh
+11,terrain_kind_search,246,76,4012,9a0200890f,"call far 2,0F89h"
+11,terrain_kind_search,246,81,4017,c9,leave
+11,terrain_kind_search,246,82,4018,cb,ret far
+11,terrain_kind44_variant,246,380,4316,c8020000,"enter 2,0"
+11,terrain_kind44_variant,246,384,4320,803e422600,"cmp byte ptr [2642h],0"
+11,terrain_kind44_variant,246,389,4325,750d,jne short 0194h
+11,terrain_kind44_variant,246,391,4327,666a44,data32 push 44h
+11,terrain_kind44_variant,246,394,4330,0e,push cs
+11,terrain_kind44_variant,246,395,4331,e87cfe,call 000Ah
+11,terrain_kind44_variant,246,398,4334,83c404,"add sp,4"
+11,terrain_kind44_variant,246,401,4337,a24226,"mov [2642h],al"
+11,terrain_kind44_variant,246,404,4340,c45e06,"les bx,[bp+6]"
+11,terrain_kind44_variant,246,407,4343,268a1f,"mov bl,es:[bx]"
+11,terrain_kind44_variant,246,410,4346,2aff,"sub bh,bh"
+11,terrain_kind44_variant,246,412,4348,80bf5ad244,"cmp byte ptr [bx-2DA6h],44h"
+11,terrain_kind44_variant,246,417,4353,750f,jne short 01B2h
+11,terrain_kind44_variant,246,419,4355,8ac3,"mov al,bl"
+11,terrain_kind44_variant,246,421,4357,2ae4,"sub ah,ah"
+11,terrain_kind44_variant,246,423,4359,8a0e4226,"mov cl,[2642h]"
+11,terrain_kind44_variant,246,427,4363,2aed,"sub ch,ch"
+11,terrain_kind44_variant,246,429,4365,2bc1,"sub ax,cx"
+11,terrain_kind44_variant,246,431,4367,c9,leave
+11,terrain_kind44_variant,246,432,4368,cb,ret far
+11,terrain_kind44_variant,246,434,4370,b8ffff,"mov ax,0FFFFh"
+11,terrain_kind44_variant,246,437,4373,c9,leave
+11,terrain_kind44_variant,246,438,4374,cb,ret far
+12,player_near_geometry_cursors,1554,712,25576,55,push bp
+12,player_near_geometry_cursors,1554,713,25577,8bec,"mov bp,sp"
+12,player_near_geometry_cursors,1554,715,25579,8b5606,"mov dx,[bp+6]"
+12,player_near_geometry_cursors,1554,718,25582,3916c040,"cmp [40C0h],dx"
+12,player_near_geometry_cursors,1554,722,25586,7c48,jl short 031Ch
+12,player_near_geometry_cursors,1554,724,25588,0f8e8800,jle 0360h
+12,player_near_geometry_cursors,1554,728,25592,833ec84000,"cmp word ptr [40C8h],0"
+12,player_near_geometry_cursors,1554,733,25597,7e1a,jle short 02F9h
+12,player_near_geometry_cursors,1554,735,25599,8b1ec840,"mov bx,[40C8h]"
+12,player_near_geometry_cursors,1554,739,25603,03db,"add bx,bx"
+12,player_near_geometry_cursors,1554,741,25605,8b9f905c,"mov bx,[bx+5C90h]"
+12,player_near_geometry_cursors,1554,745,25609,39570c,"cmp [bx+0Ch],dx"
+12,player_near_geometry_cursors,1554,748,25612,7e0b,jle short 02F9h
+12,player_near_geometry_cursors,1554,750,25614,ff0ec840,dec word ptr [40C8h]
+12,player_near_geometry_cursors,1554,754,25618,833ec84000,"cmp word ptr [40C8h],0"
+12,player_near_geometry_cursors,1554,759,25623,7fe6,jg short 02DFh
+12,player_near_geometry_cursors,1554,761,25625,833eca4000,"cmp word ptr [40CAh],0"
+12,player_near_geometry_cursors,1554,766,25630,7e60,jle short 0360h
+12,player_near_geometry_cursors,1554,768,25632,8b1eca40,"mov bx,[40CAh]"
+12,player_near_geometry_cursors,1554,772,25636,03db,"add bx,bx"
+12,player_near_geometry_cursors,1554,774,25638,8b9f2a5f,"mov bx,[bx+5F2Ah]"
+12,player_near_geometry_cursors,1554,778,25642,39570c,"cmp [bx+0Ch],dx"
+12,player_near_geometry_cursors,1554,781,25645,7e51,jle short 0360h
+12,player_near_geometry_cursors,1554,783,25647,ff0eca40,dec word ptr [40CAh]
+12,player_near_geometry_cursors,1554,787,25651,833eca4000,"cmp word ptr [40CAh],0"
+12,player_near_geometry_cursors,1554,792,25656,7fe6,jg short 0300h
+12,player_near_geometry_cursors,1554,794,25658,eb44,jmp short 0360h
+12,player_near_geometry_cursors,1554,796,25660,a15a57,"mov ax,[575Ah]"
+12,player_near_geometry_cursors,1554,799,25663,3906c840,"cmp [40C8h],ax"
+12,player_near_geometry_cursors,1554,803,25667,7d19,jge short 033Eh
+12,player_near_geometry_cursors,1554,805,25669,8b1ec840,"mov bx,[40C8h]"
+12,player_near_geometry_cursors,1554,809,25673,03db,"add bx,bx"
+12,player_near_geometry_cursors,1554,811,25675,8b9f925c,"mov bx,[bx+5C92h]"
+12,player_near_geometry_cursors,1554,815,25679,39570c,"cmp [bx+0Ch],dx"
+12,player_near_geometry_cursors,1554,818,25682,7d0a,jge short 033Eh
+12,player_near_geometry_cursors,1554,820,25684,ff06c840,inc word ptr [40C8h]
+12,player_near_geometry_cursors,1554,824,25688,3906c840,"cmp [40C8h],ax"
+12,player_near_geometry_cursors,1554,828,25692,7ce7,jl short 0325h
+12,player_near_geometry_cursors,1554,830,25694,a15c57,"mov ax,[575Ch]"
+12,player_near_geometry_cursors,1554,833,25697,3906ca40,"cmp [40CAh],ax"
+12,player_near_geometry_cursors,1554,837,25701,7d19,jge short 0360h
+12,player_near_geometry_cursors,1554,839,25703,8b1eca40,"mov bx,[40CAh]"
+12,player_near_geometry_cursors,1554,843,25707,03db,"add bx,bx"
+12,player_near_geometry_cursors,1554,845,25709,8b9f2c5f,"mov bx,[bx+5F2Ch]"
+12,player_near_geometry_cursors,1554,849,25713,39570c,"cmp [bx+0Ch],dx"
+12,player_near_geometry_cursors,1554,852,25716,7d0a,jge short 0360h
+12,player_near_geometry_cursors,1554,854,25718,ff06ca40,inc word ptr [40CAh]
+12,player_near_geometry_cursors,1554,858,25722,3906ca40,"cmp [40CAh],ax"
+12,player_near_geometry_cursors,1554,862,25726,7ce7,jl short 0347h
+12,player_near_geometry_cursors,1554,864,25728,a1c240,"mov ax,[40C2h]"
+12,player_near_geometry_cursors,1554,867,25731,394608,"cmp [bp+8],ax"
+12,player_near_geometry_cursors,1554,870,25734,7f4e,jg short 03B6h
+12,player_near_geometry_cursors,1554,872,25736,0f8d9100,jge 03FDh
+12,player_near_geometry_cursors,1554,876,25740,833ec44000,"cmp word ptr [40C4h],0"
+12,player_near_geometry_cursors,1554,881,25745,7e1d,jle short 0390h
+12,player_near_geometry_cursors,1554,883,25747,8b5608,"mov dx,[bp+8]"
+12,player_near_geometry_cursors,1554,886,25750,8b1ec440,"mov bx,[40C4h]"
+12,player_near_geometry_cursors,1554,890,25754,03db,"add bx,bx"
+12,player_near_geometry_cursors,1554,892,25756,8b9f5c57,"mov bx,[bx+575Ch]"
+12,player_near_geometry_cursors,1554,896,25760,39570e,"cmp [bx+0Eh],dx"
+12,player_near_geometry_cursors,1554,899,25763,7e0b,jle short 0390h
+12,player_near_geometry_cursors,1554,901,25765,ff0ec440,dec word ptr [40C4h]
+12,player_near_geometry_cursors,1554,905,25769,833ec44000,"cmp word ptr [40C4h],0"
+12,player_near_geometry_cursors,1554,910,25774,7fe6,jg short 0376h
+12,player_near_geometry_cursors,1554,912,25776,833ec64000,"cmp word ptr [40C6h],0"
+12,player_near_geometry_cursors,1554,917,25781,7e66,jle short 03FDh
+12,player_near_geometry_cursors,1554,919,25783,8b5608,"mov dx,[bp+8]"
+12,player_near_geometry_cursors,1554,922,25786,8b1ec640,"mov bx,[40C6h]"
+12,player_near_geometry_cursors,1554,926,25790,03db,"add bx,bx"
+12,player_near_geometry_cursors,1554,928,25792,8b9ff659,"mov bx,[bx+59F6h]"
+12,player_near_geometry_cursors,1554,932,25796,39570e,"cmp [bx+0Eh],dx"
+12,player_near_geometry_cursors,1554,935,25799,7e54,jle short 03FDh
+12,player_near_geometry_cursors,1554,937,25801,ff0ec640,dec word ptr [40C6h]
+12,player_near_geometry_cursors,1554,941,25805,833ec64000,"cmp word ptr [40C6h],0"
+12,player_near_geometry_cursors,1554,946,25810,7fe6,jg short 039Ah
+12,player_near_geometry_cursors,1554,948,25812,c9,leave
+12,player_near_geometry_cursors,1554,949,25813,cb,ret far
+12,player_near_geometry_cursors,1554,950,25814,8b5608,"mov dx,[bp+8]"
+12,player_near_geometry_cursors,1554,953,25817,a15657,"mov ax,[5756h]"
+12,player_near_geometry_cursors,1554,956,25820,3906c440,"cmp [40C4h],ax"
+12,player_near_geometry_cursors,1554,960,25824,7d19,jge short 03DBh
+12,player_near_geometry_cursors,1554,962,25826,8b1ec440,"mov bx,[40C4h]"
+12,player_near_geometry_cursors,1554,966,25830,03db,"add bx,bx"
+12,player_near_geometry_cursors,1554,968,25832,8b9f5e57,"mov bx,[bx+575Eh]"
+12,player_near_geometry_cursors,1554,972,25836,39570e,"cmp [bx+0Eh],dx"
+12,player_near_geometry_cursors,1554,975,25839,7d0a,jge short 03DBh
+12,player_near_geometry_cursors,1554,977,25841,ff06c440,inc word ptr [40C4h]
+12,player_near_geometry_cursors,1554,981,25845,3906c440,"cmp [40C4h],ax"
+12,player_near_geometry_cursors,1554,985,25849,7ce7,jl short 03C2h
+12,player_near_geometry_cursors,1554,987,25851,a15857,"mov ax,[5758h]"
+12,player_near_geometry_cursors,1554,990,25854,3906c640,"cmp [40C6h],ax"
+12,player_near_geometry_cursors,1554,994,25858,7d19,jge short 03FDh
+12,player_near_geometry_cursors,1554,996,25860,8b1ec640,"mov bx,[40C6h]"
+12,player_near_geometry_cursors,1554,1000,25864,03db,"add bx,bx"
+12,player_near_geometry_cursors,1554,1002,25866,8b9ff859,"mov bx,[bx+59F8h]"
+12,player_near_geometry_cursors,1554,1006,25870,39570e,"cmp [bx+0Eh],dx"
+12,player_near_geometry_cursors,1554,1009,25873,7d0a,jge short 03FDh
+12,player_near_geometry_cursors,1554,1011,25875,ff06c640,inc word ptr [40C6h]
+12,player_near_geometry_cursors,1554,1015,25879,3906c640,"cmp [40C6h],ax"
+12,player_near_geometry_cursors,1554,1019,25883,7ce7,jl short 03E4h
+12,player_near_geometry_cursors,1554,1021,25885,c9,leave
+12,player_near_geometry_cursors,1554,1022,25886,cb,ret far
+12,player_far_actor_cursors,1554,1024,25888,55,push bp
+12,player_far_actor_cursors,1554,1025,25889,8bec,"mov bp,sp"
+12,player_far_actor_cursors,1554,1027,25891,56,push si
+12,player_far_actor_cursors,1554,1028,25892,8b5e06,"mov bx,[bp+6]"
+12,player_far_actor_cursors,1554,1031,25895,391ec040,"cmp [40C0h],bx"
+12,player_far_actor_cursors,1554,1035,25899,7c27,jl short 0434h
+12,player_far_actor_cursors,1554,1037,25901,7e49,jle short 0458h
+12,player_far_actor_cursors,1554,1039,25903,833ecc4000,"cmp word ptr [40CCh],0"
+12,player_far_actor_cursors,1554,1044,25908,7e42,jle short 0458h
+12,player_far_actor_cursors,1554,1046,25910,8b36cc40,"mov si,[40CCh]"
+12,player_far_actor_cursors,1554,1050,25914,c1e602,"shl si,2"
+12,player_far_actor_cursors,1554,1053,25917,c4b46ed4,"les si,[si-2B92h]"
+12,player_far_actor_cursors,1554,1057,25921,26395c10,"cmp es:[si+10h],bx"
+12,player_far_actor_cursors,1554,1061,25925,7e31,jle short 0458h
+12,player_far_actor_cursors,1554,1063,25927,ff0ecc40,dec word ptr [40CCh]
+12,player_far_actor_cursors,1554,1067,25931,833ecc4000,"cmp word ptr [40CCh],0"
+12,player_far_actor_cursors,1554,1072,25936,7fe4,jg short 0416h
+12,player_far_actor_cursors,1554,1074,25938,eb24,jmp short 0458h
+12,player_far_actor_cursors,1554,1076,25940,a170d4,"mov ax,[0D470h]"
+12,player_far_actor_cursors,1554,1079,25943,3906cc40,"cmp [40CCh],ax"
+12,player_far_actor_cursors,1554,1083,25947,7d1b,jge short 0458h
+12,player_far_actor_cursors,1554,1085,25949,8b36cc40,"mov si,[40CCh]"
+12,player_far_actor_cursors,1554,1089,25953,c1e602,"shl si,2"
+12,player_far_actor_cursors,1554,1092,25956,c4b472d4,"les si,[si-2B8Eh]"
+12,player_far_actor_cursors,1554,1096,25960,26395c10,"cmp es:[si+10h],bx"
+12,player_far_actor_cursors,1554,1100,25964,7d0a,jge short 0458h
+12,player_far_actor_cursors,1554,1102,25966,ff06cc40,inc word ptr [40CCh]
+12,player_far_actor_cursors,1554,1106,25970,3906cc40,"cmp [40CCh],ax"
+12,player_far_actor_cursors,1554,1110,25974,7ce5,jl short 043Dh
+12,player_far_actor_cursors,1554,1112,25976,a1c240,"mov ax,[40C2h]"
+12,player_far_actor_cursors,1554,1115,25979,394608,"cmp [bp+8],ax"
+12,player_far_actor_cursors,1554,1118,25982,7f2c,jg short 048Ch
+12,player_far_actor_cursors,1554,1120,25984,7d51,jge short 04B3h
+12,player_far_actor_cursors,1554,1122,25986,833ece4000,"cmp word ptr [40CEh],0"
+12,player_far_actor_cursors,1554,1127,25991,7e4a,jle short 04B3h
+12,player_far_actor_cursors,1554,1129,25993,8b5e08,"mov bx,[bp+8]"
+12,player_far_actor_cursors,1554,1132,25996,8b36ce40,"mov si,[40CEh]"
+12,player_far_actor_cursors,1554,1136,26000,c1e602,"shl si,2"
+12,player_far_actor_cursors,1554,1139,26003,c4b4e6d9,"les si,[si-261Ah]"
+12,player_far_actor_cursors,1554,1143,26007,26395c12,"cmp es:[si+12h],bx"
+12,player_far_actor_cursors,1554,1147,26011,7e36,jle short 04B3h
+12,player_far_actor_cursors,1554,1149,26013,ff0ece40,dec word ptr [40CEh]
+12,player_far_actor_cursors,1554,1153,26017,833ece4000,"cmp word ptr [40CEh],0"
+12,player_far_actor_cursors,1554,1158,26022,7fe4,jg short 046Ch
+12,player_far_actor_cursors,1554,1160,26024,5e,pop si
+12,player_far_actor_cursors,1554,1161,26025,c9,leave
+12,player_far_actor_cursors,1554,1162,26026,cb,ret far
+12,player_far_actor_cursors,1554,1164,26028,a170d4,"mov ax,[0D470h]"
+12,player_far_actor_cursors,1554,1167,26031,3906ce40,"cmp [40CEh],ax"
+12,player_far_actor_cursors,1554,1171,26035,7d1e,jge short 04B3h
+12,player_far_actor_cursors,1554,1173,26037,8b5e08,"mov bx,[bp+8]"
+12,player_far_actor_cursors,1554,1176,26040,8b36ce40,"mov si,[40CEh]"
+12,player_far_actor_cursors,1554,1180,26044,c1e602,"shl si,2"
+12,player_far_actor_cursors,1554,1183,26047,c4b4ead9,"les si,[si-2616h]"
+12,player_far_actor_cursors,1554,1187,26051,26395c12,"cmp es:[si+12h],bx"
+12,player_far_actor_cursors,1554,1191,26055,7d0a,jge short 04B3h
+12,player_far_actor_cursors,1554,1193,26057,ff06ce40,inc word ptr [40CEh]
+12,player_far_actor_cursors,1554,1197,26061,3906ce40,"cmp [40CEh],ax"
+12,player_far_actor_cursors,1554,1201,26065,7ce5,jl short 0498h
+12,player_far_actor_cursors,1554,1203,26067,5e,pop si
+12,player_far_actor_cursors,1554,1204,26068,c9,leave
+12,player_far_actor_cursors,1554,1205,26069,cb,ret far
+12,player_position_commit,1554,1310,26174,c8040000,"enter 4,0"
+12,player_position_commit,1554,1314,26178,57,push di
+12,player_position_commit,1554,1315,26179,56,push si
+12,player_position_commit,1554,1316,26180,8b7e06,"mov di,[bp+6]"
+12,player_position_commit,1554,1319,26183,8b7608,"mov si,[bp+8]"
+12,player_position_commit,1554,1322,26186,666a07,data32 push 7
+12,player_position_commit,1554,1325,26189,9a04141808,"call far 1404h,0818h"
+12,player_position_commit,1554,1330,26194,83c404,"add sp,4"
+12,player_position_commit,1554,1333,26197,56,push si
+12,player_position_commit,1554,1334,26198,57,push di
+12,player_position_commit,1554,1335,26199,0e,push cs
+12,player_position_commit,1554,1336,26200,e88dfd,call 02C8h
+12,player_position_commit,1554,1339,26203,83c404,"add sp,4"
+12,player_position_commit,1554,1342,26206,56,push si
+12,player_position_commit,1554,1343,26207,57,push di
+12,player_position_commit,1554,1344,26208,0e,push cs
+12,player_position_commit,1554,1345,26209,e8bcfe,call 0400h
+12,player_position_commit,1554,1348,26212,83c404,"add sp,4"
+12,player_position_commit,1554,1351,26215,893ec040,"mov [40C0h],di"
+12,player_position_commit,1554,1355,26219,8936c240,"mov [40C2h],si"
+12,player_position_commit,1554,1359,26223,c1ff06,"sar di,6"
+12,player_position_commit,1554,1362,26226,c1fe06,"sar si,6"
+12,player_position_commit,1554,1365,26229,3b3ebc40,"cmp di,[40BCh]"
+12,player_position_commit,1554,1369,26233,7507,jne short 0562h
+12,player_position_commit,1554,1371,26235,a1be40,"mov ax,[40BEh]"
+12,player_position_commit,1554,1374,26238,3bf0,"cmp si,ax"
+12,player_position_commit,1554,1376,26240,7412,je short 0574h
+12,player_position_commit,1554,1378,26242,893ebc40,"mov [40BCh],di"
+12,player_position_commit,1554,1382,26246,8936be40,"mov [40BEh],si"
+12,player_position_commit,1554,1386,26250,6a16,push 16h
+12,player_position_commit,1554,1388,26252,9ac6051808,"call far 05C6h,0818h"
+12,player_position_commit,1554,1393,26257,83c402,"add sp,2"
+12,player_position_commit,1554,1396,26260,a1be40,"mov ax,[40BEh]"
+12,player_position_commit,1554,1399,26263,c1e006,"shl ax,6"
+12,player_position_commit,1554,1402,26266,0306bc40,"add ax,[40BCh]"
+12,player_position_commit,1554,1406,26270,03c0,"add ax,ax"
+12,player_position_commit,1554,1408,26272,053e37,"add ax,373Eh"
+12,player_position_commit,1554,1411,26275,b9271e,"mov cx,1E27h"
+12,player_position_commit,1554,1414,26278,a3d840,"mov [40D8h],ax"
+12,player_position_commit,1554,1417,26281,890eda40,"mov [40DAh],cx"
+12,player_position_commit,1554,1421,26285,51,push cx
+12,player_position_commit,1554,1422,26286,50,push ax
+12,player_position_commit,1554,1423,26287,9a7c01f600,"call far 017Ch,00F6h"
+12,player_position_commit,1554,1428,26292,83c404,"add sp,4"
+12,player_position_commit,1554,1431,26295,8bf0,"mov si,ax"
+12,player_position_commit,1554,1433,26297,83feff,"cmp si,0FFFFh"
+12,player_position_commit,1554,1436,26300,7403,je short 05A1h
+12,player_position_commit,1554,1438,26302,a2e440,"mov [40E4h],al"
+12,player_position_commit,1554,1441,26305,5e,pop si
+12,player_position_commit,1554,1442,26306,5f,pop di
+12,player_position_commit,1554,1443,26307,c9,leave
+12,player_position_commit,1554,1444,26308,cb,ret far
+12,player_position_reindex,1554,1492,26356,57,push di
+12,player_position_reindex,1554,1493,26357,56,push si
+12,player_position_reindex,1554,1494,26358,8b3ec040,"mov di,[40C0h]"
+12,player_position_reindex,1554,1498,26362,8b36c240,"mov si,[40C2h]"
+12,player_position_reindex,1554,1502,26366,6633c0,"xor eax,eax"
+12,player_position_reindex,1554,1505,26369,66a3c040,"mov [40C0h],eax"
+12,player_position_reindex,1554,1509,26373,66a3c840,"mov [40C8h],eax"
+12,player_position_reindex,1554,1513,26377,66a3c440,"mov [40C4h],eax"
+12,player_position_reindex,1554,1517,26381,66a3cc40,"mov [40CCh],eax"
+12,player_position_reindex,1554,1521,26385,56,push si
+12,player_position_reindex,1554,1522,26386,57,push di
+12,player_position_reindex,1554,1523,26387,0e,push cs
+12,player_position_reindex,1554,1524,26388,e827ff,call 051Eh
+12,player_position_reindex,1554,1527,26391,83c404,"add sp,4"
+12,player_position_reindex,1554,1530,26394,5e,pop si
+12,player_position_reindex,1554,1531,26395,5f,pop di
+12,player_position_reindex,1554,1532,26396,cb,ret far
+12,terrain_kind_search,246,10,3946,55,push bp
+12,terrain_kind_search,246,11,3947,8bec,"mov bp,sp"
+12,terrain_kind_search,246,13,3949,2aff,"sub bh,bh"
+12,terrain_kind_search,246,15,3951,8a5e08,"mov bl,[bp+8]"
+12,terrain_kind_search,246,18,3954,81fb0001,"cmp bx,100h"
+12,terrain_kind_search,246,22,3958,7d14,jge short 002Ch
+12,terrain_kind_search,246,24,3960,8b4e06,"mov cx,[bp+6]"
+12,terrain_kind_search,246,27,3963,8a876ad2,"mov al,[bx-2D96h]"
+12,terrain_kind_search,246,31,3967,2ae4,"sub ah,ah"
+12,terrain_kind_search,246,33,3969,3bc1,"cmp ax,cx"
+12,terrain_kind_search,246,35,3971,741f,je short 0044h
+12,terrain_kind_search,246,37,3973,43,inc bx
+12,terrain_kind_search,246,38,3974,81fb0001,"cmp bx,100h"
+12,terrain_kind_search,246,42,3978,7cef,jl short 001Bh
+12,terrain_kind_search,246,44,3980,33db,"xor bx,bx"
+12,terrain_kind_search,246,46,3982,8b4e06,"mov cx,[bp+6]"
+12,terrain_kind_search,246,49,3985,8a876ad2,"mov al,[bx-2D96h]"
+12,terrain_kind_search,246,53,3989,2ae4,"sub ah,ah"
+12,terrain_kind_search,246,55,3991,3bc1,"cmp ax,cx"
+12,terrain_kind_search,246,57,3993,7409,je short 0044h
+12,terrain_kind_search,246,59,3995,43,inc bx
+12,terrain_kind_search,246,60,3996,81fb0001,"cmp bx,100h"
+12,terrain_kind_search,246,64,4000,7cef,jl short 0031h
+12,terrain_kind_search,246,66,4002,eb04,jmp short 0048h
+12,terrain_kind_search,246,68,4004,8bc3,"mov ax,bx"
+12,terrain_kind_search,246,70,4006,c9,leave
+12,terrain_kind_search,246,71,4007,cb,ret far
+12,terrain_kind_search,246,72,4008,51,push cx
+12,terrain_kind_search,246,73,4009,68da00,push 0DAh
+12,terrain_kind_search,246,76,4012,9a02008f0f,"call far 2,0F8Fh"
+12,terrain_kind_search,246,81,4017,c9,leave
+12,terrain_kind_search,246,82,4018,cb,ret far
+12,terrain_kind44_variant,246,380,4316,c8020000,"enter 2,0"
+12,terrain_kind44_variant,246,384,4320,803e3e2600,"cmp byte ptr [263Eh],0"
+12,terrain_kind44_variant,246,389,4325,750d,jne short 0194h
+12,terrain_kind44_variant,246,391,4327,666a44,data32 push 44h
+12,terrain_kind44_variant,246,394,4330,0e,push cs
+12,terrain_kind44_variant,246,395,4331,e87cfe,call 000Ah
+12,terrain_kind44_variant,246,398,4334,83c404,"add sp,4"
+12,terrain_kind44_variant,246,401,4337,a23e26,"mov [263Eh],al"
+12,terrain_kind44_variant,246,404,4340,c45e06,"les bx,[bp+6]"
+12,terrain_kind44_variant,246,407,4343,268a1f,"mov bl,es:[bx]"
+12,terrain_kind44_variant,246,410,4346,2aff,"sub bh,bh"
+12,terrain_kind44_variant,246,412,4348,80bf6ad244,"cmp byte ptr [bx-2D96h],44h"
+12,terrain_kind44_variant,246,417,4353,750f,jne short 01B2h
+12,terrain_kind44_variant,246,419,4355,8ac3,"mov al,bl"
+12,terrain_kind44_variant,246,421,4357,2ae4,"sub ah,ah"
+12,terrain_kind44_variant,246,423,4359,8a0e3e26,"mov cl,[263Eh]"
+12,terrain_kind44_variant,246,427,4363,2aed,"sub ch,ch"
+12,terrain_kind44_variant,246,429,4365,2bc1,"sub ax,cx"
+12,terrain_kind44_variant,246,431,4367,c9,leave
+12,terrain_kind44_variant,246,432,4368,cb,ret far
+12,terrain_kind44_variant,246,434,4370,b8ffff,"mov ax,0FFFFh"
+12,terrain_kind44_variant,246,437,4373,c9,leave
+12,terrain_kind44_variant,246,438,4374,cb,ret far
+15,player_near_geometry_cursors,1559,710,25654,55,push bp
+15,player_near_geometry_cursors,1559,711,25655,8bec,"mov bp,sp"
+15,player_near_geometry_cursors,1559,713,25657,8b5606,"mov dx,[bp+6]"
+15,player_near_geometry_cursors,1559,716,25660,39169040,"cmp [4090h],dx"
+15,player_near_geometry_cursors,1559,720,25664,7c48,jl short 031Ah
+15,player_near_geometry_cursors,1559,722,25666,0f8e8800,jle 035Eh
+15,player_near_geometry_cursors,1559,726,25670,833e984000,"cmp word ptr [4098h],0"
+15,player_near_geometry_cursors,1559,731,25675,7e1a,jle short 02F7h
+15,player_near_geometry_cursors,1559,733,25677,8b1e9840,"mov bx,[4098h]"
+15,player_near_geometry_cursors,1559,737,25681,03db,"add bx,bx"
+15,player_near_geometry_cursors,1559,739,25683,8b9f605c,"mov bx,[bx+5C60h]"
+15,player_near_geometry_cursors,1559,743,25687,39570c,"cmp [bx+0Ch],dx"
+15,player_near_geometry_cursors,1559,746,25690,7e0b,jle short 02F7h
+15,player_near_geometry_cursors,1559,748,25692,ff0e9840,dec word ptr [4098h]
+15,player_near_geometry_cursors,1559,752,25696,833e984000,"cmp word ptr [4098h],0"
+15,player_near_geometry_cursors,1559,757,25701,7fe6,jg short 02DDh
+15,player_near_geometry_cursors,1559,759,25703,833e9a4000,"cmp word ptr [409Ah],0"
+15,player_near_geometry_cursors,1559,764,25708,7e60,jle short 035Eh
+15,player_near_geometry_cursors,1559,766,25710,8b1e9a40,"mov bx,[409Ah]"
+15,player_near_geometry_cursors,1559,770,25714,03db,"add bx,bx"
+15,player_near_geometry_cursors,1559,772,25716,8b9ffa5e,"mov bx,[bx+5EFAh]"
+15,player_near_geometry_cursors,1559,776,25720,39570c,"cmp [bx+0Ch],dx"
+15,player_near_geometry_cursors,1559,779,25723,7e51,jle short 035Eh
+15,player_near_geometry_cursors,1559,781,25725,ff0e9a40,dec word ptr [409Ah]
+15,player_near_geometry_cursors,1559,785,25729,833e9a4000,"cmp word ptr [409Ah],0"
+15,player_near_geometry_cursors,1559,790,25734,7fe6,jg short 02FEh
+15,player_near_geometry_cursors,1559,792,25736,eb44,jmp short 035Eh
+15,player_near_geometry_cursors,1559,794,25738,a12a57,"mov ax,[572Ah]"
+15,player_near_geometry_cursors,1559,797,25741,39069840,"cmp [4098h],ax"
+15,player_near_geometry_cursors,1559,801,25745,7d19,jge short 033Ch
+15,player_near_geometry_cursors,1559,803,25747,8b1e9840,"mov bx,[4098h]"
+15,player_near_geometry_cursors,1559,807,25751,03db,"add bx,bx"
+15,player_near_geometry_cursors,1559,809,25753,8b9f625c,"mov bx,[bx+5C62h]"
+15,player_near_geometry_cursors,1559,813,25757,39570c,"cmp [bx+0Ch],dx"
+15,player_near_geometry_cursors,1559,816,25760,7d0a,jge short 033Ch
+15,player_near_geometry_cursors,1559,818,25762,ff069840,inc word ptr [4098h]
+15,player_near_geometry_cursors,1559,822,25766,39069840,"cmp [4098h],ax"
+15,player_near_geometry_cursors,1559,826,25770,7ce7,jl short 0323h
+15,player_near_geometry_cursors,1559,828,25772,a12c57,"mov ax,[572Ch]"
+15,player_near_geometry_cursors,1559,831,25775,39069a40,"cmp [409Ah],ax"
+15,player_near_geometry_cursors,1559,835,25779,7d19,jge short 035Eh
+15,player_near_geometry_cursors,1559,837,25781,8b1e9a40,"mov bx,[409Ah]"
+15,player_near_geometry_cursors,1559,841,25785,03db,"add bx,bx"
+15,player_near_geometry_cursors,1559,843,25787,8b9ffc5e,"mov bx,[bx+5EFCh]"
+15,player_near_geometry_cursors,1559,847,25791,39570c,"cmp [bx+0Ch],dx"
+15,player_near_geometry_cursors,1559,850,25794,7d0a,jge short 035Eh
+15,player_near_geometry_cursors,1559,852,25796,ff069a40,inc word ptr [409Ah]
+15,player_near_geometry_cursors,1559,856,25800,39069a40,"cmp [409Ah],ax"
+15,player_near_geometry_cursors,1559,860,25804,7ce7,jl short 0345h
+15,player_near_geometry_cursors,1559,862,25806,a19240,"mov ax,[4092h]"
+15,player_near_geometry_cursors,1559,865,25809,394608,"cmp [bp+8],ax"
+15,player_near_geometry_cursors,1559,868,25812,7f4e,jg short 03B4h
+15,player_near_geometry_cursors,1559,870,25814,0f8d9100,jge 03FBh
+15,player_near_geometry_cursors,1559,874,25818,833e944000,"cmp word ptr [4094h],0"
+15,player_near_geometry_cursors,1559,879,25823,7e1d,jle short 038Eh
+15,player_near_geometry_cursors,1559,881,25825,8b5608,"mov dx,[bp+8]"
+15,player_near_geometry_cursors,1559,884,25828,8b1e9440,"mov bx,[4094h]"
+15,player_near_geometry_cursors,1559,888,25832,03db,"add bx,bx"
+15,player_near_geometry_cursors,1559,890,25834,8b9f2c57,"mov bx,[bx+572Ch]"
+15,player_near_geometry_cursors,1559,894,25838,39570e,"cmp [bx+0Eh],dx"
+15,player_near_geometry_cursors,1559,897,25841,7e0b,jle short 038Eh
+15,player_near_geometry_cursors,1559,899,25843,ff0e9440,dec word ptr [4094h]
+15,player_near_geometry_cursors,1559,903,25847,833e944000,"cmp word ptr [4094h],0"
+15,player_near_geometry_cursors,1559,908,25852,7fe6,jg short 0374h
+15,player_near_geometry_cursors,1559,910,25854,833e964000,"cmp word ptr [4096h],0"
+15,player_near_geometry_cursors,1559,915,25859,7e66,jle short 03FBh
+15,player_near_geometry_cursors,1559,917,25861,8b5608,"mov dx,[bp+8]"
+15,player_near_geometry_cursors,1559,920,25864,8b1e9640,"mov bx,[4096h]"
+15,player_near_geometry_cursors,1559,924,25868,03db,"add bx,bx"
+15,player_near_geometry_cursors,1559,926,25870,8b9fc659,"mov bx,[bx+59C6h]"
+15,player_near_geometry_cursors,1559,930,25874,39570e,"cmp [bx+0Eh],dx"
+15,player_near_geometry_cursors,1559,933,25877,7e54,jle short 03FBh
+15,player_near_geometry_cursors,1559,935,25879,ff0e9640,dec word ptr [4096h]
+15,player_near_geometry_cursors,1559,939,25883,833e964000,"cmp word ptr [4096h],0"
+15,player_near_geometry_cursors,1559,944,25888,7fe6,jg short 0398h
+15,player_near_geometry_cursors,1559,946,25890,c9,leave
+15,player_near_geometry_cursors,1559,947,25891,cb,ret far
+15,player_near_geometry_cursors,1559,948,25892,8b5608,"mov dx,[bp+8]"
+15,player_near_geometry_cursors,1559,951,25895,a12657,"mov ax,[5726h]"
+15,player_near_geometry_cursors,1559,954,25898,39069440,"cmp [4094h],ax"
+15,player_near_geometry_cursors,1559,958,25902,7d19,jge short 03D9h
+15,player_near_geometry_cursors,1559,960,25904,8b1e9440,"mov bx,[4094h]"
+15,player_near_geometry_cursors,1559,964,25908,03db,"add bx,bx"
+15,player_near_geometry_cursors,1559,966,25910,8b9f2e57,"mov bx,[bx+572Eh]"
+15,player_near_geometry_cursors,1559,970,25914,39570e,"cmp [bx+0Eh],dx"
+15,player_near_geometry_cursors,1559,973,25917,7d0a,jge short 03D9h
+15,player_near_geometry_cursors,1559,975,25919,ff069440,inc word ptr [4094h]
+15,player_near_geometry_cursors,1559,979,25923,39069440,"cmp [4094h],ax"
+15,player_near_geometry_cursors,1559,983,25927,7ce7,jl short 03C0h
+15,player_near_geometry_cursors,1559,985,25929,a12857,"mov ax,[5728h]"
+15,player_near_geometry_cursors,1559,988,25932,39069640,"cmp [4096h],ax"
+15,player_near_geometry_cursors,1559,992,25936,7d19,jge short 03FBh
+15,player_near_geometry_cursors,1559,994,25938,8b1e9640,"mov bx,[4096h]"
+15,player_near_geometry_cursors,1559,998,25942,03db,"add bx,bx"
+15,player_near_geometry_cursors,1559,1000,25944,8b9fc859,"mov bx,[bx+59C8h]"
+15,player_near_geometry_cursors,1559,1004,25948,39570e,"cmp [bx+0Eh],dx"
+15,player_near_geometry_cursors,1559,1007,25951,7d0a,jge short 03FBh
+15,player_near_geometry_cursors,1559,1009,25953,ff069640,inc word ptr [4096h]
+15,player_near_geometry_cursors,1559,1013,25957,39069640,"cmp [4096h],ax"
+15,player_near_geometry_cursors,1559,1017,25961,7ce7,jl short 03E2h
+15,player_near_geometry_cursors,1559,1019,25963,c9,leave
+15,player_near_geometry_cursors,1559,1020,25964,cb,ret far
+15,player_far_actor_cursors,1559,1022,25966,55,push bp
+15,player_far_actor_cursors,1559,1023,25967,8bec,"mov bp,sp"
+15,player_far_actor_cursors,1559,1025,25969,56,push si
+15,player_far_actor_cursors,1559,1026,25970,8b5e06,"mov bx,[bp+6]"
+15,player_far_actor_cursors,1559,1029,25973,391e9040,"cmp [4090h],bx"
+15,player_far_actor_cursors,1559,1033,25977,7c27,jl short 0432h
+15,player_far_actor_cursors,1559,1035,25979,7e49,jle short 0456h
+15,player_far_actor_cursors,1559,1037,25981,833e9c4000,"cmp word ptr [409Ch],0"
+15,player_far_actor_cursors,1559,1042,25986,7e42,jle short 0456h
+15,player_far_actor_cursors,1559,1044,25988,8b369c40,"mov si,[409Ch]"
+15,player_far_actor_cursors,1559,1048,25992,c1e602,"shl si,2"
+15,player_far_actor_cursors,1559,1051,25995,c4b43ed4,"les si,[si-2BC2h]"
+15,player_far_actor_cursors,1559,1055,25999,26395c10,"cmp es:[si+10h],bx"
+15,player_far_actor_cursors,1559,1059,26003,7e31,jle short 0456h
+15,player_far_actor_cursors,1559,1061,26005,ff0e9c40,dec word ptr [409Ch]
+15,player_far_actor_cursors,1559,1065,26009,833e9c4000,"cmp word ptr [409Ch],0"
+15,player_far_actor_cursors,1559,1070,26014,7fe4,jg short 0414h
+15,player_far_actor_cursors,1559,1072,26016,eb24,jmp short 0456h
+15,player_far_actor_cursors,1559,1074,26018,a140d4,"mov ax,[0D440h]"
+15,player_far_actor_cursors,1559,1077,26021,39069c40,"cmp [409Ch],ax"
+15,player_far_actor_cursors,1559,1081,26025,7d1b,jge short 0456h
+15,player_far_actor_cursors,1559,1083,26027,8b369c40,"mov si,[409Ch]"
+15,player_far_actor_cursors,1559,1087,26031,c1e602,"shl si,2"
+15,player_far_actor_cursors,1559,1090,26034,c4b442d4,"les si,[si-2BBEh]"
+15,player_far_actor_cursors,1559,1094,26038,26395c10,"cmp es:[si+10h],bx"
+15,player_far_actor_cursors,1559,1098,26042,7d0a,jge short 0456h
+15,player_far_actor_cursors,1559,1100,26044,ff069c40,inc word ptr [409Ch]
+15,player_far_actor_cursors,1559,1104,26048,39069c40,"cmp [409Ch],ax"
+15,player_far_actor_cursors,1559,1108,26052,7ce5,jl short 043Bh
+15,player_far_actor_cursors,1559,1110,26054,a19240,"mov ax,[4092h]"
+15,player_far_actor_cursors,1559,1113,26057,394608,"cmp [bp+8],ax"
+15,player_far_actor_cursors,1559,1116,26060,7f2c,jg short 048Ah
+15,player_far_actor_cursors,1559,1118,26062,7d51,jge short 04B1h
+15,player_far_actor_cursors,1559,1120,26064,833e9e4000,"cmp word ptr [409Eh],0"
+15,player_far_actor_cursors,1559,1125,26069,7e4a,jle short 04B1h
+15,player_far_actor_cursors,1559,1127,26071,8b5e08,"mov bx,[bp+8]"
+15,player_far_actor_cursors,1559,1130,26074,8b369e40,"mov si,[409Eh]"
+15,player_far_actor_cursors,1559,1134,26078,c1e602,"shl si,2"
+15,player_far_actor_cursors,1559,1137,26081,c4b4b6d9,"les si,[si-264Ah]"
+15,player_far_actor_cursors,1559,1141,26085,26395c12,"cmp es:[si+12h],bx"
+15,player_far_actor_cursors,1559,1145,26089,7e36,jle short 04B1h
+15,player_far_actor_cursors,1559,1147,26091,ff0e9e40,dec word ptr [409Eh]
+15,player_far_actor_cursors,1559,1151,26095,833e9e4000,"cmp word ptr [409Eh],0"
+15,player_far_actor_cursors,1559,1156,26100,7fe4,jg short 046Ah
+15,player_far_actor_cursors,1559,1158,26102,5e,pop si
+15,player_far_actor_cursors,1559,1159,26103,c9,leave
+15,player_far_actor_cursors,1559,1160,26104,cb,ret far
+15,player_far_actor_cursors,1559,1162,26106,a140d4,"mov ax,[0D440h]"
+15,player_far_actor_cursors,1559,1165,26109,39069e40,"cmp [409Eh],ax"
+15,player_far_actor_cursors,1559,1169,26113,7d1e,jge short 04B1h
+15,player_far_actor_cursors,1559,1171,26115,8b5e08,"mov bx,[bp+8]"
+15,player_far_actor_cursors,1559,1174,26118,8b369e40,"mov si,[409Eh]"
+15,player_far_actor_cursors,1559,1178,26122,c1e602,"shl si,2"
+15,player_far_actor_cursors,1559,1181,26125,c4b4bad9,"les si,[si-2646h]"
+15,player_far_actor_cursors,1559,1185,26129,26395c12,"cmp es:[si+12h],bx"
+15,player_far_actor_cursors,1559,1189,26133,7d0a,jge short 04B1h
+15,player_far_actor_cursors,1559,1191,26135,ff069e40,inc word ptr [409Eh]
+15,player_far_actor_cursors,1559,1195,26139,39069e40,"cmp [409Eh],ax"
+15,player_far_actor_cursors,1559,1199,26143,7ce5,jl short 0496h
+15,player_far_actor_cursors,1559,1201,26145,5e,pop si
+15,player_far_actor_cursors,1559,1202,26146,c9,leave
+15,player_far_actor_cursors,1559,1203,26147,cb,ret far
+15,player_position_commit,1559,1308,26252,c8040000,"enter 4,0"
+15,player_position_commit,1559,1312,26256,57,push di
+15,player_position_commit,1559,1313,26257,56,push si
+15,player_position_commit,1559,1314,26258,8b7e06,"mov di,[bp+6]"
+15,player_position_commit,1559,1317,26261,8b7608,"mov si,[bp+8]"
+15,player_position_commit,1559,1320,26264,666a07,data32 push 7
+15,player_position_commit,1559,1323,26267,9a42141c08,"call far 1442h,081Ch"
+15,player_position_commit,1559,1328,26272,83c404,"add sp,4"
+15,player_position_commit,1559,1331,26275,56,push si
+15,player_position_commit,1559,1332,26276,57,push di
+15,player_position_commit,1559,1333,26277,0e,push cs
+15,player_position_commit,1559,1334,26278,e88dfd,call 02C6h
+15,player_position_commit,1559,1337,26281,83c404,"add sp,4"
+15,player_position_commit,1559,1340,26284,56,push si
+15,player_position_commit,1559,1341,26285,57,push di
+15,player_position_commit,1559,1342,26286,0e,push cs
+15,player_position_commit,1559,1343,26287,e8bcfe,call 03FEh
+15,player_position_commit,1559,1346,26290,83c404,"add sp,4"
+15,player_position_commit,1559,1349,26293,893e9040,"mov [4090h],di"
+15,player_position_commit,1559,1353,26297,89369240,"mov [4092h],si"
+15,player_position_commit,1559,1357,26301,c1ff06,"sar di,6"
+15,player_position_commit,1559,1360,26304,c1fe06,"sar si,6"
+15,player_position_commit,1559,1363,26307,3b3e8c40,"cmp di,[408Ch]"
+15,player_position_commit,1559,1367,26311,7507,jne short 0560h
+15,player_position_commit,1559,1369,26313,a18e40,"mov ax,[408Eh]"
+15,player_position_commit,1559,1372,26316,3bf0,"cmp si,ax"
+15,player_position_commit,1559,1374,26318,7412,je short 0572h
+15,player_position_commit,1559,1376,26320,893e8c40,"mov [408Ch],di"
+15,player_position_commit,1559,1380,26324,89368e40,"mov [408Eh],si"
+15,player_position_commit,1559,1384,26328,6a16,push 16h
+15,player_position_commit,1559,1386,26330,9ad8051c08,"call far 05D8h,081Ch"
+15,player_position_commit,1559,1391,26335,83c402,"add sp,2"
+15,player_position_commit,1559,1394,26338,a18e40,"mov ax,[408Eh]"
+15,player_position_commit,1559,1397,26341,c1e006,"shl ax,6"
+15,player_position_commit,1559,1400,26344,03068c40,"add ax,[408Ch]"
+15,player_position_commit,1559,1404,26348,03c0,"add ax,ax"
+15,player_position_commit,1559,1406,26350,053e37,"add ax,373Eh"
+15,player_position_commit,1559,1409,26353,b9d621,"mov cx,21D6h"
+15,player_position_commit,1559,1412,26356,a3a840,"mov [40A8h],ax"
+15,player_position_commit,1559,1415,26359,890eaa40,"mov [40AAh],cx"
+15,player_position_commit,1559,1419,26363,51,push cx
+15,player_position_commit,1559,1420,26364,50,push ax
+15,player_position_commit,1559,1421,26365,9a7601f700,"call far 0176h,00F7h"
+15,player_position_commit,1559,1426,26370,83c404,"add sp,4"
+15,player_position_commit,1559,1429,26373,8bf0,"mov si,ax"
+15,player_position_commit,1559,1431,26375,83feff,"cmp si,0FFFFh"
+15,player_position_commit,1559,1434,26378,7403,je short 059Fh
+15,player_position_commit,1559,1436,26380,a2b440,"mov [40B4h],al"
+15,player_position_commit,1559,1439,26383,5e,pop si
+15,player_position_commit,1559,1440,26384,5f,pop di
+15,player_position_commit,1559,1441,26385,c9,leave
+15,player_position_commit,1559,1442,26386,cb,ret far
+15,player_position_reindex,1559,1490,26434,57,push di
+15,player_position_reindex,1559,1491,26435,56,push si
+15,player_position_reindex,1559,1492,26436,8b3e9040,"mov di,[4090h]"
+15,player_position_reindex,1559,1496,26440,8b369240,"mov si,[4092h]"
+15,player_position_reindex,1559,1500,26444,6633c0,"xor eax,eax"
+15,player_position_reindex,1559,1503,26447,66a39040,"mov [4090h],eax"
+15,player_position_reindex,1559,1507,26451,66a39840,"mov [4098h],eax"
+15,player_position_reindex,1559,1511,26455,66a39440,"mov [4094h],eax"
+15,player_position_reindex,1559,1515,26459,66a39c40,"mov [409Ch],eax"
+15,player_position_reindex,1559,1519,26463,56,push si
+15,player_position_reindex,1559,1520,26464,57,push di
+15,player_position_reindex,1559,1521,26465,0e,push cs
+15,player_position_reindex,1559,1522,26466,e827ff,call 051Ch
+15,player_position_reindex,1559,1525,26469,83c404,"add sp,4"
+15,player_position_reindex,1559,1528,26472,5e,pop si
+15,player_position_reindex,1559,1529,26473,5f,pop di
+15,player_position_reindex,1559,1530,26474,cb,ret far
+15,terrain_kind_search,247,4,3956,55,push bp
+15,terrain_kind_search,247,5,3957,8bec,"mov bp,sp"
+15,terrain_kind_search,247,7,3959,2aff,"sub bh,bh"
+15,terrain_kind_search,247,9,3961,8a5e08,"mov bl,[bp+8]"
+15,terrain_kind_search,247,12,3964,81fb0001,"cmp bx,100h"
+15,terrain_kind_search,247,16,3968,7d14,jge short 0026h
+15,terrain_kind_search,247,18,3970,8b4e06,"mov cx,[bp+6]"
+15,terrain_kind_search,247,21,3973,8a873ad2,"mov al,[bx-2DC6h]"
+15,terrain_kind_search,247,25,3977,2ae4,"sub ah,ah"
+15,terrain_kind_search,247,27,3979,3bc1,"cmp ax,cx"
+15,terrain_kind_search,247,29,3981,741f,je short 003Eh
+15,terrain_kind_search,247,31,3983,43,inc bx
+15,terrain_kind_search,247,32,3984,81fb0001,"cmp bx,100h"
+15,terrain_kind_search,247,36,3988,7cef,jl short 0015h
+15,terrain_kind_search,247,38,3990,33db,"xor bx,bx"
+15,terrain_kind_search,247,40,3992,8b4e06,"mov cx,[bp+6]"
+15,terrain_kind_search,247,43,3995,8a873ad2,"mov al,[bx-2DC6h]"
+15,terrain_kind_search,247,47,3999,2ae4,"sub ah,ah"
+15,terrain_kind_search,247,49,4001,3bc1,"cmp ax,cx"
+15,terrain_kind_search,247,51,4003,7409,je short 003Eh
+15,terrain_kind_search,247,53,4005,43,inc bx
+15,terrain_kind_search,247,54,4006,81fb0001,"cmp bx,100h"
+15,terrain_kind_search,247,58,4010,7cef,jl short 002Bh
+15,terrain_kind_search,247,60,4012,eb04,jmp short 0042h
+15,terrain_kind_search,247,62,4014,8bc3,"mov ax,bx"
+15,terrain_kind_search,247,64,4016,c9,leave
+15,terrain_kind_search,247,65,4017,cb,ret far
+15,terrain_kind_search,247,66,4018,51,push cx
+15,terrain_kind_search,247,67,4019,68da00,push 0DAh
+15,terrain_kind_search,247,70,4022,9a0000940f,"call far 0,0F94h"
+15,terrain_kind_search,247,75,4027,c9,leave
+15,terrain_kind_search,247,76,4028,cb,ret far
+15,terrain_kind44_variant,247,374,4326,c8020000,"enter 2,0"
+15,terrain_kind44_variant,247,378,4330,a19661,"mov ax,[6196h]"
+15,terrain_kind44_variant,247,381,4333,39062a01,"cmp [12Ah],ax"
+15,terrain_kind44_variant,247,385,4337,7410,je short 0193h
+15,terrain_kind44_variant,247,387,4339,a32a01,"mov [12Ah],ax"
+15,terrain_kind44_variant,247,390,4342,666a44,data32 push 44h
+15,terrain_kind44_variant,247,393,4345,0e,push cs
+15,terrain_kind44_variant,247,394,4346,e877fe,call 4
+15,terrain_kind44_variant,247,397,4349,83c404,"add sp,4"
+15,terrain_kind44_variant,247,400,4352,a21026,"mov [2610h],al"
+15,terrain_kind44_variant,247,403,4355,c45e06,"les bx,[bp+6]"
+15,terrain_kind44_variant,247,406,4358,268a1f,"mov bl,es:[bx]"
+15,terrain_kind44_variant,247,409,4361,2aff,"sub bh,bh"
+15,terrain_kind44_variant,247,411,4363,80bf3ad244,"cmp byte ptr [bx-2DC6h],44h"
+15,terrain_kind44_variant,247,416,4368,750e,jne short 01B0h
+15,terrain_kind44_variant,247,418,4370,8ac3,"mov al,bl"
+15,terrain_kind44_variant,247,420,4372,2ae4,"sub ah,ah"
+15,terrain_kind44_variant,247,422,4374,8a0e1026,"mov cl,[2610h]"
+15,terrain_kind44_variant,247,426,4378,2aed,"sub ch,ch"
+15,terrain_kind44_variant,247,428,4380,2bc1,"sub ax,cx"
+15,terrain_kind44_variant,247,430,4382,c9,leave
+15,terrain_kind44_variant,247,431,4383,cb,ret far
+15,terrain_kind44_variant,247,432,4384,b8ffff,"mov ax,0FFFFh"
+15,terrain_kind44_variant,247,435,4387,c9,leave
+15,terrain_kind44_variant,247,436,4388,cb,ret far
+17,player_near_geometry_cursors,1569,706,25810,55,push bp
+17,player_near_geometry_cursors,1569,707,25811,8bec,"mov bp,sp"
+17,player_near_geometry_cursors,1569,709,25813,8b5606,"mov dx,[bp+6]"
+17,player_near_geometry_cursors,1569,712,25816,3916d240,"cmp [40D2h],dx"
+17,player_near_geometry_cursors,1569,716,25820,7c48,jl short 0316h
+17,player_near_geometry_cursors,1569,718,25822,0f8e8800,jle 035Ah
+17,player_near_geometry_cursors,1569,722,25826,833eda4000,"cmp word ptr [40DAh],0"
+17,player_near_geometry_cursors,1569,727,25831,7e1a,jle short 02F3h
+17,player_near_geometry_cursors,1569,729,25833,8b1eda40,"mov bx,[40DAh]"
+17,player_near_geometry_cursors,1569,733,25837,03db,"add bx,bx"
+17,player_near_geometry_cursors,1569,735,25839,8b9fa25c,"mov bx,[bx+5CA2h]"
+17,player_near_geometry_cursors,1569,739,25843,39570c,"cmp [bx+0Ch],dx"
+17,player_near_geometry_cursors,1569,742,25846,7e0b,jle short 02F3h
+17,player_near_geometry_cursors,1569,744,25848,ff0eda40,dec word ptr [40DAh]
+17,player_near_geometry_cursors,1569,748,25852,833eda4000,"cmp word ptr [40DAh],0"
+17,player_near_geometry_cursors,1569,753,25857,7fe6,jg short 02D9h
+17,player_near_geometry_cursors,1569,755,25859,833edc4000,"cmp word ptr [40DCh],0"
+17,player_near_geometry_cursors,1569,760,25864,7e60,jle short 035Ah
+17,player_near_geometry_cursors,1569,762,25866,8b1edc40,"mov bx,[40DCh]"
+17,player_near_geometry_cursors,1569,766,25870,03db,"add bx,bx"
+17,player_near_geometry_cursors,1569,768,25872,8b9f3c5f,"mov bx,[bx+5F3Ch]"
+17,player_near_geometry_cursors,1569,772,25876,39570c,"cmp [bx+0Ch],dx"
+17,player_near_geometry_cursors,1569,775,25879,7e51,jle short 035Ah
+17,player_near_geometry_cursors,1569,777,25881,ff0edc40,dec word ptr [40DCh]
+17,player_near_geometry_cursors,1569,781,25885,833edc4000,"cmp word ptr [40DCh],0"
+17,player_near_geometry_cursors,1569,786,25890,7fe6,jg short 02FAh
+17,player_near_geometry_cursors,1569,788,25892,eb44,jmp short 035Ah
+17,player_near_geometry_cursors,1569,790,25894,a16c57,"mov ax,[576Ch]"
+17,player_near_geometry_cursors,1569,793,25897,3906da40,"cmp [40DAh],ax"
+17,player_near_geometry_cursors,1569,797,25901,7d19,jge short 0338h
+17,player_near_geometry_cursors,1569,799,25903,8b1eda40,"mov bx,[40DAh]"
+17,player_near_geometry_cursors,1569,803,25907,03db,"add bx,bx"
+17,player_near_geometry_cursors,1569,805,25909,8b9fa45c,"mov bx,[bx+5CA4h]"
+17,player_near_geometry_cursors,1569,809,25913,39570c,"cmp [bx+0Ch],dx"
+17,player_near_geometry_cursors,1569,812,25916,7d0a,jge short 0338h
+17,player_near_geometry_cursors,1569,814,25918,ff06da40,inc word ptr [40DAh]
+17,player_near_geometry_cursors,1569,818,25922,3906da40,"cmp [40DAh],ax"
+17,player_near_geometry_cursors,1569,822,25926,7ce7,jl short 031Fh
+17,player_near_geometry_cursors,1569,824,25928,a16e57,"mov ax,[576Eh]"
+17,player_near_geometry_cursors,1569,827,25931,3906dc40,"cmp [40DCh],ax"
+17,player_near_geometry_cursors,1569,831,25935,7d19,jge short 035Ah
+17,player_near_geometry_cursors,1569,833,25937,8b1edc40,"mov bx,[40DCh]"
+17,player_near_geometry_cursors,1569,837,25941,03db,"add bx,bx"
+17,player_near_geometry_cursors,1569,839,25943,8b9f3e5f,"mov bx,[bx+5F3Eh]"
+17,player_near_geometry_cursors,1569,843,25947,39570c,"cmp [bx+0Ch],dx"
+17,player_near_geometry_cursors,1569,846,25950,7d0a,jge short 035Ah
+17,player_near_geometry_cursors,1569,848,25952,ff06dc40,inc word ptr [40DCh]
+17,player_near_geometry_cursors,1569,852,25956,3906dc40,"cmp [40DCh],ax"
+17,player_near_geometry_cursors,1569,856,25960,7ce7,jl short 0341h
+17,player_near_geometry_cursors,1569,858,25962,a1d440,"mov ax,[40D4h]"
+17,player_near_geometry_cursors,1569,861,25965,394608,"cmp [bp+8],ax"
+17,player_near_geometry_cursors,1569,864,25968,7f4e,jg short 03B0h
+17,player_near_geometry_cursors,1569,866,25970,0f8d9100,jge 03F7h
+17,player_near_geometry_cursors,1569,870,25974,833ed64000,"cmp word ptr [40D6h],0"
+17,player_near_geometry_cursors,1569,875,25979,7e1d,jle short 038Ah
+17,player_near_geometry_cursors,1569,877,25981,8b5608,"mov dx,[bp+8]"
+17,player_near_geometry_cursors,1569,880,25984,8b1ed640,"mov bx,[40D6h]"
+17,player_near_geometry_cursors,1569,884,25988,03db,"add bx,bx"
+17,player_near_geometry_cursors,1569,886,25990,8b9f6e57,"mov bx,[bx+576Eh]"
+17,player_near_geometry_cursors,1569,890,25994,39570e,"cmp [bx+0Eh],dx"
+17,player_near_geometry_cursors,1569,893,25997,7e0b,jle short 038Ah
+17,player_near_geometry_cursors,1569,895,25999,ff0ed640,dec word ptr [40D6h]
+17,player_near_geometry_cursors,1569,899,26003,833ed64000,"cmp word ptr [40D6h],0"
+17,player_near_geometry_cursors,1569,904,26008,7fe6,jg short 0370h
+17,player_near_geometry_cursors,1569,906,26010,833ed84000,"cmp word ptr [40D8h],0"
+17,player_near_geometry_cursors,1569,911,26015,7e66,jle short 03F7h
+17,player_near_geometry_cursors,1569,913,26017,8b5608,"mov dx,[bp+8]"
+17,player_near_geometry_cursors,1569,916,26020,8b1ed840,"mov bx,[40D8h]"
+17,player_near_geometry_cursors,1569,920,26024,03db,"add bx,bx"
+17,player_near_geometry_cursors,1569,922,26026,8b9f085a,"mov bx,[bx+5A08h]"
+17,player_near_geometry_cursors,1569,926,26030,39570e,"cmp [bx+0Eh],dx"
+17,player_near_geometry_cursors,1569,929,26033,7e54,jle short 03F7h
+17,player_near_geometry_cursors,1569,931,26035,ff0ed840,dec word ptr [40D8h]
+17,player_near_geometry_cursors,1569,935,26039,833ed84000,"cmp word ptr [40D8h],0"
+17,player_near_geometry_cursors,1569,940,26044,7fe6,jg short 0394h
+17,player_near_geometry_cursors,1569,942,26046,c9,leave
+17,player_near_geometry_cursors,1569,943,26047,cb,ret far
+17,player_near_geometry_cursors,1569,944,26048,8b5608,"mov dx,[bp+8]"
+17,player_near_geometry_cursors,1569,947,26051,a16857,"mov ax,[5768h]"
+17,player_near_geometry_cursors,1569,950,26054,3906d640,"cmp [40D6h],ax"
+17,player_near_geometry_cursors,1569,954,26058,7d19,jge short 03D5h
+17,player_near_geometry_cursors,1569,956,26060,8b1ed640,"mov bx,[40D6h]"
+17,player_near_geometry_cursors,1569,960,26064,03db,"add bx,bx"
+17,player_near_geometry_cursors,1569,962,26066,8b9f7057,"mov bx,[bx+5770h]"
+17,player_near_geometry_cursors,1569,966,26070,39570e,"cmp [bx+0Eh],dx"
+17,player_near_geometry_cursors,1569,969,26073,7d0a,jge short 03D5h
+17,player_near_geometry_cursors,1569,971,26075,ff06d640,inc word ptr [40D6h]
+17,player_near_geometry_cursors,1569,975,26079,3906d640,"cmp [40D6h],ax"
+17,player_near_geometry_cursors,1569,979,26083,7ce7,jl short 03BCh
+17,player_near_geometry_cursors,1569,981,26085,a16a57,"mov ax,[576Ah]"
+17,player_near_geometry_cursors,1569,984,26088,3906d840,"cmp [40D8h],ax"
+17,player_near_geometry_cursors,1569,988,26092,7d19,jge short 03F7h
+17,player_near_geometry_cursors,1569,990,26094,8b1ed840,"mov bx,[40D8h]"
+17,player_near_geometry_cursors,1569,994,26098,03db,"add bx,bx"
+17,player_near_geometry_cursors,1569,996,26100,8b9f0a5a,"mov bx,[bx+5A0Ah]"
+17,player_near_geometry_cursors,1569,1000,26104,39570e,"cmp [bx+0Eh],dx"
+17,player_near_geometry_cursors,1569,1003,26107,7d0a,jge short 03F7h
+17,player_near_geometry_cursors,1569,1005,26109,ff06d840,inc word ptr [40D8h]
+17,player_near_geometry_cursors,1569,1009,26113,3906d840,"cmp [40D8h],ax"
+17,player_near_geometry_cursors,1569,1013,26117,7ce7,jl short 03DEh
+17,player_near_geometry_cursors,1569,1015,26119,c9,leave
+17,player_near_geometry_cursors,1569,1016,26120,cb,ret far
+17,player_far_actor_cursors,1569,1018,26122,55,push bp
+17,player_far_actor_cursors,1569,1019,26123,8bec,"mov bp,sp"
+17,player_far_actor_cursors,1569,1021,26125,56,push si
+17,player_far_actor_cursors,1569,1022,26126,8b5e06,"mov bx,[bp+6]"
+17,player_far_actor_cursors,1569,1025,26129,391ed240,"cmp [40D2h],bx"
+17,player_far_actor_cursors,1569,1029,26133,7c27,jl short 042Eh
+17,player_far_actor_cursors,1569,1031,26135,7e49,jle short 0452h
+17,player_far_actor_cursors,1569,1033,26137,833ede4000,"cmp word ptr [40DEh],0"
+17,player_far_actor_cursors,1569,1038,26142,7e42,jle short 0452h
+17,player_far_actor_cursors,1569,1040,26144,8b36de40,"mov si,[40DEh]"
+17,player_far_actor_cursors,1569,1044,26148,c1e602,"shl si,2"
+17,player_far_actor_cursors,1569,1047,26151,c4b480d4,"les si,[si-2B80h]"
+17,player_far_actor_cursors,1569,1051,26155,26395c10,"cmp es:[si+10h],bx"
+17,player_far_actor_cursors,1569,1055,26159,7e31,jle short 0452h
+17,player_far_actor_cursors,1569,1057,26161,ff0ede40,dec word ptr [40DEh]
+17,player_far_actor_cursors,1569,1061,26165,833ede4000,"cmp word ptr [40DEh],0"
+17,player_far_actor_cursors,1569,1066,26170,7fe4,jg short 0410h
+17,player_far_actor_cursors,1569,1068,26172,eb24,jmp short 0452h
+17,player_far_actor_cursors,1569,1070,26174,a182d4,"mov ax,[0D482h]"
+17,player_far_actor_cursors,1569,1073,26177,3906de40,"cmp [40DEh],ax"
+17,player_far_actor_cursors,1569,1077,26181,7d1b,jge short 0452h
+17,player_far_actor_cursors,1569,1079,26183,8b36de40,"mov si,[40DEh]"
+17,player_far_actor_cursors,1569,1083,26187,c1e602,"shl si,2"
+17,player_far_actor_cursors,1569,1086,26190,c4b484d4,"les si,[si-2B7Ch]"
+17,player_far_actor_cursors,1569,1090,26194,26395c10,"cmp es:[si+10h],bx"
+17,player_far_actor_cursors,1569,1094,26198,7d0a,jge short 0452h
+17,player_far_actor_cursors,1569,1096,26200,ff06de40,inc word ptr [40DEh]
+17,player_far_actor_cursors,1569,1100,26204,3906de40,"cmp [40DEh],ax"
+17,player_far_actor_cursors,1569,1104,26208,7ce5,jl short 0437h
+17,player_far_actor_cursors,1569,1106,26210,a1d440,"mov ax,[40D4h]"
+17,player_far_actor_cursors,1569,1109,26213,394608,"cmp [bp+8],ax"
+17,player_far_actor_cursors,1569,1112,26216,7f2c,jg short 0486h
+17,player_far_actor_cursors,1569,1114,26218,7d51,jge short 04ADh
+17,player_far_actor_cursors,1569,1116,26220,833ee04000,"cmp word ptr [40E0h],0"
+17,player_far_actor_cursors,1569,1121,26225,7e4a,jle short 04ADh
+17,player_far_actor_cursors,1569,1123,26227,8b5e08,"mov bx,[bp+8]"
+17,player_far_actor_cursors,1569,1126,26230,8b36e040,"mov si,[40E0h]"
+17,player_far_actor_cursors,1569,1130,26234,c1e602,"shl si,2"
+17,player_far_actor_cursors,1569,1133,26237,c4b4f8d9,"les si,[si-2608h]"
+17,player_far_actor_cursors,1569,1137,26241,26395c12,"cmp es:[si+12h],bx"
+17,player_far_actor_cursors,1569,1141,26245,7e36,jle short 04ADh
+17,player_far_actor_cursors,1569,1143,26247,ff0ee040,dec word ptr [40E0h]
+17,player_far_actor_cursors,1569,1147,26251,833ee04000,"cmp word ptr [40E0h],0"
+17,player_far_actor_cursors,1569,1152,26256,7fe4,jg short 0466h
+17,player_far_actor_cursors,1569,1154,26258,5e,pop si
+17,player_far_actor_cursors,1569,1155,26259,c9,leave
+17,player_far_actor_cursors,1569,1156,26260,cb,ret far
+17,player_far_actor_cursors,1569,1158,26262,a182d4,"mov ax,[0D482h]"
+17,player_far_actor_cursors,1569,1161,26265,3906e040,"cmp [40E0h],ax"
+17,player_far_actor_cursors,1569,1165,26269,7d1e,jge short 04ADh
+17,player_far_actor_cursors,1569,1167,26271,8b5e08,"mov bx,[bp+8]"
+17,player_far_actor_cursors,1569,1170,26274,8b36e040,"mov si,[40E0h]"
+17,player_far_actor_cursors,1569,1174,26278,c1e602,"shl si,2"
+17,player_far_actor_cursors,1569,1177,26281,c4b4fcd9,"les si,[si-2604h]"
+17,player_far_actor_cursors,1569,1181,26285,26395c12,"cmp es:[si+12h],bx"
+17,player_far_actor_cursors,1569,1185,26289,7d0a,jge short 04ADh
+17,player_far_actor_cursors,1569,1187,26291,ff06e040,inc word ptr [40E0h]
+17,player_far_actor_cursors,1569,1191,26295,3906e040,"cmp [40E0h],ax"
+17,player_far_actor_cursors,1569,1195,26299,7ce5,jl short 0492h
+17,player_far_actor_cursors,1569,1197,26301,5e,pop si
+17,player_far_actor_cursors,1569,1198,26302,c9,leave
+17,player_far_actor_cursors,1569,1199,26303,cb,ret far
+17,player_position_commit,1569,1304,26408,c8040000,"enter 4,0"
+17,player_position_commit,1569,1308,26412,57,push di
+17,player_position_commit,1569,1309,26413,56,push si
+17,player_position_commit,1569,1310,26414,8b7e06,"mov di,[bp+6]"
+17,player_position_commit,1569,1313,26417,8b7608,"mov si,[bp+8]"
+17,player_position_commit,1569,1316,26420,666a07,data32 push 7
+17,player_position_commit,1569,1319,26423,9a3e142608,"call far 143Eh,0826h"
+17,player_position_commit,1569,1324,26428,83c404,"add sp,4"
+17,player_position_commit,1569,1327,26431,56,push si
+17,player_position_commit,1569,1328,26432,57,push di
+17,player_position_commit,1569,1329,26433,0e,push cs
+17,player_position_commit,1569,1330,26434,e88dfd,call 02C2h
+17,player_position_commit,1569,1333,26437,83c404,"add sp,4"
+17,player_position_commit,1569,1336,26440,56,push si
+17,player_position_commit,1569,1337,26441,57,push di
+17,player_position_commit,1569,1338,26442,0e,push cs
+17,player_position_commit,1569,1339,26443,e8bcfe,call 03FAh
+17,player_position_commit,1569,1342,26446,83c404,"add sp,4"
+17,player_position_commit,1569,1345,26449,893ed240,"mov [40D2h],di"
+17,player_position_commit,1569,1349,26453,8936d440,"mov [40D4h],si"
+17,player_position_commit,1569,1353,26457,c1ff06,"sar di,6"
+17,player_position_commit,1569,1356,26460,c1fe06,"sar si,6"
+17,player_position_commit,1569,1359,26463,3b3ece40,"cmp di,[40CEh]"
+17,player_position_commit,1569,1363,26467,7507,jne short 055Ch
+17,player_position_commit,1569,1365,26469,a1d040,"mov ax,[40D0h]"
+17,player_position_commit,1569,1368,26472,3bf0,"cmp si,ax"
+17,player_position_commit,1569,1370,26474,7412,je short 056Eh
+17,player_position_commit,1569,1372,26476,893ece40,"mov [40CEh],di"
+17,player_position_commit,1569,1376,26480,8936d040,"mov [40D0h],si"
+17,player_position_commit,1569,1380,26484,6a16,push 16h
+17,player_position_commit,1569,1382,26486,9ad4052608,"call far 05D4h,0826h"
+17,player_position_commit,1569,1387,26491,83c402,"add sp,2"
+17,player_position_commit,1569,1390,26494,a1d040,"mov ax,[40D0h]"
+17,player_position_commit,1569,1393,26497,c1e006,"shl ax,6"
+17,player_position_commit,1569,1396,26500,0306ce40,"add ax,[40CEh]"
+17,player_position_commit,1569,1400,26504,03c0,"add ax,ax"
+17,player_position_commit,1569,1402,26506,053e37,"add ax,373Eh"
+17,player_position_commit,1569,1405,26509,b9e021,"mov cx,21E0h"
+17,player_position_commit,1569,1408,26512,a3ea40,"mov [40EAh],ax"
+17,player_position_commit,1569,1411,26515,890eec40,"mov [40ECh],cx"
+17,player_position_commit,1569,1415,26519,51,push cx
+17,player_position_commit,1569,1416,26520,50,push ax
+17,player_position_commit,1569,1417,26521,9a7601f700,"call far 0176h,00F7h"
+17,player_position_commit,1569,1422,26526,83c404,"add sp,4"
+17,player_position_commit,1569,1425,26529,8bf0,"mov si,ax"
+17,player_position_commit,1569,1427,26531,83feff,"cmp si,0FFFFh"
+17,player_position_commit,1569,1430,26534,7403,je short 059Bh
+17,player_position_commit,1569,1432,26536,a2f640,"mov [40F6h],al"
+17,player_position_commit,1569,1435,26539,5e,pop si
+17,player_position_commit,1569,1436,26540,5f,pop di
+17,player_position_commit,1569,1437,26541,c9,leave
+17,player_position_commit,1569,1438,26542,cb,ret far
+17,player_position_reindex,1569,1486,26590,57,push di
+17,player_position_reindex,1569,1487,26591,56,push si
+17,player_position_reindex,1569,1488,26592,8b3ed240,"mov di,[40D2h]"
+17,player_position_reindex,1569,1492,26596,8b36d440,"mov si,[40D4h]"
+17,player_position_reindex,1569,1496,26600,6633c0,"xor eax,eax"
+17,player_position_reindex,1569,1499,26603,66a3d240,"mov [40D2h],eax"
+17,player_position_reindex,1569,1503,26607,66a3da40,"mov [40DAh],eax"
+17,player_position_reindex,1569,1507,26611,66a3d640,"mov [40D6h],eax"
+17,player_position_reindex,1569,1511,26615,66a3de40,"mov [40DEh],eax"
+17,player_position_reindex,1569,1515,26619,56,push si
+17,player_position_reindex,1569,1516,26620,57,push di
+17,player_position_reindex,1569,1517,26621,0e,push cs
+17,player_position_reindex,1569,1518,26622,e827ff,call 0518h
+17,player_position_reindex,1569,1521,26625,83c404,"add sp,4"
+17,player_position_reindex,1569,1524,26628,5e,pop si
+17,player_position_reindex,1569,1525,26629,5f,pop di
+17,player_position_reindex,1569,1526,26630,cb,ret far
+17,terrain_kind_search,247,4,3956,55,push bp
+17,terrain_kind_search,247,5,3957,8bec,"mov bp,sp"
+17,terrain_kind_search,247,7,3959,2aff,"sub bh,bh"
+17,terrain_kind_search,247,9,3961,8a5e08,"mov bl,[bp+8]"
+17,terrain_kind_search,247,12,3964,81fb0001,"cmp bx,100h"
+17,terrain_kind_search,247,16,3968,7d14,jge short 0026h
+17,terrain_kind_search,247,18,3970,8b4e06,"mov cx,[bp+6]"
+17,terrain_kind_search,247,21,3973,8a877cd2,"mov al,[bx-2D84h]"
+17,terrain_kind_search,247,25,3977,2ae4,"sub ah,ah"
+17,terrain_kind_search,247,27,3979,3bc1,"cmp ax,cx"
+17,terrain_kind_search,247,29,3981,741f,je short 003Eh
+17,terrain_kind_search,247,31,3983,43,inc bx
+17,terrain_kind_search,247,32,3984,81fb0001,"cmp bx,100h"
+17,terrain_kind_search,247,36,3988,7cef,jl short 0015h
+17,terrain_kind_search,247,38,3990,33db,"xor bx,bx"
+17,terrain_kind_search,247,40,3992,8b4e06,"mov cx,[bp+6]"
+17,terrain_kind_search,247,43,3995,8a877cd2,"mov al,[bx-2D84h]"
+17,terrain_kind_search,247,47,3999,2ae4,"sub ah,ah"
+17,terrain_kind_search,247,49,4001,3bc1,"cmp ax,cx"
+17,terrain_kind_search,247,51,4003,7409,je short 003Eh
+17,terrain_kind_search,247,53,4005,43,inc bx
+17,terrain_kind_search,247,54,4006,81fb0001,"cmp bx,100h"
+17,terrain_kind_search,247,58,4010,7cef,jl short 002Bh
+17,terrain_kind_search,247,60,4012,eb04,jmp short 0042h
+17,terrain_kind_search,247,62,4014,8bc3,"mov ax,bx"
+17,terrain_kind_search,247,64,4016,c9,leave
+17,terrain_kind_search,247,65,4017,cb,ret far
+17,terrain_kind_search,247,66,4018,51,push cx
+17,terrain_kind_search,247,67,4019,68da00,push 0DAh
+17,terrain_kind_search,247,70,4022,9a0c009d0f,"call far 000Ch,0F9Dh"
+17,terrain_kind_search,247,75,4027,c9,leave
+17,terrain_kind_search,247,76,4028,cb,ret far
+17,terrain_kind44_variant,247,374,4326,c8020000,"enter 2,0"
+17,terrain_kind44_variant,247,378,4330,a1d861,"mov ax,[61D8h]"
+17,terrain_kind44_variant,247,381,4333,39062a01,"cmp [12Ah],ax"
+17,terrain_kind44_variant,247,385,4337,7410,je short 0193h
+17,terrain_kind44_variant,247,387,4339,a32a01,"mov [12Ah],ax"
+17,terrain_kind44_variant,247,390,4342,666a44,data32 push 44h
+17,terrain_kind44_variant,247,393,4345,0e,push cs
+17,terrain_kind44_variant,247,394,4346,e877fe,call 4
+17,terrain_kind44_variant,247,397,4349,83c404,"add sp,4"
+17,terrain_kind44_variant,247,400,4352,a21426,"mov [2614h],al"
+17,terrain_kind44_variant,247,403,4355,c45e06,"les bx,[bp+6]"
+17,terrain_kind44_variant,247,406,4358,268a1f,"mov bl,es:[bx]"
+17,terrain_kind44_variant,247,409,4361,2aff,"sub bh,bh"
+17,terrain_kind44_variant,247,411,4363,80bf7cd244,"cmp byte ptr [bx-2D84h],44h"
+17,terrain_kind44_variant,247,416,4368,750e,jne short 01B0h
+17,terrain_kind44_variant,247,418,4370,8ac3,"mov al,bl"
+17,terrain_kind44_variant,247,420,4372,2ae4,"sub ah,ah"
+17,terrain_kind44_variant,247,422,4374,8a0e1426,"mov cl,[2614h]"
+17,terrain_kind44_variant,247,426,4378,2aed,"sub ch,ch"
+17,terrain_kind44_variant,247,428,4380,2bc1,"sub ax,cx"
+17,terrain_kind44_variant,247,430,4382,c9,leave
+17,terrain_kind44_variant,247,431,4383,cb,ret far
+17,terrain_kind44_variant,247,432,4384,b8ffff,"mov ax,0FFFFh"
+17,terrain_kind44_variant,247,435,4387,c9,leave
+17,terrain_kind44_variant,247,436,4388,cb,ret far
+18,player_near_geometry_cursors,1591,710,26166,55,push bp
+18,player_near_geometry_cursors,1591,711,26167,8bec,"mov bp,sp"
+18,player_near_geometry_cursors,1591,713,26169,8b5606,"mov dx,[bp+6]"
+18,player_near_geometry_cursors,1591,716,26172,39166241,"cmp [4162h],dx"
+18,player_near_geometry_cursors,1591,720,26176,7c48,jl short 031Ah
+18,player_near_geometry_cursors,1591,722,26178,0f8e8800,jle 035Eh
+18,player_near_geometry_cursors,1591,726,26182,833e6a4100,"cmp word ptr [416Ah],0"
+18,player_near_geometry_cursors,1591,731,26187,7e1a,jle short 02F7h
+18,player_near_geometry_cursors,1591,733,26189,8b1e6a41,"mov bx,[416Ah]"
+18,player_near_geometry_cursors,1591,737,26193,03db,"add bx,bx"
+18,player_near_geometry_cursors,1591,739,26195,8b9f325d,"mov bx,[bx+5D32h]"
+18,player_near_geometry_cursors,1591,743,26199,39570c,"cmp [bx+0Ch],dx"
+18,player_near_geometry_cursors,1591,746,26202,7e0b,jle short 02F7h
+18,player_near_geometry_cursors,1591,748,26204,ff0e6a41,dec word ptr [416Ah]
+18,player_near_geometry_cursors,1591,752,26208,833e6a4100,"cmp word ptr [416Ah],0"
+18,player_near_geometry_cursors,1591,757,26213,7fe6,jg short 02DDh
+18,player_near_geometry_cursors,1591,759,26215,833e6c4100,"cmp word ptr [416Ch],0"
+18,player_near_geometry_cursors,1591,764,26220,7e60,jle short 035Eh
+18,player_near_geometry_cursors,1591,766,26222,8b1e6c41,"mov bx,[416Ch]"
+18,player_near_geometry_cursors,1591,770,26226,03db,"add bx,bx"
+18,player_near_geometry_cursors,1591,772,26228,8b9fcc5f,"mov bx,[bx+5FCCh]"
+18,player_near_geometry_cursors,1591,776,26232,39570c,"cmp [bx+0Ch],dx"
+18,player_near_geometry_cursors,1591,779,26235,7e51,jle short 035Eh
+18,player_near_geometry_cursors,1591,781,26237,ff0e6c41,dec word ptr [416Ch]
+18,player_near_geometry_cursors,1591,785,26241,833e6c4100,"cmp word ptr [416Ch],0"
+18,player_near_geometry_cursors,1591,790,26246,7fe6,jg short 02FEh
+18,player_near_geometry_cursors,1591,792,26248,eb44,jmp short 035Eh
+18,player_near_geometry_cursors,1591,794,26250,a1fc57,"mov ax,[57FCh]"
+18,player_near_geometry_cursors,1591,797,26253,39066a41,"cmp [416Ah],ax"
+18,player_near_geometry_cursors,1591,801,26257,7d19,jge short 033Ch
+18,player_near_geometry_cursors,1591,803,26259,8b1e6a41,"mov bx,[416Ah]"
+18,player_near_geometry_cursors,1591,807,26263,03db,"add bx,bx"
+18,player_near_geometry_cursors,1591,809,26265,8b9f345d,"mov bx,[bx+5D34h]"
+18,player_near_geometry_cursors,1591,813,26269,39570c,"cmp [bx+0Ch],dx"
+18,player_near_geometry_cursors,1591,816,26272,7d0a,jge short 033Ch
+18,player_near_geometry_cursors,1591,818,26274,ff066a41,inc word ptr [416Ah]
+18,player_near_geometry_cursors,1591,822,26278,39066a41,"cmp [416Ah],ax"
+18,player_near_geometry_cursors,1591,826,26282,7ce7,jl short 0323h
+18,player_near_geometry_cursors,1591,828,26284,a1fe57,"mov ax,[57FEh]"
+18,player_near_geometry_cursors,1591,831,26287,39066c41,"cmp [416Ch],ax"
+18,player_near_geometry_cursors,1591,835,26291,7d19,jge short 035Eh
+18,player_near_geometry_cursors,1591,837,26293,8b1e6c41,"mov bx,[416Ch]"
+18,player_near_geometry_cursors,1591,841,26297,03db,"add bx,bx"
+18,player_near_geometry_cursors,1591,843,26299,8b9fce5f,"mov bx,[bx+5FCEh]"
+18,player_near_geometry_cursors,1591,847,26303,39570c,"cmp [bx+0Ch],dx"
+18,player_near_geometry_cursors,1591,850,26306,7d0a,jge short 035Eh
+18,player_near_geometry_cursors,1591,852,26308,ff066c41,inc word ptr [416Ch]
+18,player_near_geometry_cursors,1591,856,26312,39066c41,"cmp [416Ch],ax"
+18,player_near_geometry_cursors,1591,860,26316,7ce7,jl short 0345h
+18,player_near_geometry_cursors,1591,862,26318,a16441,"mov ax,[4164h]"
+18,player_near_geometry_cursors,1591,865,26321,394608,"cmp [bp+8],ax"
+18,player_near_geometry_cursors,1591,868,26324,7f4e,jg short 03B4h
+18,player_near_geometry_cursors,1591,870,26326,0f8d9100,jge 03FBh
+18,player_near_geometry_cursors,1591,874,26330,833e664100,"cmp word ptr [4166h],0"
+18,player_near_geometry_cursors,1591,879,26335,7e1d,jle short 038Eh
+18,player_near_geometry_cursors,1591,881,26337,8b5608,"mov dx,[bp+8]"
+18,player_near_geometry_cursors,1591,884,26340,8b1e6641,"mov bx,[4166h]"
+18,player_near_geometry_cursors,1591,888,26344,03db,"add bx,bx"
+18,player_near_geometry_cursors,1591,890,26346,8b9ffe57,"mov bx,[bx+57FEh]"
+18,player_near_geometry_cursors,1591,894,26350,39570e,"cmp [bx+0Eh],dx"
+18,player_near_geometry_cursors,1591,897,26353,7e0b,jle short 038Eh
+18,player_near_geometry_cursors,1591,899,26355,ff0e6641,dec word ptr [4166h]
+18,player_near_geometry_cursors,1591,903,26359,833e664100,"cmp word ptr [4166h],0"
+18,player_near_geometry_cursors,1591,908,26364,7fe6,jg short 0374h
+18,player_near_geometry_cursors,1591,910,26366,833e684100,"cmp word ptr [4168h],0"
+18,player_near_geometry_cursors,1591,915,26371,7e66,jle short 03FBh
+18,player_near_geometry_cursors,1591,917,26373,8b5608,"mov dx,[bp+8]"
+18,player_near_geometry_cursors,1591,920,26376,8b1e6841,"mov bx,[4168h]"
+18,player_near_geometry_cursors,1591,924,26380,03db,"add bx,bx"
+18,player_near_geometry_cursors,1591,926,26382,8b9f985a,"mov bx,[bx+5A98h]"
+18,player_near_geometry_cursors,1591,930,26386,39570e,"cmp [bx+0Eh],dx"
+18,player_near_geometry_cursors,1591,933,26389,7e54,jle short 03FBh
+18,player_near_geometry_cursors,1591,935,26391,ff0e6841,dec word ptr [4168h]
+18,player_near_geometry_cursors,1591,939,26395,833e684100,"cmp word ptr [4168h],0"
+18,player_near_geometry_cursors,1591,944,26400,7fe6,jg short 0398h
+18,player_near_geometry_cursors,1591,946,26402,c9,leave
+18,player_near_geometry_cursors,1591,947,26403,cb,ret far
+18,player_near_geometry_cursors,1591,948,26404,8b5608,"mov dx,[bp+8]"
+18,player_near_geometry_cursors,1591,951,26407,a1f857,"mov ax,[57F8h]"
+18,player_near_geometry_cursors,1591,954,26410,39066641,"cmp [4166h],ax"
+18,player_near_geometry_cursors,1591,958,26414,7d19,jge short 03D9h
+18,player_near_geometry_cursors,1591,960,26416,8b1e6641,"mov bx,[4166h]"
+18,player_near_geometry_cursors,1591,964,26420,03db,"add bx,bx"
+18,player_near_geometry_cursors,1591,966,26422,8b9f0058,"mov bx,[bx+5800h]"
+18,player_near_geometry_cursors,1591,970,26426,39570e,"cmp [bx+0Eh],dx"
+18,player_near_geometry_cursors,1591,973,26429,7d0a,jge short 03D9h
+18,player_near_geometry_cursors,1591,975,26431,ff066641,inc word ptr [4166h]
+18,player_near_geometry_cursors,1591,979,26435,39066641,"cmp [4166h],ax"
+18,player_near_geometry_cursors,1591,983,26439,7ce7,jl short 03C0h
+18,player_near_geometry_cursors,1591,985,26441,a1fa57,"mov ax,[57FAh]"
+18,player_near_geometry_cursors,1591,988,26444,39066841,"cmp [4168h],ax"
+18,player_near_geometry_cursors,1591,992,26448,7d19,jge short 03FBh
+18,player_near_geometry_cursors,1591,994,26450,8b1e6841,"mov bx,[4168h]"
+18,player_near_geometry_cursors,1591,998,26454,03db,"add bx,bx"
+18,player_near_geometry_cursors,1591,1000,26456,8b9f9a5a,"mov bx,[bx+5A9Ah]"
+18,player_near_geometry_cursors,1591,1004,26460,39570e,"cmp [bx+0Eh],dx"
+18,player_near_geometry_cursors,1591,1007,26463,7d0a,jge short 03FBh
+18,player_near_geometry_cursors,1591,1009,26465,ff066841,inc word ptr [4168h]
+18,player_near_geometry_cursors,1591,1013,26469,39066841,"cmp [4168h],ax"
+18,player_near_geometry_cursors,1591,1017,26473,7ce7,jl short 03E2h
+18,player_near_geometry_cursors,1591,1019,26475,c9,leave
+18,player_near_geometry_cursors,1591,1020,26476,cb,ret far
+18,player_far_actor_cursors,1591,1022,26478,55,push bp
+18,player_far_actor_cursors,1591,1023,26479,8bec,"mov bp,sp"
+18,player_far_actor_cursors,1591,1025,26481,56,push si
+18,player_far_actor_cursors,1591,1026,26482,8b5e06,"mov bx,[bp+6]"
+18,player_far_actor_cursors,1591,1029,26485,391e6241,"cmp [4162h],bx"
+18,player_far_actor_cursors,1591,1033,26489,7c27,jl short 0432h
+18,player_far_actor_cursors,1591,1035,26491,7e49,jle short 0456h
+18,player_far_actor_cursors,1591,1037,26493,833e6e4100,"cmp word ptr [416Eh],0"
+18,player_far_actor_cursors,1591,1042,26498,7e42,jle short 0456h
+18,player_far_actor_cursors,1591,1044,26500,8b366e41,"mov si,[416Eh]"
+18,player_far_actor_cursors,1591,1048,26504,c1e602,"shl si,2"
+18,player_far_actor_cursors,1591,1051,26507,c4b410d5,"les si,[si-2AF0h]"
+18,player_far_actor_cursors,1591,1055,26511,26395c10,"cmp es:[si+10h],bx"
+18,player_far_actor_cursors,1591,1059,26515,7e31,jle short 0456h
+18,player_far_actor_cursors,1591,1061,26517,ff0e6e41,dec word ptr [416Eh]
+18,player_far_actor_cursors,1591,1065,26521,833e6e4100,"cmp word ptr [416Eh],0"
+18,player_far_actor_cursors,1591,1070,26526,7fe4,jg short 0414h
+18,player_far_actor_cursors,1591,1072,26528,eb24,jmp short 0456h
+18,player_far_actor_cursors,1591,1074,26530,a112d5,"mov ax,[0D512h]"
+18,player_far_actor_cursors,1591,1077,26533,39066e41,"cmp [416Eh],ax"
+18,player_far_actor_cursors,1591,1081,26537,7d1b,jge short 0456h
+18,player_far_actor_cursors,1591,1083,26539,8b366e41,"mov si,[416Eh]"
+18,player_far_actor_cursors,1591,1087,26543,c1e602,"shl si,2"
+18,player_far_actor_cursors,1591,1090,26546,c4b414d5,"les si,[si-2AECh]"
+18,player_far_actor_cursors,1591,1094,26550,26395c10,"cmp es:[si+10h],bx"
+18,player_far_actor_cursors,1591,1098,26554,7d0a,jge short 0456h
+18,player_far_actor_cursors,1591,1100,26556,ff066e41,inc word ptr [416Eh]
+18,player_far_actor_cursors,1591,1104,26560,39066e41,"cmp [416Eh],ax"
+18,player_far_actor_cursors,1591,1108,26564,7ce5,jl short 043Bh
+18,player_far_actor_cursors,1591,1110,26566,a16441,"mov ax,[4164h]"
+18,player_far_actor_cursors,1591,1113,26569,394608,"cmp [bp+8],ax"
+18,player_far_actor_cursors,1591,1116,26572,7f2c,jg short 048Ah
+18,player_far_actor_cursors,1591,1118,26574,7d51,jge short 04B1h
+18,player_far_actor_cursors,1591,1120,26576,833e704100,"cmp word ptr [4170h],0"
+18,player_far_actor_cursors,1591,1125,26581,7e4a,jle short 04B1h
+18,player_far_actor_cursors,1591,1127,26583,8b5e08,"mov bx,[bp+8]"
+18,player_far_actor_cursors,1591,1130,26586,8b367041,"mov si,[4170h]"
+18,player_far_actor_cursors,1591,1134,26590,c1e602,"shl si,2"
+18,player_far_actor_cursors,1591,1137,26593,c4b488da,"les si,[si-2578h]"
+18,player_far_actor_cursors,1591,1141,26597,26395c12,"cmp es:[si+12h],bx"
+18,player_far_actor_cursors,1591,1145,26601,7e36,jle short 04B1h
+18,player_far_actor_cursors,1591,1147,26603,ff0e7041,dec word ptr [4170h]
+18,player_far_actor_cursors,1591,1151,26607,833e704100,"cmp word ptr [4170h],0"
+18,player_far_actor_cursors,1591,1156,26612,7fe4,jg short 046Ah
+18,player_far_actor_cursors,1591,1158,26614,5e,pop si
+18,player_far_actor_cursors,1591,1159,26615,c9,leave
+18,player_far_actor_cursors,1591,1160,26616,cb,ret far
+18,player_far_actor_cursors,1591,1162,26618,a112d5,"mov ax,[0D512h]"
+18,player_far_actor_cursors,1591,1165,26621,39067041,"cmp [4170h],ax"
+18,player_far_actor_cursors,1591,1169,26625,7d1e,jge short 04B1h
+18,player_far_actor_cursors,1591,1171,26627,8b5e08,"mov bx,[bp+8]"
+18,player_far_actor_cursors,1591,1174,26630,8b367041,"mov si,[4170h]"
+18,player_far_actor_cursors,1591,1178,26634,c1e602,"shl si,2"
+18,player_far_actor_cursors,1591,1181,26637,c4b48cda,"les si,[si-2574h]"
+18,player_far_actor_cursors,1591,1185,26641,26395c12,"cmp es:[si+12h],bx"
+18,player_far_actor_cursors,1591,1189,26645,7d0a,jge short 04B1h
+18,player_far_actor_cursors,1591,1191,26647,ff067041,inc word ptr [4170h]
+18,player_far_actor_cursors,1591,1195,26651,39067041,"cmp [4170h],ax"
+18,player_far_actor_cursors,1591,1199,26655,7ce5,jl short 0496h
+18,player_far_actor_cursors,1591,1201,26657,5e,pop si
+18,player_far_actor_cursors,1591,1202,26658,c9,leave
+18,player_far_actor_cursors,1591,1203,26659,cb,ret far
+18,player_position_commit,1591,1308,26764,c8040000,"enter 4,0"
+18,player_position_commit,1591,1312,26768,57,push di
+18,player_position_commit,1591,1313,26769,56,push si
+18,player_position_commit,1591,1314,26770,8b7e06,"mov di,[bp+6]"
+18,player_position_commit,1591,1317,26773,8b7608,"mov si,[bp+8]"
+18,player_position_commit,1591,1320,26776,666a07,data32 push 7
+18,player_position_commit,1591,1323,26779,9a42143c08,"call far 1442h,083Ch"
+18,player_position_commit,1591,1328,26784,83c404,"add sp,4"
+18,player_position_commit,1591,1331,26787,56,push si
+18,player_position_commit,1591,1332,26788,57,push di
+18,player_position_commit,1591,1333,26789,0e,push cs
+18,player_position_commit,1591,1334,26790,e88dfd,call 02C6h
+18,player_position_commit,1591,1337,26793,83c404,"add sp,4"
+18,player_position_commit,1591,1340,26796,56,push si
+18,player_position_commit,1591,1341,26797,57,push di
+18,player_position_commit,1591,1342,26798,0e,push cs
+18,player_position_commit,1591,1343,26799,e8bcfe,call 03FEh
+18,player_position_commit,1591,1346,26802,83c404,"add sp,4"
+18,player_position_commit,1591,1349,26805,893e6241,"mov [4162h],di"
+18,player_position_commit,1591,1353,26809,89366441,"mov [4164h],si"
+18,player_position_commit,1591,1357,26813,c1ff06,"sar di,6"
+18,player_position_commit,1591,1360,26816,c1fe06,"sar si,6"
+18,player_position_commit,1591,1363,26819,3b3e5e41,"cmp di,[415Eh]"
+18,player_position_commit,1591,1367,26823,7507,jne short 0560h
+18,player_position_commit,1591,1369,26825,a16041,"mov ax,[4160h]"
+18,player_position_commit,1591,1372,26828,3bf0,"cmp si,ax"
+18,player_position_commit,1591,1374,26830,7412,je short 0572h
+18,player_position_commit,1591,1376,26832,893e5e41,"mov [415Eh],di"
+18,player_position_commit,1591,1380,26836,89366041,"mov [4160h],si"
+18,player_position_commit,1591,1384,26840,6a16,push 16h
+18,player_position_commit,1591,1386,26842,9ad8053c08,"call far 05D8h,083Ch"
+18,player_position_commit,1591,1391,26847,83c402,"add sp,2"
+18,player_position_commit,1591,1394,26850,a16041,"mov ax,[4160h]"
+18,player_position_commit,1591,1397,26853,c1e006,"shl ax,6"
+18,player_position_commit,1591,1400,26856,03065e41,"add ax,[415Eh]"
+18,player_position_commit,1591,1404,26860,03c0,"add ax,ax"
+18,player_position_commit,1591,1406,26862,053e37,"add ax,373Eh"
+18,player_position_commit,1591,1409,26865,b9f921,"mov cx,21F9h"
+18,player_position_commit,1591,1412,26868,a37a41,"mov [417Ah],ax"
+18,player_position_commit,1591,1415,26871,890e7c41,"mov [417Ch],cx"
+18,player_position_commit,1591,1419,26875,51,push cx
+18,player_position_commit,1591,1420,26876,50,push ax
+18,player_position_commit,1591,1421,26877,9a7601f700,"call far 0176h,00F7h"
+18,player_position_commit,1591,1426,26882,83c404,"add sp,4"
+18,player_position_commit,1591,1429,26885,8bf0,"mov si,ax"
+18,player_position_commit,1591,1431,26887,83feff,"cmp si,0FFFFh"
+18,player_position_commit,1591,1434,26890,7403,je short 059Fh
+18,player_position_commit,1591,1436,26892,a28641,"mov [4186h],al"
+18,player_position_commit,1591,1439,26895,5e,pop si
+18,player_position_commit,1591,1440,26896,5f,pop di
+18,player_position_commit,1591,1441,26897,c9,leave
+18,player_position_commit,1591,1442,26898,cb,ret far
+18,player_position_reindex,1591,1490,26946,57,push di
+18,player_position_reindex,1591,1491,26947,56,push si
+18,player_position_reindex,1591,1492,26948,8b3e6241,"mov di,[4162h]"
+18,player_position_reindex,1591,1496,26952,8b366441,"mov si,[4164h]"
+18,player_position_reindex,1591,1500,26956,6633c0,"xor eax,eax"
+18,player_position_reindex,1591,1503,26959,66a36241,"mov [4162h],eax"
+18,player_position_reindex,1591,1507,26963,66a36a41,"mov [416Ah],eax"
+18,player_position_reindex,1591,1511,26967,66a36641,"mov [4166h],eax"
+18,player_position_reindex,1591,1515,26971,66a36e41,"mov [416Eh],eax"
+18,player_position_reindex,1591,1519,26975,56,push si
+18,player_position_reindex,1591,1520,26976,57,push di
+18,player_position_reindex,1591,1521,26977,0e,push cs
+18,player_position_reindex,1591,1522,26978,e827ff,call 051Ch
+18,player_position_reindex,1591,1525,26981,83c404,"add sp,4"
+18,player_position_reindex,1591,1528,26984,5e,pop si
+18,player_position_reindex,1591,1529,26985,5f,pop di
+18,player_position_reindex,1591,1530,26986,cb,ret far
+18,terrain_kind_search,247,4,3956,55,push bp
+18,terrain_kind_search,247,5,3957,8bec,"mov bp,sp"
+18,terrain_kind_search,247,7,3959,2aff,"sub bh,bh"
+18,terrain_kind_search,247,9,3961,8a5e08,"mov bl,[bp+8]"
+18,terrain_kind_search,247,12,3964,81fb0001,"cmp bx,100h"
+18,terrain_kind_search,247,16,3968,7d14,jge short 0026h
+18,terrain_kind_search,247,18,3970,8b4e06,"mov cx,[bp+6]"
+18,terrain_kind_search,247,21,3973,8a870cd3,"mov al,[bx-2CF4h]"
+18,terrain_kind_search,247,25,3977,2ae4,"sub ah,ah"
+18,terrain_kind_search,247,27,3979,3bc1,"cmp ax,cx"
+18,terrain_kind_search,247,29,3981,741f,je short 003Eh
+18,terrain_kind_search,247,31,3983,43,inc bx
+18,terrain_kind_search,247,32,3984,81fb0001,"cmp bx,100h"
+18,terrain_kind_search,247,36,3988,7cef,jl short 0015h
+18,terrain_kind_search,247,38,3990,33db,"xor bx,bx"
+18,terrain_kind_search,247,40,3992,8b4e06,"mov cx,[bp+6]"
+18,terrain_kind_search,247,43,3995,8a870cd3,"mov al,[bx-2CF4h]"
+18,terrain_kind_search,247,47,3999,2ae4,"sub ah,ah"
+18,terrain_kind_search,247,49,4001,3bc1,"cmp ax,cx"
+18,terrain_kind_search,247,51,4003,7409,je short 003Eh
+18,terrain_kind_search,247,53,4005,43,inc bx
+18,terrain_kind_search,247,54,4006,81fb0001,"cmp bx,100h"
+18,terrain_kind_search,247,58,4010,7cef,jl short 002Bh
+18,terrain_kind_search,247,60,4012,eb04,jmp short 0042h
+18,terrain_kind_search,247,62,4014,8bc3,"mov ax,bx"
+18,terrain_kind_search,247,64,4016,c9,leave
+18,terrain_kind_search,247,65,4017,cb,ret far
+18,terrain_kind_search,247,66,4018,51,push cx
+18,terrain_kind_search,247,67,4019,68da00,push 0DAh
+18,terrain_kind_search,247,70,4022,9a0000b70f,"call far 0,0FB7h"
+18,terrain_kind_search,247,75,4027,c9,leave
+18,terrain_kind_search,247,76,4028,cb,ret far
+18,terrain_kind44_variant,247,374,4326,c8020000,"enter 2,0"
+18,terrain_kind44_variant,247,378,4330,a16862,"mov ax,[6268h]"
+18,terrain_kind44_variant,247,381,4333,39062a01,"cmp [12Ah],ax"
+18,terrain_kind44_variant,247,385,4337,7410,je short 0193h
+18,terrain_kind44_variant,247,387,4339,a32a01,"mov [12Ah],ax"
+18,terrain_kind44_variant,247,390,4342,666a44,data32 push 44h
+18,terrain_kind44_variant,247,393,4345,0e,push cs
+18,terrain_kind44_variant,247,394,4346,e877fe,call 4
+18,terrain_kind44_variant,247,397,4349,83c404,"add sp,4"
+18,terrain_kind44_variant,247,400,4352,a24e26,"mov [264Eh],al"
+18,terrain_kind44_variant,247,403,4355,c45e06,"les bx,[bp+6]"
+18,terrain_kind44_variant,247,406,4358,268a1f,"mov bl,es:[bx]"
+18,terrain_kind44_variant,247,409,4361,2aff,"sub bh,bh"
+18,terrain_kind44_variant,247,411,4363,80bf0cd344,"cmp byte ptr [bx-2CF4h],44h"
+18,terrain_kind44_variant,247,416,4368,750e,jne short 01B0h
+18,terrain_kind44_variant,247,418,4370,8ac3,"mov al,bl"
+18,terrain_kind44_variant,247,420,4372,2ae4,"sub ah,ah"
+18,terrain_kind44_variant,247,422,4374,8a0e4e26,"mov cl,[264Eh]"
+18,terrain_kind44_variant,247,426,4378,2aed,"sub ch,ch"
+18,terrain_kind44_variant,247,428,4380,2bc1,"sub ax,cx"
+18,terrain_kind44_variant,247,430,4382,c9,leave
+18,terrain_kind44_variant,247,431,4383,cb,ret far
+18,terrain_kind44_variant,247,432,4384,b8ffff,"mov ax,0FFFFh"
+18,terrain_kind44_variant,247,435,4387,c9,leave
+18,terrain_kind44_variant,247,436,4388,cb,ret far
+19,player_near_geometry_cursors,1591,710,26166,55,push bp
+19,player_near_geometry_cursors,1591,711,26167,8bec,"mov bp,sp"
+19,player_near_geometry_cursors,1591,713,26169,8b5606,"mov dx,[bp+6]"
+19,player_near_geometry_cursors,1591,716,26172,39166241,"cmp [4162h],dx"
+19,player_near_geometry_cursors,1591,720,26176,7c48,jl short 031Ah
+19,player_near_geometry_cursors,1591,722,26178,0f8e8800,jle 035Eh
+19,player_near_geometry_cursors,1591,726,26182,833e6a4100,"cmp word ptr [416Ah],0"
+19,player_near_geometry_cursors,1591,731,26187,7e1a,jle short 02F7h
+19,player_near_geometry_cursors,1591,733,26189,8b1e6a41,"mov bx,[416Ah]"
+19,player_near_geometry_cursors,1591,737,26193,03db,"add bx,bx"
+19,player_near_geometry_cursors,1591,739,26195,8b9f325d,"mov bx,[bx+5D32h]"
+19,player_near_geometry_cursors,1591,743,26199,39570c,"cmp [bx+0Ch],dx"
+19,player_near_geometry_cursors,1591,746,26202,7e0b,jle short 02F7h
+19,player_near_geometry_cursors,1591,748,26204,ff0e6a41,dec word ptr [416Ah]
+19,player_near_geometry_cursors,1591,752,26208,833e6a4100,"cmp word ptr [416Ah],0"
+19,player_near_geometry_cursors,1591,757,26213,7fe6,jg short 02DDh
+19,player_near_geometry_cursors,1591,759,26215,833e6c4100,"cmp word ptr [416Ch],0"
+19,player_near_geometry_cursors,1591,764,26220,7e60,jle short 035Eh
+19,player_near_geometry_cursors,1591,766,26222,8b1e6c41,"mov bx,[416Ch]"
+19,player_near_geometry_cursors,1591,770,26226,03db,"add bx,bx"
+19,player_near_geometry_cursors,1591,772,26228,8b9fcc5f,"mov bx,[bx+5FCCh]"
+19,player_near_geometry_cursors,1591,776,26232,39570c,"cmp [bx+0Ch],dx"
+19,player_near_geometry_cursors,1591,779,26235,7e51,jle short 035Eh
+19,player_near_geometry_cursors,1591,781,26237,ff0e6c41,dec word ptr [416Ch]
+19,player_near_geometry_cursors,1591,785,26241,833e6c4100,"cmp word ptr [416Ch],0"
+19,player_near_geometry_cursors,1591,790,26246,7fe6,jg short 02FEh
+19,player_near_geometry_cursors,1591,792,26248,eb44,jmp short 035Eh
+19,player_near_geometry_cursors,1591,794,26250,a1fc57,"mov ax,[57FCh]"
+19,player_near_geometry_cursors,1591,797,26253,39066a41,"cmp [416Ah],ax"
+19,player_near_geometry_cursors,1591,801,26257,7d19,jge short 033Ch
+19,player_near_geometry_cursors,1591,803,26259,8b1e6a41,"mov bx,[416Ah]"
+19,player_near_geometry_cursors,1591,807,26263,03db,"add bx,bx"
+19,player_near_geometry_cursors,1591,809,26265,8b9f345d,"mov bx,[bx+5D34h]"
+19,player_near_geometry_cursors,1591,813,26269,39570c,"cmp [bx+0Ch],dx"
+19,player_near_geometry_cursors,1591,816,26272,7d0a,jge short 033Ch
+19,player_near_geometry_cursors,1591,818,26274,ff066a41,inc word ptr [416Ah]
+19,player_near_geometry_cursors,1591,822,26278,39066a41,"cmp [416Ah],ax"
+19,player_near_geometry_cursors,1591,826,26282,7ce7,jl short 0323h
+19,player_near_geometry_cursors,1591,828,26284,a1fe57,"mov ax,[57FEh]"
+19,player_near_geometry_cursors,1591,831,26287,39066c41,"cmp [416Ch],ax"
+19,player_near_geometry_cursors,1591,835,26291,7d19,jge short 035Eh
+19,player_near_geometry_cursors,1591,837,26293,8b1e6c41,"mov bx,[416Ch]"
+19,player_near_geometry_cursors,1591,841,26297,03db,"add bx,bx"
+19,player_near_geometry_cursors,1591,843,26299,8b9fce5f,"mov bx,[bx+5FCEh]"
+19,player_near_geometry_cursors,1591,847,26303,39570c,"cmp [bx+0Ch],dx"
+19,player_near_geometry_cursors,1591,850,26306,7d0a,jge short 035Eh
+19,player_near_geometry_cursors,1591,852,26308,ff066c41,inc word ptr [416Ch]
+19,player_near_geometry_cursors,1591,856,26312,39066c41,"cmp [416Ch],ax"
+19,player_near_geometry_cursors,1591,860,26316,7ce7,jl short 0345h
+19,player_near_geometry_cursors,1591,862,26318,a16441,"mov ax,[4164h]"
+19,player_near_geometry_cursors,1591,865,26321,394608,"cmp [bp+8],ax"
+19,player_near_geometry_cursors,1591,868,26324,7f4e,jg short 03B4h
+19,player_near_geometry_cursors,1591,870,26326,0f8d9100,jge 03FBh
+19,player_near_geometry_cursors,1591,874,26330,833e664100,"cmp word ptr [4166h],0"
+19,player_near_geometry_cursors,1591,879,26335,7e1d,jle short 038Eh
+19,player_near_geometry_cursors,1591,881,26337,8b5608,"mov dx,[bp+8]"
+19,player_near_geometry_cursors,1591,884,26340,8b1e6641,"mov bx,[4166h]"
+19,player_near_geometry_cursors,1591,888,26344,03db,"add bx,bx"
+19,player_near_geometry_cursors,1591,890,26346,8b9ffe57,"mov bx,[bx+57FEh]"
+19,player_near_geometry_cursors,1591,894,26350,39570e,"cmp [bx+0Eh],dx"
+19,player_near_geometry_cursors,1591,897,26353,7e0b,jle short 038Eh
+19,player_near_geometry_cursors,1591,899,26355,ff0e6641,dec word ptr [4166h]
+19,player_near_geometry_cursors,1591,903,26359,833e664100,"cmp word ptr [4166h],0"
+19,player_near_geometry_cursors,1591,908,26364,7fe6,jg short 0374h
+19,player_near_geometry_cursors,1591,910,26366,833e684100,"cmp word ptr [4168h],0"
+19,player_near_geometry_cursors,1591,915,26371,7e66,jle short 03FBh
+19,player_near_geometry_cursors,1591,917,26373,8b5608,"mov dx,[bp+8]"
+19,player_near_geometry_cursors,1591,920,26376,8b1e6841,"mov bx,[4168h]"
+19,player_near_geometry_cursors,1591,924,26380,03db,"add bx,bx"
+19,player_near_geometry_cursors,1591,926,26382,8b9f985a,"mov bx,[bx+5A98h]"
+19,player_near_geometry_cursors,1591,930,26386,39570e,"cmp [bx+0Eh],dx"
+19,player_near_geometry_cursors,1591,933,26389,7e54,jle short 03FBh
+19,player_near_geometry_cursors,1591,935,26391,ff0e6841,dec word ptr [4168h]
+19,player_near_geometry_cursors,1591,939,26395,833e684100,"cmp word ptr [4168h],0"
+19,player_near_geometry_cursors,1591,944,26400,7fe6,jg short 0398h
+19,player_near_geometry_cursors,1591,946,26402,c9,leave
+19,player_near_geometry_cursors,1591,947,26403,cb,ret far
+19,player_near_geometry_cursors,1591,948,26404,8b5608,"mov dx,[bp+8]"
+19,player_near_geometry_cursors,1591,951,26407,a1f857,"mov ax,[57F8h]"
+19,player_near_geometry_cursors,1591,954,26410,39066641,"cmp [4166h],ax"
+19,player_near_geometry_cursors,1591,958,26414,7d19,jge short 03D9h
+19,player_near_geometry_cursors,1591,960,26416,8b1e6641,"mov bx,[4166h]"
+19,player_near_geometry_cursors,1591,964,26420,03db,"add bx,bx"
+19,player_near_geometry_cursors,1591,966,26422,8b9f0058,"mov bx,[bx+5800h]"
+19,player_near_geometry_cursors,1591,970,26426,39570e,"cmp [bx+0Eh],dx"
+19,player_near_geometry_cursors,1591,973,26429,7d0a,jge short 03D9h
+19,player_near_geometry_cursors,1591,975,26431,ff066641,inc word ptr [4166h]
+19,player_near_geometry_cursors,1591,979,26435,39066641,"cmp [4166h],ax"
+19,player_near_geometry_cursors,1591,983,26439,7ce7,jl short 03C0h
+19,player_near_geometry_cursors,1591,985,26441,a1fa57,"mov ax,[57FAh]"
+19,player_near_geometry_cursors,1591,988,26444,39066841,"cmp [4168h],ax"
+19,player_near_geometry_cursors,1591,992,26448,7d19,jge short 03FBh
+19,player_near_geometry_cursors,1591,994,26450,8b1e6841,"mov bx,[4168h]"
+19,player_near_geometry_cursors,1591,998,26454,03db,"add bx,bx"
+19,player_near_geometry_cursors,1591,1000,26456,8b9f9a5a,"mov bx,[bx+5A9Ah]"
+19,player_near_geometry_cursors,1591,1004,26460,39570e,"cmp [bx+0Eh],dx"
+19,player_near_geometry_cursors,1591,1007,26463,7d0a,jge short 03FBh
+19,player_near_geometry_cursors,1591,1009,26465,ff066841,inc word ptr [4168h]
+19,player_near_geometry_cursors,1591,1013,26469,39066841,"cmp [4168h],ax"
+19,player_near_geometry_cursors,1591,1017,26473,7ce7,jl short 03E2h
+19,player_near_geometry_cursors,1591,1019,26475,c9,leave
+19,player_near_geometry_cursors,1591,1020,26476,cb,ret far
+19,player_far_actor_cursors,1591,1022,26478,55,push bp
+19,player_far_actor_cursors,1591,1023,26479,8bec,"mov bp,sp"
+19,player_far_actor_cursors,1591,1025,26481,56,push si
+19,player_far_actor_cursors,1591,1026,26482,8b5e06,"mov bx,[bp+6]"
+19,player_far_actor_cursors,1591,1029,26485,391e6241,"cmp [4162h],bx"
+19,player_far_actor_cursors,1591,1033,26489,7c27,jl short 0432h
+19,player_far_actor_cursors,1591,1035,26491,7e49,jle short 0456h
+19,player_far_actor_cursors,1591,1037,26493,833e6e4100,"cmp word ptr [416Eh],0"
+19,player_far_actor_cursors,1591,1042,26498,7e42,jle short 0456h
+19,player_far_actor_cursors,1591,1044,26500,8b366e41,"mov si,[416Eh]"
+19,player_far_actor_cursors,1591,1048,26504,c1e602,"shl si,2"
+19,player_far_actor_cursors,1591,1051,26507,c4b410d5,"les si,[si-2AF0h]"
+19,player_far_actor_cursors,1591,1055,26511,26395c10,"cmp es:[si+10h],bx"
+19,player_far_actor_cursors,1591,1059,26515,7e31,jle short 0456h
+19,player_far_actor_cursors,1591,1061,26517,ff0e6e41,dec word ptr [416Eh]
+19,player_far_actor_cursors,1591,1065,26521,833e6e4100,"cmp word ptr [416Eh],0"
+19,player_far_actor_cursors,1591,1070,26526,7fe4,jg short 0414h
+19,player_far_actor_cursors,1591,1072,26528,eb24,jmp short 0456h
+19,player_far_actor_cursors,1591,1074,26530,a112d5,"mov ax,[0D512h]"
+19,player_far_actor_cursors,1591,1077,26533,39066e41,"cmp [416Eh],ax"
+19,player_far_actor_cursors,1591,1081,26537,7d1b,jge short 0456h
+19,player_far_actor_cursors,1591,1083,26539,8b366e41,"mov si,[416Eh]"
+19,player_far_actor_cursors,1591,1087,26543,c1e602,"shl si,2"
+19,player_far_actor_cursors,1591,1090,26546,c4b414d5,"les si,[si-2AECh]"
+19,player_far_actor_cursors,1591,1094,26550,26395c10,"cmp es:[si+10h],bx"
+19,player_far_actor_cursors,1591,1098,26554,7d0a,jge short 0456h
+19,player_far_actor_cursors,1591,1100,26556,ff066e41,inc word ptr [416Eh]
+19,player_far_actor_cursors,1591,1104,26560,39066e41,"cmp [416Eh],ax"
+19,player_far_actor_cursors,1591,1108,26564,7ce5,jl short 043Bh
+19,player_far_actor_cursors,1591,1110,26566,a16441,"mov ax,[4164h]"
+19,player_far_actor_cursors,1591,1113,26569,394608,"cmp [bp+8],ax"
+19,player_far_actor_cursors,1591,1116,26572,7f2c,jg short 048Ah
+19,player_far_actor_cursors,1591,1118,26574,7d51,jge short 04B1h
+19,player_far_actor_cursors,1591,1120,26576,833e704100,"cmp word ptr [4170h],0"
+19,player_far_actor_cursors,1591,1125,26581,7e4a,jle short 04B1h
+19,player_far_actor_cursors,1591,1127,26583,8b5e08,"mov bx,[bp+8]"
+19,player_far_actor_cursors,1591,1130,26586,8b367041,"mov si,[4170h]"
+19,player_far_actor_cursors,1591,1134,26590,c1e602,"shl si,2"
+19,player_far_actor_cursors,1591,1137,26593,c4b488da,"les si,[si-2578h]"
+19,player_far_actor_cursors,1591,1141,26597,26395c12,"cmp es:[si+12h],bx"
+19,player_far_actor_cursors,1591,1145,26601,7e36,jle short 04B1h
+19,player_far_actor_cursors,1591,1147,26603,ff0e7041,dec word ptr [4170h]
+19,player_far_actor_cursors,1591,1151,26607,833e704100,"cmp word ptr [4170h],0"
+19,player_far_actor_cursors,1591,1156,26612,7fe4,jg short 046Ah
+19,player_far_actor_cursors,1591,1158,26614,5e,pop si
+19,player_far_actor_cursors,1591,1159,26615,c9,leave
+19,player_far_actor_cursors,1591,1160,26616,cb,ret far
+19,player_far_actor_cursors,1591,1162,26618,a112d5,"mov ax,[0D512h]"
+19,player_far_actor_cursors,1591,1165,26621,39067041,"cmp [4170h],ax"
+19,player_far_actor_cursors,1591,1169,26625,7d1e,jge short 04B1h
+19,player_far_actor_cursors,1591,1171,26627,8b5e08,"mov bx,[bp+8]"
+19,player_far_actor_cursors,1591,1174,26630,8b367041,"mov si,[4170h]"
+19,player_far_actor_cursors,1591,1178,26634,c1e602,"shl si,2"
+19,player_far_actor_cursors,1591,1181,26637,c4b48cda,"les si,[si-2574h]"
+19,player_far_actor_cursors,1591,1185,26641,26395c12,"cmp es:[si+12h],bx"
+19,player_far_actor_cursors,1591,1189,26645,7d0a,jge short 04B1h
+19,player_far_actor_cursors,1591,1191,26647,ff067041,inc word ptr [4170h]
+19,player_far_actor_cursors,1591,1195,26651,39067041,"cmp [4170h],ax"
+19,player_far_actor_cursors,1591,1199,26655,7ce5,jl short 0496h
+19,player_far_actor_cursors,1591,1201,26657,5e,pop si
+19,player_far_actor_cursors,1591,1202,26658,c9,leave
+19,player_far_actor_cursors,1591,1203,26659,cb,ret far
+19,player_position_commit,1591,1308,26764,c8040000,"enter 4,0"
+19,player_position_commit,1591,1312,26768,57,push di
+19,player_position_commit,1591,1313,26769,56,push si
+19,player_position_commit,1591,1314,26770,8b7e06,"mov di,[bp+6]"
+19,player_position_commit,1591,1317,26773,8b7608,"mov si,[bp+8]"
+19,player_position_commit,1591,1320,26776,666a07,data32 push 7
+19,player_position_commit,1591,1323,26779,9a42143c08,"call far 1442h,083Ch"
+19,player_position_commit,1591,1328,26784,83c404,"add sp,4"
+19,player_position_commit,1591,1331,26787,56,push si
+19,player_position_commit,1591,1332,26788,57,push di
+19,player_position_commit,1591,1333,26789,0e,push cs
+19,player_position_commit,1591,1334,26790,e88dfd,call 02C6h
+19,player_position_commit,1591,1337,26793,83c404,"add sp,4"
+19,player_position_commit,1591,1340,26796,56,push si
+19,player_position_commit,1591,1341,26797,57,push di
+19,player_position_commit,1591,1342,26798,0e,push cs
+19,player_position_commit,1591,1343,26799,e8bcfe,call 03FEh
+19,player_position_commit,1591,1346,26802,83c404,"add sp,4"
+19,player_position_commit,1591,1349,26805,893e6241,"mov [4162h],di"
+19,player_position_commit,1591,1353,26809,89366441,"mov [4164h],si"
+19,player_position_commit,1591,1357,26813,c1ff06,"sar di,6"
+19,player_position_commit,1591,1360,26816,c1fe06,"sar si,6"
+19,player_position_commit,1591,1363,26819,3b3e5e41,"cmp di,[415Eh]"
+19,player_position_commit,1591,1367,26823,7507,jne short 0560h
+19,player_position_commit,1591,1369,26825,a16041,"mov ax,[4160h]"
+19,player_position_commit,1591,1372,26828,3bf0,"cmp si,ax"
+19,player_position_commit,1591,1374,26830,7412,je short 0572h
+19,player_position_commit,1591,1376,26832,893e5e41,"mov [415Eh],di"
+19,player_position_commit,1591,1380,26836,89366041,"mov [4160h],si"
+19,player_position_commit,1591,1384,26840,6a16,push 16h
+19,player_position_commit,1591,1386,26842,9ad8053c08,"call far 05D8h,083Ch"
+19,player_position_commit,1591,1391,26847,83c402,"add sp,2"
+19,player_position_commit,1591,1394,26850,a16041,"mov ax,[4160h]"
+19,player_position_commit,1591,1397,26853,c1e006,"shl ax,6"
+19,player_position_commit,1591,1400,26856,03065e41,"add ax,[415Eh]"
+19,player_position_commit,1591,1404,26860,03c0,"add ax,ax"
+19,player_position_commit,1591,1406,26862,053e37,"add ax,373Eh"
+19,player_position_commit,1591,1409,26865,b9f921,"mov cx,21F9h"
+19,player_position_commit,1591,1412,26868,a37a41,"mov [417Ah],ax"
+19,player_position_commit,1591,1415,26871,890e7c41,"mov [417Ch],cx"
+19,player_position_commit,1591,1419,26875,51,push cx
+19,player_position_commit,1591,1420,26876,50,push ax
+19,player_position_commit,1591,1421,26877,9a7601f700,"call far 0176h,00F7h"
+19,player_position_commit,1591,1426,26882,83c404,"add sp,4"
+19,player_position_commit,1591,1429,26885,8bf0,"mov si,ax"
+19,player_position_commit,1591,1431,26887,83feff,"cmp si,0FFFFh"
+19,player_position_commit,1591,1434,26890,7403,je short 059Fh
+19,player_position_commit,1591,1436,26892,a28641,"mov [4186h],al"
+19,player_position_commit,1591,1439,26895,5e,pop si
+19,player_position_commit,1591,1440,26896,5f,pop di
+19,player_position_commit,1591,1441,26897,c9,leave
+19,player_position_commit,1591,1442,26898,cb,ret far
+19,player_position_reindex,1591,1490,26946,57,push di
+19,player_position_reindex,1591,1491,26947,56,push si
+19,player_position_reindex,1591,1492,26948,8b3e6241,"mov di,[4162h]"
+19,player_position_reindex,1591,1496,26952,8b366441,"mov si,[4164h]"
+19,player_position_reindex,1591,1500,26956,6633c0,"xor eax,eax"
+19,player_position_reindex,1591,1503,26959,66a36241,"mov [4162h],eax"
+19,player_position_reindex,1591,1507,26963,66a36a41,"mov [416Ah],eax"
+19,player_position_reindex,1591,1511,26967,66a36641,"mov [4166h],eax"
+19,player_position_reindex,1591,1515,26971,66a36e41,"mov [416Eh],eax"
+19,player_position_reindex,1591,1519,26975,56,push si
+19,player_position_reindex,1591,1520,26976,57,push di
+19,player_position_reindex,1591,1521,26977,0e,push cs
+19,player_position_reindex,1591,1522,26978,e827ff,call 051Ch
+19,player_position_reindex,1591,1525,26981,83c404,"add sp,4"
+19,player_position_reindex,1591,1528,26984,5e,pop si
+19,player_position_reindex,1591,1529,26985,5f,pop di
+19,player_position_reindex,1591,1530,26986,cb,ret far
+19,terrain_kind_search,247,4,3956,55,push bp
+19,terrain_kind_search,247,5,3957,8bec,"mov bp,sp"
+19,terrain_kind_search,247,7,3959,2aff,"sub bh,bh"
+19,terrain_kind_search,247,9,3961,8a5e08,"mov bl,[bp+8]"
+19,terrain_kind_search,247,12,3964,81fb0001,"cmp bx,100h"
+19,terrain_kind_search,247,16,3968,7d14,jge short 0026h
+19,terrain_kind_search,247,18,3970,8b4e06,"mov cx,[bp+6]"
+19,terrain_kind_search,247,21,3973,8a870cd3,"mov al,[bx-2CF4h]"
+19,terrain_kind_search,247,25,3977,2ae4,"sub ah,ah"
+19,terrain_kind_search,247,27,3979,3bc1,"cmp ax,cx"
+19,terrain_kind_search,247,29,3981,741f,je short 003Eh
+19,terrain_kind_search,247,31,3983,43,inc bx
+19,terrain_kind_search,247,32,3984,81fb0001,"cmp bx,100h"
+19,terrain_kind_search,247,36,3988,7cef,jl short 0015h
+19,terrain_kind_search,247,38,3990,33db,"xor bx,bx"
+19,terrain_kind_search,247,40,3992,8b4e06,"mov cx,[bp+6]"
+19,terrain_kind_search,247,43,3995,8a870cd3,"mov al,[bx-2CF4h]"
+19,terrain_kind_search,247,47,3999,2ae4,"sub ah,ah"
+19,terrain_kind_search,247,49,4001,3bc1,"cmp ax,cx"
+19,terrain_kind_search,247,51,4003,7409,je short 003Eh
+19,terrain_kind_search,247,53,4005,43,inc bx
+19,terrain_kind_search,247,54,4006,81fb0001,"cmp bx,100h"
+19,terrain_kind_search,247,58,4010,7cef,jl short 002Bh
+19,terrain_kind_search,247,60,4012,eb04,jmp short 0042h
+19,terrain_kind_search,247,62,4014,8bc3,"mov ax,bx"
+19,terrain_kind_search,247,64,4016,c9,leave
+19,terrain_kind_search,247,65,4017,cb,ret far
+19,terrain_kind_search,247,66,4018,51,push cx
+19,terrain_kind_search,247,67,4019,68da00,push 0DAh
+19,terrain_kind_search,247,70,4022,9a0000b70f,"call far 0,0FB7h"
+19,terrain_kind_search,247,75,4027,c9,leave
+19,terrain_kind_search,247,76,4028,cb,ret far
+19,terrain_kind44_variant,247,374,4326,c8020000,"enter 2,0"
+19,terrain_kind44_variant,247,378,4330,a16862,"mov ax,[6268h]"
+19,terrain_kind44_variant,247,381,4333,39062a01,"cmp [12Ah],ax"
+19,terrain_kind44_variant,247,385,4337,7410,je short 0193h
+19,terrain_kind44_variant,247,387,4339,a32a01,"mov [12Ah],ax"
+19,terrain_kind44_variant,247,390,4342,666a44,data32 push 44h
+19,terrain_kind44_variant,247,393,4345,0e,push cs
+19,terrain_kind44_variant,247,394,4346,e877fe,call 4
+19,terrain_kind44_variant,247,397,4349,83c404,"add sp,4"
+19,terrain_kind44_variant,247,400,4352,a24e26,"mov [264Eh],al"
+19,terrain_kind44_variant,247,403,4355,c45e06,"les bx,[bp+6]"
+19,terrain_kind44_variant,247,406,4358,268a1f,"mov bl,es:[bx]"
+19,terrain_kind44_variant,247,409,4361,2aff,"sub bh,bh"
+19,terrain_kind44_variant,247,411,4363,80bf0cd344,"cmp byte ptr [bx-2CF4h],44h"
+19,terrain_kind44_variant,247,416,4368,750e,jne short 01B0h
+19,terrain_kind44_variant,247,418,4370,8ac3,"mov al,bl"
+19,terrain_kind44_variant,247,420,4372,2ae4,"sub ah,ah"
+19,terrain_kind44_variant,247,422,4374,8a0e4e26,"mov cl,[264Eh]"
+19,terrain_kind44_variant,247,426,4378,2aed,"sub ch,ch"
+19,terrain_kind44_variant,247,428,4380,2bc1,"sub ax,cx"
+19,terrain_kind44_variant,247,430,4382,c9,leave
+19,terrain_kind44_variant,247,431,4383,cb,ret far
+19,terrain_kind44_variant,247,432,4384,b8ffff,"mov ax,0FFFFh"
+19,terrain_kind44_variant,247,435,4387,c9,leave
+19,terrain_kind44_variant,247,436,4388,cb,ret far

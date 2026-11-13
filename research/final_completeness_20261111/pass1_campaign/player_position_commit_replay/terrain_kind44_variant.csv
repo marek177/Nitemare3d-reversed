@@ -1,0 +1,26 @@
+cs,ip,image_offset,bytes,instruction
+247,374,4326,c8020000,"enter 2,0"
+247,378,4330,a16a62,"mov ax,[626Ah]"
+247,381,4333,39062a01,"cmp [12Ah],ax"
+247,385,4337,7410,je short 0193h
+247,387,4339,a32a01,"mov [12Ah],ax"
+247,390,4342,666a44,data32 push 44h
+247,393,4345,0e,push cs
+247,394,4346,e877fe,call 4
+247,397,4349,83c404,"add sp,4"
+247,400,4352,a25026,"mov [2650h],al"
+247,403,4355,c45e06,"les bx,[bp+6]"
+247,406,4358,268a1f,"mov bl,es:[bx]"
+247,409,4361,2aff,"sub bh,bh"
+247,411,4363,80bf0ed344,"cmp byte ptr [bx-2CF2h],44h"
+247,416,4368,750e,jne short 01B0h
+247,418,4370,8ac3,"mov al,bl"
+247,420,4372,2ae4,"sub ah,ah"
+247,422,4374,8a0e5026,"mov cl,[2650h]"
+247,426,4378,2aed,"sub ch,ch"
+247,428,4380,2bc1,"sub ax,cx"
+247,430,4382,c9,leave
+247,431,4383,cb,ret far
+247,432,4384,b8ffff,"mov ax,0FFFFh"
+247,435,4387,c9,leave
+247,436,4388,cb,ret far

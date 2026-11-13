@@ -34,7 +34,7 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
-    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay','xms_lifecycle_wrappers_replay','cache_memory_probe_replay','crt_large_allocation_replay','crt_far_free_replay','music_snd_reader_replay','crt_seek_replay','damage_result_consumer_replay','reaction_selectors_replay','damage_sound_frame_replay','visibility_gate_ray_replay'):
+    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay','xms_lifecycle_wrappers_replay','cache_memory_probe_replay','crt_large_allocation_replay','crt_far_free_replay','music_snd_reader_replay','crt_seek_replay','damage_result_consumer_replay','reaction_selectors_replay','damage_sound_frame_replay','visibility_gate_ray_replay','player_position_commit_replay'):
         for f in readjson(root/folder/'summary.json')['functions']:
             if folder=='worx_register_bank_replay' and f['name'] in ('worx_port_callback_set','worx_port_write_delayed'):continue # already owned by prior independent functions
             sources.append((f['name'],root/folder/(f['name']+'.csv')))
@@ -488,6 +488,13 @@ def main():
             if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('UNKNOWNtail source hash conflict')
         result['pass1_UNKNOWN_bytes_with_controlled_OOB_load_witness']=g['conditional_UNKNOWN_bytes']
         result['pass1_UNKNOWN_OOB_load_scope']='Conditionalsyntheticx64/y63 reads,notsemantictyping,padding,naturalruntime orstatuspromotion'
+    position_gap=root/'pass1_map_tail_position_refs/independent_verification.json'
+    if position_gap.exists():
+        pg=readjson(position_gap);assert pg['verified'] and pg['status_changes']==0 and pg['new_typed_bytes']==0
+        for item in pg['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('position UNKNOWNtail source conflict')
+        result['pass1_UNKNOWN_tail_position_load_witnesses']=pg['witnesses']
+        result['pass1_UNKNOWN_tail_position_scope']='Additional conditional terrain-lookup consumer of existing2770E,not an additional UNKNOWN byte ornaturalbounds proof'
     result['controlled_instruction_replay_cases'] = read_replay['controlled_replay_cases'] if read_replay else 0
     result['original_pass320_ledger_imported']=baseline_path.exists()
     if baseline_path.exists():
@@ -556,7 +563,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay','crt_large_allocation_replay','probe_original_crt_replay','crt_far_malloc_replay','crt_far_free_replay','music_snd_reader_replay','worx_bank_original_resolver_replay','crt_seek_replay','damage_result_consumer_replay','reaction_selectors_replay','damage_chain_replay','damage_sound_frame_replay','damage_event_frame_chain_replay','visibility_gate_ray_replay','damage_visibility_chain_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay','crt_large_allocation_replay','probe_original_crt_replay','crt_far_malloc_replay','crt_far_free_replay','music_snd_reader_replay','worx_bank_original_resolver_replay','crt_seek_replay','damage_result_consumer_replay','reaction_selectors_replay','damage_chain_replay','damage_sound_frame_replay','damage_event_frame_chain_replay','visibility_gate_ray_replay','damage_visibility_chain_replay','player_position_commit_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')
@@ -803,7 +810,7 @@ def main():
             if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('partial capture hash mismatch')
         result['partial_native_validator_allowed_calls_not_additional_scenarios']=partial['successful_native_allowed_calls']
     bss_tables=[]
-    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv',root/'guard_validator_partial/external_bss_tables.csv',root/'classification_producer_fields/external_bss_tables.csv',root/'image_group_fields/external_bss_tables.csv',root/'image_record_fields/external_bss_tables.csv',root/'image_retrieval_fields/external_bss_tables.csv',root/'crt_ftime_fields/external_bss_tables.csv',root/'object_cache_fields/external_bss_tables.csv',root/'cache_cleanup_fields/external_bss_tables.csv'):
+    for runtime_bss in (root/'runtime_reciprocal_init/external_bss_tables.csv',root/'sound_directory_producer/external_bss_tables.csv',root/'font2_runtime_fields/external_bss_tables.csv',root/'intro_flip_font0_fields/external_bss_tables.csv',root/'font1_keyboard_fields/external_bss_tables.csv',root/'guard_validator_partial/external_bss_tables.csv',root/'classification_producer_fields/external_bss_tables.csv',root/'image_group_fields/external_bss_tables.csv',root/'image_record_fields/external_bss_tables.csv',root/'image_retrieval_fields/external_bss_tables.csv',root/'crt_ftime_fields/external_bss_tables.csv',root/'object_cache_fields/external_bss_tables.csv',root/'cache_cleanup_fields/external_bss_tables.csv',root/'player_position_fields/external_bss_tables.csv'):
         if runtime_bss.exists():bss_tables.extend(readcsv(runtime_bss))
     if bss_tables:
         bss_union=set()
@@ -843,6 +850,7 @@ def main():
     refinement_paths.append(root/'reaction_selector_fields/consumer_field_roles.csv')
     refinement_paths.append(root/'damage_sound_frame_fields/consumer_field_roles.csv')
     refinement_paths.append(root/'visibility_gate_fields/consumer_field_roles.csv')
+    refinement_paths.append(root/'player_position_fields/consumer_field_roles.csv')
     if len(refinement_paths)!=len(set(refinement_paths)):raise ValueError('duplicate refinement source')
     records=[]
     for refinements in refinement_paths:
