@@ -1,0 +1,13 @@
+record,offset,width,role,consumer
+record26,16,1,zero-extended BYTE health; compare against low BYTE damage; zero or subtract,"04C7:1320..1333,13F5..13FB"
+record26,11,1,state selects 19-way dispatch; optional state7 callback; default overwritten21,"04C7:13E0,142C..14A3"
+record26,12,1,default nonzero previous state saved before state21,04C7:148E..149C
+record26,10,1,kind2 selects mode8 frame;kind4 skips further reaction,04C7:1404..1412
+record26,13,1,token copied to pointed record28 cell BYTE+1 after death,04C7:13C4..13CF
+record26,18,1,hurt duration/countdown written8 for positive nonlethal damage,04C7:13FF
+record26,23,1,low BYTE of special helper result stored for states7/8/21,04C7:14C4
+record26,0,2,default frame WORD from SS-based class bank,04C7:1481..1485
+record28,4,1,unsigned class selects8B class-bank slot,"04C7:137F..1388,1472..147A,14ED..14F6"
+record28,3,1,default branch stores low BYTE of new frame,04C7:1488..148B
+record28,12,4,FAR pointer to cell receiving record26 token at BYTE+1,04C7:13CB..13CF
+record28,26,1,signed BYTE >0 selects mode18 versus0 for death frame dispatch,04C7:1362..1378
