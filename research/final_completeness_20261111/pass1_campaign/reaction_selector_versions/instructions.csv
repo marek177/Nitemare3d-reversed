@@ -1,0 +1,1025 @@
+version,function,cs,ip,image_offset,bytes,instruction
+20,target_score_delta,2109,302,34046,55,push bp
+20,target_score_delta,2109,303,34047,8bec,"mov bp,sp"
+20,target_score_delta,2109,305,34049,33c9,"xor cx,cx"
+20,target_score_delta,2109,307,34051,c45e0a,"les bx,[bp+0Ah]"
+20,target_score_delta,2109,310,34054,2ae4,"sub ah,ah"
+20,target_score_delta,2109,312,34056,268a4706,"mov al,es:[bx+6]"
+20,target_score_delta,2109,316,34060,2d0800,"sub ax,8"
+20,target_score_delta,2109,319,34063,3d1800,"cmp ax,18h"
+20,target_score_delta,2109,322,34066,7777,ja short 01BBh
+20,target_score_delta,2109,324,34068,03c0,"add ax,ax"
+20,target_score_delta,2109,326,34070,93,"xchg bx,ax"
+20,target_score_delta,2109,327,34071,2effa74c01,jmp word ptr cs:[bx+14Ch]
+20,target_score_delta,2109,382,34126,b91900,"mov cx,19h"
+20,target_score_delta,2109,385,34129,eb38,jmp short 01BBh
+20,target_score_delta,2109,388,34132,b94b00,"mov cx,4Bh"
+20,target_score_delta,2109,391,34135,eb32,jmp short 01BBh
+20,target_score_delta,2109,394,34138,b96400,"mov cx,64h"
+20,target_score_delta,2109,397,34141,eb2c,jmp short 01BBh
+20,target_score_delta,2109,400,34144,b99600,"mov cx,96h"
+20,target_score_delta,2109,403,34147,8bc1,"mov ax,cx"
+20,target_score_delta,2109,405,34149,c9,leave
+20,target_score_delta,2109,406,34150,cb,ret far
+20,target_score_delta,2109,408,34152,b9c800,"mov cx,0C8h"
+20,target_score_delta,2109,411,34155,8bc1,"mov ax,cx"
+20,target_score_delta,2109,413,34157,c9,leave
+20,target_score_delta,2109,414,34158,cb,ret far
+20,target_score_delta,2109,416,34160,b918fc,"mov cx,0FC18h"
+20,target_score_delta,2109,419,34163,8bc1,"mov ax,cx"
+20,target_score_delta,2109,421,34165,c9,leave
+20,target_score_delta,2109,422,34166,cb,ret far
+20,target_score_delta,2109,424,34168,b9e803,"mov cx,3E8h"
+20,target_score_delta,2109,427,34171,8bc1,"mov ax,cx"
+20,target_score_delta,2109,429,34173,c9,leave
+20,target_score_delta,2109,430,34174,cb,ret far
+20,target_score_delta,2109,432,34176,b9fa00,"mov cx,0FAh"
+20,target_score_delta,2109,435,34179,8bc1,"mov ax,cx"
+20,target_score_delta,2109,437,34181,c9,leave
+20,target_score_delta,2109,438,34182,cb,ret far
+20,target_score_delta,2109,440,34184,b93200,"mov cx,32h"
+20,target_score_delta,2109,443,34187,8bc1,"mov ax,cx"
+20,target_score_delta,2109,445,34189,c9,leave
+20,target_score_delta,2109,446,34190,cb,ret far
+20,death_frame_index,2109,7140,40884,55,push bp
+20,death_frame_index,2109,7141,40885,8bec,"mov bp,sp"
+20,death_frame_index,2109,7143,40887,57,push di
+20,death_frame_index,2109,7144,40888,56,push si
+20,death_frame_index,2109,7145,40889,c45e06,"les bx,[bp+6]"
+20,death_frame_index,2109,7148,40892,26807f1200,"cmp byte ptr es:[bx+12h],0"
+20,death_frame_index,2109,7153,40897,751d,jne short 1C10h
+20,death_frame_index,2109,7155,40899,c45e0a,"les bx,[bp+0Ah]"
+20,death_frame_index,2109,7158,40902,268a5f04,"mov bl,es:[bx+4]"
+20,death_frame_index,2109,7162,40906,2aff,"sub bh,bh"
+20,death_frame_index,2109,7164,40908,c1e303,"shl bx,3"
+20,death_frame_index,2109,7167,40911,8b9f223d,"mov bx,[bx+3D22h]"
+20,death_frame_index,2109,7171,40915,807f5900,"cmp byte ptr [bx+59h],0"
+20,death_frame_index,2109,7175,40919,7407,je short 1C10h
+20,death_frame_index,2109,7177,40921,b80700,"mov ax,7"
+20,death_frame_index,2109,7180,40924,5e,pop si
+20,death_frame_index,2109,7181,40925,5f,pop di
+20,death_frame_index,2109,7182,40926,c9,leave
+20,death_frame_index,2109,7183,40927,cb,ret far
+20,death_frame_index,2109,7184,40928,8b7e0a,"mov di,[bp+0Ah]"
+20,death_frame_index,2109,7187,40931,9aa001ba0f,"call far 01A0h,0FBAh"
+20,death_frame_index,2109,7192,40936,b90700,"mov cx,7"
+20,death_frame_index,2109,7195,40939,99,cwd
+20,death_frame_index,2109,7196,40940,f7f9,idiv cx
+20,death_frame_index,2109,7198,40942,8bf2,"mov si,dx"
+20,death_frame_index,2109,7200,40944,3bf1,"cmp si,cx"
+20,death_frame_index,2109,7202,40946,74ef,je short 1C13h
+20,death_frame_index,2109,7204,40948,8bda,"mov bx,dx"
+20,death_frame_index,2109,7206,40950,03da,"add bx,dx"
+20,death_frame_index,2109,7208,40952,8e460c,"mov es,[bp+0Ch]"
+20,death_frame_index,2109,7211,40955,8bc3,"mov ax,bx"
+20,death_frame_index,2109,7213,40957,268a5d04,"mov bl,es:[di+4]"
+20,death_frame_index,2109,7217,40961,2aff,"sub bh,bh"
+20,death_frame_index,2109,7219,40963,c1e303,"shl bx,3"
+20,death_frame_index,2109,7222,40966,8b9f223d,"mov bx,[bx+3D22h]"
+20,death_frame_index,2109,7226,40970,03d8,"add bx,ax"
+20,death_frame_index,2109,7228,40972,386f4b,"cmp [bx+4Bh],ch"
+20,death_frame_index,2109,7231,40975,74d2,je short 1C13h
+20,death_frame_index,2109,7233,40977,8bc6,"mov ax,si"
+20,death_frame_index,2109,7235,40979,5e,pop si
+20,death_frame_index,2109,7236,40980,5f,pop di
+20,death_frame_index,2109,7237,40981,c9,leave
+20,death_frame_index,2109,7238,40982,cb,ret far
+20,hurt_frame_index,2109,7240,40984,55,push bp
+20,hurt_frame_index,2109,7241,40985,8bec,"mov bp,sp"
+20,hurt_frame_index,2109,7243,40987,57,push di
+20,hurt_frame_index,2109,7244,40988,56,push si
+20,hurt_frame_index,2109,7245,40989,c45e06,"les bx,[bp+6]"
+20,hurt_frame_index,2109,7248,40992,26807f1200,"cmp byte ptr es:[bx+12h],0"
+20,hurt_frame_index,2109,7253,40997,751d,jne short 1C74h
+20,hurt_frame_index,2109,7255,40999,c45e0a,"les bx,[bp+0Ah]"
+20,hurt_frame_index,2109,7258,41002,268a5f04,"mov bl,es:[bx+4]"
+20,hurt_frame_index,2109,7262,41006,2aff,"sub bh,bh"
+20,hurt_frame_index,2109,7264,41008,c1e303,"shl bx,3"
+20,hurt_frame_index,2109,7267,41011,8b9f223d,"mov bx,[bx+3D22h]"
+20,hurt_frame_index,2109,7271,41015,807f4900,"cmp byte ptr [bx+49h],0"
+20,hurt_frame_index,2109,7275,41019,7407,je short 1C74h
+20,hurt_frame_index,2109,7277,41021,b80700,"mov ax,7"
+20,hurt_frame_index,2109,7280,41024,5e,pop si
+20,hurt_frame_index,2109,7281,41025,5f,pop di
+20,hurt_frame_index,2109,7282,41026,c9,leave
+20,hurt_frame_index,2109,7283,41027,cb,ret far
+20,hurt_frame_index,2109,7284,41028,8b7e0a,"mov di,[bp+0Ah]"
+20,hurt_frame_index,2109,7287,41031,9aa001ba0f,"call far 01A0h,0FBAh"
+20,hurt_frame_index,2109,7292,41036,b90700,"mov cx,7"
+20,hurt_frame_index,2109,7295,41039,99,cwd
+20,hurt_frame_index,2109,7296,41040,f7f9,idiv cx
+20,hurt_frame_index,2109,7298,41042,8bf2,"mov si,dx"
+20,hurt_frame_index,2109,7300,41044,3bf1,"cmp si,cx"
+20,hurt_frame_index,2109,7302,41046,74ef,je short 1C77h
+20,hurt_frame_index,2109,7304,41048,8bda,"mov bx,dx"
+20,hurt_frame_index,2109,7306,41050,03da,"add bx,dx"
+20,hurt_frame_index,2109,7308,41052,8e460c,"mov es,[bp+0Ch]"
+20,hurt_frame_index,2109,7311,41055,8bc3,"mov ax,bx"
+20,hurt_frame_index,2109,7313,41057,268a5d04,"mov bl,es:[di+4]"
+20,hurt_frame_index,2109,7317,41061,2aff,"sub bh,bh"
+20,hurt_frame_index,2109,7319,41063,c1e303,"shl bx,3"
+20,hurt_frame_index,2109,7322,41066,8b9f223d,"mov bx,[bx+3D22h]"
+20,hurt_frame_index,2109,7326,41070,03d8,"add bx,ax"
+20,hurt_frame_index,2109,7328,41072,386f3b,"cmp [bx+3Bh],ch"
+20,hurt_frame_index,2109,7331,41075,74d2,je short 1C77h
+20,hurt_frame_index,2109,7333,41077,8bc6,"mov ax,si"
+20,hurt_frame_index,2109,7335,41079,5e,pop si
+20,hurt_frame_index,2109,7336,41080,5f,pop di
+20,hurt_frame_index,2109,7337,41081,c9,leave
+20,hurt_frame_index,2109,7338,41082,cb,ret far
+10,target_score_delta,2037,298,32890,55,push bp
+10,target_score_delta,2037,299,32891,8bec,"mov bp,sp"
+10,target_score_delta,2037,301,32893,33c9,"xor cx,cx"
+10,target_score_delta,2037,303,32895,c45e0a,"les bx,[bp+0Ah]"
+10,target_score_delta,2037,306,32898,2ae4,"sub ah,ah"
+10,target_score_delta,2037,308,32900,268a4706,"mov al,es:[bx+6]"
+10,target_score_delta,2037,312,32904,2d0800,"sub ax,8"
+10,target_score_delta,2037,315,32907,3d1800,"cmp ax,18h"
+10,target_score_delta,2037,318,32910,7777,ja short 01B7h
+10,target_score_delta,2037,320,32912,03c0,"add ax,ax"
+10,target_score_delta,2037,322,32914,93,"xchg bx,ax"
+10,target_score_delta,2037,323,32915,2effa74801,jmp word ptr cs:[bx+148h]
+10,target_score_delta,2037,378,32970,b91900,"mov cx,19h"
+10,target_score_delta,2037,381,32973,eb38,jmp short 01B7h
+10,target_score_delta,2037,384,32976,b94b00,"mov cx,4Bh"
+10,target_score_delta,2037,387,32979,eb32,jmp short 01B7h
+10,target_score_delta,2037,390,32982,b96400,"mov cx,64h"
+10,target_score_delta,2037,393,32985,eb2c,jmp short 01B7h
+10,target_score_delta,2037,396,32988,b99600,"mov cx,96h"
+10,target_score_delta,2037,399,32991,8bc1,"mov ax,cx"
+10,target_score_delta,2037,401,32993,c9,leave
+10,target_score_delta,2037,402,32994,cb,ret far
+10,target_score_delta,2037,404,32996,b9c800,"mov cx,0C8h"
+10,target_score_delta,2037,407,32999,8bc1,"mov ax,cx"
+10,target_score_delta,2037,409,33001,c9,leave
+10,target_score_delta,2037,410,33002,cb,ret far
+10,target_score_delta,2037,412,33004,b918fc,"mov cx,0FC18h"
+10,target_score_delta,2037,415,33007,8bc1,"mov ax,cx"
+10,target_score_delta,2037,417,33009,c9,leave
+10,target_score_delta,2037,418,33010,cb,ret far
+10,target_score_delta,2037,420,33012,b9e803,"mov cx,3E8h"
+10,target_score_delta,2037,423,33015,8bc1,"mov ax,cx"
+10,target_score_delta,2037,425,33017,c9,leave
+10,target_score_delta,2037,426,33018,cb,ret far
+10,target_score_delta,2037,428,33020,b9fa00,"mov cx,0FAh"
+10,target_score_delta,2037,431,33023,8bc1,"mov ax,cx"
+10,target_score_delta,2037,433,33025,c9,leave
+10,target_score_delta,2037,434,33026,cb,ret far
+10,target_score_delta,2037,436,33028,b93200,"mov cx,32h"
+10,target_score_delta,2037,439,33031,8bc1,"mov ax,cx"
+10,target_score_delta,2037,441,33033,c9,leave
+10,target_score_delta,2037,442,33034,cb,ret far
+10,death_frame_index,2037,7080,39672,55,push bp
+10,death_frame_index,2037,7081,39673,8bec,"mov bp,sp"
+10,death_frame_index,2037,7083,39675,57,push di
+10,death_frame_index,2037,7084,39676,56,push si
+10,death_frame_index,2037,7085,39677,c45e06,"les bx,[bp+6]"
+10,death_frame_index,2037,7088,39680,26807f1200,"cmp byte ptr es:[bx+12h],0"
+10,death_frame_index,2037,7093,39685,751d,jne short 1BD4h
+10,death_frame_index,2037,7095,39687,c45e0a,"les bx,[bp+0Ah]"
+10,death_frame_index,2037,7098,39690,268a5f04,"mov bl,es:[bx+4]"
+10,death_frame_index,2037,7102,39694,2aff,"sub bh,bh"
+10,death_frame_index,2037,7104,39696,c1e303,"shl bx,3"
+10,death_frame_index,2037,7107,39699,8b9f7a3b,"mov bx,[bx+3B7Ah]"
+10,death_frame_index,2037,7111,39703,807f5900,"cmp byte ptr [bx+59h],0"
+10,death_frame_index,2037,7115,39707,7407,je short 1BD4h
+10,death_frame_index,2037,7117,39709,b80700,"mov ax,7"
+10,death_frame_index,2037,7120,39712,5e,pop si
+10,death_frame_index,2037,7121,39713,5f,pop di
+10,death_frame_index,2037,7122,39714,c9,leave
+10,death_frame_index,2037,7123,39715,cb,ret far
+10,death_frame_index,2037,7124,39716,8b7e0a,"mov di,[bp+0Ah]"
+10,death_frame_index,2037,7127,39719,9a9e01670f,"call far 019Eh,0F67h"
+10,death_frame_index,2037,7132,39724,b90700,"mov cx,7"
+10,death_frame_index,2037,7135,39727,99,cwd
+10,death_frame_index,2037,7136,39728,f7f9,idiv cx
+10,death_frame_index,2037,7138,39730,8bf2,"mov si,dx"
+10,death_frame_index,2037,7140,39732,3bf1,"cmp si,cx"
+10,death_frame_index,2037,7142,39734,74ef,je short 1BD7h
+10,death_frame_index,2037,7144,39736,8bda,"mov bx,dx"
+10,death_frame_index,2037,7146,39738,03da,"add bx,dx"
+10,death_frame_index,2037,7148,39740,8e460c,"mov es,[bp+0Ch]"
+10,death_frame_index,2037,7151,39743,8bc3,"mov ax,bx"
+10,death_frame_index,2037,7153,39745,268a5d04,"mov bl,es:[di+4]"
+10,death_frame_index,2037,7157,39749,2aff,"sub bh,bh"
+10,death_frame_index,2037,7159,39751,c1e303,"shl bx,3"
+10,death_frame_index,2037,7162,39754,8b9f7a3b,"mov bx,[bx+3B7Ah]"
+10,death_frame_index,2037,7166,39758,03d8,"add bx,ax"
+10,death_frame_index,2037,7168,39760,386f4b,"cmp [bx+4Bh],ch"
+10,death_frame_index,2037,7171,39763,74d2,je short 1BD7h
+10,death_frame_index,2037,7173,39765,8bc6,"mov ax,si"
+10,death_frame_index,2037,7175,39767,5e,pop si
+10,death_frame_index,2037,7176,39768,5f,pop di
+10,death_frame_index,2037,7177,39769,c9,leave
+10,death_frame_index,2037,7178,39770,cb,ret far
+10,hurt_frame_index,2037,7180,39772,55,push bp
+10,hurt_frame_index,2037,7181,39773,8bec,"mov bp,sp"
+10,hurt_frame_index,2037,7183,39775,57,push di
+10,hurt_frame_index,2037,7184,39776,56,push si
+10,hurt_frame_index,2037,7185,39777,c45e06,"les bx,[bp+6]"
+10,hurt_frame_index,2037,7188,39780,26807f1200,"cmp byte ptr es:[bx+12h],0"
+10,hurt_frame_index,2037,7193,39785,751d,jne short 1C38h
+10,hurt_frame_index,2037,7195,39787,c45e0a,"les bx,[bp+0Ah]"
+10,hurt_frame_index,2037,7198,39790,268a5f04,"mov bl,es:[bx+4]"
+10,hurt_frame_index,2037,7202,39794,2aff,"sub bh,bh"
+10,hurt_frame_index,2037,7204,39796,c1e303,"shl bx,3"
+10,hurt_frame_index,2037,7207,39799,8b9f7a3b,"mov bx,[bx+3B7Ah]"
+10,hurt_frame_index,2037,7211,39803,807f4900,"cmp byte ptr [bx+49h],0"
+10,hurt_frame_index,2037,7215,39807,7407,je short 1C38h
+10,hurt_frame_index,2037,7217,39809,b80700,"mov ax,7"
+10,hurt_frame_index,2037,7220,39812,5e,pop si
+10,hurt_frame_index,2037,7221,39813,5f,pop di
+10,hurt_frame_index,2037,7222,39814,c9,leave
+10,hurt_frame_index,2037,7223,39815,cb,ret far
+10,hurt_frame_index,2037,7224,39816,8b7e0a,"mov di,[bp+0Ah]"
+10,hurt_frame_index,2037,7227,39819,9a9e01670f,"call far 019Eh,0F67h"
+10,hurt_frame_index,2037,7232,39824,b90700,"mov cx,7"
+10,hurt_frame_index,2037,7235,39827,99,cwd
+10,hurt_frame_index,2037,7236,39828,f7f9,idiv cx
+10,hurt_frame_index,2037,7238,39830,8bf2,"mov si,dx"
+10,hurt_frame_index,2037,7240,39832,3bf1,"cmp si,cx"
+10,hurt_frame_index,2037,7242,39834,74ef,je short 1C3Bh
+10,hurt_frame_index,2037,7244,39836,8bda,"mov bx,dx"
+10,hurt_frame_index,2037,7246,39838,03da,"add bx,dx"
+10,hurt_frame_index,2037,7248,39840,8e460c,"mov es,[bp+0Ch]"
+10,hurt_frame_index,2037,7251,39843,8bc3,"mov ax,bx"
+10,hurt_frame_index,2037,7253,39845,268a5d04,"mov bl,es:[di+4]"
+10,hurt_frame_index,2037,7257,39849,2aff,"sub bh,bh"
+10,hurt_frame_index,2037,7259,39851,c1e303,"shl bx,3"
+10,hurt_frame_index,2037,7262,39854,8b9f7a3b,"mov bx,[bx+3B7Ah]"
+10,hurt_frame_index,2037,7266,39858,03d8,"add bx,ax"
+10,hurt_frame_index,2037,7268,39860,386f3b,"cmp [bx+3Bh],ch"
+10,hurt_frame_index,2037,7271,39863,74d2,je short 1C3Bh
+10,hurt_frame_index,2037,7273,39865,8bc6,"mov ax,si"
+10,hurt_frame_index,2037,7275,39867,5e,pop si
+10,hurt_frame_index,2037,7276,39868,5f,pop di
+10,hurt_frame_index,2037,7277,39869,c9,leave
+10,hurt_frame_index,2037,7278,39870,cb,ret far
+11,target_score_delta,2071,298,33434,55,push bp
+11,target_score_delta,2071,299,33435,8bec,"mov bp,sp"
+11,target_score_delta,2071,301,33437,33c9,"xor cx,cx"
+11,target_score_delta,2071,303,33439,c45e0a,"les bx,[bp+0Ah]"
+11,target_score_delta,2071,306,33442,2ae4,"sub ah,ah"
+11,target_score_delta,2071,308,33444,268a4706,"mov al,es:[bx+6]"
+11,target_score_delta,2071,312,33448,2d0800,"sub ax,8"
+11,target_score_delta,2071,315,33451,3d1800,"cmp ax,18h"
+11,target_score_delta,2071,318,33454,7777,ja short 01B7h
+11,target_score_delta,2071,320,33456,03c0,"add ax,ax"
+11,target_score_delta,2071,322,33458,93,"xchg bx,ax"
+11,target_score_delta,2071,323,33459,2effa74801,jmp word ptr cs:[bx+148h]
+11,target_score_delta,2071,378,33514,b91900,"mov cx,19h"
+11,target_score_delta,2071,381,33517,eb38,jmp short 01B7h
+11,target_score_delta,2071,384,33520,b94b00,"mov cx,4Bh"
+11,target_score_delta,2071,387,33523,eb32,jmp short 01B7h
+11,target_score_delta,2071,390,33526,b96400,"mov cx,64h"
+11,target_score_delta,2071,393,33529,eb2c,jmp short 01B7h
+11,target_score_delta,2071,396,33532,b99600,"mov cx,96h"
+11,target_score_delta,2071,399,33535,8bc1,"mov ax,cx"
+11,target_score_delta,2071,401,33537,c9,leave
+11,target_score_delta,2071,402,33538,cb,ret far
+11,target_score_delta,2071,404,33540,b9c800,"mov cx,0C8h"
+11,target_score_delta,2071,407,33543,8bc1,"mov ax,cx"
+11,target_score_delta,2071,409,33545,c9,leave
+11,target_score_delta,2071,410,33546,cb,ret far
+11,target_score_delta,2071,412,33548,b918fc,"mov cx,0FC18h"
+11,target_score_delta,2071,415,33551,8bc1,"mov ax,cx"
+11,target_score_delta,2071,417,33553,c9,leave
+11,target_score_delta,2071,418,33554,cb,ret far
+11,target_score_delta,2071,420,33556,b9e803,"mov cx,3E8h"
+11,target_score_delta,2071,423,33559,8bc1,"mov ax,cx"
+11,target_score_delta,2071,425,33561,c9,leave
+11,target_score_delta,2071,426,33562,cb,ret far
+11,target_score_delta,2071,428,33564,b9fa00,"mov cx,0FAh"
+11,target_score_delta,2071,431,33567,8bc1,"mov ax,cx"
+11,target_score_delta,2071,433,33569,c9,leave
+11,target_score_delta,2071,434,33570,cb,ret far
+11,target_score_delta,2071,436,33572,b93200,"mov cx,32h"
+11,target_score_delta,2071,439,33575,8bc1,"mov ax,cx"
+11,target_score_delta,2071,441,33577,c9,leave
+11,target_score_delta,2071,442,33578,cb,ret far
+11,death_frame_index,2071,7080,40216,55,push bp
+11,death_frame_index,2071,7081,40217,8bec,"mov bp,sp"
+11,death_frame_index,2071,7083,40219,57,push di
+11,death_frame_index,2071,7084,40220,56,push si
+11,death_frame_index,2071,7085,40221,c45e06,"les bx,[bp+6]"
+11,death_frame_index,2071,7088,40224,26807f1200,"cmp byte ptr es:[bx+12h],0"
+11,death_frame_index,2071,7093,40229,751d,jne short 1BD4h
+11,death_frame_index,2071,7095,40231,c45e0a,"les bx,[bp+0Ah]"
+11,death_frame_index,2071,7098,40234,268a5f04,"mov bl,es:[bx+4]"
+11,death_frame_index,2071,7102,40238,2aff,"sub bh,bh"
+11,death_frame_index,2071,7104,40240,c1e303,"shl bx,3"
+11,death_frame_index,2071,7107,40243,8b9f803c,"mov bx,[bx+3C80h]"
+11,death_frame_index,2071,7111,40247,807f5900,"cmp byte ptr [bx+59h],0"
+11,death_frame_index,2071,7115,40251,7407,je short 1BD4h
+11,death_frame_index,2071,7117,40253,b80700,"mov ax,7"
+11,death_frame_index,2071,7120,40256,5e,pop si
+11,death_frame_index,2071,7121,40257,5f,pop di
+11,death_frame_index,2071,7122,40258,c9,leave
+11,death_frame_index,2071,7123,40259,cb,ret far
+11,death_frame_index,2071,7124,40260,8b7e0a,"mov di,[bp+0Ah]"
+11,death_frame_index,2071,7127,40263,9a9601890f,"call far 0196h,0F89h"
+11,death_frame_index,2071,7132,40268,b90700,"mov cx,7"
+11,death_frame_index,2071,7135,40271,99,cwd
+11,death_frame_index,2071,7136,40272,f7f9,idiv cx
+11,death_frame_index,2071,7138,40274,8bf2,"mov si,dx"
+11,death_frame_index,2071,7140,40276,3bf1,"cmp si,cx"
+11,death_frame_index,2071,7142,40278,74ef,je short 1BD7h
+11,death_frame_index,2071,7144,40280,8bda,"mov bx,dx"
+11,death_frame_index,2071,7146,40282,03da,"add bx,dx"
+11,death_frame_index,2071,7148,40284,8e460c,"mov es,[bp+0Ch]"
+11,death_frame_index,2071,7151,40287,8bc3,"mov ax,bx"
+11,death_frame_index,2071,7153,40289,268a5d04,"mov bl,es:[di+4]"
+11,death_frame_index,2071,7157,40293,2aff,"sub bh,bh"
+11,death_frame_index,2071,7159,40295,c1e303,"shl bx,3"
+11,death_frame_index,2071,7162,40298,8b9f803c,"mov bx,[bx+3C80h]"
+11,death_frame_index,2071,7166,40302,03d8,"add bx,ax"
+11,death_frame_index,2071,7168,40304,386f4b,"cmp [bx+4Bh],ch"
+11,death_frame_index,2071,7171,40307,74d2,je short 1BD7h
+11,death_frame_index,2071,7173,40309,8bc6,"mov ax,si"
+11,death_frame_index,2071,7175,40311,5e,pop si
+11,death_frame_index,2071,7176,40312,5f,pop di
+11,death_frame_index,2071,7177,40313,c9,leave
+11,death_frame_index,2071,7178,40314,cb,ret far
+11,hurt_frame_index,2071,7180,40316,55,push bp
+11,hurt_frame_index,2071,7181,40317,8bec,"mov bp,sp"
+11,hurt_frame_index,2071,7183,40319,57,push di
+11,hurt_frame_index,2071,7184,40320,56,push si
+11,hurt_frame_index,2071,7185,40321,c45e06,"les bx,[bp+6]"
+11,hurt_frame_index,2071,7188,40324,26807f1200,"cmp byte ptr es:[bx+12h],0"
+11,hurt_frame_index,2071,7193,40329,751d,jne short 1C38h
+11,hurt_frame_index,2071,7195,40331,c45e0a,"les bx,[bp+0Ah]"
+11,hurt_frame_index,2071,7198,40334,268a5f04,"mov bl,es:[bx+4]"
+11,hurt_frame_index,2071,7202,40338,2aff,"sub bh,bh"
+11,hurt_frame_index,2071,7204,40340,c1e303,"shl bx,3"
+11,hurt_frame_index,2071,7207,40343,8b9f803c,"mov bx,[bx+3C80h]"
+11,hurt_frame_index,2071,7211,40347,807f4900,"cmp byte ptr [bx+49h],0"
+11,hurt_frame_index,2071,7215,40351,7407,je short 1C38h
+11,hurt_frame_index,2071,7217,40353,b80700,"mov ax,7"
+11,hurt_frame_index,2071,7220,40356,5e,pop si
+11,hurt_frame_index,2071,7221,40357,5f,pop di
+11,hurt_frame_index,2071,7222,40358,c9,leave
+11,hurt_frame_index,2071,7223,40359,cb,ret far
+11,hurt_frame_index,2071,7224,40360,8b7e0a,"mov di,[bp+0Ah]"
+11,hurt_frame_index,2071,7227,40363,9a9601890f,"call far 0196h,0F89h"
+11,hurt_frame_index,2071,7232,40368,b90700,"mov cx,7"
+11,hurt_frame_index,2071,7235,40371,99,cwd
+11,hurt_frame_index,2071,7236,40372,f7f9,idiv cx
+11,hurt_frame_index,2071,7238,40374,8bf2,"mov si,dx"
+11,hurt_frame_index,2071,7240,40376,3bf1,"cmp si,cx"
+11,hurt_frame_index,2071,7242,40378,74ef,je short 1C3Bh
+11,hurt_frame_index,2071,7244,40380,8bda,"mov bx,dx"
+11,hurt_frame_index,2071,7246,40382,03da,"add bx,dx"
+11,hurt_frame_index,2071,7248,40384,8e460c,"mov es,[bp+0Ch]"
+11,hurt_frame_index,2071,7251,40387,8bc3,"mov ax,bx"
+11,hurt_frame_index,2071,7253,40389,268a5d04,"mov bl,es:[di+4]"
+11,hurt_frame_index,2071,7257,40393,2aff,"sub bh,bh"
+11,hurt_frame_index,2071,7259,40395,c1e303,"shl bx,3"
+11,hurt_frame_index,2071,7262,40398,8b9f803c,"mov bx,[bx+3C80h]"
+11,hurt_frame_index,2071,7266,40402,03d8,"add bx,ax"
+11,hurt_frame_index,2071,7268,40404,386f3b,"cmp [bx+3Bh],ch"
+11,hurt_frame_index,2071,7271,40407,74d2,je short 1C3Bh
+11,hurt_frame_index,2071,7273,40409,8bc6,"mov ax,si"
+11,hurt_frame_index,2071,7275,40411,5e,pop si
+11,hurt_frame_index,2071,7276,40412,5f,pop di
+11,hurt_frame_index,2071,7277,40413,c9,leave
+11,hurt_frame_index,2071,7278,40414,cb,ret far
+12,target_score_delta,2072,294,33446,55,push bp
+12,target_score_delta,2072,295,33447,8bec,"mov bp,sp"
+12,target_score_delta,2072,297,33449,33c9,"xor cx,cx"
+12,target_score_delta,2072,299,33451,c45e0a,"les bx,[bp+0Ah]"
+12,target_score_delta,2072,302,33454,2ae4,"sub ah,ah"
+12,target_score_delta,2072,304,33456,268a4706,"mov al,es:[bx+6]"
+12,target_score_delta,2072,308,33460,2d0800,"sub ax,8"
+12,target_score_delta,2072,311,33463,3d1800,"cmp ax,18h"
+12,target_score_delta,2072,314,33466,7777,ja short 01B3h
+12,target_score_delta,2072,316,33468,03c0,"add ax,ax"
+12,target_score_delta,2072,318,33470,93,"xchg bx,ax"
+12,target_score_delta,2072,319,33471,2effa74401,jmp word ptr cs:[bx+144h]
+12,target_score_delta,2072,374,33526,b91900,"mov cx,19h"
+12,target_score_delta,2072,377,33529,eb38,jmp short 01B3h
+12,target_score_delta,2072,380,33532,b94b00,"mov cx,4Bh"
+12,target_score_delta,2072,383,33535,eb32,jmp short 01B3h
+12,target_score_delta,2072,386,33538,b96400,"mov cx,64h"
+12,target_score_delta,2072,389,33541,eb2c,jmp short 01B3h
+12,target_score_delta,2072,392,33544,b99600,"mov cx,96h"
+12,target_score_delta,2072,395,33547,8bc1,"mov ax,cx"
+12,target_score_delta,2072,397,33549,c9,leave
+12,target_score_delta,2072,398,33550,cb,ret far
+12,target_score_delta,2072,400,33552,b9c800,"mov cx,0C8h"
+12,target_score_delta,2072,403,33555,8bc1,"mov ax,cx"
+12,target_score_delta,2072,405,33557,c9,leave
+12,target_score_delta,2072,406,33558,cb,ret far
+12,target_score_delta,2072,408,33560,b918fc,"mov cx,0FC18h"
+12,target_score_delta,2072,411,33563,8bc1,"mov ax,cx"
+12,target_score_delta,2072,413,33565,c9,leave
+12,target_score_delta,2072,414,33566,cb,ret far
+12,target_score_delta,2072,416,33568,b9e803,"mov cx,3E8h"
+12,target_score_delta,2072,419,33571,8bc1,"mov ax,cx"
+12,target_score_delta,2072,421,33573,c9,leave
+12,target_score_delta,2072,422,33574,cb,ret far
+12,target_score_delta,2072,424,33576,b9fa00,"mov cx,0FAh"
+12,target_score_delta,2072,427,33579,8bc1,"mov ax,cx"
+12,target_score_delta,2072,429,33581,c9,leave
+12,target_score_delta,2072,430,33582,cb,ret far
+12,target_score_delta,2072,432,33584,b93200,"mov cx,32h"
+12,target_score_delta,2072,435,33587,8bc1,"mov ax,cx"
+12,target_score_delta,2072,437,33589,c9,leave
+12,target_score_delta,2072,438,33590,cb,ret far
+12,death_frame_index,2072,7066,40218,55,push bp
+12,death_frame_index,2072,7067,40219,8bec,"mov bp,sp"
+12,death_frame_index,2072,7069,40221,57,push di
+12,death_frame_index,2072,7070,40222,56,push si
+12,death_frame_index,2072,7071,40223,c45e06,"les bx,[bp+6]"
+12,death_frame_index,2072,7074,40226,26807f1200,"cmp byte ptr es:[bx+12h],0"
+12,death_frame_index,2072,7079,40231,751d,jne short 1BC6h
+12,death_frame_index,2072,7081,40233,c45e0a,"les bx,[bp+0Ah]"
+12,death_frame_index,2072,7084,40236,268a5f04,"mov bl,es:[bx+4]"
+12,death_frame_index,2072,7088,40240,2aff,"sub bh,bh"
+12,death_frame_index,2072,7090,40242,c1e303,"shl bx,3"
+12,death_frame_index,2072,7093,40245,8b9f803c,"mov bx,[bx+3C80h]"
+12,death_frame_index,2072,7097,40249,807f5900,"cmp byte ptr [bx+59h],0"
+12,death_frame_index,2072,7101,40253,7407,je short 1BC6h
+12,death_frame_index,2072,7103,40255,b80700,"mov ax,7"
+12,death_frame_index,2072,7106,40258,5e,pop si
+12,death_frame_index,2072,7107,40259,5f,pop di
+12,death_frame_index,2072,7108,40260,c9,leave
+12,death_frame_index,2072,7109,40261,cb,ret far
+12,death_frame_index,2072,7110,40262,8b7e0a,"mov di,[bp+0Ah]"
+12,death_frame_index,2072,7113,40265,9a96018f0f,"call far 0196h,0F8Fh"
+12,death_frame_index,2072,7118,40270,b90700,"mov cx,7"
+12,death_frame_index,2072,7121,40273,99,cwd
+12,death_frame_index,2072,7122,40274,f7f9,idiv cx
+12,death_frame_index,2072,7124,40276,8bf2,"mov si,dx"
+12,death_frame_index,2072,7126,40278,3bf1,"cmp si,cx"
+12,death_frame_index,2072,7128,40280,74ef,je short 1BC9h
+12,death_frame_index,2072,7130,40282,8bda,"mov bx,dx"
+12,death_frame_index,2072,7132,40284,03da,"add bx,dx"
+12,death_frame_index,2072,7134,40286,8e460c,"mov es,[bp+0Ch]"
+12,death_frame_index,2072,7137,40289,8bc3,"mov ax,bx"
+12,death_frame_index,2072,7139,40291,268a5d04,"mov bl,es:[di+4]"
+12,death_frame_index,2072,7143,40295,2aff,"sub bh,bh"
+12,death_frame_index,2072,7145,40297,c1e303,"shl bx,3"
+12,death_frame_index,2072,7148,40300,8b9f803c,"mov bx,[bx+3C80h]"
+12,death_frame_index,2072,7152,40304,03d8,"add bx,ax"
+12,death_frame_index,2072,7154,40306,386f4b,"cmp [bx+4Bh],ch"
+12,death_frame_index,2072,7157,40309,74d2,je short 1BC9h
+12,death_frame_index,2072,7159,40311,8bc6,"mov ax,si"
+12,death_frame_index,2072,7161,40313,5e,pop si
+12,death_frame_index,2072,7162,40314,5f,pop di
+12,death_frame_index,2072,7163,40315,c9,leave
+12,death_frame_index,2072,7164,40316,cb,ret far
+12,hurt_frame_index,2072,7166,40318,55,push bp
+12,hurt_frame_index,2072,7167,40319,8bec,"mov bp,sp"
+12,hurt_frame_index,2072,7169,40321,57,push di
+12,hurt_frame_index,2072,7170,40322,56,push si
+12,hurt_frame_index,2072,7171,40323,c45e06,"les bx,[bp+6]"
+12,hurt_frame_index,2072,7174,40326,26807f1200,"cmp byte ptr es:[bx+12h],0"
+12,hurt_frame_index,2072,7179,40331,751d,jne short 1C2Ah
+12,hurt_frame_index,2072,7181,40333,c45e0a,"les bx,[bp+0Ah]"
+12,hurt_frame_index,2072,7184,40336,268a5f04,"mov bl,es:[bx+4]"
+12,hurt_frame_index,2072,7188,40340,2aff,"sub bh,bh"
+12,hurt_frame_index,2072,7190,40342,c1e303,"shl bx,3"
+12,hurt_frame_index,2072,7193,40345,8b9f803c,"mov bx,[bx+3C80h]"
+12,hurt_frame_index,2072,7197,40349,807f4900,"cmp byte ptr [bx+49h],0"
+12,hurt_frame_index,2072,7201,40353,7407,je short 1C2Ah
+12,hurt_frame_index,2072,7203,40355,b80700,"mov ax,7"
+12,hurt_frame_index,2072,7206,40358,5e,pop si
+12,hurt_frame_index,2072,7207,40359,5f,pop di
+12,hurt_frame_index,2072,7208,40360,c9,leave
+12,hurt_frame_index,2072,7209,40361,cb,ret far
+12,hurt_frame_index,2072,7210,40362,8b7e0a,"mov di,[bp+0Ah]"
+12,hurt_frame_index,2072,7213,40365,9a96018f0f,"call far 0196h,0F8Fh"
+12,hurt_frame_index,2072,7218,40370,b90700,"mov cx,7"
+12,hurt_frame_index,2072,7221,40373,99,cwd
+12,hurt_frame_index,2072,7222,40374,f7f9,idiv cx
+12,hurt_frame_index,2072,7224,40376,8bf2,"mov si,dx"
+12,hurt_frame_index,2072,7226,40378,3bf1,"cmp si,cx"
+12,hurt_frame_index,2072,7228,40380,74ef,je short 1C2Dh
+12,hurt_frame_index,2072,7230,40382,8bda,"mov bx,dx"
+12,hurt_frame_index,2072,7232,40384,03da,"add bx,dx"
+12,hurt_frame_index,2072,7234,40386,8e460c,"mov es,[bp+0Ch]"
+12,hurt_frame_index,2072,7237,40389,8bc3,"mov ax,bx"
+12,hurt_frame_index,2072,7239,40391,268a5d04,"mov bl,es:[di+4]"
+12,hurt_frame_index,2072,7243,40395,2aff,"sub bh,bh"
+12,hurt_frame_index,2072,7245,40397,c1e303,"shl bx,3"
+12,hurt_frame_index,2072,7248,40400,8b9f803c,"mov bx,[bx+3C80h]"
+12,hurt_frame_index,2072,7252,40404,03d8,"add bx,ax"
+12,hurt_frame_index,2072,7254,40406,386f3b,"cmp [bx+3Bh],ch"
+12,hurt_frame_index,2072,7257,40409,74d2,je short 1C2Dh
+12,hurt_frame_index,2072,7259,40411,8bc6,"mov ax,si"
+12,hurt_frame_index,2072,7261,40413,5e,pop si
+12,hurt_frame_index,2072,7262,40414,5f,pop di
+12,hurt_frame_index,2072,7263,40415,c9,leave
+12,hurt_frame_index,2072,7264,40416,cb,ret far
+15,target_score_delta,2076,308,33524,55,push bp
+15,target_score_delta,2076,309,33525,8bec,"mov bp,sp"
+15,target_score_delta,2076,311,33527,33c9,"xor cx,cx"
+15,target_score_delta,2076,313,33529,c45e0a,"les bx,[bp+0Ah]"
+15,target_score_delta,2076,316,33532,2ae4,"sub ah,ah"
+15,target_score_delta,2076,318,33534,268a4706,"mov al,es:[bx+6]"
+15,target_score_delta,2076,322,33538,2d0800,"sub ax,8"
+15,target_score_delta,2076,325,33541,3d1800,"cmp ax,18h"
+15,target_score_delta,2076,328,33544,7777,ja short 01C1h
+15,target_score_delta,2076,330,33546,03c0,"add ax,ax"
+15,target_score_delta,2076,332,33548,93,"xchg bx,ax"
+15,target_score_delta,2076,333,33549,2effa75201,jmp word ptr cs:[bx+152h]
+15,target_score_delta,2076,388,33604,b91900,"mov cx,19h"
+15,target_score_delta,2076,391,33607,eb38,jmp short 01C1h
+15,target_score_delta,2076,394,33610,b94b00,"mov cx,4Bh"
+15,target_score_delta,2076,397,33613,eb32,jmp short 01C1h
+15,target_score_delta,2076,400,33616,b96400,"mov cx,64h"
+15,target_score_delta,2076,403,33619,eb2c,jmp short 01C1h
+15,target_score_delta,2076,406,33622,b99600,"mov cx,96h"
+15,target_score_delta,2076,409,33625,8bc1,"mov ax,cx"
+15,target_score_delta,2076,411,33627,c9,leave
+15,target_score_delta,2076,412,33628,cb,ret far
+15,target_score_delta,2076,414,33630,b9c800,"mov cx,0C8h"
+15,target_score_delta,2076,417,33633,8bc1,"mov ax,cx"
+15,target_score_delta,2076,419,33635,c9,leave
+15,target_score_delta,2076,420,33636,cb,ret far
+15,target_score_delta,2076,422,33638,b918fc,"mov cx,0FC18h"
+15,target_score_delta,2076,425,33641,8bc1,"mov ax,cx"
+15,target_score_delta,2076,427,33643,c9,leave
+15,target_score_delta,2076,428,33644,cb,ret far
+15,target_score_delta,2076,430,33646,b9e803,"mov cx,3E8h"
+15,target_score_delta,2076,433,33649,8bc1,"mov ax,cx"
+15,target_score_delta,2076,435,33651,c9,leave
+15,target_score_delta,2076,436,33652,cb,ret far
+15,target_score_delta,2076,438,33654,b9fa00,"mov cx,0FAh"
+15,target_score_delta,2076,441,33657,8bc1,"mov ax,cx"
+15,target_score_delta,2076,443,33659,c9,leave
+15,target_score_delta,2076,444,33660,cb,ret far
+15,target_score_delta,2076,446,33662,b93200,"mov cx,32h"
+15,target_score_delta,2076,449,33665,8bc1,"mov ax,cx"
+15,target_score_delta,2076,451,33667,c9,leave
+15,target_score_delta,2076,452,33668,cb,ret far
+15,death_frame_index,2076,7128,40344,55,push bp
+15,death_frame_index,2076,7129,40345,8bec,"mov bp,sp"
+15,death_frame_index,2076,7131,40347,57,push di
+15,death_frame_index,2076,7132,40348,56,push si
+15,death_frame_index,2076,7133,40349,c45e06,"les bx,[bp+6]"
+15,death_frame_index,2076,7136,40352,26807f1200,"cmp byte ptr es:[bx+12h],0"
+15,death_frame_index,2076,7141,40357,751d,jne short 1C04h
+15,death_frame_index,2076,7143,40359,c45e0a,"les bx,[bp+0Ah]"
+15,death_frame_index,2076,7146,40362,268a5f04,"mov bl,es:[bx+4]"
+15,death_frame_index,2076,7150,40366,2aff,"sub bh,bh"
+15,death_frame_index,2076,7152,40368,c1e303,"shl bx,3"
+15,death_frame_index,2076,7155,40371,8b9f503c,"mov bx,[bx+3C50h]"
+15,death_frame_index,2076,7159,40375,807f5900,"cmp byte ptr [bx+59h],0"
+15,death_frame_index,2076,7163,40379,7407,je short 1C04h
+15,death_frame_index,2076,7165,40381,b80700,"mov ax,7"
+15,death_frame_index,2076,7168,40384,5e,pop si
+15,death_frame_index,2076,7169,40385,5f,pop di
+15,death_frame_index,2076,7170,40386,c9,leave
+15,death_frame_index,2076,7171,40387,cb,ret far
+15,death_frame_index,2076,7172,40388,8b7e0a,"mov di,[bp+0Ah]"
+15,death_frame_index,2076,7175,40391,9a9401940f,"call far 0194h,0F94h"
+15,death_frame_index,2076,7180,40396,b90700,"mov cx,7"
+15,death_frame_index,2076,7183,40399,99,cwd
+15,death_frame_index,2076,7184,40400,f7f9,idiv cx
+15,death_frame_index,2076,7186,40402,8bf2,"mov si,dx"
+15,death_frame_index,2076,7188,40404,3bf1,"cmp si,cx"
+15,death_frame_index,2076,7190,40406,74ef,je short 1C07h
+15,death_frame_index,2076,7192,40408,8bda,"mov bx,dx"
+15,death_frame_index,2076,7194,40410,03da,"add bx,dx"
+15,death_frame_index,2076,7196,40412,8e460c,"mov es,[bp+0Ch]"
+15,death_frame_index,2076,7199,40415,8bc3,"mov ax,bx"
+15,death_frame_index,2076,7201,40417,268a5d04,"mov bl,es:[di+4]"
+15,death_frame_index,2076,7205,40421,2aff,"sub bh,bh"
+15,death_frame_index,2076,7207,40423,c1e303,"shl bx,3"
+15,death_frame_index,2076,7210,40426,8b9f503c,"mov bx,[bx+3C50h]"
+15,death_frame_index,2076,7214,40430,03d8,"add bx,ax"
+15,death_frame_index,2076,7216,40432,386f4b,"cmp [bx+4Bh],ch"
+15,death_frame_index,2076,7219,40435,74d2,je short 1C07h
+15,death_frame_index,2076,7221,40437,8bc6,"mov ax,si"
+15,death_frame_index,2076,7223,40439,5e,pop si
+15,death_frame_index,2076,7224,40440,5f,pop di
+15,death_frame_index,2076,7225,40441,c9,leave
+15,death_frame_index,2076,7226,40442,cb,ret far
+15,hurt_frame_index,2076,7228,40444,55,push bp
+15,hurt_frame_index,2076,7229,40445,8bec,"mov bp,sp"
+15,hurt_frame_index,2076,7231,40447,57,push di
+15,hurt_frame_index,2076,7232,40448,56,push si
+15,hurt_frame_index,2076,7233,40449,c45e06,"les bx,[bp+6]"
+15,hurt_frame_index,2076,7236,40452,26807f1200,"cmp byte ptr es:[bx+12h],0"
+15,hurt_frame_index,2076,7241,40457,751d,jne short 1C68h
+15,hurt_frame_index,2076,7243,40459,c45e0a,"les bx,[bp+0Ah]"
+15,hurt_frame_index,2076,7246,40462,268a5f04,"mov bl,es:[bx+4]"
+15,hurt_frame_index,2076,7250,40466,2aff,"sub bh,bh"
+15,hurt_frame_index,2076,7252,40468,c1e303,"shl bx,3"
+15,hurt_frame_index,2076,7255,40471,8b9f503c,"mov bx,[bx+3C50h]"
+15,hurt_frame_index,2076,7259,40475,807f4900,"cmp byte ptr [bx+49h],0"
+15,hurt_frame_index,2076,7263,40479,7407,je short 1C68h
+15,hurt_frame_index,2076,7265,40481,b80700,"mov ax,7"
+15,hurt_frame_index,2076,7268,40484,5e,pop si
+15,hurt_frame_index,2076,7269,40485,5f,pop di
+15,hurt_frame_index,2076,7270,40486,c9,leave
+15,hurt_frame_index,2076,7271,40487,cb,ret far
+15,hurt_frame_index,2076,7272,40488,8b7e0a,"mov di,[bp+0Ah]"
+15,hurt_frame_index,2076,7275,40491,9a9401940f,"call far 0194h,0F94h"
+15,hurt_frame_index,2076,7280,40496,b90700,"mov cx,7"
+15,hurt_frame_index,2076,7283,40499,99,cwd
+15,hurt_frame_index,2076,7284,40500,f7f9,idiv cx
+15,hurt_frame_index,2076,7286,40502,8bf2,"mov si,dx"
+15,hurt_frame_index,2076,7288,40504,3bf1,"cmp si,cx"
+15,hurt_frame_index,2076,7290,40506,74ef,je short 1C6Bh
+15,hurt_frame_index,2076,7292,40508,8bda,"mov bx,dx"
+15,hurt_frame_index,2076,7294,40510,03da,"add bx,dx"
+15,hurt_frame_index,2076,7296,40512,8e460c,"mov es,[bp+0Ch]"
+15,hurt_frame_index,2076,7299,40515,8bc3,"mov ax,bx"
+15,hurt_frame_index,2076,7301,40517,268a5d04,"mov bl,es:[di+4]"
+15,hurt_frame_index,2076,7305,40521,2aff,"sub bh,bh"
+15,hurt_frame_index,2076,7307,40523,c1e303,"shl bx,3"
+15,hurt_frame_index,2076,7310,40526,8b9f503c,"mov bx,[bx+3C50h]"
+15,hurt_frame_index,2076,7314,40530,03d8,"add bx,ax"
+15,hurt_frame_index,2076,7316,40532,386f3b,"cmp [bx+3Bh],ch"
+15,hurt_frame_index,2076,7319,40535,74d2,je short 1C6Bh
+15,hurt_frame_index,2076,7321,40537,8bc6,"mov ax,si"
+15,hurt_frame_index,2076,7323,40539,5e,pop si
+15,hurt_frame_index,2076,7324,40540,5f,pop di
+15,hurt_frame_index,2076,7325,40541,c9,leave
+15,hurt_frame_index,2076,7326,40542,cb,ret far
+17,target_score_delta,2086,304,33680,55,push bp
+17,target_score_delta,2086,305,33681,8bec,"mov bp,sp"
+17,target_score_delta,2086,307,33683,33c9,"xor cx,cx"
+17,target_score_delta,2086,309,33685,c45e0a,"les bx,[bp+0Ah]"
+17,target_score_delta,2086,312,33688,2ae4,"sub ah,ah"
+17,target_score_delta,2086,314,33690,268a4706,"mov al,es:[bx+6]"
+17,target_score_delta,2086,318,33694,2d0800,"sub ax,8"
+17,target_score_delta,2086,321,33697,3d1800,"cmp ax,18h"
+17,target_score_delta,2086,324,33700,7777,ja short 01BDh
+17,target_score_delta,2086,326,33702,03c0,"add ax,ax"
+17,target_score_delta,2086,328,33704,93,"xchg bx,ax"
+17,target_score_delta,2086,329,33705,2effa74e01,jmp word ptr cs:[bx+14Eh]
+17,target_score_delta,2086,384,33760,b91900,"mov cx,19h"
+17,target_score_delta,2086,387,33763,eb38,jmp short 01BDh
+17,target_score_delta,2086,390,33766,b94b00,"mov cx,4Bh"
+17,target_score_delta,2086,393,33769,eb32,jmp short 01BDh
+17,target_score_delta,2086,396,33772,b96400,"mov cx,64h"
+17,target_score_delta,2086,399,33775,eb2c,jmp short 01BDh
+17,target_score_delta,2086,402,33778,b99600,"mov cx,96h"
+17,target_score_delta,2086,405,33781,8bc1,"mov ax,cx"
+17,target_score_delta,2086,407,33783,c9,leave
+17,target_score_delta,2086,408,33784,cb,ret far
+17,target_score_delta,2086,410,33786,b9c800,"mov cx,0C8h"
+17,target_score_delta,2086,413,33789,8bc1,"mov ax,cx"
+17,target_score_delta,2086,415,33791,c9,leave
+17,target_score_delta,2086,416,33792,cb,ret far
+17,target_score_delta,2086,418,33794,b918fc,"mov cx,0FC18h"
+17,target_score_delta,2086,421,33797,8bc1,"mov ax,cx"
+17,target_score_delta,2086,423,33799,c9,leave
+17,target_score_delta,2086,424,33800,cb,ret far
+17,target_score_delta,2086,426,33802,b9e803,"mov cx,3E8h"
+17,target_score_delta,2086,429,33805,8bc1,"mov ax,cx"
+17,target_score_delta,2086,431,33807,c9,leave
+17,target_score_delta,2086,432,33808,cb,ret far
+17,target_score_delta,2086,434,33810,b9fa00,"mov cx,0FAh"
+17,target_score_delta,2086,437,33813,8bc1,"mov ax,cx"
+17,target_score_delta,2086,439,33815,c9,leave
+17,target_score_delta,2086,440,33816,cb,ret far
+17,target_score_delta,2086,442,33818,b93200,"mov cx,32h"
+17,target_score_delta,2086,445,33821,8bc1,"mov ax,cx"
+17,target_score_delta,2086,447,33823,c9,leave
+17,target_score_delta,2086,448,33824,cb,ret far
+17,death_frame_index,2086,7124,40500,55,push bp
+17,death_frame_index,2086,7125,40501,8bec,"mov bp,sp"
+17,death_frame_index,2086,7127,40503,57,push di
+17,death_frame_index,2086,7128,40504,56,push si
+17,death_frame_index,2086,7129,40505,c45e06,"les bx,[bp+6]"
+17,death_frame_index,2086,7132,40508,26807f1200,"cmp byte ptr es:[bx+12h],0"
+17,death_frame_index,2086,7137,40513,751d,jne short 1C00h
+17,death_frame_index,2086,7139,40515,c45e0a,"les bx,[bp+0Ah]"
+17,death_frame_index,2086,7142,40518,268a5f04,"mov bl,es:[bx+4]"
+17,death_frame_index,2086,7146,40522,2aff,"sub bh,bh"
+17,death_frame_index,2086,7148,40524,c1e303,"shl bx,3"
+17,death_frame_index,2086,7151,40527,8b9f923c,"mov bx,[bx+3C92h]"
+17,death_frame_index,2086,7155,40531,807f5900,"cmp byte ptr [bx+59h],0"
+17,death_frame_index,2086,7159,40535,7407,je short 1C00h
+17,death_frame_index,2086,7161,40537,b80700,"mov ax,7"
+17,death_frame_index,2086,7164,40540,5e,pop si
+17,death_frame_index,2086,7165,40541,5f,pop di
+17,death_frame_index,2086,7166,40542,c9,leave
+17,death_frame_index,2086,7167,40543,cb,ret far
+17,death_frame_index,2086,7168,40544,8b7e0a,"mov di,[bp+0Ah]"
+17,death_frame_index,2086,7171,40547,9aa0019d0f,"call far 01A0h,0F9Dh"
+17,death_frame_index,2086,7176,40552,b90700,"mov cx,7"
+17,death_frame_index,2086,7179,40555,99,cwd
+17,death_frame_index,2086,7180,40556,f7f9,idiv cx
+17,death_frame_index,2086,7182,40558,8bf2,"mov si,dx"
+17,death_frame_index,2086,7184,40560,3bf1,"cmp si,cx"
+17,death_frame_index,2086,7186,40562,74ef,je short 1C03h
+17,death_frame_index,2086,7188,40564,8bda,"mov bx,dx"
+17,death_frame_index,2086,7190,40566,03da,"add bx,dx"
+17,death_frame_index,2086,7192,40568,8e460c,"mov es,[bp+0Ch]"
+17,death_frame_index,2086,7195,40571,8bc3,"mov ax,bx"
+17,death_frame_index,2086,7197,40573,268a5d04,"mov bl,es:[di+4]"
+17,death_frame_index,2086,7201,40577,2aff,"sub bh,bh"
+17,death_frame_index,2086,7203,40579,c1e303,"shl bx,3"
+17,death_frame_index,2086,7206,40582,8b9f923c,"mov bx,[bx+3C92h]"
+17,death_frame_index,2086,7210,40586,03d8,"add bx,ax"
+17,death_frame_index,2086,7212,40588,386f4b,"cmp [bx+4Bh],ch"
+17,death_frame_index,2086,7215,40591,74d2,je short 1C03h
+17,death_frame_index,2086,7217,40593,8bc6,"mov ax,si"
+17,death_frame_index,2086,7219,40595,5e,pop si
+17,death_frame_index,2086,7220,40596,5f,pop di
+17,death_frame_index,2086,7221,40597,c9,leave
+17,death_frame_index,2086,7222,40598,cb,ret far
+17,hurt_frame_index,2086,7224,40600,55,push bp
+17,hurt_frame_index,2086,7225,40601,8bec,"mov bp,sp"
+17,hurt_frame_index,2086,7227,40603,57,push di
+17,hurt_frame_index,2086,7228,40604,56,push si
+17,hurt_frame_index,2086,7229,40605,c45e06,"les bx,[bp+6]"
+17,hurt_frame_index,2086,7232,40608,26807f1200,"cmp byte ptr es:[bx+12h],0"
+17,hurt_frame_index,2086,7237,40613,751d,jne short 1C64h
+17,hurt_frame_index,2086,7239,40615,c45e0a,"les bx,[bp+0Ah]"
+17,hurt_frame_index,2086,7242,40618,268a5f04,"mov bl,es:[bx+4]"
+17,hurt_frame_index,2086,7246,40622,2aff,"sub bh,bh"
+17,hurt_frame_index,2086,7248,40624,c1e303,"shl bx,3"
+17,hurt_frame_index,2086,7251,40627,8b9f923c,"mov bx,[bx+3C92h]"
+17,hurt_frame_index,2086,7255,40631,807f4900,"cmp byte ptr [bx+49h],0"
+17,hurt_frame_index,2086,7259,40635,7407,je short 1C64h
+17,hurt_frame_index,2086,7261,40637,b80700,"mov ax,7"
+17,hurt_frame_index,2086,7264,40640,5e,pop si
+17,hurt_frame_index,2086,7265,40641,5f,pop di
+17,hurt_frame_index,2086,7266,40642,c9,leave
+17,hurt_frame_index,2086,7267,40643,cb,ret far
+17,hurt_frame_index,2086,7268,40644,8b7e0a,"mov di,[bp+0Ah]"
+17,hurt_frame_index,2086,7271,40647,9aa0019d0f,"call far 01A0h,0F9Dh"
+17,hurt_frame_index,2086,7276,40652,b90700,"mov cx,7"
+17,hurt_frame_index,2086,7279,40655,99,cwd
+17,hurt_frame_index,2086,7280,40656,f7f9,idiv cx
+17,hurt_frame_index,2086,7282,40658,8bf2,"mov si,dx"
+17,hurt_frame_index,2086,7284,40660,3bf1,"cmp si,cx"
+17,hurt_frame_index,2086,7286,40662,74ef,je short 1C67h
+17,hurt_frame_index,2086,7288,40664,8bda,"mov bx,dx"
+17,hurt_frame_index,2086,7290,40666,03da,"add bx,dx"
+17,hurt_frame_index,2086,7292,40668,8e460c,"mov es,[bp+0Ch]"
+17,hurt_frame_index,2086,7295,40671,8bc3,"mov ax,bx"
+17,hurt_frame_index,2086,7297,40673,268a5d04,"mov bl,es:[di+4]"
+17,hurt_frame_index,2086,7301,40677,2aff,"sub bh,bh"
+17,hurt_frame_index,2086,7303,40679,c1e303,"shl bx,3"
+17,hurt_frame_index,2086,7306,40682,8b9f923c,"mov bx,[bx+3C92h]"
+17,hurt_frame_index,2086,7310,40686,03d8,"add bx,ax"
+17,hurt_frame_index,2086,7312,40688,386f3b,"cmp [bx+3Bh],ch"
+17,hurt_frame_index,2086,7315,40691,74d2,je short 1C67h
+17,hurt_frame_index,2086,7317,40693,8bc6,"mov ax,si"
+17,hurt_frame_index,2086,7319,40695,5e,pop si
+17,hurt_frame_index,2086,7320,40696,5f,pop di
+17,hurt_frame_index,2086,7321,40697,c9,leave
+17,hurt_frame_index,2086,7322,40698,cb,ret far
+18,target_score_delta,2108,308,34036,55,push bp
+18,target_score_delta,2108,309,34037,8bec,"mov bp,sp"
+18,target_score_delta,2108,311,34039,33c9,"xor cx,cx"
+18,target_score_delta,2108,313,34041,c45e0a,"les bx,[bp+0Ah]"
+18,target_score_delta,2108,316,34044,2ae4,"sub ah,ah"
+18,target_score_delta,2108,318,34046,268a4706,"mov al,es:[bx+6]"
+18,target_score_delta,2108,322,34050,2d0800,"sub ax,8"
+18,target_score_delta,2108,325,34053,3d1800,"cmp ax,18h"
+18,target_score_delta,2108,328,34056,7777,ja short 01C1h
+18,target_score_delta,2108,330,34058,03c0,"add ax,ax"
+18,target_score_delta,2108,332,34060,93,"xchg bx,ax"
+18,target_score_delta,2108,333,34061,2effa75201,jmp word ptr cs:[bx+152h]
+18,target_score_delta,2108,388,34116,b91900,"mov cx,19h"
+18,target_score_delta,2108,391,34119,eb38,jmp short 01C1h
+18,target_score_delta,2108,394,34122,b94b00,"mov cx,4Bh"
+18,target_score_delta,2108,397,34125,eb32,jmp short 01C1h
+18,target_score_delta,2108,400,34128,b96400,"mov cx,64h"
+18,target_score_delta,2108,403,34131,eb2c,jmp short 01C1h
+18,target_score_delta,2108,406,34134,b99600,"mov cx,96h"
+18,target_score_delta,2108,409,34137,8bc1,"mov ax,cx"
+18,target_score_delta,2108,411,34139,c9,leave
+18,target_score_delta,2108,412,34140,cb,ret far
+18,target_score_delta,2108,414,34142,b9c800,"mov cx,0C8h"
+18,target_score_delta,2108,417,34145,8bc1,"mov ax,cx"
+18,target_score_delta,2108,419,34147,c9,leave
+18,target_score_delta,2108,420,34148,cb,ret far
+18,target_score_delta,2108,422,34150,b918fc,"mov cx,0FC18h"
+18,target_score_delta,2108,425,34153,8bc1,"mov ax,cx"
+18,target_score_delta,2108,427,34155,c9,leave
+18,target_score_delta,2108,428,34156,cb,ret far
+18,target_score_delta,2108,430,34158,b9e803,"mov cx,3E8h"
+18,target_score_delta,2108,433,34161,8bc1,"mov ax,cx"
+18,target_score_delta,2108,435,34163,c9,leave
+18,target_score_delta,2108,436,34164,cb,ret far
+18,target_score_delta,2108,438,34166,b9fa00,"mov cx,0FAh"
+18,target_score_delta,2108,441,34169,8bc1,"mov ax,cx"
+18,target_score_delta,2108,443,34171,c9,leave
+18,target_score_delta,2108,444,34172,cb,ret far
+18,target_score_delta,2108,446,34174,b93200,"mov cx,32h"
+18,target_score_delta,2108,449,34177,8bc1,"mov ax,cx"
+18,target_score_delta,2108,451,34179,c9,leave
+18,target_score_delta,2108,452,34180,cb,ret far
+18,death_frame_index,2108,7128,40856,55,push bp
+18,death_frame_index,2108,7129,40857,8bec,"mov bp,sp"
+18,death_frame_index,2108,7131,40859,57,push di
+18,death_frame_index,2108,7132,40860,56,push si
+18,death_frame_index,2108,7133,40861,c45e06,"les bx,[bp+6]"
+18,death_frame_index,2108,7136,40864,26807f1200,"cmp byte ptr es:[bx+12h],0"
+18,death_frame_index,2108,7141,40869,751d,jne short 1C04h
+18,death_frame_index,2108,7143,40871,c45e0a,"les bx,[bp+0Ah]"
+18,death_frame_index,2108,7146,40874,268a5f04,"mov bl,es:[bx+4]"
+18,death_frame_index,2108,7150,40878,2aff,"sub bh,bh"
+18,death_frame_index,2108,7152,40880,c1e303,"shl bx,3"
+18,death_frame_index,2108,7155,40883,8b9f223d,"mov bx,[bx+3D22h]"
+18,death_frame_index,2108,7159,40887,807f5900,"cmp byte ptr [bx+59h],0"
+18,death_frame_index,2108,7163,40891,7407,je short 1C04h
+18,death_frame_index,2108,7165,40893,b80700,"mov ax,7"
+18,death_frame_index,2108,7168,40896,5e,pop si
+18,death_frame_index,2108,7169,40897,5f,pop di
+18,death_frame_index,2108,7170,40898,c9,leave
+18,death_frame_index,2108,7171,40899,cb,ret far
+18,death_frame_index,2108,7172,40900,8b7e0a,"mov di,[bp+0Ah]"
+18,death_frame_index,2108,7175,40903,9a9401b70f,"call far 0194h,0FB7h"
+18,death_frame_index,2108,7180,40908,b90700,"mov cx,7"
+18,death_frame_index,2108,7183,40911,99,cwd
+18,death_frame_index,2108,7184,40912,f7f9,idiv cx
+18,death_frame_index,2108,7186,40914,8bf2,"mov si,dx"
+18,death_frame_index,2108,7188,40916,3bf1,"cmp si,cx"
+18,death_frame_index,2108,7190,40918,74ef,je short 1C07h
+18,death_frame_index,2108,7192,40920,8bda,"mov bx,dx"
+18,death_frame_index,2108,7194,40922,03da,"add bx,dx"
+18,death_frame_index,2108,7196,40924,8e460c,"mov es,[bp+0Ch]"
+18,death_frame_index,2108,7199,40927,8bc3,"mov ax,bx"
+18,death_frame_index,2108,7201,40929,268a5d04,"mov bl,es:[di+4]"
+18,death_frame_index,2108,7205,40933,2aff,"sub bh,bh"
+18,death_frame_index,2108,7207,40935,c1e303,"shl bx,3"
+18,death_frame_index,2108,7210,40938,8b9f223d,"mov bx,[bx+3D22h]"
+18,death_frame_index,2108,7214,40942,03d8,"add bx,ax"
+18,death_frame_index,2108,7216,40944,386f4b,"cmp [bx+4Bh],ch"
+18,death_frame_index,2108,7219,40947,74d2,je short 1C07h
+18,death_frame_index,2108,7221,40949,8bc6,"mov ax,si"
+18,death_frame_index,2108,7223,40951,5e,pop si
+18,death_frame_index,2108,7224,40952,5f,pop di
+18,death_frame_index,2108,7225,40953,c9,leave
+18,death_frame_index,2108,7226,40954,cb,ret far
+18,hurt_frame_index,2108,7228,40956,55,push bp
+18,hurt_frame_index,2108,7229,40957,8bec,"mov bp,sp"
+18,hurt_frame_index,2108,7231,40959,57,push di
+18,hurt_frame_index,2108,7232,40960,56,push si
+18,hurt_frame_index,2108,7233,40961,c45e06,"les bx,[bp+6]"
+18,hurt_frame_index,2108,7236,40964,26807f1200,"cmp byte ptr es:[bx+12h],0"
+18,hurt_frame_index,2108,7241,40969,751d,jne short 1C68h
+18,hurt_frame_index,2108,7243,40971,c45e0a,"les bx,[bp+0Ah]"
+18,hurt_frame_index,2108,7246,40974,268a5f04,"mov bl,es:[bx+4]"
+18,hurt_frame_index,2108,7250,40978,2aff,"sub bh,bh"
+18,hurt_frame_index,2108,7252,40980,c1e303,"shl bx,3"
+18,hurt_frame_index,2108,7255,40983,8b9f223d,"mov bx,[bx+3D22h]"
+18,hurt_frame_index,2108,7259,40987,807f4900,"cmp byte ptr [bx+49h],0"
+18,hurt_frame_index,2108,7263,40991,7407,je short 1C68h
+18,hurt_frame_index,2108,7265,40993,b80700,"mov ax,7"
+18,hurt_frame_index,2108,7268,40996,5e,pop si
+18,hurt_frame_index,2108,7269,40997,5f,pop di
+18,hurt_frame_index,2108,7270,40998,c9,leave
+18,hurt_frame_index,2108,7271,40999,cb,ret far
+18,hurt_frame_index,2108,7272,41000,8b7e0a,"mov di,[bp+0Ah]"
+18,hurt_frame_index,2108,7275,41003,9a9401b70f,"call far 0194h,0FB7h"
+18,hurt_frame_index,2108,7280,41008,b90700,"mov cx,7"
+18,hurt_frame_index,2108,7283,41011,99,cwd
+18,hurt_frame_index,2108,7284,41012,f7f9,idiv cx
+18,hurt_frame_index,2108,7286,41014,8bf2,"mov si,dx"
+18,hurt_frame_index,2108,7288,41016,3bf1,"cmp si,cx"
+18,hurt_frame_index,2108,7290,41018,74ef,je short 1C6Bh
+18,hurt_frame_index,2108,7292,41020,8bda,"mov bx,dx"
+18,hurt_frame_index,2108,7294,41022,03da,"add bx,dx"
+18,hurt_frame_index,2108,7296,41024,8e460c,"mov es,[bp+0Ch]"
+18,hurt_frame_index,2108,7299,41027,8bc3,"mov ax,bx"
+18,hurt_frame_index,2108,7301,41029,268a5d04,"mov bl,es:[di+4]"
+18,hurt_frame_index,2108,7305,41033,2aff,"sub bh,bh"
+18,hurt_frame_index,2108,7307,41035,c1e303,"shl bx,3"
+18,hurt_frame_index,2108,7310,41038,8b9f223d,"mov bx,[bx+3D22h]"
+18,hurt_frame_index,2108,7314,41042,03d8,"add bx,ax"
+18,hurt_frame_index,2108,7316,41044,386f3b,"cmp [bx+3Bh],ch"
+18,hurt_frame_index,2108,7319,41047,74d2,je short 1C6Bh
+18,hurt_frame_index,2108,7321,41049,8bc6,"mov ax,si"
+18,hurt_frame_index,2108,7323,41051,5e,pop si
+18,hurt_frame_index,2108,7324,41052,5f,pop di
+18,hurt_frame_index,2108,7325,41053,c9,leave
+18,hurt_frame_index,2108,7326,41054,cb,ret far
+19,target_score_delta,2108,308,34036,55,push bp
+19,target_score_delta,2108,309,34037,8bec,"mov bp,sp"
+19,target_score_delta,2108,311,34039,33c9,"xor cx,cx"
+19,target_score_delta,2108,313,34041,c45e0a,"les bx,[bp+0Ah]"
+19,target_score_delta,2108,316,34044,2ae4,"sub ah,ah"
+19,target_score_delta,2108,318,34046,268a4706,"mov al,es:[bx+6]"
+19,target_score_delta,2108,322,34050,2d0800,"sub ax,8"
+19,target_score_delta,2108,325,34053,3d1800,"cmp ax,18h"
+19,target_score_delta,2108,328,34056,7777,ja short 01C1h
+19,target_score_delta,2108,330,34058,03c0,"add ax,ax"
+19,target_score_delta,2108,332,34060,93,"xchg bx,ax"
+19,target_score_delta,2108,333,34061,2effa75201,jmp word ptr cs:[bx+152h]
+19,target_score_delta,2108,388,34116,b91900,"mov cx,19h"
+19,target_score_delta,2108,391,34119,eb38,jmp short 01C1h
+19,target_score_delta,2108,394,34122,b94b00,"mov cx,4Bh"
+19,target_score_delta,2108,397,34125,eb32,jmp short 01C1h
+19,target_score_delta,2108,400,34128,b96400,"mov cx,64h"
+19,target_score_delta,2108,403,34131,eb2c,jmp short 01C1h
+19,target_score_delta,2108,406,34134,b99600,"mov cx,96h"
+19,target_score_delta,2108,409,34137,8bc1,"mov ax,cx"
+19,target_score_delta,2108,411,34139,c9,leave
+19,target_score_delta,2108,412,34140,cb,ret far
+19,target_score_delta,2108,414,34142,b9c800,"mov cx,0C8h"
+19,target_score_delta,2108,417,34145,8bc1,"mov ax,cx"
+19,target_score_delta,2108,419,34147,c9,leave
+19,target_score_delta,2108,420,34148,cb,ret far
+19,target_score_delta,2108,422,34150,b918fc,"mov cx,0FC18h"
+19,target_score_delta,2108,425,34153,8bc1,"mov ax,cx"
+19,target_score_delta,2108,427,34155,c9,leave
+19,target_score_delta,2108,428,34156,cb,ret far
+19,target_score_delta,2108,430,34158,b9e803,"mov cx,3E8h"
+19,target_score_delta,2108,433,34161,8bc1,"mov ax,cx"
+19,target_score_delta,2108,435,34163,c9,leave
+19,target_score_delta,2108,436,34164,cb,ret far
+19,target_score_delta,2108,438,34166,b9fa00,"mov cx,0FAh"
+19,target_score_delta,2108,441,34169,8bc1,"mov ax,cx"
+19,target_score_delta,2108,443,34171,c9,leave
+19,target_score_delta,2108,444,34172,cb,ret far
+19,target_score_delta,2108,446,34174,b93200,"mov cx,32h"
+19,target_score_delta,2108,449,34177,8bc1,"mov ax,cx"
+19,target_score_delta,2108,451,34179,c9,leave
+19,target_score_delta,2108,452,34180,cb,ret far
+19,death_frame_index,2108,7128,40856,55,push bp
+19,death_frame_index,2108,7129,40857,8bec,"mov bp,sp"
+19,death_frame_index,2108,7131,40859,57,push di
+19,death_frame_index,2108,7132,40860,56,push si
+19,death_frame_index,2108,7133,40861,c45e06,"les bx,[bp+6]"
+19,death_frame_index,2108,7136,40864,26807f1200,"cmp byte ptr es:[bx+12h],0"
+19,death_frame_index,2108,7141,40869,751d,jne short 1C04h
+19,death_frame_index,2108,7143,40871,c45e0a,"les bx,[bp+0Ah]"
+19,death_frame_index,2108,7146,40874,268a5f04,"mov bl,es:[bx+4]"
+19,death_frame_index,2108,7150,40878,2aff,"sub bh,bh"
+19,death_frame_index,2108,7152,40880,c1e303,"shl bx,3"
+19,death_frame_index,2108,7155,40883,8b9f223d,"mov bx,[bx+3D22h]"
+19,death_frame_index,2108,7159,40887,807f5900,"cmp byte ptr [bx+59h],0"
+19,death_frame_index,2108,7163,40891,7407,je short 1C04h
+19,death_frame_index,2108,7165,40893,b80700,"mov ax,7"
+19,death_frame_index,2108,7168,40896,5e,pop si
+19,death_frame_index,2108,7169,40897,5f,pop di
+19,death_frame_index,2108,7170,40898,c9,leave
+19,death_frame_index,2108,7171,40899,cb,ret far
+19,death_frame_index,2108,7172,40900,8b7e0a,"mov di,[bp+0Ah]"
+19,death_frame_index,2108,7175,40903,9a9401b70f,"call far 0194h,0FB7h"
+19,death_frame_index,2108,7180,40908,b90700,"mov cx,7"
+19,death_frame_index,2108,7183,40911,99,cwd
+19,death_frame_index,2108,7184,40912,f7f9,idiv cx
+19,death_frame_index,2108,7186,40914,8bf2,"mov si,dx"
+19,death_frame_index,2108,7188,40916,3bf1,"cmp si,cx"
+19,death_frame_index,2108,7190,40918,74ef,je short 1C07h
+19,death_frame_index,2108,7192,40920,8bda,"mov bx,dx"
+19,death_frame_index,2108,7194,40922,03da,"add bx,dx"
+19,death_frame_index,2108,7196,40924,8e460c,"mov es,[bp+0Ch]"
+19,death_frame_index,2108,7199,40927,8bc3,"mov ax,bx"
+19,death_frame_index,2108,7201,40929,268a5d04,"mov bl,es:[di+4]"
+19,death_frame_index,2108,7205,40933,2aff,"sub bh,bh"
+19,death_frame_index,2108,7207,40935,c1e303,"shl bx,3"
+19,death_frame_index,2108,7210,40938,8b9f223d,"mov bx,[bx+3D22h]"
+19,death_frame_index,2108,7214,40942,03d8,"add bx,ax"
+19,death_frame_index,2108,7216,40944,386f4b,"cmp [bx+4Bh],ch"
+19,death_frame_index,2108,7219,40947,74d2,je short 1C07h
+19,death_frame_index,2108,7221,40949,8bc6,"mov ax,si"
+19,death_frame_index,2108,7223,40951,5e,pop si
+19,death_frame_index,2108,7224,40952,5f,pop di
+19,death_frame_index,2108,7225,40953,c9,leave
+19,death_frame_index,2108,7226,40954,cb,ret far
+19,hurt_frame_index,2108,7228,40956,55,push bp
+19,hurt_frame_index,2108,7229,40957,8bec,"mov bp,sp"
+19,hurt_frame_index,2108,7231,40959,57,push di
+19,hurt_frame_index,2108,7232,40960,56,push si
+19,hurt_frame_index,2108,7233,40961,c45e06,"les bx,[bp+6]"
+19,hurt_frame_index,2108,7236,40964,26807f1200,"cmp byte ptr es:[bx+12h],0"
+19,hurt_frame_index,2108,7241,40969,751d,jne short 1C68h
+19,hurt_frame_index,2108,7243,40971,c45e0a,"les bx,[bp+0Ah]"
+19,hurt_frame_index,2108,7246,40974,268a5f04,"mov bl,es:[bx+4]"
+19,hurt_frame_index,2108,7250,40978,2aff,"sub bh,bh"
+19,hurt_frame_index,2108,7252,40980,c1e303,"shl bx,3"
+19,hurt_frame_index,2108,7255,40983,8b9f223d,"mov bx,[bx+3D22h]"
+19,hurt_frame_index,2108,7259,40987,807f4900,"cmp byte ptr [bx+49h],0"
+19,hurt_frame_index,2108,7263,40991,7407,je short 1C68h
+19,hurt_frame_index,2108,7265,40993,b80700,"mov ax,7"
+19,hurt_frame_index,2108,7268,40996,5e,pop si
+19,hurt_frame_index,2108,7269,40997,5f,pop di
+19,hurt_frame_index,2108,7270,40998,c9,leave
+19,hurt_frame_index,2108,7271,40999,cb,ret far
+19,hurt_frame_index,2108,7272,41000,8b7e0a,"mov di,[bp+0Ah]"
+19,hurt_frame_index,2108,7275,41003,9a9401b70f,"call far 0194h,0FB7h"
+19,hurt_frame_index,2108,7280,41008,b90700,"mov cx,7"
+19,hurt_frame_index,2108,7283,41011,99,cwd
+19,hurt_frame_index,2108,7284,41012,f7f9,idiv cx
+19,hurt_frame_index,2108,7286,41014,8bf2,"mov si,dx"
+19,hurt_frame_index,2108,7288,41016,3bf1,"cmp si,cx"
+19,hurt_frame_index,2108,7290,41018,74ef,je short 1C6Bh
+19,hurt_frame_index,2108,7292,41020,8bda,"mov bx,dx"
+19,hurt_frame_index,2108,7294,41022,03da,"add bx,dx"
+19,hurt_frame_index,2108,7296,41024,8e460c,"mov es,[bp+0Ch]"
+19,hurt_frame_index,2108,7299,41027,8bc3,"mov ax,bx"
+19,hurt_frame_index,2108,7301,41029,268a5d04,"mov bl,es:[di+4]"
+19,hurt_frame_index,2108,7305,41033,2aff,"sub bh,bh"
+19,hurt_frame_index,2108,7307,41035,c1e303,"shl bx,3"
+19,hurt_frame_index,2108,7310,41038,8b9f223d,"mov bx,[bx+3D22h]"
+19,hurt_frame_index,2108,7314,41042,03d8,"add bx,ax"
+19,hurt_frame_index,2108,7316,41044,386f3b,"cmp [bx+3Bh],ch"
+19,hurt_frame_index,2108,7319,41047,74d2,je short 1C6Bh
+19,hurt_frame_index,2108,7321,41049,8bc6,"mov ax,si"
+19,hurt_frame_index,2108,7323,41051,5e,pop si
+19,hurt_frame_index,2108,7324,41052,5f,pop di
+19,hurt_frame_index,2108,7325,41053,c9,leave
+19,hurt_frame_index,2108,7326,41054,cb,ret far
