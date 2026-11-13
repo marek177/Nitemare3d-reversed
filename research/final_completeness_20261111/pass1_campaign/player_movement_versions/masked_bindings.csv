@@ -1,0 +1,665 @@
+version,function,index,kind,raw,asm
+20,paired_cell_step,8,global_or_pointer_table,8a870cd0,"mov al,[bx-2FF4h]"
+20,paired_cell_step,12,global_or_pointer_table,8a870cd0,"mov al,[bx-2FF4h]"
+20,paired_cell_step,15,call_or_branch,0f85cc00,jne 0104h
+20,paired_cell_step,17,call_or_branch,0f85c400,jne 0104h
+20,paired_cell_step,19,call_or_branch,741c,je short 0062h
+20,paired_cell_step,22,call_or_branch,9a00000000,"call far 0,0"
+20,paired_cell_step,26,call_or_branch,9ae0010000,"call far 01E0h,0"
+20,paired_cell_step,29,call_or_branch,0f84a200,je 0104h
+20,paired_cell_step,31,call_or_branch,741c,je short 0084h
+20,paired_cell_step,34,call_or_branch,9a00000000,"call far 0,0"
+20,paired_cell_step,38,call_or_branch,9ae0010000,"call far 01E0h,0"
+20,paired_cell_step,41,call_or_branch,0f848000,je 0104h
+20,paired_cell_step,43,call_or_branch,740f,je short 0099h
+20,paired_cell_step,47,call_or_branch,9a50223d08,"call far 2250h,083Dh"
+20,paired_cell_step,50,call_or_branch,740f,je short 00AEh
+20,paired_cell_step,54,call_or_branch,9a50223d08,"call far 2250h,083Dh"
+20,paired_cell_step,59,global_or_pointer_table,8a870cd1,"mov al,[bx-2EF4h]"
+20,paired_cell_step,63,global_or_pointer_table,8a870cd1,"mov al,[bx-2EF4h]"
+20,paired_cell_step,66,call_or_branch,740c,je short 00DEh
+20,paired_cell_step,69,call_or_branch,9a1807ea0a,"call far 0718h,0AEAh"
+20,paired_cell_step,72,call_or_branch,740c,je short 00F0h
+20,paired_cell_step,75,call_or_branch,9a1807ea0a,"call far 0718h,0AEAh"
+20,paired_cell_step,78,call_or_branch,751b,jne short 0111h
+20,paired_cell_step,80,call_or_branch,7515,jne short 0111h
+20,paired_cell_step,88,call_or_branch,9ad6032b0c,"call far 03D6h,0C2Bh"
+20,movement_resolve,4,global_or_pointer_table,a07241,"mov al,[4172h]"
+20,movement_resolve,7,call_or_branch,7e0c,jle short 0138h
+20,movement_resolve,9,call_or_branch,7d06,jge short 0138h
+20,movement_resolve,11,call_or_branch,eb04,jmp short 013Bh
+20,movement_resolve,14,call_or_branch,7c05,jl short 0146h
+20,movement_resolve,16,call_or_branch,eb03,jmp short 0149h
+20,movement_resolve,20,global_or_pointer_table,8b0e6241,"mov cx,[4162h]"
+20,movement_resolve,23,global_or_pointer_table,8b0e6441,"mov cx,[4164h]"
+20,movement_resolve,31,call_or_branch,740b,je short 017Eh
+20,movement_resolve,37,call_or_branch,0f8e3c01,jle 02C2h
+20,movement_resolve,43,call_or_branch,7442,je short 01DAh
+20,movement_resolve,68,call_or_branch,e836fe,call 8
+20,movement_resolve,71,call_or_branch,eb41,jmp short 021Ah
+20,movement_resolve,96,call_or_branch,e8f3fd,call 8
+20,movement_resolve,99,global_or_pointer_table,833e744100,"cmp word ptr [4174h],0"
+20,movement_resolve,100,call_or_branch,7d0b,jge short 022Ch
+20,movement_resolve,101,global_or_pointer_table,a17641,"mov ax,[4176h]"
+20,movement_resolve,102,global_or_pointer_table,01067441,"add [4174h],ax"
+20,movement_resolve,103,call_or_branch,e99000,jmp 02BBh
+20,movement_resolve,104,global_or_pointer_table,a17841,"mov ax,[4178h]"
+20,movement_resolve,105,global_or_pointer_table,01067441,"add [4174h],ax"
+20,movement_resolve,107,call_or_branch,7443,je short 027Ch
+20,movement_resolve,132,call_or_branch,e894fd,call 8
+20,movement_resolve,135,call_or_branch,eb40,jmp short 02BBh
+20,movement_resolve,160,call_or_branch,e852fd,call 8
+20,movement_resolve,164,call_or_branch,0f85d0fe,jne 0192h
+20,player_heading_prepare,5,global_or_pointer_table,a35641,"mov [4156h],ax"
+20,player_heading_prepare,7,call_or_branch,7d06,jge short 007Dh
+20,player_heading_prepare,8,global_or_pointer_table,810656416801,"add word ptr [4156h],168h"
+20,player_heading_prepare,9,global_or_pointer_table,813e56416801,"cmp word ptr [4156h],168h"
+20,player_heading_prepare,10,call_or_branch,7c06,jl short 008Bh
+20,player_heading_prepare,11,global_or_pointer_table,812e56416801,"sub word ptr [4156h],168h"
+20,player_heading_prepare,12,global_or_pointer_table,a15641,"mov ax,[4156h]"
+20,player_heading_prepare,17,global_or_pointer_table,a35841,"mov [4158h],ax"
+20,player_heading_prepare,21,global_or_pointer_table,a35c41,"mov [415Ch],ax"
+20,player_heading_prepare,22,global_or_pointer_table,a15641,"mov ax,[4156h]"
+20,player_heading_prepare,30,global_or_pointer_table,a35a41,"mov [415Ah],ax"
+20,player_heading_prepare,31,global_or_pointer_table,ff365641,push word ptr [4156h]
+20,player_heading_prepare,33,call_or_branch,e82107,call 07E2h
+20,player_heading_prepare,35,global_or_pointer_table,a3b241,"mov [41B2h],ax"
+20,player_heading_prepare,36,global_or_pointer_table,ff365641,push word ptr [4156h]
+20,player_heading_prepare,38,call_or_branch,e85f07,call 082Eh
+20,player_heading_prepare,40,global_or_pointer_table,a3b441,"mov [41B4h],ax"
+20,player_heading_prepare,41,global_or_pointer_table,a1b241,"mov ax,[41B2h]"
+20,player_heading_prepare,46,global_or_pointer_table,a1b441,"mov ax,[41B4h]"
+20,player_heading_prepare,52,call_or_branch,7d19,jge short 0106h
+20,player_heading_prepare,53,global_or_pointer_table,c70672410100,"mov word ptr [4172h],1"
+20,player_heading_prepare,57,global_or_pointer_table,a37441,"mov [4174h],ax"
+20,player_heading_prepare,58,global_or_pointer_table,890e7641,"mov [4176h],cx"
+20,player_heading_prepare,61,call_or_branch,eb18,jmp short 011Eh
+20,player_heading_prepare,62,global_or_pointer_table,c70672410000,"mov word ptr [4172h],0"
+20,player_heading_prepare,67,global_or_pointer_table,89367441,"mov [4174h],si"
+20,player_heading_prepare,68,global_or_pointer_table,890e7641,"mov [4176h],cx"
+20,player_heading_prepare,71,global_or_pointer_table,a37841,"mov [4178h],ax"
+20,player_move_wrapper,1,global_or_pointer_table,803e544100,"cmp byte ptr [4154h],0"
+20,player_move_wrapper,2,call_or_branch,7521,jne short 05D0h
+20,player_move_wrapper,12,call_or_branch,e853fb,call 0118h
+20,player_move_wrapper,16,call_or_branch,e84cff,call 051Ch
+10,paired_cell_step,8,global_or_pointer_table,8a8752ce,"mov al,[bx-31AEh]"
+10,paired_cell_step,12,global_or_pointer_table,8a8752ce,"mov al,[bx-31AEh]"
+10,paired_cell_step,15,call_or_branch,0f85cc00,jne 0106h
+10,paired_cell_step,17,call_or_branch,0f85c400,jne 0106h
+10,paired_cell_step,19,call_or_branch,741c,je short 0064h
+10,paired_cell_step,22,call_or_branch,9a00000000,"call far 0,0"
+10,paired_cell_step,26,call_or_branch,9ae0010000,"call far 01E0h,0"
+10,paired_cell_step,29,call_or_branch,0f84a200,je 0106h
+10,paired_cell_step,31,call_or_branch,741c,je short 0086h
+10,paired_cell_step,34,call_or_branch,9a00000000,"call far 0,0"
+10,paired_cell_step,38,call_or_branch,9ae0010000,"call far 01E0h,0"
+10,paired_cell_step,41,call_or_branch,0f848000,je 0106h
+10,paired_cell_step,43,call_or_branch,740f,je short 009Bh
+10,paired_cell_step,47,call_or_branch,9aec21f507,"call far 21ECh,07F5h"
+10,paired_cell_step,50,call_or_branch,740f,je short 00B0h
+10,paired_cell_step,54,call_or_branch,9aec21f507,"call far 21ECh,07F5h"
+10,paired_cell_step,59,global_or_pointer_table,8a8752cf,"mov al,[bx-30AEh]"
+10,paired_cell_step,63,global_or_pointer_table,8a8752cf,"mov al,[bx-30AEh]"
+10,paired_cell_step,66,call_or_branch,740c,je short 00E0h
+10,paired_cell_step,69,call_or_branch,9a0c079e0a,"call far 070Ch,0A9Eh"
+10,paired_cell_step,72,call_or_branch,740c,je short 00F2h
+10,paired_cell_step,75,call_or_branch,9a0c079e0a,"call far 070Ch,0A9Eh"
+10,paired_cell_step,78,call_or_branch,751b,jne short 0113h
+10,paired_cell_step,80,call_or_branch,7515,jne short 0113h
+10,paired_cell_step,88,call_or_branch,9ae603dd0b,"call far 03E6h,0BDDh"
+10,movement_resolve,4,global_or_pointer_table,a0ca3f,"mov al,[3FCAh]"
+10,movement_resolve,7,call_or_branch,7e0c,jle short 013Ah
+10,movement_resolve,9,call_or_branch,7d06,jge short 013Ah
+10,movement_resolve,11,call_or_branch,eb04,jmp short 013Dh
+10,movement_resolve,14,call_or_branch,7c05,jl short 0148h
+10,movement_resolve,16,call_or_branch,eb03,jmp short 014Bh
+10,movement_resolve,20,global_or_pointer_table,8b0eba3f,"mov cx,[3FBAh]"
+10,movement_resolve,23,global_or_pointer_table,8b0ebc3f,"mov cx,[3FBCh]"
+10,movement_resolve,31,call_or_branch,740b,je short 0180h
+10,movement_resolve,37,call_or_branch,0f8e3c01,jle 02C4h
+10,movement_resolve,43,call_or_branch,7442,je short 01DCh
+10,movement_resolve,68,call_or_branch,e836fe,call 000Ah
+10,movement_resolve,71,call_or_branch,eb41,jmp short 021Ch
+10,movement_resolve,96,call_or_branch,e8f3fd,call 000Ah
+10,movement_resolve,99,global_or_pointer_table,833ecc3f00,"cmp word ptr [3FCCh],0"
+10,movement_resolve,100,call_or_branch,7d0b,jge short 022Eh
+10,movement_resolve,101,global_or_pointer_table,a1ce3f,"mov ax,[3FCEh]"
+10,movement_resolve,102,global_or_pointer_table,0106cc3f,"add [3FCCh],ax"
+10,movement_resolve,103,call_or_branch,e99000,jmp 02BDh
+10,movement_resolve,104,global_or_pointer_table,a1d03f,"mov ax,[3FD0h]"
+10,movement_resolve,105,global_or_pointer_table,0106cc3f,"add [3FCCh],ax"
+10,movement_resolve,107,call_or_branch,7443,je short 027Eh
+10,movement_resolve,132,call_or_branch,e894fd,call 000Ah
+10,movement_resolve,135,call_or_branch,eb40,jmp short 02BDh
+10,movement_resolve,160,call_or_branch,e852fd,call 000Ah
+10,movement_resolve,164,call_or_branch,0f85d0fe,jne 0194h
+10,player_heading_prepare,5,global_or_pointer_table,a3ae3f,"mov [3FAEh],ax"
+10,player_heading_prepare,7,call_or_branch,7d06,jge short 007Dh
+10,player_heading_prepare,8,global_or_pointer_table,8106ae3f6801,"add word ptr [3FAEh],168h"
+10,player_heading_prepare,9,global_or_pointer_table,813eae3f6801,"cmp word ptr [3FAEh],168h"
+10,player_heading_prepare,10,call_or_branch,7c06,jl short 008Bh
+10,player_heading_prepare,11,global_or_pointer_table,812eae3f6801,"sub word ptr [3FAEh],168h"
+10,player_heading_prepare,12,global_or_pointer_table,a1ae3f,"mov ax,[3FAEh]"
+10,player_heading_prepare,17,global_or_pointer_table,a3b03f,"mov [3FB0h],ax"
+10,player_heading_prepare,21,global_or_pointer_table,a3b43f,"mov [3FB4h],ax"
+10,player_heading_prepare,22,global_or_pointer_table,a1ae3f,"mov ax,[3FAEh]"
+10,player_heading_prepare,30,global_or_pointer_table,a3b23f,"mov [3FB2h],ax"
+10,player_heading_prepare,31,global_or_pointer_table,ff36ae3f,push word ptr [3FAEh]
+10,player_heading_prepare,33,call_or_branch,e82107,call 07E2h
+10,player_heading_prepare,35,global_or_pointer_table,a30840,"mov [4008h],ax"
+10,player_heading_prepare,36,global_or_pointer_table,ff36ae3f,push word ptr [3FAEh]
+10,player_heading_prepare,38,call_or_branch,e85f07,call 082Eh
+10,player_heading_prepare,40,global_or_pointer_table,a30a40,"mov [400Ah],ax"
+10,player_heading_prepare,41,global_or_pointer_table,a10840,"mov ax,[4008h]"
+10,player_heading_prepare,46,global_or_pointer_table,a10a40,"mov ax,[400Ah]"
+10,player_heading_prepare,52,call_or_branch,7d19,jge short 0106h
+10,player_heading_prepare,53,global_or_pointer_table,c706ca3f0100,"mov word ptr [3FCAh],1"
+10,player_heading_prepare,57,global_or_pointer_table,a3cc3f,"mov [3FCCh],ax"
+10,player_heading_prepare,58,global_or_pointer_table,890ece3f,"mov [3FCEh],cx"
+10,player_heading_prepare,61,call_or_branch,eb18,jmp short 011Eh
+10,player_heading_prepare,62,global_or_pointer_table,c706ca3f0000,"mov word ptr [3FCAh],0"
+10,player_heading_prepare,67,global_or_pointer_table,8936cc3f,"mov [3FCCh],si"
+10,player_heading_prepare,68,global_or_pointer_table,890ece3f,"mov [3FCEh],cx"
+10,player_heading_prepare,71,global_or_pointer_table,a3d03f,"mov [3FD0h],ax"
+10,player_move_wrapper,1,global_or_pointer_table,803eac3f00,"cmp byte ptr [3FACh],0"
+10,player_move_wrapper,2,call_or_branch,7521,jne short 05D2h
+10,player_move_wrapper,12,call_or_branch,e853fb,call 011Ah
+10,player_move_wrapper,16,call_or_branch,e84cff,call 051Eh
+11,paired_cell_step,8,global_or_pointer_table,8a8758cf,"mov al,[bx-30A8h]"
+11,paired_cell_step,12,global_or_pointer_table,8a8758cf,"mov al,[bx-30A8h]"
+11,paired_cell_step,15,call_or_branch,0f85cc00,jne 010Ah
+11,paired_cell_step,17,call_or_branch,0f85c400,jne 010Ah
+11,paired_cell_step,19,call_or_branch,741c,je short 0068h
+11,paired_cell_step,22,call_or_branch,9a00000000,"call far 0,0"
+11,paired_cell_step,26,call_or_branch,9ae0010000,"call far 01E0h,0"
+11,paired_cell_step,29,call_or_branch,0f84a200,je 010Ah
+11,paired_cell_step,31,call_or_branch,741c,je short 008Ah
+11,paired_cell_step,34,call_or_branch,9a00000000,"call far 0,0"
+11,paired_cell_step,38,call_or_branch,9ae0010000,"call far 01E0h,0"
+11,paired_cell_step,41,call_or_branch,0f848000,je 010Ah
+11,paired_cell_step,43,call_or_branch,740f,je short 009Fh
+11,paired_cell_step,47,call_or_branch,9aec211708,"call far 21ECh,0817h"
+11,paired_cell_step,50,call_or_branch,740f,je short 00B4h
+11,paired_cell_step,54,call_or_branch,9aec211708,"call far 21ECh,0817h"
+11,paired_cell_step,59,global_or_pointer_table,8a8758d0,"mov al,[bx-2FA8h]"
+11,paired_cell_step,63,global_or_pointer_table,8a8758d0,"mov al,[bx-2FA8h]"
+11,paired_cell_step,66,call_or_branch,740c,je short 00E4h
+11,paired_cell_step,69,call_or_branch,9a1407be0a,"call far 0714h,0ABEh"
+11,paired_cell_step,72,call_or_branch,740c,je short 00F6h
+11,paired_cell_step,75,call_or_branch,9a1407be0a,"call far 0714h,0ABEh"
+11,paired_cell_step,78,call_or_branch,751b,jne short 0117h
+11,paired_cell_step,80,call_or_branch,7515,jne short 0117h
+11,paired_cell_step,88,call_or_branch,9a0a04ff0b,"call far 040Ah,0BFFh"
+11,movement_resolve,4,global_or_pointer_table,a0d040,"mov al,[40D0h]"
+11,movement_resolve,7,call_or_branch,7e0c,jle short 013Eh
+11,movement_resolve,9,call_or_branch,7d06,jge short 013Eh
+11,movement_resolve,11,call_or_branch,eb04,jmp short 0141h
+11,movement_resolve,14,call_or_branch,7c05,jl short 014Ch
+11,movement_resolve,16,call_or_branch,eb03,jmp short 014Fh
+11,movement_resolve,20,global_or_pointer_table,8b0ec040,"mov cx,[40C0h]"
+11,movement_resolve,23,global_or_pointer_table,8b0ec240,"mov cx,[40C2h]"
+11,movement_resolve,31,call_or_branch,740b,je short 0184h
+11,movement_resolve,37,call_or_branch,0f8e3c01,jle 02C8h
+11,movement_resolve,43,call_or_branch,7442,je short 01E0h
+11,movement_resolve,68,call_or_branch,e836fe,call 000Eh
+11,movement_resolve,71,call_or_branch,eb41,jmp short 0220h
+11,movement_resolve,96,call_or_branch,e8f3fd,call 000Eh
+11,movement_resolve,99,global_or_pointer_table,833ed24000,"cmp word ptr [40D2h],0"
+11,movement_resolve,100,call_or_branch,7d0b,jge short 0232h
+11,movement_resolve,101,global_or_pointer_table,a1d440,"mov ax,[40D4h]"
+11,movement_resolve,102,global_or_pointer_table,0106d240,"add [40D2h],ax"
+11,movement_resolve,103,call_or_branch,e99000,jmp 02C1h
+11,movement_resolve,104,global_or_pointer_table,a1d640,"mov ax,[40D6h]"
+11,movement_resolve,105,global_or_pointer_table,0106d240,"add [40D2h],ax"
+11,movement_resolve,107,call_or_branch,7443,je short 0282h
+11,movement_resolve,132,call_or_branch,e894fd,call 000Eh
+11,movement_resolve,135,call_or_branch,eb40,jmp short 02C1h
+11,movement_resolve,160,call_or_branch,e852fd,call 000Eh
+11,movement_resolve,164,call_or_branch,0f85d0fe,jne 0198h
+11,player_heading_prepare,5,global_or_pointer_table,a3b440,"mov [40B4h],ax"
+11,player_heading_prepare,7,call_or_branch,7d06,jge short 0081h
+11,player_heading_prepare,8,global_or_pointer_table,8106b4406801,"add word ptr [40B4h],168h"
+11,player_heading_prepare,9,global_or_pointer_table,813eb4406801,"cmp word ptr [40B4h],168h"
+11,player_heading_prepare,10,call_or_branch,7c06,jl short 008Fh
+11,player_heading_prepare,11,global_or_pointer_table,812eb4406801,"sub word ptr [40B4h],168h"
+11,player_heading_prepare,12,global_or_pointer_table,a1b440,"mov ax,[40B4h]"
+11,player_heading_prepare,17,global_or_pointer_table,a3b640,"mov [40B6h],ax"
+11,player_heading_prepare,21,global_or_pointer_table,a3ba40,"mov [40BAh],ax"
+11,player_heading_prepare,22,global_or_pointer_table,a1b440,"mov ax,[40B4h]"
+11,player_heading_prepare,30,global_or_pointer_table,a3b840,"mov [40B8h],ax"
+11,player_heading_prepare,31,global_or_pointer_table,ff36b440,push word ptr [40B4h]
+11,player_heading_prepare,33,call_or_branch,e82107,call 07E6h
+11,player_heading_prepare,35,global_or_pointer_table,a30e41,"mov [410Eh],ax"
+11,player_heading_prepare,36,global_or_pointer_table,ff36b440,push word ptr [40B4h]
+11,player_heading_prepare,38,call_or_branch,e85f07,call 0832h
+11,player_heading_prepare,40,global_or_pointer_table,a31041,"mov [4110h],ax"
+11,player_heading_prepare,41,global_or_pointer_table,a10e41,"mov ax,[410Eh]"
+11,player_heading_prepare,46,global_or_pointer_table,a11041,"mov ax,[4110h]"
+11,player_heading_prepare,52,call_or_branch,7d19,jge short 010Ah
+11,player_heading_prepare,53,global_or_pointer_table,c706d0400100,"mov word ptr [40D0h],1"
+11,player_heading_prepare,57,global_or_pointer_table,a3d240,"mov [40D2h],ax"
+11,player_heading_prepare,58,global_or_pointer_table,890ed440,"mov [40D4h],cx"
+11,player_heading_prepare,61,call_or_branch,eb18,jmp short 0122h
+11,player_heading_prepare,62,global_or_pointer_table,c706d0400000,"mov word ptr [40D0h],0"
+11,player_heading_prepare,67,global_or_pointer_table,8936d240,"mov [40D2h],si"
+11,player_heading_prepare,68,global_or_pointer_table,890ed440,"mov [40D4h],cx"
+11,player_heading_prepare,71,global_or_pointer_table,a3d640,"mov [40D6h],ax"
+11,player_move_wrapper,1,global_or_pointer_table,803eb24000,"cmp byte ptr [40B2h],0"
+11,player_move_wrapper,2,call_or_branch,7521,jne short 05D6h
+11,player_move_wrapper,12,call_or_branch,e853fb,call 011Eh
+11,player_move_wrapper,16,call_or_branch,e84cff,call 0522h
+12,paired_cell_step,8,global_or_pointer_table,8a8768cf,"mov al,[bx-3098h]"
+12,paired_cell_step,12,global_or_pointer_table,8a8768cf,"mov al,[bx-3098h]"
+12,paired_cell_step,15,call_or_branch,0f85cc00,jne 0106h
+12,paired_cell_step,17,call_or_branch,0f85c400,jne 0106h
+12,paired_cell_step,19,call_or_branch,741c,je short 0064h
+12,paired_cell_step,22,call_or_branch,9a00000000,"call far 0,0"
+12,paired_cell_step,26,call_or_branch,9ae0010000,"call far 01E0h,0"
+12,paired_cell_step,29,call_or_branch,0f84a200,je 0106h
+12,paired_cell_step,31,call_or_branch,741c,je short 0086h
+12,paired_cell_step,34,call_or_branch,9a00000000,"call far 0,0"
+12,paired_cell_step,38,call_or_branch,9ae0010000,"call far 01E0h,0"
+12,paired_cell_step,41,call_or_branch,0f848000,je 0106h
+12,paired_cell_step,43,call_or_branch,740f,je short 009Bh
+12,paired_cell_step,47,call_or_branch,9ade211808,"call far 21DEh,0818h"
+12,paired_cell_step,50,call_or_branch,740f,je short 00B0h
+12,paired_cell_step,54,call_or_branch,9ade211808,"call far 21DEh,0818h"
+12,paired_cell_step,59,global_or_pointer_table,8a8768d0,"mov al,[bx-2F98h]"
+12,paired_cell_step,63,global_or_pointer_table,8a8768d0,"mov al,[bx-2F98h]"
+12,paired_cell_step,66,call_or_branch,740c,je short 00E0h
+12,paired_cell_step,69,call_or_branch,9a1607be0a,"call far 0716h,0ABEh"
+12,paired_cell_step,72,call_or_branch,740c,je short 00F2h
+12,paired_cell_step,75,call_or_branch,9a1607be0a,"call far 0716h,0ABEh"
+12,paired_cell_step,78,call_or_branch,751b,jne short 0113h
+12,paired_cell_step,80,call_or_branch,7515,jne short 0113h
+12,paired_cell_step,88,call_or_branch,9a0c04ff0b,"call far 040Ch,0BFFh"
+12,movement_resolve,4,global_or_pointer_table,a0d040,"mov al,[40D0h]"
+12,movement_resolve,7,call_or_branch,7e0c,jle short 013Ah
+12,movement_resolve,9,call_or_branch,7d06,jge short 013Ah
+12,movement_resolve,11,call_or_branch,eb04,jmp short 013Dh
+12,movement_resolve,14,call_or_branch,7c05,jl short 0148h
+12,movement_resolve,16,call_or_branch,eb03,jmp short 014Bh
+12,movement_resolve,20,global_or_pointer_table,8b0ec040,"mov cx,[40C0h]"
+12,movement_resolve,23,global_or_pointer_table,8b0ec240,"mov cx,[40C2h]"
+12,movement_resolve,31,call_or_branch,740b,je short 0180h
+12,movement_resolve,37,call_or_branch,0f8e3c01,jle 02C4h
+12,movement_resolve,43,call_or_branch,7442,je short 01DCh
+12,movement_resolve,68,call_or_branch,e836fe,call 000Ah
+12,movement_resolve,71,call_or_branch,eb41,jmp short 021Ch
+12,movement_resolve,96,call_or_branch,e8f3fd,call 000Ah
+12,movement_resolve,99,global_or_pointer_table,833ed24000,"cmp word ptr [40D2h],0"
+12,movement_resolve,100,call_or_branch,7d0b,jge short 022Eh
+12,movement_resolve,101,global_or_pointer_table,a1d440,"mov ax,[40D4h]"
+12,movement_resolve,102,global_or_pointer_table,0106d240,"add [40D2h],ax"
+12,movement_resolve,103,call_or_branch,e99000,jmp 02BDh
+12,movement_resolve,104,global_or_pointer_table,a1d640,"mov ax,[40D6h]"
+12,movement_resolve,105,global_or_pointer_table,0106d240,"add [40D2h],ax"
+12,movement_resolve,107,call_or_branch,7443,je short 027Eh
+12,movement_resolve,132,call_or_branch,e894fd,call 000Ah
+12,movement_resolve,135,call_or_branch,eb40,jmp short 02BDh
+12,movement_resolve,160,call_or_branch,e852fd,call 000Ah
+12,movement_resolve,164,call_or_branch,0f85d0fe,jne 0194h
+12,player_heading_prepare,5,global_or_pointer_table,a3b440,"mov [40B4h],ax"
+12,player_heading_prepare,7,call_or_branch,7d06,jge short 0083h
+12,player_heading_prepare,8,global_or_pointer_table,8106b4406801,"add word ptr [40B4h],168h"
+12,player_heading_prepare,9,global_or_pointer_table,813eb4406801,"cmp word ptr [40B4h],168h"
+12,player_heading_prepare,10,call_or_branch,7c06,jl short 0091h
+12,player_heading_prepare,11,global_or_pointer_table,812eb4406801,"sub word ptr [40B4h],168h"
+12,player_heading_prepare,12,global_or_pointer_table,a1b440,"mov ax,[40B4h]"
+12,player_heading_prepare,17,global_or_pointer_table,a3b640,"mov [40B6h],ax"
+12,player_heading_prepare,21,global_or_pointer_table,a3ba40,"mov [40BAh],ax"
+12,player_heading_prepare,22,global_or_pointer_table,a1b440,"mov ax,[40B4h]"
+12,player_heading_prepare,30,global_or_pointer_table,a3b840,"mov [40B8h],ax"
+12,player_heading_prepare,31,global_or_pointer_table,ff36b440,push word ptr [40B4h]
+12,player_heading_prepare,33,call_or_branch,e82107,call 07E8h
+12,player_heading_prepare,35,global_or_pointer_table,a30e41,"mov [410Eh],ax"
+12,player_heading_prepare,36,global_or_pointer_table,ff36b440,push word ptr [40B4h]
+12,player_heading_prepare,38,call_or_branch,e85f07,call 0834h
+12,player_heading_prepare,40,global_or_pointer_table,a31041,"mov [4110h],ax"
+12,player_heading_prepare,41,global_or_pointer_table,a10e41,"mov ax,[410Eh]"
+12,player_heading_prepare,46,global_or_pointer_table,a11041,"mov ax,[4110h]"
+12,player_heading_prepare,52,call_or_branch,7d19,jge short 010Ch
+12,player_heading_prepare,53,global_or_pointer_table,c706d0400100,"mov word ptr [40D0h],1"
+12,player_heading_prepare,57,global_or_pointer_table,a3d240,"mov [40D2h],ax"
+12,player_heading_prepare,58,global_or_pointer_table,890ed440,"mov [40D4h],cx"
+12,player_heading_prepare,61,call_or_branch,eb18,jmp short 0124h
+12,player_heading_prepare,62,global_or_pointer_table,c706d0400000,"mov word ptr [40D0h],0"
+12,player_heading_prepare,67,global_or_pointer_table,8936d240,"mov [40D2h],si"
+12,player_heading_prepare,68,global_or_pointer_table,890ed440,"mov [40D4h],cx"
+12,player_heading_prepare,71,global_or_pointer_table,a3d640,"mov [40D6h],ax"
+12,player_move_wrapper,1,global_or_pointer_table,803eb24000,"cmp byte ptr [40B2h],0"
+12,player_move_wrapper,2,call_or_branch,7521,jne short 05D2h
+12,player_move_wrapper,12,call_or_branch,e853fb,call 011Ah
+12,player_move_wrapper,16,call_or_branch,e84cff,call 051Eh
+15,paired_cell_step,8,global_or_pointer_table,8a8738cf,"mov al,[bx-30C8h]"
+15,paired_cell_step,12,global_or_pointer_table,8a8738cf,"mov al,[bx-30C8h]"
+15,paired_cell_step,15,call_or_branch,0f85cc00,jne 0104h
+15,paired_cell_step,17,call_or_branch,0f85c400,jne 0104h
+15,paired_cell_step,19,call_or_branch,741c,je short 0062h
+15,paired_cell_step,22,call_or_branch,9a00000000,"call far 0,0"
+15,paired_cell_step,26,call_or_branch,9ae0010000,"call far 01E0h,0"
+15,paired_cell_step,29,call_or_branch,0f84a200,je 0104h
+15,paired_cell_step,31,call_or_branch,741c,je short 0084h
+15,paired_cell_step,34,call_or_branch,9a00000000,"call far 0,0"
+15,paired_cell_step,38,call_or_branch,9ae0010000,"call far 01E0h,0"
+15,paired_cell_step,41,call_or_branch,0f848000,je 0104h
+15,paired_cell_step,43,call_or_branch,740f,je short 0099h
+15,paired_cell_step,47,call_or_branch,9a24221c08,"call far 2224h,081Ch"
+15,paired_cell_step,50,call_or_branch,740f,je short 00AEh
+15,paired_cell_step,54,call_or_branch,9a24221c08,"call far 2224h,081Ch"
+15,paired_cell_step,59,global_or_pointer_table,8a8738d0,"mov al,[bx-2FC8h]"
+15,paired_cell_step,63,global_or_pointer_table,8a8738d0,"mov al,[bx-2FC8h]"
+15,paired_cell_step,66,call_or_branch,740c,je short 00DEh
+15,paired_cell_step,69,call_or_branch,9a0c07c70a,"call far 070Ch,0AC7h"
+15,paired_cell_step,72,call_or_branch,740c,je short 00F0h
+15,paired_cell_step,75,call_or_branch,9a0c07c70a,"call far 070Ch,0AC7h"
+15,paired_cell_step,78,call_or_branch,751b,jne short 0111h
+15,paired_cell_step,80,call_or_branch,7515,jne short 0111h
+15,paired_cell_step,88,call_or_branch,9ada03070c,"call far 03DAh,0C07h"
+15,movement_resolve,4,global_or_pointer_table,a0a040,"mov al,[40A0h]"
+15,movement_resolve,7,call_or_branch,7e0c,jle short 0138h
+15,movement_resolve,9,call_or_branch,7d06,jge short 0138h
+15,movement_resolve,11,call_or_branch,eb04,jmp short 013Bh
+15,movement_resolve,14,call_or_branch,7c05,jl short 0146h
+15,movement_resolve,16,call_or_branch,eb03,jmp short 0149h
+15,movement_resolve,20,global_or_pointer_table,8b0e9040,"mov cx,[4090h]"
+15,movement_resolve,23,global_or_pointer_table,8b0e9240,"mov cx,[4092h]"
+15,movement_resolve,31,call_or_branch,740b,je short 017Eh
+15,movement_resolve,37,call_or_branch,0f8e3c01,jle 02C2h
+15,movement_resolve,43,call_or_branch,7442,je short 01DAh
+15,movement_resolve,68,call_or_branch,e836fe,call 8
+15,movement_resolve,71,call_or_branch,eb41,jmp short 021Ah
+15,movement_resolve,96,call_or_branch,e8f3fd,call 8
+15,movement_resolve,99,global_or_pointer_table,833ea24000,"cmp word ptr [40A2h],0"
+15,movement_resolve,100,call_or_branch,7d0b,jge short 022Ch
+15,movement_resolve,101,global_or_pointer_table,a1a440,"mov ax,[40A4h]"
+15,movement_resolve,102,global_or_pointer_table,0106a240,"add [40A2h],ax"
+15,movement_resolve,103,call_or_branch,e99000,jmp 02BBh
+15,movement_resolve,104,global_or_pointer_table,a1a640,"mov ax,[40A6h]"
+15,movement_resolve,105,global_or_pointer_table,0106a240,"add [40A2h],ax"
+15,movement_resolve,107,call_or_branch,7443,je short 027Ch
+15,movement_resolve,132,call_or_branch,e894fd,call 8
+15,movement_resolve,135,call_or_branch,eb40,jmp short 02BBh
+15,movement_resolve,160,call_or_branch,e852fd,call 8
+15,movement_resolve,164,call_or_branch,0f85d0fe,jne 0192h
+15,player_heading_prepare,5,global_or_pointer_table,a38440,"mov [4084h],ax"
+15,player_heading_prepare,7,call_or_branch,7d06,jge short 0081h
+15,player_heading_prepare,8,global_or_pointer_table,810684406801,"add word ptr [4084h],168h"
+15,player_heading_prepare,9,global_or_pointer_table,813e84406801,"cmp word ptr [4084h],168h"
+15,player_heading_prepare,10,call_or_branch,7c06,jl short 008Fh
+15,player_heading_prepare,11,global_or_pointer_table,812e84406801,"sub word ptr [4084h],168h"
+15,player_heading_prepare,12,global_or_pointer_table,a18440,"mov ax,[4084h]"
+15,player_heading_prepare,17,global_or_pointer_table,a38640,"mov [4086h],ax"
+15,player_heading_prepare,21,global_or_pointer_table,a38a40,"mov [408Ah],ax"
+15,player_heading_prepare,22,global_or_pointer_table,a18440,"mov ax,[4084h]"
+15,player_heading_prepare,30,global_or_pointer_table,a38840,"mov [4088h],ax"
+15,player_heading_prepare,31,global_or_pointer_table,ff368440,push word ptr [4084h]
+15,player_heading_prepare,33,call_or_branch,e82107,call 07E6h
+15,player_heading_prepare,35,global_or_pointer_table,a3de40,"mov [40DEh],ax"
+15,player_heading_prepare,36,global_or_pointer_table,ff368440,push word ptr [4084h]
+15,player_heading_prepare,38,call_or_branch,e85f07,call 0832h
+15,player_heading_prepare,40,global_or_pointer_table,a3e040,"mov [40E0h],ax"
+15,player_heading_prepare,41,global_or_pointer_table,a1de40,"mov ax,[40DEh]"
+15,player_heading_prepare,46,global_or_pointer_table,a1e040,"mov ax,[40E0h]"
+15,player_heading_prepare,52,call_or_branch,7d19,jge short 010Ah
+15,player_heading_prepare,53,global_or_pointer_table,c706a0400100,"mov word ptr [40A0h],1"
+15,player_heading_prepare,57,global_or_pointer_table,a3a240,"mov [40A2h],ax"
+15,player_heading_prepare,58,global_or_pointer_table,890ea440,"mov [40A4h],cx"
+15,player_heading_prepare,61,call_or_branch,eb18,jmp short 0122h
+15,player_heading_prepare,62,global_or_pointer_table,c706a0400000,"mov word ptr [40A0h],0"
+15,player_heading_prepare,67,global_or_pointer_table,8936a240,"mov [40A2h],si"
+15,player_heading_prepare,68,global_or_pointer_table,890ea440,"mov [40A4h],cx"
+15,player_heading_prepare,71,global_or_pointer_table,a3a640,"mov [40A6h],ax"
+15,player_move_wrapper,1,global_or_pointer_table,803e824000,"cmp byte ptr [4082h],0"
+15,player_move_wrapper,2,call_or_branch,7521,jne short 05D0h
+15,player_move_wrapper,12,call_or_branch,e853fb,call 0118h
+15,player_move_wrapper,16,call_or_branch,e84cff,call 051Ch
+17,paired_cell_step,8,global_or_pointer_table,8a877acf,"mov al,[bx-3086h]"
+17,paired_cell_step,12,global_or_pointer_table,8a877acf,"mov al,[bx-3086h]"
+17,paired_cell_step,15,call_or_branch,0f85cc00,jne 0100h
+17,paired_cell_step,17,call_or_branch,0f85c400,jne 0100h
+17,paired_cell_step,19,call_or_branch,741c,je short 005Eh
+17,paired_cell_step,22,call_or_branch,9a00000000,"call far 0,0"
+17,paired_cell_step,26,call_or_branch,9ae0010000,"call far 01E0h,0"
+17,paired_cell_step,29,call_or_branch,0f84a200,je 0100h
+17,paired_cell_step,31,call_or_branch,741c,je short 0080h
+17,paired_cell_step,34,call_or_branch,9a00000000,"call far 0,0"
+17,paired_cell_step,38,call_or_branch,9ae0010000,"call far 01E0h,0"
+17,paired_cell_step,41,call_or_branch,0f848000,je 0100h
+17,paired_cell_step,43,call_or_branch,740f,je short 0095h
+17,paired_cell_step,47,call_or_branch,9a20222608,"call far 2220h,0826h"
+17,paired_cell_step,50,call_or_branch,740f,je short 00AAh
+17,paired_cell_step,54,call_or_branch,9a20222608,"call far 2220h,0826h"
+17,paired_cell_step,59,global_or_pointer_table,8a877ad0,"mov al,[bx-2F86h]"
+17,paired_cell_step,63,global_or_pointer_table,8a877ad0,"mov al,[bx-2F86h]"
+17,paired_cell_step,66,call_or_branch,740c,je short 00DAh
+17,paired_cell_step,69,call_or_branch,9a1807d00a,"call far 0718h,0AD0h"
+17,paired_cell_step,72,call_or_branch,740c,je short 00ECh
+17,paired_cell_step,75,call_or_branch,9a1807d00a,"call far 0718h,0AD0h"
+17,paired_cell_step,78,call_or_branch,751b,jne short 010Dh
+17,paired_cell_step,80,call_or_branch,7515,jne short 010Dh
+17,paired_cell_step,88,call_or_branch,9ad603110c,"call far 03D6h,0C11h"
+17,movement_resolve,4,global_or_pointer_table,a0e240,"mov al,[40E2h]"
+17,movement_resolve,7,call_or_branch,7e0c,jle short 0134h
+17,movement_resolve,9,call_or_branch,7d06,jge short 0134h
+17,movement_resolve,11,call_or_branch,eb04,jmp short 0137h
+17,movement_resolve,14,call_or_branch,7c05,jl short 0142h
+17,movement_resolve,16,call_or_branch,eb03,jmp short 0145h
+17,movement_resolve,20,global_or_pointer_table,8b0ed240,"mov cx,[40D2h]"
+17,movement_resolve,23,global_or_pointer_table,8b0ed440,"mov cx,[40D4h]"
+17,movement_resolve,31,call_or_branch,740b,je short 017Ah
+17,movement_resolve,37,call_or_branch,0f8e3c01,jle 02BEh
+17,movement_resolve,43,call_or_branch,7442,je short 01D6h
+17,movement_resolve,68,call_or_branch,e836fe,call 4
+17,movement_resolve,71,call_or_branch,eb41,jmp short 0216h
+17,movement_resolve,96,call_or_branch,e8f3fd,call 4
+17,movement_resolve,99,global_or_pointer_table,833ee44000,"cmp word ptr [40E4h],0"
+17,movement_resolve,100,call_or_branch,7d0b,jge short 0228h
+17,movement_resolve,101,global_or_pointer_table,a1e640,"mov ax,[40E6h]"
+17,movement_resolve,102,global_or_pointer_table,0106e440,"add [40E4h],ax"
+17,movement_resolve,103,call_or_branch,e99000,jmp 02B7h
+17,movement_resolve,104,global_or_pointer_table,a1e840,"mov ax,[40E8h]"
+17,movement_resolve,105,global_or_pointer_table,0106e440,"add [40E4h],ax"
+17,movement_resolve,107,call_or_branch,7443,je short 0278h
+17,movement_resolve,132,call_or_branch,e894fd,call 4
+17,movement_resolve,135,call_or_branch,eb40,jmp short 02B7h
+17,movement_resolve,160,call_or_branch,e852fd,call 4
+17,movement_resolve,164,call_or_branch,0f85d0fe,jne 018Eh
+17,player_heading_prepare,5,global_or_pointer_table,a3c640,"mov [40C6h],ax"
+17,player_heading_prepare,7,call_or_branch,7d06,jge short 007Dh
+17,player_heading_prepare,8,global_or_pointer_table,8106c6406801,"add word ptr [40C6h],168h"
+17,player_heading_prepare,9,global_or_pointer_table,813ec6406801,"cmp word ptr [40C6h],168h"
+17,player_heading_prepare,10,call_or_branch,7c06,jl short 008Bh
+17,player_heading_prepare,11,global_or_pointer_table,812ec6406801,"sub word ptr [40C6h],168h"
+17,player_heading_prepare,12,global_or_pointer_table,a1c640,"mov ax,[40C6h]"
+17,player_heading_prepare,17,global_or_pointer_table,a3c840,"mov [40C8h],ax"
+17,player_heading_prepare,21,global_or_pointer_table,a3cc40,"mov [40CCh],ax"
+17,player_heading_prepare,22,global_or_pointer_table,a1c640,"mov ax,[40C6h]"
+17,player_heading_prepare,30,global_or_pointer_table,a3ca40,"mov [40CAh],ax"
+17,player_heading_prepare,31,global_or_pointer_table,ff36c640,push word ptr [40C6h]
+17,player_heading_prepare,33,call_or_branch,e82107,call 07E2h
+17,player_heading_prepare,35,global_or_pointer_table,a32041,"mov [4120h],ax"
+17,player_heading_prepare,36,global_or_pointer_table,ff36c640,push word ptr [40C6h]
+17,player_heading_prepare,38,call_or_branch,e85f07,call 082Eh
+17,player_heading_prepare,40,global_or_pointer_table,a32241,"mov [4122h],ax"
+17,player_heading_prepare,41,global_or_pointer_table,a12041,"mov ax,[4120h]"
+17,player_heading_prepare,46,global_or_pointer_table,a12241,"mov ax,[4122h]"
+17,player_heading_prepare,52,call_or_branch,7d19,jge short 0106h
+17,player_heading_prepare,53,global_or_pointer_table,c706e2400100,"mov word ptr [40E2h],1"
+17,player_heading_prepare,57,global_or_pointer_table,a3e440,"mov [40E4h],ax"
+17,player_heading_prepare,58,global_or_pointer_table,890ee640,"mov [40E6h],cx"
+17,player_heading_prepare,61,call_or_branch,eb18,jmp short 011Eh
+17,player_heading_prepare,62,global_or_pointer_table,c706e2400000,"mov word ptr [40E2h],0"
+17,player_heading_prepare,67,global_or_pointer_table,8936e440,"mov [40E4h],si"
+17,player_heading_prepare,68,global_or_pointer_table,890ee640,"mov [40E6h],cx"
+17,player_heading_prepare,71,global_or_pointer_table,a3e840,"mov [40E8h],ax"
+17,player_move_wrapper,1,global_or_pointer_table,803ec44000,"cmp byte ptr [40C4h],0"
+17,player_move_wrapper,2,call_or_branch,7521,jne short 05CCh
+17,player_move_wrapper,12,call_or_branch,e853fb,call 0114h
+17,player_move_wrapper,16,call_or_branch,e84cff,call 0518h
+18,paired_cell_step,8,global_or_pointer_table,8a870ad0,"mov al,[bx-2FF6h]"
+18,paired_cell_step,12,global_or_pointer_table,8a870ad0,"mov al,[bx-2FF6h]"
+18,paired_cell_step,15,call_or_branch,0f85cc00,jne 0104h
+18,paired_cell_step,17,call_or_branch,0f85c400,jne 0104h
+18,paired_cell_step,19,call_or_branch,741c,je short 0062h
+18,paired_cell_step,22,call_or_branch,9a00000000,"call far 0,0"
+18,paired_cell_step,26,call_or_branch,9ae0010000,"call far 01E0h,0"
+18,paired_cell_step,29,call_or_branch,0f84a200,je 0104h
+18,paired_cell_step,31,call_or_branch,741c,je short 0084h
+18,paired_cell_step,34,call_or_branch,9a00000000,"call far 0,0"
+18,paired_cell_step,38,call_or_branch,9ae0010000,"call far 01E0h,0"
+18,paired_cell_step,41,call_or_branch,0f848000,je 0104h
+18,paired_cell_step,43,call_or_branch,740f,je short 0099h
+18,paired_cell_step,47,call_or_branch,9a24223c08,"call far 2224h,083Ch"
+18,paired_cell_step,50,call_or_branch,740f,je short 00AEh
+18,paired_cell_step,54,call_or_branch,9a24223c08,"call far 2224h,083Ch"
+18,paired_cell_step,59,global_or_pointer_table,8a870ad1,"mov al,[bx-2EF6h]"
+18,paired_cell_step,63,global_or_pointer_table,8a870ad1,"mov al,[bx-2EF6h]"
+18,paired_cell_step,66,call_or_branch,740c,je short 00DEh
+18,paired_cell_step,69,call_or_branch,9a0c07e70a,"call far 070Ch,0AE7h"
+18,paired_cell_step,72,call_or_branch,740c,je short 00F0h
+18,paired_cell_step,75,call_or_branch,9a0c07e70a,"call far 070Ch,0AE7h"
+18,paired_cell_step,78,call_or_branch,751b,jne short 0111h
+18,paired_cell_step,80,call_or_branch,7515,jne short 0111h
+18,paired_cell_step,88,call_or_branch,9ada03270c,"call far 03DAh,0C27h"
+18,movement_resolve,4,global_or_pointer_table,a07241,"mov al,[4172h]"
+18,movement_resolve,7,call_or_branch,7e0c,jle short 0138h
+18,movement_resolve,9,call_or_branch,7d06,jge short 0138h
+18,movement_resolve,11,call_or_branch,eb04,jmp short 013Bh
+18,movement_resolve,14,call_or_branch,7c05,jl short 0146h
+18,movement_resolve,16,call_or_branch,eb03,jmp short 0149h
+18,movement_resolve,20,global_or_pointer_table,8b0e6241,"mov cx,[4162h]"
+18,movement_resolve,23,global_or_pointer_table,8b0e6441,"mov cx,[4164h]"
+18,movement_resolve,31,call_or_branch,740b,je short 017Eh
+18,movement_resolve,37,call_or_branch,0f8e3c01,jle 02C2h
+18,movement_resolve,43,call_or_branch,7442,je short 01DAh
+18,movement_resolve,68,call_or_branch,e836fe,call 8
+18,movement_resolve,71,call_or_branch,eb41,jmp short 021Ah
+18,movement_resolve,96,call_or_branch,e8f3fd,call 8
+18,movement_resolve,99,global_or_pointer_table,833e744100,"cmp word ptr [4174h],0"
+18,movement_resolve,100,call_or_branch,7d0b,jge short 022Ch
+18,movement_resolve,101,global_or_pointer_table,a17641,"mov ax,[4176h]"
+18,movement_resolve,102,global_or_pointer_table,01067441,"add [4174h],ax"
+18,movement_resolve,103,call_or_branch,e99000,jmp 02BBh
+18,movement_resolve,104,global_or_pointer_table,a17841,"mov ax,[4178h]"
+18,movement_resolve,105,global_or_pointer_table,01067441,"add [4174h],ax"
+18,movement_resolve,107,call_or_branch,7443,je short 027Ch
+18,movement_resolve,132,call_or_branch,e894fd,call 8
+18,movement_resolve,135,call_or_branch,eb40,jmp short 02BBh
+18,movement_resolve,160,call_or_branch,e852fd,call 8
+18,movement_resolve,164,call_or_branch,0f85d0fe,jne 0192h
+18,player_heading_prepare,5,global_or_pointer_table,a35641,"mov [4156h],ax"
+18,player_heading_prepare,7,call_or_branch,7d06,jge short 0081h
+18,player_heading_prepare,8,global_or_pointer_table,810656416801,"add word ptr [4156h],168h"
+18,player_heading_prepare,9,global_or_pointer_table,813e56416801,"cmp word ptr [4156h],168h"
+18,player_heading_prepare,10,call_or_branch,7c06,jl short 008Fh
+18,player_heading_prepare,11,global_or_pointer_table,812e56416801,"sub word ptr [4156h],168h"
+18,player_heading_prepare,12,global_or_pointer_table,a15641,"mov ax,[4156h]"
+18,player_heading_prepare,17,global_or_pointer_table,a35841,"mov [4158h],ax"
+18,player_heading_prepare,21,global_or_pointer_table,a35c41,"mov [415Ch],ax"
+18,player_heading_prepare,22,global_or_pointer_table,a15641,"mov ax,[4156h]"
+18,player_heading_prepare,30,global_or_pointer_table,a35a41,"mov [415Ah],ax"
+18,player_heading_prepare,31,global_or_pointer_table,ff365641,push word ptr [4156h]
+18,player_heading_prepare,33,call_or_branch,e82107,call 07E6h
+18,player_heading_prepare,35,global_or_pointer_table,a3b041,"mov [41B0h],ax"
+18,player_heading_prepare,36,global_or_pointer_table,ff365641,push word ptr [4156h]
+18,player_heading_prepare,38,call_or_branch,e85f07,call 0832h
+18,player_heading_prepare,40,global_or_pointer_table,a3b241,"mov [41B2h],ax"
+18,player_heading_prepare,41,global_or_pointer_table,a1b041,"mov ax,[41B0h]"
+18,player_heading_prepare,46,global_or_pointer_table,a1b241,"mov ax,[41B2h]"
+18,player_heading_prepare,52,call_or_branch,7d19,jge short 010Ah
+18,player_heading_prepare,53,global_or_pointer_table,c70672410100,"mov word ptr [4172h],1"
+18,player_heading_prepare,57,global_or_pointer_table,a37441,"mov [4174h],ax"
+18,player_heading_prepare,58,global_or_pointer_table,890e7641,"mov [4176h],cx"
+18,player_heading_prepare,61,call_or_branch,eb18,jmp short 0122h
+18,player_heading_prepare,62,global_or_pointer_table,c70672410000,"mov word ptr [4172h],0"
+18,player_heading_prepare,67,global_or_pointer_table,89367441,"mov [4174h],si"
+18,player_heading_prepare,68,global_or_pointer_table,890e7641,"mov [4176h],cx"
+18,player_heading_prepare,71,global_or_pointer_table,a37841,"mov [4178h],ax"
+18,player_move_wrapper,1,global_or_pointer_table,803e544100,"cmp byte ptr [4154h],0"
+18,player_move_wrapper,2,call_or_branch,7521,jne short 05D0h
+18,player_move_wrapper,12,call_or_branch,e853fb,call 0118h
+18,player_move_wrapper,16,call_or_branch,e84cff,call 051Ch
+19,paired_cell_step,8,global_or_pointer_table,8a870ad0,"mov al,[bx-2FF6h]"
+19,paired_cell_step,12,global_or_pointer_table,8a870ad0,"mov al,[bx-2FF6h]"
+19,paired_cell_step,15,call_or_branch,0f85cc00,jne 0104h
+19,paired_cell_step,17,call_or_branch,0f85c400,jne 0104h
+19,paired_cell_step,19,call_or_branch,741c,je short 0062h
+19,paired_cell_step,22,call_or_branch,9a00000000,"call far 0,0"
+19,paired_cell_step,26,call_or_branch,9ae0010000,"call far 01E0h,0"
+19,paired_cell_step,29,call_or_branch,0f84a200,je 0104h
+19,paired_cell_step,31,call_or_branch,741c,je short 0084h
+19,paired_cell_step,34,call_or_branch,9a00000000,"call far 0,0"
+19,paired_cell_step,38,call_or_branch,9ae0010000,"call far 01E0h,0"
+19,paired_cell_step,41,call_or_branch,0f848000,je 0104h
+19,paired_cell_step,43,call_or_branch,740f,je short 0099h
+19,paired_cell_step,47,call_or_branch,9a24223c08,"call far 2224h,083Ch"
+19,paired_cell_step,50,call_or_branch,740f,je short 00AEh
+19,paired_cell_step,54,call_or_branch,9a24223c08,"call far 2224h,083Ch"
+19,paired_cell_step,59,global_or_pointer_table,8a870ad1,"mov al,[bx-2EF6h]"
+19,paired_cell_step,63,global_or_pointer_table,8a870ad1,"mov al,[bx-2EF6h]"
+19,paired_cell_step,66,call_or_branch,740c,je short 00DEh
+19,paired_cell_step,69,call_or_branch,9a0c07e70a,"call far 070Ch,0AE7h"
+19,paired_cell_step,72,call_or_branch,740c,je short 00F0h
+19,paired_cell_step,75,call_or_branch,9a0c07e70a,"call far 070Ch,0AE7h"
+19,paired_cell_step,78,call_or_branch,751b,jne short 0111h
+19,paired_cell_step,80,call_or_branch,7515,jne short 0111h
+19,paired_cell_step,88,call_or_branch,9ada03270c,"call far 03DAh,0C27h"
+19,movement_resolve,4,global_or_pointer_table,a07241,"mov al,[4172h]"
+19,movement_resolve,7,call_or_branch,7e0c,jle short 0138h
+19,movement_resolve,9,call_or_branch,7d06,jge short 0138h
+19,movement_resolve,11,call_or_branch,eb04,jmp short 013Bh
+19,movement_resolve,14,call_or_branch,7c05,jl short 0146h
+19,movement_resolve,16,call_or_branch,eb03,jmp short 0149h
+19,movement_resolve,20,global_or_pointer_table,8b0e6241,"mov cx,[4162h]"
+19,movement_resolve,23,global_or_pointer_table,8b0e6441,"mov cx,[4164h]"
+19,movement_resolve,31,call_or_branch,740b,je short 017Eh
+19,movement_resolve,37,call_or_branch,0f8e3c01,jle 02C2h
+19,movement_resolve,43,call_or_branch,7442,je short 01DAh
+19,movement_resolve,68,call_or_branch,e836fe,call 8
+19,movement_resolve,71,call_or_branch,eb41,jmp short 021Ah
+19,movement_resolve,96,call_or_branch,e8f3fd,call 8
+19,movement_resolve,99,global_or_pointer_table,833e744100,"cmp word ptr [4174h],0"
+19,movement_resolve,100,call_or_branch,7d0b,jge short 022Ch
+19,movement_resolve,101,global_or_pointer_table,a17641,"mov ax,[4176h]"
+19,movement_resolve,102,global_or_pointer_table,01067441,"add [4174h],ax"
+19,movement_resolve,103,call_or_branch,e99000,jmp 02BBh
+19,movement_resolve,104,global_or_pointer_table,a17841,"mov ax,[4178h]"
+19,movement_resolve,105,global_or_pointer_table,01067441,"add [4174h],ax"
+19,movement_resolve,107,call_or_branch,7443,je short 027Ch
+19,movement_resolve,132,call_or_branch,e894fd,call 8
+19,movement_resolve,135,call_or_branch,eb40,jmp short 02BBh
+19,movement_resolve,160,call_or_branch,e852fd,call 8
+19,movement_resolve,164,call_or_branch,0f85d0fe,jne 0192h
+19,player_heading_prepare,5,global_or_pointer_table,a35641,"mov [4156h],ax"
+19,player_heading_prepare,7,call_or_branch,7d06,jge short 0081h
+19,player_heading_prepare,8,global_or_pointer_table,810656416801,"add word ptr [4156h],168h"
+19,player_heading_prepare,9,global_or_pointer_table,813e56416801,"cmp word ptr [4156h],168h"
+19,player_heading_prepare,10,call_or_branch,7c06,jl short 008Fh
+19,player_heading_prepare,11,global_or_pointer_table,812e56416801,"sub word ptr [4156h],168h"
+19,player_heading_prepare,12,global_or_pointer_table,a15641,"mov ax,[4156h]"
+19,player_heading_prepare,17,global_or_pointer_table,a35841,"mov [4158h],ax"
+19,player_heading_prepare,21,global_or_pointer_table,a35c41,"mov [415Ch],ax"
+19,player_heading_prepare,22,global_or_pointer_table,a15641,"mov ax,[4156h]"
+19,player_heading_prepare,30,global_or_pointer_table,a35a41,"mov [415Ah],ax"
+19,player_heading_prepare,31,global_or_pointer_table,ff365641,push word ptr [4156h]
+19,player_heading_prepare,33,call_or_branch,e82107,call 07E6h
+19,player_heading_prepare,35,global_or_pointer_table,a3b041,"mov [41B0h],ax"
+19,player_heading_prepare,36,global_or_pointer_table,ff365641,push word ptr [4156h]
+19,player_heading_prepare,38,call_or_branch,e85f07,call 0832h
+19,player_heading_prepare,40,global_or_pointer_table,a3b241,"mov [41B2h],ax"
+19,player_heading_prepare,41,global_or_pointer_table,a1b041,"mov ax,[41B0h]"
+19,player_heading_prepare,46,global_or_pointer_table,a1b241,"mov ax,[41B2h]"
+19,player_heading_prepare,52,call_or_branch,7d19,jge short 010Ah
+19,player_heading_prepare,53,global_or_pointer_table,c70672410100,"mov word ptr [4172h],1"
+19,player_heading_prepare,57,global_or_pointer_table,a37441,"mov [4174h],ax"
+19,player_heading_prepare,58,global_or_pointer_table,890e7641,"mov [4176h],cx"
+19,player_heading_prepare,61,call_or_branch,eb18,jmp short 0122h
+19,player_heading_prepare,62,global_or_pointer_table,c70672410000,"mov word ptr [4172h],0"
+19,player_heading_prepare,67,global_or_pointer_table,89367441,"mov [4174h],si"
+19,player_heading_prepare,68,global_or_pointer_table,890e7641,"mov [4176h],cx"
+19,player_heading_prepare,71,global_or_pointer_table,a37841,"mov [4178h],ax"
+19,player_move_wrapper,1,global_or_pointer_table,803e544100,"cmp byte ptr [4154h],0"
+19,player_move_wrapper,2,call_or_branch,7521,jne short 05D0h
+19,player_move_wrapper,12,call_or_branch,e853fb,call 0118h
+19,player_move_wrapper,16,call_or_branch,e84cff,call 051Ch

@@ -34,7 +34,7 @@ def main():
     leaf=readjson(root/'worx_leafs/leaf_evidence.json')
     dataflow=readjson(root/'worx_dataflow/dataflow_evidence.json')
     sources=[('helper_31ca',root/'worx_helper/instructions.csv')]
-    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay','xms_lifecycle_wrappers_replay','cache_memory_probe_replay','crt_large_allocation_replay','crt_far_free_replay','music_snd_reader_replay','crt_seek_replay','damage_result_consumer_replay','reaction_selectors_replay','damage_sound_frame_replay','visibility_gate_ray_replay','player_position_commit_replay'):
+    for folder in ('episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','image_group_loader_replay','image_record_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','cache_reset_replay','xms_lifecycle_wrappers_replay','cache_memory_probe_replay','crt_large_allocation_replay','crt_far_free_replay','music_snd_reader_replay','crt_seek_replay','damage_result_consumer_replay','reaction_selectors_replay','damage_sound_frame_replay','visibility_gate_ray_replay','player_position_commit_replay','player_movement_collision_replay'):
         for f in readjson(root/folder/'summary.json')['functions']:
             if folder=='worx_register_bank_replay' and f['name'] in ('worx_port_callback_set','worx_port_write_delayed'):continue # already owned by prior independent functions
             sources.append((f['name'],root/folder/(f['name']+'.csv')))
@@ -495,6 +495,13 @@ def main():
             if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('position UNKNOWNtail source conflict')
         result['pass1_UNKNOWN_tail_position_load_witnesses']=pg['witnesses']
         result['pass1_UNKNOWN_tail_position_scope']='Additional conditional terrain-lookup consumer of existing2770E,not an additional UNKNOWN byte ornaturalbounds proof'
+    movement_gap=root/'pass1_movement_conditional_refs/independent_verification.json'
+    if movement_gap.exists():
+        mg=readjson(movement_gap);assert mg['verified'] and mg['status_changes']==0 and mg['new_typed_bytes']==0
+        for item in mg['files']:
+            if sha(Path(item['path']).read_bytes())!=item['sha256']:raise ValueError('movement conditional source conflict')
+        result['pass1_movement_conditional_load_witnesses']=mg['witnesses']
+        result['pass1_heading_conditional_CLASSIFIED_ONLY_bytes']=mg['conditional_CLASSIFIED_ONLY_bytes']
     result['controlled_instruction_replay_cases'] = read_replay['controlled_replay_cases'] if read_replay else 0
     result['original_pass320_ledger_imported']=baseline_path.exists()
     if baseline_path.exists():
@@ -563,7 +570,7 @@ def main():
     if (root/'keyboard_irq_replay/summary.json').exists():replay_folders.append('keyboard_irq_replay')
     if (root/'worx_private_stack_replay/summary.json').exists():replay_folders.append('worx_private_stack_replay')
     if (root/'menu_save_gate_replay/summary.json').exists():replay_folders.append('menu_save_gate_replay')
-    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay','crt_large_allocation_replay','probe_original_crt_replay','crt_far_malloc_replay','crt_far_free_replay','music_snd_reader_replay','worx_bank_original_resolver_replay','crt_seek_replay','damage_result_consumer_replay','reaction_selectors_replay','damage_chain_replay','damage_sound_frame_replay','damage_event_frame_chain_replay','visibility_gate_ray_replay','damage_visibility_chain_replay','player_position_commit_replay'])
+    replay_folders.extend(['episode_selector_replay','xms_request_replay','game_start_replay','sound_xms_cache_replay','palette_effect_replay','guard_cell_move_replay','guard_validator_replay','guard_move_original_validator_replay','door_interaction_replay','classification_producers_replay','rtc_irq_replay','worx_register_bank_replay','guard_orientation_replay','guard_move_original_facing_replay','image_group_loader_replay','image_record_pipeline_replay','IMG_group_pipeline_replay','image_cache_retrieval_replay','crt_calendar_replay','crt_ftime_replay','object_cache_replay','object_cache_count_prefix_replay','cache_reset_replay','cache_reset_RAM_replay','xms_lifecycle_wrappers_replay','cache_initialization_replay','cache_memory_probe_replay','crt_large_allocation_replay','probe_original_crt_replay','crt_far_malloc_replay','crt_far_free_replay','music_snd_reader_replay','worx_bank_original_resolver_replay','crt_seek_replay','damage_result_consumer_replay','reaction_selectors_replay','damage_chain_replay','damage_sound_frame_replay','damage_event_frame_chain_replay','visibility_gate_ray_replay','damage_visibility_chain_replay','player_position_commit_replay','player_movement_collision_replay'])
     if len(replay_folders)!=len(set(replay_folders)):raise ValueError('duplicate replay batch')
     for replay_folder in replay_folders:
         replay_summary=readjson(root/replay_folder/'summary.json')

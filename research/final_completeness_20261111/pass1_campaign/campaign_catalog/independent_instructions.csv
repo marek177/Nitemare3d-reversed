@@ -3968,6 +3968,365 @@ player_position_reindex,26981,1591,1525,83c404,"add sp,4",new independent decode
 player_position_reindex,26984,1591,1528,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
 player_position_reindex,26985,1591,1529,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
 player_position_reindex,26986,1591,1530,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+paired_cell_step,25464,1591,8,c8040000,"enter 4,0",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25468,1591,12,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25469,1591,13,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25470,1591,14,8b7e06,"mov di,[bp+6]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25473,1591,17,8b760a,"mov si,[bp+0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25476,1591,20,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25479,1591,23,268a1d,"mov bl,es:[di]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25482,1591,26,2aff,"sub bh,bh",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25484,1591,28,8a870cd0,"mov al,[bx-2FF4h]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25488,1591,32,8846ff,"mov [bp-1],al",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25491,1591,35,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25494,1591,38,268a1c,"mov bl,es:[si]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25497,1591,41,8a870cd0,"mov al,[bx-2FF4h]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25501,1591,45,8846fe,"mov [bp-2],al",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25504,1591,48,f646ff04,"test byte ptr [bp-1],4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25508,1591,52,0f85cc00,jne 0104h,new independent decode; no historical text imported,3,25716,PARTIAL
+paired_cell_step,25512,1591,56,f646fe04,"test byte ptr [bp-2],4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25516,1591,60,0f85c400,jne 0104h,new independent decode; no historical text imported,3,25716,PARTIAL
+paired_cell_step,25520,1591,64,f646ff08,"test byte ptr [bp-1],8",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25524,1591,68,741c,je short 0062h,new independent decode; no historical text imported,3,25554,PARTIAL
+paired_cell_step,25526,1591,70,ff7608,push word ptr [bp+8],new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25529,1591,73,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25530,1591,74,9a00000000,"call far 0,0",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25535,1591,79,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25538,1591,82,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25539,1591,83,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25540,1591,84,9ae0010000,"call far 01E0h,0",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25545,1591,89,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25548,1591,92,0ac0,"or al,al",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25550,1591,94,0f84a200,je 0104h,new independent decode; no historical text imported,3,25716,PARTIAL
+paired_cell_step,25554,1591,98,f646fe08,"test byte ptr [bp-2],8",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25558,1591,102,741c,je short 0084h,new independent decode; no historical text imported,3,25588,PARTIAL
+paired_cell_step,25560,1591,104,ff760c,push word ptr [bp+0Ch],new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25563,1591,107,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25564,1591,108,9a00000000,"call far 0,0",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25569,1591,113,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25572,1591,116,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25573,1591,117,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25574,1591,118,9ae0010000,"call far 01E0h,0",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25579,1591,123,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25582,1591,126,0ac0,"or al,al",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25584,1591,128,0f848000,je 0104h,new independent decode; no historical text imported,3,25716,PARTIAL
+paired_cell_step,25588,1591,132,f646ff40,"test byte ptr [bp-1],40h",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25592,1591,136,740f,je short 0099h,new independent decode; no historical text imported,3,25609,PARTIAL
+paired_cell_step,25594,1591,138,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25597,1591,141,268a05,"mov al,es:[di]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25600,1591,144,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25601,1591,145,9a50223d08,"call far 2250h,083Dh",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25606,1591,150,83c402,"add sp,2",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25609,1591,153,f646fe40,"test byte ptr [bp-2],40h",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25613,1591,157,740f,je short 00AEh,new independent decode; no historical text imported,3,25630,PARTIAL
+paired_cell_step,25615,1591,159,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25618,1591,162,268a04,"mov al,es:[si]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25621,1591,165,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25622,1591,166,9a50223d08,"call far 2250h,083Dh",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25627,1591,171,83c402,"add sp,2",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25630,1591,174,8e4608,"mov es,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25633,1591,177,268a5d01,"mov bl,es:[di+1]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25637,1591,181,2aff,"sub bh,bh",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25639,1591,183,8a870cd1,"mov al,[bx-2EF4h]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25643,1591,187,8846fd,"mov [bp-3],al",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25646,1591,190,8e460c,"mov es,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25649,1591,193,268a5c01,"mov bl,es:[si+1]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25653,1591,197,8a870cd1,"mov al,[bx-2EF4h]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25657,1591,201,8846fc,"mov [bp-4],al",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25660,1591,204,f646fd04,"test byte ptr [bp-3],4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25664,1591,208,740c,je short 00DEh,new independent decode; no historical text imported,3,25678,PARTIAL
+paired_cell_step,25666,1591,210,ff7608,push word ptr [bp+8],new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25669,1591,213,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25670,1591,214,9a1807ea0a,"call far 0718h,0AEAh",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25675,1591,219,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25678,1591,222,f646fc04,"test byte ptr [bp-4],4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25682,1591,226,740c,je short 00F0h,new independent decode; no historical text imported,3,25696,PARTIAL
+paired_cell_step,25684,1591,228,ff760c,push word ptr [bp+0Ch],new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25687,1591,231,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25688,1591,232,9a1807ea0a,"call far 0718h,0AEAh",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25693,1591,237,83c404,"add sp,4",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25696,1591,240,f646fd02,"test byte ptr [bp-3],2",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25700,1591,244,751b,jne short 0111h,new independent decode; no historical text imported,3,25729,PARTIAL
+paired_cell_step,25702,1591,246,f646fc02,"test byte ptr [bp-4],2",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25706,1591,250,7515,jne short 0111h,new independent decode; no historical text imported,3,25729,PARTIAL
+paired_cell_step,25708,1591,252,8b460e,"mov ax,[bp+0Eh]",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25711,1591,255,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25712,1591,256,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25713,1591,257,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25714,1591,258,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+paired_cell_step,25716,1591,260,666a00,data32 push 0,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25719,1591,263,6a01,push 1,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25721,1591,265,9ad6032b0c,"call far 03D6h,0C2Bh",new independent decode; no historical text imported,5,25456,PARTIAL
+paired_cell_step,25726,1591,270,83c406,"add sp,6",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25729,1591,273,33c0,"xor ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25731,1591,275,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25732,1591,276,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25733,1591,277,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+paired_cell_step,25734,1591,278,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+movement_resolve,25736,1591,280,c80e0000,"enter 0Eh,0",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25740,1591,284,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25741,1591,285,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25742,1591,286,8b7e06,"mov di,[bp+6]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25745,1591,289,a07241,"mov al,[4172h]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25748,1591,292,8846fb,"mov [bp-5],al",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25751,1591,295,83ff5a,"cmp di,5Ah",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25754,1591,298,7e0c,jle short 0138h,new independent decode; no historical text imported,3,25768,PARTIAL
+movement_resolve,25756,1591,300,81ff0e01,"cmp di,10Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25760,1591,304,7d06,jge short 0138h,new independent decode; no historical text imported,3,25768,PARTIAL
+movement_resolve,25762,1591,306,be0100,"mov si,1",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25765,1591,309,eb04,jmp short 013Bh,new independent decode; no historical text imported,1,25771,PARTIAL
+movement_resolve,25768,1591,312,beffff,"mov si,0FFFFh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25771,1591,315,81ffb400,"cmp di,0B4h",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25775,1591,319,7c05,jl short 0146h,new independent decode; no historical text imported,3,25782,PARTIAL
+movement_resolve,25777,1591,321,b8ffff,"mov ax,0FFFFh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25780,1591,324,eb03,jmp short 0149h,new independent decode; no historical text imported,1,25785,PARTIAL
+movement_resolve,25782,1591,326,b80100,"mov ax,1",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25785,1591,329,8946f8,"mov [bp-8],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25788,1591,332,8b5e0c,"mov bx,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25791,1591,335,8b0e6241,"mov cx,[4162h]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25795,1591,339,890f,"mov [bx],cx",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25797,1591,341,8b5e0e,"mov bx,[bp+0Eh]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25800,1591,344,8b0e6441,"mov cx,[4164h]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25804,1591,348,890f,"mov [bx],cx",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25806,1591,350,6bc01b,"imul ax,1Bh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25809,1591,353,8946fe,"mov [bp-2],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25812,1591,356,6bc61b,"imul ax,si,1Bh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25815,1591,359,8946fc,"mov [bp-4],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25818,1591,362,8976f4,"mov [bp-0Ch],si",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25821,1591,365,807e0800,"cmp byte ptr [bp+8],0",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25825,1591,369,740b,je short 017Eh,new independent decode; no historical text imported,3,25838,PARTIAL
+movement_resolve,25827,1591,371,807efb01,"cmp byte ptr [bp-5],1",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25831,1591,375,1ac0,"sbb al,al",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25833,1591,377,f6d8,neg al,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25835,1591,379,8846fb,"mov [bp-5],al",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25838,1591,382,837e0a00,"cmp word ptr [bp+0Ah],0",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25842,1591,386,0f8e3c01,jle 02C2h,new independent decode; no historical text imported,3,26162,PARTIAL
+movement_resolve,25846,1591,390,8b460a,"mov ax,[bp+0Ah]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25849,1591,393,8946f6,"mov [bp-0Ah],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25852,1591,396,8b760c,"mov si,[bp+0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25855,1591,399,8b7e0e,"mov di,[bp+0Eh]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25858,1591,402,807efb00,"cmp byte ptr [bp-5],0",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25862,1591,406,7442,je short 01DAh,new independent decode; no historical text imported,3,25930,PARTIAL
+movement_resolve,25864,1591,408,8b46f8,"mov ax,[bp-8]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25867,1591,411,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25868,1591,412,0346fe,"add ax,[bp-2]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25871,1591,415,0304,"add ax,[si]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25873,1591,417,24df,"and al,0DFh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25875,1591,419,c1f805,"sar ax,5",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25878,1591,422,8b4efc,"mov cx,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25881,1591,425,030d,"add cx,[di]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25883,1591,427,80e1c0,"and cl,0C0h",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25886,1591,430,03c9,"add cx,cx",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25888,1591,432,8bd0,"mov dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25890,1591,434,03c1,"add ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25892,1591,436,053e37,"add ax,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25895,1591,439,68fd21,push 21FDh,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25898,1591,442,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25899,1591,443,8b05,"mov ax,[di]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25901,1591,445,2b46fc,"sub ax,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25904,1591,448,24c0,"and al,0C0h",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25906,1591,450,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25908,1591,452,03d0,"add dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25910,1591,454,81c23e37,"add dx,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25914,1591,458,68fd21,push 21FDh,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25917,1591,461,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25918,1591,462,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25919,1591,463,e836fe,call 8,new independent decode; no historical text imported,5,25464,PARTIAL
+movement_resolve,25922,1591,466,83c40a,"add sp,0Ah",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25925,1591,469,0104,"add [si],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25927,1591,471,eb41,jmp short 021Ah,new independent decode; no historical text imported,1,25994,PARTIAL
+movement_resolve,25930,1591,474,8b46f4,"mov ax,[bp-0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25933,1591,477,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25934,1591,478,0346fc,"add ax,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25937,1591,481,0305,"add ax,[di]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25939,1591,483,24c0,"and al,0C0h",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25941,1591,485,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25943,1591,487,8b4efe,"mov cx,[bp-2]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25946,1591,490,030c,"add cx,[si]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25948,1591,492,80e1df,"and cl,0DFh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25951,1591,495,c1f905,"sar cx,5",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25954,1591,498,8bd0,"mov dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25956,1591,500,03c1,"add ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25958,1591,502,053e37,"add ax,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25961,1591,505,68fd21,push 21FDh,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25964,1591,508,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25965,1591,509,8b04,"mov ax,[si]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25967,1591,511,2b46fe,"sub ax,[bp-2]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25970,1591,514,24df,"and al,0DFh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25972,1591,516,c1f805,"sar ax,5",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25975,1591,519,03d0,"add dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25977,1591,521,81c23e37,"add dx,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25981,1591,525,68fd21,push 21FDh,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25984,1591,528,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25985,1591,529,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25986,1591,530,e8f3fd,call 8,new independent decode; no historical text imported,5,25464,PARTIAL
+movement_resolve,25989,1591,533,83c40a,"add sp,0Ah",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25992,1591,536,0105,"add [di],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25994,1591,538,833e744100,"cmp word ptr [4174h],0",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,25999,1591,543,7d0b,jge short 022Ch,new independent decode; no historical text imported,3,26012,PARTIAL
+movement_resolve,26001,1591,545,a17641,"mov ax,[4176h]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26004,1591,548,01067441,"add [4174h],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26008,1591,552,e99000,jmp 02BBh,new independent decode; no historical text imported,1,26155,PARTIAL
+movement_resolve,26012,1591,556,a17841,"mov ax,[4178h]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26015,1591,559,01067441,"add [4174h],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26019,1591,563,807efb00,"cmp byte ptr [bp-5],0",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26023,1591,567,7443,je short 027Ch,new independent decode; no historical text imported,3,26092,PARTIAL
+movement_resolve,26025,1591,569,8b46f4,"mov ax,[bp-0Ch]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26028,1591,572,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26029,1591,573,0346fc,"add ax,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26032,1591,576,0305,"add ax,[di]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26034,1591,578,24c0,"and al,0C0h",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26036,1591,580,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26038,1591,582,8b4efe,"mov cx,[bp-2]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26041,1591,585,030c,"add cx,[si]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26043,1591,587,80e1df,"and cl,0DFh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26046,1591,590,c1f905,"sar cx,5",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26049,1591,593,8bd0,"mov dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26051,1591,595,03c1,"add ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26053,1591,597,053e37,"add ax,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26056,1591,600,68fd21,push 21FDh,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26059,1591,603,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26060,1591,604,8b04,"mov ax,[si]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26062,1591,606,2b46fe,"sub ax,[bp-2]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26065,1591,609,24df,"and al,0DFh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26067,1591,611,c1f805,"sar ax,5",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26070,1591,614,03d0,"add dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26072,1591,616,81c23e37,"add dx,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26076,1591,620,68fd21,push 21FDh,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26079,1591,623,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26080,1591,624,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26081,1591,625,e894fd,call 8,new independent decode; no historical text imported,5,25464,PARTIAL
+movement_resolve,26084,1591,628,83c40a,"add sp,0Ah",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26087,1591,631,0105,"add [di],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26089,1591,633,eb40,jmp short 02BBh,new independent decode; no historical text imported,1,26155,PARTIAL
+movement_resolve,26092,1591,636,8b46f8,"mov ax,[bp-8]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26095,1591,639,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26096,1591,640,0346fe,"add ax,[bp-2]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26099,1591,643,0304,"add ax,[si]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26101,1591,645,24df,"and al,0DFh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26103,1591,647,c1f805,"sar ax,5",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26106,1591,650,8b4efc,"mov cx,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26109,1591,653,030d,"add cx,[di]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26111,1591,655,80e1c0,"and cl,0C0h",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26114,1591,658,03c9,"add cx,cx",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26116,1591,660,8bd0,"mov dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26118,1591,662,03c1,"add ax,cx",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26120,1591,664,053e37,"add ax,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26123,1591,667,68fd21,push 21FDh,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26126,1591,670,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26127,1591,671,8b05,"mov ax,[di]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26129,1591,673,2b46fc,"sub ax,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26132,1591,676,24c0,"and al,0C0h",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26134,1591,678,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26136,1591,680,03d0,"add dx,ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26138,1591,682,81c23e37,"add dx,373Eh",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26142,1591,686,68fd21,push 21FDh,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26145,1591,689,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26146,1591,690,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26147,1591,691,e852fd,call 8,new independent decode; no historical text imported,5,25464,PARTIAL
+movement_resolve,26150,1591,694,83c40a,"add sp,0Ah",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26153,1591,697,0104,"add [si],ax",new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26155,1591,699,ff4ef6,dec word ptr [bp-0Ah],new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26158,1591,702,0f85d0fe,jne 0192h,new independent decode; no historical text imported,3,25858,PARTIAL
+movement_resolve,26162,1591,706,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26163,1591,707,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26164,1591,708,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+movement_resolve,26165,1591,709,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+player_heading_prepare,51256,3197,104,55,push bp,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51257,3197,105,8bec,"mov bp,sp",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51259,3197,107,57,push di,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51260,3197,108,56,push si,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51261,3197,109,8b4606,"mov ax,[bp+6]",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51264,3197,112,a35641,"mov [4156h],ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51267,3197,115,0bc0,"or ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51269,3197,117,7d06,jge short 007Dh,new independent decode; no historical text imported,3,51277,PARTIAL
+player_heading_prepare,51271,3197,119,810656416801,"add word ptr [4156h],168h",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51277,3197,125,813e56416801,"cmp word ptr [4156h],168h",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51283,3197,131,7c06,jl short 008Bh,new independent decode; no historical text imported,3,51291,PARTIAL
+player_heading_prepare,51285,3197,133,812e56416801,"sub word ptr [4156h],168h",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51291,3197,139,a15641,"mov ax,[4156h]",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51294,3197,142,b92d00,"mov cx,2Dh",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51297,3197,145,99,cwd,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51298,3197,146,f7f9,idiv cx,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51300,3197,148,8bc8,"mov cx,ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51302,3197,150,a35841,"mov [4158h],ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51305,3197,153,b80100,"mov ax,1",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51308,3197,156,d3e0,"shl ax,cl",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51310,3197,158,259900,"and ax,99h",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51313,3197,161,a35c41,"mov [415Ch],ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51316,3197,164,a15641,"mov ax,[4156h]",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51319,3197,167,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51321,3197,169,b92d00,"mov cx,2Dh",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51324,3197,172,99,cwd,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51325,3197,173,f7f9,idiv cx,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51327,3197,175,fec0,inc al,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51329,3197,177,250e00,"and ax,0Eh",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51332,3197,180,d1f8,"sar ax,1",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51334,3197,182,a35a41,"mov [415Ah],ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51337,3197,185,ff365641,push word ptr [4156h],new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51341,3197,189,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51342,3197,190,e82107,call 07E2h,new independent decode; no historical text imported,5,53170,PARTIAL
+player_heading_prepare,51345,3197,193,83c402,"add sp,2",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51348,3197,196,a3b241,"mov [41B2h],ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51351,3197,199,ff365641,push word ptr [4156h],new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51355,3197,203,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51356,3197,204,e85f07,call 082Eh,new independent decode; no historical text imported,5,53246,PARTIAL
+player_heading_prepare,51359,3197,207,83c402,"add sp,2",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51362,3197,210,a3b441,"mov [41B4h],ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51365,3197,213,a1b241,"mov ax,[41B2h]",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51368,3197,216,99,cwd,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51369,3197,217,33c2,"xor ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51371,3197,219,2bc2,"sub ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51373,3197,221,8bf0,"mov si,ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51375,3197,223,a1b441,"mov ax,[41B4h]",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51378,3197,226,99,cwd,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51379,3197,227,33c2,"xor ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51381,3197,229,2bc2,"sub ax,dx",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51383,3197,231,8bf8,"mov di,ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51385,3197,233,3bfe,"cmp di,si",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51387,3197,235,7d19,jge short 0106h,new independent decode; no historical text imported,3,51414,PARTIAL
+player_heading_prepare,51389,3197,237,c70672410100,"mov word ptr [4172h],1",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51395,3197,243,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51397,3197,245,8bc8,"mov cx,ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51399,3197,247,2bc6,"sub ax,si",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51401,3197,249,a37441,"mov [4174h],ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51404,3197,252,890e7641,"mov [4176h],cx",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51408,3197,256,8bc7,"mov ax,di",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51410,3197,258,2bc6,"sub ax,si",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51412,3197,260,eb18,jmp short 011Eh,new independent decode; no historical text imported,1,51438,PARTIAL
+player_heading_prepare,51414,3197,262,c70672410000,"mov word ptr [4172h],0",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51420,3197,268,8bc6,"mov ax,si",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51422,3197,270,03f6,"add si,si",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51424,3197,272,8bce,"mov cx,si",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51426,3197,274,2bf7,"sub si,di",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51428,3197,276,89367441,"mov [4174h],si",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51432,3197,280,890e7641,"mov [4176h],cx",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51436,3197,284,2bc7,"sub ax,di",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51438,3197,286,03c0,"add ax,ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51440,3197,288,a37841,"mov [4178h],ax",new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51443,3197,291,5e,pop si,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51444,3197,292,5f,pop di,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51445,3197,293,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+player_heading_prepare,51446,3197,294,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
+player_move_wrapper,26900,1591,1444,c8040000,"enter 4,0",new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26904,1591,1448,803e544100,"cmp byte ptr [4154h],0",new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26909,1591,1453,7521,jne short 05D0h,new independent decode; no historical text imported,3,26944,PARTIAL
+player_move_wrapper,26911,1591,1455,8d46fe,"lea ax,[bp-2]",new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26914,1591,1458,50,push ax,new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26915,1591,1459,8d4efc,"lea cx,[bp-4]",new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26918,1591,1462,51,push cx,new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26919,1591,1463,ff760a,push word ptr [bp+0Ah],new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26922,1591,1466,8a5608,"mov dl,[bp+8]",new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26925,1591,1469,52,push dx,new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26926,1591,1470,ff7606,push word ptr [bp+6],new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26929,1591,1473,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26930,1591,1474,e853fb,call 0118h,new independent decode; no historical text imported,5,25736,PARTIAL
+player_move_wrapper,26933,1591,1477,83c40a,"add sp,0Ah",new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26936,1591,1480,66ff76fc,push dword ptr [bp-4],new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26940,1591,1484,0e,push cs,new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26941,1591,1485,e84cff,call 051Ch,new independent decode; no historical text imported,5,26764,PARTIAL
+player_move_wrapper,26944,1591,1488,c9,leave,new independent decode; no historical text imported,0,,PARTIAL
+player_move_wrapper,26945,1591,1489,cb,ret far,new independent decode; no historical text imported,4,,PARTIAL
 normalize_es_di,107040,5567,17968,50,push ax,push ax,0,,PARTIAL
 normalize_es_di,107041,5567,17969,52,push dx,push dx,0,,PARTIAL
 normalize_es_di,107042,5567,17970,8cc0,"mov ax,es","mov ax, es",0,,PARTIAL

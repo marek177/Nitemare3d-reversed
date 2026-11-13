@@ -1,0 +1,20 @@
+cs,ip,image_offset,bytes,instruction
+1591,1444,26900,c8040000,"enter 4,0"
+1591,1448,26904,803e544100,"cmp byte ptr [4154h],0"
+1591,1453,26909,7521,jne short 05D0h
+1591,1455,26911,8d46fe,"lea ax,[bp-2]"
+1591,1458,26914,50,push ax
+1591,1459,26915,8d4efc,"lea cx,[bp-4]"
+1591,1462,26918,51,push cx
+1591,1463,26919,ff760a,push word ptr [bp+0Ah]
+1591,1466,26922,8a5608,"mov dl,[bp+8]"
+1591,1469,26925,52,push dx
+1591,1470,26926,ff7606,push word ptr [bp+6]
+1591,1473,26929,0e,push cs
+1591,1474,26930,e853fb,call 0118h
+1591,1477,26933,83c40a,"add sp,0Ah"
+1591,1480,26936,66ff76fc,push dword ptr [bp-4]
+1591,1484,26940,0e,push cs
+1591,1485,26941,e84cff,call 051Ch
+1591,1488,26944,c9,leave
+1591,1489,26945,cb,ret far
