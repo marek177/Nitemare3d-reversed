@@ -8,6 +8,10 @@ Nitemare3D-Reversed is an AI-assisted reverse-engineering research project and w
 
 For a starting point, see the [research consolidation](docs/RE_CONSOLIDATION_20261022_24_SK.md), [implementation acceptance matrix](docs/RE_IMPLEMENTATION_ACCEPTANCE_20261024_SK.md), [build instructions](#build) and [original data setup](#original-data). The latest update is below; the complete update history is in [updates.md](updates.md).
 
+## v0.79 evidence reconciliation (20 Nov 2026)
+
+The [v0.79 November consolidation](docs/V079_20261120_EVIDENCE_CONSOLIDATION.md) records bounded CEDC findings alongside later NON-CODE, sprite, SAVE and GUARD research leads **without promoting undocumented observations to DEEP VERIFIED**. Its [JSON evidence addendum](research/v079_20261120_evidence.json), [metadata validator](tools/n3d_v079_addendum_audit.py), [regression tests](tests/test_n3d_v079_addendum_audit.py) and [CI](.github/workflows/v079-evidence-addendum.yml) are separate from original game-parity claims. This research addendum does not replace later renderer v0.80+ code.
+
 ## Latest update
 
 **22–24 Oct 2026 research consolidation:** [DOS/Win16 evidence and implementation map](docs/RE_CONSOLIDATION_20261022_24_SK.md) and [P0 implementation acceptance matrix](docs/RE_IMPLEMENTATION_ACCEPTANCE_20261024_SK.md). This is an evidence-bounded integration; no new original-vs-remake full-game parity is claimed.
