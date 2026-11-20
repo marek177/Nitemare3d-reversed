@@ -35,3 +35,21 @@ This is an **addendum to the historical renderer v0.79**, not a rollback of late
 The companion [machine-readable v0.79 addendum](../research/v079_20261120_evidence.json) deliberately stores the evidence class and open blocker for each claim. The [validator](../tools/n3d_v079_addendum_audit.py) checks schema, duplicate identifiers, bounds, counts and file links **without claiming to validate original CPU behavior**.
 
 Existing v0.79 renderer code and tests are preserved unchanged. Game assets and private trace CSV files are not copied into this public repository.
+
+## Separate interval-ledger cross-check
+
+The 89 B value above is a historical count of bytes with unknown type in
+`N3D_COUNTS.json` (33 UNKNOWN and 56 UNASSESSED). A separate local interval
+ledger for the 57,295 B historical NON-CODE set reports 57,199 B PARTIAL,
+68 B CLASSIFIED ONLY and 28 B UNKNOWN. Its five UNKNOWN rows form four
+contiguous ranges. Neither result changes this addendum's DEEP VERIFIED count.
+
+The local audit independently checked the SHA-256 of the 171,360 B canonical
+load image (`e2efde70af9637fb233bcf4a8cb1cec736ffd81fa90998cc47834b3f54f1f297`),
+the ledger itself (`89fce6b43612d13befb42a61a0c935bbab16151cfb5799a8d5ffc01a4aed919f`),
+and the lengths, non-overlap and original-image slice hashes of all 903 rows.
+In canonical image coordinates the remaining contiguous UNKNOWN ranges are
+`[0x1BDA2,0x1BDB0)`, `[0x1D0EC,0x1D0F0)`,
+`[0x20B88,0x20B90)` and `[0x2770E,0x27710)`.
+This check establishes interval integrity. Semantic ownership and lifetime
+remain unresolved, and the private image and ledger are not included here.
