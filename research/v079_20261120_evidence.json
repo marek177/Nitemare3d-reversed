@@ -1,0 +1,97 @@
+{
+  "schema": "n3d.v079-evidence-addendum.v1",
+  "date": "2026-11-20",
+  "kind": "historical_reconciliation_no_original_reexecution",
+  "global_original_vs_remake_parity": false,
+  "original_runtime_reexecuted": false,
+  "items": [
+    {
+      "id": "V079_CEDC",
+      "domain": "renderer",
+      "status": "BOUNDED_ARCHIVED_PROOF",
+      "source": "docs/V079_DOS20_CEDC_PERSPECTIVE_RUNTIME_SK.md",
+      "metrics": {
+        "calls": 1808,
+        "branches": [
+          1030,
+          474,
+          187,
+          117
+        ],
+        "linked_columns": 1520,
+        "edge_corrections": 23
+      },
+      "blocker": "Full original-versus-remake synchronized framebuffer/DAC proof"
+    },
+    {
+      "id": "NONCODE_20261119",
+      "domain": "non_code",
+      "status": "REPORTED_PENDING_ARTIFACT_IMPORT",
+      "metrics": {
+        "total_bytes": 57295,
+        "classified_bytes": 57206,
+        "unknown_bytes": 89,
+        "unknown_intervals": 15,
+        "new_deep_verified_bytes": 0
+      },
+      "blocker": "Canonical byte-span manifest and hashes for each of the 15 intervals"
+    },
+    {
+      "id": "SPRITE_20261119",
+      "domain": "renderer_sprite",
+      "status": "REPORTED_PENDING_ARTIFACT_IMPORT",
+      "metrics": {
+        "reported_frames": 11,
+        "pixels_per_frame": 64000,
+        "episodes": 3
+      },
+      "blocker": "Original-vs-comparator provenance and actual per-frame pixel artifacts"
+    },
+    {
+      "id": "MENU_20261119",
+      "domain": "menu",
+      "status": "REPORTED_PENDING_ARTIFACT_IMPORT",
+      "metrics": {
+        "music_id": 13,
+        "music_delta": -60,
+        "sfx_id": 12,
+        "sfx_delta": 70,
+        "mouse_delta": 50,
+        "joystick_delta": -50
+      },
+      "blocker": "Machine-code and UI-control trace to corroborate all menu values"
+    },
+    {
+      "id": "SAVE_20261119",
+      "domain": "save_load",
+      "status": "REPORTED_PENDING_ARTIFACT_IMPORT",
+      "metrics": {
+        "changed_bytes": 5,
+        "observed_time_values": [
+          8601,
+          8403
+        ]
+      },
+      "blocker": "Exact byte offsets, timer epoch, and post-load first-frame trace"
+    },
+    {
+      "id": "GUARD_RENDER_20261104",
+      "domain": "guard_renderer",
+      "status": "LIBRARY_REPORT_NOT_REPLAYED",
+      "metrics": {
+        "guard_index": 25,
+        "record_stride": 26,
+        "field_offsets": [
+          2,
+          4
+        ],
+        "state2_observed_sequence": [
+          1,
+          2,
+          3
+        ]
+      },
+      "blocker": "Archive-to-trace provenance, alias and full lifecycle closure"
+    }
+  ]
+}
