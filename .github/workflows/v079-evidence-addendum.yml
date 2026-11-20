@@ -1,0 +1,28 @@
+name: v0.79 evidence addendum integrity
+on:
+  push:
+    paths:
+      - 'docs/V079_20261120_EVIDENCE_CONSOLIDATION.md'
+      - 'research/v079_20261120_evidence.json'
+      - 'tools/n3d_v079_addendum_audit.py'
+      - 'tests/test_n3d_v079_addendum_audit.py'
+      - '.github/workflows/v079-evidence-addendum.yml'
+  pull_request:
+    paths:
+      - 'docs/V079_20261120_EVIDENCE_CONSOLIDATION.md'
+      - 'research/v079_20261120_evidence.json'
+      - 'tools/n3d_v079_addendum_audit.py'
+      - 'tests/test_n3d_v079_addendum_audit.py'
+      - '.github/workflows/v079-evidence-addendum.yml'
+jobs:
+  metadata-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify source links and evidence counts
+        run: python3 tools/n3d_v079_addendum_audit.py
+      - name: Run negative regression tests
+        run: python3 -m unittest discover -s tests -p test_n3d_v079_addendum_audit.py -v
