@@ -53,3 +53,7 @@ In canonical image coordinates the remaining contiguous UNKNOWN ranges are
 `[0x20B88,0x20B90)` and `[0x2770E,0x27710)`.
 This check establishes interval integrity. Semantic ownership and lifetime
 remain unresolved, and the private image and ledger are not included here.
+
+The crosswalk for the same canonical image places all 28 addresses inside
+the 89 unknown-type addresses. The difference is 61 addresses across 11
+additional intervals. This is a coverage comparison between two maps.
