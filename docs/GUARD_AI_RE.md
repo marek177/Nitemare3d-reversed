@@ -1,6 +1,6 @@
 # GUARD AI reverse engineering
 
-Updated: 2026-09-22
+Updated: 2026-09-29
 
 Evidence: original NITE3W.EXE V1.10 Win16 binary (230400 bytes), reconstructed USER.SAV writer/layout, direct 16-bit disassembly/decompilation, executable developer/debug strings, original data files and controlled gameplay/video observations.
 
@@ -114,28 +114,121 @@ The dispatcher around `3:7B55` accepts exactly 22 numeric states.
 |---:|---:|---|---|
 | `00` | `7BA2` | animation/timer; then `state=nextstate` | strong |
 | `01` | `7BE0` | timer countdown; then `02` | strong |
-| `02` | `7BFA` | active AI/animation with sound-type-3 path | PARTIAL |
-| `03` | `7C3C` | detection/transition branch | PARTIAL |
-| `04` | `7C86` | alternate detection/attack branch | PARTIAL |
-| `05` | `7CE4` | helper transition | PARTIAL |
-| `06` | `7CEC` | movement + timer; then `03` | strong control flow |
-| `07` | `7D2A` | active AI; strategy 3 special branch | PARTIAL |
-| `08` | `7D7E` | movement/AI; may enter `02` | PARTIAL |
-| `09` | `7DEC` | special/collision/action path; transformation-related writers remain important | PARTIAL |
-| `0A` | `80A4` | no local action in dispatcher | strong |
+| `02` | `7BFA` | AlertSequence: class sound + row+34 sequence -> 03 | strong |
+| `03` | `7C3C` | AttackOpportunityCheck: 7594 -> 04 or 05 | strong |
+| `04` | `7C86` | AttackExecution: perception re-check, attack SFX + player damage, then 05 | strong |
+| `05` | `7CE4` | MovementReplan via strategy planner 76FC | strong |
+| `06` | `7CEC` | TimedMovement: movement + countdown -> 03 | strong |
+| `07` | `7D2A` | StationaryAcquire: Omnificent/LOS gate -> 02 or strategy-3 state 13 | strong |
+| `08` | `7D7E` | MovingAcquire: marker movement + conditional LOS -> 02 | strong |
+| `09` | `7DEC` | lethal death/special finalization | strong |
+| `0A` | `80A4` | finalized-death terminal state; no local dispatcher body | strong |
 | `0B` | `80A4` | no local action in dispatcher | strong |
-| `0C` | `7E54` | shared handler | PARTIAL |
-| `0D` | `7E54` | shared handler | PARTIAL |
+| `0C` | `7E54` | dormant retail branch; sequence refresh only; USE retains `I've nothing left!` | VERIFIED reachability classification |
+| `0D` | `7E54` | dormant sibling branch; same sequence-refresh handler | VERIFIED reachability classification |
 | `0E` | `7E6C` | conditional transition to `0F` | strong control flow |
 | `0F` | `7E9E` | timer/action; transitions `10` or `0E` | strong control flow |
 | `10` | `7F26` | timer; then return `0F` | strong control flow |
-| `11` | `7F8E` | movement + timer; then `strategy=0,state=07` | strong control flow |
-| `12` | `7FEE` | wait for timer/animation; then `state=nextstate` | strong |
+| `11` | `7F8E` | strategy-1 dynamic-door maneuver; then `strategy=0,state=07` | strong |
+| `12` | `7FEE` | lethal wait/animation path; then `state=nextstate` (death path uses 09) | strong |
 | `13` | `8038` | helper transition | PARTIAL |
-| `14` | `804A` | long timer + periodic action | PARTIAL |
+| `14` | `804A` | E1M9 Radio/Dancers scripted movement state | strong/scripted |
 | `15` | `807E` | confirmed pain/hit reaction; returns to nextstate | VERIFIED/strong |
 
 Exact labels such as CHASE/ATTACK/SEARCH are intentionally not assigned to states 02..14 until movement, animation and sound XREFs close the semantics.
+
+### State 0x0C / 0x0D reachability closure — 2026-09-29
+
+A writer/read audit changes the status of these two states. They are **not normal active AI states in the recovered retail graph**.
+
+For Win16, the audited 1.3, 1.6, 1.8 and 1.10 C exports all retain the same state-`0x0C` USE check, but none contains a recovered direct writer of current state `0x0C` or `0x0D`. In 1.10 the only three raw calls to the common state/sequence setter `3:762C` construct ordinary animation/death/reaction transitions; none supplies `0x0C` or `0x0D` as the new current/next state. The direct `nextState` writers likewise do not introduce either value.
+
+For DOS the same residual state-`0x0C` interaction check exists in the audited exports:
+
+| DOS build | residual state-0x0C interaction helper |
+|---|---|
+| 1.0 | `FUN_1000_8C46` |
+| 1.7 | `FUN_1000_8F56` |
+| 1.8 | `FUN_1000_90BA` |
+| 1.9 | byte-identical executable to the audited 1.8 build, therefore the same code image |
+| 2.0 | `FUN_1000_90C4` |
+
+The audited DOS writer sets also contain no recovered literal current-state writer for `0x0C` or `0x0D`.
+
+The surviving Win16 USE hook `3:AB3E` resolves a GUARD and displays **"I've nothing left!"** only when current state is `0x0C`. This is the only user-facing semantic directly tied to `0x0C`. Both `0x0C` and `0x0D` otherwise share `3:7E54`, which merely forces the normal directional/sequence refresh and does not leave the state.
+
+**Classification:** `0x0C` and `0x0D` are **retail-dormant / legacy-compatible states** in the recovered normal graph. A crafted save, corrupted state, or an as-yet-unrecovered external memory write could still place a GUARD there, so this is not a claim that the numeric handlers are impossible to execute. The historical pre-release meaning is unknown; specifically, `0x0C` is **not** renamed corpse/loot state merely from the text.
+
+This also explains why ordinary death does not prove `0x0C`: normal death finalization reaches state `0x0A`, while lethal player contact uses `0x0B`.
+
+## State producer/reachability closure — 2026-09-29
+
+The Win16 1.10 numeric state space is now closed at the producer level. All 22 values `0x00..0x15` are classified: 20 have a recovered retail producer, `0x0A/0x0B` are deliberate terminal states with no local dispatcher body, and only `0x0C/0x0D` are retained dormant handlers without a normal producer.
+
+Important newly promoted semantics:
+
+- `0x09` = death/special finalization entry;
+- `0x0A` = ordinary finalized-death terminal state;
+- `0x11` = strategy-1 dynamic-door maneuver;
+- `0x12` = conditional lethal wait/animation before next state `0x09`;
+- `0x14` = E1M9 Radio/Dancers scripted state;
+- `0x15` = ordinary pain/reaction state.
+
+The lethal state-setter packing is now decoded: `0x00090000` supplies `state=0,next=9`, while `0x00090012` supplies `state=0x12,next=9` when OBJECT `+0x1A > 0`. This is why state `0x12` eventually restores state `0x09` rather than representing an independent AI strategy.
+
+Detailed evidence and the complete 22-row producer table are in `GUARD_STATE_REACHABILITY_CLOSURE_2026-09-29.md`.
+
+**Coverage:** GUARD state-ID / producer reachability is **100% for Win16 1.10**. This does not promote the entire GUARD AI subsystem to 100%; exact state names for the remaining active AI states, attack scheduling, resource bindings and full DOS parity remain separate targets.
+
+## Strategy matrix and active states 0x02–0x08 — 2026-09-29
+
+A writer/control-flow audit closes the normal Win16 strategy set as exactly **0..4**:
+
+| strategy | functional meaning |
+|---:|---|
+| 0 | default player-biased movement planner |
+| 1 | wounded door-seeking / flee-to-door |
+| 2 | route-marker movement (RETREAT/ACTIONSPOT; double movement scale) |
+| 3 | gargoyle/ONE_SHOT timed movement |
+| 4 | Cannon state machine |
+
+No normal gameplay writer of strategy 5 was recovered. Earlier references to strategy 5 are obsolete.
+
+State semantics are now promoted where direct side effects are sufficient:
+
+| state | functional name |
+|---:|---|
+| 02 | AlertSequence |
+| 03 | AttackOpportunityCheck |
+| 04 | AttackExecution |
+| 05 | MovementReplan |
+| 06 | TimedMovement |
+| 07 | StationaryAcquire |
+| 08 | MovingAcquire |
+
+The ordinary active loop is `02 -> 03 -> 04 -> 05 -> 06 -> 03`, with branches that can skip attack execution when perception fails. State 7 is the stationary acquisition entry; state 8 is the moving/marker acquisition entry.
+
+Strategy 1's helper `1394` scans the 22-byte DoorRuntime controller array and chooses the nearest LOS-valid door anchor when strength < 0x7F. Strategy 2 is selected by RETREAT/ACTIONSPOT wall classes and uses 16-unit movement plus the alternate animation bank. Strategy 3 belongs to the two gargoyle classes and activates ONE_SHOT during state 13. Strategy 4 is class-0x19 Cannon.
+
+Detailed evidence is in `GUARD_STRATEGY_ACTIVE_STATES_CLOSURE_2026-09-29.md`.
+
+**Coverage:** strategy IDs/writers/control flow and states 02–08 control flow are **100% for Win16 1.10**. Exact presentation token/IMG/SND binding and complete DOS parity remain separate.
+
+## Engagement mode / acquisition distinction — 2026-09-29
+
+`GUARD+0x16` now has a direct behavioral interpretation in `3:7594`:
+
+- mode `0` -> use close-proximity flag `GUARD+0x18`;
+- mode `1` -> use visibility/LOS flag `GUARD+0x17`;
+- mode `2` -> same LOS result, but no normal writer exists in Win16 1.3/1.6/1.8/1.10.
+
+The close flag is true only when both world-axis deltas are <= 64. The visibility helper itself rejects targets beyond 8 map cells on either axis.
+
+Initialization selects close-proximity mode for Bat, Frankenstein, Mummy, Dracula, both Gargoyles, Dracula-Bat and Ghost; other normal classes default to LOS mode.
+
+States 7/8 use a front-facing acquisition call directly through `7494`, while states 3/4 use `7594`, whose internal visibility call bypasses the frontal-octant test. This cleanly separates initial acquisition from continued attack opportunity.
+
+**Coverage:** engagement-mode semantics are statically closed for Win16 1.10; mode 2 is retained as an LOS-compatible legacy value without a normal producer.
 
 ## Pain transition
 
@@ -215,18 +308,23 @@ The transformed `0x14` class then uses the score-switch value **200** when final
 
 Current interpretation: Dracula has two 255-strength phases, with the second phase represented internally by GUARD13/class `0x14`. This is supported by the direct class writer plus HP/state reset and shared Bat-related resource/sound behavior.
 
-## GUARD25 / class 0x20 profile
+## GUARD25 / class 0x20 shipped-reachability closure
 
-Class `0x20` remains visually unidentified, but its runtime footprint is much narrower than previously thought:
+Class `0x20` is now classified as an **executable-only fallback/cut slot**, not merely an unidentified retail enemy.
 
-- normal/special creation strength: 255;
-- generic initial AI profile observed as state `07`, next state `02`, strategy 0;
-- score-switch value 50;
-- no dedicated class branch in the recovered `0x0C..0x1F` resistance table, so it falls outside that explicit transform and currently behaves as a generic/fallback damage case in the audited path;
-- no confirmed dedicated attack/death/alert SND mapping;
-- no confirmed normal MAP spawn or visible sprite identity.
+The complete supplied MAP/object-class inventory contains no object-class-table assignment for `0x20`, while every normal retail guard class around it is represented and class `0x21` is explicitly GUARD26/Dancers. A targeted Win16 writer audit also finds no gameplay writer `OBJECT+06 = 0x20`. The superficially similar `GUARD+06 = 0x20` write belongs to the door-maneuver timer and is unrelated to object class.
 
-The best current classification is **cut/unfinished/fallback class, INFERRED**, not a named enemy. Remaining work is to search orphan SEQDEF/IMG/SND references and every writer of `OBJECT+06 = 0x20`.
+If injected, `0x20` still receives the generic guard profile: strength 255, initial state/next state 7/2, strategy 0, generic damage handling, score 50, and no dedicated recovered GUARD sound-selector branch.
+
+This is sufficient to close **shipped reachability**: GUARD25 is not spawned or transformed into by the supplied retail game data/code graph. A hypothetical orphan/pre-release sprite identity remains historical archaeology only.
+
+## GUARD26 / class 0x21 Dancers
+
+GUARD26 is real shipped data rather than a fallback slot. Episode-1 object ID `0x8C` maps to class `0x21` and editor name **Dancers**, with one supplied E1 placement. It uses the special initialization profile and the E1M9 Radio/ACTIONSPOT scripted path. GUARD26 lies outside the GUARD1..25 score switch and therefore scores zero by the default path.
+
+Detailed data evidence is in `GUARD_CLASS_INVENTORY_CLOSURE_2026-09-29.md`.
+
+**Coverage:** shipped GUARD class/object reachability inventory is now **100%**. This does not invent a pre-release name for the unused `0x20` slot.
 
 ## Weapon/class special cases relevant to AI
 
@@ -269,7 +367,7 @@ GUARD26/Dancers is not another class in the GUARD1..25 switch. E1M9 data/gamepla
 
 ## Remaining GUARD/AI targets
 
-1. Give exact semantic names to states 02..14 using original animation/movement/sound XREFs.
+1. Give exact semantic names to the remaining *reachable* partially named states (especially 02..09 and 0E..14) using original animation/movement/sound XREFs; 0C/0D are now classified as dormant.
 2. Recover every `strategy` value and full transition matrix.
 3. Trace movement-state writes to OBJECT X/Y and derive exact speeds/cadence.
 4. Recover sight/FOV/LOS/hearing and the Omnificent hostility gate.
