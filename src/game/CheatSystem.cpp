@@ -40,6 +40,7 @@ void CheatSystem::applyLevelStart(CheatAffectedState& state) const {
         state.health = 100;
         state.weaponResources.fill(100);
         state.weaponMask = 0x0F;
+        if (state.activeWeapon == 0xFF) state.activeWeapon = 0;
     }
     if (enabled(CheatMode::Omnifarious)) {
         state.health = 100;
@@ -49,7 +50,9 @@ void CheatSystem::applyLevelStart(CheatAffectedState& state) const {
         state.weaponMask = 0x0F;
         state.keyMask = 0x0F;
         state.idCardMask = 0x03;
-        state.benefitMask = 0x0F;
+        state.pentagramMask = 0x0F;
+        state.specialUseCharges = 99;
+        if (state.activeWeapon == 0xFF) state.activeWeapon = 0;
     }
 }
 
