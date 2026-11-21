@@ -1,0 +1,88 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:0FD9:0016",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 4057,
+    "entry_offset": 22,
+    "ranges": [
+      [
+        22,
+        94
+      ]
+    ],
+    "end_exclusive_envelope": 94,
+    "file_offset": 71654,
+    "candidate_bytes": "72",
+    "instruction_count": 38,
+    "entries": [
+      22
+    ],
+    "decoded_exits": [
+      {
+        "offset": 65,
+        "kind": "retf"
+      },
+      {
+        "offset": 77,
+        "kind": "retf"
+      },
+      {
+        "offset": 93,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "frame prologue heuristic",
+      "relocated PUSH far callback"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_0FD9_0016.json",
+  "calling_convention": "FAR comparator; two nearDS pointers to near-record-pointer elements atBP+6/+8. ReturnsAX -1/0/+1; savesDI/SI/BP, CX/DS/SS/ES/DF preserved in isolated cases. Actual three native callback frames/returns checked.",
+  "parameters": "near pointers to two pointer-array elements; implicitDS record storage",
+  "algorithm": "Dereference each element word into a near record. If first record signedword+0C equalsword+10, compare signedX at+0C; otherwise compare signedY at+0E. Return sign(firstkey-secondkey). Axis is selected only by first record; arbitrary mixed orientations do not form a universal total ordering.",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "CanonicalFAR frame with saves; valid distinct pointer fixture tested. Invalid/aliased/wrapped inputs and IRQ effects remainopen.",
+  "runtime_evidence": [
+    "wall_sort_20261106/wall_sort_report.md: native grouping/four sorts, three sampled indirect calls to0016 and actualreturns; parent tail and firstDemo header separately witnessed"
+  ],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN for whole boundaries/domains, aliases, IRQ and live remake",
+  "open_questions": [
+    "Validate entry reachability and all indirect branches",
+    "Validate shared ownership and semantic function boundary",
+    "Recover algorithm, ABI and full side effects"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "bounded_analysis_status": "VERIFIED_STATIC_LOCAL_SYNTHETIC_CPU_AND_RUNTIME",
+  "synthetic_cpu_evidence": {
+    "cases": 1076,
+    "report": "wall_sort_20261106/comparator_cpu_validation.json",
+    "mixed_orientation_compare_both_directions_plus1_witness": true
+  },
+  "native_callback_samples": {
+    "sites": [
+      "11EE:30AD",
+      "11EE:312F",
+      "11EE:314D"
+    ],
+    "AX": [
+      0,
+      0,
+      65535
+    ],
+    "trace_events": [
+      25,
+      25,
+      25
+    ],
+    "scope": "One actualsample per site; not all calls or target-domain closure"
+  }
+}

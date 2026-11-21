@@ -1,0 +1,67 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:0FBA:01B2",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 4026,
+    "entry_offset": 434,
+    "ranges": [
+      [
+        434,
+        496
+      ]
+    ],
+    "end_exclusive_envelope": 496,
+    "file_offset": 71570,
+    "candidate_bytes": "62",
+    "instruction_count": 29,
+    "entries": [
+      434
+    ],
+    "decoded_exits": [
+      {
+        "offset": 495,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic",
+      "relocated far call/jump"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_0FBA_01B2.json",
+  "calling_convention": "UNKNOWN",
+  "parameters": "UNKNOWN",
+  "algorithm": "UNKNOWN; instruction semantics recorded, no inferred gameplay name",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "UNKNOWN",
+  "runtime_evidence": [],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN for whole-function, arbitrary aliases/IRQ, nativeWin16 and live remake",
+  "open_questions": [
+    "Validate entry reachability and all indirect branches",
+    "Validate shared ownership and semantic function boundary",
+    "Recover algorithm, ABI and full side effects"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "bounded_algorithm": {
+    "status": "BYTE_MATCHED_LOCAL_AND_SYNTHETIC_CPU",
+    "parameters": "FAR buffer atSS:[entrySP+4,+6], wordcount at+8; FAR return, caller removes6 argumentbytes",
+    "algorithm": "For DI=0..count-1, accumulate XOR of byteDS:SI intoSS localBP-1 before XORing that byte withSS:[2045+(DI mod52)]. IncrementSI modulo65536. ReturnAL checksum of originalbytes.",
+    "key": "52 bytes inSS, not necessarily incomingDS. Fixed repeating-key model requires key/buffer disjointness; selected aliases tested with sequential memory oracle.",
+    "segment_result": "Count0 preserves incomingDS; nonzero setsDS=SS before return. Both preserveSI,DI,BP,SS,ES in tested no-stackalias domains.",
+    "AX": "AL is checksum; nonzeroAH=highbyte floor((count-1)/52), zeroAH preserved. Not a full16-bit boolean return.",
+    "FLAGS": "FinalCMP is equal in stable-count fixtures; IF/DF preserved; arbitrary frame aliases and IRQeffects remainopen.",
+    "native_data_join": "Original supplied54-byteBSF header transforms byte-exactly toP nativeendpointDS3638..366D, checksum0; byte3=1 feeds selector1DS363B. Native transform entry/exit not captured.",
+    "tests": "716 isolatedoriginalCPU cases,432 singlebit ciphertext mutations produce nonzero checksum and one corresponding plaintext bit mutation.",
+    "scope": "Whole boundaries, alternateentries, allaliases/IRQ/crossversion/remake remainUNKNOWN."
+  }
+}

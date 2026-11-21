@@ -1,0 +1,7 @@
+import json,hashlib,shutil
+from pathlib import Path
+R=Path(__file__).resolve().parents[1];W=R/'work/runtime';G=W/'game_rng_targets_i_20261031';name='bsf_eof_s_20261107';D=W/('game_'+name);O=R/'outputs/evidence/runtime'/name;assert not D.exists() and not O.exists();shutil.copytree(G,D);O.mkdir();H=lambda b:hashlib.sha256(b).hexdigest();endpoint=r'\\.\pipe\dosbox-agent-codex-bsf-s-20261107'
+assert H((D/'N3D.EXE').read_bytes())=='a3fa02335e1d8bc531918f3bfaa66217aef65c81e562a2fdf1c749be652ca485';assert H(Path('C:/dosbox-x/dosbox-x.exe').read_bytes())=='78fd1926272de172c2a87b9456aafce5eb54ea928ad1e5103a6d943bc26f0f57'
+spec={'run':name,'game_dir':str(D),'endpoint':endpoint,'pid_file':str(W/'bsf_s_pid.txt'),'scope':'Fresh independent original startup; all supplied26 inputfiles unchanged. No BIOS fixture or guest memory write planned for header transform.'};(O/'run_config.json').write_text(json.dumps(spec,indent=2));env=(W/'agent_rng_p.env').read_text().replace(r'\\.\pipe\dosbox-agent-codex-episode3-p-20261107',endpoint).replace(str(W/'game_rng_episode3_p_20261107'),str(D));(W/'agent_bsf_s.env').write_text(env);(O/'agent_profile.env').write_text(env)
+for f in ('active_run.json','palette_control.json'):shutil.copy2(W/f,O/('prior_'+f))
+(W/'active_run.json').write_text(json.dumps({'endpoint':endpoint,'artifact_subdir':name}));(O/'input_manifest.json').write_text(json.dumps([{'name':p.name,'bytes':p.stat().st_size,'sha256':H(p.read_bytes())} for p in sorted(D.iterdir()) if p.is_file()],indent=2));print(json.dumps(spec))

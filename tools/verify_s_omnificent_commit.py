@@ -1,0 +1,7 @@
+from pathlib import Path
+import json,base64,hashlib
+R=Path.cwd();D=R/'outputs/evidence/runtime/bsf_eof_s_20261107';v=json.loads((D/'omnificent_native_commit.json').read_text());raw={json.loads(p.read_text())['response']['id']:json.loads(p.read_text()) for p in D.glob('rpc_*.json')}
+def data(x):
+ r=raw[x['id']];assert r['response']==x and r['server_pid']==21868;a=x['result'];b=base64.b64decode(a['data_base64']);assert len(b)==a['byte_count'] and hashlib.sha256(b).hexdigest()==a['sha256'];return b
+assert data(v['flag'])==b'\1' and data(v['after_flag'])==b'\0';assert data(v['code'])==bytes.fromhex('36a25341');a=v['registers']['result'];b=v['after_registers']['result'];assert raw[v['registers']['id']]['response']==v['registers'] and raw[v['after_registers']['id']]['response']==v['after_registers'];assert int(a['instruction_pointer'],16)==0x215d and int(b['instruction_pointer'],16)==0x2161 and int(a['general']['eax'],16)&255==0;assert a['segments']['ss']==b['segments']['ss']=='0x2F94'
+O=R/'outputs/omnificent_native_menu_s_20261107';O.mkdir(exist_ok=True);(O/'validation.json').write_text(json.dumps({'status':'VERIFIED_RAW_RPC_NATIVE_MENU_FLAG_STORE','pid':21868,'writer':'0D29:215D','instruction_bytes':'36a25341','before':1,'after':0,'source_AL':0,'next_PC':'0D29:2161','menu_label':'Omnificent (all-cunning), third item','scope':'BIOS queue fixtures used for menu input; no direct testwrite toDS4153. All menu/error/alias/IRQ domains and successfulC37 remainopen.'},indent=2));print('PASS original native SS:4153 store1->0')

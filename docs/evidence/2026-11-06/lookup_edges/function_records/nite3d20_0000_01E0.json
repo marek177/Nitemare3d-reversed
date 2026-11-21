@@ -1,0 +1,156 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:0000:01E0",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 0,
+    "entry_offset": 480,
+    "ranges": [
+      [
+        480,
+        503
+      ],
+      [
+        504,
+        508
+      ]
+    ],
+    "end_exclusive_envelope": 508,
+    "file_offset": 7200,
+    "candidate_bytes": "27",
+    "instruction_count": 14,
+    "entries": [
+      480
+    ],
+    "decoded_exits": [
+      {
+        "offset": 502,
+        "kind": "retf"
+      },
+      {
+        "offset": 507,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic",
+      "relocated far call/jump",
+      "relocated pointer + frame prologue"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_0000_01E0.json",
+  "calling_convention": "FAR call; 4-byte argument FAR pointer at entry SS:SP+4 (after PUSH BP at BP+6), RETF consumes4-byte return, caller cleans4-byte argument; valid stack assumed",
+  "parameters": {
+    "BP+6": "offset word",
+    "BP+8": "segment word"
+  },
+  "algorithm": "LES BX,[BP+6]; CX=word ES:[BX+8]; AL=(CX==0 or CX==4). AH retained. Two RETF paths at01F6/01FB. No whole-word AX boolean claim.",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "Push/restore BP; FAR pointer and stack must be valid and non-corrupting. BX/ES become argument; CX becomes state. DX/SI/DI/DS/SS and AH retained on local paths.",
+  "runtime_evidence": [
+    "runtime_m_20261106/visibility_runtime_validation.json:28-byte code read matches original; NOT an executed predicate invocation"
+  ],
+  "timing_rng_dependencies": "No local RNG, loop or I/O. IRQ timing and caller ordering remain open.",
+  "cross_version_mapping": {
+    "evidence_status": "VERIFIED_STATIC",
+    "proof": "lookup_edges_20261106/predicate_crossversion_mapping.json",
+    "matched_function_ids": [
+      "local_dos_12:0000:01E0",
+      "local_dos_cd:0000:01E0",
+      "nite3d10:0000:01E0",
+      "nite3d11:0000:01E0",
+      "nite3d15:0000:01E0",
+      "nite3d17:0000:01E0",
+      "nite3d19:0000:01E0",
+      "nite3d20:0000:01E0"
+    ],
+    "scope": "Exact14-instruction body/CFG and local valid-pointer contract; no global record meaning, runtime timing, reachability or whole-boundary equivalence"
+  },
+  "parity": "UNKNOWN; identical bounded original bodies do not establish live remake or whole-game parity",
+  "open_questions": [
+    "Native entry/exit and all natural caller paths",
+    "Global alias, alternate-entry and code-write closure",
+    "Cross-version mappings and live remake parity"
+  ],
+  "next_test": "Native lookup/predicate invocation at a wall trait2|8 branch with actual record/state and FAR return",
+  "bounded_analysis_status": "VERIFIED_STATIC",
+  "proven_direct_callers": [
+    {
+      "site": "0AEA:0DD8",
+      "target": "0000:01E0",
+      "inherited_caller": "nite3d20:0AEA:0CC0",
+      "frame": "FAR CALL",
+      "status": "VERIFIED_STATIC"
+    },
+    {
+      "site": "07ED:01EE",
+      "target": "0000:01E0",
+      "inherited_caller": "nite3d20:07ED:00C6",
+      "frame": "FAR CALL",
+      "status": "VERIFIED_STATIC"
+    },
+    {
+      "site": "0637:0054",
+      "target": "0000:01E0",
+      "inherited_caller": "nite3d20:0637:0008",
+      "frame": "FAR CALL",
+      "status": "VERIFIED_STATIC"
+    },
+    {
+      "site": "0637:0076",
+      "target": "0000:01E0",
+      "inherited_caller": "nite3d20:0637:0008",
+      "frame": "FAR CALL",
+      "status": "VERIFIED_STATIC"
+    },
+    {
+      "site": "04C7:0404",
+      "target": "0000:01E0",
+      "inherited_caller": "nite3d20:04C7:0254",
+      "frame": "FAR CALL",
+      "status": "VERIFIED_STATIC"
+    }
+  ],
+  "caller_scope": "Byte-matched explicit edges in inherited callgraph, including PUSH CS/NEAR CALL frames; undiscovered and pointer callers remain open",
+  "registers_and_flags": {
+    "clobbered": [
+      "AL",
+      "BX",
+      "CX",
+      "ES"
+    ],
+    "preserved": [
+      "AH",
+      "DX",
+      "SI",
+      "DI",
+      "BP",
+      "DS",
+      "SS",
+      "IF",
+      "DF"
+    ],
+    "return_flags": "CF=0 PF=1 ZF=1 SF=0 OF=0; AF is not defined uniformly"
+  },
+  "memory_dependencies": {
+    "reads": [
+      "SS stack FAR return/argument/saved BP",
+      "argument.FAR+8 word"
+    ],
+    "writes": [
+      "SS:entrySP-2 saved BP word only under valid nonaliasing stack fixture"
+    ]
+  },
+  "synthetic_cpu_evidence": [
+    "predicate_20261106/exhaustive_predicate_validation.json: all65536 state words, AH=A5 fixture, IF and bothDF values, register/FLAGS/FAR stack/write checks",
+    "visibility_targets_20261106/visibility_direct_targets.json:35 composed helper/grid/lookup/state cases"
+  ],
+  "bounded_lookup_followup": "Companion lookup0000:0000 now has8 controlled CPU boundary cases; see lookup_edges_20261106/lookup_edge_validation.json"
+}

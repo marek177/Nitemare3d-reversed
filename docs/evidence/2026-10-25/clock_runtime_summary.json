@@ -1,0 +1,24 @@
+{
+  "status": "VERIFIED_RUNTIME",
+  "counter_writer": "0BCC:000F",
+  "runtime_writer": "13EE:000F",
+  "slot": "2F93:081E",
+  "trace_events": 24,
+  "trace_artifact": "runtime/clean_run_b/RTC_counter_writer.json",
+  "trace_sha256": "9f416da5d89e9a120e51aa8c24b43c5618e44b72e1da9eb2d7e32b73c3532e8a",
+  "traced_transition": [
+    14090,
+    14091
+  ],
+  "watch_artifact": "runtime/clean_run_b/RTC_watch_only.json",
+  "watch_transition": [
+    14872,
+    14873
+  ],
+  "watch_stop_PC": "13EE:0014",
+  "watch_linear_address": "0003014E",
+  "rejected_option": "once=true rejected CAPABILITY_UNAVAILABLE; once=false worked",
+  "entry_snapshot": "runtime/clean_run_b/clock_entry_ses-1_18.json",
+  "scope": "one traced IRQ increment and one separate watch hit; no IRQ frequency or carry-boundary atomicity claim",
+  "clock_read_order_note": "Trace returns from IRQ to clock RETF with pre-IRQ sampled AX=370A although memory counter has incremented to370B; later clock read loads370B. No torn low/high read or rollover witnessed."
+}

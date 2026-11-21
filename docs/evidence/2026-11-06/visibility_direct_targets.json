@@ -1,0 +1,204 @@
+{
+  "status": "VERIFIED_STATIC_RELOCATION_AND_SYNTHETIC_CPU_ONLY",
+  "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+  "relocation_entries": 1670,
+  "resolved_calls": [
+    {
+      "site": "0AEA:0DCE",
+      "direct_target": "0000:0000",
+      "segment_word_relocation_linear": 48241,
+      "runtime_target_rule": "(MZ_loadbase+0000):0000",
+      "indirect": false
+    },
+    {
+      "site": "0AEA:0DD8",
+      "direct_target": "0000:01E0",
+      "segment_word_relocation_linear": 48251,
+      "runtime_target_rule": "(MZ_loadbase+0000):01E0",
+      "indirect": false
+    }
+  ],
+  "lookup_contract": "0000:0000 searches up to signed count DS(21FD):0000 records at3076 stride18 for FAR tile pointer at+4/+6; returns matching record DX:AX. Missing-record branch calls0FBA:000C with42h; not executed in this fixture.",
+  "predicate_contract": "0000:01E0 returns AL1 exactly for record word+8 equal0 or4, otherwiseAL0.",
+  "cases": [
+    {
+      "wall_traits": 0,
+      "record_state": 0,
+      "AL": 1
+    },
+    {
+      "wall_traits": 0,
+      "record_state": 1,
+      "AL": 1
+    },
+    {
+      "wall_traits": 0,
+      "record_state": 2,
+      "AL": 1
+    },
+    {
+      "wall_traits": 0,
+      "record_state": 3,
+      "AL": 1
+    },
+    {
+      "wall_traits": 0,
+      "record_state": 4,
+      "AL": 1
+    },
+    {
+      "wall_traits": 0,
+      "record_state": 5,
+      "AL": 1
+    },
+    {
+      "wall_traits": 0,
+      "record_state": 65535,
+      "AL": 1
+    },
+    {
+      "wall_traits": 2,
+      "record_state": 0,
+      "AL": 1
+    },
+    {
+      "wall_traits": 2,
+      "record_state": 1,
+      "AL": 1
+    },
+    {
+      "wall_traits": 2,
+      "record_state": 2,
+      "AL": 1
+    },
+    {
+      "wall_traits": 2,
+      "record_state": 3,
+      "AL": 1
+    },
+    {
+      "wall_traits": 2,
+      "record_state": 4,
+      "AL": 1
+    },
+    {
+      "wall_traits": 2,
+      "record_state": 5,
+      "AL": 1
+    },
+    {
+      "wall_traits": 2,
+      "record_state": 65535,
+      "AL": 1
+    },
+    {
+      "wall_traits": 6,
+      "record_state": 0,
+      "AL": 0
+    },
+    {
+      "wall_traits": 6,
+      "record_state": 1,
+      "AL": 0
+    },
+    {
+      "wall_traits": 6,
+      "record_state": 2,
+      "AL": 0
+    },
+    {
+      "wall_traits": 6,
+      "record_state": 3,
+      "AL": 0
+    },
+    {
+      "wall_traits": 6,
+      "record_state": 4,
+      "AL": 0
+    },
+    {
+      "wall_traits": 6,
+      "record_state": 5,
+      "AL": 0
+    },
+    {
+      "wall_traits": 6,
+      "record_state": 65535,
+      "AL": 0
+    },
+    {
+      "wall_traits": 10,
+      "record_state": 0,
+      "AL": 1
+    },
+    {
+      "wall_traits": 10,
+      "record_state": 1,
+      "AL": 0
+    },
+    {
+      "wall_traits": 10,
+      "record_state": 2,
+      "AL": 0
+    },
+    {
+      "wall_traits": 10,
+      "record_state": 3,
+      "AL": 0
+    },
+    {
+      "wall_traits": 10,
+      "record_state": 4,
+      "AL": 1
+    },
+    {
+      "wall_traits": 10,
+      "record_state": 5,
+      "AL": 0
+    },
+    {
+      "wall_traits": 10,
+      "record_state": 65535,
+      "AL": 0
+    },
+    {
+      "wall_traits": 14,
+      "record_state": 0,
+      "AL": 0
+    },
+    {
+      "wall_traits": 14,
+      "record_state": 1,
+      "AL": 0
+    },
+    {
+      "wall_traits": 14,
+      "record_state": 2,
+      "AL": 0
+    },
+    {
+      "wall_traits": 14,
+      "record_state": 3,
+      "AL": 0
+    },
+    {
+      "wall_traits": 14,
+      "record_state": 4,
+      "AL": 0
+    },
+    {
+      "wall_traits": 14,
+      "record_state": 5,
+      "AL": 0
+    },
+    {
+      "wall_traits": 14,
+      "record_state": 65535,
+      "AL": 0
+    }
+  ],
+  "case_count": 35,
+  "preserved_registers_and_FAR_stack_checked": true,
+  "scope": "One interior tile, one matching lookup record, skip-direction flag. Original helper, grid, lookup and predicate bytes execute in Unicorn. No native-game target invocation, absent-record behavior, all door lifecycle or global code-write closure is claimed.",
+  "correction": "The segment-zero call operands are direct MZ-relocated calls, not unresolved indirect callbacks or absent targets."
+}

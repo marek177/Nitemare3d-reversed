@@ -1,0 +1,167 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:06B0:0000",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 1712,
+    "entry_offset": 0,
+    "ranges": [
+      [
+        0,
+        97
+      ],
+      [
+        98,
+        133
+      ],
+      [
+        134,
+        155
+      ],
+      [
+        156,
+        177
+      ],
+      [
+        178,
+        193
+      ],
+      [
+        194,
+        207
+      ],
+      [
+        208,
+        221
+      ],
+      [
+        222,
+        308
+      ]
+    ],
+    "end_exclusive_envelope": 308,
+    "file_offset": 34112,
+    "candidate_bytes": "301",
+    "instruction_count": 114,
+    "entries": [
+      0
+    ],
+    "decoded_exits": [
+      {
+        "offset": 307,
+        "kind": "iret"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "unresolved",
+    "prior_evidence": [
+      "relocated PUSH far callback"
+    ],
+    "issues": [
+      "indirect call 0111"
+    ],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_06B0_0000.json",
+  "calling_convention": "UNKNOWN",
+  "parameters": "UNKNOWN",
+  "algorithm": "UNKNOWN; instruction semantics recorded, no inferred gameplay name",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "UNKNOWN",
+  "runtime_evidence": [],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN",
+  "open_questions": [
+    "Validate entry reachability and all indirect branches",
+    "Validate shared ownership and semantic function boundary",
+    "Recover algorithm, ABI and full side effects"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "indirect_target_provenance": [
+    {
+      "binary_id": "nite3d20",
+      "site": "06B0:0111",
+      "provenance_status": "VERIFIED_STATIC",
+      "target_domain": "INT21_AH35_vector09_return_ES_BX",
+      "target_address_status": "UNKNOWN",
+      "closure": "NOT_PROVEN",
+      "instruction": {
+        "cs": "06B0",
+        "start": "0110",
+        "end_exclusive": "0115",
+        "file_offset": 34384,
+        "bytes": "9cff1e523f",
+        "instructions": [
+          {
+            "ip": "0110",
+            "asm": "pushf "
+          },
+          {
+            "ip": "0111",
+            "asm": "lcall [0x3f52]"
+          }
+        ]
+      },
+      "slot": "DS:3F52 offset, DS:3F54 segment",
+      "proof": [
+        "registration_06B0_014B",
+        "getvect_11EE_39E2",
+        "setvect_11EE_39F4"
+      ],
+      "stack_contract": "PUSHF before FAR CALL; flags and far return frame available to chained handler; handler behavior unresolved",
+      "preconditions": [
+        "registration branch has saved old vector",
+        "DS identifies data segment",
+        "no later overwrite"
+      ],
+      "open": [
+        "capture old vector runtime address",
+        "validate IRET/chaining behavior",
+        "prove data-segment provenance at IRQ entry"
+      ],
+      "runtime_saved_slot_witness": {
+        "slot": "2F94:3F52",
+        "target": "F000:E987",
+        "normalized_writer": "06B0:0154/0157",
+        "runtime_stop": "0ED3:015B",
+        "session": "ses-3",
+        "revision": 10,
+        "status": "VERIFIED_RUNTIME",
+        "artifact": "runtime/callback_break_ses-3_10.json",
+        "artifact_sha256": "009e80171630cf82fb0bf3d7d32d8c05c591379b730035fb70f2e25b36f19561",
+        "scope": "saved vector pointer matches returned DX:AX; no IRQ-chain execution"
+      }
+    }
+  ],
+  "bounded_keyboard_input_analysis": {
+    "status": "VERIFIED_STATIC_BYTES_ONLY",
+    "input": "IN AL,60h; make=1 iff rawbit7 clear, scan=raw&7Fh",
+    "3F50_masks": {
+      "01": "01",
+      "1D": "80",
+      "2A": "40",
+      "36": "20",
+      "48": "02",
+      "4B": "08",
+      "4D": "10",
+      "50": "04"
+    },
+    "3F51_masks": {
+      "38": "01",
+      "39": "02"
+    },
+    "updates": "Masked bit assignment to make/break value; other bits preserved. Shift2A/36 suppressed if priorrawDS34BA=E0. Store currentraw to34BA.",
+    "chain": "PUSHF/FAR indirectCALL DS:[3F52]; downstream optional06B0:01E2 and modeword3CD6==4 ->3CD4=0, thenIRET",
+    "register_contract": "PUSHAD/DS/ES saved; CLD locally, finalIRET flags from interruptedframe. Oldhandler and nestedcallee effects/IRQ vector ownership not closed.",
+    "scope": "114 original instructions matched; no new native port input, vector-registration or IRQ9 parity proof. BIOS menu queue inputs do not exercise this producer."
+  },
+  "bounded_keyboard_CPU_validation": {
+    "status": "SYNTHETIC_ORIGINAL_PREFIX_131072_CASES",
+    "proof": "keyboard_cpu_20261107/validation.json",
+    "domain": "256rawscancodes x256correlatedinitialfieldpairs x2priorprefixstates",
+    "scope": "Onlyport60 mocked; stop010A before savedprefix/rechaining/IRET. Not complete interrupt contract or nativeIRQ parity."
+  }
+}

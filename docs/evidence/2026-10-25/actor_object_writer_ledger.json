@@ -1,0 +1,104 @@
+{
+  "status": "VERIFIED_RUNTIME_ADDRESS_PROVENANCE",
+  "object_index": 169,
+  "guard_slot": 24,
+  "before_after_changes": [
+    {
+      "guard_slot": 24,
+      "object_index": 169,
+      "bytes": [
+        {
+          "offset": 3,
+          "before": 3,
+          "after": 0
+        },
+        {
+          "offset": 12,
+          "before": 156,
+          "after": 154
+        },
+        {
+          "offset": 16,
+          "before": 192,
+          "after": 184
+        }
+      ]
+    }
+  ],
+  "explicit_writes": [
+    {
+      "sequence": 2994,
+      "PC": "04C7:05C1",
+      "asm": "add word ptr es:[di + 0x10], ax",
+      "object_index": 169,
+      "field_offset": 16,
+      "size": 2,
+      "value_before_replay": 3008,
+      "value_after_replay": 3000,
+      "segment": "2A20",
+      "offset": "1292"
+    },
+    {
+      "sequence": 2996,
+      "PC": "04C7:05C8",
+      "asm": "add word ptr es:[di + 0x12], cx",
+      "object_index": 169,
+      "field_offset": 18,
+      "size": 2,
+      "value_before_replay": 3360,
+      "value_after_replay": 3360,
+      "segment": "2A20",
+      "offset": "1294"
+    },
+    {
+      "sequence": 3043,
+      "PC": "04C7:062A",
+      "asm": "inc byte ptr es:[di + 3]",
+      "object_index": 169,
+      "field_offset": 3,
+      "size": 1,
+      "value_before_replay": 3,
+      "value_after_replay": 4,
+      "segment": "2A20",
+      "offset": "1285"
+    },
+    {
+      "sequence": 3057,
+      "PC": "04C7:0652",
+      "asm": "mov byte ptr es:[di + 3], al",
+      "object_index": 169,
+      "field_offset": 3,
+      "size": 1,
+      "value_before_replay": 4,
+      "value_after_replay": 0,
+      "segment": "2A20",
+      "offset": "1285"
+    },
+    {
+      "sequence": 3097,
+      "PC": "04C7:068A",
+      "asm": "mov word ptr es:[di + 0xc], ax",
+      "object_index": 169,
+      "field_offset": 12,
+      "size": 2,
+      "value_before_replay": 20892,
+      "value_after_replay": 20890,
+      "segment": "2A20",
+      "offset": "128E"
+    },
+    {
+      "sequence": 3098,
+      "PC": "04C7:068E",
+      "asm": "mov word ptr es:[di + 0xe], cx",
+      "object_index": 169,
+      "field_offset": 14,
+      "size": 2,
+      "value_before_replay": 10784,
+      "value_after_replay": 10784,
+      "segment": "2A20",
+      "offset": "1290"
+    }
+  ],
+  "six_write_replay_matches_final_28_bytes": true,
+  "scope": "Effective addresses and six local ADD/INC/MOV effects reconstructed from pre-instruction register deltas, initial bytes and hash-pinned decode; final28 bytes match; not global writer closure"
+}

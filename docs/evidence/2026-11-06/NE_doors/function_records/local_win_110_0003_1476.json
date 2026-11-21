@@ -1,0 +1,105 @@
+{
+  "boundary": {
+    "function_id": "local_win_110:0003:1476",
+    "binary_id": "local_win_110",
+    "source_sha256": "12fe5168783446275802e0e947898261b5eca6b88288f3a895fc1faa4c544481",
+    "logical_segment": 3,
+    "entry_offset": 5238,
+    "ranges": [
+      [
+        5238,
+        5261
+      ],
+      [
+        5262,
+        5266
+      ]
+    ],
+    "end_exclusive_envelope": 5266,
+    "file_offset": 95286,
+    "candidate_bytes": "27",
+    "instruction_count": 14,
+    "entries": [
+      5238
+    ],
+    "decoded_exits": [
+      {
+        "offset": 5260,
+        "kind": "retf"
+      },
+      {
+        "offset": 5265,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "NE selector relocation + frame prologue",
+      "decoded direct call",
+      "frame prologue heuristic"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/local_win_110_0003_1476.json",
+  "calling_convention": "FAR call, FAR pointer argument at BP+6/+8 after PUSH BP; RETF local returns; caller ADD SP4 witnessed in paired chains",
+  "parameters": {
+    "BP+6": "argument offset",
+    "BP+8": "argument segment"
+  },
+  "algorithm": "LES BX,[BP+6]; CX=word ES:[BX+0Ch]; AL=1 iff CX in{0,4}, otherwise0; AH retained. Local RETF sites148C/1491.",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "Same local FAR-return ABI as DOS predicate; record state offset differs. Caller must provide a valid Win16 selector/pointer; protected-mode checks not exercised here.",
+  "runtime_evidence": [],
+  "timing_rng_dependencies": "No local loop, RNG or I/O; Win16 caller scheduling and IRQ ordering remain open",
+  "cross_version_mapping": {
+    "evidence_status": "VERIFIED_STATIC",
+    "source_function": "nite3d20:0000:01E0",
+    "proof": "ne_door_20261106/NE_door_contract_mapping.json",
+    "scope": "Local predicate under DOS state+8 \u2194 NE state+12 projection; not whole-record identity, native NE execution or timing parity"
+  },
+  "parity": "UNKNOWN for native Win16, full version/record and live remake parity",
+  "open_questions": [
+    "Native Win16 entry/exit/selector validity",
+    "Whole boundary/alternate entries",
+    "Error behavior and global aliases/writers",
+    "Full state/tick/render/remake parity"
+  ],
+  "next_test": "Run native Win16 paired caller path with actual loaded selectors and record provenance",
+  "bounded_analysis_status": "VERIFIED_STATIC",
+  "registers_and_flags": {
+    "clobbered": [
+      "AL",
+      "BX",
+      "CX",
+      "ES"
+    ],
+    "preserved": [
+      "AH",
+      "DX",
+      "SI",
+      "DI",
+      "BP",
+      "DS",
+      "SS",
+      "IF",
+      "DF"
+    ],
+    "return_flags": "CF0 PF1 ZF1 SF0 OF0; AF excluded"
+  },
+  "memory_dependencies": {
+    "reads": [
+      "argument.word+0Ch",
+      "stack arguments/saved BP/FAR frame"
+    ],
+    "writes": [
+      "saved BP stack word under a valid nonaliasing stack fixture"
+    ]
+  },
+  "synthetic_cpu_evidence": [
+    "ne_door_20261106/predicate_projection_CPU_validation.json: representative historical_11 vs DOS20,65536 field-projected paired CPU cases. Other NE bodies match statically, not native execution of each image."
+  ]
+}

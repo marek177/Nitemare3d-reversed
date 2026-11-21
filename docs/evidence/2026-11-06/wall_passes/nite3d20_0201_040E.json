@@ -1,0 +1,81 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:0201:040E",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 513,
+    "entry_offset": 1038,
+    "ranges": [
+      [
+        1038,
+        1167
+      ],
+      [
+        1168,
+        1179
+      ],
+      [
+        1180,
+        1191
+      ],
+      [
+        1192,
+        1233
+      ],
+      [
+        1234,
+        1264
+      ]
+    ],
+    "end_exclusive_envelope": 1264,
+    "file_offset": 15966,
+    "candidate_bytes": "222",
+    "instruction_count": 86,
+    "entries": [
+      1038
+    ],
+    "decoded_exits": [
+      {
+        "offset": 1263,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_0201_040E.json",
+  "calling_convention": "UNKNOWN",
+  "parameters": "UNKNOWN",
+  "algorithm": "UNKNOWN; instruction semantics recorded, no inferred gameplay name",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "UNKNOWN",
+  "runtime_evidence": [],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN for whole domain, aliases, IRQ ordering and live remake",
+  "open_questions": [
+    "Validate entry reachability and all indirect branches",
+    "Validate shared ownership and semantic function boundary",
+    "Recover algorithm, ABI and full side effects",
+    "Recheck descriptor timing-table pointers after005E/remaining initialization and witness actual040E arguments before claiming RNG input-domain closure"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "preliminary_descriptor_data_join": {
+    "evidence_status": "RUNTIME_ENDPOINT_DATA_WITH_STATIC_FORMULA_NOT_CALLEE_EXECUTION",
+    "report": "wall_passes_20261106/near_descriptor_validation.json",
+    "records": 960,
+    "descriptor_indices": 64,
+    "nonzero_timing_table_descriptors": 0,
+    "nonzero_speed_records": 59,
+    "candidate_count": 0,
+    "scope": "At0277:0B99 before later initialization; actual visible-list pointer ownership and future table persistence unproved. No native0201:0468 invocation or domain closure."
+  }
+}

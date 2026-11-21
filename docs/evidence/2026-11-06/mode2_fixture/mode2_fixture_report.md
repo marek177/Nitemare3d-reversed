@@ -1,0 +1,17 @@
+# Mode2 constructor and09F6 under explicit loader-input fixture — 2026-11-06
+
+The former M process7772 is absent in a new authoritative process query. Its interrupted op56 has a final preserved running response, not a final gameplay snapshot; its terminal time/cause and unobserved tail are UNKNOWN. A fresh independently identified original process N23808/loadbase0823 uses unchanged binaries, MAP and DEMO files.
+
+UI timing recovery is documented: initial fixed-delay attempts remained on the title page. A30-second uninterrupted continuation reached Main Menu. A visually checked selection was corrected from Quit to Demo before Enter; Quit was never confirmed. VGA page hashes vary with selection/timing and are not used as proof that an incorrect screen is the menu. These menu fixtures bypass physical keyboard/IRQ9.
+
+N then uses one deliberate2-byte stack input at0D29:26F4: levelIndex10→4, episode1 unchanged. The explicit PUSH CS/NEAR CALL frame is preserved. Native0D29:097D writes index4. This is NOT native UI level selection and is not a pristine stock-Demo scenario. No actor, position, RNG or executable API patch is made; the single non-BIOS write is the identified loader argument. The original engine loads originalMAP1 level5 and unchangedDEMO1 input.
+
+Original constructor entry083D:117A is traced for a type15 actor on original tile(29,10), wall class42h. Before1262 its mode is0; one native step executes MOV actor.mode,2 and changes only that byte. POP SI/LEAVE/RETF reach the saved04C7:1700 return with the expected stack. The initial level snapshot independently decodes13 mode2 records matching class42/46 cells; it does not turn the earlier76 static candidates into76 runtime constructions.
+
+At render counter17, N reaches the previously unobserved04C7:09F6. RNG C823F683→18BE873A returns AX6334. The native consumer applies CWD/IDIV8 then+8, producing timer14; all26 actor bytes match the predicted timer-only update before0B0A. The actor is mode2/state5 at the call. This does not identify the originally selected dispatcher state or prove the prior writer of5. Native0B0D then writes state6 and the function FAR-returns04C7:0EA4.
+
+Separate constructor/target/consumer/nested trace windows contain34/37/8/368 contiguous sequence-numbered events below capacity. Stop-instruction recording is not treated as execution; mode/state stores and FAR exits have explicit steps. The read-only raw-RPC verifier covers input write classification, native writes, original assets/header, frame/address/hash relations,13 decoded mode2 records, LCG/AX, timer/all26 bytes and returns. Three altered level/timer/mode proofs are rejected.
+
+Static native level-choice reconstruction is separate: action9 advances one index,10 advances two,12 invokes0D29:1B12; changed indices flow to095A. The provided three initial MAP class tables contain no12. The menu also takes an error-call path for count>=11; error termination is not newly closed. No universal unreachable-code or ordinary Cheats warp claim is made. Level-selection/menu records and constructor/loader/0938 records retain UNKNOWN whole boundaries.
+
+09F6 is retired from active stops after this verified input-fixture case. Nine targets from the original11 remain without such captures. The full DOS/Win16, IRQ/global writer, native UI timing and live remake goal remains OPEN. Raw traces, images, original binaries and assets stay local; public artifacts are derived proof summaries and verification source.

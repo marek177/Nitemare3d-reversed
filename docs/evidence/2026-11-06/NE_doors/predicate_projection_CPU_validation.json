@@ -1,0 +1,21 @@
+{
+  "evidence_status": "VERIFIED_DIFFERENTIAL",
+  "test_kind": "SYNTHETIC_ORIGINAL_BYTE_CPU_ONLY",
+  "DOS_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+  "NE_sha256": "6476e259a3a763e2985f22ea6655929e5b313f63ca4bcb976f98b6d50b72140c",
+  "NE_binary_id": "historical_11",
+  "paired_cases": 65536,
+  "projection": "DOS record.word+8 equals NE record.word+12; ES normalized to each argument segment",
+  "AX_CX_defined_FLAGS_and_FAR_return_match": true,
+  "preserved_registers_checked": true,
+  "AH_fixture": "A5",
+  "IF_DF_fixtures": "IF1, DF alternating by state",
+  "case_digest_sha256": "5967762f9fa8a4b8cd10c05901e1111913bd1128ebd81de90f6f58185f23c96f",
+  "unprojected_layout_counterexample": {
+    "NE_word8": 0,
+    "NE_word12": 1,
+    "NE_AL": 0
+  },
+  "unicorn": "2.1.4",
+  "scope": "Two isolated original predicate bodies in a valid real-mode CPU fixture; not a running Win16/NE loader, protected-mode selector/IRQ behavior, whole-record isomorphism or whole-game/remake parity"
+}

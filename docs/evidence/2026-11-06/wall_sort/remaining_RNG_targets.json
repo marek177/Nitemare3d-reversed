@@ -1,0 +1,376 @@
+{
+  "count": 9,
+  "basis": "original11 prior-run-unobserved sites minus M0490 and N09F6",
+  "N09F6_scope": "explicit native-loader level-input fixture",
+  "records": [
+    {
+      "site": "0201:0468",
+      "candidate_function": "0201:040E",
+      "condition": "Near DS record: due unsigned dword+08<=clock; class+06 not07/2D/2F; descriptor+04 nonzero; incremented byte+03 reaches sum of selected low/high bytes. Retry while selected high byte is zero.",
+      "result": "AL&7 -> index+02; accepted low byte ->+03; next time clock+descriptor+02.",
+      "target_test": "Timed near record with rejection then acceptance; observe descriptor and table, no assumed natural termination.",
+      "local_guard_witnesses": [
+        {
+          "pc": "0201:041B",
+          "bytes": "66394408",
+          "instruction": "cmp [si+8],eax"
+        },
+        {
+          "pc": "0201:041F",
+          "bytes": "0f87c900",
+          "instruction": "ja 04ECh"
+        },
+        {
+          "pc": "0201:042B",
+          "bytes": "3d2f00",
+          "instruction": "cmp ax,2Fh"
+        },
+        {
+          "pc": "0201:042E",
+          "bytes": "0f84a000",
+          "instruction": "je 04D2h"
+        },
+        {
+          "pc": "0201:0432",
+          "bytes": "7708",
+          "instruction": "ja short 043Ch"
+        },
+        {
+          "pc": "0201:0436",
+          "bytes": "7464",
+          "instruction": "je short 049Ch"
+        },
+        {
+          "pc": "0201:043A",
+          "bytes": "747e",
+          "instruction": "je short 04BAh"
+        },
+        {
+          "pc": "0201:043F",
+          "bytes": "837d0400",
+          "instruction": "cmp word ptr [di+4],0"
+        },
+        {
+          "pc": "0201:0443",
+          "bytes": "744b",
+          "instruction": "je short 0490h"
+        },
+        {
+          "pc": "0201:0464",
+          "bytes": "3bc1",
+          "instruction": "cmp ax,cx"
+        },
+        {
+          "pc": "0201:0466",
+          "bytes": "7f6e",
+          "instruction": "jg short 04D6h"
+        },
+        {
+          "pc": "0201:0481",
+          "bytes": "807eff00",
+          "instruction": "cmp byte ptr [bp-1],0"
+        },
+        {
+          "pc": "0201:0485",
+          "bytes": "74e1",
+          "instruction": "je short 0468h"
+        }
+      ],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Post-init current64 referenced near-descriptor timing pointers are0 under static formula; actual visible-list domain/future deferred updates remainunproved.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    },
+    {
+      "site": "04C7:0C37",
+      "candidate_function": "04C7:0C30",
+      "condition": "No conditional between candidate entry and RNG.",
+      "result": "CWD/IDIV80 remainder+8 ->timer+06 (8..87); state+0B=13h; direction+11 indexes DS tables0AD4/0ADC.",
+      "target_test": "Dispatcher state7, DS4153==0, helper0F75 returns AL!=0, record+0A==3; index+11 validity remains open.",
+      "local_guard_witnesses": [],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Initial50 actors allmode0; no mode3 actor. Future state/mode changes/spawns remainopen.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    },
+    {
+      "site": "083D:049C",
+      "candidate_function": "083D:0408",
+      "condition": "Descriptor+06 selector9 or10 via CS045E.",
+      "result": "AX&15 ->SI; same scale; returned AX=SI.",
+      "target_test": "Same callback with selector9 or10 and valid FAR arguments.",
+      "local_guard_witnesses": [
+        {
+          "pc": "083D:0445",
+          "bytes": "c45e0a",
+          "instruction": "les bx,[bp+0Ah]"
+        },
+        {
+          "pc": "083D:0448",
+          "bytes": "2ae4",
+          "instruction": "sub ah,ah"
+        },
+        {
+          "pc": "083D:044A",
+          "bytes": "268a4706",
+          "instruction": "mov al,es:[bx+6]"
+        },
+        {
+          "pc": "083D:044E",
+          "bytes": "2d0800",
+          "instruction": "sub ax,8"
+        },
+        {
+          "pc": "083D:0451",
+          "bytes": "3d1600",
+          "instruction": "cmp ax,16h"
+        },
+        {
+          "pc": "083D:0454",
+          "bytes": "7736",
+          "instruction": "ja short 048Ch"
+        },
+        {
+          "pc": "083D:0459",
+          "bytes": "2effa75e04",
+          "instruction": "jmp word ptr cs:[bx+45Eh]"
+        }
+      ],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Initial actor types9/10 absent; endpoint only.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    },
+    {
+      "site": "083D:04AC",
+      "candidate_function": "083D:0408",
+      "condition": "Descriptor+06 selector17..20 via CS045E.",
+      "result": "AX&31 ->SI; same scale; returned AX=SI.",
+      "target_test": "Same callback with each selector17..20; map/episode provenance unresolved.",
+      "local_guard_witnesses": [
+        {
+          "pc": "083D:0445",
+          "bytes": "c45e0a",
+          "instruction": "les bx,[bp+0Ah]"
+        },
+        {
+          "pc": "083D:0448",
+          "bytes": "2ae4",
+          "instruction": "sub ah,ah"
+        },
+        {
+          "pc": "083D:044A",
+          "bytes": "268a4706",
+          "instruction": "mov al,es:[bx+6]"
+        },
+        {
+          "pc": "083D:044E",
+          "bytes": "2d0800",
+          "instruction": "sub ax,8"
+        },
+        {
+          "pc": "083D:0451",
+          "bytes": "3d1600",
+          "instruction": "cmp ax,16h"
+        },
+        {
+          "pc": "083D:0454",
+          "bytes": "7736",
+          "instruction": "ja short 048Ch"
+        },
+        {
+          "pc": "083D:0459",
+          "bytes": "2effa75e04",
+          "instruction": "jmp word ptr cs:[bx+45Eh]"
+        }
+      ],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Initial actor types17..20 absent; endpoint only.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    },
+    {
+      "site": "083D:1698",
+      "candidate_function": "083D:143C",
+      "condition": "Entry argument7. N=DS41AF; divisor signed16(low16(N^3)); Q=trunc(500/divisor)>0. OR supplies JLE condition; divide fault possible for zero divisor.",
+      "result": "RNG modulo62 ->DS3632; paired second draw at16A7; loop gate recomputes N after external calls.",
+      "target_test": "Capture provenance of N; do not inject fault values into natural run or assume fixed iteration count.",
+      "local_guard_witnesses": [
+        {
+          "pc": "083D:1678",
+          "bytes": "c7062a360000",
+          "instruction": "mov word ptr [362Ah],0"
+        },
+        {
+          "pc": "083D:167E",
+          "bytes": "8a0eaf41",
+          "instruction": "mov cl,[41AFh]"
+        },
+        {
+          "pc": "083D:1682",
+          "bytes": "2aed",
+          "instruction": "sub ch,ch"
+        },
+        {
+          "pc": "083D:1684",
+          "bytes": "8bc1",
+          "instruction": "mov ax,cx"
+        },
+        {
+          "pc": "083D:1686",
+          "bytes": "f7e9",
+          "instruction": "imul cx"
+        },
+        {
+          "pc": "083D:1688",
+          "bytes": "f7e9",
+          "instruction": "imul cx"
+        },
+        {
+          "pc": "083D:168A",
+          "bytes": "8bc8",
+          "instruction": "mov cx,ax"
+        },
+        {
+          "pc": "083D:168C",
+          "bytes": "b8f401",
+          "instruction": "mov ax,1F4h"
+        },
+        {
+          "pc": "083D:168F",
+          "bytes": "99",
+          "instruction": "cwd"
+        },
+        {
+          "pc": "083D:1690",
+          "bytes": "f7f9",
+          "instruction": "idiv cx"
+        },
+        {
+          "pc": "083D:1692",
+          "bytes": "0bc0",
+          "instruction": "or ax,ax"
+        },
+        {
+          "pc": "083D:1694",
+          "bytes": "0f8e7301",
+          "instruction": "jle 180Bh"
+        }
+      ],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Not classified by this actor/near-descriptor snapshot; requires separate input provenance.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    },
+    {
+      "site": "083D:16A7",
+      "candidate_function": "083D:143C",
+      "condition": "Unconditional second local draw following1698 and coordinate store; same outer gate.",
+      "result": "RNG modulo36 ->DS3630; coordinates passed to helpers.",
+      "target_test": "Break both sites; distinguish two local draws from RNG calls inside callees/IRQs.",
+      "local_guard_witnesses": [],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Not classified by this actor/near-descriptor snapshot; requires separate input provenance.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    },
+    {
+      "site": "083D:18F2",
+      "candidate_function": "083D:1866",
+      "condition": "Descriptor+06 selectors27..31 via CS1888 table (base9).",
+      "result": "RNG modulo4+75 ->SI75..78; passes selected value to0C2B:03D6, not final returnAX.",
+      "target_test": "Direct candidate inbound04C7:0ECA/10F4; capture selector and consumer arguments.",
+      "local_guard_witnesses": [],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Initial actor types27..31 absent; endpoint only.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    },
+    {
+      "site": "083D:1B3C",
+      "candidate_function": "083D:1AE4",
+      "condition": "Descriptor+06 selectors9/10 via CS1B06 table (base8).",
+      "result": "RNG modulo3+56 ->SI56..58; passed as consumer argument.",
+      "target_test": "Direct candidate inbound04C7:0E34/13ED; capture upstream actor state.",
+      "local_guard_witnesses": [],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Initial actor types9/10 absent; endpoint only.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    },
+    {
+      "site": "0AEA:03D6",
+      "candidate_function": "0AEA:038C",
+      "condition": "FAR ES record: due unsigned dword+08<=clock; increment+03; near descriptor+04 table nonzero; incremented counter>=byte-sum threshold; retry high byte0.",
+      "result": "AL&7 ->ES index+02; accepted low byte ->+03; next time clock+descriptor+02.",
+      "target_test": "Caller0681 excludes classes5/44/45 and descriptor+02==0; distinguish near/FAR ABI; test counter wrap and clock carry separately.",
+      "local_guard_witnesses": [
+        {
+          "pc": "0AEA:0395",
+          "bytes": "66a11e08",
+          "instruction": "mov eax,[81Eh]"
+        },
+        {
+          "pc": "0AEA:0399",
+          "bytes": "6626394408",
+          "instruction": "cmp es:[si+8],eax"
+        },
+        {
+          "pc": "0AEA:039E",
+          "bytes": "0f878d00",
+          "instruction": "ja 042Fh"
+        },
+        {
+          "pc": "0AEA:03A2",
+          "bytes": "26fe4403",
+          "instruction": "inc byte ptr es:[si+3]"
+        },
+        {
+          "pc": "0AEA:03A9",
+          "bytes": "837d0400",
+          "instruction": "cmp word ptr [di+4],0"
+        },
+        {
+          "pc": "0AEA:03AD",
+          "bytes": "7457",
+          "instruction": "je short 0406h"
+        },
+        {
+          "pc": "0AEA:03D2",
+          "bytes": "3bc1",
+          "instruction": "cmp ax,cx"
+        },
+        {
+          "pc": "0AEA:03D4",
+          "bytes": "7c41",
+          "instruction": "jl short 0417h"
+        },
+        {
+          "pc": "0AEA:03F3",
+          "bytes": "807eff00",
+          "instruction": "cmp byte ptr [bp-1],0"
+        },
+        {
+          "pc": "0AEA:03F7",
+          "bytes": "74dd",
+          "instruction": "je short 03D6h"
+        }
+      ],
+      "evidence": "VERIFIED_STATIC_LOCAL_BYTES; inherited ownership; not natural runtime",
+      "runtime_status": "NOT_OBSERVED_IN_PRIOR_run_f",
+      "current_native_header_domain_note": "Not classified by this actor/near-descriptor snapshot; requires separate input provenance.",
+      "domain_evidence": "wall_sort_20261106/post_init_actor_validation.json and post_init_descriptor_validation.json",
+      "target_reachability_closed": false
+    }
+  ],
+  "whole_RNG_or_site_domains_closed": false,
+  "scope": "SameN now at nativeDemo1 episode1/index10 header, all9 target captures stillopen. Initial domain notes do not prove universal unreachability."
+}

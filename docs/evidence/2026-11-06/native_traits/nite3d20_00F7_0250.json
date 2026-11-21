@@ -1,0 +1,95 @@
+{
+  "boundary": {
+    "function_id": "nite3d20:00F7:0250",
+    "binary_id": "nite3d20",
+    "source_sha256": "5ad15f66a4478de21e4c74799a74d35d606f3bdb7406a5b40168cfbd5ba2c9a3",
+    "logical_segment": 247,
+    "entry_offset": 592,
+    "ranges": [
+      [
+        592,
+        621
+      ],
+      [
+        622,
+        695
+      ],
+      [
+        696,
+        754
+      ]
+    ],
+    "end_exclusive_envelope": 754,
+    "file_offset": 11264,
+    "candidate_bytes": "160",
+    "instruction_count": 60,
+    "entries": [
+      592
+    ],
+    "decoded_exits": [
+      {
+        "offset": 753,
+        "kind": "retf"
+      }
+    ],
+    "boundary_status": "UNKNOWN",
+    "evidence_status": "INFERRED",
+    "prior_status": "static_CFG",
+    "prior_evidence": [
+      "decoded direct call",
+      "frame prologue heuristic",
+      "relocated far call/jump"
+    ],
+    "issues": [],
+    "overlaps": [],
+    "decoder_disagreements": []
+  },
+  "cfg": "function_cfg/nite3d20_00F7_0250.json",
+  "calling_convention": "CanonicalFAR entry; implicitDS object headerD40E and outputD10C. BP/SI saved; BX/CX/DI/DS/ES/SS/DF retained. AH/upperEAX retained,AL flags of last class; DXlow last class. SPentry+4 onRETF.",
+  "parameters": "No canonical explicit arguments; initial localbyteSS:[entrySP-3] suppliesbit7",
+  "algorithm": "For index0..255 map byteDS:D40E+index toDS:D10C+index. Bit0 iff6..3Dh;bit1 iff8..2Dh;bit2 iff2Fh..3Dh;bit3 iff8..25h;bit4 cleared;bit5 iffclass2Ah;bit6 iffclass4;bit7 retained from uninitialized localbyte across all256 iterations.",
+  "liveness": "UNKNOWN; local decoder register accesses are not interprocedural liveness",
+  "stack_and_aliasing": "ENTER2 plus savedSI; localBP-1=entrySP-3. Tested nonoverlapping stack/input/output. Alternate entries, aliases and arbitrary interrupt writers remainopen.",
+  "runtime_evidence": [
+    "native_trait_20261106/native_trait_report.md: native wall/object builders with raw-RPC correlation,256 ordered stores each, actualFAR returns and split/interleaved trace scope"
+  ],
+  "timing_rng_dependencies": "UNKNOWN",
+  "cross_version_mapping": "UNKNOWN",
+  "parity": "UNKNOWN for whole function, aliases, interrupts and live remake",
+  "open_questions": [
+    "Whole boundaries and alternate entries",
+    "Universal initial stackbit7 provenance and consumers",
+    "Global alias/IRQ/writer closure and remake parity"
+  ],
+  "next_test": "hash-pinned original runtime entry/exit + caller/stack/write ledger",
+  "bounded_analysis_status": "VERIFIED_STATIC_LOCAL_SYNTHETIC_CPU_AND_RUNTIME",
+  "bounded_register_flags": "FinalCMP SI,0100h givesCF0/PF1/AF0/ZF1/SF0/OF0;DF retained. Native register/flags/FAR frame checked, including interleaved execution.",
+  "memory_dependencies": {
+    "reads": [
+      "DS:D40E..D50D class bytes",
+      "SS:[entrySP-3] initialbit7",
+      "caller frame and savedSI/BP"
+    ],
+    "writes": [
+      "DS:D10C..D20B256 flag bytes",
+      "localbyte and stack saves"
+    ]
+  },
+  "synthetic_cpu_evidence": {
+    "report": "native_trait_20261106/object_trait_builder_validation.json",
+    "invocations": 256,
+    "class_initial_byte_pairs": 65536
+  },
+  "native_invocation": {
+    "status": "VERIFIED_RUNTIME",
+    "initial_local_byte": 7,
+    "output_bit7": 0,
+    "trace_window_events": [
+      10000,
+      363
+    ],
+    "ordered_stores": 256,
+    "FAR_return": "0277:0B94",
+    "scope": "First trace window reaches capacity; second resumes same stopped invocation. Windows retained separately, no stop-instruction execution assumed."
+  }
+}
